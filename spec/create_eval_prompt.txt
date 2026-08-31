@@ -1,0 +1,74 @@
+**Improved Evolution Plan Specification**
+
+**Objective**  
+Develop a rigorous, executable Evolution & Validation Plan for the common agent structure. The plan must systematically validate correctness, robustness, and scalability across a graduated complexity spectrum, produce quantified, actionable feedback, and drive closed-loop iterative self-improvement of the framework.
+
+The plan shall be organized into the following mandatory components:
+
+### 1. Scenario Grading Framework
+All test scenarios must be classified into four strictly progressive complexity tiers. No scenario may skip tiers.
+
+- **Tier 1 – Foundational**  
+  Single-agent, single-task execution. Static input parsing, deterministic response generation, basic tool invocation, and simple state management. No concurrency or inter-agent communication.
+
+- **Tier 2 – Intermediate**  
+  Multi-step sequential workflows, basic inter-agent messaging, conditional branching, simple retry logic, and short-term context retention within a single session.
+
+- **Tier 3 – Advanced**  
+  Parallel and concurrent task execution, dynamic tool discovery/registration, long-horizon context retention across sessions, adaptive planning, and graceful degradation under partial failures.
+
+- **Tier 4 – Extreme / Enterprise**  
+  Multi-agent distributed collaboration, handling of unstructured and adversarial real-world inputs, recovery from critical cascading failures, regulatory compliance (data residency, auditability, PII handling), and high-scale resource contention.
+
+### 2. Test Case Development Requirements
+For every tier, produce a complete set of test cases that each contain:
+
+- Unique Test Case ID (format: `T{tier}-{domain}-{seq}`, e.g., `T3-TOOL-007`)
+- Clear objective statement and explicit preconditions (environment, agent configuration, seed data)
+- Step-by-step execution workflow with formal input/output schemas (JSON Schema preferred)
+- Explicit pass/fail criteria mapped to core common-agent-structure invariants
+- Standardized scoring rubric (1–10) applied independently to each of the following dimensions, then averaged (with optional weighted variants documented):
+  - Functionality completeness
+  - Response accuracy / semantic correctness
+  - Latency & throughput
+  - Resource efficiency (CPU, memory, token, cost)
+  - Error handling & recovery robustness
+  - Security & compliance posture
+- Discussion section that records:
+  - Observed behavior vs. expected
+  - Root-cause linkage to specific architectural components or interfaces of the common agent structure
+  - Concrete gaps and hypothesized remediation
+
+Minimum coverage targets:  
+Tier 1 ≥ 12 cases · Tier 2 ≥ 15 cases · Tier 3 ≥ 12 cases · Tier 4 ≥ 8 cases.
+
+### 3. Feedback & Self-Improvement Mechanism
+A closed-loop system must convert every test run into prioritized engineering actions:
+
+- Automatic root-cause analysis for any dimension scoring < 7
+- Actionable recommendations tagged with:
+  - Implementation effort (Low / Medium / High)
+  - Business / architectural impact (Critical / Important / Optional)
+  - Affected common-agent-structure component(s)
+- Regression suite that must be re-executed after every improvement is merged; any new regression of previously passing cases is treated as a blocking defect
+- Quarterly evolution cycle that:
+  - Incorporates newly observed production failure modes
+  - Raises performance benchmarks
+  - Adds new scenarios reflecting emerging industry patterns and internal product requirements
+
+### 4. Deliverable Requirements
+The final Evolution Plan document must contain:
+
+1. **Master Test Case Matrix** – single source of truth aggregating every test case ID, tier, scores across all six dimensions, overall score, status, and key observations. Supports trend analysis and heat-map visualization.
+2. **Self-Improvement Roadmap** – time-boxed milestones (e.g., M1: Tier 1–2 green, M2: Tier 3 ≥ 8.0 average, M3: Tier 4 production-ready) with measurable success metrics and exit criteria for each iteration.
+3. **Risk & Bottleneck Assessment** – identification of structural risks that emerge when scaling from Tier 3 → Tier 4 (e.g., context explosion, coordination overhead, observability gaps), together with concrete mitigation strategies and early-warning indicators.
+4. **Maintenance Schedule** – cadence for refreshing test cases, recalibrating the scoring rubric, expanding the scenario library, and re-baselining performance numbers against current industry best practices.
+
+**Additional Quality Gates**  
+- Every test case must be fully reproducible from a single command or script.  
+- All runs must emit structured telemetry that can be ingested by the existing observability stack.  
+- The plan itself must be version-controlled and treated as a living specification that co-evolves with the common agent structure.
+
+This specification is intended to produce a living, high-signal validation system rather than a static test document.
+
+Output as evaluation_plan.md

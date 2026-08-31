@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" role="img" aria-labelledby="title desc">
+  <title id="title">CASOPS mutation contract and safe run lifecycle</title>
+  <desc id="desc">All mutations supply four headers and pass a host policy gate. Compose preview performs validation without writing locks, then a deterministic run produces a trace, artifact, and evidence graph. Replay is non-writing.</desc>
+  <defs>
+    <style>
+      .bg{fill:#f8fafc}.card{fill:#fff;stroke:#cbd5e1;stroke-width:2}.blue{fill:#eff6ff;stroke:#60a5fa;stroke-width:2}.green{fill:#ecfdf5;stroke:#34d399;stroke-width:2}.purple{fill:#f5f3ff;stroke:#a78bfa;stroke-width:2}.amber{fill:#fffbeb;stroke:#fbbf24;stroke-width:2}.rose{fill:#fff1f2;stroke:#fb7185;stroke-width:2}.ink{fill:#0f172a;font-family:Segoe UI,Arial,sans-serif}.head{font-size:25px;font-weight:700}.label{font-size:16px;font-weight:700}.body{font-size:13px;fill:#475569}.small{font-size:12px;fill:#475569}.mono{font-size:11px;font-family:Consolas,monospace;fill:#334155}.arrow{fill:none;stroke:#64748b;stroke-width:3;marker-end:url(#arrow)}.fail{fill:none;stroke:#e11d48;stroke-width:3;marker-end:url(#fail)}
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#64748b"/></marker>
+    <marker id="fail" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#e11d48"/></marker>
+  </defs>
+  <rect class="bg" width="1200" height="680" rx="16"/>
+  <text class="ink head" x="42" y="52">Mutation contract → compose preview → deterministic run</text>
+  <text class="body" x="42" y="78">Write endpoints are fail-closed. Preview proves what would compose before the runtime executes the agent DAG.</text>
+
+  <rect class="blue" x="42" y="120" width="250" height="210" rx="14"/>
+  <text class="ink label" x="66" y="154">Required headers</text>
+  <text class="mono" x="66" y="186">x-casops-actor</text><text class="mono" x="66" y="211">x-casops-reason</text><text class="mono" x="66" y="236">x-casops-expected-parent</text><text class="mono" x="66" y="261">x-casops-dry-run</text>
+  <text class="small" x="66" y="301">Every POST / PUT / PATCH / DELETE</text>
+
+  <rect class="purple" x="365" y="120" width="230" height="210" rx="14"/>
+  <text class="ink label" x="389" y="154">Host policy gate</text>
+  <text class="body" x="389" y="188">identity and reason</text><text class="body" x="389" y="212">expected-parent</text><text class="body" x="389" y="236">dry-run declaration</text><text class="body" x="389" y="260">corrigibility rules</text>
+  <text class="small" x="389" y="301">Accept or reject before work</text>
+
+  <rect class="green" x="668" y="120" width="230" height="210" rx="14"/>
+  <text class="ink label" x="692" y="154">Compose preview</text>
+  <text class="body" x="692" y="188">attest invariants</text><text class="body" x="692" y="212">walk MRO and policy</text><text class="body" x="692" y="236">prospective hash</text><text class="mono" x="692" y="271">wrote_locks: false</text>
+  <text class="small" x="692" y="301">No lock files are written</text>
+
+  <rect class="amber" x="971" y="120" width="187" height="210" rx="14"/>
+  <text class="ink label" x="995" y="154">Runtime run</text>
+  <text class="body" x="995" y="188">DAG execution</text><text class="body" x="995" y="212">local deterministic</text><text class="body" x="995" y="236">no plugins</text><text class="body" x="995" y="260">no memory writes</text>
+
+  <path class="arrow" d="M292 225 H350"/><path class="arrow" d="M595 225 H653"/><path class="arrow" d="M898 225 H956"/>
+
+  <rect class="rose" x="343" y="382" width="274" height="90" rx="12"/>
+  <text class="ink label" x="367" y="416">Rejected mutation</text>
+  <text class="mono" x="367" y="442">IMP_UNSIGNED</text><text class="mono" x="490" y="442">IMP_SELF_APPROVAL</text>
+  <path class="fail" d="M480 330 V367"/>
+
+  <rect class="card" x="693" y="382" width="465" height="182" rx="14"/>
+  <text class="ink label" x="717" y="416">Run evidence and inspection</text>
+  <rect class="blue" x="717" y="438" width="118" height="86" rx="10"/><text class="label ink" x="739" y="470" style="font-size:14px">Trace</text><text class="mono" x="739" y="496">tr_…</text>
+  <rect class="purple" x="865" y="438" width="118" height="86" rx="10"/><text class="label ink" x="882" y="470" style="font-size:14px">Artifact</text><text class="mono" x="885" y="496">art_…</text>
+  <rect class="green" x="1013" y="438" width="121" height="86" rx="10"/><text class="label ink" x="1028" y="470" style="font-size:14px">Evidence</text><text class="small" x="1030" y="496">graph</text>
+  <text class="small" x="717" y="548">Replay and counterfactual inspect the same path; they do not write memory.</text>
+  <path class="arrow" d="M1065 330 V367"/>
+
+  <text class="small" x="42" y="628">Operator check: preview must return a 64-hex compose_hash, no errors, and wrote_locks: false before starting a run.</text>
+</svg>

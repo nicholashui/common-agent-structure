@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://casops.local/schemas/agent/agent_spec.schema.json",
+  "title": "agent_spec",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "schema_version",
+    "structure_id",
+    "agent_id",
+    "status",
+    "allowed_tools",
+    "allowed_plugins",
+    "model_policy",
+    "budget_policy",
+    "production_activation_requested",
+    "does_not_own"
+  ],
+  "properties": {
+    "schema_version": { "type": "string", "const": "3.0" },
+    "structure_id": { "type": "string", "const": "casops.common_agent.v3" },
+    "agent_id": { "type": "string", "minLength": 1 },
+    "status": { "type": "string" },
+    "role": { "type": "string" },
+    "allowed_tools": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "allowed_plugins": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "model_policy": {
+      "type": "object",
+      "required": ["provider", "model_id", "network_access"],
+      "properties": {
+        "provider": { "type": "string" },
+        "model_id": { "type": "string" },
+        "network_access": { "type": "boolean" },
+        "routing_allowed": { "type": "boolean" }
+      }
+    },
+    "budget_policy": {
+      "type": "object",
+      "required": [
+        "max_input_tokens",
+        "max_output_tokens",
+        "max_model_calls",
+        "max_tool_requests",
+        "max_job_ms",
+        "max_cost_units"
+      ],
+      "properties": {
+        "max_input_tokens": { "type": "integer", "minimum": 1 },
+        "max_output_tokens": { "type": "integer", "minimum": 1 },
+        "max_model_calls": { "type": "integer", "minimum": 0 },
+        "max_tool_requests": { "type": "integer", "minimum": 0 },
+        "max_job_ms": { "type": "integer", "minimum": 1 },
+        "max_cost_units": { "type": "number" },
+        "max_peer_hops": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "production_activation_requested": { "type": "boolean" },
+    "does_not_own": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1
+    },
+    "max_refinement_count": { "type": "integer", "minimum": 0 }
+  }
+}

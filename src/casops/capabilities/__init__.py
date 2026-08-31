@@ -1,0 +1,1 @@
+"""Capability assertion and conformance."""

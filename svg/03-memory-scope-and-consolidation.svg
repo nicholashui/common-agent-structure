@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 650" role="img" aria-labelledby="title desc">
+  <title id="title">CASOPS memory scope and consolidation boundary</title>
+  <desc id="desc">The baseline template forbids persistent memory writes. A working-mode agent scopes memory to the combined tenant and subject key. Consolidation only queues work; a separate worker drains it off the serving path.</desc>
+  <defs>
+    <style>
+      .bg{fill:#f8fafc}.blue{fill:#eff6ff;stroke:#60a5fa;stroke-width:2}.green{fill:#ecfdf5;stroke:#34d399;stroke-width:2}.purple{fill:#f5f3ff;stroke:#a78bfa;stroke-width:2}.amber{fill:#fffbeb;stroke:#fbbf24;stroke-width:2}.rose{fill:#fff1f2;stroke:#fb7185;stroke-width:2}.ink{fill:#0f172a;font-family:Segoe UI,Arial,sans-serif}.head{font-size:25px;font-weight:700}.label{font-size:16px;font-weight:700}.body{font-size:13px;fill:#475569}.small{font-size:12px;fill:#475569}.mono{font-size:12px;font-family:Consolas,monospace;fill:#334155}.arrow{fill:none;stroke:#64748b;stroke-width:3;marker-end:url(#arrow)}.fail{fill:none;stroke:#e11d48;stroke-width:3;marker-end:url(#fail)}
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#64748b"/></marker>
+    <marker id="fail" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#e11d48"/></marker>
+  </defs>
+  <rect class="bg" width="1200" height="650" rx="16"/>
+  <text class="ink head" x="42" y="52">Memory: policy gate, tenant/subject scope, offline consolidation</text>
+  <text class="body" x="42" y="78">Memory is never global. The baseline template has a deliberate no-write policy.</text>
+
+  <rect class="rose" x="42" y="124" width="278" height="166" rx="14"/>
+  <text class="ink label" x="66" y="158">baseline_safe</text>
+  <text class="mono" x="66" y="188">mode: none</text>
+  <text class="body" x="66" y="216">Persistent candidate write</text><text class="body" x="66" y="236">is rejected by host policy.</text>
+  <text class="mono" x="66" y="266">MEM_TRUST_TIER</text>
+
+  <rect class="purple" x="420" y="124" width="330" height="166" rx="14"/>
+  <text class="ink label" x="444" y="158">Working-mode agent</text>
+  <text class="body" x="444" y="188">Every read or mutation carries:</text>
+  <rect class="blue" x="444" y="208" width="126" height="52" rx="8"/><text class="mono" x="470" y="240">tenant=t1</text>
+  <rect class="blue" x="592" y="208" width="132" height="52" rx="8"/><text class="mono" x="612" y="240">subject=s1</text>
+  <path class="arrow" d="M320 207 H405"/>
+
+  <rect class="green" x="850" y="124" width="302" height="166" rx="14"/>
+  <text class="ink label" x="874" y="158">Scoped memory record</text>
+  <text class="mono" x="874" y="190">memory_id: mem_…</text>
+  <text class="body" x="874" y="216">candidate → query → tombstone</text>
+  <text class="body" x="874" y="236">→ verify deletion</text>
+  <text class="small" x="874" y="266">Wrong scope on delete/verify: MEM_SCOPE</text>
+  <path class="arrow" d="M750 207 H835"/>
+
+  <rect class="blue" x="140" y="372" width="245" height="108" rx="14"/>
+  <text class="ink label" x="164" y="406">Serving API</text>
+  <text class="body" x="164" y="434">POST /memory/consolidate</text>
+  <text class="mono" x="164" y="458">queued: true</text>
+
+  <rect class="amber" x="480" y="372" width="245" height="108" rx="14"/>
+  <text class="ink label" x="504" y="406">Offline queue</text>
+  <text class="body" x="504" y="434">handoff only</text>
+  <text class="mono" x="504" y="458">queue_depth</text>
+
+  <rect class="green" x="820" y="372" width="245" height="108" rx="14"/>
+  <text class="ink label" x="844" y="406">Consolidation worker</text>
+  <text class="body" x="844" y="434">separate process</text>
+  <text class="small" x="844" y="458">only worker drains queue</text>
+  <path class="arrow" d="M385 426 H465"/><path class="arrow" d="M725 426 H805"/>
+
+  <path class="fail" d="M1000 290 V332 H620 V357"/>
+  <text class="small" x="644" y="337" fill="#be123c">never drain on the serving path</text>
+  <text class="small" x="42" y="576">Querying a different tenant returns no records. Tenant and subject remain hard boundaries for deletion and verification.</text>
+</svg>

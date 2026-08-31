@@ -1,0 +1,8 @@
+Conduct a comprehensive deep search across arXiv and leading academic research repositories to identify cutting-edge advancements in agent architectures, then systematically enhance the existing common agent structure by integrating state-of-the-art improvements. Your enhancements must address the following core technical domains with measurable implementation requirements:
+1. Performance: Optimize inference latency, task completion accuracy, and computational resource utilization through adoption of recent architectural optimizations identified in peer-reviewed research
+2. Compatibility: Ensure seamless interoperability with standard LLM inference frameworks, common tooling ecosystems, and multi-agent communication protocols
+3. Observability: Implement structured telemetry, traceable decision-making workflows, and transparent reasoning logs to enable full monitoring of agent operations
+4. Extensibility: Design a modular plugin architecture that supports seamless integration of new tools, capabilities, and modality handlers without core system rewrites
+5. Long-term memory: Integrate verified research-backed memory architectures to enable persistent, retrievable, and context-aware long-term knowledge retention
+6. Autonomous self-improvement: Incorporate mechanisms for continuous online learning, iterative performance refinement, and self-directed capability expansion based on task outcomes
+Package all enhancements, updated architectural diagrams, implementation specifications, and research citations as a production-ready version 2 (v2) of the agent structure, including a detailed validation report that demonstrates measurable improvements across all evaluated technical domains.

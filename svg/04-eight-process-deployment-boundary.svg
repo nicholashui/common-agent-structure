@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" role="img" aria-labelledby="title desc">
+  <title id="title">CASOPS eight-process Docker deployment boundary</title>
+  <desc id="desc">Only the control plane port 8080 is public. Seven supporting services remain internal, including the offline consolidation worker. The trainer bridge has no gradient socket into the runtime.</desc>
+  <defs>
+    <style>
+      .bg{fill:#f8fafc}.shell{fill:#f1f5f9;stroke:#94a3b8;stroke-width:2;stroke-dasharray:8 6}.blue{fill:#eff6ff;stroke:#60a5fa;stroke-width:2}.green{fill:#ecfdf5;stroke:#34d399;stroke-width:2}.purple{fill:#f5f3ff;stroke:#a78bfa;stroke-width:2}.amber{fill:#fffbeb;stroke:#fbbf24;stroke-width:2}.rose{fill:#fff1f2;stroke:#fb7185;stroke-width:2}.ink{fill:#0f172a;font-family:Segoe UI,Arial,sans-serif}.head{font-size:25px;font-weight:700}.label{font-size:15px;font-weight:700}.body{font-size:12px;fill:#475569}.small{font-size:11px;fill:#475569}.mono{font-size:11px;font-family:Consolas,monospace;fill:#334155}.arrow{fill:none;stroke:#64748b;stroke-width:2.5;marker-end:url(#arrow)}.none{stroke:#e11d48;stroke-width:3}.x{stroke:#e11d48;stroke-width:3}
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#64748b"/></marker>
+  </defs>
+  <rect class="bg" width="1200" height="680" rx="16"/>
+  <text class="ink head" x="42" y="52">Eight-process deployment: one public port, seven internal services</text>
+  <text class="body" x="42" y="78">Docker isolates supporting roles behind the control plane. Public traffic never connects directly to internal services.</text>
+
+  <rect class="blue" x="42" y="134" width="184" height="80" rx="12"/>
+  <text class="ink label" x="67" y="166">Operator / client</text><text class="mono" x="67" y="192">127.0.0.1:8080</text>
+
+  <rect class="shell" x="300" y="108" width="850" height="500" rx="18"/>
+  <text class="ink label" x="326" y="140">Docker Compose internal network</text>
+  <text class="small" x="326" y="160">Only the control-plane port is published. All remaining process ports are internal-only.</text>
+
+  <rect x="340" y="190" width="240" height="84" rx="12" fill="#1d4ed8"/>
+  <text x="364" y="223" fill="#fff" font-family="Segoe UI,Arial,sans-serif" font-size="15" font-weight="700">control-plane</text><text x="364" y="248" fill="#dbeafe" font-family="Consolas,monospace" font-size="12">8080 • published</text>
+  <path class="arrow" d="M226 174 H325"/>
+
+  <rect class="purple" x="660" y="190" width="200" height="84" rx="12"/><text class="ink label" x="680" y="223">corrigibility</text><text class="mono" x="680" y="248">8081 • internal</text>
+  <rect class="purple" x="900" y="190" width="200" height="84" rx="12"/><text class="ink label" x="920" y="223">compose</text><text class="mono" x="920" y="248">8082 • internal</text>
+
+  <rect class="green" x="340" y="350" width="200" height="84" rx="12"/><text class="ink label" x="360" y="383">instruments</text><text class="mono" x="360" y="408">8083 • internal</text>
+  <rect class="green" x="580" y="350" width="200" height="84" rx="12"/><text class="ink label" x="600" y="383">runtime</text><text class="mono" x="600" y="408">8084 • internal</text>
+  <rect class="green" x="820" y="350" width="200" height="84" rx="12"/><text class="ink label" x="840" y="383">memory</text><text class="mono" x="840" y="408">8085 • internal</text>
+
+  <rect class="amber" x="460" y="500" width="250" height="84" rx="12"/><text class="ink label" x="480" y="533">consolidation worker</text><text class="mono" x="480" y="558">8086 • drains offline queue</text>
+  <rect class="rose" x="785" y="500" width="220" height="84" rx="12"/><text class="ink label" x="805" y="533">trainer bridge</text><text class="mono" x="805" y="558">8087 • no gradient socket</text>
+
+  <path class="arrow" d="M580 231 H645"/><path class="arrow" d="M580 231 H885"/><path class="arrow" d="M460 274 V335 H440"/><path class="arrow" d="M470 274 V335 H680"/><path class="arrow" d="M500 274 V335 H920"/><path class="arrow" d="M920 434 V485 H585"/>
+  <line class="none" x1="785" y1="476" x2="780" y2="434"/><line class="x" x1="767" y1="445" x2="793" y2="471"/><line class="x" x1="793" y1="445" x2="767" y2="471"/>
+  <text class="small" x="800" y="475" fill="#be123c">no trainer → runtime gradient path</text>
+
+  <text class="small" x="42" y="648">Deployment rule: access the host through the control plane; never publish or use internal role ports as an alternate public API.</text>
+</svg>

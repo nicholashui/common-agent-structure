@@ -1,0 +1,40 @@
+# Populated as each FR is implemented. Schema from implementation_plan.md §11.2.
+schema_version: "3.0"
+requirements:
+  - requirement_id: FR-COR-001
+    source_section: "15.2"
+    summary: Separate ownership, storage, and capability absence for invariants
+    workstream: WS-02
+    implementation_component: corrigibility.store
+    status: implemented
+  - requirement_id: FR-COR-002
+    source_section: "15.2"
+    summary: Every compose attests the invariant digest against a host-held reference
+    workstream: WS-02
+    implementation_component: corrigibility.store
+    status: implemented
+  - requirement_id: FR-COR-003
+    source_section: "15.2"
+    summary: Mismatch invokes containment stop and operator alert; no degraded mode
+    workstream: WS-02
+    implementation_component: corrigibility.store
+    status: implemented
+  - requirement_id: FR-COR-006
+    source_section: "15.2"
+    summary: INV-01 through INV-12 each have a negative fixture
+    workstream: WS-02
+    implementation_component: corrigibility.enforcement
+    status: implemented
+  - requirement_id: FR-INH-301
+    source_section: "6.5"
+    summary: Regression and safety fixtures are union-monotonic
+    workstream: WS-04
+    implementation_component: compose.fixtures
+    status: implemented
+  - requirement_id: FR-SKL-002
+    source_section: "16.1"
+    summary: Skill enable-AND with missing enabled defaulting to true
+    workstream: WS-04
+    implementation_component: compose.skills
+    status: implemented
+

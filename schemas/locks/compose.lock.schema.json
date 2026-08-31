@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://casops.local/schemas/locks/compose.lock.schema.json",
+  "title": "compose.lock",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "schema_version",
+    "agent_id",
+    "child_hash",
+    "parent_hashes",
+    "mro",
+    "compose_hash"
+  ],
+  "properties": {
+    "schema_version": { "type": "string", "const": "3.0" },
+    "agent_id": { "type": "string" },
+    "child_hash": { "type": "string", "minLength": 64, "maxLength": 64 },
+    "parent_hashes": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "mro": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "prompt_hashes": { "type": "object" },
+    "rubric_hashes": { "type": "object" },
+    "skill_resolution": { "type": "object" },
+    "cache_policy_hash": { "type": "string" },
+    "context_policy_hash": { "type": "string" },
+    "compute_controller_hash": { "type": "string" },
+    "verified_capability_matrix": { "type": "object" },
+    "tokenizer_digest": { "type": "string" },
+    "chat_template_digest": { "type": "string" },
+    "protocol_versions": { "type": "object" },
+    "adapter_versions": { "type": "object" },
+    "otel_schema_url": { "type": "string" },
+    "plugin_digests": { "type": "object" },
+    "isolation_tier_map": { "type": "object" },
+    "plugin_sbom_digests": { "type": "object" },
+    "memory_policy_hash": { "type": "string" },
+    "memory_hierarchy_hash": { "type": "string" },
+    "memory_security_hash": { "type": "string" },
+    "unlearning_hash": { "type": "string" },
+    "verifier_set_hash": { "type": "string" },
+    "safety_hash": { "type": "string" },
+    "termination_hash": { "type": "string" },
+    "corrigibility_invariant_digest": { "type": "string" },
+    "instrument_digests": { "type": "object" },
+    "analysis_plan_hash": { "type": "string" },
+    "regression_fixture_set_digest": { "type": "string" },
+    "compose_hash": { "type": "string", "minLength": 64, "maxLength": 64 }
+  }
+}

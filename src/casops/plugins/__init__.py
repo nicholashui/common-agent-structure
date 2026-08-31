@@ -1,0 +1,1 @@
+"""Plugin manifests and isolation."""

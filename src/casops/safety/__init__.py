@@ -1,0 +1,1 @@
+"""Mandatory safety plane."""

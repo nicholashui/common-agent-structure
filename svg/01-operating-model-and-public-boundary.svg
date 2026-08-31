@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 620" role="img" aria-labelledby="title desc">
+  <title id="title">CASOPS operating model and public boundary</title>
+  <desc id="desc">A human operator uses the public API control plane, which loads the agent folder and coordinates internal host services. Direct agent self-approval, invariant writes, and production activation are denied.</desc>
+  <defs>
+    <style>
+      .bg{fill:#f8fafc}.card{fill:#fff;stroke:#cbd5e1;stroke-width:2}.blue{fill:#eff6ff;stroke:#60a5fa;stroke-width:2}.purple{fill:#f5f3ff;stroke:#a78bfa;stroke-width:2}.green{fill:#ecfdf5;stroke:#34d399;stroke-width:2}.red{fill:#fff1f2;stroke:#fb7185;stroke-width:2}.ink{fill:#0f172a;font-family:Segoe UI,Arial,sans-serif}.head{font-size:25px;font-weight:700}.label{font-size:16px;font-weight:700}.body{font-size:13px;fill:#475569}.small{font-size:12px;fill:#475569}.mono{font-size:12px;font-family:Consolas,monospace;fill:#334155}.white{fill:#fff;font-size:16px;font-weight:700}.arrow{fill:none;stroke:#64748b;stroke-width:3;marker-end:url(#arrow)}.deny{stroke:#e11d48;stroke-width:3}.x{stroke:#e11d48;stroke-width:4}
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#64748b"/></marker>
+  </defs>
+  <rect class="bg" width="1200" height="620" rx="16"/>
+  <text class="ink head" x="42" y="52">CASOPS operating boundary</text>
+  <text class="body" x="42" y="78">The host owns safety-critical decisions. The agent folder is a loaded configuration input, not a control plane.</text>
+
+  <rect class="blue" x="52" y="130" width="220" height="135" rx="14"/>
+  <text class="ink label" x="76" y="165">Human operator</text>
+  <text class="body" x="76" y="193">PowerShell, browser,</text><text class="body" x="76" y="213">casops-eval, citation CLI</text>
+
+  <rect x="405" y="126" width="310" height="145" rx="14" fill="#1d4ed8"/>
+  <text class="white" x="431" y="164">Public control plane</text>
+  <text x="431" y="193" fill="#dbeafe" font-family="Consolas,monospace" font-size="14">/api/v3</text>
+  <text x="431" y="219" fill="#dbeafe" font-family="Segoe UI,Arial,sans-serif" font-size="13">FastAPI • mutation policy • audit</text>
+
+  <rect class="purple" x="890" y="130" width="255" height="135" rx="14"/>
+  <text class="ink label" x="914" y="165">Agent folder</text>
+  <text class="mono" x="914" y="193">agents/_template_v3/</text>
+  <text class="small" x="914" y="216">prompts • policy • DAG</text>
+  <text class="small" x="914" y="236">host-loaded configuration</text>
+
+  <path class="arrow" d="M272 197 H390"/><text class="small" x="306" y="180">only public path</text>
+  <path class="arrow" d="M715 197 H875"/><text class="small" x="758" y="180">loads and validates</text>
+
+  <rect class="green" x="224" y="372" width="752" height="148" rx="14"/>
+  <text class="ink label" x="250" y="406">Internal host services — not public</text>
+  <text class="body" x="250" y="434">corrigibility invariants  •  compose  •  runtime  •  memory  •  instrument registry</text>
+  <text class="body" x="250" y="458">consolidation worker  •  trainer bridge  •  evidence and trace storage</text>
+  <text class="small" x="250" y="490">Internal ports support service coordination; the control plane remains the single public HTTP boundary.</text>
+  <path class="arrow" d="M560 271 V356"/>
+
+  <rect class="red" x="68" y="548" width="1060" height="48" rx="10"/>
+  <line class="x" x1="91" y1="561" x2="117" y2="585"/><line class="x" x1="117" y1="561" x2="91" y2="585"/>
+  <text class="ink label" x="140" y="579">Denied from an agent identity:</text>
+  <text class="body" x="397" y="579">self-approval • invariant writes • production activation • granting its own network/tools</text>
+</svg>

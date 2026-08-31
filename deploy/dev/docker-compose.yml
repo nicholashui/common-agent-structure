@@ -1,0 +1,82 @@
+# Normative process isolation from implementation_plan.md §16.2.
+# Public traffic binds only to control-plane.
+
+services:
+  corrigibility-invariant-service:
+    build:
+      context: ../..
+      dockerfile: services/corrigibility-invariant-service/Dockerfile
+    volumes:
+      - corrigibility-data:/var/casops/corrigibility
+    environment:
+      CASOPS_ROLE: corrigibility
+      CASOPS_CORRIGIBILITY_DATA: /var/casops/corrigibility
+      CASOPS_CORRIGIBILITY_KEY: /var/casops/corrigibility/keys/ed25519.pem
+    expose:
+      - "8081"
+
+  instrument-registry-service:
+    build: ../../services/instrument-registry-service
+    volumes:
+      - instrument-data:/var/casops/instruments
+    environment:
+      CASOPS_ROLE: instruments
+
+  compose-service:
+    build:
+      context: ../..
+      dockerfile: services/compose-service/Dockerfile
+    volumes:
+      - agent-folders:/var/casops/agents:ro
+      - locks:/var/casops/locks
+    environment:
+      CASOPS_ROLE: compose
+      CASOPS_AGENTS_ROOT: /var/casops/agents
+      CASOPS_CORRIGIBILITY_DATA: /var/casops/corrigibility
+      CASOPS_CORRIGIBILITY_KEY: /var/casops/corrigibility/keys/ed25519.pem
+    expose:
+      - "8082"
+
+  runtime-service:
+    build: ../../services/runtime-service
+    volumes:
+      - runtime-data:/var/casops/runtime
+      - artifacts:/var/casops/artifacts
+
+  memory-service:
+    build: ../../services/memory-service
+    volumes:
+      - memory-data:/var/casops/memory
+
+  consolidation-worker:
+    build: ../../services/consolidation-worker
+    volumes:
+      - memory-data:/var/casops/memory
+    deploy:
+      resources:
+        reservations:
+          cpus: "1.0"
+          memory: 1G
+
+  trainer-bridge:
+    build: ../../services/trainer-bridge
+    volumes:
+      - trajectories:/var/casops/trajectories
+    # No inbound gradient socket into runtime-service.
+
+  control-plane:
+    build: ../../services/control-plane
+    ports:
+      - "8080:8080"
+    environment:
+      CASOPS_PUBLIC_PREFIX: /api/v3
+
+volumes:
+  corrigibility-data:
+  instrument-data:
+  agent-folders:
+  locks:
+  runtime-data:
+  artifacts:
+  memory-data:
+  trajectories:
