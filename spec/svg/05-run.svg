@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 800" role="img" aria-labelledby="title desc">
+  <title id="title">Run screen</title>
+  <desc id="desc">DAG canvas, context budget, T3-off cache, Run button, sealed result without a chat transcript.</desc>
+  <defs>
+    <style>
+      text { font-family: Inter, system-ui, sans-serif; }
+      .pulse { animation: p 1.4s ease-in-out infinite; }
+      @keyframes p { 0%,100% { opacity:1 } 50% { opacity:.35 } }
+    </style>
+  </defs>
+<rect width="1280" height="800" fill="#ffffff"/>
+<rect x="0" y="0" width="1280" height="56" fill="#ffffff"/>
+<line x1="0" y1="56" x2="1280" y2="56" stroke="#e7e5e4" stroke-width="1"/>
+<rect x="16.0" y="14.0" width="28.0" height="28.0" rx="8" fill="#4f46e5"/>
+<path d="M24 22 L36 28 L24 34 Z" fill="#ffffff" opacity="0.9"/>
+<text x="52.0" y="34.0" fill="#1c1917" font-size="14" font-weight="600" font-family="Inter, system-ui, sans-serif" text-anchor="start">caso</text>
+<text x="108.0" y="34.0" fill="#a8a29e" font-size="12" font-weight="500" font-family="Inter, system-ui, sans-serif" text-anchor="start">Control UI</text>
+<rect x="300.0" y="12.0" width="340.0" height="32.0" rx="10" fill="#fafaf9" stroke="#e7e5e4" stroke-width="1"/>
+<text x="314.0" y="33.0" fill="#44403c" font-size="12" font-weight="500" font-family="ui-monospace, Consolas, monospace" text-anchor="start">casops.template.baseline_safe ▾</text>
+<rect x="980.0" y="17.0" width="72.0" height="22.0" rx="999" fill="#ecfdf5" stroke="#a7f3d0" stroke-width="1"/><circle cx="991" cy="28" r="3.2" fill="#10b981" class="pulse"/><text x="1000.0" y="32.0" fill="#047857" font-size="11" font-weight="500" font-family="Inter, system-ui, sans-serif" text-anchor="start">Live</text>
+<text x="1088.0" y="34.0" fill="#a8a29e" font-size="11" font-weight="500" font-family="Inter, system-ui, sans-serif" text-anchor="start">as_of just now</text>
+<rect x="0" y="56" width="208" height="744" fill="#fafaf9"/>
+<line x1="208" y1="56" x2="208" y2="800" stroke="#e7e5e4"/>
+<text x="24.0" y="85.0" fill="#78716c" font-size="13" font-weight="500" font-family="Inter, system-ui, sans-serif" text-anchor="start">Fleet</text>
+<text x="24.0" y="119.0" fill="#78716c" font-size="13" font-weight="500" font-family="Inter, system-ui, sans-serif" text-anchor="start">Overview</text>
+<text x="24.0" y="153.0" fill="#78716c" font-size="13" font-weight="500" font-family="Inter, system-ui, sans-serif" text-anchor="start">Structure</text>
+<text x="24.0" y="187.0" fill="#78716c" font-size="13" font-weight="500" font-family="Inter, system-ui, sans-serif" text-anchor="start">Compose</text>
+<rect x="10.0" y="202.0" width="188.0" height="28.0" rx="8" fill="#ffffff" stroke="#c7d2fe" stroke-width="1"/>
+<rect x="10.0" y="202.0" width="3.0" height="28.0" rx="2" fill="#4f46e5"/>
+<text x="24.0" y="221.0" fill="#1c1917" font-size="13" font-weight="600" font-family="Inter, system-ui, sans-serif" text-anchor="start">Run</text>
+<text x="24.0" y="255.0" fill="#78716c" font-size="13" font-weight="500" font-family="Inter, system-ui, sans-serif" text-anchor="start">Trace</text>
+<text x="24.0" y="289.0" fill="#78716c" font-size="13" font-weight="500" font-family="Inter, system-ui, sans-serif" text-anchor="start">Capabilities</text>
+<text x="24.0" y="323.0" fill="#78716c" font-size="13" font-weight="500" font-family="Inter, system-ui, sans-serif" text-anchor="start">Protocols</text>
+<text x="24.0" y="357.0" fill="#78716c" font-size="13" font-weight="500" font-family="Inter, system-ui, sans-serif" text-anchor="start">Memory</text>
+<text x="24.0" y="391.0" fill="#78716c" font-size="13" font-weight="500" font-family="Inter, system-ui, sans-serif" text-anchor="start">Plugins</text>
+<text x="24.0" y="425.0" fill="#78716c" font-size="13" font-weight="500" font-family="Inter, system-ui, sans-serif" text-anchor="start">Cache</text>
+<text x="24.0" y="459.0" fill="#78716c" font-size="13" font-weight="500" font-family="Inter, system-ui, sans-serif" text-anchor="start">Safety</text>
+<text x="24.0" y="493.0" fill="#78716c" font-size="13" font-weight="500" font-family="Inter, system-ui, sans-serif" text-anchor="start">Improvement</text>
+<text x="24.0" y="527.0" fill="#78716c" font-size="13" font-weight="500" font-family="Inter, system-ui, sans-serif" text-anchor="start">Validation</text>
+<text x="24.0" y="561.0" fill="#78716c" font-size="13" font-weight="500" font-family="Inter, system-ui, sans-serif" text-anchor="start">Corrigibility</text>
+<text x="24.0" y="595.0" fill="#78716c" font-size="13" font-weight="500" font-family="Inter, system-ui, sans-serif" text-anchor="start">Settings</text>
+<rect x="208" y="56" width="1072" height="52" fill="#fafaf9"/>
+<line x1="208" y1="108" x2="1280" y2="108" stroke="#e7e5e4"/>
+<text x="224.0" y="76.0" fill="#a8a29e" font-size="9" font-weight="600" font-family="Inter, system-ui, sans-serif" text-anchor="start">MUTATION CONTRACT</text>
+<rect x="224.0" y="82.0" width="150.0" height="22.0" rx="8" fill="#ffffff" stroke="#e7e5e4" stroke-width="1"/>
+<text x="234.0" y="97.0" fill="#292524" font-size="11" font-weight="500" font-family="Inter, system-ui, sans-serif" text-anchor="start">host_service ▾</text>
+<rect x="384.0" y="82.0" width="220.0" height="22.0" rx="8" fill="#ffffff" stroke="#e7e5e4" stroke-width="1"/>
+<text x="394.0" y="97.0" fill="#78716c" font-size="11" font-weight="500" font-family="Inter, system-ui, sans-serif" text-anchor="start">reason: operator-walkthrough</text>
+<rect x="614.0" y="82.0" width="150.0" height="22.0" rx="8" fill="#ffffff" stroke="#e7e5e4" stroke-width="1"/>
+<text x="624.0" y="97.0" fill="#78716c" font-size="11" font-weight="500" font-family="Inter, system-ui, sans-serif" text-anchor="start">parent: none</text>
+<rect x="776.0" y="82.0" width="118.0" height="22.0" rx="999" fill="#eef2ff" stroke="#c7d2fe" stroke-width="1"/>
+<text x="835.0" y="97.0" fill="#4338ca" font-size="11" font-weight="600" font-family="Inter, system-ui, sans-serif" text-anchor="middle">dry-run ON</text>
+<text x="224.0" y="70.0" fill="#a8a29e" font-size="11" font-weight="500" font-family="Inter, system-ui, sans-serif" text-anchor="start">Fleet / casops.template.baseline_safe / Run</text>
+<text x="232.0" y="144.0" fill="#1c1917" font-size="22" font-weight="700" font-family="Inter, system-ui, sans-serif" text-anchor="start">Run</text>
+<text x="232.0" y="166.0" fill="#78716c" font-size="13" font-weight="500" font-family="Inter, system-ui, sans-serif" text-anchor="start">Execute baseline_safe. No chat transcript — sealed adapter output only.</text>
+<rect x="232.0" y="186.0" width="420.0" height="280.0" rx="16" fill="#ffffff" stroke="#c7d2fe" stroke-width="2"/>
+<text x="252.0" y="218.0" fill="#4f46e5" font-size="12" font-weight="600" font-family="Inter, system-ui, sans-serif" text-anchor="start">DAG  ·  GET …/runtime/plan</text>
+<rect x="352.0" y="266.0" width="180.0" height="72.0" rx="16" fill="#ffffff" stroke="#c7d2fe" stroke-width="2"/>
+<text x="442.0" y="298.0" fill="#1c1917" font-size="13" font-weight="600" font-family="Inter, system-ui, sans-serif" text-anchor="middle">run.root</text>
+<text x="442.0" y="318.0" fill="#a8a29e" font-size="11" font-weight="500" font-family="Inter, system-ui, sans-serif" text-anchor="middle">tr_b5db3e88</text>
+<line x1="442" y1="338" x2="442" y2="374" stroke="#c7d2fe" stroke-width="2"/>
+<rect x="352.0" y="374.0" width="180.0" height="64.0" rx="16" fill="#eef2ff" stroke="#c7d2fe" stroke-width="1"/>
+<text x="442.0" y="402.0" fill="#4338ca" font-size="13" font-weight="600" font-family="Inter, system-ui, sans-serif" text-anchor="middle">node.model</text>
+<text x="442.0" y="422.0" fill="#78716c" font-size="11" font-weight="500" font-family="Inter, system-ui, sans-serif" text-anchor="middle">model_1</text>
+<rect x="676.0" y="186.0" width="300.0" height="280.0" rx="16" fill="#ffffff" stroke="#e7e5e4" stroke-width="1"/>
+<text x="696.0" y="218.0" fill="#1c1917" font-size="14" font-weight="600" font-family="Inter, system-ui, sans-serif" text-anchor="start">Context budget</text>
+<text x="696.0" y="246.0" fill="#a8a29e" font-size="11" font-weight="500" font-family="ui-monospace, Consolas, monospace" text-anchor="start">GET …/runtime/context-budget</text>
+<text x="696.0" y="278.0" fill="#44403c" font-size="12" font-weight="500" font-family="Inter, system-ui, sans-serif" text-anchor="start">policy / task / memory / tools</text>
+<text x="696.0" y="300.0" fill="#44403c" font-size="12" font-weight="500" font-family="Inter, system-ui, sans-serif" text-anchor="start">pinned: safety, corrigibility</text>
+<rect x="676.0" y="334.0" width="260.0" height="36.0" rx="8" fill="#fafaf9"/>
+<text x="692.0" y="358.0" fill="#78716c" font-size="12" font-weight="500" font-family="Inter, system-ui, sans-serif" text-anchor="start">Disclosure collapsed</text>
+<rect x="1000.0" y="186.0" width="256.0" height="280.0" rx="16" fill="#ffffff" stroke="#e7e5e4" stroke-width="1"/>
+<text x="1020.0" y="218.0" fill="#1c1917" font-size="14" font-weight="600" font-family="Inter, system-ui, sans-serif" text-anchor="start">Cache</text>
+<text x="1020.0" y="246.0" fill="#44403c" font-size="12" font-weight="500" font-family="Inter, system-ui, sans-serif" text-anchor="start">tiers  [T0]</text>
+<rect x="1020.0" y="262.0" width="94.0" height="22.0" rx="999" fill="#f5f5f4" stroke="#e7e5e4" stroke-width="1"/><circle cx="1031" cy="273" r="3.2" fill="#a8a29e"/><text x="1040.0" y="277.0" fill="#78716c" font-size="11" font-weight="500" font-family="Inter, system-ui, sans-serif" text-anchor="start">T3 off</text>
+<text x="1020.0" y="314.0" fill="#a8a29e" font-size="11" font-weight="500" font-family="Inter, system-ui, sans-serif" text-anchor="start">No Enable T3 control — no API.</text>
+<rect x="1020.0" y="406.0" width="140.0" height="28.0" rx="999" fill="#ffffff" stroke="#e7e5e4" stroke-width="1"/><text x="1090.0" y="424.5" fill="#44403c" font-size="12" font-weight="500" font-family="Inter, system-ui, sans-serif" text-anchor="middle">Invalidate</text>
+<rect x="232.0" y="486.0" width="100.0" height="36.0" rx="999" fill="#1c1917"/><text x="282.0" y="508.5" fill="#ffffff" font-size="12" font-weight="500" font-family="Inter, system-ui, sans-serif" text-anchor="middle">Run</text>
+<rect x="352.0" y="486.0" width="904.0" height="196.0" rx="16" fill="#ffffff" stroke="#e7e5e4" stroke-width="1"/>
+<text x="372.0" y="518.0" fill="#1c1917" font-size="14" font-weight="600" font-family="Inter, system-ui, sans-serif" text-anchor="start">Last result</text>
+<rect x="372.0" y="534.0" width="116.0" height="22.0" rx="999" fill="#ecfdf5" stroke="#a7f3d0" stroke-width="1"/><circle cx="383" cy="545" r="3.2" fill="#10b981"/><text x="392.0" y="549.0" fill="#047857" font-size="11" font-weight="500" font-family="Inter, system-ui, sans-serif" text-anchor="start">Complete</text>
+<text x="372.0" y="582.0" fill="#44403c" font-size="12" font-weight="500" font-family="ui-monospace, Consolas, monospace" text-anchor="start">root   tr_b5db3e8836d1cf2e</text>
+<text x="372.0" y="602.0" fill="#44403c" font-size="12" font-weight="500" font-family="ui-monospace, Consolas, monospace" text-anchor="start">art    art_48fb91808379</text>
+<text x="372.0" y="630.0" fill="#78716c" font-size="12" font-weight="500" font-family="Inter, system-ui, sans-serif" text-anchor="start">containment_stop null   ·   memory_writes []   ·   adapter local_deterministic</text>
+<text x="372.0" y="656.0" fill="#4f46e5" font-size="13" font-weight="600" font-family="Inter, system-ui, sans-serif" text-anchor="start">Open trace →</text>
+<text x="752.0" y="582.0" fill="#a8a29e" font-size="11" font-weight="500" font-family="Inter, system-ui, sans-serif" text-anchor="start">sealed text</text>
+<text x="752.0" y="602.0" fill="#292524" font-size="12" font-weight="500" font-family="ui-monospace, Consolas, monospace" text-anchor="start">deterministic:c3ba620011e4</text>
+</svg>

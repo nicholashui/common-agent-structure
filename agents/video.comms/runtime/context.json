@@ -1,0 +1,12 @@
+{
+  "schema_version": "3.0",
+  "segments": {
+    "policy": 512,
+    "task": 768,
+    "memory": 0,
+    "tools": 0,
+    "evidence": 256,
+    "output": 512
+  },
+  "compaction": "disabled"
+}

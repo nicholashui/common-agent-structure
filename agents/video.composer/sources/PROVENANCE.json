@@ -1,0 +1,171 @@
+{
+  "schema_version": "3.0",
+  "sources": [
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "All You Need to Know About the Music Business, 10th ed.",
+      "author": "Donald S. Passman",
+      "isbn13": "9781501122187",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: All You Need to Know About the Music Business, 10th ed. (Donald S. Passman), ISBN-13 9781501122187"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "This Business of Music, 10th ed.",
+      "author": "Krasilovsky et al.",
+      "isbn13": "9780823077236",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: This Business of Music, 10th ed. (Krasilovsky et al.), ISBN-13 9780823077236"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Music Supervision",
+      "author": "Adams, Hnatiuk, Weiss",
+      "isbn13": "9780825672194",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Music Supervision (Adams, Hnatiuk, Weiss), ISBN-13 9780825672194"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "On the Track, 2nd ed.",
+      "author": "Karlin & Wright",
+      "isbn13": "9780415941365",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: On the Track, 2nd ed. (Karlin & Wright), ISBN-13 9780415941365"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "这就是音乐产业",
+      "author": "Passman 中译常见",
+      "isbn13": "9787111456780",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 这就是音乐产业（Passman 中译常见），ISBN-13 9787111456780"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Sound Design",
+      "author": "David Sonnenschein",
+      "isbn13": "9780941188265",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Sound Design (David Sonnenschein), ISBN-13 9780941188265"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Foley Grail, 2nd ed.",
+      "author": "Vanessa Theme Ament",
+      "isbn13": "9780240824260",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Foley Grail, 2nd ed. (Vanessa Theme Ament), ISBN-13 9780240824260"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Practical Art of Motion Picture Sound, 4th ed.",
+      "author": "David Yewdall",
+      "isbn13": "9780240812403",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Practical Art of Motion Picture Sound, 4th ed. (David Yewdall), ISBN-13 9780240812403"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Mixing Secrets for the Small Studio, 2nd ed.",
+      "author": "Mike Senior",
+      "isbn13": "9781138556375",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Mixing Secrets for the Small Studio, 2nd ed. (Mike Senior), ISBN-13 9781138556375"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Mastering Audio, 3rd ed.",
+      "author": "Bob Katz",
+      "isbn13": "9780240818962",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Mastering Audio, 3rd ed. (Bob Katz), ISBN-13 9780240818962"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Audio Post Production for Film and Video",
+      "author": "Jay Rose",
+      "isbn13": "9780240809700",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Audio Post Production for Film and Video (Jay Rose), ISBN-13 9780240809700"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "声音设计：电影中语言、音乐和音响的表现力",
+      "isbn13": "9787106031237",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 声音设计：电影中语言、音乐和音响的表现力，ISBN-13 9787106031237"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "现代录音技术",
+      "isbn13": "9787115331861",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 现代录音技术，ISBN-13 9787115331861"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Complete Guide To Film Scoring",
+      "author": "Richard Davis",
+      "isbn13": "9780634006364",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Complete Guide To Film Scoring (Richard Davis), ISBN-13 9780634006364"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "On the Track A Guide to Contemporary Film Scoring",
+      "author": "Fred Karlin Rayburn Wright",
+      "isbn13": "9781135948023",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: On the Track A Guide to Contemporary Film Scoring (Fred Karlin Rayburn Wright), ISBN-13 9781135948023"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Composing for the films",
+      "author": "Adorno, Theodor W., 1903-1969, Eisler, Hanns etc.",
+      "isbn13": "9780826499028",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Composing for the films (Adorno, Theodor W., 1903-1969, Eisler, Hanns etc.), ISBN-13 9780826499028"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Film composers guide",
+      "author": "Smith, Steven C, Francillon, Vincent J",
+      "isbn13": "9780943728360",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Film composers guide (Smith, Steven C, Francillon, Vincent J), ISBN-13 9780943728360"
+    }
+  ],
+  "agent_id": "video.composer",
+  "previous_common_agent_id": "video.compositing_artist",
+  "va_taxonomy_aligned": true,
+  "generic_source": "generic-swarm-ops/business/video/agents/video.composer",
+  "note": "Imported into CASOPS as baseline_safe. No production activation, no network, no plugins, memory writes forbidden.",
+  "aligned_at": "2026-07-27T00:48:11.034446Z",
+  "generic_source_depth": {
+    "excerpts": true,
+    "study": true,
+    "adopted_at": "2026-07-27T01:30:27.924749+00:00",
+    "upstream": "generic-swarm-ops/business/video/agents"
+  },
+  "imported_from": "C:\\Project\\common-agent-swarm-ops\\business\\video\\agents\\video.composer",
+  "reference_book_origin": "spec/book_of_knowledge.md",
+  "reference_book_note": "Bibliographic references from spec/book_of_knowledge.md. Does not enable network, RAG, T3, plugins, or memory writes."
+}

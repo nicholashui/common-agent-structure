@@ -1,0 +1,11 @@
+{
+  "schema_version": "3.0",
+  "agent_id": "specials.controller-agent",
+  "mode": "fixed",
+  "allocation": {
+    "min_model_calls": 1,
+    "max_model_calls": 2,
+    "max_refinements": 0,
+    "max_parallel_samples": 1
+  }
+}

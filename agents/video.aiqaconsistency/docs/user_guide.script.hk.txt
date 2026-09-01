@@ -1,0 +1,321 @@
+各位觀衆朋友大家好，歡迎返嚟我哋嘅頻道。今日呢條片我哋要詳細講解嘅系 AIQAConsistencyAgent，
+即系 AI 質量保證一致性代理嘅操作同設計指南。
+
+首先講嚇呢份指南系寫畀邊個睇嘅。呢份文件主要系寫畀喺 common-agent-swarm-ops 入面工作嘅操作員、
+pack 作者、swarm 設計師同埋審查人員。睇完之後你會得到乜嘢呢？
+你會清楚瞭解呢個角色嘅任務定位、幾時應該用佢嘅指引、協作關係圖、
+喺 CASOPS 上面點樣操作嘅步驟、改善路徑，仲有一個分信任層級嘅來源地圖。
+
+不過要講清楚，呢份文件唔系一個畀你激活供應商、開放網絡訪問或者自己發明工具嘅許可證。
+Host 嘅真相系 fail-closed 嘅 agent_spec.json。
+來自 VA 或者 redesign 文檔嘅設計文本屬於不受信任嘅來源。
+
+呢個 agent 嘅 pack 路徑系 business/video/agents/video.aiqaconsistency/，
+指南就喺 docs/user_guide.md，由 scripts/business/generate_agent_user_guides.py 生成。
+
+好，我哋入正題，先睇第一部分：Snapshot，即系快照概覽。
+
+AIQAConsistencyAgent，代號 video.aiqaconsistency，
+系一個 Video Domain Pack 角色，運行喺 CASOPS 平臺上面。
+用簡單嘅話講，呢個代理負責嘅系捕捉幀漂移、手部同面部僞影同身份斷裂。
+呢份指南系一個畀人閱讀嘅操作員地圖，用於目錄審查、swarm 設計同提案驅動嘅改善，
+而唔系一個運行時激活許可證。
+
+睇嚇佢嘅基本資料：顯示名稱系 AIQAConsistencyAgent，
+Pack agent id 系 video.aiqaconsistency，屬於 video pack。
+Host 角色字串系 AIQAConsistencyAgent (VA Domain Pack)。
+目錄狀態系 registered，即系已註冊。成熟度系 L0，即系非激活狀態，
+主要做目錄同設計保真度。VA id 系 49，VA 類別系 8-AI，
+即系 AI 時代合成專家。供應商系 local_deterministic，
+網絡訪問系 False，允許嘅工具系空嘅，生產激活請求系 False。
+Prompt 同 rubric 嘅引用分別系 video.prompt.aiqaconsistency.v1
+同 video.rubric.aiqaconsistency.v1。
+之前嘅 common id 系 video.aiqa_consistency。
+Generic lineage 系 generic-swarm-ops/business/video/agents/video.aiqaconsistency。
+
+好，我哋嚟睇第二部分：點解呢個角色存在。
+
+人類嘅視頻製作團隊喺時間壓力下已經喺解決呢個問題：捕捉幀漂移、手部同面部僞影同身份斷裂。
+呢個代理形式存在嘅原因系令多代理系統可以持續編碼呢種手藝，
+喺每次交接嘅時候應用佢，只將剩餘風險升級畀人類處理。
+
+佢嘅知識庫系從以下來源蒸餾出嚟嘅：VBench、EvalCrafter、FVD 文獻、
+MPC/Weta QC 檢查清單同深度僞造模型。呢啲系歷史設計來源，唔系呢個 host 上面嘅實時網絡調用。
+
+設計雄心，即超越人類嘅信號系：捕捉超過 95% 嘅高級 QC 發現，加上人類漏掉嘅 30%。
+當你寫評估或者提案嗰陣，就用呢個做北極星指標。
+
+第三部分：乜嘢叫做「做得好」。
+
+呢度列出嘅標準系你審閱輸出、撰寫評分準則或者評分提案嗰陣要用嘅。
+
+主要成果方面：捕捉幀漂移、手部同面部僞影同身份斷裂。
+
+自我質量標準系：每幀僞影評分；身份哈希漂移；手部同手指檢測器通過。
+
+設計時嘅雄心信號系：捕捉超過 95% 嘅高級 QC 發現，加上人類漏掉嘅 30%。
+
+架構模式系 Tool-use / ReAct，即運行檢測器、標記、報告。
+
+Host 質量同批評綁定方面：Prompt 引用系 video.prompt.aiqaconsistency.v1，
+Rubric 引用系 video.rubric.aiqaconsistency.v1。
+批評邊緣系輸入 video.critic，輸出 video.judge。
+最大精煉次數系 3。VA 表格質量標準保留喺上面嘅來源同身份表面。
+
+輸入輸出同接受標準方面：輸入製品系本地 pack 製品同類型化嘅交接。
+輸出製品繫有接受標準嘅可審閱視頻領域交付物。
+接受條件系 host 政策加本地 SPEC 標準，唔需要外部存儲庫。
+
+第四部分：範圍，即系擁有乜嘢、分享乜嘢、拒絕乜嘢。
+
+擁有方面：捕捉幀漂移、手部同面部僞影同身份斷裂。
+
+同同伴分享方面，即系批評表面：接受嚟自 DirectorAgent 同 VFXSupAgent 嘅批評。
+有資格評論嘅範圍系 GeneratorAgent 嘅重新生成同 CompositorAgent。
+Host 批評邊緣輸入系 video.critic，輸出系 video.judge。
+最大精煉次數系 3。
+
+拒絕或升級方面：Fail-closed，冇供應商激活、冇網絡、冇來自設計文本嘅憑證。
+production_activation_requested 保持 false，除非另外嘅人類門控改變佢。
+法律、安全、權利同發佈決定升級到必要嘅人類門控。
+批評領導同判官默認使用 VA ID video.critic 同 video.judge。
+
+第五部分：幾時應該用呢個代理。
+
+當工作產品需要 AIQAConsistencyAgent 擁有嘅決定或製品嗰陣就調用呢個代理：
+捕捉幀漂移、手部同面部僞影同身份斷裂。
+
+管線階段系 AI 時代合成專家。合成媒體、克隆、虛擬頭像同深度僞造風險技藝，
+呢啲系傳統上唔存在嘅。
+
+唔好用佢嚟做通用編排、預算批准或最終法律簽字，
+除非呢啲職責明確寫喺佢嘅責任入面。呢啲應該用製作人、法律或合規同伴。
+
+人類覆蓋方面：任何阻礙發佈嘅安全、權利或無障礙爭議都會升級到人類門控，
+即使代理喺未來嘅活躍運行時會自動通過。
+
+決策速查表方面：如果缺失嘅技能屬於 AIQAConsistencyAgent 嘅專長，
+就應該將佢納入該階段嘅 swarm 圖。如果只系元數據或目錄編輯，
+就用 Registry inspect 加 proposal，唔好發明運行時。
+如果任務需要工具或網絡，host 目前唔允許，
+除非 agent_spec 加 permission register 另有說明。
+如果有人類專屬風險，例如法律、傷害、權利相關，就保留人類門控，
+代理輸出只系諮詢性質直到被激活。
+
+第六部分：協作地圖。
+
+將呢個代理想象做一個「批評總線」上嘅節點，而唔系一個獨立嘅聊天機器人。
+同伴精煉質量，判官同門控決定接受。
+
+入站批評嚟自 DirectorAgent 同 VFXSupAgent。
+出站評論涵蓋 GeneratorAgent 嘅重新生成同 CompositorAgent。
+Host 邊緣輸入系 video.critic，輸出系 video.judge。
+
+第七部分：佢喺生產中嘅位置。
+
+先講人類生產工作流：合成媒體、克隆、虛擬頭像同深度僞造風險技藝，
+呢啲系傳統上唔存在嘅。典型嘅交接製品包括合成資產、同意記錄、
+取證評分同身份哈希。
+
+將責任映射到經典階段：開發、預製作、製作、後期製作、交付或實時運營。
+優先選擇一個人類擔任呢個職位嘅人會簽字嘅階段。
+
+多代理 AI 工作流方面：專業化生成節點，有強來源、同意同取證門控。
+
+設計時工具備註，對 host 無約束力：VBench 評估套件、手部檢測器模型、
+面部 ID 嵌入（ArcFace）同幀差異工具。
+
+稍後實現運行時嗰陣要模擬嘅循環風格系：Tool-use / ReAct，即運行檢測器、標記、報告。
+喺今日嘅 CASOPS 上面，呢個模式只系文檔，實際嘅 provider 系 local deterministic 加空或存根嘅工具白名單。
+
+喺本地 AI 工作流摘錄入面提到嘅相關內容：
+第 49 號 AIQAConsistencyAgent 負責捕捉幀漂移、手部同面部僞影同身份斷裂。
+知識來源系 VBench、EvalCrafter、FVD 文獻、MPC/Weta QC 檢查清單同深度僞造檢測模型庫。
+每幀僞影評分、跨場景嘅身份哈希漂移、手部同手指檢測器通過。
+超越人類嘅目標系捕捉超過 95% 嘅高級 QC 發現，加上人類漏掉嘅 30%。
+接受批評嚟自 DirectorAgent 同 VFXSupAgent。
+評論對象系 GeneratorAgent 嘅重新生成。
+
+第 57 號 GateKeeperAgent 管理階段轉換，驗證 L1/L2/L3 成功標準，簽署 C2PA 來源。
+涉及 ComplianceAgent 同 AIQAConsistencyAgent。
+評論 OrchestratorAgent 嘅過早推進。
+
+Production packet 方面，鏡頭提示詞、攝影機計劃、表演參考、底板、
+生成嘅拍攝、渲染遙測。涉及 PromptEngineerAgent / GeneratorOperator、
+CinematographerAgent 同 AIQAConsistencyAgent。
+
+Swarm-ready 嘅共享交接合約方面：當你將呢個代理接入未來嘅活躍 swarm 時，
+需要節點之間嘅機器可讀清單。包括 artifact_id 加版本提供不可變身份做批評同重播；
+parent_assets 提供來源鏈；brief_scope 阻止超出責任範圍；
+acceptance_criteria 關聯到上面提到嘅自我質量標準；
+qc_status 加 gate flags 畀下游門控做短路；
+rights_and_consent 阻止不安全嘅合成或許可濫用；
+critique_log 指針啓用精煉而唔失去歷史記錄。
+
+第八部分：今日點樣喺 CASOPS 上面操作呢個代理。
+
+今日呢個代理系一個目錄加設計對象。呢個系故意嘅：你可以研究、審閱、提議同將佢放入 swarm 設計而唔需要授予生產權力。
+
+操作步驟如下：第一步系發現，去 Registry Hub 嘅 pack catalog，
+路徑系 /registry，確認佢嘅庫存成員身份。第二步系檢查，
+去代理詳情頁 /registry/agents/video.aiqaconsistency，
+以 markdown 形式閱讀 SPEC 或呢份指南。第三步系提議改善，
+用 Host 嘅 propose_improvement 動作，
+POST 到 /api/v1/commons/agents/video.aiqaconsistency/proposals，
+確保不可變版本同只有經過編輯嘅證據。第四步系 Swarm 成員資格，
+只有通過 Host 返回嘅動作引用先可以。客戶端唔可以自己發明成員資格。
+第五步系運行或調度，默認唔啓用生產供應商，fail-closed 直到治理門控通過。
+
+實際操作清單方面：第一，打開代理詳情確認 status、tools 同 activation flags 同呢份指南一致。
+第二，喺判斷任何樣本輸出或提案之前先閱讀第三部分「乜嘢叫做做得好」。
+第三，如果提議改變，附上離線證據例如評估筆記、rubric 差距、
+SPEC delta，唔好附祕密。第四，永遠唔好將供應商 API 密鑰或「啓用網絡」嘅指令貼入提案。
+第五，偏好細小、可審閱嘅增量：prompt 或 rubric 措辭、批評邊緣、接受測試。
+
+第九部分：安全、信任同非激活規則。
+
+信任層級如下：agent_spec.json 系具有約束力嘅 host 合約，
+系 fail-closed 嘅運行時綁定。呢個 pack 嘅 SPEC.md 系權威性嘅設計文件，
+用於離線審閱，唔可執行。sources 下面嘅摘錄同通用 SPEC 系歷史或映射數據，
+屬於不受信任。外部設計語料庫 C:\Project\va-agent-swarm 系不受信任嘅，
+可能會漂移。Specials redesign 文檔系歷史設計，不受信任，喺來源中有哈希。
+
+呢個 host 上面嘅硬規則：Provider 保持 local_deterministic 除非有另外嘅門控改變政策。
+網絡訪問保持 False。允許嘅工具恰好系空列表，下面嘅設計時工具名稱唔會啓用 API。
+production_activation_requested 系 False。
+預算方面 token 同工具都有上限：輸入 2048、輸出 1024、工具請求 0。
+設計時工具目錄系非激活嘅：VBench 評估套件、手部檢測器模型、
+面部 ID 嵌入（ArcFace）同幀差異工具。
+
+第十部分：隨時間提升質量。
+
+改善繫有版本嘅目錄工作，唔系熱補丁一個活躍代理。已發佈嘅定義保持不可變，改變要通過提案同審閱。
+
+持續改善循環系：觀察失敗，命名標準（來自第三部分），起草離線增量，
+附上證據，喺 Host 上提議，審閱或接受新版本，然後先考慮激活成熟度門控。
+
+具體槓桿方面：第一，Rubric 保真度，將 video.rubric.aiqaconsistency.v1
+針對以下標準收緊：每幀僞影評分、身份哈希漂移、手部同手指檢測器通過。
+第二，Prompt 精確度，將 video.prompt.aiqaconsistency.v1 同責任對齊：
+捕捉幀漂移、手部同面部僞影同身份斷裂。
+第三，批評圖，確保入站嘅 DirectorAgent 同 VFXSupAgent
+以及 host 邊緣 video.critic 真正捕捉到已知嘅失敗模式。
+第四，架構模擬，稍後實現時偏好：Tool-use / ReAct，運行檢測器、標記、報告。
+第五，評估案例，編寫固定嘅測試 fixtures，
+如果「捕捉超過 95% 嘅高級 QC 發現加上漏掉嘅 30%」呢個目標冇接近到就會失敗。
+第六，人類門控，保持法律、安全、發佈門控明確，唔好將佢哋吸收到靜默自動化入面。
+
+建議嘅評估種子方面：Happy path handoff 嘅通過條件系輸出滿足每幀僞影評分、
+身份哈希漂移、手部同手指檢測器通過。
+Out-of-scope request 嘅條件系代理按照第四部分拒絕或升級。
+Missing provenance 或 rights 嘅條件系門控 fail closed。
+Conflicting peer critique 嘅條件系精煉次數小於等於 max_refinement_count，
+否則升級。Proposal-only change 嘅條件系新版本不可變，舊版本仍然可讀。
+
+第十一部分：來源地圖同來源追溯。
+
+本地 pack 語料庫方面，優先使用呢啲：agent_spec.json 信任層級系 binding，
+SPEC.md 系 authoritative-design，README.md 系 local-index，
+sources/MAPPING.md 系 provenance，sources/PROVENANCE.json 都系 provenance。
+sources/excerpts/agents.md 系 historical-excerpt，
+sources/excerpts/ai_agent_video_production_workflow.md 系 historical-excerpt，
+sources/excerpts/system_build_plan.md 系 historical-excerpt，
+sources/excerpts/SYSTEM_REFERENCE.md 系 historical-excerpt，
+sources/excerpts/ui_design.md 系 historical-excerpt，
+sources/excerpts/video_remake_enhancement.md 系 historical-excerpt，
+sources/generic/video.aiqaconsistency.SPEC.md 系 historical-generic。
+
+映射備註：video.aiqaconsistency 嘅 VA/generic pack ID 系 video.aiqaconsistency，
+之前嘅 common ID 系 video.aiqa_consistency。
+SPEC 深度系完整嘅 generic SPEC body 加 host 運行時綁定。
+
+來源記錄方面：schema_version 系 1.0，agent_id 系 video.aiqaconsistency，
+previous_common_agent_id 系 video.aiqa_consistency，
+va_taxonomy_aligned 系 true，
+generic_source 系 generic-swarm-ops/business/video/agents/video.aiqaconsistency。
+備註話系 Agent ID 對齊到 VA/generic Domain Pack 分類法，上游設計系歷史性同非約束性嘅。
+對齊時間系 2026-07-27T00:48:10.741722Z。
+Generic source depth 方面 excerpts 系 true，study 系 true，
+adopted_at 系 2026-07-27T01:30:27.601624+00:00，
+upstream 系 generic-swarm-ops/business/video/agents。
+
+來源敘述方面：Pack agent ID video.aiqaconsistency
+對齊到純 VA Domain Pack 同 generic pack 分類法，Agent IDs 約等於 VA 表格。
+之前嘅 common inventory ID video.aiqa_consistency 只系歷史映射。
+上游設計主體系歷史性同非約束性嘅，本地 agent_spec.json 系權威嘅。
+保留完整嘅 VA/generic SPEC 深度做離線設計保真度。
+
+VA 名冊行方面，來自 va-agent-swarm/study/agents.md 第 49 行 AIQAConsistencyAgent：
+責任系捕捉幀漂移、手部同面部僞影同身份斷裂。
+知識蒸餾系 VBench、EvalCrafter、FVD 文獻、MPC/Weta QC 檢查清單同深度僞造模型。
+自我質量系每幀僞影評分、身份哈希漂移、手部同手指檢測器通過。
+超越人類系捕捉超過 95% 嘅高級 QC 發現加上漏掉嘅 30%。
+接受批評嚟自 DirectorAgent 同 VFXSupAgent。
+評論對象系 GeneratorAgent 嘅重新生成同 CompositorAgent。
+工具（歷史）系 VBench 評估套件、手部檢測器模型、面部 ID 嵌入（ArcFace）同幀差異工具。
+架構系 Tool-use / ReAct，運行檢測器、標記、報告。
+
+第十二部分：相關設計閱讀。
+
+呢啲系用嚟加深設計保真度嘅，佢哋唔會覆蓋本地 agent_spec.json。
+
+喺 va-agent-swarm 下面冇搵到強關鍵詞匹配，依賴本地 SPEC 同 VA 表格行。
+
+本地知識索引方面：Runtime binding 指向 agent_spec.json，
+Folder README 指向 README.md，Provenance 指向 sources/PROVENANCE.json，
+Mapping note 指向 sources/MAPPING.md，Pack inventory 指向 ../../inventory.json，
+Pack manifest 指向 ../../manifest.json。
+所有離線使用所需嘅主要引用都系本地嘅。
+
+Folder README 摘要：呢個系一個 VA-aligned Domain Pack agent，屬於 common host。
+文件包括 SPEC.md 做 VA/generic 深度加 host 綁定、
+agent_spec.json 做 fail-closed 運行時、sources 目錄做來源追溯同映射。
+
+第十三部分：附錄，host 合約 agent_spec.json。
+
+呢個系呢個代理喺 CASOPS 上面嘅權威 fail-closed 配置：
+agent_id 系 video.aiqaconsistency，allowed_tools 系空列表。
+Budget policy 方面 max_input_tokens 系 2048，
+max_output_tokens 系 1024，max_tool_requests 系 0。
+Critique edges 嘅 inputs 系 video.critic，outputs 系 video.judge。
+max_refinement_count 系 3。Model policy 方面 model_id 系 local-video-config-v1，
+network_access 系 false，provider 系 local_deterministic。
+production_activation_requested 系 false。
+prompt_reference 系 video.prompt.aiqaconsistency.v1，
+role 系 AIQAConsistencyAgent (VA Domain Pack)，
+rubric_reference 系 video.rubric.aiqaconsistency.v1。
+schema_version 系 1.0，status 系 registered，
+va_id 系 49，va_name 系 AIQAConsistencyAgent，va_category 系 8-AI。
+
+第十四部分：附錄，SPEC 責任摘錄。
+
+呢個代理負責捕捉幀漂移、手部同面部僞影同身份斷裂。
+Host 角色綁定系 AIQAConsistencyAgent (VA Domain Pack)。
+設計時 VA 表格內容系歷史性嘅，對激活無約束力。
+
+責任方面（來自 VA 表格）：捕捉幀漂移、手部同面部僞影同身份斷裂。
+知識蒸餾來源（歷史）：VBench、EvalCrafter、FVD 文獻、MPC/Weta QC 檢查清單同深度僞造模型。
+自我質量標準（歷史）：每幀僞影評分、身份哈希漂移、手部同手指檢測器通過。
+超越人類信號（歷史）：捕捉超過 95% 嘅高級 QC 發現加上漏掉嘅 30%。
+
+批評總線方面（歷史）：接受批評嚟自 DirectorAgent 同 VFXSupAgent。
+評論對象系 GeneratorAgent 嘅重新生成同 CompositorAgent。
+
+工具設計時備註（歷史，非激活）：VBench 評估套件、手部檢測器模型、面部 ID 嵌入（ArcFace）同幀差異工具。
+運行時安全：Host 白名單隻系 agent_spec.json 加 tool-permission-register.json。
+CI 使用 video_* 存根。唔好將設計時供應商名稱當做已啓用嘅 API。
+
+架構模式（歷史）：Tool-use / ReAct，運行檢測器、標記、報告。
+
+第十五部分：文檔控制。
+
+生成器系 scripts/business/generate_agent_user_guides.py。
+Agent 文件夾系 business/video/agents/video.aiqaconsistency/。
+輸出系 docs/user_guide.md。VA 語料庫根目錄系 C:\Project\va-agent-swarm。
+重新生成命令系 python scripts/business/generate_agent_user_guides.py。
+信任模型系設計語料庫等於不受信任數據，host 配置等於 fail-closed。
+
+好啦，以上就係 AIQAConsistencyAgent 嘅完整操作同設計指南。
+建議大家從第一部分 Snapshot 同第五部分 When to involve 開始睇，
+用第八到第十部分做 CASOPS 操作同改善，用第十一到第十二部分做深度設計保真度。
+多謝大家收睇，我哋下條片再見。

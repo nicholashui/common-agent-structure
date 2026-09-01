@@ -1,0 +1,342 @@
+{
+  "schema_version": "3.0",
+  "sources": [
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Color and Light",
+      "author": "James Gurney",
+      "isbn13": "9780740797712",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Color and Light (James Gurney), ISBN-13 9780740797712"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Imaginative Realism",
+      "author": "James Gurney",
+      "isbn13": "9780740785504",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Imaginative Realism (James Gurney), ISBN-13 9780740785504"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "色彩与光线",
+      "isbn13": "9787515301235",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 色彩与光线，ISBN-13 9787515301235"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Ways of Seeing",
+      "author": "John Berger",
+      "isbn13": "9780140135152",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Ways of Seeing (John Berger), ISBN-13 9780140135152"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Interaction of Color",
+      "author": "Josef Albers",
+      "isbn13": "9780300179354",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Interaction of Color (Josef Albers), ISBN-13 9780300179354"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Understanding Comics",
+      "author": "Scott McCloud",
+      "isbn13": "9780060976255",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Understanding Comics (Scott McCloud), ISBN-13 9780060976255"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Art of Color",
+      "author": "Itten",
+      "isbn13": "9780471289289",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Art of Color (Itten), ISBN-13 9780471289289"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Camera Lucida",
+      "author": "Roland Barthes",
+      "isbn13": "9780374532338",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Camera Lucida (Roland Barthes), ISBN-13 9780374532338"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "On Photography",
+      "author": "Susan Sontag",
+      "isbn13": "9780312420093",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: On Photography (Susan Sontag), ISBN-13 9780312420093"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "美的历程",
+      "author": "李泽厚",
+      "isbn13": "9787108017963",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 美的历程（李泽厚），ISBN-13 9787108017963"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "谈美",
+      "author": "朱光潜",
+      "isbn13": "9787108042262",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 谈美（朱光潜），ISBN-13 9787108042262"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "美学散步",
+      "author": "宗白华",
+      "isbn13": "9787532123456",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 美学散步（宗白华），ISBN-13 9787532123456"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "观看之道",
+      "isbn13": "9787544715998",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 观看之道，ISBN-13 9787544715998"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "理解漫画",
+      "isbn13": "9787513320184",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 理解漫画，ISBN-13 9787513320184"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "论摄影",
+      "isbn13": "9787544722599",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 论摄影，ISBN-13 9787544722599"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Cinematography: Theory and Practice, 3rd ed.",
+      "author": "Blain Brown",
+      "isbn13": "9781138212589",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Cinematography: Theory and Practice, 3rd ed. (Blain Brown), ISBN-13 9781138212589"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Visual Story, 2nd ed.",
+      "author": "Bruce Block",
+      "isbn13": "9780240807799",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Visual Story, 2nd ed. (Bruce Block), ISBN-13 9780240807799"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Filmmaker's Eye",
+      "author": "Gustavo Mercado",
+      "isbn13": "9780240812175",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Filmmaker's Eye (Gustavo Mercado), ISBN-13 9780240812175"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Grammar of the Shot, 4th ed.",
+      "author": "Bowen",
+      "isbn13": "9781138632219",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Grammar of the Shot, 4th ed. (Bowen), ISBN-13 9781138632219"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Painting With Light",
+      "author": "John Alton",
+      "isbn13": "9780520089495",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Painting With Light (John Alton), ISBN-13 9780520089495"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Set Lighting Technician's Handbook, 4th ed.",
+      "author": "Harry Box",
+      "isbn13": "9780240810751",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Set Lighting Technician's Handbook, 4th ed. (Harry Box), ISBN-13 9780240810751"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Reflections: On Cinematography",
+      "author": "Roger Deakins",
+      "isbn13": "9781910593998",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Reflections: On Cinematography (Roger Deakins) — check latest ed. ISBN-13 9781910593998"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Light Science & Magic, 5th ed.",
+      "author": "Hunter, Biver, Fuqua",
+      "isbn13": "9780415719407",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Light Science & Magic, 5th ed. (Hunter, Biver, Fuqua), ISBN-13 9780415719407"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "电影摄影：理论与实践",
+      "isbn13": "9787515331867",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 电影摄影：理论与实践，ISBN-13 9787515331867"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "视觉故事",
+      "isbn13": "9787515302867",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 视觉故事，ISBN-13 9787515302867"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "电影语言的语法",
+      "isbn13": "9787532299990",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 电影语言的语法，ISBN-13 9787532299990"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "美国纽约摄影学院摄影教材",
+      "isbn13": "9787800078491",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 美国纽约摄影学院摄影教材，ISBN-13 9787800078491"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "摄影师的视界",
+      "isbn13": "9787512201880",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 摄影师的视界，ISBN-13 9787512201880"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "分镜设计 脚本 镜头语言与 AI 技术应用从入门到精通",
+      "isbn13": "9787122474100",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 分镜设计 脚本 镜头语言与 AI 技术应用从入门到精通，ISBN-13 9787122474100"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "爆款短视频拍摄：118个分镜脚本与摄影技巧新媒体抖音运营流量",
+      "isbn13": "9787122699984",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 爆款短视频拍摄：118个分镜脚本与摄影技巧新媒体抖音运营流量，ISBN-13 9787122699984"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "分镜头设计",
+      "author": "王威",
+      "isbn13": "9787122424273",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 分镜头设计（王威），ISBN-13 9787122424273"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "World-Building",
+      "author": "Stephen Lee Gillett",
+      "isbn13": "9781582971346",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: World-Building (Stephen Lee Gillett), ISBN-13 9781582971346"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Writers Guide to Creating a Science Fiction Universe",
+      "author": "George Ochoa, Jeffrey Osier",
+      "isbn13": "9780898795363",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Writers Guide to Creating a Science Fiction Universe (George Ochoa, Jeffrey Osier), ISBN-13 9780898795363"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Prop Building Guidebook For Theatre, Film, and TV",
+      "author": "Eric Hart",
+      "isbn13": "9781317292814",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Prop Building Guidebook For Theatre, Film, and TV (Eric Hart), ISBN-13 9781317292814"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Film Posters Exploitation",
+      "author": "Dave Kehr, Tony Nourmand, Graham Marsh",
+      "isbn13": "9783822856253",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Film Posters Exploitation (Dave Kehr, Tony Nourmand, Graham Marsh), ISBN-13 9783822856253"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Poster Art from the Classic Monster Films",
+      "author": "Philip J. Riley",
+      "isbn13": "9781593934866",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Poster Art from the Classic Monster Films (Philip J. Riley), ISBN-13 9781593934866"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "电影美术设计语言",
+      "author": "全荣哲",
+      "isbn13": "9787550242616",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 电影美术设计语言（全荣哲），ISBN-13 9787550242616"
+    }
+  ],
+  "agent_id": "video.conceptartist",
+  "previous_common_agent_id": "video.visual_qc_reviewer",
+  "va_taxonomy_aligned": true,
+  "generic_source": "generic-swarm-ops/business/video/agents/video.conceptartist",
+  "note": "Imported into CASOPS as baseline_safe. No production activation, no network, no plugins, memory writes forbidden.",
+  "aligned_at": "2026-07-27T00:48:11.106166Z",
+  "generic_source_depth": {
+    "excerpts": true,
+    "study": true,
+    "adopted_at": "2026-07-27T01:30:27.939225+00:00",
+    "upstream": "generic-swarm-ops/business/video/agents"
+  },
+  "imported_from": "C:\\Project\\common-agent-swarm-ops\\business\\video\\agents\\video.conceptartist",
+  "reference_book_origin": "spec/book_of_knowledge.md",
+  "reference_book_note": "Bibliographic references from spec/book_of_knowledge.md. Does not enable network, RAG, T3, plugins, or memory writes."
+}

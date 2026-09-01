@@ -1,0 +1,272 @@
+{
+  "schema_version": "3.0",
+  "sources": [
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "An Actor Prepares",
+      "author": "Stanislavski",
+      "isbn13": "9780878309832",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: An Actor Prepares (Stanislavski), ISBN-13 9780878309832"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Audition",
+      "author": "Michael Shurtleff",
+      "isbn13": "9780802772404",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Audition (Michael Shurtleff), ISBN-13 9780802772404"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Directing Actors",
+      "author": "Judith Weston",
+      "isbn13": "9780941188241",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Directing Actors (Judith Weston), ISBN-13 9780941188241"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Respect for Acting",
+      "author": "Uta Hagen",
+      "isbn13": "9780470228487",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Respect for Acting (Uta Hagen), ISBN-13 9780470228487"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "演员的自我修养",
+      "isbn13": "9787108014504",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 演员的自我修养，ISBN-13 9787108014504"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "尊重表演艺术",
+      "isbn13": "9787106028893",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 尊重表演艺术，ISBN-13 9787106028893"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Producer to Producer, 2nd ed.",
+      "author": "Maureen A. Ryan",
+      "isbn13": "9781615932023",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Producer to Producer, 2nd ed. (Maureen A. Ryan), ISBN-13 9781615932023"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Complete Film Production Handbook, 4th ed.",
+      "author": "Eve Light Honthaner",
+      "isbn13": "9780240811505",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Complete Film Production Handbook, 4th ed. (Eve Light Honthaner), ISBN-13 9780240811505"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Film Production Management 101",
+      "author": "Deborah S. Patz",
+      "isbn13": "9781615932290",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Film Production Management 101 (Deborah S. Patz), ISBN-13 9781615932290"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Scheduling and Budgeting Your Film, 2nd ed.",
+      "author": "Paula Landry",
+      "isbn13": "9781138936140",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Scheduling and Budgeting Your Film, 2nd ed. (Paula Landry), ISBN-13 9781138936140"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Independent Film Producing",
+      "author": "Paul Battista",
+      "isbn13": "9781138013827",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Independent Film Producing (Paul Battista), ISBN-13 9781138013827"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Hollywood Economist 2.0",
+      "author": "Edward Jay Epstein",
+      "isbn13": "9781612190501",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Hollywood Economist 2.0 (Edward Jay Epstein), ISBN-13 9781612190501"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "影视制片管理",
+      "isbn13": "9787301169186",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 影视制片管理，ISBN-13 9787301169186"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Clearance & Copyright, 4th ed.",
+      "author": "Michael C. Donaldson",
+      "isbn13": "9781615931330",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Clearance & Copyright, 4th ed. (Michael C. Donaldson), ISBN-13 9781615931330"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Pocket Lawyer for Filmmakers, 2nd ed.",
+      "author": "Thomas A. Crowell",
+      "isbn13": "9780240812182",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Pocket Lawyer for Filmmakers, 2nd ed. (Thomas A. Crowell), ISBN-13 9780240812182"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Law of Journalism and Mass Communication",
+      "author": "Trager et al.",
+      "isbn13": "9781506363226",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Law of Journalism and Mass Communication (Trager et al.), ISBN-13 9781506363226"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Entertainment Law in a Nutshell",
+      "author": "Sherri Burr",
+      "isbn13": "9781634603058",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Entertainment Law in a Nutshell (Sherri Burr), ISBN-13 9781634603058"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "著作权法",
+      "author": "王迁",
+      "isbn13": "9787301249499",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 著作权法（王迁），ISBN-13 9787301249499"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "知识产权法",
+      "author": "吴汉东",
+      "isbn13": "9787301162262",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 知识产权法（吴汉东），ISBN-13 9787301162262"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Becoming an Actor’s Director Directing Actors for Film and Television",
+      "isbn13": "9780367191870",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Becoming an Actor’s Director Directing Actors for Film and Television, ISBN-13 9780367191870"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "纪录影片及数字视频编导与制作",
+      "isbn13": "9787504380302",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 纪录影片及数字视频编导与制作，ISBN-13 9787504380302"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Producing and Directing the Short Film and Video",
+      "isbn13": "9780367895914",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Producing and Directing the Short Film and Video, ISBN-13 9780367895914"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "AI 數字人 從製作到商用",
+      "isbn13": "9787122450753",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: AI 數字人 從製作到商用，ISBN-13 9787122450753"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Masters of FX Behind the Scenes with Geniuses of Visual and Special Effects",
+      "author": "Ian Failes",
+      "isbn13": "9781317540922",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Masters of FX Behind the Scenes with Geniuses of Visual and Special Effects (Ian Failes), ISBN-13 9781317540922"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "From Page to Stage How Theatre Designers Make Connections Between Scripts and Images",
+      "isbn13": "9781040426654",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: From Page to Stage How Theatre Designers Make Connections Between Scripts and Images, ISBN-13 9781040426654"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Encyclopedia of movie special effects",
+      "author": "Patricia D. Netzley",
+      "isbn13": "9781573561679",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Encyclopedia of movie special effects (Patricia D. Netzley), ISBN-13 9781573561679"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Properties Director’s Toolkit Creativity, Collaboration, and Communication for Prop…",
+      "isbn13": "9781315146201",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Properties Director’s Toolkit Creativity, Collaboration, and Communication for Prop…, ISBN-13 9781315146201"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "电影导演艺术教程（修订版）",
+      "author": "韩小磊",
+      "isbn13": "9787106053840",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 电影导演艺术教程（修订版）（韩小磊），ISBN-13 9787106053840"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "故事片创作六讲",
+      "author": "王竞",
+      "isbn13": "9787541151323",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 故事片创作六讲（王竞），ISBN-13 9787541151323"
+    }
+  ],
+  "agent_id": "video.casting",
+  "previous_common_agent_id": "video.casting_director",
+  "va_taxonomy_aligned": true,
+  "generic_source": "generic-swarm-ops/business/video/agents/video.casting",
+  "note": "Imported into CASOPS as baseline_safe. No production activation, no network, no plugins, memory writes forbidden.",
+  "aligned_at": "2026-07-27T00:48:10.581848Z",
+  "generic_source_depth": {
+    "excerpts": true,
+    "study": true,
+    "adopted_at": "2026-07-27T01:30:27.766826+00:00",
+    "upstream": "generic-swarm-ops/business/video/agents"
+  },
+  "imported_from": "C:\\Project\\common-agent-swarm-ops\\business\\video\\agents\\video.casting",
+  "reference_book_origin": "spec/book_of_knowledge.md",
+  "reference_book_note": "Bibliographic references from spec/book_of_knowledge.md. Does not enable network, RAG, T3, plugins, or memory writes."
+}

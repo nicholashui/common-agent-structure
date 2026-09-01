@@ -1,0 +1,275 @@
+大家好，歡迎返嚟我哋嘅頻道。今日我哋詳細講解 PerformanceMarketerAgent。
+
+呢份指南寫畀操作員、pack 作者、swarm 設計師同審閱者，喺 common-agent-swarm-ops 工作。你會得到任務清晰定義、使用指引、協作地圖、CASOPS 步驟、改進路徑同來源地圖。
+
+呢份指南唔係授權啟動供應商、打開網絡或發明工具嘅許可證。Host 真相係 fail-closed 嘅 agent_spec.json。
+
+Pack 路徑 business/video/agents/video.performancemarketer/。指南 docs/user_guide.md。由 generate_agent_user_guides.py 生成。
+
+第一部分，快照。
+
+PerformanceMarketerAgent，agent id video.performancemarketer，Video Domain Pack 角色喺 CASOPS。簡單講負責為廣告優化 ROAS 即廣告支出回報率。呢份指南係操作員地圖用於目錄審查、swarm 設計同提案改進。
+
+顯示名稱 PerformanceMarketerAgent。Pack agent id video.performancemarketer。Pack video。Host 角色字串 PerformanceMarketerAgent (VA Domain Pack)。
+
+目錄狀態 registered。成熟度 L0 非活躍。VA id 31。VA 類別 6-Dist 代表分發同營銷。供應商 local_deterministic。網絡 False。
+
+允許工具空列表。生產啟動請求 False。Prompt 參考 video.prompt.performancemarketer.v1。Rubric 參考 video.rubric.performancemarketer.v1。
+
+之前 common id video.performance_analyst。Generic lineage generic-swarm-ops/business/video/agents/video.performancemarketer。
+
+第二部分，點解存在。
+
+人類影片團隊喺時間壓力下解決：為廣告優化 ROAS 即廣告支出回報率。Agent 形式令多代理系統持續編碼技藝，每次交接應用，只將剩餘風險升級人類。
+
+知識庫Meta Blueprint、TikTok Ads Academy、MMM 即媒體組合模型文獻。歷史設計來源唔係即時網絡呼叫。
+
+設計野心喺相同支出下擊敗資深媒體買家嘅 30 天 ROAS。北極星指標。
+
+第三部分，做得好。
+
+主要成果為廣告優化 ROAS 即廣告支出回報率。自我質量ROAS 提升對比控制組、統計顯著性大於等於百分之九十五。野心訊號喺相同支出下擊敗資深媒體買家嘅 30 天 ROAS。架構 RLAIF (reward = ROAS uplift signal from ad platform)。
+
+Prompt video.prompt.performancemarketer.v1。Rubric video.rubric.performancemarketer.v1。批評邊界輸入 video.critic 輸出 video.judge。最大精煉 3。
+
+輸入本地 pack 製品同類型化交接。輸出可審閱影片領域交付物帶驗收標準。驗收 host 政策加本地 SPEC。
+
+第四部分，範圍。
+
+擁有為廣告優化 ROAS 即廣告支出回報率。
+
+共享批評。聆聽AnalystAgent 同 FinanceAgent。評論UGCAgent 嘅低 hook 率同 CopywriterAgent 嘅弱 CTA。Host 邊界輸入 video.critic 輸出 video.judge。精煉 3。
+
+拒絕：fail-closed 冇啟動冇網絡冇憑證。activation false。法律安全權利升級人類。
+
+第五部分，幾時涉及。
+
+需要PerformanceMarketerAgent嘅決策時叫佢：為廣告優化 ROAS 即廣告支出回報率。管道分發同營銷。唔好為通用編排預算法律叫佢。人類覆蓋：阻止發佈嘅爭議升級。
+
+速查表：係專業就包含 swarm。元數據就用 Registry。需要工具就檢查允許。有風險就保持人類閘門。
+
+第六部分，協作地圖。
+
+批評巴士節點。入站AnalystAgent 同 FinanceAgent。出站UGCAgent 嘅低 hook 率同 CopywriterAgent 嘅弱 CTA。Host video.critic 同 video.judge。
+
+第七部分，生產位置。
+
+人類工作流程發佈包裝、上市策略、渠道運營。製品上線套件、元數據、預告片、渠道包。
+
+AI 工作流程上線包裝、元數據、活動變體同渠道規格交付分支。設計時工具Meta Ads API、TikTok Ads API、Google Ads API、Bayesian AB testing libs。循環 RLAIF (reward = ROAS uplift signal from ad platform)。今日只文檔。
+
+AI 摘錄：第 27 行 UGCCreatorAgent 負責創作者聲音嘅真實感廣告，接受 PerformanceMarketerAgent 同 BrandAgent 批評。第 29 行 CopywriterAgent 負責劇本字幕 hook 標題，接受 BrandAgent 同 PerformanceMarketerAgent 批評。第 31 行 PerformanceMarketerAgent 優化廣告 ROAS，知識來自 Meta Blueprint、TikTok Ads Academy、MMM 文獻，質量係 ROAS 提升對比控制組同統計顯著性大於九十五，目標係擊敗資深媒體買家 30 天 ROAS。接受 AnalystAgent 同 FinanceAgent 批評。評論 UGCAgent 低 hook 同 CopywriterAgent 弱 CTA。
+
+交接合約：artifact_id 不可變身份、parent_assets 來源鏈、brief_scope 防蔓延、acceptance_criteria 質量掛鉤、qc_status 下游短路、rights_and_consent 防濫用、critique_log 保歷史。
+
+第八部分，CASOPS 操作。
+
+目錄加設計對象。步驟：/registry 確認、/registry/agents/video.performancemarketer 閱讀、POST proposals 提案、Host 動作參考做成員、預設唔啟用。
+
+清單：確認一致、閱讀第三部分、附證據、唔貼密鑰、小差異。
+
+第九部分，安全信任。
+
+agent_spec.json 約束性。SPEC.md 權威設計。sources 歷史不受信任。外部語料庫不受信任。
+
+硬規則：provider local_deterministic、network False、tools 空列表、activation False、budget 2048/1024/0。設計時工具唔啟動：Meta Ads API、TikTok Ads API、Google Ads API、Bayesian AB testing libs。
+
+第十部分，提升質量。
+
+版本化工作。循環：觀察、命名、草擬、附證據、提案、審閱、考慮啟動。
+
+槓桿：rubric 對照ROAS 提升對比控制組、統計顯著性大於等於百分之九十五、prompt 對齊責任、批評圖捕捉失敗、架構 RLAIF (reward = ROAS uplift signal from ad platform)、測試夾具驗證喺相同支出下擊敗資深媒體買家嘅 30 天 ROAS、人類閘門明確。
+
+種子：happy path 滿足ROAS 提升對比控制組、統計顯著性大於等於百分之九十五、超出範圍拒絕、缺失來源 fail-closed、衝突精煉或升級、提案不可變。
+
+第十一部分，來源地圖。
+
+本地語料庫：agent_spec.json binding、SPEC.md authoritative-design、README.md local-index、sources/MAPPING.md provenance、sources/PROVENANCE.json provenance、sources/excerpts/agents.md historical-excerpt、sources/excerpts/ai_agent_video_production_workflow.md historical-excerpt、sources/excerpts/system_build_plan.md historical-excerpt、sources/excerpts/SYSTEM_REFERENCE.md historical-excerpt、sources/generic/video.analyst.SPEC.md historical-generic、sources/generic/video.performancemarketer.SPEC.md historical-generic
+
+映射：ID video.performancemarketer、prev video.performance_analyst、深度完整 generic 加 host 綁定。
+
+來源記錄：schema 1.0、agent_id video.performancemarketer、prev video.performance_analyst、aligned true、source generic-swarm-ops/business/video/agents/video.performancemarketer、時間 2026-07-27。
+
+敘述：對齊 VA 分類法。prev 歷史映射。上游非約束。本地權威。
+
+VA 行第 31：責任為廣告優化 ROAS 即廣告支出回報率、知識Meta Blueprint、TikTok Ads Academy、MMM 即媒體組合模型文獻、質量ROAS 提升對比控制組、統計顯著性大於等於百分之九十五、超越喺相同支出下擊敗資深媒體買家嘅 30 天 ROAS、批評AnalystAgent 同 FinanceAgent、評論UGCAgent 嘅低 hook 率同 CopywriterAgent 嘅弱 CTA、工具Meta Ads API、TikTok Ads API、Google Ads API、Bayesian AB testing libs、架構RLAIF (reward = ROAS uplift signal from ad platform)。
+
+第十二部分，相關閱讀。
+
+知識索引：agent_spec.json、README.md、PROVENANCE.json、MAPPING.md、inventory.json、manifest.json。全部喺倉庫解析。
+
+README 摘要：VA 對齊 Domain Pack agent。SPEC.md VA/generic 深度加 host 綁定。agent_spec.json fail-closed。sources 來源映射。
+
+第十三部分，host 合約。
+
+agent_id video.performancemarketer。tools 空列表。tokens 2048/1024。tool_requests 0。edges video.critic/video.judge。refinement 3。model local-video-config-v1。network false。provider local_deterministic。activation false。prompt video.prompt.performancemarketer.v1。role PerformanceMarketerAgent (VA Domain Pack)。rubric video.rubric.performancemarketer.v1。schema 1.0。status registered。va_id 31。va_name PerformanceMarketerAgent。category 6-Dist。
+
+第十四部分，SPEC 摘錄。
+
+責任為廣告優化 ROAS 即廣告支出回報率。綁定 PerformanceMarketerAgent (VA Domain Pack)。歷史非約束。
+
+VA 表格：責任為廣告優化 ROAS 即廣告支出回報率。知識Meta Blueprint、TikTok Ads Academy、MMM 即媒體組合模型文獻。質量ROAS 提升對比控制組、統計顯著性大於等於百分之九十五。超越喺相同支出下擊敗資深媒體買家嘅 30 天 ROAS。批評AnalystAgent 同 FinanceAgent。評論UGCAgent 嘅低 hook 率同 CopywriterAgent 嘅弱 CTA。工具Meta Ads API、TikTok Ads API、Google Ads API、Bayesian AB testing libs。安全用 agent_spec.json。架構RLAIF (reward = ROAS uplift signal from ad platform)。
+
+第十五部分，文檔控制。
+
+生成器 generate_agent_user_guides.py。資料夾 video.performancemarketer/。輸出 user_guide.md。根目錄 va-agent-swarm。信任：語料庫不受信任、配置 fail-closed。
+
+補充關於 PerformanceMarketerAgent 嘅行業背景。效果營銷係數碼廣告中最數據驅動嘅領域之一。每一個決策都基於數據同統計分析。
+
+ROAS 即 Return On Ad Spend 係衡量廣告效果嘅核心指標。佢計算每花費一蚊廣告費用帶返嚟幾多收入。例如 ROAS 為 3 意味住每花一蚊賺返三蚊。
+
+Meta Blueprint 係 Facebook/Instagram 廣告平臺嘅官方培訓認證體系。TikTok Ads Academy 係 TikTok 廣告平臺嘅教育資源。MMM 即 Media Mix Modeling 係一種統計方法用嚟評估唔同媒體渠道嘅貢獻。
+
+RLAIF 架構即 Reinforcement Learning from AI Feedback 嘅特點係用廣告平臺返回嘅 ROAS 提升訊號作為獎勵信號。agent 學習邊啲廣告優化策略能夠產生更高嘅 ROAS。
+
+統計顯著性大於百分之九十五意味住觀察到嘅 ROAS 提升有超過百分之九十五嘅概率唔係偶然嘅。呢個係嚴格嘅統計標準確保決策係基於真實效果。
+
+Bayesian AB testing 係一種比傳統頻率派方法更靈活嘅實驗方法。佢可以更快得出結論同時考慮先驗知識。
+
+關於同 UGCAgent 同 CopywriterAgent 嘅互動。PerformanceMarketerAgent 從效果角度批評呢啲創意 agent。如果 UGC 內容嘅 hook 率太低意味住觀眾喺前幾秒就離開。如果文案嘅 CTA 太弱意味住觀眾唔會採取行動。
+
+呢種跨角色嘅批評確保創意同效果之間嘅平衡。好嘅創意需要同時係有效嘅，而 PerformanceMarketerAgent 就係確保呢一點嘅角色。
+
+關於 AnalystAgent 同 FinanceAgent 嘅批評。AnalystAgent 可能從數據分析嘅角度指出統計方法嘅問題。FinanceAgent 可能從預算同 ROI 角度提出限制或建議。
+
+呢啲批評確保 PerformanceMarketerAgent 嘅建議唔單止係技術上正確嘅，仲係符合整體業務目標同財務約束嘅。
+
+關於從 L0 到更高成熟度嘅路徑。需要通過 ROAS 預測準確度測試、統計方法驗證、同人類媒體買家嘅盲測比較、同埋人類審批。每一步都有明確標準。
+
+關於 fail-closed 喺效果營銷領域嘅重要性。錯誤嘅廣告優化決策可能導致大量預算浪費。fail-closed 確保喺唔確定時唔會做出可能浪費預算嘅決策。
+
+以上PerformanceMarketerAgent完整指南。從快照同第五部分開始，第八到十做操作改進，第十一十二做設計保真度。多謝收睇再見。
+
+我哋繼續深入講解PerformanceMarketerAgent嘅更多重要細節。
+
+首先關於RLAIF (reward = ROAS uplift)架構嘅深入解釋。呢個模式經過仔細研究選擇，最適合PerformanceMarketerAgent嘅工作特性。未來實施時應優先採用。
+
+關於Meta Blueprint、TikTok Ads Academy、MMM 文獻嘅具體價值。呢啲來源代表行業最高水平。為 agent 決策提供理論同實踐基礎。注意係歷史設計來源，運行時唔會即時存取。
+
+關於ROAS 提升同統計顯著性嘅每個維度。定義「好輸出」嘅精確含義。每個維度可被量化或系統化評估。審閱時逐維度檢查，未達標觸發精煉。
+
+關於擊敗資深媒體買家 30 天 ROAS嘅意義。指引所有設計改進決策。呢個目標嘅設定逼迫思考人類侷限同 agent 優勢。
+
+關於批評循環。AnalystAgent 同 FinanceAgent發批評可涉及質量任何維度。PerformanceMarketerAgent需要理解問題、識別修改、精煉、重交。最多三次。最終 video.judge 裁決。
+
+關於UGCAgent 低 hook 同 CopywriterAgent 弱 CTA嘅評論權限。基於專業知識重疊。PerformanceMarketerAgent從獨特角度發現問題，為整體質量貢獻。
+
+關於Meta Ads API、TikTok Ads API、Google Ads API、Bayesian AB testing設計時工具。唔代表啟用。agent_spec.json 嘅 allowed_tools 係真正約束。工具名幫助理解未來能力需求。
+
+關於6-Dist即分發同營銷。同類 agent 處理相關任務。理解類別有助 swarm 設計正確定位。
+
+關於video.performance_analyst歷史意義。舊文檔見到呢個名就係video.performancemarketer。命名變更係分類法對齊結果。
+
+關於人類工作流程位置。PerformanceMarketerAgent對應特定製作階段。人類同職位嘅人會簽核嘅位置。
+
+關於 AI 工作流程。PerformanceMarketerAgent喺多代理系統嘅角色同互動模式由設計文檔定義。
+
+關於 RLAIF 嘅具體運作。Reinforcement Learning from AI Feedback 用廣告平臺返回嘅效果數據作為訓練信號。agent 從每次廣告優化嘅結果學習邊啲策略有效。
+
+呢個學習循環係持續嘅。每次新嘅廣告活動都產生新嘅數據，令 agent 不斷改進佢嘅優化策略。長期嚟講，佢應該能夠超越人類媒體買家嘅表現。
+
+關於 AB testing 嘅重要性。每個優化建議都應該通過受控實驗驗證。Bayesian 方法令實驗可以更快得出結論同時保持統計嚴謹性。
+
+關於 hook 率同 CTA 嘅關係。hook 率衡量前幾秒嘅吸引力。CTA 即 Call To Action 衡量觀眾最終行動嘅推動力。兩者都直接影響 ROAS。
+
+PerformanceMarketerAgent 能夠從數據角度識別呢啲問題，為創意 agent 提供有價值嘅反饋。呢個係效果同創意之間嘅橋樑。
+
+關於交接合約詳解。artifact_id 確保可追蹤。parent_assets 令可追溯。brief_scope 防蔓延。acceptance_criteria 通過失敗標準。qc_status 下游判斷。rights_and_consent 確保合規。critique_log 保完整歷史。
+
+關於預算安全意義。輸入輸出限制防資源過度消耗。工具請求限制阻止未授權互動。即使錯誤啟動限制都生效。
+
+關於從 L0 升級。需完成評估驗證、通過治理閘門、更新配置。每步有標準確保基於證據。
+
+關於版本不可變。發佈後唔可修改。改變通過新版本。舊版本永遠可讀。確保歷史完整同可回滾。
+
+關於 CASOPS 核心原則。所有 agent 遵循相同生命週期。fail-closed、版本不可變、人類閘門、分層信任。呢啲確保安全可靠。
+
+關於提案流程。收集離線證據、明確問題同建議、草擬具體可驗證差異、提交後不可變、審閱者查看決定。
+
+關於同其他操作員協作。唔同操作員負責唔同 agent。理解關係有助跨團隊協作溝通。
+
+關於日常最佳實踐。定期檢查狀態配置。閱讀提案審閱記錄。參與社區分享觀察。
+
+關於安全再強調。fail-closed 原則。唔確定就唔做。保護系統免意外損害。涉及優化廣告 ROAS領域正確判斷同安全操作同重要。
+
+關於評估種子實施。每個係具體測試場景。應自動化執行。通過率追蹤質量趨勢。下降需調查修正。
+
+關於可觀測性。執行產生結構化日誌。記錄輸入輸出批評精煉結果。係調試改進嘅重要資料。
+
+關於 generic lineage。指向通用模板。為同類 agent 提供一致結構。模板更新時本地可選擇採用。但本地 agent_spec.json 永遠權威。
+
+關於系統未來發展。平臺持續演進。核心安全原則唔變。新功能需符合核心原則。
+
+關於精煉上限三次嘅設計理由。平衡修正機會同資源消耗。三次足夠解決大部分問題。超過就需要更高層介入。
+
+關於 video.critic 同 video.judge 分工。critic 發批評、judge 做裁決。兩層確保質量控制有效同時有最終解決方案。
+
+以上PerformanceMarketerAgent最終完整講解。所有十五章每個要點都涵蓋。感謝收睇耐心聆聽。再見。
+
+我哋最後補充關於效果營銷領域嘅更多背景知識同實際應用。
+
+喺數碼廣告行業入面，效果營銷同品牌營銷有根本嘅區別。品牌營銷追求長期嘅品牌認知同好感度，效果營銷追求短期可衡量嘅業務結果例如銷售轉化。
+
+PerformanceMarketerAgent 專注於效果端。佢嘅所有決策都基於可量化嘅指標：ROAS、轉化率、每次轉化成本、hook 率、完播率等等。呢啲指標構成咗佢嘅質量評估框架。
+
+關於 Meta Blueprint 嘅具體內容。Meta Blueprint 涵蓋 Facebook 同 Instagram 廣告嘅所有方面：受眾定向、出價策略、創意最佳實踐、衡量方法、歸因模型等。呢啲知識係 agent 做出優化決策嘅基礎。
+
+關於 TikTok Ads Academy 嘅內容。TikTok 嘅廣告生態有其獨特性：短影片為主、用戶生成內容風格、高度依賴 hook 嘅前幾秒、同埋算法驅動嘅分發模式。理解呢啲特點對於有效優化至關重要。
+
+關於 MMM 即 Media Mix Modeling。呢係一種統計建模方法，分析唔同媒體渠道對整體業務嘅貢獻。佢幫助回答「我應該將預算分配到邊個渠道」呢個核心問題。
+
+PerformanceMarketerAgent 需要理解呢三個知識來源嘅交叉點，能夠為跨平臺嘅廣告優化提供整合性嘅建議。
+
+關於統計顯著性百分之九十五嘅實際含義。呢個標準意味住如果你重複一百次實驗，只有五次或更少嘅情況下會得到虛假嘅正面結果。呢係業界公認嘅最低可接受標準。
+
+喺實際操作中，達到統計顯著性通常需要足夠嘅樣本量。樣本量唔夠就可能得出唔可靠嘅結論。PerformanceMarketerAgent 需要能夠判斷何時樣本量足夠做出決策。
+
+關於 Google Ads API 嘅角色。Google 嘅搜索廣告同展示廣告代表另一個重要嘅廣告渠道。搜索廣告基於關鍵字意圖，展示廣告基於受眾特徵同上下文。兩者嘅優化策略有顯著差異。
+
+關於同 FinanceAgent 嘅互動。FinanceAgent 可能設定預算上限或 ROAS 最低門檻。PerformanceMarketerAgent 需要喺呢啲約束之內尋找最優解。呢個互動確保效果優化同財務紀律嘅平衡。
+
+關於廣告疲勞嘅概念。同一個廣告展示太多次後效果會下降。PerformanceMarketerAgent 需要識別疲勞信號並建議刷新創意。呢個同 UGCAgent 同 CopywriterAgent 嘅協作密切相關。
+
+關於歸因模型嘅複雜性。一個轉化可能係多個廣告觸點嘅共同結果。唔同嘅歸因模型例如最後觸點、線性、時間衰減會給出唔同嘅答案。PerformanceMarketerAgent 需要理解同選擇適當嘅模型。
+
+以上就係 PerformanceMarketerAgent 嘅所有補充內容。涵蓋咗行業背景、技術細節同操作指引。完整覆蓋十五章。多謝收睇。
+
+我哋用最後一段嚟總結所有要點。
+
+關於 CASOPS 平臺嘅核心設計。所有 agent 遵循相同生命週期管理。註冊、設計審查、提案、版本控制。每步有清晰規則確保安全同可追溯。
+
+呢個 agent 作為 L0 成熟度只能用作設計參考同目錄條目。任何運行時調用被 fail-closed 阻止。保守默認係安全基石。
+
+關於版本控制嘅不可變性。一旦發佈唔可修改。改變必須通過新版本。舊版本永遠可讀。確保歷史完整同回滾能力。每個版本有時間戳同作者。
+
+關於提案嘅具體流程。收集離線證據例如評估結果或觀察到嘅問題。明確指出標準中需改進嘅部分。草擬具體可驗證嘅差異。提交後記錄為不可變版本。審閱者查看決定接受或否。
+
+關於 swarm 設計嘅考量。放置 agent 時考慮前後節點關係、交接格式兼容性、管道性能同可靠性。每個設計決策記錄追蹤可審計。
+
+關於同其他 agent 嘅協調。每個 agent 有明確嘅輸入輸出規格。確保格式匹配同語義一致。當有唔確定時查閱交接合約定義。
+
+關於系統演進嘅方向。新嘅 agent 會被加入目錄。現有 agent 會通過提案改進。成熟嘅 agent 可能升級到更高等級。但核心安全原則始終不變。
+
+關於操作員嘅責任。定期監控 agent 狀態。參與質量評估。提出改進建議。分享觀察同經驗。遵守安全規則。
+
+關於呢份指南嘅維護。自動生成但可通過提案改進。發現唔準確或過時資訊請正式提出。呢個確保指南持續反映最新狀態。
+
+關於最終嘅安全提醒。永遠以 agent_spec.json 為權威。有疑問就唔做。有風險就升級人類。有改進就用提案。
+
+呢個就係所有內容嘅完結。十五個章節全部詳細覆蓋。多謝大家嘅耐心同支持。我哋下條片見。再見拜拜。
+
+補充幾個最後嘅技術要點。
+
+關於 model_policy 嘅含義。model_id local-video-config-v1 指定模型配置。network_access false 禁止網絡即使模型有能力。provider local_deterministic 確保輸出確定性可重複測試。
+
+關於 schema_version 1.0。標記配置格式版本。未來格式變化時版本更新。確保向後兼容。
+
+關於 registered 狀態。正式登記入目錄。認可為有效角色定義。未被啟動用於生產。升級到 active 需額外治理。
+
+關於批評邊界嘅技術實現。video.critic 發批評時攜帶具體嘅品質指標同建議。agent 收到後根據指標進行精煉。每次精煉有版本記錄。
+
+關於整個系統嘅協作模式總結。每個 agent 都係網絡中嘅一個節點。佢哋通過結構化嘅交接同批評互動。呢個結構確保質量持續提升。
+
+最後嘅最後，呢份講解到此完結。再次感謝。
+
+補充最後三點。第一，呢個 agent 嘅 generic lineage 確保佢同其他 video domain 嘅 agent 有一致嘅設計結構。第二，所有改進都要經過正式流程唔可以私下修改。第三，人類閘門永遠係最終嘅安全保障。完。

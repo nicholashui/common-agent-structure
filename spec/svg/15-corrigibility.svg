@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 800" role="img" aria-labelledby="title desc">
+  <title id="title">Corrigibility screen</title>
+  <desc id="desc">Host-owned attestation JSON, no edit controls, containment recovery note.</desc>
+  <defs>
+    <style>
+      text { font-family: Inter, system-ui, sans-serif; }
+      .pulse { animation: p 1.4s ease-in-out infinite; }
+      @keyframes p { 0%,100% { opacity:1 } 50% { opacity:.35 } }
+    </style>
+  </defs>
+<rect width="1280" height="800" fill="#ffffff"/>
+<rect x="0" y="0" width="1280" height="56" fill="#ffffff"/>
+<line x1="0" y1="56" x2="1280" y2="56" stroke="#e7e5e4" stroke-width="1"/>
+<rect x="16.0" y="14.0" width="28.0" height="28.0" rx="8" fill="#4f46e5"/>
+<path d="M24 22 L36 28 L24 34 Z" fill="#ffffff" opacity="0.9"/>
+<text x="52.0" y="34.0" fill="#1c1917" font-size="14" font-weight="600" font-family="Inter, system-ui, sans-serif" text-anchor="start">caso</text>
+<text x="108.0" y="34.0" fill="#a8a29e" font-size="12" font-weight="500" font-family="Inter, system-ui, sans-serif" text-anchor="start">Control UI</text>
+<rect x="300.0" y="12.0" width="340.0" height="32.0" rx="10" fill="#fafaf9" stroke="#e7e5e4" stroke-width="1"/>
+<text x="314.0" y="33.0" fill="#44403c" font-size="12" font-weight="500" font-family="ui-monospace, Consolas, monospace" text-anchor="start">casops.template.baseline_safe ▾</text>
+<rect x="980.0" y="17.0" width="72.0" height="22.0" rx="999" fill="#ecfdf5" stroke="#a7f3d0" stroke-width="1"/><circle cx="991" cy="28" r="3.2" fill="#10b981" class="pulse"/><text x="1000.0" y="32.0" fill="#047857" font-size="11" font-weight="500" font-family="Inter, system-ui, sans-serif" text-anchor="start">Live</text>
+<text x="1088.0" y="34.0" fill="#a8a29e" font-size="11" font-weight="500" font-family="Inter, system-ui, sans-serif" text-anchor="start">as_of just now</text>
+<rect x="0" y="56" width="208" height="744" fill="#fafaf9"/>
+<line x1="208" y1="56" x2="208" y2="800" stroke="#e7e5e4"/>
+<text x="24.0" y="85.0" fill="#78716c" font-size="13" font-weight="500" font-family="Inter, system-ui, sans-serif" text-anchor="start">Fleet</text>
+<text x="24.0" y="119.0" fill="#78716c" font-size="13" font-weight="500" font-family="Inter, system-ui, sans-serif" text-anchor="start">Overview</text>
+<text x="24.0" y="153.0" fill="#78716c" font-size="13" font-weight="500" font-family="Inter, system-ui, sans-serif" text-anchor="start">Structure</text>
+<text x="24.0" y="187.0" fill="#78716c" font-size="13" font-weight="500" font-family="Inter, system-ui, sans-serif" text-anchor="start">Compose</text>
+<text x="24.0" y="221.0" fill="#78716c" font-size="13" font-weight="500" font-family="Inter, system-ui, sans-serif" text-anchor="start">Run</text>
+<text x="24.0" y="255.0" fill="#78716c" font-size="13" font-weight="500" font-family="Inter, system-ui, sans-serif" text-anchor="start">Trace</text>
+<text x="24.0" y="289.0" fill="#78716c" font-size="13" font-weight="500" font-family="Inter, system-ui, sans-serif" text-anchor="start">Capabilities</text>
+<text x="24.0" y="323.0" fill="#78716c" font-size="13" font-weight="500" font-family="Inter, system-ui, sans-serif" text-anchor="start">Protocols</text>
+<text x="24.0" y="357.0" fill="#78716c" font-size="13" font-weight="500" font-family="Inter, system-ui, sans-serif" text-anchor="start">Memory</text>
+<text x="24.0" y="391.0" fill="#78716c" font-size="13" font-weight="500" font-family="Inter, system-ui, sans-serif" text-anchor="start">Plugins</text>
+<text x="24.0" y="425.0" fill="#78716c" font-size="13" font-weight="500" font-family="Inter, system-ui, sans-serif" text-anchor="start">Cache</text>
+<text x="24.0" y="459.0" fill="#78716c" font-size="13" font-weight="500" font-family="Inter, system-ui, sans-serif" text-anchor="start">Safety</text>
+<text x="24.0" y="493.0" fill="#78716c" font-size="13" font-weight="500" font-family="Inter, system-ui, sans-serif" text-anchor="start">Improvement</text>
+<text x="24.0" y="527.0" fill="#78716c" font-size="13" font-weight="500" font-family="Inter, system-ui, sans-serif" text-anchor="start">Validation</text>
+<rect x="10.0" y="542.0" width="188.0" height="28.0" rx="8" fill="#ffffff" stroke="#c7d2fe" stroke-width="1"/>
+<rect x="10.0" y="542.0" width="3.0" height="28.0" rx="2" fill="#4f46e5"/>
+<text x="24.0" y="561.0" fill="#1c1917" font-size="13" font-weight="600" font-family="Inter, system-ui, sans-serif" text-anchor="start">Corrigibility</text>
+<text x="24.0" y="595.0" fill="#78716c" font-size="13" font-weight="500" font-family="Inter, system-ui, sans-serif" text-anchor="start">Settings</text>
+<rect x="208" y="56" width="1072" height="52" fill="#fafaf9"/>
+<line x1="208" y1="108" x2="1280" y2="108" stroke="#e7e5e4"/>
+<text x="224.0" y="76.0" fill="#a8a29e" font-size="9" font-weight="600" font-family="Inter, system-ui, sans-serif" text-anchor="start">MUTATION CONTRACT</text>
+<rect x="224.0" y="82.0" width="150.0" height="22.0" rx="8" fill="#ffffff" stroke="#e7e5e4" stroke-width="1"/>
+<text x="234.0" y="97.0" fill="#292524" font-size="11" font-weight="500" font-family="Inter, system-ui, sans-serif" text-anchor="start">host_service ▾</text>
+<rect x="384.0" y="82.0" width="220.0" height="22.0" rx="8" fill="#ffffff" stroke="#e7e5e4" stroke-width="1"/>
+<text x="394.0" y="97.0" fill="#78716c" font-size="11" font-weight="500" font-family="Inter, system-ui, sans-serif" text-anchor="start">reason: operator-walkthrough</text>
+<rect x="614.0" y="82.0" width="150.0" height="22.0" rx="8" fill="#ffffff" stroke="#e7e5e4" stroke-width="1"/>
+<text x="624.0" y="97.0" fill="#78716c" font-size="11" font-weight="500" font-family="Inter, system-ui, sans-serif" text-anchor="start">parent: none</text>
+<rect x="776.0" y="82.0" width="118.0" height="22.0" rx="999" fill="#eef2ff" stroke="#c7d2fe" stroke-width="1"/>
+<text x="835.0" y="97.0" fill="#4338ca" font-size="11" font-weight="600" font-family="Inter, system-ui, sans-serif" text-anchor="middle">dry-run ON</text>
+<text x="224.0" y="70.0" fill="#a8a29e" font-size="11" font-weight="500" font-family="Inter, system-ui, sans-serif" text-anchor="start">Fleet / casops.template.baseline_safe / Corrigibility</text>
+<text x="232.0" y="144.0" fill="#1c1917" font-size="22" font-weight="700" font-family="Inter, system-ui, sans-serif" text-anchor="start">Corrigibility</text>
+<text x="232.0" y="166.0" fill="#78716c" font-size="13" font-weight="500" font-family="Inter, system-ui, sans-serif" text-anchor="start">Host-owned. The agent folder cannot rewrite this. No edit controls.</text>
+<rect x="232.0" y="186.0" width="1024.0" height="88.0" rx="16" fill="#eef2ff" stroke="#c7d2fe" stroke-width="1"/>
+<text x="256.0" y="222.0" fill="#4338ca" font-size="16" font-weight="600" font-family="Inter, system-ui, sans-serif" text-anchor="start">The agent folder cannot rewrite this.</text>
+<text x="256.0" y="246.0" fill="#44403c" font-size="13" font-weight="500" font-family="Inter, system-ui, sans-serif" text-anchor="start">Host-owned invariant store  ·  GET …/corrigibility/attestation</text>
+<rect x="232.0" y="298.0" width="1024.0" height="360.0" rx="16" fill="#fafaf9" stroke="#e7e5e4" stroke-width="1"/>
+<text x="256.0" y="334.0" fill="#44403c" font-size="13" font-weight="500" font-family="ui-monospace, Consolas, monospace" text-anchor="start">status              host_reference</text>
+<text x="256.0" y="362.0" fill="#44403c" font-size="13" font-weight="500" font-family="ui-monospace, Consolas, monospace" text-anchor="start">invariant_set_id    inv-casops-v3</text>
+<text x="256.0" y="390.0" fill="#44403c" font-size="13" font-weight="500" font-family="ui-monospace, Consolas, monospace" text-anchor="start">digest              dd6f875c24bb2faa7b9757f5c48a86812d798cba2194e81a…</text>
+<text x="256.0" y="418.0" fill="#a8a29e" font-size="13" font-weight="500" font-family="ui-monospace, Consolas, monospace" text-anchor="start">signature           (expand to reveal)</text>
+<text x="256.0" y="466.0" fill="#78716c" font-size="13" font-weight="500" font-family="Inter, system-ui, sans-serif" text-anchor="start">No edit, rotate, or disable control on this screen.</text>
+<rect x="256.0" y="498.0" width="976.0" height="64.0" rx="12" fill="#fef2f2" stroke="#fecaca" stroke-width="1"/>
+<text x="272.0" y="526.0" fill="#dc2626" font-size="12" font-weight="600" font-family="Inter, system-ui, sans-serif" text-anchor="start">Containment (IMP_CORRIGIBILITY): Recovery banner, mutations disabled except Reload attestation.</text>
+<text x="272.0" y="546.0" fill="#dc2626" font-size="12" font-weight="500" font-family="Inter, system-ui, sans-serif" text-anchor="start">Status pill: Recovery / Failed — never a green Live while containment_required.</text>
+</svg>

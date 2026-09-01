@@ -1,0 +1,277 @@
+大家好，歡迎返嚟我哋嘅頻道。今日我哋會詳細講解 MusicSupervisorAgent，即係音樂監督代理。
+
+呢份指南係寫畀操作員、pack 作者、swarm 設計師同審閱者睇嘅，佢哋全部喺 common-agent-swarm-ops 入面工作。你會得到任務清晰定義、使用指引、協作地圖、CASOPS 操作步驟、改進路徑同分信任等級嘅來源地圖。
+
+呢份指南唔係授權你啟動供應商、打開網絡或發明工具嘅許可證。Host 真相來源係 fail-closed 嘅 agent_spec.json。VA 或重新設計文件嘅資料係不受信任來源。
+
+Pack 路徑係 business/video/agents/video.musicsupervisor/。指南喺 docs/user_guide.md。由 generate_agent_user_guides.py 生成。
+
+第一部分，快照。
+
+MusicSupervisorAgent，agent id 係 video.musicsupervisor，係 Video Domain Pack 角色喺 CASOPS 上面。簡單講佢負責管理音樂適配度、cue 使用、版權意識同原聲帶包裝。
+
+呢份指南係人類可讀嘅操作員地圖，用於目錄審查、swarm 設計同提案改進，唔係運行時啟動許可證。
+
+快照欄位如下。顯示名稱係 MusicSupervisorAgent。Pack agent id 係 video.musicsupervisor。Pack 係 video。Host 角色字串係 MusicSupervisorAgent (VA Domain Pack)。
+
+目錄狀態係 registered。成熟度係 L0 非活躍。VA id 係 100。VA 類別係 10-Sup，代表工作流程支援同發佈閘門。供應商係 local_deterministic。網絡係 False。
+
+允許工具係空列表。生產啟動請求係 False。Prompt 參考係 video.prompt.musicsupervisor.v1。Rubric 參考係 video.rubric.musicsupervisor.v1。
+
+之前嘅 common id 係 video.music_supervisor。Generic lineage 係 generic-swarm-ops/business/video/agents/video.musicsupervisor。
+
+第二部分，點解存在。
+
+人類影片團隊喺時間壓力下解決呢個問題：管理音樂適配度、cue 使用、版權意識同原聲帶包裝。Agent 形式令多代理系統持續編碼呢種技藝，每次交接應用佢，只將剩餘風險升級畀人類。
+
+知識庫來源係音樂監督筆記、cue 放置參考同原聲帶發佈實踐。呢啲係歷史設計來源。
+
+設計野心係比碎片化嘅交接更加一致咁協調音樂放置。呢個係北極星指標。
+
+第三部分，乜嘢叫做做得好。
+
+主要成果係管理音樂適配度、cue 使用、版權意識同原聲帶包裝。自我質量標準係 cue 適合度、版權意識覆蓋率、原聲帶包嘅完整性。
+
+設計時野心訊號係比碎片化交接更一致咁協調音樂放置。架構模式係 ReAct over cue sheets and rights requirements。
+
+Prompt 參考 video.prompt.musicsupervisor.v1。Rubric 參考 video.rubric.musicsupervisor.v1。批評邊界輸入 video.critic，輸出 video.judge。最大精煉 3 次。
+
+輸入係本地 pack 製品同類型化交接。輸出係可審閱嘅影片領域交付物。驗收係 host 政策加本地 SPEC 標準。
+
+第四部分，範圍。
+
+擁有嘅職責：管理音樂適配度、cue 使用、版權意識同原聲帶包裝。
+
+共享批評表面。聆聽同接受批評來自 ComposerAgent、TrailerEditorAgent、LabelA&RAgent 同 LegalAgent。有資格評論 cue 濫用、音樂版權模糊、原聲帶凝聚力問題。
+
+Host 批評邊界輸入 video.critic，輸出 video.judge。最大精煉 3。
+
+拒絕同升級：fail-closed 冇供應商啟動、冇網絡、冇憑證。production_activation_requested 保持 false。法律安全權利發佈決策升級人類閘門。
+
+第五部分，幾時涉及。
+
+當工作產品需要 MusicSupervisorAgent 嘅決策或製品時叫佢。管道階段係工作流程支援同發佈閘門。
+
+唔好為通用編排、預算批准或法律簽核叫佢。人類覆蓋：任何阻止發佈嘅爭議升級到人類閘門。
+
+決策速查表。缺失技能係咪 MusicSupervisorAgent 嘅專業？係就包含喺 swarm 圖。只係元數據編輯？用 Registry inspect 加提案。需要工具網絡？Host 唔允許。有人類風險？保持人類閘門。
+
+
+第六部分，協作地圖。
+
+將呢個 agent 想像成批評巴士嘅節點。入站批評來自 ComposerAgent、TrailerEditorAgent、LabelA&RAgent 同 LegalAgent。出站評論關於 cue 濫用、音樂版權模糊、原聲帶凝聚力問題。
+
+Host 邊界輸入 video.critic，輸出 video.judge。
+
+第七部分，生產位置。
+
+人類生產工作流程方面，屬於支援功能同最終發佈閘門，包括無障礙、品牌、法律、存檔等。典型交接製品包括閘門決策、合規包、無障礙層、存檔母帶、修正。
+
+將責任映射到經典階段：開發、前期製作、製作、後期製作、交付或即時運營。偏好人類同職位嘅人會簽核嘅階段。
+
+多代理 AI 工作流程方面，屬於閘門同支援節點，喺發佈前或上線後接受或拒絕交接。
+
+設計時工具注釋包括音樂資產追蹤器、cue sheets 同原聲帶包裝工具。呢啲對 host 冇約束力。
+
+循環風格係 ReAct over cue sheets and rights requirements。今日喺 CASOPS 只係文檔。
+
+AI 工作流程摘錄入面提到：第 51 行 TrailerEditorAgent 負責 hook 驅動嘅預告片剪輯，知識來自 Golden Trailer Awards 存檔同 Mark Woollen/AV Squad 公開作品，質量標準係 3 秒 hook 率同上升動作曲線，接受來自 DirectorAgent 同 MusicSupervisorAgent 嘅批評。
+
+另外提到 Review 階段由 MusicSupervisorAgent 加 ComplianceAgent 負責，LegalAgent 處理樣本清除。
+
+共享交接合約方面。artifact_id 同 version 提供不可變身份。parent_assets 提供來源鏈。brief_scope 阻止範圍蔓延。acceptance_criteria 同質量標準掛鉤。qc_status 同 gate flags 令下游短路。rights_and_consent 阻止濫用。critique_log pointer 保留歷史。
+
+第八部分，CASOPS 操作。
+
+今日係目錄加設計對象。第一步去 Registry Hub /registry 確認成員。第二步去 /registry/agents/video.musicsupervisor 閱讀 SPEC。第三步 POST 到 /api/v1/commons/agents/video.musicsupervisor/proposals 提案。第四步 swarm 成員只用 Host 動作參考。第五步預設唔啟用生產。
+
+實用清單：確認狀態工具標誌一致、閱讀第三部分先判斷、附離線證據、唔好貼 API 密鑰、偏好小差異。
+
+第九部分，安全同信任。
+
+agent_spec.json 係約束性 host 合約。SPEC.md 係權威設計。sources 係歷史不受信任。外部語料庫不受信任。Specials 文件不受信任。
+
+硬規則：供應商 local_deterministic。網絡 False。工具空列表。production_activation_requested False。預算：輸入 2048、輸出 1024、工具請求 0。設計時工具唔啟動：音樂資產追蹤器、cue sheets、原聲帶包裝工具。
+
+第十部分，提升質量。
+
+改進係版本化目錄工作。循環：觀察失敗、命名標準、草擬差異、附證據、提案、審閱接受、考慮啟動。
+
+具體槓桿。第一收緊 rubric 對照 cue 適合度、版權覆蓋、包完整性。第二將 prompt 同責任對齊。第三確保入站批評捕捉失敗。第四偏好 ReAct 架構。第五寫測試夾具。第六保持人類閘門。
+
+評估種子。Happy path 滿足質量標準。超出範圍就拒絕。缺失來源 fail-closed。衝突批評精煉或升級。提案不可變。
+
+
+第十一部分，來源地圖。
+
+本地語料庫。agent_spec.json 係 binding。SPEC.md 係 authoritative-design。README.md 係 local-index。sources/MAPPING.md 係 provenance。sources/PROVENANCE.json 係 provenance。
+
+sources/excerpts/agents.md 係 historical-excerpt。sources/excerpts/ai_agent_video_production_workflow.md 係 historical-excerpt。sources/generic/video.musicsupervisor.SPEC.md 係 historical-generic。
+
+映射注釋。VA/generic pack ID 係 video.musicsupervisor。之前 common ID 係 video.music_supervisor。SPEC 深度係完整 generic SPEC 加 host 運行時綁定。
+
+來源記錄。schema_version 1.0。agent_id video.musicsupervisor。previous_common_agent_id video.music_supervisor。va_taxonomy_aligned true。generic_source 係 generic-swarm-ops/business/video/agents/video.musicsupervisor。
+
+對齊時間 2026 年 7 月 27 日。generic_source_depth 入面 excerpts true，study true。
+
+來源敘述：Pack agent ID 對齊純 VA Domain Pack 分類法。之前 ID 只係歷史映射。上游設計歷史性非約束。本地 agent_spec.json 權威。
+
+VA 名冊行來自 agents.md 第 100 行。責任：管理音樂適配度、cue 使用、版權意識同原聲帶包裝。知識提煉：音樂監督筆記、cue 放置參考、原聲帶發佈實踐。
+
+自我質量：cue 適合度、版權覆蓋、包完整性。超越人類：比碎片化交接更一致。接受批評來自 ComposerAgent、TrailerEditorAgent、LabelA&RAgent、LegalAgent。
+
+評論 cue 濫用、版權模糊、原聲帶凝聚力。歷史工具：音樂資產追蹤器、cue sheets、原聲帶包裝工具。架構：ReAct over cue sheets and rights requirements。
+
+第十二部分，相關設計閱讀。
+
+喺 va-agent-swarm 下面冇強關鍵字匹配，依賴本地 SPEC 同 VA 表格行。
+
+本地知識索引。Runtime binding 喺 agent_spec.json。README 喺 README.md。Provenance 喺 sources/PROVENANCE.json。Mapping 喺 sources/MAPPING.md。Pack inventory 喺 ../../inventory.json。Pack manifest 喺 ../../manifest.json。
+
+Folder README 摘要：VA 對齊 Domain Pack agent，common host。
+
+第十三部分，host 合約。
+
+agent_id video.musicsupervisor。allowed_tools 空列表。max_input_tokens 2048。max_output_tokens 1024。max_tool_requests 0。
+
+critique_edges 輸入 video.critic，輸出 video.judge。max_refinement_count 3。model_id local-video-config-v1。network_access false。provider local_deterministic。
+
+production_activation_requested false。prompt_reference video.prompt.musicsupervisor.v1。role MusicSupervisorAgent (VA Domain Pack)。rubric_reference video.rubric.musicsupervisor.v1。schema_version 1.0。status registered。va_id 100。va_name MusicSupervisorAgent。va_category 10-Sup。
+
+第十四部分，SPEC 責任摘錄。
+
+核心責任：管理音樂適配度、cue 使用、版權意識同原聲帶包裝。Host 角色綁定 MusicSupervisorAgent (VA Domain Pack)。
+
+知識提煉：音樂監督筆記、cue 放置參考、原聲帶發佈實踐。自我質量：cue 適合度、版權覆蓋、包完整性。超越人類：比碎片化交接更一致。
+
+批評巴士：接受 ComposerAgent、TrailerEditorAgent、LabelA&RAgent、LegalAgent。評論 cue 濫用、版權模糊、凝聚力。設計時工具唔啟動。運行時安全用 agent_spec.json 加 tool-permission-register.json。架構 ReAct。
+
+第十五部分，文檔控制。
+
+生成器 generate_agent_user_guides.py。資料夾 business/video/agents/video.musicsupervisor/。輸出 docs/user_guide.md。VA 根目錄 C:\Project\va-agent-swarm。信任模型：設計語料庫不受信任，host 配置 fail-closed。
+
+補充關於音樂監督嘅實際工作。喺影片製作入面，音樂監督係一個非常關鍵嘅角色。佢哋需要為每一個場景揀選適合嘅音樂，確保音樂同畫面嘅情緒一致，同時處理所有版權同授權問題。
+
+Cue 係指影片中每一段音樂嘅使用。每個 cue 都有精確嘅開始同結束時間點，同埋同畫面嘅對應關係。Cue sheet 就係記錄所有呢啲音樂使用嘅文件，對於版權管理同費用結算至關重要。
+
+版權意識係呢個角色嘅核心技能之一。每一段使用嘅音樂都需要適當嘅授權，無論係原創音樂、授權音樂定係公共領域嘅作品。錯誤嘅版權處理可能導致嚴重嘅法律後果同財務損失。
+
+原聲帶包裝係指將影片中使用嘅所有音樂整理成一個完整嘅包，可能係用於商業發佈嘅原聲帶專輯，或者係用於存檔同參考嘅內部文件。
+
+MusicSupervisorAgent 同 ComposerAgent 嘅關係特別密切。ComposerAgent 負責創作原創音樂，而 MusicSupervisorAgent 負責確保呢啲音樂喺整體影片入面嘅放置同使用係恰當嘅。
+
+TrailerEditorAgent 嘅批評重點係預告片入面嘅音樂同步精度。預告片嘅音樂需要精確咁同畫面嘅節奏配合，任何唔同步都會影響預告片嘅效果。
+
+LabelA&RAgent 代表唱片公司嘅藝人同曲目部門，佢哋會從商業角度批評音樂選擇。LegalAgent 則從法律合規角度確保所有版權問題都得到適當處理。
+
+ReAct 架構嘅應用方式係：首先分析 cue sheet 同版權要求（Reasoning），然後執行相應嘅動作（Acting），例如標記版權問題或建議替代音樂。呢個循環會持續進行直到所有問題都解決。
+
+以上就係 MusicSupervisorAgent 嘅完整講解。多謝大家收睇，我哋下次再見。
+
+
+我哋繼續深入講解更多關於 MusicSupervisorAgent 嘅技術細節同操作注意事項。
+
+首先關於 cue 適合度呢個質量標準。Cue 適合度唔單止係指音樂同場景嘅情緒匹配，仲包括節奏匹配、音量動態範圍、音色同對白嘅兼容性、以及音樂嘅文化適當性。
+
+一個好嘅 cue 放置需要考慮音樂嘅入場時機、高潮位置、淡出方式，同埋同下一個場景嘅銜接。呢啲全部都需要專業嘅判斷同經驗。
+
+關於版權意識覆蓋率。呢個標準衡量嘅係系統能夠識別同處理幾多百分比嘅版權問題。理想嘅覆蓋率應該係接近百分之一百，即係所有嘅音樂使用都有適當嘅版權記錄同授權文件。
+
+版權問題嘅類型包括：原創音樂嘅版權歸屬、翻唱版本嘅機械權、同步權嘅取得、表演權嘅處理、以及唔同地區嘅版權差異。
+
+關於原聲帶包完整性。一個完整嘅原聲帶包應該包含所有 cue 嘅完整列表、每段音樂嘅版權資訊、授權狀態、費用記錄、以及技術規格例如格式、位深度同採樣率。
+
+而家講下關於呢個 agent 嘅 previous common id video.music_supervisor 嘅歷史背景。呢個名字反映咗佢最初嘅命名慣例，用下劃線分隔。經過 VA 分類法對齊之後改為 video.musicsupervisor 嘅駝峯式命名。
+
+關於 VA 類別 10-Sup 嘅詳細解釋。呢個類別包含所有工作流程支援同發佈閘門相關嘅角色。音樂監督屬於呢個類別因為佢嘅工作係確保音樂相關嘅所有事項喺發佈前都得到適當處理。
+
+音樂版權問題如果唔處理好，可以直接阻止一個影片嘅發佈。所以音樂監督自然成為發佈閘門嘅一部分，需要確認所有音樂使用都合法合規先至可以批准發佈。
+
+關於同 LegalAgent 嘅協作。LegalAgent 提供嘅批評通常關於具體嘅法律風險，例如某段音樂嘅授權範圍唔涵蓋計劃中嘅使用方式，或者某個地區嘅版權法有特殊要求。
+
+MusicSupervisorAgent 需要根據 LegalAgent 嘅反饋調整音樂選擇或者取得額外嘅授權。呢個互動係保護影片免受版權侵權訴訟嘅重要機制。
+
+關於 ComposerAgent 嘅協作。當 ComposerAgent 創作完原創音樂之後，MusicSupervisorAgent 需要評估呢啲音樂喺影片入面嘅整體效果。佢可能建議調整某段音樂嘅長度或者情緒，以更好咁配合視覺敘事。
+
+關於設計時工具嘅詳細說明。音樂資產追蹤器係一個管理所有音樂檔案同佢哋嘅元數據嘅系統。佢記錄每段音樂嘅來源、版權狀態、使用歷史同授權條款。
+
+Cue sheets 係標準化嘅文件格式，用於記錄影片中每一段音樂嘅使用詳情。包括作曲者、出版商、表演者、時長、使用類型等資訊。
+
+原聲帶包裝工具用於將所有音樂素材同元數據打包成標準格式，方便存檔、發佈或者交畀其他部門處理。
+
+關於 ReAct 架構嘅深入解釋。ReAct 即係 Reasoning plus Acting。喺 MusicSupervisorAgent 嘅場景入面，reasoning 部分係分析 cue sheet 嘅內容，識別潛在問題，例如版權不明確嘅音樂、時長唔啱嘅 cue、或者缺失嘅授權文件。
+
+Acting 部分係執行具體嘅動作嚟解決問題，例如標記需要處理嘅 cue、生成替代音樂建議、或者準備版權查詢文件。呢個循環會重複進行，直到所有問題都被識別同處理。
+
+關於精煉過程嘅具體說明。當 video.critic 批評 MusicSupervisorAgent 嘅輸出時，可能嘅批評內容包括：某個 cue 嘅音樂風格同場景唔匹配、版權資訊唔完整、或者原聲帶包缺少某啲必要嘅元素。
+
+MusicSupervisorAgent 收到批評後會進行精煉，最多三次。每次精煉都應該明確回應批評中指出嘅具體問題。如果三次之後仲未解決，問題會升級到 video.judge。
+
+關於同 TrailerEditorAgent 嘅互動。預告片嘅音樂選擇同主片可能唔同。預告片需要更加有衝擊力嘅音樂，而且通常有非常嚴格嘅時間節奏要求。
+
+TrailerEditorAgent 可能會批評音樂嘅節奏同剪輯節奏唔同步，或者音樂嘅高潮位置同畫面嘅高潮位置唔對齊。MusicSupervisorAgent 需要根據呢啲反饋調整音樂建議。
+
+關於未來啟動嘅可能路徑。如果 MusicSupervisorAgent 要從 L0 升級到更高成熟度，佢需要：通過版權覆蓋率測試、通過 cue 適合度評估、通過原聲帶包完整性驗證、同埋通過人類審批嘅治理閘門。
+
+每一個步驟都有明確嘅標準同評估方法。只有全部通過之後先會考慮啟動生產供應商同授予工具權限。
+
+關於 fail-closed 嘅實際意義。如果有任何唔確定嘅情況，系統嘅默認行為係唔做任何事情。呢個原則確保即使出現意外情況，都唔會有未經授權嘅音樂使用或版權侵犯發生。
+
+特別係音樂版權領域，錯誤嘅使用可能帶嚟極其嚴重嘅法律後果。所以 fail-closed 嘅設計喺呢個場景入面特別重要同合適。
+
+以上就係我哋對 MusicSupervisorAgent 嘅最完整講解，涵蓋所有十五個章節嘅詳細內容。感謝你嘅收睇，希望呢啲資訊對你有幫助。我哋下次見。
+
+
+我哋再補充一啲關於音樂監督嘅行業背景同實際操作細節。
+
+喺荷里活嘅傳統製作流程入面，音樂監督係一個需要極高人脈同談判技巧嘅職位。佢哋需要同唱片公司、音樂出版商、獨立藝人、同佢哋嘅經理人打交道，取得音樂使用嘅授權。
+
+呢個過程通常非常耗時同複雜。一部電影可能需要幾十段唔同嘅音樂，每一段都有唔同嘅版權持有人同授權條件。談判費用、使用範圍、地區限制等等都需要逐一處理。
+
+MusicSupervisorAgent 嘅設計目標係將呢個過程中嘅分析同記錄部分系統化。雖然實際嘅談判仍然需要人類進行，但 agent 可以幫助識別潛在嘅版權問題、追蹤授權狀態、同埋確保冇遺漏。
+
+關於原聲帶發佈實踐嘅知識。原聲帶嘅發佈涉及多個方面：曲目順序嘅編排、同唱片公司嘅發佈協議、串流平臺嘅分發設置、同埋同影片上映時間表嘅協調。
+
+一個好嘅原聲帶發佈可以為影片帶嚟額外嘅宣傳效果同收入。音樂監督需要平衡藝術考量同商業考量，確保原聲帶既有音樂品質又有商業價值。
+
+關於 LabelA&RAgent 嘅角色。A&R 代表 Artists and Repertoire，係唱片公司負責發掘藝人同管理曲目嘅部門。佢哋對音樂嘅商業潛力有專業嘅判斷。
+
+當 LabelA&RAgent 批評 MusicSupervisorAgent 嘅音樂選擇時，佢哋可能會指出某段音樂嘅商業表現唔理想，或者建議用更有市場潛力嘅替代選擇。
+
+呢種跨角色嘅互動確保音樂選擇既符合藝術需求又有商業考量。最終嘅決定需要平衡多方面嘅因素。
+
+關於 cue sheet 嘅標準格式。業界通用嘅 cue sheet 格式通常包含以下資訊：cue 編號、場景描述、音樂標題、作曲者、出版商、表演者、使用類型（背景音樂、主題曲、片頭片尾等）、開始時間碼、結束時間碼、時長。
+
+每一個欄位都有特定嘅格式要求同填寫規則。MusicSupervisorAgent 需要能夠正確生成同驗證呢啲 cue sheet，確保佢哋符合行業標準。
+
+關於版權嘅唔同類型。音樂版權主要分為兩大類：詞曲版權同錄音版權。詞曲版權歸作曲者同歌詞作者擁有，通常由音樂出版商代理管理。錄音版權歸錄音嘅製作者擁有，通常由唱片公司持有。
+
+使用一段音樂喺影片入面通常需要同時取得呢兩種版權嘅授權。如果只取得其中一種，仍然會構成侵權。MusicSupervisorAgent 需要確保兩種權利都得到適當處理。
+
+同步權係特指將音樂同視覺內容同步使用嘅權利。呢個係影片製作中最重要嘅音樂版權類型。取得同步權通常需要同版權持有人直接談判。
+
+以上所有呢啲知識同流程都係 MusicSupervisorAgent 嘅知識庫需要涵蓋嘅範圍。雖然今日佢只係一個設計對象，但呢啲知識嘅結構化同系統化為未來嘅啟動奠定咗基礎。
+
+希望呢份超詳細嘅講解幫到大家全面理解 MusicSupervisorAgent 嘅角色同價值。感謝收睇，我哋下條片再見。
+
+
+最後我哋再講多幾個關鍵要點嚟總結。
+
+關於表演權嘅處理。當音樂喺公開場所播放時需要表演權授權。對於串流平臺上嘅影片，呢個通常由平臺同集體管理組織之間嘅協議涵蓋。但對於劇院放映，可能需要額外嘅授權安排。
+
+MusicSupervisorAgent 需要了解唔同分發渠道嘅版權要求差異，確保每一個渠道都有適當嘅授權。呢個係原聲帶包裝嘅重要組成部分。
+
+關於地區版權差異嘅問題。唔同國家同地區嘅版權法有顯著差異。某段音樂可能喺一個地區已經進入公共領域，但喺另一個地區仍然受版權保護。
+
+MusicSupervisorAgent 需要能夠識別呢啲差異，確保影片喺每一個計劃發行嘅地區都有完整嘅音樂版權覆蓋。呢個對於全球發行嘅影片尤其重要。
+
+關於 mechanical rights 嘅解釋。當音樂被重新錄製或改編時需要機械權授權。如果影片使用嘅係一首歌嘅翻唱版本，除咗同步權之外，仲需要取得機械權。
+
+呢個涉及額外嘅版權持有人同額外嘅費用。MusicSupervisorAgent 需要識別呢啲情況並確保所有需要嘅權利都已取得。
+
+以上就係我哋對 MusicSupervisorAgent 嘅最終同最完整嘅講解。涵蓋咗從快照到文檔控制嘅所有十五個章節，加上大量嘅行業背景同技術細節。
+
+希望呢份講解幫到你全面理解呢個角色嘅設計意圖、操作方式同未來發展方向。多謝大家嘅耐心聆聽，我哋下次再見。
+
+
+最後一點補充：呢個 agent 嘅 schema_version 1.0 同 status registered 係所有 L0 成熟度 agent 嘅標準配置。呢個一致性令系統管理同批量操作變得更容易。再見。

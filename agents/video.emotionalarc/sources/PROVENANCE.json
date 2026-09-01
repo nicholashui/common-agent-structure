@@ -1,0 +1,691 @@
+{
+  "schema_version": "3.0",
+  "sources": [
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Story",
+      "author": "Robert McKee",
+      "isbn13": "9780060391683",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Story (Robert McKee), ISBN-13 9780060391683"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Anatomy of Story",
+      "author": "John Truby",
+      "isbn13": "9780865479937",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Anatomy of Story (John Truby), ISBN-13 9780865479937"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Save the Cat!",
+      "author": "Blake Snyder",
+      "isbn13": "9781932907001",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Save the Cat! (Blake Snyder), ISBN-13 9781932907001"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Writer's Journey, 3rd ed.",
+      "author": "Christopher Vogler",
+      "isbn13": "9781932907360",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Writer's Journey, 3rd ed. (Christopher Vogler), ISBN-13 9781932907360"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Hero with a Thousand Faces",
+      "author": "Joseph Campbell",
+      "isbn13": "9781577315933",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Hero with a Thousand Faces (Joseph Campbell), ISBN-13 9781577315933"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Adventures in the Screen Trade",
+      "author": "William Goldman",
+      "isbn13": "9780446391177",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Adventures in the Screen Trade (William Goldman), ISBN-13 9780446391177"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Screenplay",
+      "author": "Syd Field",
+      "isbn13": "9780385339032",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Screenplay (Syd Field), ISBN-13 9780385339032"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Making a Good Script Great, 3rd ed.",
+      "author": "Linda Seger",
+      "isbn13": "9781932907070",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Making a Good Script Great, 3rd ed. (Linda Seger), ISBN-13 9781932907070"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Screenwriter's Bible, 7th ed.",
+      "author": "David Trottier",
+      "isbn13": "9781935247210",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Screenwriter's Bible, 7th ed. (David Trottier), ISBN-13 9781935247210"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Wired for Story",
+      "author": "Lisa Cron",
+      "isbn13": "9781607742456",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Wired for Story (Lisa Cron), ISBN-13 9781607742456"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Into the Woods",
+      "author": "John Yorke",
+      "isbn13": "9780141978109",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Into the Woods (John Yorke), ISBN-13 9780141978109"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Art of Dramatic Writing",
+      "author": "Lajos Egri",
+      "isbn13": "9780671213329",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Art of Dramatic Writing (Lajos Egri), ISBN-13 9780671213329"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Poetics",
+      "author": "Aristotle; Heath trans.",
+      "isbn13": "9780140446364",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Poetics (Aristotle; Heath trans.), ISBN-13 9780140446364"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "故事",
+      "author": "麦基",
+      "isbn13": "9787201076942",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 故事（麦基），ISBN-13 9787201076942"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "故事的解剖",
+      "author": "繁体麦基",
+      "isbn13": "9789862135488",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 故事的解剖（繁体麦基），ISBN-13 9789862135488"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "救猫咪",
+      "isbn13": "9787229040727",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 救猫咪，ISBN-13 9787229040727"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "作家之路",
+      "author": "佛格勒",
+      "isbn13": "9787513320184",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 作家之路（佛格勒），ISBN-13 9787513320184"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "千面英雄",
+      "isbn13": "9787532753871",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 千面英雄，ISBN-13 9787532753871"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "电影剧本写作基础",
+      "author": "悉德·菲尔德",
+      "isbn13": "9787106021238",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 电影剧本写作基础（悉德·菲尔德），ISBN-13 9787106021238"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "戏剧写作基础",
+      "author": "埃格里",
+      "isbn13": "9787108014504",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 戏剧写作基础（埃格里），ISBN-13 9787108014504"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Thinking, Fast and Slow",
+      "author": "Daniel Kahneman",
+      "isbn13": "9780374533557",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Thinking, Fast and Slow (Daniel Kahneman), ISBN-13 9780374533557"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Influence",
+      "author": "Robert Cialdini",
+      "isbn13": "9780061241895",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Influence (Robert Cialdini), ISBN-13 9780061241895"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Predictably Irrational",
+      "author": "Dan Ariely",
+      "isbn13": "9780061353246",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Predictably Irrational (Dan Ariely), ISBN-13 9780061353246"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Nudge",
+      "author": "Thaler & Sunstein",
+      "isbn13": "9780143115267",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Nudge (Thaler & Sunstein), ISBN-13 9780143115267"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Flow",
+      "author": "Mihaly Csikszentmihalyi",
+      "isbn13": "9780061339202",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Flow (Mihaly Csikszentmihalyi), ISBN-13 9780061339202"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Drive",
+      "author": "Daniel H. Pink",
+      "isbn13": "9781594484803",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Drive (Daniel H. Pink), ISBN-13 9781594484803"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Mindset",
+      "author": "Carol Dweck",
+      "isbn13": "9780345472328",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Mindset (Carol Dweck), ISBN-13 9780345472328"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Power of Habit",
+      "author": "Charles Duhigg",
+      "isbn13": "9780812981605",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Power of Habit (Charles Duhigg), ISBN-13 9780812981605"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Emotional Intelligence",
+      "author": "Daniel Goleman",
+      "isbn13": "9780553383713",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Emotional Intelligence (Daniel Goleman), ISBN-13 9780553383713"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Personality",
+      "author": "Daniel Nettle",
+      "isbn13": "9780199211425",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Personality (Daniel Nettle), ISBN-13 9780199211425"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "思考，快与慢",
+      "isbn13": "9787508633565",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 思考，快与慢，ISBN-13 9787508633565"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "影响力",
+      "isbn13": "9787508622163",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 影响力，ISBN-13 9787508622163"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "怪诞行为学",
+      "isbn13": "9787508615824",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 怪诞行为学，ISBN-13 9787508615824"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "助推",
+      "isbn13": "9787508641238",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 助推，ISBN-13 9787508641238"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "心流",
+      "isbn13": "9787508660721",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 心流，ISBN-13 9787508660721"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "驱动力",
+      "isbn13": "9787508621753",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 驱动力，ISBN-13 9787508621753"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "社会心理学",
+      "author": "迈尔斯",
+      "isbn13": "9787115412393",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 社会心理学（迈尔斯），ISBN-13 9787115412393"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Film Art: An Introduction, 12th ed.",
+      "author": "Bordwell, Thompson, Smith",
+      "isbn13": "9781259534959",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Film Art: An Introduction, 12th ed. (Bordwell, Thompson, Smith), ISBN-13 9781259534959"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Understanding Movies, 14th ed.",
+      "author": "Louis Giannetti",
+      "isbn13": "9780205856169",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Understanding Movies, 14th ed. (Louis Giannetti), ISBN-13 9780205856169"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Filmmaker's Handbook, 5th ed.",
+      "author": "Ascher & Pincus",
+      "isbn13": "9780452297289",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Filmmaker's Handbook, 5th ed. (Ascher & Pincus), ISBN-13 9780452297289"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "How to Read a Film, 4th ed.",
+      "author": "James Monaco",
+      "isbn13": "9780195321050",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: How to Read a Film, 4th ed. (James Monaco), ISBN-13 9780195321050"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Film History: An Introduction",
+      "author": "Thompson & Bordwell",
+      "isbn13": "9780073386133",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Film History: An Introduction (Thompson & Bordwell), ISBN-13 9780073386133"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "What Is Cinema? Vol. 1",
+      "author": "André Bazin",
+      "isbn13": "9780520242272",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: What Is Cinema? Vol. 1 (André Bazin), ISBN-13 9780520242272"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Sculpting in Time",
+      "author": "Andrei Tarkovsky",
+      "isbn13": "9780292776241",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Sculpting in Time (Andrei Tarkovsky), ISBN-13 9780292776241"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Hitchcock/Truffaut",
+      "author": "François Truffaut",
+      "isbn13": "9780671604295",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Hitchcock/Truffaut (François Truffaut), ISBN-13 9780671604295"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Notes on the Cinematograph",
+      "author": "Robert Bresson",
+      "isbn13": "9781681370248",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Notes on the Cinematograph (Robert Bresson), ISBN-13 9781681370248"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "电影艺术：形式与风格",
+      "author": "波德维尔、汤普森",
+      "isbn13": "9787301254332",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 电影艺术：形式与风格（波德维尔、汤普森），ISBN-13 9787301254332"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "认识电影",
+      "author": "贾内梯",
+      "isbn13": "9787532763122",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 认识电影（贾内梯），ISBN-13 9787532763122"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "电影是什么",
+      "author": "巴赞",
+      "isbn13": "9787108017963",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 电影是什么（巴赞），ISBN-13 9787108017963"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "雕刻时光",
+      "author": "塔可夫斯基",
+      "isbn13": "9787532743841",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 雕刻时光（塔可夫斯基），ISBN-13 9787532743841"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "希区柯克与特吕弗对话录",
+      "isbn13": "9787532745128",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 希区柯克与特吕弗对话录，ISBN-13 9787532745128"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "电影语言的语法",
+      "author": "阿里洪",
+      "isbn13": "9787532299990",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 电影语言的语法（阿里洪），ISBN-13 9787532299990"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "AI写作：用AI倍速提升写作效率",
+      "author": "邓世超",
+      "isbn13": "9787111760146",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: AI写作：用AI倍速提升写作效率（邓世超），ISBN-13 9787111760146"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "如何写出好故事 HBO大师写作课",
+      "isbn13": "9787516827482",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 如何写出好故事 HBO大师写作课，ISBN-13 9787516827482"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "给青年编剧的信3.0",
+      "author": "宋方金",
+      "isbn13": "9787559493965",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 给青年编剧的信3.0（宋方金），ISBN-13 9787559493965"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "编剧的艺术",
+      "author": "埃格里",
+      "isbn13": "9787550213333",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 编剧的艺术（埃格里），ISBN-13 9787550213333"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "短视频与直播文案写作",
+      "author": "张弘李自海魏坚 主编吴曼刘哲李守勤 副主编",
+      "isbn13": "9787115638649",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 短视频与直播文案写作（张弘李自海魏坚 主编吴曼刘哲李守勤 副主编），ISBN-13 9787115638649"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "新媒体广告与文案写作(第2版)",
+      "author": "周颖 主编张文杰 主编朱晓虹 副主编王娜 副主编黄伟 副主编",
+      "isbn13": "9787115648044",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 新媒体广告与文案写作(第2版)（周颖 主编张文杰 主编朱晓虹 副主编王娜 副主编黄伟 副主编），ISBN-13 9787115648044"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "小说的骨架：好提纲成就好故事",
+      "author": "[美]凯蒂·维兰德",
+      "isbn13": "9787210099529",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 小说的骨架：好提纲成就好故事（[美]凯蒂·维兰德），ISBN-13 9787210099529"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "编剧心理学 在剧本中建构冲突（（美）尹迪克）",
+      "isbn13": "9789571161488",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 编剧心理学 在剧本中建构冲突（（美）尹迪克），ISBN-13 9789571161488"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "救猫咪-小说创作指南",
+      "isbn13": "9787522513003",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 救猫咪-小说创作指南，ISBN-13 9787522513003"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "救猫咪：电影编剧指南",
+      "isbn13": "9787533963361",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 救猫咪：电影编剧指南，ISBN-13 9787533963361"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "人物：文本、舞台、银幕角色与卡司设计的艺术（编剧教父罗伯特·麦基“虚构艺术三部曲”完结篇）",
+      "author": "罗伯特·麦基",
+      "isbn13": "9787533969585",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 人物：文本、舞台、银幕角色与卡司设计的艺术（编剧教父罗伯特·麦基“虚构艺术三部曲”完结篇）（罗伯特·麦基），ISBN-13 9787533969585"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "救猫咪2经典电影剧本解析",
+      "isbn13": "9787533964108",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 救猫咪2经典电影剧本解析，ISBN-13 9787533964108"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "故事的解剖",
+      "author": "羅伯特．麥基(Robert McKee)",
+      "isbn13": "9787201094601",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 故事的解剖 (羅伯特．麥基(Robert McKee))，ISBN-13 9787201094601"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "對白的解剖",
+      "isbn13": "9789864898435",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 對白的解剖，ISBN-13 9789864898435"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "人物的解剖",
+      "isbn13": "9789864896257",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 人物的解剖，ISBN-13 9789864896257"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "諾蘭變奏曲",
+      "isbn13": "9789863844693",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 諾蘭變奏曲，ISBN-13 9789863844693"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "作家的灵感宝库",
+      "isbn13": "9787514220155",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 作家的灵感宝库，ISBN-13 9787514220155"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "发现你的创造力类型",
+      "isbn13": "9787210108061",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 发现你的创造力类型，ISBN-13 9787210108061"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "畅销作家写作全技巧",
+      "isbn13": "9787210092452",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 畅销作家写作全技巧，ISBN-13 9787210092452"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "小说的八百万种写法",
+      "isbn13": "9786263100442",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 小说的八百万种写法，ISBN-13 9786263100442"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "写小说最重要的十件事",
+      "isbn13": "9787210108672",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 写小说最重要的十件事，ISBN-13 9787210108672"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Essential Screenplay (3-Book Bundle)",
+      "author": "Field, Syd",
+      "isbn13": "9780307423269",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Essential Screenplay (3-Book Bundle) (Field, Syd), ISBN-13 9780307423269"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "电影编剧学（修订版）",
+      "author": "汪流",
+      "isbn13": "9787811272406",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 电影编剧学（修订版）（汪流），ISBN-13 9787811272406"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "实用电影编剧",
+      "author": "张觉明",
+      "isbn13": "9787106029234",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 实用电影编剧（张觉明），ISBN-13 9787106029234"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "故事片创作六讲",
+      "author": "王竞",
+      "isbn13": "9787541151323",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 故事片创作六讲（王竞），ISBN-13 9787541151323"
+    }
+  ],
+  "agent_id": "video.emotionalarc",
+  "previous_common_agent_id": "video.distribution_planner",
+  "va_taxonomy_aligned": true,
+  "generic_source": "generic-swarm-ops/business/video/agents/video.emotionalarc",
+  "note": "Imported into CASOPS as baseline_safe. No production activation, no network, no plugins, memory writes forbidden.",
+  "aligned_at": "2026-07-27T00:48:11.146464Z",
+  "generic_source_depth": {
+    "excerpts": true,
+    "study": true,
+    "adopted_at": "2026-07-27T01:30:28.132647+00:00",
+    "upstream": "generic-swarm-ops/business/video/agents"
+  },
+  "imported_from": "C:\\Project\\common-agent-swarm-ops\\business\\video\\agents\\video.emotionalarc",
+  "reference_book_origin": "spec/book_of_knowledge.md",
+  "reference_book_note": "Bibliographic references from spec/book_of_knowledge.md. Does not enable network, RAG, T3, plugins, or memory writes."
+}

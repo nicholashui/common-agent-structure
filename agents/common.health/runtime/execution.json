@@ -1,0 +1,16 @@
+{
+  "schema_version": "3.0",
+  "ir": "casops.execution_dag.v2",
+  "entry": "health_1",
+  "nodes": [
+    {
+      "node_id": "health_1",
+      "kind": "transform",
+      "op": "health_snapshot",
+      "dependencies": [],
+      "side_effect_class": "none",
+      "idempotent": true,
+      "timeout_ms": 1000
+    }
+  ]
+}

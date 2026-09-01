@@ -1,0 +1,15 @@
+{
+  "schema_version": "3.0",
+  "ir": "casops.execution_dag.v2",
+  "entry": "model",
+  "nodes": [
+    {
+      "node_id": "model_1",
+      "kind": "model",
+      "dependencies": [],
+      "side_effect_class": "none",
+      "idempotent": true,
+      "timeout_ms": 5000
+    }
+  ]
+}

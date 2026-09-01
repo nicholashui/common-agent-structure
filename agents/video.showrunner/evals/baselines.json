@@ -1,0 +1,13 @@
+{
+  "schema_version": "3.0",
+  "frozen": "v2-frozen-deterministic",
+  "adapter": "local_deterministic",
+  "baselines": [
+    {
+      "id": "v2-frozen",
+      "adapter": "local_deterministic",
+      "honesty": "MEASURED_LOCAL",
+      "note": "Frozen comparison arm is the host deterministic adapter. Not an LLM production baseline."
+    }
+  ]
+}

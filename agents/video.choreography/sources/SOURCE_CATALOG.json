@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.0",
+  "agent_id": "video.choreography",
+  "sources": [
+    {
+      "id": "src_1",
+      "title": "Emmy Choreography submissions",
+      "description": "Emmy Choreography submissions",
+      "license_class": "unknown_review_required",
+      "acquisition_method": "manual_or_licensed_api",
+      "local_path_hint": "sources/excerpts/ or sources/study/",
+      "refresh_sla_days": 90,
+      "owner": "video.choreography",
+      "status": "planned_or_partial"
+    },
+    {
+      "id": "src_2",
+      "title": "Goebel/Moore reels",
+      "description": "Goebel/Moore reels",
+      "license_class": "unknown_review_required",
+      "acquisition_method": "manual_or_licensed_api",
+      "local_path_hint": "sources/excerpts/ or sources/study/",
+      "refresh_sla_days": 90,
+      "owner": "video.choreography",
+      "status": "planned_or_partial"
+    },
+    {
+      "id": "src_3",
+      "title": "dance-notation datasets",
+      "description": "dance-notation datasets",
+      "license_class": "unknown_review_required",
+      "acquisition_method": "manual_or_licensed_api",
+      "local_path_hint": "sources/excerpts/ or sources/study/",
+      "refresh_sla_days": 90,
+      "owner": "video.choreography",
+      "status": "planned_or_partial"
+    }
+  ],
+  "note": "Legal review required before treating external corpora as production grounding."
+}

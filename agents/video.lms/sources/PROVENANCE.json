@@ -1,0 +1,185 @@
+{
+  "schema_version": "3.0",
+  "sources": [
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Design for How People Learn, 2nd ed.",
+      "author": "Julie Dirksen",
+      "isbn13": "9780134211282",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Design for How People Learn, 2nd ed. (Julie Dirksen), ISBN-13 9780134211282"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "e-Learning and the Science of Instruction, 4th ed.",
+      "author": "Clark & Mayer",
+      "isbn13": "9781119158660",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: e-Learning and the Science of Instruction, 4th ed. (Clark & Mayer), ISBN-13 9781119158660"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Make It Stick",
+      "author": "Brown, Roediger, McDaniel",
+      "isbn13": "9780674729018",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Make It Stick (Brown, Roediger, McDaniel), ISBN-13 9780674729018"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "How People Learn",
+      "author": "Bransford et al.",
+      "isbn13": "9780309070362",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: How People Learn (Bransford et al.), ISBN-13 9780309070362"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Understanding by Design",
+      "author": "Wiggins & McTighe",
+      "isbn13": "9781416600350",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Understanding by Design (Wiggins & McTighe), ISBN-13 9781416600350"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Multimedia Learning, 3rd ed.",
+      "author": "Richard E. Mayer",
+      "isbn13": "9781107566187",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Multimedia Learning, 3rd ed. (Richard E. Mayer), ISBN-13 9781107566187"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "First Principles of Instruction",
+      "author": "M. David Merrill",
+      "isbn13": "9780470900406",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: First Principles of Instruction (M. David Merrill), ISBN-13 9780470900406"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "让学习粘住",
+      "isbn13": "9787508655611",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 让学习粘住，ISBN-13 9787508655611"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "教学设计原理",
+      "author": "加涅",
+      "isbn13": "9787561762264",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 教学设计原理（加涅），ISBN-13 9787561762264"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "追求理解的教学设计",
+      "isbn13": "9787561799994",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 追求理解的教学设计，ISBN-13 9787561799994"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Clean Code",
+      "author": "Robert C. Martin",
+      "isbn13": "9780132350884",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Clean Code (Robert C. Martin), ISBN-13 9780132350884"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Design Patterns",
+      "author": "Gamma, Helm, Johnson, Vlissides",
+      "isbn13": "9780201633610",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Design Patterns (Gamma, Helm, Johnson, Vlissides), ISBN-13 9780201633610"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Pragmatic Programmer, 20th Anniv.",
+      "author": "Hunt & Thomas",
+      "isbn13": "9780135957059",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Pragmatic Programmer, 20th Anniv. (Hunt & Thomas), ISBN-13 9780135957059"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Site Reliability Engineering",
+      "author": "Beyer et al.",
+      "isbn13": "9781491929124",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Site Reliability Engineering (Beyer et al.), ISBN-13 9781491929124"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Systems Performance, 2nd ed.",
+      "author": "Brendan Gregg",
+      "isbn13": "9780136820154",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Systems Performance, 2nd ed. (Brendan Gregg), ISBN-13 9780136820154"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "代码整洁之道",
+      "isbn13": "9787115216878",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 代码整洁之道，ISBN-13 9787115216878"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "设计模式",
+      "isbn13": "9787111075752",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 设计模式，ISBN-13 9787111075752"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "SRE：Google运维解密",
+      "isbn13": "9787115419903",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: SRE：Google运维解密，ISBN-13 9787115419903"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "程序员修炼之道",
+      "isbn13": "9787115527684",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 程序员修炼之道，ISBN-13 9787115527684"
+    }
+  ],
+  "agent_id": "video.lms",
+  "previous_common_agent_id": "video.incident_manager",
+  "va_taxonomy_aligned": true,
+  "generic_source": "generic-swarm-ops/business/video/agents/video.lms",
+  "note": "Imported into CASOPS as baseline_safe. No production activation, no network, no plugins, memory writes forbidden.",
+  "aligned_at": "2026-07-27T00:48:11.223129Z",
+  "generic_source_depth": {
+    "excerpts": true,
+    "study": true,
+    "adopted_at": "2026-07-27T01:30:28.355038+00:00",
+    "upstream": "generic-swarm-ops/business/video/agents"
+  },
+  "imported_from": "C:\\Project\\common-agent-swarm-ops\\business\\video\\agents\\video.lms",
+  "reference_book_origin": "spec/book_of_knowledge.md",
+  "reference_book_note": "Bibliographic references from spec/book_of_knowledge.md. Does not enable network, RAG, T3, plugins, or memory writes."
+}

@@ -1,0 +1,543 @@
+{
+  "schema_version": "3.0",
+  "sources": [
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Competitive Strategy",
+      "author": "Michael E. Porter",
+      "isbn13": "9780684841489",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Competitive Strategy (Michael E. Porter), ISBN-13 9780684841489"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Good Strategy/Bad Strategy",
+      "author": "Richard Rumelt",
+      "isbn13": "9780307886231",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Good Strategy/Bad Strategy (Richard Rumelt), ISBN-13 9780307886231"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Playing to Win",
+      "author": "Lafley & Martin",
+      "isbn13": "9781422187395",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Playing to Win (Lafley & Martin), ISBN-13 9781422187395"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Measure What Matters",
+      "author": "John Doerr",
+      "isbn13": "9780525538318",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Measure What Matters (John Doerr), ISBN-13 9780525538318"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Innovator's Dilemma",
+      "author": "Clayton Christensen",
+      "isbn13": "9781633691780",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Innovator's Dilemma (Clayton Christensen), ISBN-13 9781633691780"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Thinking in Systems",
+      "author": "Donella Meadows",
+      "isbn13": "9781603580557",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Thinking in Systems (Donella Meadows), ISBN-13 9781603580557"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Fifth Discipline",
+      "author": "Peter Senge",
+      "isbn13": "9780385517256",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Fifth Discipline (Peter Senge), ISBN-13 9780385517256"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Superforecasting",
+      "author": "Tetlock & Gardner",
+      "isbn13": "9780804136716",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Superforecasting (Tetlock & Gardner), ISBN-13 9780804136716"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "竞争战略",
+      "isbn13": "9787508633749",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 竞争战略，ISBN-13 9787508633749"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "好战略，坏战略",
+      "isbn13": "9787508643427",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 好战略，坏战略，ISBN-13 9787508643427"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "这就是OKR",
+      "isbn13": "9787521702330",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 这就是OKR，ISBN-13 9787521702330"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "创新者的窘境",
+      "isbn13": "9787508633336",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 创新者的窘境，ISBN-13 9787508633336"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "系统之美",
+      "isbn13": "9787508640114",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 系统之美，ISBN-13 9787508640114"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "第五项修炼",
+      "isbn13": "9787508631332",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 第五项修炼，ISBN-13 9787508631332"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "超预测",
+      "isbn13": "9787508663098",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 超预测，ISBN-13 9787508663098"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "金字塔原理",
+      "isbn13": "9787508633732",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 金字塔原理，ISBN-13 9787508633732"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Thinking, Fast and Slow",
+      "author": "Daniel Kahneman",
+      "isbn13": "9780374533557",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Thinking, Fast and Slow (Daniel Kahneman), ISBN-13 9780374533557"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Influence",
+      "author": "Robert Cialdini",
+      "isbn13": "9780061241895",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Influence (Robert Cialdini), ISBN-13 9780061241895"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Predictably Irrational",
+      "author": "Dan Ariely",
+      "isbn13": "9780061353246",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Predictably Irrational (Dan Ariely), ISBN-13 9780061353246"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Nudge",
+      "author": "Thaler & Sunstein",
+      "isbn13": "9780143115267",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Nudge (Thaler & Sunstein), ISBN-13 9780143115267"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Flow",
+      "author": "Mihaly Csikszentmihalyi",
+      "isbn13": "9780061339202",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Flow (Mihaly Csikszentmihalyi), ISBN-13 9780061339202"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Drive",
+      "author": "Daniel H. Pink",
+      "isbn13": "9781594484803",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Drive (Daniel H. Pink), ISBN-13 9781594484803"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Mindset",
+      "author": "Carol Dweck",
+      "isbn13": "9780345472328",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Mindset (Carol Dweck), ISBN-13 9780345472328"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Power of Habit",
+      "author": "Charles Duhigg",
+      "isbn13": "9780812981605",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Power of Habit (Charles Duhigg), ISBN-13 9780812981605"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Emotional Intelligence",
+      "author": "Daniel Goleman",
+      "isbn13": "9780553383713",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Emotional Intelligence (Daniel Goleman), ISBN-13 9780553383713"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Personality",
+      "author": "Daniel Nettle",
+      "isbn13": "9780199211425",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Personality (Daniel Nettle), ISBN-13 9780199211425"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "思考，快与慢",
+      "isbn13": "9787508633565",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 思考，快与慢，ISBN-13 9787508633565"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "影响力",
+      "isbn13": "9787508622163",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 影响力，ISBN-13 9787508622163"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "怪诞行为学",
+      "isbn13": "9787508615824",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 怪诞行为学，ISBN-13 9787508615824"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "助推",
+      "isbn13": "9787508641238",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 助推，ISBN-13 9787508641238"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "心流",
+      "isbn13": "9787508660721",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 心流，ISBN-13 9787508660721"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "驱动力",
+      "isbn13": "9787508621753",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 驱动力，ISBN-13 9787508621753"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "社会心理学",
+      "author": "迈尔斯",
+      "isbn13": "9787115412393",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 社会心理学（迈尔斯），ISBN-13 9787115412393"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Artificial Intelligence: A Modern Approach, 4th ed.",
+      "author": "Russell & Norvig",
+      "isbn13": "9780134610993",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Artificial Intelligence: A Modern Approach, 4th ed. (Russell & Norvig), ISBN-13 9780134610993"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Multiagent Systems, 2nd ed.",
+      "author": "Michael Wooldridge",
+      "isbn13": "9780471496915",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Multiagent Systems, 2nd ed. (Michael Wooldridge), ISBN-13 9780471496915"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Deep Learning",
+      "author": "Goodfellow, Bengio, Courville",
+      "isbn13": "9780262035613",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Deep Learning (Goodfellow, Bengio, Courville), ISBN-13 9780262035613"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Hands-On Machine Learning, 3rd ed.",
+      "author": "Aurélien Géron",
+      "isbn13": "9781098125974",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Hands-On Machine Learning, 3rd ed. (Aurélien Géron), ISBN-13 9781098125974"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Reinforcement Learning, 2nd ed.",
+      "author": "Sutton & Barto",
+      "isbn13": "9780262039246",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Reinforcement Learning, 2nd ed. (Sutton & Barto), ISBN-13 9780262039246"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Speech and Language Processing, 2nd ed.",
+      "author": "Jurafsky & Martin",
+      "isbn13": "9780131873216",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Speech and Language Processing, 2nd ed. (Jurafsky & Martin), ISBN-13 9780131873216"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Introduction to Information Retrieval",
+      "author": "Manning, Raghavan, Schütze",
+      "isbn13": "9780521865715",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Introduction to Information Retrieval (Manning, Raghavan, Schütze), ISBN-13 9780521865715"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Designing Data-Intensive Applications",
+      "author": "Martin Kleppmann",
+      "isbn13": "9781449373320",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Designing Data-Intensive Applications (Martin Kleppmann), ISBN-13 9781449373320"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Human Compatible",
+      "author": "Stuart Russell",
+      "isbn13": "9780525558613",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Human Compatible (Stuart Russell), ISBN-13 9780525558613"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Alignment Problem",
+      "author": "Brian Christian",
+      "isbn13": "9780393635829",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Alignment Problem (Brian Christian), ISBN-13 9780393635829"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Superintelligence",
+      "author": "Nick Bostrom",
+      "isbn13": "9780199678112",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Superintelligence (Nick Bostrom), ISBN-13 9780199678112"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Weapons of Math Destruction",
+      "author": "Cathy O'Neil",
+      "isbn13": "9780553418811",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Weapons of Math Destruction (Cathy O'Neil), ISBN-13 9780553418811"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "人工智能：一种现代的方法",
+      "author": "第4版",
+      "isbn13": "9787111547044",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 人工智能：一种现代的方法（第4版），ISBN-13 9787111547044"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "深度学习",
+      "author": "花书",
+      "isbn13": "9787115461476",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 深度学习（花书），ISBN-13 9787115461476"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "机器学习",
+      "author": "周志华",
+      "isbn13": "9787302373575",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 机器学习（周志华），ISBN-13 9787302373575"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "统计学习方法",
+      "author": "李航",
+      "isbn13": "9787302423288",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 统计学习方法（李航），ISBN-13 9787302423288"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "强化学习",
+      "author": "第2版",
+      "isbn13": "9787115546081",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 强化学习（第2版），ISBN-13 9787115546081"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "信息检索导论",
+      "isbn13": "9787115221704",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 信息检索导论，ISBN-13 9787115221704"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "数据密集型应用系统设计",
+      "isbn13": "9787111547532",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 数据密集型应用系统设计，ISBN-13 9787111547532"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "生命3.0",
+      "isbn13": "9787508684031",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 生命3.0，ISBN-13 9787508684031"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "动手学深度学习",
+      "author": "李沐等",
+      "isbn13": "9787115547460",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 动手学深度学习（李沐等），ISBN-13 9787115547460"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Film Criticism in the Digital Age",
+      "author": "Mattias Frey, Cecilia Sayad (eds.)",
+      "isbn13": "9780813570730",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Film Criticism in the Digital Age (Mattias Frey, Cecilia Sayad (eds.)), ISBN-13 9780813570730"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Better living through criticism how to think about art, pleasure, beauty, and truth",
+      "author": "Scott, A. O., 1966- author",
+      "isbn13": "9780143109976",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Better living through criticism how to think about art, pleasure, beauty, and truth (Scott, A. O., 1966- author), ISBN-13 9780143109976"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Age of Movies Selected Writings of Pauline Kael",
+      "author": "Pauline Kael, Sanford Schwartz",
+      "isbn13": "9781598535082",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Age of Movies Selected Writings of Pauline Kael (Pauline Kael, Sanford Schwartz), ISBN-13 9781598535082"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "All about Oscar the history and politics of the Academy Awards",
+      "author": "Levy, Emanuel, 1947-",
+      "isbn13": "9780826414526",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: All about Oscar the history and politics of the Academy Awards (Levy, Emanuel, 1947-), ISBN-13 9780826414526"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Inside Oscar 2 6 New Years of Academy Awards History 1995-2000",
+      "author": "Damien Bona",
+      "isbn13": "9780345448002",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Inside Oscar 2 6 New Years of Academy Awards History 1995-2000 (Damien Bona), ISBN-13 9780345448002"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Big Show High Times and Dirty Dealings Backstage at the Academy Awards®",
+      "author": "Steve Pond",
+      "isbn13": "9780571211937",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Big Show High Times and Dirty Dealings Backstage at the Academy Awards® (Steve Pond), ISBN-13 9780571211937"
+    }
+  ],
+  "agent_id": "video.judge",
+  "previous_common_agent_id": "video.qc_l3_reviewer",
+  "va_taxonomy_aligned": true,
+  "generic_source": "generic-swarm-ops/business/video/agents/video.judge",
+  "note": "Imported into CASOPS as baseline_safe. No production activation, no network, no plugins, memory writes forbidden.",
+  "aligned_at": "2026-07-27T00:48:10.796752Z",
+  "generic_source_depth": {
+    "excerpts": true,
+    "study": true,
+    "adopted_at": "2026-07-27T01:30:28.286380+00:00",
+    "upstream": "generic-swarm-ops/business/video/agents"
+  },
+  "imported_from": "C:\\Project\\common-agent-swarm-ops\\business\\video\\agents\\video.judge",
+  "reference_book_origin": "spec/book_of_knowledge.md",
+  "reference_book_note": "Bibliographic references from spec/book_of_knowledge.md. Does not enable network, RAG, T3, plugins, or memory writes."
+}

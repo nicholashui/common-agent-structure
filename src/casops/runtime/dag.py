@@ -39,6 +39,7 @@ class Node:
     side_effect_class: str
     timeout_ms: int
     idempotent: bool
+    op: str = ""
 
 
 @dataclass
@@ -64,6 +65,7 @@ def compile_dag(execution: dict[str, Any] | Path) -> Dag:
             side_effect_class=str(raw.get("side_effect_class") or "none"),
             timeout_ms=int(raw.get("timeout_ms") or 1000),
             idempotent=bool(raw.get("idempotent", False)),
+            op=str(raw.get("op") or ""),
         )
         dag.nodes[node.node_id] = node
     dag.order = _topo(dag)

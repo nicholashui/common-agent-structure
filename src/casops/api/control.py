@@ -7,13 +7,14 @@ from pathlib import Path
 from typing import Any
 
 from fastapi import FastAPI, Header, Query, Request
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 
 from casops.api.http import actor_from_header, install_error_handler
 from casops.auth.actors import ActorClass, is_allowed
 from casops.capabilities.conformance import verify_folder
 from casops.compose.engine import Composer
-from casops.compose.folders import locate_agent_folder
+from casops.compose.folders import list_agent_summaries, locate_agent_folder
 from casops.corrigibility.store import InvariantStore
 from casops.errors.codes import ErrorCode
 from casops.errors.exceptions import CasopsError
@@ -24,6 +25,7 @@ from casops.cache.manager import CacheManager
 from casops.memory.store import ConsolidationWorker, MemoryService
 from casops.plugins.validate import validate_registry
 from casops.runtime.executor import Runtime
+from casops.runtime.llm import PROVIDER_CATALOG, LlmRouter, LlmSettings, list_providers, load_dotenv
 import os
 
 
@@ -65,6 +67,23 @@ SPEC_V3_PATHS: tuple[tuple[str, str], ...] = (
     ("POST", "/api/v3/agents/{agent_id}/runtime/run"),
 )
 
+# UI companion (not spec §19). Extra /api/v3 paths are OpenAPI-legal.
+COMPANION_V3_PATHS: tuple[tuple[str, str], ...] = (
+    ("GET", "/api/v3/agents"),
+    ("GET", "/api/v3/llm/providers"),
+    ("GET", "/api/v3/llm/settings"),
+    ("POST", "/api/v3/llm/settings"),
+    ("GET", "/api/v3/agents/{agent_id}/llm"),
+    ("POST", "/api/v3/agents/{agent_id}/llm"),
+)
+
+_DEFAULT_CORS_ORIGINS = (
+    "http://127.0.0.1:5173",
+    "http://localhost:5173",
+    "http://127.0.0.1:4173",
+    "http://localhost:4173",
+)
+
 
 @dataclass
 class HostState:
@@ -76,6 +95,7 @@ class HostState:
     memory: MemoryService
     consolidator: ConsolidationWorker
     trainer: TrainerBridge
+    llm: LlmRouter
     cache: CacheManager = field(default_factory=CacheManager)
     incidents: list[dict[str, Any]] = field(default_factory=list)
     candidates: dict[str, dict[str, Any]] = field(default_factory=dict)
@@ -89,6 +109,12 @@ def _folder(state: HostState, agent_id: str) -> Path:
     return located
 
 
+def _forbid_agent_llm_actor(request: Request) -> None:
+    actor = getattr(request.state, "actor", None)
+    if actor is ActorClass.agent_runtime:
+        raise CasopsError(ErrorCode.IMP_SELF_APPROVAL)
+
+
 def create_control_plane(
     *,
     agents_root: Path,
@@ -98,11 +124,14 @@ def create_control_plane(
     runtime: Runtime | None = None,
     consolidator: ConsolidationWorker | None = None,
     cache: CacheManager | None = None,
+    llm: LlmRouter | None = None,
 ) -> FastAPI:
     store = store or InvariantStore.with_host_defaults()
     instruments = instruments or InstrumentRegistry()
     memory = memory or MemoryService()
-    runtime = runtime or Runtime(agents_root=agents_root, store=store)
+    settings_path = Path(os.environ.get("CASOPS_LLM_SETTINGS", str(Path.cwd() / "var" / "llm-settings.json")))
+    llm = llm or LlmRouter(settings=LlmSettings.load(settings_path))
+    runtime = runtime or Runtime(agents_root=agents_root, store=store, llm=llm)
     consolidator = consolidator or ConsolidationWorker(memory)
     state = HostState(
         agents_root=agents_root,
@@ -113,10 +142,19 @@ def create_control_plane(
         memory=memory,
         consolidator=consolidator,
         trainer=TrainerBridge(),
+        llm=llm,
         cache=cache or CacheManager(),
     )
     app = FastAPI(title="casops-control-plane", version="0.1.0")
     install_error_handler(app)
+    extra_origins = [part.strip() for part in os.environ.get("CASOPS_CORS_ORIGINS", "").split(",") if part.strip()]
+    app.add_middleware(
+        CORSMiddleware,
+        allow_origins=[*_DEFAULT_CORS_ORIGINS, *extra_origins],
+        allow_credentials=True,
+        allow_methods=["*"],
+        allow_headers=["*"],
+    )
 
     @app.middleware("http")
     async def mutation_contract(request: Request, call_next):  # type: ignore[no-untyped-def]
@@ -160,6 +198,89 @@ def create_control_plane(
             request.state.actor = parsed
             request.state.dry_run = dry.lower() in {"1", "true", "yes"}
         return await call_next(request)
+
+    @app.get("/api/v3/agents")
+    def list_agents() -> dict[str, Any]:
+        return {"agents": list_agent_summaries(state.agents_root)}
+
+    @app.get("/api/v3/llm/providers")
+    def llm_providers() -> dict[str, Any]:
+        return {"providers": list_providers()}
+
+    @app.get("/api/v3/llm/settings")
+    def get_llm_settings() -> dict[str, Any]:
+        return state.llm.settings.public_view()
+
+    @app.post("/api/v3/llm/settings")
+    def set_llm_settings(request: Request, body: dict[str, Any]) -> dict[str, Any]:
+        _forbid_agent_llm_actor(request)
+        default_llm = body.get("default_llm")
+        if default_llm in {None, ""}:
+            next_default = None
+        else:
+            if str(default_llm) not in PROVIDER_CATALOG:
+                raise CasopsError(ErrorCode.PERF_ROUTE_UNAVAILABLE, detail="unknown LLM provider")
+            next_default = str(default_llm)
+        if getattr(request.state, "dry_run", False):
+            preview = LlmSettings(
+                path=state.llm.settings.path,
+                default_llm=next_default,
+                agents=dict(state.llm.settings.agents),
+            )
+            view = preview.public_view()
+            view["saved"] = False
+            view["dry_run"] = True
+            return view
+        state.llm.settings.default_llm = next_default
+        state.llm.settings.save()
+        view = state.llm.settings.public_view()
+        view["saved"] = True
+        view["dry_run"] = False
+        return view
+
+    @app.get("/api/v3/agents/{agent_id}/llm")
+    def get_agent_llm(agent_id: str) -> dict[str, Any]:
+        _folder(state, agent_id)
+        settings = state.llm.settings
+        return {
+            "agent_id": agent_id,
+            "provider": settings.resolved_for(agent_id),
+            "override": settings.agents.get(agent_id),
+            "default_llm": settings.resolved_default(),
+            "providers": list_providers(),
+        }
+
+    @app.post("/api/v3/agents/{agent_id}/llm")
+    def set_agent_llm(agent_id: str, request: Request, body: dict[str, Any]) -> dict[str, Any]:
+        _folder(state, agent_id)
+        _forbid_agent_llm_actor(request)
+        provider = body.get("provider")
+        if provider in {None, "", "default", "__default__"}:
+            next_override = None
+        else:
+            if str(provider) not in PROVIDER_CATALOG:
+                raise CasopsError(ErrorCode.PERF_ROUTE_UNAVAILABLE, detail="unknown LLM provider")
+            next_override = str(provider)
+        if getattr(request.state, "dry_run", False):
+            return {
+                "agent_id": agent_id,
+                "saved": False,
+                "dry_run": True,
+                "provider": next_override or state.llm.settings.resolved_default(),
+                "override": next_override,
+            }
+        if next_override is None:
+            state.llm.settings.agents.pop(agent_id, None)
+        else:
+            state.llm.settings.agents[agent_id] = next_override
+        state.llm.settings.save()
+        return {
+            "agent_id": agent_id,
+            "saved": True,
+            "dry_run": False,
+            "provider": state.llm.settings.resolved_for(agent_id),
+            "override": state.llm.settings.agents.get(agent_id),
+        }
 
     @app.get("/api/v3/agents/{agent_id}/structure")
     def structure(agent_id: str) -> dict[str, Any]:
@@ -249,9 +370,14 @@ def create_control_plane(
         return {"agent_id": agent_id, "hierarchy": ["H0"], "mode": "none"}
 
     @app.post("/api/v3/agents/{agent_id}/memory/query")
-    def memory_query(agent_id: str, tenant: str = Query("t"), subject: str = Query("s")) -> dict[str, Any]:
+    def memory_query(
+        agent_id: str,
+        tenant: str = Query("t"),
+        subject: str = Query("s"),
+        text: str | None = Query(default=None),
+    ) -> dict[str, Any]:
         del agent_id
-        return {"records": state.memory.scoped_query(tenant=tenant, subject=subject)}
+        return {"records": state.memory.scoped_query(tenant=tenant, subject=subject, text=text)}
 
     @app.post("/api/v3/agents/{agent_id}/memory/write-candidate")
     def memory_write(
@@ -407,4 +533,8 @@ def create_control_plane(
 
 
 def create_app_from_env() -> FastAPI:
-    return create_control_plane(agents_root=Path(os.environ.get("CASOPS_AGENTS_ROOT", "agents")))
+    cwd = Path.cwd()
+    load_dotenv(cwd / ".env")
+    agents_root = Path(os.environ.get("CASOPS_AGENTS_ROOT", "agents"))
+    load_dotenv(agents_root.resolve().parent / ".env")
+    return create_control_plane(agents_root=agents_root)

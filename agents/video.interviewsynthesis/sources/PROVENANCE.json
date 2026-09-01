@@ -1,0 +1,252 @@
+{
+  "schema_version": "3.0",
+  "sources": [
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Elements of Journalism, 3rd ed.",
+      "author": "Kovach & Rosenstiel",
+      "isbn13": "9780804136785",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Elements of Journalism, 3rd ed. (Kovach & Rosenstiel), ISBN-13 9780804136785"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Blur",
+      "author": "Kovach & Rosenstiel",
+      "isbn13": "9781608193011",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Blur (Kovach & Rosenstiel), ISBN-13 9781608193011"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Associated Press Stylebook",
+      "isbn13": "9781541649883",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Associated Press Stylebook, ISBN-13 9781541649883"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "On Writing Well",
+      "author": "William Zinsser",
+      "isbn13": "9780060891541",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: On Writing Well (William Zinsser), ISBN-13 9780060891541"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Craft of Research, 4th ed.",
+      "author": "Booth et al.",
+      "isbn13": "9780226239736",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Craft of Research, 4th ed. (Booth et al.), ISBN-13 9780226239736"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Interviewing as Qualitative Research, 4th ed.",
+      "author": "Irving Seidman",
+      "isbn13": "9780807755679",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Interviewing as Qualitative Research, 4th ed. (Irving Seidman), ISBN-13 9780807755679"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "新闻的十大基本原则",
+      "isbn13": "9787301161111",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 新闻的十大基本原则，ISBN-13 9787301161111"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "采访的艺术",
+      "isbn13": "9787301169186",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 采访的艺术，ISBN-13 9787301169186"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "如何阅读一本书",
+      "isbn13": "9787100040945",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 如何阅读一本书，ISBN-13 9787100040945"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "研究是一门艺术",
+      "isbn13": "9787300116226",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 研究是一门艺术，ISBN-13 9787300116226"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Thinking, Fast and Slow",
+      "author": "Daniel Kahneman",
+      "isbn13": "9780374533557",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Thinking, Fast and Slow (Daniel Kahneman), ISBN-13 9780374533557"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Influence",
+      "author": "Robert Cialdini",
+      "isbn13": "9780061241895",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Influence (Robert Cialdini), ISBN-13 9780061241895"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Predictably Irrational",
+      "author": "Dan Ariely",
+      "isbn13": "9780061353246",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Predictably Irrational (Dan Ariely), ISBN-13 9780061353246"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Nudge",
+      "author": "Thaler & Sunstein",
+      "isbn13": "9780143115267",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Nudge (Thaler & Sunstein), ISBN-13 9780143115267"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Flow",
+      "author": "Mihaly Csikszentmihalyi",
+      "isbn13": "9780061339202",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Flow (Mihaly Csikszentmihalyi), ISBN-13 9780061339202"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Drive",
+      "author": "Daniel H. Pink",
+      "isbn13": "9781594484803",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Drive (Daniel H. Pink), ISBN-13 9781594484803"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Mindset",
+      "author": "Carol Dweck",
+      "isbn13": "9780345472328",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Mindset (Carol Dweck), ISBN-13 9780345472328"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Power of Habit",
+      "author": "Charles Duhigg",
+      "isbn13": "9780812981605",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Power of Habit (Charles Duhigg), ISBN-13 9780812981605"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Emotional Intelligence",
+      "author": "Daniel Goleman",
+      "isbn13": "9780553383713",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Emotional Intelligence (Daniel Goleman), ISBN-13 9780553383713"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Personality",
+      "author": "Daniel Nettle",
+      "isbn13": "9780199211425",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Personality (Daniel Nettle), ISBN-13 9780199211425"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "思考，快与慢",
+      "isbn13": "9787508633565",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 思考，快与慢，ISBN-13 9787508633565"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "影响力",
+      "isbn13": "9787508622163",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 影响力，ISBN-13 9787508622163"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "怪诞行为学",
+      "isbn13": "9787508615824",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 怪诞行为学，ISBN-13 9787508615824"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "助推",
+      "isbn13": "9787508641238",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 助推，ISBN-13 9787508641238"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "心流",
+      "isbn13": "9787508660721",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 心流，ISBN-13 9787508660721"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "驱动力",
+      "isbn13": "9787508621753",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 驱动力，ISBN-13 9787508621753"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "社会心理学",
+      "author": "迈尔斯",
+      "isbn13": "9787115412393",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 社会心理学（迈尔斯），ISBN-13 9787115412393"
+    }
+  ],
+  "agent_id": "video.interviewsynthesis",
+  "previous_common_agent_id": "video.location_manager",
+  "va_taxonomy_aligned": true,
+  "generic_source": "generic-swarm-ops/business/video/agents/video.interviewsynthesis",
+  "note": "Imported into CASOPS as baseline_safe. No production activation, no network, no plugins, memory writes forbidden.",
+  "aligned_at": "2026-07-27T00:48:11.173612Z",
+  "generic_source_depth": {
+    "excerpts": true,
+    "study": true,
+    "adopted_at": "2026-07-27T01:30:28.246190+00:00",
+    "upstream": "generic-swarm-ops/business/video/agents"
+  },
+  "imported_from": "C:\\Project\\common-agent-swarm-ops\\business\\video\\agents\\video.interviewsynthesis",
+  "reference_book_origin": "spec/book_of_knowledge.md",
+  "reference_book_note": "Bibliographic references from spec/book_of_knowledge.md. Does not enable network, RAG, T3, plugins, or memory writes."
+}

@@ -1,0 +1,449 @@
+大家好，歡迎收睇今日嘅影片。
+
+今日我哋會詳細講解 TrailerEditorAgent 嘅操作員同設計指南。
+
+呢份文件係俾操作員、pack 作者、swarm 設計師同審核人員使用嘅。
+
+呢份指南提供任務清晰度、幾時使用嘅指引、協作地圖、CASOPS 操作步驟、改進路徑同分信任層級嘅來源地圖。
+
+重要聲明，呢份文件唔係啟動 provider 嘅許可證。
+
+唔係開放網絡嘅授權。
+
+唔係發明工具嘅許可。
+
+Host 真相係 fail-closed 嘅 agent_spec.json。
+
+VA 或 redesign 文件嘅設計文字係不受信任來源。
+
+Pack 路徑係 business/video/agents/video.trailereditor/。
+
+指南位於 docs/user_guide.md。
+
+由 scripts/business/generate_agent_user_guides.py 生成。
+
+第一部分，快照。
+
+TrailerEditorAgent，pack agent id 係 video.trailereditor。
+
+佢係 Video Domain Pack 角色運行喺 CASOPS 上。
+
+簡單講，佢嘅工作係做以 hook 為驅動嘅預告片剪輯。
+
+呢份指南係人類可讀嘅操作員地圖。
+
+基本資料逐項講。
+
+Display name 係 TrailerEditorAgent。
+
+Pack agent id 係 video.trailereditor。
+
+Pack 係 video。
+
+Host role string 係 TrailerEditorAgent (VA Domain Pack)。
+
+Catalog status 係 registered。
+
+Maturity today 係 L0 非活動。
+
+VA id 係 51。
+
+VA category 係 8-AI，即 AI 時代合成專家。
+
+Provider 係 local_deterministic。
+
+Network 係 False。
+
+Allowed tools 空列表。
+
+Production activation requested 係 False。
+
+Prompt 同 rubric 參考係 video.prompt.trailereditor.v1 同 video.rubric.trailereditor.v1。
+
+Previous common id 係 video.audit_liaison。
+
+Generic lineage 係 generic-swarm-ops/business/video/agents/video.trailereditor。
+
+第二部分，點解存在。
+
+人類影片團隊已經喺時間壓力下解決呢個問題：以 hook 為驅動嘅預告片剪輯。
+
+Agent 形式令多代理系統持續編碼呢種工藝。
+
+知識庫來源第一個係 Golden Trailer Awards 即金預告片獎。
+
+第二個係 Woollen 斜線 AV Squad reels 即 Mark Woollen 同 AV Squad 嘅公開作品集。
+
+第三個係 trailer-music libs 即預告片音樂庫。
+
+呢啲係歷史設計來源。
+
+設計野心係：喺 Golden-Trailer-rubric 盲測比較中獲勝。
+
+用呢個做北極星指標。
+
+第三部分，乜嘢叫做好。
+
+Primary outcome 係以 hook 為驅動嘅預告片剪輯。
+
+Self-quality bar 第一個係 Hook-rate at 3s 即三秒時嘅吸引率。
+
+第二個係 rising-action curve 即上升動作曲線。
+
+第三個係 music-sync precision 即音樂同步精確度。
+
+Ambition signal 係喺 Golden-Trailer-rubric 盲測比較中獲勝。
+
+Architecture pattern 係 Self-Refine，即用留存率曲線模型作為反饋。
+
+Host quality 同 critique binding。
+
+Prompt reference video.prompt.trailereditor.v1。
+
+Rubric reference video.rubric.trailereditor.v1。
+
+Critique edges inputs video.critic，outputs video.judge。
+
+Max refinement 3。
+
+輸入輸出驗收。
+
+Inputs 本地 pack 工件同類型化交接。
+
+Outputs 可審查交付物。
+
+Acceptance host 政策加 SPEC 標準。
+
+第四部分，範圍。
+
+擁有：以 hook 為驅動嘅預告片剪輯。
+
+共享批評表面。
+
+聽取 DirectorAgent 嘅批評。
+
+聽取 MusicSupervisorAgent 嘅批評。
+
+有資格評論 EditorAgent 嘅 over-cut 即過度剪輯。
+
+有資格評論 ComposerAgent 嘅 mismatch 即不匹配。
+
+Host critique edge inputs video.critic。
+
+outputs video.judge。
+
+Max refinement count 3。
+
+拒絕同升級：Fail-closed。
+
+production_activation_requested 保持 false。
+
+法律安全版權發布升級人類閘門。
+
+第五部分，幾時用。
+
+當工作需要 TrailerEditorAgent 嘅決定或工件時叫佢。
+
+即以 hook 為驅動嘅預告片剪輯。
+
+Pipeline phase 係 AI 時代合成專家。
+
+即合成媒體、克隆、化身同 deepfake 風險工藝。
+
+唔好用佢做一般編排、預算或法律簽署。
+
+Human override：阻礙發布嘅爭議升級人類閘門。
+
+決策小抄。
+
+技能係 TrailerEditorAgent 嘅工藝？加入 swarm 圖。
+
+只係元數據？用 Registry。
+
+需要工具網絡？Host 唔允許。
+
+人類風險？保留閘門。
+
+第六部分，協作地圖。
+
+Inbound critique 來自 DirectorAgent 同 MusicSupervisorAgent。
+
+Outbound commentary 針對 EditorAgent 嘅 over-cut 同 ComposerAgent 嘅 mismatch。
+
+Host edge inputs video.critic。
+
+outputs video.judge。
+
+第七部分，生產位置。
+
+人類工作流程階段係合成媒體、克隆、化身同 deepfake 風險工藝。
+
+典型交接工件包括合成資產。
+
+仲有同意記錄。
+
+仲有法醫評分。
+
+同埋身份哈希。
+
+多代理 AI 工作流程方面，係專門嘅生成節點有強來源同意同法醫閘門。
+
+設計時工具備註第一個係 DaVinci Resolve (MCP)。
+
+第二個係 trailer-music APIs 包括 Musicbed 同 Artlist。
+
+第三個係 retention-curve predictor 即留存率曲線預測器。
+
+循環風格係 Self-Refine 用留存率曲線模型反饋。
+
+AI 工作流程摘錄提到第 51 號 TrailerEditorAgent。
+
+職責係以 hook 為驅動嘅預告片剪輯。
+
+知識來源係 Golden Trailer Awards archive、Mark Woollen 斜線 AV Squad 作品集、預告片音樂庫。
+
+自我質量係三秒吸引率、上升動作曲線擬合同音樂同步精確度。
+
+超越人類係 Golden-Trailer-rubric 盲測獲勝。
+
+接受批評來自 DirectorAgent 同 MusicSupervisorAgent。
+
+評論 EditorAgent 過度剪輯同 ComposerAgent 不匹配。
+
+Distribution 階段由 SalesAgent 加 DistributorAgent 加 TrailerEditorAgent 加 MarketingAgent 加 ArchiveMasterAgent 組成配合 ComplianceAgent。
+
+共享交接合約方面。
+
+artifact_id version 不可變身份。
+
+parent_assets 來源鏈。
+
+brief_scope 阻止範圍蔓延。
+
+acceptance_criteria 同質量標準掛鉤。
+
+qc_status gate flags 下游短路。
+
+rights_and_consent 阻止濫用。
+
+critique_log pointer 保存歷史。
+
+第八部分，CASOPS 操作。
+
+今日係目錄加設計物件。
+
+步驟一 Discover 去 /registry。
+
+步驟二 Inspect 去 /registry/agents/video.trailereditor。
+
+步驟三 POST 到 /api/v1/commons/agents/video.trailereditor/proposals。
+
+步驟四隻用 Host 引用。
+
+步驟五預設唔啟用。
+
+操作檯檢查清單。
+
+確認旗標。
+
+先閱讀第三部分。
+
+附離線證據。
+
+唔好貼密鑰。
+
+偏好小差異。
+
+第九部分，安全信任。
+
+agent_spec.json 約束力合約。
+
+SPEC.md 權威設計。
+
+sources 歷史不受信任。
+
+外部語料庫唔受信任。
+
+硬規則：Provider local_deterministic。
+
+Network False。
+
+Tools 空列表。
+
+production_activation_requested False。
+
+Budget：輸入 2048，輸出 1024，工具 0。
+
+設計時工具目錄非啟動：DaVinci Resolve (MCP)、trailer-music APIs、retention-curve predictor。
+
+第十部分，提升質量。
+
+版本化目錄工作。
+
+循環：觀察失敗、命名標準、起草差異、附證據、提案、審查、考慮閘門。
+
+具體槓桿六個。
+
+第一 Rubric fidelity 收緊對照 Hook-rate at 3s、rising-action curve、music-sync precision。
+
+第二 Prompt precision 對齊責任。
+
+第三 Critique graph 確保 DirectorAgent 同 MusicSupervisorAgent 捕捉失敗。
+
+第四 Architecture 偏好 Self-Refine 留存率曲線反饋。
+
+第五 Eval cases 寫 fixtures。
+
+第六 Human gates 保持明確。
+
+評估種子。
+
+Happy path：滿足 Hook-rate at 3s、rising-action curve、music-sync precision。
+
+Out-of-scope：拒絕升級。
+
+Missing provenance：fail closed。
+
+Conflicting critique：唔超過 max count。
+
+Proposal-only：不可變。
+
+第十一部分，來源地圖。
+
+agent_spec.json binding。
+
+SPEC.md authoritative-design。
+
+README.md local-index。
+
+sources/MAPPING.md provenance。
+
+sources/PROVENANCE.json provenance。
+
+sources/excerpts/agents.md historical-excerpt。
+
+sources/excerpts/ai_agent_video_production_workflow.md historical-excerpt。
+
+sources/excerpts/lifes_quiet_redemption_agent_workflow.md historical-excerpt。
+
+sources/excerpts/SYSTEM_REFERENCE.md historical-excerpt。
+
+sources/generic/video.compliance.SPEC.md historical-generic。
+
+sources/generic/video.legal.SPEC.md historical-generic。
+
+Mapping note：VA ID video.trailereditor，之前 ID video.audit_liaison，SPEC 深度完整。
+
+Provenance record：schema_version 1.0，agent_id video.trailereditor，previous_common_agent_id video.audit_liaison。
+
+va_taxonomy_aligned true，generic_source generic-swarm-ops/business/video/agents/video.trailereditor。
+
+aligned_at 2026 年 7 月 27 日。
+
+VA roster row 第 51 行。
+
+Responsibility 以 hook 為驅動嘅預告片剪輯。
+
+Knowledge distillation Golden Trailer Awards、Woollen/AV Squad reels、trailer-music libs。
+
+Self-quality Hook-rate at 3s、rising-action curve、music-sync precision。
+
+Surpass-human Golden-Trailer-rubric 盲測獲勝。
+
+Accepts critique DirectorAgent 同 MusicSupervisorAgent。
+
+Comments on EditorAgent over-cut 同 ComposerAgent mismatch。
+
+Tools 歷史性 DaVinci Resolve (MCP)、trailer-music APIs、retention-curve predictor。
+
+Architecture Self-Refine 留存率曲線反饋。
+
+第十二部分，相關設計閱讀。
+
+冇強匹配。
+
+本地索引包括 Runtime binding、README、Provenance、Mapping、inventory、manifest。
+
+第十三部分，host 合約。
+
+agent_id video.trailereditor。
+
+allowed_tools 空列表。
+
+max_input_tokens 2048。
+
+max_output_tokens 1024。
+
+max_tool_requests 0。
+
+critique_edges inputs video.critic outputs video.judge。
+
+max_refinement_count 3。
+
+model_id local-video-config-v1。
+
+network_access false。
+
+provider local_deterministic。
+
+production_activation_requested false。
+
+prompt_reference video.prompt.trailereditor.v1。
+
+role TrailerEditorAgent (VA Domain Pack)。
+
+rubric_reference video.rubric.trailereditor.v1。
+
+schema_version 1.0。
+
+status registered。
+
+va_id 51。
+
+va_name TrailerEditorAgent。
+
+va_category 8-AI。
+
+第十四部分，SPEC 責任摘錄。
+
+責任係以 hook 為驅動嘅預告片剪輯。
+
+Host role binding TrailerEditorAgent (VA Domain Pack)。
+
+Knowledge distillation 歷史性。
+
+Self-quality criteria 歷史性。
+
+Surpass-human 歷史性。
+
+Critique bus：接受 DirectorAgent 同 MusicSupervisorAgent 批評。
+
+評論 EditorAgent over-cut 同 ComposerAgent mismatch。
+
+Tools 非啟動。
+
+Runtime safety Host allow-lists 只有 agent_spec.json。
+
+Architecture Self-Refine。
+
+第十五部分，文件控制。
+
+Generator scripts/business/generate_agent_user_guides.py。
+
+Agent folder business/video/agents/video.trailereditor/。
+
+Output docs/user_guide.md。
+
+VA corpus root C:\Project\va-agent-swarm。
+
+Trust model 設計語料庫不受信任，host config fail-closed。
+
+以上就係 TrailerEditorAgent 完整指南。
+
+由第一部分同第五部分開始。
+
+用第八到第十做操作改進。
+
+用第十一到第十二做深度設計。
+
+多謝收睇。

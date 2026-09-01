@@ -1,0 +1,429 @@
+{
+  "schema_version": "3.0",
+  "sources": [
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Intelligent Investor, Rev.",
+      "author": "Benjamin Graham",
+      "isbn13": "9780060555665",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Intelligent Investor, Rev. (Benjamin Graham), ISBN-13 9780060555665"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Security Analysis, 6th ed.",
+      "author": "Graham & Dodd",
+      "isbn13": "9780071592536",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Security Analysis, 6th ed. (Graham & Dodd), ISBN-13 9780071592536"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Valuation, 7th ed.",
+      "author": "Koller, Goedhart, Wessels",
+      "isbn13": "9781119610885",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Valuation, 7th ed. (Koller, Goedhart, Wessels), ISBN-13 9781119610885"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "A Random Walk Down Wall Street",
+      "author": "Burton Malkiel",
+      "isbn13": "9780393358384",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: A Random Walk Down Wall Street (Burton Malkiel), ISBN-13 9780393358384"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Options, Futures, and Other Derivatives, 10th ed.",
+      "author": "John Hull",
+      "isbn13": "9780134472089",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Options, Futures, and Other Derivatives, 10th ed. (John Hull), ISBN-13 9780134472089"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "聪明的投资者",
+      "isbn13": "9787111403012",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 聪明的投资者，ISBN-13 9787111403012"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "证券分析",
+      "isbn13": "9787111403029",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 证券分析，ISBN-13 9787111403029"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "价值评估",
+      "isbn13": "9787508637020",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 价值评估，ISBN-13 9787508637020"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "漫步华尔街",
+      "isbn13": "9787508640114",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 漫步华尔街，ISBN-13 9787508640114"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Trustworthy Online Controlled Experiments",
+      "author": "Kohavi, Tang, Xu",
+      "isbn13": "9781108724265",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Trustworthy Online Controlled Experiments (Kohavi, Tang, Xu), ISBN-13 9781108724265"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Storytelling with Data",
+      "author": "Cole Nussbaumer Knaflic",
+      "isbn13": "9781119002253",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Storytelling with Data (Cole Nussbaumer Knaflic), ISBN-13 9781119002253"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Lean Analytics",
+      "author": "Croll & Yoskovitz",
+      "isbn13": "9781449335670",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Lean Analytics (Croll & Yoskovitz), ISBN-13 9781449335670"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Visual Display of Quantitative Information, 2nd ed.",
+      "author": "Edward Tufte",
+      "isbn13": "9780961392147",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Visual Display of Quantitative Information, 2nd ed. (Edward Tufte), ISBN-13 9780961392147"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Naked Statistics",
+      "author": "Charles Wheelan",
+      "isbn13": "9780393347777",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Naked Statistics (Charles Wheelan), ISBN-13 9780393347777"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Signal and the Noise",
+      "author": "Nate Silver",
+      "isbn13": "9780143125082",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Signal and the Noise (Nate Silver), ISBN-13 9780143125082"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "精益数据分析",
+      "isbn13": "9787115384515",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 精益数据分析，ISBN-13 9787115384515"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "用数据讲故事",
+      "isbn13": "9787111575558",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 用数据讲故事，ISBN-13 9787111575558"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "赤裸裸的统计学",
+      "isbn13": "9787508643427",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 赤裸裸的统计学，ISBN-13 9787508643427"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Competitive Strategy",
+      "author": "Michael E. Porter",
+      "isbn13": "9780684841489",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Competitive Strategy (Michael E. Porter), ISBN-13 9780684841489"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Good Strategy/Bad Strategy",
+      "author": "Richard Rumelt",
+      "isbn13": "9780307886231",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Good Strategy/Bad Strategy (Richard Rumelt), ISBN-13 9780307886231"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Playing to Win",
+      "author": "Lafley & Martin",
+      "isbn13": "9781422187395",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Playing to Win (Lafley & Martin), ISBN-13 9781422187395"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Measure What Matters",
+      "author": "John Doerr",
+      "isbn13": "9780525538318",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Measure What Matters (John Doerr), ISBN-13 9780525538318"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Innovator's Dilemma",
+      "author": "Clayton Christensen",
+      "isbn13": "9781633691780",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Innovator's Dilemma (Clayton Christensen), ISBN-13 9781633691780"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Thinking in Systems",
+      "author": "Donella Meadows",
+      "isbn13": "9781603580557",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Thinking in Systems (Donella Meadows), ISBN-13 9781603580557"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Fifth Discipline",
+      "author": "Peter Senge",
+      "isbn13": "9780385517256",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Fifth Discipline (Peter Senge), ISBN-13 9780385517256"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Superforecasting",
+      "author": "Tetlock & Gardner",
+      "isbn13": "9780804136716",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Superforecasting (Tetlock & Gardner), ISBN-13 9780804136716"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "竞争战略",
+      "isbn13": "9787508633749",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 竞争战略，ISBN-13 9787508633749"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "这就是OKR",
+      "isbn13": "9787521702330",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 这就是OKR，ISBN-13 9787521702330"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "创新者的窘境",
+      "isbn13": "9787508633336",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 创新者的窘境，ISBN-13 9787508633336"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "第五项修炼",
+      "isbn13": "9787508631332",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 第五项修炼，ISBN-13 9787508631332"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "超预测",
+      "isbn13": "9787508663098",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 超预测，ISBN-13 9787508663098"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "金字塔原理",
+      "isbn13": "9787508633732",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 金字塔原理，ISBN-13 9787508633732"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "剪映视频后期剪辑零基础入门到精通",
+      "author": "许放",
+      "isbn13": "9787115634979",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 剪映视频后期剪辑零基础入门到精通（许放），ISBN-13 9787115634979"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Producing and Directing the Short Film and Video",
+      "isbn13": "9780367895914",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Producing and Directing the Short Film and Video, ISBN-13 9780367895914"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Movie Business Book",
+      "author": "Jason E. Squire",
+      "isbn13": "9780743293402",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Movie Business Book (Jason E. Squire), ISBN-13 9780743293402"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Filmmakers and Financing",
+      "author": "Louise Levison",
+      "isbn13": "9781315670089",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Filmmakers and Financing (Louise Levison), ISBN-13 9781315670089"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Producers Business Handbook The Roadmap for the Balanced Film Producer",
+      "author": "John J. Lee, Jr. Anne Marie Gillen",
+      "isbn13": "9781138050938",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Producers Business Handbook The Roadmap for the Balanced Film Producer (John J. Lee, Jr. Anne Marie Gillen), ISBN-13 9781138050938"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Audience-ology How Moviegoers Shape the Films We Love",
+      "author": "Kevin Goetz",
+      "isbn13": "9781982186678",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Audience-ology How Moviegoers Shape the Films We Love (Kevin Goetz), ISBN-13 9781982186678"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Film Marketing",
+      "author": "Finola Kerrigan",
+      "isbn13": "9781138013360",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Film Marketing (Finola Kerrigan), ISBN-13 9781138013360"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Global Film Market Transformation in the Post-Pandemic Era Production, Distribution…",
+      "author": "Qiao Li, David Wilson, Yanqiu Guan",
+      "isbn13": "9781003345251",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Global Film Market Transformation in the Post-Pandemic Era Production, Distribution… (Qiao Li, David Wilson, Yanqiu Guan), ISBN-13 9781003345251"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Making Movie Magic A Lifetime Creating Special Effects for James Bond, Harry Potter, Su…",
+      "author": "John Richardson, Richard Donner",
+      "isbn13": "9780750994392",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Making Movie Magic A Lifetime Creating Special Effects for James Bond, Harry Potter, Su… (John Richardson, Richard Donner), ISBN-13 9780750994392"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Guide to Managing Postproduction for Film, TV, and Digital Distribution",
+      "author": "Barbara Clark, Susan Spohr, Dawn Higginbotham etc.",
+      "isbn13": "9781138482814",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Guide to Managing Postproduction for Film, TV, and Digital Distribution (Barbara Clark, Susan Spohr, Dawn Higginbotham etc.), ISBN-13 9781138482814"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Streaming systems the what, where, when, and how of large-scale data processing",
+      "author": "Akidau, TylerChernyak, SlavaLax, Reuven",
+      "isbn13": "9781491983874",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Streaming systems the what, where, when, and how of large-scale data processing (Akidau, TylerChernyak, SlavaLax, Reuven), ISBN-13 9781491983874"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Blockbusters Hit-Making, Risk-Taking, and the Big Business of Entertainment",
+      "author": "Elberse, Anita",
+      "isbn13": "9781491518649",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Blockbusters Hit-Making, Risk-Taking, and the Big Business of Entertainment (Elberse, Anita), ISBN-13 9781491518649"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "电影市场营销（第2版）",
+      "author": "于丽",
+      "isbn13": "9787106053994",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 电影市场营销（第2版）（于丽），ISBN-13 9787106053994"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "电影发行与市场营销",
+      "author": "刘嘉等",
+      "isbn13": "9787010167718",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 电影发行与市场营销（刘嘉等），ISBN-13 9787010167718"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "華語電影融資、市場與製片管理",
+      "author": "卓伯棠",
+      "isbn13": "9789888257652",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 華語電影融資、市場與製片管理（卓伯棠），ISBN-13 9789888257652"
+    }
+  ],
+  "agent_id": "video.finance",
+  "previous_common_agent_id": "video.budget_controller",
+  "va_taxonomy_aligned": true,
+  "generic_source": "generic-swarm-ops/business/video/agents/video.finance",
+  "note": "Imported into CASOPS as baseline_safe. No production activation, no network, no plugins, memory writes forbidden.",
+  "aligned_at": "2026-07-27T00:48:10.957113Z",
+  "generic_source_depth": {
+    "excerpts": true,
+    "study": true,
+    "adopted_at": "2026-07-27T01:30:28.184547+00:00",
+    "upstream": "generic-swarm-ops/business/video/agents"
+  },
+  "imported_from": "C:\\Project\\common-agent-swarm-ops\\business\\video\\agents\\video.finance",
+  "reference_book_origin": "spec/book_of_knowledge.md",
+  "reference_book_note": "Bibliographic references from spec/book_of_knowledge.md. Does not enable network, RAG, T3, plugins, or memory writes."
+}

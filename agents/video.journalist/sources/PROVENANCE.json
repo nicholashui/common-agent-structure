@@ -1,0 +1,217 @@
+{
+  "schema_version": "3.0",
+  "sources": [
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Elements of Journalism, 3rd ed.",
+      "author": "Kovach & Rosenstiel",
+      "isbn13": "9780804136785",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Elements of Journalism, 3rd ed. (Kovach & Rosenstiel), ISBN-13 9780804136785"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Blur",
+      "author": "Kovach & Rosenstiel",
+      "isbn13": "9781608193011",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Blur (Kovach & Rosenstiel), ISBN-13 9781608193011"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Associated Press Stylebook",
+      "isbn13": "9781541649883",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Associated Press Stylebook, ISBN-13 9781541649883"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "On Writing Well",
+      "author": "William Zinsser",
+      "isbn13": "9780060891541",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: On Writing Well (William Zinsser), ISBN-13 9780060891541"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Craft of Research, 4th ed.",
+      "author": "Booth et al.",
+      "isbn13": "9780226239736",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Craft of Research, 4th ed. (Booth et al.), ISBN-13 9780226239736"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Interviewing as Qualitative Research, 4th ed.",
+      "author": "Irving Seidman",
+      "isbn13": "9780807755679",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Interviewing as Qualitative Research, 4th ed. (Irving Seidman), ISBN-13 9780807755679"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "新闻的十大基本原则",
+      "isbn13": "9787301161111",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 新闻的十大基本原则，ISBN-13 9787301161111"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "采访的艺术",
+      "isbn13": "9787301169186",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 采访的艺术，ISBN-13 9787301169186"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "如何阅读一本书",
+      "isbn13": "9787100040945",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 如何阅读一本书，ISBN-13 9787100040945"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "研究是一门艺术",
+      "isbn13": "9787300116226",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 研究是一门艺术，ISBN-13 9787300116226"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Elements of Style, 4th ed.",
+      "author": "Strunk & White",
+      "isbn13": "9780205309023",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Elements of Style, 4th ed. (Strunk & White), ISBN-13 9780205309023"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "They Say / I Say, 4th ed.",
+      "author": "Graff & Birkenstein",
+      "isbn13": "9780393631678",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: They Say / I Say, 4th ed. (Graff & Birkenstein), ISBN-13 9780393631678"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Understanding Media",
+      "author": "Marshall McLuhan",
+      "isbn13": "9780262631594",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Understanding Media (Marshall McLuhan), ISBN-13 9780262631594"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Amusing Ourselves to Death",
+      "author": "Neil Postman",
+      "isbn13": "9780143036531",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Amusing Ourselves to Death (Neil Postman), ISBN-13 9780143036531"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Convergence Culture",
+      "author": "Henry Jenkins",
+      "isbn13": "9780814742952",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Convergence Culture (Henry Jenkins), ISBN-13 9780814742952"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Spreadable Media",
+      "author": "Jenkins, Ford, Green",
+      "isbn13": "9780814743508",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Spreadable Media (Jenkins, Ford, Green), ISBN-13 9780814743508"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Attention Merchants",
+      "author": "Tim Wu",
+      "isbn13": "9780385352017",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Attention Merchants (Tim Wu), ISBN-13 9780385352017"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Here Comes Everybody",
+      "author": "Clay Shirky",
+      "isbn13": "9780143114949",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Here Comes Everybody (Clay Shirky), ISBN-13 9780143114949"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "理解媒介",
+      "isbn13": "9787508040318",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 理解媒介，ISBN-13 9787508040318"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "娱乐至死",
+      "isbn13": "9787563397648",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 娱乐至死，ISBN-13 9787563397648"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "融合文化",
+      "isbn13": "9787301162262",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 融合文化，ISBN-13 9787301162262"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "认知盈余",
+      "isbn13": "9787213044661",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 认知盈余，ISBN-13 9787213044661"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "纪录影片及数字视频编导与制作",
+      "isbn13": "9787504380302",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 纪录影片及数字视频编导与制作，ISBN-13 9787504380302"
+    }
+  ],
+  "agent_id": "video.journalist",
+  "previous_common_agent_id": "video.production_coordinator",
+  "va_taxonomy_aligned": true,
+  "generic_source": "generic-swarm-ops/business/video/agents/video.journalist",
+  "note": "Imported into CASOPS as baseline_safe. No production activation, no network, no plugins, memory writes forbidden.",
+  "aligned_at": "2026-07-27T00:48:11.182175Z",
+  "generic_source_depth": {
+    "excerpts": true,
+    "study": true,
+    "adopted_at": "2026-07-27T01:30:28.258361+00:00",
+    "upstream": "generic-swarm-ops/business/video/agents"
+  },
+  "imported_from": "C:\\Project\\common-agent-swarm-ops\\business\\video\\agents\\video.journalist",
+  "reference_book_origin": "spec/book_of_knowledge.md",
+  "reference_book_note": "Bibliographic references from spec/book_of_knowledge.md. Does not enable network, RAG, T3, plugins, or memory writes."
+}

@@ -1,0 +1,267 @@
+{
+  "schema_version": "3.0",
+  "sources": [
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "All You Need to Know About the Music Business, 10th ed.",
+      "author": "Donald S. Passman",
+      "isbn13": "9781501122187",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: All You Need to Know About the Music Business, 10th ed. (Donald S. Passman), ISBN-13 9781501122187"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "This Business of Music, 10th ed.",
+      "author": "Krasilovsky et al.",
+      "isbn13": "9780823077236",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: This Business of Music, 10th ed. (Krasilovsky et al.), ISBN-13 9780823077236"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Music Supervision",
+      "author": "Adams, Hnatiuk, Weiss",
+      "isbn13": "9780825672194",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Music Supervision (Adams, Hnatiuk, Weiss), ISBN-13 9780825672194"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "On the Track, 2nd ed.",
+      "author": "Karlin & Wright",
+      "isbn13": "9780415941365",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: On the Track, 2nd ed. (Karlin & Wright), ISBN-13 9780415941365"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "这就是音乐产业",
+      "author": "Passman 中译常见",
+      "isbn13": "9787111456780",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 这就是音乐产业（Passman 中译常见），ISBN-13 9787111456780"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Positioning",
+      "author": "Ries & Trout",
+      "isbn13": "9780071373586",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Positioning (Ries & Trout), ISBN-13 9780071373586"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Brand Gap",
+      "author": "Marty Neumeier",
+      "isbn13": "9780321348104",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Brand Gap (Marty Neumeier), ISBN-13 9780321348104"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Designing Brand Identity, 5th ed.",
+      "author": "Alina Wheeler",
+      "isbn13": "9781118980828",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Designing Brand Identity, 5th ed. (Alina Wheeler), ISBN-13 9781118980828"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Strategic Brand Management, 4th ed.",
+      "author": "Kevin Lane Keller",
+      "isbn13": "9780132664257",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Strategic Brand Management, 4th ed. (Kevin Lane Keller), ISBN-13 9780132664257"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Building Strong Brands",
+      "author": "David Aaker",
+      "isbn13": "9780029001516",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Building Strong Brands (David Aaker), ISBN-13 9780029001516"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "How Brands Grow",
+      "author": "Byron Sharp",
+      "isbn13": "9780195573565",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: How Brands Grow (Byron Sharp), ISBN-13 9780195573565"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Building a StoryBrand",
+      "author": "Donald Miller",
+      "isbn13": "9780718033330",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Building a StoryBrand (Donald Miller), ISBN-13 9780718033330"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "定位",
+      "isbn13": "9787111320586",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 定位，ISBN-13 9787111320586"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "品牌的起源",
+      "isbn13": "9787111323051",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 品牌的起源，ISBN-13 9787111323051"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "战略品牌管理",
+      "isbn13": "9787300162263",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 战略品牌管理，ISBN-13 9787300162263"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "品牌如何增长",
+      "isbn13": "9787111558477",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 品牌如何增长，ISBN-13 9787111558477"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Producer to Producer, 2nd ed.",
+      "author": "Maureen A. Ryan",
+      "isbn13": "9781615932023",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Producer to Producer, 2nd ed. (Maureen A. Ryan), ISBN-13 9781615932023"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Complete Film Production Handbook, 4th ed.",
+      "author": "Eve Light Honthaner",
+      "isbn13": "9780240811505",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Complete Film Production Handbook, 4th ed. (Eve Light Honthaner), ISBN-13 9780240811505"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Film Production Management 101",
+      "author": "Deborah S. Patz",
+      "isbn13": "9781615932290",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Film Production Management 101 (Deborah S. Patz), ISBN-13 9781615932290"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Scheduling and Budgeting Your Film, 2nd ed.",
+      "author": "Paula Landry",
+      "isbn13": "9781138936140",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Scheduling and Budgeting Your Film, 2nd ed. (Paula Landry), ISBN-13 9781138936140"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Independent Film Producing",
+      "author": "Paul Battista",
+      "isbn13": "9781138013827",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Independent Film Producing (Paul Battista), ISBN-13 9781138013827"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Hollywood Economist 2.0",
+      "author": "Edward Jay Epstein",
+      "isbn13": "9781612190501",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Hollywood Economist 2.0 (Edward Jay Epstein), ISBN-13 9781612190501"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "影视制片管理",
+      "isbn13": "9787301169186",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 影视制片管理，ISBN-13 9787301169186"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Building Machine Learning Powered Applications Going from Idea to Product",
+      "author": "Emmanuel Ameisen",
+      "isbn13": "9781492045113",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Building Machine Learning Powered Applications Going from Idea to Product (Emmanuel Ameisen), ISBN-13 9781492045113"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Practical Statistics for Data Scientists (First Early Release)",
+      "author": "Peter Bruce, Andrew Bruce, Peter Gedeck",
+      "isbn13": "9798341666245",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Practical Statistics for Data Scientists (First Early Release) (Peter Bruce, Andrew Bruce, Peter Gedeck), ISBN-13 9798341666245"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Ensemble Methods Foundations and Algorithms, 2e",
+      "author": "Zhi-Hua Zhou",
+      "isbn13": "9781003587774",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Ensemble Methods Foundations and Algorithms, 2e (Zhi-Hua Zhou), ISBN-13 9781003587774"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Hands-On Ensemble Learning with R",
+      "author": "Unknown",
+      "isbn13": "9781788624145",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Hands-On Ensemble Learning with R (Unknown), ISBN-13 9781788624145"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "High Performance Python - Practical Performant Programming for Humans (3rd Edition)",
+      "author": "Micha Gorelick, Ian Ozsvald",
+      "isbn13": "9781098165963",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: High Performance Python - Practical Performant Programming for Humans (3rd Edition) (Micha Gorelick, Ian Ozsvald), ISBN-13 9781098165963"
+    }
+  ],
+  "agent_id": "video.labela_r",
+  "previous_common_agent_id": "video.postproduction_coordinator",
+  "va_taxonomy_aligned": true,
+  "generic_source": "generic-swarm-ops/business/video/agents/video.labela_r",
+  "note": "Imported into CASOPS as baseline_safe. No production activation, no network, no plugins, memory writes forbidden.",
+  "aligned_at": "2026-07-27T00:48:11.187338Z",
+  "generic_source_depth": {
+    "excerpts": true,
+    "study": true,
+    "adopted_at": "2026-07-27T01:30:28.291884+00:00",
+    "upstream": "generic-swarm-ops/business/video/agents"
+  },
+  "imported_from": "C:\\Project\\common-agent-swarm-ops\\business\\video\\agents\\video.labela_r",
+  "reference_book_origin": "spec/book_of_knowledge.md",
+  "reference_book_note": "Bibliographic references from spec/book_of_knowledge.md. Does not enable network, RAG, T3, plugins, or memory writes."
+}

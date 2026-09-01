@@ -1,0 +1,20 @@
+{
+  "skill_id": "video-evaluationharness",
+  "agent_id": "video.evaluationharness",
+  "kind": "pack_agent_harness",
+  "status": "scaffolded",
+  "prompt_reference": "video.prompt.evaluationharness.v1",
+  "rubric_reference": "video.rubric.evaluationharness.v1",
+  "patterns": [
+    "ReAct",
+    "Agent Skills"
+  ],
+  "bindings": [],
+  "entrypoint": {
+    "type": "host_agent_runner",
+    "agent_id": "video.evaluationharness"
+  },
+  "fail_closed": true,
+  "generated_by": "improve_agents_from_plan_v1.py",
+  "generated_at": "2026-07-30T14:45:34Z"
+}

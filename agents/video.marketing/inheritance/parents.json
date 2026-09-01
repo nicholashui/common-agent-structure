@@ -1,0 +1,15 @@
+{
+  "schema_version": "3.0",
+  "parents": [
+    {
+      "agent_id": "casops.template.baseline_safe",
+      "priority": 1,
+      "surfaces": [
+        "docs",
+        "knowledge_sources",
+        "prompt_refs",
+        "rubric_refs"
+      ]
+    }
+  ]
+}

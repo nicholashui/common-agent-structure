@@ -1,0 +1,449 @@
+大家好，歡迎收睇今日嘅影片。
+
+今日我哋會詳細介紹 TemplateDesignAgent 嘅操作員同設計指南。
+
+呢份文件係俾操作員、pack 作者、swarm 設計師同審核人員使用嘅。
+
+呢份指南提供任務清晰度、幾時使用嘅指引、協作地圖、CASOPS 操作步驟、改進路徑同分信任層級嘅來源地圖。
+
+重要聲明，呢份文件唔係啟動 provider 嘅許可證。
+
+唔係開放網絡嘅授權。
+
+唔係發明工具嘅許可。
+
+Host 真相係 fail-closed 嘅 agent_spec.json。
+
+VA 或 redesign 文件嘅設計文字係不受信任來源。
+
+Pack 路徑係 business/video/agents/video.templatedesign/。
+
+指南位於 docs/user_guide.md。
+
+由 scripts/business/generate_agent_user_guides.py 生成。
+
+第一部分，快照。
+
+TemplateDesignAgent，pack agent id 係 video.templatedesign。
+
+佢係 Video Domain Pack 角色運行喺 CASOPS 上。
+
+簡單講，佢嘅工作係設計可重用同安全嘅個人化模板。
+
+呢份指南係人類可讀嘅操作員地圖。
+
+基本資料逐項講。
+
+Display name 係 TemplateDesignAgent。
+
+Pack agent id 係 video.templatedesign。
+
+Pack 係 video。
+
+Host role string 係 TemplateDesignAgent (VA Domain Pack)。
+
+Catalog status 係 registered。
+
+Maturity today 係 L0 非活動。
+
+VA id 係 89。
+
+VA category 係 10-Sup，即工作流程支援同發布閘門。
+
+Provider 係 local_deterministic。
+
+Network 係 False。
+
+Allowed tools 空列表。
+
+Production activation requested 係 False。
+
+Prompt 同 rubric 參考係 video.prompt.templatedesign.v1 同 video.rubric.templatedesign.v1。
+
+Previous common id 係 video.thumbnail_designer。
+
+Generic lineage 係 generic-swarm-ops/business/video/agents/video.templatedesign。
+
+第二部分，點解存在。
+
+人類影片團隊已經喺時間壓力下解決呢個問題：設計可重用同安全嘅個人化模板。
+
+Agent 形式令多代理系統持續編碼呢種工藝。
+
+知識庫來源第一個係 Variable-content design systems 即可變內容設計系統。
+
+第二個係 dynamic layout rules 即動態佈局規則。
+
+第三個係 campaign template libraries 即營銷活動模板庫。
+
+呢啲係歷史設計來源。
+
+設計野心係：生產比手動設計變體有更少破損嘅可重用模板。
+
+用呢個做北極星指標。
+
+第三部分，乜嘢叫做好。
+
+Primary outcome 係設計可重用同安全嘅個人化模板。
+
+Self-quality bar 第一個係 Merge-field robustness 即合併欄位穩健性。
+
+第二個係 layout stability 即佈局穩定性。
+
+第三個係 render survivability 即渲染存活性。
+
+Ambition signal 係生產比手動設計變體有更少破損嘅模板。
+
+Architecture pattern 係 ReAct on template schemas and render constraints。
+
+Host quality 同 critique binding。
+
+Prompt reference video.prompt.templatedesign.v1。
+
+Rubric reference video.rubric.templatedesign.v1。
+
+Critique edges inputs video.critic，outputs video.judge。
+
+Max refinement 3。
+
+輸入輸出驗收。
+
+Inputs 本地 pack 工件同類型化交接。
+
+Outputs 可審查交付物。
+
+Acceptance host 政策加 SPEC 標準。
+
+第四部分，範圍。
+
+擁有：設計可重用同安全嘅個人化模板。
+
+共享批評表面。
+
+聽取 PersonalizationEngineerAgent 嘅批評。
+
+聽取 UXAgent 嘅批評。
+
+聽取 CRMAgent 嘅批評。
+
+有資格評論脆弱佈局。
+
+有資格評論不安全嘅 placeholder 邏輯。
+
+有資格評論合併碰撞問題。
+
+Host critique edge inputs video.critic。
+
+outputs video.judge。
+
+Max refinement count 3。
+
+拒絕同升級：Fail-closed。
+
+production_activation_requested 保持 false。
+
+法律安全版權發布升級人類閘門。
+
+第五部分，幾時用。
+
+當工作需要 TemplateDesignAgent 嘅決定或工件時叫佢。
+
+即設計可重用同安全嘅個人化模板。
+
+Pipeline phase 係工作流程支援同發布閘門。
+
+即支援功能同最終發布閘門。
+
+唔好用佢做一般編排、預算或法律簽署。
+
+Human override：阻礙發布嘅爭議升級人類閘門。
+
+決策小抄。
+
+技能係 TemplateDesignAgent 嘅工藝？加入 swarm 圖。
+
+只係元數據？用 Registry。
+
+需要工具網絡？Host 唔允許。
+
+人類風險？保留閘門。
+
+第六部分，協作地圖。
+
+Inbound critique 來自 PersonalizationEngineerAgent、UXAgent 同 CRMAgent。
+
+Outbound commentary 針對脆弱佈局、不安全 placeholder 邏輯同合併碰撞。
+
+Host edge inputs video.critic。
+
+outputs video.judge。
+
+第七部分，生產位置。
+
+人類工作流程方面，係支援功能同最終發布閘門。
+
+典型交接工件包括閘門決定。
+
+仲有合規包。
+
+仲有無障礙層。
+
+仲有檔案母帶。
+
+同埋更正。
+
+多代理 AI 工作流程方面，係閘門同支援節點。
+
+設計時工具備註第一個係 Template engines 即模板引擎。
+
+第二個係 design systems 即設計系統。
+
+第三個係 schema validators 即架構驗證器。
+
+循環風格係 ReAct on template schemas and render constraints。
+
+AI 工作流程摘錄提到第 50 號 PersonalizationEngineerAgent。
+
+職責係 Variable templates 即名字面孔聲音替換。
+
+知識包括 Idomoo case studies、DMA campaigns、MarTech literature。
+
+自我質量係 Render-success rate 大於等於 99.5%。
+
+接受批評來自 ComplianceAgent 同 AnalystAgent。
+
+評論 TemplateDesignerAgent 嘅模板脆弱性。
+
+Concept 階段由 TemplateDesignAgent 加 PersonalizationEngineerAgent 組成配合 UXAgent。
+
+共享交接合約方面。
+
+artifact_id version 不可變身份。
+
+parent_assets 來源鏈。
+
+brief_scope 阻止範圍蔓延。
+
+acceptance_criteria 同質量標準掛鉤。
+
+qc_status gate flags 下游短路。
+
+rights_and_consent 阻止濫用。
+
+critique_log pointer 保存歷史。
+
+第八部分，CASOPS 操作。
+
+今日係目錄加設計物件。
+
+步驟一 Discover 去 /registry。
+
+步驟二 Inspect 去 /registry/agents/video.templatedesign。
+
+步驟三 POST 到 /api/v1/commons/agents/video.templatedesign/proposals。
+
+步驟四隻用 Host 引用。
+
+步驟五預設唔啟用。
+
+操作檯檢查清單。
+
+確認旗標。
+
+先閱讀第三部分。
+
+附離線證據。
+
+唔好貼密鑰。
+
+偏好小差異。
+
+第九部分，安全信任。
+
+agent_spec.json 約束力合約。
+
+SPEC.md 權威設計。
+
+sources 歷史不受信任。
+
+外部語料庫唔受信任。
+
+硬規則：Provider local_deterministic。
+
+Network False。
+
+Tools 空列表。
+
+production_activation_requested False。
+
+Budget：輸入 2048，輸出 1024，工具 0。
+
+設計時工具目錄非啟動：Template engines、design systems、schema validators。
+
+第十部分，提升質量。
+
+版本化目錄工作。
+
+循環：觀察失敗、命名標準、起草差異、附證據、提案、審查、考慮閘門。
+
+具體槓桿六個。
+
+第一 Rubric fidelity 收緊對照 Merge-field robustness、layout stability、render survivability。
+
+第二 Prompt precision 對齊責任。
+
+第三 Critique graph 確保 PersonalizationEngineerAgent、UXAgent、CRMAgent 捕捉失敗。
+
+第四 Architecture 偏好 ReAct on template schemas。
+
+第五 Eval cases 寫 fixtures。
+
+第六 Human gates 保持明確。
+
+評估種子。
+
+Happy path：滿足 Merge-field robustness、layout stability、render survivability。
+
+Out-of-scope：拒絕升級。
+
+Missing provenance：fail closed。
+
+Conflicting critique：唔超過 max count。
+
+Proposal-only：不可變。
+
+第十一部分，來源地圖。
+
+agent_spec.json binding。
+
+SPEC.md authoritative-design。
+
+README.md local-index。
+
+sources/MAPPING.md provenance。
+
+sources/PROVENANCE.json provenance。
+
+sources/excerpts/agents.md historical-excerpt。
+
+sources/excerpts/ai_agent_video_production_workflow.md historical-excerpt。
+
+sources/generic/video.motiongraphics.SPEC.md historical-generic。
+
+sources/generic/video.templatedesign.SPEC.md historical-generic。
+
+Mapping note：VA ID video.templatedesign，之前 ID video.thumbnail_designer，SPEC 深度完整。
+
+Provenance record：schema_version 1.0，agent_id video.templatedesign，previous_common_agent_id video.thumbnail_designer。
+
+va_taxonomy_aligned true，generic_source generic-swarm-ops/business/video/agents/video.templatedesign。
+
+aligned_at 2026 年 7 月 27 日。
+
+VA roster row 第 89 行。
+
+Responsibility 設計可重用同安全嘅個人化模板。
+
+Knowledge distillation 可變內容設計系統、動態佈局規則、營銷活動模板庫。
+
+Self-quality Merge-field robustness、layout stability、render survivability。
+
+Surpass-human 比手動設計更少破損。
+
+Accepts critique PersonalizationEngineerAgent、UXAgent、CRMAgent。
+
+Comments on 脆弱佈局、不安全 placeholder、合併碰撞。
+
+Tools 歷史性 Template engines、design systems、schema validators。
+
+Architecture ReAct on template schemas。
+
+第十二部分，相關設計閱讀。
+
+冇強匹配。
+
+本地索引包括 Runtime binding、README、Provenance、Mapping、inventory、manifest。
+
+第十三部分，host 合約。
+
+agent_id video.templatedesign。
+
+allowed_tools 空列表。
+
+max_input_tokens 2048。
+
+max_output_tokens 1024。
+
+max_tool_requests 0。
+
+critique_edges inputs video.critic outputs video.judge。
+
+max_refinement_count 3。
+
+model_id local-video-config-v1。
+
+network_access false。
+
+provider local_deterministic。
+
+production_activation_requested false。
+
+prompt_reference video.prompt.templatedesign.v1。
+
+role TemplateDesignAgent (VA Domain Pack)。
+
+rubric_reference video.rubric.templatedesign.v1。
+
+schema_version 1.0。
+
+status registered。
+
+va_id 89。
+
+va_name TemplateDesignAgent。
+
+va_category 10-Sup。
+
+第十四部分，SPEC 責任摘錄。
+
+責任係設計可重用同安全嘅個人化模板。
+
+Host role binding TemplateDesignAgent (VA Domain Pack)。
+
+Knowledge distillation 歷史性。
+
+Self-quality criteria 歷史性。
+
+Surpass-human 歷史性。
+
+Critique bus：接受三個 agent 批評。
+
+評論脆弱佈局同不安全邏輯。
+
+Tools 非啟動。
+
+Runtime safety Host allow-lists 只有 agent_spec.json。
+
+Architecture ReAct。
+
+第十五部分，文件控制。
+
+Generator scripts/business/generate_agent_user_guides.py。
+
+Agent folder business/video/agents/video.templatedesign/。
+
+Output docs/user_guide.md。
+
+VA corpus root C:\Project\va-agent-swarm。
+
+Trust model 設計語料庫不受信任，host config fail-closed。
+
+以上就係 TemplateDesignAgent 完整指南。
+
+由第一部分同第五部分開始。
+
+用第八到第十做操作改進。
+
+用第十一到第十二做深度設計。
+
+多謝收睇。

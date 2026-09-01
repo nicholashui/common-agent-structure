@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.0",
+  "agent_id": "video.interviewsynthesis",
+  "sources": [
+    {
+      "id": "src_1",
+      "title": "Otter/Rev transcripts",
+      "description": "Otter/Rev transcripts",
+      "license_class": "unknown_review_required",
+      "acquisition_method": "manual_or_licensed_api",
+      "local_path_hint": "sources/excerpts/ or sources/study/",
+      "refresh_sla_days": 90,
+      "owner": "video.interviewsynthesis",
+      "status": "planned_or_partial"
+    },
+    {
+      "id": "src_2",
+      "title": "consent forms",
+      "description": "consent forms",
+      "license_class": "unknown_review_required",
+      "acquisition_method": "manual_or_licensed_api",
+      "local_path_hint": "sources/excerpts/ or sources/study/",
+      "refresh_sla_days": 90,
+      "owner": "video.interviewsynthesis",
+      "status": "planned_or_partial"
+    },
+    {
+      "id": "src_3",
+      "title": "SAG/WGA templates",
+      "description": "SAG/WGA templates",
+      "license_class": "unknown_review_required",
+      "acquisition_method": "manual_or_licensed_api",
+      "local_path_hint": "sources/excerpts/ or sources/study/",
+      "refresh_sla_days": 90,
+      "owner": "video.interviewsynthesis",
+      "status": "planned_or_partial"
+    }
+  ],
+  "note": "Legal review required before treating external corpora as production grounding."
+}

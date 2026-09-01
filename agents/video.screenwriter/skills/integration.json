@@ -1,0 +1,22 @@
+{
+  "skill_id": "video-screenwriter",
+  "agent_id": "video.screenwriter",
+  "kind": "pack_agent_harness",
+  "status": "scaffolded",
+  "prompt_reference": "video.prompt.screenwriter.v1",
+  "rubric_reference": "video.rubric.screenwriter.v1",
+  "patterns": [
+    "Reflexion",
+    "Agent Skills"
+  ],
+  "bindings": [
+    "screenwriter_strategic_goal_achievement_agent"
+  ],
+  "entrypoint": {
+    "type": "host_agent_runner",
+    "agent_id": "video.screenwriter"
+  },
+  "fail_closed": true,
+  "generated_by": "improve_agents_from_plan_v1.py",
+  "generated_at": "2026-07-30T14:45:34Z"
+}

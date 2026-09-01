@@ -1,0 +1,282 @@
+{
+  "schema_version": "3.0",
+  "sources": [
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Out on the Wire",
+      "author": "Jessica Abel",
+      "isbn13": "9780385348430",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Out on the Wire (Jessica Abel), ISBN-13 9780385348430"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Sound Reporting",
+      "author": "Jonathan Kern",
+      "isbn13": "9780226431789",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Sound Reporting (Jonathan Kern), ISBN-13 9780226431789"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Reality Radio, 2nd ed.",
+      "author": "John Biewen, ed.",
+      "isbn13": "9781469633138",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Reality Radio, 2nd ed. (John Biewen, ed.), ISBN-13 9781469633138"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "声音设计",
+      "isbn13": "9787106031237",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 声音设计，ISBN-13 9787106031237"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "采访的艺术",
+      "isbn13": "9787301169186",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 采访的艺术，ISBN-13 9787301169186"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Sound Design",
+      "author": "David Sonnenschein",
+      "isbn13": "9780941188265",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Sound Design (David Sonnenschein), ISBN-13 9780941188265"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Foley Grail, 2nd ed.",
+      "author": "Vanessa Theme Ament",
+      "isbn13": "9780240824260",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Foley Grail, 2nd ed. (Vanessa Theme Ament), ISBN-13 9780240824260"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Practical Art of Motion Picture Sound, 4th ed.",
+      "author": "David Yewdall",
+      "isbn13": "9780240812403",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Practical Art of Motion Picture Sound, 4th ed. (David Yewdall), ISBN-13 9780240812403"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Mixing Secrets for the Small Studio, 2nd ed.",
+      "author": "Mike Senior",
+      "isbn13": "9781138556375",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Mixing Secrets for the Small Studio, 2nd ed. (Mike Senior), ISBN-13 9781138556375"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Mastering Audio, 3rd ed.",
+      "author": "Bob Katz",
+      "isbn13": "9780240818962",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Mastering Audio, 3rd ed. (Bob Katz), ISBN-13 9780240818962"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Audio Post Production for Film and Video",
+      "author": "Jay Rose",
+      "isbn13": "9780240809700",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Audio Post Production for Film and Video (Jay Rose), ISBN-13 9780240809700"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "现代录音技术",
+      "isbn13": "9787115331861",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 现代录音技术，ISBN-13 9787115331861"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Elements of Journalism, 3rd ed.",
+      "author": "Kovach & Rosenstiel",
+      "isbn13": "9780804136785",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Elements of Journalism, 3rd ed. (Kovach & Rosenstiel), ISBN-13 9780804136785"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Blur",
+      "author": "Kovach & Rosenstiel",
+      "isbn13": "9781608193011",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Blur (Kovach & Rosenstiel), ISBN-13 9781608193011"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Associated Press Stylebook",
+      "isbn13": "9781541649883",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Associated Press Stylebook, ISBN-13 9781541649883"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "On Writing Well",
+      "author": "William Zinsser",
+      "isbn13": "9780060891541",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: On Writing Well (William Zinsser), ISBN-13 9780060891541"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Craft of Research, 4th ed.",
+      "author": "Booth et al.",
+      "isbn13": "9780226239736",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Craft of Research, 4th ed. (Booth et al.), ISBN-13 9780226239736"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Interviewing as Qualitative Research, 4th ed.",
+      "author": "Irving Seidman",
+      "isbn13": "9780807755679",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Interviewing as Qualitative Research, 4th ed. (Irving Seidman), ISBN-13 9780807755679"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "新闻的十大基本原则",
+      "isbn13": "9787301161111",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 新闻的十大基本原则，ISBN-13 9787301161111"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "如何阅读一本书",
+      "isbn13": "9787100040945",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 如何阅读一本书，ISBN-13 9787100040945"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "研究是一门艺术",
+      "isbn13": "9787300116226",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 研究是一门艺术，ISBN-13 9787300116226"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "秒懂声音掘金：重塑声音 打造声音IP 声音创副业 AI配音 AI解说",
+      "isbn13": "9787122477637",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 秒懂声音掘金：重塑声音 打造声音IP 声音创副业 AI配音 AI解说，ISBN-13 9787122477637"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Sound Effects Bible How to Create and Record Hollywood Style Sound Effects",
+      "author": "Viers, Ric",
+      "isbn13": "9781932907483",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Sound Effects Bible How to Create and Record Hollywood Style Sound Effects (Viers, Ric), ISBN-13 9781932907483"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Hollywood Soundscapes Film Sound Style, Craft and Production in the Classical Era",
+      "author": "Helen Hanson",
+      "isbn13": "9781844577279",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Hollywood Soundscapes Film Sound Style, Craft and Production in the Classical Era (Helen Hanson), ISBN-13 9781844577279"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Production Sound Mixing The Art and Craft of Sound Recording for the Moving Image (The…",
+      "author": "John J. Murphy",
+      "isbn13": "9781501307102",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Production Sound Mixing The Art and Craft of Sound Recording for the Moving Image (The… (John J. Murphy), ISBN-13 9781501307102"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Sound design the expressive power of music， voice and sound effects in cinema eng",
+      "isbn13": "9781032592183",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Sound design the expressive power of music， voice and sound effects in cinema eng, ISBN-13 9781032592183"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Sound Design for the Visual Storyteller Creating Sound for Visual Media",
+      "author": "Anderson, Christopher D.",
+      "isbn13": "9781040332245",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Sound Design for the Visual Storyteller Creating Sound for Visual Media (Anderson, Christopher D.), ISBN-13 9781040332245"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Art of Mixing",
+      "author": "David Gibson",
+      "isbn13": "9781003655268",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Art of Mixing (David Gibson), ISBN-13 9781003655268"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Mixing Audio",
+      "author": "Izhaki, Roey",
+      "isbn13": "9781032219448",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Mixing Audio (Izhaki, Roey), ISBN-13 9781032219448"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "电影电视声音创作与录音制作教程",
+      "author": "姚国强",
+      "isbn13": "9787106032937",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 电影电视声音创作与录音制作教程（姚国强），ISBN-13 9787106032937"
+    }
+  ],
+  "common_agent_id": "specials.podcast-agent",
+  "pack_id": "specials",
+  "mapping_status": "related",
+  "source_documents": [
+    "docs/special_agents_redesign/agents/podcast_agent.md"
+  ],
+  "source_sha256": "f8a76576bd0b39c7a6aa4935532040d2c451b783804195f4149e1e38be761dd6",
+  "configuration_sha256": "4cd649f3291a105509274c087687a1381f14d3b8f72fcce32e056e3c7f3eb21a",
+  "destination_commit": "5460c4b4a33c15286f9fd84b1bc764d755f5bab0",
+  "note": "Imported into CASOPS as baseline_safe. No production activation, no network, no plugins, memory writes forbidden.",
+  "generated_at": "2026-07-26T14:16:45.966484Z",
+  "reviewed_by": "specials-self-contained-reviewer",
+  "reviewed_at": "2026-07-26T18:00:00Z",
+  "imported_from": "C:\\Project\\common-agent-swarm-ops\\business\\specials\\agents\\specials.podcast-agent",
+  "reference_book_origin": "spec/book_of_knowledge.md",
+  "reference_book_note": "Bibliographic references from spec/book_of_knowledge.md. Does not enable network, RAG, T3, plugins, or memory writes."
+}

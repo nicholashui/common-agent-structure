@@ -1,0 +1,392 @@
+{
+  "schema_version": "3.0",
+  "sources": [
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Artificial Intelligence: A Modern Approach, 4th ed.",
+      "author": "Russell & Norvig",
+      "isbn13": "9780134610993",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Artificial Intelligence: A Modern Approach, 4th ed. (Russell & Norvig), ISBN-13 9780134610993"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Multiagent Systems, 2nd ed.",
+      "author": "Michael Wooldridge",
+      "isbn13": "9780471496915",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Multiagent Systems, 2nd ed. (Michael Wooldridge), ISBN-13 9780471496915"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Deep Learning",
+      "author": "Goodfellow, Bengio, Courville",
+      "isbn13": "9780262035613",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Deep Learning (Goodfellow, Bengio, Courville), ISBN-13 9780262035613"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Hands-On Machine Learning, 3rd ed.",
+      "author": "Aurélien Géron",
+      "isbn13": "9781098125974",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Hands-On Machine Learning, 3rd ed. (Aurélien Géron), ISBN-13 9781098125974"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Reinforcement Learning, 2nd ed.",
+      "author": "Sutton & Barto",
+      "isbn13": "9780262039246",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Reinforcement Learning, 2nd ed. (Sutton & Barto), ISBN-13 9780262039246"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Speech and Language Processing, 2nd ed.",
+      "author": "Jurafsky & Martin",
+      "isbn13": "9780131873216",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Speech and Language Processing, 2nd ed. (Jurafsky & Martin), ISBN-13 9780131873216"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Introduction to Information Retrieval",
+      "author": "Manning, Raghavan, Schütze",
+      "isbn13": "9780521865715",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Introduction to Information Retrieval (Manning, Raghavan, Schütze), ISBN-13 9780521865715"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Designing Data-Intensive Applications",
+      "author": "Martin Kleppmann",
+      "isbn13": "9781449373320",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Designing Data-Intensive Applications (Martin Kleppmann), ISBN-13 9781449373320"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Human Compatible",
+      "author": "Stuart Russell",
+      "isbn13": "9780525558613",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Human Compatible (Stuart Russell), ISBN-13 9780525558613"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Alignment Problem",
+      "author": "Brian Christian",
+      "isbn13": "9780393635829",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Alignment Problem (Brian Christian), ISBN-13 9780393635829"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Superintelligence",
+      "author": "Nick Bostrom",
+      "isbn13": "9780199678112",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Superintelligence (Nick Bostrom), ISBN-13 9780199678112"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Weapons of Math Destruction",
+      "author": "Cathy O'Neil",
+      "isbn13": "9780553418811",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Weapons of Math Destruction (Cathy O'Neil), ISBN-13 9780553418811"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "人工智能：一种现代的方法",
+      "author": "第4版",
+      "isbn13": "9787111547044",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 人工智能：一种现代的方法（第4版），ISBN-13 9787111547044"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "深度学习",
+      "author": "花书",
+      "isbn13": "9787115461476",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 深度学习（花书），ISBN-13 9787115461476"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "机器学习",
+      "author": "周志华",
+      "isbn13": "9787302373575",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 机器学习（周志华），ISBN-13 9787302373575"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "统计学习方法",
+      "author": "李航",
+      "isbn13": "9787302423288",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 统计学习方法（李航），ISBN-13 9787302423288"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "强化学习",
+      "author": "第2版",
+      "isbn13": "9787115546081",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 强化学习（第2版），ISBN-13 9787115546081"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "信息检索导论",
+      "isbn13": "9787115221704",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 信息检索导论，ISBN-13 9787115221704"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "数据密集型应用系统设计",
+      "isbn13": "9787111547532",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 数据密集型应用系统设计，ISBN-13 9787111547532"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "超级智能",
+      "isbn13": "9787508663098",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 超级智能，ISBN-13 9787508663098"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "生命3.0",
+      "isbn13": "9787508684031",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 生命3.0，ISBN-13 9787508684031"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "动手学深度学习",
+      "author": "李沐等",
+      "isbn13": "9787115547460",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 动手学深度学习（李沐等），ISBN-13 9787115547460"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Threat Modeling",
+      "author": "Adam Shostack",
+      "isbn13": "9781118809990",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Threat Modeling (Adam Shostack), ISBN-13 9781118809990"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "威胁建模",
+      "isbn13": "9787115419903",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 威胁建模，ISBN-13 9787115419903"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Ways of Seeing",
+      "author": "John Berger",
+      "isbn13": "9780140135152",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Ways of Seeing (John Berger), ISBN-13 9780140135152"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Interaction of Color",
+      "author": "Josef Albers",
+      "isbn13": "9780300179354",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Interaction of Color (Josef Albers), ISBN-13 9780300179354"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Understanding Comics",
+      "author": "Scott McCloud",
+      "isbn13": "9780060976255",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Understanding Comics (Scott McCloud), ISBN-13 9780060976255"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Art of Color",
+      "author": "Itten",
+      "isbn13": "9780471289289",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Art of Color (Itten), ISBN-13 9780471289289"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Camera Lucida",
+      "author": "Roland Barthes",
+      "isbn13": "9780374532338",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Camera Lucida (Roland Barthes), ISBN-13 9780374532338"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "On Photography",
+      "author": "Susan Sontag",
+      "isbn13": "9780312420093",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: On Photography (Susan Sontag), ISBN-13 9780312420093"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "美的历程",
+      "author": "李泽厚",
+      "isbn13": "9787108017963",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 美的历程（李泽厚），ISBN-13 9787108017963"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "谈美",
+      "author": "朱光潜",
+      "isbn13": "9787108042262",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 谈美（朱光潜），ISBN-13 9787108042262"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "美学散步",
+      "author": "宗白华",
+      "isbn13": "9787532123456",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 美学散步（宗白华），ISBN-13 9787532123456"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "观看之道",
+      "isbn13": "9787544715998",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 观看之道，ISBN-13 9787544715998"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "理解漫画",
+      "isbn13": "9787513320184",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 理解漫画，ISBN-13 9787513320184"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "论摄影",
+      "isbn13": "9787544722599",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 论摄影，ISBN-13 9787544722599"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "生成式AI实战基于Transformer、Stable Diffusion、LangChain和AI Agent",
+      "isbn13": "9787115650443",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 生成式AI实战基于Transformer、Stable Diffusion、LangChain和AI Agent，ISBN-13 9787115650443"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "Stable Diffusion AI 繪圖",
+      "isbn13": "9787302656333",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: Stable Diffusion AI 繪圖，ISBN-13 9787302656333"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Stable Diffusion ComfyUI Workflow",
+      "isbn13": "9787302671923",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Stable Diffusion ComfyUI Workflow, ISBN-13 9787302671923"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "ComfyUI 工作流",
+      "isbn13": "9787122466532",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: ComfyUI 工作流，ISBN-13 9787122466532"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "AI短视频创作：一本通剪映+即梦+可灵+文心一格",
+      "isbn13": "9787122470027",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: AI短视频创作：一本通剪映+即梦+可灵+文心一格，ISBN-13 9787122470027"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "可灵AI ComfyUI+Deform 人工智能AI视频制作技巧",
+      "isbn13": "9787122466556",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 可灵AI ComfyUI+Deform 人工智能AI视频制作技巧，ISBN-13 9787122466556"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "AI數位人全面應用：形象製作+口播視頻+直播帶貨+客服溝通",
+      "isbn13": "9787302695332",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: AI數位人全面應用：形象製作+口播視頻+直播帶貨+客服溝通，ISBN-13 9787302695332"
+    }
+  ],
+  "agent_id": "video.avatardesign",
+  "previous_common_agent_id": "video.character_designer",
+  "va_taxonomy_aligned": true,
+  "generic_source": "generic-swarm-ops/business/video/agents/video.avatardesign",
+  "note": "Imported into CASOPS as baseline_safe. No production activation, no network, no plugins, memory writes forbidden.",
+  "aligned_at": "2026-07-27T00:48:10.631432Z",
+  "generic_source_depth": {
+    "excerpts": true,
+    "study": true,
+    "adopted_at": "2026-07-27T01:30:27.698728+00:00",
+    "upstream": "generic-swarm-ops/business/video/agents"
+  },
+  "imported_from": "C:\\Project\\common-agent-swarm-ops\\business\\video\\agents\\video.avatardesign",
+  "reference_book_origin": "spec/book_of_knowledge.md",
+  "reference_book_note": "Bibliographic references from spec/book_of_knowledge.md. Does not enable network, RAG, T3, plugins, or memory writes."
+}

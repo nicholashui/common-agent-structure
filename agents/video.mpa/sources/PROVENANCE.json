@@ -1,0 +1,270 @@
+{
+  "schema_version": "3.0",
+  "sources": [
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Producer to Producer, 2nd ed.",
+      "author": "Maureen A. Ryan",
+      "isbn13": "9781615932023",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Producer to Producer, 2nd ed. (Maureen A. Ryan), ISBN-13 9781615932023"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Complete Film Production Handbook, 4th ed.",
+      "author": "Eve Light Honthaner",
+      "isbn13": "9780240811505",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Complete Film Production Handbook, 4th ed. (Eve Light Honthaner), ISBN-13 9780240811505"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Film Production Management 101",
+      "author": "Deborah S. Patz",
+      "isbn13": "9781615932290",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Film Production Management 101 (Deborah S. Patz), ISBN-13 9781615932290"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Scheduling and Budgeting Your Film, 2nd ed.",
+      "author": "Paula Landry",
+      "isbn13": "9781138936140",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Scheduling and Budgeting Your Film, 2nd ed. (Paula Landry), ISBN-13 9781138936140"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Independent Film Producing",
+      "author": "Paul Battista",
+      "isbn13": "9781138013827",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Independent Film Producing (Paul Battista), ISBN-13 9781138013827"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Hollywood Economist 2.0",
+      "author": "Edward Jay Epstein",
+      "isbn13": "9781612190501",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Hollywood Economist 2.0 (Edward Jay Epstein), ISBN-13 9781612190501"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "影视制片管理",
+      "isbn13": "9787301169186",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 影视制片管理，ISBN-13 9787301169186"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Clearance & Copyright, 4th ed.",
+      "author": "Michael C. Donaldson",
+      "isbn13": "9781615931330",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Clearance & Copyright, 4th ed. (Michael C. Donaldson), ISBN-13 9781615931330"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Pocket Lawyer for Filmmakers, 2nd ed.",
+      "author": "Thomas A. Crowell",
+      "isbn13": "9780240812182",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Pocket Lawyer for Filmmakers, 2nd ed. (Thomas A. Crowell), ISBN-13 9780240812182"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Law of Journalism and Mass Communication",
+      "author": "Trager et al.",
+      "isbn13": "9781506363226",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Law of Journalism and Mass Communication (Trager et al.), ISBN-13 9781506363226"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Entertainment Law in a Nutshell",
+      "author": "Sherri Burr",
+      "isbn13": "9781634603058",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Entertainment Law in a Nutshell (Sherri Burr), ISBN-13 9781634603058"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "著作权法",
+      "author": "王迁",
+      "isbn13": "9787301249499",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 著作权法（王迁），ISBN-13 9787301249499"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "知识产权法",
+      "author": "吴汉东",
+      "isbn13": "9787301162262",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 知识产权法（吴汉东），ISBN-13 9787301162262"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Film Art: An Introduction, 12th ed.",
+      "author": "Bordwell, Thompson, Smith",
+      "isbn13": "9781259534959",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Film Art: An Introduction, 12th ed. (Bordwell, Thompson, Smith), ISBN-13 9781259534959"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Understanding Movies, 14th ed.",
+      "author": "Louis Giannetti",
+      "isbn13": "9780205856169",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Understanding Movies, 14th ed. (Louis Giannetti), ISBN-13 9780205856169"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Filmmaker's Handbook, 5th ed.",
+      "author": "Ascher & Pincus",
+      "isbn13": "9780452297289",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Filmmaker's Handbook, 5th ed. (Ascher & Pincus), ISBN-13 9780452297289"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "How to Read a Film, 4th ed.",
+      "author": "James Monaco",
+      "isbn13": "9780195321050",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: How to Read a Film, 4th ed. (James Monaco), ISBN-13 9780195321050"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Film History: An Introduction",
+      "author": "Thompson & Bordwell",
+      "isbn13": "9780073386133",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Film History: An Introduction (Thompson & Bordwell), ISBN-13 9780073386133"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "What Is Cinema? Vol. 1",
+      "author": "André Bazin",
+      "isbn13": "9780520242272",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: What Is Cinema? Vol. 1 (André Bazin), ISBN-13 9780520242272"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Sculpting in Time",
+      "author": "Andrei Tarkovsky",
+      "isbn13": "9780292776241",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Sculpting in Time (Andrei Tarkovsky), ISBN-13 9780292776241"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Hitchcock/Truffaut",
+      "author": "François Truffaut",
+      "isbn13": "9780671604295",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Hitchcock/Truffaut (François Truffaut), ISBN-13 9780671604295"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Notes on the Cinematograph",
+      "author": "Robert Bresson",
+      "isbn13": "9781681370248",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Notes on the Cinematograph (Robert Bresson), ISBN-13 9781681370248"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "电影艺术：形式与风格",
+      "author": "波德维尔、汤普森",
+      "isbn13": "9787301254332",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 电影艺术：形式与风格（波德维尔、汤普森），ISBN-13 9787301254332"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "认识电影",
+      "author": "贾内梯",
+      "isbn13": "9787532763122",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 认识电影（贾内梯），ISBN-13 9787532763122"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "电影是什么",
+      "author": "巴赞",
+      "isbn13": "9787108017963",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 电影是什么（巴赞），ISBN-13 9787108017963"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "雕刻时光",
+      "author": "塔可夫斯基",
+      "isbn13": "9787532743841",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 雕刻时光（塔可夫斯基），ISBN-13 9787532743841"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "希区柯克与特吕弗对话录",
+      "isbn13": "9787532745128",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 希区柯克与特吕弗对话录，ISBN-13 9787532745128"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "电影语言的语法",
+      "author": "阿里洪",
+      "isbn13": "9787532299990",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 电影语言的语法（阿里洪），ISBN-13 9787532299990"
+    }
+  ],
+  "agent_id": "video.mpa",
+  "previous_common_agent_id": "video.platform_policy_reviewer",
+  "va_taxonomy_aligned": true,
+  "generic_source": "generic-swarm-ops/business/video/agents/video.mpa",
+  "note": "Imported into CASOPS as baseline_safe. No production activation, no network, no plugins, memory writes forbidden.",
+  "aligned_at": "2026-07-27T00:48:10.814761Z",
+  "generic_source_depth": {
+    "excerpts": true,
+    "study": true,
+    "adopted_at": "2026-07-27T01:30:28.482795+00:00",
+    "upstream": "generic-swarm-ops/business/video/agents"
+  },
+  "imported_from": "C:\\Project\\common-agent-swarm-ops\\business\\video\\agents\\video.mpa",
+  "reference_book_origin": "spec/book_of_knowledge.md",
+  "reference_book_note": "Bibliographic references from spec/book_of_knowledge.md. Does not enable network, RAG, T3, plugins, or memory writes."
+}

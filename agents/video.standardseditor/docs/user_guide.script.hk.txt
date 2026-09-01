@@ -1,0 +1,503 @@
+大家好，歡迎收睇今日嘅影片。
+
+今日我哋會詳細介紹 StandardsEditorAgent 嘅操作員同設計指南。
+
+呢份文件係專門俾操作員、pack 作者、swarm 設計師同審核人員使用嘅。
+
+呢份指南會俾到你任務清晰度、幾時使用嘅指引、協作地圖、CASOPS 操作步驟、改進路徑，同一個分信任層級嘅來源地圖。
+
+重要提醒，呢份文件唔係啟動 provider 嘅許可證。
+
+唔係開放網絡存取嘅授權。
+
+亦唔係發明工具嘅許可。
+
+Host 嘅真相係 fail-closed 嘅 agent_spec.json。
+
+來自 VA 或 redesign 文件嘅設計文字係不受信任嘅來源。
+
+Pack 路徑係 business/video/agents/video.standardseditor/。
+
+指南位於 docs/user_guide.md。
+
+由 scripts/business/generate_agent_user_guides.py 生成。
+
+第一部分，快照。
+
+StandardsEditorAgent，pack agent id 係 video.standardseditor。
+
+佢係一個 Video Domain Pack 角色，運行喺 CASOPS 上。
+
+簡單講，佢嘅工作係執行編輯標準、來源紀律同更正政策。
+
+呢份指南係人類可讀嘅操作員地圖，用嚟做目錄審查、swarm 設計同透過提案推動改進。
+
+逐項講基本資料。
+
+Display name 係 StandardsEditorAgent。
+
+Pack agent id 係 video.standardseditor。
+
+Pack 係 video。
+
+Host role string 係 StandardsEditorAgent (VA Domain Pack)。
+
+Catalog status 係 registered。
+
+Maturity today 係 L0，非活動狀態。
+
+VA id 係 106。
+
+VA category 係 10-Sup，即工作流程支援同發布閘門。
+
+Provider 係 local_deterministic。
+
+Network 係 False。
+
+Allowed tools 係空列表。
+
+Production activation requested 係 False。
+
+Prompt 同 rubric 參考分別係 video.prompt.standardseditor.v1 同 video.rubric.standardseditor.v1。
+
+Previous common id 係 video.script_editor。
+
+Generic lineage 係 generic-swarm-ops/business/video/agents/video.standardseditor。
+
+第二部分，點解呢個角色存在。
+
+人類影片團隊已經喺時間壓力下解決呢個問題：執行編輯標準、來源紀律同更正政策。
+
+Agent 形式存在係為咗令多代理系統持續編碼呢種工藝。
+
+喺每次交接時應用，只將殘餘風險升級俾人類。
+
+知識庫來源包括新聞室標準手冊。
+
+仲有更正政策。
+
+同埋歸因標準。
+
+呢啲係歷史設計來源，唔係即時網絡呼叫。
+
+設計野心係：比後期階段嘅文字編輯更有效咁減少標準漂移。
+
+用呢個作為北極星指標。
+
+第三部分，乜嘢叫做好。
+
+Primary outcome 係執行編輯標準、來源紀律同更正政策。
+
+Self-quality bar 第一個係標準合規率。
+
+第二個係歸因準確度。
+
+第三個係更正準備就緒程度。
+
+Ambition signal 係比後期文字編輯更好咁減少標準漂移。
+
+Architecture pattern 係 Constitutional AI，配合編輯標準憲法。
+
+Host quality 同 critique binding。
+
+Prompt reference 係 video.prompt.standardseditor.v1。
+
+Rubric reference 係 video.rubric.standardseditor.v1。
+
+Critique edges inputs 係 video.critic，outputs 係 video.judge。
+
+Max refinement 係 3。
+
+輸入、輸出同驗收。
+
+Inputs 係本地 pack 工件同類型化交接。
+
+Outputs 係可審查嘅影片領域交付物。
+
+Acceptance 係 host 政策加本地 SPEC 標準。
+
+第四部分，範圍。
+
+擁有嘅範圍係執行編輯標準、來源紀律同更正政策。
+
+共享批評表面方面。
+
+聽取同接受來自 JournalistAgent 嘅批評。
+
+接受來自 FactCheckerAgent 嘅批評。
+
+接受來自 CorrectionsAgent 嘅批評。
+
+接受來自 LegalAgent 嘅批評。
+
+有資格評論弱歸因問題。
+
+有資格評論標準違規問題。
+
+有資格評論更正政策缺口。
+
+Host critique edge inputs 係 video.critic。
+
+Host critique edge outputs 係 video.judge。
+
+Max refinement count 係 3。
+
+拒絕同升級方面。
+
+Fail-closed，唔會啟動 provider、開放網絡或獲取憑證。
+
+production_activation_requested 保持 false。
+
+將法律、安全、版權同發布決定升級到人類閘門。
+
+第五部分，幾時用呢個 agent。
+
+當工作成品需要由 StandardsEditorAgent 擁有嘅決定或工件時叫佢。
+
+即執行編輯標準、來源紀律同更正政策。
+
+Pipeline phase 係工作流程支援同發布閘門。
+
+即支援功能同最終發布閘門，包括無障礙、品牌、法律、檔案等。
+
+唔好用佢做一般編排、預算批准或最終法律簽署。
+
+用 producer、legal 或 compliance 同事代替。
+
+Human override：任何阻礙發布嘅安全、版權或無障礙爭議都升級到人類閘門。
+
+決策小抄有四個問題。
+
+缺少嘅技能係咪 StandardsEditorAgent 嘅工藝？係就加入 swarm 圖。
+
+只係元數據編輯？用 Registry inspect 加提案。
+
+需要工具或網絡？Host 唔允許。
+
+有人類專屬風險？保留人類閘門。
+
+第六部分，協作地圖。
+
+呢個 agent 係批評總線上嘅節點。
+
+Inbound critique 來自 JournalistAgent。
+
+來自 FactCheckerAgent。
+
+來自 CorrectionsAgent。
+
+同埋來自 LegalAgent。
+
+Outbound commentary 針對弱歸因。
+
+針對標準違規。
+
+針對更正政策缺口。
+
+Host edge inputs 係 video.critic。
+
+Host edge outputs 係 video.judge。
+
+第七部分，生產中嘅位置。
+
+人類生產工作流程方面，係支援功能同最終發布閘門。
+
+包括無障礙、品牌、法律、檔案等。
+
+典型交接工件包括閘門決定。
+
+仲有合規包。
+
+仲有無障礙層。
+
+仲有檔案母帶。
+
+同埋更正。
+
+多代理 AI 工作流程方面，係喺發布前或發布後接受或拒絕交接嘅閘門同支援節點。
+
+設計時工具備註，對 host 唔具約束力。
+
+第一個係 Editorial checklists 即編輯檢查清單。
+
+第二個係 attribution validators 即歸因驗證器。
+
+第三個係 standards DB 即標準數據庫。
+
+循環風格係 Constitutional AI 配合編輯標準憲法。
+
+今日嘅 CASOPS 上只係文檔。
+
+本地 AI 工作流程摘錄入面有提到幾個相關 agent。
+
+第 34 號 FactCheckerAgent，職責係為每個聲明做來源評級。
+
+知識來源包括 New Yorker 事實查覈手冊。
+
+包括 IFCN verified-signatories。
+
+包括 Snopes 同 PolitiFact 記錄。
+
+自我質量係每個聲明嘅來源評級，主要來源優先，跨來源一致性大於等於 2。
+
+超越人類係比 Pulitzer 級別出版物更低嘅更正率。
+
+接受批評來自 SMEAgent 同 StandardsEditorAgent。
+
+第 36 號 JournalistAgent，職責係報導加道德框架。
+
+知識來源包括 Pulitzer、duPont、Peabody 得獎者。
+
+包括 SPJ 道德守則。
+
+包括 Poynter 材料。
+
+超越人類係比新聞室記者更低更正率加更快歸檔。
+
+Review 階段由 FactCheckerAgent 加 LegalAgent 加 StandardsEditorAgent 組成，配合 EthicsAgent (SPJ)。
+
+共享交接合約方面。
+
+artifact_id 同 version 提供不可變身份。
+
+parent_assets 提供來源鏈。
+
+brief_scope 阻止範圍蔓延。
+
+acceptance_criteria 同自我質量標準掛鉤。
+
+qc_status 令下游閘門短路。
+
+rights_and_consent 阻止濫用。
+
+critique_log pointer 保存歷史。
+
+第八部分，今日喺 CASOPS 上操作。
+
+呢個 agent 係目錄加設計物件。
+
+步驟一 Discover，去 Registry Hub /registry 確認成員資格。
+
+步驟二 Inspect，去 /registry/agents/video.standardseditor 閱讀 SPEC。
+
+步驟三 Propose improvements，POST 到 /api/v1/commons/agents/video.standardseditor/proposals。
+
+步驟四 Swarm membership，只用 Host 動作引用。
+
+步驟五 Run/dispatch，預設唔啟用。
+
+操作檯檢查清單。
+
+第一確認 status、tools、activation 旗標。
+
+第二先閱讀第三部分。
+
+第三附上離線證據。
+
+第四唔好貼 API 密鑰。
+
+第五偏好小型差異。
+
+第九部分，安全同信任。
+
+agent_spec.json 係具約束力嘅 host 合約。
+
+SPEC.md 係權威設計。
+
+sources 係歷史不受信任數據。
+
+外部語料庫唔受信任。
+
+硬規則如下。
+
+Provider 保持 local_deterministic。
+
+Network 保持 False。
+
+Allowed tools 空列表。
+
+production_activation_requested False。
+
+Budget：輸入 2048、輸出 1024、工具請求 0。
+
+設計時工具目錄，非啟動：Editorial checklists、attribution validators、standards DB。
+
+第十部分，提升質量。
+
+改進係版本化目錄工作。
+
+持續改進循環：觀察失敗、命名標準、起草差異、附上證據、提案、審查接受、考慮啟動閘門。
+
+具體槓桿有六個。
+
+第一 Rubric fidelity，收緊 video.rubric.standardseditor.v1 對照標準合規率、歸因準確度、更正準備就緒。
+
+第二 Prompt precision，對齊 video.prompt.standardseditor.v1 同責任。
+
+第三 Critique graph，確保入站 JournalistAgent、FactCheckerAgent、CorrectionsAgent、LegalAgent 捕捉失敗模式。
+
+第四 Architecture emulation，偏好 Constitutional AI 配合編輯標準憲法。
+
+第五 Eval cases，寫 fixtures。
+
+第六 Human gates，保持閘門明確。
+
+評估種子方面。
+
+Happy path：輸出滿足標準合規率、歸因準確度、更正準備就緒。
+
+Out-of-scope：按第四部分拒絕。
+
+Missing provenance：閘門 fail closed。
+
+Conflicting critique：refinement 唔超過 max count。
+
+Proposal-only：新版本不可變。
+
+第十一部分，來源地圖。
+
+本地 corpus 優先使用。
+
+agent_spec.json binding。
+
+SPEC.md authoritative-design。
+
+README.md local-index。
+
+sources/MAPPING.md provenance。
+
+sources/PROVENANCE.json provenance。
+
+sources/excerpts/agents.md historical-excerpt。
+
+sources/excerpts/ai_agent_video_production_workflow.md historical-excerpt。
+
+sources/excerpts/lifes_quiet_redemption_agent_workflow.md historical-excerpt。
+
+sources/generic/video.screenwriter.SPEC.md historical-generic。
+
+sources/generic/video.standardseditor.SPEC.md historical-generic。
+
+Mapping note：VA 同 generic pack ID 係 video.standardseditor。
+
+之前 common ID 係 video.script_editor。
+
+SPEC 深度係完整 generic SPEC body 加 host runtime binding。
+
+Provenance record：schema_version 1.0。
+
+agent_id video.standardseditor。
+
+previous_common_agent_id video.script_editor。
+
+va_taxonomy_aligned true。
+
+generic_source generic-swarm-ops/business/video/agents/video.standardseditor。
+
+aligned_at 2026 年 7 月 27 日。
+
+Provenance narrative：Pack agent ID 對齊到 VA Domain Pack 分類法。
+
+之前 ID 只係歷史映射。
+
+上游設計係歷史性非約束性嘅。
+
+VA roster row 第 106 行 StandardsEditorAgent。
+
+Responsibility 係執行編輯標準、來源紀律同更正政策。
+
+Knowledge distillation 係新聞室標準手冊、更正政策、歸因標準。
+
+Self-quality 係標準合規率、歸因準確度、更正準備就緒。
+
+Surpass-human 係比後期文字編輯更好咁減少標準漂移。
+
+Accepts critique 來自 JournalistAgent、FactCheckerAgent、CorrectionsAgent、LegalAgent。
+
+Comments on 弱歸因、標準違規、更正政策缺口。
+
+Tools 歷史性嘅包括 Editorial checklists、attribution validators、standards DB。
+
+Architecture 係 Constitutional AI 配合編輯標準憲法。
+
+第十二部分，相關設計閱讀。
+
+冇強關鍵字匹配。
+
+本地知識索引包括 Runtime binding、Folder README、Provenance、Mapping note、Pack inventory、Pack manifest。
+
+第十三部分，host 合約。
+
+agent_id video.standardseditor。
+
+allowed_tools 空列表。
+
+budget_policy：max_input_tokens 2048，max_output_tokens 1024，max_tool_requests 0。
+
+critique_edges：inputs video.critic，outputs video.judge。
+
+max_refinement_count 3。
+
+model_policy：model_id local-video-config-v1，network_access false，provider local_deterministic。
+
+production_activation_requested false。
+
+prompt_reference video.prompt.standardseditor.v1。
+
+role StandardsEditorAgent (VA Domain Pack)。
+
+rubric_reference video.rubric.standardseditor.v1。
+
+schema_version 1.0。
+
+status registered。
+
+va_id 106。
+
+va_name StandardsEditorAgent。
+
+va_category 10-Sup。
+
+第十四部分，SPEC 責任摘錄。
+
+責任係執行編輯標準、來源紀律同更正政策。
+
+Host role binding 係 StandardsEditorAgent (VA Domain Pack)。
+
+Knowledge distillation sources 歷史性。
+
+Self-quality criteria 歷史性。
+
+Surpass-human signal 歷史性。
+
+Critique bus：接受四個 agent 批評。
+
+評論弱歸因同標準違規同更正政策缺口。
+
+Tools 非啟動。
+
+Runtime safety：Host allow-lists 只有 agent_spec.json 加 tool-permission-register.json。
+
+Architecture pattern 係 Constitutional AI。
+
+第十五部分，文件控制。
+
+Generator 係 scripts/business/generate_agent_user_guides.py。
+
+Agent folder 係 business/video/agents/video.standardseditor/。
+
+Output 係 docs/user_guide.md。
+
+VA corpus root 係 C:\Project\va-agent-swarm。
+
+Trust model 係設計語料庫等於不受信任數據，host config 等於 fail-closed。
+
+以上就係 StandardsEditorAgent 嘅完整指南。
+
+由第一部分同第五部分開始。
+
+用第八到第十部分做操作同改進。
+
+用第十一到第十二部分做深度設計。
+
+多謝收睇。

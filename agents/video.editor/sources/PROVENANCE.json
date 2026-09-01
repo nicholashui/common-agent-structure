@@ -1,0 +1,460 @@
+{
+  "schema_version": "3.0",
+  "sources": [
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "In the Blink of an Eye, 2nd ed.",
+      "author": "Walter Murch",
+      "isbn13": "9781879505629",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: In the Blink of an Eye, 2nd ed. (Walter Murch), ISBN-13 9781879505629"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Grammar of the Edit, 4th ed.",
+      "author": "Christopher J. Bowen",
+      "isbn13": "9781138632226",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Grammar of the Edit, 4th ed. (Christopher J. Bowen), ISBN-13 9781138632226"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Technique of Film and Video Editing, 5th ed.",
+      "author": "Ken Dancyger",
+      "isbn13": "9780240813974",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Technique of Film and Video Editing, 5th ed. (Ken Dancyger), ISBN-13 9780240813974"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "On Film Editing",
+      "author": "Edward Dmytryk",
+      "isbn13": "9780240803906",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: On Film Editing (Edward Dmytryk), ISBN-13 9780240803906"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Cut to the Chase",
+      "author": "Sam O'Steen",
+      "isbn13": "9780941188371",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Cut to the Chase (Sam O'Steen), ISBN-13 9780941188371"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "First Cut",
+      "author": "Gabriella Oldham",
+      "isbn13": "9780520273504",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: First Cut (Gabriella Oldham), ISBN-13 9780520273504"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "眨眼之间",
+      "isbn13": "9787515340128",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 眨眼之间，ISBN-13 9787515340128"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "电影剪辑技巧",
+      "isbn13": "9787115222224",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 电影剪辑技巧，ISBN-13 9787115222224"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Film Art: An Introduction, 12th ed.",
+      "author": "Bordwell, Thompson, Smith",
+      "isbn13": "9781259534959",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Film Art: An Introduction, 12th ed. (Bordwell, Thompson, Smith), ISBN-13 9781259534959"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Understanding Movies, 14th ed.",
+      "author": "Louis Giannetti",
+      "isbn13": "9780205856169",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Understanding Movies, 14th ed. (Louis Giannetti), ISBN-13 9780205856169"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Filmmaker's Handbook, 5th ed.",
+      "author": "Ascher & Pincus",
+      "isbn13": "9780452297289",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Filmmaker's Handbook, 5th ed. (Ascher & Pincus), ISBN-13 9780452297289"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "How to Read a Film, 4th ed.",
+      "author": "James Monaco",
+      "isbn13": "9780195321050",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: How to Read a Film, 4th ed. (James Monaco), ISBN-13 9780195321050"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Film History: An Introduction",
+      "author": "Thompson & Bordwell",
+      "isbn13": "9780073386133",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Film History: An Introduction (Thompson & Bordwell), ISBN-13 9780073386133"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "What Is Cinema? Vol. 1",
+      "author": "André Bazin",
+      "isbn13": "9780520242272",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: What Is Cinema? Vol. 1 (André Bazin), ISBN-13 9780520242272"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Sculpting in Time",
+      "author": "Andrei Tarkovsky",
+      "isbn13": "9780292776241",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Sculpting in Time (Andrei Tarkovsky), ISBN-13 9780292776241"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Hitchcock/Truffaut",
+      "author": "François Truffaut",
+      "isbn13": "9780671604295",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Hitchcock/Truffaut (François Truffaut), ISBN-13 9780671604295"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Notes on the Cinematograph",
+      "author": "Robert Bresson",
+      "isbn13": "9781681370248",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Notes on the Cinematograph (Robert Bresson), ISBN-13 9781681370248"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "电影艺术：形式与风格",
+      "author": "波德维尔、汤普森",
+      "isbn13": "9787301254332",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 电影艺术：形式与风格（波德维尔、汤普森），ISBN-13 9787301254332"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "认识电影",
+      "author": "贾内梯",
+      "isbn13": "9787532763122",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 认识电影（贾内梯），ISBN-13 9787532763122"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "电影是什么",
+      "author": "巴赞",
+      "isbn13": "9787108017963",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 电影是什么（巴赞），ISBN-13 9787108017963"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "雕刻时光",
+      "author": "塔可夫斯基",
+      "isbn13": "9787532743841",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 雕刻时光（塔可夫斯基），ISBN-13 9787532743841"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "希区柯克与特吕弗对话录",
+      "isbn13": "9787532745128",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 希区柯克与特吕弗对话录，ISBN-13 9787532745128"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "电影语言的语法",
+      "author": "阿里洪",
+      "isbn13": "9787532299990",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 电影语言的语法（阿里洪），ISBN-13 9787532299990"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Sound Design",
+      "author": "David Sonnenschein",
+      "isbn13": "9780941188265",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Sound Design (David Sonnenschein), ISBN-13 9780941188265"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Foley Grail, 2nd ed.",
+      "author": "Vanessa Theme Ament",
+      "isbn13": "9780240824260",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Foley Grail, 2nd ed. (Vanessa Theme Ament), ISBN-13 9780240824260"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Practical Art of Motion Picture Sound, 4th ed.",
+      "author": "David Yewdall",
+      "isbn13": "9780240812403",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Practical Art of Motion Picture Sound, 4th ed. (David Yewdall), ISBN-13 9780240812403"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Mixing Secrets for the Small Studio, 2nd ed.",
+      "author": "Mike Senior",
+      "isbn13": "9781138556375",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Mixing Secrets for the Small Studio, 2nd ed. (Mike Senior), ISBN-13 9781138556375"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Mastering Audio, 3rd ed.",
+      "author": "Bob Katz",
+      "isbn13": "9780240818962",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Mastering Audio, 3rd ed. (Bob Katz), ISBN-13 9780240818962"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Audio Post Production for Film and Video",
+      "author": "Jay Rose",
+      "isbn13": "9780240809700",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Audio Post Production for Film and Video (Jay Rose), ISBN-13 9780240809700"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "声音设计：电影中语言、音乐和音响的表现力",
+      "isbn13": "9787106031237",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 声音设计：电影中语言、音乐和音响的表现力，ISBN-13 9787106031237"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "现代录音技术",
+      "isbn13": "9787115331861",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 现代录音技术，ISBN-13 9787115331861"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "短视频与直播文案写作",
+      "author": "张弘李自海魏坚 主编吴曼刘哲李守勤 副主编",
+      "isbn13": "9787115638649",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 短视频与直播文案写作（张弘李自海魏坚 主编吴曼刘哲李守勤 副主编），ISBN-13 9787115638649"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "DeepSeek+爆款短视频一本通流量时代的AI生产力",
+      "author": "张守刚张小平",
+      "isbn13": "9787115670014",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: DeepSeek+爆款短视频一本通流量时代的AI生产力（张守刚张小平），ISBN-13 9787115670014"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "剪映+DeepSeek短视频剪辑全能一本通",
+      "author": "Jack",
+      "isbn13": "9787115669780",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 剪映+DeepSeek短视频剪辑全能一本通（Jack），ISBN-13 9787115669780"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "剪映：手机短视频制作（全彩慕课版）",
+      "author": "尹涛 陈杰",
+      "isbn13": "9787115611772",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 剪映：手机短视频制作（全彩慕课版）（尹涛 陈杰），ISBN-13 9787115611772"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "剪辑师宝典：视频剪辑思维与案例实战",
+      "author": "杨超",
+      "isbn13": "9787121450723",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 剪辑师宝典：视频剪辑思维与案例实战（杨超），ISBN-13 9787121450723"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "手机短视频拍摄与制作（微课版）",
+      "author": "王武林 主编；马千里；蔡静 副主编",
+      "isbn13": "9787115630629",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 手机短视频拍摄与制作（微课版）（王武林 主编；马千里；蔡静 副主编），ISBN-13 9787115630629"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "抖音+剪映+Premiere短视频创作实战（全彩微课版）",
+      "author": "李晓斌；张晓景 编著",
+      "isbn13": "9787302632870",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 抖音+剪映+Premiere短视频创作实战（全彩微课版）（李晓斌；张晓景 编著），ISBN-13 9787302632870"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "短视频制作实战策划 拍摄 制作 运营(全彩慕课版)(第2版)",
+      "author": "郭韬 主编刘琴琴 副主编",
+      "isbn13": "9787115672063",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 短视频制作实战策划 拍摄 制作 运营(全彩慕课版)(第2版)（郭韬 主编刘琴琴 副主编），ISBN-13 9787115672063"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "短视频拍摄与剪辑零基础一本通",
+      "author": "千知影像学院 编著",
+      "isbn13": "9787115635402",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 短视频拍摄与剪辑零基础一本通（千知影像学院 编著），ISBN-13 9787115635402"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "短视频策划、拍摄与制作(微课版)",
+      "author": "吕子燕 主编卢玲 副主编",
+      "isbn13": "9787115569295",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 短视频策划、拍摄与制作(微课版)（吕子燕 主编卢玲 副主编），ISBN-13 9787115569295"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "手機攝影技術教程",
+      "isbn13": "9787210129653",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 手機攝影技術教程，ISBN-13 9787210129653"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "短視頻編劇全流程",
+      "isbn13": "9787122452696",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 短視頻編劇全流程，ISBN-13 9787122452696"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "AI短视频创作：一本通剪映+即梦+可灵+文心一格",
+      "isbn13": "9787122470027",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: AI短视频创作：一本通剪映+即梦+可灵+文心一格，ISBN-13 9787122470027"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "爆款短视频拍摄：118个分镜脚本与摄影技巧新媒体抖音运营流量",
+      "isbn13": "9787122699984",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 爆款短视频拍摄：118个分镜脚本与摄影技巧新媒体抖音运营流量，ISBN-13 9787122699984"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "剪映视频后期剪辑零基础入门到精通",
+      "author": "许放",
+      "isbn13": "9787115634979",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 剪映视频后期剪辑零基础入门到精通（许放），ISBN-13 9787115634979"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "剪映+數字人",
+      "isbn13": "9787122452511",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 剪映+數字人，ISBN-13 9787122452511"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Guide to Managing Postproduction for Film, TV, and Digital Distribution",
+      "author": "Barbara Clark, Susan Spohr, Dawn Higginbotham etc.",
+      "isbn13": "9781138482814",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Guide to Managing Postproduction for Film, TV, and Digital Distribution (Barbara Clark, Susan Spohr, Dawn Higginbotham etc.), ISBN-13 9781138482814"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Coming Attractions Reading American Movie Trailers",
+      "author": "Lisa Kernan",
+      "isbn13": "9780292797253",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Coming Attractions Reading American Movie Trailers (Lisa Kernan), ISBN-13 9780292797253"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Making the Cut at Pixar The Art of Editing Animation",
+      "author": "Bill Kinder Bobbie O’steen",
+      "isbn13": "9780367766146",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Making the Cut at Pixar The Art of Editing Animation (Bill Kinder Bobbie O’steen), ISBN-13 9780367766146"
+    }
+  ],
+  "agent_id": "video.editor",
+  "previous_common_agent_id": "video.edit_assembler",
+  "va_taxonomy_aligned": true,
+  "generic_source": "generic-swarm-ops/business/video/agents/video.editor",
+  "note": "Imported into CASOPS as baseline_safe. No production activation, no network, no plugins, memory writes forbidden.",
+  "aligned_at": "2026-07-27T00:48:10.685580Z",
+  "generic_source_depth": {
+    "excerpts": true,
+    "study": true,
+    "adopted_at": "2026-07-27T01:30:28.119430+00:00",
+    "upstream": "generic-swarm-ops/business/video/agents"
+  },
+  "imported_from": "C:\\Project\\common-agent-swarm-ops\\business\\video\\agents\\video.editor",
+  "reference_book_origin": "spec/book_of_knowledge.md",
+  "reference_book_note": "Bibliographic references from spec/book_of_knowledge.md. Does not enable network, RAG, T3, plugins, or memory writes."
+}

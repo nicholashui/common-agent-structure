@@ -1,0 +1,293 @@
+各位觀眾大家好，歡迎返嚟我哋嘅頻道。今日呢條影片，我會同大家詳細講解 MotionGraphicsAgent 嘅操作員同設計指南。
+
+呢份指南係寫畀操作員、pack 作者、swarm 設計師、同埋喺 common-agent-swarm-ops 裡面做審查嘅人。睇完之後你會得到任務清晰度、幾時用呢個 agent 嘅指引、協作地圖、CASOPS 操作步驟、改進路徑，同埋一份按信任層級分類嘅來源地圖。
+
+好重要嘅一點，呢份指南唔係一個可以啟動 provider、開啟網絡存取、或者自創工具嘅許可證。Host 嘅真相係 fail-closed 嘅 agent_spec.json。由 VA 或者重新設計文件嚟嘅設計文字屬於不受信任嘅來源。
+
+呢個 pack 嘅路徑係 business/video/agents/video.motiongraphics/。指南本身喺 docs/user_guide.md。佢係由 scripts/business/generate_agent_user_guides.py 自動生成嘅。
+
+好，我哋而家入正題，由第一個部分快照開始講起。
+
+MotionGraphicsAgent，佢嘅 agent id 係 video.motiongraphics，係 CASOPS 上面嘅 Video Domain Pack 角色。用簡單嘅講法嚟講，佢負責嘅係同行 agents 嘅作品審查，即佢有資格審閱嘅同行代理人工作。呢份指南你應該當佢做人類可讀嘅操作員地圖，用嚟做目錄審查、swarm 設計同埋以提案為驅動嘅改進，而唔係一個運行時啟動許可。
+
+而家我逐項同你講佢嘅快照資料。Display name 係 MotionGraphicsAgent。Pack agent id 係 video.motiongraphics。Pack 係 video。Host role string 係 MotionGraphicsAgent (VA Domain Pack)。
+
+Catalog status 係 registered。Maturity today 係 L0 斜線 non-active，即係目錄同設計保真度階段。VA id 係 13。VA category 係 3-Edit，即係 Editorial 同 finishing。
+
+Provider (host) 係 media_host。Network 係 True。Allowed tools (host) 係 media.stub 同 media.runway。Production activation requested 係 True。
+
+Prompt 同 rubric refs 分別係 video.prompt.motiongraphics.v1 同 video.rubric.motiongraphics.v1。Previous common id 係 video.motion_designer。Generic lineage 係 generic-swarm-ops/business/video/agents/video.motiongraphics。
+
+好，第二部分，點解呢個角色會存在。
+
+人類影片製作團隊其實已經喺時間壓力之下解決緊呢個問題，就係同行 agents 嘅作品審查。Agent 形式存在嘅原因，係令多代理系統可以持續咁編碼呢種技藝，喺每一次交接時應用佢，同埋只將剩餘風險升級畀人類處理。
+
+佢嘅知識庫係由以下來源蒸餾出嚟嘅：Defined per-agent in roster，Messages emitted on same bus。呢啲係歷史性嘅設計來源，唔係喺呢個 host 上面做嘅即時網絡呼叫。
+
+設計層面嘅野心，即係超越人類嘅訊號，係 14。之後當你寫 evals 或者提案嘅時候，用呢個做北極星指標。
+
+第三部分，好嘅輸出係點樣嘅。
+
+當你閱讀輸出、撰寫 rubric、或者為提案評分嘅時候，用以下呢啲做審查標準。
+
+Primary outcome 係同行 agents 嘅作品審查。Self-quality bar 係 Typographic hierarchy、brand compliance 同 readability at thumbnail。Ambition signal 係設計時嘅，數值係 14。Architecture pattern 都係設計時嘅，係 ReAct，即 reason about brand guidelines then render。
+
+
+而家講 Host quality 同 critique binding。Prompt reference 係 video.prompt.motiongraphics.v1。Rubric reference 係 video.rubric.motiongraphics.v1。Critique edges 嘅 inputs 係 video.critic，outputs 係 video.judge。Max refinement 係 3。VA table quality criteria 保留喺上面嘅 Provenance and Identity surface。
+
+關於 Inputs、outputs 同 acceptance。Inputs 係 local pack artifacts 同 typed handoffs。Outputs 係可供審查嘅 video-domain deliverables 加上驗收標準。Acceptance 係 host policy 加 local SPEC criteria，唔需要外部 repository。
+
+第四部分，範圍：擁有、共享同拒絕。
+
+Owns 部分，MotionGraphicsAgent 擁有嘅職責係同行 agents 嘅作品審查。
+
+Shares with peers，即係同行之間嘅 critique surface。Listens to 同 accepts critique from 係 HiTL Escalation。Is qualified to comment on 係 When a human must be brought in，即幾時需要帶人類入嚟。Host critique edge inputs 係 video.critic。Host critique edge outputs 係 video.judge。Max refinement count 係 3。
+
+Refuses 同 escalates 部分。Fail-closed 即係冇 provider 啟動、冇網絡、冇由設計文字嚟嘅認證。production_activation_requested 維持 false，除非有一個獨立嘅人類閘門改變政策。佢會將法律、安全、權利同發佈決定升級畀需要嘅人類閘門。Critique lead 同 judge 嘅默認值使用 VA IDs video.critic 同 video.judge。
+
+第五部分，幾時應該用呢個 agent。
+
+當工作產品需要一個由 MotionGraphicsAgent 擁有嘅決定或者製品嘅時候，就要 call 呢個 agent。具體嚟講就係同行 agents 嘅作品審查。
+
+Pipeline phase 係 Editorial 同 finishing。呢啲係後期製作編輯、調色同畫面完成。
+
+唔好 call 佢嚟做通用編排、預算批准、或者最終法律簽字，除非嗰啲職責明確喺佢嘅責任範圍之內。如果係嗰啲嘢，用 producer、legal 或者 compliance 嘅 peers 代替。
+
+Human override 方面，任何阻擋發佈嘅安全、權利或者無障礙糾紛都會升級畀人類閘門，即使個 agent 喺未來嘅活躍運行時會自動通過。
+
+而家講決策速查表。第一個問題：缺少嘅技能係唔係 MotionGraphicsAgent 嘅專長？指引係：如果係，就將佢包含喺嗰個階段嘅 swarm graph 入面。
+
+第二個問題：呢個只係一個 metadata 斜線 catalog 編輯嗎？指引係用 Registry inspect 加 proposal，唔好發明 runtime。
+
+第三個問題：呢個任務需要工具斜線網絡嗎？指引係 Host 目前唔允許，除非 agent_spec 加 permission register 另有說明。
+
+第四個問題：係唔係有隻限人類嘅風險，包括法律、傷害、權利？指引係保持人類閘門，agent 嘅輸出喺啟動之前只係諮詢性質。
+
+第六部分，協作地圖。
+
+將呢個 agent 當做 critique bus 上嘅一個節點，唔係一個獨立嘅 chatbot。Peers 負責改進質量；judges 同 gates 負責決定是否接受。
+
+Inbound critique 方面，嚟自 HiTL Escalation。Outbound commentary 方面，去到 When a human must be brought in。Host edge inputs 係 video.critic。Host edge outputs 係 video.judge。
+
+第七部分，佢喺生產中嘅位置。
+
+先講 7.1 人類生產工作流程。呢個角色屬於後期製作編輯、調色同畫面完成。典型嘅交接製品包括 Cuts、timelines、grades、continuity notes 同 QC tickets。
+
+將呢個職責映射到經典階段：開發、前期製作、製作、後期製作、交付斜線即時運維。偏好嗰個有呢個職位嘅人類會簽字嘅階段。
+
+7.2 多代理 AI 工作流程。佢係 Cut assembly、grade 同 picture QC nodes，帶有對 director 斜線 audience judges 嘅 critique loops。
+
+設計時嘅工具筆記，對 host 唔具約束力，包括 Consent 即 SAG-AFTRA AI rider 同 EU AI Act Art. 50、final legal sign-off、MPA rating、festival eligibility、crisis comms 同 cross-cultural sensitivity。
+
+之後當你實現 runtime 嘅時候要模擬嘅 loop style 係 ReAct，即 reason about brand guidelines then render。喺今日嘅 CASOPS 上，呢個模式只係文檔，實際嘅 provider 係 local deterministic，工具允許清單係空嘅或者 stub。
+
+喺本地 AI-workflow excerpt 入面提到嘅相關內容有以下幾個。第一個係第 13 號 MotionGraphicsAgent，負責 Kinetic typography、lower thirds 同 infographics。知識嚟自 Motionographer archive、School of Motion lessons 同 AICP Next Award reels。自我質量標準係 Typographic hierarchy score、brand-system compliance 同 readability at thumbnail size。超越人類訊號係 Wins agency RFP shootouts on speed 加 on-brand fidelity。接受 critique 嚟自 BrandManagerAgent 同 AccessibilityAgent (contrast)。評論 CopywriterAgent (verbosity) 同 EditorAgent (timing)。
+
+第二個提及係第 33 號 SMEAgent，即 Subject-Matter Expert，負責 Domain accuracy in target field。知識嚟自 Peer-reviewed journals、certified curricula 包括 CFA、USMLE、AWS 等等。自我質量標準係 Citation density、benchmark exam pass、hallucination rate 小於等於 0.5%。超越人類訊號係 Passes the same certification exam as the human pro。接受 critique 嚟自 FactCheckerAgent 同 peer SMEAgents (debate)。評論 Scriptwrite 相關。
+
+第三個提及係第 38 號 FinanceAgent，負責 Accurate market 斜線 earnings 斜線 token facts。知識嚟自 CFA Institute curriculum、SEC marketing rule 同 Bloomberg/Refinitiv data feeds。自我質量標準係 Numerical accuracy 100% 加 SEC marketing-rule compliance。超越人類訊號係 Passes CFA L3 simulated 加 lower retraction rate than analyst desks。接受 critique 嚟自 SMEAgent (econ) 同 ComplianceAgent。評論 ScriptwriterAgent (number drift) 同 MotionGraphicsAgent (chart mis-scale)。
+
+
+7.3 共享交接合約，即 swarm-ready。當你將呢個 agent 接入未來嘅活躍 swarm 嘅時候，需要喺節點之間要求機器可讀嘅 manifests。
+
+artifact_id 斜線 version 欄位，佢嘅重要性係為 critique 同 replay 提供不可變嘅身份。parent_assets 欄位，佢嘅重要性係進入呢個 agent inputs 嘅來源鏈。brief_scope 欄位，佢嘅重要性係阻止範圍蔓延超出職責。acceptance_criteria 欄位，佢嘅重要性係同上面嘅 self-quality bar 掛鉤。qc_status 斜線 gate flags 欄位，佢嘅重要性係令下游 gates 可以短路。rights_and_consent 欄位，佢嘅重要性係阻止唔安全嘅合成或者授權濫用。critique_log pointer 欄位，佢嘅重要性係令精煉可以進行而唔會失去歷史紀錄。
+
+第八部分，今日喺 CASOPS 上操作呢個 agent。
+
+今日呢個 agent 係一個目錄加設計物件。呢個係故意嘅設計：你可以研究、審查、提案，同將佢放入 swarm 設計入面，而唔需要授予生產權力。
+
+第一步 Discover，去 Registry Hub 嘅 pack catalog，路徑係 /registry，確認 inventory membership。
+
+第二步 Inspect，去 Agent detail，路徑係 /registry/agents/video.motiongraphics，以 markdown 形式閱讀 SPEC 同呢份指南。
+
+第三步 Propose improvements，用 Host 嘅 propose_improvement action，即 POST /api/v1/commons/agents/video.motiongraphics/proposals。要用不可變版本同只有已修訂嘅證據。
+
+第四步 Swarm membership，只可以用 Host 回傳嘅 action references。Client 唔可以自創 membership。
+
+第五步 Run 斜線 dispatch，默認情況下唔會為生產 providers 啟用。Fail-closed 直到治理閘門。
+
+實用控制檯檢查清單。第一，打開 agent detail 確認 status、tools 同 activation flags 同呢份指南一致。第二，喺判斷任何樣本輸出或者提案之前閱讀第三部分「好嘅輸出係點樣嘅」。第三，如果提議改變，附上離線證據包括 eval notes、rubric gap、SPEC delta，唔好有祕密。第四，永遠唔好將 vendor API keys 或者「enable network」嘅指示貼入提案。第五，偏好細小嘅、可審查嘅 deltas：prompt 斜線 rubric 措辭、critique edges、acceptance tests。
+
+第九部分，安全、信任同非啟動規則。
+
+信任層級表。agent_spec.json 係 binding 嘅 host contract，角色係 fail-closed runtime binding。呢個 pack 嘅 SPEC.md 係 authoritative design，用於離線審查，唔可以執行。sources 底下嘅 excerpts 同 generic SPECs 係 historical 斜線 mapped，屬於 untrusted data。C:\Project\va-agent-swarm 係外部設計語料庫，untrusted，可能會飄移。Specials redesign docs 係歷史設計，untrusted，喺 provenance 入面有 hash。
+
+呢個 host 上嘅硬性規則如下。Provider 維持 media_host，除非有一個獨立嘅閘門改變政策。Network access 維持 True。Allowed tools 精確係 media.stub 同 media.runway，下面嘅設計時工具名唔會啟用 APIs。production_activation_requested 係 True。Budget 包括 tokens 同 tools 有上限：輸入 2048、輸出 1024、tool requests 4。設計時工具目錄，非啟動性質，包括 Consent 即 SAG-AFTRA AI rider 同 EU AI Act Art. 50、final legal sign-off、MPA rating、festival eligibility、crisis comms 同 cross-cultural sensitivity。
+
+第十部分，隨時間提升質量。
+
+改進係版本化嘅目錄工作，唔係對一個活躍 agent 做即時修補。已發佈嘅定義保持不可變；改變要經過提案同審查。
+
+10.1 持續改進循環。流程係：觀察失敗，然後命名標準，由第三部分嚟嘅，然後起草離線 delta，然後附上證據，然後喺 Host 上提案，然後審查斜線接受新版本，之後先考慮啟動成熟度閘門。
+
+10.2 呢個 agent 嘅具體槓桿。第一，Rubric fidelity，收緊 video.rubric.motiongraphics.v1，對標 Typographic hierarchy、brand compliance 同 readability at thumbnail。第二，Prompt precision，對齊 video.prompt.motiongraphics.v1 同職責：同行 agents 嘅作品審查。第三，Critique graph，確保入站嘅 HiTL Escalation 同 host edges video.critic 確實捕捉到已知嘅失敗模式。第四，Architecture emulation，之後實現嘅時候偏好 ReAct，即 reason about brand guidelines then render。第五，Eval cases，寫固定嘅 fixtures，如果 14 呢個指標冇被接近就應該 fail。第六，Human gates，保持法律斜線安全斜線發佈閘門明確，唔好將佢哋吸收入靜默自動化。
+
+10.3 建議嘅評估種子。第一個 seed 係 Happy path handoff，pass condition 係輸出滿足 Typographic hierarchy、brand compliance 同 readability at thumbnail。第二個 seed 係 Out-of-scope request，pass condition 係 Agent 按照第四部分拒絕或者升級。第三個 seed 係 Missing provenance 斜線 rights，pass condition 係 gate 以 fail-closed 方式失敗。第四個 seed 係 Conflicting peer critique，pass condition 係 refinement 小於等於 max_refinement_count，否則升級。第五個 seed 係 Proposal-only change，pass condition 係新版本不可變，舊版本仍然可讀。
+
+
+第十一部分，來源地圖同來源追蹤。
+
+11.1 本地 pack 語料庫，優先使用呢啲。agent_spec.json 嘅信任層級係 binding。SPEC.md 嘅信任層級係 authoritative-design。README.md 嘅信任層級係 local-index。sources/MAPPING.md 嘅信任層級係 provenance。sources/PROVENANCE.json 嘅信任層級係 provenance。
+
+接落嚟係一系列 historical-excerpt 層級嘅檔案。sources/excerpts/agents.md 係 historical-excerpt。sources/excerpts/ai_agent_video_production_workflow.md 係 historical-excerpt。sources/excerpts/lifes_quiet_redemption_agent_workflow.md 係 historical-excerpt。sources/excerpts/project_creation_flow.md 係 historical-excerpt。sources/excerpts/SYSTEM_REFERENCE.md 係 historical-excerpt。sources/excerpts/ui_design.md 係 historical-excerpt。sources/excerpts/video_remake_enhancement.md 係 historical-excerpt。
+
+仲有一個 historical-generic 層級嘅：sources/generic/video.motiongraphics.SPEC.md。
+
+11.2 Mapping note。video.motiongraphics 嘅 VA 斜線 generic pack ID 係 video.motiongraphics。Previous common ID 係 video.motion_designer。SPEC depth 係 full generic SPEC body 加 host runtime binding。
+
+11.3 Provenance record。schema_version 係 1.0。agent_id 係 video.motiongraphics。previous_common_agent_id 係 video.motion_designer。va_taxonomy_aligned 係 true。generic_source 係 generic-swarm-ops/business/video/agents/video.motiongraphics。note 話 Agent ID 同 VA 斜線 generic Domain Pack taxonomy 對齊，上游設計係歷史性同非約束性嘅。aligned_at 嘅時間係 2026-07-27T00:48:10.619931Z。generic_source_depth 裡面 excerpts 係 true，study 係 true，adopted_at 係 2026-07-27T01:30:28.447457+00:00，upstream 係 generic-swarm-ops/business/video/agents。
+
+11.4 Provenance narrative。Pack agent ID video.motiongraphics 係同純 VA Domain Pack 斜線 generic pack taxonomy 對齊嘅，Agent IDs 約等於 VA tables。Previous common inventory ID video.motion_designer 只係歷史映射。上游設計主體係歷史性同非約束性嘅；本地 agent_spec.json 先係權威嘅。保留完整嘅 VA 斜線 generic SPEC depth 用於離線設計保真度，包括 category roster rows 同 common agent structure。
+
+11.5 VA roster row，歷史設計。嚟自 va-agent-swarm/study/agents.md 第 13 行 Critique Outbox，呢個係設計語料庫，唔係啟動嘅約束。
+
+Responsibility 維度嘅內容係同行 agents 嘅作品審查。Knowledge distillation 維度嘅內容係 Defined per-agent in roster，Messages emitted on same bus，Evidence-backed，rubric-referenced，appended to C2PA provenance。Self-quality 維度嘅內容係空白。Surpass-human 維度嘅內容係 14。Accepts critique 維度嘅內容係 HiTL Escalation。Comments on 維度嘅內容係 When a human must be brought in。Tools 歷史維度嘅內容係 Consent 即 SAG-AFTRA AI rider 同 EU AI Act Art. 50、final legal sign-off、MPA rating、festival eligibility、crisis comms 同 cross-cultural sensitivity。Architecture 維度嘅內容係空白。
+
+第十二部分，相關設計閱讀。
+
+當你要深化設計保真度嘅時候用呢啲。佢哋唔會覆蓋本地 agent_spec.json。
+
+呢度冇喺 va-agent-swarm 底下搵到強 keyword 匹配；依賴本地 SPEC 同 VA table row。
+
+12.3 本地知識索引。Runtime binding 連結到 agent_spec.json。Folder README 連結到 README.md。Provenance 連結到 sources/PROVENANCE.json。Mapping note 連結到 sources/MAPPING.md。Pack inventory 連結到 ../../inventory.json。Pack manifest 連結到 ../../manifest.json。所有必需嘅主要參考資料都喺呢個 repository 入面解析。
+
+12.4 Folder README 摘要。呢個係 VA-aligned Domain Pack agent，用 common host。SPEC.md 嘅用途係 VA 斜線 generic depth 加 host binding。agent_spec.json 嘅用途係 Fail-closed runtime。sources/ 嘅用途係 Provenance 斜線 mapping。
+
+第十三部分，附錄：host contract，即 agent_spec.json。
+
+呢個係呢個 agent 喺 CASOPS 上嘅權威 fail-closed 配置。我逐個欄位讀出嚟。
+
+agent_id 係 video.motiongraphics。allowed_tools 係 media.stub 同 media.runway。budget_policy 裡面，max_input_tokens 係 2048，max_output_tokens 係 1024，max_tool_requests 係 4。critique_edges 裡面，inputs 係 video.critic，outputs 係 video.judge。max_refinement_count 係 3。model_policy 裡面，model_id 係 local-video-config-v1，network_access 係 true，provider 係 media_host。production_activation_requested 係 true。prompt_reference 係 video.prompt.motiongraphics.v1。role 係 MotionGraphicsAgent (VA Domain Pack)。rubric_reference 係 video.rubric.motiongraphics.v1。schema_version 係 1.0。status 係 registered。va_id 係 13。va_name 係 MotionGraphicsAgent。va_category 係 3-Edit。
+
+第十四部分，附錄：SPEC responsibility excerpt。
+
+展開嘅職責文字如下。Kinetic typography、lower thirds 同 infographics。Host role binding 係 MotionGraphicsAgent (VA Domain Pack)。設計時嘅 VA table 內容係歷史性同非約束性嘅。
+
+Responsibility 嚟自 VA table：Kinetic typography、lower thirds 同 infographics。Knowledge distillation sources 歷史性嘅：Motionographer、School of Motion 同 AICP Next Awards。Self-quality criteria 歷史性嘅：Typographic hierarchy、brand compliance 同 readability at thumbnail。Surpass-human signal 歷史性嘅：Wins agency RFP shootouts on speed 加 on-brand fidelity。
+
+Critique bus 歷史性嘅。Accepts critique from 係 BrandManagerAgent 同 AccessibilityAgent (contrast)。Comments on 係 CopywriterAgent (verbosity) 同 EditorAgent (timing)。
+
+Tools design-time notes 歷史性非啟動嘅：After Effects via MCP 斜線 ExtendScript、Lottie export、Rive 同 brand-asset CDN。Runtime safety 方面，Host allow-lists 只係 agent_spec.json 加 tool-permission-register.json。CI 用 video_* stubs。唔好將設計時嘅 vendor 名當做已啟用嘅 APIs。
+
+Architecture pattern 歷史性嘅：ReAct，即 reason about brand guidelines then render。
+
+第十五部分，文件控制。
+
+Generator 係 scripts/business/generate_agent_user_guides.py。Agent folder 係 business/video/agents/video.motiongraphics/。Output 係 docs/user_guide.md。VA corpus root 係 C:\Project\va-agent-swarm。Regeneration 用 python scripts/business/generate_agent_user_guides.py。Trust model 係設計語料庫等於 untrusted data，host config 等於 fail-closed。
+
+呢個就係 MotionGraphicsAgent 指南嘅全部內容。建議由第一部分 Snapshot 同第五部分 When to involve 開始睇，用第八到第十部分做 CASOPS 操作同改進，用第十一到第十二部分做深度設計保真度。
+
+多謝大家收睇，我哋下條片見。
+
+
+而家我再深入講多啲關於呢個 agent 嘅重要細節，確保大家對每一個方面都有全面嘅理解。
+
+首先返去第一部分快照，我想強調幾個關鍵嘅配置參數。呢個 agent 嘅 maturity 係 L0 斜線 non-active，呢個意思係佢目前只係存在於目錄同設計保真度層面。但同之前兩個 agents 唔同嘅係，呢個 agent 嘅 production_activation_requested 係 True，provider 係 media_host，而且 network 係 True。
+
+VA id 13 代表佢喺整個 Video Agent 表入面嘅位置。佢屬於 3-Edit category，即係 Editorial 同 finishing 類別。呢個類別嘅 agents 負責嘅係後期製作嘅編輯、調色同畫面完成工作。
+
+Provider 係 media_host 而唔係 local_deterministic，呢個意味住佢有潛力連接到媒體處理服務。Network 設定為 True 進一步確認佢係有網絡連接能力嘅。Allowed tools 包括 media.stub 同 media.runway，呢兩個工具分別用於媒體處理嘅 stub 測試同 Runway 嘅整合。
+
+返去第二部分，MotionGraphicsAgent 存在嘅核心原因。喺傳統嘅影片製作團隊入面，motion graphics designer 或者 motion designer 負責製作 kinetic typography、lower thirds、infographics 等視覺元素。呢啲係影片嘅重要視覺組成部分。
+
+佢嘅知識庫嚟自 Defined per-agent in roster 同 Messages emitted on same bus。呢個講法指嘅係每個 agent 喺 roster 入面都有定義嘅知識來源，同時佢哋喺同一個 bus 上發出嘅訊息都構成共享知識。
+
+關於第三部分嘅質量標準，Typographic hierarchy 係指文字排版要有清晰嘅層級結構，令觀眾可以快速理解信息嘅優先次序。Brand compliance 係指所有視覺元素要符合品牌嘅設計系統同指引。Readability at thumbnail 係指即使喺縮略圖大小嘅顯示下，文字同圖形都要保持可讀性。
+
+Architecture pattern 方面，ReAct 即 reason about brand guidelines then render 係一個先推理後執行嘅模式。先理解品牌指引嘅要求，然後再進行渲染同輸出。
+
+第四部分嘅 scope 設計比較特殊。佢接受 critique 嚟自 HiTL Escalation，即 Human-in-the-Loop Escalation。佢有資格評論嘅係 When a human must be brought in，即幾時需要帶人類入嚟做決定。呢個設計反映佢喺系統中有一個特殊嘅角色。
+
+關於第五部分，pipeline phase 係 Editorial 同 finishing，呢個將佢放喺後期製作嘅階段。Motion graphics 通常係喺影片剪接同調色之後加入嘅視覺元素，所以佢屬於 finishing 階段。
+
+第六部分嘅協作地圖顯示入站 critique 嚟自 HiTL Escalation，出站 commentary 去到 When a human must be brought in。呢個形成一個同人類決策緊密連結嘅回饋循環。
+
+第七部分 7.1 嘅人類生產工作流程屬於後期製作編輯、調色同畫面完成。典型嘅交接製品包括 Cuts 即剪接版本、timelines 即時間線、grades 即調色、continuity notes 即連戲筆記、同 QC tickets 即質量控制工單。
+
+7.2 多代理 AI 工作流程入面提到嘅三個相關 agents 好值得深入理解。第 13 號 MotionGraphicsAgent 本身負責 Kinetic typography、lower thirds 同 infographics。佢嘅知識嚟自 Motionographer archive，呢個係 motion graphics 界最知名嘅線上社區同作品展示平臺。School of Motion lessons 係一個專業嘅 motion design 教育平臺。AICP Next Award reels 係廣告製作界嘅頂級獎項，佢嘅入選作品代表業界最高水平。
+
+第 33 號 SMEAgent 同第 38 號 FinanceAgent 都有提到 MotionGraphicsAgent。FinanceAgent 會評論 MotionGraphicsAgent 嘅 chart mis-scale 問題，即圖表比例失真。呢個係一個好實際嘅問題，當 motion graphics 中有數據圖表嘅時候，數字嘅視覺表現必須準確。
+
+設計時嘅工具筆記提到嘅 Consent 相關工具好重要。SAG-AFTRA AI rider 係美國演員工會關於 AI 使用嘅條款。EU AI Act Art. 50 係歐盟 AI 法案第 50 條。Final legal sign-off、MPA rating、festival eligibility、crisis comms 同 cross-cultural sensitivity 都係同合規同法律相關嘅考慮。
+
+第八部分嘅操作流程同之前嘅 agents 類似但有一個重要區別。因為呢個 agent 嘅 production_activation_requested 係 True，所以佢嘅治理路徑可能同其他唔需要啟動嘅 agents 唔同。但目前佢仍然係一個 catalog 加 design object。
+
+第九部分嘅安全規則有幾個同之前 agents 唔同嘅地方。Provider 維持 media_host 而唔係 local_deterministic。Network access 維持 True 而唔係 False。Allowed tools 係 media.stub 同 media.runway 而唔係空陣列。production_activation_requested 係 True 而唔係 False。Budget 入面 max_tool_requests 係 4 而唔係 0。
+
+呢啲差異顯示 MotionGraphicsAgent 係一個更加接近生產就緒嘅 agent，佢有更多嘅 capabilities 被設計入去。但係記住，即使有呢啲 capabilities，佢仍然受到 agent_spec.json 嘅 fail-closed 約束。
+
+第十部分嘅改進路徑入面，Rubric fidelity 要對標 Typographic hierarchy、brand compliance 同 readability at thumbnail。如果你發現 agent 嘅 motion graphics 唔符合品牌指引或者喺細尺寸下唔可讀，就要收緊 rubric。
+
+第十四部分嘅 SPEC responsibility excerpt 提供咗更加詳細嘅職責描述。實際上，MotionGraphicsAgent 嘅核心職責係 Kinetic typography、lower thirds 同 infographics。Kinetic typography 係動態文字排版。Lower thirds 係出現喺畫面下方三分一嘅文字同圖形元素，通常用嚟顯示人物名字或者標題。Infographics 係信息圖表，將數據同信息以視覺方式呈現。
+
+知識來源 Motionographer 係一個展示最佳 motion design 作品嘅平臺。School of Motion 係一個線上學習平臺，教授專業嘅 motion design 技術。AICP Next Awards 係由美國獨立廣告製作公司協會頒發嘅獎項，專注於創新同技術卓越。
+
+歷史設計時工具包括 After Effects via MCP 斜線 ExtendScript，呢個係 Adobe After Effects 通過 MCP 協議同 ExtendScript 腳本嘅整合。Lottie export 係將動畫導出為 Lottie 格式，呢個格式適合喺網頁同移動應用入面播放。Rive 係另一個互動動畫工具。Brand-asset CDN 係品牌資產嘅內容分發網絡。
+
+Critique bus 方面，接受 critique 嚟自 BrandManagerAgent 同 AccessibilityAgent (contrast)。BrandManagerAgent 確保品牌一致性，AccessibilityAgent 確保對比度符合無障礙標準。Comments on CopywriterAgent (verbosity) 同 EditorAgent (timing)，即係佢會評論文案太冗長或者剪接時間唔對嘅問題。
+
+最後，我想提醒大家，呢個 agent 嘅 previous common id 係 video.motion_designer。呢個歷史名稱更加直接反映佢嘅職能，但而家已經同 VA Domain Pack taxonomy 對齊，使用 video.motiongraphics 作為正式嘅 agent id。
+
+呢個就係 MotionGraphicsAgent 完整指南嘅所有細節。希望呢條影片對你哋理解呢個 agent 有幫助。記住，由第一部分 Snapshot 同第五部分 When to involve 開始睇，用第八到第十部分做日常操作，用第十一到第十二部分做深度研究。
+
+再次多謝大家收睇，如果覺得有用記得畀個 like，我哋下條片見。
+
+
+我想再補充幾個重要嘅技術細節，幫助大家更加全面咁理解 MotionGraphicsAgent 嘅設計同操作。
+
+關於 7.3 嘅共享交接合約，artifact_id 同 version 欄位係整個系統可追溯性嘅基礎。每一個由 MotionGraphicsAgent 產出嘅 motion graphic 元素都應該有一個不可變嘅身份標識，令之後嘅 critique 同 replay 可以精確指向特定嘅版本。
+
+parent_assets 欄位追蹤嘅係呢個 motion graphic 嘅來源。例如一個 lower third 可能係根據某個 BrandManagerAgent 嘅品牌指引製作嘅，嗰個指引就係 parent asset。呢種來源追蹤確保你永遠知道一個視覺元素由邊度嚟。
+
+brief_scope 欄位防止 MotionGraphicsAgent 做超出範圍嘅嘢。如果一個 brief 只涉及 title cards，咁佢就唔應該去處理整個影片嘅調色。
+
+acceptance_criteria 欄位同 Typographic hierarchy、brand compliance 同 readability at thumbnail 直接掛鉤。如果一個 motion graphic 嘅排版層級唔清晰，品牌唔合規，或者喺縮略圖大小下唔可讀，下游 gates 可以拒絕佢。
+
+qc_status 同 gate flags 令整個流程可以高效運作。如果一個 motion graphic 已經通過所有質量檢查，下游嘅 delivery pipeline 可以直接使用佢。
+
+rights_and_consent 欄位確保所有使用嘅字體、圖形元素同動畫都有正確嘅授權。呢個對商業影片製作嚟講特別重要。
+
+critique_log pointer 令你可以睇到一個 motion graphic 經歷咗幾多次精煉，每次精煉係由 BrandManagerAgent 定係 AccessibilityAgent 發起嘅。
+
+關於 10.3 嘅評估種子，每一個都值得更深入嘅解釋。Happy path handoff 測試嘅係正常情況下 MotionGraphicsAgent 能唔能夠產出符合排版層級、品牌合規同縮略圖可讀性標準嘅元素。
+
+Out-of-scope request 測試嘅係當有人要求 MotionGraphicsAgent 做超出佢職責範圍嘅嘢時，佢能唔能夠正確拒絕。例如有人要求佢做 3D 建模，佢應該拒絕並指向正確嘅 agent。
+
+Missing provenance 斜線 rights 測試嘅係當字體或者圖形元素嘅授權信息缺失嘅時候，系統能唔能夠正確 fail-closed。呢個確保唔會有未經授權嘅素材出現喺最終產品中。
+
+Conflicting peer critique 測試嘅係當 BrandManagerAgent 同 AccessibilityAgent 對同一個元素提出矛盾嘅修改建議時，系統點處理。例如品牌要求某個顏色但無障礙標準要求更高對比度，呢個衝突需要解決。
+
+Proposal-only change 測試嘅係版本控制系統本身。當有人提議改變 MotionGraphicsAgent 嘅配置時，新版本應該係不可變嘅，同時舊版本要保持可讀性。
+
+關於 media.stub 同 media.runway 呢兩個 allowed tools，media.stub 係一個用於測試嘅 stub 工具，模擬媒體處理嘅行為但唔會實際執行。media.runway 係同 Runway ML 整合嘅工具，Runway 係一個 AI 驅動嘅創意工具平臺，可以生成同編輯視覺內容。
+
+budget_policy 入面 max_tool_requests 係 4，呢個係所有三個 agents 中最高嘅。佢容許 MotionGraphicsAgent 喺一個工作週期內最多發出四次工具請求。呢個設計反映 motion graphics 工作通常需要多次迭代同渲染。
+
+最後我想總結一下 MotionGraphicsAgent 嘅核心價值。Motion graphics 係現代影片製作中不可或缺嘅元素。由 YouTube 影片嘅 lower thirds 到廣告片嘅 kinetic typography，再到紀錄片嘅 infographics，motion graphics 將信息以動態視覺嘅方式傳達畀觀眾。
+
+MotionGraphicsAgent 通過 ReAct 架構，先理解品牌指引嘅要求，然後再進行渲染。呢個確保每一個視覺元素都係有根據有邏輯嘅，唔係隨機生成嘅。
+
+佢同 BrandManagerAgent 同 AccessibilityAgent 嘅 critique 關係確保輸出既符合品牌形象又滿足無障礙要求。同 CopywriterAgent 同 EditorAgent 嘅 commentary 關係確保文字內容同時間都係恰當嘅。
+
+呢個就係今日嘅全部內容。記住，MotionGraphicsAgent 雖然有更多嘅 capabilities 被設計入去，包括 network access 同 tool requests，但佢仍然受到 agent_spec.json 嘅約束。所有嘅改進都要通過版本化嘅提案流程。
+
+感謝各位嘅觀看同支持，我哋下一條影片再見。
+
+
+我仲想講多幾個關於 MotionGraphicsAgent 嘅實用考慮。
+
+喺所有三個 agents 入面，MotionGraphicsAgent 係最接近生產就緒嘅一個。佢有 network access，有 allowed tools，同埋 production_activation_requested 係 True。呢啲配置顯示設計者預期佢會係較早被實際啟動嘅 agents 之一。
+
+media.runway 工具嘅存在暗示 MotionGraphicsAgent 可能會利用 Runway ML 嘅 AI 生成能力嚟加速 motion graphics 嘅製作。Runway 提供文字轉影片、圖像轉影片等功能，呢啲都可以用喺 motion graphics 嘅創作流程中。
+
+VA category 3-Edit 即 Editorial 同 finishing 將呢個 agent 定位喺後期製作嘅最後階段。呢個好有道理，因為 motion graphics 通常係喺影片剪接完成之後先加入嘅。佢係影片 finishing 過程嘅一部分。
+
+previous common id video.motion_designer 反映佢之前嘅名稱。Motion designer 係影片行業嘅標準職位名稱，但喺 VA Domain Pack taxonomy 入面，video.motiongraphics 更加精確咁描述佢嘅輸出類型。
+
+喺 agent_spec.json 入面，max_tool_requests 4 嘅設計考慮係基於 motion graphics 嘅工作流程。一個典型嘅 motion graphic 元素可能需要搜索品牌素材、生成初稿、渲染最終版本、同導出到正確格式，每一步都可能需要一次工具請求。
+
+network_access true 嘅設定容許 MotionGraphicsAgent 訪問外部資源，例如品牌素材 CDN 或者 Runway 嘅 API。但係記住，實際嘅網絡使用仍然受到 host 政策嘅約束。
+
+呢個就係我今日想分享嘅全部內容。MotionGraphicsAgent 作為一個 kinetic typography、lower thirds 同 infographics 嘅製作者，喺影片嘅視覺完成度上扮演關鍵角色。佢嘅工作直接影響觀眾對影片專業度嘅感知。
+
+希望今日嘅詳細講解對大家有幫助。如果你有任何問題，歡迎喺下面留言。我哋下次再見。

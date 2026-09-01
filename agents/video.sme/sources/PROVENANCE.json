@@ -1,0 +1,329 @@
+{
+  "schema_version": "3.0",
+  "sources": [
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Elements of Journalism, 3rd ed.",
+      "author": "Kovach & Rosenstiel",
+      "isbn13": "9780804136785",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Elements of Journalism, 3rd ed. (Kovach & Rosenstiel), ISBN-13 9780804136785"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Blur",
+      "author": "Kovach & Rosenstiel",
+      "isbn13": "9781608193011",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Blur (Kovach & Rosenstiel), ISBN-13 9781608193011"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Associated Press Stylebook",
+      "isbn13": "9781541649883",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Associated Press Stylebook, ISBN-13 9781541649883"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "On Writing Well",
+      "author": "William Zinsser",
+      "isbn13": "9780060891541",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: On Writing Well (William Zinsser), ISBN-13 9780060891541"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Craft of Research, 4th ed.",
+      "author": "Booth et al.",
+      "isbn13": "9780226239736",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Craft of Research, 4th ed. (Booth et al.), ISBN-13 9780226239736"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Interviewing as Qualitative Research, 4th ed.",
+      "author": "Irving Seidman",
+      "isbn13": "9780807755679",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Interviewing as Qualitative Research, 4th ed. (Irving Seidman), ISBN-13 9780807755679"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "新闻的十大基本原则",
+      "isbn13": "9787301161111",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 新闻的十大基本原则，ISBN-13 9787301161111"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "采访的艺术",
+      "isbn13": "9787301169186",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 采访的艺术，ISBN-13 9787301169186"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "如何阅读一本书",
+      "isbn13": "9787100040945",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 如何阅读一本书，ISBN-13 9787100040945"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "研究是一门艺术",
+      "isbn13": "9787300116226",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 研究是一门艺术，ISBN-13 9787300116226"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Design for How People Learn, 2nd ed.",
+      "author": "Julie Dirksen",
+      "isbn13": "9780134211282",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Design for How People Learn, 2nd ed. (Julie Dirksen), ISBN-13 9780134211282"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "e-Learning and the Science of Instruction, 4th ed.",
+      "author": "Clark & Mayer",
+      "isbn13": "9781119158660",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: e-Learning and the Science of Instruction, 4th ed. (Clark & Mayer), ISBN-13 9781119158660"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Make It Stick",
+      "author": "Brown, Roediger, McDaniel",
+      "isbn13": "9780674729018",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Make It Stick (Brown, Roediger, McDaniel), ISBN-13 9780674729018"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "How People Learn",
+      "author": "Bransford et al.",
+      "isbn13": "9780309070362",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: How People Learn (Bransford et al.), ISBN-13 9780309070362"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Understanding by Design",
+      "author": "Wiggins & McTighe",
+      "isbn13": "9781416600350",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Understanding by Design (Wiggins & McTighe), ISBN-13 9781416600350"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Multimedia Learning, 3rd ed.",
+      "author": "Richard E. Mayer",
+      "isbn13": "9781107566187",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Multimedia Learning, 3rd ed. (Richard E. Mayer), ISBN-13 9781107566187"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "First Principles of Instruction",
+      "author": "M. David Merrill",
+      "isbn13": "9780470900406",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: First Principles of Instruction (M. David Merrill), ISBN-13 9780470900406"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "让学习粘住",
+      "isbn13": "9787508655611",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 让学习粘住，ISBN-13 9787508655611"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "教学设计原理",
+      "author": "加涅",
+      "isbn13": "9787561762264",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 教学设计原理（加涅），ISBN-13 9787561762264"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "追求理解的教学设计",
+      "isbn13": "9787561799994",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 追求理解的教学设计，ISBN-13 9787561799994"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Competitive Strategy",
+      "author": "Michael E. Porter",
+      "isbn13": "9780684841489",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Competitive Strategy (Michael E. Porter), ISBN-13 9780684841489"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Good Strategy/Bad Strategy",
+      "author": "Richard Rumelt",
+      "isbn13": "9780307886231",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Good Strategy/Bad Strategy (Richard Rumelt), ISBN-13 9780307886231"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Playing to Win",
+      "author": "Lafley & Martin",
+      "isbn13": "9781422187395",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Playing to Win (Lafley & Martin), ISBN-13 9781422187395"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Measure What Matters",
+      "author": "John Doerr",
+      "isbn13": "9780525538318",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Measure What Matters (John Doerr), ISBN-13 9780525538318"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Innovator's Dilemma",
+      "author": "Clayton Christensen",
+      "isbn13": "9781633691780",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Innovator's Dilemma (Clayton Christensen), ISBN-13 9781633691780"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Thinking in Systems",
+      "author": "Donella Meadows",
+      "isbn13": "9781603580557",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Thinking in Systems (Donella Meadows), ISBN-13 9781603580557"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Fifth Discipline",
+      "author": "Peter Senge",
+      "isbn13": "9780385517256",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Fifth Discipline (Peter Senge), ISBN-13 9780385517256"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Superforecasting",
+      "author": "Tetlock & Gardner",
+      "isbn13": "9780804136716",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Superforecasting (Tetlock & Gardner), ISBN-13 9780804136716"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "竞争战略",
+      "isbn13": "9787508633749",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 竞争战略，ISBN-13 9787508633749"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "好战略，坏战略",
+      "isbn13": "9787508643427",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 好战略，坏战略，ISBN-13 9787508643427"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "这就是OKR",
+      "isbn13": "9787521702330",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 这就是OKR，ISBN-13 9787521702330"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "创新者的窘境",
+      "isbn13": "9787508633336",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 创新者的窘境，ISBN-13 9787508633336"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "系统之美",
+      "isbn13": "9787508640114",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 系统之美，ISBN-13 9787508640114"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "第五项修炼",
+      "isbn13": "9787508631332",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 第五项修炼，ISBN-13 9787508631332"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "超预测",
+      "isbn13": "9787508663098",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 超预测，ISBN-13 9787508663098"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "金字塔原理",
+      "isbn13": "9787508633732",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 金字塔原理，ISBN-13 9787508633732"
+    }
+  ],
+  "agent_id": "video.sme",
+  "previous_common_agent_id": "video.adversarial_tester",
+  "va_taxonomy_aligned": true,
+  "generic_source": "generic-swarm-ops/business/video/agents/video.sme",
+  "note": "Imported into CASOPS as baseline_safe. No production activation, no network, no plugins, memory writes forbidden.",
+  "aligned_at": "2026-07-27T00:48:11.327502Z",
+  "generic_source_depth": {
+    "excerpts": true,
+    "study": true,
+    "adopted_at": "2026-07-27T01:30:28.825957+00:00",
+    "upstream": "generic-swarm-ops/business/video/agents"
+  },
+  "imported_from": "C:\\Project\\common-agent-swarm-ops\\business\\video\\agents\\video.sme",
+  "reference_book_origin": "spec/book_of_knowledge.md",
+  "reference_book_note": "Bibliographic references from spec/book_of_knowledge.md. Does not enable network, RAG, T3, plugins, or memory writes."
+}

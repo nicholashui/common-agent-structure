@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.0",
+  "agent_id": "video.distributor",
+  "plan_id": "video.distributor.distill.v1",
+  "inputs": [
+    "src_1"
+  ],
+  "extractors": [
+    "markdown_excerpt",
+    "structured_table_row"
+  ],
+  "chunk_policy": {
+    "max_chars": 2000,
+    "overlap": 200
+  },
+  "owner": "video.distributor",
+  "cadence": "quarterly",
+  "promotion_criteria": [
+    "source license approved or fixture-only",
+    "excerpt hash recorded in PROVENANCE",
+    "golden eval still passes L1"
+  ],
+  "memory_namespace": "pack.video.video.distributor",
+  "next_review_at": "2026-10-01"
+}

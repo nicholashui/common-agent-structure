@@ -1,0 +1,804 @@
+<!DOCTYPE html><html><head><meta name="x-poe-datastore-behavior" content="local_only"><meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://code.jquery.com https://unpkg.com https://d3js.org https://threejs.org https://cdn.plot.ly https://stackpath.bootstrapcdn.com https://maps.googleapis.com https://cdn.tailwindcss.com https://ajax.googleapis.com https://kit.fontawesome.com https://cdn.datatables.net https://maxcdn.bootstrapcdn.com https://code.highcharts.com https://tako-static-assets-production.s3.amazonaws.com https://www.youtube.com https://fonts.googleapis.com https://fonts.gstatic.com https://pfst.cf2.poecdn.net https://puc.poecdn.net https://i.imgur.com https://wikimedia.org https://*.icons8.com https://*.giphy.com https://picsum.photos https://images.unsplash.com; frame-src 'self' https://www.youtube.com https://trytako.com; child-src 'self'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests; block-all-mixed-content;"><meta http-equiv="x-dns-prefetch-control" content="off"><script src="https://puc.poecdn.net/authenticated_preview_page/standard.3ef2c256959faf5a756d.js"></script>
+    <meta charset="utf-8">
+    <title>Poe</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+  <script src="https://puc.poecdn.net/authenticated_preview_page/disableWebRTC.9710cebe07429a9e8e06.js"></script><meta name="x-poe-allow-downloads" content="true"><meta name="x-poe-datastore-behavior" content="disabled"><script src="https://puc.poecdn.net/authenticated_preview_page/tw.50ec1b0612bf5b0c30a5.js"></script><script src="https://puc.poecdn.net/authenticated_preview_page/deps.faccd16000d314dc16d5.js"></script><script src="https://puc.poecdn.net/authenticated_preview_page/exports.b0f0f482cdeb5302b0b9.js"></script><script src="https://puc.poecdn.net/authenticated_preview_page/renderer.75c73ae6b4235f62945a.js"></script><script>Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }var _react = require('react'); var _react2 = _interopRequireDefault(_react);
+
+
+
+
+
+
+
+
+var _lucidereact = require('lucide-react');
+
+/* ─── STATUS CONFIG — light theme ────────────────────────── */
+const STATUS_CFG = {
+  live:         { bg: 'bg-emerald-50',  border: 'border-emerald-200', text: 'text-emerald-700', dot: 'bg-emerald-500', pulse: true,  label: 'Live' },
+  running:      { bg: 'bg-blue-50',     border: 'border-blue-200',    text: 'text-blue-700',    dot: 'bg-blue-500',    pulse: true,  label: 'Running' },
+  queued:       { bg: 'bg-violet-50',   border: 'border-violet-200',  text: 'text-violet-700',  dot: 'bg-violet-500',  pulse: false, label: 'Queued' },
+  self_refine:  { bg: 'bg-purple-50',   border: 'border-purple-200',  text: 'text-purple-700',  dot: 'bg-purple-500',  pulse: true,  label: 'Self-Refining' },
+  delayed:      { bg: 'bg-yellow-50',   border: 'border-yellow-200',  text: 'text-yellow-700',  dot: 'bg-yellow-500',  pulse: false, label: 'Delayed' },
+  reconnecting: { bg: 'bg-orange-50',   border: 'border-orange-200',  text: 'text-orange-700',  dot: 'bg-orange-500',  pulse: true,  label: 'Reconnecting' },
+  degraded:     { bg: 'bg-red-50',      border: 'border-red-200',     text: 'text-red-700',     dot: 'bg-red-500',     pulse: false, label: 'Degraded' },
+  failed:       { bg: 'bg-red-50',      border: 'border-red-200',     text: 'text-red-700',     dot: 'bg-red-600',     pulse: false, label: 'Failed' },
+  recovery:     { bg: 'bg-amber-50',    border: 'border-amber-200',   text: 'text-amber-700',   dot: 'bg-amber-500',   pulse: true,  label: 'Recovery' },
+  complete:     { bg: 'bg-emerald-50',  border: 'border-emerald-200', text: 'text-emerald-700', dot: 'bg-emerald-500', pulse: false, label: 'Complete' },
+  unavailable:  { bg: 'bg-stone-100',   border: 'border-stone-200',   text: 'text-stone-500',   dot: 'bg-stone-400',   pulse: false, label: 'Unavailable' },
+  stale:        { bg: 'bg-stone-100',   border: 'border-stone-200',   text: 'text-stone-400',   dot: 'bg-stone-300',   pulse: false, label: 'Stale' },
+  cancelled:    { bg: 'bg-stone-100',   border: 'border-stone-200',   text: 'text-stone-500',   dot: 'bg-stone-400',   pulse: false, label: 'Cancelled' },
+};
+
+const StatusPill = ({ status }) => {
+  const c = STATUS_CFG[status] || STATUS_CFG.stale;
+  return (
+    _react2.default.createElement('span', { className: `inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium border ${c.bg} ${c.border} ${c.text}`,}
+      , _react2.default.createElement('span', { className: `w-1.5 h-1.5 rounded-full ${c.dot} ${c.pulse ? 'animate-pulse' : ''}`,} )
+      , c.label
+    )
+  );
+};
+
+const CommonBadge = ({ version, runs, success }) => (
+  _react2.default.createElement('span', { className: "inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-indigo-50 border border-indigo-200 text-indigo-700 text-xs font-mono whitespace-nowrap"            ,}
+    , _react2.default.createElement('span', { className: "font-semibold text-indigo-600" ,}, "Common")
+    , _react2.default.createElement('span', null, "v", version)
+    , runs    && _react2.default.createElement('span', { className: "text-stone-400 hidden sm:inline"  ,}, "· " , runs)
+    , success && _react2.default.createElement('span', { className: "text-emerald-600 hidden sm:inline"  ,}, "· " , success, "%")
+  )
+);
+
+const FaqItem = ({ q, a }) => {
+  const [open, setOpen] = _react.useState.call(void 0, false);
+  return (
+    _react2.default.createElement('div', { className: "border-b border-stone-200 last:border-0"  ,}
+      , _react2.default.createElement('button', { onClick: () => setOpen(o => !o), className: "w-full flex items-center justify-between py-5 text-left gap-4"      ,}
+        , _react2.default.createElement('span', { className: "text-base font-medium text-stone-900"  ,}, q)
+        , open
+          ? _react2.default.createElement(_lucidereact.ChevronUp, { size: 18, className: "text-stone-400 shrink-0" ,} )
+          : _react2.default.createElement(_lucidereact.ChevronDown, { size: 18, className: "text-stone-400 shrink-0" ,} )
+      )
+      , open && _react2.default.createElement('p', { className: "text-sm text-stone-500 pb-5 leading-relaxed"   ,}, a)
+    )
+  );
+};
+
+/* ─── MAIN ────────────────────────────────────────────────── */
+ function CASODesignSystem() {
+  const [activeAgentTab, setActiveAgentTab] = _react.useState.call(void 0, 'history');
+
+  const features = [
+    { icon: _react2.default.createElement(_lucidereact.Layers, { size: 20,} ),       title: 'Registry Hub',           desc: 'Versioned CommonAgents and Patterns discoverable like npm — with live aggregate stats, provenance, and one-click instantiation.' },
+    { icon: _react2.default.createElement(_lucidereact.Network, { size: 20,} ),      title: 'Graph-Native Canvas',    desc: 'Cyclic edges, verification loops, parallel BIG ROW groups, LLM routers — built for modern agent organizations, not simple DAGs.' },
+    { icon: _react2.default.createElement(_lucidereact.Rocket, { size: 20,} ),       title: 'Fleet Ops',              desc: 'Canary rollouts, A/B testing, approval gates, and post-rollout monitoring — a full control plane for common components across swarms.' },
+    { icon: _react2.default.createElement(_lucidereact.Brain, { size: 20,} ),        title: 'Collective Self-Improve', desc: 'Meta-critic analyzes thousands of runs and auto-proposes improvements. Every usage sharpens the commons for all teams.' },
+    { icon: _react2.default.createElement(_lucidereact.Shield, { size: 20,} ),       title: 'Production Discipline',  desc: 'Idempotent commands, SSE projections, freshness labels, and stale-state guards so the UI never misrepresents live state.' },
+    { icon: _react2.default.createElement(_lucidereact.Database, { size: 20,} ),     title: 'Shared Knowledge',       desc: 'Verified run outputs contribute back to common knowledge collections with full provenance and evaluation gating.' },
+  ];
+
+  const steps = [
+    { n: '01', title: 'Explore the Registry',    desc: 'Search versioned CommonAgents and Patterns. See aggregate metrics from every swarm using them in production.' },
+    { n: '02', title: 'Compose on Canvas',        desc: 'Drag common primitives into graph patterns. Cyclic verifiers, parallel groups, and routers wire up naturally.' },
+    { n: '03', title: 'Run, Observe, Improve',    desc: 'Execute with full SSE live state. Traces feed back into the meta-critic to auto-propose improvements to the commons.' },
+  ];
+
+  const faqItems = [
+    { q: 'What is common-agent-swarm-ops?', a: 'A self-hosted control plane for versioned, reusable CommonAgents and CommonSwarm Patterns. Teams build once, improvements propagate to all swarms, and fleet operations are fully observable.' },
+    { q: 'How does the Registry differ from a template library?', a: 'Registry items carry versioned semantic specs with aggregate eval scores from every real production run. The meta-critic proposes new versions from analyzed failures and successes, so the library actively improves as teams use it.' },
+    { q: 'What graph organizations does the canvas support?', a: 'Stateful graphs with cycles, dynamic LLM-decided routing, parallel independent sub-swarms (BIG ROWs), hierarchical supervisor-worker trees, debate/consensus nodes, and nested pattern groups — all graph-native.' },
+    { q: 'How does the UI stay truthful about live state?', a: 'All screens distinguish Live, Delayed, Reconnecting, Degraded, Stale, and Unavailable using text and icons alongside color. SSE gaps trigger a REST projection reload before any incremental events are re-applied.' },
+    { q: 'Which orchestration backends are supported?', a: 'LangGraph, CrewAI, custom asyncio, distributed Moltbot-style, containerized, and OpenAI Swarm ports — all through standard orchestration adapters. Export to YAML/JSON or Python with common-lib stubs.' },
+  ];
+
+  return (
+    _react2.default.createElement('div', { className: "min-h-screen bg-white text-stone-900"  , style: { fontFamily: 'Inter, system-ui, sans-serif' },}
+
+      /* ── NAV ─────────────────────────────────────────────────── */
+      , _react2.default.createElement('nav', { className: "sticky top-0 z-50 border-b border-stone-200 bg-white/95 backdrop-blur-md"      ,}
+        , _react2.default.createElement('div', { className: "max-w-6xl mx-auto px-4 flex items-center h-14 gap-4"      ,}
+          , _react2.default.createElement('div', { className: "flex items-center gap-2 shrink-0"   ,}
+            , _react2.default.createElement('div', { className: "w-7 h-7 rounded-lg bg-indigo-600 flex items-center justify-center shadow-sm"       ,}
+              , _react2.default.createElement(_lucidereact.Network, { size: 13, className: "text-white",} )
+            )
+            , _react2.default.createElement('span', { className: "text-sm font-semibold text-stone-900 hidden md:block"    ,}, "caso")
+          )
+          , _react2.default.createElement('div', { className: "hidden sm:flex items-center gap-1.5 text-xs text-stone-400"     ,}
+            , _react2.default.createElement('span', null, "Design System" )
+            , _react2.default.createElement(_lucidereact.ChevronRight, { size: 12,} )
+            , _react2.default.createElement('span', { className: "text-stone-700 font-medium" ,}, "UI Style Guide v2.1"   )
+          )
+          , _react2.default.createElement('div', { className: "flex-1",} )
+          , _react2.default.createElement('div', { className: "hidden lg:flex items-center gap-1 text-xs"    ,}
+            , ['Overview','Colors','Typography','Components','Patterns','Status'].map(l => (
+              _react2.default.createElement('button', { key: l, className: "px-3 py-1.5 rounded-lg font-medium text-stone-500 hover:text-stone-900 hover:bg-stone-100 transition-colors"       ,}, l)
+            ))
+          )
+          , _react2.default.createElement('button', { className: "flex items-center gap-1.5 px-4 py-2 rounded-full bg-stone-900 hover:bg-stone-700 text-white text-xs font-medium transition-colors shrink-0"            ,}, "Start Building"
+
+          )
+        )
+      )
+
+      /* ── HERO ────────────────────────────────────────────────── */
+      , _react2.default.createElement('section', { className: "max-w-6xl mx-auto px-4 pt-20 pb-16 text-center"     ,}
+        , _react2.default.createElement('div', { className: "inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-indigo-50 border border-indigo-200 text-indigo-600 text-xs font-medium mb-8"            ,}
+          , _react2.default.createElement('span', { className: "w-1.5 h-1.5 rounded-full bg-indigo-500 animate-pulse"    ,} ), "Design System · v2.1 · common-agent-swarm-ops"
+
+        )
+        , _react2.default.createElement('h1', { className: "text-5xl font-bold text-stone-900 mb-6 leading-tight tracking-tight"     ,}, "Common-first,"
+          , _react2.default.createElement('br', null ), "graph-native UI"
+        )
+        , _react2.default.createElement('p', { className: "text-xl text-stone-500 max-w-xl mx-auto leading-relaxed mb-10"     ,}, "Visual language for versioned agents, reusable patterns, governed swarm execution, and production fleet operations."
+
+        )
+        , _react2.default.createElement('div', { className: "flex items-center justify-center gap-3 flex-wrap"    ,}
+          , _react2.default.createElement('button', { className: "flex items-center gap-2 px-6 py-3 rounded-full bg-stone-900 hover:bg-stone-700 text-white text-sm font-medium transition-colors"           ,}, "Explore Components "
+              , _react2.default.createElement(_lucidereact.ArrowRight, { size: 15,} )
+          )
+          , _react2.default.createElement('button', { className: "flex items-center gap-2 px-6 py-3 rounded-full border border-stone-200 hover:border-stone-300 text-stone-600 hover:text-stone-900 text-sm font-medium transition-colors bg-white"              ,}
+            , _react2.default.createElement(_lucidereact.Layers, { size: 15,} ), " Browse Registry"
+          )
+        )
+      )
+
+      /* ── CAPABILITIES GRID ───────────────────────────────────── */
+      , _react2.default.createElement('section', { className: "bg-stone-50 border-y border-stone-200"  ,}
+        , _react2.default.createElement('div', { className: "max-w-6xl mx-auto px-4 py-16"   ,}
+          , _react2.default.createElement('p', { className: "text-xs font-semibold tracking-widest text-stone-400 uppercase text-center mb-3"      ,}, "Capabilities")
+          , _react2.default.createElement('h2', { className: "text-3xl font-bold text-stone-900 text-center mb-12 tracking-tight"     ,}, "Built for the full ops lifecycle"     )
+          , _react2.default.createElement('div', { className: "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"    ,}
+            , features.map(f => (
+              _react2.default.createElement('div', { key: f.title, className: "bg-white rounded-2xl border border-stone-200 p-6 hover:shadow-md transition-all duration-200"       ,}
+                , _react2.default.createElement('div', { className: "w-10 h-10 rounded-xl bg-indigo-50 border border-indigo-100 flex items-center justify-center text-indigo-600 mb-4"          ,}
+                  , f.icon
+                )
+                , _react2.default.createElement('h3', { className: "text-base font-semibold text-stone-900 mb-2"   ,}, f.title)
+                , _react2.default.createElement('p', { className: "text-sm text-stone-500 leading-relaxed"  ,}, f.desc)
+              )
+            ))
+          )
+        )
+      )
+
+      , _react2.default.createElement('div', { className: "max-w-6xl mx-auto px-4 py-16 space-y-24"    ,}
+
+        /* ── COLOR SYSTEM ──────────────────────────────────────── */
+        , _react2.default.createElement('section', null
+          , _react2.default.createElement('p', { className: "text-xs font-semibold tracking-widest text-stone-400 uppercase mb-2"     ,}, "Design Tokens" )
+          , _react2.default.createElement('h2', { className: "text-3xl font-bold text-stone-900 mb-3 tracking-tight"    ,}, "Color System" )
+          , _react2.default.createElement('p', { className: "text-base text-stone-500 mb-10 max-w-2xl leading-relaxed"    ,}, "Semantic surface, accent, and status tokens. Indigo/violet for shared commons primitives; amber for custom forks; status always uses text + icon + color together."                       )
+          , _react2.default.createElement('div', { className: "grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4"    ,}
+            , [
+              { swatch: 'bg-white border border-stone-200',  label: 'Base BG',          desc: 'white',      hex: '#ffffff' },
+              { swatch: 'bg-stone-50',   label: 'Surface',          desc: 'stone-50',    hex: '#fafaf9' },
+              { swatch: 'bg-stone-100',  label: 'Elevated',         desc: 'stone-100',   hex: '#f5f5f4' },
+              { swatch: 'bg-stone-200',  label: 'Border',           desc: 'stone-200',   hex: '#e7e5e4' },
+              { swatch: 'bg-stone-900',  label: 'Primary Text / CTA',desc: 'stone-900',  hex: '#1c1917' },
+              { swatch: 'bg-stone-500',  label: 'Secondary Text',   desc: 'stone-500',   hex: '#78716c' },
+              { swatch: 'bg-indigo-600', label: 'Common Accent',    desc: 'indigo-600',  hex: '#4f46e5' },
+              { swatch: 'bg-indigo-50',  label: 'Common Surface',   desc: 'indigo-50',   hex: '#eef2ff' },
+              { swatch: 'bg-violet-600', label: 'Pattern / Router', desc: 'violet-600',  hex: '#7c3aed' },
+              { swatch: 'bg-amber-500',  label: 'Custom Fork',      desc: 'amber-500',   hex: '#f59e0b' },
+              { swatch: 'bg-emerald-500',label: 'Success / Live',   desc: 'emerald-500', hex: '#10b981' },
+              { swatch: 'bg-red-500',    label: 'Error / Failed',   desc: 'red-500',     hex: '#ef4444' },
+            ].map(c => (
+              _react2.default.createElement('div', { key: c.desc, className: "rounded-2xl overflow-hidden border border-stone-200 hover:shadow-md transition-shadow bg-white"      ,}
+                , _react2.default.createElement('div', { className: `${c.swatch} h-12`,} )
+                , _react2.default.createElement('div', { className: "p-3",}
+                  , _react2.default.createElement('div', { className: "text-sm font-medium text-stone-800"  ,}, c.label)
+                  , _react2.default.createElement('div', { className: "text-xs text-stone-400 font-mono"  ,}, c.desc)
+                  , _react2.default.createElement('div', { className: "text-xs text-stone-300 font-mono"  ,}, c.hex)
+                )
+              )
+            ))
+          )
+        )
+
+        /* ── TYPOGRAPHY ────────────────────────────────────────── */
+        , _react2.default.createElement('section', null
+          , _react2.default.createElement('p', { className: "text-xs font-semibold tracking-widest text-stone-400 uppercase mb-2"     ,}, "Tokens")
+          , _react2.default.createElement('h2', { className: "text-3xl font-bold text-stone-900 mb-3 tracking-tight"    ,}, "Typography Scale" )
+          , _react2.default.createElement('p', { className: "text-base text-stone-500 mb-10 max-w-2xl leading-relaxed"    ,}, "Inter/system-ui — weight-first hierarchy, generous line-height for dense ops data, monospace for versions, IDs, and metrics."               )
+          , _react2.default.createElement('div', { className: "bg-stone-50 rounded-3xl border border-stone-200 p-8 space-y-8"     ,}
+            , [
+              { cls: 'text-4xl font-bold text-stone-900 tracking-tight', label: 'text-4xl bold · Page heroes, dashboard titles',    sample: 'Common Registry Hub' },
+              { cls: 'text-2xl font-semibold text-stone-900',             label: 'text-2xl semibold · Section headers',              sample: 'Swarm Fleet Overview' },
+              { cls: 'text-lg font-semibold text-stone-800',              label: 'text-lg semibold · Card titles, modal headers',    sample: 'VerificationLoopAgent' },
+              { cls: 'text-base text-stone-700',                          label: 'text-base · Primary body copy',                    sample: 'Common agents improve with every run across all swarms in your fleet.' },
+              { cls: 'text-sm text-stone-500',                            label: 'text-sm · Meta info, timestamps, sub-labels',      sample: 'as_of: 2026-07-20T04:12Z · corr: a3f9b1c2 · seq: 4421' },
+            ].map(t => (
+              _react2.default.createElement('div', { key: t.label, className: "pb-6 border-b border-stone-200 last:border-0 last:pb-0"    ,}
+                , _react2.default.createElement('div', { className: t.cls,}, t.sample)
+                , _react2.default.createElement('div', { className: "text-xs text-stone-400 font-mono mt-2"   ,}, t.label)
+              )
+            ))
+            , _react2.default.createElement('div', null
+              , _react2.default.createElement('span', { className: "inline-block text-sm font-mono text-indigo-600 bg-indigo-50 border border-indigo-200 px-3 py-1.5 rounded-lg"         ,}, "Common v2.3 · 12.4k runs · 94% success"
+
+              )
+              , _react2.default.createElement('div', { className: "text-xs text-stone-400 font-mono mt-2"   ,}, "font-mono · version badges, run IDs, metric inlines"       )
+            )
+          )
+        )
+
+        /* ── STATUS SYSTEM ─────────────────────────────────────── */
+        , _react2.default.createElement('section', null
+          , _react2.default.createElement('p', { className: "text-xs font-semibold tracking-widest text-stone-400 uppercase mb-2"     ,}, "System")
+          , _react2.default.createElement('h2', { className: "text-3xl font-bold text-stone-900 mb-3 tracking-tight"    ,}, "Status & Lifecycle"  )
+          , _react2.default.createElement('p', { className: "text-base text-stone-500 mb-10 max-w-2xl leading-relaxed"    ,}, "Text + dot + color — never color alone. Covers all task lifecycle and ops states including SSE reconnect, recovery, and manual escalation."                      )
+          , _react2.default.createElement('div', { className: "bg-stone-50 rounded-3xl border border-stone-200 p-8"    ,}
+            , _react2.default.createElement('div', { className: "flex flex-wrap gap-2 mb-8"   ,}
+              , Object.keys(STATUS_CFG).map(s => _react2.default.createElement(StatusPill, { key: s, status: s,} ))
+            )
+            , _react2.default.createElement('div', { className: "border-t border-stone-200 pt-6 space-y-2"   ,}
+              , [
+                { bg: 'bg-emerald-50 border-emerald-200', icon: _react2.default.createElement('span', { className: "w-2 h-2 rounded-full bg-emerald-500 animate-pulse inline-block"     ,} ), label: 'Live',              msg: 'SSE connected · as_of: just now · seq: 4421', action: null },
+                { bg: 'bg-yellow-50 border-yellow-200',   icon: _react2.default.createElement(_lucidereact.Clock, { size: 13, className: "text-yellow-600",} ),        label: 'Delayed',          msg: 'as_of: 4m ago · event queue backing up', action: 'Refresh' },
+                { bg: 'bg-orange-50 border-orange-200',   icon: _react2.default.createElement(_lucidereact.Loader2, { size: 13, className: "text-orange-600 animate-spin" ,} ), label: 'Reconnecting', msg: 'SSE gap — reloading REST projection before resubscribing', action: null },
+                { bg: 'bg-stone-100 border-stone-200',    icon: _react2.default.createElement(_lucidereact.AlertCircle, { size: 13, className: "text-stone-400",} ),   label: 'Stale',            msg: 'as_of: 23m ago · actions requiring current state disabled', action: 'Reload' },
+                { bg: 'bg-amber-50 border-amber-200',     icon: _react2.default.createElement(_lucidereact.AlertTriangle, { size: 13, className: "text-amber-600",} ), label: 'Recovery Required', msg: 'manual_recovery_required · corr: a3f9b1 · escalation available', action: 'Escalate' },
+              ].map(e => (
+                _react2.default.createElement('div', { key: e.label, className: `flex items-center gap-3 px-4 py-3 rounded-xl border ${e.bg}`,}
+                  , _react2.default.createElement('span', { className: "shrink-0 flex items-center"  ,}, e.icon)
+                  , _react2.default.createElement('span', { className: "font-medium text-stone-800 text-sm shrink-0"   ,}, e.label)
+                  , _react2.default.createElement('span', { className: "text-stone-500 text-xs flex-1 min-w-0 hidden sm:block"     ,}, e.msg)
+                  , e.action && _react2.default.createElement('button', { className: "shrink-0 text-xs text-indigo-600 hover:text-indigo-800 font-medium transition-colors"     ,}, e.action, " →" )
+                )
+              ))
+            )
+          )
+        )
+
+        /* ── BADGES ────────────────────────────────────────────── */
+        , _react2.default.createElement('section', null
+          , _react2.default.createElement('p', { className: "text-xs font-semibold tracking-widest text-stone-400 uppercase mb-2"     ,}, "Tokens")
+          , _react2.default.createElement('h2', { className: "text-3xl font-bold text-stone-900 mb-3 tracking-tight"    ,}, "Badges & Tags"  )
+          , _react2.default.createElement('p', { className: "text-base text-stone-500 mb-10 max-w-2xl leading-relaxed"    ,}, "Provenance, domain, quality, and governance indicators — all inline, readable without color dependency."            )
+          , _react2.default.createElement('div', { className: "bg-stone-50 rounded-3xl border border-stone-200 p-8"    ,}
+            , _react2.default.createElement('div', { className: "flex flex-wrap gap-2"  ,}
+              , _react2.default.createElement(CommonBadge, { version: "2.3", runs: "12.4k runs" , success: "94",} )
+              , _react2.default.createElement('span', { className: "inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-amber-50 border border-amber-200 text-amber-700 text-xs font-medium"           ,}, _react2.default.createElement(_lucidereact.GitFork, { size: 11,} ), "Fork of Common v2.3"   )
+              , _react2.default.createElement('span', { className: "inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-violet-50 border border-violet-200 text-violet-700 text-xs font-medium"           ,}, _react2.default.createElement(_lucidereact.Workflow, { size: 11,} ), "Parallel Indep. v1.4"  )
+              , _react2.default.createElement('span', { className: "inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs font-medium"           ,}, _react2.default.createElement(_lucidereact.CheckCircle, { size: 11,} ), "Verified Output" )
+              , _react2.default.createElement('span', { className: "inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-sky-50 border border-sky-200 text-sky-700 text-xs font-medium"           ,}, _react2.default.createElement(_lucidereact.Shield, { size: 11,} ), "High Verification" )
+              , _react2.default.createElement('span', { className: "inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-stone-100 border border-stone-200 text-stone-600 text-xs font-medium"           ,}, _react2.default.createElement(_lucidereact.Rocket, { size: 11,} ), "Moltbot Compatible" )
+              , _react2.default.createElement('span', { className: "inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-red-50 border border-red-200 text-red-600 text-xs font-medium"           ,}, _react2.default.createElement(_lucidereact.AlertTriangle, { size: 11,} ), "Deprecated")
+              , _react2.default.createElement('span', { className: "inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-stone-100 border border-stone-200 text-stone-500 text-xs font-mono"           ,}, "corr: a3f9b1c2" )
+              , _react2.default.createElement('span', { className: "inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-indigo-50 border border-indigo-200 text-indigo-600 text-xs font-medium"           ,}, _react2.default.createElement(_lucidereact.Activity, { size: 11,} ), "847 runs in your swarms"    )
+            )
+          )
+        )
+
+        /* ── BUTTONS ───────────────────────────────────────────── */
+        , _react2.default.createElement('section', null
+          , _react2.default.createElement('p', { className: "text-xs font-semibold tracking-widest text-stone-400 uppercase mb-2"     ,}, "Components")
+          , _react2.default.createElement('h2', { className: "text-3xl font-bold text-stone-900 mb-3 tracking-tight"    ,}, "Actions & Buttons"  )
+          , _react2.default.createElement('p', { className: "text-base text-stone-500 mb-10 max-w-2xl leading-relaxed"    ,}, "Filled → outlined → ghost hierarchy. Dark primary CTAs, semantic fills for destructive/positive actions, explicit disabled states for stale projections and pending commands."                      )
+          , _react2.default.createElement('div', { className: "bg-stone-50 rounded-3xl border border-stone-200 p-8 space-y-7"     ,}
+            , _react2.default.createElement('div', null
+              , _react2.default.createElement('div', { className: "text-xs font-semibold text-stone-400 uppercase tracking-wider mb-4"     ,}, "Filled / Primary"  )
+              , _react2.default.createElement('div', { className: "flex flex-wrap gap-3"  ,}
+                , _react2.default.createElement('button', { className: "flex items-center gap-2 px-5 py-2.5 rounded-full bg-stone-900 hover:bg-stone-700 text-white text-sm font-medium transition-colors"           ,}, _react2.default.createElement(_lucidereact.Plus, { size: 15,} ), "Instantiate Common" )
+                , _react2.default.createElement('button', { className: "flex items-center gap-2 px-5 py-2.5 rounded-full bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-medium transition-colors"           ,}, _react2.default.createElement(_lucidereact.Sparkles, { size: 15,} ), "Propose Improvement" )
+                , _react2.default.createElement('button', { className: "flex items-center gap-2 px-5 py-2.5 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-medium transition-colors"           ,}, _react2.default.createElement(_lucidereact.Rocket, { size: 15,} ), "Safe Rollout" )
+                , _react2.default.createElement('button', { className: "flex items-center gap-2 px-5 py-2.5 rounded-full bg-red-600 hover:bg-red-700 text-white text-sm font-medium transition-colors"           ,}, _react2.default.createElement(_lucidereact.X, { size: 15,} ), "Rollback")
+              )
+            )
+            , _react2.default.createElement('div', null
+              , _react2.default.createElement('div', { className: "text-xs font-semibold text-stone-400 uppercase tracking-wider mb-4"     ,}, "Outlined / Secondary"  )
+              , _react2.default.createElement('div', { className: "flex flex-wrap gap-3"  ,}
+                , _react2.default.createElement('button', { className: "flex items-center gap-2 px-4 py-2 rounded-full border border-stone-200 hover:border-stone-300 text-stone-700 text-sm font-medium bg-white hover:bg-stone-50 transition-colors"              ,}, _react2.default.createElement(_lucidereact.Eye, { size: 15,} ), "View Registry" )
+                , _react2.default.createElement('button', { className: "flex items-center gap-2 px-4 py-2 rounded-full border border-indigo-200 hover:border-indigo-300 text-indigo-700 text-sm font-medium bg-white hover:bg-indigo-50 transition-colors"              ,}, _react2.default.createElement(_lucidereact.GitMerge, { size: 15,} ), "A/B Test" )
+                , _react2.default.createElement('button', { className: "flex items-center gap-2 px-4 py-2 rounded-full border border-amber-200 text-amber-700 text-sm font-medium bg-white hover:bg-amber-50 transition-colors"             ,}, _react2.default.createElement(_lucidereact.GitFork, { size: 15,} ), "Fork Custom" )
+                , _react2.default.createElement('button', { className: "flex items-center gap-2 px-4 py-2 rounded-full border border-violet-200 text-violet-700 text-sm font-medium bg-white hover:bg-violet-50 transition-colors"             ,}, _react2.default.createElement(_lucidereact.Brain, { size: 15,} ), "Meta-Critique")
+              )
+            )
+            , _react2.default.createElement('div', null
+              , _react2.default.createElement('div', { className: "text-xs font-semibold text-stone-400 uppercase tracking-wider mb-4"     ,}, "Ghost / Disabled / Pending"    )
+              , _react2.default.createElement('div', { className: "flex flex-wrap gap-3"  ,}
+                , _react2.default.createElement('button', { className: "flex items-center gap-2 px-4 py-2 rounded-full text-stone-500 hover:text-stone-800 hover:bg-stone-100 text-sm font-medium transition-colors"           ,}, _react2.default.createElement(_lucidereact.RefreshCw, { size: 15,} ), "Refresh")
+                , _react2.default.createElement('button', { disabled: true, className: "flex items-center gap-2 px-5 py-2.5 rounded-full bg-stone-100 text-stone-400 text-sm font-medium cursor-not-allowed"          ,}, _react2.default.createElement(_lucidereact.Lock, { size: 15,} ), "Stale — Refresh First"   )
+                , _react2.default.createElement('button', { disabled: true, className: "flex items-center gap-2 px-5 py-2.5 rounded-full border border-stone-200 text-stone-400 text-sm font-medium cursor-not-allowed"           ,}, _react2.default.createElement(_lucidereact.Loader2, { size: 15, className: "animate-spin",} ), "Command Pending…" )
+              )
+            )
+          )
+        )
+
+        /* ── REGISTRY AGENT CARDS ──────────────────────────────── */
+        , _react2.default.createElement('section', null
+          , _react2.default.createElement('p', { className: "text-xs font-semibold tracking-widest text-stone-400 uppercase mb-2"     ,}, "Components")
+          , _react2.default.createElement('h2', { className: "text-3xl font-bold text-stone-900 mb-3 tracking-tight"    ,}, "Registry Agent Cards"  )
+          , _react2.default.createElement('p', { className: "text-base text-stone-500 mb-10 max-w-2xl leading-relaxed"    ,}, "Provenance-first, stats-rich, action-ready. Clean white cards with light indigo accent marking shared commons identity."             )
+          , _react2.default.createElement('div', { className: "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"    ,}
+            , [
+              { name: 'MarketSentimentAgent', version: '2.1', domain: 'trading analysis',    runs: '12.4k', success: 94, tokens: '1.2k', trend: '+8% token efficiency' },
+              { name: 'ContentDirectorAgent', version: '1.8', domain: 'creative strategy',   runs: '8.7k',  success: 91, tokens: '2.1k', trend: '+5% quality score' },
+              { name: 'VerificationLoopAgent',version: '3.0', domain: 'output verification', runs: '31.2k', success: 97, tokens: '640',   trend: '+12% pass rate', isNew: true },
+            ].map(a => (
+              _react2.default.createElement('div', { key: a.name, className: "group bg-white rounded-2xl border border-stone-200 p-5 hover:shadow-lg hover:border-stone-300 transition-all duration-200 cursor-pointer"          ,}
+                , _react2.default.createElement('div', { className: "flex items-start justify-between mb-4"   ,}
+                  , _react2.default.createElement('div', { className: "flex items-center gap-3"  ,}
+                    , _react2.default.createElement('div', { className: "w-10 h-10 rounded-xl bg-indigo-50 border border-indigo-100 flex items-center justify-center shrink-0"         ,}
+                      , _react2.default.createElement(_lucidereact.Bot, { size: 18, className: "text-indigo-600",} )
+                    )
+                    , _react2.default.createElement('div', null
+                      , _react2.default.createElement('div', { className: "flex items-center gap-2 mb-1 flex-wrap"    ,}
+                        , _react2.default.createElement('span', { className: "text-sm font-semibold text-stone-900"  ,}, a.name)
+                        , a.isNew && _react2.default.createElement('span', { className: "px-1.5 py-0.5 rounded-md text-xs bg-emerald-50 text-emerald-700 border border-emerald-200"       ,}, "New")
+                      )
+                      , _react2.default.createElement(CommonBadge, { version: a.version,} )
+                    )
+                  )
+                  , _react2.default.createElement('button', { className: "opacity-0 group-hover:opacity-100 transition-opacity p-1.5 rounded-lg hover:bg-stone-100"     ,}
+                    , _react2.default.createElement(_lucidereact.MoreHorizontal, { size: 14, className: "text-stone-400",} )
+                  )
+                )
+                , _react2.default.createElement('p', { className: "text-xs text-stone-500 mb-4 leading-relaxed"   ,}, "Specialized for "
+                    , _react2.default.createElement('span', { className: "text-stone-700 font-medium" ,}, a.domain), " — standardized I/O, OpenAI-compatible tool calling."
+                )
+                , _react2.default.createElement('div', { className: "grid grid-cols-3 gap-2 mb-4"   ,}
+                  , [['Runs', a.runs, ''], ['Success', `${a.success}%`, 'text-emerald-600 font-semibold'], ['Avg Tok', a.tokens, '']].map(([l, v, c]) => (
+                    _react2.default.createElement('div', { key: l, className: "bg-stone-50 rounded-xl p-2.5 text-center border border-stone-100"     ,}
+                      , _react2.default.createElement('div', { className: "text-xs text-stone-400 mb-1"  ,}, l)
+                      , _react2.default.createElement('div', { className: `text-sm font-semibold text-stone-800 ${c}`,}, v)
+                    )
+                  ))
+                )
+                , _react2.default.createElement('div', { className: "flex items-center justify-between"  ,}
+                  , _react2.default.createElement('span', { className: "flex items-center gap-1 text-xs text-emerald-600"    ,}, _react2.default.createElement(_lucidereact.TrendingUp, { size: 11,} ), a.trend)
+                  , _react2.default.createElement('div', { className: "flex gap-1.5" ,}
+                    , _react2.default.createElement('button', { className: "px-3 py-1.5 rounded-full text-xs bg-stone-900 text-white hover:bg-stone-700 transition-colors font-medium"        ,}, "Instantiate")
+                    , _react2.default.createElement('button', { className: "p-1.5 rounded-full border border-stone-200 hover:bg-stone-50 transition-colors"     ,}, _react2.default.createElement(_lucidereact.GitFork, { size: 12, className: "text-stone-500",} ))
+                  )
+                )
+              )
+            ))
+          )
+        )
+
+        /* ── SWARM FLEET CARDS ─────────────────────────────────── */
+        , _react2.default.createElement('section', null
+          , _react2.default.createElement('p', { className: "text-xs font-semibold tracking-widest text-stone-400 uppercase mb-2"     ,}, "Components")
+          , _react2.default.createElement('h2', { className: "text-3xl font-bold text-stone-900 mb-3 tracking-tight"    ,}, "Fleet Swarm Cards"  )
+          , _react2.default.createElement('p', { className: "text-base text-stone-500 mb-10 max-w-2xl leading-relaxed"    ,}, "Live status, common linkage, and cost rate — compact ops-first layout for monitoring swarm fleets at a glance."                 )
+          , _react2.default.createElement('div', { className: "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"    ,}
+            , [
+              { name: 'TradingResearch α',  status: 'running',     pattern: 'Parallel Indep. + Verify v1.4',  agents: 8, common: 7, cost: '$0.14/min', costCls: 'text-amber-600' },
+              { name: 'ContentPipeline β',  status: 'live',        pattern: 'Hierarchical Supervisor v2.0',    agents: 5, common: 5, cost: '$0.06/min', costCls: 'text-amber-600' },
+              { name: 'DSE Tutor Fleet',    status: 'delayed',     pattern: 'Verification Loop v1.2',           agents: 6, common: 4, cost: '$0.03/min', costCls: 'text-amber-600' },
+              { name: 'LegacyModernizer',   status: 'self_refine', pattern: 'Map-Reduce + Verifier v1.1',       agents: 4, common: 3, cost: '$0.08/min', costCls: 'text-amber-600' },
+              { name: 'DebateConsensus',    status: 'queued',      pattern: 'Debate & Consensus v1.0',          agents: 7, common: 6, cost: '—',         costCls: 'text-stone-400' },
+              { name: 'BatchProcessor',     status: 'recovery',    pattern: 'Dynamic Router Graph v2.2',        agents: 9, common: 8, cost: 'paused',    costCls: 'text-stone-400' },
+            ].map(s => (
+              _react2.default.createElement('div', { key: s.name, className: "bg-white rounded-2xl border border-stone-200 p-4 hover:shadow-md transition-all"      ,}
+                , _react2.default.createElement('div', { className: "flex items-start justify-between mb-2"   ,}
+                  , _react2.default.createElement('div', null
+                    , _react2.default.createElement('span', { className: "text-sm font-semibold text-stone-900 block mb-1"    ,}, s.name)
+                    , _react2.default.createElement(StatusPill, { status: s.status,} )
+                  )
+                  , _react2.default.createElement('button', { className: "p-1.5 rounded-lg hover:bg-stone-50 transition-colors"   ,}
+                    , _react2.default.createElement(_lucidereact.Eye, { size: 14, className: "text-stone-400",} )
+                  )
+                )
+                , _react2.default.createElement('p', { className: "text-xs text-indigo-600 font-medium mt-2 mb-3"    ,}, s.pattern)
+                , _react2.default.createElement('div', { className: "flex items-center gap-3 text-xs text-stone-400 flex-wrap"     ,}
+                  , _react2.default.createElement('span', { className: "flex items-center gap-1"  ,}, _react2.default.createElement(_lucidereact.Bot, { size: 11,} ), s.agents, " agents" )
+                  , _react2.default.createElement('span', { className: "flex items-center gap-1"  ,}, _react2.default.createElement(_lucidereact.Link, { size: 11,} ), s.common, " common" )
+                  , _react2.default.createElement('span', { className: `flex items-center gap-1 font-medium ${s.costCls}`,}, _react2.default.createElement(_lucidereact.Zap, { size: 11,} ), s.cost)
+                )
+              )
+            ))
+          )
+        )
+
+        /* ── CANVAS NODES ──────────────────────────────────────── */
+        , _react2.default.createElement('section', null
+          , _react2.default.createElement('p', { className: "text-xs font-semibold tracking-widest text-stone-400 uppercase mb-2"     ,}, "Components")
+          , _react2.default.createElement('h2', { className: "text-3xl font-bold text-stone-900 mb-3 tracking-tight"    ,}, "Canvas Graph Nodes"  )
+          , _react2.default.createElement('p', { className: "text-base text-stone-500 mb-10 max-w-2xl leading-relaxed"    ,}, "Common-linked (indigo solid border) · custom fork (amber dashed) · verifier cycle · dynamic router diamond · supervisor hub · parallel group."                     )
+          , _react2.default.createElement('div', { className: "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"    ,}
+
+            , _react2.default.createElement('div', { className: "bg-white rounded-2xl border-2 border-indigo-200 p-4 shadow-sm"     ,}
+              , _react2.default.createElement('div', { className: "flex items-center justify-between mb-2"   ,}
+                , _react2.default.createElement('div', { className: "flex items-center gap-2"  ,}
+                  , _react2.default.createElement('div', { className: "w-8 h-8 rounded-xl bg-indigo-50 border border-indigo-200 flex items-center justify-center"        ,}, _react2.default.createElement(_lucidereact.Bot, { size: 15, className: "text-indigo-600",} ))
+                  , _react2.default.createElement('span', { className: "text-sm font-semibold text-stone-900"  ,}, "MarketSentimentAgent")
+                )
+                , _react2.default.createElement(StatusPill, { status: "running",} )
+              )
+              , _react2.default.createElement(CommonBadge, { version: "2.1",} )
+              , _react2.default.createElement('div', { className: "flex items-center gap-3 mt-2 text-xs text-stone-400"     ,}, _react2.default.createElement('span', null, "tok: 847" ), _react2.default.createElement('span', null, "·"), _react2.default.createElement('span', null, "iter 2/3" ))
+              , _react2.default.createElement('p', { className: "mt-2 text-xs text-indigo-400 italic"   ,}, "Linked to Common Registry"   )
+            )
+
+            , _react2.default.createElement('div', { className: "bg-white rounded-2xl border-2 border-dashed border-amber-300 p-4"     ,}
+              , _react2.default.createElement('div', { className: "flex items-center justify-between mb-2"   ,}
+                , _react2.default.createElement('div', { className: "flex items-center gap-2"  ,}
+                  , _react2.default.createElement('div', { className: "w-8 h-8 rounded-xl bg-amber-50 border border-amber-200 flex items-center justify-center"        ,}, _react2.default.createElement(_lucidereact.GitFork, { size: 15, className: "text-amber-600",} ))
+                  , _react2.default.createElement('span', { className: "text-sm font-semibold text-stone-900"  ,}, "CustomReportAgent")
+                )
+                , _react2.default.createElement(StatusPill, { status: "complete",} )
+              )
+              , _react2.default.createElement('span', { className: "inline-flex items-center gap-1 px-2 py-0.5 rounded-lg bg-amber-50 border border-amber-200 text-amber-700 text-xs"          ,}, _react2.default.createElement(_lucidereact.GitFork, { size: 10,} ), "Fork of Common v2.3"   )
+              , _react2.default.createElement('p', { className: "mt-2 text-xs text-amber-500"  ,}, "Custom — contribute back?"   )
+            )
+
+            , _react2.default.createElement('div', { className: "bg-white rounded-2xl border-2 border-emerald-200 p-4"    ,}
+              , _react2.default.createElement('div', { className: "flex items-center justify-between mb-3"   ,}
+                , _react2.default.createElement('div', { className: "flex items-center gap-2"  ,}
+                  , _react2.default.createElement('div', { className: "w-8 h-8 rounded-full bg-emerald-50 border border-emerald-200 flex items-center justify-center"        ,}, _react2.default.createElement(_lucidereact.CheckCheck, { size: 15, className: "text-emerald-600",} ))
+                  , _react2.default.createElement('span', { className: "text-sm font-semibold text-stone-900"  ,}, "VerifierNode")
+                )
+                , _react2.default.createElement('span', { className: "text-xs text-emerald-600 font-mono font-medium"   ,}, "↻ iter 3/5"  )
+              )
+              , _react2.default.createElement('div', { className: "flex items-center gap-2"  ,}
+                , _react2.default.createElement('div', { className: "flex-1 bg-stone-100 rounded-full h-1.5"   ,}, _react2.default.createElement('div', { className: "bg-emerald-500 rounded-full h-1.5 w-3/5"   ,} ))
+                , _react2.default.createElement('span', { className: "text-xs text-stone-500" ,}, "60%")
+              )
+              , _react2.default.createElement('p', { className: "mt-2 text-xs text-stone-400"  ,}, "Cycle edge ↻ feeds back to agent"      )
+            )
+
+            , _react2.default.createElement('div', { className: "bg-white rounded-2xl border-2 border-violet-200 p-4"    ,}
+              , _react2.default.createElement('div', { className: "flex items-center gap-2 mb-3"   ,}
+                , _react2.default.createElement('div', { className: "w-8 h-8 bg-violet-50 border border-violet-200 rotate-45 rounded-lg flex items-center justify-center"         ,}
+                  , _react2.default.createElement(_lucidereact.GitBranch, { size: 13, className: "text-violet-600 -rotate-45" ,} )
+                )
+                , _react2.default.createElement('span', { className: "text-sm font-semibold text-violet-800"  ,}, "Dynamic Router" )
+                , _react2.default.createElement('span', { className: "text-xs text-stone-400" ,}, "LLM-decided")
+              )
+              , _react2.default.createElement('div', { className: "flex gap-1.5 flex-wrap"  ,}
+                , ['→ Research', '→ Synthesis', '→ Escalate'].map(b => (
+                  _react2.default.createElement('span', { key: b, className: "px-2 py-1 rounded-lg bg-stone-50 text-xs text-stone-600 border border-stone-200"       ,}, b)
+                ))
+              )
+            )
+
+            , _react2.default.createElement('div', { className: "bg-white rounded-2xl border-2 border-amber-200 p-4"    ,}
+              , _react2.default.createElement('div', { className: "flex items-center gap-2 mb-3"   ,}
+                , _react2.default.createElement('div', { className: "w-8 h-8 rounded-full bg-amber-50 border border-amber-200 flex items-center justify-center"        ,}, _react2.default.createElement(_lucidereact.Users, { size: 15, className: "text-amber-600",} ))
+                , _react2.default.createElement('span', { className: "text-sm font-semibold text-stone-900"  ,}, "Supervisor")
+                , _react2.default.createElement(StatusPill, { status: "running",} )
+              )
+              , _react2.default.createElement('div', { className: "flex gap-1.5 flex-wrap"  ,}
+                , ['↓ Worker A', '↓ Worker B', '↓ Worker C'].map(w => (
+                  _react2.default.createElement('span', { key: w, className: "px-2 py-1 rounded-lg bg-stone-50 text-xs text-stone-600 border border-stone-200"       ,}, w)
+                ))
+              )
+            )
+
+            , _react2.default.createElement('div', { className: "bg-indigo-50 rounded-2xl border-2 border-indigo-100 p-4"    ,}
+              , _react2.default.createElement('div', { className: "flex items-center justify-between mb-3"   ,}
+                , _react2.default.createElement('span', { className: "text-sm font-semibold text-indigo-800"  ,}, "⊞ Parallel Sub-Swarm"  )
+                , _react2.default.createElement('span', { className: "text-xs text-stone-400" ,}, "BIG ROWs" )
+              )
+              , _react2.default.createElement('div', { className: "grid grid-cols-3 gap-2 mb-2"   ,}
+                , ['Shard 1', 'Shard 2', 'Shard 3'].map(s => (
+                  _react2.default.createElement('div', { key: s, className: "bg-white border border-indigo-100 rounded-xl p-2 text-center"     ,}
+                    , _react2.default.createElement('div', { className: "w-4 h-4 rounded-md bg-indigo-100 mx-auto mb-1"     ,} )
+                    , _react2.default.createElement('span', { className: "text-xs text-stone-500" ,}, s)
+                  )
+                ))
+              )
+              , _react2.default.createElement('p', { className: "text-xs text-indigo-500" ,}, "Parallel Indep. Pattern v1.4"   )
+            )
+
+          )
+        )
+
+        /* ── PATTERN CARDS ─────────────────────────────────────── */
+        , _react2.default.createElement('section', null
+          , _react2.default.createElement('p', { className: "text-xs font-semibold tracking-widest text-stone-400 uppercase mb-2"     ,}, "Components")
+          , _react2.default.createElement('h2', { className: "text-3xl font-bold text-stone-900 mb-3 tracking-tight"    ,}, "Common Swarm Pattern Cards"   )
+          , _react2.default.createElement('p', { className: "text-base text-stone-500 mb-10 max-w-2xl leading-relaxed"    ,}, "Mini-graph previews in the composition palette — instantiate battle-tested patterns with real aggregate metrics from production swarms."                )
+          , _react2.default.createElement('div', { className: "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"    ,}
+            , [
+              {
+                icon: '⊞', name: 'Parallel Independent', border: 'border-indigo-200', bg: 'bg-white', btnCls: 'bg-stone-900 text-white hover:bg-stone-700',
+                desc: 'Multiple independent sub-swarms process in parallel — BIG ROWs visual. Ideal for sharded analysis and map-reduce.',
+                metrics: { success: '92%', swarms: 234, tokens: '3.2k' }, tags: ['map-reduce', 'scale-out'],
+                preview: (
+                  _react2.default.createElement('div', { className: "flex items-center justify-center gap-3 py-2"    ,}
+                    , ['A','B','C'].map(l => _react2.default.createElement('div', { key: l, className: "w-9 h-9 rounded-xl border-2 border-indigo-200 bg-indigo-50 flex items-center justify-center text-sm font-bold text-indigo-600"           ,}, l))
+                  )
+                ),
+              },
+              {
+                icon: '↻', name: 'Verification Loop', border: 'border-emerald-200', bg: 'bg-white', btnCls: 'bg-emerald-700 text-white hover:bg-emerald-600',
+                desc: 'Iterative refinement with verifier cycling back until quality threshold passed. Your N1ch01as self-refine style at scale.',
+                metrics: { success: '97%', swarms: 189, tokens: '1.8k' }, tags: ['self-refine', 'quality'],
+                preview: (
+                  _react2.default.createElement('div', { className: "flex items-center justify-center gap-2 py-2"    ,}
+                    , _react2.default.createElement('div', { className: "w-12 h-9 rounded-xl border-2 border-stone-200 bg-stone-50 flex items-center justify-center text-xs text-stone-500 font-medium"           ,}, "Agent")
+                    , _react2.default.createElement(_lucidereact.ArrowRight, { size: 12, className: "text-stone-300",} )
+                    , _react2.default.createElement('div', { className: "w-12 h-9 rounded-xl border-2 border-emerald-200 bg-emerald-50 flex items-center justify-center text-xs text-emerald-600 font-medium"           ,}, "Verify")
+                    , _react2.default.createElement('span', { className: "text-lg text-emerald-400 font-light"  ,}, "↺")
+                  )
+                ),
+              },
+              {
+                icon: '◇', name: 'Dynamic Router Graph', border: 'border-violet-200', bg: 'bg-white', btnCls: 'bg-violet-600 text-white hover:bg-violet-700',
+                desc: 'LLM router dynamically selects next node at runtime — stateful, conditional branching for complex task flows.',
+                metrics: { success: '89%', swarms: 112, tokens: '2.4k' }, tags: ['dynamic', 'stateful'],
+                preview: (
+                  _react2.default.createElement('div', { className: "flex items-center justify-center gap-3 py-2"    ,}
+                    , _react2.default.createElement('div', { className: "w-9 h-9 border-2 border-violet-200 bg-violet-50 rotate-45 rounded-lg flex items-center justify-center"         ,}
+                      , _react2.default.createElement('span', { className: "text-violet-600 text-xs -rotate-45 font-bold"   ,}, "◇")
+                    )
+                    , _react2.default.createElement('div', { className: "flex flex-col gap-1.5"  ,}
+                      , ['→ B1','→ B2'].map(b => _react2.default.createElement('div', { key: b, className: "w-12 h-7 rounded-lg border border-stone-200 bg-stone-50 flex items-center justify-center text-xs text-stone-500"          ,}, b))
+                    )
+                  )
+                ),
+              },
+            ].map(p => (
+              _react2.default.createElement('div', { key: p.name, className: `bg-white rounded-2xl border-2 ${p.border} p-5 hover:shadow-md transition-all`,}
+                , _react2.default.createElement('div', { className: "flex items-center gap-2 mb-3"   ,}
+                  , _react2.default.createElement('span', { className: "text-xl",}, p.icon)
+                  , _react2.default.createElement('span', { className: "text-base font-semibold text-stone-900"  ,}, p.name)
+                )
+                , _react2.default.createElement('div', { className: "bg-stone-50 rounded-xl mb-4"  ,}, p.preview)
+                , _react2.default.createElement('p', { className: "text-sm text-stone-500 mb-4 leading-relaxed"   ,}, p.desc)
+                , _react2.default.createElement('div', { className: "flex items-center gap-3 text-xs text-stone-500 mb-4"     ,}
+                  , _react2.default.createElement('span', { className: "text-emerald-600 font-medium" ,}, p.metrics.success)
+                  , _react2.default.createElement('span', { className: "text-stone-300",}, "·")
+                  , _react2.default.createElement('span', null, p.metrics.swarms, " swarms" )
+                  , _react2.default.createElement('span', { className: "text-stone-300",}, "·")
+                  , _react2.default.createElement('span', null, p.metrics.tokens, " avg" )
+                )
+                , _react2.default.createElement('div', { className: "flex gap-1.5 mb-4"  ,}
+                  , p.tags.map(t => _react2.default.createElement('span', { key: t, className: "px-2 py-0.5 rounded-lg bg-stone-100 text-stone-500 text-xs border border-stone-200"       ,}, t))
+                )
+                , _react2.default.createElement('button', { className: `w-full py-2.5 rounded-full text-sm font-medium transition-colors ${p.btnCls}`,}, "Instantiate in Canvas"  )
+              )
+            ))
+          )
+        )
+
+        /* ── AGENT DETAIL PANEL ────────────────────────────────── */
+        , _react2.default.createElement('section', null
+          , _react2.default.createElement('p', { className: "text-xs font-semibold tracking-widest text-stone-400 uppercase mb-2"     ,}, "Components")
+          , _react2.default.createElement('h2', { className: "text-3xl font-bold text-stone-900 mb-3 tracking-tight"    ,}, "Agent Detail Panel"  )
+          , _react2.default.createElement('p', { className: "text-base text-stone-500 mb-10 max-w-2xl leading-relaxed"    ,}, "Registry-centric, cross-swarm tabs: history · config · playground · knowledge · ops. The living view for any common primitive."                  )
+          , _react2.default.createElement('div', { className: "bg-white rounded-3xl border border-stone-200 overflow-hidden shadow-sm"     ,}
+            , _react2.default.createElement('div', { className: "px-6 pt-6 pb-5 border-b border-stone-200 bg-stone-50"     ,}
+              , _react2.default.createElement('div', { className: "flex items-start justify-between gap-4 flex-wrap"    ,}
+                , _react2.default.createElement('div', { className: "flex items-center gap-4"  ,}
+                  , _react2.default.createElement('div', { className: "w-12 h-12 rounded-2xl bg-indigo-50 border border-indigo-100 flex items-center justify-center shrink-0"         ,}
+                    , _react2.default.createElement(_lucidereact.Bot, { size: 22, className: "text-indigo-600",} )
+                  )
+                  , _react2.default.createElement('div', null
+                    , _react2.default.createElement('div', { className: "flex items-center gap-3 mb-1.5 flex-wrap"    ,}
+                      , _react2.default.createElement('h3', { className: "text-lg font-semibold text-stone-900"  ,}, "VerificationLoopAgent")
+                      , _react2.default.createElement(CommonBadge, { version: "3.0",} )
+                      , _react2.default.createElement(StatusPill, { status: "live",} )
+                    )
+                    , _react2.default.createElement('div', { className: "flex items-center gap-4 text-xs text-stone-400 flex-wrap"     ,}
+                      , _react2.default.createElement('span', { className: "flex items-center gap-1"  ,}, _react2.default.createElement(_lucidereact.Activity, { size: 11,} ), "31.2k runs · 47 swarms"    )
+                      , _react2.default.createElement('span', { className: "flex items-center gap-1 text-emerald-600 font-medium"    ,}, _react2.default.createElement(_lucidereact.TrendingUp, { size: 11,} ), "97% success" )
+                      , _react2.default.createElement('span', { className: "flex items-center gap-1 text-amber-600"   ,}, _react2.default.createElement(_lucidereact.Zap, { size: 11,} ), "avg 640 tokens"  )
+                    )
+                  )
+                )
+                , _react2.default.createElement('button', { className: "flex items-center gap-2 px-4 py-2 rounded-full bg-violet-600 hover:bg-violet-700 text-white text-xs font-medium transition-colors shrink-0"            ,}
+                  , _react2.default.createElement(_lucidereact.Sparkles, { size: 13,} ), "Propose Improvement"
+                )
+              )
+            )
+            , _react2.default.createElement('div', { className: "flex border-b border-stone-200 px-6 overflow-x-auto bg-white"     ,}
+              , [['history','Instance History'],['config','Config / Spec'],['playground','Playground'],['knowledge','Knowledge'],['ops','Ops & Rollout']].map(([id, label]) => (
+                _react2.default.createElement('button', { key: id, onClick: () => setActiveAgentTab(id),
+                  className: `px-4 py-3 text-xs font-medium border-b-2 transition-colors whitespace-nowrap ${
+                    activeAgentTab === id ? 'border-stone-900 text-stone-900' : 'border-transparent text-stone-400 hover:text-stone-700'
+                  }`,}
+                  , label
+                )
+              ))
+            )
+            , _react2.default.createElement('div', { className: "p-6",}
+              , activeAgentTab === 'history' && (
+                _react2.default.createElement('div', { className: "space-y-2",}
+                  , [
+                    { swarm: 'TradingResearch α', run: '#run-4421', status: 'complete',    tokens: 612, ago: '2m ago' },
+                    { swarm: 'ContentPipeline β', run: '#run-4418', status: 'self_refine', tokens: 780, ago: '8m ago' },
+                    { swarm: 'DSE Tutor Fleet',   run: '#run-4401', status: 'complete',    tokens: 598, ago: '1h ago' },
+                    { swarm: 'LegacyModernizer',  run: '#run-4388', status: 'failed',      tokens: 1200, ago: '3h ago' },
+                  ].map(r => (
+                    _react2.default.createElement('div', { key: r.run, className: "flex items-center justify-between py-3 px-4 rounded-xl bg-stone-50 border border-stone-200 hover:bg-white hover:shadow-sm transition-all cursor-pointer"            ,}
+                      , _react2.default.createElement('div', { className: "flex items-center gap-3 flex-wrap"   ,}
+                        , _react2.default.createElement(StatusPill, { status: r.status,} )
+                        , _react2.default.createElement('span', { className: "text-sm font-medium text-stone-800"  ,}, r.swarm)
+                        , _react2.default.createElement('span', { className: "text-xs text-stone-400 font-mono hidden sm:block"    ,}, r.run)
+                      )
+                      , _react2.default.createElement('div', { className: "flex items-center gap-3 text-xs text-stone-400 shrink-0"     ,}
+                        , _react2.default.createElement('span', null, r.tokens, " tok" )
+                        , _react2.default.createElement('span', { className: "hidden sm:block" ,}, r.ago)
+                        , _react2.default.createElement(_lucidereact.ChevronRight, { size: 14, className: "text-stone-300",} )
+                      )
+                    )
+                  ))
+                )
+              )
+              , activeAgentTab === 'config' && (
+                _react2.default.createElement('div', { className: "grid grid-cols-1 sm:grid-cols-2 gap-3"   ,}
+                  , [['Role','Verification Loop Orchestrator'],['Model','grok-3 / gpt-4o (configurable)'],['Max Iterations','5 (configurable per instance)'],['Output Schema','VerificationResult (standard)'],['Eval Rubric','CommonVerificationRubric v1.2'],['Tool Calling','OpenAI-compatible JSON schema']].map(([k,v]) => (
+                    _react2.default.createElement('div', { key: k, className: "p-4 rounded-xl bg-stone-50 border border-stone-200"    ,}
+                      , _react2.default.createElement('div', { className: "text-xs text-stone-400 mb-1"  ,}, k)
+                      , _react2.default.createElement('div', { className: "text-sm font-medium text-stone-800"  ,}, v)
+                    )
+                  ))
+                )
+              )
+              , activeAgentTab === 'playground' && (
+                _react2.default.createElement('div', { className: "space-y-4",}
+                  , _react2.default.createElement('div', { className: "flex flex-wrap gap-2"  ,}
+                    , _react2.default.createElement('button', { className: "flex items-center gap-2 px-4 py-2 rounded-full border border-indigo-200 text-indigo-700 text-xs font-medium hover:bg-indigo-50 bg-white transition-colors"             ,}, _react2.default.createElement(_lucidereact.FlaskConical, { size: 13,} ), "Test with Common Eval Harness"    )
+                    , _react2.default.createElement('button', { className: "flex items-center gap-2 px-4 py-2 rounded-full border border-stone-200 text-stone-600 text-xs font-medium hover:bg-stone-50 bg-white transition-colors"             ,}, _react2.default.createElement(_lucidereact.GitMerge, { size: 13,} ), "Compare Versions" )
+                    , _react2.default.createElement('button', { className: "flex items-center gap-2 px-4 py-2 rounded-full border border-stone-200 text-stone-600 text-xs font-medium hover:bg-stone-50 bg-white transition-colors"             ,}, "Simulate Pattern Context"  )
+                  )
+                  , _react2.default.createElement('div', { className: "bg-stone-50 border border-stone-200 rounded-xl p-4 min-h-20 text-sm text-stone-400"       ,}, "Playground input — inject test content, simulate upstream pattern context, run against eval harness…"             )
+                  , _react2.default.createElement('label', { className: "flex items-center gap-2 text-xs text-stone-500 cursor-pointer"     ,}
+                    , _react2.default.createElement('input', { type: "checkbox", className: "rounded border-stone-300" , readOnly: true,} ), "High-quality output — contribute distilled insight to Common Knowledge?"
+
+                  )
+                )
+              )
+              , activeAgentTab === 'knowledge' && (
+                _react2.default.createElement('div', { className: "space-y-3",}
+                  , [['Common Knowledge Subscriptions','2 shared collections · 847 chunks contributed from 312 verified runs'],['Per-Agent RAG','3 private collections · last indexed 14m ago']].map(([t,d]) => (
+                    _react2.default.createElement('div', { key: t, className: "p-4 rounded-xl bg-stone-50 border border-stone-200"    ,}
+                      , _react2.default.createElement('div', { className: "text-sm font-semibold text-stone-800 mb-1"   ,}, t)
+                      , _react2.default.createElement('div', { className: "text-xs text-stone-500" ,}, d)
+                    )
+                  ))
+                  , _react2.default.createElement('button', { className: "flex items-center gap-2 px-4 py-2 rounded-full border border-violet-200 text-violet-700 text-xs font-medium hover:bg-violet-50 bg-white transition-colors"             ,}, _react2.default.createElement(_lucidereact.Plus, { size: 13,} ), "Propose New Common Knowledge Chunk"    )
+                )
+              )
+              , activeAgentTab === 'ops' && (
+                _react2.default.createElement('div', { className: "space-y-4",}
+                  , _react2.default.createElement('div', { className: "flex items-start gap-3 p-4 rounded-xl bg-amber-50 border border-amber-200"       ,}
+                    , _react2.default.createElement(_lucidereact.AlertTriangle, { size: 15, className: "text-amber-600 mt-0.5 shrink-0"  ,} )
+                    , _react2.default.createElement('p', { className: "text-xs text-amber-700 leading-relaxed"  ,}, "v3.0 active in 47 swarms. Canary recommended — rollout to 5 swarms first to validate metrics before full fleet."                  )
+                  )
+                  , _react2.default.createElement('div', { className: "grid grid-cols-1 sm:grid-cols-3 gap-3"   ,}
+                    , _react2.default.createElement('button', { className: "py-2.5 rounded-full bg-stone-900 hover:bg-stone-700 text-white text-xs font-medium transition-colors"       ,}, "Safe Rollout All Swarms"   )
+                    , _react2.default.createElement('button', { className: "py-2.5 rounded-full border border-indigo-200 text-indigo-700 hover:bg-indigo-50 text-xs font-medium bg-white transition-colors"         ,}, "A/B Test v3.0 vs v2.9"    )
+                    , _react2.default.createElement('button', { className: "py-2.5 rounded-full border border-stone-200 text-stone-600 hover:bg-stone-50 text-xs font-medium bg-white transition-colors"         ,}, "View Impact Analysis"  )
+                  )
+                  , _react2.default.createElement('div', { className: "grid grid-cols-3 gap-3"  ,}
+                    , [['47','Active swarms'],['3','Canary eligible'],['0.4%','Error rate Δ']].map(([v, l]) => (
+                      _react2.default.createElement('div', { key: l, className: "p-4 rounded-xl bg-stone-50 border border-stone-200 text-center"     ,}
+                        , _react2.default.createElement('div', { className: "text-xl font-bold text-stone-900 mb-0.5"   ,}, v)
+                        , _react2.default.createElement('div', { className: "text-xs text-stone-400" ,}, l)
+                      )
+                    ))
+                  )
+                )
+              )
+            )
+          )
+        )
+
+        /* ── OPS INTELLIGENCE ──────────────────────────────────── */
+        , _react2.default.createElement('section', null
+          , _react2.default.createElement('p', { className: "text-xs font-semibold tracking-widest text-stone-400 uppercase mb-2"     ,}, "Components")
+          , _react2.default.createElement('h2', { className: "text-3xl font-bold text-stone-900 mb-3 tracking-tight"    ,}, "Ops Intelligence Panels"  )
+          , _react2.default.createElement('p', { className: "text-base text-stone-500 mb-10 max-w-2xl leading-relaxed"    ,}, "Rollout opportunities, collective insights, and anomaly alerts — always actionable, server-authorized, never color-only."            )
+          , _react2.default.createElement('div', { className: "space-y-4",}
+            , _react2.default.createElement('div', { className: "bg-white rounded-2xl border border-indigo-200 p-6 hover:shadow-md transition-shadow"      ,}
+              , _react2.default.createElement('div', { className: "flex items-start gap-4"  ,}
+                , _react2.default.createElement('div', { className: "w-11 h-11 rounded-2xl bg-indigo-50 border border-indigo-100 flex items-center justify-center shrink-0"         ,}
+                  , _react2.default.createElement(_lucidereact.Rocket, { size: 20, className: "text-indigo-600",} )
+                )
+                , _react2.default.createElement('div', { className: "flex-1",}
+                  , _react2.default.createElement('div', { className: "flex items-center gap-2 mb-2 flex-wrap"    ,}
+                    , _react2.default.createElement('span', { className: "text-base font-semibold text-stone-900"  ,}, "Rollout Opportunity" )
+                    , _react2.default.createElement('span', { className: "px-2.5 py-0.5 rounded-full bg-indigo-50 border border-indigo-200 text-indigo-700 text-xs font-medium"        ,}, "19 swarms" )
+                  )
+                  , _react2.default.createElement('p', { className: "text-sm text-stone-500 mb-4 leading-relaxed"   ,}, "Updating " , _react2.default.createElement('span', { className: "text-stone-800 font-medium" ,}, "CommonReportAgent"), " to "  , _react2.default.createElement('span', { className: "font-mono text-indigo-600" ,}, "v3.0"), " would improve 19 active swarms by "       , _react2.default.createElement('span', { className: "text-emerald-600 font-medium" ,}, "+15% latency" ), " and save "   , _react2.default.createElement('span', { className: "text-emerald-600 font-medium" ,}, "~$47/mo"), ".")
+                  , _react2.default.createElement('div', { className: "flex gap-2 flex-wrap"  ,}
+                    , _react2.default.createElement('button', { className: "px-4 py-2 rounded-full bg-stone-900 text-white text-xs font-medium hover:bg-stone-700 transition-colors"        ,}, "Approve Rollout" )
+                    , _react2.default.createElement('button', { className: "px-4 py-2 rounded-full border border-stone-200 text-stone-600 text-xs font-medium hover:bg-stone-50 bg-white transition-colors"          ,}, "A/B Test First"  )
+                  )
+                )
+              )
+            )
+            , _react2.default.createElement('div', { className: "bg-white rounded-2xl border border-violet-200 p-6 hover:shadow-md transition-shadow"      ,}
+              , _react2.default.createElement('div', { className: "flex items-start gap-4"  ,}
+                , _react2.default.createElement('div', { className: "w-11 h-11 rounded-2xl bg-violet-50 border border-violet-100 flex items-center justify-center shrink-0"         ,}
+                  , _react2.default.createElement(_lucidereact.Brain, { size: 20, className: "text-violet-600",} )
+                )
+                , _react2.default.createElement('div', { className: "flex-1",}
+                  , _react2.default.createElement('span', { className: "text-base font-semibold text-stone-900"  ,}, "Collective Intelligence Insight"  )
+                  , _react2.default.createElement('p', { className: "text-sm text-stone-500 mt-1 mb-3 leading-relaxed"    ,}, "Improvement to "  , _react2.default.createElement('span', { className: "font-medium text-stone-800" ,}, "CommonMarketPredictor"), " from "  , _react2.default.createElement('span', { className: "text-violet-600 font-medium" ,}, "4,200 runs across 67 swarms"    ), ". A structured verification step reduced hallucinations by "        , _react2.default.createElement('span', { className: "text-emerald-600 font-medium" ,}, "23%"), ".")
+                  , _react2.default.createElement('button', { className: "text-xs text-indigo-600 hover:text-indigo-800 font-medium transition-colors"    ,}, "View diff and meta-critic rationale →"     )
+                )
+              )
+            )
+            , _react2.default.createElement('div', { className: "bg-white rounded-2xl border border-red-200 p-6 hover:shadow-md transition-shadow"      ,}
+              , _react2.default.createElement('div', { className: "flex items-start gap-4"  ,}
+                , _react2.default.createElement('div', { className: "w-11 h-11 rounded-2xl bg-red-50 border border-red-100 flex items-center justify-center shrink-0"         ,}
+                  , _react2.default.createElement(_lucidereact.AlertTriangle, { size: 20, className: "text-red-500",} )
+                )
+                , _react2.default.createElement('div', { className: "flex-1",}
+                  , _react2.default.createElement('div', { className: "flex items-center gap-2 mb-2 flex-wrap"    ,}
+                    , _react2.default.createElement('span', { className: "text-base font-semibold text-stone-900"  ,}, "Anomaly Detected" )
+                    , _react2.default.createElement(StatusPill, { status: "degraded",} )
+                  )
+                  , _react2.default.createElement('p', { className: "text-sm text-stone-500 mb-4 leading-relaxed"   ,}, "After " , _react2.default.createElement('span', { className: "font-mono text-stone-700" ,}, "ReportAgent v2.1" ), " rollout, error rate ↑ in 3 swarms. "        , _react2.default.createElement('span', { className: "font-mono text-stone-400 text-xs"  ,}, "as_of: 2026-07-20T04:12Z" ), " · corr: "   , _react2.default.createElement('span', { className: "font-mono text-stone-400 underline decoration-dotted cursor-pointer hover:text-stone-700"     ,}, "b7f2c9d0"))
+                  , _react2.default.createElement('div', { className: "flex gap-2 flex-wrap"  ,}
+                    , _react2.default.createElement('button', { className: "px-4 py-2 rounded-full bg-red-600 hover:bg-red-700 text-white text-xs font-medium transition-colors"        ,}, "Rollback")
+                    , _react2.default.createElement('button', { className: "px-4 py-2 rounded-full border border-stone-200 text-stone-600 text-xs font-medium hover:bg-stone-50 bg-white transition-colors"          ,}, "Investigate Traces" )
+                  )
+                )
+              )
+            )
+          )
+        )
+
+        /* ── HOW IT WORKS ──────────────────────────────────────── */
+        , _react2.default.createElement('section', { className: "bg-stone-50 rounded-3xl border border-stone-200 p-10"    ,}
+          , _react2.default.createElement('p', { className: "text-xs font-semibold tracking-widest text-stone-400 uppercase mb-3"     ,}, "Workflow")
+          , _react2.default.createElement('h2', { className: "text-3xl font-bold text-stone-900 mb-12 tracking-tight"    ,}, "How it works"  )
+          , _react2.default.createElement('div', { className: "grid grid-cols-1 md:grid-cols-3 gap-10"   ,}
+            , steps.map((s, i) => (
+              _react2.default.createElement('div', { key: s.n, className: "relative",}
+                , i < steps.length - 1 && _react2.default.createElement('div', { className: "hidden md:block absolute top-5 left-full w-full h-px bg-stone-300 -translate-x-6"        ,} )
+                , _react2.default.createElement('div', { className: "w-10 h-10 rounded-full bg-stone-900 text-white flex items-center justify-center text-sm font-bold mb-5"          ,}, s.n)
+                , _react2.default.createElement('h3', { className: "text-lg font-semibold text-stone-900 mb-2"   ,}, s.title)
+                , _react2.default.createElement('p', { className: "text-sm text-stone-500 leading-relaxed"  ,}, s.desc)
+              )
+            ))
+          )
+        )
+
+        /* ── FAQ ───────────────────────────────────────────────── */
+        , _react2.default.createElement('section', { className: "max-w-2xl mx-auto w-full"  ,}
+          , _react2.default.createElement('p', { className: "text-xs font-semibold tracking-widest text-stone-400 uppercase mb-3 text-center"      ,}, "FAQ")
+          , _react2.default.createElement('h2', { className: "text-3xl font-bold text-stone-900 mb-8 text-center tracking-tight"     ,}, "Common questions" )
+          , faqItems.map(item => _react2.default.createElement(FaqItem, { key: item.q, ...item,} ))
+        )
+
+      )
+
+      /* ── BOTTOM CTA ────────────────────────────────────────── */
+      , _react2.default.createElement('section', { className: "bg-stone-900 mt-10" ,}
+        , _react2.default.createElement('div', { className: "max-w-6xl mx-auto px-4 py-20 text-center"    ,}
+          , _react2.default.createElement('h2', { className: "text-4xl font-bold text-white mb-4 tracking-tight"    ,}, "Start building with common primitives"    )
+          , _react2.default.createElement('p', { className: "text-lg text-stone-400 mb-10 max-w-lg mx-auto leading-relaxed"     ,}, "Every component, pattern, and interaction ships production-ready with full provenance and ops visibility."            )
+          , _react2.default.createElement('div', { className: "flex items-center justify-center gap-4 flex-wrap"    ,}
+            , _react2.default.createElement('button', { className: "flex items-center gap-2 px-8 py-4 rounded-full bg-white hover:bg-stone-100 text-stone-900 text-sm font-semibold transition-colors"           ,}, "Explore Registry "
+                , _react2.default.createElement(_lucidereact.ArrowRight, { size: 16,} )
+            )
+            , _react2.default.createElement('button', { className: "flex items-center gap-2 px-8 py-4 rounded-full border border-stone-700 hover:border-stone-500 text-white text-sm font-semibold transition-colors"            ,}, "Read the Docs"
+
+            )
+          )
+        )
+      )
+
+      /* ── FOOTER ────────────────────────────────────────────── */
+      , _react2.default.createElement('footer', { className: "bg-white border-t border-stone-200"  ,}
+        , _react2.default.createElement('div', { className: "max-w-6xl mx-auto px-4 py-8 flex flex-col sm:flex-row items-center justify-between gap-4"         ,}
+          , _react2.default.createElement('div', { className: "flex items-center gap-2.5"  ,}
+            , _react2.default.createElement('div', { className: "w-6 h-6 rounded-lg bg-indigo-600 flex items-center justify-center"      ,}, _react2.default.createElement(_lucidereact.Network, { size: 12, className: "text-white",} ))
+            , _react2.default.createElement('span', { className: "text-sm font-semibold text-stone-700"  ,}, "common-agent-swarm-ops")
+            , _react2.default.createElement('span', { className: "text-stone-300",}, "·")
+            , _react2.default.createElement('span', { className: "text-sm text-stone-400" ,}, "UI Design System v2.1"   )
+          )
+          , _react2.default.createElement('div', { className: "flex items-center gap-5 text-xs text-stone-400"    ,}
+            , ['Registry','Canvas','Ops','Eval','Costs','API'].map(l => (
+              _react2.default.createElement('button', { key: l, className: "hover:text-stone-700 transition-colors" ,}, l)
+            ))
+          )
+          , _react2.default.createElement('span', { className: "text-xs text-stone-400" ,}, "N1ch01as Architect · Moltbot ecosystem"    )
+        )
+      )
+    )
+  );
+} exports.default = CASODesignSystem;
+</script></head>
+  <body>
+  
+
+<div id="preview-app"></div></body></html>

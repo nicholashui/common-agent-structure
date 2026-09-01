@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.0",
+  "agent_id": "video.storyboard",
+  "sources": [
+    {
+      "id": "src_1",
+      "title": "*Framed Ink* (Mateu-Mestre)",
+      "description": "*Framed Ink* (Mateu-Mestre)",
+      "license_class": "unknown_review_required",
+      "acquisition_method": "manual_or_licensed_api",
+      "local_path_hint": "sources/excerpts/ or sources/study/",
+      "refresh_sla_days": 90,
+      "owner": "video.storyboard",
+      "status": "planned_or_partial"
+    },
+    {
+      "id": "src_2",
+      "title": "Pixar story-trust",
+      "description": "Pixar story-trust",
+      "license_class": "unknown_review_required",
+      "acquisition_method": "manual_or_licensed_api",
+      "local_path_hint": "sources/excerpts/ or sources/study/",
+      "refresh_sla_days": 90,
+      "owner": "video.storyboard",
+      "status": "planned_or_partial"
+    },
+    {
+      "id": "src_3",
+      "title": "Despretz boards",
+      "description": "Despretz boards",
+      "license_class": "unknown_review_required",
+      "acquisition_method": "manual_or_licensed_api",
+      "local_path_hint": "sources/excerpts/ or sources/study/",
+      "refresh_sla_days": 90,
+      "owner": "video.storyboard",
+      "status": "planned_or_partial"
+    }
+  ],
+  "note": "Legal review required before treating external corpora as production grounding."
+}

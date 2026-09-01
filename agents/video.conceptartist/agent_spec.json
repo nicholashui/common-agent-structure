@@ -1,0 +1,80 @@
+{
+  "schema_version": "3.0",
+  "structure_id": "casops.common_agent.v3",
+  "agent_id": "video.conceptartist",
+  "status": "registered",
+  "role": "ConceptArtistAgent (VA Domain Pack)",
+  "allowed_tools": [],
+  "allowed_plugins": [],
+  "model_policy": {
+    "provider": "local_deterministic",
+    "model_id": "local-video-config-v1",
+    "network_access": false,
+    "routing_allowed": false
+  },
+  "budget_policy": {
+    "max_input_tokens": 2048,
+    "max_output_tokens": 1024,
+    "max_model_calls": 2,
+    "max_tool_requests": 0,
+    "max_job_ms": 15000,
+    "max_cost_units": 1.0,
+    "max_peer_hops": 0
+  },
+  "prompt_reference": "prompts/primary.md",
+  "rubric_reference": "rubrics/primary.md",
+  "critique_edges": {
+    "inputs": [
+      "video.critic",
+      "video.director",
+      "video.productiondesign"
+    ],
+    "outputs": [
+      "video.judge",
+      "video.storyboard"
+    ]
+  },
+  "max_refinement_count": 0,
+  "production_activation_requested": false,
+  "does_not_own": [
+    "Host credential storage",
+    "Silent production activation without fail-closed gates",
+    "Inventing action references for irreversible mutations",
+    "Owning other agents' exclusive craft outputs without handoff contract",
+    "Credentials",
+    "Silent production activation",
+    "Another agent's exclusive craft output without handoff",
+    "Automatic promotion of self-generated artifacts",
+    "Modification of safety, telemetry, gates, permissions, or corrigibility",
+    "Self-granting tools, plugins, network, or isolation downgrades"
+  ],
+  "va_id": 15,
+  "va_name": "ConceptArtistAgent",
+  "va_category": "3-Edit",
+  "source_schema_version": "1.0",
+  "inheritance_ref": "inheritance/parents.json",
+  "identity_ref": "identity/",
+  "skills_ref": "skills/bindings.json",
+  "toggles_ref": "skills/toggles.json",
+  "runtime_ref": "runtime/execution.json",
+  "context_ref": "runtime/context.json",
+  "compute_controller_ref": "runtime/compute_controller.json",
+  "backends_ref": "runtime/backends.json",
+  "cache_ref": "runtime/cache.json",
+  "protocols_ref": "protocols/compatibility.json",
+  "capability_assertions_ref": "protocols/capability_assertions.json",
+  "observability_ref": "observability/telemetry.json",
+  "sampling_ref": "observability/sampling.json",
+  "plugins_ref": "plugins/registry.json",
+  "isolation_ref": "plugins/isolation.json",
+  "memory_ref": "memory/policy.json",
+  "memory_hierarchy_ref": "memory/hierarchy.json",
+  "memory_security_ref": "memory/security.json",
+  "improvement_ref": "improvement/policy.json",
+  "verifiers_ref": "improvement/verifiers.json",
+  "safety_ref": "safety/policy.json",
+  "termination_ref": "safety/termination.json",
+  "corrigibility_ref": "corrigibility/invariants.json",
+  "evals_ref": "evals/benchmarks.json",
+  "analysis_plan_ref": "evals/analysis_plan.json"
+}

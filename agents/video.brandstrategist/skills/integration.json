@@ -1,0 +1,21 @@
+{
+  "skill_id": "video-brandstrategist",
+  "agent_id": "video.brandstrategist",
+  "kind": "pack_agent_harness",
+  "status": "scaffolded",
+  "prompt_reference": "video.prompt.brandstrategist.v1",
+  "rubric_reference": "video.rubric.brandstrategist.v1",
+  "patterns": [
+    "Multi-agent debate",
+    "Agentic Graph",
+    "Agent Skills"
+  ],
+  "bindings": [],
+  "entrypoint": {
+    "type": "host_agent_runner",
+    "agent_id": "video.brandstrategist"
+  },
+  "fail_closed": true,
+  "generated_by": "improve_agents_from_plan_v1.py",
+  "generated_at": "2026-07-30T14:45:33Z"
+}

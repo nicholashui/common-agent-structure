@@ -1,0 +1,169 @@
+{
+  "schema_version": "3.0",
+  "sources": [
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Script Supervising and Film Continuity, 3rd ed.",
+      "author": "Pat P. Miller",
+      "isbn13": "9780240802947",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Script Supervising and Film Continuity, 3rd ed. (Pat P. Miller), ISBN-13 9780240802947"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Film Production Management 101",
+      "isbn13": "9781615932290",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Film Production Management 101, ISBN-13 9781615932290"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "影视场记与制片",
+      "isbn13": "9787301169186",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 影视场记与制片，ISBN-13 9787301169186"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Producer to Producer, 2nd ed.",
+      "author": "Maureen A. Ryan",
+      "isbn13": "9781615932023",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Producer to Producer, 2nd ed. (Maureen A. Ryan), ISBN-13 9781615932023"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Complete Film Production Handbook, 4th ed.",
+      "author": "Eve Light Honthaner",
+      "isbn13": "9780240811505",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Complete Film Production Handbook, 4th ed. (Eve Light Honthaner), ISBN-13 9780240811505"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Scheduling and Budgeting Your Film, 2nd ed.",
+      "author": "Paula Landry",
+      "isbn13": "9781138936140",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Scheduling and Budgeting Your Film, 2nd ed. (Paula Landry), ISBN-13 9781138936140"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Independent Film Producing",
+      "author": "Paul Battista",
+      "isbn13": "9781138013827",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Independent Film Producing (Paul Battista), ISBN-13 9781138013827"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Hollywood Economist 2.0",
+      "author": "Edward Jay Epstein",
+      "isbn13": "9781612190501",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Hollywood Economist 2.0 (Edward Jay Epstein), ISBN-13 9781612190501"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "In the Blink of an Eye, 2nd ed.",
+      "author": "Walter Murch",
+      "isbn13": "9781879505629",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: In the Blink of an Eye, 2nd ed. (Walter Murch), ISBN-13 9781879505629"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Grammar of the Edit, 4th ed.",
+      "author": "Christopher J. Bowen",
+      "isbn13": "9781138632226",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Grammar of the Edit, 4th ed. (Christopher J. Bowen), ISBN-13 9781138632226"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Technique of Film and Video Editing, 5th ed.",
+      "author": "Ken Dancyger",
+      "isbn13": "9780240813974",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Technique of Film and Video Editing, 5th ed. (Ken Dancyger), ISBN-13 9780240813974"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "On Film Editing",
+      "author": "Edward Dmytryk",
+      "isbn13": "9780240803906",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: On Film Editing (Edward Dmytryk), ISBN-13 9780240803906"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Cut to the Chase",
+      "author": "Sam O'Steen",
+      "isbn13": "9780941188371",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Cut to the Chase (Sam O'Steen), ISBN-13 9780941188371"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "First Cut",
+      "author": "Gabriella Oldham",
+      "isbn13": "9780520273504",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: First Cut (Gabriella Oldham), ISBN-13 9780520273504"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "眨眼之间",
+      "isbn13": "9787515340128",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 眨眼之间，ISBN-13 9787515340128"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "电影剪辑技巧",
+      "isbn13": "9787115222224",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 电影剪辑技巧，ISBN-13 9787115222224"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Beyond Continuity Script Supervision for the Modern Filmmaker",
+      "author": "Mary Cybulski",
+      "isbn13": "9780367423377",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Beyond Continuity Script Supervision for the Modern Filmmaker (Mary Cybulski), ISBN-13 9780367423377"
+    }
+  ],
+  "agent_id": "video.continuity",
+  "previous_common_agent_id": "video.continuity_supervisor",
+  "va_taxonomy_aligned": true,
+  "generic_source": "generic-swarm-ops/business/video/agents/video.continuity",
+  "note": "Imported into CASOPS as baseline_safe. No production activation, no network, no plugins, memory writes forbidden.",
+  "aligned_at": "2026-07-27T00:48:10.732297Z",
+  "generic_source_depth": {
+    "excerpts": true,
+    "study": true,
+    "adopted_at": "2026-07-27T01:30:27.950027+00:00",
+    "upstream": "generic-swarm-ops/business/video/agents"
+  },
+  "imported_from": "C:\\Project\\common-agent-swarm-ops\\business\\video\\agents\\video.continuity",
+  "reference_book_origin": "spec/book_of_knowledge.md",
+  "reference_book_note": "Bibliographic references from spec/book_of_knowledge.md. Does not enable network, RAG, T3, plugins, or memory writes."
+}

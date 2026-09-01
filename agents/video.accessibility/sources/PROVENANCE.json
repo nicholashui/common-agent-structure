@@ -1,0 +1,250 @@
+{
+  "schema_version": "3.0",
+  "sources": [
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "A Web for Everyone",
+      "author": "Horton & Quesenbery",
+      "isbn13": "9781933820972",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: A Web for Everyone (Horton & Quesenbery), ISBN-13 9781933820972"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Inclusive Design for a Digital World",
+      "author": "Regine Gilbert",
+      "isbn13": "9781484250150",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Inclusive Design for a Digital World (Regine Gilbert), ISBN-13 9781484250150"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Accessibility for Everyone",
+      "author": "Laura Kalbag",
+      "isbn13": "9781937557607",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Accessibility for Everyone (Laura Kalbag), ISBN-13 9781937557607"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Design for Real Life",
+      "author": "Eric Meyer & Sara Wachter-Boettcher",
+      "isbn13": "9781937557409",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Design for Real Life (Eric Meyer & Sara Wachter-Boettcher), ISBN-13 9781937557409"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "为真实的世界设计",
+      "author": "帕帕奈克",
+      "isbn13": "9787566905321",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 为真实的世界设计（帕帕奈克），ISBN-13 9787566905321"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "无障碍设计基础",
+      "author": "国内教材",
+      "isbn13": "9787115417947",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 无障碍设计基础（国内教材），ISBN-13 9787115417947"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Design of Everyday Things, Rev.",
+      "author": "Don Norman",
+      "isbn13": "9780465050659",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Design of Everyday Things, Rev. (Don Norman), ISBN-13 9780465050659"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Don't Make Me Think, Revisited",
+      "author": "Steve Krug",
+      "isbn13": "9780321965516",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Don't Make Me Think, Revisited (Steve Krug), ISBN-13 9780321965516"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "About Face, 4th ed.",
+      "author": "Cooper et al.",
+      "isbn13": "9781118766576",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: About Face, 4th ed. (Cooper et al.), ISBN-13 9781118766576"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Designing Interfaces, 3rd ed.",
+      "author": "Tidwell et al.",
+      "isbn13": "9781492051961",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Designing Interfaces, 3rd ed. (Tidwell et al.), ISBN-13 9781492051961"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "100 Things Every Designer Needs to Know About People",
+      "author": "Susan Weinschenk",
+      "isbn13": "9780321767530",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: 100 Things Every Designer Needs to Know About People (Susan Weinschenk), ISBN-13 9780321767530"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Universal Principles of Design",
+      "author": "Lidwell, Holden, Butler",
+      "isbn13": "9781592535873",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Universal Principles of Design (Lidwell, Holden, Butler), ISBN-13 9781592535873"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "点石成金",
+      "isbn13": "9787115249494",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 点石成金，ISBN-13 9787115249494"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "界面设计模式",
+      "isbn13": "9787115331861",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 界面设计模式，ISBN-13 9787115331861"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "用户体验要素",
+      "author": "加瑞特",
+      "isbn13": "9787115325466",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 用户体验要素（加瑞特），ISBN-13 9787115325466"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "设计中的设计",
+      "author": "原研哉",
+      "isbn13": "9787549559787",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 设计中的设计（原研哉），ISBN-13 9787549559787"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Design for How People Learn, 2nd ed.",
+      "author": "Julie Dirksen",
+      "isbn13": "9780134211282",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Design for How People Learn, 2nd ed. (Julie Dirksen), ISBN-13 9780134211282"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "e-Learning and the Science of Instruction, 4th ed.",
+      "author": "Clark & Mayer",
+      "isbn13": "9781119158660",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: e-Learning and the Science of Instruction, 4th ed. (Clark & Mayer), ISBN-13 9781119158660"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Make It Stick",
+      "author": "Brown, Roediger, McDaniel",
+      "isbn13": "9780674729018",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Make It Stick (Brown, Roediger, McDaniel), ISBN-13 9780674729018"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "How People Learn",
+      "author": "Bransford et al.",
+      "isbn13": "9780309070362",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: How People Learn (Bransford et al.), ISBN-13 9780309070362"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Understanding by Design",
+      "author": "Wiggins & McTighe",
+      "isbn13": "9781416600350",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Understanding by Design (Wiggins & McTighe), ISBN-13 9781416600350"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Multimedia Learning, 3rd ed.",
+      "author": "Richard E. Mayer",
+      "isbn13": "9781107566187",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Multimedia Learning, 3rd ed. (Richard E. Mayer), ISBN-13 9781107566187"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "First Principles of Instruction",
+      "author": "M. David Merrill",
+      "isbn13": "9780470900406",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: First Principles of Instruction (M. David Merrill), ISBN-13 9780470900406"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "让学习粘住",
+      "isbn13": "9787508655611",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 让学习粘住，ISBN-13 9787508655611"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "教学设计原理",
+      "author": "加涅",
+      "isbn13": "9787561762264",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 教学设计原理（加涅），ISBN-13 9787561762264"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "追求理解的教学设计",
+      "isbn13": "9787561799994",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 追求理解的教学设计，ISBN-13 9787561799994"
+    }
+  ],
+  "agent_id": "video.accessibility",
+  "previous_common_agent_id": "video.caption_specialist",
+  "va_taxonomy_aligned": true,
+  "generic_source": "generic-swarm-ops/business/video/agents/video.accessibility",
+  "note": "Imported into CASOPS as baseline_safe. No production activation, no network, no plugins, memory writes forbidden.",
+  "aligned_at": "2026-07-27T00:48:10.706516Z",
+  "generic_source_depth": {
+    "excerpts": true,
+    "study": true,
+    "adopted_at": "2026-07-27T01:30:27.572982+00:00",
+    "upstream": "generic-swarm-ops/business/video/agents"
+  },
+  "imported_from": "C:\\Project\\common-agent-swarm-ops\\business\\video\\agents\\video.accessibility",
+  "reference_book_origin": "spec/book_of_knowledge.md",
+  "reference_book_note": "Bibliographic references from spec/book_of_knowledge.md. Does not enable network, RAG, T3, plugins, or memory writes."
+}

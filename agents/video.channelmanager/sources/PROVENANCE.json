@@ -1,0 +1,503 @@
+{
+  "schema_version": "3.0",
+  "sources": [
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "This is Marketing",
+      "author": "Seth Godin",
+      "isbn13": "9780525541073",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: This is Marketing (Seth Godin), ISBN-13 9780525541073"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Contagious",
+      "author": "Jonah Berger",
+      "isbn13": "9781451686586",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Contagious (Jonah Berger), ISBN-13 9781451686586"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Made to Stick",
+      "author": "Chip & Dan Heath",
+      "isbn13": "9781400064281",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Made to Stick (Chip & Dan Heath), ISBN-13 9781400064281"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Crossing the Chasm, 3rd ed.",
+      "author": "Geoffrey Moore",
+      "isbn13": "9780062292988",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Crossing the Chasm, 3rd ed. (Geoffrey Moore), ISBN-13 9780062292988"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Lean Startup",
+      "author": "Eric Ries",
+      "isbn13": "9780307887894",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Lean Startup (Eric Ries), ISBN-13 9780307887894"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Ogilvy on Advertising",
+      "author": "David Ogilvy",
+      "isbn13": "9780394729039",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Ogilvy on Advertising (David Ogilvy), ISBN-13 9780394729039"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Copywriter's Handbook, 4th ed.",
+      "author": "Robert W. Bly",
+      "isbn13": "9781250238092",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Copywriter's Handbook, 4th ed. (Robert W. Bly), ISBN-13 9781250238092"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Hey, Whipple, Squeeze This, 5th ed.",
+      "author": "Luke Sullivan",
+      "isbn13": "9781119164005",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Hey, Whipple, Squeeze This, 5th ed. (Luke Sullivan), ISBN-13 9781119164005"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Scientific Advertising",
+      "author": "Claude Hopkins",
+      "isbn13": "9781607962335",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Scientific Advertising (Claude Hopkins), ISBN-13 9781607962335"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Jab, Jab, Jab, Right Hook",
+      "author": "Gary Vaynerchuk",
+      "isbn13": "9780062273062",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Jab, Jab, Jab, Right Hook (Gary Vaynerchuk), ISBN-13 9780062273062"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Hooked",
+      "author": "Nir Eyal",
+      "isbn13": "9781591847786",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Hooked (Nir Eyal), ISBN-13 9781591847786"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Traction",
+      "author": "Weinberg & Mares",
+      "isbn13": "9781591848363",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Traction (Weinberg & Mares), ISBN-13 9781591848363"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Hacking Growth",
+      "author": "Ellis & Brown",
+      "isbn13": "9780451497215",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Hacking Growth (Ellis & Brown), ISBN-13 9780451497215"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "这就是营销",
+      "isbn13": "9787521702330",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 这就是营销，ISBN-13 9787521702330"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "疯传",
+      "isbn13": "9787508641238",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 疯传，ISBN-13 9787508641238"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "让创意更有黏性",
+      "isbn13": "9787508641245",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 让创意更有黏性，ISBN-13 9787508641245"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "跨越鸿沟",
+      "isbn13": "9787111456780",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 跨越鸿沟，ISBN-13 9787111456780"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "精益创业",
+      "isbn13": "9787115293701",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 精益创业，ISBN-13 9787115293701"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "一个广告人的自白",
+      "isbn13": "9787111496182",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 一个广告人的自白，ISBN-13 9787111496182"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "文案训练手册",
+      "isbn13": "9787115351555",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 文案训练手册，ISBN-13 9787115351555"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "上瘾",
+      "isbn13": "9787508648017",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 上瘾，ISBN-13 9787508648017"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "增长黑客",
+      "isbn13": "9787213066948",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 增长黑客，ISBN-13 9787213066948"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "参与感",
+      "isbn13": "9787213055375",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 参与感，ISBN-13 9787213055375"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Art of SEO, 3rd ed.",
+      "author": "Enge, Spencer, Stricchiola",
+      "isbn13": "9781491948965",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Art of SEO, 3rd ed. (Enge, Spencer, Stricchiola), ISBN-13 9781491948965"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Content Strategy for the Web, 2nd ed.",
+      "author": "Kristina Halvorson",
+      "isbn13": "9780321808301",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Content Strategy for the Web, 2nd ed. (Kristina Halvorson), ISBN-13 9780321808301"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Everybody Writes",
+      "author": "Ann Handley",
+      "isbn13": "9781118905555",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Everybody Writes (Ann Handley), ISBN-13 9781118905555"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "SEO艺术",
+      "isbn13": "9787115419903",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: SEO艺术，ISBN-13 9787115419903"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Understanding Media",
+      "author": "Marshall McLuhan",
+      "isbn13": "9780262631594",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Understanding Media (Marshall McLuhan), ISBN-13 9780262631594"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Amusing Ourselves to Death",
+      "author": "Neil Postman",
+      "isbn13": "9780143036531",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Amusing Ourselves to Death (Neil Postman), ISBN-13 9780143036531"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Convergence Culture",
+      "author": "Henry Jenkins",
+      "isbn13": "9780814742952",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Convergence Culture (Henry Jenkins), ISBN-13 9780814742952"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Spreadable Media",
+      "author": "Jenkins, Ford, Green",
+      "isbn13": "9780814743508",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Spreadable Media (Jenkins, Ford, Green), ISBN-13 9780814743508"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Attention Merchants",
+      "author": "Tim Wu",
+      "isbn13": "9780385352017",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Attention Merchants (Tim Wu), ISBN-13 9780385352017"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Here Comes Everybody",
+      "author": "Clay Shirky",
+      "isbn13": "9780143114949",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Here Comes Everybody (Clay Shirky), ISBN-13 9780143114949"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "理解媒介",
+      "isbn13": "9787508040318",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 理解媒介，ISBN-13 9787508040318"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "娱乐至死",
+      "isbn13": "9787563397648",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 娱乐至死，ISBN-13 9787563397648"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "融合文化",
+      "isbn13": "9787301162262",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 融合文化，ISBN-13 9787301162262"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "认知盈余",
+      "isbn13": "9787213044661",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 认知盈余，ISBN-13 9787213044661"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "从零开始做内容：爆款内容的底层逻辑",
+      "author": "吕白",
+      "isbn13": "9787111664604",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 从零开始做内容：爆款内容的底层逻辑（吕白），ISBN-13 9787111664604"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "短视频与直播文案写作",
+      "author": "张弘李自海魏坚 主编吴曼刘哲李守勤 副主编",
+      "isbn13": "9787115638649",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 短视频与直播文案写作（张弘李自海魏坚 主编吴曼刘哲李守勤 副主编），ISBN-13 9787115638649"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "YouTube视频之王的崛起之路",
+      "author": "【美】马克·伯根",
+      "isbn13": "9787516837474",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: YouTube视频之王的崛起之路（【美】马克·伯根），ISBN-13 9787516837474"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "DeepSeek+爆款短视频一本通流量时代的AI生产力",
+      "author": "张守刚张小平",
+      "isbn13": "9787115670014",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: DeepSeek+爆款短视频一本通流量时代的AI生产力（张守刚张小平），ISBN-13 9787115670014"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "剪映+DeepSeek短视频剪辑全能一本通",
+      "author": "Jack",
+      "isbn13": "9787115669780",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 剪映+DeepSeek短视频剪辑全能一本通（Jack），ISBN-13 9787115669780"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "剪映：手机短视频制作（全彩慕课版）",
+      "author": "尹涛 陈杰",
+      "isbn13": "9787115611772",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 剪映：手机短视频制作（全彩慕课版）（尹涛 陈杰），ISBN-13 9787115611772"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "手机短视频拍摄与制作（微课版）",
+      "author": "王武林 主编；马千里；蔡静 副主编",
+      "isbn13": "9787115630629",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 手机短视频拍摄与制作（微课版）（王武林 主编；马千里；蔡静 副主编），ISBN-13 9787115630629"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "抖音+剪映+Premiere短视频创作实战（全彩微课版）",
+      "author": "李晓斌；张晓景 编著",
+      "isbn13": "9787302632870",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 抖音+剪映+Premiere短视频创作实战（全彩微课版）（李晓斌；张晓景 编著），ISBN-13 9787302632870"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "短视频制作实战策划 拍摄 制作 运营(全彩慕课版)(第2版)",
+      "author": "郭韬 主编刘琴琴 副主编",
+      "isbn13": "9787115672063",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 短视频制作实战策划 拍摄 制作 运营(全彩慕课版)(第2版)（郭韬 主编刘琴琴 副主编），ISBN-13 9787115672063"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "短视频拍摄与剪辑零基础一本通",
+      "author": "千知影像学院 编著",
+      "isbn13": "9787115635402",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 短视频拍摄与剪辑零基础一本通（千知影像学院 编著），ISBN-13 9787115635402"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "短视频策划、拍摄与制作(微课版)",
+      "author": "吕子燕 主编卢玲 副主编",
+      "isbn13": "9787115569295",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 短视频策划、拍摄与制作(微课版)（吕子燕 主编卢玲 副主编），ISBN-13 9787115569295"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "手機攝影技術教程",
+      "isbn13": "9787210129653",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 手機攝影技術教程，ISBN-13 9787210129653"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "短視頻編劇全流程",
+      "isbn13": "9787122452696",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 短視頻編劇全流程，ISBN-13 9787122452696"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "AI短视频创作：一本通剪映+即梦+可灵+文心一格",
+      "isbn13": "9787122470027",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: AI短视频创作：一本通剪映+即梦+可灵+文心一格，ISBN-13 9787122470027"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "爆款短视频拍摄：118个分镜脚本与摄影技巧新媒体抖音运营流量",
+      "isbn13": "9787122699984",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 爆款短视频拍摄：118个分镜脚本与摄影技巧新媒体抖音运营流量，ISBN-13 9787122699984"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "剪映视频后期剪辑零基础入门到精通",
+      "author": "许放",
+      "isbn13": "9787115634979",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 剪映视频后期剪辑零基础入门到精通（许放），ISBN-13 9787115634979"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "剪映+數字人",
+      "isbn13": "9787122452511",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 剪映+數字人，ISBN-13 9787122452511"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Ultimate Guide to Social Media Marketing",
+      "author": "Butow, EricGarcia, StephanieBlake etc.",
+      "isbn13": "9781599186740",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Ultimate Guide to Social Media Marketing (Butow, EricGarcia, StephanieBlake etc.), ISBN-13 9781599186740"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "新媒体营销圣经",
+      "isbn13": "9787550272101",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 新媒体营销圣经，ISBN-13 9787550272101"
+    }
+  ],
+  "agent_id": "video.channelmanager",
+  "previous_common_agent_id": "video.channel_optimizer",
+  "va_taxonomy_aligned": true,
+  "generic_source": "generic-swarm-ops/business/video/agents/video.channelmanager",
+  "note": "Imported into CASOPS as baseline_safe. No production activation, no network, no plugins, memory writes forbidden.",
+  "aligned_at": "2026-07-27T00:48:10.857360Z",
+  "generic_source_depth": {
+    "excerpts": true,
+    "study": true,
+    "adopted_at": "2026-07-27T01:30:27.773870+00:00",
+    "upstream": "generic-swarm-ops/business/video/agents"
+  },
+  "imported_from": "C:\\Project\\common-agent-swarm-ops\\business\\video\\agents\\video.channelmanager",
+  "reference_book_origin": "spec/book_of_knowledge.md",
+  "reference_book_note": "Bibliographic references from spec/book_of_knowledge.md. Does not enable network, RAG, T3, plugins, or memory writes."
+}

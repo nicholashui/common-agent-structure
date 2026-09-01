@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --caso-bg: #ffffff;
+  --caso-surface: #fafaf9;
+  --caso-border: #e7e5e4;
+  --caso-text: #1c1917;
+  --caso-muted: #78716c;
+  --caso-indigo: #4f46e5;
+  --caso-violet: #7c3aed;
+  --caso-amber: #f59e0b;
+  --caso-emerald: #10b981;
+  --caso-red: #ef4444;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+  background: var(--caso-bg);
+  color: var(--caso-text);
+  font-family: Inter, system-ui, sans-serif;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px #fff, 0 0 0 4px #4f46e5;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}

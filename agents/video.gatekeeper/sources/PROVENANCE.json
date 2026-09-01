@@ -1,0 +1,222 @@
+{
+  "schema_version": "3.0",
+  "sources": [
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "A Guide to the Project Management Body of Knowledge (PMBOK Guide), 7th ed.",
+      "isbn13": "9781628256642",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: A Guide to the Project Management Body of Knowledge (PMBOK Guide), 7th ed., ISBN-13 9781628256642"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Mythical Man-Month",
+      "author": "Frederick P. Brooks Jr.",
+      "isbn13": "9780201835953",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Mythical Man-Month (Frederick P. Brooks Jr.), ISBN-13 9780201835953"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Goal",
+      "author": "Eliyahu M. Goldratt",
+      "isbn13": "9780884271956",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Goal (Eliyahu M. Goldratt), ISBN-13 9780884271956"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "High Output Management",
+      "author": "Andrew S. Grove",
+      "isbn13": "9780679762881",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: High Output Management (Andrew S. Grove), ISBN-13 9780679762881"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Checklist Manifesto",
+      "author": "Atul Gawande",
+      "isbn13": "9780312430009",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Checklist Manifesto (Atul Gawande), ISBN-13 9780312430009"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Critical Chain",
+      "author": "Goldratt",
+      "isbn13": "9780884271536",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Critical Chain (Goldratt), ISBN-13 9780884271536"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "项目管理知识体系指南",
+      "author": "第7版",
+      "isbn13": "9787111558477",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 项目管理知识体系指南（第7版），ISBN-13 9787111558477"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "人月神话",
+      "isbn13": "9787302154419",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 人月神话，ISBN-13 9787302154419"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "目标",
+      "isbn13": "9787508637020",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 目标，ISBN-13 9787508637020"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "高效能人士的七个习惯",
+      "isbn13": "9787508092232",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 高效能人士的七个习惯，ISBN-13 9787508092232"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Producer to Producer, 2nd ed.",
+      "author": "Maureen A. Ryan",
+      "isbn13": "9781615932023",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Producer to Producer, 2nd ed. (Maureen A. Ryan), ISBN-13 9781615932023"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Complete Film Production Handbook, 4th ed.",
+      "author": "Eve Light Honthaner",
+      "isbn13": "9780240811505",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Complete Film Production Handbook, 4th ed. (Eve Light Honthaner), ISBN-13 9780240811505"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Film Production Management 101",
+      "author": "Deborah S. Patz",
+      "isbn13": "9781615932290",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Film Production Management 101 (Deborah S. Patz), ISBN-13 9781615932290"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Scheduling and Budgeting Your Film, 2nd ed.",
+      "author": "Paula Landry",
+      "isbn13": "9781138936140",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Scheduling and Budgeting Your Film, 2nd ed. (Paula Landry), ISBN-13 9781138936140"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Independent Film Producing",
+      "author": "Paul Battista",
+      "isbn13": "9781138013827",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Independent Film Producing (Paul Battista), ISBN-13 9781138013827"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Hollywood Economist 2.0",
+      "author": "Edward Jay Epstein",
+      "isbn13": "9781612190501",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Hollywood Economist 2.0 (Edward Jay Epstein), ISBN-13 9781612190501"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "影视制片管理",
+      "isbn13": "9787301169186",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 影视制片管理，ISBN-13 9787301169186"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Clearance & Copyright, 4th ed.",
+      "author": "Michael C. Donaldson",
+      "isbn13": "9781615931330",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Clearance & Copyright, 4th ed. (Michael C. Donaldson), ISBN-13 9781615931330"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Pocket Lawyer for Filmmakers, 2nd ed.",
+      "author": "Thomas A. Crowell",
+      "isbn13": "9780240812182",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Pocket Lawyer for Filmmakers, 2nd ed. (Thomas A. Crowell), ISBN-13 9780240812182"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Law of Journalism and Mass Communication",
+      "author": "Trager et al.",
+      "isbn13": "9781506363226",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Law of Journalism and Mass Communication (Trager et al.), ISBN-13 9781506363226"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Entertainment Law in a Nutshell",
+      "author": "Sherri Burr",
+      "isbn13": "9781634603058",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Entertainment Law in a Nutshell (Sherri Burr), ISBN-13 9781634603058"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "著作权法",
+      "author": "王迁",
+      "isbn13": "9787301249499",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 著作权法（王迁），ISBN-13 9787301249499"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "知识产权法",
+      "author": "吴汉东",
+      "isbn13": "9787301162262",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 知识产权法（吴汉东），ISBN-13 9787301162262"
+    }
+  ],
+  "agent_id": "video.gatekeeper",
+  "previous_common_agent_id": "video.signoff_coordinator",
+  "va_taxonomy_aligned": true,
+  "generic_source": "generic-swarm-ops/business/video/agents/video.gatekeeper",
+  "note": "Imported into CASOPS as baseline_safe. No production activation, no network, no plugins, memory writes forbidden.",
+  "aligned_at": "2026-07-27T00:48:10.851303Z",
+  "generic_source_depth": {
+    "excerpts": true,
+    "study": true,
+    "adopted_at": "2026-07-27T01:30:28.208140+00:00",
+    "upstream": "generic-swarm-ops/business/video/agents"
+  },
+  "imported_from": "C:\\Project\\common-agent-swarm-ops\\business\\video\\agents\\video.gatekeeper",
+  "reference_book_origin": "spec/book_of_knowledge.md",
+  "reference_book_note": "Bibliographic references from spec/book_of_knowledge.md. Does not enable network, RAG, T3, plugins, or memory writes."
+}

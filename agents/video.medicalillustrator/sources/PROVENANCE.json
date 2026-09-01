@@ -1,0 +1,79 @@
+{
+  "schema_version": "3.0",
+  "sources": [
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Atlas of Human Anatomy, 7th ed.",
+      "author": "Frank H. Netter",
+      "isbn13": "9780323393225",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Atlas of Human Anatomy, 7th ed. (Frank H. Netter), ISBN-13 9780323393225"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Grant's Atlas of Anatomy, 14th ed.",
+      "isbn13": "9781496310248",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Grant's Atlas of Anatomy, 14th ed., ISBN-13 9781496310248"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "奈特人体解剖彩色图谱",
+      "isbn13": "9787117207683",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 奈特人体解剖彩色图谱，ISBN-13 9787117207683"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "格氏解剖学",
+      "isbn13": "9787117207690",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 格氏解剖学，ISBN-13 9787117207690"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Color and Light",
+      "author": "James Gurney",
+      "isbn13": "9780740797712",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Color and Light (James Gurney), ISBN-13 9780740797712"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Imaginative Realism",
+      "author": "James Gurney",
+      "isbn13": "9780740785504",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Imaginative Realism (James Gurney), ISBN-13 9780740785504"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "色彩与光线",
+      "isbn13": "9787515301235",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 色彩与光线，ISBN-13 9787515301235"
+    }
+  ],
+  "agent_id": "video.medicalillustrator",
+  "previous_common_agent_id": "video.risk_manager",
+  "va_taxonomy_aligned": true,
+  "generic_source": "generic-swarm-ops/business/video/agents/video.medicalillustrator",
+  "note": "Imported into CASOPS as baseline_safe. No production activation, no network, no plugins, memory writes forbidden.",
+  "aligned_at": "2026-07-27T00:48:11.227971Z",
+  "generic_source_depth": {
+    "excerpts": true,
+    "study": true,
+    "adopted_at": "2026-07-27T01:30:28.386715+00:00",
+    "upstream": "generic-swarm-ops/business/video/agents"
+  },
+  "imported_from": "C:\\Project\\common-agent-swarm-ops\\business\\video\\agents\\video.medicalillustrator",
+  "reference_book_origin": "spec/book_of_knowledge.md",
+  "reference_book_note": "Bibliographic references from spec/book_of_knowledge.md. Does not enable network, RAG, T3, plugins, or memory writes."
+}

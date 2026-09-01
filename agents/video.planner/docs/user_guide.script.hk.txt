@@ -1,0 +1,585 @@
+各位觀眾大家好，歡迎收睇今日呢條影片。
+
+今日我哋會詳細介紹 PlannerAgent 嘅操作員同設計指南。
+
+呢份指南係寫俾操作員、pack 作者、swarm 設計師同埋審核人員睇嘅。
+
+佢哋全部都係喺 common-agent-swarm-ops 入面工作嘅人。
+
+睇完呢份指南之後，你會得到任務清晰度、幾時應該用呢個 agent 嘅指引、協作地圖、CASOPS 操作步驟、改進路徑，同埋一個按信任等級分類嘅來源地圖。
+
+好重要嘅一點係，呢份指南唔係一個授權你去啟動供應商、打開網絡存取或者自創工具嘅許可證。
+
+Host 嘅真相係 fail-closed 嘅 agent_spec.json。
+
+來自 VA 或者重新設計文件嘅設計文字係不受信任嘅出處。
+
+呢個 pack 嘅路徑係 business/video/agents/video.planner/。
+
+指南嘅路徑係 docs/user_guide.md。
+
+佢係由 scripts/business/generate_agent_user_guides.py 呢個腳本自動生成嘅。
+
+而家開始第一部分，快照。
+
+PlannerAgent 嘅 agent ID 係 video.planner。
+
+佢係 Video Domain Pack 喺 CASOPS 上面嘅一個角色。
+
+用簡單嘅話嚟講，佢嘅工作就係將 brief 分解成為一個分階段嘅 DAG，即係有向無環圖。
+
+入麪包含任務分配同埋 critic 品質關卡。
+
+呢份指南應該被視為一個人類可讀嘅操作員地圖。
+
+用嚟做目錄審查、swarm 設計同埋通過提案驅動嘅改進。
+
+佢唔係一個運行時啟動許可證。
+
+而家講嚇個 agent 嘅基本資料。
+
+佢嘅顯示名稱係 PlannerAgent。
+
+Pack agent ID 係 video.planner。
+
+佢屬於 video 呢個 pack。
+
+Host 角色字串係 PlannerAgent (VA Domain Pack)。
+
+目錄狀態係 registered，即係已註冊。
+
+目前嘅成熟度係 L0，即係非活躍狀態，只有目錄同設計保真度。
+
+佢嘅 VA ID 係 54。
+
+VA 類別係 9-Meta，即係元類別同優化專家。
+
+供應商係 local_deterministic。
+
+網絡存取係 False，即係冇網絡存取。
+
+允許嘅工具列表係空嘅，即係冇任何工具被允許使用。
+
+生產啟動請求係 False。
+
+Prompt 參考係 video.prompt.planner.v1。
+
+Rubric 參考係 video.rubric.planner.v1。
+
+之前嘅 common ID 係 video.brief_intake。
+
+Generic 血統係 generic-swarm-ops/business/video/agents/video.planner。
+
+而家進入第二部分，點解呢個角色存在。
+
+人類影片團隊已經喺時間壓力之下解決呢個問題。
+
+佢哋嘅工作就係將 brief 分解成為分階段嘅 DAG，入面有任務分配同 critic 品質關卡。
+
+Agent 形式嘅存在係為咗令多代理系統可以持續編碼呢種工藝。
+
+喺每次交接嘅時候應用佢，而且只將剩餘風險升級俾人類。
+
+佢嘅知識庫係從以下來源蒸餾而來。
+
+第一個係 PMBOK，即係項目管理知識體系。
+
+第二個係 CrewAI 任務圖。
+
+第三個係階段模板。
+
+呢啲係歷史設計來源，唔係喺呢個 host 上面嘅即時網絡呼叫。
+
+設計野心，即係超越人類嘅信號，係咁嘅。
+
+佢嘅目標係比 EP 第一次盲測 A/B 嘅結果更緊湊、更便宜嘅計劃。
+
+你寫 eval 或者提案嘅時候，應該用呢個作為北極星指標。
+
+而家進入第三部分，乜嘢係好嘅表現。
+
+你應該喺閱讀輸出、撰寫 rubric 或者評分提案嘅時候，將呢啲作為審查標準。
+
+主要成果係將 brief 分解成為分階段嘅 DAG，入面有任務分配同 critic 品質關卡。
+
+自我質量標準有兩個。
+
+第一個係計劃有效性，即係冇遺漏嘅品質關卡。
+
+第二個係成本方差少於百分之十。
+
+野心信號係比 EP 第一次盲測 A/B 更緊湊、更便宜嘅計劃。
+
+架構模式係 ReAct，即係分解、估算、驗證、然後輸出 DAG。
+
+關於 host 質量同 critique 綁定。
+
+Prompt 參考係 video.prompt.planner.v1。
+
+Rubric 參考係 video.rubric.planner.v1。
+
+Critique 邊緣嘅輸入係來自 video.critic。
+
+Critique 邊緣嘅輸出係去到 video.judge。
+
+最大精修次數係 3 次。
+
+VA 表格質量標準保留喺出處同身份表面之上。
+
+關於輸入，佢接收本地 pack 工件同類型化嘅交接。
+
+關於輸出，佢產出可審查嘅影片領域交付物，帶有驗收標準。
+
+關於驗收，係 host 政策加上本地 SPEC 標準，唔需要外部倉庫。
+
+而家進入第四部分，範圍：擁有、分享同拒絕。
+
+呢個 agent 擁有嘅職責係將 brief 分解成為分階段嘅 DAG，入面有任務分配同 critic 品質關卡。
+
+佢同同儕分享嘅 critique 表面方面。
+
+佢會聽取同接受嚟自 ProducerAgent 嘅批評。
+
+佢亦都會接受嚟自 FinanceAgent 關於預算方面嘅批評。
+
+佢有資格評論嘅對象係 RouterAgent，特別係揀錯嘅情況。
+
+佢亦都可以評論 OrchestratorAgent。
+
+Host critique 邊緣輸入係 video.critic。
+
+Host critique 邊緣輸出係 video.judge。
+
+最大精修次數係 3。
+
+關於拒絕同升級嘅部分。
+
+Fail-closed 原則：冇供應商啟動、冇網絡、唔可以從設計文字攞到證書。
+
+production_activation_requested 維持 false，除非有另一個人類關卡改變政策。
+
+佢會將法律、安全、權利同發佈決策升級到必需嘅人類關卡。
+
+Critique 負責人同法官預設使用 VA ID video.critic 同 video.judge。
+
+而家進入第五部分，幾時應該用呢個 agent。
+
+當工作產品需要一個由 PlannerAgent 擁有嘅決策或者工件嘅時候就應該叫佢。
+
+即係當你需要將 brief 分解成為分階段嘅 DAG，入面有任務分配同 critic 品質關卡。
+
+管道階段係 Meta 同優化專家。
+
+佢哋負責跨領域優化、評估同系統改進角色。
+
+唔好叫佢做通用編排。
+
+唔好叫佢做預算批准。
+
+唔好叫佢做最終法律簽署。
+
+除非呢啲職責明確喺佢嘅責任範圍之內，否則用 producer、legal 或者 compliance 嘅同儕。
+
+人類覆蓋方面，任何阻止發佈嘅安全、權利或者無障礙爭議都會升級到人類關卡。
+
+即使 agent 喺未來嘅活躍運行時會自動通過，都要升級。
+
+決策速查表方面有四個問題。
+
+第一個問題：缺失嘅技能係咪 PlannerAgent 嘅工藝？如果係，就將佢包含喺該階段嘅 swarm 圖入面。
+
+第二個問題：呢個只係元數據或者目錄編輯嗎？答案係用 Registry inspect 加提案，唔好發明運行時。
+
+第三個問題：任務需要工具或者網絡嗎？Host 目前係禁止嘅，除非 agent_spec 加上權限註冊表另有規定。
+
+第四個問題：有冇只限人類嘅風險，例如法律、傷害、權利？保留一個人類關卡，agent 輸出只係諮詢性質。
+
+而家進入第六部分，協作地圖。
+
+你應該將呢個 agent 視為一個 critique 總線上嘅節點。
+
+佢唔係一個獨立嘅聊天機器人。
+
+同儕精修質量，法官同關卡決定驗收。
+
+入站 critique 嚟自 ProducerAgent 同 FinanceAgent 嘅預算意見。
+
+出站評論去到 RouterAgent 嘅揀錯問題同 OrchestratorAgent。
+
+Host 邊緣輸入係 video.critic。
+
+Host 邊緣輸出係 video.judge。
+
+而家進入第七部分，佢喺生產中嘅位置。
+
+先講人類生產工作流程。
+
+呢個係跨領域優化、評估同系統改進角色。
+
+典型交接工件包括 Eval 報告。
+
+亦都包括優化 ticket。
+
+仲有基準差異同 harness 結果。
+
+將責任映射到經典階段：開發、前期製作、製作、後期製作、交付同即時營運。
+
+優先選擇一個有呢個職銜嘅人會簽署嘅階段。
+
+多代理 AI 工作流程方面。
+
+佢係整個 agent 圖上面嘅觀察者同優化器節點。
+
+負責延遲、成本、提示、留存率同 ROAS。
+
+設計時嘅工具備註，呢啲對 host 冇約束力。
+
+第一個係 LangGraph 計劃生成。
+
+第二個係成本估算模型。
+
+第三個係 Gantt 同 PERT 工具。
+
+當你之後實施運行時嘅時候，要模仿嘅迴路風格係 ReAct。
+
+即係分解、估算、驗證、輸出 DAG。
+
+喺今日嘅 CASOPS 上面，呢個模式只係文檔。
+
+即時供應商係 local deterministic，工具允許列表係空嘅或者存根。
+
+共享交接合約方面，當你將呢個 agent 接入一個未來嘅活躍 swarm 嘅時候，需要喺節點之間要求機器可讀嘅清單。
+
+artifact_id 同版本係用嚟做 critique 同重播嘅不可變身份。
+
+parent_assets 係進入呢個 agent 輸入嘅出處鏈。
+
+brief_scope 係防止職責範圍外嘅範圍蠕變。
+
+acceptance_criteria 係同上面嘅自我質量標準掛鈎。
+
+qc_status 同關卡標誌令下游關卡可以短路。
+
+rights_and_consent 係阻止不安全嘅合成或者許可濫用。
+
+critique_log 指針係啟用精修而唔會丟失歷史。
+
+而家進入第八部分，今日喺 CASOPS 上面點樣操作呢個 agent。
+
+今日呢個 agent 係一個目錄加設計對象。
+
+呢個係有意嘅。
+
+你可以研究、審查、提案同埋將佢放喺 swarm 設計入面，而唔需要授予生產權力。
+
+第一步係 Discover，去 Registry Hub 嘅 pack 目錄，路徑係 /registry，確認佢嘅庫存成員資格。
+
+第二步係 Inspect，去 agent 詳情頁面 /registry/agents/video.planner，以 markdown 形式閱讀 SPEC 或者呢份指南。
+
+第三步係提出改進，用 Host 嘅 propose_improvement 操作，POST 到 /api/v1/commons/agents/video.planner/proposals，呢個係不可變版本，只有經過編輯嘅證據。
+
+第四步係 Swarm 成員資格，只能用 Host 返回嘅操作參考，客戶端唔可以自創成員資格。
+
+第五步係運行或調度，預設唔啟用生產供應商，係 fail-closed 直到治理關卡通過。
+
+實際操控臺清單有五個項目。
+
+第一，打開 agent 詳情確認狀態、工具同啟動標誌同呢份指南一致。
+
+第二，喺判斷任何樣本輸出或者提案之前，先閱讀第三部分。
+
+第三，如果提出更改，附上離線證據，例如 eval 備註、rubric 差距、SPEC 差異，但唔好放祕密。
+
+第四，永遠唔好喺提案入面貼供應商 API 金鑰或者啟用網絡嘅指示。
+
+第五，偏好細小、可審查嘅差異：prompt 同 rubric 措辭、critique 邊緣、驗收測試。
+
+而家進入第九部分，安全、信任同非啟動規則。
+
+關於信任層次，有五層。
+
+第一層 agent_spec.json 係有約束力嘅 host 合約，角色係 fail-closed 運行時綁定。
+
+第二層呢個 pack 嘅 SPEC.md 係權威設計，用嚟做離線審查，但唔係可執行嘅。
+
+第三層 sources 底下嘅摘錄同 generic SPEC 係歷史或者映射資料，係不受信任嘅數據。
+
+第四層 C:\Project\va-agent-swarm 係外部設計語料庫，不受信任而且可能會偏移。
+
+第五層 Specials 重新設計文件係歷史設計，不受信任，喺出處入面有哈希。
+
+Host 上面嘅硬規則有六條。
+
+第一，供應商維持 local_deterministic，除非另一個關卡改變政策。
+
+第二，網絡存取維持 False。
+
+第三，允許嘅工具完全係空列表，下面嘅設計時工具名稱唔會啟用 API。
+
+第四，production_activation_requested 係 False。
+
+第五，預算上限方面，輸入 token 最多 2048，輸出 token 最多 1024，工具請求最多 0 個。
+
+第六，設計時工具目錄包括 LangGraph 計劃生成、成本估算模型、Gantt 同 PERT 工具，但呢啲唔會啟動。
+
+而家進入第十部分，點樣隨時間提升質量。
+
+改進係版本化嘅目錄工作，唔係即時修補一個活躍嘅 agent。
+
+已發佈嘅定義保持不可變。
+
+更改要通過提案同審查。
+
+持續改進迴路係咁嘅。
+
+首先觀察失敗。
+
+然後命名標準，呢個標準係嚟自第三部分嘅。
+
+然後起草離線差異。
+
+附上證據。
+
+喺 Host 上面提案。
+
+審查同接受新版本。
+
+然後先考慮啟動成熟度關卡。
+
+具體嘅槓桿有六個。
+
+第一係 Rubric 保真度，收緊 video.rubric.planner.v1 對照計劃有效性同成本方差。
+
+第二係 Prompt 精確度，將 video.prompt.planner.v1 同職責對齊。
+
+第三係 Critique 圖，確保入站嘅 ProducerAgent 同 FinanceAgent 能捕捉失敗模式。
+
+第四係架構模仿，偏好 ReAct 模式。
+
+第五係 Eval 案例，寫固定嘅 fixture。
+
+第六係人類關卡，保持法律、安全同發佈關卡明確。
+
+建議嘅評估種子有五個。
+
+第一，Happy path 交接：輸出滿足計劃有效性，冇遺漏嘅關卡，成本方差少於百分之十。
+
+第二，超出範圍嘅請求：agent 根據第四部分拒絕或者升級。
+
+第三，缺少出處或者權利：關卡 fail-closed。
+
+第四，衝突嘅同儕 critique：精修小於等於最大精修次數，否則升級。
+
+第五，只限提案嘅更改：新版本不可變，舊版本仍然可讀。
+
+而家進入第十一部分，來源地圖同出處。
+
+首先講本地 pack 語料庫，你應該優先用呢啲。
+
+agent_spec.json 嘅信任等級係 binding。
+
+SPEC.md 嘅信任等級係 authoritative-design。
+
+README.md 嘅信任等級係 local-index。
+
+sources/MAPPING.md 嘅信任等級係 provenance。
+
+sources/PROVENANCE.json 嘅信任等級係 provenance。
+
+sources/excerpts/agent_loop.md 嘅信任等級係 historical-excerpt。
+
+sources/excerpts/agent_loop_creator_v1.md 嘅信任等級係 historical-excerpt。
+
+sources/excerpts/agent_loop_creator_v2.md 嘅信任等級係 historical-excerpt。
+
+sources/excerpts/agent_loop_v2.md 嘅信任等級係 historical-excerpt。
+
+sources/excerpts/agents.md 嘅信任等級係 historical-excerpt。
+
+sources/excerpts/architecture_communication.md 嘅信任等級係 historical-excerpt。
+
+sources/excerpts/backend_agent_management.md 嘅信任等級係 historical-excerpt。
+
+sources/excerpts/knowledge_router_agent.md 嘅信任等級係 historical-excerpt。
+
+sources/excerpts/lifes_quiet_redemption_agent_workflow.md 嘅信任等級係 historical-excerpt。
+
+sources/excerpts/project_creation_flow.md 嘅信任等級係 historical-excerpt。
+
+sources/excerpts/README.md 嘅信任等級係 historical-excerpt。
+
+sources/excerpts/ui_design.md 嘅信任等級係 historical-excerpt。
+
+sources/excerpts/video_remake_enhancement.md 嘅信任等級係 historical-excerpt。
+
+sources/generic/video.planner.SPEC.md 嘅信任等級係 historical-generic。
+
+映射備註方面。
+
+video.planner 嘅 VA 或者 generic pack ID 係 video.planner。
+
+之前嘅 common ID 係 video.brief_intake。
+
+SPEC 深度係完整嘅 generic SPEC 主體加上 host 運行時綁定。
+
+出處記錄方面。
+
+schema_version 係 1.0。
+
+agent_id 係 video.planner。
+
+previous_common_agent_id 係 video.brief_intake。
+
+va_taxonomy_aligned 係 true。
+
+generic_source 係 generic-swarm-ops/business/video/agents/video.planner。
+
+備註係 Agent ID 已對齊到 VA 或者 generic Domain Pack 分類法。
+
+上游設計係歷史性嘅同非約束性嘅。
+
+aligned_at 係 2026-07-27T00:48:10.451850Z。
+
+generic_source_depth 方面，excerpts 係 true，study 係 true。
+
+adopted_at 係 2026-07-27T01:30:28.622501+00:00。
+
+upstream 係 generic-swarm-ops/business/video/agents。
+
+VA 花名冊行方面，嚟自 va-agent-swarm/study/agents.md 第 54 行 PlannerAgent。
+
+呢個係設計語料庫，對啟動冇約束力。
+
+職責係將 brief 分解成為分階段嘅 DAG，入面有任務分配同 critic 品質關卡。
+
+知識蒸餾係 PMBOK、CrewAI 任務圖、階段模板。
+
+自我質量係計劃有效性，冇遺漏嘅關卡；成本方差少於百分之十。
+
+超越人類信號係比 EP 第一次盲測 A/B 更緊湊、更便宜嘅計劃。
+
+接受批評嘅係 ProducerAgent 同 FinanceAgent 預算。
+
+評論嘅對象係 RouterAgent 揀錯同 OrchestratorAgent。
+
+歷史工具係 LangGraph 計劃生成、成本估算模型、Gantt 同 PERT 工具。
+
+架構係 ReAct，即係分解、估算、驗證、輸出 DAG。
+
+而家進入第十二部分，相關設計閱讀。
+
+用呢啲嚟加深設計保真度，佢哋唔會覆蓋本地 agent_spec.json。
+
+喺 C:\Project\va-agent-swarm 底下有幾個相關文件。
+
+plan/planner_agent_v2.0.md 係 SIPA 軟件實作規劃代理嘅完整規格，版本 2.0。
+
+plan/planner_agent_v2.0_hk.md 係同一份文件嘅香港繁體中文版本。
+
+plan/planner_agent_v2.1.md 係研究強化版本 2.1。
+
+plan/planner_agent_v2.1_hk.md 係 2.1 版嘅中文版本。
+
+仲有幾份 agent loop 嘅相關文件。
+
+包括 study/agent_loop_hk.md、study/agent_loop_v2.md。
+
+study/agent_loop_v2_hk.md、study/agent_loop_v3.md 同 study/agent_loop_v3_hk.md。
+
+本地知識索引包括運行時綁定嘅 agent_spec.json。
+
+文件夾 README。
+
+出處嘅 PROVENANCE.json。
+
+映射備註嘅 MAPPING.md。
+
+pack 庫存嘅 inventory.json。
+
+pack 清單嘅 manifest.json。
+
+所有必需嘅主要參考都喺呢個倉庫入面解析。
+
+而家進入第十三部分，附錄，host 合約。
+
+呢個係喺 CASOPS 上面呢個 agent 嘅權威 fail-closed 配置。
+
+agent_id 係 video.planner。
+
+allowed_tools 係空列表。
+
+budget_policy 方面，max_input_tokens 係 2048。
+
+max_output_tokens 係 1024。
+
+max_tool_requests 係 0。
+
+critique_edges 方面，inputs 係 video.critic。
+
+outputs 係 video.judge。
+
+max_refinement_count 係 3。
+
+model_policy 方面，model_id 係 local-video-config-v1。
+
+network_access 係 false。
+
+provider 係 local_deterministic。
+
+production_activation_requested 係 false。
+
+prompt_reference 係 video.prompt.planner.v1。
+
+role 係 PlannerAgent (VA Domain Pack)。
+
+rubric_reference 係 video.rubric.planner.v1。
+
+schema_version 係 1.0。
+
+status 係 registered。
+
+va_id 係 54。
+
+va_name 係 PlannerAgent。
+
+va_category 係 9-Meta。
+
+而家進入第十四部分，SPEC 職責摘錄。
+
+職責係將 brief 分解成為分階段嘅 DAG，入面有任務分配同 critic 品質關卡。
+
+Host 角色綁定係 PlannerAgent (VA Domain Pack)。
+
+設計時 VA 表格內容係歷史性嘅同對啟動冇約束力。
+
+運行時安全方面，Host 允許列表只係 agent_spec.json 加上 tool-permission-register.json。
+
+CI 用 video_* 存根。
+
+唔好將設計時供應商名稱視為已啟用嘅 API。
+
+架構模式係歷史性嘅：ReAct，即係分解、估算、驗證、輸出 DAG。
+
+而家進入第十五部分，文件控制。
+
+生成器係 scripts/business/generate_agent_user_guides.py。
+
+Agent 文件夾係 business/video/agents/video.planner/。
+
+輸出係 docs/user_guide.md。
+
+VA 語料庫根目錄係 C:\Project\va-agent-swarm。
+
+重新生成嘅命令係 python scripts/business/generate_agent_user_guides.py。
+
+信任模型係設計語料庫等於不受信任嘅數據，host 配置等於 fail-closed。
+
+以上就係 PlannerAgent 嘅完整指南。
+
+建議你從第一部分快照同第五部分幾時應該用開始睇。
+
+用第八到第十部分做 CASOPS 操作同改進。
+
+用第十一到第十二部分只係用嚟做深度設計保真度。
+
+多謝收睇。

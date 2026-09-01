@@ -1,0 +1,51 @@
+{
+  "schema_version": "1.0",
+  "agent_id": "video.vfxsupervisor",
+  "sources": [
+    {
+      "id": "src_1",
+      "title": "VES Awards",
+      "description": "VES Awards",
+      "license_class": "unknown_review_required",
+      "acquisition_method": "manual_or_licensed_api",
+      "local_path_hint": "sources/excerpts/ or sources/study/",
+      "refresh_sla_days": 90,
+      "owner": "video.vfxsupervisor",
+      "status": "planned_or_partial"
+    },
+    {
+      "id": "src_2",
+      "title": "SIGGRAPH papers",
+      "description": "SIGGRAPH papers",
+      "license_class": "unknown_review_required",
+      "acquisition_method": "manual_or_licensed_api",
+      "local_path_hint": "sources/excerpts/ or sources/study/",
+      "refresh_sla_days": 90,
+      "owner": "video.vfxsupervisor",
+      "status": "planned_or_partial"
+    },
+    {
+      "id": "src_3",
+      "title": "Weta/DNEG talks",
+      "description": "Weta/DNEG talks",
+      "license_class": "unknown_review_required",
+      "acquisition_method": "manual_or_licensed_api",
+      "local_path_hint": "sources/excerpts/ or sources/study/",
+      "refresh_sla_days": 90,
+      "owner": "video.vfxsupervisor",
+      "status": "planned_or_partial"
+    },
+    {
+      "id": "src_4",
+      "title": "Foundry training",
+      "description": "Foundry training",
+      "license_class": "unknown_review_required",
+      "acquisition_method": "manual_or_licensed_api",
+      "local_path_hint": "sources/excerpts/ or sources/study/",
+      "refresh_sla_days": 90,
+      "owner": "video.vfxsupervisor",
+      "status": "planned_or_partial"
+    }
+  ],
+  "note": "Legal review required before treating external corpora as production grounding."
+}

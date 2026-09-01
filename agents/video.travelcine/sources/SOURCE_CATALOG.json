@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.0",
+  "agent_id": "video.travelcine",
+  "sources": [
+    {
+      "id": "src_1",
+      "title": "Brandon Li/Burkard reels",
+      "description": "Brandon Li/Burkard reels",
+      "license_class": "unknown_review_required",
+      "acquisition_method": "manual_or_licensed_api",
+      "local_path_hint": "sources/excerpts/ or sources/study/",
+      "refresh_sla_days": 90,
+      "owner": "video.travelcine",
+      "status": "planned_or_partial"
+    },
+    {
+      "id": "src_2",
+      "title": "NatGeo style guide",
+      "description": "NatGeo style guide",
+      "license_class": "unknown_review_required",
+      "acquisition_method": "manual_or_licensed_api",
+      "local_path_hint": "sources/excerpts/ or sources/study/",
+      "refresh_sla_days": 90,
+      "owner": "video.travelcine",
+      "status": "planned_or_partial"
+    },
+    {
+      "id": "src_3",
+      "title": "Banff Fest",
+      "description": "Banff Fest",
+      "license_class": "unknown_review_required",
+      "acquisition_method": "manual_or_licensed_api",
+      "local_path_hint": "sources/excerpts/ or sources/study/",
+      "refresh_sla_days": 90,
+      "owner": "video.travelcine",
+      "status": "planned_or_partial"
+    }
+  ],
+  "note": "Legal review required before treating external corpora as production grounding."
+}

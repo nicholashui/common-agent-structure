@@ -1,0 +1,187 @@
+{
+  "schema_version": "3.0",
+  "sources": [
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Art of Voice Acting, 5th ed.",
+      "author": "James R. Alburger",
+      "isbn13": "9781138843103",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Art of Voice Acting, 5th ed. (James R. Alburger), ISBN-13 9781138843103"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Voice-Over for Animation",
+      "author": "Wright & Lallo",
+      "isbn13": "9780240812151",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Voice-Over for Animation (Wright & Lallo), ISBN-13 9780240812151"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "There's Money Where Your Mouth Is",
+      "author": "Elaine A. Clark",
+      "isbn13": "9781581159806",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: There's Money Where Your Mouth Is (Elaine A. Clark), ISBN-13 9781581159806"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "播音主持创作基础",
+      "author": "张颂",
+      "isbn13": "9787565701238",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 播音主持创作基础（张颂），ISBN-13 9787565701238"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "An Actor Prepares",
+      "author": "Stanislavski",
+      "isbn13": "9780878309832",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: An Actor Prepares (Stanislavski), ISBN-13 9780878309832"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Audition",
+      "author": "Michael Shurtleff",
+      "isbn13": "9780802772404",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Audition (Michael Shurtleff), ISBN-13 9780802772404"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Directing Actors",
+      "author": "Judith Weston",
+      "isbn13": "9780941188241",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Directing Actors (Judith Weston), ISBN-13 9780941188241"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Respect for Acting",
+      "author": "Uta Hagen",
+      "isbn13": "9780470228487",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Respect for Acting (Uta Hagen), ISBN-13 9780470228487"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "演员的自我修养",
+      "isbn13": "9787108014504",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 演员的自我修养，ISBN-13 9787108014504"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "尊重表演艺术",
+      "isbn13": "9787106028893",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 尊重表演艺术，ISBN-13 9787106028893"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "秒懂声音掘金：重塑声音 打造声音IP 声音创副业 AI配音 AI解说",
+      "isbn13": "9787122477637",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 秒懂声音掘金：重塑声音 打造声音IP 声音创副业 AI配音 AI解说，ISBN-13 9787122477637"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Sound Effects Bible How to Create and Record Hollywood Style Sound Effects",
+      "author": "Viers, Ric",
+      "isbn13": "9781932907483",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Sound Effects Bible How to Create and Record Hollywood Style Sound Effects (Viers, Ric), ISBN-13 9781932907483"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Hollywood Soundscapes Film Sound Style, Craft and Production in the Classical Era",
+      "author": "Helen Hanson",
+      "isbn13": "9781844577279",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Hollywood Soundscapes Film Sound Style, Craft and Production in the Classical Era (Helen Hanson), ISBN-13 9781844577279"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Production Sound Mixing The Art and Craft of Sound Recording for the Moving Image (The…",
+      "author": "John J. Murphy",
+      "isbn13": "9781501307102",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Production Sound Mixing The Art and Craft of Sound Recording for the Moving Image (The… (John J. Murphy), ISBN-13 9781501307102"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Sound design the expressive power of music， voice and sound effects in cinema eng",
+      "isbn13": "9781032592183",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Sound design the expressive power of music， voice and sound effects in cinema eng, ISBN-13 9781032592183"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Sound Design for the Visual Storyteller Creating Sound for Visual Media",
+      "author": "Anderson, Christopher D.",
+      "isbn13": "9781040332245",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Sound Design for the Visual Storyteller Creating Sound for Visual Media (Anderson, Christopher D.), ISBN-13 9781040332245"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Art of Mixing",
+      "author": "David Gibson",
+      "isbn13": "9781003655268",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Art of Mixing (David Gibson), ISBN-13 9781003655268"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Mixing Audio",
+      "author": "Izhaki, Roey",
+      "isbn13": "9781032219448",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Mixing Audio (Izhaki, Roey), ISBN-13 9781032219448"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "电影电视声音创作与录音制作教程",
+      "author": "姚国强",
+      "isbn13": "9787106032937",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 电影电视声音创作与录音制作教程（姚国强），ISBN-13 9787106032937"
+    }
+  ],
+  "agent_id": "video.voiceover",
+  "previous_common_agent_id": "video.voice_director",
+  "va_taxonomy_aligned": true,
+  "generic_source": "generic-swarm-ops/business/video/agents/video.voiceover",
+  "note": "Imported into CASOPS as baseline_safe. No production activation, no network, no plugins, memory writes forbidden.",
+  "aligned_at": "2026-07-27T00:48:10.593425Z",
+  "generic_source_depth": {
+    "excerpts": true,
+    "study": true,
+    "adopted_at": "2026-07-27T01:30:29.015858+00:00",
+    "upstream": "generic-swarm-ops/business/video/agents"
+  },
+  "imported_from": "C:\\Project\\common-agent-swarm-ops\\business\\video\\agents\\video.voiceover",
+  "reference_book_origin": "spec/book_of_knowledge.md",
+  "reference_book_note": "Bibliographic references from spec/book_of_knowledge.md. Does not enable network, RAG, T3, plugins, or memory writes."
+}

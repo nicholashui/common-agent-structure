@@ -1,0 +1,172 @@
+{
+  "schema_version": "3.0",
+  "sources": [
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Clearance & Copyright, 4th ed.",
+      "author": "Michael C. Donaldson",
+      "isbn13": "9781615931330",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Clearance & Copyright, 4th ed. (Michael C. Donaldson), ISBN-13 9781615931330"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Pocket Lawyer for Filmmakers, 2nd ed.",
+      "author": "Thomas A. Crowell",
+      "isbn13": "9780240812182",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Pocket Lawyer for Filmmakers, 2nd ed. (Thomas A. Crowell), ISBN-13 9780240812182"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Law of Journalism and Mass Communication",
+      "author": "Trager et al.",
+      "isbn13": "9781506363226",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Law of Journalism and Mass Communication (Trager et al.), ISBN-13 9781506363226"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Entertainment Law in a Nutshell",
+      "author": "Sherri Burr",
+      "isbn13": "9781634603058",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Entertainment Law in a Nutshell (Sherri Burr), ISBN-13 9781634603058"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "著作权法",
+      "author": "王迁",
+      "isbn13": "9787301249499",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 著作权法（王迁），ISBN-13 9787301249499"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "知识产权法",
+      "author": "吴汉东",
+      "isbn13": "9787301162262",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 知识产权法（吴汉东），ISBN-13 9787301162262"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Producer to Producer, 2nd ed.",
+      "author": "Maureen A. Ryan",
+      "isbn13": "9781615932023",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Producer to Producer, 2nd ed. (Maureen A. Ryan), ISBN-13 9781615932023"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Complete Film Production Handbook, 4th ed.",
+      "author": "Eve Light Honthaner",
+      "isbn13": "9780240811505",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Complete Film Production Handbook, 4th ed. (Eve Light Honthaner), ISBN-13 9780240811505"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Film Production Management 101",
+      "author": "Deborah S. Patz",
+      "isbn13": "9781615932290",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Film Production Management 101 (Deborah S. Patz), ISBN-13 9781615932290"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Scheduling and Budgeting Your Film, 2nd ed.",
+      "author": "Paula Landry",
+      "isbn13": "9781138936140",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Scheduling and Budgeting Your Film, 2nd ed. (Paula Landry), ISBN-13 9781138936140"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Independent Film Producing",
+      "author": "Paul Battista",
+      "isbn13": "9781138013827",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Independent Film Producing (Paul Battista), ISBN-13 9781138013827"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Hollywood Economist 2.0",
+      "author": "Edward Jay Epstein",
+      "isbn13": "9781612190501",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Hollywood Economist 2.0 (Edward Jay Epstein), ISBN-13 9781612190501"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "影视制片管理",
+      "isbn13": "9787301169186",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 影视制片管理，ISBN-13 9787301169186"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "AI Robotics Ethics, Algorithms, and Technology of Artificial Intelligence-Powered Robots",
+      "author": "Vinod Kumar Khanna",
+      "isbn13": "9781032695266",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: AI Robotics Ethics, Algorithms, and Technology of Artificial Intelligence-Powered Robots (Vinod Kumar Khanna), ISBN-13 9781032695266"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Ethics of Artificial Intelligence Principles, Challenges, and Opportunities",
+      "author": "Luciano Floridi",
+      "isbn13": "9780198883098",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Ethics of Artificial Intelligence Principles, Challenges, and Opportunities (Luciano Floridi), ISBN-13 9780198883098"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "电影版权与伦理",
+      "author": "贾磊磊等",
+      "isbn13": "9787562193920",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 电影版权与伦理（贾磊磊等），ISBN-13 9787562193920"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "中国电影伦理学",
+      "author": "贾磊磊、袁智忠",
+      "isbn13": "9787562187752",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 中国电影伦理学（贾磊磊、袁智忠），ISBN-13 9787562187752"
+    }
+  ],
+  "agent_id": "video.compliance",
+  "previous_common_agent_id": "video.compliance_agent",
+  "va_taxonomy_aligned": true,
+  "generic_source": "generic-swarm-ops/business/video/agents/video.compliance",
+  "note": "Imported into CASOPS as baseline_safe. No production activation, no network, no plugins, memory writes forbidden.",
+  "aligned_at": "2026-07-27T00:48:10.426138Z",
+  "generic_source_depth": {
+    "excerpts": true,
+    "study": true,
+    "adopted_at": "2026-07-27T01:30:27.908481+00:00",
+    "upstream": "generic-swarm-ops/business/video/agents"
+  },
+  "imported_from": "C:\\Project\\common-agent-swarm-ops\\business\\video\\agents\\video.compliance",
+  "reference_book_origin": "spec/book_of_knowledge.md",
+  "reference_book_note": "Bibliographic references from spec/book_of_knowledge.md. Does not enable network, RAG, T3, plugins, or memory writes."
+}

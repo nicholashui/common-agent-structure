@@ -1,0 +1,310 @@
+{
+  "schema_version": "3.0",
+  "sources": [
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Threat Modeling",
+      "author": "Adam Shostack",
+      "isbn13": "9781118809990",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Threat Modeling (Adam Shostack), ISBN-13 9781118809990"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Alignment Problem",
+      "isbn13": "9780393635829",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Alignment Problem, ISBN-13 9780393635829"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Weapons of Math Destruction",
+      "isbn13": "9780553418811",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Weapons of Math Destruction, ISBN-13 9780553418811"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "威胁建模",
+      "isbn13": "9787115419903",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 威胁建模，ISBN-13 9787115419903"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "算法霸权",
+      "isbn13": "9787508684031",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 算法霸权，ISBN-13 9787508684031"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Artificial Intelligence: A Modern Approach, 4th ed.",
+      "author": "Russell & Norvig",
+      "isbn13": "9780134610993",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Artificial Intelligence: A Modern Approach, 4th ed. (Russell & Norvig), ISBN-13 9780134610993"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Multiagent Systems, 2nd ed.",
+      "author": "Michael Wooldridge",
+      "isbn13": "9780471496915",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Multiagent Systems, 2nd ed. (Michael Wooldridge), ISBN-13 9780471496915"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Deep Learning",
+      "author": "Goodfellow, Bengio, Courville",
+      "isbn13": "9780262035613",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Deep Learning (Goodfellow, Bengio, Courville), ISBN-13 9780262035613"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Hands-On Machine Learning, 3rd ed.",
+      "author": "Aurélien Géron",
+      "isbn13": "9781098125974",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Hands-On Machine Learning, 3rd ed. (Aurélien Géron), ISBN-13 9781098125974"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Reinforcement Learning, 2nd ed.",
+      "author": "Sutton & Barto",
+      "isbn13": "9780262039246",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Reinforcement Learning, 2nd ed. (Sutton & Barto), ISBN-13 9780262039246"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Speech and Language Processing, 2nd ed.",
+      "author": "Jurafsky & Martin",
+      "isbn13": "9780131873216",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Speech and Language Processing, 2nd ed. (Jurafsky & Martin), ISBN-13 9780131873216"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Introduction to Information Retrieval",
+      "author": "Manning, Raghavan, Schütze",
+      "isbn13": "9780521865715",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Introduction to Information Retrieval (Manning, Raghavan, Schütze), ISBN-13 9780521865715"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Designing Data-Intensive Applications",
+      "author": "Martin Kleppmann",
+      "isbn13": "9781449373320",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Designing Data-Intensive Applications (Martin Kleppmann), ISBN-13 9781449373320"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Human Compatible",
+      "author": "Stuart Russell",
+      "isbn13": "9780525558613",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Human Compatible (Stuart Russell), ISBN-13 9780525558613"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Superintelligence",
+      "author": "Nick Bostrom",
+      "isbn13": "9780199678112",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Superintelligence (Nick Bostrom), ISBN-13 9780199678112"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "人工智能：一种现代的方法",
+      "author": "第4版",
+      "isbn13": "9787111547044",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 人工智能：一种现代的方法（第4版），ISBN-13 9787111547044"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "深度学习",
+      "author": "花书",
+      "isbn13": "9787115461476",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 深度学习（花书），ISBN-13 9787115461476"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "机器学习",
+      "author": "周志华",
+      "isbn13": "9787302373575",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 机器学习（周志华），ISBN-13 9787302373575"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "统计学习方法",
+      "author": "李航",
+      "isbn13": "9787302423288",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 统计学习方法（李航），ISBN-13 9787302423288"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "强化学习",
+      "author": "第2版",
+      "isbn13": "9787115546081",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 强化学习（第2版），ISBN-13 9787115546081"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "信息检索导论",
+      "isbn13": "9787115221704",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 信息检索导论，ISBN-13 9787115221704"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "数据密集型应用系统设计",
+      "isbn13": "9787111547532",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 数据密集型应用系统设计，ISBN-13 9787111547532"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "超级智能",
+      "isbn13": "9787508663098",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 超级智能，ISBN-13 9787508663098"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "动手学深度学习",
+      "author": "李沐等",
+      "isbn13": "9787115547460",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 动手学深度学习（李沐等），ISBN-13 9787115547460"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Clearance & Copyright, 4th ed.",
+      "author": "Michael C. Donaldson",
+      "isbn13": "9781615931330",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Clearance & Copyright, 4th ed. (Michael C. Donaldson), ISBN-13 9781615931330"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Pocket Lawyer for Filmmakers, 2nd ed.",
+      "author": "Thomas A. Crowell",
+      "isbn13": "9780240812182",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Pocket Lawyer for Filmmakers, 2nd ed. (Thomas A. Crowell), ISBN-13 9780240812182"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Law of Journalism and Mass Communication",
+      "author": "Trager et al.",
+      "isbn13": "9781506363226",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Law of Journalism and Mass Communication (Trager et al.), ISBN-13 9781506363226"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Entertainment Law in a Nutshell",
+      "author": "Sherri Burr",
+      "isbn13": "9781634603058",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Entertainment Law in a Nutshell (Sherri Burr), ISBN-13 9781634603058"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "著作权法",
+      "author": "王迁",
+      "isbn13": "9787301249499",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 著作权法（王迁），ISBN-13 9787301249499"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "知识产权法",
+      "author": "吴汉东",
+      "isbn13": "9787301162262",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 知识产权法（吴汉东），ISBN-13 9787301162262"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "AI Robotics Ethics, Algorithms, and Technology of Artificial Intelligence-Powered Robots",
+      "author": "Vinod Kumar Khanna",
+      "isbn13": "9781032695266",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: AI Robotics Ethics, Algorithms, and Technology of Artificial Intelligence-Powered Robots (Vinod Kumar Khanna), ISBN-13 9781032695266"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Ethics of Artificial Intelligence Principles, Challenges, and Opportunities",
+      "author": "Luciano Floridi",
+      "isbn13": "9780198883098",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Ethics of Artificial Intelligence Principles, Challenges, and Opportunities (Luciano Floridi), ISBN-13 9780198883098"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "中国电影伦理学",
+      "author": "贾磊磊、袁智忠",
+      "isbn13": "9787562187752",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 中国电影伦理学（贾磊磊、袁智忠），ISBN-13 9787562187752"
+    }
+  ],
+  "agent_id": "video.safetyredteam",
+  "previous_common_agent_id": "video.safety_reviewer",
+  "va_taxonomy_aligned": true,
+  "generic_source": "generic-swarm-ops/business/video/agents/video.safetyredteam",
+  "note": "Imported into CASOPS as baseline_safe. No production activation, no network, no plugins, memory writes forbidden.",
+  "aligned_at": "2026-07-27T00:48:10.775150Z",
+  "generic_source_depth": {
+    "excerpts": true,
+    "study": true,
+    "adopted_at": "2026-07-27T01:30:28.756893+00:00",
+    "upstream": "generic-swarm-ops/business/video/agents"
+  },
+  "imported_from": "C:\\Project\\common-agent-swarm-ops\\business\\video\\agents\\video.safetyredteam",
+  "reference_book_origin": "spec/book_of_knowledge.md",
+  "reference_book_note": "Bibliographic references from spec/book_of_knowledge.md. Does not enable network, RAG, T3, plugins, or memory writes."
+}

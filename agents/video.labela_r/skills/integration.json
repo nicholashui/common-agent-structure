@@ -1,0 +1,20 @@
+{
+  "skill_id": "video-labela_r",
+  "agent_id": "video.labela_r",
+  "kind": "pack_agent_harness",
+  "status": "scaffolded",
+  "prompt_reference": "video.prompt.labela_r.v1",
+  "rubric_reference": "video.rubric.labela_r.v1",
+  "patterns": [
+    "Multi-agent debate",
+    "Agent Skills"
+  ],
+  "bindings": [],
+  "entrypoint": {
+    "type": "host_agent_runner",
+    "agent_id": "video.labela_r"
+  },
+  "fail_closed": true,
+  "generated_by": "improve_agents_from_plan_v1.py",
+  "generated_at": "2026-07-30T14:45:34Z"
+}

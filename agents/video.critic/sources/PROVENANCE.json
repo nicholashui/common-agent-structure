@@ -1,0 +1,389 @@
+{
+  "schema_version": "3.0",
+  "sources": [
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Film Art: An Introduction, 12th ed.",
+      "author": "Bordwell, Thompson, Smith",
+      "isbn13": "9781259534959",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Film Art: An Introduction, 12th ed. (Bordwell, Thompson, Smith), ISBN-13 9781259534959"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Understanding Movies, 14th ed.",
+      "author": "Louis Giannetti",
+      "isbn13": "9780205856169",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Understanding Movies, 14th ed. (Louis Giannetti), ISBN-13 9780205856169"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Filmmaker's Handbook, 5th ed.",
+      "author": "Ascher & Pincus",
+      "isbn13": "9780452297289",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Filmmaker's Handbook, 5th ed. (Ascher & Pincus), ISBN-13 9780452297289"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "How to Read a Film, 4th ed.",
+      "author": "James Monaco",
+      "isbn13": "9780195321050",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: How to Read a Film, 4th ed. (James Monaco), ISBN-13 9780195321050"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Film History: An Introduction",
+      "author": "Thompson & Bordwell",
+      "isbn13": "9780073386133",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Film History: An Introduction (Thompson & Bordwell), ISBN-13 9780073386133"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "What Is Cinema? Vol. 1",
+      "author": "André Bazin",
+      "isbn13": "9780520242272",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: What Is Cinema? Vol. 1 (André Bazin), ISBN-13 9780520242272"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Sculpting in Time",
+      "author": "Andrei Tarkovsky",
+      "isbn13": "9780292776241",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Sculpting in Time (Andrei Tarkovsky), ISBN-13 9780292776241"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Hitchcock/Truffaut",
+      "author": "François Truffaut",
+      "isbn13": "9780671604295",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Hitchcock/Truffaut (François Truffaut), ISBN-13 9780671604295"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Notes on the Cinematograph",
+      "author": "Robert Bresson",
+      "isbn13": "9781681370248",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Notes on the Cinematograph (Robert Bresson), ISBN-13 9781681370248"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "电影艺术：形式与风格",
+      "author": "波德维尔、汤普森",
+      "isbn13": "9787301254332",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 电影艺术：形式与风格（波德维尔、汤普森），ISBN-13 9787301254332"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "认识电影",
+      "author": "贾内梯",
+      "isbn13": "9787532763122",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 认识电影（贾内梯），ISBN-13 9787532763122"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "电影是什么",
+      "author": "巴赞",
+      "isbn13": "9787108017963",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 电影是什么（巴赞），ISBN-13 9787108017963"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "雕刻时光",
+      "author": "塔可夫斯基",
+      "isbn13": "9787532743841",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 雕刻时光（塔可夫斯基），ISBN-13 9787532743841"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "希区柯克与特吕弗对话录",
+      "isbn13": "9787532745128",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 希区柯克与特吕弗对话录，ISBN-13 9787532745128"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "电影语言的语法",
+      "author": "阿里洪",
+      "isbn13": "9787532299990",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 电影语言的语法（阿里洪），ISBN-13 9787532299990"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Ways of Seeing",
+      "author": "John Berger",
+      "isbn13": "9780140135152",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Ways of Seeing (John Berger), ISBN-13 9780140135152"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Interaction of Color",
+      "author": "Josef Albers",
+      "isbn13": "9780300179354",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Interaction of Color (Josef Albers), ISBN-13 9780300179354"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Understanding Comics",
+      "author": "Scott McCloud",
+      "isbn13": "9780060976255",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Understanding Comics (Scott McCloud), ISBN-13 9780060976255"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Art of Color",
+      "author": "Itten",
+      "isbn13": "9780471289289",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Art of Color (Itten), ISBN-13 9780471289289"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Camera Lucida",
+      "author": "Roland Barthes",
+      "isbn13": "9780374532338",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Camera Lucida (Roland Barthes), ISBN-13 9780374532338"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "On Photography",
+      "author": "Susan Sontag",
+      "isbn13": "9780312420093",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: On Photography (Susan Sontag), ISBN-13 9780312420093"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "谈美",
+      "author": "朱光潜",
+      "isbn13": "9787108042262",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 谈美（朱光潜），ISBN-13 9787108042262"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "美学散步",
+      "author": "宗白华",
+      "isbn13": "9787532123456",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 美学散步（宗白华），ISBN-13 9787532123456"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "观看之道",
+      "isbn13": "9787544715998",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 观看之道，ISBN-13 9787544715998"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "理解漫画",
+      "isbn13": "9787513320184",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 理解漫画，ISBN-13 9787513320184"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "论摄影",
+      "isbn13": "9787544722599",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 论摄影，ISBN-13 9787544722599"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Elements of Journalism, 3rd ed.",
+      "author": "Kovach & Rosenstiel",
+      "isbn13": "9780804136785",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Elements of Journalism, 3rd ed. (Kovach & Rosenstiel), ISBN-13 9780804136785"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Blur",
+      "author": "Kovach & Rosenstiel",
+      "isbn13": "9781608193011",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Blur (Kovach & Rosenstiel), ISBN-13 9781608193011"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Associated Press Stylebook",
+      "isbn13": "9781541649883",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Associated Press Stylebook, ISBN-13 9781541649883"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "On Writing Well",
+      "author": "William Zinsser",
+      "isbn13": "9780060891541",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: On Writing Well (William Zinsser), ISBN-13 9780060891541"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Craft of Research, 4th ed.",
+      "author": "Booth et al.",
+      "isbn13": "9780226239736",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Craft of Research, 4th ed. (Booth et al.), ISBN-13 9780226239736"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Interviewing as Qualitative Research, 4th ed.",
+      "author": "Irving Seidman",
+      "isbn13": "9780807755679",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Interviewing as Qualitative Research, 4th ed. (Irving Seidman), ISBN-13 9780807755679"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "新闻的十大基本原则",
+      "isbn13": "9787301161111",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 新闻的十大基本原则，ISBN-13 9787301161111"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "采访的艺术",
+      "isbn13": "9787301169186",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 采访的艺术，ISBN-13 9787301169186"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "如何阅读一本书",
+      "isbn13": "9787100040945",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 如何阅读一本书，ISBN-13 9787100040945"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "研究是一门艺术",
+      "isbn13": "9787300116226",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 研究是一门艺术，ISBN-13 9787300116226"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Film Criticism in the Digital Age",
+      "author": "Mattias Frey, Cecilia Sayad (eds.)",
+      "isbn13": "9780813570730",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Film Criticism in the Digital Age (Mattias Frey, Cecilia Sayad (eds.)), ISBN-13 9780813570730"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Better living through criticism how to think about art, pleasure, beauty, and truth",
+      "author": "Scott, A. O., 1966- author",
+      "isbn13": "9780143109976",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Better living through criticism how to think about art, pleasure, beauty, and truth (Scott, A. O., 1966- author), ISBN-13 9780143109976"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Age of Movies Selected Writings of Pauline Kael",
+      "author": "Pauline Kael, Sanford Schwartz",
+      "isbn13": "9781598535082",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Age of Movies Selected Writings of Pauline Kael (Pauline Kael, Sanford Schwartz), ISBN-13 9781598535082"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "All about Oscar the history and politics of the Academy Awards",
+      "author": "Levy, Emanuel, 1947-",
+      "isbn13": "9780826414526",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: All about Oscar the history and politics of the Academy Awards (Levy, Emanuel, 1947-), ISBN-13 9780826414526"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Inside Oscar 2 6 New Years of Academy Awards History 1995-2000",
+      "author": "Damien Bona",
+      "isbn13": "9780345448002",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Inside Oscar 2 6 New Years of Academy Awards History 1995-2000 (Damien Bona), ISBN-13 9780345448002"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Big Show High Times and Dirty Dealings Backstage at the Academy Awards®",
+      "author": "Steve Pond",
+      "isbn13": "9780571211937",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Big Show High Times and Dirty Dealings Backstage at the Academy Awards® (Steve Pond), ISBN-13 9780571211937"
+    }
+  ],
+  "agent_id": "video.critic",
+  "previous_common_agent_id": "video.quality_controller",
+  "va_taxonomy_aligned": true,
+  "generic_source": "generic-swarm-ops/business/video/agents/video.critic",
+  "note": "Imported into CASOPS as baseline_safe. No production activation, no network, no plugins, memory writes forbidden.",
+  "aligned_at": "2026-07-27T00:48:10.785752Z",
+  "generic_source_depth": {
+    "excerpts": true,
+    "study": true,
+    "adopted_at": "2026-07-27T01:30:28.033538+00:00",
+    "upstream": "generic-swarm-ops/business/video/agents"
+  },
+  "imported_from": "C:\\Project\\common-agent-swarm-ops\\business\\video\\agents\\video.critic",
+  "reference_book_origin": "spec/book_of_knowledge.md",
+  "reference_book_note": "Bibliographic references from spec/book_of_knowledge.md. Does not enable network, RAG, T3, plugins, or memory writes."
+}

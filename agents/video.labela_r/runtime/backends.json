@@ -1,0 +1,11 @@
+{
+  "schema_version": "3.0",
+  "adapters": [
+    {
+      "id": "local_deterministic",
+      "kind": "model",
+      "provider": "local_deterministic",
+      "network_access": false
+    }
+  ]
+}

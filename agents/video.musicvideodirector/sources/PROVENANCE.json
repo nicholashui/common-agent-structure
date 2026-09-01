@@ -1,0 +1,406 @@
+{
+  "schema_version": "3.0",
+  "sources": [
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Making Movies",
+      "author": "Sidney Lumet",
+      "isbn13": "9780679756606",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Making Movies (Sidney Lumet), ISBN-13 9780679756606"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Film Directing: Shot by Shot",
+      "author": "Steven D. Katz",
+      "isbn13": "9780941188104",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Film Directing: Shot by Shot (Steven D. Katz), ISBN-13 9780941188104"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "On Directing Film",
+      "author": "David Mamet",
+      "isbn13": "9780140127225",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: On Directing Film (David Mamet), ISBN-13 9780140127225"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Directing Actors",
+      "author": "Judith Weston",
+      "isbn13": "9780941188241",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Directing Actors (Judith Weston), ISBN-13 9780941188241"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "On Film-making",
+      "author": "Alexander Mackendrick",
+      "isbn13": "9780571211258",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: On Film-making (Alexander Mackendrick), ISBN-13 9780571211258"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "A Director Prepares",
+      "author": "Anne Bogart",
+      "isbn13": "9780415238328",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: A Director Prepares (Anne Bogart), ISBN-13 9780415238328"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Rebel without a Crew",
+      "author": "Robert Rodriguez",
+      "isbn13": "9780452271876",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Rebel without a Crew (Robert Rodriguez), ISBN-13 9780452271876"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Directing: Film Techniques and Aesthetics, 5th ed.",
+      "author": "Michael Rabiger",
+      "isbn13": "9780240818450",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Directing: Film Techniques and Aesthetics, 5th ed. (Michael Rabiger), ISBN-13 9780240818450"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Director's Craft",
+      "author": "Katie Mitchell",
+      "isbn13": "9780415404396",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Director's Craft (Katie Mitchell), ISBN-13 9780415404396"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "拍电影",
+      "author": "卢梅",
+      "isbn13": "9787106028893",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 拍电影（卢梅），ISBN-13 9787106028893"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "电影镜头设计",
+      "author": "卡茨",
+      "isbn13": "9787115222224",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 电影镜头设计（卡茨），ISBN-13 9787115222224"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "导演创作完全手册",
+      "author": "拉比格",
+      "isbn13": "9787515302867",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 导演创作完全手册（拉比格），ISBN-13 9787515302867"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Cinematography: Theory and Practice, 3rd ed.",
+      "author": "Blain Brown",
+      "isbn13": "9781138212589",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Cinematography: Theory and Practice, 3rd ed. (Blain Brown), ISBN-13 9781138212589"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Visual Story, 2nd ed.",
+      "author": "Bruce Block",
+      "isbn13": "9780240807799",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Visual Story, 2nd ed. (Bruce Block), ISBN-13 9780240807799"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Filmmaker's Eye",
+      "author": "Gustavo Mercado",
+      "isbn13": "9780240812175",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Filmmaker's Eye (Gustavo Mercado), ISBN-13 9780240812175"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Grammar of the Shot, 4th ed.",
+      "author": "Bowen",
+      "isbn13": "9781138632219",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Grammar of the Shot, 4th ed. (Bowen), ISBN-13 9781138632219"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Painting With Light",
+      "author": "John Alton",
+      "isbn13": "9780520089495",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Painting With Light (John Alton), ISBN-13 9780520089495"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Set Lighting Technician's Handbook, 4th ed.",
+      "author": "Harry Box",
+      "isbn13": "9780240810751",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Set Lighting Technician's Handbook, 4th ed. (Harry Box), ISBN-13 9780240810751"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Reflections: On Cinematography",
+      "author": "Roger Deakins",
+      "isbn13": "9781910593998",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Reflections: On Cinematography (Roger Deakins) — check latest ed. ISBN-13 9781910593998"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Light Science & Magic, 5th ed.",
+      "author": "Hunter, Biver, Fuqua",
+      "isbn13": "9780415719407",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Light Science & Magic, 5th ed. (Hunter, Biver, Fuqua), ISBN-13 9780415719407"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "电影摄影：理论与实践",
+      "isbn13": "9787515331867",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 电影摄影：理论与实践，ISBN-13 9787515331867"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "电影语言的语法",
+      "isbn13": "9787532299990",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 电影语言的语法，ISBN-13 9787532299990"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "美国纽约摄影学院摄影教材",
+      "isbn13": "9787800078491",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 美国纽约摄影学院摄影教材，ISBN-13 9787800078491"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "论摄影",
+      "author": "桑塔格",
+      "isbn13": "9787544722599",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 论摄影（桑塔格），ISBN-13 9787544722599"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "摄影师的视界",
+      "isbn13": "9787512201880",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 摄影师的视界，ISBN-13 9787512201880"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "All You Need to Know About the Music Business, 10th ed.",
+      "author": "Donald S. Passman",
+      "isbn13": "9781501122187",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: All You Need to Know About the Music Business, 10th ed. (Donald S. Passman), ISBN-13 9781501122187"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "This Business of Music, 10th ed.",
+      "author": "Krasilovsky et al.",
+      "isbn13": "9780823077236",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: This Business of Music, 10th ed. (Krasilovsky et al.), ISBN-13 9780823077236"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Music Supervision",
+      "author": "Adams, Hnatiuk, Weiss",
+      "isbn13": "9780825672194",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Music Supervision (Adams, Hnatiuk, Weiss), ISBN-13 9780825672194"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "On the Track, 2nd ed.",
+      "author": "Karlin & Wright",
+      "isbn13": "9780415941365",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: On the Track, 2nd ed. (Karlin & Wright), ISBN-13 9780415941365"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "这就是音乐产业",
+      "author": "Passman 中译常见",
+      "isbn13": "9787111456780",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 这就是音乐产业（Passman 中译常见），ISBN-13 9787111456780"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Becoming an Actor’s Director Directing Actors for Film and Television",
+      "isbn13": "9780367191870",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Becoming an Actor’s Director Directing Actors for Film and Television, ISBN-13 9780367191870"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "纪录影片及数字视频编导与制作",
+      "isbn13": "9787504380302",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 纪录影片及数字视频编导与制作，ISBN-13 9787504380302"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Producing and Directing the Short Film and Video",
+      "isbn13": "9780367895914",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Producing and Directing the Short Film and Video, ISBN-13 9780367895914"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "AI 數字人 從製作到商用",
+      "isbn13": "9787122450753",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: AI 數字人 從製作到商用，ISBN-13 9787122450753"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Masters of FX Behind the Scenes with Geniuses of Visual and Special Effects",
+      "author": "Ian Failes",
+      "isbn13": "9781317540922",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Masters of FX Behind the Scenes with Geniuses of Visual and Special Effects (Ian Failes), ISBN-13 9781317540922"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Complete Guide To Film Scoring",
+      "author": "Richard Davis",
+      "isbn13": "9780634006364",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Complete Guide To Film Scoring (Richard Davis), ISBN-13 9780634006364"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "From Page to Stage How Theatre Designers Make Connections Between Scripts and Images",
+      "isbn13": "9781040426654",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: From Page to Stage How Theatre Designers Make Connections Between Scripts and Images, ISBN-13 9781040426654"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Encyclopedia of movie special effects",
+      "author": "Patricia D. Netzley",
+      "isbn13": "9781573561679",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Encyclopedia of movie special effects (Patricia D. Netzley), ISBN-13 9781573561679"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Properties Director’s Toolkit Creativity, Collaboration, and Communication for Prop…",
+      "isbn13": "9781315146201",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Properties Director’s Toolkit Creativity, Collaboration, and Communication for Prop…, ISBN-13 9781315146201"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "On the Track A Guide to Contemporary Film Scoring",
+      "author": "Fred Karlin Rayburn Wright",
+      "isbn13": "9781135948023",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: On the Track A Guide to Contemporary Film Scoring (Fred Karlin Rayburn Wright), ISBN-13 9781135948023"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Composing for the films",
+      "author": "Adorno, Theodor W., 1903-1969, Eisler, Hanns etc.",
+      "isbn13": "9780826499028",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Composing for the films (Adorno, Theodor W., 1903-1969, Eisler, Hanns etc.), ISBN-13 9780826499028"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Film composers guide",
+      "author": "Smith, Steven C, Francillon, Vincent J",
+      "isbn13": "9780943728360",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Film composers guide (Smith, Steven C, Francillon, Vincent J), ISBN-13 9780943728360"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "电影导演艺术教程（修订版）",
+      "author": "韩小磊",
+      "isbn13": "9787106053840",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 电影导演艺术教程（修订版）（韩小磊），ISBN-13 9787106053840"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "故事片创作六讲",
+      "author": "王竞",
+      "isbn13": "9787541151323",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 故事片创作六讲（王竞），ISBN-13 9787541151323"
+    }
+  ],
+  "agent_id": "video.musicvideodirector",
+  "previous_common_agent_id": "video.critique_coordinator",
+  "va_taxonomy_aligned": true,
+  "generic_source": "generic-swarm-ops/business/video/agents/video.musicvideodirector",
+  "note": "Imported into CASOPS as baseline_safe. No production activation, no network, no plugins, memory writes forbidden.",
+  "aligned_at": "2026-07-27T00:48:11.253300Z",
+  "generic_source_depth": {
+    "excerpts": true,
+    "study": true,
+    "adopted_at": "2026-07-27T01:30:28.510628+00:00",
+    "upstream": "generic-swarm-ops/business/video/agents"
+  },
+  "imported_from": "C:\\Project\\common-agent-swarm-ops\\business\\video\\agents\\video.musicvideodirector",
+  "reference_book_origin": "spec/book_of_knowledge.md",
+  "reference_book_note": "Bibliographic references from spec/book_of_knowledge.md. Does not enable network, RAG, T3, plugins, or memory writes."
+}

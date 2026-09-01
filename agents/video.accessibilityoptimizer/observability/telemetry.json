@@ -1,0 +1,6 @@
+{
+  "schema_version": "3.0",
+  "exporter": "otlp",
+  "schema_url": "https://casops.local/semconv/1.0.0",
+  "content_capture": "metadata_only"
+}

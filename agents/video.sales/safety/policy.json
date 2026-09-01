@@ -1,0 +1,7 @@
+{
+  "schema_version": "3.0",
+  "taint": true,
+  "injection": true,
+  "exfiltration": true,
+  "kill_switch_bypass": false
+}

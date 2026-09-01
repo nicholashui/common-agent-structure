@@ -1,0 +1,233 @@
+{
+  "schema_version": "3.0",
+  "sources": [
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Comic Toolbox",
+      "author": "John Vorhaus",
+      "isbn13": "9781879505216",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Comic Toolbox (John Vorhaus), ISBN-13 9781879505216"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Comedy Writing Secrets, 3rd ed.",
+      "author": "Helitzer & Shatz",
+      "isbn13": "9781599638775",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Comedy Writing Secrets, 3rd ed. (Helitzer & Shatz), ISBN-13 9781599638775"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Hidden Tools of Comedy",
+      "author": "Steve Kaplan",
+      "isbn13": "9781615931408",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Hidden Tools of Comedy (Steve Kaplan), ISBN-13 9781615931408"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "喜剧的富矿",
+      "isbn13": "9787550279995",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 喜剧的富矿，ISBN-13 9787550279995"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Story",
+      "author": "Robert McKee",
+      "isbn13": "9780060391683",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Story (Robert McKee), ISBN-13 9780060391683"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Anatomy of Story",
+      "author": "John Truby",
+      "isbn13": "9780865479937",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Anatomy of Story (John Truby), ISBN-13 9780865479937"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Save the Cat!",
+      "author": "Blake Snyder",
+      "isbn13": "9781932907001",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Save the Cat! (Blake Snyder), ISBN-13 9781932907001"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Writer's Journey, 3rd ed.",
+      "author": "Christopher Vogler",
+      "isbn13": "9781932907360",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Writer's Journey, 3rd ed. (Christopher Vogler), ISBN-13 9781932907360"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Hero with a Thousand Faces",
+      "author": "Joseph Campbell",
+      "isbn13": "9781577315933",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Hero with a Thousand Faces (Joseph Campbell), ISBN-13 9781577315933"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Adventures in the Screen Trade",
+      "author": "William Goldman",
+      "isbn13": "9780446391177",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Adventures in the Screen Trade (William Goldman), ISBN-13 9780446391177"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Screenplay",
+      "author": "Syd Field",
+      "isbn13": "9780385339032",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Screenplay (Syd Field), ISBN-13 9780385339032"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Making a Good Script Great, 3rd ed.",
+      "author": "Linda Seger",
+      "isbn13": "9781932907070",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Making a Good Script Great, 3rd ed. (Linda Seger), ISBN-13 9781932907070"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Screenwriter's Bible, 7th ed.",
+      "author": "David Trottier",
+      "isbn13": "9781935247210",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Screenwriter's Bible, 7th ed. (David Trottier), ISBN-13 9781935247210"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Wired for Story",
+      "author": "Lisa Cron",
+      "isbn13": "9781607742456",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Wired for Story (Lisa Cron), ISBN-13 9781607742456"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Into the Woods",
+      "author": "John Yorke",
+      "isbn13": "9780141978109",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Into the Woods (John Yorke), ISBN-13 9780141978109"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Art of Dramatic Writing",
+      "author": "Lajos Egri",
+      "isbn13": "9780671213329",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Art of Dramatic Writing (Lajos Egri), ISBN-13 9780671213329"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Poetics",
+      "author": "Aristotle; Heath trans.",
+      "isbn13": "9780140446364",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Poetics (Aristotle; Heath trans.), ISBN-13 9780140446364"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "故事",
+      "author": "麦基",
+      "isbn13": "9787201076942",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 故事（麦基），ISBN-13 9787201076942"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "故事的解剖",
+      "author": "繁体麦基",
+      "isbn13": "9789862135488",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 故事的解剖（繁体麦基），ISBN-13 9789862135488"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "救猫咪",
+      "isbn13": "9787229040727",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 救猫咪，ISBN-13 9787229040727"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "作家之路",
+      "author": "佛格勒",
+      "isbn13": "9787513320184",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 作家之路（佛格勒），ISBN-13 9787513320184"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "千面英雄",
+      "isbn13": "9787532753871",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 千面英雄，ISBN-13 9787532753871"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "电影剧本写作基础",
+      "author": "悉德·菲尔德",
+      "isbn13": "9787106021238",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 电影剧本写作基础（悉德·菲尔德），ISBN-13 9787106021238"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "戏剧写作基础",
+      "author": "埃格里",
+      "isbn13": "9787108014504",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 戏剧写作基础（埃格里），ISBN-13 9787108014504"
+    }
+  ],
+  "agent_id": "video.comedywriter",
+  "previous_common_agent_id": "video.qc_l1_reviewer",
+  "va_taxonomy_aligned": true,
+  "generic_source": "generic-swarm-ops/business/video/agents/video.comedywriter",
+  "note": "Imported into CASOPS as baseline_safe. No production activation, no network, no plugins, memory writes forbidden.",
+  "aligned_at": "2026-07-27T00:48:11.078215Z",
+  "generic_source_depth": {
+    "excerpts": true,
+    "study": true,
+    "adopted_at": "2026-07-27T01:30:27.866052+00:00",
+    "upstream": "generic-swarm-ops/business/video/agents"
+  },
+  "imported_from": "C:\\Project\\common-agent-swarm-ops\\business\\video\\agents\\video.comedywriter",
+  "reference_book_origin": "spec/book_of_knowledge.md",
+  "reference_book_note": "Bibliographic references from spec/book_of_knowledge.md. Does not enable network, RAG, T3, plugins, or memory writes."
+}

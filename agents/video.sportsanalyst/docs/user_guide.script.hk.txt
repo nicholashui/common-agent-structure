@@ -1,0 +1,475 @@
+大家好，歡迎收睇今日嘅影片。
+
+今日我哋會詳細講解 SportsAnalystAgent，又叫做 TelestratorOp 嘅操作員同設計指南。
+
+呢份指南係專門俾操作員、pack 作者、swarm 設計師同審核人員使用嘅。
+
+呢份指南會提供任務清晰度、幾時使用嘅指引、協作地圖、CASOPS 操作步驟、改進路徑，同埋一個分信任層級嘅來源地圖。
+
+非常重要嘅一點，呢份文件唔係一個啟動 provider 嘅許可證。
+
+唔係開放網絡存取嘅授權。
+
+亦唔係發明工具嘅許可。
+
+Host 嘅真相係 fail-closed 嘅 agent_spec.json。
+
+來自 VA 或者 redesign 文件嘅設計文字係不受信任嘅來源。
+
+Pack 路徑係 business/video/agents/video.sportsanalyst/。
+
+指南位於 docs/user_guide.md。
+
+由 scripts/business/generate_agent_user_guides.py 生成。
+
+第一部分，快照。
+
+SportsAnalystAgent 斜線 TelestratorOp，pack agent id 係 video.sportsanalyst。
+
+佢係一個 Video Domain Pack 角色，運行喺 CASOPS 上面。
+
+簡單講，佢嘅工作就係做戰術分析同圖表。
+
+呢份指南係人類可讀嘅操作員地圖，用嚟做目錄審查、swarm 設計同透過提案推動改進。
+
+逐項講基本資料。
+
+Display name 係 SportsAnalystAgent / TelestratorOp。
+
+Pack agent id 係 video.sportsanalyst。
+
+Pack 係 video。
+
+Host role string 係 SportsAnalystAgent / TelestratorOp (VA Domain Pack)。
+
+Catalog status 係 registered。
+
+Maturity today 係 L0，即非活動狀態，只有目錄同設計保真度。
+
+VA id 係 52。
+
+VA category 係 8-AI，即 AI 時代合成專家類別。
+
+Provider 係 local_deterministic。
+
+Network 係 False。
+
+Allowed tools 係空列表。
+
+Production activation requested 係 False。
+
+Prompt 同 rubric 參考分別係 video.prompt.sportsanalyst.v1 同 video.rubric.sportsanalyst.v1。
+
+Previous common id 係 video.operations_observer。
+
+Generic lineage 係 generic-swarm-ops/business/video/agents/video.sportsanalyst。
+
+第二部分，點解呢個角色存在。
+
+人類嘅影片製作團隊已經喺時間壓力之下解決呢個問題，就係做戰術分析同圖表。
+
+Agent 形式嘅存在係為咗令多代理系統持續編碼呢種工藝。
+
+喺每次交接時應用，並且只將殘餘風險升級俾人類處理。
+
+知識庫來自以下來源：MIT Sloan 論文，即麻省理工斯隆體育分析論文。
+
+仲有 ESPN Stats and Info。
+
+同埋 Goldsberry 分析，即 Kirk Goldsberry 嘅數據分析。
+
+呢啲係歷史設計來源，唔係即時網絡呼叫。
+
+設計野心係：喺戰術預測任務上打敗前運動員。
+
+當你寫評估或提案時用呢個作為北極星指標。
+
+第三部分，乜嘢叫做好。
+
+呢啲係審查準則。
+
+Primary outcome 係戰術分析同圖表。
+
+Self-quality bar 第一個係 Play-call accuracy 即戰術預測準確度。
+
+第二個係 on-screen clarity score 即螢幕清晰度評分。
+
+Ambition signal 係喺戰術預測任務上打敗前運動員評論員。
+
+Architecture pattern 係 ReAct，即擷取比賽數據、標註、然後渲染覆蓋層。
+
+Host quality 同 critique binding 方面。
+
+Prompt reference 係 video.prompt.sportsanalyst.v1。
+
+Rubric reference 係 video.rubric.sportsanalyst.v1。
+
+Critique edges 嘅 inputs 係 video.critic，outputs 係 video.judge。
+
+Max refinement 係 3。
+
+關於輸入、輸出同驗收。
+
+Inputs 係本地 pack 工件同類型化交接。
+
+Outputs 係可審查嘅影片領域交付物，附帶驗收標準。
+
+Acceptance 係 host 政策加本地 SPEC 標準，唔需要外部存儲庫。
+
+第四部分，範圍。
+
+呢個 agent 擁有嘅範圍係戰術分析同圖表。
+
+同同事共享嘅批評表面方面。
+
+佢聽取同接受來自 SMEAgent (sport) 嘅批評。
+
+佢亦接受來自 JournalistAgent 嘅批評。
+
+佢有資格評論 EditorAgent 嘅 missed-replay 問題。
+
+佢亦有資格評論 MotionGraphicsAgent 嘅圖表清晰度問題。
+
+Host critique edge inputs 係 video.critic。
+
+Host critique edge outputs 係 video.judge。
+
+Max refinement count 係 3。
+
+拒絕同升級方面。
+
+Fail-closed：唔會從設計文字中啟動 provider、開放網絡或獲取憑證。
+
+production_activation_requested 保持 false。
+
+將法律、安全、版權同發布決定升級到人類閘門。
+
+第五部分，幾時用呢個 agent。
+
+當工作成品需要由 SportsAnalystAgent / TelestratorOp 擁有嘅決定或工件時叫佢。
+
+即戰術分析同圖表。
+
+Pipeline phase 係 AI 時代合成專家。
+
+即合成媒體、克隆、化身同 deepfake 風險工藝，呢啲係傳統上唔存在嘅。
+
+唔好用佢做一般編排、預算批准或最終法律簽署。
+
+用 producer、legal 或 compliance 同事代替。
+
+Human override：任何阻礙發布嘅安全、版權或無障礙爭議都升級到人類閘門。
+
+決策小抄有四個問題。
+
+第一：缺少嘅技能係咪 SportsAnalystAgent 嘅工藝？如果係，加入 swarm 圖。
+
+第二：只係元數據編輯？用 Registry inspect 加提案。
+
+第三：需要工具或網絡？Host 目前唔允許。
+
+第四：有人類專屬風險？保留人類閘門。
+
+第六部分，協作地圖。
+
+呢個 agent 係批評總線上嘅節點，唔係獨立聊天機器人。
+
+Inbound critique 來自 SMEAgent (sport) 同 JournalistAgent。
+
+Outbound commentary 針對 EditorAgent 嘅 missed-replay 同 MotionGraphicsAgent 嘅圖表清晰度。
+
+Host edge inputs 係 video.critic。
+
+Host edge outputs 係 video.judge。
+
+第七部分，生產中嘅位置。
+
+人類生產工作流程方面，階段係合成媒體、克隆、化身同 deepfake 風險工藝。
+
+典型交接工件包括合成資產。
+
+仲有同意記錄。
+
+仲有法醫評分。
+
+同埋身份哈希。
+
+映射到經典階段：開發、前期製作、製作、後期製作、交付同即時運營。
+
+多代理 AI 工作流程方面，係專門嘅生成節點，有強來源、同意同法醫閘門。
+
+設計時工具備註，對 host 唔具約束力。
+
+第一個係 Sports data APIs，包括 StatsBomb 同 NBA Stats。
+
+第二個係 telestration overlay tools，即電子畫板覆蓋工具。
+
+第三個係 After Effects MCP。
+
+循環風格係 ReAct，即擷取比賽數據、標註、渲染覆蓋層。
+
+今日嘅 CASOPS 上呢個只係文檔。
+
+本地 AI 工作流程摘錄入面提到第 52 號 SportsAnalystAgent / TelestratorOp。
+
+職責係戰術分析同圖表。
+
+知識來源係 MIT Sloan Sports Analytics 論文、ESPN Stats and Info、Kirk Goldsberry 分析。
+
+自我質量係預測對實際嘅 play-call 準確度同螢幕清晰度評分。
+
+超越人類信號係喺戰術預測任務上打敗前運動員評論員。
+
+接受批評來自 SMEAgent (sport) 同 JournalistAgent。
+
+評論 EditorAgent 嘅 missed-replay 同 MotionGraphicsAgent 嘅圖表清晰度。
+
+共享交接合約方面。
+
+artifact_id 同 version 提供不可變身份。
+
+parent_assets 提供來源鏈。
+
+brief_scope 阻止範圍蔓延。
+
+acceptance_criteria 同自我質量標準掛鉤。
+
+qc_status 同 gate flags 令下游閘門短路。
+
+rights_and_consent 阻止不安全嘅濫用。
+
+critique_log pointer 保存歷史。
+
+第八部分，今日喺 CASOPS 上操作。
+
+呢個 agent 今日係目錄加設計物件。
+
+步驟一 Discover，去 Registry Hub 嘅 pack catalog /registry 確認成員資格。
+
+步驟二 Inspect，去 /registry/agents/video.sportsanalyst 閱讀 SPEC 同指南。
+
+步驟三 Propose improvements，POST 到 /api/v1/commons/agents/video.sportsanalyst/proposals。
+
+不可變版本加經過編輯嘅證據。
+
+步驟四 Swarm membership，只用 Host 返回嘅動作引用。
+
+步驟五 Run/dispatch，預設唔啟用，fail-closed 直到治理閘門。
+
+實際操作檯檢查清單。
+
+第一，確認 status、tools、activation 旗標。
+
+第二，先閱讀第三部分。
+
+第三，附上離線證據。
+
+第四，唔好貼 API 密鑰。
+
+第五，偏好小型可審查差異。
+
+第九部分，安全、信任同非啟動規則。
+
+agent_spec.json 係具約束力嘅 host 合約，fail-closed runtime binding。
+
+SPEC.md 係權威設計用於離線審查。
+
+sources 底下係歷史性不受信任數據。
+
+外部設計語料庫唔受信任。
+
+硬規則如下。
+
+Provider 保持 local_deterministic。
+
+Network access 保持 False。
+
+Allowed tools 係空列表。
+
+production_activation_requested 係 False。
+
+Budget 上限：輸入 2048、輸出 1024、工具請求 0。
+
+設計時工具目錄，非啟動：Sports data APIs 包括 StatsBomb 同 NBA Stats、telestration overlay tools、After Effects MCP。
+
+第十部分，提升質量。
+
+改進係版本化目錄工作。
+
+持續改進循環：觀察失敗、命名標準、起草差異、附上證據、提案、審查接受、然後考慮啟動閘門。
+
+具體槓桿有六個。
+
+第一，Rubric fidelity，收緊 video.rubric.sportsanalyst.v1 對照 Play-call accuracy 同 on-screen clarity score。
+
+第二，Prompt precision，對齊 video.prompt.sportsanalyst.v1 同責任：戰術分析同圖表。
+
+第三，Critique graph，確保入站 SMEAgent (sport) 同 JournalistAgent 同 host edges video.critic 捕捉失敗模式。
+
+第四，Architecture emulation，偏好 ReAct 即擷取比賽數據、標註、渲染覆蓋層。
+
+第五，Eval cases，寫 fixtures 如果「打敗前運動員」冇被接近就失敗。
+
+第六，Human gates，保持閘門明確。
+
+評估種子方面。
+
+Happy path：輸出滿足 Play-call accuracy 同 on-screen clarity score。
+
+Out-of-scope：按第四部分拒絕。
+
+Missing provenance：閘門 fail closed。
+
+Conflicting critique：refinement 唔超過 max count。
+
+Proposal-only：新版本不可變。
+
+第十一部分，來源地圖。
+
+本地 pack corpus 優先使用。
+
+agent_spec.json 係 binding。
+
+SPEC.md 係 authoritative-design。
+
+README.md 係 local-index。
+
+sources/MAPPING.md 係 provenance。
+
+sources/PROVENANCE.json 係 provenance。
+
+sources/excerpts/agents.md 係 historical-excerpt。
+
+sources/excerpts/ai_agent_video_production_workflow.md 係 historical-excerpt。
+
+sources/excerpts/SYSTEM_REFERENCE.md 係 historical-excerpt。
+
+sources/generic/video.analyst.SPEC.md 係 historical-generic。
+
+sources/generic/video.orchestrator.SPEC.md 係 historical-generic。
+
+Mapping note：video.sportsanalyst 嘅 VA 同 generic pack ID 係 video.sportsanalyst。
+
+之前嘅 common ID 係 video.operations_observer。
+
+SPEC 深度係完整 generic SPEC body 加 host runtime binding。
+
+Provenance record：schema_version 1.0。
+
+agent_id video.sportsanalyst。
+
+previous_common_agent_id video.operations_observer。
+
+va_taxonomy_aligned true。
+
+generic_source 係 generic-swarm-ops/business/video/agents/video.sportsanalyst。
+
+aligned_at 2026 年 7 月 27 日。
+
+Provenance narrative：Pack agent ID video.sportsanalyst 對齊到純 VA Domain Pack 分類法。
+
+之前嘅 ID video.operations_observer 只係歷史映射。
+
+上游設計係歷史性非約束性嘅。
+
+VA roster row，第 52 行 SportsAnalystAgent / TelestratorOp。
+
+Responsibility 係戰術分析同圖表。
+
+Knowledge distillation 係 MIT Sloan 論文、ESPN Stats and Info、Goldsberry 分析。
+
+Self-quality 係 Play-call accuracy 同 on-screen clarity score。
+
+Surpass-human 係打敗前運動員。
+
+Accepts critique 來自 SMEAgent (sport) 同 JournalistAgent。
+
+Comments on EditorAgent 嘅 missed-replay 同 MotionGraphicsAgent 嘅圖表清晰度。
+
+Tools 係歷史性嘅，包括 Sports data APIs、telestration overlay tools、After Effects MCP。
+
+Architecture 係 ReAct。
+
+第十二部分，相關設計閱讀。
+
+冇強關鍵字匹配，依靠本地 SPEC 同 VA 表格行。
+
+本地知識索引包括 Runtime binding、Folder README、Provenance、Mapping note、Pack inventory、Pack manifest。
+
+所有參考都喺存儲庫內解析。
+
+第十三部分，host 合約。
+
+agent_id 係 video.sportsanalyst。
+
+allowed_tools 空列表。
+
+budget_policy：max_input_tokens 2048，max_output_tokens 1024，max_tool_requests 0。
+
+critique_edges：inputs video.critic，outputs video.judge。
+
+max_refinement_count 3。
+
+model_policy：model_id local-video-config-v1，network_access false，provider local_deterministic。
+
+production_activation_requested false。
+
+prompt_reference video.prompt.sportsanalyst.v1。
+
+role 係 SportsAnalystAgent / TelestratorOp (VA Domain Pack)。
+
+rubric_reference video.rubric.sportsanalyst.v1。
+
+schema_version 1.0。
+
+status registered。
+
+va_id 52。
+
+va_name SportsAnalystAgent / TelestratorOp。
+
+va_category 8-AI。
+
+第十四部分，SPEC 責任摘錄。
+
+責任係戰術分析同圖表。
+
+Host role binding 係 SportsAnalystAgent / TelestratorOp (VA Domain Pack)。
+
+Knowledge distillation sources 係 MIT Sloan 論文、ESPN Stats and Info、Goldsberry 分析。
+
+Self-quality criteria 係 Play-call accuracy 同 on-screen clarity score。
+
+Surpass-human signal 係打敗前運動員。
+
+Critique bus：接受 SMEAgent (sport) 同 JournalistAgent 批評。
+
+評論 EditorAgent 嘅 missed-replay 同 MotionGraphicsAgent 嘅圖表清晰度。
+
+Tools 設計時備註係非啟動嘅。
+
+Runtime safety：Host allow-lists 只有 agent_spec.json 加 tool-permission-register.json。
+
+Architecture pattern 係 ReAct。
+
+第十五部分，文件控制。
+
+Generator 係 scripts/business/generate_agent_user_guides.py。
+
+Agent folder 係 business/video/agents/video.sportsanalyst/。
+
+Output 係 docs/user_guide.md。
+
+VA corpus root 係 C:\Project\va-agent-swarm。
+
+Trust model 係設計語料庫等於不受信任數據，host config 等於 fail-closed。
+
+以上就係 SportsAnalystAgent / TelestratorOp 嘅完整指南。
+
+建議由第一部分同第五部分開始。
+
+用第八到第十部分做操作。
+
+用第十一到第十二部分做深度設計。
+
+多謝收睇。

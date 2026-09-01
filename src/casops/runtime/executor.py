@@ -17,6 +17,8 @@ from casops.errors.codes import ErrorCode
 from casops.errors.exceptions import CasopsError
 from casops.runtime.adapter import DeterministicAdapter
 from casops.runtime.dag import compile_dag
+from casops.runtime.health import observe_health
+from casops.runtime.llm import LlmRouter
 from casops.runtime.safety import safety_gate
 from casops.runtime.trace import add_child, start_run_trace
 
@@ -52,8 +54,14 @@ class Runtime:
     agents_root: Path
     store: InvariantStore
     adapter: DeterministicAdapter = field(default_factory=DeterministicAdapter)
+    llm: LlmRouter | None = None
     runs: dict[str, RunResult] = field(default_factory=dict)
     artifacts: dict[str, dict[str, Any]] = field(default_factory=dict)
+
+    def __post_init__(self) -> None:
+        if self.llm is None:
+            self.llm = LlmRouter()
+        self.llm.local = self.adapter
 
     def execute(
         self,
@@ -91,7 +99,23 @@ class Runtime:
             add_child(trace, name=f"node.{node.kind}", attributes={"node_id": node_id})
             if node.kind == "model":
                 prompt = (folder / "prompts" / "primary.md").read_text(encoding="utf-8")
-                outputs.append(self.adapter.complete(prompt=prompt, node_id=node_id))
+                budget = spec.get("budget_policy") or {}
+                max_tokens = int(budget.get("max_output_tokens") or 512)
+                router = self.llm or LlmRouter()
+                outputs.append(
+                    router.complete(
+                        agent_id=str(spec.get("agent_id") or agent_id),
+                        prompt=prompt,
+                        node_id=node_id,
+                        max_tokens=max_tokens,
+                    )
+                )
+            elif node.kind == "transform":
+                if node.op != "health_snapshot":
+                    raise CasopsError(ErrorCode.PERF_PLAN_CYCLE, detail=f"unsupported transform {node.op}")
+                outputs.append(
+                    observe_health(folder=folder, spec=spec, store=self.store, node_id=node_id)
+                )
             elif node.kind == "memory_write":
                 if memory_policy.get("mode") in {None, "none", "disabled"}:
                     continue
@@ -103,6 +127,7 @@ class Runtime:
             "id": f"art_{run_id[:12]}",
             "digest": sha256_json({"outputs": outputs, "agent": agent_id}),
             "sealed": True,
+            "text": last.get("text"),
         }
         result = RunResult(
             agent_id=spec.get("agent_id") or agent_id,
@@ -113,13 +138,13 @@ class Runtime:
             memory_writes=[],
             safety=safety,
             cancelled=cancelled,
-            adapter=self.adapter.provider,
+            adapter=str(last.get("provider") or self.adapter.provider),
         )
         self.runs[result.root_trace_id] = result
         self.artifacts[artifact["id"]] = {
             "artifact": artifact,
             "evidence_graph": {
-                "claims": [{"text": last.get("text"), "support": "deterministic_adapter"}],
+                "claims": [{"text": last.get("text"), "support": last.get("provider") or "deterministic_adapter"}],
                 "unsupported": [],
             },
             "run": result.root_trace_id,

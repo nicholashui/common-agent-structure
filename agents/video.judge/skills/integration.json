@@ -1,0 +1,23 @@
+{
+  "skill_id": "video-judge",
+  "agent_id": "video.judge",
+  "kind": "pack_agent_harness",
+  "status": "scaffolded",
+  "prompt_reference": "video.prompt.judge.v1",
+  "rubric_reference": "video.rubric.judge.v1",
+  "patterns": [
+    "LLM-as-Judge",
+    "Multi-agent debate",
+    "Agent Skills"
+  ],
+  "bindings": [
+    "agent_loop_v3"
+  ],
+  "entrypoint": {
+    "type": "host_agent_runner",
+    "agent_id": "video.judge"
+  },
+  "fail_closed": true,
+  "generated_by": "improve_agents_from_plan_v1.py",
+  "generated_at": "2026-07-30T14:45:34Z"
+}

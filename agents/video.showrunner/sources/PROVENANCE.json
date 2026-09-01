@@ -1,0 +1,574 @@
+{
+  "schema_version": "3.0",
+  "sources": [
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The TV Showrunner's Roadmap",
+      "author": "Neil Landau",
+      "isbn13": "9780415831642",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The TV Showrunner's Roadmap (Neil Landau), ISBN-13 9780415831642"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Writing the TV Drama Series, 4th ed.",
+      "author": "Pamela Douglas",
+      "isbn13": "9781615932986",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Writing the TV Drama Series, 4th ed. (Pamela Douglas), ISBN-13 9781615932986"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Hollywood Standard, 2nd ed.",
+      "author": "Christopher Riley",
+      "isbn13": "9781932907636",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Hollywood Standard, 2nd ed. (Christopher Riley), ISBN-13 9781932907636"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "电视剧写作",
+      "isbn13": "9787301169186",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 电视剧写作，ISBN-13 9787301169186"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Story",
+      "author": "Robert McKee",
+      "isbn13": "9780060391683",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Story (Robert McKee), ISBN-13 9780060391683"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Anatomy of Story",
+      "author": "John Truby",
+      "isbn13": "9780865479937",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Anatomy of Story (John Truby), ISBN-13 9780865479937"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Save the Cat!",
+      "author": "Blake Snyder",
+      "isbn13": "9781932907001",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Save the Cat! (Blake Snyder), ISBN-13 9781932907001"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Writer's Journey, 3rd ed.",
+      "author": "Christopher Vogler",
+      "isbn13": "9781932907360",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Writer's Journey, 3rd ed. (Christopher Vogler), ISBN-13 9781932907360"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Hero with a Thousand Faces",
+      "author": "Joseph Campbell",
+      "isbn13": "9781577315933",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Hero with a Thousand Faces (Joseph Campbell), ISBN-13 9781577315933"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Adventures in the Screen Trade",
+      "author": "William Goldman",
+      "isbn13": "9780446391177",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Adventures in the Screen Trade (William Goldman), ISBN-13 9780446391177"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Screenplay",
+      "author": "Syd Field",
+      "isbn13": "9780385339032",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Screenplay (Syd Field), ISBN-13 9780385339032"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Making a Good Script Great, 3rd ed.",
+      "author": "Linda Seger",
+      "isbn13": "9781932907070",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Making a Good Script Great, 3rd ed. (Linda Seger), ISBN-13 9781932907070"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Screenwriter's Bible, 7th ed.",
+      "author": "David Trottier",
+      "isbn13": "9781935247210",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Screenwriter's Bible, 7th ed. (David Trottier), ISBN-13 9781935247210"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Wired for Story",
+      "author": "Lisa Cron",
+      "isbn13": "9781607742456",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Wired for Story (Lisa Cron), ISBN-13 9781607742456"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Into the Woods",
+      "author": "John Yorke",
+      "isbn13": "9780141978109",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Into the Woods (John Yorke), ISBN-13 9780141978109"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Art of Dramatic Writing",
+      "author": "Lajos Egri",
+      "isbn13": "9780671213329",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Art of Dramatic Writing (Lajos Egri), ISBN-13 9780671213329"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Poetics",
+      "author": "Aristotle; Heath trans.",
+      "isbn13": "9780140446364",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Poetics (Aristotle; Heath trans.), ISBN-13 9780140446364"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "故事",
+      "author": "麦基",
+      "isbn13": "9787201076942",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 故事（麦基），ISBN-13 9787201076942"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "故事的解剖",
+      "author": "繁体麦基",
+      "isbn13": "9789862135488",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 故事的解剖（繁体麦基），ISBN-13 9789862135488"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "救猫咪",
+      "isbn13": "9787229040727",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 救猫咪，ISBN-13 9787229040727"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "作家之路",
+      "author": "佛格勒",
+      "isbn13": "9787513320184",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 作家之路（佛格勒），ISBN-13 9787513320184"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "千面英雄",
+      "isbn13": "9787532753871",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 千面英雄，ISBN-13 9787532753871"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "电影剧本写作基础",
+      "author": "悉德·菲尔德",
+      "isbn13": "9787106021238",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 电影剧本写作基础（悉德·菲尔德），ISBN-13 9787106021238"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "戏剧写作基础",
+      "author": "埃格里",
+      "isbn13": "9787108014504",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 戏剧写作基础（埃格里），ISBN-13 9787108014504"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Producer to Producer, 2nd ed.",
+      "author": "Maureen A. Ryan",
+      "isbn13": "9781615932023",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Producer to Producer, 2nd ed. (Maureen A. Ryan), ISBN-13 9781615932023"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Complete Film Production Handbook, 4th ed.",
+      "author": "Eve Light Honthaner",
+      "isbn13": "9780240811505",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Complete Film Production Handbook, 4th ed. (Eve Light Honthaner), ISBN-13 9780240811505"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Film Production Management 101",
+      "author": "Deborah S. Patz",
+      "isbn13": "9781615932290",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Film Production Management 101 (Deborah S. Patz), ISBN-13 9781615932290"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Scheduling and Budgeting Your Film, 2nd ed.",
+      "author": "Paula Landry",
+      "isbn13": "9781138936140",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Scheduling and Budgeting Your Film, 2nd ed. (Paula Landry), ISBN-13 9781138936140"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Independent Film Producing",
+      "author": "Paul Battista",
+      "isbn13": "9781138013827",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Independent Film Producing (Paul Battista), ISBN-13 9781138013827"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Hollywood Economist 2.0",
+      "author": "Edward Jay Epstein",
+      "isbn13": "9781612190501",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Hollywood Economist 2.0 (Edward Jay Epstein), ISBN-13 9781612190501"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "AI写作：用AI倍速提升写作效率",
+      "author": "邓世超",
+      "isbn13": "9787111760146",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: AI写作：用AI倍速提升写作效率（邓世超），ISBN-13 9787111760146"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "如何写出好故事 HBO大师写作课",
+      "isbn13": "9787516827482",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 如何写出好故事 HBO大师写作课，ISBN-13 9787516827482"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "给青年编剧的信3.0",
+      "author": "宋方金",
+      "isbn13": "9787559493965",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 给青年编剧的信3.0（宋方金），ISBN-13 9787559493965"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "编剧的艺术",
+      "author": "埃格里",
+      "isbn13": "9787550213333",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 编剧的艺术（埃格里），ISBN-13 9787550213333"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "短视频与直播文案写作",
+      "author": "张弘李自海魏坚 主编吴曼刘哲李守勤 副主编",
+      "isbn13": "9787115638649",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 短视频与直播文案写作（张弘李自海魏坚 主编吴曼刘哲李守勤 副主编），ISBN-13 9787115638649"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "新媒体广告与文案写作(第2版)",
+      "author": "周颖 主编张文杰 主编朱晓虹 副主编王娜 副主编黄伟 副主编",
+      "isbn13": "9787115648044",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 新媒体广告与文案写作(第2版)（周颖 主编张文杰 主编朱晓虹 副主编王娜 副主编黄伟 副主编），ISBN-13 9787115648044"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "小说的骨架：好提纲成就好故事",
+      "author": "[美]凯蒂·维兰德",
+      "isbn13": "9787210099529",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 小说的骨架：好提纲成就好故事（[美]凯蒂·维兰德），ISBN-13 9787210099529"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "编剧心理学 在剧本中建构冲突（（美）尹迪克）",
+      "isbn13": "9789571161488",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 编剧心理学 在剧本中建构冲突（（美）尹迪克），ISBN-13 9789571161488"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "救猫咪-小说创作指南",
+      "isbn13": "9787522513003",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 救猫咪-小说创作指南，ISBN-13 9787522513003"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "救猫咪：电影编剧指南",
+      "isbn13": "9787533963361",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 救猫咪：电影编剧指南，ISBN-13 9787533963361"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "人物：文本、舞台、银幕角色与卡司设计的艺术（编剧教父罗伯特·麦基“虚构艺术三部曲”完结篇）",
+      "author": "罗伯特·麦基",
+      "isbn13": "9787533969585",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 人物：文本、舞台、银幕角色与卡司设计的艺术（编剧教父罗伯特·麦基“虚构艺术三部曲”完结篇）（罗伯特·麦基），ISBN-13 9787533969585"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "救猫咪2经典电影剧本解析",
+      "isbn13": "9787533964108",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 救猫咪2经典电影剧本解析，ISBN-13 9787533964108"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "故事的解剖",
+      "author": "羅伯特．麥基(Robert McKee)",
+      "isbn13": "9787201094601",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 故事的解剖 (羅伯特．麥基(Robert McKee))，ISBN-13 9787201094601"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "對白的解剖",
+      "isbn13": "9789864898435",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 對白的解剖，ISBN-13 9789864898435"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "人物的解剖",
+      "isbn13": "9789864896257",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 人物的解剖，ISBN-13 9789864896257"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "諾蘭變奏曲",
+      "isbn13": "9789863844693",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 諾蘭變奏曲，ISBN-13 9789863844693"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "作家的灵感宝库",
+      "isbn13": "9787514220155",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 作家的灵感宝库，ISBN-13 9787514220155"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "发现你的创造力类型",
+      "isbn13": "9787210108061",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 发现你的创造力类型，ISBN-13 9787210108061"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "畅销作家写作全技巧",
+      "isbn13": "9787210092452",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 畅销作家写作全技巧，ISBN-13 9787210092452"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "小说的八百万种写法",
+      "isbn13": "9786263100442",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 小说的八百万种写法，ISBN-13 9786263100442"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "写小说最重要的十件事",
+      "isbn13": "9787210108672",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 写小说最重要的十件事，ISBN-13 9787210108672"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Essential Screenplay (3-Book Bundle)",
+      "author": "Field, Syd",
+      "isbn13": "9780307423269",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Essential Screenplay (3-Book Bundle) (Field, Syd), ISBN-13 9780307423269"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Becoming an Actor’s Director Directing Actors for Film and Television",
+      "isbn13": "9780367191870",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Becoming an Actor’s Director Directing Actors for Film and Television, ISBN-13 9780367191870"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "纪录影片及数字视频编导与制作",
+      "isbn13": "9787504380302",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 纪录影片及数字视频编导与制作，ISBN-13 9787504380302"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Producing and Directing the Short Film and Video",
+      "isbn13": "9780367895914",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Producing and Directing the Short Film and Video, ISBN-13 9780367895914"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "AI 數字人 從製作到商用",
+      "isbn13": "9787122450753",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: AI 數字人 從製作到商用，ISBN-13 9787122450753"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Masters of FX Behind the Scenes with Geniuses of Visual and Special Effects",
+      "author": "Ian Failes",
+      "isbn13": "9781317540922",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Masters of FX Behind the Scenes with Geniuses of Visual and Special Effects (Ian Failes), ISBN-13 9781317540922"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "From Page to Stage How Theatre Designers Make Connections Between Scripts and Images",
+      "isbn13": "9781040426654",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: From Page to Stage How Theatre Designers Make Connections Between Scripts and Images, ISBN-13 9781040426654"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Encyclopedia of movie special effects",
+      "author": "Patricia D. Netzley",
+      "isbn13": "9781573561679",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Encyclopedia of movie special effects (Patricia D. Netzley), ISBN-13 9781573561679"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Properties Director’s Toolkit Creativity, Collaboration, and Communication for Prop…",
+      "isbn13": "9781315146201",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Properties Director’s Toolkit Creativity, Collaboration, and Communication for Prop…, ISBN-13 9781315146201"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "电影导演艺术教程（修订版）",
+      "author": "韩小磊",
+      "isbn13": "9787106053840",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 电影导演艺术教程（修订版）（韩小磊），ISBN-13 9787106053840"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "电影编剧学（修订版）",
+      "author": "汪流",
+      "isbn13": "9787811272406",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 电影编剧学（修订版）（汪流），ISBN-13 9787811272406"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "实用电影编剧",
+      "author": "张觉明",
+      "isbn13": "9787106029234",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 实用电影编剧（张觉明），ISBN-13 9787106029234"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "故事片创作六讲",
+      "author": "王竞",
+      "isbn13": "9787541151323",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 故事片创作六讲（王竞），ISBN-13 9787541151323"
+    }
+  ],
+  "agent_id": "video.showrunner",
+  "previous_common_agent_id": "video.evaluation_designer",
+  "va_taxonomy_aligned": true,
+  "generic_source": "generic-swarm-ops/business/video/agents/video.showrunner",
+  "note": "Imported into CASOPS as baseline_safe. No production activation, no network, no plugins, memory writes forbidden.",
+  "aligned_at": "2026-07-27T00:48:11.312010Z",
+  "generic_source_depth": {
+    "excerpts": true,
+    "study": true,
+    "adopted_at": "2026-07-27T01:30:28.802385+00:00",
+    "upstream": "generic-swarm-ops/business/video/agents"
+  },
+  "imported_from": "C:\\Project\\common-agent-swarm-ops\\business\\video\\agents\\video.showrunner",
+  "reference_book_origin": "spec/book_of_knowledge.md",
+  "reference_book_note": "Bibliographic references from spec/book_of_knowledge.md. Does not enable network, RAG, T3, plugins, or memory writes."
+}

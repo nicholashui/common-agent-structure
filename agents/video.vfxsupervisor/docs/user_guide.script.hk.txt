@@ -1,0 +1,279 @@
+各位觀眾大家好，歡迎收睇今日嘅影片。今日我哋要深入介紹一個好重要嘅 AI 代理角色，佢叫做 VFXSupervisorAgent。
+
+呢份指南係寫畀邊啲人睇㗎呢？主要係寫畀操作員、Pack 作者、Swarm 設計師，同埋喺 common-agent-swarm-ops 裏面做審核嘅人。
+
+你睇完之後會得到乜嘢呢？你會清楚瞭解呢個代理嘅任務、幾時應該用佢、佢同其他代理嘅協作地圖、喺 CASOPS 上面點樣操作佢、點樣改善佢，同埋一個有信任分級嘅資料來源地圖。
+
+但係有啲嘢呢份指南唔係嘅。佢唔係一個授權你去啟動供應商、開網路存取或者自己發明工具嘅許可證。真正嘅主機事實係嗰個 fail-closed 嘅 agent_spec.json 檔案。來自 VA 或者重新設計文件嘅設計文本，佢哋嘅來源係不受信任嘅。
+
+呢個 Pack 嘅路徑係 business/video/agents/video.vfxsupervisor/。指南文件路徑係 docs/user_guide.md。佢係由 scripts/business/generate_agent_user_guides.py 呢個腳本自動生成嘅。
+
+好，而家入正題，第一部分係快照。
+
+VFXSupervisorAgent 嘅代理 ID 係 video.vfxsupervisor，佢係 Video Domain Pack 入面嘅一個角色，運行喺 CASOPS 上面。用簡單嘅說話嚟講，佢嘅工作就係規劃加監督 VFX 流水線。
+
+呢份指南要當成係一個人類可讀嘅操作員地圖，用嚟做目錄審核、Swarm 設計同提案驅動嘅改進，而唔係一個運行時啟動許可證。
+
+而家我逐個欄位同你講。顯示名稱係 VFXSupervisorAgent。Pack 代理 ID 係 video.vfxsupervisor。Pack 名稱係 video。
+
+主機角色字串係 VFXSupervisorAgent (VA Domain Pack)。目錄狀態係 registered，即係已註冊。
+
+目前嘅成熟度係 L0 斜線 non-active，即係目錄同設計保真度階段。VA 編號係 11。
+
+VA 類別係 3-Edit，即係剪輯同完成。供應商即係主機係 local_deterministic。網絡存取係 False，即係冇網絡。
+
+主機允許嘅工具係空嘅列表。生產啟動請求係 False，即係未有申請生產啟動。
+
+Prompt 同 Rubric 嘅參考分別係 video.prompt.vfxsupervisor.v1 同 video.rubric.vfxsupervisor.v1。之前嘅通用 ID 係 video.vfx_supervisor。
+
+通用血統係 generic-swarm-ops/business/video/agents/video.vfxsupervisor。
+
+好，第二部分，點解呢個角色會存在。
+
+人類影片團隊已經喺時間壓力之下解決緊呢個問題：規劃加監督 VFX 流水線。代理形式存在嘅原因，係等多代理系統可以持續編碼呢門手藝，喺每一次交接都應用佢，然後只將剩餘風險升級畀人類。
+
+佢嘅知識庫係從邊度蒸餾出嚟呢？係從 VES Awards、SIGGRAPH 論文、Weta 同 DNEG 嘅公開講座同 Foundry 培訓。呢啲係歷史設計來源，唔係喺呢個主機上面做即時網絡呼叫。
+
+設計雄心，即超越人類嘅信號係：以一小部分嘅時間達到 Weta 級別嘅 QC 通過率。你之後寫評估或者提案嘅時候，用呢個做北極星指標。
+
+第三部分，乜嘢先算做得好。
+
+呢啲係你讀輸出、寫評分標準或者評分提案嘅時候用嘅審核標準。
+
+主要成果係規劃加監督 VFX 流水線。自我品質標準係鏡頭完成百分比、合成錯誤像素計數同 CLIP-T 相對底片嘅分數。
+
+雄心信號係喺設計時定嘅：以一小部分嘅時間達到 Weta 級別嘅 QC 通過率。架構模式係設計時定嘅：Agentic Graph 即每個鏡頭扇出加 LLM-as-Judge 嘅 QC 評分標準。
+
+而家講主機品質同批評綁定。Prompt 參考係 video.prompt.vfxsupervisor.v1。Rubric 參考係 video.rubric.vfxsupervisor.v1。
+
+批評邊緣係咁嘅：輸入係 video.critic，輸出係 video.judge。最大精煉次數係 3。VA 表品質標準保留喺來源同身份表面之上。
+
+關於輸入到輸出再到驗收。輸入係本地 pack 工件同類型化嘅交接。輸出係可審核嘅影片領域交付物，帶有驗收標準。驗收係主機政策加上本地 SPEC 標準，唔需要外部存儲庫。
+
+第四部分，範圍：擁有、分享同拒絕。
+
+擁有嘅部分：規劃加監督 VFX 流水線。
+
+同同行分享嘅批評表面方面。接受批評嘅來源係 DirectorAgent、DoPAgent 同 ConsistencyAgent。佢有資格評論嘅係 AIGeneratorAgent 嘅工件問題同 CompositorAgent。
+
+主機批評邊緣輸入係 video.critic。主機批評邊緣輸出係 video.judge。最大精煉次數係 3。
+
+拒絕或者升級嘅部分。Fail-closed：唔會啟動供應商、冇網絡、唔會從設計文本攞憑證。production_activation_requested 保持 false，除非有另外嘅人類關卡改變佢。
+
+佢會將法律、安全、權利同發布決定升級到必需嘅人類關卡。批評主管同評判預設用 VA ID video.critic 同 video.judge。
+
+第五部分，幾時應該搵呢個代理。
+
+當工作產品需要 VFXSupervisorAgent 擁有嘅決定或者工件嘅時候就搵佢：規劃加監督 VFX 流水線。
+
+流水線階段係剪輯同完成。後期製作嘅剪輯、調色同畫面完成。
+
+唔好搵佢做通用協調、預算批准或者最終法律簽署，除非呢啲職責明確喺佢嘅責任入面，否則用製片人、法律或者合規同行代替。
+
+人類覆蓋：任何阻止發布嘅安全、權利或者無障礙爭議都會升級到人類關卡，即使代理喺未來嘅活躍運行時會自動通過。
+
+而家講決策小抄。第一個問題，缺少嘅技能係唔係 VFXSupervisorAgent 嘅手藝？如果係嘅話，就將佢包含喺嗰個階段嘅 Swarm 圖入面。
+
+第二個問題，呢個只係元數據或者目錄編輯嗎？如果係嘅話，用 Registry inspect 加提案，唔好發明運行時。
+
+第三個問題，任務需唔需要工具或者網絡？主機目前唔允許，除非 agent_spec 加權限登記另外講咗。
+
+第四個問題，有冇只係人類先可以處理嘅風險？如果有嘅話，保持一個人類關卡，代理輸出只係諮詢性質直到佢被啟動。
+
+第六部分，協作地圖。
+
+將呢個代理當成批評巴士上面嘅一個節點，而唔係一個獨立嘅聊天機器人。同行精煉品質，評判同關卡決定驗收。
+
+入站批評嚟自 DirectorAgent、DoPAgent 同 ConsistencyAgent。出站評論係關於 AIGeneratorAgent 嘅工件問題同 CompositorAgent。
+
+主機邊緣輸入係 video.critic。主機邊緣輸出係 video.judge。
+
+第七部分，佢喺生產中嘅位置。
+
+首先係人類生產工作流程。佢嘅位置係後期製作嘅剪輯、調色同畫面完成。
+
+典型嘅交接工件包括剪輯版本、時間線、調色、連貫性筆記同 QC 工單。
+
+你應該將責任映射到經典階段：開發到前期製作到製作到後期製作到交付或者即時運維。偏好人類帶有呢個職稱嘅人會簽署嘅階段。
+
+而家講多代理 AI 工作流程。佢做剪輯組裝、調色同畫面 QC 節點，有批評循環對照導演同觀眾評判。
+
+設計時工具備註，唔係綁定主機嘅：Nuke 通過 MCP 橋接、Runway Gen-4 Aleph 視頻到視頻、ComfyUI。
+
+之後實現運行時嘅時候要模擬嘅循環風格係 Agentic Graph 即每個鏡頭扇出加 LLM-as-Judge 嘅 QC 評分標準。喺今日嘅 CASOPS 上面，呢個模式只係文檔，即時供應商係本地確定性嘅，工具允許列表係空或者存根。
+
+本地 AI 工作流程摘錄入面提及嘅內容。第 11 號係 VFXSupervisorAgent，規劃加監督 VFX 流水線。知識來源包括 VES Awards 作品集、SIGGRAPH 論文、Weta 同 DNEG 公開講座同 Foundry 培訓。
+
+鏡頭完成百分比、合成錯誤像素計數、整合分數即 CLIP-T 相對底片。以一小部分嘅時間達到 Weta 級別嘅合成 QC 通過率。接受批評嚟自 DirectorAgent、DoPAgent 同 ConsistencyAgent。評論 AIGeneratorAgent 嘅工件問題同 CompositorAgent。
+
+另外喺後期階段，係 EditorAgent 加 ColoristAgent 加 VFXSupervisorAgent 交畀 DirectorAgent。
+
+喺生產階段，係 CinematographerAgent 即 DoP 加 PromptEngineerAgent 斜線 GeneratorOperator 加 ContinuityAgent 交畀 VFXSupervisorAgent。
+
+而家講 Swarm 準備好嘅共享交接合約。當你將來將呢個代理接入活躍嘅 Swarm，需要節點之間有機器可讀嘅清單。
+
+artifact_id 同版本，佢提供批評同重放嘅不可變身份。parent_assets 係到呢個代理輸入嘅來源鏈。brief_scope 防止責任之外嘅範圍蔓延。
+
+acceptance_criteria 與上面嘅自我品質標準掛鉤。qc_status 同關卡標誌等下游關卡可以短路。rights_and_consent 阻止不安全嘅合成或者授權濫用。critique_log 指標使精煉唔會丟失歷史記錄。
+
+第八部分，今日喺 CASOPS 上面操作呢個代理。
+
+今日呢個代理係一個目錄加設計對象。呢個係有意嘅：你可以研究、審核、提案同將佢放入 Swarm 設計而唔需要畀佢生產權力。
+
+第一步係發現。去 Registry Hub 嘅 pack 目錄，路徑係 /registry，確認庫存成員資格。
+
+第二步係檢查。去代理詳情頁面 /registry/agents/video.vfxsupervisor，讀 SPEC 或者呢份指南嘅 markdown。
+
+第三步係提出改進。用主機嘅 propose_improvement 動作，POST 到 /api/v1/commons/agents/video.vfxsupervisor/proposals。版本係不可變嘅，只用刪節嘅證據。
+
+第四步係 Swarm 成員資格。只可以用主機返回嘅動作參考。客戶端唔可以自己發明成員資格。
+
+第五步係運行或者調度。默認唔啟用生產供應商。Fail-closed 直到治理關卡。
+
+而家講實用嘅控制檯清單。第一，打開代理詳情確認狀態、工具同啟動標誌與呢份指南吻合。
+
+第二，讀第三部分「乜嘢先算做得好」，喺判斷任何樣本輸出或者提案之前。
+
+第三，如果提出更改，附上離線證據，好似評估筆記、評分標準差距、SPEC 差異，但唔好放祕密。
+
+第四，永遠唔好將供應商 API 金鑰或者「啟用網絡」指令貼到提案入面。
+
+第五，偏好小嘅、可審核嘅差異：prompt 或者 rubric 措辭、批評邊緣、驗收測試。
+
+第九部分，安全、信任同非啟動規則。
+
+信任層級方面。agent_spec.json 係綁定嘅主機合約，佢嘅角色係 fail-closed 運行時綁定。呢個 pack 嘅 SPEC.md 係權威嘅設計文件，用於離線審核，唔可以執行。
+
+sources 目錄下面嘅摘錄同通用 SPEC 係歷史嘅或者映射嘅，屬於不受信任嘅數據。C:\Project\va-agent-swarm 係外部設計語料庫，不受信任，可能會漂移。Specials 重新設計文檔係歷史設計，不受信任，來源有哈希值。
+
+呢個主機上面嘅硬規則。供應商保持 local_deterministic，除非有另外嘅關卡改變政策。
+
+網絡存取保持 False。允許嘅工具精確係空列表，設計時嘅工具名稱唔會啟用 API。
+
+production_activation_requested 係 False。預算，包括 tokens 同工具，係有上限嘅：輸入 2048、輸出 1024、工具請求 0。
+
+設計時工具目錄，呢啲唔會啟動任何嘢：Nuke 通過 MCP 橋接、Runway Gen-4 Aleph 視頻到視頻、ComfyUI。
+
+第十部分，隨時間提高品質。
+
+改進係有版本嘅目錄工作，唔係即時修補活躍嘅代理。已發布嘅定義保持不可變，更改要通過提案同審核。
+
+持續改進循環係咁嘅：觀察失敗，然後命名標準，呢個標準來自第三部分，然後起草離線差異，附上證據，喺主機上提案，審核同接受新版本，然後先至考慮啟動成熟度關卡。
+
+針對呢個代理嘅具體槓桿。第一，Rubric 保真度，收緊 video.rubric.vfxsupervisor.v1 嘅標準，對照鏡頭完成百分比、合成錯誤像素計數同 CLIP-T 相對底片。
+
+第二，Prompt 精確度，將 video.prompt.vfxsupervisor.v1 與責任對齊：規劃加監督 VFX 流水線。
+
+第三，批評圖，確保入站嘅 DirectorAgent、DoPAgent 同 ConsistencyAgent 同主機邊緣 video.critic 確實能捕捉已知嘅失敗模式。
+
+第四，架構模擬，之後實現嘅時候偏好 Agentic Graph 每個鏡頭扇出加 LLM-as-Judge QC 評分標準。
+
+第五，評估案例，寫固定嘅測試 fixture，如果「以一小部分時間達到 Weta 級別 QC 通過率」呢個目標冇被接近就會失敗。
+
+第六，人類關卡，保持法律、安全同發布關卡明確，唔好將佢哋吸收到沉默嘅自動化入面。
+
+建議嘅評估種子方面。Happy path handoff，即順利路徑交接，通過條件係輸出滿足鏡頭完成百分比、合成錯誤像素計數同 CLIP-T 相對底片。
+
+超出範圍嘅請求，代理應該按第四部分拒絕或者升級。缺少來源或者權利，關卡應該 fail-closed。
+
+衝突嘅同行批評，精煉應該小於或等於最大精煉次數，否則升級。只有提案嘅更改，新版本不可變，舊版本仍然可讀。
+
+第十一部分，來源地圖同出處。
+
+本地 pack 語料庫方面，你應該優先用呢啲。agent_spec.json 嘅信任層級係 binding。SPEC.md 嘅信任層級係 authoritative-design。README.md 嘅信任層級係 local-index。
+
+sources/MAPPING.md 嘅信任層級係 provenance。sources/PROVENANCE.json 都係 provenance。sources/excerpts/agents.md 係 historical-excerpt。
+
+sources/excerpts/ai_agent_video_production_workflow.md 係 historical-excerpt。sources/excerpts/lifes_quiet_redemption_agent_workflow.md 係 historical-excerpt。sources/excerpts/SYSTEM_REFERENCE.md 係 historical-excerpt。
+
+sources/excerpts/ui_design.md 係 historical-excerpt。sources/excerpts/video_remake_enhancement.md 係 historical-excerpt。sources/generic/video.vfxsupervisor.SPEC.md 係 historical-generic。
+
+映射備註方面。video.vfxsupervisor 嘅 VA/generic pack ID 係 video.vfxsupervisor。之前嘅通用 ID 係 video.vfx_supervisor。SPEC 深度係完整嘅通用 SPEC 正文加主機運行時綁定。
+
+出處記錄方面。schema_version 係 1.0。agent_id 係 video.vfxsupervisor。previous_common_agent_id 係 video.vfx_supervisor。va_taxonomy_aligned 係 true。
+
+generic_source 係 generic-swarm-ops/business/video/agents/video.vfxsupervisor。備註話 Agent ID 已對齊到 VA/generic Domain Pack 分類法，上游設計係歷史嘅同非綁定嘅。
+
+對齊時間係 2026-07-27T00:48:10.699208Z。通用來源深度方面，excerpts 係 true，study 係 true，adopted_at 係 2026-07-27T01:30:28.994075+00:00，upstream 係 generic-swarm-ops/business/video/agents。
+
+出處敘述方面。Pack 代理 ID video.vfxsupervisor 對齊到純 VA Domain Pack 斜線通用 pack 分類法。之前嘅通用庫存 ID video.vfx_supervisor 只係歷史映射。上游設計正文係歷史嘅同非綁定嘅，本地 agent_spec.json 係權威嘅。完整嘅 VA/generic SPEC 深度保留用於離線設計保真度。
+
+VA 花名冊行方面，呢個係來自 va-agent-swarm/study/agents.md 第 11 行 VFXSupervisorAgent 嘅設計語料庫，唔係用嚟啟動嘅。
+
+責任係規劃加監督 VFX 流水線。知識蒸餾來源係 VES Awards、SIGGRAPH 論文、Weta 同 DNEG 講座同 Foundry 培訓。
+
+自我品質標準係鏡頭完成百分比、合成錯誤像素計數同 CLIP-T 相對底片。超越人類信號係以一小部分時間達到 Weta 級別 QC 通過率。
+
+接受批評嚟自 DirectorAgent、DoPAgent 同 ConsistencyAgent。評論嘅對象係 AIGeneratorAgent 工件同 CompositorAgent。歷史工具包括 Nuke 通過 MCP 橋接、Runway Gen-4 Aleph 視頻到視頻同 ComfyUI。架構係 Agentic Graph 每個鏡頭扇出加 LLM-as-Judge QC 評分標準。
+
+第十二部分，相關設計閱讀。
+
+呢啲係用嚟加深設計保真度嘅，佢哋唔會覆蓋本地 agent_spec.json。喺 va-agent-swarm 之下冇強關鍵字匹配，依賴本地 SPEC 同 VA 錶行。
+
+本地知識索引方面。Runtime binding 係 agent_spec.json。Folder README 係 README.md。Provenance 係 sources/PROVENANCE.json。Mapping note 係 sources/MAPPING.md。Pack inventory 係 ../../inventory.json。Pack manifest 係 ../../manifest.json。所有必需嘅主要參考都喺呢個存儲庫入面解析。
+
+資料夾 README 嘅摘要係：VA 對齊嘅 Domain Pack 代理，喺通用主機上面。檔案方面，SPEC.md 嘅用途係 VA/generic 深度加主機綁定，agent_spec.json 係 fail-closed 運行時，sources 目錄係出處同映射。
+
+第十三部分，附錄，主機合約 agent_spec.json。
+
+呢個係喺 CASOPS 上面嘅權威 fail-closed 配置。agent_id 係 video.vfxsupervisor。allowed_tools 係空列表。
+
+budget_policy 方面，max_input_tokens 係 2048，max_output_tokens 係 1024，max_tool_requests 係 0。
+
+critique_edges 方面，inputs 係 video.critic，outputs 係 video.judge。max_refinement_count 係 3。
+
+model_policy 方面，model_id 係 local-video-config-v1，network_access 係 false，provider 係 local_deterministic。
+
+production_activation_requested 係 false。prompt_reference 係 video.prompt.vfxsupervisor.v1。role 係 VFXSupervisorAgent (VA Domain Pack)。
+
+rubric_reference 係 video.rubric.vfxsupervisor.v1。schema_version 係 1.0。status 係 registered。va_id 係 11。va_name 係 VFXSupervisorAgent。va_category 係 3-Edit。
+
+第十四部分，附錄，SPEC 責任摘錄。
+
+擴展嘅責任文本來自本地 SPEC.md。工作係規劃加監督 VFX 流水線。主機角色綁定係 VFXSupervisorAgent (VA Domain Pack)。設計時嘅 VA 表內容係歷史嘅同非綁定嘅。
+
+VA 表嘅責任係規劃加監督 VFX 流水線。歷史知識蒸餾來源係 VES Awards、SIGGRAPH 論文、Weta 同 DNEG 講座同 Foundry 培訓。
+
+歷史自我品質標準係鏡頭完成百分比、合成錯誤像素計數同 CLIP-T 相對底片。歷史超越人類信號係以一小部分時間達到 Weta 級別 QC 通過率。
+
+歷史批評巴士方面，接受批評嚟自 DirectorAgent、DoPAgent 同 ConsistencyAgent。評論嘅係 AIGeneratorAgent 工件同 CompositorAgent。
+
+歷史工具設計時備註，呢啲唔會啟動任何嘢：Nuke 通過 MCP 橋接、Runway Gen-4 Aleph 視頻到視頻同 ComfyUI。運行時安全方面，主機允許列表只係 agent_spec.json 加 tool-permission-register.json。CI 用 video 星號存根。唔好將設計時嘅供應商名稱當成已啟用嘅 API。
+
+歷史架構模式係 Agentic Graph 每個鏡頭扇出加 LLM-as-Judge QC 評分標準。
+
+第十五部分，文檔控制。
+
+生成器係 scripts/business/generate_agent_user_guides.py。代理資料夾係 business/video/agents/video.vfxsupervisor/。輸出係 docs/user_guide.md。
+
+VA 語料庫根目錄係 C:\Project\va-agent-swarm。重新生成命令係 python scripts/business/generate_agent_user_guides.py。信任模型係設計語料庫等於不受信任嘅數據，主機配置等於 fail-closed。
+
+以上就係 VFXSupervisorAgent 嘅完整指南。建議你由第一部分快照同第五部分幾時搵佢開始睇，用第八到第十部分做 CASOPS 操作同改進，用第十一到第十二部分只係做深度設計保真度。多謝收睇。
+
+
+
+補充返少少重要嘅資訊。關於呢個代理嘅整體定位，佢係屬於剪輯同完成類別，即係 3-Edit 呢個分類。
+
+呢個分類入面嘅代理主要負責後期製作嘅剪輯、調色同畫面完成。VFXSupervisorAgent 喺呢個分類入面嘅獨特之處，在於佢專注於規劃同監督整個視覺特效流水線。
+
+喺現代影片製作中，VFX 流水線可以涉及數十甚至數百個鏡頭嘅處理。每一個鏡頭都有佢獨特嘅技術需求同品質標準。
+
+佢嘅架構設計採用 Agentic Graph 每個鏡頭扇出加 LLM-as-Judge QC 評分標準嘅方式。呢種方式允許並行處理多個鏡頭，同時保持一致嘅品質控制。
+
+值得注意嘅係，佢接受批評嘅來源包括 DirectorAgent、DoPAgent 同 ConsistencyAgent。導演確保創意方向正確，攝影指導確保視覺語言一致，連貫性代理確保鏡頭之間冇矛盾。
+
+佢有資格評論嘅領域包括 AIGeneratorAgent 嘅工件問題同 CompositorAgent 嘅合成品質。呢啲都係 VFX 流水線中嘅關鍵節點。
+
+如果你想改變呢個代理嘅配置，記住要通過正式嘅提案流程。附上離線嘅評估數據同品質基準對比。
+
+最後，記住呢個代理嘅核心使命：以一小部分嘅時間達到 Weta 級別嘅合成 QC 通過率。呢個係極高嘅標準，代表頂級視覺特效品質。
+
+希望今日嘅深度講解對你有幫助。如果你有任何問題，歡迎繼續關注我哋嘅頻道。多謝各位收睇，我哋下次再見。
+
+
+
+VFX 流水線嘅複雜性決定咗呢個代理需要有極高嘅組織同協調能力。每一個鏡頭都可能涉及唔同嘅技術棧同工具鏈。
+
+合成錯誤像素計數呢個指標確保視覺品質達到像素級嘅精確度。任何可見嘅合成瑕疵都會破壞觀眾嘅沉浸感。
+
+總結嚟講，VFXSupervisorAgent 係 VFX 流水線嘅大腦，負責協調所有視覺特效工作並確保最終品質達到最高標準。

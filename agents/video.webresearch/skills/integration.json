@@ -1,0 +1,22 @@
+{
+  "skill_id": "video-webresearch",
+  "agent_id": "video.webresearch",
+  "kind": "pack_agent_harness",
+  "status": "scaffolded",
+  "prompt_reference": "video.prompt.webresearch.v1",
+  "rubric_reference": "video.rubric.webresearch.v1",
+  "patterns": [
+    "ReAct",
+    "Agent Skills"
+  ],
+  "bindings": [
+    "research_agent"
+  ],
+  "entrypoint": {
+    "type": "host_agent_runner",
+    "agent_id": "video.webresearch"
+  },
+  "fail_closed": true,
+  "generated_by": "improve_agents_from_plan_v1.py",
+  "generated_at": "2026-07-30T14:45:34Z"
+}

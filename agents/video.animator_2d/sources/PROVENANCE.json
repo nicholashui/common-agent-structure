@@ -1,0 +1,211 @@
+{
+  "schema_version": "3.0",
+  "sources": [
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Animator's Survival Kit, Expanded",
+      "author": "Richard Williams",
+      "isbn13": "9780571238347",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Animator's Survival Kit, Expanded (Richard Williams), ISBN-13 9780571238347"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Illusion of Life",
+      "author": "Thomas & Johnston",
+      "isbn13": "9780786860708",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Illusion of Life (Thomas & Johnston), ISBN-13 9780786860708"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Timing for Animation, 2nd ed.",
+      "author": "Whitaker & Halas",
+      "isbn13": "9780240521602",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Timing for Animation, 2nd ed. (Whitaker & Halas), ISBN-13 9780240521602"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Character Animation Crash Course!",
+      "author": "Eric Goldberg",
+      "isbn13": "9781879505971",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Character Animation Crash Course! (Eric Goldberg), ISBN-13 9781879505971"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Acting for Animators, 4th ed.",
+      "author": "Ed Hooks",
+      "isbn13": "9781138669116",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Acting for Animators, 4th ed. (Ed Hooks), ISBN-13 9781138669116"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Animator's Sketchbook",
+      "author": "various; *Drawn to Life* Stanchfield",
+      "isbn13": "9780240810966",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Animator's Sketchbook (various; *Drawn to Life* Stanchfield), ISBN-13 9780240810966"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Cartoon Animation",
+      "author": "Preston Blair",
+      "isbn13": "9781560100843",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Cartoon Animation (Preston Blair), ISBN-13 9781560100843"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "动画师生存手册",
+      "isbn13": "9787115215208",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 动画师生存手册，ISBN-13 9787115215208"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "生命的幻象：迪斯尼动画造型设计",
+      "isbn13": "9787532275119",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 生命的幻象：迪斯尼动画造型设计，ISBN-13 9787532275119"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "动画时间掌握",
+      "isbn13": "9787532275126",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 动画时间掌握，ISBN-13 9787532275126"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Framed Ink",
+      "author": "Marcos Mateu-Mestre",
+      "isbn13": "9781933492957",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Framed Ink (Marcos Mateu-Mestre), ISBN-13 9781933492957"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Directing the Story",
+      "author": "Francis Glebas",
+      "isbn13": "9780240810768",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Directing the Story (Francis Glebas), ISBN-13 9780240810768"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Prepare to Board! 2nd ed.",
+      "author": "Nancy Beiman",
+      "isbn13": "9780240818788",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Prepare to Board! 2nd ed. (Nancy Beiman), ISBN-13 9780240818788"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Storyboards: Motion in Art, 3rd ed.",
+      "author": "Mark Simon",
+      "isbn13": "9780240808055",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Storyboards: Motion in Art, 3rd ed. (Mark Simon), ISBN-13 9780240808055"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "分镜的艺术",
+      "isbn13": "9787535672346",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 分镜的艺术，ISBN-13 9787535672346"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "电影镜头设计",
+      "isbn13": "9787115222224",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 电影镜头设计，ISBN-13 9787115222224"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "An Actor Prepares",
+      "author": "Stanislavski",
+      "isbn13": "9780878309832",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: An Actor Prepares (Stanislavski), ISBN-13 9780878309832"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Audition",
+      "author": "Michael Shurtleff",
+      "isbn13": "9780802772404",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Audition (Michael Shurtleff), ISBN-13 9780802772404"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Directing Actors",
+      "author": "Judith Weston",
+      "isbn13": "9780941188241",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Directing Actors (Judith Weston), ISBN-13 9780941188241"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Respect for Acting",
+      "author": "Uta Hagen",
+      "isbn13": "9780470228487",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Respect for Acting (Uta Hagen), ISBN-13 9780470228487"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "演员的自我修养",
+      "isbn13": "9787108014504",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 演员的自我修养，ISBN-13 9787108014504"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "尊重表演艺术",
+      "isbn13": "9787106028893",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 尊重表演艺术，ISBN-13 9787106028893"
+    }
+  ],
+  "agent_id": "video.animator_2d",
+  "previous_common_agent_id": "video.animation_director",
+  "va_taxonomy_aligned": true,
+  "generic_source": "generic-swarm-ops/business/video/agents/video.animator_2d",
+  "note": "Imported into CASOPS as baseline_safe. No production activation, no network, no plugins, memory writes forbidden.",
+  "aligned_at": "2026-07-27T00:48:10.625125Z",
+  "generic_source_depth": {
+    "excerpts": true,
+    "study": true,
+    "adopted_at": "2026-07-27T01:30:27.627608+00:00",
+    "upstream": "generic-swarm-ops/business/video/agents"
+  },
+  "imported_from": "C:\\Project\\common-agent-swarm-ops\\business\\video\\agents\\video.animator_2d",
+  "reference_book_origin": "spec/book_of_knowledge.md",
+  "reference_book_note": "Bibliographic references from spec/book_of_knowledge.md. Does not enable network, RAG, T3, plugins, or memory writes."
+}

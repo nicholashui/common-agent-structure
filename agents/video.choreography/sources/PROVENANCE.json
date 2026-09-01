@@ -1,0 +1,171 @@
+{
+  "schema_version": "3.0",
+  "sources": [
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Intimate Act of Choreography",
+      "author": "Blom & Chaplin",
+      "isbn13": "9780822953425",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Intimate Act of Choreography (Blom & Chaplin), ISBN-13 9780822953425"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Laban for All",
+      "author": "Newlove & Dalby",
+      "isbn13": "9781854597250",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Laban for All (Newlove & Dalby), ISBN-13 9781854597250"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "舞蹈编导基础",
+      "isbn13": "9787810839990",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 舞蹈编导基础，ISBN-13 9787810839990"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Making Movies",
+      "author": "Sidney Lumet",
+      "isbn13": "9780679756606",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Making Movies (Sidney Lumet), ISBN-13 9780679756606"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Film Directing: Shot by Shot",
+      "author": "Steven D. Katz",
+      "isbn13": "9780941188104",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Film Directing: Shot by Shot (Steven D. Katz), ISBN-13 9780941188104"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "On Directing Film",
+      "author": "David Mamet",
+      "isbn13": "9780140127225",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: On Directing Film (David Mamet), ISBN-13 9780140127225"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Directing Actors",
+      "author": "Judith Weston",
+      "isbn13": "9780941188241",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Directing Actors (Judith Weston), ISBN-13 9780941188241"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "On Film-making",
+      "author": "Alexander Mackendrick",
+      "isbn13": "9780571211258",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: On Film-making (Alexander Mackendrick), ISBN-13 9780571211258"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "A Director Prepares",
+      "author": "Anne Bogart",
+      "isbn13": "9780415238328",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: A Director Prepares (Anne Bogart), ISBN-13 9780415238328"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Rebel without a Crew",
+      "author": "Robert Rodriguez",
+      "isbn13": "9780452271876",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Rebel without a Crew (Robert Rodriguez), ISBN-13 9780452271876"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Directing: Film Techniques and Aesthetics, 5th ed.",
+      "author": "Michael Rabiger",
+      "isbn13": "9780240818450",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Directing: Film Techniques and Aesthetics, 5th ed. (Michael Rabiger), ISBN-13 9780240818450"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Director's Craft",
+      "author": "Katie Mitchell",
+      "isbn13": "9780415404396",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Director's Craft (Katie Mitchell), ISBN-13 9780415404396"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "拍电影",
+      "author": "卢梅",
+      "isbn13": "9787106028893",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 拍电影（卢梅），ISBN-13 9787106028893"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "电影镜头设计",
+      "author": "卡茨",
+      "isbn13": "9787115222224",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 电影镜头设计（卡茨），ISBN-13 9787115222224"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "导演创作完全手册",
+      "author": "拉比格",
+      "isbn13": "9787515302867",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 导演创作完全手册（拉比格），ISBN-13 9787515302867"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Fight Choreography - The Art of Non-Verbal Dialogue",
+      "author": "John Kreng",
+      "isbn13": "9781592006793",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Fight Choreography - The Art of Non-Verbal Dialogue (John Kreng), ISBN-13 9781592006793"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The True Adventures of the Worlds Greatest Stuntman My Life as Indiana Jones, James Bon…",
+      "isbn13": "9781848568747",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The True Adventures of the Worlds Greatest Stuntman My Life as Indiana Jones, James Bon…, ISBN-13 9781848568747"
+    }
+  ],
+  "agent_id": "video.choreography",
+  "previous_common_agent_id": "video.content_moderator",
+  "va_taxonomy_aligned": true,
+  "generic_source": "generic-swarm-ops/business/video/agents/video.choreography",
+  "note": "Imported into CASOPS as baseline_safe. No production activation, no network, no plugins, memory writes forbidden.",
+  "aligned_at": "2026-07-27T00:48:11.069835Z",
+  "generic_source_depth": {
+    "excerpts": true,
+    "study": true,
+    "adopted_at": "2026-07-27T01:30:27.792939+00:00",
+    "upstream": "generic-swarm-ops/business/video/agents"
+  },
+  "imported_from": "C:\\Project\\common-agent-swarm-ops\\business\\video\\agents\\video.choreography",
+  "reference_book_origin": "spec/book_of_knowledge.md",
+  "reference_book_note": "Bibliographic references from spec/book_of_knowledge.md. Does not enable network, RAG, T3, plugins, or memory writes."
+}

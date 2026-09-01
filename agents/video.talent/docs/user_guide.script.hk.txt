@@ -1,0 +1,475 @@
+大家好，歡迎收睇今日嘅影片。
+
+今日我哋會詳細講解 TalentAgent，即 On-camera Agent 嘅操作員同設計指南。
+
+呢份文件係俾操作員、pack 作者、swarm 設計師同審核人員睇嘅。
+
+呢份指南提供任務清晰度、幾時使用嘅指引、協作地圖、CASOPS 操作步驟、改進路徑同分信任層級嘅來源地圖。
+
+重要聲明，呢份文件唔係啟動 provider 嘅許可證。
+
+唔係開放網絡嘅授權。
+
+唔係發明工具嘅許可。
+
+Host 真相係 fail-closed 嘅 agent_spec.json。
+
+VA 或 redesign 文件嘅設計文字係不受信任來源。
+
+Pack 路徑係 business/video/agents/video.talent/。
+
+指南位於 docs/user_guide.md。
+
+由 scripts/business/generate_agent_user_guides.py 生成。
+
+第一部分，快照。
+
+TalentAgent (On-camera)，pack agent id 係 video.talent。
+
+佢係 Video Domain Pack 角色運行喺 CASOPS 上。
+
+簡單講，佢嘅工作係 AI 渲染嘅表演。
+
+呢份指南係人類可讀嘅操作員地圖。
+
+基本資料逐項講。
+
+Display name 係 TalentAgent (On-camera)。
+
+Pack agent id 係 video.talent。
+
+Pack 係 video。
+
+Host role string 係 TalentAgent (On-camera) (VA Domain Pack)。
+
+Catalog status 係 registered。
+
+Maturity today 係 L0 非活動。
+
+VA id 係 26。
+
+VA category 係 5-Perf，即表演同編舞類別。
+
+Provider 係 local_deterministic。
+
+Network 係 False。
+
+Allowed tools 空列表。
+
+Production activation requested 係 False。
+
+Prompt 同 rubric 參考係 video.prompt.talent.v1 同 video.rubric.talent.v1。
+
+Previous common id 係 video.talent_coordinator。
+
+Generic lineage 係 generic-swarm-ops/business/video/agents/video.talent。
+
+第二部分，點解存在。
+
+人類影片團隊已經喺時間壓力下解決呢個問題：AI 渲染嘅表演。
+
+Agent 形式令多代理系統持續編碼呢種工藝。
+
+喺每次交接時應用，只將殘餘風險升級俾人類。
+
+知識庫來源第一個係方法演技錄音稿。
+
+第二個係經同意嘅演員表演語料庫。
+
+呢啲係歷史設計來源，唔係即時網絡呼叫。
+
+設計野心係：Hold-rate 匹配同一羣組中頂級創作者。
+
+用呢個做北極星指標。
+
+第三部分，乜嘢叫做好。
+
+Primary outcome 係 AI 渲染嘅表演。
+
+Self-quality bar 第一個係 Emotion-target match 即情緒目標匹配。
+
+第二個係 charisma score 即魅力評分，用觀眾代理。
+
+Ambition signal 係 Hold-rate 匹配同羣組中頂級創作者。
+
+Architecture pattern 係 Self-Refine 加情緒回歸驗證器。
+
+Host quality 同 critique binding。
+
+Prompt reference video.prompt.talent.v1。
+
+Rubric reference video.rubric.talent.v1。
+
+Critique edges inputs video.critic，outputs video.judge。
+
+Max refinement 3。
+
+輸入輸出驗收。
+
+Inputs 本地 pack 工件同類型化交接。
+
+Outputs 可審查交付物。
+
+Acceptance host 政策加 SPEC 標準。
+
+第四部分，範圍。
+
+擁有：AI 渲染嘅表演。
+
+共享批評表面。
+
+聽取 DirectorAgent 嘅批評。
+
+聽取 CastingAgent 嘅批評。
+
+有資格評論 DirectorAgent 嘅 impossible blocking 即不可能嘅走位指示。
+
+Host critique edge inputs video.critic。
+
+outputs video.judge。
+
+Max refinement count 3。
+
+拒絕同升級：Fail-closed。
+
+production_activation_requested 保持 false。
+
+法律安全版權發布升級人類閘門。
+
+第五部分，幾時用。
+
+當工作需要 TalentAgent 嘅決定或工件時叫佢。
+
+即 AI 渲染嘅表演。
+
+Pipeline phase 係表演同編舞。
+
+即人才表演指導、動作同螢幕存在感。
+
+唔好用佢做一般編排、預算或法律簽署。
+
+Human override：阻礙發布嘅爭議升級人類閘門。
+
+決策小抄。
+
+技能係 TalentAgent 嘅工藝？加入 swarm 圖。
+
+只係元數據？用 Registry。
+
+需要工具網絡？Host 唔允許。
+
+人類風險？保留閘門。
+
+第六部分，協作地圖。
+
+Inbound critique 來自 DirectorAgent 同 CastingAgent。
+
+Outbound commentary 針對 DirectorAgent 嘅 impossible blocking。
+
+Host edge inputs video.critic。
+
+outputs video.judge。
+
+第七部分，生產位置。
+
+人類工作流程階段係人才表演指導、動作同螢幕存在感。
+
+典型交接工件包括表演筆記。
+
+仲有動作評分。
+
+仲有選角同配音選擇。
+
+人類工作流程摘錄提到影片類型。
+
+按時長分類包括 Hook clips。
+
+Meme videos 同搞笑短劇。
+
+Trending sound 或 reaction videos。
+
+快速轉場。
+
+Text-on-screen 語錄。
+
+循環背景。
+
+Aesthetic vibe loops。
+
+Style-transfer clips。
+
+虛擬賀卡。
+
+Carousel-to-video snippets。
+
+Motion-art teasers。
+
+呢啲屬於 Very Easy 難度，最容易生成。
+
+多代理 AI 工作流程方面，係表演模擬、編舞、選角同配音適配、化身表演包。
+
+設計時工具備註第一個係 HeyGen Avatar IV。
+
+第二個係 Synthesia personal avatars 即 Synthesia 個人化身。
+
+第三個係 emotion-detection models (AffectNet) 即情緒檢測模型。
+
+循環風格係 Self-Refine 加情緒回歸驗證器。
+
+今日 CASOPS 上只係文檔。
+
+AI 工作流程摘錄提到第 26 號 TalentAgent (On-camera)。
+
+職責係 AI 渲染嘅表演。
+
+知識來源係方法演技錄音稿同經同意嘅演員表演語料庫。
+
+自我質量係情緒目標匹配同魅力評分。
+
+超越人類係 Hold-rate 匹配頂級創作者。
+
+接受批評來自 DirectorAgent 同 CastingAgent。
+
+評論 DirectorAgent 嘅 impossible blocking。
+
+共享交接合約方面。
+
+artifact_id version 不可變身份。
+
+parent_assets 來源鏈。
+
+brief_scope 阻止範圍蔓延。
+
+acceptance_criteria 同質量標準掛鉤。
+
+qc_status gate flags 下游短路。
+
+rights_and_consent 阻止濫用。
+
+critique_log pointer 保存歷史。
+
+第八部分，CASOPS 操作。
+
+今日係目錄加設計物件。
+
+步驟一 Discover 去 /registry。
+
+步驟二 Inspect 去 /registry/agents/video.talent。
+
+步驟三 POST 到 /api/v1/commons/agents/video.talent/proposals。
+
+步驟四隻用 Host 引用。
+
+步驟五預設唔啟用。
+
+操作檯檢查清單。
+
+確認旗標。
+
+先閱讀第三部分。
+
+附離線證據。
+
+唔好貼密鑰。
+
+偏好小差異。
+
+第九部分，安全信任。
+
+agent_spec.json 約束力合約。
+
+SPEC.md 權威設計。
+
+sources 歷史不受信任。
+
+外部語料庫唔受信任。
+
+硬規則：Provider local_deterministic。
+
+Network False。
+
+Tools 空列表。
+
+production_activation_requested False。
+
+Budget：輸入 2048，輸出 1024，工具 0。
+
+設計時工具目錄非啟動：HeyGen Avatar IV、Synthesia personal avatars、emotion-detection models (AffectNet)。
+
+第十部分，提升質量。
+
+版本化目錄工作。
+
+循環：觀察失敗、命名標準、起草差異、附證據、提案、審查、考慮閘門。
+
+具體槓桿六個。
+
+第一 Rubric fidelity 收緊對照 Emotion-target match 同 charisma score。
+
+第二 Prompt precision 對齊責任 AI 渲染表演。
+
+第三 Critique graph 確保 DirectorAgent 同 CastingAgent 捕捉失敗。
+
+第四 Architecture 偏好 Self-Refine 加情緒回歸驗證器。
+
+第五 Eval cases 寫 fixtures 如果 Hold-rate 冇匹配就失敗。
+
+第六 Human gates 保持明確。
+
+評估種子。
+
+Happy path：滿足 Emotion-target match 同 charisma score。
+
+Out-of-scope：拒絕升級。
+
+Missing provenance：fail closed。
+
+Conflicting critique：唔超過 max count。
+
+Proposal-only：不可變。
+
+第十一部分，來源地圖。
+
+agent_spec.json binding。
+
+SPEC.md authoritative-design。
+
+README.md local-index。
+
+sources/MAPPING.md provenance。
+
+sources/PROVENANCE.json provenance。
+
+sources/excerpts/agents.md historical-excerpt。
+
+sources/excerpts/ai_agent_video_production_workflow.md historical-excerpt。
+
+sources/excerpts/human_video_production_workflow.md historical-excerpt。
+
+sources/excerpts/lifes_quiet_redemption_agent_workflow.md historical-excerpt。
+
+sources/excerpts/system_build_plan.md historical-excerpt。
+
+sources/excerpts/SYSTEM_REFERENCE.md historical-excerpt。
+
+sources/excerpts/ui_design.md historical-excerpt。
+
+sources/generic/video.casting.SPEC.md historical-generic。
+
+sources/generic/video.talent.SPEC.md historical-generic。
+
+Mapping note：VA ID video.talent，之前 ID video.talent_coordinator，SPEC 深度完整。
+
+Provenance record：schema_version 1.0，agent_id video.talent，previous_common_agent_id video.talent_coordinator。
+
+va_taxonomy_aligned true，generic_source generic-swarm-ops/business/video/agents/video.talent。
+
+aligned_at 2026 年 7 月 27 日。
+
+VA roster row 第 26 行。
+
+Responsibility AI 渲染表演。
+
+Knowledge distillation 方法演技錄音稿同經同意嘅演員語料庫。
+
+Self-quality Emotion-target match 同 charisma score。
+
+Surpass-human Hold-rate 匹配頂級創作者。
+
+Accepts critique DirectorAgent 同 CastingAgent。
+
+Comments on DirectorAgent impossible blocking。
+
+Tools 歷史性 HeyGen Avatar IV、Synthesia personal avatars、emotion-detection models。
+
+Architecture Self-Refine 加情緒回歸驗證器。
+
+第十二部分，相關設計閱讀。
+
+冇強匹配。
+
+本地索引包括 Runtime binding、README、Provenance、Mapping、inventory、manifest。
+
+第十三部分，host 合約。
+
+agent_id video.talent。
+
+allowed_tools 空列表。
+
+max_input_tokens 2048。
+
+max_output_tokens 1024。
+
+max_tool_requests 0。
+
+critique_edges inputs video.critic outputs video.judge。
+
+max_refinement_count 3。
+
+model_id local-video-config-v1。
+
+network_access false。
+
+provider local_deterministic。
+
+production_activation_requested false。
+
+prompt_reference video.prompt.talent.v1。
+
+role TalentAgent (On-camera) (VA Domain Pack)。
+
+rubric_reference video.rubric.talent.v1。
+
+schema_version 1.0。
+
+status registered。
+
+va_id 26。
+
+va_name TalentAgent (On-camera)。
+
+va_category 5-Perf。
+
+第十四部分，SPEC 責任摘錄。
+
+責任係 AI 渲染表演。
+
+Host role binding TalentAgent (On-camera) (VA Domain Pack)。
+
+Knowledge distillation 歷史性。
+
+Self-quality criteria 歷史性。
+
+Surpass-human 歷史性。
+
+Critique bus：接受 DirectorAgent 同 CastingAgent 批評。
+
+評論 DirectorAgent impossible blocking。
+
+Tools 非啟動。
+
+Runtime safety Host allow-lists 只有 agent_spec.json。
+
+Architecture Self-Refine 加情緒回歸驗證器。
+
+第十五部分，文件控制。
+
+Generator scripts/business/generate_agent_user_guides.py。
+
+Agent folder business/video/agents/video.talent/。
+
+Output docs/user_guide.md。
+
+VA corpus root C:\Project\va-agent-swarm。
+
+Trust model 設計語料庫不受信任，host config fail-closed。
+
+以上就係 TalentAgent (On-camera) 完整指南。
+
+由第一部分同第五部分開始。
+
+用第八到第十做操作改進。
+
+用第十一到第十二做深度設計。
+
+多謝收睇。

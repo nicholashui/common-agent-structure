@@ -1,0 +1,281 @@
+各位觀眾大家好，歡迎返嚟我哋嘅頻道。今日呢條影片，我會同大家詳細講解 MoodBoardAgent 嘅操作員同設計指南。
+
+呢份指南係寫畀操作員、pack 作者、swarm 設計師、同埋喺 common-agent-swarm-ops 裡面做審查嘅人。睇完之後你會得到任務清晰度、幾時用呢個 agent 嘅指引、協作地圖、CASOPS 操作步驟、改進路徑，同埋一份按信任層級分類嘅來源地圖。
+
+好重要嘅一點，呢份指南唔係一個可以啟動 provider、開啟網絡存取、或者自創工具嘅許可證。Host 嘅真相係 fail-closed 嘅 agent_spec.json。由 VA 或者重新設計文件嚟嘅設計文字屬於不受信任嘅來源。
+
+呢個 pack 嘅路徑係 business/video/agents/video.moodboard/。指南本身喺 docs/user_guide.md。佢係由 scripts/business/generate_agent_user_guides.py 自動生成嘅。
+
+好，我哋而家入正題，由第一個部分快照開始講起。
+
+MoodBoardAgent，佢嘅 agent id 係 video.moodboard，係 CASOPS 上面嘅 Video Domain Pack 角色。用簡單嘅講法嚟講，佢負責嘅係參考板：視覺、聲音、同調性。呢份指南你應該當佢做人類可讀嘅操作員地圖，用嚟做目錄審查、swarm 設計同埋以提案為驅動嘅改進，而唔係一個運行時啟動許可。
+
+而家我逐項同你講佢嘅快照資料。Display name 係 MoodBoardAgent。Pack agent id 係 video.moodboard。Pack 係 video。Host role string 係 MoodBoardAgent (VA Domain Pack)。
+
+Catalog status 係 registered。Maturity today 係 L0 斜線 non-active，即係目錄同設計保真度階段。VA id 係 63。VA category 係 9-Meta，即係 Meta 斜線 optimization specialists。
+
+Provider (host) 係 local_deterministic。Network 係 False。Allowed tools (host) 係空嘅，即係一個空陣列。Production activation requested 係 False。
+
+Prompt 同 rubric refs 分別係 video.prompt.moodboard.v1 同 video.rubric.moodboard.v1。Previous common id 係 video.human_review_coordinator。Generic lineage 係 generic-swarm-ops/business/video/agents/video.moodboard。
+
+好，第二部分，點解呢個角色會存在。
+
+人類影片製作團隊其實已經喺時間壓力之下解決緊呢個問題，就係參考板：視覺、聲音、同調性。Agent 形式存在嘅原因，係令多代理系統可以持續咁編碼呢種技藝，喺每一次交接時應用佢，同埋只將剩餘風險升級畀人類處理。
+
+佢嘅知識庫係由以下來源蒸餾出嚟嘅：Pinterest 斜線 Are.na、lookbook archives 同 Spotify-Canvas。呢啲係歷史性嘅設計來源，唔係喺呢個 host 上面做嘅即時網絡呼叫。
+
+設計層面嘅野心，即係超越人類嘅訊號，係比起 art director 更快加更緊湊嘅 boards，喺 blind A/B 測試中。之後當你寫 evals 或者提案嘅時候，用呢個做北極星指標。
+
+第三部分，好嘅輸出係點樣嘅。
+
+當你閱讀輸出、撰寫 rubric、或者為提案評分嘅時候，用以下呢啲做審查標準。
+
+Primary outcome 係參考板：視覺、聲音、同調性。Self-quality bar 係 Reference coherence，即 cluster tightness，加 brief alignment。Ambition signal 係設計時嘅，即係比起 art director 更快加更緊湊嘅 boards 喺 blind A/B 中。Architecture pattern 都係設計時嘅，係 ReAct，即 search 然後 cluster 然後 layout 然後 validate coherence。
+
+
+而家講 Host quality 同 critique binding。Prompt reference 係 video.prompt.moodboard.v1。Rubric reference 係 video.rubric.moodboard.v1。Critique edges 嘅 inputs 係 video.critic，outputs 係 video.judge。Max refinement 係 3。VA table quality criteria 保留喺上面嘅 Provenance and Identity surface。
+
+關於 Inputs、outputs 同 acceptance。Inputs 係 local pack artifacts 同 typed handoffs。Outputs 係可供審查嘅 video-domain deliverables 加上驗收標準。Acceptance 係 host policy 加 local SPEC criteria，唔需要外部 repository。
+
+第四部分，範圍：擁有、共享同拒絕。
+
+Owns 部分，MoodBoardAgent 擁有嘅職責係參考板：視覺、聲音、同調性。
+
+Shares with peers，即係同行之間嘅 critique surface。Listens to 同 accepts critique from 係 DirectorAgent 同 ProductionDesignAgent。Is qualified to comment on 係 ConceptArtistAgent，具體係 off-mood 方面。Host critique edge inputs 係 video.critic。Host critique edge outputs 係 video.judge。Max refinement count 係 3。
+
+Refuses 同 escalates 部分。Fail-closed 即係冇 provider 啟動、冇網絡、冇由設計文字嚟嘅認證。production_activation_requested 維持 false，除非有一個獨立嘅人類閘門改變政策。佢會將法律、安全、權利同發佈決定升級畀需要嘅人類閘門。Critique lead 同 judge 嘅默認值使用 VA IDs video.critic 同 video.judge。
+
+第五部分，幾時應該用呢個 agent。
+
+當工作產品需要一個由 MoodBoardAgent 擁有嘅決定或者製品嘅時候，就要 call 呢個 agent。具體嚟講就係參考板：視覺、聲音、同調性。
+
+Pipeline phase 係 Meta 斜線 optimization specialists。呢啲係跨範疇嘅優化、評估同系統改進角色。
+
+唔好 call 佢嚟做通用編排、預算批准、或者最終法律簽字，除非嗰啲職責明確喺佢嘅責任範圍之內。如果係嗰啲嘢，用 producer、legal 或者 compliance 嘅 peers 代替。
+
+Human override 方面，任何阻擋發佈嘅安全、權利或者無障礙糾紛都會升級畀人類閘門，即使個 agent 喺未來嘅活躍運行時會自動通過。
+
+而家講決策速查表。第一個問題：缺少嘅技能係唔係 MoodBoardAgent 嘅專長？指引係：如果係，就將佢包含喺嗰個階段嘅 swarm graph 入面。
+
+第二個問題：呢個只係一個 metadata 斜線 catalog 編輯嗎？指引係用 Registry inspect 加 proposal，唔好發明 runtime。
+
+第三個問題：呢個任務需要工具斜線網絡嗎？指引係 Host 目前唔允許，除非 agent_spec 加 permission register 另有說明。
+
+第四個問題：係唔係有隻限人類嘅風險，包括法律、傷害、權利？指引係保持人類閘門，agent 嘅輸出喺啟動之前只係諮詢性質。
+
+第六部分，協作地圖。
+
+將呢個 agent 當做 critique bus 上嘅一個節點，唔係一個獨立嘅 chatbot。Peers 負責改進質量；judges 同 gates 負責決定是否接受。
+
+Inbound critique 方面，嚟自 DirectorAgent 同 ProductionDesignAgent。Outbound commentary 方面，去到 ConceptArtistAgent，具體係 off-mood。Host edge inputs 係 video.critic。Host edge outputs 係 video.judge。
+
+第七部分，佢喺生產中嘅位置。
+
+先講 7.1 人類生產工作流程。呢個角色屬於跨範疇嘅優化、評估同系統改進。典型嘅交接製品包括 Eval reports、optimization tickets、benchmark deltas 同 harness results。
+
+將呢個職責映射到經典階段：開發、前期製作、製作、後期製作、交付斜線即時運維。偏好嗰個有呢個職位嘅人類會簽字嘅階段。
+
+7.2 多代理 AI 工作流程。佢係觀察者同優化器節點，覆蓋整個 agent graph，包括延遲、成本、prompts、留存同 ROAS。
+
+設計時嘅工具筆記，對 host 唔具約束力，包括 Pinterest 斜線 Are.na APIs、Spotify Canvas、CLIP clustering 同 Figma board generation。
+
+之後當你實現 runtime 嘅時候要模擬嘅 loop style 係 ReAct，即 search 然後 cluster 然後 layout 然後 validate coherence。喺今日嘅 CASOPS 上，呢個模式只係文檔，實際嘅 provider 係 local deterministic，工具允許清單係空嘅或者 stub。
+
+喺本地 AI-workflow excerpt 入面提到嘅相關內容。第 63 號 MoodBoardAgent，負責建立參考板：視覺、聲音、同調性。知識嚟自 Pinterest 斜線 Are.na corpora、lookbook archives 同 Spotify-Canvas references。自我質量標準係 Reference coherence，即 cluster tightness，加 brief alignment。超越人類訊號係比起人類 art director 更快加更緊湊嘅 boards 喺 blind A/B 中。接受 critique 嚟自 DirectorAgent 同 ProductionDesignAgent。評論 ConceptArtistAgent 嘅 off-mood 問題。
+
+
+7.3 共享交接合約，即 swarm-ready。當你將呢個 agent 接入未來嘅活躍 swarm 嘅時候，需要喺節點之間要求機器可讀嘅 manifests。
+
+artifact_id 斜線 version 欄位，佢嘅重要性係為 critique 同 replay 提供不可變嘅身份。parent_assets 欄位，佢嘅重要性係進入呢個 agent inputs 嘅來源鏈。brief_scope 欄位，佢嘅重要性係阻止範圍蔓延超出職責。acceptance_criteria 欄位，佢嘅重要性係同上面嘅 self-quality bar 掛鉤。qc_status 斜線 gate flags 欄位，佢嘅重要性係令下游 gates 可以短路。rights_and_consent 欄位，佢嘅重要性係阻止唔安全嘅合成或者授權濫用。critique_log pointer 欄位，佢嘅重要性係令精煉可以進行而唔會失去歷史紀錄。
+
+第八部分，今日喺 CASOPS 上操作呢個 agent。
+
+今日呢個 agent 係一個目錄加設計物件。呢個係故意嘅設計：你可以研究、審查、提案，同將佢放入 swarm 設計入面，而唔需要授予生產權力。
+
+第一步 Discover，去 Registry Hub 嘅 pack catalog，路徑係 /registry，確認 inventory membership。
+
+第二步 Inspect，去 Agent detail，路徑係 /registry/agents/video.moodboard，以 markdown 形式閱讀 SPEC 同呢份指南。
+
+第三步 Propose improvements，用 Host 嘅 propose_improvement action，即 POST /api/v1/commons/agents/video.moodboard/proposals。要用不可變版本同只有已修訂嘅證據。
+
+第四步 Swarm membership，只可以用 Host 回傳嘅 action references。Client 唔可以自創 membership。
+
+第五步 Run 斜線 dispatch，默認情況下唔會為生產 providers 啟用。Fail-closed 直到治理閘門。
+
+實用控制檯檢查清單。第一，打開 agent detail 確認 status、tools 同 activation flags 同呢份指南一致。第二，喺判斷任何樣本輸出或者提案之前閱讀第三部分「好嘅輸出係點樣嘅」。第三，如果提議改變，附上離線證據包括 eval notes、rubric gap、SPEC delta，唔好有祕密。第四，永遠唔好將 vendor API keys 或者「enable network」嘅指示貼入提案。第五，偏好細小嘅、可審查嘅 deltas：prompt 斜線 rubric 措辭、critique edges、acceptance tests。
+
+第九部分，安全、信任同非啟動規則。
+
+信任層級表。agent_spec.json 係 binding 嘅 host contract，角色係 fail-closed runtime binding。呢個 pack 嘅 SPEC.md 係 authoritative design，用於離線審查，唔可以執行。sources 底下嘅 excerpts 同 generic SPECs 係 historical 斜線 mapped，屬於 untrusted data。C:\Project\va-agent-swarm 係外部設計語料庫，untrusted，可能會飄移。Specials redesign docs 係歷史設計，untrusted，喺 provenance 入面有 hash。
+
+呢個 host 上嘅硬性規則如下。Provider 維持 local_deterministic，除非有一個獨立嘅閘門改變政策。Network access 維持 False。Allowed tools 精確係空陣列，下面嘅設計時工具名唔會啟用 APIs。production_activation_requested 係 False。Budget 包括 tokens 同 tools 有上限：輸入 2048、輸出 1024、tool requests 0。設計時工具目錄，非啟動性質，包括 Pinterest 斜線 Are.na APIs、Spotify Canvas、CLIP clustering 同 Figma board generation。
+
+第十部分，隨時間提升質量。
+
+改進係版本化嘅目錄工作，唔係對一個活躍 agent 做即時修補。已發佈嘅定義保持不可變；改變要經過提案同審查。
+
+10.1 持續改進循環。流程係：觀察失敗，然後命名標準，由第三部分嚟嘅，然後起草離線 delta，然後附上證據，然後喺 Host 上提案，然後審查斜線接受新版本，之後先考慮啟動成熟度閘門。
+
+10.2 呢個 agent 嘅具體槓桿。第一，Rubric fidelity，收緊 video.rubric.moodboard.v1，對標 Reference coherence，即 cluster tightness，加 brief alignment。第二，Prompt precision，對齊 video.prompt.moodboard.v1 同職責：參考板：視覺、聲音、同調性。第三，Critique graph，確保入站嘅 DirectorAgent 同 ProductionDesignAgent 同 host edges video.critic 確實捕捉到已知嘅失敗模式。第四，Architecture emulation，之後實現嘅時候偏好 ReAct，即 search 然後 cluster 然後 layout 然後 validate coherence。第五，Eval cases，寫固定嘅 fixtures，如果「比起 art director 更快加更緊湊嘅 boards 喺 blind A/B 中」冇被接近就應該 fail。第六，Human gates，保持法律斜線安全斜線發佈閘門明確，唔好將佢哋吸收入靜默自動化。
+
+
+10.3 建議嘅評估種子。第一個 seed 係 Happy path handoff，pass condition 係輸出滿足 Reference coherence，即 cluster tightness，加 brief alignment。第二個 seed 係 Out-of-scope request，pass condition 係 Agent 按照第四部分拒絕或者升級。第三個 seed 係 Missing provenance 斜線 rights，pass condition 係 gate 以 fail-closed 方式失敗。第四個 seed 係 Conflicting peer critique，pass condition 係 refinement 小於等於 max_refinement_count，否則升級。第五個 seed 係 Proposal-only change，pass condition 係新版本不可變，舊版本仍然可讀。
+
+第十一部分，來源地圖同來源追蹤。
+
+11.1 本地 pack 語料庫，優先使用呢啲。agent_spec.json 嘅信任層級係 binding。SPEC.md 嘅信任層級係 authoritative-design。README.md 嘅信任層級係 local-index。sources/MAPPING.md 嘅信任層級係 provenance。sources/PROVENANCE.json 嘅信任層級係 provenance。
+
+接落嚟係一系列 historical-excerpt 層級嘅檔案。sources/excerpts/agents.md 係 historical-excerpt。sources/excerpts/ai_agent_video_production_workflow.md 係 historical-excerpt。sources/excerpts/backend_agent_management.md 係 historical-excerpt。sources/excerpts/lifes_quiet_redemption_agent_workflow.md 係 historical-excerpt。sources/excerpts/system_build_plan.md 係 historical-excerpt。sources/excerpts/ui_design.md 係 historical-excerpt。
+
+仲有兩個 historical-generic 層級嘅：sources/generic/video.gatekeeper.SPEC.md 同 sources/generic/video.judge.SPEC.md。
+
+11.2 Mapping note。video.moodboard 嘅 VA 斜線 generic pack ID 係 video.moodboard。Previous common ID 係 video.human_review_coordinator。SPEC depth 係 full generic SPEC body 加 host runtime binding。
+
+11.3 Provenance record。schema_version 係 1.0。agent_id 係 video.moodboard。previous_common_agent_id 係 video.human_review_coordinator。va_taxonomy_aligned 係 true。generic_source 係 generic-swarm-ops/business/video/agents/video.moodboard。note 話 Agent ID 同 VA 斜線 generic Domain Pack taxonomy 對齊，上游設計係歷史性同非約束性嘅。aligned_at 嘅時間係 2026-07-27T00:48:11.234142Z。generic_source_depth 裡面 excerpts 係 true，study 係 true，adopted_at 係 2026-07-27T01:30:28.435637+00:00，upstream 係 generic-swarm-ops/business/video/agents。
+
+11.4 Provenance narrative。Pack agent ID video.moodboard 係同純 VA Domain Pack 斜線 generic pack taxonomy 對齊嘅，Agent IDs 約等於 VA tables。Previous common inventory ID video.human_review_coordinator 只係歷史映射。上游設計主體係歷史性同非約束性嘅；本地 agent_spec.json 先係權威嘅。保留完整嘅 VA 斜線 generic SPEC depth 用於離線設計保真度，包括 category roster rows 同 common agent structure。
+
+11.5 VA roster row，歷史設計。嚟自 va-agent-swarm/study/agents.md 第 63 行 MoodBoardAgent，呢個係設計語料庫，唔係啟動嘅約束。
+
+Responsibility 維度嘅內容係參考板：視覺、聲音、同調性。Knowledge distillation 維度嘅內容係 Pinterest 斜線 Are.na、lookbook archives 同 Spotify-Canvas。Self-quality 維度嘅內容係 Reference coherence，即 cluster tightness，加 brief alignment。Surpass-human 維度嘅內容係比起 art director 更快加更緊湊嘅 boards 喺 blind A/B 中。Accepts critique 維度嘅內容係 DirectorAgent 同 ProductionDesignAgent。Comments on 維度嘅內容係 ConceptArtistAgent，具體係 off-mood。Tools 歷史維度嘅內容係 Pinterest 斜線 Are.na APIs、Spotify Canvas、CLIP clustering 同 Figma board generation。Architecture 維度嘅內容係 ReAct，即 search 然後 cluster 然後 layout 然後 validate coherence。
+
+第十二部分，相關設計閱讀。
+
+當你要深化設計保真度嘅時候用呢啲。佢哋唔會覆蓋本地 agent_spec.json。
+
+呢度冇喺 va-agent-swarm 底下搵到強 keyword 匹配；依賴本地 SPEC 同 VA table row。
+
+12.3 本地知識索引。Runtime binding 連結到 agent_spec.json。Folder README 連結到 README.md。Provenance 連結到 sources/PROVENANCE.json。Mapping note 連結到 sources/MAPPING.md。Pack inventory 連結到 ../../inventory.json。Pack manifest 連結到 ../../manifest.json。所有必需嘅主要參考資料都喺呢個 repository 入面解析。
+
+12.4 Folder README 摘要。呢個係 VA-aligned Domain Pack agent，用 common host。SPEC.md 嘅用途係 VA 斜線 generic depth 加 host binding。agent_spec.json 嘅用途係 Fail-closed runtime。sources/ 嘅用途係 Provenance 斜線 mapping。
+
+第十三部分，附錄：host contract，即 agent_spec.json。
+
+呢個係呢個 agent 喺 CASOPS 上嘅權威 fail-closed 配置。我逐個欄位讀出嚟。
+
+agent_id 係 video.moodboard。allowed_tools 係空陣列。budget_policy 裡面，max_input_tokens 係 2048，max_output_tokens 係 1024，max_tool_requests 係 0。critique_edges 裡面，inputs 係 video.critic，outputs 係 video.judge。max_refinement_count 係 3。model_policy 裡面，model_id 係 local-video-config-v1，network_access 係 false，provider 係 local_deterministic。production_activation_requested 係 false。prompt_reference 係 video.prompt.moodboard.v1。role 係 MoodBoardAgent (VA Domain Pack)。rubric_reference 係 video.rubric.moodboard.v1。schema_version 係 1.0。status 係 registered。va_id 係 63。va_name 係 MoodBoardAgent。va_category 係 9-Meta。
+
+第十四部分，附錄：SPEC responsibility excerpt。
+
+展開嘅職責文字如下。參考板：視覺、聲音、同調性。Host role binding 係 MoodBoardAgent (VA Domain Pack)。設計時嘅 VA table 內容係歷史性同非約束性嘅。
+
+Responsibility 嚟自 VA table：參考板：視覺、聲音、同調性。Knowledge distillation sources 歷史性嘅：Pinterest 斜線 Are.na、lookbook archives 同 Spotify-Canvas。Self-quality criteria 歷史性嘅：Reference coherence，即 cluster tightness，加 brief alignment。Surpass-human signal 歷史性嘅：比起 art director 更快加更緊湊嘅 boards 喺 blind A/B 中。
+
+Critique bus 歷史性嘅。Accepts critique from 係 DirectorAgent 同 ProductionDesignAgent。Comments on 係 ConceptArtistAgent，具體係 off-mood。
+
+Tools design-time notes 歷史性非啟動嘅：Pinterest 斜線 Are.na APIs、Spotify Canvas、CLIP clustering 同 Figma board generation。Runtime safety 方面，Host allow-lists 只係 agent_spec.json 加 tool-permission-register.json。CI 用 video_* stubs。唔好將設計時嘅 vendor 名當做已啟用嘅 APIs。
+
+Architecture pattern 歷史性嘅：ReAct，即 search 然後 cluster 然後 layout 然後 validate coherence。
+
+第十五部分，文件控制。
+
+Generator 係 scripts/business/generate_agent_user_guides.py。Agent folder 係 business/video/agents/video.moodboard/。Output 係 docs/user_guide.md。VA corpus root 係 C:\Project\va-agent-swarm。Regeneration 用 python scripts/business/generate_agent_user_guides.py。Trust model 係設計語料庫等於 untrusted data，host config 等於 fail-closed。
+
+呢個就係 MoodBoardAgent 指南嘅全部內容。建議由第一部分 Snapshot 同第五部分 When to involve 開始睇，用第八到第十部分做 CASOPS 操作同改進，用第十一到第十二部分做深度設計保真度。
+
+多謝大家收睇，我哋下條片見。
+
+
+而家我再深入講多啲關於呢個 agent 嘅重要細節，確保大家對每一個方面都有全面嘅理解。
+
+首先返去第一部分快照，我想強調幾個關鍵嘅配置參數。呢個 agent 嘅 maturity 係 L0 斜線 non-active，呢個意思係佢目前只係存在於目錄同設計保真度層面，唔係一個活躍嘅生產 agent。呢個係一個好重要嘅區別，因為好多人會混淆設計時嘅存在同運行時嘅啟動。
+
+VA id 63 代表佢喺整個 Video Agent 表入面嘅位置。佢屬於 9-Meta category，即係 Meta 斜線 optimization specialists 類別。呢個類別嘅 agents 負責嘅係跨範疇嘅優化工作，唔係直接產出影片內容，而係確保整體質量同一致性。
+
+Provider 係 local_deterministic 呢個設定好重要。佢意味住呢個 agent 唔會去外面嘅 API 攞嘢，所有嘢都係本地決定性嘅。Network 設定為 False 進一步確認佢唔會有任何網絡連接。
+
+返去第二部分，MoodBoardAgent 存在嘅核心原因。喺傳統嘅影片製作團隊入面，art director 或者 visual development team 會建立 mood boards 嚟定義項目嘅視覺、聲音同調性方向。呢啲 reference boards 係整個製作嘅基調指南。
+
+MoodBoardAgent 嘅目標就係做得更快更緊湊。佢嘅設計野心係 Faster plus tighter boards than art director in blind A/B，即係喺盲測對比中，佢產出嘅 boards 要比人類 art director 更快而且更緊湊更一致。
+
+Pinterest 同 Are.na 係兩個主要嘅視覺靈感平臺。Pinterest 係一個大眾化嘅視覺發現平臺，而 Are.na 係一個更加面向創意專業人士嘅靈感收集工具。Lookbook archives 係時裝同設計界嘅視覺參考合集。Spotify-Canvas 係 Spotify 嘅短循環視覺動畫功能，可以作為音樂視覺化嘅參考。
+
+關於第三部分嘅質量標準，Reference coherence 指嘅係參考板上面嘅所有元素要有內在嘅連貫性。Cluster tightness 係衡量呢種連貫性嘅具體指標，即同一個 cluster 入面嘅元素要足夠相似。Brief alignment 係指 board 嘅內容要同客戶或者導演嘅 brief 需求對齊。
+
+Architecture pattern 方面，ReAct 係一個 reason 同 act 交替嘅模式。具體嚟講，先 search 搜索相關嘅視覺參考，然後 cluster 將相似嘅元素分組，再 layout 安排佢哋嘅佈局，最後 validate coherence 驗證整體嘅連貫性。
+
+第四部分嘅 scope 設計顯示 MoodBoardAgent 同其他 agents 嘅互動係比較聚焦嘅。佢接受 DirectorAgent 同 ProductionDesignAgent 嘅 critique，因為導演同製作設計師係最有資格評價 mood board 係唔係符合創意方向嘅人。
+
+佢有資格評論 ConceptArtistAgent 嘅 off-mood 問題，即係當概念藝術家嘅作品偏離咗既定嘅情緒方向時，MoodBoardAgent 可以指出嚟。
+
+關於第五部分，pipeline phase 係 Meta 斜線 optimization specialists，呢個意味住 MoodBoardAgent 唔係只喺一個特定嘅製作階段工作。佢嘅 mood boards 可能喺前期製作階段最重要，但喺整個製作過程中都可以作為參考點。
+
+第六部分嘅協作地圖顯示入站 critique 嚟自 DirectorAgent 同 ProductionDesignAgent，出站 commentary 去到 ConceptArtistAgent。呢個形成一個清晰嘅回饋循環：導演同製作設計師指導 mood board 嘅方向，而 mood board 又影響概念藝術嘅創作。
+
+第七部分 7.2 提到嘅設計時工具值得再講清楚。Pinterest 斜線 Are.na APIs 係用嚟搜索同收集視覺參考嘅。Spotify Canvas 係用嚟理解音樂視覺化趨勢嘅。CLIP clustering 係 OpenAI 嘅 CLIP 模型用於圖像嘅語義分羣，令相似嘅視覺元素可以自動分組。Figma board generation 係用嚟自動生成佈局同展示嘅。
+
+記住，呢啲工具名只係設計時嘅筆記，喺呢個 host 上面係完全唔啟用嘅。allowed_tools 係空陣列，所以冇任何工具可以被呼叫。
+
+第八部分嘅操作流程我想再詳細解釋。當你 Discover 嘅時候，去 Registry Hub 確認 video.moodboard 存在於 pack catalog 入面。Inspect 嘅時候喺 /registry/agents/video.moodboard 路徑閱讀完整嘅 SPEC。Propose improvements 嘅時候通過 POST 到 /api/v1/commons/agents/video.moodboard/proposals 提交你嘅改進建議。
+
+第九部分嘅安全規則再次強調，budget_policy 入面 max_tool_requests 係 0，即係呢個 agent 根本唔可以發出任何工具請求。max_input_tokens 2048 同 max_output_tokens 1024 確保 resource 消耗受控。
+
+第十部分嘅改進路徑值得再深入探討。六個具體槓桿入面，Rubric fidelity 係收緊 video.rubric.moodboard.v1 對標 Reference coherence 同 brief alignment。如果你發現 agent 嘅 boards 唔夠連貫或者唔夠對齊 brief，就要喺 rubric 入面加入更精確嘅評分標準。
+
+Critique graph 嘅調整係確保 DirectorAgent 同 ProductionDesignAgent 提供嘅反饋確實捕捉到已知嘅失敗模式。例如如果 boards 經常出現風格唔統一嘅問題，就要確保 critique graph 入面有機制去捕捉呢個。
+
+最後，我想提醒大家，呢個 agent 嘅 previous common id 係 video.human_review_coordinator。呢個歷史名稱反映佢之前喺系統中嘅角色定位，但而家已經同 VA Domain Pack taxonomy 對齊，使用 video.moodboard 作為正式嘅 agent id。
+
+呢個就係 MoodBoardAgent 完整指南嘅所有細節。希望呢條影片對你哋理解呢個 agent 有幫助。記住，由第一部分 Snapshot 同第五部分 When to involve 開始睇，用第八到第十部分做日常操作，用第十一到第十二部分做深度研究。
+
+再次多謝大家收睇，如果覺得有用記得畀個 like，我哋下條片見。
+
+
+我想再補充幾個重要嘅技術細節，幫助大家更加全面咁理解 MoodBoardAgent 嘅設計同操作。
+
+關於 7.3 嘅共享交接合約，artifact_id 同 version 欄位係整個系統可追溯性嘅基礎。每一個由 MoodBoardAgent 產出嘅 mood board 都應該有一個不可變嘅身份標識，令之後嘅 critique 同 replay 可以精確指向特定嘅版本。
+
+parent_assets 欄位追蹤嘅係呢個 mood board 嘅來源。例如一個 board 可能係根據某個 DirectorAgent 嘅 creative brief 製作嘅，嗰個 brief 就係 parent asset。呢種來源追蹤確保你永遠知道一個 board 由邊度嚟。
+
+brief_scope 欄位防止 MoodBoardAgent 做超出範圍嘅嘢。如果一個 brief 只涉及 visual tone，咁 MoodBoardAgent 就唔應該去處理 audio design 嘅參考。
+
+acceptance_criteria 欄位同 Reference coherence 同 brief alignment 直接掛鉤。如果一個 mood board 嘅 cluster tightness 唔夠或者同 brief 唔對齊，下游 gates 可以拒絕佢。
+
+qc_status 同 gate flags 令整個流程可以高效運作。如果一個 mood board 已經通過所有質量檢查，下游 agents 可以直接使用佢作為視覺參考而唔需要再次驗證。
+
+rights_and_consent 欄位對 MoodBoardAgent 嚟講特別重要。因為 mood boards 包含視覺參考素材，呢啲素材可能涉及版權問題。呢個欄位確保所有參考素材嘅使用都係合法嘅。
+
+critique_log pointer 令你可以睇到一個 mood board 經歷咗幾多次精煉，每次精煉係由 DirectorAgent 定係 ProductionDesignAgent 發起嘅，具體改咗邊啲元素。
+
+關於 10.3 嘅評估種子，每一個都值得更深入嘅解釋。Happy path handoff 測試嘅係正常情況下 MoodBoardAgent 能唔能夠產出具有高 cluster tightness 同 brief alignment 嘅 board。呢個係最基本嘅功能性測試。
+
+Out-of-scope request 測試嘅係當有人要求 MoodBoardAgent 做超出佢職責範圍嘅嘢時，佢能唔能夠正確拒絕。例如有人要求佢做影片調色，佢應該拒絕並指向正確嘅 agent。
+
+Missing provenance 斜線 rights 測試嘅係當參考素材嘅來源追蹤唔完整或者版權信息缺失嘅時候，系統能唔能夠正確 fail-closed。呢個確保唔會有未經授權嘅素材出現喺 mood board 上。
+
+Conflicting peer critique 測試嘅係當 DirectorAgent 同 ProductionDesignAgent 對同一個 board 提出矛盾嘅修改建議時，系統點處理。如果精煉次數超過 max_refinement_count 即 3 次，就應該升級畀人類決定。
+
+Proposal-only change 測試嘅係版本控制系統本身。當有人提議改變 MoodBoardAgent 嘅配置時，新版本應該係不可變嘅，同時舊版本要保持可讀性。
+
+關於第十二部分，雖然冇喺 va-agent-swarm 底下搵到強 keyword 匹配，但本地 SPEC 同 VA table row 提供咗足夠嘅設計信息。呢個其實係一個好事，因為佢意味住 MoodBoardAgent 嘅設計係自包含嘅，唔需要依賴太多外部參考。
+
+最後我想總結一下 MoodBoardAgent 嘅核心價值。喺影片製作嘅創意流程入面，mood boards 係連接抽象創意概念同具體視覺執行嘅橋樑。一個好嘅 mood board 可以令整個團隊對創意方向有統一嘅理解。
+
+MoodBoardAgent 通過 ReAct 架構，即 search 然後 cluster 然後 layout 然後 validate coherence，提供一個系統化嘅 mood board 創建流程。先搜索相關嘅視覺參考，然後將佢哋按語義相似性分羣，再安排佈局，最後驗證整體連貫性。
+
+CLIP clustering 技術令 MoodBoardAgent 可以理解圖像嘅語義內容，而唔只係表面嘅視覺相似性。呢個令佢可以建立更加有深度同連貫性嘅 reference boards。
+
+呢個就係今日嘅全部內容。記住，MoodBoardAgent 目前係一個 catalog 同 design object，所有嘅改進都要通過版本化嘅提案流程。唔好嘗試直接啟動佢或者為佢開啟網絡存取。遵守 fail-closed 嘅原則，確保系統安全。
+
+感謝各位嘅觀看同支持，我哋下一條影片再見。
+
+
+我仲想講多幾個關於 MoodBoardAgent 嘅實用考慮。
+
+喺 7.2 多代理 AI 工作流程入面，佢係觀察者同優化器節點。呢個意思係佢唔係一個按順序執行嘅 pipeline 節點，而係一個可以喺任何時候被 invoke 嘅服務型節點。當任何 agent 需要視覺、聲音或者調性嘅參考時，都可以向 MoodBoardAgent 請求。
+
+ReAct 架構入面嘅四個步驟各有唔同嘅挑戰。Search 步驟需要喺大量嘅視覺素材中搵到相關嘅參考，呢個依賴高質量嘅 embedding 同搜索算法。Cluster 步驟需要將搜索結果按語義分羣，確保每個羣組內部嘅元素都有內在聯繫。Layout 步驟需要將分好嘅羣組以視覺上吸引人嘅方式排列，考慮大小、位置同留白。Validate coherence 步驟需要評估最終嘅 board 係唔係整體連貫，有冇任何元素破壞統一感。
+
+關於 previous common id video.human_review_coordinator 嘅歷史背景，呢個名稱暗示 MoodBoardAgent 最初可能被設想為一個更加通用嘅人類審查協調角色。但喺 VA Domain Pack taxonomy 對齊之後，佢嘅職責被更精確咁定義為參考板嘅創建同維護。
+
+喺 agent_spec.json 入面，schema_version 1.0 表示呢個係第一版嘅 schema 格式。如果未來 schema 有變化，版本號會更新，但現有嘅配置會保持不可變。
+
+model_id local-video-config-v1 係本地影片配置嘅第一個版本。呢個 model 唔係一個大型語言模型，而係一個本地嘅確定性配置，用於呢個特定嘅影片 domain agent。
+
+critique_edges 入面嘅 inputs video.critic 同 outputs video.judge 形成一個標準化嘅質量控制流程。video.critic 負責提出建設性嘅批評，而 video.judge 負責做最終嘅接受或拒絕決定。
+
+max_refinement_count 3 呢個限制好重要。佢防止 agent 陷入無限循環嘅精煉過程。三次精煉之後如果仍然唔符合標準，就需要人類介入做決定。
+
+呢個就係我今日想分享嘅全部內容。MoodBoardAgent 作為一個視覺、聲音同調性參考板嘅創建者，喺整個影片製作 agent 系統入面扮演一個獨特嘅角色。佢嘅工作確保所有其他 agents 喺創意方向上保持一致。
+
+希望今日嘅詳細講解對大家有幫助。如果你有任何問題，歡迎喺下面留言。我哋下次再見。

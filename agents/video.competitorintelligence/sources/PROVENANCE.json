@@ -1,0 +1,311 @@
+{
+  "schema_version": "3.0",
+  "sources": [
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Competitive Strategy",
+      "author": "Michael E. Porter",
+      "isbn13": "9780684841489",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Competitive Strategy (Michael E. Porter), ISBN-13 9780684841489"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Good Strategy/Bad Strategy",
+      "author": "Richard Rumelt",
+      "isbn13": "9780307886231",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Good Strategy/Bad Strategy (Richard Rumelt), ISBN-13 9780307886231"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Playing to Win",
+      "author": "Lafley & Martin",
+      "isbn13": "9781422187395",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Playing to Win (Lafley & Martin), ISBN-13 9781422187395"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Measure What Matters",
+      "author": "John Doerr",
+      "isbn13": "9780525538318",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Measure What Matters (John Doerr), ISBN-13 9780525538318"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Innovator's Dilemma",
+      "author": "Clayton Christensen",
+      "isbn13": "9781633691780",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Innovator's Dilemma (Clayton Christensen), ISBN-13 9781633691780"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Thinking in Systems",
+      "author": "Donella Meadows",
+      "isbn13": "9781603580557",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Thinking in Systems (Donella Meadows), ISBN-13 9781603580557"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Fifth Discipline",
+      "author": "Peter Senge",
+      "isbn13": "9780385517256",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Fifth Discipline (Peter Senge), ISBN-13 9780385517256"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Superforecasting",
+      "author": "Tetlock & Gardner",
+      "isbn13": "9780804136716",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Superforecasting (Tetlock & Gardner), ISBN-13 9780804136716"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "竞争战略",
+      "isbn13": "9787508633749",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 竞争战略，ISBN-13 9787508633749"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "好战略，坏战略",
+      "isbn13": "9787508643427",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 好战略，坏战略，ISBN-13 9787508643427"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "这就是OKR",
+      "isbn13": "9787521702330",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 这就是OKR，ISBN-13 9787521702330"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "创新者的窘境",
+      "isbn13": "9787508633336",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 创新者的窘境，ISBN-13 9787508633336"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "系统之美",
+      "isbn13": "9787508640114",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 系统之美，ISBN-13 9787508640114"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "第五项修炼",
+      "isbn13": "9787508631332",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 第五项修炼，ISBN-13 9787508631332"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "超预测",
+      "isbn13": "9787508663098",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 超预测，ISBN-13 9787508663098"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "金字塔原理",
+      "isbn13": "9787508633732",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 金字塔原理，ISBN-13 9787508633732"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Trustworthy Online Controlled Experiments",
+      "author": "Kohavi, Tang, Xu",
+      "isbn13": "9781108724265",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Trustworthy Online Controlled Experiments (Kohavi, Tang, Xu), ISBN-13 9781108724265"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Storytelling with Data",
+      "author": "Cole Nussbaumer Knaflic",
+      "isbn13": "9781119002253",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Storytelling with Data (Cole Nussbaumer Knaflic), ISBN-13 9781119002253"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Lean Analytics",
+      "author": "Croll & Yoskovitz",
+      "isbn13": "9781449335670",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Lean Analytics (Croll & Yoskovitz), ISBN-13 9781449335670"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Visual Display of Quantitative Information, 2nd ed.",
+      "author": "Edward Tufte",
+      "isbn13": "9780961392147",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Visual Display of Quantitative Information, 2nd ed. (Edward Tufte), ISBN-13 9780961392147"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Naked Statistics",
+      "author": "Charles Wheelan",
+      "isbn13": "9780393347777",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Naked Statistics (Charles Wheelan), ISBN-13 9780393347777"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Signal and the Noise",
+      "author": "Nate Silver",
+      "isbn13": "9780143125082",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Signal and the Noise (Nate Silver), ISBN-13 9780143125082"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "精益数据分析",
+      "isbn13": "9787115384515",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 精益数据分析，ISBN-13 9787115384515"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "用数据讲故事",
+      "isbn13": "9787111575558",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 用数据讲故事，ISBN-13 9787111575558"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Elements of Journalism, 3rd ed.",
+      "author": "Kovach & Rosenstiel",
+      "isbn13": "9780804136785",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Elements of Journalism, 3rd ed. (Kovach & Rosenstiel), ISBN-13 9780804136785"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Blur",
+      "author": "Kovach & Rosenstiel",
+      "isbn13": "9781608193011",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Blur (Kovach & Rosenstiel), ISBN-13 9781608193011"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Associated Press Stylebook",
+      "isbn13": "9781541649883",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Associated Press Stylebook, ISBN-13 9781541649883"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "On Writing Well",
+      "author": "William Zinsser",
+      "isbn13": "9780060891541",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: On Writing Well (William Zinsser), ISBN-13 9780060891541"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Craft of Research, 4th ed.",
+      "author": "Booth et al.",
+      "isbn13": "9780226239736",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Craft of Research, 4th ed. (Booth et al.), ISBN-13 9780226239736"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Interviewing as Qualitative Research, 4th ed.",
+      "author": "Irving Seidman",
+      "isbn13": "9780807755679",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Interviewing as Qualitative Research, 4th ed. (Irving Seidman), ISBN-13 9780807755679"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "新闻的十大基本原则",
+      "isbn13": "9787301161111",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 新闻的十大基本原则，ISBN-13 9787301161111"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "采访的艺术",
+      "isbn13": "9787301169186",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 采访的艺术，ISBN-13 9787301169186"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "如何阅读一本书",
+      "isbn13": "9787100040945",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 如何阅读一本书，ISBN-13 9787100040945"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "研究是一门艺术",
+      "isbn13": "9787300116226",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 研究是一门艺术，ISBN-13 9787300116226"
+    }
+  ],
+  "agent_id": "video.competitorintelligence",
+  "previous_common_agent_id": "video.audio_qc_reviewer",
+  "va_taxonomy_aligned": true,
+  "generic_source": "generic-swarm-ops/business/video/agents/video.competitorintelligence",
+  "note": "Imported into CASOPS as baseline_safe. No production activation, no network, no plugins, memory writes forbidden.",
+  "aligned_at": "2026-07-27T00:48:11.094463Z",
+  "generic_source_depth": {
+    "excerpts": true,
+    "study": true,
+    "adopted_at": "2026-07-27T01:30:27.889953+00:00",
+    "upstream": "generic-swarm-ops/business/video/agents"
+  },
+  "imported_from": "C:\\Project\\common-agent-swarm-ops\\business\\video\\agents\\video.competitorintelligence",
+  "reference_book_origin": "spec/book_of_knowledge.md",
+  "reference_book_note": "Bibliographic references from spec/book_of_knowledge.md. Does not enable network, RAG, T3, plugins, or memory writes."
+}

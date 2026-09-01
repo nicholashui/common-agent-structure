@@ -1,0 +1,309 @@
+{
+  "schema_version": "3.0",
+  "sources": [
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Framed Ink",
+      "author": "Marcos Mateu-Mestre",
+      "isbn13": "9781933492957",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Framed Ink (Marcos Mateu-Mestre), ISBN-13 9781933492957"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Directing the Story",
+      "author": "Francis Glebas",
+      "isbn13": "9780240810768",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Directing the Story (Francis Glebas), ISBN-13 9780240810768"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Prepare to Board! 2nd ed.",
+      "author": "Nancy Beiman",
+      "isbn13": "9780240818788",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Prepare to Board! 2nd ed. (Nancy Beiman), ISBN-13 9780240818788"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Storyboards: Motion in Art, 3rd ed.",
+      "author": "Mark Simon",
+      "isbn13": "9780240808055",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Storyboards: Motion in Art, 3rd ed. (Mark Simon), ISBN-13 9780240808055"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "分镜的艺术",
+      "isbn13": "9787535672346",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 分镜的艺术，ISBN-13 9787535672346"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "电影镜头设计",
+      "isbn13": "9787115222224",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 电影镜头设计，ISBN-13 9787115222224"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Making Movies",
+      "author": "Sidney Lumet",
+      "isbn13": "9780679756606",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Making Movies (Sidney Lumet), ISBN-13 9780679756606"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Film Directing: Shot by Shot",
+      "author": "Steven D. Katz",
+      "isbn13": "9780941188104",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Film Directing: Shot by Shot (Steven D. Katz), ISBN-13 9780941188104"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "On Directing Film",
+      "author": "David Mamet",
+      "isbn13": "9780140127225",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: On Directing Film (David Mamet), ISBN-13 9780140127225"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Directing Actors",
+      "author": "Judith Weston",
+      "isbn13": "9780941188241",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Directing Actors (Judith Weston), ISBN-13 9780941188241"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "On Film-making",
+      "author": "Alexander Mackendrick",
+      "isbn13": "9780571211258",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: On Film-making (Alexander Mackendrick), ISBN-13 9780571211258"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "A Director Prepares",
+      "author": "Anne Bogart",
+      "isbn13": "9780415238328",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: A Director Prepares (Anne Bogart), ISBN-13 9780415238328"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Rebel without a Crew",
+      "author": "Robert Rodriguez",
+      "isbn13": "9780452271876",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Rebel without a Crew (Robert Rodriguez), ISBN-13 9780452271876"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Directing: Film Techniques and Aesthetics, 5th ed.",
+      "author": "Michael Rabiger",
+      "isbn13": "9780240818450",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Directing: Film Techniques and Aesthetics, 5th ed. (Michael Rabiger), ISBN-13 9780240818450"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Director's Craft",
+      "author": "Katie Mitchell",
+      "isbn13": "9780415404396",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Director's Craft (Katie Mitchell), ISBN-13 9780415404396"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "拍电影",
+      "author": "卢梅",
+      "isbn13": "9787106028893",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 拍电影（卢梅），ISBN-13 9787106028893"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "导演创作完全手册",
+      "author": "拉比格",
+      "isbn13": "9787515302867",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 导演创作完全手册（拉比格），ISBN-13 9787515302867"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Cinematography: Theory and Practice, 3rd ed.",
+      "author": "Blain Brown",
+      "isbn13": "9781138212589",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Cinematography: Theory and Practice, 3rd ed. (Blain Brown), ISBN-13 9781138212589"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Visual Story, 2nd ed.",
+      "author": "Bruce Block",
+      "isbn13": "9780240807799",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Visual Story, 2nd ed. (Bruce Block), ISBN-13 9780240807799"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Filmmaker's Eye",
+      "author": "Gustavo Mercado",
+      "isbn13": "9780240812175",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Filmmaker's Eye (Gustavo Mercado), ISBN-13 9780240812175"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Grammar of the Shot, 4th ed.",
+      "author": "Bowen",
+      "isbn13": "9781138632219",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Grammar of the Shot, 4th ed. (Bowen), ISBN-13 9781138632219"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Painting With Light",
+      "author": "John Alton",
+      "isbn13": "9780520089495",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Painting With Light (John Alton), ISBN-13 9780520089495"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Set Lighting Technician's Handbook, 4th ed.",
+      "author": "Harry Box",
+      "isbn13": "9780240810751",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Set Lighting Technician's Handbook, 4th ed. (Harry Box), ISBN-13 9780240810751"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Reflections: On Cinematography",
+      "author": "Roger Deakins",
+      "isbn13": "9781910593998",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Reflections: On Cinematography (Roger Deakins) — check latest ed. ISBN-13 9781910593998"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Light Science & Magic, 5th ed.",
+      "author": "Hunter, Biver, Fuqua",
+      "isbn13": "9780415719407",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Light Science & Magic, 5th ed. (Hunter, Biver, Fuqua), ISBN-13 9780415719407"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "电影摄影：理论与实践",
+      "isbn13": "9787515331867",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 电影摄影：理论与实践，ISBN-13 9787515331867"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "电影语言的语法",
+      "isbn13": "9787532299990",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 电影语言的语法，ISBN-13 9787532299990"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "美国纽约摄影学院摄影教材",
+      "isbn13": "9787800078491",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 美国纽约摄影学院摄影教材，ISBN-13 9787800078491"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "论摄影",
+      "author": "桑塔格",
+      "isbn13": "9787544722599",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 论摄影（桑塔格），ISBN-13 9787544722599"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "摄影师的视界",
+      "isbn13": "9787512201880",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 摄影师的视界，ISBN-13 9787512201880"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "分镜设计 脚本 镜头语言与 AI 技术应用从入门到精通",
+      "isbn13": "9787122474100",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 分镜设计 脚本 镜头语言与 AI 技术应用从入门到精通，ISBN-13 9787122474100"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "爆款短视频拍摄：118个分镜脚本与摄影技巧新媒体抖音运营流量",
+      "isbn13": "9787122699984",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 爆款短视频拍摄：118个分镜脚本与摄影技巧新媒体抖音运营流量，ISBN-13 9787122699984"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "分镜头设计",
+      "author": "王威",
+      "isbn13": "9787122424273",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 分镜头设计（王威），ISBN-13 9787122424273"
+    }
+  ],
+  "agent_id": "video.storyboard",
+  "previous_common_agent_id": "video.storyboard_artist",
+  "va_taxonomy_aligned": true,
+  "generic_source": "generic-swarm-ops/business/video/agents/video.storyboard",
+  "note": "Imported into CASOPS as baseline_safe. No production activation, no network, no plugins, memory writes forbidden.",
+  "aligned_at": "2026-07-27T00:48:10.546742Z",
+  "generic_source_depth": {
+    "excerpts": true,
+    "study": true,
+    "adopted_at": "2026-07-27T01:30:28.894681+00:00",
+    "upstream": "generic-swarm-ops/business/video/agents"
+  },
+  "imported_from": "C:\\Project\\common-agent-swarm-ops\\business\\video\\agents\\video.storyboard",
+  "reference_book_origin": "spec/book_of_knowledge.md",
+  "reference_book_note": "Bibliographic references from spec/book_of_knowledge.md. Does not enable network, RAG, T3, plugins, or memory writes."
+}

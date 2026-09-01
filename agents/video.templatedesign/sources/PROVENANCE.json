@@ -1,0 +1,211 @@
+{
+  "schema_version": "3.0",
+  "sources": [
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Design of Everyday Things, Rev.",
+      "author": "Don Norman",
+      "isbn13": "9780465050659",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Design of Everyday Things, Rev. (Don Norman), ISBN-13 9780465050659"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Don't Make Me Think, Revisited",
+      "author": "Steve Krug",
+      "isbn13": "9780321965516",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Don't Make Me Think, Revisited (Steve Krug), ISBN-13 9780321965516"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "About Face, 4th ed.",
+      "author": "Cooper et al.",
+      "isbn13": "9781118766576",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: About Face, 4th ed. (Cooper et al.), ISBN-13 9781118766576"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Designing Interfaces, 3rd ed.",
+      "author": "Tidwell et al.",
+      "isbn13": "9781492051961",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Designing Interfaces, 3rd ed. (Tidwell et al.), ISBN-13 9781492051961"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "100 Things Every Designer Needs to Know About People",
+      "author": "Susan Weinschenk",
+      "isbn13": "9780321767530",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: 100 Things Every Designer Needs to Know About People (Susan Weinschenk), ISBN-13 9780321767530"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Universal Principles of Design",
+      "author": "Lidwell, Holden, Butler",
+      "isbn13": "9781592535873",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Universal Principles of Design (Lidwell, Holden, Butler), ISBN-13 9781592535873"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "设计心理学",
+      "isbn13": "9787115417947",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 设计心理学，ISBN-13 9787115417947"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "点石成金",
+      "isbn13": "9787115249494",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 点石成金，ISBN-13 9787115249494"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "界面设计模式",
+      "isbn13": "9787115331861",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 界面设计模式，ISBN-13 9787115331861"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "用户体验要素",
+      "author": "加瑞特",
+      "isbn13": "9787115325466",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 用户体验要素（加瑞特），ISBN-13 9787115325466"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "设计中的设计",
+      "author": "原研哉",
+      "isbn13": "9787549559787",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 设计中的设计（原研哉），ISBN-13 9787549559787"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Positioning",
+      "author": "Ries & Trout",
+      "isbn13": "9780071373586",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Positioning (Ries & Trout), ISBN-13 9780071373586"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Brand Gap",
+      "author": "Marty Neumeier",
+      "isbn13": "9780321348104",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Brand Gap (Marty Neumeier), ISBN-13 9780321348104"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Designing Brand Identity, 5th ed.",
+      "author": "Alina Wheeler",
+      "isbn13": "9781118980828",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Designing Brand Identity, 5th ed. (Alina Wheeler), ISBN-13 9781118980828"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Strategic Brand Management, 4th ed.",
+      "author": "Kevin Lane Keller",
+      "isbn13": "9780132664257",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Strategic Brand Management, 4th ed. (Kevin Lane Keller), ISBN-13 9780132664257"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Building Strong Brands",
+      "author": "David Aaker",
+      "isbn13": "9780029001516",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Building Strong Brands (David Aaker), ISBN-13 9780029001516"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "How Brands Grow",
+      "author": "Byron Sharp",
+      "isbn13": "9780195573565",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: How Brands Grow (Byron Sharp), ISBN-13 9780195573565"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Building a StoryBrand",
+      "author": "Donald Miller",
+      "isbn13": "9780718033330",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Building a StoryBrand (Donald Miller), ISBN-13 9780718033330"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "定位",
+      "isbn13": "9787111320586",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 定位，ISBN-13 9787111320586"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "品牌的起源",
+      "isbn13": "9787111323051",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 品牌的起源，ISBN-13 9787111323051"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "战略品牌管理",
+      "isbn13": "9787300162263",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 战略品牌管理，ISBN-13 9787300162263"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "品牌如何增长",
+      "isbn13": "9787111558477",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 品牌如何增长，ISBN-13 9787111558477"
+    }
+  ],
+  "agent_id": "video.templatedesign",
+  "previous_common_agent_id": "video.thumbnail_designer",
+  "va_taxonomy_aligned": true,
+  "generic_source": "generic-swarm-ops/business/video/agents/video.templatedesign",
+  "note": "Imported into CASOPS as baseline_safe. No production activation, no network, no plugins, memory writes forbidden.",
+  "aligned_at": "2026-07-27T00:48:10.876303Z",
+  "generic_source_depth": {
+    "excerpts": true,
+    "study": true,
+    "adopted_at": "2026-07-27T01:30:28.927786+00:00",
+    "upstream": "generic-swarm-ops/business/video/agents"
+  },
+  "imported_from": "C:\\Project\\common-agent-swarm-ops\\business\\video\\agents\\video.templatedesign",
+  "reference_book_origin": "spec/book_of_knowledge.md",
+  "reference_book_note": "Bibliographic references from spec/book_of_knowledge.md. Does not enable network, RAG, T3, plugins, or memory writes."
+}

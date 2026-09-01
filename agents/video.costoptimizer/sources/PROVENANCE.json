@@ -1,0 +1,395 @@
+{
+  "schema_version": "3.0",
+  "sources": [
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Clean Code",
+      "author": "Robert C. Martin",
+      "isbn13": "9780132350884",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Clean Code (Robert C. Martin), ISBN-13 9780132350884"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Design Patterns",
+      "author": "Gamma, Helm, Johnson, Vlissides",
+      "isbn13": "9780201633610",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Design Patterns (Gamma, Helm, Johnson, Vlissides), ISBN-13 9780201633610"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Pragmatic Programmer, 20th Anniv.",
+      "author": "Hunt & Thomas",
+      "isbn13": "9780135957059",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Pragmatic Programmer, 20th Anniv. (Hunt & Thomas), ISBN-13 9780135957059"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Site Reliability Engineering",
+      "author": "Beyer et al.",
+      "isbn13": "9781491929124",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Site Reliability Engineering (Beyer et al.), ISBN-13 9781491929124"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Systems Performance, 2nd ed.",
+      "author": "Brendan Gregg",
+      "isbn13": "9780136820154",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Systems Performance, 2nd ed. (Brendan Gregg), ISBN-13 9780136820154"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "代码整洁之道",
+      "isbn13": "9787115216878",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 代码整洁之道，ISBN-13 9787115216878"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "设计模式",
+      "isbn13": "9787111075752",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 设计模式，ISBN-13 9787111075752"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "SRE：Google运维解密",
+      "isbn13": "9787115419903",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: SRE：Google运维解密，ISBN-13 9787115419903"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "程序员修炼之道",
+      "isbn13": "9787115527684",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 程序员修炼之道，ISBN-13 9787115527684"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Trustworthy Online Controlled Experiments",
+      "author": "Kohavi, Tang, Xu",
+      "isbn13": "9781108724265",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Trustworthy Online Controlled Experiments (Kohavi, Tang, Xu), ISBN-13 9781108724265"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Storytelling with Data",
+      "author": "Cole Nussbaumer Knaflic",
+      "isbn13": "9781119002253",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Storytelling with Data (Cole Nussbaumer Knaflic), ISBN-13 9781119002253"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Lean Analytics",
+      "author": "Croll & Yoskovitz",
+      "isbn13": "9781449335670",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Lean Analytics (Croll & Yoskovitz), ISBN-13 9781449335670"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Visual Display of Quantitative Information, 2nd ed.",
+      "author": "Edward Tufte",
+      "isbn13": "9780961392147",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Visual Display of Quantitative Information, 2nd ed. (Edward Tufte), ISBN-13 9780961392147"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Naked Statistics",
+      "author": "Charles Wheelan",
+      "isbn13": "9780393347777",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Naked Statistics (Charles Wheelan), ISBN-13 9780393347777"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Signal and the Noise",
+      "author": "Nate Silver",
+      "isbn13": "9780143125082",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Signal and the Noise (Nate Silver), ISBN-13 9780143125082"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "精益数据分析",
+      "isbn13": "9787115384515",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 精益数据分析，ISBN-13 9787115384515"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "用数据讲故事",
+      "isbn13": "9787111575558",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 用数据讲故事，ISBN-13 9787111575558"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "赤裸裸的统计学",
+      "isbn13": "9787508643427",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 赤裸裸的统计学，ISBN-13 9787508643427"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "A Guide to the Project Management Body of Knowledge (PMBOK Guide), 7th ed.",
+      "isbn13": "9781628256642",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: A Guide to the Project Management Body of Knowledge (PMBOK Guide), 7th ed., ISBN-13 9781628256642"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Mythical Man-Month",
+      "author": "Frederick P. Brooks Jr.",
+      "isbn13": "9780201835953",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Mythical Man-Month (Frederick P. Brooks Jr.), ISBN-13 9780201835953"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Goal",
+      "author": "Eliyahu M. Goldratt",
+      "isbn13": "9780884271956",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Goal (Eliyahu M. Goldratt), ISBN-13 9780884271956"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "High Output Management",
+      "author": "Andrew S. Grove",
+      "isbn13": "9780679762881",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: High Output Management (Andrew S. Grove), ISBN-13 9780679762881"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Checklist Manifesto",
+      "author": "Atul Gawande",
+      "isbn13": "9780312430009",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Checklist Manifesto (Atul Gawande), ISBN-13 9780312430009"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Critical Chain",
+      "author": "Goldratt",
+      "isbn13": "9780884271536",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Critical Chain (Goldratt), ISBN-13 9780884271536"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "项目管理知识体系指南",
+      "author": "第7版",
+      "isbn13": "9787111558477",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 项目管理知识体系指南（第7版），ISBN-13 9787111558477"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "人月神话",
+      "isbn13": "9787302154419",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 人月神话，ISBN-13 9787302154419"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "目标",
+      "isbn13": "9787508637020",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 目标，ISBN-13 9787508637020"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "高效能人士的七个习惯",
+      "isbn13": "9787508092232",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 高效能人士的七个习惯，ISBN-13 9787508092232"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "剪映视频后期剪辑零基础入门到精通",
+      "author": "许放",
+      "isbn13": "9787115634979",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 剪映视频后期剪辑零基础入门到精通（许放），ISBN-13 9787115634979"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Producing and Directing the Short Film and Video",
+      "isbn13": "9780367895914",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Producing and Directing the Short Film and Video, ISBN-13 9780367895914"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Movie Business Book",
+      "author": "Jason E. Squire",
+      "isbn13": "9780743293402",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Movie Business Book (Jason E. Squire), ISBN-13 9780743293402"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Filmmakers and Financing",
+      "author": "Louise Levison",
+      "isbn13": "9781315670089",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Filmmakers and Financing (Louise Levison), ISBN-13 9781315670089"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Producers Business Handbook The Roadmap for the Balanced Film Producer",
+      "author": "John J. Lee, Jr. Anne Marie Gillen",
+      "isbn13": "9781138050938",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Producers Business Handbook The Roadmap for the Balanced Film Producer (John J. Lee, Jr. Anne Marie Gillen), ISBN-13 9781138050938"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Audience-ology How Moviegoers Shape the Films We Love",
+      "author": "Kevin Goetz",
+      "isbn13": "9781982186678",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Audience-ology How Moviegoers Shape the Films We Love (Kevin Goetz), ISBN-13 9781982186678"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Film Marketing",
+      "author": "Finola Kerrigan",
+      "isbn13": "9781138013360",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Film Marketing (Finola Kerrigan), ISBN-13 9781138013360"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Global Film Market Transformation in the Post-Pandemic Era Production, Distribution…",
+      "author": "Qiao Li, David Wilson, Yanqiu Guan",
+      "isbn13": "9781003345251",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Global Film Market Transformation in the Post-Pandemic Era Production, Distribution… (Qiao Li, David Wilson, Yanqiu Guan), ISBN-13 9781003345251"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Making Movie Magic A Lifetime Creating Special Effects for James Bond, Harry Potter, Su…",
+      "author": "John Richardson, Richard Donner",
+      "isbn13": "9780750994392",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Making Movie Magic A Lifetime Creating Special Effects for James Bond, Harry Potter, Su… (John Richardson, Richard Donner), ISBN-13 9780750994392"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Guide to Managing Postproduction for Film, TV, and Digital Distribution",
+      "author": "Barbara Clark, Susan Spohr, Dawn Higginbotham etc.",
+      "isbn13": "9781138482814",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Guide to Managing Postproduction for Film, TV, and Digital Distribution (Barbara Clark, Susan Spohr, Dawn Higginbotham etc.), ISBN-13 9781138482814"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Streaming systems the what, where, when, and how of large-scale data processing",
+      "author": "Akidau, TylerChernyak, SlavaLax, Reuven",
+      "isbn13": "9781491983874",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Streaming systems the what, where, when, and how of large-scale data processing (Akidau, TylerChernyak, SlavaLax, Reuven), ISBN-13 9781491983874"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Blockbusters Hit-Making, Risk-Taking, and the Big Business of Entertainment",
+      "author": "Elberse, Anita",
+      "isbn13": "9781491518649",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Blockbusters Hit-Making, Risk-Taking, and the Big Business of Entertainment (Elberse, Anita), ISBN-13 9781491518649"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "电影市场营销（第2版）",
+      "author": "于丽",
+      "isbn13": "9787106053994",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 电影市场营销（第2版）（于丽），ISBN-13 9787106053994"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "电影发行与市场营销",
+      "author": "刘嘉等",
+      "isbn13": "9787010167718",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 电影发行与市场营销（刘嘉等），ISBN-13 9787010167718"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "華語電影融資、市場與製片管理",
+      "author": "卓伯棠",
+      "isbn13": "9789888257652",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 華語電影融資、市場與製片管理（卓伯棠），ISBN-13 9789888257652"
+    }
+  ],
+  "agent_id": "video.costoptimizer",
+  "previous_common_agent_id": "video.cost_analyst",
+  "va_taxonomy_aligned": true,
+  "generic_source": "generic-swarm-ops/business/video/agents/video.costoptimizer",
+  "note": "Imported into CASOPS as baseline_safe. No production activation, no network, no plugins, memory writes forbidden.",
+  "aligned_at": "2026-07-27T00:48:11.011328Z",
+  "generic_source_depth": {
+    "excerpts": true,
+    "study": true,
+    "adopted_at": "2026-07-27T01:30:27.983912+00:00",
+    "upstream": "generic-swarm-ops/business/video/agents"
+  },
+  "imported_from": "C:\\Project\\common-agent-swarm-ops\\business\\video\\agents\\video.costoptimizer",
+  "reference_book_origin": "spec/book_of_knowledge.md",
+  "reference_book_note": "Bibliographic references from spec/book_of_knowledge.md. Does not enable network, RAG, T3, plugins, or memory writes."
+}

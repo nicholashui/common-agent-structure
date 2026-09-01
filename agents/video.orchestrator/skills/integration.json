@@ -1,0 +1,23 @@
+{
+  "skill_id": "video-orchestrator",
+  "agent_id": "video.orchestrator",
+  "kind": "pack_agent_harness",
+  "status": "scaffolded",
+  "prompt_reference": "video.prompt.orchestrator.v1",
+  "rubric_reference": "video.rubric.orchestrator.v1",
+  "patterns": [
+    "Agentic Graph",
+    "Agent Skills"
+  ],
+  "bindings": [
+    "agent_loop_v3",
+    "complex_problem_solution_process_model"
+  ],
+  "entrypoint": {
+    "type": "host_agent_runner",
+    "agent_id": "video.orchestrator"
+  },
+  "fail_closed": true,
+  "generated_by": "improve_agents_from_plan_v1.py",
+  "generated_at": "2026-07-30T14:45:34Z"
+}

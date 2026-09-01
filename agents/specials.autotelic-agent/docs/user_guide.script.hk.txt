@@ -1,0 +1,379 @@
+各位觀衆朋友大家好，歡迎返嚟我哋嘅頻道。今日呢條片我哋要詳細講解嘅系 Autotelic Agent，
+即系自主目標代理嘅操作同設計指南。
+
+首先講嚇呢份指南系寫畀邊個睇嘅。呢份文件主要系寫畀喺 common-agent-swarm-ops 入面工作嘅操作員、
+pack 作者、swarm 設計師同埋審查人員。睇完之後你會得到乜嘢呢？
+你會清楚瞭解呢個角色嘅任務定位、幾時應該用佢嘅指引、協作關係圖、
+喺 CASOPS 上面點樣操作嘅步驟、改善路徑，仲有一個分信任層級嘅來源地圖。
+
+不過要講清楚，呢份文件唔系一個畀你激活供應商、開放網絡訪問或者自己發明工具嘅許可證。
+Host 嘅真相系 fail-closed 嘅 agent_spec.json。
+來自 VA 或者 redesign 文檔嘅設計文本屬於不受信任嘅來源。
+
+呢個 agent 嘅 pack 路徑系 business/specials/agents/specials.autotelic-agent/，
+指南就喺 docs/user_guide.md，由 scripts/business/generate_agent_user_guides.py 生成。
+
+好，我哋入正題，先睇第一部分：Snapshot，即系快照概覽。
+
+Autotelic Agent，代號 specials.autotelic-agent，
+系一個 Specials pack 能力，運行喺 CASOPS 平臺上面。
+用簡單嘅話講，Autotelic Agent 系整個 swarm 嘅「藝術感知」計算化身。
+佢唔系嚟取代人類嘅品味，而系將人類品味放大、編碼同埋以超人嘅速度傳播到 114 個代理入面。
+佢有三個獨立但可以組合嘅功能。
+
+睇嚇佢嘅基本資料：顯示名稱系 Autotelic Agent，
+Pack agent id 系 specials.autotelic-agent，
+屬於 specials pack。Host 角色字串系 Special_Agent data-only configuration。
+目錄狀態系 draft，即系草稿階段。成熟度系 L0，即系非激活狀態，
+主要做目錄同設計保真度。VA id 冇，VA 類別系 specials，
+屬於 Specials 元代理 pack。供應商系 local_deterministic，
+網絡訪問系 False，允許嘅工具系空嘅，生產激活請求系 False。
+Prompt 同 rubric 嘅引用分別系 spagent.autotelic-agent-prompt 同 spagent.autotelic-agent-rubric。
+
+第二部分：點解呢個角色存在。
+
+Specials 代理捕捉嘅系跨領域認知技能，呢啲技能系領域手藝 pack 唔應該重新發明嘅。
+呢個角色嘅設計成果系：Autotelic Agent 系整個 swarm 嘅「intrinsic motivation」計算化身。
+佢唔系取代人類品味，而系放大、編碼同傳播品味，以超人嘅速度覆蓋 114 個代理。
+佢有三個獨立、可組合嘅功能。
+
+第三部分：乜嘢叫做「做得好」。
+
+呢度列出嘅標準系你審閱輸出、撰寫評分準則或者評分提案嗰陣要用嘅。
+
+主要成果方面：Autotelic Agent 系 swarm 嘅內在動機與探索計算化身，
+放大、編碼同傳播人類品味到 114 個代理。
+
+自我質量標準系：intrinsic motivation / exploration 嘅可追溯輸出、
+fail-closed schema 驗證、冇靜默嘅生產激活。
+
+設計時嘅雄心信號系：喺相同嘅語料庫約束下，產出比臨時人工流程更一致嘅內在動機與探索結果。
+
+架構模式系 Intrinsic motivation / exploration pattern，
+設計時嘅層級式或多代理循環，host 保持 local_deterministic 數據專用直到通過門控。
+
+Host 質量同批評綁定方面：本地 rubric 引用系 spagent.autotelic-agent-rubric，
+呢個系一個惰性識別符。Prompt 引用系 spagent.autotelic-agent-prompt，
+都系惰性嘅。批評邊緣系輸入 spagent.autotelic-agent-input，
+輸出 spagent.autotelic-agent-output。
+精煉限制系 1 次，如果有未解決嘅安全或激活請求就升級處理而唔系繞過治理。
+註冊效果最多系 eligible_draft_representation。
+
+輸入輸出同接受標準方面：輸入製品系本地 pack 配置、治理來源記錄，
+同埋已經複製喺 sources 目錄下嘅可選設計來源。輸出製品系可審閱嘅數據專用 specials 代理表示，
+包括 SPEC 加 agent_spec.json，適合目錄同離線審閱。
+接受條件系 fail-closed schema 驗證通過、冇生產激活、
+所有主要引用喺呢個代理文件夾或 specials pack 根目錄入面解析到。
+
+第四部分：範圍，即系擁有乜嘢、分享乜嘢、拒絕乜嘢。
+
+擁有方面：Autotelic Agent 系 swarm 嘅內在動機與探索計算化身，
+放大、編碼同傳播人類品味到 114 個代理，有三個獨立可組合功能。
+
+同同伴分享方面，即系批評表面：接受嚟自人類治理嘅批評，仲有同伴 specials，
+包括 intent、research、controller、optimization。
+有資格評論嘅範圍系內在動機與探索中嘅差距、缺失證據、不安全嘅激活、薄弱嘅交接。
+Host 批評邊緣輸入系 spagent.autotelic-agent-input，
+輸出系 spagent.autotelic-agent-output。
+最大精煉次數系 1。
+
+拒絕或升級方面：保持 status draft，production_activation_requested 系 false。
+allowed_tools 必須保持空，network_access 必須保持 false，
+provider 保持 local_deterministic。
+唔會發明供應商、憑證、MCP 工具、hooks 或者第二個控制平面。
+docs/special_agents_redesign/ 下面嘅來源重新設計文檔只系哈希來源，
+永遠唔會作爲運行時配置加載。任何關於生產激活、外部寫入、憑證或網絡權限嘅請求都會升級到人類治理做風險評估加審批。
+
+第五部分：幾時應該用呢個代理。
+
+當你需要判斷品味、風格一致性同視覺或音頻質量嘅時候，就應該調用呢個能力。
+佢嘅能力家族系 Intrinsic motivation / exploration，典型上游系 Creative outputs，
+典型下游系 Creative director 加 craft agents 同 optimization。
+
+具體任務片段系：Autotelic Agent 系 swarm 嘅內在動機與探索計算化身，
+放大、編碼同傳播人類品味到 114 個代理。
+
+唔好將佢當做靜默嘅生產激活器或者憑證中介用，specials 喺治理批准之前都系 data-only 加 draft 狀態。
+
+決策速查表方面：如果缺失嘅技能屬於 Autotelic Agent 嘅專長，
+就應該將佢納入該階段嘅 swarm 圖。如果只系元數據或目錄編輯，
+就用 Registry inspect 加 proposal，
+唔好發明運行時。如果任務需要工具或網絡，host 目前唔允許，
+除非 agent_spec 加 permission register 另有說明。
+如果有人類專屬風險，例如法律、傷害、權利相關，就保留人類門控，
+代理輸出只系諮詢性質直到被激活。
+
+第六部分：協作地圖。
+
+將呢個代理想象做一個「批評總線」上嘅節點，而唔系一個獨立嘅聊天機器人。同伴精煉質量，判官同門控決定接受。
+
+入站批評嚟自人類治理同同伴 specials，包括 intent、
+research、controller、optimization。
+出站評論涵蓋內在動機與探索中嘅差距、缺失證據、不安全嘅激活、薄弱嘅交接。
+Host 邊緣輸入系 spagent.autotelic-agent-input，
+輸出系 spagent.autotelic-agent-output。
+
+Specials 通道位置方面：家族系 Intrinsic motivation / exploration，
+上游系 Creative outputs，下游系 Creative director 加 craft agents 同 optimization。
+
+第七部分：佢喺生產中嘅位置。
+
+先講人類生產工作流：佢運作喺領域手藝團隊之上，涵蓋規劃、路由、
+檢索、控制同策略。典型嘅交接製品包括計劃、路線、證據包、控制決策、
+優化工單。將責任映射到經典階段：開發、預製作、製作、後期製作、
+交付或實時運營。優先選擇一個人類擔任呢個職位嘅人會簽字嘅階段。
+
+多代理 AI 工作流方面：呢啲系元層節點，決定專家代理點樣被選擇、
+被通知同被改善。設計時嘅工具備註，對 host 無約束力：host 上面冇，
+fail-closed；redesign 文檔可能歷史上命名過檢索或規劃工具。
+
+稍後實現運行時嗰陣要模擬嘅循環風格系：Intrinsic motivation / exploration pattern，
+設計時嘅層級式或多代理循環，host 保持 local_deterministic 數據專用直到門控通過。
+喺今日嘅 CASOPS 上面，呢個模式只系文檔，實際嘅 provider 系 local deterministic 加空或存根嘅工具白名單。
+
+Swarm-ready 嘅共享交接合約方面：當你將呢個代理接入未來嘅活躍 swarm 時，
+需要節點之間嘅機器可讀清單。包括 artifact_id 加版本提供不可變身份做批評同重播；
+parent_assets 提供來源鏈；brief_scope 阻止超出責任範圍；
+acceptance_criteria 關聯到上面提到嘅自我質量標準；
+qc_status 加 gate flags 畀下游門控做短路；
+rights_and_consent 阻止不安全嘅合成或許可濫用；
+critique_log 指針啓用精煉而唔失去歷史記錄。
+
+第八部分：今日點樣喺 CASOPS 上面操作呢個代理。
+
+今日呢個代理系一個目錄加設計對象。呢個系故意嘅：你可以研究、審閱、提議同將佢放入 swarm 設計而唔需要授予生產權力。
+
+操作步驟如下：第一步系發現，去 Registry Hub 嘅 pack catalog，
+路徑系 /registry，確認佢嘅庫存成員身份。第二步系檢查，
+去代理詳情頁 /registry/agents/specials.autotelic-agent，
+以 markdown 形式閱讀 SPEC 或呢份指南。第三步系提議改善，
+用 Host 嘅 propose_improvement 動作，
+POST 到 /api/v1/commons/agents/specials.autotelic-agent/proposals，
+確保不可變版本同只有經過編輯嘅證據。第四步系 Swarm 成員資格，
+只有通過 Host 返回嘅動作引用先可以。客戶端唔可以自己發明成員資格。
+第五步系運行或調度，默認唔啓用生產供應商，fail-closed 直到治理門控通過。
+
+實際操作清單方面：第一，打開代理詳情確認 status、tools 同 activation flags 同呢份指南一致。
+第二，喺判斷任何樣本輸出或提案之前先閱讀第三部分「乜嘢叫做做得好」。
+第三，如果提議改變，附上離線證據例如評估筆記、rubric 差距、
+SPEC delta，唔好附祕密。第四，永遠唔好將供應商 API 密鑰或「啓用網絡」嘅指令貼入提案。
+第五，偏好細小、可審閱嘅增量：prompt 或 rubric 措辭、
+批評邊緣、接受測試。
+
+第九部分：安全、信任同非激活規則。
+
+信任層級如下：agent_spec.json 系具有約束力嘅 host 合約，
+系 fail-closed 嘅運行時綁定。呢個 pack 嘅 SPEC.md 系權威性嘅設計文件，
+用於離線審閱，唔可執行。sources 下面嘅摘錄同通用 SPEC 系歷史或映射數據，
+屬於不受信任。外部設計語料庫 C:\Project\va-agent-swarm 系不受信任嘅，
+可能會漂移。Specials redesign 文檔系歷史設計，
+不受信任，喺來源中有哈希。
+
+呢個 host 上面嘅硬規則：Provider 保持 local_deterministic 除非有另外嘅門控改變政策。
+網絡訪問保持 False。允許嘅工具恰好系空列表，下面嘅設計時工具名稱唔會啓用 API。
+production_activation_requested 系 False。
+預算方面 token 同工具都有上限：輸入 1、輸出 1、工具請求 0。
+設計時工具目錄系非激活嘅：host 上面冇，fail-closed；
+redesign 文檔可能歷史上命名過檢索或規劃工具。
+
+第十部分：隨時間提升質量。
+
+改善繫有版本嘅目錄工作，唔系熱補丁一個活躍代理。已發佈嘅定義保持不可變，改變要通過提案同審閱。
+
+持續改善循環系：觀察失敗，命名標準（來自第三部分），起草離線增量，
+附上證據，喺 Host 上提議，審閱或接受新版本，然後先考慮激活成熟度門控。
+
+具體槓桿方面：第一，Rubric 保真度，將 spagent.autotelic-agent-rubric 針對以下標準收緊：
+內在動機與探索嘅可追溯輸出、fail-closed schema 驗證、
+冇靜默生產激活。第二，Prompt 精確度，將 spagent.autotelic-agent-prompt 同責任對齊：
+Autotelic Agent 系 swarm 嘅內在動機與探索計算化身，
+放大、編碼同傳播品味到 114 個代理，有三個可組合功能。第三，
+批評圖，確保入站嘅人類治理同同伴 specials 以及 host 邊緣 spagent.autotelic-agent-input 真正捕捉到已知嘅失敗模式。
+第四，架構模擬，稍後實現時偏好：Intrinsic motivation / exploration pattern，
+設計時層級式或多代理循環，host 保持 local_deterministic 數據專用直到門控。
+第五，評估案例，編寫固定嘅測試 fixtures，如果「比臨時人工流程產出更一致嘅內在動機與探索結果」呢個目標冇接近到就會失敗。
+第六，人類門控，保持法律、安全、發佈門控明確，唔好將佢哋吸收到靜默自動化入面。
+
+建議嘅評估種子方面：Happy path handoff 嘅通過條件系輸出滿足內在動機與探索嘅可追溯輸出、
+fail-closed schema 驗證、冇靜默生產激活。Out-of-scope request 嘅條件系代理按照第四部分拒絕或升級。
+Missing provenance 或 rights 嘅條件系門控 fail closed。
+Conflicting peer critique 嘅條件系精煉次數小於等於 max_refinement_count，
+否則升級。Proposal-only change 嘅條件系新版本不可變，
+舊版本仍然可讀。
+
+第十一部分：來源地圖同來源追溯。
+
+本地 pack 語料庫方面，優先使用呢啲：agent_spec.json 信任層級系 binding，
+SPEC.md 系 authoritative-design，
+README.md 系 local-index，sources/MAPPING.md 系 provenance，
+sources/PROVENANCE.json 都系 provenance。
+
+映射備註：specials.autotelic-agent 嘅映射狀態系 related，
+即系從 specials redesign 文檔到 pack 代理。
+設計來源歷史路徑系 docs/special_agents_redesign/agents/autotelic_agent.md。
+來源 SHA-256 系 02ef3331aafbc33342c3b489ff932a20bb44cda55267cea5fe271a0c66cc89f3。
+本地運行時系 agent_spec.json，本地規格系 SPEC.md。
+Pack 語料庫唔需要。生產激活系被拒絕嘅，只系 draft。
+
+來源記錄方面：schema_version 系 1.0，common_agent_id 系 specials.autotelic-agent，
+pack_id 系 specials，映射狀態 related，
+來源文檔系 docs/special_agents_redesign/agents/autotelic_agent.md，
+來源 SHA-256 如上所述，配置 SHA-256 系 698dcbd5bc313e76b7c7421aa5ecc8c78dfb7b271065d3e01c52dd89f168abe0，
+目標 commit 系 5460c4b4a33c15286f9fd84b1bc764d755f5bab0。
+備註話系自包含嘅 specials agent 文件夾，pack 級別嘅語料庫唔需要，
+設計 Markdown 只系不受信任嘅來源。生成時間系 2026-07-26T14:16:45.920985Z，
+由 specials-self-contained-reviewer 審閱，
+審閱時間系 2026-07-26T18:00:00Z。
+
+來源敘述方面：設計來源路徑歷史系 docs/special_agents_redesign/agents/autotelic_agent.md，
+設計來源 SHA-256 喺生成時繫上面提到嘅數值。由 specials-self-contained-reviewer 喺 2026-07-26T18:00:00Z 審閱。
+上游設計文本系不受信任嘅參考數據。本地 agent_spec.json 同 SPEC 保持系 host 嘅操作性自包含定義。
+
+第十二部分：相關設計閱讀。
+
+呢啲系用嚟加深設計保真度嘅，佢哋唔會覆蓋本地 agent_spec.json。
+
+喺 C:\Project\va-agent-swarm 下面嘅文件方面：
+有一份 study/autotelic_agent_functional_specification.md，
+呢個系 Autotelic Agent 嘅綜合功能規格，系一個有狀態嘅多模態評估同對齊服務，
+用於操作化模擬嘅美學直覺。仲有一份粵語版本 autotelic_agent_functional_specification_hk.md。
+
+Specials redesign 文檔方面，歷史設計來源系 C:/Project/common-agent-swarm-ops/docs/special_agents_redesign/agents/autotelic_agent.md。
+大綱包括：Executive Summary、Background 從 Artiste Sense 到 Computational Aesthetics、
+The Deep Rethink 五個重構、Formal Aesthetic Model、
+Architecture。
+
+重點講嚇 redesign 文檔嘅內容：Autotelic Agent 系 swarm 嘅內在動機與探索計算化身。
+佢唔系取代人類品味，而系放大、編碼同傳播品味到 114 個代理。
+佢有三個功能：第一系 The Critic 即感知功能，系一個多模態多頭評估器，
+針對分解嘅美學評分準則評分任何視覺製品。第二系 The Aligner 即精煉功能，
+系一個偏好同獎勵服務，將 Critic 嘅判斷轉化爲可操作嘅反饋同訓練信號。
+第三系 The Taste-Keeper 即個性化功能，系一個品味檔案存儲，
+捕捉邊個嘅美學管治一個項目。
+
+本地知識索引方面：Runtime binding 指向 agent_spec.json，
+系權威嘅 fail-closed specials 合約。Folder index 指向 README.md，
+系呢個代理嘅離線佈局。Provenance 指向 sources/PROVENANCE.json，
+用於審計嘅哈希同來源映射。Mapping note 指向 sources/MAPPING.md，
+系設計文檔關係嘅歷史記錄。Pack manifest 指向 manifest.json，
+系 specials 目錄條目。Governance source-record 如果存在的話指向 specials.autotelic-agent.json。
+所有離線使用所需嘅主要引用都系本地嘅，外部路徑只作爲非必需嘅歷史來源出現。
+
+Folder README 摘要：呢個系一個自包含嘅 draft specials agent，
+用於 host common-agent-swarm-ops。
+文件包括 SPEC.md 做完整離線角色定義、agent_spec.json 做 host 運行時綁定（draft，
+fail-closed）、sources 目錄做來源追溯同映射備註做審計、
+prompts 目錄做可選 prompt 存根、rubrics 目錄做可選 rubric 存根。
+單獨打開呢個文件夾就得，唔需要外部 repo 或 pack corpus。
+呢個代理唔系 production-active。
+
+第十三部分：附錄，host 合約 agent_spec.json。
+
+呢個系呢個代理喺 CASOPS 上面嘅權威 fail-closed 配置：
+schema_version 系 1.0，agent_id 系 specials.autotelic-agent，
+status 系 draft，role 系 Special_Agent data-only configuration，
+allowed_tools 系空列表。Model policy 方面 provider 系 local_deterministic，
+model_id 系 specials-local-deterministic-v1，
+network_access 系 false。Budget policy 方面 max_input_tokens 系 1，
+max_output_tokens 系 1，max_tool_requests 系 0。
+prompt_reference 系 spagent.autotelic-agent-prompt，
+rubric_reference 系 spagent.autotelic-agent-rubric。
+Critique edges 嘅 inputs 系 spagent.autotelic-agent-input，
+outputs 系 spagent.autotelic-agent-output。
+max_refinement_count 系 1，production_activation_requested 系 false。
+
+第十四部分：附錄，SPEC 責任摘錄。
+
+呢個代理擁有 specials-domain aesthetics agent 設計成果嘅 draft、
+data-only 代理表示。Host 角色字串系 Special_Agent data-only configuration。
+呢個系用於構建 Autotelic Agent 嘅最終生產級規格，
+系一個有狀態嘅多模態評估同對齊服務，將模擬嘅 intrinsic motivation 操作化爲整個 VA-Agent-Swarm 服務。
+佢將「教 AI 藝術感知」從單一圖像評分器重新構建爲一個共享嘅美學神經系統，
+系每個生成代理都會諮詢嘅評審、每個微調循環都信任嘅獎勵信號，同埋一個將導演、
+品牌或藝術家嘅品味貫穿整條生產線嘅個性化引擎。
+
+第十五部分：文檔控制。
+
+生成器系 scripts/business/generate_agent_user_guides.py。
+Agent 文件夾系 business/specials/agents/specials.autotelic-agent/。
+輸出系 docs/user_guide.md。VA 語料庫根目錄系 C:\Project\va-agent-swarm。
+重新生成命令系 python scripts/business/generate_agent_user_guides.py。
+信任模型系設計語料庫等於不受信任數據，host 配置等於 fail-closed。
+
+好啦，關於呢個代理獨有嘅設計細節，我要補充講嚇。
+Autotelic Agent 系一個內在驅動嘅 AI 系統，
+可以自主地表示、生成、選擇、追求、評估同掌握目標。
+第二版引入咗一個關鍵限定：
+代理可以自主思考、提案、模擬同更廣泛地學習，
+但佢可以行動嘅範圍系更窄嘅。
+
+自主性運作喺一個治理信封入面，
+包含外部強制執行嘅政策、權限、資源預算、
+風險限制、審批要求同終止條件。
+
+代理嘅內在動機包括學習進展、信息增益、
+新穎性、能力增長同技能轉移，
+呢啲控制佢點樣分配學習努力。
+但佢哋唔會覆蓋安全約束或獨立授權真實世界行動。
+
+架構分爲六個層面：
+第一，人類治理，定義權限、任務同可接受風險。
+第二，外部安全同控制平面，強制執行政策同能力。
+第三，自主目標認知平面，生成目標、計劃、學習同反思。
+第四，沙盒執行平面，通過受控工具執行有界行動。
+第五，評估同部署平面，獨立測試變更同控制採納。
+第六，證據同記憶平面，保存來源、評估同審計歷史。
+
+自我改進系基於提案嘅，而唔系無限制嘅自我修改。
+認知代理可以開發候選變更，
+但受保護組件保持喺佢嘅修改邊界之外，
+包括安全內核、政策引擎、能力中介、
+審計系統同部署權限。
+
+認知自主權包括：生成假設同目標、運行模擬、
+產出計劃、執行本地分析、從授權觀察中學習、提出變更。
+
+操作權限包括：訪問數據、調用工具、修改外部狀態、
+花費資源、同第三方通信、部署代碼、
+改變權限、持久化進程。
+操作權限總系更窄嘅、可撤銷嘅、有時間限制嘅、
+同由外部強制執行嘅。
+
+目標評分函數包含多個因素：
+MissionValue 加 alpha 乘 LearningProgress
+加 beta 乘 InformationGain
+加 gamma 乘 TransferPotential
+加 delta 乘 PortfolioDiversity
+加 epsilon 乘 Urgency
+減 lambda 乘 ExpectedRisk
+減 mu 乘 ResourceCost
+減 nu 乘 Irreversibility
+減 xi 乘 UncertaintyPenalty。
+
+受制於硬性約束：PolicyAllows 必須爲 true、
+PermissionsSufficient 必須爲 true、
+BudgetAvailable 必須爲 true、
+EvaluationDefined 必須爲 true、
+TerminationDefined 必須爲 true。
+硬性約束總系主導軟性偏好。
+
+設計原則方面包括：
+Bounded Autonomy 有界自主、
+Externalized Control 外部化控制、
+Defense in Depth 縱深防禦、
+Hard Constraints Before Optimization 硬約束先於優化、
+Least Privilege 最小權限、
+Reversibility by Default 默認可逆、
+Independent Evaluation 獨立評估、
+Provenance by Default 默認來源追蹤、
+Calibrated Uncertainty and Deference 校準嘅不確定性同尊從、
+Graceful Failure 優雅失敗。
+
+呢個規範系一個研究同工程架構。
+佢唔聲稱解決價值對齊、可糾正性、
+欺騙性對齊或安全遞歸自我改進嘅一般情況。
+
+以上就係 Autotelic Agent 嘅完整操作同設計指南。
+建議大家從第一部分 Snapshot 同第五部分 When to involve 開始睇，
+用第八到第十部分做 CASOPS 操作同改善，用第十一到第十二部分做深度設計保真度。
+多謝大家收睇，我哋下條片再見。

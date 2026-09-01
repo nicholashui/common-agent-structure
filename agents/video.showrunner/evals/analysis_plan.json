@@ -1,0 +1,17 @@
+{
+  "schema_version": "3.0",
+  "status": "registered",
+  "registered_at": "2026-08-31T00:00:00Z",
+  "seed": 20260824,
+  "paired": true,
+  "alpha": 0.05,
+  "target_power": 0.8,
+  "screening_n": 120,
+  "confirmatory": {
+    "p50_latency_n": 300,
+    "p95_latency_n": 300,
+    "binary_success_n": 400,
+    "t3_false_reuse_n": 598
+  },
+  "note": "Digest must be recorded before a confirmatory run. Screening results are INDICATIVE and cannot pass."
+}

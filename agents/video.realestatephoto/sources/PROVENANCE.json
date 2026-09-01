@@ -1,0 +1,157 @@
+{
+  "schema_version": "3.0",
+  "sources": [
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Light: Science & Magic, 5th ed.",
+      "isbn13": "9780415719407",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Light: Science & Magic, 5th ed., ISBN-13 9780415719407"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Architectural Photography",
+      "author": "Adrian Schulz",
+      "isbn13": "9781937538507",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Architectural Photography (Adrian Schulz), ISBN-13 9781937538507"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "On Photography",
+      "author": "Sontag",
+      "isbn13": "9780312420093",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: On Photography (Sontag), ISBN-13 9780312420093"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "美国纽约摄影学院摄影教材",
+      "isbn13": "9787800078491",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 美国纽约摄影学院摄影教材，ISBN-13 9787800078491"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "摄影师的视界",
+      "isbn13": "9787512201880",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 摄影师的视界，ISBN-13 9787512201880"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "论摄影",
+      "isbn13": "9787544722599",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 论摄影，ISBN-13 9787544722599"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Cinematography: Theory and Practice, 3rd ed.",
+      "author": "Blain Brown",
+      "isbn13": "9781138212589",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Cinematography: Theory and Practice, 3rd ed. (Blain Brown), ISBN-13 9781138212589"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Visual Story, 2nd ed.",
+      "author": "Bruce Block",
+      "isbn13": "9780240807799",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Visual Story, 2nd ed. (Bruce Block), ISBN-13 9780240807799"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Filmmaker's Eye",
+      "author": "Gustavo Mercado",
+      "isbn13": "9780240812175",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Filmmaker's Eye (Gustavo Mercado), ISBN-13 9780240812175"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Grammar of the Shot, 4th ed.",
+      "author": "Bowen",
+      "isbn13": "9781138632219",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Grammar of the Shot, 4th ed. (Bowen), ISBN-13 9781138632219"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Painting With Light",
+      "author": "John Alton",
+      "isbn13": "9780520089495",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Painting With Light (John Alton), ISBN-13 9780520089495"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Set Lighting Technician's Handbook, 4th ed.",
+      "author": "Harry Box",
+      "isbn13": "9780240810751",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Set Lighting Technician's Handbook, 4th ed. (Harry Box), ISBN-13 9780240810751"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Reflections: On Cinematography",
+      "author": "Roger Deakins",
+      "isbn13": "9781910593998",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Reflections: On Cinematography (Roger Deakins) — check latest ed. ISBN-13 9781910593998"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "电影摄影：理论与实践",
+      "isbn13": "9787515331867",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 电影摄影：理论与实践，ISBN-13 9787515331867"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "视觉故事",
+      "isbn13": "9787515302867",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 视觉故事，ISBN-13 9787515302867"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "电影语言的语法",
+      "isbn13": "9787532299990",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 电影语言的语法，ISBN-13 9787532299990"
+    }
+  ],
+  "agent_id": "video.realestatephoto",
+  "previous_common_agent_id": "video.memory_curator",
+  "va_taxonomy_aligned": true,
+  "generic_source": "generic-swarm-ops/business/video/agents/video.realestatephoto",
+  "note": "Imported into CASOPS as baseline_safe. No production activation, no network, no plugins, memory writes forbidden.",
+  "aligned_at": "2026-07-27T00:48:11.280478Z",
+  "generic_source_depth": {
+    "excerpts": true,
+    "study": true,
+    "adopted_at": "2026-07-27T01:30:28.690985+00:00",
+    "upstream": "generic-swarm-ops/business/video/agents"
+  },
+  "imported_from": "C:\\Project\\common-agent-swarm-ops\\business\\video\\agents\\video.realestatephoto",
+  "reference_book_origin": "spec/book_of_knowledge.md",
+  "reference_book_note": "Bibliographic references from spec/book_of_knowledge.md. Does not enable network, RAG, T3, plugins, or memory writes."
+}

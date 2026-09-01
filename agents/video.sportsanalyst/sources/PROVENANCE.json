@@ -1,0 +1,141 @@
+{
+  "schema_version": "3.0",
+  "sources": [
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Soccernomics",
+      "author": "Kuper & Szymanski",
+      "isbn13": "9781568589565",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Soccernomics (Kuper & Szymanski), ISBN-13 9781568589565"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Basketball on Paper",
+      "author": "Dean Oliver",
+      "isbn13": "9781574886887",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Basketball on Paper (Dean Oliver), ISBN-13 9781574886887"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Moneyball",
+      "author": "Michael Lewis",
+      "isbn13": "9780393338393",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Moneyball (Michael Lewis), ISBN-13 9780393338393"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "足球经济学",
+      "isbn13": "9787508641238",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 足球经济学，ISBN-13 9787508641238"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "点球成金",
+      "isbn13": "9787508641245",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 点球成金，ISBN-13 9787508641245"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Trustworthy Online Controlled Experiments",
+      "author": "Kohavi, Tang, Xu",
+      "isbn13": "9781108724265",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Trustworthy Online Controlled Experiments (Kohavi, Tang, Xu), ISBN-13 9781108724265"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Storytelling with Data",
+      "author": "Cole Nussbaumer Knaflic",
+      "isbn13": "9781119002253",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Storytelling with Data (Cole Nussbaumer Knaflic), ISBN-13 9781119002253"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Lean Analytics",
+      "author": "Croll & Yoskovitz",
+      "isbn13": "9781449335670",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Lean Analytics (Croll & Yoskovitz), ISBN-13 9781449335670"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Visual Display of Quantitative Information, 2nd ed.",
+      "author": "Edward Tufte",
+      "isbn13": "9780961392147",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Visual Display of Quantitative Information, 2nd ed. (Edward Tufte), ISBN-13 9780961392147"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Naked Statistics",
+      "author": "Charles Wheelan",
+      "isbn13": "9780393347777",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Naked Statistics (Charles Wheelan), ISBN-13 9780393347777"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Signal and the Noise",
+      "author": "Nate Silver",
+      "isbn13": "9780143125082",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Signal and the Noise (Nate Silver), ISBN-13 9780143125082"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "精益数据分析",
+      "isbn13": "9787115384515",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 精益数据分析，ISBN-13 9787115384515"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "用数据讲故事",
+      "isbn13": "9787111575558",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 用数据讲故事，ISBN-13 9787111575558"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "赤裸裸的统计学",
+      "isbn13": "9787508643427",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 赤裸裸的统计学，ISBN-13 9787508643427"
+    }
+  ],
+  "agent_id": "video.sportsanalyst",
+  "previous_common_agent_id": "video.operations_observer",
+  "va_taxonomy_aligned": true,
+  "generic_source": "generic-swarm-ops/business/video/agents/video.sportsanalyst",
+  "note": "Imported into CASOPS as baseline_safe. No production activation, no network, no plugins, memory writes forbidden.",
+  "aligned_at": "2026-07-27T00:48:11.333618Z",
+  "generic_source_depth": {
+    "excerpts": true,
+    "study": true,
+    "adopted_at": "2026-07-27T01:30:28.872051+00:00",
+    "upstream": "generic-swarm-ops/business/video/agents"
+  },
+  "imported_from": "C:\\Project\\common-agent-swarm-ops\\business\\video\\agents\\video.sportsanalyst",
+  "reference_book_origin": "spec/book_of_knowledge.md",
+  "reference_book_note": "Bibliographic references from spec/book_of_knowledge.md. Does not enable network, RAG, T3, plugins, or memory writes."
+}

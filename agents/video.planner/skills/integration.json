@@ -1,0 +1,24 @@
+{
+  "skill_id": "video-planner",
+  "agent_id": "video.planner",
+  "kind": "pack_agent_harness",
+  "status": "scaffolded",
+  "prompt_reference": "video.prompt.planner.v1",
+  "rubric_reference": "video.rubric.planner.v1",
+  "patterns": [
+    "ReAct",
+    "Agentic Graph",
+    "Agent Skills"
+  ],
+  "bindings": [
+    "agent_loop_v3",
+    "thinking_model"
+  ],
+  "entrypoint": {
+    "type": "host_agent_runner",
+    "agent_id": "video.planner"
+  },
+  "fail_closed": true,
+  "generated_by": "improve_agents_from_plan_v1.py",
+  "generated_at": "2026-07-30T14:45:34Z"
+}

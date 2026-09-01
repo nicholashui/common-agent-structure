@@ -12,6 +12,7 @@ from casops.registry.folder import validate_required_files
 
 REPO = Path(__file__).resolve().parents[2]
 TEMPLATE = REPO / "agents" / "_template_v3"
+HEALTH = REPO / "agents" / "common.health"
 SCHEMA = REPO / "schemas" / "agent" / "agent_spec.schema.json"
 
 ALWAYS_REQUIRED_FILES = (
@@ -77,6 +78,24 @@ def test_template_is_baseline_safe_disabled_modes() -> None:
     assert improvement.get("auto_promote", False) is False
     assert compute["mode"] == "fixed"
     assert cache["tiers"] == ["T0"]
+
+
+def test_common_health_agent_has_all_always_required_files() -> None:
+    result = validate_required_files(HEALTH)
+    assert result.ok, result.missing
+    spec = json.loads((HEALTH / "agent_spec.json").read_text(encoding="utf-8"))
+    jsonschema.validate(spec, json.loads(SCHEMA.read_text(encoding="utf-8")))
+    assert spec["agent_id"] == "common.health"
+    assert spec["role"] == "HostHealthObserver"
+    assert spec["production_activation_requested"] is False
+    assert spec["model_policy"]["network_access"] is False
+    memory = json.loads((HEALTH / "memory" / "policy.json").read_text(encoding="utf-8"))
+    plugins = json.loads((HEALTH / "plugins" / "registry.json").read_text(encoding="utf-8"))
+    execution = json.loads((HEALTH / "runtime" / "execution.json").read_text(encoding="utf-8"))
+    assert memory["mode"] == "none"
+    assert plugins["plugins"] == []
+    assert execution["nodes"][0]["kind"] == "transform"
+    assert execution["nodes"][0]["op"] == "health_snapshot"
 
 
 def test_missing_readme_fails_closed() -> None:

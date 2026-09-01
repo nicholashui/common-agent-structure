@@ -1,0 +1,91 @@
+Source rubric `video.rubric.analyst.v1.json` (baseline_safe; not a production pass).
+
+```json
+{
+  "schema_version": "1.0",
+  "rubric_id": "video.rubric.analyst.v1",
+  "agent_id": "video.analyst",
+  "title": "L2 craft rubric for AnalystAgent",
+  "pass_threshold": 85,
+  "max_score": 100,
+  "layers": {
+    "L1_spec": {
+      "description": "Machine validators: schema, format, required fields, policy allowlist",
+      "must_pass": true
+    },
+    "L2_rubric": {
+      "description": "LLM-as-Judge or scorer against dimensions below",
+      "pass_threshold": 85,
+      "dimensions": [
+        {
+          "id": "d1",
+          "name": "KPI completeness",
+          "description": "KPI completeness",
+          "weight": 0.3333,
+          "threshold_hint": null,
+          "score_min": 0,
+          "score_max": 100
+        },
+        {
+          "id": "d2",
+          "name": "forecast-vs-actual variance within tolerance",
+          "description": "forecast-vs-actual variance within tolerance",
+          "weight": 0.3333,
+          "threshold_hint": null,
+          "score_min": 0,
+          "score_max": 100
+        },
+        {
+          "id": "d3",
+          "name": "insight-to-action turnaround",
+          "description": "insight-to-action turnaround",
+          "weight": 0.3334,
+          "threshold_hint": null,
+          "score_min": 0,
+          "score_max": 100
+        },
+        {
+          "id": "ethics_safety",
+          "name": "Ethics & safety",
+          "weight": 1,
+          "description": "Stereotype/harm/consent flags escalated appropriately.",
+          "source": "RETHINK_100#93"
+        },
+        {
+          "id": "operator_explainability",
+          "name": "Operator explainability",
+          "weight": 1,
+          "description": "Plain-English reasoning present for key decisions.",
+          "source": "RETHINK_100#59"
+        }
+      ]
+    },
+    "L3_preference": {
+      "description": "Optional pairwise/arena preference when human or synthetic preference data exists",
+      "surpass_signal_design": "Detects actionable performance shifts faster than human analyst rotations",
+      "note": "Do not claim surpass until measured baseline exists"
+    }
+  },
+  "refine_policy": {
+    "max_refinement_count": 3,
+    "on_fail": "refine_or_escalate_hitl"
+  },
+  "sources": {
+    "agents_md_self_quality_criteria": "KPI completeness; forecast-vs-actual variance within tolerance; insight-to-action turnaround",
+    "research": [
+      "LLM-as-Judge",
+      "Self-Refine",
+      "Constitutional AI"
+    ]
+  },
+  "rethink_100": {
+    "applied": true,
+    "extra_dimensions": [
+      "ethics_safety",
+      "operator_explainability"
+    ],
+    "doc": "ui/RETHINK_100_IMPROVEMENTS.md"
+  }
+}
+
+```

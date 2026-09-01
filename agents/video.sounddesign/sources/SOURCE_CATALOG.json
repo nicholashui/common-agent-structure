@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.0",
+  "agent_id": "video.sounddesign",
+  "sources": [
+    {
+      "id": "src_1",
+      "title": "BBC SFX library",
+      "description": "BBC SFX library",
+      "license_class": "unknown_review_required",
+      "acquisition_method": "manual_or_licensed_api",
+      "local_path_hint": "sources/excerpts/ or sources/study/",
+      "refresh_sla_days": 90,
+      "owner": "video.sounddesign",
+      "status": "planned_or_partial"
+    },
+    {
+      "id": "src_2",
+      "title": "MPSE Golden Reel",
+      "description": "MPSE Golden Reel",
+      "license_class": "unknown_review_required",
+      "acquisition_method": "manual_or_licensed_api",
+      "local_path_hint": "sources/excerpts/ or sources/study/",
+      "refresh_sla_days": 90,
+      "owner": "video.sounddesign",
+      "status": "planned_or_partial"
+    },
+    {
+      "id": "src_3",
+      "title": "Burtt/Lievsay notes",
+      "description": "Burtt/Lievsay notes",
+      "license_class": "unknown_review_required",
+      "acquisition_method": "manual_or_licensed_api",
+      "local_path_hint": "sources/excerpts/ or sources/study/",
+      "refresh_sla_days": 90,
+      "owner": "video.sounddesign",
+      "status": "planned_or_partial"
+    }
+  ],
+  "note": "Legal review required before treating external corpora as production grounding."
+}

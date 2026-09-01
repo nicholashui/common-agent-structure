@@ -1,0 +1,333 @@
+{
+  "schema_version": "3.0",
+  "sources": [
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Design for How People Learn, 2nd ed.",
+      "author": "Julie Dirksen",
+      "isbn13": "9780134211282",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Design for How People Learn, 2nd ed. (Julie Dirksen), ISBN-13 9780134211282"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "e-Learning and the Science of Instruction, 4th ed.",
+      "author": "Clark & Mayer",
+      "isbn13": "9781119158660",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: e-Learning and the Science of Instruction, 4th ed. (Clark & Mayer), ISBN-13 9781119158660"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Make It Stick",
+      "author": "Brown, Roediger, McDaniel",
+      "isbn13": "9780674729018",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Make It Stick (Brown, Roediger, McDaniel), ISBN-13 9780674729018"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "How People Learn",
+      "author": "Bransford et al.",
+      "isbn13": "9780309070362",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: How People Learn (Bransford et al.), ISBN-13 9780309070362"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Understanding by Design",
+      "author": "Wiggins & McTighe",
+      "isbn13": "9781416600350",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Understanding by Design (Wiggins & McTighe), ISBN-13 9781416600350"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Multimedia Learning, 3rd ed.",
+      "author": "Richard E. Mayer",
+      "isbn13": "9781107566187",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Multimedia Learning, 3rd ed. (Richard E. Mayer), ISBN-13 9781107566187"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "First Principles of Instruction",
+      "author": "M. David Merrill",
+      "isbn13": "9780470900406",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: First Principles of Instruction (M. David Merrill), ISBN-13 9780470900406"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "让学习粘住",
+      "isbn13": "9787508655611",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 让学习粘住，ISBN-13 9787508655611"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "教学设计原理",
+      "author": "加涅",
+      "isbn13": "9787561762264",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 教学设计原理（加涅），ISBN-13 9787561762264"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "追求理解的教学设计",
+      "isbn13": "9787561799994",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 追求理解的教学设计，ISBN-13 9787561799994"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Thinking, Fast and Slow",
+      "author": "Daniel Kahneman",
+      "isbn13": "9780374533557",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Thinking, Fast and Slow (Daniel Kahneman), ISBN-13 9780374533557"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Influence",
+      "author": "Robert Cialdini",
+      "isbn13": "9780061241895",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Influence (Robert Cialdini), ISBN-13 9780061241895"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Predictably Irrational",
+      "author": "Dan Ariely",
+      "isbn13": "9780061353246",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Predictably Irrational (Dan Ariely), ISBN-13 9780061353246"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Nudge",
+      "author": "Thaler & Sunstein",
+      "isbn13": "9780143115267",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Nudge (Thaler & Sunstein), ISBN-13 9780143115267"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Flow",
+      "author": "Mihaly Csikszentmihalyi",
+      "isbn13": "9780061339202",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Flow (Mihaly Csikszentmihalyi), ISBN-13 9780061339202"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Drive",
+      "author": "Daniel H. Pink",
+      "isbn13": "9781594484803",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Drive (Daniel H. Pink), ISBN-13 9781594484803"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Mindset",
+      "author": "Carol Dweck",
+      "isbn13": "9780345472328",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Mindset (Carol Dweck), ISBN-13 9780345472328"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Power of Habit",
+      "author": "Charles Duhigg",
+      "isbn13": "9780812981605",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Power of Habit (Charles Duhigg), ISBN-13 9780812981605"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Emotional Intelligence",
+      "author": "Daniel Goleman",
+      "isbn13": "9780553383713",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Emotional Intelligence (Daniel Goleman), ISBN-13 9780553383713"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Personality",
+      "author": "Daniel Nettle",
+      "isbn13": "9780199211425",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Personality (Daniel Nettle), ISBN-13 9780199211425"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "思考，快与慢",
+      "isbn13": "9787508633565",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 思考，快与慢，ISBN-13 9787508633565"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "影响力",
+      "isbn13": "9787508622163",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 影响力，ISBN-13 9787508622163"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "怪诞行为学",
+      "isbn13": "9787508615824",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 怪诞行为学，ISBN-13 9787508615824"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "助推",
+      "isbn13": "9787508641238",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 助推，ISBN-13 9787508641238"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "心流",
+      "isbn13": "9787508660721",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 心流，ISBN-13 9787508660721"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "驱动力",
+      "isbn13": "9787508621753",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 驱动力，ISBN-13 9787508621753"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "社会心理学",
+      "author": "迈尔斯",
+      "isbn13": "9787115412393",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 社会心理学（迈尔斯），ISBN-13 9787115412393"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Trustworthy Online Controlled Experiments",
+      "author": "Kohavi, Tang, Xu",
+      "isbn13": "9781108724265",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Trustworthy Online Controlled Experiments (Kohavi, Tang, Xu), ISBN-13 9781108724265"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Storytelling with Data",
+      "author": "Cole Nussbaumer Knaflic",
+      "isbn13": "9781119002253",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Storytelling with Data (Cole Nussbaumer Knaflic), ISBN-13 9781119002253"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Lean Analytics",
+      "author": "Croll & Yoskovitz",
+      "isbn13": "9781449335670",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Lean Analytics (Croll & Yoskovitz), ISBN-13 9781449335670"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Visual Display of Quantitative Information, 2nd ed.",
+      "author": "Edward Tufte",
+      "isbn13": "9780961392147",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Visual Display of Quantitative Information, 2nd ed. (Edward Tufte), ISBN-13 9780961392147"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Naked Statistics",
+      "author": "Charles Wheelan",
+      "isbn13": "9780393347777",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Naked Statistics (Charles Wheelan), ISBN-13 9780393347777"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Signal and the Noise",
+      "author": "Nate Silver",
+      "isbn13": "9780143125082",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Signal and the Noise (Nate Silver), ISBN-13 9780143125082"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "精益数据分析",
+      "isbn13": "9787115384515",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 精益数据分析，ISBN-13 9787115384515"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "用数据讲故事",
+      "isbn13": "9787111575558",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 用数据讲故事，ISBN-13 9787111575558"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "赤裸裸的统计学",
+      "isbn13": "9787508643427",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 赤裸裸的统计学，ISBN-13 9787508643427"
+    }
+  ],
+  "agent_id": "video.learnersim",
+  "previous_common_agent_id": "video.asset_security_officer",
+  "va_taxonomy_aligned": true,
+  "generic_source": "generic-swarm-ops/business/video/agents/video.learnersim",
+  "note": "Imported into CASOPS as baseline_safe. No production activation, no network, no plugins, memory writes forbidden.",
+  "aligned_at": "2026-07-27T00:48:11.197894Z",
+  "generic_source_depth": {
+    "excerpts": true,
+    "study": true,
+    "adopted_at": "2026-07-27T01:30:28.318525+00:00",
+    "upstream": "generic-swarm-ops/business/video/agents"
+  },
+  "imported_from": "C:\\Project\\common-agent-swarm-ops\\business\\video\\agents\\video.learnersim",
+  "reference_book_origin": "spec/book_of_knowledge.md",
+  "reference_book_note": "Bibliographic references from spec/book_of_knowledge.md. Does not enable network, RAG, T3, plugins, or memory writes."
+}

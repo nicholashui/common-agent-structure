@@ -1,0 +1,6 @@
+{
+  "schema_version": "3.0",
+  "max_job_ms": 15000,
+  "excessive_agency": true,
+  "on_trip": "bounded_failure"
+}

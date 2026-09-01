@@ -1,0 +1,150 @@
+{
+  "schema_version": "3.0",
+  "sources": [
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Art of Voice Acting, 5th ed.",
+      "author": "James R. Alburger",
+      "isbn13": "9781138843103",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Art of Voice Acting, 5th ed. (James R. Alburger), ISBN-13 9781138843103"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Voice-Over for Animation",
+      "author": "Wright & Lallo",
+      "isbn13": "9780240812151",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Voice-Over for Animation (Wright & Lallo), ISBN-13 9780240812151"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "There's Money Where Your Mouth Is",
+      "author": "Elaine A. Clark",
+      "isbn13": "9781581159806",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: There's Money Where Your Mouth Is (Elaine A. Clark), ISBN-13 9781581159806"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "播音主持创作基础",
+      "author": "张颂",
+      "isbn13": "9787565701238",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 播音主持创作基础（张颂），ISBN-13 9787565701238"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "An Actor Prepares",
+      "author": "Stanislavski",
+      "isbn13": "9780878309832",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: An Actor Prepares (Stanislavski), ISBN-13 9780878309832"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Audition",
+      "author": "Michael Shurtleff",
+      "isbn13": "9780802772404",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Audition (Michael Shurtleff), ISBN-13 9780802772404"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Directing Actors",
+      "author": "Judith Weston",
+      "isbn13": "9780941188241",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Directing Actors (Judith Weston), ISBN-13 9780941188241"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Respect for Acting",
+      "author": "Uta Hagen",
+      "isbn13": "9780470228487",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Respect for Acting (Uta Hagen), ISBN-13 9780470228487"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "演员的自我修养",
+      "isbn13": "9787108014504",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 演员的自我修养，ISBN-13 9787108014504"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "尊重表演艺术",
+      "isbn13": "9787106028893",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 尊重表演艺术，ISBN-13 9787106028893"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Elements of Style, 4th ed.",
+      "author": "Strunk & White",
+      "isbn13": "9780205309023",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Elements of Style, 4th ed. (Strunk & White), ISBN-13 9780205309023"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "They Say / I Say, 4th ed.",
+      "author": "Graff & Birkenstein",
+      "isbn13": "9780393631678",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: They Say / I Say, 4th ed. (Graff & Birkenstein), ISBN-13 9780393631678"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "On Writing Well",
+      "isbn13": "9780060891541",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: On Writing Well, ISBN-13 9780060891541"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "风格的要素",
+      "isbn13": "9787100040945",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 风格的要素，ISBN-13 9787100040945"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "写作法宝",
+      "isbn13": "9787301161111",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 写作法宝，ISBN-13 9787301161111"
+    }
+  ],
+  "agent_id": "video.audiobooknarrator",
+  "previous_common_agent_id": "video.title_designer",
+  "va_taxonomy_aligned": true,
+  "generic_source": "generic-swarm-ops/business/video/agents/video.audiobooknarrator",
+  "note": "Imported into CASOPS as baseline_safe. No production activation, no network, no plugins, memory writes forbidden.",
+  "aligned_at": "2026-07-27T00:48:11.041850Z",
+  "generic_source_depth": {
+    "excerpts": true,
+    "study": true,
+    "adopted_at": "2026-07-27T01:30:27.683783+00:00",
+    "upstream": "generic-swarm-ops/business/video/agents"
+  },
+  "imported_from": "C:\\Project\\common-agent-swarm-ops\\business\\video\\agents\\video.audiobooknarrator",
+  "reference_book_origin": "spec/book_of_knowledge.md",
+  "reference_book_note": "Bibliographic references from spec/book_of_knowledge.md. Does not enable network, RAG, T3, plugins, or memory writes."
+}

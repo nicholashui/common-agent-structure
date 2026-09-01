@@ -1,0 +1,192 @@
+{
+  "schema_version": "3.0",
+  "sources": [
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Elements of Journalism, 3rd ed.",
+      "author": "Kovach & Rosenstiel",
+      "isbn13": "9780804136785",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Elements of Journalism, 3rd ed. (Kovach & Rosenstiel), ISBN-13 9780804136785"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Blur",
+      "author": "Kovach & Rosenstiel",
+      "isbn13": "9781608193011",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Blur (Kovach & Rosenstiel), ISBN-13 9781608193011"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Associated Press Stylebook",
+      "isbn13": "9781541649883",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Associated Press Stylebook, ISBN-13 9781541649883"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "On Writing Well",
+      "author": "William Zinsser",
+      "isbn13": "9780060891541",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: On Writing Well (William Zinsser), ISBN-13 9780060891541"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "The Craft of Research, 4th ed.",
+      "author": "Booth et al.",
+      "isbn13": "9780226239736",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: The Craft of Research, 4th ed. (Booth et al.), ISBN-13 9780226239736"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Interviewing as Qualitative Research, 4th ed.",
+      "author": "Irving Seidman",
+      "isbn13": "9780807755679",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Interviewing as Qualitative Research, 4th ed. (Irving Seidman), ISBN-13 9780807755679"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "新闻的十大基本原则",
+      "isbn13": "9787301161111",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 新闻的十大基本原则，ISBN-13 9787301161111"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "采访的艺术",
+      "isbn13": "9787301169186",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 采访的艺术，ISBN-13 9787301169186"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "如何阅读一本书",
+      "isbn13": "9787100040945",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 如何阅读一本书，ISBN-13 9787100040945"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "研究是一门艺术",
+      "isbn13": "9787300116226",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 研究是一门艺术，ISBN-13 9787300116226"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Introduction to Information Retrieval",
+      "isbn13": "9780521865715",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Introduction to Information Retrieval, ISBN-13 9780521865715"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Mining of Massive Datasets",
+      "author": "Leskovec, Rajaraman, Ullman",
+      "isbn13": "9781107157873",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Mining of Massive Datasets (Leskovec, Rajaraman, Ullman), ISBN-13 9781107157873"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Recommender Systems Handbook, 2nd ed.",
+      "author": "Ricci et al.",
+      "isbn13": "9781489976369",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Recommender Systems Handbook, 2nd ed. (Ricci et al.), ISBN-13 9781489976369"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "信息检索导论",
+      "isbn13": "9787115221704",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 信息检索导论，ISBN-13 9787115221704"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "推荐系统实践",
+      "author": "项亮",
+      "isbn13": "9787115281708",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 推荐系统实践（项亮），ISBN-13 9787115281708"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Documentary Storytelling, 4th ed.",
+      "author": "Sheila Curran Bernard",
+      "isbn13": "9781138120051",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Documentary Storytelling, 4th ed. (Sheila Curran Bernard), ISBN-13 9781138120051"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Directing the Documentary, 6th ed.",
+      "author": "Michael Rabiger",
+      "isbn13": "9780415719315",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Directing the Documentary, 6th ed. (Michael Rabiger), ISBN-13 9780415719315"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Introduction to Documentary, 3rd ed.",
+      "author": "Bill Nichols",
+      "isbn13": "9780253026859",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Introduction to Documentary, 3rd ed. (Bill Nichols), ISBN-13 9780253026859"
+    },
+    {
+      "kind": "reference_book",
+      "language": "ZH",
+      "title": "纪录片也要讲故事",
+      "isbn13": "9787532753888",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "ZH: 纪录片也要讲故事，ISBN-13 9787532753888"
+    },
+    {
+      "kind": "reference_book",
+      "language": "EN",
+      "title": "Film preservation competing definitions of value, use, and practice",
+      "author": "Gracy, Karen F",
+      "isbn13": "9780838910313",
+      "origin": "spec/book_of_knowledge.md",
+      "citation": "EN: Film preservation competing definitions of value, use, and practice (Gracy, Karen F), ISBN-13 9780838910313"
+    }
+  ],
+  "agent_id": "video.archiveresearch",
+  "previous_common_agent_id": "video.historical_replay_analyst",
+  "va_taxonomy_aligned": true,
+  "generic_source": "generic-swarm-ops/business/video/agents/video.archiveresearch",
+  "note": "Imported into CASOPS as baseline_safe. No production activation, no network, no plugins, memory writes forbidden.",
+  "aligned_at": "2026-07-27T00:48:10.996985Z",
+  "generic_source_depth": {
+    "excerpts": true,
+    "study": true,
+    "adopted_at": "2026-07-27T01:30:27.653817+00:00",
+    "upstream": "generic-swarm-ops/business/video/agents"
+  },
+  "imported_from": "C:\\Project\\common-agent-swarm-ops\\business\\video\\agents\\video.archiveresearch",
+  "reference_book_origin": "spec/book_of_knowledge.md",
+  "reference_book_note": "Bibliographic references from spec/book_of_knowledge.md. Does not enable network, RAG, T3, plugins, or memory writes."
+}

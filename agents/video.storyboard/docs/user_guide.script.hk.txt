@@ -1,0 +1,481 @@
+大家好，歡迎收睇今日嘅影片。
+
+今日我哋會詳細講解 StoryboardAgent 嘅操作員同設計指南。
+
+呢份文件係俾操作員、pack 作者、swarm 設計師同審核人員睇嘅。
+
+呢份指南提供任務清晰度、幾時使用嘅指引、協作地圖、CASOPS 操作步驟、改進路徑同分信任層級嘅來源地圖。
+
+重要聲明，呢份文件唔係啟動 provider 嘅許可證。
+
+唔係開放網絡嘅授權。
+
+唔係發明工具嘅許可。
+
+Host 真相係 fail-closed 嘅 agent_spec.json。
+
+VA 或 redesign 文件嘅設計文字係不受信任來源。
+
+Pack 路徑係 business/video/agents/video.storyboard/。
+
+指南位於 docs/user_guide.md。
+
+由 scripts/business/generate_agent_user_guides.py 生成。
+
+第一部分，快照。
+
+StoryboardAgent，pack agent id 係 video.storyboard。
+
+佢係 Video Domain Pack 角色運行喺 CASOPS 上。
+
+簡單講就係將劇本轉化為分鏡圖板。
+
+呢份指南係人類可讀嘅操作員地圖，用於目錄審查、swarm 設計同提案改進。
+
+基本資料逐項講。
+
+Display name 係 StoryboardAgent。
+
+Pack agent id 係 video.storyboard。
+
+Pack 係 video。
+
+Host role string 係 StoryboardAgent (VA Domain Pack)。
+
+Catalog status 係 registered。
+
+Maturity today 係 L0 非活動。
+
+VA id 係 14。
+
+VA category 係 3-Edit，即編輯同完成類別。
+
+Provider 係 local_deterministic。
+
+Network 係 False。
+
+Allowed tools 空列表。
+
+Production activation requested 係 False。
+
+Prompt 同 rubric 參考係 video.prompt.storyboard.v1 同 video.rubric.storyboard.v1。
+
+Previous common id 係 video.storyboard_artist。
+
+Generic lineage 係 generic-swarm-ops/business/video/agents/video.storyboard。
+
+第二部分，點解存在。
+
+人類影片團隊已經喺時間壓力下解決呢個問題：將劇本轉化為分鏡圖板。
+
+Agent 形式令多代理系統持續編碼呢種工藝。
+
+喺每次交接時應用，只將殘餘風險升級俾人類。
+
+知識庫來源第一個係 Framed Ink，作者係 Mateu-Mestre。
+
+第二個係 Pixar story-trust 即皮克斯故事信任輸出。
+
+第三個係 Despretz boards 即 Sylvain Despretz 嘅分鏡板。
+
+呢啲係歷史設計來源。
+
+設計野心係：以每頁幾分鐘嘅速度達到 Pixar story-trust 嘅通過率。
+
+用呢個做北極星指標。
+
+第三部分，乜嘢叫做好。
+
+Primary outcome 係將劇本轉化為分鏡圖板。
+
+Self-quality bar 第一個係鏡頭語言保真度。
+
+第二個係覆蓋完整性。
+
+第三個係場景調度清晰度。
+
+Ambition signal 係以每頁幾分鐘嘅速度匹配 Pixar story-trust 通過率。
+
+Architecture pattern 係 Self-Refine，即導演反饋循環。
+
+Host quality 同 critique binding。
+
+Prompt reference video.prompt.storyboard.v1。
+
+Rubric reference video.rubric.storyboard.v1。
+
+Critique edges inputs video.critic，outputs video.judge。
+
+Max refinement 3。
+
+輸入輸出驗收。
+
+Inputs 本地 pack 工件同類型化交接。
+
+Outputs 可審查交付物附帶驗收標準。
+
+Acceptance host 政策加 SPEC 標準。
+
+第四部分，範圍。
+
+擁有：將劇本轉化為分鏡圖板。
+
+共享批評表面方面。
+
+聽取 DirectorAgent 嘅批評。
+
+聽取 DoPAgent 即攝影指導 Agent 嘅批評。
+
+有資格評論 ScriptwriterAgent 嘅唔可拍攝問題。
+
+有資格評論 DirectorAgent 嘅場景調度問題。
+
+Host critique edge inputs video.critic。
+
+Host critique edge outputs video.judge。
+
+Max refinement count 3。
+
+拒絕同升級：Fail-closed，唔啟動 provider、唔開網絡、唔獲取憑證。
+
+production_activation_requested 保持 false。
+
+法律安全版權發布升級人類閘門。
+
+第五部分，幾時用。
+
+當工作需要 StoryboardAgent 嘅決定或工件時叫佢。
+
+即劇本到分鏡。
+
+Pipeline phase 係編輯同完成。
+
+即後期製作編輯、調色同圖像完成。
+
+唔好用佢做一般編排、預算或法律簽署。
+
+Human override：阻礙發布嘅爭議升級人類閘門。
+
+決策小抄有四個問題。
+
+技能係 StoryboardAgent 嘅工藝？加入 swarm 圖。
+
+只係元數據？用 Registry。
+
+需要工具網絡？Host 唔允許。
+
+人類風險？保留人類閘門。
+
+第六部分，協作地圖。
+
+Inbound critique 來自 DirectorAgent 同 DoPAgent。
+
+Outbound commentary 針對 ScriptwriterAgent 嘅唔可拍攝同 DirectorAgent 嘅場景調度。
+
+Host edge inputs video.critic。
+
+Host edge outputs video.judge。
+
+第七部分，生產位置。
+
+人類工作流程階段係後期製作編輯、調色同圖像完成。
+
+典型交接工件包括剪輯。
+
+仲有時間線。
+
+仲有調色。
+
+仲有連續性筆記。
+
+同埋 QC 票。
+
+人類工作流程摘錄提到幾個項目。
+
+第一個係動畫解說片，時長 60 到 180 秒，目標係一般學習者。
+
+團隊包括教學設計師、編劇、分鏡藝術家、2D 動畫師、配音藝人、聲音設計師同剪輯師。
+
+第二個係 AI 生成嘅多場景短故事，時長 1 到 5 分鐘，屬於敘事類。
+
+團隊包括故事作家、分鏡藝術家、AI Generator Operator、一致性審查員、剪輯師、作曲家同配音藝人。
+
+第六個係粉絲小說視覺化，時長 1 到 5 分鐘，屬於粉絲內容。
+
+團隊包括作家、分鏡藝術家、AI Generator Op、剪輯師、作曲家同 IP 法律審查員。
+
+多代理 AI 工作流程方面，係剪輯組裝、調色同圖像 QC 節點，配合批評循環。
+
+設計時工具備註第一個係 DALL-E 3 或 Midjourney API。
+
+第二個係 panel-layout templates 即面板佈局模板。
+
+第三個係 Fountain parser 即 Fountain 格式解析器。
+
+循環風格係 Self-Refine 即導演反饋循環。
+
+今日 CASOPS 上只係文檔。
+
+AI 工作流程摘錄提到第 12 號 AnimatorAgent (2D/3D)。
+
+職責係角色動作、重量同時間。
+
+知識包括 Richard Williams 嘅 Animator's Survival Kit。
+
+包括 Annie Award reels。
+
+包括 Pixar SparkShorts 評論同 Aaron Blaise 課程。
+
+第 14 號 StoryboardAgent，職責係劇本到分鏡圖板。
+
+知識包括 Framed Ink (Mateu-Mestre)、Pixar story-trust、Sylvain Despretz boards。
+
+自我質量係鏡頭語言保真度、覆蓋完整性同場景調度清晰度。
+
+超越人類係以每頁幾分鐘匹配 Pixar story-trust 通過率。
+
+接受批評來自 DirectorAgent 同 DoPAgent。
+
+評論 ScriptwriterAgent 嘅唔可拍攝動作同 DirectorAgent 嘅場景調度。
+
+第 15 號 ConceptArtistAgent，會評論 StoryboardAgent 嘅設計漂移。
+
+共享交接合約方面。
+
+artifact_id version 不可變身份用於批評同重播。
+
+parent_assets 來源鏈。
+
+brief_scope 阻止範圍蔓延。
+
+acceptance_criteria 同質量標準掛鉤。
+
+qc_status gate flags 下游短路。
+
+rights_and_consent 阻止濫用。
+
+critique_log pointer 保存歷史。
+
+第八部分，CASOPS 操作。
+
+今日係目錄加設計物件。
+
+步驟一 Discover 去 /registry。
+
+步驟二 Inspect 去 /registry/agents/video.storyboard。
+
+步驟三 POST 到 /api/v1/commons/agents/video.storyboard/proposals。
+
+步驟四隻用 Host 引用。
+
+步驟五預設唔啟用。
+
+操作檯檢查清單。
+
+確認旗標。
+
+先閱讀第三部分。
+
+附離線證據。
+
+唔好貼密鑰。
+
+偏好小差異。
+
+第九部分，安全信任。
+
+agent_spec.json 約束力合約。
+
+SPEC.md 權威設計。
+
+sources 歷史不受信任。
+
+外部語料庫唔受信任。
+
+硬規則：Provider local_deterministic。
+
+Network False。
+
+Tools 空列表。
+
+production_activation_requested False。
+
+Budget：輸入 2048，輸出 1024，工具 0。
+
+設計時工具目錄非啟動：DALL-E 3 或 Midjourney API、panel-layout templates、Fountain parser。
+
+第十部分，提升質量。
+
+版本化目錄工作。
+
+循環：觀察失敗、命名標準、起草差異、附證據、提案、審查、考慮閘門。
+
+具體槓桿有六個。
+
+第一 Rubric fidelity 收緊對照鏡頭語言保真度、覆蓋完整性、場景調度清晰度。
+
+第二 Prompt precision 對齊責任。
+
+第三 Critique graph 確保 DirectorAgent 同 DoPAgent 捕捉失敗。
+
+第四 Architecture 偏好 Self-Refine。
+
+第五 Eval cases 寫 fixtures。
+
+第六 Human gates 保持明確。
+
+評估種子方面。
+
+Happy path：滿足鏡頭語言保真度、覆蓋完整性、場景調度清晰度。
+
+Out-of-scope：拒絕或升級。
+
+Missing provenance：fail closed。
+
+Conflicting critique：唔超過 max count。
+
+Proposal-only：不可變。
+
+第十一部分，來源地圖。
+
+agent_spec.json binding。
+
+SPEC.md authoritative-design。
+
+README.md local-index。
+
+sources/MAPPING.md provenance。
+
+sources/PROVENANCE.json provenance。
+
+sources/excerpts/agent_management_ui.md historical-excerpt。
+
+sources/excerpts/agents.md historical-excerpt。
+
+sources/excerpts/ai_agent_video_production_workflow.md historical-excerpt。
+
+sources/excerpts/backend_agent_management.md historical-excerpt。
+
+sources/excerpts/human_video_production_workflow.md historical-excerpt。
+
+sources/excerpts/lifes_quiet_redemption_agent_workflow.md historical-excerpt。
+
+sources/excerpts/RETHINK_100_IMPROVEMENTS.md historical-excerpt。
+
+sources/excerpts/SYSTEM_REFERENCE.md historical-excerpt。
+
+sources/excerpts/ui_design.md historical-excerpt。
+
+sources/generic/video.storyboard.SPEC.md historical-generic。
+
+Mapping note：VA ID video.storyboard，之前 ID video.storyboard_artist，SPEC 深度完整。
+
+Provenance record：schema_version 1.0，agent_id video.storyboard，previous_common_agent_id video.storyboard_artist，va_taxonomy_aligned true。
+
+generic_source generic-swarm-ops/business/video/agents/video.storyboard，aligned_at 2026 年 7 月 27 日。
+
+VA roster row 第 14 行。
+
+Responsibility 劇本到分鏡圖板。
+
+Knowledge distillation Framed Ink、Pixar story-trust、Despretz boards。
+
+Self-quality 鏡頭語言保真度、覆蓋完整性、場景調度清晰度。
+
+Surpass-human 以每頁幾分鐘匹配 Pixar story-trust。
+
+Accepts critique DirectorAgent 同 DoPAgent。
+
+Comments on ScriptwriterAgent 唔可拍攝同 DirectorAgent 場景調度。
+
+Tools 歷史性 DALL-E 3 或 Midjourney API、panel-layout templates、Fountain parser。
+
+Architecture Self-Refine。
+
+第十二部分，相關設計閱讀。
+
+冇強匹配，依靠本地 SPEC 同 VA 表格行。
+
+本地索引包括 Runtime binding、README、Provenance、Mapping、inventory、manifest。
+
+第十三部分，host 合約。
+
+agent_id video.storyboard。
+
+allowed_tools 空列表。
+
+max_input_tokens 2048。
+
+max_output_tokens 1024。
+
+max_tool_requests 0。
+
+critique_edges inputs video.critic outputs video.judge。
+
+max_refinement_count 3。
+
+model_id local-video-config-v1。
+
+network_access false。
+
+provider local_deterministic。
+
+production_activation_requested false。
+
+prompt_reference video.prompt.storyboard.v1。
+
+role StoryboardAgent (VA Domain Pack)。
+
+rubric_reference video.rubric.storyboard.v1。
+
+schema_version 1.0。
+
+status registered。
+
+va_id 14。
+
+va_name StoryboardAgent。
+
+va_category 3-Edit。
+
+第十四部分，SPEC 責任摘錄。
+
+責任係劇本到分鏡圖板。
+
+Host role binding StoryboardAgent (VA Domain Pack)。
+
+Knowledge distillation 歷史性來源。
+
+Self-quality criteria 歷史性。
+
+Surpass-human 歷史性。
+
+Critique bus：接受 DirectorAgent 同 DoPAgent 批評，評論 ScriptwriterAgent 同 DirectorAgent。
+
+Tools 非啟動。
+
+Runtime safety Host allow-lists 只有 agent_spec.json。
+
+Architecture Self-Refine 導演反饋循環。
+
+第十五部分，文件控制。
+
+Generator scripts/business/generate_agent_user_guides.py。
+
+Agent folder business/video/agents/video.storyboard/。
+
+Output docs/user_guide.md。
+
+VA corpus root C:\Project\va-agent-swarm。
+
+Trust model 設計語料庫不受信任，host config fail-closed。
+
+以上就係 StoryboardAgent 完整指南。
+
+由第一部分同第五部分開始。
+
+用第八到第十做操作改進。
+
+用第十一到第十二做深度設計。
+
+多謝收睇。
