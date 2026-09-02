@@ -59,12 +59,32 @@ export interface AgentSummary {
   va_category?: string;
 }
 
+export interface AgentIo {
+  defined?: boolean;
+  merged?: boolean;
+  source?: string;
+  inputs?: string[];
+  outputs?: string[];
+  role?: string;
+  prompt_reference?: string;
+  rubric_reference?: string;
+  protocols?: string[];
+  plugin_interfaces?: { id: string; input_schema?: string; output_schema?: string }[];
+}
+
 export interface StructureResponse {
   agent_id: string;
   structure_id: string;
   schema_version: string;
   folder: string;
   spec_bytes: number;
+  io?: AgentIo;
+  spec?: {
+    role?: string;
+    prompt_reference?: string;
+    rubric_reference?: string;
+    critique_edges?: { inputs?: string[]; outputs?: string[] };
+  };
 }
 
 export interface ComposePreviewResponse {
@@ -157,6 +177,18 @@ export interface AgentLlmView {
   providers?: LlmProvider[];
   saved?: boolean;
   dry_run?: boolean;
+}
+
+export interface ChatResponse {
+  agent_id: string;
+  reply: string;
+  provider: string;
+  digest?: string;
+  io?: AgentIo;
+  memory_writes: unknown[];
+  plugins_executed: boolean;
+  t3_enabled: boolean;
+  used_prompt_reference?: string;
 }
 
 export interface CacheStats {

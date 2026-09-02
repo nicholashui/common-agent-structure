@@ -15,7 +15,9 @@ from casops.corrigibility.checkpoints import Checkpoint
 from casops.corrigibility.store import InvariantStore
 from casops.errors.codes import ErrorCode
 from casops.errors.exceptions import CasopsError
+from casops.compose.io import folder_io
 from casops.runtime.adapter import DeterministicAdapter
+from casops.runtime.chat import build_chat_system, load_prompt, normalize_history, require_message
 from casops.runtime.dag import compile_dag
 from casops.runtime.health import observe_health
 from casops.runtime.llm import LlmRouter
@@ -150,3 +152,43 @@ class Runtime:
             "run": result.root_trace_id,
         }
         return result
+
+    def chat(
+        self,
+        agent_id: str,
+        *,
+        message: str,
+        history: list[Any] | None = None,
+    ) -> dict[str, Any]:
+        folder = locate_agent_folder(self.agents_root, agent_id)
+        if folder is None:
+            raise CasopsError(ErrorCode.INH_PARENT_MISSING)
+        text = require_message(message)
+        spec = json.loads((folder / "agent_spec.json").read_text(encoding="utf-8"))
+        safety_policy = json.loads((folder / "safety" / "policy.json").read_text(encoding="utf-8"))
+        io = folder_io(folder, spec=spec, merged=False)
+        system, prompt_ref = load_prompt(folder, spec)
+        budget = spec.get("budget_policy") or {}
+        max_tokens = int(budget.get("max_output_tokens") or 512)
+        router = self.llm or LlmRouter()
+        completion = router.complete(
+            agent_id=str(spec.get("agent_id") or agent_id),
+            prompt=text,
+            node_id="chat",
+            max_tokens=max_tokens,
+            system=build_chat_system(prompt=system, io=io),
+            history=normalize_history(history),
+        )
+        safety = safety_gate(output=completion, policy=safety_policy, cancelled=False)
+        return {
+            "agent_id": spec.get("agent_id") or agent_id,
+            "reply": str(completion.get("text") or ""),
+            "provider": str(completion.get("provider") or self.adapter.provider),
+            "digest": str(completion.get("digest") or ""),
+            "io": io,
+            "memory_writes": [],
+            "plugins_executed": False,
+            "t3_enabled": False,
+            "used_prompt_reference": prompt_ref,
+            "safety": safety,
+        }

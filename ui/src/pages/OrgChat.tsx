@@ -85,7 +85,7 @@ export function OrgChatPage() {
       {!session.agents.length ? (
         <EmptyState
           title="No agents"
-          body="The control plane list is empty. Load the fleet before opening the org chart."
+          body="The control plane list is empty. Load the Agent Swarm before opening the org chart."
         />
       ) : (
         <div

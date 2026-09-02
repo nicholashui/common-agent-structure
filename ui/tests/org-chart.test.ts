@@ -61,8 +61,8 @@ describe("agent org chart", () => {
   });
 
   it("treats empty va_category as uncategorized", () => {
-    expect(agentCategory({ agent_id: "specials.planner-agent" })).toBe("uncategorized");
-    expect(agentCategory({ agent_id: "video.director", va_category: "1-ATL" })).toBe("1-ATL");
+    expect(agentCategory({})).toBe("uncategorized");
+    expect(agentCategory({ va_category: "1-ATL" })).toBe("1-ATL");
   });
 
   it("keeps every member as a distinctly placed leaf on a video-scale pack", () => {

@@ -43,6 +43,7 @@ class ComposeResult:
     findings: list[str] = field(default_factory=list)
     errors: list[dict[str, str]] = field(default_factory=list)
     wrote_locks: bool = False
+    merged: dict[str, Any] = field(default_factory=dict)
 
 
 class Composer:
@@ -99,6 +100,7 @@ class Composer:
         result.steps.append("merge")
         specs = [_load_spec(folders[item]) for item in result.mro]
         merged = merge_specs(specs[0], specs[1:])
+        result.merged = merged
 
         result.steps.append("resolve_skills")
         skills = resolve_skills([folders[item] for item in result.mro])

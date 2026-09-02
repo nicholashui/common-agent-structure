@@ -2,11 +2,12 @@
 
 from __future__ import annotations
 
+import json
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any
 
-from fastapi import FastAPI, Header, Query, Request
+from fastapi import FastAPI, Header, HTTPException, Query, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 
@@ -15,17 +16,26 @@ from casops.auth.actors import ActorClass, is_allowed
 from casops.capabilities.conformance import verify_folder
 from casops.compose.engine import Composer
 from casops.compose.folders import list_agent_summaries, locate_agent_folder
+from casops.compose.io import folder_io, spec_io_snapshot
 from casops.corrigibility.store import InvariantStore
 from casops.errors.codes import ErrorCode
 from casops.errors.exceptions import CasopsError
 from casops.eval.harness import evaluate
 from casops.improvement.trainer import TrainerBridge
 from casops.instruments.registry import InstrumentRegistry
+from casops.debuglog import write_debug_logs
 from casops.cache.manager import CacheManager
 from casops.memory.store import ConsolidationWorker, MemoryService
 from casops.plugins.validate import validate_registry
 from casops.runtime.executor import Runtime
-from casops.runtime.llm import PROVIDER_CATALOG, LlmRouter, LlmSettings, list_providers, load_dotenv
+from casops.runtime.llm import (
+    PROVIDER_CATALOG,
+    LlmRouter,
+    LlmSettings,
+    canonicalize_provider,
+    list_providers,
+    load_dotenv,
+)
 import os
 
 
@@ -75,11 +85,12 @@ COMPANION_V3_PATHS: tuple[tuple[str, str], ...] = (
     ("POST", "/api/v3/llm/settings"),
     ("GET", "/api/v3/agents/{agent_id}/llm"),
     ("POST", "/api/v3/agents/{agent_id}/llm"),
+    ("POST", "/api/v3/agents/{agent_id}/runtime/chat"),
 )
 
 _DEFAULT_CORS_ORIGINS = (
-    "http://127.0.0.1:5173",
-    "http://localhost:5173",
+    "http://127.0.0.1:15173",
+    "http://localhost:15173",
     "http://127.0.0.1:4173",
     "http://localhost:4173",
 )
@@ -218,9 +229,9 @@ def create_control_plane(
         if default_llm in {None, ""}:
             next_default = None
         else:
-            if str(default_llm) not in PROVIDER_CATALOG:
+            next_default = canonicalize_provider(str(default_llm))
+            if next_default not in PROVIDER_CATALOG:
                 raise CasopsError(ErrorCode.PERF_ROUTE_UNAVAILABLE, detail="unknown LLM provider")
-            next_default = str(default_llm)
         if getattr(request.state, "dry_run", False):
             preview = LlmSettings(
                 path=state.llm.settings.path,
@@ -258,9 +269,9 @@ def create_control_plane(
         if provider in {None, "", "default", "__default__"}:
             next_override = None
         else:
-            if str(provider) not in PROVIDER_CATALOG:
+            next_override = canonicalize_provider(str(provider))
+            if next_override not in PROVIDER_CATALOG:
                 raise CasopsError(ErrorCode.PERF_ROUTE_UNAVAILABLE, detail="unknown LLM provider")
-            next_override = str(provider)
         if getattr(request.state, "dry_run", False):
             return {
                 "agent_id": agent_id,
@@ -285,19 +296,33 @@ def create_control_plane(
     @app.get("/api/v3/agents/{agent_id}/structure")
     def structure(agent_id: str) -> dict[str, Any]:
         folder = _folder(state, agent_id)
-        spec = (folder / "agent_spec.json").read_text(encoding="utf-8")
+        raw = (folder / "agent_spec.json").read_text(encoding="utf-8")
+        try:
+            parsed = json.loads(raw)
+            spec = parsed if isinstance(parsed, dict) else {}
+        except json.JSONDecodeError:
+            spec = {}
         return {
             "agent_id": agent_id,
             "structure_id": "casops.common_agent.v3",
             "schema_version": "3.0",
             "folder": str(folder),
-            "spec_bytes": len(spec),
+            "spec_bytes": len(raw),
+            "io": folder_io(folder, spec=spec, merged=False),
+            "spec": spec_io_snapshot(spec),
         }
 
     @app.get("/api/v3/agents/{agent_id}/resolved")
     def resolved(agent_id: str) -> dict[str, Any]:
+        folder = _folder(state, agent_id)
         result = state.composer.preview(agent_id)
-        return {"agent_id": agent_id, "mro": result.mro, "compose_hash": result.compose_hash, "lock": result.lock}
+        return {
+            "agent_id": agent_id,
+            "mro": result.mro,
+            "compose_hash": result.compose_hash,
+            "lock": result.lock,
+            "io": folder_io(folder, spec=result.merged, merged=True),
+        }
 
     @app.post("/api/v3/agents/{agent_id}/compose-preview")
     def compose_preview(agent_id: str) -> dict[str, Any]:
@@ -387,7 +412,6 @@ def create_control_plane(
         text: str = Query("note"),
     ) -> dict[str, Any]:
         folder = _folder(state, agent_id)
-        import json
 
         mode = json.loads((folder / "memory" / "policy.json").read_text(encoding="utf-8")).get("mode", "none")
         record = state.memory.write_candidate(tenant=tenant, subject=subject, text=text, mode=mode)
@@ -513,9 +537,26 @@ def create_control_plane(
     def runtime_run(agent_id: str) -> dict[str, Any]:
         return state.runtime.execute(agent_id).as_dict()
 
+    @app.post("/api/v3/agents/{agent_id}/runtime/chat")
+    def runtime_chat(agent_id: str, body: dict[str, Any]) -> dict[str, Any]:
+        history = body.get("history") if isinstance(body.get("history"), list) else []
+        return state.runtime.chat(
+            agent_id,
+            message=str(body.get("message") or ""),
+            history=history,
+        )
+
     @app.get("/health")
     def health() -> dict[str, str]:
         return {"status": "ok", "service": "control-plane"}
+
+    @app.post("/debug/logs")
+    def debug_logs(body: dict[str, Any]) -> dict[str, Any]:
+        try:
+            files = write_debug_logs(body)
+        except ValueError as exc:
+            raise HTTPException(status_code=400, detail=str(exc)) from exc
+        return {"ok": True, "files": files}
 
     # health is not public API v3; tests require OpenAPI public paths to be /api/v3 only.
     # Exclude /health from OpenAPI.

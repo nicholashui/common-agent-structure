@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { DryRunControl } from "../components/ActorStrip";
 import { ErrorBanner } from "../components/RecoveryBanner";
 import { StatusPill } from "../components/StatusPill";
 import { Card, GhostButton, JsonWell, PageHeader, PrimaryButton } from "../components/ui";
 import type { CacheStats, RunResult } from "../api/types";
 import { useAgentId, useAsync } from "../lib/hooks";
 import { asRecord, parseMaybeJson, pretty } from "../lib/json";
+import { logUi } from "../log/bus";
 import { useSession } from "../state/session";
 
 export function RunPage() {
@@ -30,10 +32,17 @@ export function RunPage() {
   async function execute() {
     session.setRunning(true);
     setError(null);
+    logUi(`run ${agentId}`);
     try {
       const result = await session.client.runAgent(agentId);
       setRun(result);
       session.rememberRun(result);
+      logUi(
+        `run complete ${agentId} adapter=${result.adapter}${result.cancelled ? " cancelled" : ""}${
+          result.containment_stop ? ` stop=${result.containment_stop}` : ""
+        }`,
+        result.root_trace_id,
+      );
     } catch (err) {
       setError(err instanceof Error ? err : new Error(String(err)));
     } finally {
@@ -57,6 +66,7 @@ export function RunPage() {
         asOf={panel.asOf}
         actions={
           <>
+            <DryRunControl />
             <GhostButton type="button" disabled={!session.mutationReady} onClick={() => void invalidate()}>
               Invalidate cache
             </GhostButton>
@@ -69,8 +79,7 @@ export function RunPage() {
       <p className="mb-4 text-sm text-stone-500">
         No streaming chat API. Model node uses host LLM{" "}
         <span className="font-mono">{panel.data?.llm.provider ?? "local_deterministic"}</span>
-        {panel.data?.llm.override ? " (agent override)" : " (DEFAULT_LLM)"}. Dry-run still executes the run — this is
-        not “no side effects”.
+        {panel.data?.llm.override ? " (agent override)" : " (DEFAULT_LLM)"}.
       </p>
       <ErrorBanner error={error ?? panel.error} />
       <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">

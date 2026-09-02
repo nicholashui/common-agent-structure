@@ -13,6 +13,7 @@ export interface AgentCardModel {
   compose_hash?: string;
   runStatus?: StatusKind;
   memoryMode?: string;
+  va_category?: string;
 }
 
 export function AgentCard({

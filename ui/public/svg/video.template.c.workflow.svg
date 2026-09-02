@@ -1,0 +1,403 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3200 5700" width="3200" height="5700" lang="en" role="img" aria-labelledby="video-template-c-workflow-title video-template-c-workflow-desc" data-diagram-id="video-template-c-workflow" data-diagram-kind="template" data-code="C" data-agent-count="34" data-schema-version="1">
+<title id="video-template-c-workflow-title">Video Template C BPM workflow — Animated Explainer</title>
+<desc id="video-template-c-workflow-desc">Seven-phase governed video production BPM workflow for Animated Explainer. It shows greenlight, pre-production, production, post, release review, distribution, post-launch learning, quality gates, typed artifacts, principal agents, targeted rework, and fail-closed runtime status.</desc>
+<metadata>Generated from spec/production_scale_framework.md. Visual system follows ui/public/svg/video.workflow.svg. Evidence basis: S2 detailed flow plus S3 premium mapping; S4 depth is a scale overlay rather than a bespoke C graph. Runtime remains fail-closed; capability maps do not activate tools, network, or production.</metadata>
+<defs>
+<style><![CDATA[
+
+          .canvas{fill:#ffffff}
+          .header-title{font:700 44px 'Segoe UI',Arial,sans-serif;fill:#0f172a}
+          .header-sub{font:400 20px 'Segoe UI',Arial,sans-serif;fill:#475569}
+          .header-note{font:600 17px 'Segoe UI',Arial,sans-serif;fill:#78350f}
+          .stat{font:700 16px 'Segoe UI',Arial,sans-serif;fill:#ffffff}
+          .section-title{font:700 28px 'Segoe UI',Arial,sans-serif;fill:#0f172a}
+          .section-sub{font:400 16px 'Segoe UI',Arial,sans-serif;fill:#475569}
+          .phase-num{font:800 34px 'Segoe UI',Arial,sans-serif;fill:#fff}
+          .phase-name{font:700 25px 'Segoe UI',Arial,sans-serif;fill:#0f172a}
+          .phase-count{font:700 14px 'Segoe UI',Arial,sans-serif;fill:#475569;letter-spacing:.6px}
+          .card-title{font:700 19px 'Segoe UI',Arial,sans-serif;fill:#0f172a}
+          .small{font:500 15px 'Segoe UI',Arial,sans-serif;fill:#475569}
+          .tiny{font:400 13px 'Segoe UI',Arial,sans-serif;fill:#64748b}
+          .label{font:700 14px 'Segoe UI',Arial,sans-serif;fill:#334155;letter-spacing:.5px}
+          .agent-text{font:500 15px 'Segoe UI',Arial,sans-serif;fill:#1e293b}
+          .agent-link{cursor:pointer;text-decoration:none}
+          .agent-link:hover .agent-text,.agent-link:focus .agent-text{fill:#1d4ed8;text-decoration:underline}
+          .gateway-text{font:800 14px 'Segoe UI',Arial,sans-serif;fill:#92400e;text-anchor:middle}
+          .gateway-sub{font:700 12px 'Segoe UI',Arial,sans-serif;fill:#92400e;text-anchor:middle}
+          .parallel-symbol{font:800 28px 'Segoe UI',Arial,sans-serif;fill:#4338ca;text-anchor:middle}
+          .feedback-label{font:700 13px 'Segoe UI',Arial,sans-serif;fill:#b91c1c}
+          .phase-bg{fill:#f8fafc;stroke:#cbd5e1;stroke-width:2}
+          .phase-bg-alt{fill:#f1f5f9;stroke:#cbd5e1;stroke-width:2}
+          .control-bg{fill:#e0e7ff;stroke:#a5b4fc;stroke-width:2}
+          .card{fill:#fff;stroke:#cbd5e1;stroke-width:2;filter:url(#video-template-c-workflow-shadow)}
+          .card-blue{fill:#eff6ff;stroke:#93c5fd;stroke-width:2;filter:url(#video-template-c-workflow-shadow)}
+          .card-purple{fill:#f5f3ff;stroke:#c4b5fd;stroke-width:2;filter:url(#video-template-c-workflow-shadow)}
+          .card-green{fill:#ecfdf5;stroke:#86efac;stroke-width:2;filter:url(#video-template-c-workflow-shadow)}
+          .card-amber{fill:#fffbeb;stroke:#fcd34d;stroke-width:2;filter:url(#video-template-c-workflow-shadow)}
+          .card-rose{fill:#fff1f2;stroke:#fda4af;stroke-width:2;filter:url(#video-template-c-workflow-shadow)}
+          .artifact{fill:#fff;stroke:#94a3b8;stroke-width:2;stroke-dasharray:8 6}
+          .gateway{fill:#fff7ed;stroke:#f59e0b;stroke-width:3;filter:url(#video-template-c-workflow-shadow)}
+          .parallel{fill:#eef2ff;stroke:#6366f1;stroke-width:3;filter:url(#video-template-c-workflow-shadow)}
+          .phase-start{fill:#fff;stroke:#2563eb;stroke-width:4}
+          .event{fill:#fff;stroke:#2563eb;stroke-width:5}
+          .end-event-outer{fill:#fff;stroke:#059669;stroke-width:5}
+          .end-event-inner{fill:none;stroke:#059669;stroke-width:3}
+          .flow{fill:none;stroke:#475569;stroke-width:4;marker-end:url(#video-template-c-workflow-arrow)}
+          .branch{fill:none;stroke:#64748b;stroke-width:3;marker-end:url(#video-template-c-workflow-arrow)}
+          .feedback{fill:none;stroke:#dc2626;stroke-width:3;stroke-dasharray:12 8;marker-end:url(#video-template-c-workflow-feedback-arrow)}
+          .learning{fill:none;stroke:#7c3aed;stroke-width:3;stroke-dasharray:12 8;marker-end:url(#video-template-c-workflow-learning-arrow)}
+          .association{fill:none;stroke:#64748b;stroke-width:2;stroke-dasharray:5 7}
+          .phase-chip{fill:#1d4ed8} .phase-chip-purple{fill:#7c3aed} .phase-chip-green{fill:#059669}
+          .phase-chip-amber{fill:#d97706} .phase-chip-rose{fill:#e11d48}
+          .runtime-banner{fill:#fef3c7;stroke:#f59e0b;stroke-width:2}
+          .legend-line{stroke:#475569;stroke-width:4}
+        
+]]></style>
+<filter id="video-template-c-workflow-shadow" x="-15%" y="-15%" width="130%" height="140%"><feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="#0f172a" flood-opacity="0.10"/></filter>
+<marker id="video-template-c-workflow-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#475569"/></marker>
+<marker id="video-template-c-workflow-feedback-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#dc2626"/></marker>
+<marker id="video-template-c-workflow-learning-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#7c3aed"/></marker>
+</defs>
+<rect class="canvas" width="3200" height="5700"/>
+<g id="header">
+<rect x="0" y="0" width="3200" height="290" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/>
+<text class="header-title" x="70" y="72">Video Template C · Animated Explainer BPM Workflow</text>
+<text class="header-sub" x="70" y="112">Shared seven-phase production skeleton · specialized tasks, crew, gates, handoffs and feedback</text>
+<rect x="70" y="143" width="230" height="40" rx="20" fill="#1d4ed8"/>
+<text class="stat" x="98" y="169">Template C</text>
+<rect x="330" y="143" width="290" height="40" rx="20" fill="#7c3aed"/>
+<text class="stat" x="358" y="169">S2–S4</text>
+<rect x="650" y="143" width="290" height="40" rx="20" fill="#059669"/>
+<text class="stat" x="678" y="169">multi-scene</text>
+<rect x="970" y="143" width="390" height="40" rx="20" fill="#d97706"/>
+<text class="stat" x="998" y="169">SME + a11y</text>
+<rect class="runtime-banner" x="70" y="205" width="3060" height="60" rx="12"/>
+<text class="header-note" x="96" y="242">FAIL-CLOSED — This workflow is a capability/scheduling design. It does not activate network, tools, providers or production without separate host and human gates.</text>
+</g>
+<g id="workflow-summary">
+<rect class="control-bg" x="40" y="320" width="3120" height="380" rx="22"/>
+<text class="section-title" x="70" y="365">Workflow profile and evidence basis</text>
+<text class="section-sub" x="70" y="393">Scale is selected before archetype. Typed handoffs carry correlation, evidence, quality, rights and HiTL state.</text>
+<rect class="card-blue" x="70" y="420" width="730" height="230" rx="16"/>
+<text class="card-title" x="98" y="460">Purpose</text>
+<text class="small" x="98" y="496">Explain a concept through coherent multi-scene animation,</text>
+<text class="small" x="98" y="523">narration and accessible visual design. Product explainers,</text>
+<text class="small" x="98" y="550">educational shorts, branded explainers and premium animated</text>
+<text class="small" x="98" y="577">programmes.</text>
+<rect class="card-purple" x="850" y="420" width="730" height="230" rx="16"/>
+<text class="card-title" x="878" y="460">Operating envelope</text>
+<text class="small" x="878" y="496">Primary scales S2–S4</text>
+<rect class="card-green" x="1630" y="420" width="730" height="230" rx="16"/>
+<text class="card-title" x="1658" y="460">DNA / source basis</text>
+<text class="small" x="1658" y="496">wf_video_arch_c_animated_explainer_v1.dna.json. S2 detailed flow</text>
+<text class="small" x="1658" y="523">plus S3 premium mapping; S4 depth is a scale overlay rather than</text>
+<text class="small" x="1658" y="550">a bespoke C graph.</text>
+<rect class="card-amber" x="2410" y="420" width="720" height="230" rx="16"/>
+<text class="card-title" x="2438" y="460">Quality posture</text>
+<text class="small" x="2438" y="496">L1 required; standard L2 ≥90 at S2; SME, brand, compliance and</text>
+<text class="small" x="2438" y="523">accessibility depth rises with scale.</text>
+</g>
+<g id="governed-control-spine">
+<rect class="phase-bg" x="40" y="730" width="3120" height="280" rx="22"/>
+<text class="section-title" x="70" y="775">Governed control spine</text>
+<text class="section-sub" x="70" y="803">Host-owned orchestration, evidence, memory and approvals span all seven phases.</text>
+<rect class="card-blue" x="70" y="835" width="730" height="130" rx="16"/>
+<text class="card-title" x="98" y="875">Plan and greenlight</text>
+<a class="agent-link" href="/agents/video.planner/chat" target="_top" aria-label="Open video.planner Chat"><text class="agent-text" data-agent-id="video.planner" x="98" y="910">• video.planner</text></a>
+<a class="agent-link" href="/agents/video.producer/chat" target="_top" aria-label="Open video.producer Chat"><text class="agent-text" data-agent-id="video.producer" x="98" y="935">• video.producer</text></a>
+<rect class="card-purple" x="850" y="835" width="730" height="130" rx="16"/>
+<text class="card-title" x="878" y="875">Execute and route</text>
+<a class="agent-link" href="/agents/video.orchestrator/chat" target="_top" aria-label="Open video.orchestrator Chat"><text class="agent-text" data-agent-id="video.orchestrator" x="878" y="910">• video.orchestrator</text></a>
+<a class="agent-link" href="/agents/video.router/chat" target="_top" aria-label="Open video.router Chat"><text class="agent-text" data-agent-id="video.router" x="878" y="935">• video.router</text></a>
+<rect class="card-green" x="1630" y="835" width="730" height="130" rx="16"/>
+<text class="card-title" x="1658" y="875">Memory and evidence</text>
+<a class="agent-link" href="/agents/video.memory/chat" target="_top" aria-label="Open video.memory Chat"><text class="agent-text" data-agent-id="video.memory" x="1658" y="910">• video.memory</text></a>
+<a class="agent-link" href="/agents/video.evaluationharness/chat" target="_top" aria-label="Open video.evaluationharness Chat"><text class="agent-text" data-agent-id="video.evaluationharness" x="1658" y="935">• video.evaluationharness</text></a>
+<rect class="card-amber" x="2410" y="835" width="720" height="130" rx="16"/>
+<text class="card-title" x="2438" y="875">Critique and gate</text>
+<a class="agent-link" href="/agents/video.judge/chat" target="_top" aria-label="Open video.judge Chat"><text class="agent-text" data-agent-id="video.judge" x="2438" y="910">• video.judge</text></a>
+<a class="agent-link" href="/agents/video.gatekeeper/chat" target="_top" aria-label="Open video.gatekeeper Chat"><text class="agent-text" data-agent-id="video.gatekeeper" x="2438" y="935">• video.gatekeeper</text></a>
+<path class="association" d="M1600 965 V1020"/>
+</g>
+<g id="video-template-c-workflow-phase-0" data-phase-index="0" data-phase-name="greenlight">
+<rect class="phase-bg" x="40" y="1040" width="3120" height="560" rx="22"/>
+<rect class="phase-chip" x="70" y="1070" width="58" height="58" rx="14"/>
+<text class="phase-num" x="89" y="1111">0</text>
+<text class="phase-name" x="150" y="1098">Greenlight</text>
+<text class="phase-count" x="150" y="1123">GOVERNED SEQUENCE · TYPED ARTIFACT HANDOFF · BOUNDED REWORK</text>
+<circle class="phase-start" cx="1600" cy="1168" r="18"/>
+<path class="flow" data-flow-kind="sequence" d="M1600 1186 V1200 H540 V1203"/>
+<rect class="card-blue" x="80" y="1218" width="920" height="230" rx="16"/>
+<text class="card-title" x="108" y="1258">Work package</text>
+<text class="small" x="108" y="1294">• Set audience, learning goal and key takeaway.</text>
+<text class="small" x="108" y="1321">• Choose S2–S4 from depth and outlet needs.</text>
+<text class="small" x="108" y="1348">• Confirm budget, facts, brand and rights.</text>
+<rect class="card-purple" x="1080" y="1218" width="920" height="230" rx="16"/>
+<text class="card-title" x="1108" y="1258">Principal crew</text>
+<a class="agent-link" href="/agents/video.instructionaldesign/chat" target="_top" aria-label="Open video.instructionaldesign Chat"><text class="agent-text" data-agent-id="video.instructionaldesign" x="1108" y="1294">• video.instructionaldesign</text></a>
+<a class="agent-link" href="/agents/video.producer/chat" target="_top" aria-label="Open video.producer Chat"><text class="agent-text" data-agent-id="video.producer" x="1108" y="1319">• video.producer</text></a>
+<a class="agent-link" href="/agents/video.sme/chat" target="_top" aria-label="Open video.sme Chat"><text class="agent-text" data-agent-id="video.sme" x="1108" y="1344">• video.sme</text></a>
+<a class="agent-link" href="/agents/video.brand/chat" target="_top" aria-label="Open video.brand Chat"><text class="agent-text" data-agent-id="video.brand" x="1108" y="1369">• video.brand</text></a>
+<rect class="card-green" x="2080" y="1218" width="920" height="230" rx="16"/>
+<text class="card-title" x="2108" y="1258">Control and acceptance</text>
+<text class="small" x="2108" y="1294">• Reject an unmeasurable objective or weak source base.</text>
+<text class="small" x="2108" y="1321">• Freeze outcome, scale and delivery plan.</text>
+<path class="flow" data-flow-kind="sequence" d="M1000 1333 H1065"/>
+<path class="flow" data-flow-kind="sequence" d="M2000 1333 H2065"/>
+<path class="flow" data-flow-kind="sequence" d="M2540 1448 V1470 H1600 V1460"/>
+<polygon class="gateway" data-gate="G0 · GREENLIGHT" points="1600,1460 1655,1515 1600,1570 1545,1515"/>
+<text class="gateway-text" x="1600" y="1521">G0 · GREENLIGHT</text>
+<path class="association" data-flow-kind="artifact" d="M1655 1515 H1875"/>
+<rect class="artifact" x="1900" y="1465" width="1130" height="100" rx="12"/>
+<text class="label" x="1928" y="1496">HANDOFF / OUTPUT</text>
+<text class="small" x="1928" y="1526">Approved objective · KPI · budget · source plan</text>
+<path class="feedback" data-flow-kind="feedback" d="M1545 1515 C1050 1585 65 1585 65 1333 H80"/>
+<text class="feedback-label" x="120" y="1572">Revise objective, scope or evidence.</text>
+</g>
+<path class="flow" data-flow-kind="sequence" d="M1600 1570 V1704"/>
+<g id="video-template-c-workflow-phase-1" data-phase-index="1" data-phase-name="pre-production">
+<rect class="phase-bg-alt" x="40" y="1630" width="3120" height="560" rx="22"/>
+<rect class="phase-chip-purple" x="70" y="1660" width="58" height="58" rx="14"/>
+<text class="phase-num" x="89" y="1701">1</text>
+<text class="phase-name" x="150" y="1688">Pre-production</text>
+<text class="phase-count" x="150" y="1713">GOVERNED SEQUENCE · TYPED ARTIFACT HANDOFF · BOUNDED REWORK</text>
+<circle class="phase-start" cx="1600" cy="1758" r="18"/>
+<path class="flow" data-flow-kind="sequence" d="M1600 1776 V1790 H540 V1793"/>
+<rect class="card-blue" x="80" y="1808" width="920" height="230" rx="16"/>
+<text class="card-title" x="108" y="1848">Work package</text>
+<text class="small" x="108" y="1884">• Write one or more concise script variants.</text>
+<text class="small" x="108" y="1911">• Build storyboard, look pack and visual grammar.</text>
+<text class="small" x="108" y="1938">• Map every claim to an evidence source.</text>
+<rect class="card-purple" x="1080" y="1808" width="920" height="230" rx="16"/>
+<text class="card-title" x="1108" y="1848">Principal crew</text>
+<a class="agent-link" href="/agents/video.screenwriter/chat" target="_top" aria-label="Open video.screenwriter Chat"><text class="agent-text" data-agent-id="video.screenwriter" x="1108" y="1884">• video.screenwriter</text></a>
+<a class="agent-link" href="/agents/video.storyboard/chat" target="_top" aria-label="Open video.storyboard Chat"><text class="agent-text" data-agent-id="video.storyboard" x="1108" y="1909">• video.storyboard</text></a>
+<a class="agent-link" href="/agents/video.conceptartist/chat" target="_top" aria-label="Open video.conceptartist Chat"><text class="agent-text" data-agent-id="video.conceptartist" x="1108" y="1934">• video.conceptartist</text></a>
+<a class="agent-link" href="/agents/video.factchecker/chat" target="_top" aria-label="Open video.factchecker Chat"><text class="agent-text" data-agent-id="video.factchecker" x="1108" y="1959">• video.factchecker</text></a>
+<rect class="card-green" x="2080" y="1808" width="920" height="230" rx="16"/>
+<text class="card-title" x="2108" y="1848">Control and acceptance</text>
+<text class="small" x="2108" y="1884">• L1 validates script, claims and scene coverage.</text>
+<text class="small" x="2108" y="1911">• Lock narration, boards and terminology.</text>
+<path class="flow" data-flow-kind="sequence" d="M1000 1923 H1065"/>
+<path class="flow" data-flow-kind="sequence" d="M2000 1923 H2065"/>
+<path class="flow" data-flow-kind="sequence" d="M2540 2038 V2060 H1600 V2050"/>
+<polygon class="gateway" data-gate="G1 · L1 SPEC" points="1600,2050 1655,2105 1600,2160 1545,2105"/>
+<text class="gateway-text" x="1600" y="2111">G1 · L1 SPEC</text>
+<path class="association" data-flow-kind="artifact" d="M1655 2105 H1875"/>
+<rect class="artifact" x="1900" y="2055" width="1130" height="100" rx="12"/>
+<text class="label" x="1928" y="2086">HANDOFF / OUTPUT</text>
+<text class="small" x="1928" y="2116">Script lock · storyboard · look pack · citations</text>
+<path class="feedback" data-flow-kind="feedback" d="M1545 2105 C1050 2175 65 2175 65 1923 H80"/>
+<text class="feedback-label" x="120" y="2162">Return failed claim, panel or scene.</text>
+</g>
+<path class="flow" data-flow-kind="sequence" d="M1600 2160 V2294"/>
+<g id="video-template-c-workflow-phase-2" data-phase-index="2" data-phase-name="production">
+<rect class="phase-bg" x="40" y="2220" width="3120" height="560" rx="22"/>
+<rect class="phase-chip-green" x="70" y="2250" width="58" height="58" rx="14"/>
+<text class="phase-num" x="89" y="2291">2</text>
+<text class="phase-name" x="150" y="2278">Production</text>
+<text class="phase-count" x="150" y="2303">PARALLEL FAN-OUT / FAN-IN · TYPED ARTIFACT HANDOFF · BOUNDED REWORK</text>
+<polygon class="parallel" points="1600,2312 1644,2356 1600,2400 1556,2356"/>
+<text class="parallel-symbol" x="1600" y="2365">+</text>
+<path class="branch" data-flow-kind="branch" d="M1600 2400 L540 2383"/>
+<path class="branch" data-flow-kind="branch" d="M1600 2400 L1540 2383"/>
+<path class="branch" data-flow-kind="branch" d="M1600 2400 L2540 2383"/>
+<rect class="card-blue" x="80" y="2398" width="920" height="230" rx="16"/>
+<text class="card-title" x="108" y="2438">Work package</text>
+<text class="small" x="108" y="2474">• Generate or animate scene assets.</text>
+<text class="small" x="108" y="2501">• Record voice and build explanatory graphics.</text>
+<text class="small" x="108" y="2528">• Run per-shot consistency and anatomy/domain QA.</text>
+<rect class="card-purple" x="1080" y="2398" width="920" height="230" rx="16"/>
+<text class="card-title" x="1108" y="2438">Principal crew</text>
+<a class="agent-link" href="/agents/video.animator_2d/chat" target="_top" aria-label="Open video.animator_2d Chat"><text class="agent-text" data-agent-id="video.animator_2d" x="1108" y="2474">• video.animator_2d</text></a>
+<a class="agent-link" href="/agents/video.voiceover/chat" target="_top" aria-label="Open video.voiceover Chat"><text class="agent-text" data-agent-id="video.voiceover" x="1108" y="2499">• video.voiceover</text></a>
+<a class="agent-link" href="/agents/video.motiongraphics/chat" target="_top" aria-label="Open video.motiongraphics Chat"><text class="agent-text" data-agent-id="video.motiongraphics" x="1108" y="2524">• video.motiongraphics</text></a>
+<a class="agent-link" href="/agents/video.aiqaconsistency/chat" target="_top" aria-label="Open video.aiqaconsistency Chat"><text class="agent-text" data-agent-id="video.aiqaconsistency" x="1108" y="2549">• video.aiqaconsistency</text></a>
+<rect class="card-green" x="2080" y="2398" width="920" height="230" rx="16"/>
+<text class="card-title" x="2108" y="2438">Control and acceptance</text>
+<text class="small" x="2108" y="2474">• Multi-shot identity and diagram accuracy are gated.</text>
+<text class="small" x="2108" y="2501">• Targeted rerender keeps accepted scenes.</text>
+<path class="branch" data-flow-kind="branch" d="M540 2628 V2650 H1600 V2640"/>
+<path class="branch" data-flow-kind="branch" d="M1540 2628 V2650 H1600 V2640"/>
+<path class="branch" data-flow-kind="branch" d="M2540 2628 V2650 H1600 V2640"/>
+<polygon class="gateway" data-gate="G2 · CRAFT QC" points="1600,2640 1655,2695 1600,2750 1545,2695"/>
+<text class="gateway-text" x="1600" y="2701">G2 · CRAFT QC</text>
+<path class="association" data-flow-kind="artifact" d="M1655 2695 H1875"/>
+<rect class="artifact" x="1900" y="2645" width="1130" height="100" rx="12"/>
+<text class="label" x="1928" y="2676">HANDOFF / OUTPUT</text>
+<text class="small" x="1928" y="2706">Animated scenes · VO · graphics · QA evidence</text>
+<path class="feedback" data-flow-kind="feedback" d="M1545 2695 C1050 2765 65 2765 65 2513 H80"/>
+<text class="feedback-label" x="120" y="2752">Rerender or revise only failed scene.</text>
+</g>
+<path class="flow" data-flow-kind="sequence" d="M1600 2750 V2884"/>
+<g id="video-template-c-workflow-phase-3" data-phase-index="3" data-phase-name="post-production">
+<rect class="phase-bg-alt" x="40" y="2810" width="3120" height="560" rx="22"/>
+<rect class="phase-chip-amber" x="70" y="2840" width="58" height="58" rx="14"/>
+<text class="phase-num" x="89" y="2881">3</text>
+<text class="phase-name" x="150" y="2868">Post-production</text>
+<text class="phase-count" x="150" y="2893">GOVERNED SEQUENCE · TYPED ARTIFACT HANDOFF · BOUNDED REWORK</text>
+<circle class="phase-start" cx="1600" cy="2938" r="18"/>
+<path class="flow" data-flow-kind="sequence" d="M1600 2956 V2970 H540 V2973"/>
+<rect class="card-blue" x="80" y="2988" width="920" height="230" rx="16"/>
+<text class="card-title" x="108" y="3028">Work package</text>
+<text class="small" x="108" y="3064">• Assemble the explanatory sequence.</text>
+<text class="small" x="108" y="3091">• Apply grade, score, sound design and mix.</text>
+<text class="small" x="108" y="3118">• Add captions, audio description and variants.</text>
+<rect class="card-purple" x="1080" y="2988" width="920" height="230" rx="16"/>
+<text class="card-title" x="1108" y="3028">Principal crew</text>
+<a class="agent-link" href="/agents/video.editor/chat" target="_top" aria-label="Open video.editor Chat"><text class="agent-text" data-agent-id="video.editor" x="1108" y="3064">• video.editor</text></a>
+<a class="agent-link" href="/agents/video.colorist/chat" target="_top" aria-label="Open video.colorist Chat"><text class="agent-text" data-agent-id="video.colorist" x="1108" y="3089">• video.colorist</text></a>
+<a class="agent-link" href="/agents/video.composer/chat" target="_top" aria-label="Open video.composer Chat"><text class="agent-text" data-agent-id="video.composer" x="1108" y="3114">• video.composer</text></a>
+<a class="agent-link" href="/agents/video.sounddesign/chat" target="_top" aria-label="Open video.sounddesign Chat"><text class="agent-text" data-agent-id="video.sounddesign" x="1108" y="3139">• video.sounddesign</text></a>
+<a class="agent-link" href="/agents/video.accessibilityoptimizer/chat" target="_top" aria-label="Open video.accessibilityoptimizer Chat"><text class="agent-text" data-agent-id="video.accessibilityoptimizer" x="1108" y="3164">• video.accessibilityoptimizer</text></a>
+<rect class="card-green" x="2080" y="2988" width="920" height="230" rx="16"/>
+<text class="card-title" x="2108" y="3028">Control and acceptance</text>
+<text class="small" x="2108" y="3064">• Check pacing, intelligibility and contrast.</text>
+<text class="small" x="2108" y="3091">• Maintain claim-to-visual alignment.</text>
+<path class="flow" data-flow-kind="sequence" d="M1000 3103 H1065"/>
+<path class="flow" data-flow-kind="sequence" d="M2000 3103 H2065"/>
+<path class="flow" data-flow-kind="sequence" d="M2540 3218 V3240 H1600 V3230"/>
+<polygon class="gateway" data-gate="G3 · POST MASTER" points="1600,3230 1655,3285 1600,3340 1545,3285"/>
+<text class="gateway-text" x="1600" y="3291">G3 · POST MASTER</text>
+<path class="association" data-flow-kind="artifact" d="M1655 3285 H1875"/>
+<rect class="artifact" x="1900" y="3235" width="1130" height="100" rx="12"/>
+<text class="label" x="1928" y="3266">HANDOFF / OUTPUT</text>
+<text class="small" x="1928" y="3296">Explainer master · stems · captions · variants</text>
+<path class="feedback" data-flow-kind="feedback" d="M1545 3285 C1050 3355 65 3355 65 3103 H80"/>
+<text class="feedback-label" x="120" y="3342">Fix pacing, audio or accessibility defect.</text>
+</g>
+<path class="flow" data-flow-kind="sequence" d="M1600 3340 V3474"/>
+<g id="video-template-c-workflow-phase-4" data-phase-index="4" data-phase-name="review-&amp;-release">
+<rect class="phase-bg" x="40" y="3400" width="3120" height="560" rx="22"/>
+<rect class="phase-chip-rose" x="70" y="3430" width="58" height="58" rx="14"/>
+<text class="phase-num" x="89" y="3471">4</text>
+<text class="phase-name" x="150" y="3458">Review &amp; release</text>
+<text class="phase-count" x="150" y="3483">GOVERNED SEQUENCE · TYPED ARTIFACT HANDOFF · BOUNDED REWORK</text>
+<circle class="phase-start" cx="1600" cy="3528" r="18"/>
+<path class="flow" data-flow-kind="sequence" d="M1600 3546 V3560 H540 V3563"/>
+<rect class="card-blue" x="80" y="3578" width="920" height="230" rx="16"/>
+<text class="card-title" x="108" y="3618">Work package</text>
+<text class="small" x="108" y="3654">• SME and FactChecker validate every claim.</text>
+<text class="small" x="108" y="3681">• Brand and Compliance review final framing.</text>
+<text class="small" x="108" y="3708">• Audience/Learner simulation tests clarity.</text>
+<rect class="card-purple" x="1080" y="3578" width="920" height="230" rx="16"/>
+<text class="card-title" x="1108" y="3618">Principal crew</text>
+<a class="agent-link" href="/agents/video.sme/chat" target="_top" aria-label="Open video.sme Chat"><text class="agent-text" data-agent-id="video.sme" x="1108" y="3654">• video.sme</text></a>
+<a class="agent-link" href="/agents/video.factchecker/chat" target="_top" aria-label="Open video.factchecker Chat"><text class="agent-text" data-agent-id="video.factchecker" x="1108" y="3679">• video.factchecker</text></a>
+<a class="agent-link" href="/agents/video.compliance/chat" target="_top" aria-label="Open video.compliance Chat"><text class="agent-text" data-agent-id="video.compliance" x="1108" y="3704">• video.compliance</text></a>
+<a class="agent-link" href="/agents/video.audiencesim/chat" target="_top" aria-label="Open video.audiencesim Chat"><text class="agent-text" data-agent-id="video.audiencesim" x="1108" y="3729">• video.audiencesim</text></a>
+<a class="agent-link" href="/agents/video.learnersim/chat" target="_top" aria-label="Open video.learnersim Chat"><text class="agent-text" data-agent-id="video.learnersim" x="1108" y="3754">• video.learnersim</text></a>
+<rect class="card-green" x="2080" y="3578" width="920" height="230" rx="16"/>
+<text class="card-title" x="2108" y="3618">Control and acceptance</text>
+<text class="small" x="2108" y="3654">• L2 and evidence thresholds follow selected scale.</text>
+<text class="small" x="2108" y="3681">• HiTL covers material domain or legal risk.</text>
+<path class="flow" data-flow-kind="sequence" d="M1000 3693 H1065"/>
+<path class="flow" data-flow-kind="sequence" d="M2000 3693 H2065"/>
+<path class="flow" data-flow-kind="sequence" d="M2540 3808 V3830 H1600 V3820"/>
+<polygon class="gateway" data-gate="G4 · RELEASE" points="1600,3820 1655,3875 1600,3930 1545,3875"/>
+<text class="gateway-text" x="1600" y="3881">G4 · RELEASE</text>
+<path class="association" data-flow-kind="artifact" d="M1655 3875 H1875"/>
+<rect class="artifact" x="1900" y="3825" width="1130" height="100" rx="12"/>
+<text class="label" x="1928" y="3856">HANDOFF / OUTPUT</text>
+<text class="small" x="1928" y="3886">Review pack · provenance · sign-off log</text>
+<path class="feedback" data-flow-kind="feedback" d="M1545 3875 C1050 3945 65 3945 65 3693 H80"/>
+<text class="feedback-label" x="120" y="3932">Route factual or clarity notes to owner.</text>
+</g>
+<path class="flow" data-flow-kind="sequence" d="M1600 3930 V4064"/>
+<g id="video-template-c-workflow-phase-5" data-phase-index="5" data-phase-name="distribution">
+<rect class="phase-bg-alt" x="40" y="3990" width="3120" height="560" rx="22"/>
+<rect class="phase-chip-green" x="70" y="4020" width="58" height="58" rx="14"/>
+<text class="phase-num" x="89" y="4061">5</text>
+<text class="phase-name" x="150" y="4048">Distribution</text>
+<text class="phase-count" x="150" y="4073">PARALLEL FAN-OUT / FAN-IN · TYPED ARTIFACT HANDOFF · BOUNDED REWORK</text>
+<polygon class="parallel" points="1600,4082 1644,4126 1600,4170 1556,4126"/>
+<text class="parallel-symbol" x="1600" y="4135">+</text>
+<path class="branch" data-flow-kind="branch" d="M1600 4170 L540 4153"/>
+<path class="branch" data-flow-kind="branch" d="M1600 4170 L1540 4153"/>
+<path class="branch" data-flow-kind="branch" d="M1600 4170 L2540 4153"/>
+<rect class="card-blue" x="80" y="4168" width="920" height="230" rx="16"/>
+<text class="card-title" x="108" y="4208">Work package</text>
+<text class="small" x="108" y="4244">• Create social and streaming/mezzanine packages.</text>
+<text class="small" x="108" y="4271">• Add LMS or channel package when required.</text>
+<text class="small" x="108" y="4298">• Preserve captions, metadata and source links.</text>
+<rect class="card-purple" x="1080" y="4168" width="920" height="230" rx="16"/>
+<text class="card-title" x="1108" y="4208">Principal crew</text>
+<a class="agent-link" href="/agents/video.marketing/chat" target="_top" aria-label="Open video.marketing Chat"><text class="agent-text" data-agent-id="video.marketing" x="1108" y="4244">• video.marketing</text></a>
+<a class="agent-link" href="/agents/video.seo/chat" target="_top" aria-label="Open video.seo Chat"><text class="agent-text" data-agent-id="video.seo" x="1108" y="4269">• video.seo</text></a>
+<a class="agent-link" href="/agents/video.channelmanager/chat" target="_top" aria-label="Open video.channelmanager Chat"><text class="agent-text" data-agent-id="video.channelmanager" x="1108" y="4294">• video.channelmanager</text></a>
+<a class="agent-link" href="/agents/video.lms/chat" target="_top" aria-label="Open video.lms Chat"><text class="agent-text" data-agent-id="video.lms" x="1108" y="4319">• video.lms</text></a>
+<a class="agent-link" href="/agents/video.distributor/chat" target="_top" aria-label="Open video.distributor Chat"><text class="agent-text" data-agent-id="video.distributor" x="1108" y="4344">• video.distributor</text></a>
+<rect class="card-green" x="2080" y="4168" width="920" height="230" rx="16"/>
+<text class="card-title" x="2108" y="4208">Control and acceptance</text>
+<text class="small" x="2108" y="4244">• S2 requires at least two relevant branches.</text>
+<text class="small" x="2108" y="4271">• Each branch passes independent readiness.</text>
+<path class="branch" data-flow-kind="branch" d="M540 4398 V4420 H1600 V4410"/>
+<path class="branch" data-flow-kind="branch" d="M1540 4398 V4420 H1600 V4410"/>
+<path class="branch" data-flow-kind="branch" d="M2540 4398 V4420 H1600 V4410"/>
+<polygon class="gateway" data-gate="G5 · CHANNEL" points="1600,4410 1655,4465 1600,4520 1545,4465"/>
+<text class="gateway-text" x="1600" y="4471">G5 · CHANNEL</text>
+<path class="association" data-flow-kind="artifact" d="M1655 4465 H1875"/>
+<rect class="artifact" x="1900" y="4415" width="1130" height="100" rx="12"/>
+<text class="label" x="1928" y="4446">HANDOFF / OUTPUT</text>
+<text class="small" x="1928" y="4476">Social · mezzanine · optional LMS/archive package</text>
+<path class="feedback" data-flow-kind="feedback" d="M1545 4465 C1050 4535 65 4535 65 4283 H80"/>
+<text class="feedback-label" x="120" y="4522">Repackage only the failed endpoint.</text>
+</g>
+<path class="flow" data-flow-kind="sequence" d="M1600 4520 V4654"/>
+<g id="video-template-c-workflow-phase-6" data-phase-index="6" data-phase-name="post-launch-learning">
+<rect class="phase-bg" x="40" y="4580" width="3120" height="560" rx="22"/>
+<rect class="phase-chip" x="70" y="4610" width="58" height="58" rx="14"/>
+<text class="phase-num" x="89" y="4651">6</text>
+<text class="phase-name" x="150" y="4638">Post-launch learning</text>
+<text class="phase-count" x="150" y="4663">GOVERNED SEQUENCE · TYPED ARTIFACT HANDOFF · BOUNDED REWORK</text>
+<circle class="phase-start" cx="1600" cy="4708" r="18"/>
+<path class="flow" data-flow-kind="sequence" d="M1600 4726 V4740 H540 V4743"/>
+<rect class="card-blue" x="80" y="4758" width="920" height="230" rx="16"/>
+<text class="card-title" x="108" y="4798">Work package</text>
+<text class="small" x="108" y="4834">• Measure completion, clarity and drop-off.</text>
+<text class="small" x="108" y="4861">• Capture learner/audience confusion points.</text>
+<text class="small" x="108" y="4888">• Turn defects into prompt and rubric tickets.</text>
+<rect class="card-purple" x="1080" y="4758" width="920" height="230" rx="16"/>
+<text class="card-title" x="1108" y="4798">Principal crew</text>
+<a class="agent-link" href="/agents/video.analyst/chat" target="_top" aria-label="Open video.analyst Chat"><text class="agent-text" data-agent-id="video.analyst" x="1108" y="4834">• video.analyst</text></a>
+<a class="agent-link" href="/agents/video.audiencesim/chat" target="_top" aria-label="Open video.audiencesim Chat"><text class="agent-text" data-agent-id="video.audiencesim" x="1108" y="4859">• video.audiencesim</text></a>
+<a class="agent-link" href="/agents/video.learnersim/chat" target="_top" aria-label="Open video.learnersim Chat"><text class="agent-text" data-agent-id="video.learnersim" x="1108" y="4884">• video.learnersim</text></a>
+<a class="agent-link" href="/agents/video.promptoptimizer/chat" target="_top" aria-label="Open video.promptoptimizer Chat"><text class="agent-text" data-agent-id="video.promptoptimizer" x="1108" y="4909">• video.promptoptimizer</text></a>
+<rect class="card-green" x="2080" y="4758" width="920" height="230" rx="16"/>
+<text class="card-title" x="2108" y="4798">Control and acceptance</text>
+<text class="small" x="2108" y="4834">• Benchmark changes before promotion.</text>
+<text class="small" x="2108" y="4861">• Memory stores accepted corrections.</text>
+<path class="flow" data-flow-kind="sequence" d="M1000 4873 H1065"/>
+<path class="flow" data-flow-kind="sequence" d="M2000 4873 H2065"/>
+<path class="flow" data-flow-kind="sequence" d="M2540 4988 V5010 H1600 V5000"/>
+<polygon class="gateway" data-gate="OBSERVE" points="1600,5000 1655,5055 1600,5110 1545,5055"/>
+<text class="gateway-text" x="1600" y="5061">OBSERVE</text>
+<path class="association" data-flow-kind="artifact" d="M1655 5055 H1875"/>
+<rect class="artifact" x="1900" y="5005" width="1130" height="100" rx="12"/>
+<text class="label" x="1928" y="5036">HANDOFF / OUTPUT</text>
+<text class="small" x="1928" y="5066">Outcome report · confusion map · learning tickets</text>
+<path class="learning" data-flow-kind="learning" d="M1545 5055 C1050 5125 65 5125 65 4873 H80"/>
+<text class="feedback-label" x="120" y="5112">Use validated insights in the next explainer.</text>
+</g>
+<path class="learning" data-flow-kind="learning" d="M1545 5055 C900 5160 25 5160 25 865 H70"/>
+<text class="label" x="90" y="5172" fill="#6d28d9">REGRESSION-TESTED LEARNING → FUTURE PLAN / BRIEF</text>
+<g id="legend-and-source">
+<rect x="40" y="5220" width="3120" height="410" rx="18" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/>
+<text class="section-title" x="70" y="5265">BPM legend and operating notes</text>
+<circle class="event" cx="110" cy="5325" r="18"/><text class="small" x="145" y="5331">event / phase start</text>
+<rect class="card" x="430" y="5305" width="80" height="40" rx="9"/><text class="small" x="530" y="5331">task group</text>
+<polygon class="gateway" points="760,5305 780,5325 760,5345 740,5325"/><text class="small" x="800" y="5331">quality / decision gate</text>
+<polygon class="parallel" points="1130,5305 1150,5325 1130,5345 1110,5325"/><text class="small" x="1170" y="5331">parallel fan-out / fan-in</text>
+<line x1="1510" y1="5325" x2="1600" y2="5325" class="legend-line"/><text class="small" x="1620" y="5331">sequence / branch</text>
+<line x1="1900" y1="5325" x2="1990" y2="5325" stroke="#dc2626" stroke-width="3" stroke-dasharray="10 7"/><text class="small" x="2010" y="5331">targeted rework</text>
+<line x1="2280" y1="5325" x2="2370" y2="5325" stroke="#7c3aed" stroke-width="3" stroke-dasharray="10 7"/><text class="small" x="2390" y="5331">systemic learning</text>
+<rect class="artifact" x="2700" y="5305" width="90" height="40" rx="8"/><text class="small" x="2810" y="5331">typed artifact</text>
+<rect class="runtime-banner" x="70" y="5370" width="3060" height="92" rx="12"/>
+<text class="header-note" x="96" y="5404">HANDOFF CONTRACT — correlation_id · from/to agent · artifact_ref/type · scale · archetype · evidence_refs · L1/L2 · rights_state · needs_hitl</text>
+<text class="tiny" x="96" y="5434">Offline/UAT runs also emit knowledge_usage. Crew lists are capability maps; host policy remains authoritative.</text>
+<text class="label" x="70" y="5505">OUTPUT: video.template.c.workflow.svg</text>
+<text class="small" x="70" y="5538">Evidence basis: S2 detailed flow plus S3 premium mapping; S4 depth is a scale overlay rather than a bespoke C graph.</text>
+<text class="small" x="70" y="5570">Source: spec/production_scale_framework.md · Style reference: ui/public/svg/video.workflow.svg</text>
+<text class="tiny" x="70" y="5602">Principal unique agents linked in this diagram: 34 · Seven phases · fail-closed runtime · no automatic scale promotion.</text>
+</g>
+</svg>

@@ -11,7 +11,7 @@ const mutation = {
 
 function mockClient(handler: (url: string, init?: RequestInit) => Promise<Response> | Response) {
   return createClient({
-    getBaseUrl: () => "http://127.0.0.1:8080",
+    getBaseUrl: () => "http://127.0.0.1:18080",
     getMutation: () => mutation,
     fetchImpl: async (url, init) => handler(url, init),
   });
@@ -38,7 +38,7 @@ describe("SPEC_V3 client coverage", () => {
   it("invokes each bound path through the client", async () => {
     const seen: string[] = [];
     const client = mockClient((url, init) => {
-      const path = url.replace("http://127.0.0.1:8080", "").split("?")[0];
+      const path = url.replace("http://127.0.0.1:18080", "").split("?")[0];
       seen.push(`${init?.method ?? "GET"} ${path}`);
       return new Response(JSON.stringify({ ok: true, agents: [], plugins: [], records: [], candidates: [], incidents: [], ledger: [], fixtures: [], matrix: [] }), {
         status: 200,
@@ -88,6 +88,7 @@ describe("SPEC_V3 client coverage", () => {
     await client.setLlmSettings("local_deterministic");
     await client.getAgentLlm("a");
     await client.setAgentLlm("a", "openai");
+    await client.chatAgent("a", { message: "hello" });
 
     const normalized = seen.map((row) =>
       row
@@ -109,5 +110,6 @@ describe("SPEC_V3 client coverage", () => {
     expect(normalized).toContain("POST /api/v3/llm/settings");
     expect(normalized).toContain("GET /api/v3/agents/{agent_id}/llm");
     expect(normalized).toContain("POST /api/v3/agents/{agent_id}/llm");
+    expect(normalized).toContain("POST /api/v3/agents/{agent_id}/runtime/chat");
   });
 });

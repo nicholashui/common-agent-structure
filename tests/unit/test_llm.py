@@ -9,14 +9,41 @@ import pytest
 
 from casops.errors.codes import ErrorCode
 from casops.errors.exceptions import CasopsError
-from casops.runtime.llm import LlmRouter, LlmSettings, env_default_llm, list_providers, load_dotenv
+from casops.runtime.llm import (
+    LlmRouter,
+    LlmSettings,
+    canonicalize_provider,
+    env_default_llm,
+    list_providers,
+    load_dotenv,
+)
 
 
 def test_env_default_llm(monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.delenv("DEFAULT_LLM", raising=False)
+    monkeypatch.delenv("OPENAI_API_KEY", raising=False)
+    monkeypatch.delenv("XAI_API_KEY", raising=False)
+    monkeypatch.delenv("ANTHROPIC_API_KEY", raising=False)
     assert env_default_llm() == "local_deterministic"
     monkeypatch.setenv("DEFAULT_LLM", "openai")
     assert env_default_llm() == "openai"
+
+
+def test_env_default_llm_uses_configured_host_provider(monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.delenv("DEFAULT_LLM", raising=False)
+    monkeypatch.delenv("OPENAI_API_KEY", raising=False)
+    monkeypatch.delenv("ANTHROPIC_API_KEY", raising=False)
+    monkeypatch.setenv("XAI_API_KEY", "xai-key")
+    assert env_default_llm() == "xai"
+
+
+def test_default_llm_case_insensitive(monkeypatch: pytest.MonkeyPatch, tmp_path: Path) -> None:
+    monkeypatch.setenv("DEFAULT_LLM", "XAI")
+    monkeypatch.setenv("XAI_API_KEY", "xai-key")
+    assert canonicalize_provider("XAI") == "xai"
+    assert env_default_llm() == "xai"
+    router = LlmRouter(settings=LlmSettings(path=tmp_path / "llm.json"))
+    assert router.resolve("video.director") == "xai"
 
 
 def test_load_dotenv_does_not_override(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
@@ -77,3 +104,33 @@ def test_openai_compat_uses_host_http(tmp_path: Path, monkeypatch: pytest.Monkey
     assert captured["url"] == "https://api.openai.com/v1/chat/completions"
     assert captured["headers"]["Authorization"] == "Bearer sk-test"
     assert captured["payload"]["max_tokens"] == 32
+    assert captured["payload"]["messages"] == [{"role": "user", "content": "ping"}]
+
+
+def test_complete_sends_system_history_and_human_message(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    monkeypatch.setenv("DEFAULT_LLM", "openai")
+    monkeypatch.setenv("OPENAI_API_KEY", "sk-test")
+    captured: dict[str, object] = {}
+
+    def post(url: str, headers: dict[str, str], payload: dict[str, object]) -> dict[str, object]:
+        del url, headers
+        captured["payload"] = payload
+        return {"choices": [{"message": {"content": "ack"}}]}
+
+    router = LlmRouter(settings=LlmSettings(path=tmp_path / "llm.json"), post=post)
+    result = router.complete(
+        agent_id="video.director",
+        prompt="hello from operator",
+        node_id="chat",
+        system="You are director.",
+        history=[{"role": "user", "content": "hi"}, {"role": "assistant", "content": "hey"}],
+    )
+    assert result["text"] == "ack"
+    assert captured["payload"]["messages"] == [
+        {"role": "system", "content": "You are director."},
+        {"role": "user", "content": "hi"},
+        {"role": "assistant", "content": "hey"},
+        {"role": "user", "content": "hello from operator"},
+    ]

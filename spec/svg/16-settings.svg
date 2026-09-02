@@ -56,7 +56,7 @@
 <rect x="232.0" y="186.0" width="1024.0" height="420.0" rx="16" fill="#ffffff" stroke="#e7e5e4" stroke-width="1"/>
 <text x="256.0" y="222.0" fill="#a8a29e" font-size="12" font-weight="600" font-family="Inter, system-ui, sans-serif" text-anchor="start">Control plane base URL</text>
 <rect x="256.0" y="230.0" width="640.0" height="32.0" rx="8" fill="#fafaf9" stroke="#e7e5e4" stroke-width="1"/>
-<text x="268.0" y="251.0" fill="#292524" font-size="13" font-weight="500" font-family="Inter, system-ui, sans-serif" text-anchor="start">http://127.0.0.1:8080</text>
+<text x="268.0" y="251.0" fill="#292524" font-size="13" font-weight="500" font-family="Inter, system-ui, sans-serif" text-anchor="start">http://127.0.0.1:18080</text>
 <text x="256.0" y="286.0" fill="#a8a29e" font-size="12" font-weight="600" font-family="Inter, system-ui, sans-serif" text-anchor="start">Poll interval</text>
 <rect x="256.0" y="294.0" width="640.0" height="32.0" rx="8" fill="#fafaf9" stroke="#e7e5e4" stroke-width="1"/>
 <text x="268.0" y="315.0" fill="#292524" font-size="13" font-weight="500" font-family="Inter, system-ui, sans-serif" text-anchor="start">15 seconds</text>

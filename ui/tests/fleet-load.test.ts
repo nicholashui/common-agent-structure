@@ -10,6 +10,7 @@ function summaries(count: number): AgentSummary[] {
     schema_version: "3.0",
     role: "role",
     memory_mode: "none",
+    va_category: index % 2 === 0 ? "1-ATL" : "2-Cam",
   }));
 }
 
@@ -40,6 +41,7 @@ describe("fleet list load", () => {
     expect(listed.map((row) => row.agent_id)).toEqual(agents.map((row) => row.agent_id));
     expect(cards).toHaveLength(80);
     expect(cards.map((card) => card.agent_id)).toEqual(agents.map((row) => row.agent_id));
+    expect(cards.map((card) => card.va_category)).toEqual(agents.map((row) => row.va_category));
     expect(calls).toEqual(["GET /api/v3/agents"]);
   });
 });

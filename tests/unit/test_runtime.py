@@ -13,8 +13,15 @@ from casops.errors.codes import ErrorCode
 from casops.errors.exceptions import CasopsError
 from casops.runtime.dag import compile_dag
 from casops.runtime.executor import Runtime
+from casops.runtime.llm import LlmRouter, LlmSettings
 
 REPO = Path(__file__).resolve().parents[2]
+
+
+def _local_runtime(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> Runtime:
+    monkeypatch.setenv("DEFAULT_LLM", "local_deterministic")
+    llm = LlmRouter(settings=LlmSettings(path=tmp_path / "llm.json", default_llm="local_deterministic"))
+    return Runtime(agents_root=REPO / "agents", store=InvariantStore.with_host_defaults(), llm=llm)
 
 
 def test_cycle_fails_closed() -> None:
@@ -31,8 +38,10 @@ def test_cycle_fails_closed() -> None:
     assert raised.value.code == ErrorCode.PERF_PLAN_CYCLE
 
 
-def test_template_run_has_one_root_trace_and_no_memory_write() -> None:
-    runtime = Runtime(agents_root=REPO / "agents", store=InvariantStore.with_host_defaults())
+def test_template_run_has_one_root_trace_and_no_memory_write(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    runtime = _local_runtime(tmp_path, monkeypatch)
     result = runtime.execute("casops.template.baseline_safe")
     assert result.adapter == "local_deterministic"
     assert result.containment_stop is None
@@ -89,3 +98,25 @@ def test_cancellation_at_node_boundary() -> None:
     with pytest.raises(CasopsError) as raised:
         runtime.execute("casops.template.baseline_safe", cancel=cancel)
     assert raised.value.code == ErrorCode.SAF_TERMINATION
+
+
+def test_chat_uses_operator_message_and_does_not_record_a_run(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    runtime = _local_runtime(tmp_path, monkeypatch)
+    before = len(runtime.runs)
+    first = runtime.chat("casops.template.baseline_safe", message="alpha-unique-token")
+    second = runtime.chat("casops.template.baseline_safe", message="beta-unique-token")
+    assert len(runtime.runs) == before
+    assert first["memory_writes"] == []
+    assert first["plugins_executed"] is False
+    assert first["t3_enabled"] is False
+    assert first["provider"] == "local_deterministic"
+    assert json.loads(first["reply"])["prompt_sha256"] != json.loads(second["reply"])["prompt_sha256"]
+
+
+def test_chat_empty_message_fails_closed(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    runtime = _local_runtime(tmp_path, monkeypatch)
+    with pytest.raises(CasopsError) as raised:
+        runtime.chat("casops.template.baseline_safe", message="  ")
+    assert raised.value.code == ErrorCode.CTX_BUDGET

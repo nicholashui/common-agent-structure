@@ -6,7 +6,7 @@ import type { MutationContract } from "../src/api/types";
 function capture(contract: MutationContract) {
   const calls: { url: string; init: RequestInit }[] = [];
   const client = createClient({
-    getBaseUrl: () => "http://127.0.0.1:8080",
+    getBaseUrl: () => "http://127.0.0.1:18080",
     getMutation: () => contract,
     fetchImpl: async (url, init) => {
       calls.push({ url, init: init ?? {} });
@@ -87,5 +87,17 @@ describe("mutation headers", () => {
     });
     await expect(client.composePreview("agent")).rejects.toMatchObject({ code: "IMP_UNSIGNED" });
     expect(calls).toHaveLength(0);
+  });
+
+  it("sends a chat fallback reason so text messages work without Overview reason", async () => {
+    const { client, calls } = capture({
+      actor: "human_operator",
+      reason: "",
+      expectedParent: "none",
+      dryRun: true,
+    });
+    await client.chatAgent("video.director", { message: "hello" });
+    expect(header(calls[0].init, "x-casops-reason")).toBe("operator chat");
+    expect(JSON.parse(String(calls[0].init.body))).toEqual({ message: "hello" });
   });
 });

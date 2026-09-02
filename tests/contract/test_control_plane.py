@@ -131,12 +131,12 @@ def test_cors_preflight_from_vite_origin() -> None:
     response = client.options(
         "/api/v3/agents",
         headers={
-            "Origin": "http://127.0.0.1:5173",
+            "Origin": "http://127.0.0.1:15173",
             "Access-Control-Request-Method": "GET",
         },
     )
     assert response.status_code in {200, 204}
-    assert response.headers.get("access-control-allow-origin") == "http://127.0.0.1:5173"
+    assert response.headers.get("access-control-allow-origin") == "http://127.0.0.1:15173"
 
 
 def test_common_health_run_returns_snapshot() -> None:

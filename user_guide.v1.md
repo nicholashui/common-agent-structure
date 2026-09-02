@@ -108,13 +108,13 @@ The control plane is the public API. It loads agent folders from `agents/`.
 cd C:\Project\common-agent-structure
 $env:PYTHONPATH = "src"
 $env:CASOPS_AGENTS_ROOT = "agents"
-python -m uvicorn casops.api.control:create_app_from_env --factory --host 127.0.0.1 --port 8080
+python -m uvicorn casops.api.control:create_app_from_env --factory --host 127.0.0.1 --port 18080
 ```
 
 Leave that window open. In a **second** PowerShell:
 
 ```powershell
-curl.exe http://127.0.0.1:8080/health
+curl.exe http://127.0.0.1:18080/health
 ```
 
 Expect:
@@ -126,8 +126,8 @@ Expect:
 OpenAPI (browser or curl):
 
 ```text
-http://127.0.0.1:8080/openapi.json
-http://127.0.0.1:8080/docs
+http://127.0.0.1:18080/openapi.json
+http://127.0.0.1:18080/docs
 ```
 
 Public paths are only under `/api/v3`. `/health` exists but is not part of the public v3 contract.
@@ -150,7 +150,7 @@ Every **POST / PUT / PATCH / DELETE** under `/api/v3` needs four headers. Missin
 PowerShell helper you can reuse for the rest of this guide:
 
 ```powershell
-$base = "http://127.0.0.1:8080"
+$base = "http://127.0.0.1:18080"
 $agent = "casops.template.baseline_safe"
 $H = @{
   "x-casops-actor"           = "host_service"
@@ -545,9 +545,9 @@ If `AWS_*`, `CASOPS_HOST_KEY`, or `OPENAI_API_KEY` are in a production-profile e
 
 ## 16. Optional: eight-process Docker deploy
 
-Public traffic binds **only** to control-plane port **8080**. Other services are internal.
+Public traffic binds **only** to control-plane port **18080**. Other services are internal.
 
-![Eight-process Docker deployment showing the 8080-only public boundary and seven internal CASOPS services](svg/04-eight-process-deployment-boundary.svg)
+![Eight-process Docker deployment showing the 18080-only public boundary and seven internal CASOPS services](svg/04-eight-process-deployment-boundary.svg)
 
 From the repo root (Docker Desktop running):
 
@@ -558,14 +558,14 @@ docker compose -f deploy/dev/docker-compose.yml up --build
 Then:
 
 ```powershell
-curl.exe http://127.0.0.1:8080/health
+curl.exe http://127.0.0.1:18080/health
 ```
 
 Internal roles (not published as the public plane):
 
 | Service | Typical internal port |
 |---|---|
-| control-plane | 8080 (published) |
+| control-plane | 18080 (published) |
 | corrigibility-invariant-service | 8081 |
 | compose-service | 8082 |
 | instrument-registry-service | 8083 |

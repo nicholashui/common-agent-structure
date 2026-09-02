@@ -642,7 +642,7 @@ def screen_settings() -> str:
     body = [chrome("Settings", crumb="Settings", title="Settings", subtitle="Operator machine only. Never store production secrets in this UI.")]
     x, y = CX + 24, CY + 78
     fields = [
-        ("Control plane base URL", "http://127.0.0.1:8080"),
+        ("Control plane base URL", "http://127.0.0.1:18080"),
         ("Poll interval", "15 seconds"),
         ("Default actor", "host_service"),
         ("Default dry-run", "ON"),

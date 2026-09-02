@@ -67,7 +67,7 @@ services:
   control-plane:
     build: ../../services/control-plane
     ports:
-      - "8080:8080"
+      - "18080:18080"
     environment:
       CASOPS_PUBLIC_PREFIX: /api/v3
 

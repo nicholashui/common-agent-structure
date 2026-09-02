@@ -20,16 +20,16 @@ export function SettingsPage() {
       <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
         <Card>
           <h2 className="mb-4 text-sm font-semibold">Control plane</h2>
-          <Field label="Base URL" hint="Leave empty to use the Vite proxy to http://127.0.0.1:8080">
+          <Field label="Base URL" hint="Leave empty to use the Vite proxy to http://127.0.0.1:18080">
             <input
               className={`${inputClass} font-mono`}
-              placeholder="http://127.0.0.1:8080"
+              placeholder="http://127.0.0.1:18080"
               value={settings.baseUrl}
               onChange={(event) => session.setSettings({ ...settings, baseUrl: event.target.value.trim() })}
             />
           </Field>
           <div className="mt-4">
-            <Field label="Fleet poll interval (ms)">
+            <Field label="Agent Swarm poll interval (ms)">
               <input
                 className={inputClass}
                 type="number"
@@ -117,7 +117,7 @@ export function SettingsPage() {
             Used when GET /api/v3/agents is missing. Discovery {session.discovery}. Do not paste host Ed25519 keys here.
           </p>
           <textarea
-            className="min-h-[8rem] w-full rounded-xl border border-stone-200 p-3 font-mono text-sm"
+            className="min-h-[8rem] w-full rounded-xl border border-stone-200 bg-white p-3 font-mono text-sm text-stone-900"
             value={settings.knownIds.join("\n")}
             onChange={(event) =>
               session.setSettings({

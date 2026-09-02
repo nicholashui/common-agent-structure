@@ -25,7 +25,7 @@ export function RecoveryBanner({
         <button
           type="button"
           onClick={onReload}
-          className="rounded-full bg-stone-900 px-4 py-2 text-xs font-medium text-white"
+          className="rounded-full bg-stone-900 px-4 py-2 text-xs font-medium text-white dark:bg-stone-100 dark:text-stone-900"
         >
           Reload attestation
         </button>

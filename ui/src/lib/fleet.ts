@@ -32,6 +32,7 @@ export function summariesToCards(
     role: summary.role,
     schema_version: summary.schema_version,
     memoryMode: summary.memory_mode,
+    va_category: summary.va_category,
     runStatus: runStatusFor(lastRuns[summary.agent_id]),
   }));
 }

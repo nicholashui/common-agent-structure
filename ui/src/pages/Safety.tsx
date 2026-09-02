@@ -42,7 +42,7 @@ export function SafetyPage() {
       <ConfirmDialog
         open={confirm}
         title="Run red-team fixture?"
-        body="This POSTs /safety/redteam under the mutation contract. Confirm actor and reason in the header strip first."
+        body="This POSTs /safety/redteam under the mutation contract. Confirm actor and reason on Overview first."
         confirmLabel="Run red-team"
         onCancel={() => setConfirm(false)}
         onConfirm={() => void run()}

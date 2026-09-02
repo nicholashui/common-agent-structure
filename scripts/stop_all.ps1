@@ -1,5 +1,5 @@
 # Stop the local CASOPS operator stack started by scripts/start_all.ps1
-# (control plane :8080 and Control UI :5173). Also clears leftover listeners
+# (control plane :18080 and Control UI :15173). Also clears leftover listeners
 # on those ports.
 
 Set-StrictMode -Version Latest
@@ -7,8 +7,8 @@ $ErrorActionPreference = "Continue"
 
 $Root = (Resolve-Path (Join-Path $PSScriptRoot "..")).Path
 $StateFile = Join-Path $Root "var\casops-servers.json"
-$ControlPort = 8080
-$UiPort = 5173
+$ControlPort = 18080
+$UiPort = 15173
 
 function Stop-PidSafe([int]$ProcessId, [string]$Label) {
     if ($ProcessId -le 0) {

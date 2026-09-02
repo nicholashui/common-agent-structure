@@ -1,5 +1,7 @@
 import { createContext, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
 import { createClient, type CasopsClient } from "../api/v3";
+import { logUi } from "../log/bus";
+import { startLogSink } from "../log/persist";
 import { ACTORS, CasopsHttpError, type ActorClass, type AgentSummary, type MutationContract, type RunResult } from "../api/types";
 import type { StatusKind } from "../components/statusCfg";
 
@@ -165,6 +167,10 @@ export function SessionProvider({ children }: { children: ReactNode }) {
   }, [settings]);
 
   useEffect(() => {
+    startLogSink(() => settings.baseUrl);
+  }, [settings.baseUrl]);
+
+  useEffect(() => {
     const payload = JSON.stringify({ actor, reason, expectedParent, dryRun });
     sessionStorage.setItem(ACTOR_KEY, payload);
     if (settings.persistActor) {
@@ -187,6 +193,7 @@ export function SessionProvider({ children }: { children: ReactNode }) {
         },
         onError: (error) => {
           setLastError(error);
+          logUi(`${error.code} ${error.message}`, undefined, "error");
           if (error.code === "UNAVAILABLE") {
             setReconnecting(true);
             setHealthOk(false);

@@ -1,11 +1,14 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { OperatorContractFields } from "../components/ActorStrip";
 import { CommonBadge } from "../components/CommonBadge";
 import { ErrorBanner } from "../components/RecoveryBanner";
+import { IoPanel } from "../components/IoPanel";
 import { StatusPill } from "../components/StatusPill";
 import { Card, Field, GhostButton, PageHeader, PrimaryButton, inputClass } from "../components/ui";
 import { useAgentId, useAsync } from "../lib/hooks";
 import { pillForValidation, validationIsPass } from "../lib/honesty";
+import { parseAgentIo } from "../lib/io";
 import { useSession } from "../state/session";
 
 export function AgentOverviewPage() {
@@ -39,12 +42,18 @@ export function AgentOverviewPage() {
               <GhostButton type="button">Compose preview</GhostButton>
             </Link>
             <Link to={`/agents/${encodeURIComponent(agentId)}/run`}>
-              <PrimaryButton type="button">Run</PrimaryButton>
+              <GhostButton type="button">Run</GhostButton>
+            </Link>
+            <Link to={`/agents/${encodeURIComponent(agentId)}/chat`}>
+              <PrimaryButton type="button">Chat</PrimaryButton>
             </Link>
           </>
         }
       />
       <ErrorBanner error={error} />
+      <div className="mb-5">
+        <OperatorContractFields />
+      </div>
       {data ? (
         <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
           <Card className={ok ? "border-indigo-200" : "border-red-200"}>
@@ -77,6 +86,7 @@ export function AgentOverviewPage() {
               </div>
             </dl>
           </Card>
+          <IoPanel io={parseAgentIo(data.structure.io)} />
           <Card>
             <h2 className="mb-3 text-sm font-semibold text-stone-900">LLM</h2>
             <p className="mb-3 text-sm text-stone-500">

@@ -7,14 +7,14 @@ This is not a chat wrapper, not a T3 enablement console, and not a production-ac
 ## Prerequisites
 
 - Node.js 20+
-- The control plane on `http://127.0.0.1:8080`
+- The control plane on `http://127.0.0.1:18080`
 
 From the repo root:
 
 ```powershell
 $env:PYTHONPATH = "src"
 $env:CASOPS_AGENTS_ROOT = "agents"
-python -m uvicorn casops.api.control:create_app_from_env --factory --host 127.0.0.1 --port 8080
+python -m uvicorn casops.api.control:create_app_from_env --factory --host 127.0.0.1 --port 18080
 ```
 
 ## Install and run
@@ -25,12 +25,14 @@ npm install
 npm run dev
 ```
 
-Open `http://127.0.0.1:5173`. The Vite dev server proxies `/api` and `/health` to `:8080`. Leave **Settings → Base URL** empty to use that proxy.
+Open `http://127.0.0.1:15173`. The Vite dev server proxies `/api`, `/health`, and `/debug` to `:18080`. Leave **Settings → Base URL** empty to use that proxy.
+
+The header log icon opens a right-side drawer with live **API log** and **UI log** tabs. Each line is also appended as JSONL under `logs/debug/<session>-api.log` and `logs/debug/<session>-ui.log`.
 
 To call the host directly (CORS is enabled for Vite origins):
 
-- Set Base URL to `http://127.0.0.1:8080`
-- Or start with `VITE_CASOPS_BASE=http://127.0.0.1:8080`
+- Set Base URL to `http://127.0.0.1:18080`
+- Or start with `VITE_CASOPS_BASE=http://127.0.0.1:18080`
 
 ## Tests
 

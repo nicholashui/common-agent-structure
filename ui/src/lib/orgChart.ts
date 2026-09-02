@@ -1,4 +1,6 @@
-import { agentPack, type AgentPack } from "./agents";
+import { agentCategory, agentPack, type AgentPack } from "./agents";
+
+export { agentCategory };
 
 export const ORG_NODE_WIDTH = 184;
 export const ORG_NODE_HEIGHT = 68;
@@ -38,11 +40,6 @@ export interface OrgEdgeDraft {
   source: string;
   target: string;
   type: "smoothstep";
-}
-
-export function agentCategory(agent: OrgAgent): string {
-  const raw = (agent.va_category || "").trim();
-  return raw || "uncategorized";
 }
 
 export function agentsInGroup(agents: OrgAgent[], group: Exclude<AgentPack, "all">): OrgAgent[] {

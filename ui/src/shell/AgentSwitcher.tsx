@@ -19,7 +19,7 @@ export function AgentSwitcher({
   const root = useRef<HTMLDivElement>(null);
   const listRef = useRef<HTMLUListElement>(null);
   const ids = useMemo(() => collectAgentIds(agents, extraIds), [agents, extraIds]);
-  const filtered = useMemo(() => filterAgentIds(ids, query), [ids, query]);
+  const filtered = useMemo(() => filterAgentIds(ids, query, agents), [ids, query, agents]);
 
   useEffect(() => {
     setActive(0);
@@ -49,9 +49,9 @@ export function AgentSwitcher({
   }
 
   return (
-    <div ref={root} className="relative flex w-[min(50%,28rem)] min-w-[16rem] flex-col gap-1">
-      <label className="flex h-4 items-center text-xs font-medium text-stone-700" htmlFor="agent-switcher">
-        Fleet
+    <div ref={root} className="relative w-[min(50%,28rem)] min-w-[16rem]">
+      <label className="sr-only" htmlFor="agent-switcher">
+        Search agents
       </label>
       <input
         id="agent-switcher"

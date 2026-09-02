@@ -44,6 +44,7 @@ export const COMPANION_V3_PATHS = [
   ["POST", "/api/v3/llm/settings"],
   ["GET", "/api/v3/agents/{agent_id}/llm"],
   ["POST", "/api/v3/agents/{agent_id}/llm"],
+  ["POST", "/api/v3/agents/{agent_id}/runtime/chat"],
 ] as const;
 
 export type HttpMethod = "GET" | "POST" | "PUT" | "PATCH" | "DELETE";
@@ -91,6 +92,7 @@ export const CLIENT_BINDINGS = {
   setLlmSettings: ["POST", "/api/v3/llm/settings"],
   getAgentLlm: ["GET", "/api/v3/agents/{agent_id}/llm"],
   setAgentLlm: ["POST", "/api/v3/agents/{agent_id}/llm"],
+  chatAgent: ["POST", "/api/v3/agents/{agent_id}/runtime/chat"],
 } as const;
 
 export const MUTATING = new Set<string>(["POST", "PUT", "PATCH", "DELETE"]);

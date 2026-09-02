@@ -32,6 +32,6 @@ Single `transform` node `health_1` with `op: health_snapshot`, `side_effect_clas
 
 ## Out of scope
 
-- OS/hardware probes, live HTTP self-GET of `:8080/health`
+- OS/hardware probes, live HTTP self-GET of `:18080/health`
 - Enabling T3, L5, production activation, or plugins
 - Chat / streaming

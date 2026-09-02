@@ -5,6 +5,7 @@ import {
   MUTATING,
   type HttpMethod,
 } from "./paths";
+import { clipLogText, logApi, shouldSkipApiLog } from "../log/bus";
 import {
   CasopsHttpError,
   MutationContractError,
@@ -22,6 +23,7 @@ import {
   type LlmProvider,
   type LlmSettingsView,
   type AgentLlmView,
+  type ChatResponse,
 } from "./types";
 
 export type FetchLike = (input: string, init?: RequestInit) => Promise<Response>;
@@ -109,13 +111,17 @@ export function createClient(options: ClientOptions) {
       query?: Record<string, string | undefined>;
       timeoutMs?: number;
       body?: unknown;
+      reasonFallback?: string;
     },
   ): Promise<T> {
     const filled = fill(path, init?.params ?? {});
     const url = joinUrl(options.getBaseUrl(), `${filled}${query(init?.query ?? {})}`);
     const headers: Record<string, string> = { Accept: "application/json" };
     if (MUTATING.has(method)) {
-      const contract = options.getMutation();
+      const raw = options.getMutation();
+      const contract = raw.reason.trim()
+        ? raw
+        : { ...raw, reason: init?.reasonFallback?.trim() || raw.reason };
       assertMutation(method, filled, contract);
       Object.assign(headers, mutationHeaders(contract));
     }
@@ -127,9 +133,16 @@ export function createClient(options: ClientOptions) {
     const controller = new AbortController();
     const timeoutMs = init?.timeoutMs ?? DEFAULT_TIMEOUT_MS;
     const timer = setTimeout(() => controller.abort(), timeoutMs);
+    const started = Date.now();
+    const skipLog = shouldSkipApiLog(url);
     try {
       const response = await fetchImpl(url, { method, headers, body: payload, signal: controller.signal });
       const body = await parseBody(response);
+      const elapsed = Date.now() - started;
+      if (!skipLog) {
+        const level = response.ok ? "info" : "error";
+        logApi(`${method} ${filled} ${response.status} ${elapsed}ms`, clipLogText({ request: payload ?? null, response: body }), level);
+      }
       if (!response.ok) {
         const error = new CasopsHttpError(response.status, body);
         options.onError?.(error);
@@ -142,6 +155,14 @@ export function createClient(options: ClientOptions) {
     } catch (error) {
       if (error instanceof CasopsHttpError) {
         throw error;
+      }
+      const elapsed = Date.now() - started;
+      if (!skipLog) {
+        logApi(
+          `${method} ${filled} FAILED ${elapsed}ms`,
+          error instanceof Error ? error.message : String(error),
+          "error",
+        );
       }
       const wrapped = new CasopsHttpError(0, {
         error: {
@@ -251,6 +272,13 @@ export function createClient(options: ClientOptions) {
       request<AgentLlmView>("POST", "/api/v3/agents/{agent_id}/llm", {
         params: { agent_id: agentId },
         body: { provider },
+      }),
+    chatAgent: (agentId: string, body: { message: string; history?: { role: string; content: string }[] }) =>
+      request<ChatResponse>("POST", "/api/v3/agents/{agent_id}/runtime/chat", {
+        params: { agent_id: agentId },
+        body,
+        timeoutMs: LONG_TIMEOUT_MS,
+        reasonFallback: "operator chat",
       }),
   };
 }

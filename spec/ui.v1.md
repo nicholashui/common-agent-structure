@@ -153,7 +153,7 @@ Reviewed:
 | Live vs stale honesty | `common-style.html` + OpenClaw overview | Status pills, disable stale mutations |
 | Trace / session inspector | OpenClaw sessions, Hermes sessions | Trace, replay, evidence |
 | Kanban for governed work | OpenClaw / Hermes Office | Improvement candidates: proposed → evaluated → approved / rejected / rolled back |
-| Local-only default | Hermes dashboard on localhost | UI defaults to `http://127.0.0.1:8080` |
+| Local-only default | Hermes dashboard on localhost | UI defaults to `http://127.0.0.1:18080` |
 
 **Reject**
 
@@ -173,7 +173,7 @@ Reviewed:
 
 ### 3.1 Public plane
 
-Base URL (operator-configurable, default `http://127.0.0.1:8080`).
+Base URL (operator-configurable, default `http://127.0.0.1:18080`).
 
 All mutating calls (`POST`, `PUT`, `PATCH`, `DELETE`) under `/api/v3` **MUST** send:
 
@@ -354,7 +354,7 @@ Deep links are shareable. Example: `/agents/casops.template.baseline_safe/run`.
 
 | State | UI |
 |---|---|
-| No control plane | `unavailable` card: “Start uvicorn on :8080” + Settings link |
+| No control plane | `unavailable` card: “Start uvicorn on :18080” + Settings link |
 | No agents | Empty fleet: “Add a known agent_id or implement GET /api/v3/agents” |
 | `INH_PARENT_MISSING` | “Unknown agent_id” on the workspace |
 | Containment | Recovery banner; attestation panel forced open |
@@ -700,7 +700,7 @@ ui/
 
 Build output may be `ui/dist/` (generated, not hand-edited).
 
-Python host does not serve the UI in v1 unless a later change adds a static mount. Running the UI is documented in `ui/README.md` (dev server + `VITE_CASOPS_BASE=http://127.0.0.1:8080` or equivalent).
+Python host does not serve the UI in v1 unless a later change adds a static mount. Running the UI is documented in `ui/README.md` (dev server + `VITE_CASOPS_BASE=http://127.0.0.1:18080` or equivalent).
 
 ---
 

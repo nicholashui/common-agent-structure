@@ -1,4 +1,4 @@
-# Start the local CASOPS operator stack: control plane (:8080) and Control UI (:5173).
+# Start the local CASOPS operator stack: control plane (:18080) and Control UI (:15173).
 # Run from anywhere:  powershell -File scripts/start_all.ps1
 
 Set-StrictMode -Version Latest
@@ -13,8 +13,8 @@ $ControlOutLog = Join-Path $LogDir "control-plane.out.log"
 $ControlErrLog = Join-Path $LogDir "control-plane.err.log"
 $UiOutLog = Join-Path $LogDir "ui.out.log"
 $UiErrLog = Join-Path $LogDir "ui.err.log"
-$ControlPort = 8080
-$UiPort = 5173
+$ControlPort = 18080
+$UiPort = 15173
 
 New-Item -ItemType Directory -Force -Path $VarDir, $LogDir | Out-Null
 
