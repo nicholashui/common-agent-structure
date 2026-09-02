@@ -49,7 +49,7 @@ export function HelpDocument({
           );
         })}
       </div>
-      <div className="min-h-0 flex-1 overflow-auto pt-3" role="tabpanel">
+      <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain pt-3" role="tabpanel" data-testid="help-document">
         <MarkdownView state={markdown} />
       </div>
     </div>

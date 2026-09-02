@@ -54,7 +54,17 @@ export function docCandidates(
 ): string[] {
   const exact = normalizePath(pathname);
   const stripped = stripParamValues(pathname, params);
-  const folders = [exact, stripped].filter((folder, index, all) => all.indexOf(folder) === index);
+  const folders: string[] = [];
+  const addFolder = (folder: string) => {
+    if (!folders.includes(folder)) {
+      folders.push(folder);
+    }
+  };
+  addFolder(exact);
+  if (params.agentId) {
+    addFolder(`/agents/${params.agentId}`);
+  }
+  addFolder(stripped);
   const files: string[] = [];
   for (const folder of folders) {
     files.push(folder === "/" ? `/docs/${tabId}.md` : `/docs${folder}/${tabId}.md`);

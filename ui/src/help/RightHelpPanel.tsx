@@ -89,7 +89,7 @@ export function RightHelpPanel({
 
   return (
     <aside
-      className={`relative flex shrink-0 flex-col border-l border-stone-200 bg-white ${dragging ? "" : "transition-[width] duration-150"}`}
+      className={`sticky top-14 z-20 flex h-[calc(100dvh-8rem)] min-h-0 shrink-0 flex-col self-start overflow-hidden border-l border-stone-200 bg-white md:h-[calc(100vh-3.5rem)] ${dragging ? "" : "transition-[width] duration-150"}`}
       style={{ width: clamped }}
       data-testid="help-drawer"
     >
@@ -118,7 +118,7 @@ export function RightHelpPanel({
           <X size={16} />
         </button>
       </div>
-      <div className="flex min-h-0 flex-1 flex-col px-3 py-3">
+      <div className="flex min-h-0 flex-1 flex-col overflow-hidden px-3 py-3">
         <HelpDocument pathname={pathname} params={params} enabled />
       </div>
     </aside>

@@ -44,6 +44,14 @@ npm run build
 
 `tests/api-contract.test.ts` checks every spec §19 `/api/v3` path has a client binding. `tests/mutation-headers.test.ts` checks POST/DELETE always send the four mutation headers and that `agent_runtime` cannot approve.
 
+Per-agent Help files under `ui/public/docs/agents/<agent_id>/` are generated from each agent folder. Refresh with:
+
+```powershell
+python tools/generate_help_agent_docs.py
+```
+
+User guide is copied from `agents/<id>/docs`. Spec is merged from `SPEC.md`, `agent_spec.json`, `prompts/`, `rubrics/`, and `sources/`.
+
 ## Operator notes
 
 - Dry-run defaults **on**. Reason is required before mutations.

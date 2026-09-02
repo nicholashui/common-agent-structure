@@ -17,7 +17,12 @@ describe("help route resolution", () => {
   it("builds exact then parameter-stripped markdown candidates", () => {
     expect(docCandidates("/agents/video.director/chat", { agentId: "video.director" }, "spec")).toEqual([
       "/docs/agents/video.director/chat/spec.md",
+      "/docs/agents/video.director/spec.md",
       "/docs/agents/chat/spec.md",
+    ]);
+    expect(docCandidates("/agents/specials.aesthetics-agent", { agentId: "specials.aesthetics-agent" }, "userguide")).toEqual([
+      "/docs/agents/specials.aesthetics-agent/userguide.md",
+      "/docs/agents/userguide.md",
     ]);
     expect(docCandidates("/", {}, "userguide")).toEqual(["/docs/userguide.md", "/docs/index/userguide.md"]);
     expect(docCandidates("/workflow/sub", {}, "spec")).toEqual(["/docs/workflow/sub/spec.md"]);

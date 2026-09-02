@@ -14,7 +14,7 @@ export function HelpPage() {
       <p className="mb-4 text-sm text-stone-500">
         Full-page help for {locationLabel(source)}.
       </p>
-      <div className="min-h-[60vh] rounded-2xl border border-stone-200 bg-white p-5">
+      <div className="flex h-[min(70vh,40rem)] min-h-0 flex-col overflow-hidden rounded-2xl border border-stone-200 bg-white p-5">
         <HelpDocument pathname={source} params={params} enabled />
       </div>
     </div>
