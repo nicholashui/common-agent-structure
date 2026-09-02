@@ -83,3 +83,29 @@ def test_debug_logs_does_not_require_mutation_headers(tmp_path: Path, monkeypatc
     )
     assert response.status_code == 200
     assert response.json()["ok"] is True
+
+
+def test_debug_chat_writes_and_lists_files(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.setenv("CASOPS_CHAT_ROOT", str(tmp_path))
+    client = TestClient(create_control_plane(agents_root=REPO / "agents"))
+    session = "2026-09-02-13-00-00-000-c1"
+    response = client.post(
+        "/debug/chat",
+        json={
+            "agent_id": "video.director",
+            "session": session,
+            "entries": [
+                {"role": "user", "ts": "2026-09-02T13:00:00.000Z", "content": "hello", "provider": ""},
+                {"role": "assistant", "ts": "2026-09-02T13:00:01.000Z", "content": "hi", "provider": "xai"},
+            ],
+        },
+    )
+    assert response.status_code == 200
+    path = tmp_path / "video.director" / f"{session}.jsonl"
+    assert response.json()["files"]["transcript"] == str(path)
+    listed = client.get("/debug/chat", params={"agent_id": "video.director"})
+    assert listed.status_code == 200
+    files = listed.json()["files"]
+    assert files[0]["name"] == f"{session}.jsonl"
+    spec = client.get("/openapi.json").json()
+    assert "/debug/chat" not in spec["paths"]

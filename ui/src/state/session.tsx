@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
 import { createClient, type CasopsClient } from "../api/v3";
 import { logUi } from "../log/bus";
+import { startChatSink } from "../lib/chatPersist";
 import { startLogSink } from "../log/persist";
 import { ACTORS, CasopsHttpError, type ActorClass, type AgentSummary, type MutationContract, type RunResult } from "../api/types";
 import type { StatusKind } from "../components/statusCfg";
@@ -168,6 +169,7 @@ export function SessionProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     startLogSink(() => settings.baseUrl);
+    startChatSink(() => settings.baseUrl);
   }, [settings.baseUrl]);
 
   useEffect(() => {

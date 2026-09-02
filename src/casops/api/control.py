@@ -23,7 +23,7 @@ from casops.errors.exceptions import CasopsError
 from casops.eval.harness import evaluate
 from casops.improvement.trainer import TrainerBridge
 from casops.instruments.registry import InstrumentRegistry
-from casops.debuglog import write_debug_logs
+from casops.debuglog import list_chat_files, write_chat_turns, write_debug_logs
 from casops.cache.manager import CacheManager
 from casops.memory.store import ConsolidationWorker, MemoryService
 from casops.plugins.validate import validate_registry
@@ -557,6 +557,22 @@ def create_control_plane(
         except ValueError as exc:
             raise HTTPException(status_code=400, detail=str(exc)) from exc
         return {"ok": True, "files": files}
+
+    @app.post("/debug/chat")
+    def debug_chat(body: dict[str, Any]) -> dict[str, Any]:
+        try:
+            files = write_chat_turns(body)
+        except ValueError as exc:
+            raise HTTPException(status_code=400, detail=str(exc)) from exc
+        return {"ok": True, "files": files}
+
+    @app.get("/debug/chat")
+    def debug_chat_list(agent_id: str = Query(..., min_length=1, max_length=80)) -> dict[str, Any]:
+        try:
+            files = list_chat_files(agent_id)
+        except ValueError as exc:
+            raise HTTPException(status_code=400, detail=str(exc)) from exc
+        return {"ok": True, "agent_id": agent_id, "files": files}
 
     # health is not public API v3; tests require OpenAPI public paths to be /api/v3 only.
     # Exclude /health from OpenAPI.
