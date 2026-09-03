@@ -4,15 +4,22 @@ from __future__ import annotations
 
 from pathlib import Path
 
+import pytest
 from fastapi.testclient import TestClient
 
+from casops.corrigibility.store import InvariantStore
 from casops.runtime.app import create_runtime_service_app
+from casops.runtime.executor import Runtime
+from casops.runtime.llm import LlmRouter, LlmSettings
 
 REPO = Path(__file__).resolve().parents[2]
 
 
-def test_health_and_run() -> None:
-    client = TestClient(create_runtime_service_app(agents_root=REPO / "agents"))
+def test_health_and_run(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.setenv("DEFAULT_LLM", "local_deterministic")
+    llm = LlmRouter(settings=LlmSettings(path=tmp_path / "llm.json", default_llm="local_deterministic"))
+    runtime = Runtime(agents_root=REPO / "agents", store=InvariantStore.with_host_defaults(), llm=llm)
+    client = TestClient(create_runtime_service_app(agents_root=REPO / "agents", runtime=runtime))
     health = client.get("/health")
     assert health.status_code == 200
     assert health.json()["status"] == "ok"

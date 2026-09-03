@@ -6,12 +6,14 @@ import json
 from pathlib import Path
 
 import jsonschema
+import pytest
 from fastapi.testclient import TestClient
 
 from casops.api.apps import create_control_plane
 from casops.corrigibility.store import InvariantStore
 from casops.registry.folder import validate_required_files
 from casops.runtime.executor import Runtime
+from casops.runtime.llm import LlmRouter, LlmSettings
 
 REPO = Path(__file__).resolve().parents[2]
 SOURCE = Path(r"C:\Project\common-agent-swarm-ops\business\specials\agents")
@@ -60,8 +62,10 @@ def test_each_source_specials_agent_is_imported_as_v3_folder() -> None:
         assert background["domain"] == "specials"
 
 
-def test_specials_planner_run_is_baseline_safe() -> None:
-    runtime = Runtime(agents_root=REPO / "agents", store=InvariantStore.with_host_defaults())
+def test_specials_planner_run_is_baseline_safe(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.setenv("DEFAULT_LLM", "local_deterministic")
+    llm = LlmRouter(settings=LlmSettings(path=tmp_path / "llm.json", default_llm="local_deterministic"))
+    runtime = Runtime(agents_root=REPO / "agents", store=InvariantStore.with_host_defaults(), llm=llm)
     result = runtime.execute(SAMPLE)
     assert result.agent_id == SAMPLE
     assert result.adapter == "local_deterministic"
@@ -72,8 +76,10 @@ def test_specials_planner_run_is_baseline_safe() -> None:
     assert payload["status"] == "ready"
 
 
-def test_control_plane_lists_specials_planner() -> None:
-    client = TestClient(create_control_plane(agents_root=REPO / "agents"))
+def test_control_plane_lists_specials_planner(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.setenv("DEFAULT_LLM", "local_deterministic")
+    llm = LlmRouter(settings=LlmSettings(path=tmp_path / "llm.json", default_llm="local_deterministic"))
+    client = TestClient(create_control_plane(agents_root=REPO / "agents", llm=llm))
     ids = [item["agent_id"] for item in client.get("/api/v3/agents").json()["agents"]]
     assert SAMPLE in ids
     assert "specials.aesthetics-agent" in ids

@@ -11,6 +11,7 @@ from casops.errors.codes import ErrorCode
 from casops.errors.exceptions import CasopsError
 from casops.improvement.trainer import TrainerBridge
 from casops.runtime.executor import Runtime
+from casops.runtime.llm import LlmRouter, LlmSettings
 
 REPO = Path(__file__).resolve().parents[2]
 
@@ -23,8 +24,14 @@ def test_unsigned_import_rejected() -> None:
     assert bridge.gradient_updates_in_serving == 0
 
 
-def test_export_and_signed_import() -> None:
-    runtime = Runtime(agents_root=REPO / "agents", store=InvariantStore.with_host_defaults())
+def test_export_and_signed_import(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.setenv("DEFAULT_LLM", "local_deterministic")
+    llm = LlmRouter(settings=LlmSettings(path=tmp_path / "llm.json", default_llm="local_deterministic"))
+    runtime = Runtime(
+        agents_root=REPO / "agents",
+        store=InvariantStore.with_host_defaults(),
+        llm=llm,
+    )
     result = runtime.execute("casops.template.baseline_safe")
     bridge = TrainerBridge()
     envelope = bridge.export_trajectory(result)

@@ -30,10 +30,16 @@ def test_org_chat_page_uses_xyflow_and_group_combobox() -> None:
     assert "getResolved" not in src
     assert "getMemoryPolicy" not in src
     shell = (REPO / "ui" / "src" / "shell" / "AppShell.tsx").read_text(encoding="utf-8")
-    fleet = shell.index("Fleet")
-    org = shell.index("Agent Org Chat")
-    agent = shell.index(">Agent<") if ">Agent<" in shell else shell.index("Agent workspace")
-    assert org > fleet
+    labels = (REPO / "ui" / "src" / "shell" / "nav.ts").read_text(encoding="utf-8")
+    assert 'HOME_LABEL = "Agent Swarm"' in labels
+    assert 'AGENT_MENU_LABEL = "Agent Profile"' in labels
+    start = shell.index("<nav ")
+    end = shell.index("</nav>", start)
+    nav = shell[start:end]
+    home = nav.index("{HOME_LABEL}")
+    org = nav.index("Agent Org Chat")
+    agent = nav.index("{AGENT_MENU_LABEL}")
+    assert org > home
     assert org < agent
 
 

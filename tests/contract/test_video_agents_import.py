@@ -7,11 +7,14 @@ from pathlib import Path
 
 import jsonschema
 
+import pytest
+from fastapi.testclient import TestClient
+
 from casops.api.apps import create_control_plane
+from casops.corrigibility.store import InvariantStore
 from casops.registry.folder import validate_required_files
 from casops.runtime.executor import Runtime
-from casops.corrigibility.store import InvariantStore
-from fastapi.testclient import TestClient
+from casops.runtime.llm import LlmRouter, LlmSettings
 
 REPO = Path(__file__).resolve().parents[2]
 SOURCE = Path(r"C:\Project\common-agent-swarm-ops\business\video\agents")
@@ -57,8 +60,10 @@ def test_each_source_video_agent_is_imported_as_v3_folder() -> None:
         assert memory["mode"] == "none"
 
 
-def test_video_director_run_is_baseline_safe() -> None:
-    runtime = Runtime(agents_root=REPO / "agents", store=InvariantStore.with_host_defaults())
+def test_video_director_run_is_baseline_safe(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.setenv("DEFAULT_LLM", "local_deterministic")
+    llm = LlmRouter(settings=LlmSettings(path=tmp_path / "llm.json", default_llm="local_deterministic"))
+    runtime = Runtime(agents_root=REPO / "agents", store=InvariantStore.with_host_defaults(), llm=llm)
     result = runtime.execute("video.director")
     assert result.agent_id == "video.director"
     assert result.adapter == "local_deterministic"
@@ -70,8 +75,10 @@ def test_video_director_run_is_baseline_safe() -> None:
     assert payload["note"].startswith("baseline_safe")
 
 
-def test_control_plane_lists_video_director() -> None:
-    client = TestClient(create_control_plane(agents_root=REPO / "agents"))
+def test_control_plane_lists_video_director(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.setenv("DEFAULT_LLM", "local_deterministic")
+    llm = LlmRouter(settings=LlmSettings(path=tmp_path / "llm.json", default_llm="local_deterministic"))
+    client = TestClient(create_control_plane(agents_root=REPO / "agents", llm=llm))
     body = client.get("/api/v3/agents").json()
     ids = [item["agent_id"] for item in body["agents"]]
     assert "video.director" in ids
