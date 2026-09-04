@@ -1,0 +1,1754 @@
+<#0.5#>
+
+This section discusses two AI-driven systems for movie production: one is the Infrastructure Agent, which manages computing resources; the other is the Data Wrangling Agent, which handles training data. The Infrastructure Agent automatically scales GPU clusters, optimizes costs, and manages massive storage systems. The Data Wrangling Agent identifies gaps in training data, generates synthetic data to fill them, and continuously improves AI models during production.
+
+Next, let's explain the key concepts in simple terms. GPU Auto-scaling is like a smart thermostat that controls computing power. When rendering demand spikes—for example, completing 23 shots in 6 hours—the system automatically adds hundreds of GPUs to "turn up" capacity; when workload slows, it "turns down" to save money. Spot Instances are like discounted backup cloud computing tickets, 60-90% cheaper, but the provider can reclaim them with 30 seconds to 2 minutes' notice, so the system intelligently mixes them with guaranteed resources. Storage Tiering is like organizing your closet: frequently used hot storage goes on fast SSDs, occasionally used warm storage on slower hard drives, and rarely accessed cold storage on cheap long-term options. Synthetic Data Generation is when an AI model lacks training examples—like subtle angry expressions—so the system generates realistic artificial ones, avoiding expensive actor shoots that cost $2K and 2 days versus $50K and 2 weeks. MLOps (Machine Learning Operations) is an automated system for continuously training, testing, and deploying improved AI models without manual intervention, like a self-improving factory production line.
+
+Now, back to the main topic. Infrastructure management includes auto-scaling GPU clusters based on workload; multi-cloud cost optimization with Spot Instances; distributing storage across performance tiers; and monitoring energy efficiency with carbon footprint tracking. For data quality and model improvement: automatic detection of training data gaps; synthetic data generation with quality validation; continuous model fine-tuning during production; and human-in-the-loop validation for quality checks. Cost and performance optimization involves real-time selection of providers like AWS, Google Cloud, and Azure; intelligent job prioritization and scheduling; storage lifecycle management saving $2,000 monthly; and automation reducing cloud costs by 35-60%.
+
+In summary, the key points are that this system automates massive scale, managing 384 GPUs across multi-cloud providers to complete 2,300 GPU-hours of rendering in 6 hours. Costs are drastically reduced: Spot Instances save 60-90%, intelligent scaling saves $5,000 on a single job by scaling down early. Quality improves without delays—the Data Wrangling Agent uses synthetic data to boost subtle emotion recognition accuracy from 72% to 91% in 2 days. Multi-cloud flexibility lets the system pick the cheapest provider in real-time, blending AWS ($4,915/hr), Google Cloud ($1,224/hr), and Azure ($880/hr). Zero-downtime deployments use blue-green deployment and canary releases for 99.5% uptime, even during AI model updates. Proactive issue resolution automatically detects data gaps before they impact production quality. Energy awareness tracks carbon footprints (e.g., 369 kg CO₂ per job) and prioritizes renewable energy data centers.
+
+Now, key metrics and data. Rendering performance: 2,300 GPU-hours completed in 5.7 hours, 5% ahead of the 6-hour deadline; 384 GPUs across three cloud providers; 96.3% average GPU utilization throughout; 18TB of render frames distributed across storage tiers. Cost metrics: total cost $38,600, 10% under the $42,714 budget; Spot Instances save 60-90% vs. on-demand pricing; auto storage tiering saves $2,000 monthly; one client reduced monthly cloud spend by 35%. Data quality improvements: 91% accuracy for subtle anger detection (up from 72%); 4,777 validated synthetic images generated in 2 days; synthetic data costs $2K vs. $50K for actor shoots; director satisfaction with improved emotion expression at 98%. System reliability: 99.5% model deployment uptime; average inference time 15ms (meets SLA); zero failed renders from intelligent Spot Instance management; handles Spot preemption notices in 30 seconds to 2 minutes.
+
+Next, action items. Infrastructure implementation: Weeks 1-4: Deploy Kubernetes clusters supporting GPUs. Weeks 5-8: Implement KEDA auto-scaling with DCGM metrics; add multi-cloud Spot Instance optimization; deploy storage like MinIO or Ceph with tiering policies. Data Wrangling implementation: Weeks 9-12: Set up Albumentations augmentation pipelines; build synthetic data generation system; implement automated quality validation workflows. Weeks 13-16: Integrate continuous model training and deployment. Key decisions: Storage system—MinIO (high performance), Ceph (enterprise features), or SeaweedFS (easy deployment)? Spot Instance ratio—conservative (30% spot) or aggressive (70% spot)? Augmentation strategy—light, medium, or aggressive data augmentation? Multi-cloud strategy—single provider or multi-cloud cost arbitrage.
+
+Who is this for? Movie production studios: 60-90% rendering cost cuts while meeting tight deadlines; continuous learning improves AI-generated character quality; auto-scales compute for peak periods. VFX teams: No manual GPU cluster management; automated model improvements speed visual effects iteration; consistent quality across thousands of shots. Technical directors and pipeline engineers: Ready-to-use frameworks like KEDA, Kubernetes, Albumentations; clear 16-week roadmap; measurable ROI from cost savings and quality gains. Data scientists and ML engineers: Automated training data wrangling and model fine-tuning; fast experimentation with synthetic data generation; MLOps infrastructure for continuous model deployment. Finance and production managers: Predictable costs from auto-optimization; reduced capex on permanent GPU infrastructure; detailed cost tracking and carbon monitoring.
+
+Finally, why it matters: This system transforms unpredictable, expensive manual processes into automated, cost-effective operations that boost quality and speed—in the cutthroat movie production world, these are critical edges where deadlines are non-negotiable and budgets are tight.
+<#0.5#>
+# Computational Infrastructure & Data Wrangling Agents
+
+<#0.5#>
+
+## What to Build
+
+<#0.5#>
+
+### Infrastructure Agent
+- **GPU Cluster Auto-Scaler**: Dynamically adjusts GPU resources based on workload demands.
+- **Cost Optimizer**: Manages spot instances and preemptible VMs to minimize expenses.
+- **Workload Scheduler**: Uses priority queues to allocate resources efficiently.
+- **Distributed Rendering Manager**: Coordinates rendering tasks across GPU clusters.
+- **Storage Tiering System**: Organizes data into hot, warm, and cold tiers for performance and cost optimization.
+- **Energy Efficiency Monitor**: Tracks and reduces power consumption across infrastructure.
+
+<#0.5#>
+
+### Data Wrangling Agent
+- **Training Data Curator**: Organizes and maintains high-quality datasets for model training.
+- **On-the-Fly Data Generator**: Creates synthetic data in real time to address gaps.
+- **Model Fine-Tuning Pipeline**: Automates iterative model improvements during production.
+- **Dataset Gap Detector**: Identifies deficiencies in training data using analytics.
+- **Synthetic Data Validator**: Ensures generated data meets quality standards.
+- **Data Augmentation Engine**: Enhances datasets to improve model generalization.
+
+<#0.5#>
+
+## What They Do
+
+<#0.5#>
+
+### Infrastructure Agent
+- Provisions compute resources dynamically to match varying demands.
+- Balances cost and performance trade-offs for efficient operations.
+- Manages petabyte-scale storage with tiered access for optimal efficiency.
+- Schedules rendering jobs across thousands of GPUs to meet deadlines.
+- Monitors energy usage and implements reductions to promote sustainability.
+
+<#0.5#>
+
+### Data Wrangling Agent
+- Detects when models require additional training data through performance analysis.
+- Generates synthetic data to address identified gaps in datasets.
+- Fine-tunes models during production using updated data streams.
+- Validates data quality through continuous automated checks.
+- Augments datasets to enhance model robustness and reduce overfitting.
+
+<#0.5#>
+
+## Detailed Infrastructure Architecture & Operations
+
+<#0.5#>
+
+### GPU Cluster Auto-Scaling Deep Dive
+
+The Infrastructure Agent uses Kubernetes with GPU support to implement advanced auto-scaling. It resizes node pools based on workload demands while optimizing costs. Google Kubernetes Engine (GKE) autoscaling supports configurable minimum and maximum nodes for various GPU types, including NVIDIA H100, A100, L4, and T4.
+
+#### GPU Resource Provisioning Strategy
+The system applies intelligent bin-packing algorithms to provision GPU instances on demand and downscale during low activity. It leverages spot instances for cost savings. Kubernetes Event-Driven Autoscaling (KEDA) monitors GPU utilization metrics and scales workloads based on real-time demand. The cluster autoscaler adds nodes when GPU resources are depleted.
+
+#### Advanced Autoscaling Mechanisms
+- **Horizontal Pod Autoscaler (HPA)**: Relies on custom GPU metrics from Cloud Monitoring, polling `container/accelerator/duty_cycle` every 60 seconds to inform scaling.
+- **Cluster Autoscaler**: Adds nodes during high demand and reduces to the minimum size during low demand, balancing costs and availability.
+- **Node Auto-Provisioning**: Automatically creates node pools with suitable TPU or GPU configurations for pending workloads.
+
+#### GPU Utilization Optimization
+Separate GPU node pools improve efficiency. Limit nodes to zones with available GPUs and enable autoscaling per pool. Target replica count tracking avoids 30-second delays in scaling and supports rapid, homogeneous pod expansions.
+
+<#0.5#>
+
+### Advanced Cost Optimization Strategies
+
+#### Spot Instance Management
+Spot instances offer up to 90% savings over on-demand pricing by accessing unused cloud capacity. They suit fault-tolerant applications that tolerate interruptions. Providers provide 30 seconds notice on Azure and Google Cloud, or 2 minutes on AWS, for instance replacement.
+
+#### Multi-Cloud Cost Arbitrage
+The agent selects providers intelligently:
+- **AWS Spot Fleet**: Manages fleets with strategies like lowest price or capacity optimization across instance types.
+- **Azure VM Scale Sets**: Handles load-balanced VM groups with demand-based scaling.
+- **Google Managed Instance Groups**: Maintains target sizes, recreating spot VMs when resources are available.
+
+#### Intelligent Instance Selection
+Assign latency-sensitive services to on-demand nodes and route batch, machine learning (ML), or scalable workloads to spot instances. Diversify across instance families and availability zones. Conservative setups ensure reliable resources for critical pods while reducing costs for excess demand.
+
+<#0.5#>
+
+### Distributed Storage Architecture
+
+#### Storage Tiering Implementation
+The agent manages petabyte-scale storage via a three-tier system tailored to access patterns and costs.
+
+#### MinIO High-Performance Object Storage
+MinIO delivers distributed object storage with high throughput and low latency. It integrates seamlessly with Kubernetes and requires simple setup. It uses server pools with erasure coding, needing at least 4 drives per pool and up to 16 per set, with distributed drive planning.
+
+#### Ceph Unified Storage Platform
+Ceph offers object, block, and file storage from one cluster using Reliable Autonomic Distributed Object Store (RADOS) for data management and replication. Ceph RADOS Gateway (RGW) provides flexibility via customizable policies, multi-site replication, and 8-16 GB RAM per Object Storage Daemon (OSD).
+
+#### SeaweedFS Optimized Architecture
+SeaweedFS employs a master-volume server model, inspired by Facebook's Haystack, to separate metadata from data storage. This supports efficient small-file handling and scaling with 2-4 GB RAM per volume server.
+
+#### Storage Performance Characteristics
+- **MinIO**: Applies Reed-Solomon erasure coding with configurable parity (e.g., N/2 as 4+4 or 8+8) for high efficiency.
+- **Ceph**: Uses RADOS erasure coding pools with K+M configurations and failure domains across racks or data centers.
+- **SeaweedFS**: Supports optional erasure coding or replication, optimized for small files with O(1) disk reads.
+
+<#0.5#>
+
+### Workload Scheduling & Priority Management
+
+#### Advanced Queue Management
+The agent combines Kubernetes-native tools with custom priorities. Pod Disruption Budgets (PDBs) and Topology Spread Constraints ensure resilience during scaling. CloudWatch and Prometheus provide cluster visibility.
+
+#### Priority Queue Implementation
+Rendering tasks are categorized by criticality:
+- **Priority 1**: Shots with actors (irreplaceable; highest GPU allocation).
+- **Priority 2**: VFX shots (moderate; iterable if needed).
+- **Priority 3**: Establishing shots (lowest; easiest to re-render).
+
+#### Resource Allocation Strategies
+Karpenter with spot instances reduces monthly EC2 costs by 35% without performance loss, through smart provisioning and distribution.
+
+<#0.5#>
+
+## Comprehensive Data Wrangling Operations
+
+<#0.5#>
+
+### MLOps Pipeline Automation
+
+#### Continuous Training Architecture
+The agent automates data and model validation with pipeline triggers and metadata management. It enables production training on fresh data via live triggers. ML pipelines run training automatically on new data, including validation steps.
+
+#### CI/CD Integration for ML
+Automated CI/CD supports rapid feature engineering, architecture, and hyperparameter testing. It builds, tests, and deploys pipeline components reliably.
+
+#### Production ML Pipeline Components
+Pipelines cover development, training, evaluation, deployment, and monitoring. Amazon SageMaker Pipelines automate workflows for data processing, training, fine-tuning, evaluation, and deployment, with configurable scheduling or event triggers.
+
+<#0.5#>
+
+### Advanced Data Augmentation Engine
+
+#### Albumentations Integration
+The agent uses Albumentations for efficient handling of images, masks, bounding boxes, and keypoints. It offers 70+ augmentations with optimized code for minimal overhead, integrating with PyTorch, TensorFlow, and other frameworks.
+
+#### Production Augmentation Pipeline
+Optimal augmentations enhance generalization. Pipeline efficiency prevents CPU bottlenecks. Augmentation reduces overfitting and expands datasets, but excessive use can introduce artifacts.
+
+#### Augmentation Strategy Implementation
+- **Geometric Transformations**: Scale adjustments simulate size variations (e.g., safe ranges of (8, 2) or (5, 0)).
+- **Color and Lighting**: Adjusts brightness, contrast, hue, saturation, and value for environmental adaptation.
+- **Quality Degradation**: Mimics compression and loss via JPEG/WebP and downscale-upscale operations.
+
+<#0.5#>
+
+### Model Fine-Tuning & Validation
+
+#### Automated Fine-Tuning Pipeline
+YAML configurations define parameters for adapters like Quantized Low-Rank Adaptation (QLoRA), learning rates, and optimizations. Orchestration selects compute environments, such as Google Cloud Batch, GKE, or Vertex AI Custom Training.
+
+#### Continuous Model Evaluation
+Automated evaluation includes hyperparameter tuning and early stopping. It exports top models to registries. Production training uses fresh data with symmetric development-to-production pipelines.
+
+#### Data Quality Validation
+The ML model registry centralizes management with naming conventions, metadata, and team collaboration.
+
+<#0.5#>
+
+## Tools/Frameworks
+
+<#0.5#>
+
+### Infrastructure
+- **Orchestration**: Kubernetes with GPU support on GKE, supporting NVIDIA H100, A100, L4, B200, GB200, and T4 in Standard and Autopilot modes.
+- **Scaling**: Karpenter or Cluster Autoscaler with CAST AI for GPU provisioning and downscaling.
+- **Cloud**: Multi-cloud (AWS, GCP, Azure) with ProsperOps for discount management across spot instances and VMs.
+- **Rendering**: Deadline, OpenCue, or custom queues with ML pipelines via Apache Airflow, Dagster, Prefect, Flyte, or Mage.
+- **Storage**: Ceph, MinIO, or SeaweedFS with lifecycle policies—MinIO for performance, Ceph for enterprise features, SeaweedFS for small files.
+- **Monitoring**: Prometheus + Grafana with Google Cloud Managed Service for Prometheus.
+
+<#0.5#>
+
+### Data Wrangling
+- **Data Curation**: DVC, Weights & Biases with Amazon SageMaker ML Lineage Tracking for artifact audits.
+- **Augmentation**: Albumentations with 70+ transforms, integrating with PyTorch and TensorFlow.
+- **Synthetic Generation**: Blender, Unity Perception for 3D; Stable Diffusion for 2D on Google Cloud for scalable pipelines.
+- **Fine-Tuning**: Hugging Face Trainer, PyTorch Lightning with Axolotl's YAML for QLoRA and optimizations.
+- **Validation**: Great Expectations, custom metrics with Amazon SageMaker Model Monitor for drift detection and alerts.
+
+<#0.5#>
+
+### Interactions
+```
+INFRASTRUCTURE AGENT:
+
+Scene 12 rendering request arrives:
+  - 23 shots, 4K resolution, 512 samples per pixel
+  - Estimated: 2,300 GPU-hours
+  - Deadline: 6 hours
+    ↓
+Infrastructure Agent:
+  Resource Assessment:
+     - Current cluster: 200 GPUs active (80% utilized)
+     - Available: 40 GPUs
+     - Needed: 384 GPUs to hit deadline (2300/6 = 383)
+
+  Auto-Scaling Decision using Advanced Kubernetes GPU Autoscaling:
+     - Leverages KEDA for GPU-based autoscaling with real-time DCGM metrics
+     - Implements cluster autoscaler with target replica count tracking
+     - Eliminates 30-second delay through fast homogeneous scale-up optimization
+     - Launches 344 additional GPUs across multiple availability zones
+
+     - Strategy with Multi-Cloud Cost Arbitrage:
+       * 200 spot instances (70% cheaper, risk: preemption with 30s-2min notice)
+       * 144 on-demand (guaranteed, expensive)
+       * Implements diversification across M, C, R instance families
+       * AWS Node Termination Handler for graceful workload drainage
+
+     - Provider selection with real-time cost optimization:
+       * AWS: 150 p4d.24xlarge (A100s) - $77/hr = $4,915/hr
+       * GCP: 100 a2-highgpu-8g (A100s) - $24/hr = $1,224/hr  
+       * Azure: 94 NCv4 (V100s, cheaper fallback) - $36/hr = $880/hr
+       * Spot instance availability monitoring across regions
+
+     - Total cost for 6 hours: ~$42,714
+     - Compares to deadline penalty: $100,000
+     - Decision: PROCEED with 90% confidence based on historical availability
+
+  Advanced Workload Distribution with Priority Queuing:
+     - Implements Kubernetes Pod Disruption Budgets (PDBs)
+     - Uses Topology Spread Constraints for resilient scheduling
+     - Divides 23 shots into render tasks with intelligent bin packing
+
+     - Priority queue with GPU-optimized scheduling:
+       * Priority 1: Shots with actors (can't re-render easily) - 40% GPU allocation
+       * Priority 2: VFX shots (can iterate if needed) - 35% GPU allocation
+       * Priority 3: Establishing shots (simplest) - 25% GPU allocation
+
+     - Schedules tasks across 384 GPUs with Karpenter optimization
+     - Estimates with DCGM performance monitoring:
+       * 5 hours: Priority 1 complete (>95% GPU utilization maintained)
+       * 5 hours: Priority 2 complete
+       * 5 hours: Priority 3 complete
+       * 5 hours: Buffer for re-renders and optimization
+
+  Comprehensive Monitoring & Auto-Remediation:
+     - Tracks GPU utilization via DCGM metrics (target >95%)
+     - Prometheus + Grafana dashboards for real-time visibility
+     - Detects failures (crashed renders, OOM errors, CUDA exceptions)
+     - Auto-requeues failed tasks with exponential backoff
+
+     - Spot instance management with intelligent fallback:
+       * Spot instance preemption: 12 GPUs lost at hour 2
+       * Immediately replaces with on-demand instances
+       * Re-renders 3 interrupted shots with priority escalation
+       * Updates bidding strategy based on availability patterns
+
+  Dynamic Cost Optimization with ML-driven Decisions:
+     - At hour 4: Priority 1 & 2 done, ahead of schedule by 15%
+     - ML model predicts remaining work completion in 2 hours
+     - Intelligently scales down to 150 GPUs for Priority 3
+     - Saves ~$5,000 in unused hours while maintaining SLA buffer
+     - Implements consolidation policies for underutilized nodes
+
+  Multi-Tier Storage Management:
+     - Rendered frames: 18TB total distributed across storage tiers
+     - Hot storage (NVMe SSD): Final approved shots (2TB, <1ms access)
+     - Warm storage (SATA SSD): All rendered frames (18TB, 7 days, <10ms access)
+     - Cold storage (Object/Glacier): Raw render caches (50TB, archive, minutes)
+
+     - Advanced lifecycle policies:
+       * Automatic transition based on access patterns
+       * Intelligent prefetching for predicted workflows
+       * Erasure coding optimization (Reed-Solomon 8+4 for warm tier)
+       * Saves $2,000/month in storage costs through tiering
+
+  Energy Efficiency & Carbon Tracking:
+     - 384 GPUs × 6 hours × 400W avg = 6 kWh consumed
+     - Carbon footprint: 369 kg CO₂ (renewable energy DC preferred)
+     - Power Usage Effectiveness (PUE) monitoring: 12 achieved
+     - Dynamic frequency scaling during low-intensity operations
+     - Workload migration to renewable energy zones when possible
+    ↓
+Rendering completes in 7 hours (5% ahead of schedule)
+Total cost: $38,600 (under budget by 10%)
+GPU utilization averaged 3% across the job
+Zero failed renders due to intelligent spot instance management
+    ↓
+Sends completed frames to Quality Assurance Agent with metadata:
+- Performance metrics and cost breakdown
+- GPU utilization analytics for future optimization
+- Storage tier placement recommendations
+
+---
+
+DATA WRANGLING AGENT:
+
+Mid-production, Performance Agent flags issue:
+  "Character Sarah's subtle anger expressions not realistic enough"
+    ↓
+Data Wrangling Agent:
+  Advanced Gap Detection with ML Analytics:
+     - Analyzes current training data with automated quality metrics
+     - Facial expression dataset: 100K images across 7 emotion categories
+     - Anger subset: 8K images with intensity distribution analysis
+     - "Subtle anger" (intensity 3-5/10): Only 400 images ⚠️
+     - Statistical significance testing reveals insufficient variance
+     - GAP IDENTIFIED with 95% confidence interval
+
+  Intelligent Data Generation Strategy with Cost Analysis:
+     - Option A: Record real actors (estimated: $50K, 2 weeks timeline)
+     - Option B: Synthetic generation (estimated: $2K, 2 days timeline)
+     - Option C: Transfer learning from similar datasets (hybrid approach)
+     - Decision: Synthetic + validation with quality gates
+     - MLOps pipeline triggers automated generation workflow
+
+  Advanced Synthetic Data Creation with Albumentations:
+     - Uses Digital Human Agent's FACS-compliant face rig
+     - Procedurally generates expressions with anatomical accuracy:
+       * Eyebrow: Slight furrow (Action Unit 4, blend shape 3-5)
+       * Jaw: Tension (masseter flex 4, temporal muscle activation)
+       * Lips: Pressed (compression 6, depressor labii activation)
+       * Eyes: Micro-squint (2-4, orbicularis oculi engagement)
+
+     - Albumentations augmentation pipeline with 70+ transforms:
+       * Geometric: RandomRotation(limit=15), HorizontalFlip(p=3)
+       * Color: RandomBrightnessContrast(p=7), HueSaturationValue
+       * Quality: JPEG compression simulation, Gaussian noise
+       * Spatial: Affine transformations preserving facial landmarks
+
+     - Generates 5,000 synthetic images with controlled variations:
+       * Lighting: 12 different setups (studio, natural, dramatic)
+       * Camera angles: 15-degree increments, ±30 degrees
+       * Head poses: Euler angles within realistic ranges
+       * Skin tones: Photorealistic diversity across ethnicities
+       * Age variations: 18-65 years with appropriate aging effects
+
+  Multi-Stage Data Validation with Quality Gates:
+     - Human review via distributed workforce (Amazon Mechanical Turk):
+       * Shows 500 random samples to 3 reviewers each
+       * Question: "Rate realism and emotional accuracy (1-5 scale)"
+       * Inter-annotator agreement calculated (Krippendorff's α > 7)
+       * Results: 2/5 average realism, 0/5 emotional accuracy
+       * Quality threshold: >0 average (PASSED)
+
+     - Automated validation with ensemble models:
+       * FER2013-trained emotion classifier: 89% accuracy on validation
+       * Real vs Synthetic discriminator: Flags 23 obvious fakes (46%)
+       * Facial landmark consistency checker: 7% anatomical validity
+       * Perceptual quality metrics: LPIPS, SSIM scores within bounds
+       * Removes flagged samples, retains 4,777 validated images
+
+  MLOps-Driven Fine-Tuning with Continuous Integration:
+     - Adds 4,777 validated images to curated training set
+     - Implements data versioning with DVC (Data Version Control)
+     - Updates model registry with new dataset version metadata
+
+     - Automated fine-tuning pipeline using Vertex AI:
+       * Base model: EfficientNet-B5 trained on 100K facial images
+       * New data integration: 4,777 images (8% addition)
+       * Training configuration: AdamW optimizer, 1e-4 learning rate
+       * Infrastructure: 8x NVIDIA A100 GPUs, 2 hours total training
+       * Automated early stopping based on validation loss plateau
+
+     - Comprehensive model validation:
+       * Hold-out test set: 1,000 manually curated subtle anger images
+       * A/B testing framework for performance comparison
+       * Old model subtle anger: 72% accuracy, 83 F1-score
+       * New model subtle anger: 91% accuracy, 94 F1-score ✓
+       * Overall emotion recognition: 2% (vs 0% baseline)
+       * No degradation in other emotion categories confirmed
+
+  Automated Production Deployment with Blue-Green Strategy:
+     - Model artifact versioning and lineage tracking
+     - Containerized deployment with Kubernetes rolling updates
+     - Blue-green deployment strategy for zero-downtime transition
+     - Real-time monitoring of inference latency and accuracy
+
+     - Production integration:
+       * Swaps old model for new model using feature flags
+       * Canary deployment: 10% → 50% → 100% traffic over 2 hours
+       * Performance monitoring: 5% uptime maintained
+       * Inference time: 15ms average (within SLA)
+       * Re-renders 5 shots with Sarah's subtle anger expressions
+       * Director approves new performances with 98% satisfaction score
+
+  Knowledge Management & Continuous Learning:
+     - Logs gap discovery in centralized ML metadata store
+     - Updates global training data repository with new dataset
+     - Creates automated alerts for similar expression gaps
+     - Implements drift detection for expression quality metrics
+
+     - Future optimization triggers:
+       * Similar emotion gaps detected across other characters
+       * Automated retraining schedules based on usage patterns  
+       * Cross-project data sharing with privacy-preserving techniques
+       * Continuous model performance monitoring in production
+    ↓
+Performance quality improved: +19% accuracy in subtle anger recognition
+Director satisfaction: 98% approval rating
+Production continues with enhanced emotional authenticity
+Model registry updated with new benchmark dataset
+```
+
+<#0.5#>
+
+## Code Demo Focus
+- Building Kubernetes GPU auto-scaling with KEDA and DCGM metrics.
+- Implementing multi-cloud spot instance cost optimization algorithms.
+- Creating distributed render queues with priority-based scheduling.
+- Designing storage tiering policies with automated lifecycle management.
+- Building ML-driven data gap detection with statistical validation.
+- Implementing automated model fine-tuning with MLOps integration.
+- Validating synthetic training data with human-in-the-loop quality gates.
+- Deploying Albumentations-based augmentation pipelines at production scale.
+
+# Implementation Solutions
+
+This section outlines detailed guidance for implementing the Computational Infrastructure & Data Wrangling Agents. It maps requirements to open-source frameworks, including architectural recommendations, pros/cons analyses, and integration strategies.
+
+<#0.5#>
+
+## Capability-Framework Mapping Matrix
+
+| Capability              | KEDA                  | Cluster Autoscaler   | MinIO                | Ceph                 | SeaweedFS            | Albumentations       | Spot Instances       | Prometheus/Grafana   |
+|-------------------------|-----------------------|----------------------|----------------------|----------------------|----------------------|----------------------|----------------------|----------------------|
+| **GPU Auto-Scaling**    | ✅ Primary            | ✅ Node-Level        | ❌                   | ❌                   | ❌                   | ❌                   | ✅ Cost Savings      | ✅ Monitoring        |
+| **Cost Optimization**   | ✅ Scale-to-Zero      | ✅ Node Management   | ❌                   | ❌                   | ❌                   | ❌                   | ✅ 60-90% Savings    | ✅ Cost Tracking     |
+| **Storage Tiering**     | ❌                    | ❌                   | ✅ High Performance  | ✅ Enterprise        | ✅ Simple            | ❌                   | ❌                   | ✅ Metrics           |
+| **Data Augmentation**   | ❌                    | ❌                   | ❌                   | ❌                   | ❌                   | ✅ Primary           | ❌                   | ❌                   |
+| **Workload Scheduling** | ✅ Event-Driven       | ✅ Resource-Based    | ❌                   | ❌                   | ❌                   | ❌                   | ✅ Mixed Instances   | ✅ Queue Metrics     |
+
+<#0.5#>
+
+## Infrastructure Agent Implementation
+
+<#0.5#>
+
+### GPU Cluster Auto-Scaling Architecture
+
+#### Primary Framework Stack
+- **KEDA**: A Kubernetes-based event-driven autoscaler that scales containers based on event counts.
+- **Kubernetes Cluster Autoscaler**: Provisions nodes based on resource demand (enabled by default in Gcore Managed Kubernetes).
+- **NVIDIA DCGM**: Exposes GPU metrics via Azure Managed Prometheus for KEDA consumption.
+
+#### Implementation Architecture
+
+```yaml
+# KEDA ScaledObject for GPU-based autoscaling
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: gpu-render-scaler
+spec:
+  scaleTargetRef:
+    name: render-deployment
+  minReplicaCount: 0  # Scale to zero when idle
+  maxReplicaCount: 100
+  triggers:
+  - type: prometheus
+    metadata:
+      serverAddress: http://prometheus-server:9090
+      metricName: gpu_utilization
+      query: avg(DCGM_FI_DEV_GPU_UTIL)
+      threshold: "80"  # Scale up when GPU utilization > 80%
+  - type: prometheus
+    metadata:
+      serverAddress: http://prometheus-server:9090
+      metricName: render_queue_depth
+      query: sum(render_jobs_pending)
+      threshold: "5"   # Scale up when 5+ jobs pending
+```
+
+#### Node Pool Configuration for Multi-Cloud
+
+```bash
+# AWS EKS with mixed instance types and spot instances
+eksctl create nodegroup \
+  --cluster=gpu-cluster \
+  --name=gpu-spot-nodes \
+  --instance-types=p4d.24xlarge,p3.16xlarge \
+  --spot \
+  --asg-access \
+  --nodes-min=0 \
+  --nodes-max=50 \
+  --enable-cluster-autoscaler
+
+# GCP GKE with preemptible instances  
+gcloud container node-pools create gpu-preemptible \
+  --cluster=gpu-cluster \
+  --machine-type=a2-highgpu-8g \
+  --accelerator=type=nvidia-a100-80gb,count=8 \
+  --preemptible \
+  --enable-autoscaling \
+  --min-nodes=0 \
+  --max-nodes=30
+```
+
+#### Pros
+- Fine-grained scaling, including to zero, for event-driven workloads.
+- Excels in scaling large language model (LLM) tasks based on queues.
+- CNCF-graduated project with adapters for various event sources.
+
+#### Cons
+- Long startup times for multi-gigabyte models (30-120 seconds).
+- Requires GPU resources with unpredictable latency and high memory use.
+- Complex configuration for optimal GPU patterns.
+
+#### Integration Points
+- DCGM needs privileged containers and node access.
+- Spot instances require shutdown handling and job migration.
+- Storage must support rapid scaling events.
+
+<#0.5#>
+
+### Multi-Cloud Spot Instance Cost Optimization
+
+#### Framework Implementation
+- **Karpenter (AWS)**: Achieves 35% EC2 cost reduction in three months without performance impact.
+- Multi-cloud orchestration using provider tools.
+
+#### Cost Optimization Strategy
+
+```python
+# Cost optimization controller pseudo-code
+class SpotInstanceOptimizer:
+    def __init__(self):
+        self.aws_pricing = AWSSpotPricing()
+        self.gcp_pricing = GCPPreemptiblePricing() 
+        self.azure_pricing = AzureSpotPricing()
+
+    def select_optimal_provider(self, requirements):
+        """Select cheapest provider for GPU workload"""
+        options = [
+            self.aws_pricing.get_cost(requirements),
+            self.gcp_pricing.get_cost(requirements), 
+            self.azure_pricing.get_cost(requirements)
+        ]
+        return min(options, key=lambda x: hourly_cost)
+
+    def handle_preemption_notice(self, node):
+        """Graceful workload migration on preemption"""
+        # AWS: 2 minutes notice, GCP/Azure: 30 seconds
+        if node.provider == "aws":
+            self.migrate_workload_slow(node, timeout=120)
+        else:
+            self.migrate_workload_fast(node, timeout=30)
+```
+
+#### Spot Instance Availability
+- AWS provides 2 minutes notice; Azure and Google Cloud offer 30 seconds.
+- 2025 Kubernetes Cost Benchmark Report: AWS has higher short-term interruptions; Azure is more stable over 12 hours.
+
+#### Cost Savings Achieved
+- Mixed on-demand/spot clusters save 59%; spot-only save 77%.
+- Up to 90% reduction compared to on-demand.
+
+#### Pros
+- 60-90% savings for fault-tolerant workloads like batch jobs.
+- Kubernetes-native via node pools.
+
+#### Cons
+- Requires automation for interruptions.
+- Sophisticated orchestration needed for production.
+- Availability variability impacts predictability.
+
+<#0.5#>
+
+### Distributed Storage System Implementation
+
+#### Storage Framework Comparison
+
+##### MinIO Implementation
+MinIO requires consistent hardware and careful drive distribution for high availability.
+
+```yaml
+# MinIO StatefulSet with erasure coding
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: minio-cluster
+spec:
+  serviceName: minio-headless
+  replicas: 4
+  template:
+    spec:
+      containers:
+      - name: minio
+        image: minio/minio:latest
+        command: ["minio"]
+        args: 
+        - server
+        - http://minio-{0...3}.minio-headless.default.svc.cluster.local/data{1...2}
+        - --console-address=:9001
+        env:
+        - name: MINIO_ROOT_USER
+          value: "admin"
+        - name: MINIO_ROOT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: minio-secret
+              key: password
+        volumeMounts:
+        - name: data
+          mountPath: /data
+```
+
+##### MinIO Characteristics
+- Reed-Solomon coding with N/2 parity (e.g., 4+4) tolerates failures while maintaining efficiency.
+- S3-compatible for cloud-native apps, ideal for AI/ML data lakes.
+
+##### Use Cases
+- Cloud-native apps, AI/ML workloads, high-throughput object storage.
+
+##### Ceph RGW Implementation
+Ceph RGW uses RADOS for backend storage, supporting policies and replication (8-16 GB RAM per OSD).
+
+```yaml
+# Ceph cluster via Rook operator
+apiVersion: ceph.rook.io/v1
+kind: CephCluster
+metadata:
+  name: rook-ceph
+  namespace: rook-ceph
+spec:
+  cephVersion:
+    image: quay.io/ceph/ceph:v17.5
+  dataDirHostPath: /var/lib/rook
+  mon:
+    count: 3
+    allowMultiplePerNode: false
+  mgr:
+    count: 2
+  storage:
+    useAllNodes: true
+    useAllDevices: false
+    config:
+      osdsPerDevice: "1"
+    nodes:
+    - name: "worker-1"
+      devices:
+      - name: "nvme0n1"
+      - name: "nvme1n1"
+```
+
+##### Ceph Advantages
+- Unified storage (object, block, file) with high scalability.
+- Superior durability, multi-tenancy, and enterprise features over MinIO in production.
+
+##### SeaweedFS Implementation
+Separates metadata and storage for small-file efficiency (2-4 GB RAM per server).
+
+```yaml
+# SeaweedFS deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: seaweedfs-master
+spec:
+  replicas: 3
+  template:
+    spec:
+      containers:
+      - name: seaweedfs-master
+        image: chrislusf/seaweedfs:latest
+        command: ["weed"]
+        args: ["master", "-ip=master", "-port=9333"]
+        ports:
+        - containerPort: 9333
+        - containerPort: 19333
+---
+apiVersion: apps/v1  
+kind: Deployment
+metadata:
+  name: seaweedfs-volume
+spec:
+  replicas: 6
+  template:
+    spec:
+      containers:
+      - name: seaweedfs-volume
+        image: chrislusf/seaweedfs:latest
+        command: ["weed"]
+        args: ["volume", "-mserver=master:9333", "-port=8080"]
+        volumeMounts:
+        - name: data
+          mountPath: /data
+```
+
+##### SeaweedFS Benefits
+- O(1) disk seeks for billions of files; supports cloud tiering.
+- Efficient for small files with low resource needs.
+
+#### Storage System Comparison
+
+| Aspect              | MinIO                  | Ceph RGW               | SeaweedFS              |
+|---------------------|------------------------|------------------------|------------------------|
+| **Performance**     | Highest throughput     | Consistent under load  | Optimized for small files |
+| **S3 Compatibility**| Excellent (95%+)       | Good (80%+)            | Basic (60%+)           |
+| **Resource Usage**  | 4-8 GB RAM/node        | 8-16 GB RAM/OSD        | 2-4 GB RAM/server      |
+| **Complexity**      | Medium                 | High                   | Low                    |
+| **Multi-Tenancy**   | Good                   | Excellent              | Basic                  |
+
+#### Recommended Architecture by Use Case
+- **High-Performance Rendering**: MinIO with NVMe.
+- **Enterprise Multi-Tenant**: Ceph with dedicated hardware.
+- **Simple Deployment/Small Files**: SeaweedFS with minimal resources.
+
+<#0.5#>
+
+## Data Wrangling Agent Implementation
+
+<#0.5#>
+
+### Advanced Data Augmentation with Albumentations
+
+#### Framework Capabilities
+- 70+ augmentations for diverse datasets.
+- Fastest benchmarked library with PyTorch/TensorFlow integration.
+
+#### Production Pipeline Implementation
+
+```python
+import albumentations as A
+from albumentations.pytorch import ToTensorV2
+import cv2
+import torch
+from torch.utils.data import Dataset, DataLoader
+
+class ProductionAugmentationPipeline:
+    def __init__(self, augmentation_strength="medium"):
+        self.train_transform = self._get_train_transforms(augmentation_strength)
+        self.val_transform = self._get_val_transforms()
+
+    def _get_train_transforms(self, strength):
+        if strength == "light":
+            return A.Compose([
+                A.RandomResizedCrop(512, 512),
+                A.HorizontalFlip(p=0.5),
+                A.RandomBrightnessContrast(p=0.3),
+                A.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225]),
+                ToTensorV2()
+            ])
+        elif strength == "medium":
+            return A.Compose([
+                A.RandomResizedCrop(512, 512),
+                A.HorizontalFlip(p=0.5),
+                A.ShiftScaleRotate(shift_limit=0.1, scale_limit=0.2, 
+                                   rotate_limit=30, p=0.5),
+                A.RandomBrightnessContrast(brightness_limit=0.2, 
+                                         contrast_limit=0.2, p=0.5),
+                A.HueSaturationValue(hue_shift_limit=20, 
+                                   sat_shift_limit=30, val_shift_limit=20, p=0.5),
+                A.GaussNoise(var_limit=(10.0, 50.0), p=0.3),
+                A.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225]),
+                ToTensorV2()
+            ])
+        elif strength == "aggressive":
+            return A.Compose([
+                A.RandomResizedCrop(512, 512),
+                A.HorizontalFlip(p=0.5),
+                A.ShiftScaleRotate(shift_limit=0.2, scale_limit=0.3, 
+                                   rotate_limit=45, p=0.7),
+                A.RandomBrightnessContrast(brightness_limit=0.3, 
+                                         contrast_limit=0.3, p=0.7),
+                A.HueSaturationValue(hue_shift_limit=30, 
+                                   sat_shift_limit=40, val_shift_limit=30, p=0.7),
+                A.OneOf([
+                    A.GaussNoise(var_limit=(10.0, 50.0)),
+                    A.GaussianBlur(blur_limit=3),
+                    A.MotionBlur(blur_limit=3)
+                ], p=0.5),
+                A.OneOf([
+                    A.GridDistortion(p=0.5),
+                    A.ElasticTransform(p=0.5)
+                ], p=0.3),
+                A.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225]),
+                ToTensorV2()
+            ])
+
+class FacialExpressionDataset(Dataset):
+    def __init__(self, image_paths, labels, transform=None):
+        self.image_paths = image_paths
+        self.labels = labels
+        self.transform = transform
+
+    def __len__(self):
+        return len(self.image_paths)
+
+    def __getitem__(self, idx):
+        image = cv2.imread(self.image_paths[idx])
+        image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+
+        if self.transform:
+            augmented = self.transform(image=image)
+            image = augmented['image']
+
+        return image, self.labels[idx]
+
+# MLOps integration for continuous data augmentation
+class AugmentationMLOpsController:
+    def __init__(self):
+        self.pipeline = ProductionAugmentationPipeline()
+        self.performance_tracker = {}
+
+    def adaptive_augmentation_strength(self, model_performance, dataset_size):
+        """Adjust augmentation strength based on performance metrics"""
+        if model_performance['val_accuracy'] < 0.85 and dataset_size < 10000:
+            return "aggressive"
+        elif model_performance['val_accuracy'] < 0.90:
+            return "medium"  
+        else:
+            return "light"
+
+    def generate_synthetic_expressions(self, base_images, target_expression, count=1000):
+        """Generate synthetic facial expressions for data gaps"""
+        synthetic_pipeline = A.Compose([
+            A.FacialLandmarkAugmentation(),  # Custom transform for facial features
+            A.RandomBrightnessContrast(brightness_limit=0.1, contrast_limit=0.1, p=0.8),
+            A.HueSaturationValue(hue_shift_limit=5, sat_shift_limit=10, val_shift_limit=10, p=0.6),
+            A.GaussNoise(var_limit=(10.0, 50.0), p=0.4),
+            A.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225]),
+            ToTensorV2()
+        ])
+
+        # Generation logic here
+        return self._apply_expression_specific_augmentation(base_images, target_expression, count)
+```
+
+#### Key Features and Benefits
+- Unified handling of images, masks, boxes, and keypoints with low overhead.
+- 70+ transformations for geometric, color, and noise effects to build robust datasets.
+
+#### Production Considerations
+- Augmentation regularizes models but overuse can harm convergence or mismatch test data.
+
+#### Pros
+- Fastest library with deep learning integrations.
+- Supports complex vision tasks via unified API.
+- Production-tested with validation.
+
+#### Cons
+- Development shifted to AlbumentationsX (dual AGPL/commercial licensing).
+- Requires tuning to prevent over-augmentation.
+- Limited advanced documentation.
+
+<#0.5#>
+
+## Recommended Implementation Stack
+
+<#0.5#>
+
+### Primary Architecture (Production-Ready)
+
+#### Infrastructure Layer
+- **GPU Autoscaling**: KEDA + Cluster Autoscaler + DCGM metrics.
+- **Cost Optimization**: Multi-cloud spot instances (70% on-demand, 30% spot).
+- **Storage**: MinIO for performance; Ceph for enterprise.
+- **Monitoring**: Prometheus + Grafana.
+
+#### Data Wrangling Layer
+- **Augmentation**: Albumentations with path to AlbumentationsX.
+- **MLOps Integration**: Custom controllers for adaptive strategies.
+- **Quality Validation**: Automated with human-in-the-loop.
+- **Synthetic Generation**: Procedural with validation.
+
+<#0.5#>
+
+### Implementation Phases
+
+#### Phase 1: Core Infrastructure (Weeks 1-4)
+- Deploy Kubernetes with GPU pools.
+- Implement basic KEDA for CPU/memory.
+- Set up MinIO with erasure coding.
+- Configure Prometheus stack.
+
+#### Phase 2: Advanced Scaling (Weeks 5-8)
+- Integrate DCGM for GPU metrics.
+- Add spot optimization.
+- Enable multi-cloud support.
+- Deploy tiering policies.
+
+#### Phase 3: Data Pipeline (Weeks 9-12)
+- Implement Albumentations pipelines.
+- Build synthetic generation.
+- Add validation workflows.
+- Integrate MLOps.
+
+#### Phase 4: Production Optimization (Weeks 13-16)
+- Tune performance.
+- Set up monitoring/alerting.
+- Establish recovery procedures.
+- Document and train teams.
+
+<#0.5#>
+
+### Critical Dependencies & Prerequisites
+
+#### Infrastructure Requirements
+- Kubernetes 1.24+ with GPU plugins.
+- NVIDIA drivers and DCGM on GPU nodes.
+- NVMe SSD storage nodes.
+- Multi-cloud networking.
+
+#### Software Dependencies
+- KEDA 2.12+ for GPU features.
+- Prometheus with metrics API.
+- Storage operators (MinIO, Rook).
+- Container registry.
+
+#### Team Skills
+- Kubernetes operations.
+- Storage administration (e.g., Ceph).
+- ML pipeline development.
+- Multi-cloud optimization.
+
+This plan delivers a scalable foundation using proven technologies, with clear migration paths.
+
+<#0.5#>
+
+#### Automated Fine-Tuning Pipeline
+YAML configurations define parameters for adapters like Quantized Low-Rank Adaptation (QLoRA), learning rates, and optimizations. Orchestration selects compute environments, such as Google Cloud Batch, GKE, or Vertex AI Custom Training.
+
+<#0.5#>
+
+#### Continuous Model Evaluation
+Automated evaluation includes hyperparameter tuning and early stopping. It exports top models to registries. Production training uses fresh data with symmetric development-to-production pipelines.
+
+<#0.5#>
+
+#### Data Quality Validation
+The ML model registry centralizes management with naming conventions, metadata, and team collaboration.
+
+## Tools/Frameworks
+
+<#0.5#>
+
+### Infrastructure
+- **Orchestration**: Kubernetes with GPU support on GKE, supporting NVIDIA H100, A100, L4, B200, GB200, and T4 in Standard and Autopilot modes.
+- **Scaling**: Karpenter or Cluster Autoscaler with CAST AI for GPU provisioning and downscaling.
+- **Cloud**: Multi-cloud (AWS, GCP, Azure) with ProsperOps for discount management across spot instances and VMs.
+- **Rendering**: Deadline, OpenCue, or custom queues with ML pipelines via Apache Airflow, Dagster, Prefect, Flyte, or Mage.
+- **Storage**: Ceph, MinIO, or SeaweedFS with lifecycle policies—MinIO for performance, Ceph for enterprise features, SeaweedFS for small files.
+- **Monitoring**: Prometheus + Grafana with Google Cloud Managed Service for Prometheus.
+
+<#0.5#>
+
+### Data Wrangling
+- **Data Curation**: DVC, Weights & Biases with Amazon SageMaker ML Lineage Tracking for artifact audits.
+- **Augmentation**: Albumentations with 70+ transforms, integrating with PyTorch and TensorFlow.
+- **Synthetic Generation**: Blender, Unity Perception for 3D; Stable Diffusion for 2D on Google Cloud for scalable pipelines.
+- **Fine-Tuning**: Hugging Face Trainer, PyTorch Lightning with Axolotl's YAML for QLoRA and optimizations.
+- **Validation**: Great Expectations, custom metrics with Amazon SageMaker Model Monitor for drift detection and alerts.
+
+<#0.5#>
+
+### Interactions
+```
+INFRASTRUCTURE AGENT:
+
+Scene 12 rendering request arrives:
+  - 23 shots, 4K resolution, 512 samples per pixel
+  - Estimated: 2,300 GPU-hours
+  - Deadline: 6 hours
+    ↓
+Infrastructure Agent:
+  Resource Assessment:
+     - Current cluster: 200 GPUs active (80% utilized)
+     - Available: 40 GPUs
+     - Needed: 384 GPUs to hit deadline (2300/6 = 383)
+
+  Auto-Scaling Decision using Advanced Kubernetes GPU Autoscaling:
+     - Leverages KEDA for GPU-based autoscaling with real-time DCGM metrics
+     - Implements cluster autoscaler with target replica count tracking
+     - Eliminates 30-second delay through fast homogeneous scale-up optimization
+     - Launches 344 additional GPUs across multiple availability zones
+
+     - Strategy with Multi-Cloud Cost Arbitrage:
+       * 200 spot instances (70% cheaper, risk: preemption with 30s-2min notice)
+       * 144 on-demand (guaranteed, expensive)
+       * Implements diversification across M, C, R instance families
+       * AWS Node Termination Handler for graceful workload drainage
+
+     - Provider selection with real-time cost optimization:
+       * AWS: 150 p4d.24xlarge (A100s) - $77/hr = $4,915/hr
+       * GCP: 100 a2-highgpu-8g (A100s) - $24/hr = $1,224/hr  
+       * Azure: 94 NCv4 (V100s, cheaper fallback) - $36/hr = $880/hr
+       * Spot instance availability monitoring across regions
+
+     - Total cost for 6 hours: ~$42,714
+     - Compares to deadline penalty: $100,000
+     - Decision: PROCEED with 90% confidence based on historical availability
+
+  Advanced Workload Distribution with Priority Queuing:
+     - Implements Kubernetes Pod Disruption Budgets (PDBs)
+     - Uses Topology Spread Constraints for resilient scheduling
+     - Divides 23 shots into render tasks with intelligent bin packing
+
+     - Priority queue with GPU-optimized scheduling:
+       * Priority 1: Shots with actors (can't re-render easily) - 40% GPU allocation
+       * Priority 2: VFX shots (can iterate if needed) - 35% GPU allocation
+       * Priority 3: Establishing shots (simplest) - 25% GPU allocation
+
+     - Schedules tasks across 384 GPUs with Karpenter optimization
+     - Estimates with DCGM performance monitoring:
+       * 5 hours: Priority 1 complete (>95% GPU utilization maintained)
+       * 5 hours: Priority 2 complete
+       * 5 hours: Priority 3 complete
+       * 5 hours: Buffer for re-renders and optimization
+
+  Comprehensive Monitoring & Auto-Remediation:
+     - Tracks GPU utilization via DCGM metrics (target >95%)
+     - Prometheus + Grafana dashboards for real-time visibility
+     - Detects failures (crashed renders, OOM errors, CUDA exceptions)
+     - Auto-requeues failed tasks with exponential backoff
+
+     - Spot instance management with intelligent fallback:
+       * Spot instance preemption: 12 GPUs lost at hour 2
+       * Immediately replaces with on-demand instances
+       * Re-renders 3 interrupted shots with priority escalation
+       * Updates bidding strategy based on availability patterns
+
+  Dynamic Cost Optimization with ML-driven Decisions:
+     - At hour 4: Priority 1 & 2 done, ahead of schedule by 15%
+     - ML model predicts remaining work completion in 2 hours
+     - Intelligently scales down to 150 GPUs for Priority 3
+     - Saves ~$5,000 in unused hours while maintaining SLA buffer
+     - Implements consolidation policies for underutilized nodes
+
+  Multi-Tier Storage Management:
+     - Rendered frames: 18TB total distributed across storage tiers
+     - Hot storage (NVMe SSD): Final approved shots (2TB, <1ms access)
+     - Warm storage (SATA SSD): All rendered frames (18TB, 7 days, <10ms access)
+     - Cold storage (Object/Glacier): Raw render caches (50TB, archive, minutes)
+
+     - Advanced lifecycle policies:
+       * Automatic transition based on access patterns
+       * Intelligent prefetching for predicted workflows
+       * Erasure coding optimization (Reed-Solomon 8+4 for warm tier)
+       * Saves $2,000/month in storage costs through tiering
+
+  Energy Efficiency & Carbon Tracking:
+     - 384 GPUs × 6 hours × 400W avg = 6 kWh consumed
+     - Carbon footprint: 369 kg CO₂ (renewable energy DC preferred)
+     - Power Usage Effectiveness (PUE) monitoring: 12 achieved
+     - Dynamic frequency scaling during low-intensity operations
+     - Workload migration to renewable energy zones when possible
+    ↓
+Rendering completes in 7 hours (5% ahead of schedule)
+Total cost: $38,600 (under budget by 10%)
+GPU utilization averaged 3% across the job
+Zero failed renders due to intelligent spot instance management
+    ↓
+Sends completed frames to Quality Assurance Agent with metadata:
+- Performance metrics and cost breakdown
+- GPU utilization analytics for future optimization
+- Storage tier placement recommendations
+
+---
+
+DATA WRANGLING AGENT:
+
+Mid-production, Performance Agent flags issue:
+  "Character Sarah's subtle anger expressions not realistic enough"
+    ↓
+Data Wrangling Agent:
+  Advanced Gap Detection with ML Analytics:
+     - Analyzes current training data with automated quality metrics
+     - Facial expression dataset: 100K images across 7 emotion categories
+     - Anger subset: 8K images with intensity distribution analysis
+     - "Subtle anger" (intensity 3-5/10): Only 400 images ⚠️
+     - Statistical significance testing reveals insufficient variance
+     - GAP IDENTIFIED with 95% confidence interval
+
+  Intelligent Data Generation Strategy with Cost Analysis:
+     - Option A: Record real actors (estimated: $50K, 2 weeks timeline)
+     - Option B: Synthetic generation (estimated: $2K, 2 days timeline)
+     - Option C: Transfer learning from similar datasets (hybrid approach)
+     - Decision: Synthetic + validation with quality gates
+     - MLOps pipeline triggers automated generation workflow
+
+  Advanced Synthetic Data Creation with Albumentations:
+     - Uses Digital Human Agent's FACS-compliant face rig
+     - Procedurally generates expressions with anatomical accuracy:
+       * Eyebrow: Slight furrow (Action Unit 4, blend shape 3-5)
+       * Jaw: Tension (masseter flex 4, temporal muscle activation)
+       * Lips: Pressed (compression 6, depressor labii activation)
+       * Eyes: Micro-squint (2-4, orbicularis oculi engagement)
+
+     - Albumentations augmentation pipeline with 70+ transforms:
+       * Geometric: RandomRotation(limit=15), HorizontalFlip(p=3)
+       * Color: RandomBrightnessContrast(p=7), HueSaturationValue
+       * Quality: JPEG compression simulation, Gaussian noise
+       * Spatial: Affine transformations preserving facial landmarks
+
+     - Generates 5,000 synthetic images with controlled variations:
+       * Lighting: 12 different setups (studio, natural, dramatic)
+       * Camera angles: 15-degree increments, ±30 degrees
+       * Head poses: Euler angles within realistic ranges
+       * Skin tones: Photorealistic diversity across ethnicities
+       * Age variations: 18-65 years with appropriate aging effects
+
+  Multi-Stage Data Validation with Quality Gates:
+     - Human review via distributed workforce (Amazon Mechanical Turk):
+       * Shows 500 random samples to 3 reviewers each
+       * Question: "Rate realism and emotional accuracy (1-5 scale)"
+       * Inter-annotator agreement calculated (Krippendorff's α > 7)
+       * Results: 2/5 average realism, 0/5 emotional accuracy
+       * Quality threshold: >0 average (PASSED)
+
+     - Automated validation with ensemble models:
+       * FER2013-trained emotion classifier: 89% accuracy on validation
+       * Real vs Synthetic discriminator: Flags 23 obvious fakes (46%)
+       * Facial landmark consistency checker: 7% anatomical validity
+       * Perceptual quality metrics: LPIPS, SSIM scores within bounds
+       * Removes flagged samples, retains 4,777 validated images
+
+  MLOps-Driven Fine-Tuning with Continuous Integration:
+     - Adds 4,777 validated images to curated training set
+     - Implements data versioning with DVC (Data Version Control)
+     - Updates model registry with new dataset version metadata
+
+     - Automated fine-tuning pipeline using Vertex AI:
+       * Base model: EfficientNet-B5 trained on 100K facial images
+       * New data integration: 4,777 images (8% addition)
+       * Training configuration: AdamW optimizer, 1e-4 learning rate
+       * Infrastructure: 8x NVIDIA A100 GPUs, 2 hours total training
+       * Automated early stopping based on validation loss plateau
+
+     - Comprehensive model validation:
+       * Hold-out test set: 1,000 manually curated subtle anger images
+       * A/B testing framework for performance comparison
+       * Old model subtle anger: 72% accuracy, 83 F1-score
+       * New model subtle anger: 91% accuracy, 94 F1-score ✓
+       * Overall emotion recognition: 2% (vs 0% baseline)
+       * No degradation in other emotion categories confirmed
+
+  Automated Production Deployment with Blue-Green Strategy:
+     - Model artifact versioning and lineage tracking
+     - Containerized deployment with Kubernetes rolling updates
+     - Blue-green deployment strategy for zero-downtime transition
+     - Real-time monitoring of inference latency and accuracy
+
+     - Production integration:
+       * Swaps old model for new model using feature flags
+       * Canary deployment: 10% → 50% → 100% traffic over 2 hours
+       * Performance monitoring: 5% uptime maintained
+       * Inference time: 15ms average (within SLA)
+       * Re-renders 5 shots with Sarah's subtle anger expressions
+       * Director approves new performances with 98% satisfaction score
+
+  Knowledge Management & Continuous Learning:
+     - Logs gap discovery in centralized ML metadata store
+     - Updates global training data repository with new dataset
+     - Creates automated alerts for similar expression gaps
+     - Implements drift detection for expression quality metrics
+
+     - Future optimization triggers:
+       * Similar emotion gaps detected across other characters
+       * Automated retraining schedules based on usage patterns  
+       * Cross-project data sharing with privacy-preserving techniques
+       * Continuous model performance monitoring in production
+    ↓
+Performance quality improved: +19% accuracy in subtle anger recognition
+Director satisfaction: 98% approval rating
+Production continues with enhanced emotional authenticity
+Model registry updated with new benchmark dataset
+```
+
+## Code Demo Focus
+- Building Kubernetes GPU auto-scaling with KEDA and DCGM metrics.
+- Implementing multi-cloud spot instance cost optimization algorithms.
+- Creating distributed render queues with priority-based scheduling.
+- Designing storage tiering policies with automated lifecycle management.
+- Building ML-driven data gap detection with statistical validation.
+- Implementing automated model fine-tuning with MLOps integration.
+- Validating synthetic training data with human-in-the-loop quality gates.
+- Deploying Albumentations-based augmentation pipelines at production scale.
+
+# Implementation Solutions
+
+This section outlines detailed guidance for implementing the Computational Infrastructure & Data Wrangling Agents. It maps requirements to open-source frameworks, including architectural recommendations, pros/cons analyses, and integration strategies.
+
+## Capability-Framework Mapping Matrix
+
+| Capability              | KEDA                  | Cluster Autoscaler   | MinIO                | Ceph                 | SeaweedFS            | Albumentations       | Spot Instances       | Prometheus/Grafana   |
+|-------------------------|-----------------------|----------------------|----------------------|----------------------|----------------------|----------------------|----------------------|----------------------|
+| **GPU Auto-Scaling**    | ✅ Primary            | ✅ Node-Level        | ❌                   | ❌                   | ❌                   | ❌                   | ✅ Cost Savings      | ✅ Monitoring        |
+| **Cost Optimization**   | ✅ Scale-to-Zero      | ✅ Node Management   | ❌                   | ❌                   | ❌                   | ❌                   | ✅ 60-90% Savings    | ✅ Cost Tracking     |
+| **Storage Tiering**     | ❌                    | ❌                   | ✅ High Performance  | ✅ Enterprise        | ✅ Simple            | ❌                   | ❌                   | ✅ Metrics           |
+| **Data Augmentation**   | ❌                    | ❌                   | ❌                   | ❌                   | ❌                   | ✅ Primary           | ❌                   | ❌                   |
+| **Workload Scheduling** | ✅ Event-Driven       | ✅ Resource-Based    | ❌                   | ❌                   | ❌                   | ❌                   | ✅ Mixed Instances   | ✅ Queue Metrics     |
+
+## Infrastructure Agent Implementation
+
+<#0.5#>
+
+### GPU Cluster Auto-Scaling Architecture
+
+<#0.5#>
+
+#### Primary Framework Stack
+- **KEDA**: A Kubernetes-based event-driven autoscaler that scales containers based on event counts.
+- **Kubernetes Cluster Autoscaler**: Provisions nodes based on resource demand (enabled by default in Gcore Managed Kubernetes).
+- **NVIDIA DCGM**: Exposes GPU metrics via Azure Managed Prometheus for KEDA consumption.
+
+<#0.5#>
+
+#### Implementation Architecture
+
+```yaml
+# KEDA ScaledObject for GPU-based autoscaling
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: gpu-render-scaler
+spec:
+  scaleTargetRef:
+    name: render-deployment
+  minReplicaCount: 0  # Scale to zero when idle
+  maxReplicaCount: 100
+  triggers:
+  - type: prometheus
+    metadata:
+      serverAddress: http://prometheus-server:9090
+      metricName: gpu_utilization
+      query: avg(DCGM_FI_DEV_GPU_UTIL)
+      threshold: "80"  # Scale up when GPU utilization > 80%
+  - type: prometheus
+    metadata:
+      serverAddress: http://prometheus-server:9090
+      metricName: render_queue_depth
+      query: sum(render_jobs_pending)
+      threshold: "5"   # Scale up when 5+ jobs pending
+```
+
+<#0.5#>
+
+#### Node Pool Configuration for Multi-Cloud
+
+```bash
+# AWS EKS with mixed instance types and spot instances
+eksctl create nodegroup \
+  --cluster=gpu-cluster \
+  --name=gpu-spot-nodes \
+  --instance-types=p4d.24xlarge,p3.16xlarge \
+  --spot \
+  --asg-access \
+  --nodes-min=0 \
+  --nodes-max=50 \
+  --enable-cluster-autoscaler
+
+# GCP GKE with preemptible instances  
+gcloud container node-pools create gpu-preemptible \
+  --cluster=gpu-cluster \
+  --machine-type=a2-highgpu-8g \
+  --accelerator=type=nvidia-a100-80gb,count=8 \
+  --preemptible \
+  --enable-autoscaling \
+  --min-nodes=0 \
+  --max-nodes=30
+```
+
+<#0.5#>
+
+#### Pros
+- Fine-grained scaling, including to zero, for event-driven workloads.
+- Excels in scaling large language model (LLM) tasks based on queues.
+- CNCF-graduated project with adapters for various event sources.
+
+<#0.5#>
+
+#### Cons
+- Long startup times for multi-gigabyte models (30-120 seconds).
+- Requires GPU resources with unpredictable latency and high memory use.
+- Complex configuration for optimal GPU patterns.
+
+<#0.5#>
+
+#### Integration Points
+- DCGM needs privileged containers and node access.
+- Spot instances require shutdown handling and job migration.
+- Storage must support rapid scaling events.
+
+<#0.5#>
+
+### Multi-Cloud Spot Instance Cost Optimization
+
+<#0.5#>
+
+#### Framework Implementation
+- **Karpenter (AWS)**: Achieves 35% EC2 cost reduction in three months without performance impact.
+- Multi-cloud orchestration using provider tools.
+
+<#0.5#>
+
+#### Cost Optimization Strategy
+
+```python
+# Cost optimization controller pseudo-code
+class SpotInstanceOptimizer:
+    def __init__(self):
+        self.aws_pricing = AWSSpotPricing()
+        self.gcp_pricing = GCPPreemptiblePricing() 
+        self.azure_pricing = AzureSpotPricing()
+
+    def select_optimal_provider(self, requirements):
+        """Select cheapest provider for GPU workload"""
+        options = [
+            self.aws_pricing.get_cost(requirements),
+            self.gcp_pricing.get_cost(requirements), 
+            self.azure_pricing.get_cost(requirements)
+        ]
+        return min(options, key=lambda x: hourly_cost)
+
+    def handle_preemption_notice(self, node):
+        """Graceful workload migration on preemption"""
+        # AWS: 2 minutes notice, GCP/Azure: 30 seconds
+        if node.provider == "aws":
+            self.migrate_workload_slow(node, timeout=120)
+        else:
+            self.migrate_workload_fast(node, timeout=30)
+```
+
+<#0.5#>
+
+#### Spot Instance Availability
+- AWS provides 2 minutes notice; Azure and Google Cloud offer 30 seconds.
+- 2025 Kubernetes Cost Benchmark Report: AWS has higher short-term interruptions; Azure is more stable over 12 hours.
+
+<#0.5#>
+
+#### Cost Savings Achieved
+- Mixed on-demand/spot clusters save 59%; spot-only save 77%.
+- Up to 90% reduction compared to on-demand.
+
+<#0.5#>
+
+#### Pros
+- 60-90% savings for fault-tolerant workloads like batch jobs.
+- Kubernetes-native via node pools.
+
+<#0.5#>
+
+#### Cons
+- Requires automation for interruptions.
+- Sophisticated orchestration needed for production.
+- Availability variability impacts predictability.
+
+<#0.5#>
+
+### Distributed Storage System Implementation
+
+<#0.5#>
+
+#### Storage Framework Comparison
+
+##### MinIO Implementation
+MinIO requires consistent hardware and careful drive distribution for high availability.
+
+```yaml
+# MinIO StatefulSet with erasure coding
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: minio-cluster
+spec:
+  serviceName: minio-headless
+  replicas: 4
+  template:
+    spec:
+      containers:
+      - name: minio
+        image: minio/minio:latest
+        command: ["minio"]
+        args: 
+        - server
+        - http://minio-{0...3}.minio-headless.default.svc.cluster.local/data{1...2}
+        - --console-address=:9001
+        env:
+        - name: MINIO_ROOT_USER
+          value: "admin"
+        - name: MINIO_ROOT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: minio-secret
+              key: password
+        volumeMounts:
+        - name: data
+          mountPath: /data
+```
+
+##### MinIO Characteristics
+- Reed-Solomon coding with N/2 parity (e.g., 4+4) tolerates failures while maintaining efficiency.
+- S3-compatible for cloud-native apps, ideal for AI/ML data lakes.
+
+##### Use Cases
+- Cloud-native apps, AI/ML workloads, high-throughput object storage.
+
+##### Ceph RGW Implementation
+Ceph RGW uses RADOS for backend storage, supporting policies and replication (8-16 GB RAM per OSD).
+
+```yaml
+# Ceph cluster via Rook operator
+apiVersion: ceph.rook.io/v1
+kind: CephCluster
+metadata:
+  name: rook-ceph
+  namespace: rook-ceph
+spec:
+  cephVersion:
+    image: quay.io/ceph/ceph:v17.5
+  dataDirHostPath: /var/lib/rook
+  mon:
+    count: 3
+    allowMultiplePerNode: false
+  mgr:
+    count: 2
+  storage:
+    useAllNodes: true
+    useAllDevices: false
+    config:
+      osdsPerDevice: "1"
+    nodes:
+    - name: "worker-1"
+      devices:
+      - name: "nvme0n1"
+      - name: "nvme1n1"
+```
+
+##### Ceph Advantages
+- Unified storage (object, block, file) with high scalability.
+- Superior durability, multi-tenancy, and enterprise features over MinIO in production.
+
+##### SeaweedFS Implementation
+Separates metadata and storage for small-file efficiency (2-4 GB RAM per server).
+
+```yaml
+# SeaweedFS deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: seaweedfs-master
+spec:
+  replicas: 3
+  template:
+    spec:
+      containers:
+      - name: seaweedfs-master
+        image: chrislusf/seaweedfs:latest
+        command: ["weed"]
+        args: ["master", "-ip=master", "-port=9333"]
+        ports:
+        - containerPort: 9333
+        - containerPort: 19333
+---
+apiVersion: apps/v1  
+kind: Deployment
+metadata:
+  name: seaweedfs-volume
+spec:
+  replicas: 6
+  template:
+    spec:
+      containers:
+      - name: seaweedfs-volume
+        image: chrislusf/seaweedfs:latest
+        command: ["weed"]
+        args: ["volume", "-mserver=master:9333", "-port=8080"]
+        volumeMounts:
+        - name: data
+          mountPath: /data
+```
+
+##### SeaweedFS Benefits
+- O(1) disk seeks for billions of files; supports cloud tiering.
+- Efficient for small files with low resource needs.
+
+<#0.5#>
+
+#### Storage System Comparison
+
+| Aspect              | MinIO                  | Ceph RGW               | SeaweedFS              |
+|---------------------|------------------------|------------------------|------------------------|
+| **Performance**     | Highest throughput     | Consistent under load  | Optimized for small files |
+| **S3 Compatibility**| Excellent (95%+)       | Good (80%+)            | Basic (60%+)           |
+| **Resource Usage**  | 4-8 GB RAM/node        | 8-16 GB RAM/OSD        | 2-4 GB RAM/server      |
+| **Complexity**      | Medium                 | High                   | Low                    |
+| **Multi-Tenancy**   | Good                   | Excellent              | Basic                  |
+
+<#0.5#>
+
+#### Recommended Architecture by Use Case
+- **High-Performance Rendering**: MinIO with NVMe.
+- **Enterprise Multi-Tenant**: Ceph with dedicated hardware.
+- **Simple Deployment/Small Files**: SeaweedFS with minimal resources.
+
+## Data Wrangling Agent Implementation
+
+<#0.5#>
+
+### Advanced Data Augmentation with Albumentations
+
+<#0.5#>
+
+#### Framework Capabilities
+- 70+ augmentations for diverse datasets.
+- Fastest benchmarked library with PyTorch/TensorFlow integration.
+
+<#0.5#>
+
+#### Production Pipeline Implementation
+
+```python
+import albumentations as A
+from albumentations.pytorch import ToTensorV2
+import cv2
+import torch
+from torch.utils.data import Dataset, DataLoader
+
+class ProductionAugmentationPipeline:
+    def __init__(self, augmentation_strength="medium"):
+        self.train_transform = self._get_train_transforms(augmentation_strength)
+        self.val_transform = self._get_val_transforms()
+
+    def _get_train_transforms(self, strength):
+        if strength == "light":
+            return A.Compose([
+                A.RandomResizedCrop(512, 512),
+                A.HorizontalFlip(p=0.5),
+                A.RandomBrightnessContrast(p=0.3),
+                A.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225]),
+                ToTensorV2()
+            ])
+        elif strength == "medium":
+            return A.Compose([
+                A.RandomResizedCrop(512, 512),
+                A.HorizontalFlip(p=0.5),
+                A.ShiftScaleRotate(shift_limit=0.1, scale_limit=0.2, 
+                                   rotate_limit=30, p=0.5),
+                A.RandomBrightnessContrast(brightness_limit=0.2, 
+                                         contrast_limit=0.2, p=0.5),
+                A.HueSaturationValue(hue_shift_limit=20, 
+                                   sat_shift_limit=30, val_shift_limit=20, p=0.5),
+                A.GaussNoise(var_limit=(10.0, 50.0), p=0.3),
+                A.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225]),
+                ToTensorV2()
+            ])
+        elif strength == "aggressive":
+            return A.Compose([
+                A.RandomResizedCrop(512, 512),
+                A.HorizontalFlip(p=0.5),
+                A.ShiftScaleRotate(shift_limit=0.2, scale_limit=0.3, 
+                                   rotate_limit=45, p=0.7),
+                A.RandomBrightnessContrast(brightness_limit=0.3, 
+                                         contrast_limit=0.3, p=0.7),
+                A.HueSaturationValue(hue_shift_limit=30, 
+                                   sat_shift_limit=40, val_shift_limit=30, p=0.7),
+                A.OneOf([
+                    A.GaussNoise(var_limit=(10.0, 50.0)),
+                    A.GaussianBlur(blur_limit=3),
+                    A.MotionBlur(blur_limit=3)
+                ], p=0.5),
+                A.OneOf([
+                    A.GridDistortion(p=0.5),
+                    A.ElasticTransform(p=0.5)
+                ], p=0.3),
+                A.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225]),
+                ToTensorV2()
+            ])
+
+class FacialExpressionDataset(Dataset):
+    def __init__(self, image_paths, labels, transform=None):
+        self.image_paths = image_paths
+        self.labels = labels
+        self.transform = transform
+
+    def __len__(self):
+        return len(self.image_paths)
+
+    def __getitem__(self, idx):
+        image = cv2.imread(self.image_paths[idx])
+        image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+
+        if self.transform:
+            augmented = self.transform(image=image)
+            image = augmented['image']
+
+        return image, self.labels[idx]
+
+# MLOps integration for continuous data augmentation
+class AugmentationMLOpsController:
+    def __init__(self):
+        self.pipeline = ProductionAugmentationPipeline()
+        self.performance_tracker = {}
+
+    def adaptive_augmentation_strength(self, model_performance, dataset_size):
+        """Adjust augmentation strength based on performance metrics"""
+        if model_performance['val_accuracy'] < 0.85 and dataset_size < 10000:
+            return "aggressive"
+        elif model_performance['val_accuracy'] < 0.90:
+            return "medium"  
+        else:
+            return "light"
+
+    def generate_synthetic_expressions(self, base_images, target_expression, count=1000):
+        """Generate synthetic facial expressions for data gaps"""
+        synthetic_pipeline = A.Compose([
+            A.FacialLandmarkAugmentation(),  # Custom transform for facial features
+            A.RandomBrightnessContrast(brightness_limit=0.1, contrast_limit=0.1, p=0.8),
+            A.HueSaturationValue(hue_shift_limit=5, sat_shift_limit=10, val_shift_limit=10, p=0.6),
+            A.GaussNoise(var_limit=(10.0, 50.0), p=0.4),
+            A.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225]),
+            ToTensorV2()
+        ])
+
+        # Generation logic here
+        return self._apply_expression_specific_augmentation(base_images, target_expression, count)
+```
+
+<#0.5#>
+
+#### Key Features and Benefits
+- Unified handling of images, masks, boxes, and keypoints with low overhead.
+- 70+ transformations for geometric, color, and noise effects to build robust datasets.
+
+<#0.5#>
+
+#### Production Considerations
+- Augmentation regularizes models but overuse can harm convergence or mismatch test data.
+
+<#0.5#>
+
+#### Pros
+- Fastest library with deep learning integrations.
+- Supports complex vision tasks via unified API.
+- Production-tested with validation.
+
+<#0.5#>
+
+#### Cons
+- Development shifted to AlbumentationsX (dual AGPL/commercial licensing).
+- Requires tuning to prevent over-augmentation.
+- Limited advanced documentation.
+
+## Recommended Implementation Stack
+
+<#0.5#>
+
+### Primary Architecture (Production-Ready)
+
+<#0.5#>
+
+#### Infrastructure Layer
+- **GPU Autoscaling**: KEDA + Cluster Autoscaler + DCGM metrics.
+- **Cost Optimization**: Multi-cloud spot instances (70% on-demand, 30% spot).
+- **Storage**: MinIO for performance; Ceph for enterprise.
+- **Monitoring**: Prometheus + Grafana.
+
+<#0.5#>
+
+#### Data Wrangling Layer
+- **Augmentation**: Albumentations with path to AlbumentationsX.
+- **MLOps Integration**: Custom controllers for adaptive strategies.
+- **Quality Validation**: Automated with human-in-the-loop.
+- **Synthetic Generation**: Procedural with validation.
+
+<#0.5#>
+
+### Implementation Phases
+
+<#0.5#>
+
+#### Phase 1: Core Infrastructure (Weeks 1-4)
+- Deploy Kubernetes with GPU pools.
+- Implement basic KEDA for CPU/memory.
+- Set up MinIO with erasure coding.
+- Configure Prometheus stack.
+
+<#0.5#>
+
+#### Phase 2: Advanced Scaling (Weeks 5-8)
+- Integrate DCGM for GPU metrics.
+- Add spot optimization.
+- Enable multi-cloud support.
+- Deploy tiering policies.
+
+<#0.5#>
+
+#### Phase 3: Data Pipeline (Weeks 9-12)
+- Implement Albumentations pipelines.
+- Build synthetic generation.
+- Add validation workflows.
+- Integrate MLOps.
+
+<#0.5#>
+
+#### Phase 4: Production Optimization (Weeks 13-16)
+- Tune performance.
+- Set up monitoring/alerting.
+- Establish recovery procedures.
+- Document and train teams.
+
+<#0.5#>
+
+### Critical Dependencies & Prerequisites
+
+<#0.5#>
+
+#### Infrastructure Requirements
+- Kubernetes 1.24+ with GPU plugins.
+- NVIDIA drivers and DCGM on GPU nodes.
+- NVMe SSD storage nodes.
+- Multi-cloud networking.
+
+<#0.5#>
+
+#### Software Dependencies
+- KEDA 2.12+ for GPU features.
+- Prometheus with metrics API.
+- Storage operators (MinIO, Rook).
+- Container registry.
+
+<#0.5#>
+
+#### Team Skills
+- Kubernetes operations.
+- Storage administration (e.g., Ceph).
+- ML pipeline development.
+- Multi-cloud optimization.
+
+This plan delivers a scalable foundation using proven technologies, with clear migration paths.
+
+<#0.5#>
+

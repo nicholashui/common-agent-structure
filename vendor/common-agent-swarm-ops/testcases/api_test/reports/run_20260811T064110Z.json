@@ -1,0 +1,156 @@
+{
+  "started_at": "2026-08-11T06:41:10.427507+00:00",
+  "finished_at": "2026-08-11T06:41:10.941375+00:00",
+  "host": "http://127.0.0.1:8000",
+  "auth": "bearer",
+  "minted_key_id": "tok_74930cba56ba487e",
+  "runner": {
+    "sleep": 0.1,
+    "max_429_retries": 2,
+    "backoff_base": 1.0,
+    "backoff_cap": 30.0,
+    "batch_size": 80,
+    "batch_pause": 5.0,
+    "rate_limit_as_skip": true
+  },
+  "summary": {
+    "agents": 1,
+    "cases_total": 3,
+    "cases_passed": 3,
+    "cases_failed": 0,
+    "cases_skipped_rate_limit": 0,
+    "pass_rate": 1.0,
+    "pass_rate_excluding_rate_limit": 1.0
+  },
+  "agents": {
+    "video.planner": {
+      "passed": 3,
+      "failed": 0,
+      "skipped_rate_limit": 0,
+      "cases": [
+        {
+          "agent_id": "video.planner",
+          "case_id": "tc1",
+          "name": "video.planner offline case 1",
+          "method": "POST",
+          "path": "/api/v1/agent-loops/agents/video.planner/run",
+          "passed": true,
+          "outcome": "pass",
+          "http_status": 200,
+          "duration_ms": 50.1,
+          "attempts": 1,
+          "failures": [],
+          "response_summary": {
+            "keys": [
+              "ok",
+              "run_id",
+              "agent_id",
+              "correlation_id",
+              "status",
+              "needs_hitl",
+              "l1",
+              "l2",
+              "refinement_count",
+              "critiques_emitted",
+              "evidence_refs",
+              "tool_invocations",
+              "phases",
+              "artifact_summary",
+              "notes",
+              "activation_policy",
+              "result",
+              "v3"
+            ],
+            "agent_id": "video.planner",
+            "ok": true,
+            "status": "ok",
+            "run_id": "alr_7e67959ade864874",
+            "has_v3": true
+          }
+        },
+        {
+          "agent_id": "video.planner",
+          "case_id": "tc2",
+          "name": "video.planner offline case 2",
+          "method": "POST",
+          "path": "/api/v1/agent-loops/agents/video.planner/run",
+          "passed": true,
+          "outcome": "pass",
+          "http_status": 200,
+          "duration_ms": 72.0,
+          "attempts": 1,
+          "failures": [],
+          "response_summary": {
+            "keys": [
+              "ok",
+              "run_id",
+              "agent_id",
+              "correlation_id",
+              "status",
+              "needs_hitl",
+              "l1",
+              "l2",
+              "refinement_count",
+              "critiques_emitted",
+              "evidence_refs",
+              "tool_invocations",
+              "phases",
+              "artifact_summary",
+              "notes",
+              "activation_policy",
+              "result",
+              "v3"
+            ],
+            "agent_id": "video.planner",
+            "ok": true,
+            "status": "ok",
+            "run_id": "alr_4d0920ca5e7f45ca",
+            "has_v3": true
+          }
+        },
+        {
+          "agent_id": "video.planner",
+          "case_id": "tc3",
+          "name": "video.planner offline case 3",
+          "method": "POST",
+          "path": "/api/v1/agent-loops/agents/video.planner/run",
+          "passed": true,
+          "outcome": "pass",
+          "http_status": 200,
+          "duration_ms": 88.8,
+          "attempts": 1,
+          "failures": [],
+          "response_summary": {
+            "keys": [
+              "ok",
+              "run_id",
+              "agent_id",
+              "correlation_id",
+              "status",
+              "needs_hitl",
+              "l1",
+              "l2",
+              "refinement_count",
+              "critiques_emitted",
+              "evidence_refs",
+              "tool_invocations",
+              "phases",
+              "artifact_summary",
+              "notes",
+              "activation_policy",
+              "result",
+              "v3"
+            ],
+            "agent_id": "video.planner",
+            "ok": true,
+            "status": "ok",
+            "run_id": "alr_2dce56965df141ab",
+            "has_v3": true
+          }
+        }
+      ]
+    }
+  },
+  "failed_cases": [],
+  "skipped_rate_limit_cases": []
+}

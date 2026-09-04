@@ -5337,7 +5337,7 @@ USER clicks [▶ LAUNCH]
 ## Provenance
 
 - Master roster row va_id=56 from embedded agents.md content above.
-- Deep/extra text from `business/video/corpus/` and `C:\Project\va-agent-swarm`.
+- Deep/extra text from `business/video/corpus/` and `vendor/va-agent-swarm`.
 - Generator: `scripts/business/enrich_video_agent_specs.py`.
 - Upstream project name (historical only): va-agent-swarm.
 
@@ -5515,63 +5515,63 @@ Live primary-source expansion remains a residual for score 100 on S3 where depth
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "故事",
-      "author": "麦基",
+      "title": "\u6545\u4e8b",
+      "author": "\u9ea6\u57fa",
       "isbn13": "9787201076942",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 故事（麦基），ISBN-13 9787201076942"
+      "citation": "ZH: \u6545\u4e8b\uff08\u9ea6\u57fa\uff09\uff0cISBN-13 9787201076942"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "故事的解剖",
-      "author": "繁体麦基",
+      "title": "\u6545\u4e8b\u7684\u89e3\u5256",
+      "author": "\u7e41\u4f53\u9ea6\u57fa",
       "isbn13": "9789862135488",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 故事的解剖（繁体麦基），ISBN-13 9789862135488"
+      "citation": "ZH: \u6545\u4e8b\u7684\u89e3\u5256\uff08\u7e41\u4f53\u9ea6\u57fa\uff09\uff0cISBN-13 9789862135488"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "救猫咪",
+      "title": "\u6551\u732b\u54aa",
       "isbn13": "9787229040727",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 救猫咪，ISBN-13 9787229040727"
+      "citation": "ZH: \u6551\u732b\u54aa\uff0cISBN-13 9787229040727"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "作家之路",
-      "author": "佛格勒",
+      "title": "\u4f5c\u5bb6\u4e4b\u8def",
+      "author": "\u4f5b\u683c\u52d2",
       "isbn13": "9787513320184",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 作家之路（佛格勒），ISBN-13 9787513320184"
+      "citation": "ZH: \u4f5c\u5bb6\u4e4b\u8def\uff08\u4f5b\u683c\u52d2\uff09\uff0cISBN-13 9787513320184"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "千面英雄",
+      "title": "\u5343\u9762\u82f1\u96c4",
       "isbn13": "9787532753871",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 千面英雄，ISBN-13 9787532753871"
+      "citation": "ZH: \u5343\u9762\u82f1\u96c4\uff0cISBN-13 9787532753871"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "电影剧本写作基础",
-      "author": "悉德·菲尔德",
+      "title": "\u7535\u5f71\u5267\u672c\u5199\u4f5c\u57fa\u7840",
+      "author": "\u6089\u5fb7\u00b7\u83f2\u5c14\u5fb7",
       "isbn13": "9787106021238",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 电影剧本写作基础（悉德·菲尔德），ISBN-13 9787106021238"
+      "citation": "ZH: \u7535\u5f71\u5267\u672c\u5199\u4f5c\u57fa\u7840\uff08\u6089\u5fb7\u00b7\u83f2\u5c14\u5fb7\uff09\uff0cISBN-13 9787106021238"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "戏剧写作基础",
-      "author": "埃格里",
+      "title": "\u620f\u5267\u5199\u4f5c\u57fa\u7840",
+      "author": "\u57c3\u683c\u91cc",
       "isbn13": "9787108014504",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 戏剧写作基础（埃格里），ISBN-13 9787108014504"
+      "citation": "ZH: \u620f\u5267\u5199\u4f5c\u57fa\u7840\uff08\u57c3\u683c\u91cc\uff09\uff0cISBN-13 9787108014504"
     },
     {
       "kind": "reference_book",
@@ -5630,34 +5630,34 @@ Live primary-source expansion remains a residual for score 100 on S3 where depth
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "理解媒介",
+      "title": "\u7406\u89e3\u5a92\u4ecb",
       "isbn13": "9787508040318",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 理解媒介，ISBN-13 9787508040318"
+      "citation": "ZH: \u7406\u89e3\u5a92\u4ecb\uff0cISBN-13 9787508040318"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "娱乐至死",
+      "title": "\u5a31\u4e50\u81f3\u6b7b",
       "isbn13": "9787563397648",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 娱乐至死，ISBN-13 9787563397648"
+      "citation": "ZH: \u5a31\u4e50\u81f3\u6b7b\uff0cISBN-13 9787563397648"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "融合文化",
+      "title": "\u878d\u5408\u6587\u5316",
       "isbn13": "9787301162262",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 融合文化，ISBN-13 9787301162262"
+      "citation": "ZH: \u878d\u5408\u6587\u5316\uff0cISBN-13 9787301162262"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "认知盈余",
+      "title": "\u8ba4\u77e5\u76c8\u4f59",
       "isbn13": "9787213044661",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 认知盈余，ISBN-13 9787213044661"
+      "citation": "ZH: \u8ba4\u77e5\u76c8\u4f59\uff0cISBN-13 9787213044661"
     },
     {
       "kind": "reference_book",
@@ -5743,34 +5743,34 @@ Live primary-source expansion remains a residual for score 100 on S3 where depth
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "六顶思考帽",
+      "title": "\u516d\u9876\u601d\u8003\u5e3d",
       "isbn13": "9787508631332",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 六顶思考帽，ISBN-13 9787508631332"
+      "citation": "ZH: \u516d\u9876\u601d\u8003\u5e3d\uff0cISBN-13 9787508631332"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "水平思考",
+      "title": "\u6c34\u5e73\u601d\u8003",
       "isbn13": "9787508622170",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 水平思考，ISBN-13 9787508622170"
+      "citation": "ZH: \u6c34\u5e73\u601d\u8003\uff0cISBN-13 9787508622170"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "产生创意的方法",
+      "title": "\u4ea7\u751f\u521b\u610f\u7684\u65b9\u6cd5",
       "isbn13": "9787220101236",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 产生创意的方法，ISBN-13 9787220101236"
+      "citation": "ZH: \u4ea7\u751f\u521b\u610f\u7684\u65b9\u6cd5\uff0cISBN-13 9787220101236"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "偷师学艺",
+      "title": "\u5077\u5e08\u5b66\u827a",
       "isbn13": "9787550261235",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 偷师学艺，ISBN-13 9787550261235"
+      "citation": "ZH: \u5077\u5e08\u5b66\u827a\uff0cISBN-13 9787550261235"
     }
   ],
   "agent_id": "video.novelty",
@@ -5785,7 +5785,7 @@ Live primary-source expansion remains a residual for score 100 on S3 where depth
     "adopted_at": "2026-07-27T01:30:28.542069+00:00",
     "upstream": "generic-swarm-ops/business/video/agents"
   },
-  "imported_from": "C:\\Project\\common-agent-swarm-ops\\business\\video\\agents\\video.novelty",
+  "imported_from": "vendor/common-agent-swarm-ops/business/video/agents/video.novelty",
   "reference_book_origin": "spec/book_of_knowledge.md",
   "reference_book_note": "Bibliographic references from spec/book_of_knowledge.md. Does not enable network, RAG, T3, plugins, or memory writes."
 }

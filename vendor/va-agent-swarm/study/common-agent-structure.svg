@@ -1,0 +1,259 @@
+<?xml version='1.0' encoding='utf-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 980" role="img">
+  <title id="title">Common AI Agent Structure</title>
+  <desc id="desc">Professional reference diagram showing the common architecture shared by all agents in the video production workflow: orchestration, inputs, agent contract, execution loop, control planes, three-layer quality gates, release package, and feedback loops.</desc>
+  <defs>
+    <style>
+      .bg { fill: #F8FAFC; }
+      .panel { fill: #FFFFFF; stroke: #CBD5E1; stroke-width: 1.5; }
+      .panel-soft { fill: #F8FAFC; stroke: #CBD5E1; stroke-width: 1.5; }
+      .panel-dark { fill: #0F172A; stroke: #0F172A; stroke-width: 1.5; }
+      .panel-blue { fill: #EFF6FF; stroke: #93C5FD; stroke-width: 1.5; }
+      .panel-green { fill: #ECFDF5; stroke: #86EFAC; stroke-width: 1.5; }
+      .panel-amber { fill: #FFFBEB; stroke: #FCD34D; stroke-width: 1.5; }
+      .panel-purple { fill: #F5F3FF; stroke: #C4B5FD; stroke-width: 1.5; }
+      .panel-rose { fill: #FFF1F2; stroke: #FDA4AF; stroke-width: 1.5; }
+      .title { font: 700 26px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; fill: #0F172A; }
+      .subtitle { font: 400 12px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; fill: #475569; }
+      .section { font: 700 10px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; letter-spacing: 1.4px; fill: #64748B; }
+      .h1 { font: 700 15px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; fill: #0F172A; }
+      .h1-dark { font: 700 15px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; fill: #FFFFFF; }
+      .h2 { font: 700 12px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; fill: #0F172A; }
+      .h2w { font: 700 12px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; fill: #FFFFFF; }
+      .body { font: 400 11px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; fill: #334155; }
+      .body-dark { font: 400 11px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; fill: #CBD5E1; }
+      .mono { font: 400 10px ui-monospace, 'SF Mono', Menlo, Consolas, monospace; fill: #475569; }
+      .mono-dark { font: 400 10px ui-monospace, 'SF Mono', Menlo, Consolas, monospace; fill: #CBD5E1; }
+      .badge { font: 700 9px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; letter-spacing: 0.8px; }
+      .small { font: 400 10px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; fill: #64748B; }
+      .footer { font: 400 10px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; fill: #64748B; }
+    </style>
+    <marker id="arrow-slate" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#64748B" />
+    </marker>
+    <marker id="arrow-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2563EB" />
+    </marker>
+    <marker id="arrow-green" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#059669" />
+    </marker>
+    <marker id="arrow-purple" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#7C3AED" />
+    </marker>
+    <marker id="arrow-amber" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#D97706" />
+    </marker>
+    <marker id="arrow-rose" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#E11D48" />
+    </marker>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#0F172A" flood-opacity="0.08" />
+    </filter>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="1440" height="980" />
+
+  <text x="40" y="46" class="title">Common AI Agent Structure</text>
+  <text x="40" y="70" class="subtitle">Reference architecture shared by all agents in the video production workflow:</text>
+  <text x="40" y="86" class="subtitle">governed execution, measurable quality, auditable outputs, and continuous improvement.</text>
+
+  <rect x="1170" y="46" width="220" height="26" rx="13" fill="#0F172A" />
+  <text x="1188" y="63" class="badge" fill="#FFFFFF">COMMON TO ALL AGENTS</text>
+  <text x="1170" y="86" class="small">craft · research · support · orchestration</text>
+
+  <g filter="url(#shadow)">
+    <rect x="28" y="100" width="1384" height="836" rx="20" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.5" />
+  </g>
+
+  <text x="54" y="124" class="section">ORCHESTRATION LAYER</text>
+  <rect x="54" y="136" width="1332" height="86" rx="14" class="panel-soft" />
+
+  <rect x="72" y="152" width="240" height="54" rx="10" class="panel-blue" />
+  <text x="92" y="174" class="h2">PlannerAgent</text>
+  <text x="92" y="194" class="body">scope &amp; task graph</text>
+
+  <rect x="336" y="152" width="240" height="54" rx="10" class="panel-blue" />
+  <text x="356" y="174" class="h2">OrchestratorAgent</text>
+  <text x="356" y="194" class="body">state, retries, fan-out</text>
+
+  <rect x="600" y="152" width="240" height="54" rx="10" class="panel-blue" />
+  <text x="620" y="174" class="h2">RouterAgent</text>
+  <text x="620" y="194" class="body">agent &amp; model selection</text>
+
+  <rect x="864" y="152" width="240" height="54" rx="10" class="panel-blue" />
+  <text x="884" y="174" class="h2">GateKeeperAgent</text>
+  <text x="884" y="194" class="body">phase &amp; release approval</text>
+
+  <rect x="1128" y="152" width="240" height="54" rx="10" class="panel-blue" />
+  <text x="1148" y="174" class="h2">MemoryAgent</text>
+  <text x="1148" y="194" class="body">shared context &amp; recall</text>
+
+  <line x1="312" y1="179" x2="336" y2="179" stroke="#2563EB" stroke-width="2" marker-end="url(#arrow-blue)" />
+  <line x1="576" y1="179" x2="600" y2="179" stroke="#2563EB" stroke-width="2" marker-end="url(#arrow-blue)" />
+  <line x1="840" y1="179" x2="864" y2="179" stroke="#2563EB" stroke-width="2" marker-end="url(#arrow-blue)" />
+  <line x1="1104" y1="179" x2="1128" y2="179" stroke="#2563EB" stroke-width="2" marker-end="url(#arrow-blue)" />
+
+  <text x="54" y="248" class="section">AGENT ENTRY CONDITIONS</text>
+  <text x="392" y="248" class="section">COMMON AGENT CORE</text>
+  <text x="954" y="248" class="section">QUALITY AND RELEASE CONTROL</text>
+
+  <rect x="54" y="260" width="296" height="178" rx="16" class="panel" />
+  <text x="72" y="286" class="h1">Input Package</text>
+  <text x="72" y="308" class="body">Structured brief, phase ticket,</text>
+  <text x="72" y="324" class="body">and artifact manifest.</text>
+  <text x="72" y="346" class="mono">artifact_id | version | parent_assets</text>
+  <text x="72" y="362" class="mono">technical_spec | target_channels</text>
+  <text x="72" y="378" class="mono">rights_and_consent | continuity_state</text>
+  <text x="72" y="394" class="mono">qc_status | provenance_manifest</text>
+  <text x="72" y="418" class="small">Missing required fields block execution</text>
+  <text x="72" y="432" class="small">before any tool use begins.</text>
+
+  <rect x="54" y="450" width="296" height="178" rx="16" class="panel-purple" />
+  <text x="72" y="476" class="h1">Knowledge and Memory</text>
+  <text x="72" y="498" class="body">Licensed corpora, validated references,</text>
+  <text x="72" y="514" class="body">episodic memory, and correction history</text>
+  <text x="72" y="530" class="body">ground each task.</text>
+  <text x="72" y="552" class="body">Retrieval must be traceable, freshness-</text>
+  <text x="72" y="568" class="body">aware, and correction-aware.</text>
+  <text x="72" y="590" class="mono">vector retrieval | summary memory</text>
+  <text x="72" y="604" class="mono">recall filters</text>
+  <text x="72" y="622" class="small">Consistent decisions across revisions.</text>
+
+  <rect x="54" y="640" width="296" height="178" rx="16" class="panel-blue" />
+  <text x="72" y="666" class="h1">Tool and Policy Surface</text>
+  <text x="72" y="688" class="body">MCP tools, model providers, validators,</text>
+  <text x="72" y="704" class="body">and role-specific constitutions define</text>
+  <text x="72" y="720" class="body">what the agent may do and how it is</text>
+  <text x="72" y="736" class="body">scored.</text>
+  <text x="72" y="758" class="mono">generation | editing | validation</text>
+  <text x="72" y="772" class="mono">rubrics | compliance | retry policy</text>
+  <text x="72" y="796" class="small">Least-privilege access and machine-</text>
+  <text x="72" y="810" class="small">readable logs are mandatory.</text>
+
+  <rect x="370" y="260" width="560" height="558" rx="20" class="panel-dark" />
+  <text x="392" y="290" class="h1-dark">Agent Contract and Execution Loop</text>
+  <text x="392" y="310" class="body-dark">The same professional control model applies to every craft, research,</text>
+  <text x="392" y="326" class="body-dark">orchestration, and support agent.</text>
+
+  <rect x="392" y="344" width="516" height="84" rx="14" fill="#111827" stroke="#334155" stroke-width="1.2" />
+  <text x="412" y="368" class="h2w">Identity and Scope</text>
+  <text x="412" y="388" class="mono-dark">canonical_name | semantic_version | category | owner_rubric</text>
+  <text x="412" y="408" class="body-dark">Explicit in-scope responsibilities, out-of-scope boundaries,</text>
+  <text x="412" y="422" class="body-dark">escalation targets, and approval authority.</text>
+
+  <rect x="392" y="448" width="160" height="100" rx="14" fill="#1E293B" stroke="#475569" stroke-width="1.2" />
+  <text x="412" y="472" class="h2w">1. Plan</text>
+  <text x="412" y="492" class="body-dark">Parse the brief and</text>
+  <text x="412" y="506" class="body-dark">select an execution</text>
+  <text x="412" y="520" class="body-dark">path.</text>
+
+  <rect x="570" y="448" width="160" height="100" rx="14" fill="#1E293B" stroke="#475569" stroke-width="1.2" />
+  <text x="590" y="472" class="h2w">2. Act</text>
+  <text x="590" y="492" class="body-dark">Call tools, models,</text>
+  <text x="590" y="506" class="body-dark">and validators.</text>
+
+  <rect x="748" y="448" width="160" height="100" rx="14" fill="#1E293B" stroke="#475569" stroke-width="1.2" />
+  <text x="768" y="472" class="h2w">3. Self-Review</text>
+  <text x="768" y="492" class="body-dark">Score against rubric</text>
+  <text x="768" y="506" class="body-dark">and evidence.</text>
+
+  <line x1="552" y1="498" x2="570" y2="498" stroke="#94A3B8" stroke-width="2" marker-end="url(#arrow-slate)" />
+  <line x1="730" y1="498" x2="748" y2="498" stroke="#94A3B8" stroke-width="2" marker-end="url(#arrow-slate)" />
+  <path d="M 908 498 C 940 498 940 580 850 580 L 470 580 C 420 580 420 558 420 548" fill="none" stroke="#60A5FA" stroke-width="2" marker-end="url(#arrow-blue)" stroke-dasharray="5 4" />
+  <text x="500" y="574" class="small" fill="#93C5FD">bounded revision loop · max retries · escalate on unresolved failure</text>
+
+  <rect x="392" y="598" width="516" height="86" rx="14" fill="#111827" stroke="#334155" stroke-width="1.2" />
+  <text x="412" y="622" class="h2w">Critique, Traceability, and Output Contract</text>
+  <text x="412" y="642" class="mono-dark">CritiqueMessage | decision_log | evidence_refs | revision_notes</text>
+  <text x="412" y="662" class="body-dark">Every output includes machine-readable metadata, rights state,</text>
+  <text x="412" y="676" class="body-dark">continuity deltas, and downstream handoff information.</text>
+
+  <rect x="392" y="704" width="248" height="98" rx="14" fill="#1F2937" stroke="#475569" stroke-width="1.2" />
+  <text x="412" y="728" class="h2w">Provenance and Safety</text>
+  <text x="412" y="748" class="body-dark">C2PA chain, disclosure flags,</text>
+  <text x="412" y="762" class="body-dark">rights checks, and abuse</text>
+  <text x="412" y="776" class="body-dark">screening.</text>
+
+  <rect x="660" y="704" width="248" height="98" rx="14" fill="#1F2937" stroke="#475569" stroke-width="1.2" />
+  <text x="680" y="728" class="h2w">Observability</text>
+  <text x="680" y="748" class="body-dark">Structured logs, state</text>
+  <text x="680" y="762" class="body-dark">transitions, lineage, and</text>
+  <text x="680" y="776" class="body-dark">replay context.</text>
+
+  <rect x="950" y="260" width="436" height="208" rx="16" class="panel" />
+  <text x="970" y="286" class="h1">Three-Layer Quality Gate</text>
+
+  <rect x="970" y="304" width="130" height="148" rx="14" class="panel-blue" />
+  <text x="988" y="328" class="h2">L1 Spec</text>
+  <text x="988" y="350" class="body">Schema, format,</text>
+  <text x="988" y="364" class="body">timing, codec,</text>
+  <text x="988" y="378" class="body">and required</text>
+  <text x="988" y="392" class="body">fields.</text>
+  <text x="988" y="434" class="badge" fill="#1D4ED8">PASS = 100%</text>
+
+  <rect x="1110" y="304" width="130" height="148" rx="14" class="panel-purple" />
+  <text x="1128" y="328" class="h2">L2 Rubric</text>
+  <text x="1128" y="350" class="body">Role-specific</text>
+  <text x="1128" y="364" class="body">craft scoring</text>
+  <text x="1128" y="378" class="body">and evidence-</text>
+  <text x="1128" y="392" class="body">based critique.</text>
+  <text x="1128" y="434" class="badge" fill="#6D28D9">PASS &#8805; 85/100</text>
+
+  <rect x="1250" y="304" width="130" height="148" rx="14" class="panel-green" />
+  <text x="1268" y="328" class="h2">L3 Preference</text>
+  <text x="1268" y="350" class="body">Audience or</text>
+  <text x="1268" y="364" class="body">stakeholder</text>
+  <text x="1268" y="378" class="body">preference vs.</text>
+  <text x="1268" y="392" class="body">baseline.</text>
+  <text x="1268" y="434" class="badge" fill="#047857">PARITY OR SURPASS</text>
+
+  <line x1="1100" y1="378" x2="1110" y2="378" stroke="#64748B" stroke-width="2" marker-end="url(#arrow-slate)" />
+  <line x1="1240" y1="378" x2="1250" y2="378" stroke="#64748B" stroke-width="2" marker-end="url(#arrow-slate)" />
+
+  <rect x="950" y="482" width="436" height="172" rx="16" class="panel-green" />
+  <text x="970" y="508" class="h1">Release Package and Delivery Gate</text>
+  <text x="970" y="530" class="body">Only artifacts that clear quality, compliance, and</text>
+  <text x="970" y="546" class="body">provenance checks can advance to release.</text>
+  <text x="970" y="570" class="mono">artifact + metadata + rights_state + continuity_deltas</text>
+  <text x="970" y="586" class="mono">qc_verdict + target_channels + provenance_manifest</text>
+
+  <rect x="970" y="600" width="188" height="32" rx="10" fill="#DCFCE7" stroke="#22C55E" stroke-width="1.2" />
+  <text x="988" y="620" class="badge" fill="#166534">SIGNED DELIVERY ARTIFACT</text>
+  <rect x="1170" y="600" width="208" height="32" rx="10" fill="#DCFCE7" stroke="#22C55E" stroke-width="1.2" />
+  <text x="1188" y="620" class="badge" fill="#166534">C2PA + AUDITABLE LINEAGE</text>
+
+  <rect x="950" y="668" width="212" height="150" rx="16" class="panel-rose" />
+  <text x="970" y="694" class="h1">Critique &amp; Dispute Flow</text>
+  <text x="970" y="716" class="body">Peer review messages carry</text>
+  <text x="970" y="730" class="body">severity, evidence, rubric</text>
+  <text x="970" y="744" class="body">reference, and resolution</text>
+  <text x="970" y="758" class="body">deadline.</text>
+  <text x="970" y="788" class="mono">blocker | major | minor | nit</text>
+
+  <rect x="1174" y="668" width="212" height="150" rx="16" class="panel-amber" />
+  <text x="1194" y="694" class="h1">Human Escalation</text>
+  <text x="1194" y="716" class="body">Consent, novel legal questions,</text>
+  <text x="1194" y="730" class="body">high-risk publication, festival</text>
+  <text x="1194" y="744" class="body">or classification decisions, and</text>
+  <text x="1194" y="758" class="body">crisis communications.</text>
+  <text x="1194" y="788" class="mono">human approval required</text>
+
+  <line x1="350" y1="342" x2="370" y2="342" stroke="#64748B" stroke-width="2" marker-end="url(#arrow-slate)" />
+  <line x1="350" y1="538" x2="370" y2="538" stroke="#7C3AED" stroke-width="2" marker-end="url(#arrow-purple)" />
+  <line x1="350" y1="728" x2="370" y2="728" stroke="#2563EB" stroke-width="2" marker-end="url(#arrow-blue)" />
+
+  <line x1="930" y1="540" x2="950" y2="540" stroke="#64748B" stroke-width="2" marker-end="url(#arrow-slate)" />
+  <line x1="930" y1="378" x2="950" y2="378" stroke="#64748B" stroke-width="2" marker-end="url(#arrow-slate)" />
+
+  <path d="M 1056 818 C 1056 858 920 858 920 858 L 740 858" fill="none" stroke="#E11D48" stroke-width="2" marker-end="url(#arrow-rose)" stroke-dasharray="5 4" />
+  <path d="M 1280 818 C 1280 858 1100 858 1100 858 L 1100 870" fill="none" stroke="#D97706" stroke-width="2" marker-end="url(#arrow-amber)" stroke-dasharray="5 4" />
+  <path d="M 720 870 L 720 818" fill="none" stroke="#7C3AED" stroke-width="2" marker-end="url(#arrow-purple)" stroke-dasharray="6 4" />
+  <text x="500" y="852" class="small" fill="#7C3AED">learning loop · feeds back into planning, retrieval, and policy</text>
+
+  <text x="54" y="858" class="section">CONTINUOUS IMPROVEMENT</text>
+  <rect x="54" y="870" width="1332" height="46" rx="14" class="panel-purple" />
+  <text x="72" y="890" class="body">Operational telemetry, benchmark regressions, red-team findings, expert corrections, and post-launch outcomes</text>
+  <text x="72" y="906" class="body">feed prompt updates, retraining, rerender rules, and process refinements.</text>
+
+  <text x="40" y="958" class="footer">Source: ai_agent_video_production_workflow.md — runtime architecture, handoff contract, critique protocol, quality gates, provenance, and continuous learning.</text>
+</svg>

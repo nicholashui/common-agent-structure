@@ -3533,7 +3533,7 @@ Step 8: POST-RELEASE (optional)
 ## Provenance
 
 - Master roster row va_id=15 from embedded agents.md content above.
-- Deep/extra text from `business/video/corpus/` and `C:\Project\va-agent-swarm`.
+- Deep/extra text from `business/video/corpus/` and `vendor/va-agent-swarm`.
 - Generator: `scripts/business/enrich_video_agent_specs.py`.
 - Upstream project name (historical only): va-agent-swarm.
 
@@ -3680,42 +3680,42 @@ Omitted here; same document as `SPEC.md` above.
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "六顶思考帽",
+      "title": "\u516d\u9876\u601d\u8003\u5e3d",
       "isbn13": "9787508631332",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 六顶思考帽，ISBN-13 9787508631332"
+      "citation": "ZH: \u516d\u9876\u601d\u8003\u5e3d\uff0cISBN-13 9787508631332"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "水平思考",
+      "title": "\u6c34\u5e73\u601d\u8003",
       "isbn13": "9787508622170",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 水平思考，ISBN-13 9787508622170"
+      "citation": "ZH: \u6c34\u5e73\u601d\u8003\uff0cISBN-13 9787508622170"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "产生创意的方法",
+      "title": "\u4ea7\u751f\u521b\u610f\u7684\u65b9\u6cd5",
       "isbn13": "9787220101236",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 产生创意的方法，ISBN-13 9787220101236"
+      "citation": "ZH: \u4ea7\u751f\u521b\u610f\u7684\u65b9\u6cd5\uff0cISBN-13 9787220101236"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "偷师学艺",
+      "title": "\u5077\u5e08\u5b66\u827a",
       "isbn13": "9787550261235",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 偷师学艺，ISBN-13 9787550261235"
+      "citation": "ZH: \u5077\u5e08\u5b66\u827a\uff0cISBN-13 9787550261235"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "艺术之战",
+      "title": "\u827a\u672f\u4e4b\u6218",
       "isbn13": "9787532753871",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 艺术之战，ISBN-13 9787532753871"
+      "citation": "ZH: \u827a\u672f\u4e4b\u6218\uff0cISBN-13 9787532753871"
     },
     {
       "kind": "reference_book",
@@ -3837,82 +3837,82 @@ Omitted here; same document as `SPEC.md` above.
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "这就是营销",
+      "title": "\u8fd9\u5c31\u662f\u8425\u9500",
       "isbn13": "9787521702330",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 这就是营销，ISBN-13 9787521702330"
+      "citation": "ZH: \u8fd9\u5c31\u662f\u8425\u9500\uff0cISBN-13 9787521702330"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "疯传",
+      "title": "\u75af\u4f20",
       "isbn13": "9787508641238",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 疯传，ISBN-13 9787508641238"
+      "citation": "ZH: \u75af\u4f20\uff0cISBN-13 9787508641238"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "让创意更有黏性",
+      "title": "\u8ba9\u521b\u610f\u66f4\u6709\u9ecf\u6027",
       "isbn13": "9787508641245",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 让创意更有黏性，ISBN-13 9787508641245"
+      "citation": "ZH: \u8ba9\u521b\u610f\u66f4\u6709\u9ecf\u6027\uff0cISBN-13 9787508641245"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "跨越鸿沟",
+      "title": "\u8de8\u8d8a\u9e3f\u6c9f",
       "isbn13": "9787111456780",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 跨越鸿沟，ISBN-13 9787111456780"
+      "citation": "ZH: \u8de8\u8d8a\u9e3f\u6c9f\uff0cISBN-13 9787111456780"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "精益创业",
+      "title": "\u7cbe\u76ca\u521b\u4e1a",
       "isbn13": "9787115293701",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 精益创业，ISBN-13 9787115293701"
+      "citation": "ZH: \u7cbe\u76ca\u521b\u4e1a\uff0cISBN-13 9787115293701"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "一个广告人的自白",
+      "title": "\u4e00\u4e2a\u5e7f\u544a\u4eba\u7684\u81ea\u767d",
       "isbn13": "9787111496182",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 一个广告人的自白，ISBN-13 9787111496182"
+      "citation": "ZH: \u4e00\u4e2a\u5e7f\u544a\u4eba\u7684\u81ea\u767d\uff0cISBN-13 9787111496182"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "文案训练手册",
+      "title": "\u6587\u6848\u8bad\u7ec3\u624b\u518c",
       "isbn13": "9787115351555",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 文案训练手册，ISBN-13 9787115351555"
+      "citation": "ZH: \u6587\u6848\u8bad\u7ec3\u624b\u518c\uff0cISBN-13 9787115351555"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "上瘾",
+      "title": "\u4e0a\u763e",
       "isbn13": "9787508648017",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 上瘾，ISBN-13 9787508648017"
+      "citation": "ZH: \u4e0a\u763e\uff0cISBN-13 9787508648017"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "增长黑客",
+      "title": "\u589e\u957f\u9ed1\u5ba2",
       "isbn13": "9787213066948",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 增长黑客，ISBN-13 9787213066948"
+      "citation": "ZH: \u589e\u957f\u9ed1\u5ba2\uff0cISBN-13 9787213066948"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "参与感",
+      "title": "\u53c2\u4e0e\u611f",
       "isbn13": "9787213055375",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 参与感，ISBN-13 9787213055375"
+      "citation": "ZH: \u53c2\u4e0e\u611f\uff0cISBN-13 9787213055375"
     },
     {
       "kind": "reference_book",
@@ -4034,143 +4034,143 @@ Omitted here; same document as `SPEC.md` above.
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "故事",
-      "author": "麦基",
+      "title": "\u6545\u4e8b",
+      "author": "\u9ea6\u57fa",
       "isbn13": "9787201076942",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 故事（麦基），ISBN-13 9787201076942"
+      "citation": "ZH: \u6545\u4e8b\uff08\u9ea6\u57fa\uff09\uff0cISBN-13 9787201076942"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "故事的解剖",
-      "author": "繁体麦基",
+      "title": "\u6545\u4e8b\u7684\u89e3\u5256",
+      "author": "\u7e41\u4f53\u9ea6\u57fa",
       "isbn13": "9789862135488",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 故事的解剖（繁体麦基），ISBN-13 9789862135488"
+      "citation": "ZH: \u6545\u4e8b\u7684\u89e3\u5256\uff08\u7e41\u4f53\u9ea6\u57fa\uff09\uff0cISBN-13 9789862135488"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "救猫咪",
+      "title": "\u6551\u732b\u54aa",
       "isbn13": "9787229040727",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 救猫咪，ISBN-13 9787229040727"
+      "citation": "ZH: \u6551\u732b\u54aa\uff0cISBN-13 9787229040727"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "作家之路",
-      "author": "佛格勒",
+      "title": "\u4f5c\u5bb6\u4e4b\u8def",
+      "author": "\u4f5b\u683c\u52d2",
       "isbn13": "9787513320184",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 作家之路（佛格勒），ISBN-13 9787513320184"
+      "citation": "ZH: \u4f5c\u5bb6\u4e4b\u8def\uff08\u4f5b\u683c\u52d2\uff09\uff0cISBN-13 9787513320184"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "电影剧本写作基础",
-      "author": "悉德·菲尔德",
+      "title": "\u7535\u5f71\u5267\u672c\u5199\u4f5c\u57fa\u7840",
+      "author": "\u6089\u5fb7\u00b7\u83f2\u5c14\u5fb7",
       "isbn13": "9787106021238",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 电影剧本写作基础（悉德·菲尔德），ISBN-13 9787106021238"
+      "citation": "ZH: \u7535\u5f71\u5267\u672c\u5199\u4f5c\u57fa\u7840\uff08\u6089\u5fb7\u00b7\u83f2\u5c14\u5fb7\uff09\uff0cISBN-13 9787106021238"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "戏剧写作基础",
-      "author": "埃格里",
+      "title": "\u620f\u5267\u5199\u4f5c\u57fa\u7840",
+      "author": "\u57c3\u683c\u91cc",
       "isbn13": "9787108014504",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 戏剧写作基础（埃格里），ISBN-13 9787108014504"
+      "citation": "ZH: \u620f\u5267\u5199\u4f5c\u57fa\u7840\uff08\u57c3\u683c\u91cc\uff09\uff0cISBN-13 9787108014504"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "TRIZ进阶及实战",
-      "author": "赵敏 张武城 王冠殊",
+      "title": "TRIZ\u8fdb\u9636\u53ca\u5b9e\u6218",
+      "author": "\u8d75\u654f \u5f20\u6b66\u57ce \u738b\u51a0\u6b8a",
       "isbn13": "9787111518488",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: TRIZ进阶及实战（赵敏 张武城 王冠殊），ISBN-13 9787111518488"
+      "citation": "ZH: TRIZ\u8fdb\u9636\u53ca\u5b9e\u6218\uff08\u8d75\u654f \u5f20\u6b66\u57ce \u738b\u51a0\u6b8a\uff09\uff0cISBN-13 9787111518488"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "创新思维与TRIZ创新方法",
+      "title": "\u521b\u65b0\u601d\u7ef4\u4e0eTRIZ\u521b\u65b0\u65b9\u6cd5",
       "isbn13": "9787302500117",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 创新思维与TRIZ创新方法，ISBN-13 9787302500117"
+      "citation": "ZH: \u521b\u65b0\u601d\u7ef4\u4e0eTRIZ\u521b\u65b0\u65b9\u6cd5\uff0cISBN-13 9787302500117"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "因果推理：基础与学习算法",
+      "title": "\u56e0\u679c\u63a8\u7406\uff1a\u57fa\u7840\u4e0e\u5b66\u4e60\u7b97\u6cd5",
       "author": "Jonas Peters, Dominik Janzing etc.",
       "isbn13": "9787111640301",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 因果推理：基础与学习算法（Jonas Peters, Dominik Janzing etc.），ISBN-13 9787111640301"
+      "citation": "ZH: \u56e0\u679c\u63a8\u7406\uff1a\u57fa\u7840\u4e0e\u5b66\u4e60\u7b97\u6cd5\uff08Jonas Peters, Dominik Janzing etc.\uff09\uff0cISBN-13 9787111640301"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "如何系统思考",
-      "author": "邱昭良",
+      "title": "\u5982\u4f55\u7cfb\u7edf\u601d\u8003",
+      "author": "\u90b1\u662d\u826f",
       "isbn13": "9787111585893",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 如何系统思考（邱昭良），ISBN-13 9787111585893"
+      "citation": "ZH: \u5982\u4f55\u7cfb\u7edf\u601d\u8003\uff08\u90b1\u662d\u826f\uff09\uff0cISBN-13 9787111585893"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "思维模型",
-      "author": "彼得·霍林斯 (Peter Hollins)",
+      "title": "\u601d\u7ef4\u6a21\u578b",
+      "author": "\u5f7c\u5f97\u00b7\u970d\u6797\u65af (Peter Hollins)",
       "isbn13": "9787515360744",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 思维模型 (彼得·霍林斯 (Peter Hollins))，ISBN-13 9787515360744"
+      "citation": "ZH: \u601d\u7ef4\u6a21\u578b (\u5f7c\u5f97\u00b7\u970d\u6797\u65af (Peter Hollins))\uff0cISBN-13 9787515360744"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "把問題化繁為簡的思考架構圖鑑",
+      "title": "\u628a\u554f\u984c\u5316\u7e41\u70ba\u7c21\u7684\u601d\u8003\u67b6\u69cb\u5716\u9451",
       "isbn13": "9789865070885",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 把問題化繁為簡的思考架構圖鑑，ISBN-13 9789865070885"
+      "citation": "ZH: \u628a\u554f\u984c\u5316\u7e41\u70ba\u7c21\u7684\u601d\u8003\u67b6\u69cb\u5716\u9451\uff0cISBN-13 9789865070885"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "案例解析！超高效心智圖法入門",
-      "author": "孫易新",
+      "title": "\u6848\u4f8b\u89e3\u6790\uff01\u8d85\u9ad8\u6548\u5fc3\u667a\u5716\u6cd5\u5165\u9580",
+      "author": "\u5b6b\u6613\u65b0",
       "isbn13": "9789862729496",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 案例解析！超高效心智圖法入門（孫易新），ISBN-13 9789862729496"
+      "citation": "ZH: \u6848\u4f8b\u89e3\u6790\uff01\u8d85\u9ad8\u6548\u5fc3\u667a\u5716\u6cd5\u5165\u9580\uff08\u5b6b\u6613\u65b0\uff09\uff0cISBN-13 9789862729496"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "模型思维 The Model Thinker",
-      "author": "斯科特·佩奇 Scott E. Page",
+      "title": "\u6a21\u578b\u601d\u7ef4 The Model Thinker",
+      "author": "\u65af\u79d1\u7279\u00b7\u4f69\u5947 Scott E. Page",
       "isbn13": "9787213095436",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 模型思维 The Model Thinker（斯科特·佩奇 Scott E. Page），ISBN-13 9787213095436"
+      "citation": "ZH: \u6a21\u578b\u601d\u7ef4 The Model Thinker\uff08\u65af\u79d1\u7279\u00b7\u4f69\u5947 Scott E. Page\uff09\uff0cISBN-13 9787213095436"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "灰度决策：如何处理复杂、棘手、高风险的难题",
-      "author": "小约瑟夫·巴达拉克",
+      "title": "\u7070\u5ea6\u51b3\u7b56\uff1a\u5982\u4f55\u5904\u7406\u590d\u6742\u3001\u68d8\u624b\u3001\u9ad8\u98ce\u9669\u7684\u96be\u9898",
+      "author": "\u5c0f\u7ea6\u745f\u592b\u00b7\u5df4\u8fbe\u62c9\u514b",
       "isbn13": "9787111584643",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 灰度决策：如何处理复杂、棘手、高风险的难题（小约瑟夫·巴达拉克），ISBN-13 9787111584643"
+      "citation": "ZH: \u7070\u5ea6\u51b3\u7b56\uff1a\u5982\u4f55\u5904\u7406\u590d\u6742\u3001\u68d8\u624b\u3001\u9ad8\u98ce\u9669\u7684\u96be\u9898\uff08\u5c0f\u7ea6\u745f\u592b\u00b7\u5df4\u8fbe\u62c9\u514b\uff09\uff0cISBN-13 9787111584643"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "科学分析--逻辑与科学演绎方法",
-      "author": "周建武",
+      "title": "\u79d1\u5b66\u5206\u6790--\u903b\u8f91\u4e0e\u79d1\u5b66\u6f14\u7ece\u65b9\u6cd5",
+      "author": "\u5468\u5efa\u6b66",
       "isbn13": "9787122371232",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 科学分析--逻辑与科学演绎方法（周建武），ISBN-13 9787122371232"
+      "citation": "ZH: \u79d1\u5b66\u5206\u6790--\u903b\u8f91\u4e0e\u79d1\u5b66\u6f14\u7ece\u65b9\u6cd5\uff08\u5468\u5efa\u6b66\uff09\uff0cISBN-13 9787122371232"
     },
     {
       "kind": "reference_book",
@@ -4183,264 +4183,264 @@ Omitted here; same document as `SPEC.md` above.
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "严密系统设计-方法、趋势与挑战",
-      "author": "【法】【希腊】约瑟夫·希发基思",
+      "title": "\u4e25\u5bc6\u7cfb\u7edf\u8bbe\u8ba1-\u65b9\u6cd5\u3001\u8d8b\u52bf\u4e0e\u6311\u6218",
+      "author": "\u3010\u6cd5\u3011\u3010\u5e0c\u814a\u3011\u7ea6\u745f\u592b\u00b7\u5e0c\u53d1\u57fa\u601d",
       "isbn13": "9787121467653",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 严密系统设计-方法、趋势与挑战（【法】【希腊】约瑟夫·希发基思），ISBN-13 9787121467653"
+      "citation": "ZH: \u4e25\u5bc6\u7cfb\u7edf\u8bbe\u8ba1-\u65b9\u6cd5\u3001\u8d8b\u52bf\u4e0e\u6311\u6218\uff08\u3010\u6cd5\u3011\u3010\u5e0c\u814a\u3011\u7ea6\u745f\u592b\u00b7\u5e0c\u53d1\u57fa\u601d\uff09\uff0cISBN-13 9787121467653"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "TRIZ：产品创新设计",
-      "author": "高常青",
+      "title": "TRIZ\uff1a\u4ea7\u54c1\u521b\u65b0\u8bbe\u8ba1",
+      "author": "\u9ad8\u5e38\u9752",
       "isbn13": "9787111610298",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: TRIZ：产品创新设计（高常青），ISBN-13 9787111610298"
+      "citation": "ZH: TRIZ\uff1a\u4ea7\u54c1\u521b\u65b0\u8bbe\u8ba1\uff08\u9ad8\u5e38\u9752\uff09\uff0cISBN-13 9787111610298"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "架构师启示录-知识模型、落地方法与思维模式",
-      "author": "灵犀",
+      "title": "\u67b6\u6784\u5e08\u542f\u793a\u5f55-\u77e5\u8bc6\u6a21\u578b\u3001\u843d\u5730\u65b9\u6cd5\u4e0e\u601d\u7ef4\u6a21\u5f0f",
+      "author": "\u7075\u7280",
       "isbn13": "9787111749080",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 架构师启示录-知识模型、落地方法与思维模式（灵犀），ISBN-13 9787111749080"
+      "citation": "ZH: \u67b6\u6784\u5e08\u542f\u793a\u5f55-\u77e5\u8bc6\u6a21\u578b\u3001\u843d\u5730\u65b9\u6cd5\u4e0e\u601d\u7ef4\u6a21\u5f0f\uff08\u7075\u7280\uff09\uff0cISBN-13 9787111749080"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "模型思维简化世界的人工智能模型",
-      "author": "龚才春",
+      "title": "\u6a21\u578b\u601d\u7ef4\u7b80\u5316\u4e16\u754c\u7684\u4eba\u5de5\u667a\u80fd\u6a21\u578b",
+      "author": "\u9f9a\u624d\u6625",
       "isbn13": "9787121408984",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 模型思维简化世界的人工智能模型（龚才春），ISBN-13 9787121408984"
+      "citation": "ZH: \u6a21\u578b\u601d\u7ef4\u7b80\u5316\u4e16\u754c\u7684\u4eba\u5de5\u667a\u80fd\u6a21\u578b\uff08\u9f9a\u624d\u6625\uff09\uff0cISBN-13 9787121408984"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "分析思维的准则",
+      "title": "\u5206\u6790\u601d\u7ef4\u7684\u51c6\u5219",
       "isbn13": "9787573917065",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 分析思维的准则，ISBN-13 9787573917065"
+      "citation": "ZH: \u5206\u6790\u601d\u7ef4\u7684\u51c6\u5219\uff0cISBN-13 9787573917065"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "战略思维的六项修炼",
+      "title": "\u6218\u7565\u601d\u7ef4\u7684\u516d\u9879\u4fee\u70bc",
       "isbn13": "9787521773033",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 战略思维的六项修炼，ISBN-13 9787521773033"
+      "citation": "ZH: \u6218\u7565\u601d\u7ef4\u7684\u516d\u9879\u4fee\u70bc\uff0cISBN-13 9787521773033"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "第一性原理：21堂科学通识课",
+      "title": "\u7b2c\u4e00\u6027\u539f\u7406\uff1a21\u5802\u79d1\u5b66\u901a\u8bc6\u8bfe",
       "isbn13": "9787523605103",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 第一性原理：21堂科学通识课，ISBN-13 9787523605103"
+      "citation": "ZH: \u7b2c\u4e00\u6027\u539f\u7406\uff1a21\u5802\u79d1\u5b66\u901a\u8bc6\u8bfe\uff0cISBN-13 9787523605103"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "百知思维模型从模型应用到思维探源",
-      "author": "圆中",
+      "title": "\u767e\u77e5\u601d\u7ef4\u6a21\u578b\u4ece\u6a21\u578b\u5e94\u7528\u5230\u601d\u7ef4\u63a2\u6e90",
+      "author": "\u5706\u4e2d",
       "isbn13": "9787572295386",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 百知思维模型从模型应用到思维探源（圆中），ISBN-13 9787572295386"
+      "citation": "ZH: \u767e\u77e5\u601d\u7ef4\u6a21\u578b\u4ece\u6a21\u578b\u5e94\u7528\u5230\u601d\u7ef4\u63a2\u6e90\uff08\u5706\u4e2d\uff09\uff0cISBN-13 9787572295386"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "100+思维模型合集",
-      "author": "模型思维",
+      "title": "100+\u601d\u7ef4\u6a21\u578b\u5408\u96c6",
+      "author": "\u6a21\u578b\u601d\u7ef4",
       "isbn13": "9787115652201",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 100+思维模型合集（模型思维），ISBN-13 9787115652201"
+      "citation": "ZH: 100+\u601d\u7ef4\u6a21\u578b\u5408\u96c6\uff08\u6a21\u578b\u601d\u7ef4\uff09\uff0cISBN-13 9787115652201"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "穷查理宝典：查理·芒格智慧箴言录（全新增订本）（价值投资圣经，人生智慧宝典。全新升级版发布！97岁的查理•芒格还在不断学习精进 我们怎么...",
+      "title": "\u7a77\u67e5\u7406\u5b9d\u5178\uff1a\u67e5\u7406\u00b7\u8292\u683c\u667a\u6167\u7bb4\u8a00\u5f55\uff08\u5168\u65b0\u589e\u8ba2\u672c\uff09\uff08\u4ef7\u503c\u6295\u8d44\u5723\u7ecf\uff0c\u4eba\u751f\u667a\u6167\u5b9d\u5178\u3002\u5168\u65b0\u5347\u7ea7\u7248\u53d1\u5e03\uff0197\u5c81\u7684\u67e5\u7406\u2022\u8292\u683c\u8fd8\u5728\u4e0d\u65ad\u5b66\u4e60\u7cbe\u8fdb \u6211\u4eec\u600e\u4e48...",
       "isbn13": "9787521730401",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 穷查理宝典：查理·芒格智慧箴言录（全新增订本）（价值投资圣经，人生智慧宝典。全新升级版发布！97岁的查理•芒格还在不断学习精进 我们怎么...，ISBN-13 9787521730401"
+      "citation": "ZH: \u7a77\u67e5\u7406\u5b9d\u5178\uff1a\u67e5\u7406\u00b7\u8292\u683c\u667a\u6167\u7bb4\u8a00\u5f55\uff08\u5168\u65b0\u589e\u8ba2\u672c\uff09\uff08\u4ef7\u503c\u6295\u8d44\u5723\u7ecf\uff0c\u4eba\u751f\u667a\u6167\u5b9d\u5178\u3002\u5168\u65b0\u5347\u7ea7\u7248\u53d1\u5e03\uff0197\u5c81\u7684\u67e5\u7406\u2022\u8292\u683c\u8fd8\u5728\u4e0d\u65ad\u5b66\u4e60\u7cbe\u8fdb \u6211\u4eec\u600e\u4e48...\uff0cISBN-13 9787521730401"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "AI写作：用AI倍速提升写作效率",
-      "author": "邓世超",
+      "title": "AI\u5199\u4f5c\uff1a\u7528AI\u500d\u901f\u63d0\u5347\u5199\u4f5c\u6548\u7387",
+      "author": "\u9093\u4e16\u8d85",
       "isbn13": "9787111760146",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: AI写作：用AI倍速提升写作效率（邓世超），ISBN-13 9787111760146"
+      "citation": "ZH: AI\u5199\u4f5c\uff1a\u7528AI\u500d\u901f\u63d0\u5347\u5199\u4f5c\u6548\u7387\uff08\u9093\u4e16\u8d85\uff09\uff0cISBN-13 9787111760146"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "如何写出好故事 HBO大师写作课",
+      "title": "\u5982\u4f55\u5199\u51fa\u597d\u6545\u4e8b HBO\u5927\u5e08\u5199\u4f5c\u8bfe",
       "isbn13": "9787516827482",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 如何写出好故事 HBO大师写作课，ISBN-13 9787516827482"
+      "citation": "ZH: \u5982\u4f55\u5199\u51fa\u597d\u6545\u4e8b HBO\u5927\u5e08\u5199\u4f5c\u8bfe\uff0cISBN-13 9787516827482"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "给青年编剧的信3.0",
-      "author": "宋方金",
+      "title": "\u7ed9\u9752\u5e74\u7f16\u5267\u7684\u4fe13.0",
+      "author": "\u5b8b\u65b9\u91d1",
       "isbn13": "9787559493965",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 给青年编剧的信3.0（宋方金），ISBN-13 9787559493965"
+      "citation": "ZH: \u7ed9\u9752\u5e74\u7f16\u5267\u7684\u4fe13.0\uff08\u5b8b\u65b9\u91d1\uff09\uff0cISBN-13 9787559493965"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "编剧的艺术",
-      "author": "埃格里",
+      "title": "\u7f16\u5267\u7684\u827a\u672f",
+      "author": "\u57c3\u683c\u91cc",
       "isbn13": "9787550213333",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 编剧的艺术（埃格里），ISBN-13 9787550213333"
+      "citation": "ZH: \u7f16\u5267\u7684\u827a\u672f\uff08\u57c3\u683c\u91cc\uff09\uff0cISBN-13 9787550213333"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "短视频与直播文案写作",
-      "author": "张弘李自海魏坚 主编吴曼刘哲李守勤 副主编",
+      "title": "\u77ed\u89c6\u9891\u4e0e\u76f4\u64ad\u6587\u6848\u5199\u4f5c",
+      "author": "\u5f20\u5f18\u674e\u81ea\u6d77\u9b4f\u575a \u4e3b\u7f16\u5434\u66fc\u5218\u54f2\u674e\u5b88\u52e4 \u526f\u4e3b\u7f16",
       "isbn13": "9787115638649",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 短视频与直播文案写作（张弘李自海魏坚 主编吴曼刘哲李守勤 副主编），ISBN-13 9787115638649"
+      "citation": "ZH: \u77ed\u89c6\u9891\u4e0e\u76f4\u64ad\u6587\u6848\u5199\u4f5c\uff08\u5f20\u5f18\u674e\u81ea\u6d77\u9b4f\u575a \u4e3b\u7f16\u5434\u66fc\u5218\u54f2\u674e\u5b88\u52e4 \u526f\u4e3b\u7f16\uff09\uff0cISBN-13 9787115638649"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "新媒体广告与文案写作(第2版)",
-      "author": "周颖 主编张文杰 主编朱晓虹 副主编王娜 副主编黄伟 副主编",
+      "title": "\u65b0\u5a92\u4f53\u5e7f\u544a\u4e0e\u6587\u6848\u5199\u4f5c(\u7b2c2\u7248)",
+      "author": "\u5468\u9896 \u4e3b\u7f16\u5f20\u6587\u6770 \u4e3b\u7f16\u6731\u6653\u8679 \u526f\u4e3b\u7f16\u738b\u5a1c \u526f\u4e3b\u7f16\u9ec4\u4f1f \u526f\u4e3b\u7f16",
       "isbn13": "9787115648044",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 新媒体广告与文案写作(第2版)（周颖 主编张文杰 主编朱晓虹 副主编王娜 副主编黄伟 副主编），ISBN-13 9787115648044"
+      "citation": "ZH: \u65b0\u5a92\u4f53\u5e7f\u544a\u4e0e\u6587\u6848\u5199\u4f5c(\u7b2c2\u7248)\uff08\u5468\u9896 \u4e3b\u7f16\u5f20\u6587\u6770 \u4e3b\u7f16\u6731\u6653\u8679 \u526f\u4e3b\u7f16\u738b\u5a1c \u526f\u4e3b\u7f16\u9ec4\u4f1f \u526f\u4e3b\u7f16\uff09\uff0cISBN-13 9787115648044"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "小说的骨架：好提纲成就好故事",
-      "author": "[美]凯蒂·维兰德",
+      "title": "\u5c0f\u8bf4\u7684\u9aa8\u67b6\uff1a\u597d\u63d0\u7eb2\u6210\u5c31\u597d\u6545\u4e8b",
+      "author": "[\u7f8e]\u51ef\u8482\u00b7\u7ef4\u5170\u5fb7",
       "isbn13": "9787210099529",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 小说的骨架：好提纲成就好故事（[美]凯蒂·维兰德），ISBN-13 9787210099529"
+      "citation": "ZH: \u5c0f\u8bf4\u7684\u9aa8\u67b6\uff1a\u597d\u63d0\u7eb2\u6210\u5c31\u597d\u6545\u4e8b\uff08[\u7f8e]\u51ef\u8482\u00b7\u7ef4\u5170\u5fb7\uff09\uff0cISBN-13 9787210099529"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "编剧心理学 在剧本中建构冲突（（美）尹迪克）",
+      "title": "\u7f16\u5267\u5fc3\u7406\u5b66 \u5728\u5267\u672c\u4e2d\u5efa\u6784\u51b2\u7a81\uff08\uff08\u7f8e\uff09\u5c39\u8fea\u514b\uff09",
       "isbn13": "9789571161488",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 编剧心理学 在剧本中建构冲突（（美）尹迪克），ISBN-13 9789571161488"
+      "citation": "ZH: \u7f16\u5267\u5fc3\u7406\u5b66 \u5728\u5267\u672c\u4e2d\u5efa\u6784\u51b2\u7a81\uff08\uff08\u7f8e\uff09\u5c39\u8fea\u514b\uff09\uff0cISBN-13 9789571161488"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "救猫咪-小说创作指南",
+      "title": "\u6551\u732b\u54aa-\u5c0f\u8bf4\u521b\u4f5c\u6307\u5357",
       "isbn13": "9787522513003",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 救猫咪-小说创作指南，ISBN-13 9787522513003"
+      "citation": "ZH: \u6551\u732b\u54aa-\u5c0f\u8bf4\u521b\u4f5c\u6307\u5357\uff0cISBN-13 9787522513003"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "救猫咪：电影编剧指南",
+      "title": "\u6551\u732b\u54aa\uff1a\u7535\u5f71\u7f16\u5267\u6307\u5357",
       "isbn13": "9787533963361",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 救猫咪：电影编剧指南，ISBN-13 9787533963361"
+      "citation": "ZH: \u6551\u732b\u54aa\uff1a\u7535\u5f71\u7f16\u5267\u6307\u5357\uff0cISBN-13 9787533963361"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "人物：文本、舞台、银幕角色与卡司设计的艺术（编剧教父罗伯特·麦基“虚构艺术三部曲”完结篇）",
-      "author": "罗伯特·麦基",
+      "title": "\u4eba\u7269\uff1a\u6587\u672c\u3001\u821e\u53f0\u3001\u94f6\u5e55\u89d2\u8272\u4e0e\u5361\u53f8\u8bbe\u8ba1\u7684\u827a\u672f\uff08\u7f16\u5267\u6559\u7236\u7f57\u4f2f\u7279\u00b7\u9ea6\u57fa\u201c\u865a\u6784\u827a\u672f\u4e09\u90e8\u66f2\u201d\u5b8c\u7ed3\u7bc7\uff09",
+      "author": "\u7f57\u4f2f\u7279\u00b7\u9ea6\u57fa",
       "isbn13": "9787533969585",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 人物：文本、舞台、银幕角色与卡司设计的艺术（编剧教父罗伯特·麦基“虚构艺术三部曲”完结篇）（罗伯特·麦基），ISBN-13 9787533969585"
+      "citation": "ZH: \u4eba\u7269\uff1a\u6587\u672c\u3001\u821e\u53f0\u3001\u94f6\u5e55\u89d2\u8272\u4e0e\u5361\u53f8\u8bbe\u8ba1\u7684\u827a\u672f\uff08\u7f16\u5267\u6559\u7236\u7f57\u4f2f\u7279\u00b7\u9ea6\u57fa\u201c\u865a\u6784\u827a\u672f\u4e09\u90e8\u66f2\u201d\u5b8c\u7ed3\u7bc7\uff09\uff08\u7f57\u4f2f\u7279\u00b7\u9ea6\u57fa\uff09\uff0cISBN-13 9787533969585"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "救猫咪2经典电影剧本解析",
+      "title": "\u6551\u732b\u54aa2\u7ecf\u5178\u7535\u5f71\u5267\u672c\u89e3\u6790",
       "isbn13": "9787533964108",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 救猫咪2经典电影剧本解析，ISBN-13 9787533964108"
+      "citation": "ZH: \u6551\u732b\u54aa2\u7ecf\u5178\u7535\u5f71\u5267\u672c\u89e3\u6790\uff0cISBN-13 9787533964108"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "故事的解剖",
-      "author": "羅伯特．麥基(Robert McKee)",
+      "title": "\u6545\u4e8b\u7684\u89e3\u5256",
+      "author": "\u7f85\u4f2f\u7279\uff0e\u9ea5\u57fa(Robert McKee)",
       "isbn13": "9787201094601",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 故事的解剖 (羅伯特．麥基(Robert McKee))，ISBN-13 9787201094601"
+      "citation": "ZH: \u6545\u4e8b\u7684\u89e3\u5256 (\u7f85\u4f2f\u7279\uff0e\u9ea5\u57fa(Robert McKee))\uff0cISBN-13 9787201094601"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "對白的解剖",
+      "title": "\u5c0d\u767d\u7684\u89e3\u5256",
       "isbn13": "9789864898435",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 對白的解剖，ISBN-13 9789864898435"
+      "citation": "ZH: \u5c0d\u767d\u7684\u89e3\u5256\uff0cISBN-13 9789864898435"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "人物的解剖",
+      "title": "\u4eba\u7269\u7684\u89e3\u5256",
       "isbn13": "9789864896257",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 人物的解剖，ISBN-13 9789864896257"
+      "citation": "ZH: \u4eba\u7269\u7684\u89e3\u5256\uff0cISBN-13 9789864896257"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "諾蘭變奏曲",
+      "title": "\u8afe\u862d\u8b8a\u594f\u66f2",
       "isbn13": "9789863844693",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 諾蘭變奏曲，ISBN-13 9789863844693"
+      "citation": "ZH: \u8afe\u862d\u8b8a\u594f\u66f2\uff0cISBN-13 9789863844693"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "作家的灵感宝库",
+      "title": "\u4f5c\u5bb6\u7684\u7075\u611f\u5b9d\u5e93",
       "isbn13": "9787514220155",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 作家的灵感宝库，ISBN-13 9787514220155"
+      "citation": "ZH: \u4f5c\u5bb6\u7684\u7075\u611f\u5b9d\u5e93\uff0cISBN-13 9787514220155"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "发现你的创造力类型",
+      "title": "\u53d1\u73b0\u4f60\u7684\u521b\u9020\u529b\u7c7b\u578b",
       "isbn13": "9787210108061",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 发现你的创造力类型，ISBN-13 9787210108061"
+      "citation": "ZH: \u53d1\u73b0\u4f60\u7684\u521b\u9020\u529b\u7c7b\u578b\uff0cISBN-13 9787210108061"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "畅销作家写作全技巧",
+      "title": "\u7545\u9500\u4f5c\u5bb6\u5199\u4f5c\u5168\u6280\u5de7",
       "isbn13": "9787210092452",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 畅销作家写作全技巧，ISBN-13 9787210092452"
+      "citation": "ZH: \u7545\u9500\u4f5c\u5bb6\u5199\u4f5c\u5168\u6280\u5de7\uff0cISBN-13 9787210092452"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "小说的八百万种写法",
+      "title": "\u5c0f\u8bf4\u7684\u516b\u767e\u4e07\u79cd\u5199\u6cd5",
       "isbn13": "9786263100442",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 小说的八百万种写法，ISBN-13 9786263100442"
+      "citation": "ZH: \u5c0f\u8bf4\u7684\u516b\u767e\u4e07\u79cd\u5199\u6cd5\uff0cISBN-13 9786263100442"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "写小说最重要的十件事",
+      "title": "\u5199\u5c0f\u8bf4\u6700\u91cd\u8981\u7684\u5341\u4ef6\u4e8b",
       "isbn13": "9787210108672",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 写小说最重要的十件事，ISBN-13 9787210108672"
+      "citation": "ZH: \u5199\u5c0f\u8bf4\u6700\u91cd\u8981\u7684\u5341\u4ef6\u4e8b\uff0cISBN-13 9787210108672"
     },
     {
       "kind": "reference_book",
@@ -4454,29 +4454,29 @@ Omitted here; same document as `SPEC.md` above.
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "电影编剧学（修订版）",
-      "author": "汪流",
+      "title": "\u7535\u5f71\u7f16\u5267\u5b66\uff08\u4fee\u8ba2\u7248\uff09",
+      "author": "\u6c6a\u6d41",
       "isbn13": "9787811272406",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 电影编剧学（修订版）（汪流），ISBN-13 9787811272406"
+      "citation": "ZH: \u7535\u5f71\u7f16\u5267\u5b66\uff08\u4fee\u8ba2\u7248\uff09\uff08\u6c6a\u6d41\uff09\uff0cISBN-13 9787811272406"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "实用电影编剧",
-      "author": "张觉明",
+      "title": "\u5b9e\u7528\u7535\u5f71\u7f16\u5267",
+      "author": "\u5f20\u89c9\u660e",
       "isbn13": "9787106029234",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 实用电影编剧（张觉明），ISBN-13 9787106029234"
+      "citation": "ZH: \u5b9e\u7528\u7535\u5f71\u7f16\u5267\uff08\u5f20\u89c9\u660e\uff09\uff0cISBN-13 9787106029234"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "故事片创作六讲",
-      "author": "王竞",
+      "title": "\u6545\u4e8b\u7247\u521b\u4f5c\u516d\u8bb2",
+      "author": "\u738b\u7ade",
       "isbn13": "9787541151323",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 故事片创作六讲（王竞），ISBN-13 9787541151323"
+      "citation": "ZH: \u6545\u4e8b\u7247\u521b\u4f5c\u516d\u8bb2\uff08\u738b\u7ade\uff09\uff0cISBN-13 9787541151323"
     }
   ],
   "agent_id": "video.ideation",
@@ -4491,7 +4491,7 @@ Omitted here; same document as `SPEC.md` above.
     "adopted_at": "2026-07-27T01:30:28.225766+00:00",
     "upstream": "generic-swarm-ops/business/video/agents"
   },
-  "imported_from": "C:\\Project\\common-agent-swarm-ops\\business\\video\\agents\\video.ideation",
+  "imported_from": "vendor/common-agent-swarm-ops/business/video/agents/video.ideation",
   "reference_book_origin": "spec/book_of_knowledge.md",
   "reference_book_note": "Bibliographic references from spec/book_of_knowledge.md. Does not enable network, RAG, T3, plugins, or memory writes."
 }

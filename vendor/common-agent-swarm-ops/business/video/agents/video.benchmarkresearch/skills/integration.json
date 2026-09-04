@@ -1,0 +1,22 @@
+{
+  "skill_id": "video-benchmarkresearch",
+  "agent_id": "video.benchmarkresearch",
+  "kind": "pack_agent_harness",
+  "status": "scaffolded",
+  "prompt_reference": "video.prompt.benchmarkresearch.v1",
+  "rubric_reference": "video.rubric.benchmarkresearch.v1",
+  "patterns": [
+    "ReAct",
+    "Agent Skills"
+  ],
+  "bindings": [
+    "research_agent"
+  ],
+  "entrypoint": {
+    "type": "host_agent_runner",
+    "agent_id": "video.benchmarkresearch"
+  },
+  "fail_closed": true,
+  "generated_by": "improve_agents_from_plan_v1.py",
+  "generated_at": "2026-07-30T14:45:33Z"
+}

@@ -1,0 +1,96 @@
+{
+  "agent_id": "video.trailereditor",
+  "kind": "pack",
+  "cases": [
+    {
+      "id": "tc1",
+      "name": "video.trailereditor offline case 1",
+      "method": "POST",
+      "path": "/api/v1/agent-loops/agents/video.trailereditor/run",
+      "body": {
+        "goal": "Propose cut list and pacing grammar for a 60s retention-first short",
+        "enable_v3": true,
+        "max_steps": 3,
+        "allow_production": false,
+        "allow_network": false
+      },
+      "success_criteria": {
+        "http_status": [
+          200
+        ],
+        "required_keys_any": [
+          "agent_id",
+          "ok",
+          "phases",
+          "v3",
+          "status",
+          "run_id"
+        ],
+        "json_equals": {
+          "agent_id": "video.trailereditor"
+        },
+        "notes": "Offline loop: expect 200 with agent_id match; prefer ok=true or v3/phases present. allow_production/allow_network must stay false."
+      }
+    },
+    {
+      "id": "tc2",
+      "name": "video.trailereditor offline case 2",
+      "method": "POST",
+      "path": "/api/v1/agent-loops/agents/video.trailereditor/run",
+      "body": {
+        "goal": "Design trailer cold-open hooks from day-highlight beats (refs only)",
+        "enable_v3": true,
+        "max_steps": 3,
+        "allow_production": false,
+        "allow_network": false
+      },
+      "success_criteria": {
+        "http_status": [
+          200
+        ],
+        "required_keys_any": [
+          "agent_id",
+          "ok",
+          "phases",
+          "v3",
+          "status",
+          "run_id"
+        ],
+        "json_equals": {
+          "agent_id": "video.trailereditor"
+        },
+        "notes": "Offline loop: expect 200 with agent_id match; prefer ok=true or v3/phases present. allow_production/allow_network must stay false."
+      }
+    },
+    {
+      "id": "tc3",
+      "name": "video.trailereditor offline case 3",
+      "method": "POST",
+      "path": "/api/v1/agent-loops/agents/video.trailereditor/run",
+      "body": {
+        "goal": "Outline VO delivery and mix targets for documentary-style vlog",
+        "enable_v3": true,
+        "max_steps": 2,
+        "allow_production": false,
+        "allow_network": false
+      },
+      "success_criteria": {
+        "http_status": [
+          200
+        ],
+        "required_keys_any": [
+          "agent_id",
+          "ok",
+          "phases",
+          "v3",
+          "status",
+          "run_id"
+        ],
+        "json_equals": {
+          "agent_id": "video.trailereditor"
+        },
+        "notes": "Offline loop: expect 200 with agent_id match; prefer ok=true or v3/phases present. allow_production/allow_network must stay false."
+      }
+    }
+  ]
+}

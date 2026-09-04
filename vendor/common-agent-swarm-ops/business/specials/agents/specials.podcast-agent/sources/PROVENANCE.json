@@ -1,0 +1,16 @@
+{
+  "schema_version": "1.0",
+  "common_agent_id": "specials.podcast-agent",
+  "pack_id": "specials",
+  "mapping_status": "related",
+  "source_documents": [
+    "docs/special_agents_redesign/agents/podcast_agent.md"
+  ],
+  "source_sha256": "f8a76576bd0b39c7a6aa4935532040d2c451b783804195f4149e1e38be761dd6",
+  "configuration_sha256": "4cd649f3291a105509274c087687a1381f14d3b8f72fcce32e056e3c7f3eb21a",
+  "destination_commit": "5460c4b4a33c15286f9fd84b1bc764d755f5bab0",
+  "note": "Self-contained specials agent folder. Pack-level corpus is not required. Design Markdown is untrusted provenance only.",
+  "generated_at": "2026-07-26T14:16:45.966484Z",
+  "reviewed_by": "specials-self-contained-reviewer",
+  "reviewed_at": "2026-07-26T18:00:00Z"
+}

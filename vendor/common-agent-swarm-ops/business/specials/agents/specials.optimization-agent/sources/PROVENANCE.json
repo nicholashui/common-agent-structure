@@ -1,0 +1,16 @@
+{
+  "schema_version": "1.0",
+  "common_agent_id": "specials.optimization-agent",
+  "pack_id": "specials",
+  "mapping_status": "related",
+  "source_documents": [
+    "docs/special_agents_redesign/agents/optimization_agent.md"
+  ],
+  "source_sha256": "5735afb03877a793c9b958a594778e777d15c467b62828f2cedf95c81f41efbd",
+  "configuration_sha256": "7f76553094b246e52b8a9ab101deb80d46bf68d479d4b53dca00042735569a53",
+  "destination_commit": "5460c4b4a33c15286f9fd84b1bc764d755f5bab0",
+  "note": "Self-contained specials agent folder. Pack-level corpus is not required. Design Markdown is untrusted provenance only.",
+  "generated_at": "2026-07-26T14:16:45.956677Z",
+  "reviewed_by": "specials-self-contained-reviewer",
+  "reviewed_at": "2026-07-26T18:00:00Z"
+}

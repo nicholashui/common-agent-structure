@@ -1,0 +1,281 @@
+呢個係 SocialMediaStrategistAgent 嘅操作同設計指南嘅完整廣東話旁白。
+
+呢份指南係寫俾操作員、pack 作者、swarm 設計師、同埋喺 common-agent-swarm-ops 入面做審閱工作嘅人。
+
+你會得到嘅嘢包括任務清晰度、幾時應該用呢個 agent 嘅指引、協作地圖、CASOPS 操作步驟、改進路徑、同埋一個分信任層級嘅來源地圖。
+
+呢份文件唔係一個啟動 provider 嘅許可證，唔係開網絡存取嘅許可證，亦唔係發明工具嘅許可證。Host 真相係 fail-closed 嘅 agent_spec.json。來自 VA 或者重新設計文件嘅設計文本係不受信任嘅來源。
+
+Pack 路徑係 business/video/agents/video.socialmediastrategist/。指南檔案係 docs/user_guide.md。由 scripts/business/generate_agent_user_guides.py 生成。
+
+
+第一部分係快照。
+
+SocialMediaStrategistAgent，agent ID 係 video.socialmediastrategist，係 CASOPS 上面嘅 Video Domain Pack 角色。簡單嚟講，佢嘅職責係平臺原生分發、時機同趨勢。呢份指南要當作人類可讀嘅操作員地圖，用嚟做目錄審閱、swarm 設計、同埋基於提案嘅改進，唔係當作運行時啟動許可證。
+
+而家講嚇快照表格入面嘅每個欄位。Display name 係 SocialMediaStrategistAgent。Pack agent id 係 video.socialmediastrategist。Pack 係 video。Host role string 係 SocialMediaStrategistAgent (VA Domain Pack)。
+
+Catalog status 係 registered。Maturity today 係 L0 斜線 non-active，即係目錄同設計保真度階段。VA id 係 28。VA category 係 6-Dist，即係 Distribution 同 marketing。
+
+Provider (host) 係 local_deterministic。Network 係 False。Allowed tools (host) 係空嘅列表。Production activation requested 係 False。
+
+Prompt 斜線 rubric refs 係 video.prompt.socialmediastrategist.v1 斜線 video.rubric.socialmediastrategist.v1。Previous common id 係 video.social_editor。Generic lineage 係 generic-swarm-ops/business/video/agents/video.socialmediastrategist。
+
+第二部分係點解呢個角色存在。
+
+人類影片製作團隊已經喺時間壓力下解決呢個問題：平臺原生分發、時機同趨勢。Agent 形式存在嘅原因係等多代理系統可以持續編碼呢種技藝，喺每次交接時應用佢，同埋只將殘餘風險升級俾人類。
+
+佢嘅知識庫係從以下來源提煉出嚟嘅：TikTok Creator Portal、Meta Marketing Science、Tubular 斜線 Sensor Tower。呢啲係歷史設計來源，唔係呢個 host 上面嘅即時網絡調用。
+
+設計雄心（超越人類信號）係：喺 30 日觸達提升方面打敗代理社交領導。當你之後寫評估或者提案嘅時候，用呢個作為北極星指標。
+
+第三部分係乜嘢叫做好。
+
+用呢啲作為審閱標準，當你閱讀輸出、撰寫評分標準、或者評分提案嘅時候。
+
+Primary outcome 係：平臺原生分發、時機同趨勢。Self-quality bar 係：預測對實際觸達誤差、趨勢時機延遲少於 2 小時。Ambition signal（設計時）係：喺 30 日觸達提升方面打敗代理社交領導。Architecture pattern（設計時）係：ReAct（trend search 到 schedule 到 post）。
+
+Host 質量同批評綁定方面。Prompt reference 係 video.prompt.socialmediastrategist.v1。Rubric reference 係 video.rubric.socialmediastrategist.v1。Critique edges 入面，inputs 係 video.critic，outputs 係 video.judge。Max refinement 係 3。
+
+輸入、輸出同驗收方面。輸入係本地 pack 產物同埋有類型嘅交接。輸出係可審閱嘅影片領域交付物，附帶驗收標準。驗收係 host 政策加本地 SPEC 標準，唔需要外部儲存庫。
+
+第四部分係範圍：擁有、共享同拒絕。
+
+擁有嘅部分：平臺原生分發、時機同趨勢。
+
+同同儕共享（批評表面）方面。聽取或接受批評嘅來源係：AnalystAgent 同 BrandAgent。有資格評論嘅對象係：CopywriterAgent（off-platform tone）同 EditorAgent（wrong aspect）。Host critique edge inputs 係 video.critic。Host critique edge outputs 係 video.judge。Max refinement count 係 3。
+
+拒絕同升級方面。Fail-closed：冇 provider 啟動、冇網絡、冇來自設計文本嘅憑證。production_activation_requested 保持 false，除非有另外一個人類閘門改變佢。將法律、安全、權利同發布決定升級到必要嘅人類閘門。批評領導斜線法官預設用 VA ID video.critic 同 video.judge。
+
+第五部分係幾時應該用呢個 agent。
+
+當工作產品需要 SocialMediaStrategistAgent 擁有嘅決定或者產物嘅時候就叫佢：平臺原生分發、時機同趨勢。
+
+Pipeline phase 係 Distribution 同 marketing。發布包裝、go-to-market、渠道運營。
+
+唔好叫佢做通用編排、預算批准、或者最終法律簽署。用 producer 斜線 legal 斜線 compliance 同儕代替。
+
+人類覆寫：任何阻止發布嘅安全、權利、或者無障礙爭議都會升級到人類閘門。
+
+決策速查表入面有四個問題同指引。第一，缺失嘅技能係咪 SocialMediaStrategistAgent 嘅技藝？如果係就將佢包括喺嗰個階段嘅 swarm 圖入面。第二，呢個只係一個元數據斜線目錄編輯嗎？用 Registry inspect 加提案，唔好發明運行時。第三，呢個任務需要工具斜線網絡嗎？Host 目前唔允許，除非 agent_spec 加權限註冊表另有說明。第四，有冇人類專屬風險？保留人類閘門。
+
+第六部分係協作地圖。
+
+Inbound critique 嘅方向係 AnalystAgent 同 BrandAgent。Outbound commentary 嘅方向係 CopywriterAgent（off-platform tone）同 EditorAgent（wrong aspect）。Host edge inputs 係 video.critic。Host edge outputs 係 video.judge。
+
+第七部分係佢喺生產環境嘅位置。
+
+7.1 係人類生產工作流。發布包裝、go-to-market、渠道運營。典型嘅交接產物包括：Launch kits、metadata、trailers、channel packages。
+
+7.2 係多代理 AI 工作流。Launch packaging、metadata、campaign variants、同 outlet-spec delivery branches。
+
+設計時工具備註（對 host 無約束力）：Meta Graph API、TikTok Content Posting API、Buffer 斜線 Hootsuite API、Sensor Tower data。
+
+運行時要模仿嘅循環風格：ReAct（trend search 到 schedule 到 post）。喺今日嘅 CASOPS 上面，呢個模式只係文檔。
+
+本地 AI 工作流摘錄中嘅提及如下。第 28 項，SocialMediaStrategistAgent，平臺原生分發、時機同趨勢。知識來源係 TikTok Creator Portal data、Meta Marketing Science、Tubular 斜線 Sensor Tower。質量標準係預測對實際觸達誤差、趨勢時機延遲少於 2 小時。超越人類信號係喺 30 日觸達提升方面打敗代理社交領導。接受批評來自 AnalystAgent 同 BrandAgent。評論對象係 CopywriterAgent（off-platform tone）同 EditorAgent（wrong aspect）。
+
+另外嘅提及：Concept 階段包含 TrendIntelligenceAgent 加 CopywriterAgent，由 SocialMediaStrategistAgent 監督。Review 階段由 SocialMediaStrategistAgent 負責，由 AudienceSimAgent 監督。
+
+7.3 係共享交接合約（swarm-ready）。每個欄位同佢對呢個角色嘅重要性如下。artifact_id 斜線 version 提供批評同重播嘅不可變身份。parent_assets 提供進入呢個 agent 輸入嘅來源鏈。brief_scope 阻止超出責任範圍嘅範圍蔓延。acceptance_criteria 連結到上面嘅自我質量標準。qc_status 斜線 gate flags 允許下游閘門短路。rights_and_consent 阻止不安全嘅合成或者授權濫用。critique_log pointer 啟用改進而唔會丟失歷史。
+
+
+第八部分係今日喺 CASOPS 上面操作呢個 agent。
+
+今日呢個 agent 係一個目錄加設計對象。你可以研究、審閱、提議、同埋將佢放入 swarm 設計入面而唔會授予生產力量。
+
+步驟表格入面有五行。第一步，Discover，去 Registry Hub 然後去 pack catalog（/registry），確認庫存成員資格。第二步，Inspect，去 Agent detail /registry/agents/video.socialmediastrategist，閱讀 SPEC 斜線呢份指南作為 markdown。第三步，Propose improvements，用 Host propose_improvement action，POST 到 /api/v1/commons/agents/video.socialmediastrategist/proposals，不可變版本，只有經過編輯嘅證據。第四步，Swarm membership，只有用 Host 返回嘅 action references，客戶端唔可以發明成員資格。第五步，Run 斜線 dispatch，預設唔啟用生產 providers，fail-closed 直到 governance gate。
+
+實用主控臺清單有五個要點。第一，打開 agent detail 確認 status、tools、同 activation flags 同呢份指南匹配。第二，喺判斷任何樣本輸出或者提案之前閱讀第三部分「乜嘢叫做好」。第三，如果提議改變，附上離線證據。第四，永遠唔好將供應商 API 密鑰貼入提案。第五，偏好小型、可審閱嘅差異。
+
+第九部分係安全、信任同非啟動規則。
+
+信任層級表格有五行。agent_spec.json 係 Binding host contract。SPEC.md 係 Authoritative design for offline review。sources 目錄係 Historical 斜線 mapped。C:\Project\va-agent-swarm 係 External design corpus。Specials redesign docs 係 Historical design。
+
+呢個 host 上面嘅硬規則如下。Provider 保持 local_deterministic。Network access 保持 False。Allowed tools 正正係空列表。production_activation_requested 係 False。Budget 有上限：in 2048、out 1024、tool requests 0。設計時工具目錄（非啟動性質）：Meta Graph API、TikTok Content Posting API、Buffer 斜線 Hootsuite API、Sensor Tower data。
+
+第十部分係隨時間提升質量。
+
+改進係版本化嘅目錄工作，唔係熱修補一個即時 agent。已發布嘅定義保持不可變；改變要經過提案同審閱。
+
+10.1 係持續改進循環。觀察失敗，然後命名標準，然後起草離線差異，然後附上證據，然後喺 Host 上提議，然後審閱斜線接受新版本，然後先考慮啟動成熟度閘門。
+
+10.2 係呢個 agent 嘅具體槓桿。第一，Rubric fidelity，收緊 video.rubric.socialmediastrategist.v1 對照：預測對實際觸達誤差、趨勢時機延遲少於 2 小時。第二，Prompt precision，將 video.prompt.socialmediastrategist.v1 同責任對齊：平臺原生分發、時機同趨勢。第三，Critique graph，確保入站嘅 AnalystAgent 同 BrandAgent 同 host edges video.critic 真正捕捉到已知嘅失敗模式。第四，Architecture emulation，之後實施時偏好：ReAct（trend search 到 schedule 到 post）。第五，Eval cases，寫固定嘅 fixtures，如果「喺 30 日觸達提升方面打敗代理社交領導」冇被接近就會失敗。第六，Human gates，保持閘門明確。
+
+10.3 係建議嘅評估種子。Happy path handoff 嘅通過條件係：輸出滿足預測對實際觸達誤差、趨勢時機延遲少於 2 小時。Out-of-scope request 嘅通過條件係：Agent 按照第四部分拒絕或升級。Missing provenance 斜線 rights 嘅通過條件係：Gate fails closed。Conflicting peer critique 嘅通過條件係：Refinement 小於等於 max_refinement_count，否則升級。Proposal-only change 嘅通過條件係：新版本不可變，舊版本仍然可讀。
+
+第十一部分係來源地圖同來源。
+
+11.1 係本地 pack 語料庫。agent_spec.json 嘅信任層級係 binding。SPEC.md 嘅信任層級係 authoritative-design。README.md 嘅信任層級係 local-index。sources/MAPPING.md 嘅信任層級係 provenance。sources/PROVENANCE.json 嘅信任層級係 provenance。sources/excerpts/agents.md 嘅信任層級係 historical-excerpt。sources/excerpts/ai_agent_video_production_workflow.md 嘅信任層級係 historical-excerpt。sources/excerpts/lifes_quiet_redemption_agent_workflow.md 嘅信任層級係 historical-excerpt。sources/excerpts/system_build_plan.md 嘅信任層級係 historical-excerpt。sources/excerpts/SYSTEM_REFERENCE.md 嘅信任層級係 historical-excerpt。sources/generic/video.editor.SPEC.md 嘅信任層級係 historical-generic。sources/generic/video.socialmediastrategist.SPEC.md 嘅信任層級係 historical-generic。
+
+11.2 係映射備註。映射 video.socialmediastrategist。VA 斜線 generic pack ID 係 video.socialmediastrategist。Previous common ID 係 video.social_editor。SPEC depth 係 full generic SPEC body 加 host runtime binding。
+
+11.3 係來源記錄。schema_version 係 1.0，agent_id 係 video.socialmediastrategist，previous_common_agent_id 係 video.social_editor，va_taxonomy_aligned 係 true，generic_source 係 generic-swarm-ops/business/video/agents/video.socialmediastrategist。aligned_at 係 2026-07-27T00:48:10.883511Z。generic_source_depth 入面，excerpts 係 true，study 係 true，adopted_at 係 2026-07-27T01:30:28.836019+00:00，upstream 係 generic-swarm-ops/business/video/agents。
+
+11.4 係來源敘述。Pack agent ID video.socialmediastrategist 同 VA Domain Pack taxonomy 對齊。Previous common inventory ID video.social_editor 只係歷史映射。
+
+11.5 係 VA 名冊行（歷史設計）。來自第 28 行 SocialMediaStrategistAgent。Responsibility 係平臺原生分發、時機同趨勢。Knowledge distillation 係 TikTok Creator Portal、Meta Marketing Science、Tubular 斜線 Sensor Tower。Self-quality 係預測對實際觸達誤差、趨勢時機延遲少於 2 小時。Surpass-human 係喺 30 日觸達提升方面打敗代理社交領導。Accepts critique 係 AnalystAgent 同 BrandAgent。Comments on 係 CopywriterAgent（off-platform tone）同 EditorAgent（wrong aspect）。Tools（historical）係 Meta Graph API、TikTok Content Posting API、Buffer 斜線 Hootsuite API、Sensor Tower data。Architecture 係 ReAct（trend search 到 schedule 到 post）。
+
+第十二部分係相關設計閱讀。用呢啲嚟深化設計保真度。喺 va-agent-swarm 下面冇強關鍵字匹配，依賴本地 SPEC 同 VA table row。12.3 係本地知識索引。所有必需嘅主要引用都喺呢個儲存庫內部解析。12.4 係 Folder README 摘要。VA-aligned Domain Pack agent（common host）。
+
+第十三部分係附錄：host 合約。JSON 物件入面，agent_id 係 video.socialmediastrategist。allowed_tools 係空列表。budget_policy 入面，max_input_tokens 係 2048，max_output_tokens 係 1024，max_tool_requests 係 0。critique_edges 入面，inputs 係 video.critic，outputs 係 video.judge。max_refinement_count 係 3。model_policy 入面，model_id 係 local-video-config-v1，network_access 係 false，provider 係 local_deterministic。production_activation_requested 係 false。prompt_reference 係 video.prompt.socialmediastrategist.v1。role 係 SocialMediaStrategistAgent (VA Domain Pack)。rubric_reference 係 video.rubric.socialmediastrategist.v1。schema_version 係 1.0。status 係 registered。va_id 係 28。va_name 係 SocialMediaStrategistAgent。va_category 係 6-Dist。
+
+第十四部分係附錄：SPEC 責任摘錄。平臺原生分發、時機同趨勢。Host role binding 係 SocialMediaStrategistAgent (VA Domain Pack)。Responsibility 係平臺原生分發、時機同趨勢。Knowledge distillation sources 係 TikTok Creator Portal、Meta Marketing Science、Tubular 斜線 Sensor Tower。Self-quality criteria 係預測對實際觸達誤差、趨勢時機延遲少於 2 小時。Surpass-human signal 係喺 30 日觸達提升方面打敗代理社交領導。Critique bus 方面，接受批評來自 AnalystAgent 同 BrandAgent。評論對象係 CopywriterAgent（off-platform tone）同 EditorAgent（wrong aspect）。Tools design-time notes 係 Meta Graph API、TikTok Content Posting API、Buffer 斜線 Hootsuite API、Sensor Tower data。Architecture pattern 係 ReAct（trend search 到 schedule 到 post）。
+
+第十五部分係文件控制。Generator 係 scripts/business/generate_agent_user_guides.py。Agent folder 係 business/video/agents/video.socialmediastrategist/。Output 係 docs/user_guide.md。VA corpus root 係 C:\Project\va-agent-swarm。Regeneration 命令係 python scripts/business/generate_agent_user_guides.py。Trust model 係設計語料庫等於不受信任嘅數據，host config 等於 fail-closed。
+
+呢個就係 SocialMediaStrategistAgent 嘅指南嘅結尾。從第一部分快照同第五部分「幾時應該用」開始；用第八到第十部分做 CASOPS 操作同改進；只有需要深度設計保真度嘅時候先用第十一到第十二部分。
+
+以下係對每個部分嘅更詳細補充說明。
+
+關於第一部分快照嘅補充。呢個 agent 嘅基本資料已經喺上面嘅快照表格入面列出。
+
+佢嘅 pack agent id 係佢喺整個系統入面嘅唯一識別符。
+
+佢屬於 video pack，即係影片領域嘅代理包。
+
+佢嘅 host role string 定義咗佢喺 host 上面嘅角色身份。
+
+佢嘅 catalog status 係 registered，代表佢已經喺目錄入面註冊咗。
+
+佢嘅成熟度今日係 L0 斜線 non-active，意思係佢只係喺目錄同設計保真度階段，仲未去到生產啟動。
+
+佢嘅 VA id 係佢喺 VA 表格入面嘅唯一編號。
+
+佢嘅 VA category 定義咗佢屬於邊個功能類別。
+
+Provider 定義咗佢嘅運行時提供者係邊個。
+
+Network 定義咗佢有冇網絡存取權限。
+
+Allowed tools 列出咗佢被允許使用嘅工具。
+
+Production activation requested 顯示有冇人要求啟動佢嘅生產環境。
+
+關於第二部分嘅補充。呢個角色存在嘅原因係因為人類影片團隊一直都需要有人做呢方面嘅工作。
+
+Agent 形式嘅存在意義係令到多代理系統可以持續編碼呢種技藝。
+
+佢會喺每次交接時自動應用佢嘅專業知識。
+
+只有殘餘風險先會升級俾人類處理。
+
+佢嘅知識庫係從歷史設計來源提煉出嚟嘅，唔係即時網絡調用。
+
+設計雄心定義咗佢嘅北極星指標，用嚟衡量佢嘅表現。
+
+關於第三部分嘅補充。乜嘢叫做好呢個部分定義咗具體嘅評審標準。
+
+Primary outcome 定義咗佢嘅主要產出目標。
+
+Self-quality bar 定義咗佢嘅自我質量標準。
+
+Ambition signal 定義咗佢嘅超越人類嘅目標。
+
+Architecture pattern 定義咗佢嘅技術架構模式。
+
+Host quality 同 critique binding 定義咗佢嘅質量約束。
+
+Prompt reference 指向佢嘅提示詞版本。
+
+Rubric reference 指向佢嘅評分標準版本。
+
+Critique edges 定義咗佢嘅批評輸入同輸出。
+
+Max refinement 定義咗最大改進次數。
+
+關於第四部分嘅補充。呢個 agent 擁有嘅責任範圍係好明確嘅。
+
+佢只負責自己職責範圍內嘅工作，唔會越界做其他嘅事情。
+
+佢接受來自指定同儕嘅批評，確保質量。
+
+佢有資格評論指定對象嘅輸出。
+
+Host critique edge inputs 同 outputs 定義咗正式嘅批評通道。
+
+Max refinement count 限制咗改進嘅次數，防止無限循環。
+
+Fail-closed 規則確保冇明確許可就唔會做任何事。
+
+關於第五部分嘅補充。呢個部分定義咗幾時應該叫呢個 agent。
+
+當工作產品需要佢擁有嘅決定或者產物嘅時候就應該叫佢。
+
+Pipeline phase 定義咗佢喺工作流入面嘅位置。
+
+唔好叫佢做唔屬於佢職責嘅工作。
+
+人類覆寫規則確保安全問題永遠有人類把關。
+
+決策速查表幫助你快速判斷係咪應該用呢個 agent。
+
+關於第六部分嘅補充。協作地圖顯示咗呢個 agent 同其他 agent 嘅關係。
+
+佢唔係一個獨立運作嘅聊天機器人。
+
+佢同同儕透過批評巴士互相改善質量。
+
+法官同閘門負責最終嘅驗收決定。
+
+Inbound critique 定義咗邊啲 agent 會俾佢反饋。
+
+Outbound commentary 定義咗佢會評論邊啲 agent 嘅輸出。
+
+Host edge inputs 同 outputs 係正式嘅系統級批評通道。
+
+關於第七部分嘅補充。呢個部分定義咗佢喺生產環境入面嘅位置。
+
+人類生產工作流顯示咗對應嘅人類工作階段。
+
+典型嘅交接產物定義咗佢會產生或者接收嘅具體產物。
+
+多代理 AI 工作流顯示咗佢喺 AI 系統入面嘅位置。
+
+設計時工具備註列出咗未來可能使用嘅工具，但係目前唔會啟動。
+
+運行時循環風格定義咗佢嘅行為模式。
+
+共享交接合約定義咗同其他 agent 之間嘅接口。
+
+關於第八部分嘅補充。今日喺 CASOPS 上面，呢個 agent 只係一個目錄加設計對象。
+
+呢個限制係有意設計嘅，確保安全性同可控性。
+
+你可以研究佢嘅設計，瞭解佢嘅職責同能力。
+
+你可以審閱佢嘅配置，確認所有設定都正確。
+
+你可以提議改進，透過正式嘅提案流程。
+
+你可以將佢放入 swarm 設計入面，規劃未來嘅系統架構。
+
+但係你唔可以直接授予佢生產力量，需要經過正式嘅 governance gate。
+
+關於第九部分嘅補充。安全同信任規則係整個系統嘅基石。
+
+agent_spec.json 係最高優先級嘅信任來源。
+
+SPEC.md 係權威嘅設計文件，但係只用嚟離線審閱。
+
+sources 目錄下面嘅所有內容都係歷史性嘅，唔受信任。
+
+外部設計語料庫可能會同本地配置有出入，所以唔受信任。
+
+硬規則確保 provider、network、tools 同 budget 都有嚴格嘅限制。
+
+關於第十部分嘅補充。提升質量係一個持續嘅過程，唔係一次性嘅工作。
+
+每次改進都要經過版本化嘅流程，確保可追溯性。
+
+已發布嘅定義係不可變嘅，唔可以直接修改。
+
+所有改變都要經過正式嘅提案同審閱流程。
+
+只有通過審閱嘅改變先會被接受到新版本入面。
+
+持續改進循環從觀察失敗開始，到命名標準，到起草差異，到附上證據，到提議，到審閱，最後先考慮啟動成熟度閘門。
+
+具體槓桿包括 rubric fidelity、prompt precision、critique graph、architecture emulation、eval cases 同 human gates。
+
+評估種子包括 happy path handoff、out-of-scope request、missing provenance、conflicting peer critique 同 proposal-only change。

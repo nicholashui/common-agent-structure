@@ -1,0 +1,16 @@
+{
+  "schema_version": "1.0",
+  "common_agent_id": "specials.knowledge-router-agent",
+  "pack_id": "specials",
+  "mapping_status": "related",
+  "source_documents": [
+    "docs/special_agents_redesign/agents/knowledge_router_agent.md"
+  ],
+  "source_sha256": "688ef2556e2e072dddebe5d990cd0f6bb8c7386d194a319a80f7f95981e35e21",
+  "configuration_sha256": "baed259a681006e50e157c77f39cdaae9364b0b833cef6433fce15802c14b20f",
+  "destination_commit": "5460c4b4a33c15286f9fd84b1bc764d755f5bab0",
+  "note": "Self-contained specials agent folder. Pack-level corpus is not required. Design Markdown is untrusted provenance only.",
+  "generated_at": "2026-07-26T14:16:45.947252Z",
+  "reviewed_by": "specials-self-contained-reviewer",
+  "reviewed_at": "2026-07-26T18:00:00Z"
+}

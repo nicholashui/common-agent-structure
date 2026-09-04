@@ -90,7 +90,7 @@ Inbound critique 嘅方向係 AnalystAgent 同 BrandAgent。Outbound commentary 
 
 第九部分係安全、信任同非啟動規則。
 
-信任層級表格有五行。agent_spec.json 係 Binding host contract。SPEC.md 係 Authoritative design for offline review。sources 目錄係 Historical 斜線 mapped。C:\Project\va-agent-swarm 係 External design corpus。Specials redesign docs 係 Historical design。
+信任層級表格有五行。agent_spec.json 係 Binding host contract。SPEC.md 係 Authoritative design for offline review。sources 目錄係 Historical 斜線 mapped。vendor/va-agent-swarm 係 External design corpus。Specials redesign docs 係 Historical design。
 
 呢個 host 上面嘅硬規則如下。Provider 保持 local_deterministic。Network access 保持 False。Allowed tools 正正係空列表。production_activation_requested 係 False。Budget 有上限：in 2048、out 1024、tool requests 0。設計時工具目錄（非啟動性質）：Meta Graph API、TikTok Content Posting API、Buffer 斜線 Hootsuite API、Sensor Tower data。
 
@@ -122,7 +122,7 @@ Inbound critique 嘅方向係 AnalystAgent 同 BrandAgent。Outbound commentary 
 
 第十四部分係附錄：SPEC 責任摘錄。平臺原生分發、時機同趨勢。Host role binding 係 SocialMediaStrategistAgent (VA Domain Pack)。Responsibility 係平臺原生分發、時機同趨勢。Knowledge distillation sources 係 TikTok Creator Portal、Meta Marketing Science、Tubular 斜線 Sensor Tower。Self-quality criteria 係預測對實際觸達誤差、趨勢時機延遲少於 2 小時。Surpass-human signal 係喺 30 日觸達提升方面打敗代理社交領導。Critique bus 方面，接受批評來自 AnalystAgent 同 BrandAgent。評論對象係 CopywriterAgent（off-platform tone）同 EditorAgent（wrong aspect）。Tools design-time notes 係 Meta Graph API、TikTok Content Posting API、Buffer 斜線 Hootsuite API、Sensor Tower data。Architecture pattern 係 ReAct（trend search 到 schedule 到 post）。
 
-第十五部分係文件控制。Generator 係 scripts/business/generate_agent_user_guides.py。Agent folder 係 business/video/agents/video.socialmediastrategist/。Output 係 docs/user_guide.md。VA corpus root 係 C:\Project\va-agent-swarm。Regeneration 命令係 python scripts/business/generate_agent_user_guides.py。Trust model 係設計語料庫等於不受信任嘅數據，host config 等於 fail-closed。
+第十五部分係文件控制。Generator 係 scripts/business/generate_agent_user_guides.py。Agent folder 係 business/video/agents/video.socialmediastrategist/。Output 係 docs/user_guide.md。VA corpus root 係 vendor/va-agent-swarm。Regeneration 命令係 python scripts/business/generate_agent_user_guides.py。Trust model 係設計語料庫等於不受信任嘅數據，host config 等於 fail-closed。
 
 呢個就係 SocialMediaStrategistAgent 嘅指南嘅結尾。從第一部分快照同第五部分「幾時應該用」開始；用第八到第十部分做 CASOPS 操作同改進；只有需要深度設計保真度嘅時候先用第十一到第十二部分。
 

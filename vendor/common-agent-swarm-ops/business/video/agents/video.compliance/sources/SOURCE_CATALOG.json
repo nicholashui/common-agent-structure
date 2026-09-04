@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.0",
+  "agent_id": "video.compliance",
+  "sources": [
+    {
+      "id": "src_1",
+      "title": "Bar CLE",
+      "description": "Bar CLE",
+      "license_class": "unknown_review_required",
+      "acquisition_method": "manual_or_licensed_api",
+      "local_path_hint": "sources/excerpts/ or sources/study/",
+      "refresh_sla_days": 90,
+      "owner": "video.compliance",
+      "status": "planned_or_partial"
+    },
+    {
+      "id": "src_2",
+      "title": "FTC guides",
+      "description": "FTC guides",
+      "license_class": "unknown_review_required",
+      "acquisition_method": "manual_or_licensed_api",
+      "local_path_hint": "sources/excerpts/ or sources/study/",
+      "refresh_sla_days": 90,
+      "owner": "video.compliance",
+      "status": "planned_or_partial"
+    },
+    {
+      "id": "src_3",
+      "title": "EU AI Act",
+      "description": "EU AI Act",
+      "license_class": "unknown_review_required",
+      "acquisition_method": "manual_or_licensed_api",
+      "local_path_hint": "sources/excerpts/ or sources/study/",
+      "refresh_sla_days": 90,
+      "owner": "video.compliance",
+      "status": "planned_or_partial"
+    },
+    {
+      "id": "src_4",
+      "title": "GDPR/CCPA",
+      "description": "GDPR/CCPA",
+      "license_class": "unknown_review_required",
+      "acquisition_method": "manual_or_licensed_api",
+      "local_path_hint": "sources/excerpts/ or sources/study/",
+      "refresh_sla_days": 90,
+      "owner": "video.compliance",
+      "status": "planned_or_partial"
+    },
+    {
+      "id": "src_5",
+      "title": "SAG-AFTRA AI rider",
+      "description": "SAG-AFTRA AI rider",
+      "license_class": "unknown_review_required",
+      "acquisition_method": "manual_or_licensed_api",
+      "local_path_hint": "sources/excerpts/ or sources/study/",
+      "refresh_sla_days": 90,
+      "owner": "video.compliance",
+      "status": "planned_or_partial"
+    }
+  ],
+  "note": "Legal review required before treating external corpora as production grounding."
+}

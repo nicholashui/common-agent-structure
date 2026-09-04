@@ -20,8 +20,8 @@
     "routing_allowed": false
   },
   "budget_policy": {
-    "max_input_tokens": 1,
-    "max_output_tokens": 1,
+    "max_input_tokens": 2048,
+    "max_output_tokens": 1024,
     "max_model_calls": 2,
     "max_tool_requests": 0,
     "max_job_ms": 15000,
@@ -321,59 +321,59 @@ Success: stay inside pack responsibility; no network; no production activation.
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "思考，快与慢",
+      "title": "\u601d\u8003\uff0c\u5feb\u4e0e\u6162",
       "isbn13": "9787508633565",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 思考，快与慢，ISBN-13 9787508633565"
+      "citation": "ZH: \u601d\u8003\uff0c\u5feb\u4e0e\u6162\uff0cISBN-13 9787508633565"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "影响力",
+      "title": "\u5f71\u54cd\u529b",
       "isbn13": "9787508622163",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 影响力，ISBN-13 9787508622163"
+      "citation": "ZH: \u5f71\u54cd\u529b\uff0cISBN-13 9787508622163"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "怪诞行为学",
+      "title": "\u602a\u8bde\u884c\u4e3a\u5b66",
       "isbn13": "9787508615824",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 怪诞行为学，ISBN-13 9787508615824"
+      "citation": "ZH: \u602a\u8bde\u884c\u4e3a\u5b66\uff0cISBN-13 9787508615824"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "助推",
+      "title": "\u52a9\u63a8",
       "isbn13": "9787508641238",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 助推，ISBN-13 9787508641238"
+      "citation": "ZH: \u52a9\u63a8\uff0cISBN-13 9787508641238"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "心流",
+      "title": "\u5fc3\u6d41",
       "isbn13": "9787508660721",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 心流，ISBN-13 9787508660721"
+      "citation": "ZH: \u5fc3\u6d41\uff0cISBN-13 9787508660721"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "驱动力",
+      "title": "\u9a71\u52a8\u529b",
       "isbn13": "9787508621753",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 驱动力，ISBN-13 9787508621753"
+      "citation": "ZH: \u9a71\u52a8\u529b\uff0cISBN-13 9787508621753"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "社会心理学",
-      "author": "迈尔斯",
+      "title": "\u793e\u4f1a\u5fc3\u7406\u5b66",
+      "author": "\u8fc8\u5c14\u65af",
       "isbn13": "9787115412393",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 社会心理学（迈尔斯），ISBN-13 9787115412393"
+      "citation": "ZH: \u793e\u4f1a\u5fc3\u7406\u5b66\uff08\u8fc8\u5c14\u65af\uff09\uff0cISBN-13 9787115412393"
     },
     {
       "kind": "reference_book",
@@ -495,74 +495,74 @@ Success: stay inside pack responsibility; no network; no production activation.
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "这就是营销",
+      "title": "\u8fd9\u5c31\u662f\u8425\u9500",
       "isbn13": "9787521702330",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 这就是营销，ISBN-13 9787521702330"
+      "citation": "ZH: \u8fd9\u5c31\u662f\u8425\u9500\uff0cISBN-13 9787521702330"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "让创意更有黏性",
+      "title": "\u8ba9\u521b\u610f\u66f4\u6709\u9ecf\u6027",
       "isbn13": "9787508641245",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 让创意更有黏性，ISBN-13 9787508641245"
+      "citation": "ZH: \u8ba9\u521b\u610f\u66f4\u6709\u9ecf\u6027\uff0cISBN-13 9787508641245"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "跨越鸿沟",
+      "title": "\u8de8\u8d8a\u9e3f\u6c9f",
       "isbn13": "9787111456780",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 跨越鸿沟，ISBN-13 9787111456780"
+      "citation": "ZH: \u8de8\u8d8a\u9e3f\u6c9f\uff0cISBN-13 9787111456780"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "精益创业",
+      "title": "\u7cbe\u76ca\u521b\u4e1a",
       "isbn13": "9787115293701",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 精益创业，ISBN-13 9787115293701"
+      "citation": "ZH: \u7cbe\u76ca\u521b\u4e1a\uff0cISBN-13 9787115293701"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "一个广告人的自白",
+      "title": "\u4e00\u4e2a\u5e7f\u544a\u4eba\u7684\u81ea\u767d",
       "isbn13": "9787111496182",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 一个广告人的自白，ISBN-13 9787111496182"
+      "citation": "ZH: \u4e00\u4e2a\u5e7f\u544a\u4eba\u7684\u81ea\u767d\uff0cISBN-13 9787111496182"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "文案训练手册",
+      "title": "\u6587\u6848\u8bad\u7ec3\u624b\u518c",
       "isbn13": "9787115351555",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 文案训练手册，ISBN-13 9787115351555"
+      "citation": "ZH: \u6587\u6848\u8bad\u7ec3\u624b\u518c\uff0cISBN-13 9787115351555"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "上瘾",
+      "title": "\u4e0a\u763e",
       "isbn13": "9787508648017",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 上瘾，ISBN-13 9787508648017"
+      "citation": "ZH: \u4e0a\u763e\uff0cISBN-13 9787508648017"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "增长黑客",
+      "title": "\u589e\u957f\u9ed1\u5ba2",
       "isbn13": "9787213066948",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 增长黑客，ISBN-13 9787213066948"
+      "citation": "ZH: \u589e\u957f\u9ed1\u5ba2\uff0cISBN-13 9787213066948"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "参与感",
+      "title": "\u53c2\u4e0e\u611f",
       "isbn13": "9787213055375",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 参与感，ISBN-13 9787213055375"
+      "citation": "ZH: \u53c2\u4e0e\u611f\uff0cISBN-13 9787213055375"
     },
     {
       "kind": "reference_book",
@@ -621,26 +621,26 @@ Success: stay inside pack responsibility; no network; no production activation.
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "精益数据分析",
+      "title": "\u7cbe\u76ca\u6570\u636e\u5206\u6790",
       "isbn13": "9787115384515",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 精益数据分析，ISBN-13 9787115384515"
+      "citation": "ZH: \u7cbe\u76ca\u6570\u636e\u5206\u6790\uff0cISBN-13 9787115384515"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "用数据讲故事",
+      "title": "\u7528\u6570\u636e\u8bb2\u6545\u4e8b",
       "isbn13": "9787111575558",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 用数据讲故事，ISBN-13 9787111575558"
+      "citation": "ZH: \u7528\u6570\u636e\u8bb2\u6545\u4e8b\uff0cISBN-13 9787111575558"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "赤裸裸的统计学",
+      "title": "\u8d64\u88f8\u88f8\u7684\u7edf\u8ba1\u5b66",
       "isbn13": "9787508643427",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 赤裸裸的统计学，ISBN-13 9787508643427"
+      "citation": "ZH: \u8d64\u88f8\u88f8\u7684\u7edf\u8ba1\u5b66\uff0cISBN-13 9787508643427"
     }
   ],
   "common_agent_id": "specials.psychological-recommendation-agent",
@@ -656,7 +656,7 @@ Success: stay inside pack responsibility; no network; no production activation.
   "generated_at": "2026-07-26T14:16:45.978233Z",
   "reviewed_by": "specials-self-contained-reviewer",
   "reviewed_at": "2026-07-26T18:00:00Z",
-  "imported_from": "C:\\Project\\common-agent-swarm-ops\\business\\specials\\agents\\specials.psychological-recommendation-agent",
+  "imported_from": "vendor/common-agent-swarm-ops/business/specials/agents/specials.psychological-recommendation-agent",
   "reference_book_origin": "spec/book_of_knowledge.md",
   "reference_book_note": "Bibliographic references from spec/book_of_knowledge.md. Does not enable network, RAG, T3, plugins, or memory writes."
 }

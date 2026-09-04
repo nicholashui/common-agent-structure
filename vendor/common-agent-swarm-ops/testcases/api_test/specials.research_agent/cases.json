@@ -1,0 +1,76 @@
+{
+  "agent_id": "specials.research_agent",
+  "kind": "special",
+  "cases": [
+    {
+      "id": "tc1",
+      "name": "Osaka research offline",
+      "method": "POST",
+      "path": "/api/v1/research/query",
+      "body": {
+        "query": "Osaka travel production research offline",
+        "allow_live_web": false
+      },
+      "success_criteria": {
+        "http_status": [
+          200
+        ],
+        "required_keys_any": [
+          "ok",
+          "sources",
+          "brief",
+          "result",
+          "correlation_id"
+        ],
+        "notes": "allow_live_web must stay false; offline research skeleton OK."
+      }
+    },
+    {
+      "id": "tc2",
+      "name": "Transit themes",
+      "method": "POST",
+      "path": "/api/v1/research/query",
+      "body": {
+        "query": "Transit themes and seasonal constraints skeleton",
+        "allow_live_web": false
+      },
+      "success_criteria": {
+        "http_status": [
+          200
+        ],
+        "required_keys_any": [
+          "ok",
+          "sources",
+          "brief",
+          "result",
+          "correlation_id"
+        ],
+        "notes": "allow_live_web must stay false; offline research skeleton OK."
+      }
+    },
+    {
+      "id": "tc3",
+      "name": "Documentary themes",
+      "method": "POST",
+      "path": "/api/v1/research/query",
+      "body": {
+        "query": "Documentary fact themes for multi-day vlog",
+        "max_sources": 4,
+        "allow_live_web": false
+      },
+      "success_criteria": {
+        "http_status": [
+          200
+        ],
+        "required_keys_any": [
+          "ok",
+          "sources",
+          "brief",
+          "result",
+          "correlation_id"
+        ],
+        "notes": "allow_live_web must stay false; offline research skeleton OK."
+      }
+    }
+  ]
+}

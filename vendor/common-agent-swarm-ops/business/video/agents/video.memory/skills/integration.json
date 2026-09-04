@@ -1,0 +1,23 @@
+{
+  "skill_id": "video-memory",
+  "agent_id": "video.memory",
+  "kind": "pack_agent_harness",
+  "status": "scaffolded",
+  "prompt_reference": "video.prompt.memory.v1",
+  "rubric_reference": "video.rubric.memory.v1",
+  "patterns": [
+    "Reflexion",
+    "Agent Skills"
+  ],
+  "bindings": [
+    "agent_loop_v3",
+    "agentic_rag"
+  ],
+  "entrypoint": {
+    "type": "host_agent_runner",
+    "agent_id": "video.memory"
+  },
+  "fail_closed": true,
+  "generated_by": "improve_agents_from_plan_v1.py",
+  "generated_at": "2026-07-30T14:45:34Z"
+}

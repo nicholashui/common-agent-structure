@@ -22,10 +22,10 @@
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "数字资源长期保存",
+      "title": "\u6570\u5b57\u8d44\u6e90\u957f\u671f\u4fdd\u5b58",
       "isbn13": "9787501355419",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 数字资源长期保存，ISBN-13 9787501355419"
+      "citation": "ZH: \u6570\u5b57\u8d44\u6e90\u957f\u671f\u4fdd\u5b58\uff0cISBN-13 9787501355419"
     },
     {
       "kind": "reference_book",
@@ -84,10 +84,10 @@
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "影视制片管理",
+      "title": "\u5f71\u89c6\u5236\u7247\u7ba1\u7406",
       "isbn13": "9787301169186",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 影视制片管理，ISBN-13 9787301169186"
+      "citation": "ZH: \u5f71\u89c6\u5236\u7247\u7ba1\u7406\uff0cISBN-13 9787301169186"
     },
     {
       "kind": "reference_book",
@@ -111,7 +111,7 @@
     "adopted_at": "2026-07-27T01:30:27.635467+00:00",
     "upstream": "generic-swarm-ops/business/video/agents"
   },
-  "imported_from": "C:\\Project\\common-agent-swarm-ops\\business\\video\\agents\\video.archivemaster",
+  "imported_from": "vendor/common-agent-swarm-ops/business/video/agents/video.archivemaster",
   "reference_book_origin": "spec/book_of_knowledge.md",
   "reference_book_note": "Bibliographic references from spec/book_of_knowledge.md. Does not enable network, RAG, T3, plugins, or memory writes."
 }

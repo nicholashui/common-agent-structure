@@ -1,0 +1,8 @@
+{
+  "agent_id": "video.router",
+  "folder": "agents/video.router",
+  "honesty": "CHARACTERIZATION",
+  "note": "Chat prompts are characterization only. Not an eval pass. casops-eval stays NOT_RUN while instruments are unqualified.",
+  "swarm_ops_cases": "vendor/common-agent-swarm-ops/testcases/api_test/video.router/cases.json",
+  "swarm_ops_agent_id": "video.router"
+}

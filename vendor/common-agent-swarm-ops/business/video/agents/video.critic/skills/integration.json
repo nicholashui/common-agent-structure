@@ -1,0 +1,22 @@
+{
+  "skill_id": "video-critic",
+  "agent_id": "video.critic",
+  "kind": "pack_agent_harness",
+  "status": "scaffolded",
+  "prompt_reference": "video.prompt.critic.v1",
+  "rubric_reference": "video.rubric.critic.v1",
+  "patterns": [
+    "Multi-agent debate",
+    "Agent Skills"
+  ],
+  "bindings": [
+    "optimization_agent"
+  ],
+  "entrypoint": {
+    "type": "host_agent_runner",
+    "agent_id": "video.critic"
+  },
+  "fail_closed": true,
+  "generated_by": "improve_agents_from_plan_v1.py",
+  "generated_at": "2026-07-30T14:45:34Z"
+}

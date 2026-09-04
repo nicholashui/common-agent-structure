@@ -1,0 +1,63 @@
+{
+  "schema_version": "1.0",
+  "agent_id": "video.sounddesign",
+  "source_doc": "business/video/corpus/study/ui/RETHINK_100_IMPROVEMENTS.md",
+  "applied_at": "2026-07-31T06:22:31Z",
+  "item_ids": [
+    5,
+    14,
+    15,
+    21,
+    26,
+    30,
+    31,
+    37,
+    38,
+    39,
+    59,
+    63,
+    79,
+    87,
+    88,
+    91,
+    93,
+    94
+  ],
+  "item_titles": {
+    "5": "Hailuo 2.3 budget-tier generation",
+    "14": "Native audio generation awareness",
+    "15": "Model deprecation handling",
+    "21": "Isolate orchestration from execution",
+    "26": "Circuit breaker per external API",
+    "30": "Multi-tenant isolation",
+    "31": "Iterative script verification",
+    "37": "Hybrid workforce checkpoints (gates)",
+    "38": "Multi-turn agent conversation",
+    "39": "Sound director supervision loop",
+    "59": "Agent reasoning in plain English",
+    "63": "Comparison with human baseline",
+    "79": "Music-first workflow",
+    "87": "Human preference learning (accepts/rejects)",
+    "88": "Automated regression on config change",
+    "91": "Audio-video sync scoring",
+    "93": "Ethical review automation",
+    "94": "Provenance chain visualization"
+  },
+  "design_time_models": [
+    "Hailuo 2.3 (design-time only)"
+  ],
+  "obligations": [
+    "Host control plane owns orchestration; this agent never opens a second control plane.",
+    "Runtime tools remain agent_spec.allowed_tools only; RETHINK model names are design-time.",
+    "Fail closed when tools/providers are unavailable (circuit-breaker posture).",
+    "Prefer iterative verify → refine ≤ max_refinement_count → HiTL over silent pass.",
+    "Emit plain-English reasoning summary in artifacts for operator trust.",
+    "Attach provenance / correlation_id / evidence_refs on every handoff.",
+    "Verify intermediate narrative/script artifacts before advancing downstream handoffs.",
+    "Escalate stereotype/harm/consent risks to ethics/trust-safety/legal gates.",
+    "Track A/V sync and native-audio implications; do not assume silent video when audio is native."
+  ],
+  "runtime_note": "RETHINK model/tool names are non-binding. allowed_tools + model_policy + production_activation_requested remain authoritative.",
+  "production_activation_requested": true,
+  "network_access": true
+}

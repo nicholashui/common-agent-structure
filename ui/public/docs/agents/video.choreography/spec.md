@@ -5630,7 +5630,7 @@ Step 7: DELIVERY PH
 ## Provenance
 
 - Master roster row va_id=57 from embedded agents.md content above.
-- Deep/extra text from `business/video/corpus/` and `C:\Project\va-agent-swarm`.
+- Deep/extra text from `business/video/corpus/` and `vendor/va-agent-swarm`.
 - Generator: `scripts/business/enrich_video_agent_specs.py`.
 - Upstream project name (historical only): va-agent-swarm.
 
@@ -6015,7 +6015,7 @@ The diagram below presents the common agent as a professional operating architec
 ## Provenance
 
 - Master roster row va_id=91 from embedded agents.md content above.
-- Deep/extra text from `business/video/corpus/` and `C:\Project\va-agent-swarm`.
+- Deep/extra text from `business/video/corpus/` and `vendor/va-agent-swarm`.
 - Generator: `scripts/business/enrich_video_agent_specs.py`.
 - Upstream project name (historical only): va-agent-swarm.
 
@@ -6095,10 +6095,10 @@ Live primary-source expansion remains a residual for score 100 on S3 where depth
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "舞蹈编导基础",
+      "title": "\u821e\u8e48\u7f16\u5bfc\u57fa\u7840",
       "isbn13": "9787810839990",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 舞蹈编导基础，ISBN-13 9787810839990"
+      "citation": "ZH: \u821e\u8e48\u7f16\u5bfc\u57fa\u7840\uff0cISBN-13 9787810839990"
     },
     {
       "kind": "reference_book",
@@ -6184,29 +6184,29 @@ Live primary-source expansion remains a residual for score 100 on S3 where depth
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "拍电影",
-      "author": "卢梅",
+      "title": "\u62cd\u7535\u5f71",
+      "author": "\u5362\u6885",
       "isbn13": "9787106028893",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 拍电影（卢梅），ISBN-13 9787106028893"
+      "citation": "ZH: \u62cd\u7535\u5f71\uff08\u5362\u6885\uff09\uff0cISBN-13 9787106028893"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "电影镜头设计",
-      "author": "卡茨",
+      "title": "\u7535\u5f71\u955c\u5934\u8bbe\u8ba1",
+      "author": "\u5361\u8328",
       "isbn13": "9787115222224",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 电影镜头设计（卡茨），ISBN-13 9787115222224"
+      "citation": "ZH: \u7535\u5f71\u955c\u5934\u8bbe\u8ba1\uff08\u5361\u8328\uff09\uff0cISBN-13 9787115222224"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "导演创作完全手册",
-      "author": "拉比格",
+      "title": "\u5bfc\u6f14\u521b\u4f5c\u5b8c\u5168\u624b\u518c",
+      "author": "\u62c9\u6bd4\u683c",
       "isbn13": "9787515302867",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 导演创作完全手册（拉比格），ISBN-13 9787515302867"
+      "citation": "ZH: \u5bfc\u6f14\u521b\u4f5c\u5b8c\u5168\u624b\u518c\uff08\u62c9\u6bd4\u683c\uff09\uff0cISBN-13 9787515302867"
     },
     {
       "kind": "reference_book",
@@ -6220,10 +6220,10 @@ Live primary-source expansion remains a residual for score 100 on S3 where depth
     {
       "kind": "reference_book",
       "language": "EN",
-      "title": "The True Adventures of the Worlds Greatest Stuntman My Life as Indiana Jones, James Bon…",
+      "title": "The True Adventures of the Worlds Greatest Stuntman My Life as Indiana Jones, James Bon\u2026",
       "isbn13": "9781848568747",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "EN: The True Adventures of the Worlds Greatest Stuntman My Life as Indiana Jones, James Bon…, ISBN-13 9781848568747"
+      "citation": "EN: The True Adventures of the Worlds Greatest Stuntman My Life as Indiana Jones, James Bon\u2026, ISBN-13 9781848568747"
     }
   ],
   "agent_id": "video.choreography",
@@ -6238,7 +6238,7 @@ Live primary-source expansion remains a residual for score 100 on S3 where depth
     "adopted_at": "2026-07-27T01:30:27.792939+00:00",
     "upstream": "generic-swarm-ops/business/video/agents"
   },
-  "imported_from": "C:\\Project\\common-agent-swarm-ops\\business\\video\\agents\\video.choreography",
+  "imported_from": "vendor/common-agent-swarm-ops/business/video/agents/video.choreography",
   "reference_book_origin": "spec/book_of_knowledge.md",
   "reference_book_note": "Bibliographic references from spec/book_of_knowledge.md. Does not enable network, RAG, T3, plugins, or memory writes."
 }

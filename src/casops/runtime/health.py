@@ -31,7 +31,7 @@ def observe_health(
         "role": spec.get("role"),
         "structure_id": spec.get("structure_id"),
         "schema_version": spec.get("schema_version"),
-        "folder": str(folder),
+        "folder": f"agents/{folder.name}",
         "folder_ok": check.ok,
         "folder_missing": check.missing,
         "production_activation_requested": bool(spec.get("production_activation_requested")),

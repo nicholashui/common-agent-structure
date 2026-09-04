@@ -1,0 +1,8 @@
+{
+  "agent_id": "video.musicsupervisor",
+  "folder": "agents/video.musicsupervisor",
+  "honesty": "CHARACTERIZATION",
+  "note": "Chat prompts are characterization only. Not an eval pass. casops-eval stays NOT_RUN while instruments are unqualified.",
+  "swarm_ops_cases": "vendor/common-agent-swarm-ops/testcases/api_test/video.musicsupervisor/cases.json",
+  "swarm_ops_agent_id": "video.musicsupervisor"
+}

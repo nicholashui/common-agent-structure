@@ -1,0 +1,8 @@
+{
+  "agent_id": "video.personalizationengineer",
+  "folder": "agents/video.personalizationengineer",
+  "honesty": "CHARACTERIZATION",
+  "note": "Chat prompts are characterization only. Not an eval pass. casops-eval stays NOT_RUN while instruments are unqualified.",
+  "swarm_ops_cases": "vendor/common-agent-swarm-ops/testcases/api_test/video.personalizationengineer/cases.json",
+  "swarm_ops_agent_id": "video.personalizationengineer"
+}

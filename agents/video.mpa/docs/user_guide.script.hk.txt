@@ -275,7 +275,7 @@ agent_spec.json 嘅 Trust 係 Binding host contract，Role 係 Fail-closed runti
 
 sources 下面嘅 excerpts 同 generic SPECs 嘅 Trust 係 Historical 斜線 mapped，Role 係 Untrusted data。
 
-C:\Project\va-agent-swarm 嘅 Trust 係 External design corpus，Role 係 Untrusted，may drift。
+vendor/va-agent-swarm 嘅 Trust 係 External design corpus，Role 係 Untrusted，may drift。
 
 Specials redesign docs 嘅 Trust 係 Historical design，Role 係 Untrusted，hashed in provenance。
 
@@ -448,7 +448,7 @@ Architecture 係 Human-in-the-loop with structured packaging support。
 
 用呢啲嚟加深設計保真度。佢哋唔會覆蓋本地 agent_spec.json。
 
-12.1，C:\Project\va-agent-swarm 下面嘅檔案。
+12.1，vendor/va-agent-swarm 下面嘅檔案。
 
 study/ai_agent_video_production_workflow.md，相關原因係 AI Agent Video Production Workflow，Companion to human_video_production_workflow.md，score 2。
 
@@ -538,7 +538,7 @@ Agent folder 係 business/video/agents/video.mpa/。
 
 Output 係 docs/user_guide.md。
 
-VA corpus root 係 C:\Project\va-agent-swarm。
+VA corpus root 係 vendor/va-agent-swarm。
 
 Regeneration 指令係 python scripts/business/generate_agent_user_guides.py。
 

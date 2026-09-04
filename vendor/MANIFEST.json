@@ -1,0 +1,43 @@
+{
+  "schema_version": "casops.vendor.v1",
+  "note": "Byte copies of external trees this host needs. Not junctions, not git submodules, not runtime file links. Tools read these relative to the repo root.",
+  "trees": [
+    {
+      "key": "testcases/api_test",
+      "dest": "vendor/common-agent-swarm-ops/testcases/api_test",
+      "present": true
+    },
+    {
+      "key": "business/video/agents",
+      "dest": "vendor/common-agent-swarm-ops/business/video/agents",
+      "present": true
+    },
+    {
+      "key": "business/specials/agents",
+      "dest": "vendor/common-agent-swarm-ops/business/specials/agents",
+      "present": true
+    },
+    {
+      "key": "docs/special_agents_redesign",
+      "dest": "vendor/common-agent-swarm-ops/docs/special_agents_redesign",
+      "present": true
+    },
+    {
+      "key": "va-agent-swarm",
+      "dest": "vendor/va-agent-swarm",
+      "present": true
+    }
+  ],
+  "skipped_media_suffixes": [
+    ".gif",
+    ".jpeg",
+    ".jpg",
+    ".mov",
+    ".mp3",
+    ".mp4",
+    ".png",
+    ".wav",
+    ".webm",
+    ".webp"
+  ]
+}

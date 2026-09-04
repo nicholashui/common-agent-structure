@@ -8467,7 +8467,7 @@ Once launched, it flows through the same:
 ## Provenance
 
 - Master roster row va_id=53 from embedded agents.md content above.
-- Deep/extra text from `business/video/corpus/` and `C:\Project\va-agent-swarm`.
+- Deep/extra text from `business/video/corpus/` and `vendor/va-agent-swarm`.
 - Generator: `scripts/business/enrich_video_agent_specs.py`.
 - Upstream project name (historical only): va-agent-swarm.
 
@@ -12827,7 +12827,7 @@ Once launched, it flows through the same:
 ## Provenance
 
 - Master roster row va_id=55 from embedded agents.md content above.
-- Deep/extra text from `business/video/corpus/` and `C:\Project\va-agent-swarm`.
+- Deep/extra text from `business/video/corpus/` and `vendor/va-agent-swarm`.
 - Generator: `scripts/business/enrich_video_agent_specs.py`.
 - Upstream project name (historical only): va-agent-swarm.
 
@@ -13005,82 +13005,82 @@ Live primary-source expansion remains a residual for score 100 on S3 where depth
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "这就是营销",
+      "title": "\u8fd9\u5c31\u662f\u8425\u9500",
       "isbn13": "9787521702330",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 这就是营销，ISBN-13 9787521702330"
+      "citation": "ZH: \u8fd9\u5c31\u662f\u8425\u9500\uff0cISBN-13 9787521702330"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "疯传",
+      "title": "\u75af\u4f20",
       "isbn13": "9787508641238",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 疯传，ISBN-13 9787508641238"
+      "citation": "ZH: \u75af\u4f20\uff0cISBN-13 9787508641238"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "让创意更有黏性",
+      "title": "\u8ba9\u521b\u610f\u66f4\u6709\u9ecf\u6027",
       "isbn13": "9787508641245",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 让创意更有黏性，ISBN-13 9787508641245"
+      "citation": "ZH: \u8ba9\u521b\u610f\u66f4\u6709\u9ecf\u6027\uff0cISBN-13 9787508641245"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "跨越鸿沟",
+      "title": "\u8de8\u8d8a\u9e3f\u6c9f",
       "isbn13": "9787111456780",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 跨越鸿沟，ISBN-13 9787111456780"
+      "citation": "ZH: \u8de8\u8d8a\u9e3f\u6c9f\uff0cISBN-13 9787111456780"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "精益创业",
+      "title": "\u7cbe\u76ca\u521b\u4e1a",
       "isbn13": "9787115293701",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 精益创业，ISBN-13 9787115293701"
+      "citation": "ZH: \u7cbe\u76ca\u521b\u4e1a\uff0cISBN-13 9787115293701"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "一个广告人的自白",
+      "title": "\u4e00\u4e2a\u5e7f\u544a\u4eba\u7684\u81ea\u767d",
       "isbn13": "9787111496182",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 一个广告人的自白，ISBN-13 9787111496182"
+      "citation": "ZH: \u4e00\u4e2a\u5e7f\u544a\u4eba\u7684\u81ea\u767d\uff0cISBN-13 9787111496182"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "文案训练手册",
+      "title": "\u6587\u6848\u8bad\u7ec3\u624b\u518c",
       "isbn13": "9787115351555",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 文案训练手册，ISBN-13 9787115351555"
+      "citation": "ZH: \u6587\u6848\u8bad\u7ec3\u624b\u518c\uff0cISBN-13 9787115351555"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "上瘾",
+      "title": "\u4e0a\u763e",
       "isbn13": "9787508648017",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 上瘾，ISBN-13 9787508648017"
+      "citation": "ZH: \u4e0a\u763e\uff0cISBN-13 9787508648017"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "增长黑客",
+      "title": "\u589e\u957f\u9ed1\u5ba2",
       "isbn13": "9787213066948",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 增长黑客，ISBN-13 9787213066948"
+      "citation": "ZH: \u589e\u957f\u9ed1\u5ba2\uff0cISBN-13 9787213066948"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "参与感",
+      "title": "\u53c2\u4e0e\u611f",
       "isbn13": "9787213055375",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 参与感，ISBN-13 9787213055375"
+      "citation": "ZH: \u53c2\u4e0e\u611f\uff0cISBN-13 9787213055375"
     },
     {
       "kind": "reference_book",
@@ -13139,26 +13139,26 @@ Live primary-source expansion remains a residual for score 100 on S3 where depth
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "精益数据分析",
+      "title": "\u7cbe\u76ca\u6570\u636e\u5206\u6790",
       "isbn13": "9787115384515",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 精益数据分析，ISBN-13 9787115384515"
+      "citation": "ZH: \u7cbe\u76ca\u6570\u636e\u5206\u6790\uff0cISBN-13 9787115384515"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "用数据讲故事",
+      "title": "\u7528\u6570\u636e\u8bb2\u6545\u4e8b",
       "isbn13": "9787111575558",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 用数据讲故事，ISBN-13 9787111575558"
+      "citation": "ZH: \u7528\u6570\u636e\u8bb2\u6545\u4e8b\uff0cISBN-13 9787111575558"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "赤裸裸的统计学",
+      "title": "\u8d64\u88f8\u88f8\u7684\u7edf\u8ba1\u5b66",
       "isbn13": "9787508643427",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 赤裸裸的统计学，ISBN-13 9787508643427"
+      "citation": "ZH: \u8d64\u88f8\u88f8\u7684\u7edf\u8ba1\u5b66\uff0cISBN-13 9787508643427"
     }
   ],
   "agent_id": "video.roasoptimizer",
@@ -13173,7 +13173,7 @@ Live primary-source expansion remains a residual for score 100 on S3 where depth
     "adopted_at": "2026-07-27T01:30:28.716772+00:00",
     "upstream": "generic-swarm-ops/business/video/agents"
   },
-  "imported_from": "C:\\Project\\common-agent-swarm-ops\\business\\video\\agents\\video.roasoptimizer",
+  "imported_from": "vendor/common-agent-swarm-ops/business/video/agents/video.roasoptimizer",
   "reference_book_origin": "spec/book_of_knowledge.md",
   "reference_book_note": "Bibliographic references from spec/book_of_knowledge.md. Does not enable network, RAG, T3, plugins, or memory writes."
 }

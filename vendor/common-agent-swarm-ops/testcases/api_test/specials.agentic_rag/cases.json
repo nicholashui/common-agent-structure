@@ -1,0 +1,77 @@
+{
+  "agent_id": "specials.agentic_rag",
+  "kind": "special",
+  "cases": [
+    {
+      "id": "tc1",
+      "name": "Travel logistics RAG",
+      "method": "POST",
+      "path": "/api/v1/rag/query",
+      "body": {
+        "query": "Osaka multi-day travel vlog logistics offline",
+        "allow_live_web": false
+      },
+      "success_criteria": {
+        "http_status": [
+          200
+        ],
+        "required_keys_any": [
+          "ok",
+          "answer",
+          "chunks",
+          "result",
+          "correlation_id"
+        ],
+        "notes": "Agentic RAG offline; no live web/chroma required."
+      }
+    },
+    {
+      "id": "tc2",
+      "name": "Package HITL RAG",
+      "method": "POST",
+      "path": "/api/v1/rag/query",
+      "body": {
+        "query": "How Host package HITL works",
+        "max_iterations": 2,
+        "allow_chroma": false
+      },
+      "success_criteria": {
+        "http_status": [
+          200
+        ],
+        "required_keys_any": [
+          "ok",
+          "answer",
+          "chunks",
+          "result",
+          "correlation_id"
+        ],
+        "notes": "Agentic RAG offline; no live web/chroma required."
+      }
+    },
+    {
+      "id": "tc3",
+      "name": "Agent-loop RAG",
+      "method": "POST",
+      "path": "/api/v1/rag/query",
+      "body": {
+        "query": "Agent-loop Plan Act Self-Review summary",
+        "top_k": 5,
+        "allow_live_web": false
+      },
+      "success_criteria": {
+        "http_status": [
+          200
+        ],
+        "required_keys_any": [
+          "ok",
+          "answer",
+          "chunks",
+          "result",
+          "correlation_id"
+        ],
+        "notes": "Agentic RAG offline; no live web/chroma required."
+      }
+    }
+  ]
+}

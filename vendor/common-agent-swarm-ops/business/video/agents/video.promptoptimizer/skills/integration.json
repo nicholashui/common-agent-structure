@@ -1,0 +1,23 @@
+{
+  "skill_id": "video-promptoptimizer",
+  "agent_id": "video.promptoptimizer",
+  "kind": "pack_agent_harness",
+  "status": "scaffolded",
+  "prompt_reference": "video.prompt.promptoptimizer.v1",
+  "rubric_reference": "video.rubric.promptoptimizer.v1",
+  "patterns": [
+    "Self-Refine",
+    "Agent Skills"
+  ],
+  "bindings": [
+    "optimization_agent",
+    "llm_usage"
+  ],
+  "entrypoint": {
+    "type": "host_agent_runner",
+    "agent_id": "video.promptoptimizer"
+  },
+  "fail_closed": true,
+  "generated_by": "improve_agents_from_plan_v1.py",
+  "generated_at": "2026-07-30T14:45:34Z"
+}

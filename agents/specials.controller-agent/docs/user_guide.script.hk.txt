@@ -143,7 +143,7 @@ pack_id specials，映射 related。配置 SHA-256 b4a488e7b4ff9749af0645bcc3b7e
 
 唔覆蓋 agent_spec.json。va-agent-swarm 下冇強關鍵詞匹配。
 
-Specials redesign 文檔歷史來源 C:/Project/common-agent-swarm-ops/docs/special_agents_redesign/agents/controller_agent.md。
+Specials redesign 文檔歷史來源 vendor/common-agent-swarm-ops/docs/special_agents_redesign/agents/controller_agent.md。
 大綱：Controller Agent Controllable Video Generation Pipeline、
 Core Philosophy、Proven Methods Extracted from Key YouTube Videos、
 Mickmumpitz Free Local AI Render Engine、

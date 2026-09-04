@@ -179,7 +179,7 @@ POST /api/v1/commons/agents/specials.techology-advisor-agent/proposals，
 agent_spec.json 綁定 host 合約 fail-closed 運行時綁定。
 SPEC.md 權威設計離線審查唔可執行。
 sources 摘錄同通用 SPEC 歷史映射不受信任。
-C:\Project\va-agent-swarm 外部設計語料不受信任可能漂移。
+vendor/va-agent-swarm 外部設計語料不受信任可能漂移。
 Specials redesign 文檔歷史設計不受信任有 hash。
 
 硬規則：
@@ -265,7 +265,7 @@ va-agent-swarm 下面相關文件：
 依賴本地 SPEC 同 VA 錶行。
 
 Specials redesign 文檔歷史來源：
-C:/Project/common-agent-swarm-ops/docs/special_agents_redesign/agents/techology_advisor_agent.md。
+vendor/common-agent-swarm-ops/docs/special_agents_redesign/agents/techology_advisor_agent.md。
 大綱：PHASE 4 Self-Evaluation Past Recommendations、PHASE 5 Knowledge Base Update Re-Propagation、PHASE 6 Proactive User Notification、Confidence Signaling System、Self-Improvement Transparency、What You Do NOT Do、Closing Reminder。
 
 重設計內容摘要：
@@ -319,7 +319,7 @@ production_activation_requested false。
 生成器 scripts/business/generate_agent_user_guides.py。
 代理文件夾 business/specials/agents/specials.techology-advisor-agent/。
 輸出 docs/user_guide.md。
-VA corpus root C:\Project\va-agent-swarm。
+VA corpus root vendor/va-agent-swarm。
 重新生成 python scripts/business/generate_agent_user_guides.py。
 信任模型：設計語料不受信任，host 配置 fail-closed。
 

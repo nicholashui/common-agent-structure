@@ -1,7 +1,7 @@
 # CASOPS: The Complete Book
 
 **Title.** Common-Agent Swarm Operations Host — The Complete, Self-Contained Operator and Implementer Book  
-**Work.** `C:\Project\common-agent-structure`  
+**Work.** this repository (paths are relative to the repo root)  
 **Host package.** `casops` version `0.1.0`  
 **Agent structure.** `casops.common_agent.v3`  
 **Schema.** `3.0`  
@@ -126,8 +126,8 @@ You do **not** talk to internal ports `8081`–`8087` from the browser.
 ## I.5 Repository layout (complete top level that matters)
 
 ```
-C:\Project\common-agent-structure\
-  agents\                      loadable agent folders (135 with agent_spec.json)
+./
+  agents\                      loadable agent folders (scan agent_spec.json; do not freeze a count)
   src\casops\                  host library
   services\                    eight process Dockerfiles + main.py
   ui\                          Control UI (mandatory UI source root)
@@ -168,14 +168,14 @@ Python package discovery: `[tool.setuptools.packages.find] where = ["src"]`. Imp
 
 ```powershell
 python --version
-cd C:\Project\common-agent-structure
+cd .
 ```
 
 ## II.2 Create a venv and install
 
 ```powershell
 python -m venv .venv
-.\.venv\Scripts\Activate.ps1
+./.venv\Scripts\Activate.ps1
 python -m pip install -U pip
 python -m pip install -e ".[dev,api]"
 $env:PYTHONPATH = "src"
@@ -187,7 +187,7 @@ Expect printed version `0.1.0`.
 UI:
 
 ```powershell
-cd C:\Project\common-agent-structure\ui
+cd ./ui
 npm install
 ```
 
@@ -196,7 +196,7 @@ npm install
 ## II.3 Prove the host
 
 ```powershell
-cd C:\Project\common-agent-structure
+cd .
 $env:PYTHONPATH = "src"
 python -m pytest tests -q
 ```
@@ -206,7 +206,7 @@ Expect exit code 0. If this fails, do not start HTTP.
 UI tests:
 
 ```powershell
-cd C:\Project\common-agent-structure\ui
+cd ./ui
 npm test
 ```
 
@@ -215,7 +215,7 @@ npm test
 Recommended:
 
 ```powershell
-powershell -File C:\Project\common-agent-structure\scripts\start_all.ps1
+powershell -File ./scripts\start_all.ps1
 ```
 
 This starts:
@@ -228,13 +228,13 @@ It writes `var\casops-servers.json` and logs to `logs\control-plane.out.log`, `l
 Stop:
 
 ```powershell
-powershell -File C:\Project\common-agent-structure\scripts\stop_all.ps1
+powershell -File ./scripts\stop_all.ps1
 ```
 
 Manual equivalent:
 
 ```powershell
-cd C:\Project\common-agent-structure
+cd .
 $env:PYTHONPATH = "src"
 $env:CASOPS_AGENTS_ROOT = "agents"
 python -m uvicorn casops.api.control:create_app_from_env --factory --host 127.0.0.1 --port 18080
@@ -243,7 +243,7 @@ python -m uvicorn casops.api.control:create_app_from_env --factory --host 127.0.
 Second window:
 
 ```powershell
-cd C:\Project\common-agent-structure\ui
+cd ./ui
 npx vite --host 127.0.0.1 --port 15173
 ```
 
@@ -399,7 +399,7 @@ That is why the template is called with id `casops.template.baseline_safe` while
 ```json
 {
   "agent_id": "casops.template.baseline_safe",
-  "folder": "C:\\Project\\common-agent-structure\\agents\\_template_v3",
+  "folder": "./\agents\\_template_v3",
   "structure_id": "casops.common_agent.v3",
   "schema_version": "3.0",
   "role": "BaselineSafeTemplate",
@@ -761,7 +761,7 @@ Body `{ "provider": "<id>" }` or `"default"` / `"__default__"` / empty to clear 
   "agent_id": "casops.template.baseline_safe",
   "structure_id": "casops.common_agent.v3",
   "schema_version": "3.0",
-  "folder": "C:\\Project\\common-agent-structure\\agents\\_template_v3",
+  "folder": "./\agents\\_template_v3",
   "spec_bytes": 0,
   "io": {
     "defined": false,
@@ -1442,7 +1442,7 @@ Read-only. Use it to see critique edges, not to send operator chat.
 ### Step 13 — Stop
 
 ```powershell
-powershell -File C:\Project\common-agent-structure\scripts\stop_all.ps1
+powershell -File ./scripts\stop_all.ps1
 ```
 
 ---
@@ -21205,7 +21205,7 @@ describe("chat transcript sink", () => {
         return new Response(
           JSON.stringify({
             ok: true,
-            files: { transcript: "C:/Project/common-agent-structure/logs/chat/common.health/session.jsonl" },
+            files: { transcript: "./logs/chat/common.health/session.jsonl" },
           }),
           { status: 200, headers: { "Content-Type": "application/json" } },
         );
@@ -21717,8 +21717,8 @@ describe("debug log file sink", () => {
           JSON.stringify({
             ok: true,
             files: {
-              api: "C:/Project/common-agent-structure/logs/debug/session-api.log",
-              ui: "C:/Project/common-agent-structure/logs/debug/session-ui.log",
+              api: "./logs/debug/session-api.log",
+              ui: "./logs/debug/session-ui.log",
             },
           }),
           { status: 200, headers: { "Content-Type": "application/json" } },
@@ -23128,7 +23128,7 @@ from casops.registry.folder import validate_required_files
 from casops.runtime.executor import Runtime
 
 REPO = Path(__file__).resolve().parents[2]
-SOURCE = Path(r"C:\Project\common-agent-swarm-ops\business\specials\agents")
+SOURCE = Path(r"vendor/common-agent-swarm-ops/business/specials/agents")
 SCHEMA = json.loads((REPO / "schemas" / "agent" / "agent_spec.schema.json").read_text(encoding="utf-8"))
 MUTATION = {
     "x-casops-actor": "host_service",
@@ -23239,7 +23239,7 @@ from casops.corrigibility.store import InvariantStore
 from fastapi.testclient import TestClient
 
 REPO = Path(__file__).resolve().parents[2]
-SOURCE = Path(r"C:\Project\common-agent-swarm-ops\business\video\agents")
+SOURCE = Path(r"vendor/common-agent-swarm-ops/business/video/agents")
 SCHEMA = json.loads((REPO / "schemas" / "agent" / "agent_spec.schema.json").read_text(encoding="utf-8"))
 MUTATION = {
     "x-casops-actor": "host_service",
@@ -24673,8 +24673,8 @@ def test_build_userguide_copies_docs_markdown(tmp_path: Path) -> None:
     folder = tmp_path / "demo.agent"
     docs = folder / "docs"
     docs.mkdir(parents=True)
-    (docs / "user_guide.md").write_text("# Operator guide\n\nTalk to this agent.\n", encoding="utf-8")
-    (docs / "notes.md").write_text("# Extra\n\nMore.\n", encoding="utf-8")
+    (docs / "user_guide.md").write_text("# Operator guide\n\nTalk to this agent./n", encoding="utf-8")
+    (docs / "notes.md").write_text("# Extra\n\nMore./n", encoding="utf-8")
     text = build_userguide(folder) or ""
     assert "Copied from `demo.agent/docs`" in text
     assert "Talk to this agent." in text
@@ -24690,10 +24690,10 @@ def test_build_spec_merges_spec_json_prompts_rubrics_sources(tmp_path: Path) -> 
         json.dumps({"agent_id": "demo.agent", "role": "Demo", "production_activation_requested": False}),
         encoding="utf-8",
     )
-    (folder / "SPEC.md").write_text("# Demo SPEC\n\nOwns the demo role.\n", encoding="utf-8")
-    (folder / "prompts" / "primary.md").write_text("You are demo.\n", encoding="utf-8")
-    (folder / "rubrics" / "primary.md").write_text("Score honesty.\n", encoding="utf-8")
-    (folder / "sources" / "MAPPING.md").write_text("Mapped from design notes.\n", encoding="utf-8")
+    (folder / "SPEC.md").write_text("# Demo SPEC\n\nOwns the demo role./n", encoding="utf-8")
+    (folder / "prompts" / "primary.md").write_text("You are demo./n", encoding="utf-8")
+    (folder / "rubrics" / "primary.md").write_text("Score honesty./n", encoding="utf-8")
+    (folder / "sources" / "MAPPING.md").write_text("Mapped from design notes./n", encoding="utf-8")
     (folder / "sources" / "excerpts" / "long.md").write_text("excerpt body\n", encoding="utf-8")
     text = build_spec(folder)
     assert "demo.agent — Spec" in text
@@ -24830,7 +24830,7 @@ def test_l5_cannot_write_production_or_forbidden_surfaces(tmp_path: Path) -> Non
         box.mutate("corrigibility/invariants.json", b"nope", actor=ActorClass.host_service)
     assert raised.value.code == ErrorCode.IMP_SCOPE
     with pytest.raises(CasopsError):
-        box.mutate("..\\production\\agent.py", b"nope", actor=ActorClass.host_service)
+        box.mutate("../\production\\agent.py", b"nope", actor=ActorClass.host_service)
 
 
 def test_l5_mutate_rollback_and_never_promotes(tmp_path: Path) -> None:
@@ -25941,7 +25941,7 @@ python --version
 Work from the repo root:
 
 ```powershell
-cd C:\Project\common-agent-structure
+cd .
 ```
 
 ---
@@ -25952,7 +25952,7 @@ Create a venv (recommended):
 
 ```powershell
 python -m venv .venv
-.\.venv\Scripts\Activate.ps1
+./.venv\Scripts\Activate.ps1
 python -m pip install -U pip
 ```
 
@@ -25993,7 +25993,7 @@ If this fails, stop. Do not start HTTP services against a broken install.
 The control plane is the public API. It loads agent folders from `agents/`.
 
 ```powershell
-cd C:\Project\common-agent-structure
+cd .
 $env:PYTHONPATH = "src"
 $env:CASOPS_AGENTS_ROOT = "agents"
 python -m uvicorn casops.api.control:create_app_from_env --factory --host 127.0.0.1 --port 18080
@@ -26418,7 +26418,7 @@ box = ResearchIsolation(
     root=root,
     signer=HostSigner.generate(),
     approved_repos=(root / "writable",),
-    production_root=Path(r"C:\Project\common-agent-structure"),
+    production_root=Path(r"."),
 )
 # agent_runtime is denied
 record = box.mutate("notes.txt", b"draft", actor=ActorClass.independent_approver)
@@ -38381,7 +38381,7 @@ def build_userguide(folder: Path) -> str | None:
     markdown.sort(key=lambda item: (0 if item.name.lower() == "user_guide.md" else 1, item.name.lower()))
     if not markdown:
         return None
-    parts = [f"> Copied from `{folder.name}/docs` for Help.\n"]
+    parts = [f"> Copied from `{folder.name}/docs` for Help./n"]
     if len(markdown) == 1 and markdown[0].name.lower() == "user_guide.md":
         parts.append(_read(markdown[0]))
         return "\n".join(parts).strip() + "\n"
@@ -38407,7 +38407,7 @@ def build_spec(folder: Path) -> str:
         f"# {agent_id} — Spec\n",
         (
             f"> Merged for Help from `SPEC.md`, `agent_spec.json`, `prompts/`, `rubrics/`, "
-            f"and `sources/` in `agents/{folder.name}/`.\n"
+            f"and `sources/` in `agents/{folder.name}/`./n"
         ),
     ]
     spec_json = folder / "agent_spec.json"
@@ -38446,7 +38446,7 @@ def build_spec(folder: Path) -> str:
             rel = path.relative_to(folder).as_posix()
             if rel.lower() == skip_generic:
                 parts.append(f"### `{rel}`\n")
-                parts.append("Omitted here; same document as `SPEC.md` above.\n")
+                parts.append("Omitted here; same document as `SPEC.md` above./n")
                 continue
             clip = _source_clip_for(path, folder)
             parts.append(f"### `{rel}`\n")
@@ -38571,12 +38571,12 @@ ADRS = {
 
 def main() -> None:
     ROOT.mkdir(parents=True, exist_ok=True)
-    index_lines = ["# Architecture decision records\n", "Planning defaults applied from implementation_plan.md §24.\n"]
+    index_lines = ["# Architecture decision records\n", "Planning defaults applied from implementation_plan.md §24./n"]
     for adr_id, (title, decision) in ADRS.items():
         path = ROOT / f"{adr_id.lower()}.md"
         path.write_text(
             f"# {adr_id}: {title}\n\n"
-            f"**Status:** Accepted as coding-plan default (still formally open in the source plan until a signed decision log exists).\n\n"
+            f"**Status:** Accepted as coding-plan default (still formally open in the source plan until a signed decision log exists)./n\n"
             f"**Decision:** {decision}\n",
             encoding="utf-8",
         )
@@ -38617,14 +38617,14 @@ def main() -> None:
     write_text(
         ROOT / "README.md",
         "# casops.template.baseline_safe\n\n"
-        "Reference v3 agent folder for the `baseline_safe` profile.\n"
-        "Deterministic adapter, T0 cache, no persistent memory, no plugins, improvement disabled.\n",
+        "Reference v3 agent folder for the `baseline_safe` profile./n"
+        "Deterministic adapter, T0 cache, no persistent memory, no plugins, improvement disabled./n",
     )
     write_text(
         ROOT / "SPEC.md",
         "# Template baseline_safe agent\n\n"
         "Mission: exercise host compose and run with mandatory safety, "
-        "corrigibility, and audit controls only.\n",
+        "corrigibility, and audit controls only./n",
     )
     dump(
         ROOT / "agent_spec.json",
@@ -38691,8 +38691,8 @@ def main() -> None:
             "analysis_plan_ref": "evals/analysis_plan.json",
         },
     )
-    write_text(ROOT / "prompts" / "primary.md", "You are a deterministic baseline-safe agent.\n")
-    write_text(ROOT / "rubrics" / "primary.md", "Success: produce a bounded, schema-valid reply.\n")
+    write_text(ROOT / "prompts" / "primary.md", "You are a deterministic baseline-safe agent./n")
+    write_text(ROOT / "rubrics" / "primary.md", "Success: produce a bounded, schema-valid reply./n")
     dump(
         ROOT / "sources" / "PROVENANCE.json",
         {
@@ -38701,12 +38701,12 @@ def main() -> None:
             "note": "Template has no external sources.",
         },
     )
-    write_text(ROOT / "sources" / "MAPPING.md", "No external source mapping.\n")
+    write_text(ROOT / "sources" / "MAPPING.md", "No external source mapping./n")
     write_text(ROOT / "sources" / "excerpts" / ".gitkeep", "")
-    write_text(ROOT / "docs" / "user_guide.md", "Host-operated template. Not a production agent.\n")
+    write_text(ROOT / "docs" / "user_guide.md", "Host-operated template. Not a production agent./n")
     dump(ROOT / "inheritance" / "parents.json", {"parents": []})
     dump(ROOT / "inheritance" / "conflicts.json", {"conflicts": []})
-    write_text(ROOT / "skills" / "SKILL.md", "No skills enabled.\n")
+    write_text(ROOT / "skills" / "SKILL.md", "No skills enabled./n")
     dump(ROOT / "skills" / "bindings.json", {"bindings": []})
     dump(ROOT / "skills" / "integration.json", {"integrations": []})
     dump(ROOT / "skills" / "toggles.json", {"toggles": []})
@@ -39733,7 +39733,7 @@ if __name__ == "__main__":
 ````python
 """Import VA video pack agents into CASOPS v3 baseline_safe folders.
 
-Source: C:\\Project\\common-agent-swarm-ops\\business\\video\\agents
+Source: vendor/common-agent-swarm-ops//business//video//agents
 Dest:   agents/<agent_id>/
 
 Does not enable network, plugins, memory writes, T3, or production.
@@ -39749,7 +39749,7 @@ from pathlib import Path
 REPO = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPO / "src"))
 TEMPLATE = REPO / "agents" / "_template_v3"
-DEFAULT_SOURCE = Path(r"C:\Project\common-agent-swarm-ops\business\video\agents")
+DEFAULT_SOURCE = Path(r"vendor/common-agent-swarm-ops/business/video/agents")
 SKIP_SUFFIXES = {".mp3", ".wav", ".png", ".jpg", ".jpeg", ".webp", ".gif"}
 OVERLAY_TOP = ("docs", "prompts", "rubrics", "skills", "sources")
 CASOPS_OWNED = {
@@ -39825,14 +39825,14 @@ def _first_prompt(dest: Path, *, domain: str) -> str:
         excerpt = spec_md.read_text(encoding="utf-8")[:4000]
         write_text(
             primary,
-            f"You are a baseline-safe {domain} pack agent. No network. No production activation.\n\n{excerpt}\n",
+            f"You are a baseline-safe {domain} pack agent. No network. No production activation./n\n{excerpt}\n",
         )
         return primary.read_text(encoding="utf-8")
     if primary.is_file():
         return primary.read_text(encoding="utf-8")
     write_text(
         primary,
-        f"You are a baseline-safe {domain} pack agent. No network. No production activation.\n",
+        f"You are a baseline-safe {domain} pack agent. No network. No production activation./n",
     )
     return primary.read_text(encoding="utf-8")
 
@@ -39842,13 +39842,13 @@ def _materialize_rubric(dest: Path) -> None:
     jsons = sorted((dest / "rubrics").glob("*.json"))
     if jsons:
         body = jsons[0].read_text(encoding="utf-8")
-        write_text(primary, f"Source rubric `{jsons[0].name}` (baseline_safe; not a production pass).\n\n```json\n{body}\n```\n")
+        write_text(primary, f"Source rubric `{jsons[0].name}` (baseline_safe; not a production pass)./n\n```json\n{body}\n```\n")
         return
     mds = sorted(p for p in (dest / "rubrics").glob("*.md") if p.name != "primary.md")
     if mds:
         write_text(primary, mds[0].read_text(encoding="utf-8"))
         return
-    write_text(primary, "Success: stay inside pack responsibility; no network; no production activation.\n")
+    write_text(primary, "Success: stay inside pack responsibility; no network; no production activation./n")
 
 
 def casops_spec(source: dict, agent_id: str) -> dict:
@@ -40006,8 +40006,8 @@ def import_one(src: Path, dest_root: Path, *, domain: str) -> str:
     readme = dest / "README.md"
     header = (
         f"# {agent_id}\n\n"
-        f"CASOPS v3 import of `{src}` as `baseline_safe`.\n"
-        "Local deterministic adapter only. Not production-certified.\n\n"
+        f"CASOPS v3 import of `{src}` as `baseline_safe`./n"
+        "Local deterministic adapter only. Not production-certified./n\n"
     )
     existing = readme.read_text(encoding="utf-8") if readme.is_file() else ""
     if not existing.startswith(f"# {agent_id}\n\nCASOPS v3 import"):
@@ -40043,7 +40043,7 @@ if __name__ == "__main__":
 ```python
 """Import specials pack agents into CASOPS v3 baseline_safe folders.
 
-Source: C:\\Project\\common-agent-swarm-ops\\business\\specials\\agents
+Source: vendor/common-agent-swarm-ops//business//specials//agents
 Dest:   agents/<agent_id>/
 
 Does not enable network, plugins, memory writes, T3, or production.
@@ -40057,7 +40057,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from import_video_agents import main
 
-DEFAULT_SOURCE = Path(r"C:\Project\common-agent-swarm-ops\business\specials\agents")
+DEFAULT_SOURCE = Path(r"vendor/common-agent-swarm-ops/business/specials/agents")
 
 
 if __name__ == "__main__":
@@ -41096,4 +41096,4 @@ if __name__ == "__main__":
 
 ---
 
-**End of book.** Generated 2026-09-03T00:45:18Z from `C:\Project\common-agent-structure`.
+**End of book.** Generated 2026-09-03T00:45:18Z from `.`.

@@ -1,0 +1,1464 @@
+<#0.5#>
+
+This section discusses a highly advanced digital makeup and hair system used in movies and games to create ultra-realistic character appearances. It combines cutting-edge computer graphics, physics simulation, and artificial intelligence to handle everything from natural makeup to special effects, aging simulation, and historical accuracy.
+
+Let's break down the key concepts in simple terms. Subsurface Scattering (次表面散射) is like when light passes through your hand and you see a reddish glow—light penetrates the skin, bounces around inside, and comes back out. This system digitally recreates that effect, making skin look like real human skin instead of plastic. Vellum Physics (Vellum 物理) is a simulation system that makes hair move naturally. Imagine each strand of hair as a chain of beads that can bend, bounce, and collide with objects—this is how it works. GAN (Generative Adversarial Network, 生成對抗網絡) involves two AI systems working together: one generates an aged face, the other judges if it's realistic enough, competing until the result looks real. It's like an art student and teacher refining a painting until it looks lifelike. Procedural Generation (程序生成) uses math formulas to create textures and details instead of hand-drawing them one by one. It's like following a recipe to bake cookies rather than sculpting each one.
+
+Now, the main topics: First, the skin rendering system creates realistic digital skin with accurate light interactions, pores, blemishes, and color variations across different face areas. Second, makeup application applies virtual cosmetics that look real under any lighting, from everyday natural looks to dramatic transformations. Third, hair simulation makes hair move, bounce, and interact with the environment using physics calculations. Fourth, aging technology uses AI to make characters look younger or older while preserving their identifiable features. Fifth, wound and injury effects simulate bruises, cuts, and healing processes with medical accuracy, evolving over time. Sixth, historical accuracy verifies makeup and hairstyles against historical references for period authenticity. Seventh, continuity management tracks every detail across scenes to ensure makeup and hair remain consistent throughout.
+
+In summary, this is a complete digital makeup artist handling everything from everyday natural appearances to fantasy creatures and historical periods. It's physics-based for realism—hair and skin behave according to real-world physics, not just animation. AI-driven aging allows characters at any age while keeping them recognizable. Medically accurate injury progression and healing are based on real biology. Production-ready performance runs in real-time at 60 frames per second on modern hardware. Culturally sensitive, with historical verification for authentic period representation. Full tracking ensures no continuity errors—every makeup detail is followed frame by frame.
+
+Key numbers and data: Performance targets include 60 FPS real-time rendering, simultaneous simulation of 150,000 hair strands, 8K resolution texture maps for skin details, and tracking 151 facial landmarks for makeup placement. The aging system has 6 age categories: 0-18, 19-29, 30-39, 40-49, 50-59, 60+ years; AI models trained for 100 epochs; 95% facial recognition consistency during aging; trained on over 7,000 images with age and ethnicity data. Skin details include 80 pores per square centimeter on the forehead, 2.5mm light scattering radius for realistic skin, and simulation of 3 skin layers (epidermis, dermis, subcutaneous tissue). Production scale: 147 makeup variations per character, 23 unique hairstyles with full physics, 8 injury progression states, and 3 age variations per character.
+
+Next steps for implementation: First, choose a rendering engine (recommend Unity or Godot); second, set up facial tracking (OpenCV + Dlib); third, implement basic skin shaders with subsurface scattering; fourth, build hair physics simulation; fifth, train or integrate AI aging models; sixth, create a cultural reference database; seventh, develop continuity tracking systems. Recommended timeline: 8-month development cycle—first 3 months for core systems (facial tracking, basic rendering); months 4-6 for advanced features (AI aging, makeup application); months 7-8 for optimization and polish.
+
+Who is this important for? Visual effects artists, providing tools to create realistic digital humans without manual per-frame work. Game developers, enabling dynamic character customization and realistic aging in interactive experiences. Film production, ensuring makeup and hair continuity across scenes and handling complex transformations. Historical productions, verifying period accuracy for costume and makeup departments. Medical simulations, creating accurate injury and healing visualizations for training. Beauty industry, powering virtual try-on experiences for makeup products. Education, teaching makeup artistry and historical cosmetics practices.
+
+Technical requirements: Hardware needs a modern GPU (NVIDIA GTX 1060 or better), at least 16GB RAM, multi-core processor, and recommended SSD storage. Software stack: Unity 2022 or Godot 4.x (rendering engine), Python 3.8+ (AI components), PyTorch (neural networks), OpenCV (facial tracking), CUDA (GPU acceleration).
+
+Why is this system so powerful? Traditional digital makeup requires artists to hand-paint and adjust frame by frame; this automates complex physics and biology while retaining artistic control. AI aging doesn't just stretch the face—it understands decades of skin, fat, and bone changes. Hair doesn't just move—it bends, collides, and clumps like real hair. Makeup doesn't float on the surface—it interacts with skin texture and lighting like real cosmetics. Bottom line: This is a software version of a full digital makeup department, handling everything from everyday continuity to complex effects, with scientific accuracy and artistic flexibility.
+<#0.5#>
+# Makeup & Hair Agent - The Face Sculptor
+
+<#0.5#>
+
+## Overview
+
+This document outlines the design, functionality, and implementation of the **Makeup & Hair Agent**, a comprehensive system for advanced character makeup design, hair simulation, aging progression, injury simulation, and cultural authenticity validation. It serves as a digital makeup artist and stylist for virtual production pipelines, ensuring realistic, consistent, and historically accurate results across scenes.
+
+<#0.5#>
+
+## What to Build
+
+The system comprises the following core components:
+
+- **Advanced Character Makeup Designer**: Handles natural beauty makeup, theatrical transformations, special effects, age progression, injury simulation, and cultural/period authenticity.
+- **Procedural Skin Shader System**: Implements multi-layered subsurface scattering (SSS) using physically based models, separating surface reflection from subsurface light transport to achieve soft, realistic skin appearance via light penetration and dermal scattering.
+- **Hair Physics Simulation Platform**: Utilizes an advanced Vellum solver for physics-based simulations of hair movement, bending, and object interactions, enforcing distance and orientation constraints with adjustable bend stiffness and damping ratios.
+- **AI-Powered Aging Simulator**: Employs a multi-network architecture (encoder, FaceNet, generator, discriminator) with ethnicity-specific aging data and weak spatial supervision for realistic progression and regression.
+- **Procedural Injury/Wound Generator**: Simulates wound progression with healing timelines, bruise color evolution, scar formation, and blood flow dynamics.
+- **Comprehensive Continuity Tracker**: Manages frame-by-frame makeup and hair states to ensure consistency across scenes and temporal changes.
+- **Cultural/Period Authenticity Validator**: Verifies historical makeup and hairstyles against extensive reference databases.
+
+<#0.5#>
+
+## What It Does
+
+<#0.5#>
+
+### Core Makeup Design System
+
+The agent functions as a digital makeup artist, applying virtual cosmetics with high realism. It generates skin pores using procedural noise (e.g., black-and-white spots and clouds) with adjustable scale, adhering to physically based rendering (PBR) principles: non-metallic materials (metallic value = 0), emphasizing base color, roughness, normal/height mapping, and SSS balance.
+
+#### Advanced Skin Texturing Workflow
+
+The system uses Smart Materials and procedural effects in tools like Substance Painter, layering artistically and refining iteratively under varied lighting. It incorporates pre-built materials (e.g., "Skin Human") and community assets (e.g., "Realistic Human Skin") with tri-planar projection for adjustable base pores and maskable layers for color/detail control.
+
+Textures separate base color from roughness and scattering data for non-destructive editing, allowing isolated adjustments (e.g., skin tone) without full retexturing.
+
+#### Procedural Pore Generation
+
+Pores are generated with controlled size, depth, and variation, referencing high-resolution images and using ZBrush-style layering for depth. Skin direction includes micro-creases from facial movement; layer intensity simulates age (deeper creases for older characters).
+
+<#0.5#>
+
+### Subsurface Scattering Implementation
+
+#### Physical Accuracy
+
+The skin shader models SSS where light penetrates the surface, scatters and absorbs subsurface, then exits, producing translucency for soft skin. About 6% of light reflects directly via Fresnel at the oily surface; the rest undergoes subsurface scattering and absorption.
+
+#### Multi-Layer Skin Model
+
+It simulates up to five layers with varying absorption and scattering, supported by graphics research. The bidirectional scattering-surface reflectance distribution function (BSSRDF) softens appearance and enables color bleeding in shadows, with blood absorption reddening deep-scattered light.
+
+#### Real-Time Performance
+
+Full physical accuracy exceeds real-time limits, so the system approximates visuals using lighting blur (e.g., Gaussian blurs for "glow" effects) in post-processing.
+
+<#0.5#>
+
+### Hair Simulation System
+
+#### Vellum Physics Engine
+
+Hair uses position-based dynamics (PBD) via Houdini's Vellum framework, integrated with cloth, grains, fluids, and soft bodies. It maintains segment distance and orientation, with bend stiffness and damping preventing twisting; anti-twist support avoids axis rotation.
+
+#### Advanced Constraint Systems
+
+Constraints combine edge-distance and bend-angle calculations, distinguishing twist/stretch from regular geometry. Higher bend stiffness and lower damping yield stiffer hair; fewer segments and more iterations increase rigidity.
+
+#### Collision and Interaction
+
+Surface colliders handle deforming objects without VDB generation for efficiency. For long hair, disable self-collisions and use glue constraints for clumping, reducing chaos.
+
+#### Pin and Root Systems
+
+Roots pin to scalp via Group Expression SOPs (points, first primitive point). Orientation pinning preserves groomed direction; soft pins allow flex around roots.
+
+<#0.5#>
+
+### Aging Simulation Technology
+
+#### GAN-Based Architecture
+
+The system uses a generator (G) and discriminator (D) per deep convolutional GAN (DCGAN), with conditional inputs at G and D's first layer. Aging occurs via latent vector approximation and age switching.
+
+#### Multi-Network Integration
+
+Age-conditional GAN (age-cGAN) includes encoder, FaceNet, generator, and discriminator. Pretrained Inception-ResNet-v2 yields 128D embeddings via Euclidean distance on real/reconstructed images.
+
+#### Aging Progression Control
+
+It labels 15 clinical signs across 7,000 images for ethnicity-specific maps, controlling localization and degree. Outputs include wrinkles, hairline changes, and super-resolution while preserving identity.
+
+#### Training Methodology
+
+Optimized with ADAM over 100 epochs across six age groups (0-18, 19-29, 30-39, 40-49, 50-59, 60+). G minimizes generation-to-target loss; D maximizes real-vs-generated discrimination until outputs are indistinguishable.
+
+<#0.5#>
+
+### Virtual Makeup Technology
+
+#### Face Tracking Precision
+
+Detects up to 151 landmarks for precise placement, refining alignment on contours. Multi-point tracking handles movement for realistic try-ons in images/videos.
+
+#### Real-Time Application
+
+Tracks points through video, adjusting for rotations/translations to maintain positioning in dynamic interactions.
+
+#### Makeup Realism
+
+Aligns products (e.g., lipstick on lips, eyeshadow on creases) dynamically with expressions, ensuring seamless motion without artifacts.
+
+<#0.5#>
+
+## Tools and Frameworks
+
+<#0.5#>
+
+### Core Rendering Technologies
+
+- **Advanced Skin Shading**: BSSRDF models for flexible, realistic rendering under varied lighting.
+- **Substance Designer Integration**: Smart Materials with curvature/AO-responsive stacks, producing tileable displacement maps (roughness, specular, scattering).
+- **Hair Simulation Engines**: Houdini for hair/cloth/fluid simulations, with assets for hair cards/low-poly models; integrates with Unreal Engine/Unity.
+- **Machine Learning Frameworks**: AttentionGAN + SRGAN; AttentionGAN uses subnets for attention/content masks in aging.
+
+<#0.5#>
+
+### Advanced Technical Implementation
+
+- **Procedural Asset Generation**: Skin details (freckles, pimples, cuts) via micro-grains for health-state rendering.
+- **Performance Optimization**: Unity shaders for mobile SSS, linking textures to optical parameters.
+- **Cross-Platform Compatibility**: Real-time beautification/try-on for iOS, Android, Web.
+
+<#0.5#>
+
+## Example Interaction Workflow
+
+For character Sarah (age 32, mixed ethnicity, medium brown skin, natural shoulder-length dark brown hair with highlights, minimal professional makeup; injuries in scenes 8/30; aging in scenes 35/40):
+
+<#0.5#>
+
+### Phase 1: Advanced Skin Design & Subsurface Implementation
+
+#### Physical Skin Modeling
+
+- **Research**: Fitzpatrick Type IV-V; warm golden undertone (RGB 120,90,70); uneven melanin; multi-lighting references (tungsten 3200K, daylight 5500K, golden hour 2500K, cloudy 6500K).
+- **SSS Layers**: Epidermis (1mm, σ_s=5mm⁻¹); Dermis (σ_s=5mm⁻¹, hemoglobin); Hypodermis (σ_s=8mm⁻¹, fat).
+- **BSSRDF Parameters**: Radius 5mm; absorption σ_a=(0.32,0.17,0.48) RGB; Fresnel η=1.4; Henyey-Greenstein g=0.8.
+
+#### Procedural Texture Generation (Substance Designer)
+
+- **Base Layer**: RGB(120,90,70) ±15%; 5mm melanin noise; vein subsurface; warm/cool zones.
+- **Micro-Details**: 80 pores/cm² forehead (50 cheeks); 0.08-0.25mm diameter; 0.03-0.08mm depth; 0.02mm hexagonal cells.
+- **Imperfections**: 25 freckles (Poisson); 2 moles (5mm); 1 scar (eyebrow, 2mm); no age spots.
+- **Outputs**: 8K albedo/normal/roughness/SSS/transmission/specular maps.
+
+#### Advanced Shader Implementation
+
+- **PBR**: Energy conservation (albedo + specular + transmission = 1); dipole multiple scattering; chromatic transport.
+- **Network**: UV/view/light inputs; BSSRDF lookups; GGX reflection; energy blend.
+- **Optimization**: Screen-space SSS; precomputed irradiance; temporal reprojection; LOD.
+
+<#0.5#>
+
+### Phase 2: Comprehensive Makeup System
+
+#### Natural Professional Makeup (Default)
+
+- **Foundation**: 40% opacity; spectral match; airbrush evenness; T-zone pore reduction.
+- **Eyes**: 0.8mm tapered black liner; 20% mascara volume; 10° eyebrow correction.
+- **Lips**: RGB(180,120,100); gloss 0.3 (satin).
+
+#### Advanced Variations
+
+- **Gala**: 3-zone eyeshadow gradient; pearl cheek highlight; intensified lips RGB(160,80,90); +15% luminosity.
+- **Rain**: Waterproof opacity; physics smudges; desaturation; moisture roughness.
+
+<#0.5#>
+
+### Phase 3: Advanced Hair Physics & Styling
+
+#### Hair Modeling & Generation
+
+- **Guides**: 12,000 primary; 150,000 interpolated; 300,000 render strands.
+- **Properties**: 0.075mm diameter; 0-6 GPa modulus; 1.3 g/cm³ density; 0.4 friction.
+- **Color**: Base RGB(45,30,20); 18% highlights RGB(110,75,45); root-tip gradient.
+
+#### Vellum Physics Configuration
+
+- **Constraints**: Distance (length); bend (15°/segment); twist prevention; root pins.
+- **Solver**: 4 substeps; 150 iterations; 0.15 damping; 9.81 m/s² gravity.
+- **Collisions**: Head geometric; shoulder capsule; no self (long hair); dynamic clothing.
+
+#### Dynamic States
+
+- **Bun (Scenes 1-7)**: Occipital gather (8cm above nape); 5 twists; 4 pins (5N); 5% flyaways.
+- **Loose (Scene 22)**: 12cm S-waves; 25% crown volume; light gel; enhanced bounce.
+- **Wet (Scene 30)**: 8-12 clump hairs; 3x mass; 40% transparency; 25% darker; drip physics.
+
+<#0.5#>
+
+### Phase 4: Injury Simulation & Progression
+
+#### Bruise Physics & Color Evolution
+
+- **Initial (0-2 min)**: Capillary rupture; 3cm red pool RGB(180,40,40); 2mm swelling.
+- **1-6 Hours**: Clot; darker red RGB(160,30,30); 5mm peak; +2°C inflammation.
+- **Day 1-3**: Purple-blue RGB(120,60,100); swelling to 3mm; tenderness zones.
+- **Day 4-7**: Blue-green RGB(100,80,120); 20% size reduction; granulation.
+- **Day 8-14**: Yellow-green RGB(140,140,80); 80% fade; texture normalization.
+
+#### Wound Geometry & Healing
+
+- **Cut**: 2mm dermal depth; 18mm length; 3mm width; clean edges.
+- **Blood**: 2ml/min flow; 8-min clot; gravity trickle; brown residue.
+- **Scab**: Day 1 dark red; Day 3 barrier; Day 7 lift; Day 14 pink scar.
+- **Scar**: Atrophic; 5mm wide; RGB(160,130,120); smooth, low pores; gradual fade.
+
+<#0.5#>
+
+### Phase 5: AI-Driven Aging Simulation
+
+#### De-Aging to 25 (Scene 35)
+
+- **Structure**: +15% collagen volume; cheek fat; jaw tone; bone subtlety.
+- **Skin**: +25% elasticity; -20% pores; + oil/hydration.
+- **Details**: -60% wrinkles; minimal spots/veins; even pigmentation.
+- **AI**: 512D encoding; age vector; style transfer; 95% identity.
+
+#### Progression to 50 (Scene 40)
+
+- **Structure**: 2mm descent; -20% fat; orbital changes; muscle loss.
+- **Skin**: -40% elastin; -30% collagen; -25% hydration; -15% thickness.
+- **Features**: Deep nasolabial; 8-12 spots; telangiectasia; 35% gray hair.
+
+#### Hair Aging
+
+- **Graying**: Temple-first; desaturation; coarser texture.
+- **Thinning**: 25% density loss; -15% diameter; -20% growth.
+
+<#0.5#>
+
+### Phase 6: Cultural & Period Authenticity
+
+#### 1920s Makeup
+
+- **Eyes**: Heavy kohl; smoky matte; thin penciled brows; clumpy mascara.
+- **Lips**: Cupid's bow; oxblood RGB(100,20,30); matte edges.
+- **Face**: Pale foundation; heavy powder; minimal blush; no contour.
+
+#### Period Hair
+
+- **Bob**: Chin-length; sharp cut; nape exposure; asymmetrical part.
+- **Waves**: S-curves; pomade set; sharp ridges; symmetric; 12-hour hold.
+
+<#0.5#>
+
+### Phase 7: Comprehensive Continuity Management
+
+- **Database**: Character ID/scene/timestamp; makeup/hair inventory; environmental factors.
+- **Transitions**: Time/physical/emotional/environmental logic.
+- **QC**: Reference frames; auto-detection; artist review; version control; shader/animation/lighting checks.
+
+<#0.5#>
+
+### Phase 8: Advanced Special Effects
+
+- **Prosthetics**: ZBrush sculpting; seamless blends; expression deformation; tone match.
+- **Fantasy**: Alien scales; bioluminescence; anatomical mods.
+- **Blood**: Arterial spray; venous flow; seepage; clotting; particle droplets/spatter/stains.
+
+<#0.5#>
+
+## Integration with Production Pipeline
+
+- **To Digital Human Agent**: 8K textures; shader networks; physics caches; metadata.
+- **To Lighting Agent**: SSS/Fresnel/hair data; light mappings.
+- **QA**: Auto render/performance/cross-platform tests; artist validation; cultural checks.
+
+<#0.5#>
+
+## Final Technical Output
+
+- 147 makeup variations (47 base + 100 situational).
+- 23 hairstyles with physics.
+- 8 injury states (medically accurate).
+- 3 age variations (texture/geometry).
+- 2 period styles (validated).
+- Continuity database; pipeline integration; 60fps real-time; cross-platform (PC/console/mobile); expert-validated sensitivity/accuracy.
+
+<#0.5#>
+
+## Code Demo Focus
+
+Implementation emphasizes modular, performant components:
+
+- **Procedural Skin Texture Generator**: BnW noise for PBR-compliant pores; tileable 8K maps with channel separation.
+- **SSS Shader**: BSSRDF with UV Gaussian blurring; camera projection.
+- **Hair Simulation**: Vellum PBD constraints; distance/bend calculations.
+- **Injury System**: Time-based bruise/wound/scar/blood physics.
+- **AI Aging Simulator**: Multi-network with ethnicity maps; spatial control.
+- **Makeup System**: 151-landmark detection; real-time tracking/adaptation.
+- **Continuity Tracking**: Frame-state management; auto-detection workflows.
+- **Authenticity Validator**: Historical databases; AI/cultural checks.
+
+# Implementation Solutions
+
+This section details strategies using open-source frameworks, based on the specification and compatibility analysis.
+
+<#0.5#>
+
+## Framework Compatibility Matrix
+
+| Capability              | OpenCV | Blender | Godot | PyTorch | TensorFlow | Dlib | Substance | Houdini | Unity |
+|-------------------------|--------|---------|-------|---------|------------|------|-----------|---------|-------|
+| Face Tracking           | ✅     | ❌      | ❌    | ✅      | ✅         | ✅   | ❌        | ❌      | ✅    |
+| Subsurface Scattering   | ⚠️     | ✅      | ⚠️    | ❌      | ❌         | ❌   | ✅        | ✅      | ✅    |
+| Hair Physics            | ❌     | ✅      | ⚠️    | ❌      | ❌         | ❌   | ❌        | ✅      | ✅    |
+| GAN-based Aging         | ❌     | ❌      | ❌    | ✅      | ✅         | ❌   | ❌        | ❌      | ⚠️   |
+| Procedural Texturing    | ❌     | ✅      | ⚠️    | ❌      | ❌         | ❌   | ✅        | ✅      | ⚠️   |
+| Real-time Rendering     | ⚠️     | ❌      | ✅     | ❌      | ❌         | ❌   | ❌        | ❌      | ✅    |
+
+**Legend**: ✅ Full Support | ⚠️ Partial/Requires Extension | ❌ Not Supported
+
+<#0.5#>
+
+## Core Implementation Architecture
+
+<#0.5#>
+
+### Primary Technology Stack
+
+- **Real-time Engine**: Unity 3D (URP/HDRP).
+- **Face Tracking**: OpenCV + Dlib.
+- **AI/ML**: PyTorch for GANs.
+- **Hair Physics**: Custom Vellum-inspired.
+- **Skin Rendering**: FaceWorks + custom SSS.
+
+**Alternative (Open-Source Only)**:
+- **Engine**: Godot 4.x.
+- **Tracking**: OpenCV + MediaPipe.
+- **AI/ML**: PyTorch.
+- **Hair**: Custom physics.
+- **Skin**: Custom shaders.
+
+<#0.5#>
+
+## Detailed Implementation Solutions
+
+<#0.5#>
+
+### Advanced Face Tracking and Landmark Detection
+
+#### Primary: OpenCV + Dlib
+
+Dlib's pre-trained model detects 68 landmarks (e.g., eyes, lips, nose).
+
+```python
+import cv2
+import dlib
+import numpy as np
+
+class FacialLandmarkTracker:
+    def __init__(self):
+        self.detector = dlib.get_frontal_face_detector()
+        self.predictor = dlib.shape_predictor('shape_predictor_68_face_landmarks.dat')
+
+    def detect_landmarks(self, image):
+        gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+        faces = self.detector(gray)
+        landmarks = []
+        for face in faces:
+            shape = self.predictor(gray, face)
+            landmarks.append([(p.x, p.y) for p in shape.parts()])
+        return landmarks
+```
+
+**Pros**: Real-time C++ performance; extensive support; free.  
+**Cons**: Adult-focused; 68 landmarks only; ethnicity variance.  
+**Integration**: OpenCV for capture; Unity via plugins.
+
+<#0.5#>
+
+### Physically-Based Skin Rendering with Subsurface Scattering
+
+#### Primary: Custom Unity HDRP Shader
+
+Uses texture-space SSS with UV Gaussian kernels.
+
+```hlsl
+Shader "Custom/SubsurfaceScatteringSkin"
+{
+    Properties
+    {
+        _BaseColor ("Base Color", Color) = (1,1,1,1)
+        _SubsurfaceScatteringProfile ("SSS Profile", 2D) = "white" {}
+        _ScatteringRadius ("Scattering Radius", Range(0, 10)) = 5
+        _ThicknessTex ("Thickness", 2D) = "white" {}
+    }
+    SubShader { Tags { "RenderPipeline"="UniversalPipeline" } }
+    Pass
+    {
+        Name "ForwardLit"
+        HLSLPROGRAM
+        #pragma vertex vert
+        #pragma fragment frag
+        #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
+        #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Lighting.hlsl"
+
+        struct Attributes { float4 positionOS : POSITION; float3 normalOS : NORMAL; float2 uv : TEXCOORD0; };
+        struct Varyings { float4 positionHCS : SV_POSITION; float3 positionWS : TEXCOORD0; float3 normalWS : TEXCOORD1; float2 uv : TEXCOORD2; };
+
+        Varyings vert(Attributes input) {
+            Varyings output;
+            VertexPositionInputs pos = GetVertexPositionInputs(input.positionOS.xyz);
+            output.positionHCS = pos.positionCS;
+            output.positionWS = pos.positionWS;
+            output.normalWS = GetWorldSpaceNormalizeMix(input.normalOS, 0.0);
+            output.uv = input.uv;
+            return output;
+        }
+
+        float3 SubsurfaceScattering(float3 lightDir, float3 normal, float3 viewDir, float thickness, float2 uv) {
+            float transmission = pow(saturate(dot(-lightDir, normal + viewDir)), _ScatteringRadius) * thickness;
+            float3 scatteringProfile = tex2D(_SubsurfaceScatteringProfile, float2(transmission, 0.5)).rgb;
+            return scatteringProfile;
+        }
+
+        half4 frag(Varyings input) : SV_Target {
+            float3 normalWS = normalize(input.normalWS);
+            Light mainLight = GetMainLight();
+            float3 viewDirWS = GetWorldSpaceViewDir(input.positionWS);
+            float thickness = tex2D(_ThicknessTex, input.uv).r;
+            float3 sss = SubsurfaceScattering(mainLight.direction, normalWS, viewDirWS, thickness, input.uv);
+            half3 color = _BaseColor.rgb + sss * mainLight.color;
+            return half4(color, 1.0);
+        }
+        ENDHLSL
+    }
+}
+```
+
+**Alternative: Godot Custom Shader**
+
+```gdscript
+shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx;
+
+uniform sampler2D subsurface_profile : hint_albedo;
+uniform float scattering_radius : hint_range(0.0, 10.0) = 5.0;
+uniform vec3 base_color : source_color = vec3(0.8, 0.6, 0.5);
+uniform float subsurface_strength : hint_range(0.0, 1.0) = 0.5;
+
+void fragment() {
+    vec3 normal = normalize(NORMAL);
+    vec3 light_dir = normalize(LIGHT0_DIRECTION);
+    vec3 view_dir = normalize(VIEW);
+    float thickness = texture(THICKNESS_TEXTURE, UV).r;
+    float transmission = pow(max(0.0, dot(-light_dir, normal + view_dir)), scattering_radius) * thickness;
+    vec3 scattering = texture(subsurface_profile, vec2(transmission, 0.5)).rgb * subsurface_strength;
+    ALBEDO = base_color + scattering;
+}
+```
+
+**Pros**: Flexible realism; real-time approximation.  
+**Cons**: Hardware limits; tuning needs; mobile intensive.  
+**Integration**: Unity pipelines; Blender pre-compute.
+
+<#0.5#>
+
+### Hair Physics Simulation System
+
+#### Primary: Custom Vellum-Inspired in Unity
+
+Uses PBD with Verlet integration and jobs.
+
+```csharp
+using Unity.Collections;
+using Unity.Jobs;
+using UnityEngine;
+
+public class HairStrandSimulation : MonoBehaviour
+{
+    [SerializeField] private int segmentsPerStrand = 10;
+    [SerializeField] private float strandLength = 1f;
+    [SerializeField] private float damping = 0.15f;
+    [SerializeField] private float stiffness = 100f;
+
+    private NativeArray<Vector3> positions;
+    private NativeArray<Vector3> oldPositions;
+    private NativeArray<float> masses;
+
+    void Start()
+    {
+        int totalPoints = segmentsPerStrand * /* num strands */;
+        positions = new NativeArray<Vector3>(totalPoints, Allocator.Persistent);
+        oldPositions = new NativeArray<Vector3>(totalPoints, Allocator.Persistent);
+        masses = new NativeArray<float>(totalPoints, Allocator.Persistent);
+        // Initialize positions, etc.
+    }
+
+    struct HairPhysicsJob : IJobParallelFor
+    {
+        [WriteOnly] public NativeArray<Vector3> positions;
+        [ReadOnly] public NativeArray<Vector3> oldPositions;
+        [ReadOnly] public NativeArray<float> masses;
+        public float deltaTime;
+        public float damping;
+        public Vector3 gravity;
+
+        public void Execute(int index)
+        {
+            if (index == 0) return; // Root pinned
+
+            Vector3 velocity = (positions[index] - oldPositions[index]) / deltaTime;
+            Vector3 force = gravity * masses[index];
+
+            // Distance constraint
+            Vector3 delta = positions[index] - positions[index - 1];
+            float distance = delta.magnitude;
+            float restLength = strandLength / (segmentsPerStrand - 1);
+            if (distance > restLength)
+            {
+                Vector3 correction = delta.normalized * (distance - restLength) * 0.5f;
+                positions[index] -= correction;
+                positions[index - 1] += correction;
+            }
+
+            // Verlet
+            Vector3 newPos = positions[index] + velocity * damping + force * deltaTime * deltaTime / masses[index];
+            oldPositions[index] = positions[index];
+            positions[index] = newPos;
+        }
+    }
+
+    void Update()
+    {
+        var job = new HairPhysicsJob
+        {
+            positions = positions,
+            oldPositions = oldPositions,
+            masses = masses,
+            deltaTime = Time.deltaTime,
+            damping = damping,
+            gravity = Physics.gravity
+        };
+        JobHandle handle = job.Schedule(positions.Length, 64);
+        handle.Complete();
+    }
+
+    void OnDestroy()
+    {
+        positions.Dispose();
+        oldPositions.Dispose();
+        masses.Dispose();
+    }
+}
+```
+
+**Compute Shader Variant** (for GPU):
+
+```hlsl
+#pragma kernel HairPhysicsUpdate
+
+RWStructuredBuffer<float3> positions : register(u0);
+StructuredBuffer<float3> oldPositions : register(t0);
+StructuredBuffer<float> masses : register(t1);
+cbuffer Constants : register(b0) { float deltaTime; float damping; float3 gravity; };
+
+[numthreads(64,1,1)]
+void HairPhysicsUpdate(uint3 id : SV_DispatchThreadID)
+{
+    uint index = id.x;
+    if (index >= positions.Length || index == 0) return;
+
+    float3 velocity = (positions[index] - oldPositions[index]) / deltaTime;
+    float3 force = gravity * masses[index];
+
+    // Distance constraint and Verlet (optimized GPU version)
+    // Implementation similar to CPU, with parallel corrections
+}
+```
+
+**Pros**: 500k+ points at 120fps; modular.  
+**Cons**: Custom physics needed; collision complexity; GPU reqs.  
+**Integration**: Unity Jobs/GPU; rendering systems.
+
+<#0.5#>
+
+### AI-Powered Face Aging System
+
+#### Primary: PyTorch GAN
+
+Uses encoder-decoder with age modulation; UTKFace dataset (20k+ images, ages 0-116).
+
+```python
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
+from torch.utils.data import DataLoader
+
+class Generator(nn.Module):
+    def __init__(self, num_channels=64):
+        super().__init__()
+        self.encoder = nn.Sequential(
+            nn.Conv2d(3, num_channels, 4, 2, 1),
+            nn.LeakyReLU(0.2),
+            nn.Conv2d(num_channels, num_channels*2, 4, 2, 1),
+            nn.BatchNorm2d(num_channels*2),
+            nn.LeakyReLU(0.2),
+            # Add more layers up to 512 channels
+        )
+        self.decoder = nn.Sequential(
+            nn.ConvTranspose2d(num_channels*8, num_channels*4, 4, 2, 1),
+            nn.BatchNorm2d(num_channels*4),
+            nn.ReLU(),
+            # Add more layers to 3 channels
+            nn.Tanh()
+        )
+        self.age_modulator = nn.Linear(6, num_channels*8)  # 6 age groups
+
+    def forward(self, x, age_label):
+        encoded = self.encoder(x)
+        age_feat = F.relu(self.age_modulator(age_label))
+        modulated = encoded + age_feat.view(encoded.shape)
+        return self.decoder(modulated)
+
+class Discriminator(nn.Module):
+    def __init__(self):
+        super().__init__()
+        self.model = nn.Sequential(
+            nn.Conv2d(3 + 1, 64, 4, 2, 1),  # +1 for age label
+            nn.LeakyReLU(0.2),
+            # More conv layers
+            nn.Conv2d(512, 1, 4, 1, 0),
+            nn.Sigmoid()
+        )
+
+    def forward(self, x, age_label):
+        age_map = age_label.view(-1, 1, 1, 1).expand(-1, 1, x.shape[2], x.shape[3])
+        input = torch.cat([x, age_map], dim=1)
+        return self.model(input)
+
+# Training
+def train_age_gan(generator, discriminator, dataloader, epochs=100):
+    optimizer_G = torch.optim.Adam(generator.parameters(), lr=0.0002, betas=(0.5, 0.999))
+    optimizer_D = torch.optim.Adam(discriminator.parameters(), lr=0.0002, betas=(0.5, 0.999))
+    criterion = nn.BCELoss()
+
+    for epoch in range(epochs):
+        for real_imgs, ages in dataloader:
+            # Train D
+            real_labels = torch.ones(real_imgs.size(0), 1)
+            fake_imgs = generator(real_imgs, ages)
+            fake_labels = torch.zeros(real_imgs.size(0), 1)
+
+            d_real = discriminator(real_imgs, ages)
+            loss_d_real = criterion(d_real, real_labels)
+            d_fake = discriminator(fake_imgs.detach(), ages)
+            loss_d_fake = criterion(d_fake, fake_labels)
+            loss_d = (loss_d_real + loss_d_fake) / 2
+            optimizer_D.zero_grad()
+            loss_d.backward()
+            optimizer_D.step()
+
+            # Train G
+            g_output = discriminator(fake_imgs, ages)
+            loss_g = criterion(g_output, real_labels)
+            optimizer_G.zero_grad()
+            loss_g.backward()
+            optimizer_G.step()
+```
+
+**Pros**: Proven implementations; ethnicity handling.  
+**Cons**: Compute-heavy training; input sensitivity.  
+**Integration**: Python.NET to Unity; GPU inference.
+
+<#0.5#>
+
+### Virtual Makeup Application System
+
+#### Primary: OpenCV + MediaPipe
+
+Applies effects via 468+ landmarks.
+
+```python
+import cv2
+import mediapipe as mp
+import numpy as np
+
+class VirtualMakeupSystem:
+    def __init__(self):
+        self.mp_face_mesh = mp.solutions.face_mesh
+        self.face_mesh = self.mp_face_mesh.FaceMesh(
+            max_num_faces=1, refine_landmarks=True, min_detection_confidence=0.5
+        )
+
+    def apply_lipstick(self, image, color=(255, 0, 0)):
+        rgb_image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+        results = self.face_mesh.process(rgb_image)
+        if results.multi_face_landmarks:
+            landmarks = results.multi_face_landmarks[0]
+            h, w = image.shape[:2]
+
+            # Lip indices (MediaPipe: upper/lower)
+            upper_lip = [61, 185, 40, 39, 37, 0, 267, 269, 270, 409, 291]
+            lower_lip = [146, 91, 181, 84, 17, 314, 405, 321, 375]
+            lip_points = []
+            for idx in upper_lip + lower_lip:
+                x = int(landmarks.landmark[idx].x * w)
+                y = int(landmarks.landmark[idx].y * h)
+                lip_points.append([x, y])
+
+            mask = np.zeros((h, w), dtype=np.uint8)
+            cv2.fillPoly(mask, [np.array(lip_points)], 255)
+            mask = cv2.GaussianBlur(mask, (21, 21), 0)
+
+            foreground = np.zeros_like(image)
+            foreground[mask == 255] = color
+            result = cv2.addWeighted(image, 0.7, foreground, 0.3, 0)
+            return result
+        return image
+
+    def process_frame(self, image):
+        return self.apply_lipstick(image)
+```
+
+**Pros**: Real-time; accurate; open-source.  
+**Cons**: 2D limits; lighting dependency; pose issues.  
+**Integration**: Webcam batch; 3D export.
+
+<#0.5#>
+
+### Cultural and Period Authenticity System
+
+#### Implementation: SQLite Database with Validation
+
+```python
+import sqlite3
+import json
+
+class CulturalAuthenticityValidator:
+    def __init__(self, db_path="cultural_references.db"):
+        self.db_path = db_path
+        self.init_database()
+
+    def init_database(self):
+        with sqlite3.connect(self.db_path) as conn:
+            conn.execute('''
+                CREATE TABLE IF NOT EXISTS makeup_styles (
+                    id INTEGER PRIMARY KEY,
+                    period TEXT,
+                    culture TEXT,
+                    style_name TEXT,
+                    description TEXT,
+                    colors TEXT,  -- JSON
+                    techniques TEXT,  -- JSON
+                    reference_images TEXT,  -- JSON
+                    authenticity_score REAL
+                )
+            ''')
+            # Populate with data, e.g.:
+            # conn.execute("INSERT INTO makeup_styles (period, culture, ...) VALUES ('1920s', 'Western', ...)")
+            conn.commit()
+
+    def validate_makeup_style(self, period, culture, makeup_config):
+        with sqlite3.connect(self.db_path) as conn:
+            cursor = conn.cursor()
+            cursor.execute('SELECT * FROM makeup_styles WHERE period = ? AND culture = ?', (period, culture))
+            historical = cursor.fetchall()
+
+            # Simple score (expand with ML)
+            score = 80 if any('red' in mc['colors'] for mc in makeup_config.get('elements', []) if historical) else 50
+            return {
+                'authentic': score > 75,
+                'score': score,
+                'suggestions': ['Adjust lip color to oxblood for 1920s accuracy'] if score < 75 else []
+            }
+```
+
+**Pros**: Flexible; real-time feedback.  
+**Cons**: Data maintenance.  
+**Integration**: Makeup pipelines; batch validation.
+
+<#0.5#>
+
+## Phased Implementation Strategy
+
+<#0.5#>
+
+### Phase 1: Foundation (Months 1-3)
+
+- Implement face tracking, basic SSS shader, simple hair physics, and engine setup.
+- **Deliverables**: Detection prototype; skin shader; hair basics; IDE.
+
+<#0.5#>
+
+### Phase 2: Advanced Features (Months 4-6)
+
+- Add GAN aging, makeup blending, collision hair, and database.
+- **Deliverables**: Aging system; virtual makeup; interactive hair; validator.
+
+<#0.5#>
+
+### Phase 3: Optimization and Polish (Months 7-8)
+
+- GPU optimize; enhance rendering; test; refine UI.
+- **Deliverables**: 60fps performance; asset pipeline; tests; docs.
+
+<#0.5#>
+
+## Critical Dependencies and Prerequisites
+
+<#0.5#>
+
+### Hardware
+
+- GPU: NVIDIA GTX 1060+ / AMD RX 580+.
+- RAM: 16GB+.
+- CPU: Multi-core.
+- Storage: SSD.
+
+<#0.5#>
+
+### Software
+
+- Python 3.8+; CUDA 11+; Unity 2022.3 LTS / Godot 4.x; PyTorch 2.0+; OpenCV 4.5+.
+
+<#0.5#>
+
+### Integration Challenges and Solutions
+
+- **Python-Unity**: Python.NET or ONNX.
+- **Performance**: GPU shaders; LOD.
+- **Cross-Platform**: Interfaces; Unity builds.
+- **Pipeline**: Auto-scripts; cloud processing.
+
+<#0.5#>
+
+## Conclusion
+
+This strategy leverages open-source tools for a modular Makeup & Hair Agent, enabling iterative development of realistic simulations. Unity/PyTorch/OpenCV form a robust base, with phased rollout ensuring feasibility. Testing against authenticity databases upholds accuracy, supporting production-scale virtual cosmetics and styling.
+
+<#0.5#>
+
+#### 1920s Makeup
+
+- **Eyes**: Heavy kohl; smoky matte; thin penciled brows; clumpy mascara.
+- **Lips**: Cupid's bow; oxblood RGB(100,20,30); matte edges.
+- **Face**: Pale foundation; heavy powder; minimal blush; no contour.
+
+<#0.5#>
+
+#### Period Hair
+
+- **Bob**: Chin-length; sharp cut; nape exposure; asymmetrical part.
+- **Waves**: S-curves; pomade set; sharp ridges; symmetric; 12-hour hold.
+
+<#0.5#>
+
+### Phase 7: Comprehensive Continuity Management
+
+- **Database**: Character ID/scene/timestamp; makeup/hair inventory; environmental factors.
+- **Transitions**: Time/physical/emotional/environmental logic.
+- **QC**: Reference frames; auto-detection; artist review; version control; shader/animation/lighting checks.
+
+<#0.5#>
+
+### Phase 8: Advanced Special Effects
+
+- **Prosthetics**: ZBrush sculpting; seamless blends; expression deformation; tone match.
+- **Fantasy**: Alien scales; bioluminescence; anatomical mods.
+- **Blood**: Arterial spray; venous flow; seepage; clotting; particle droplets/spatter/stains.
+
+## Integration with Production Pipeline
+
+- **To Digital Human Agent**: 8K textures; shader networks; physics caches; metadata.
+- **To Lighting Agent**: SSS/Fresnel/hair data; light mappings.
+- **QA**: Auto render/performance/cross-platform tests; artist validation; cultural checks.
+
+## Final Technical Output
+
+- 147 makeup variations (47 base + 100 situational).
+- 23 hairstyles with physics.
+- 8 injury states (medically accurate).
+- 3 age variations (texture/geometry).
+- 2 period styles (validated).
+- Continuity database; pipeline integration; 60fps real-time; cross-platform (PC/console/mobile); expert-validated sensitivity/accuracy.
+
+## Code Demo Focus
+
+Implementation emphasizes modular, performant components:
+
+- **Procedural Skin Texture Generator**: BnW noise for PBR-compliant pores; tileable 8K maps with channel separation.
+- **SSS Shader**: BSSRDF with UV Gaussian blurring; camera projection.
+- **Hair Simulation**: Vellum PBD constraints; distance/bend calculations.
+- **Injury System**: Time-based bruise/wound/scar/blood physics.
+- **AI Aging Simulator**: Multi-network with ethnicity maps; spatial control.
+- **Makeup System**: 151-landmark detection; real-time tracking/adaptation.
+- **Continuity Tracking**: Frame-state management; auto-detection workflows.
+- **Authenticity Validator**: Historical databases; AI/cultural checks.
+
+# Implementation Solutions
+
+This section details strategies using open-source frameworks, based on the specification and compatibility analysis.
+
+## Framework Compatibility Matrix
+
+| Capability              | OpenCV | Blender | Godot | PyTorch | TensorFlow | Dlib | Substance | Houdini | Unity |
+|-------------------------|--------|---------|-------|---------|------------|------|-----------|---------|-------|
+| Face Tracking           | ✅     | ❌      | ❌    | ✅      | ✅         | ✅   | ❌        | ❌      | ✅    |
+| Subsurface Scattering   | ⚠️     | ✅      | ⚠️    | ❌      | ❌         | ❌   | ✅        | ✅      | ✅    |
+| Hair Physics            | ❌     | ✅      | ⚠️    | ❌      | ❌         | ❌   | ❌        | ✅      | ✅    |
+| GAN-based Aging         | ❌     | ❌      | ❌    | ✅      | ✅         | ❌   | ❌        | ❌      | ⚠️   |
+| Procedural Texturing    | ❌     | ✅      | ⚠️    | ❌      | ❌         | ❌   | ✅        | ✅      | ⚠️   |
+| Real-time Rendering     | ⚠️     | ❌      | ✅     | ❌      | ❌         | ❌   | ❌        | ❌      | ✅    |
+
+**Legend**: ✅ Full Support | ⚠️ Partial/Requires Extension | ❌ Not Supported
+
+## Core Implementation Architecture
+
+<#0.5#>
+
+### Primary Technology Stack
+
+- **Real-time Engine**: Unity 3D (URP/HDRP).
+- **Face Tracking**: OpenCV + Dlib.
+- **AI/ML**: PyTorch for GANs.
+- **Hair Physics**: Custom Vellum-inspired.
+- **Skin Rendering**: FaceWorks + custom SSS.
+
+**Alternative (Open-Source Only)**:
+- **Engine**: Godot 4.x.
+- **Tracking**: OpenCV + MediaPipe.
+- **AI/ML**: PyTorch.
+- **Hair**: Custom physics.
+- **Skin**: Custom shaders.
+
+## Detailed Implementation Solutions
+
+<#0.5#>
+
+### Advanced Face Tracking and Landmark Detection
+
+<#0.5#>
+
+#### Primary: OpenCV + Dlib
+
+Dlib's pre-trained model detects 68 landmarks (e.g., eyes, lips, nose).
+
+```python
+import cv2
+import dlib
+import numpy as np
+
+class FacialLandmarkTracker:
+    def __init__(self):
+        self.detector = dlib.get_frontal_face_detector()
+        self.predictor = dlib.shape_predictor('shape_predictor_68_face_landmarks.dat')
+
+    def detect_landmarks(self, image):
+        gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+        faces = self.detector(gray)
+        landmarks = []
+        for face in faces:
+            shape = self.predictor(gray, face)
+            landmarks.append([(p.x, p.y) for p in shape.parts()])
+        return landmarks
+```
+
+**Pros**: Real-time C++ performance; extensive support; free.  
+**Cons**: Adult-focused; 68 landmarks only; ethnicity variance.  
+**Integration**: OpenCV for capture; Unity via plugins.
+
+<#0.5#>
+
+### Physically-Based Skin Rendering with Subsurface Scattering
+
+<#0.5#>
+
+#### Primary: Custom Unity HDRP Shader
+
+Uses texture-space SSS with UV Gaussian kernels.
+
+```hlsl
+Shader "Custom/SubsurfaceScatteringSkin"
+{
+    Properties
+    {
+        _BaseColor ("Base Color", Color) = (1,1,1,1)
+        _SubsurfaceScatteringProfile ("SSS Profile", 2D) = "white" {}
+        _ScatteringRadius ("Scattering Radius", Range(0, 10)) = 5
+        _ThicknessTex ("Thickness", 2D) = "white" {}
+    }
+    SubShader { Tags { "RenderPipeline"="UniversalPipeline" } }
+    Pass
+    {
+        Name "ForwardLit"
+        HLSLPROGRAM
+        #pragma vertex vert
+        #pragma fragment frag
+        #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
+        #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Lighting.hlsl"
+
+        struct Attributes { float4 positionOS : POSITION; float3 normalOS : NORMAL; float2 uv : TEXCOORD0; };
+        struct Varyings { float4 positionHCS : SV_POSITION; float3 positionWS : TEXCOORD0; float3 normalWS : TEXCOORD1; float2 uv : TEXCOORD2; };
+
+        Varyings vert(Attributes input) {
+            Varyings output;
+            VertexPositionInputs pos = GetVertexPositionInputs(input.positionOS.xyz);
+            output.positionHCS = pos.positionCS;
+            output.positionWS = pos.positionWS;
+            output.normalWS = GetWorldSpaceNormalizeMix(input.normalOS, 0.0);
+            output.uv = input.uv;
+            return output;
+        }
+
+        float3 SubsurfaceScattering(float3 lightDir, float3 normal, float3 viewDir, float thickness, float2 uv) {
+            float transmission = pow(saturate(dot(-lightDir, normal + viewDir)), _ScatteringRadius) * thickness;
+            float3 scatteringProfile = tex2D(_SubsurfaceScatteringProfile, float2(transmission, 0.5)).rgb;
+            return scatteringProfile;
+        }
+
+        half4 frag(Varyings input) : SV_Target {
+            float3 normalWS = normalize(input.normalWS);
+            Light mainLight = GetMainLight();
+            float3 viewDirWS = GetWorldSpaceViewDir(input.positionWS);
+            float thickness = tex2D(_ThicknessTex, input.uv).r;
+            float3 sss = SubsurfaceScattering(mainLight.direction, normalWS, viewDirWS, thickness, input.uv);
+            half3 color = _BaseColor.rgb + sss * mainLight.color;
+            return half4(color, 1.0);
+        }
+        ENDHLSL
+    }
+}
+```
+
+**Alternative: Godot Custom Shader**
+
+```gdscript
+shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx;
+
+uniform sampler2D subsurface_profile : hint_albedo;
+uniform float scattering_radius : hint_range(0.0, 10.0) = 5.0;
+uniform vec3 base_color : source_color = vec3(0.8, 0.6, 0.5);
+uniform float subsurface_strength : hint_range(0.0, 1.0) = 0.5;
+
+void fragment() {
+    vec3 normal = normalize(NORMAL);
+    vec3 light_dir = normalize(LIGHT0_DIRECTION);
+    vec3 view_dir = normalize(VIEW);
+    float thickness = texture(THICKNESS_TEXTURE, UV).r;
+    float transmission = pow(max(0.0, dot(-light_dir, normal + view_dir)), scattering_radius) * thickness;
+    vec3 scattering = texture(subsurface_profile, vec2(transmission, 0.5)).rgb * subsurface_strength;
+    ALBEDO = base_color + scattering;
+}
+```
+
+**Pros**: Flexible realism; real-time approximation.  
+**Cons**: Hardware limits; tuning needs; mobile intensive.  
+**Integration**: Unity pipelines; Blender pre-compute.
+
+<#0.5#>
+
+### Hair Physics Simulation System
+
+<#0.5#>
+
+#### Primary: Custom Vellum-Inspired in Unity
+
+Uses PBD with Verlet integration and jobs.
+
+```csharp
+using Unity.Collections;
+using Unity.Jobs;
+using UnityEngine;
+
+public class HairStrandSimulation : MonoBehaviour
+{
+    [SerializeField] private int segmentsPerStrand = 10;
+    [SerializeField] private float strandLength = 1f;
+    [SerializeField] private float damping = 0.15f;
+    [SerializeField] private float stiffness = 100f;
+
+    private NativeArray<Vector3> positions;
+    private NativeArray<Vector3> oldPositions;
+    private NativeArray<float> masses;
+
+    void Start()
+    {
+        int totalPoints = segmentsPerStrand * /* num strands */;
+        positions = new NativeArray<Vector3>(totalPoints, Allocator.Persistent);
+        oldPositions = new NativeArray<Vector3>(totalPoints, Allocator.Persistent);
+        masses = new NativeArray<float>(totalPoints, Allocator.Persistent);
+        // Initialize positions, etc.
+    }
+
+    struct HairPhysicsJob : IJobParallelFor
+    {
+        [WriteOnly] public NativeArray<Vector3> positions;
+        [ReadOnly] public NativeArray<Vector3> oldPositions;
+        [ReadOnly] public NativeArray<float> masses;
+        public float deltaTime;
+        public float damping;
+        public Vector3 gravity;
+
+        public void Execute(int index)
+        {
+            if (index == 0) return; // Root pinned
+
+            Vector3 velocity = (positions[index] - oldPositions[index]) / deltaTime;
+            Vector3 force = gravity * masses[index];
+
+            // Distance constraint
+            Vector3 delta = positions[index] - positions[index - 1];
+            float distance = delta.magnitude;
+            float restLength = strandLength / (segmentsPerStrand - 1);
+            if (distance > restLength)
+            {
+                Vector3 correction = delta.normalized * (distance - restLength) * 0.5f;
+                positions[index] -= correction;
+                positions[index - 1] += correction;
+            }
+
+            // Verlet
+            Vector3 newPos = positions[index] + velocity * damping + force * deltaTime * deltaTime / masses[index];
+            oldPositions[index] = positions[index];
+            positions[index] = newPos;
+        }
+    }
+
+    void Update()
+    {
+        var job = new HairPhysicsJob
+        {
+            positions = positions,
+            oldPositions = oldPositions,
+            masses = masses,
+            deltaTime = Time.deltaTime,
+            damping = damping,
+            gravity = Physics.gravity
+        };
+        JobHandle handle = job.Schedule(positions.Length, 64);
+        handle.Complete();
+    }
+
+    void OnDestroy()
+    {
+        positions.Dispose();
+        oldPositions.Dispose();
+        masses.Dispose();
+    }
+}
+```
+
+**Compute Shader Variant** (for GPU):
+
+```hlsl
+#pragma kernel HairPhysicsUpdate
+
+RWStructuredBuffer<float3> positions : register(u0);
+StructuredBuffer<float3> oldPositions : register(t0);
+StructuredBuffer<float> masses : register(t1);
+cbuffer Constants : register(b0) { float deltaTime; float damping; float3 gravity; };
+
+[numthreads(64,1,1)]
+void HairPhysicsUpdate(uint3 id : SV_DispatchThreadID)
+{
+    uint index = id.x;
+    if (index >= positions.Length || index == 0) return;
+
+    float3 velocity = (positions[index] - oldPositions[index]) / deltaTime;
+    float3 force = gravity * masses[index];
+
+    // Distance constraint and Verlet (optimized GPU version)
+    // Implementation similar to CPU, with parallel corrections
+}
+```
+
+**Pros**: 500k+ points at 120fps; modular.  
+**Cons**: Custom physics needed; collision complexity; GPU reqs.  
+**Integration**: Unity Jobs/GPU; rendering systems.
+
+<#0.5#>
+
+### AI-Powered Face Aging System
+
+<#0.5#>
+
+#### Primary: PyTorch GAN
+
+Uses encoder-decoder with age modulation; UTKFace dataset (20k+ images, ages 0-116).
+
+```python
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
+from torch.utils.data import DataLoader
+
+class Generator(nn.Module):
+    def __init__(self, num_channels=64):
+        super().__init__()
+        self.encoder = nn.Sequential(
+            nn.Conv2d(3, num_channels, 4, 2, 1),
+            nn.LeakyReLU(0.2),
+            nn.Conv2d(num_channels, num_channels*2, 4, 2, 1),
+            nn.BatchNorm2d(num_channels*2),
+            nn.LeakyReLU(0.2),
+            # Add more layers up to 512 channels
+        )
+        self.decoder = nn.Sequential(
+            nn.ConvTranspose2d(num_channels*8, num_channels*4, 4, 2, 1),
+            nn.BatchNorm2d(num_channels*4),
+            nn.ReLU(),
+            # Add more layers to 3 channels
+            nn.Tanh()
+        )
+        self.age_modulator = nn.Linear(6, num_channels*8)  # 6 age groups
+
+    def forward(self, x, age_label):
+        encoded = self.encoder(x)
+        age_feat = F.relu(self.age_modulator(age_label))
+        modulated = encoded + age_feat.view(encoded.shape)
+        return self.decoder(modulated)
+
+class Discriminator(nn.Module):
+    def __init__(self):
+        super().__init__()
+        self.model = nn.Sequential(
+            nn.Conv2d(3 + 1, 64, 4, 2, 1),  # +1 for age label
+            nn.LeakyReLU(0.2),
+            # More conv layers
+            nn.Conv2d(512, 1, 4, 1, 0),
+            nn.Sigmoid()
+        )
+
+    def forward(self, x, age_label):
+        age_map = age_label.view(-1, 1, 1, 1).expand(-1, 1, x.shape[2], x.shape[3])
+        input = torch.cat([x, age_map], dim=1)
+        return self.model(input)
+
+# Training
+def train_age_gan(generator, discriminator, dataloader, epochs=100):
+    optimizer_G = torch.optim.Adam(generator.parameters(), lr=0.0002, betas=(0.5, 0.999))
+    optimizer_D = torch.optim.Adam(discriminator.parameters(), lr=0.0002, betas=(0.5, 0.999))
+    criterion = nn.BCELoss()
+
+    for epoch in range(epochs):
+        for real_imgs, ages in dataloader:
+            # Train D
+            real_labels = torch.ones(real_imgs.size(0), 1)
+            fake_imgs = generator(real_imgs, ages)
+            fake_labels = torch.zeros(real_imgs.size(0), 1)
+
+            d_real = discriminator(real_imgs, ages)
+            loss_d_real = criterion(d_real, real_labels)
+            d_fake = discriminator(fake_imgs.detach(), ages)
+            loss_d_fake = criterion(d_fake, fake_labels)
+            loss_d = (loss_d_real + loss_d_fake) / 2
+            optimizer_D.zero_grad()
+            loss_d.backward()
+            optimizer_D.step()
+
+            # Train G
+            g_output = discriminator(fake_imgs, ages)
+            loss_g = criterion(g_output, real_labels)
+            optimizer_G.zero_grad()
+            loss_g.backward()
+            optimizer_G.step()
+```
+
+**Pros**: Proven implementations; ethnicity handling.  
+**Cons**: Compute-heavy training; input sensitivity.  
+**Integration**: Python.NET to Unity; GPU inference.
+
+<#0.5#>
+
+### Virtual Makeup Application System
+
+<#0.5#>
+
+#### Primary: OpenCV + MediaPipe
+
+Applies effects via 468+ landmarks.
+
+```python
+import cv2
+import mediapipe as mp
+import numpy as np
+
+class VirtualMakeupSystem:
+    def __init__(self):
+        self.mp_face_mesh = mp.solutions.face_mesh
+        self.face_mesh = self.mp_face_mesh.FaceMesh(
+            max_num_faces=1, refine_landmarks=True, min_detection_confidence=0.5
+        )
+
+    def apply_lipstick(self, image, color=(255, 0, 0)):
+        rgb_image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+        results = self.face_mesh.process(rgb_image)
+        if results.multi_face_landmarks:
+            landmarks = results.multi_face_landmarks[0]
+            h, w = image.shape[:2]
+
+            # Lip indices (MediaPipe: upper/lower)
+            upper_lip = [61, 185, 40, 39, 37, 0, 267, 269, 270, 409, 291]
+            lower_lip = [146, 91, 181, 84, 17, 314, 405, 321, 375]
+            lip_points = []
+            for idx in upper_lip + lower_lip:
+                x = int(landmarks.landmark[idx].x * w)
+                y = int(landmarks.landmark[idx].y * h)
+                lip_points.append([x, y])
+
+            mask = np.zeros((h, w), dtype=np.uint8)
+            cv2.fillPoly(mask, [np.array(lip_points)], 255)
+            mask = cv2.GaussianBlur(mask, (21, 21), 0)
+
+            foreground = np.zeros_like(image)
+            foreground[mask == 255] = color
+            result = cv2.addWeighted(image, 0.7, foreground, 0.3, 0)
+            return result
+        return image
+
+    def process_frame(self, image):
+        return self.apply_lipstick(image)
+```
+
+**Pros**: Real-time; accurate; open-source.  
+**Cons**: 2D limits; lighting dependency; pose issues.  
+**Integration**: Webcam batch; 3D export.
+
+<#0.5#>
+
+### Cultural and Period Authenticity System
+
+<#0.5#>
+
+#### Implementation: SQLite Database with Validation
+
+```python
+import sqlite3
+import json
+
+class CulturalAuthenticityValidator:
+    def __init__(self, db_path="cultural_references.db"):
+        self.db_path = db_path
+        self.init_database()
+
+    def init_database(self):
+        with sqlite3.connect(self.db_path) as conn:
+            conn.execute('''
+                CREATE TABLE IF NOT EXISTS makeup_styles (
+                    id INTEGER PRIMARY KEY,
+                    period TEXT,
+                    culture TEXT,
+                    style_name TEXT,
+                    description TEXT,
+                    colors TEXT,  -- JSON
+                    techniques TEXT,  -- JSON
+                    reference_images TEXT,  -- JSON
+                    authenticity_score REAL
+                )
+            ''')
+            # Populate with data, e.g.:
+            # conn.execute("INSERT INTO makeup_styles (period, culture, ...) VALUES ('1920s', 'Western', ...)")
+            conn.commit()
+
+    def validate_makeup_style(self, period, culture, makeup_config):
+        with sqlite3.connect(self.db_path) as conn:
+            cursor = conn.cursor()
+            cursor.execute('SELECT * FROM makeup_styles WHERE period = ? AND culture = ?', (period, culture))
+            historical = cursor.fetchall()
+
+            # Simple score (expand with ML)
+            score = 80 if any('red' in mc['colors'] for mc in makeup_config.get('elements', []) if historical) else 50
+            return {
+                'authentic': score > 75,
+                'score': score,
+                'suggestions': ['Adjust lip color to oxblood for 1920s accuracy'] if score < 75 else []
+            }
+```
+
+**Pros**: Flexible; real-time feedback.  
+**Cons**: Data maintenance.  
+**Integration**: Makeup pipelines; batch validation.
+
+## Phased Implementation Strategy
+
+<#0.5#>
+
+### Phase 1: Foundation (Months 1-3)
+
+- Implement face tracking, basic SSS shader, simple hair physics, and engine setup.
+- **Deliverables**: Detection prototype; skin shader; hair basics; IDE.
+
+<#0.5#>
+
+### Phase 2: Advanced Features (Months 4-6)
+
+- Add GAN aging, makeup blending, collision hair, and database.
+- **Deliverables**: Aging system; virtual makeup; interactive hair; validator.
+
+<#0.5#>
+
+### Phase 3: Optimization and Polish (Months 7-8)
+
+- GPU optimize; enhance rendering; test; refine UI.
+- **Deliverables**: 60fps performance; asset pipeline; tests; docs.
+
+## Critical Dependencies and Prerequisites
+
+<#0.5#>
+
+### Hardware
+
+- GPU: NVIDIA GTX 1060+ / AMD RX 580+.
+- RAM: 16GB+.
+- CPU: Multi-core.
+- Storage: SSD.
+
+<#0.5#>
+
+### Software
+
+- Python 3.8+; CUDA 11+; Unity 2022.3 LTS / Godot 4.x; PyTorch 2.0+; OpenCV 4.5+.
+
+<#0.5#>
+
+### Integration Challenges and Solutions
+
+- **Python-Unity**: Python.NET or ONNX.
+- **Performance**: GPU shaders; LOD.
+- **Cross-Platform**: Interfaces; Unity builds.
+- **Pipeline**: Auto-scripts; cloud processing.
+
+## Conclusion
+
+This strategy leverages open-source tools for a modular Makeup & Hair Agent, enabling iterative development of realistic simulations. Unity/PyTorch/OpenCV form a robust base, with phased rollout ensuring feasibility. Testing against authenticity databases upholds accuracy, supporting production-scale virtual cosmetics and styling.
+
+<#0.5#>
+

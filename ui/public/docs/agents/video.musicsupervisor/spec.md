@@ -2419,11 +2419,11 @@ Omitted here; same document as `SPEC.md` above.
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "这就是音乐产业",
-      "author": "Passman 中译常见",
+      "title": "\u8fd9\u5c31\u662f\u97f3\u4e50\u4ea7\u4e1a",
+      "author": "Passman \u4e2d\u8bd1\u5e38\u89c1",
       "isbn13": "9787111456780",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 这就是音乐产业（Passman 中译常见），ISBN-13 9787111456780"
+      "citation": "ZH: \u8fd9\u5c31\u662f\u97f3\u4e50\u4ea7\u4e1a\uff08Passman \u4e2d\u8bd1\u5e38\u89c1\uff09\uff0cISBN-13 9787111456780"
     },
     {
       "kind": "reference_book",
@@ -2464,20 +2464,20 @@ Omitted here; same document as `SPEC.md` above.
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "著作权法",
-      "author": "王迁",
+      "title": "\u8457\u4f5c\u6743\u6cd5",
+      "author": "\u738b\u8fc1",
       "isbn13": "9787301249499",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 著作权法（王迁），ISBN-13 9787301249499"
+      "citation": "ZH: \u8457\u4f5c\u6743\u6cd5\uff08\u738b\u8fc1\uff09\uff0cISBN-13 9787301249499"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "知识产权法",
-      "author": "吴汉东",
+      "title": "\u77e5\u8bc6\u4ea7\u6743\u6cd5",
+      "author": "\u5434\u6c49\u4e1c",
       "isbn13": "9787301162262",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 知识产权法（吴汉东），ISBN-13 9787301162262"
+      "citation": "ZH: \u77e5\u8bc6\u4ea7\u6743\u6cd5\uff08\u5434\u6c49\u4e1c\uff09\uff0cISBN-13 9787301162262"
     },
     {
       "kind": "reference_book",
@@ -2536,18 +2536,18 @@ Omitted here; same document as `SPEC.md` above.
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "声音设计：电影中语言、音乐和音响的表现力",
+      "title": "\u58f0\u97f3\u8bbe\u8ba1\uff1a\u7535\u5f71\u4e2d\u8bed\u8a00\u3001\u97f3\u4e50\u548c\u97f3\u54cd\u7684\u8868\u73b0\u529b",
       "isbn13": "9787106031237",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 声音设计：电影中语言、音乐和音响的表现力，ISBN-13 9787106031237"
+      "citation": "ZH: \u58f0\u97f3\u8bbe\u8ba1\uff1a\u7535\u5f71\u4e2d\u8bed\u8a00\u3001\u97f3\u4e50\u548c\u97f3\u54cd\u7684\u8868\u73b0\u529b\uff0cISBN-13 9787106031237"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "现代录音技术",
+      "title": "\u73b0\u4ee3\u5f55\u97f3\u6280\u672f",
       "isbn13": "9787115331861",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 现代录音技术，ISBN-13 9787115331861"
+      "citation": "ZH: \u73b0\u4ee3\u5f55\u97f3\u6280\u672f\uff0cISBN-13 9787115331861"
     },
     {
       "kind": "reference_book",
@@ -2598,7 +2598,7 @@ Omitted here; same document as `SPEC.md` above.
     "adopted_at": "2026-07-27T01:30:28.501679+00:00",
     "upstream": "generic-swarm-ops/business/video/agents"
   },
-  "imported_from": "C:\\Project\\common-agent-swarm-ops\\business\\video\\agents\\video.musicsupervisor",
+  "imported_from": "vendor/common-agent-swarm-ops/business/video/agents/video.musicsupervisor",
   "reference_book_origin": "spec/book_of_knowledge.md",
   "reference_book_note": "Bibliographic references from spec/book_of_knowledge.md. Does not enable network, RAG, T3, plugins, or memory writes."
 }

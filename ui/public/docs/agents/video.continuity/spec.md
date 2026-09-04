@@ -2365,10 +2365,10 @@ Omitted here; same document as `SPEC.md` above.
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "影视场记与制片",
+      "title": "\u5f71\u89c6\u573a\u8bb0\u4e0e\u5236\u7247",
       "isbn13": "9787301169186",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 影视场记与制片，ISBN-13 9787301169186"
+      "citation": "ZH: \u5f71\u89c6\u573a\u8bb0\u4e0e\u5236\u7247\uff0cISBN-13 9787301169186"
     },
     {
       "kind": "reference_book",
@@ -2472,18 +2472,18 @@ Omitted here; same document as `SPEC.md` above.
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "眨眼之间",
+      "title": "\u7728\u773c\u4e4b\u95f4",
       "isbn13": "9787515340128",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 眨眼之间，ISBN-13 9787515340128"
+      "citation": "ZH: \u7728\u773c\u4e4b\u95f4\uff0cISBN-13 9787515340128"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "电影剪辑技巧",
+      "title": "\u7535\u5f71\u526a\u8f91\u6280\u5de7",
       "isbn13": "9787115222224",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 电影剪辑技巧，ISBN-13 9787115222224"
+      "citation": "ZH: \u7535\u5f71\u526a\u8f91\u6280\u5de7\uff0cISBN-13 9787115222224"
     },
     {
       "kind": "reference_book",
@@ -2507,7 +2507,7 @@ Omitted here; same document as `SPEC.md` above.
     "adopted_at": "2026-07-27T01:30:27.950027+00:00",
     "upstream": "generic-swarm-ops/business/video/agents"
   },
-  "imported_from": "C:\\Project\\common-agent-swarm-ops\\business\\video\\agents\\video.continuity",
+  "imported_from": "vendor/common-agent-swarm-ops/business/video/agents/video.continuity",
   "reference_book_origin": "spec/book_of_knowledge.md",
   "reference_book_note": "Bibliographic references from spec/book_of_knowledge.md. Does not enable network, RAG, T3, plugins, or memory writes."
 }

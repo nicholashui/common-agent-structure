@@ -2240,10 +2240,10 @@ Omitted here; same document as `SPEC.md` above.
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "数字合成的科学与艺术",
+      "title": "\u6570\u5b57\u5408\u6210\u7684\u79d1\u5b66\u4e0e\u827a\u672f",
       "isbn13": "9787115215208",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 数字合成的科学与艺术，ISBN-13 9787115215208"
+      "citation": "ZH: \u6570\u5b57\u5408\u6210\u7684\u79d1\u5b66\u4e0e\u827a\u672f\uff0cISBN-13 9787115215208"
     },
     {
       "kind": "reference_book",
@@ -2306,7 +2306,7 @@ Omitted here; same document as `SPEC.md` above.
       "author": "Roger Deakins",
       "isbn13": "9781910593998",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "EN: Reflections: On Cinematography (Roger Deakins) — check latest ed. ISBN-13 9781910593998"
+      "citation": "EN: Reflections: On Cinematography (Roger Deakins) \u2014 check latest ed. ISBN-13 9781910593998"
     },
     {
       "kind": "reference_book",
@@ -2320,51 +2320,51 @@ Omitted here; same document as `SPEC.md` above.
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "电影摄影：理论与实践",
+      "title": "\u7535\u5f71\u6444\u5f71\uff1a\u7406\u8bba\u4e0e\u5b9e\u8df5",
       "isbn13": "9787515331867",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 电影摄影：理论与实践，ISBN-13 9787515331867"
+      "citation": "ZH: \u7535\u5f71\u6444\u5f71\uff1a\u7406\u8bba\u4e0e\u5b9e\u8df5\uff0cISBN-13 9787515331867"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "视觉故事",
+      "title": "\u89c6\u89c9\u6545\u4e8b",
       "isbn13": "9787515302867",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 视觉故事，ISBN-13 9787515302867"
+      "citation": "ZH: \u89c6\u89c9\u6545\u4e8b\uff0cISBN-13 9787515302867"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "电影语言的语法",
+      "title": "\u7535\u5f71\u8bed\u8a00\u7684\u8bed\u6cd5",
       "isbn13": "9787532299990",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 电影语言的语法，ISBN-13 9787532299990"
+      "citation": "ZH: \u7535\u5f71\u8bed\u8a00\u7684\u8bed\u6cd5\uff0cISBN-13 9787532299990"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "美国纽约摄影学院摄影教材",
+      "title": "\u7f8e\u56fd\u7ebd\u7ea6\u6444\u5f71\u5b66\u9662\u6444\u5f71\u6559\u6750",
       "isbn13": "9787800078491",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 美国纽约摄影学院摄影教材，ISBN-13 9787800078491"
+      "citation": "ZH: \u7f8e\u56fd\u7ebd\u7ea6\u6444\u5f71\u5b66\u9662\u6444\u5f71\u6559\u6750\uff0cISBN-13 9787800078491"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "论摄影",
-      "author": "桑塔格",
+      "title": "\u8bba\u6444\u5f71",
+      "author": "\u6851\u5854\u683c",
       "isbn13": "9787544722599",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 论摄影（桑塔格），ISBN-13 9787544722599"
+      "citation": "ZH: \u8bba\u6444\u5f71\uff08\u6851\u5854\u683c\uff09\uff0cISBN-13 9787544722599"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "摄影师的视界",
+      "title": "\u6444\u5f71\u5e08\u7684\u89c6\u754c",
       "isbn13": "9787512201880",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 摄影师的视界，ISBN-13 9787512201880"
+      "citation": "ZH: \u6444\u5f71\u5e08\u7684\u89c6\u754c\uff0cISBN-13 9787512201880"
     },
     {
       "kind": "reference_book",
@@ -2423,26 +2423,26 @@ Omitted here; same document as `SPEC.md` above.
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "影视制片管理",
+      "title": "\u5f71\u89c6\u5236\u7247\u7ba1\u7406",
       "isbn13": "9787301169186",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 影视制片管理，ISBN-13 9787301169186"
+      "citation": "ZH: \u5f71\u89c6\u5236\u7247\u7ba1\u7406\uff0cISBN-13 9787301169186"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "生成式AI实战基于Transformer、Stable Diffusion、LangChain和AI Agent",
+      "title": "\u751f\u6210\u5f0fAI\u5b9e\u6218\u57fa\u4e8eTransformer\u3001Stable Diffusion\u3001LangChain\u548cAI Agent",
       "isbn13": "9787115650443",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 生成式AI实战基于Transformer、Stable Diffusion、LangChain和AI Agent，ISBN-13 9787115650443"
+      "citation": "ZH: \u751f\u6210\u5f0fAI\u5b9e\u6218\u57fa\u4e8eTransformer\u3001Stable Diffusion\u3001LangChain\u548cAI Agent\uff0cISBN-13 9787115650443"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "Stable Diffusion AI 繪圖",
+      "title": "Stable Diffusion AI \u7e6a\u5716",
       "isbn13": "9787302656333",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: Stable Diffusion AI 繪圖，ISBN-13 9787302656333"
+      "citation": "ZH: Stable Diffusion AI \u7e6a\u5716\uff0cISBN-13 9787302656333"
     },
     {
       "kind": "reference_book",
@@ -2455,43 +2455,43 @@ Omitted here; same document as `SPEC.md` above.
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "ComfyUI 工作流",
+      "title": "ComfyUI \u5de5\u4f5c\u6d41",
       "isbn13": "9787122466532",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: ComfyUI 工作流，ISBN-13 9787122466532"
+      "citation": "ZH: ComfyUI \u5de5\u4f5c\u6d41\uff0cISBN-13 9787122466532"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "AI短视频创作：一本通剪映+即梦+可灵+文心一格",
+      "title": "AI\u77ed\u89c6\u9891\u521b\u4f5c\uff1a\u4e00\u672c\u901a\u526a\u6620+\u5373\u68a6+\u53ef\u7075+\u6587\u5fc3\u4e00\u683c",
       "isbn13": "9787122470027",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: AI短视频创作：一本通剪映+即梦+可灵+文心一格，ISBN-13 9787122470027"
+      "citation": "ZH: AI\u77ed\u89c6\u9891\u521b\u4f5c\uff1a\u4e00\u672c\u901a\u526a\u6620+\u5373\u68a6+\u53ef\u7075+\u6587\u5fc3\u4e00\u683c\uff0cISBN-13 9787122470027"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "可灵AI ComfyUI+Deform 人工智能AI视频制作技巧",
+      "title": "\u53ef\u7075AI ComfyUI+Deform \u4eba\u5de5\u667a\u80fdAI\u89c6\u9891\u5236\u4f5c\u6280\u5de7",
       "isbn13": "9787122466556",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 可灵AI ComfyUI+Deform 人工智能AI视频制作技巧，ISBN-13 9787122466556"
+      "citation": "ZH: \u53ef\u7075AI ComfyUI+Deform \u4eba\u5de5\u667a\u80fdAI\u89c6\u9891\u5236\u4f5c\u6280\u5de7\uff0cISBN-13 9787122466556"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "AI數位人全面應用：形象製作+口播視頻+直播帶貨+客服溝通",
+      "title": "AI\u6578\u4f4d\u4eba\u5168\u9762\u61c9\u7528\uff1a\u5f62\u8c61\u88fd\u4f5c+\u53e3\u64ad\u8996\u983b+\u76f4\u64ad\u5e36\u8ca8+\u5ba2\u670d\u6e9d\u901a",
       "isbn13": "9787302695332",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: AI數位人全面應用：形象製作+口播視頻+直播帶貨+客服溝通，ISBN-13 9787302695332"
+      "citation": "ZH: AI\u6578\u4f4d\u4eba\u5168\u9762\u61c9\u7528\uff1a\u5f62\u8c61\u88fd\u4f5c+\u53e3\u64ad\u8996\u983b+\u76f4\u64ad\u5e36\u8ca8+\u5ba2\u670d\u6e9d\u901a\uff0cISBN-13 9787302695332"
     },
     {
       "kind": "reference_book",
       "language": "EN",
-      "title": "Making Movie Magic A Lifetime Creating Special Effects for James Bond, Harry Potter, Su…",
+      "title": "Making Movie Magic A Lifetime Creating Special Effects for James Bond, Harry Potter, Su\u2026",
       "author": "John Richardson, Richard Donner",
       "isbn13": "9780750994392",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "EN: Making Movie Magic A Lifetime Creating Special Effects for James Bond, Harry Potter, Su… (John Richardson, Richard Donner), ISBN-13 9780750994392"
+      "citation": "EN: Making Movie Magic A Lifetime Creating Special Effects for James Bond, Harry Potter, Su\u2026 (John Richardson, Richard Donner), ISBN-13 9780750994392"
     }
   ],
   "agent_id": "video.vfxsupervisor",
@@ -2506,7 +2506,7 @@ Omitted here; same document as `SPEC.md` above.
     "adopted_at": "2026-07-27T01:30:28.994075+00:00",
     "upstream": "generic-swarm-ops/business/video/agents"
   },
-  "imported_from": "C:\\Project\\common-agent-swarm-ops\\business\\video\\agents\\video.vfxsupervisor",
+  "imported_from": "vendor/common-agent-swarm-ops/business/video/agents/video.vfxsupervisor",
   "reference_book_origin": "spec/book_of_knowledge.md",
   "reference_book_note": "Bibliographic references from spec/book_of_knowledge.md. Does not enable network, RAG, T3, plugins, or memory writes."
 }

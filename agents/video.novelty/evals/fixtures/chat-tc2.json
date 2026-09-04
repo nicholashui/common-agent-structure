@@ -1,0 +1,29 @@
+{
+  "schema_version": "casops.testcase.v1",
+  "id": "chat-tc2",
+  "agent_id": "video.novelty",
+  "path": "chat",
+  "honesty": "CHARACTERIZATION",
+  "input": {
+    "message": "Produce structure-only artifacts for role 'novelty' on a 6-day Osaka-style brief",
+    "history": []
+  },
+  "expect": {
+    "http_status": 200,
+    "agent_id": "video.novelty",
+    "memory_writes": [],
+    "plugins_executed": false,
+    "t3_enabled": false,
+    "network_granted": false,
+    "io_declared_named": true,
+    "io_declared_fetched": false,
+    "truncated": false,
+    "path_id": "chat"
+  },
+  "source": {
+    "repo": "vendor/common-agent-swarm-ops",
+    "file": "vendor/common-agent-swarm-ops/testcases/api_test/video.novelty/cases.json",
+    "case_id": "tc2",
+    "case_name": "video.novelty offline case 2"
+  }
+}

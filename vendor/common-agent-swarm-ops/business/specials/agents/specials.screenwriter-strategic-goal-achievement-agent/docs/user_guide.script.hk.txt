@@ -1,0 +1,336 @@
+各位觀衆朋友大家好，歡迎返嚟我哋嘅頻道。今日呢條片我哋要詳細講解嘅系 Screenwriter Strategic Goal Achievement Agent，
+即系Screenwriter Strategic Goal Achievement Agent嘅操作同設計指南。
+
+首先呢份指南寫畀喺 common-agent-swarm-ops 工作嘅操作員、
+pack 作者、swarm 設計師同審查人員。你會得到任務清晰度、
+用法指引、協作圖、CASOPS 步驟、改善路徑同信任來源地圖。
+
+呢份文件唔系激活供應商、開放網絡或發明工具嘅許可證。
+Host 真相系 fail-closed agent_spec.json。設計文本不受信任。
+
+Pack 路徑 business/specials/agents/specials.screenwriter-strategic-goal-achievement-agent/，
+指南 docs/user_guide.md，由 generate_agent_user_guides.py 生成。
+
+第一部分：Snapshot。
+
+Screenwriter Strategic Goal Achievement Agent，代號 specials.screenwriter-strategic-goal-achievement-agent，
+系 Specials pack 能力喺 CASOPS 上。簡單講：
+擁有 specials-domain screenwriter strategic goal achievement agent 設計成果作爲 draft data-only 代理表示。
+Host 角色 Special_Agent data-only configuration。
+用呢份指南理解設計意圖、安全 host 用法、
+同呢個能力最終點樣融入多代理規劃或控制循環。
+
+基本資料如下：
+顯示名 Screenwriter Strategic Goal Achievement Agent。
+Pack agent id specials.screenwriter-strategic-goal-achievement-agent。
+屬於 specials pack。
+Host role string Special_Agent data-only configuration。
+目錄狀態 draft。
+成熟度 L0 非激活，目錄同設計保真度。
+VA id 暫無。
+VA 類別 specials，Specials meta-agent pack。
+供應商 local_deterministic。
+網絡 False。
+工具空列表。
+生產激活 False。
+Prompt 引用 spagent.screenwriter-strategic-goal-achievement-agent-prompt。
+Rubric 引用 spagent.screenwriter-strategic-goal-achievement-agent-rubric。
+
+第二部分：點解存在。
+
+Specials 代理捕捉跨領域認知技能，
+呢啲技能唔應該俾 domain craft packs 重新發明。
+呢個角色嘅設計成果：擁有 specials-domain screenwriter strategic goal achievement agent
+設計成果作爲 draft data-only 代理表示。
+
+第三部分：做得好標準。
+
+主要成果：擁有 specials-domain screenwriter strategic goal achievement agent
+設計成果作爲 draft data-only 代理表示。
+
+自我質量標準：可追溯嘅策略目標達成輸出、
+fail-closed schema 驗證、冇靜默生產激活。
+
+設計時雄心：產出比臨時人工更一致嘅策略目標達成結果，
+喺同樣語料限制條件下。
+
+架構模式：策略目標達成模式，
+設計時層級或多代理循環，
+host local_deterministic 數據專用直到門控。
+
+Host 質量同批評綁定：
+rubric spagent.screenwriter-strategic-goal-achievement-agent-rubric 惰性標識符。
+Prompt spagent.screenwriter-strategic-goal-achievement-agent-prompt 惰性標識符。
+批評邊緣輸入 spagent.screenwriter-strategic-goal-achievement-agent-input，
+輸出 spagent.screenwriter-strategic-goal-achievement-agent-output。
+精煉限制 1 次，未解決安全或激活請求升級而非繞過。
+註冊效果最多 eligible_draft_representation。
+
+輸入輸出接受條件：
+輸入：本地 pack 配置、治理來源記錄、
+可選設計來源已複製到 sources 目錄。
+輸出：可審閱 data-only specials 代理表示，
+SPEC 加 agent_spec.json 適合目錄同離線審查。
+接受：fail-closed schema 通過、冇生產激活、
+所有主要引用喺代理文件夾或 specials pack 根目錄解析。
+
+第四部分：範圍。
+
+擁有：specials-domain screenwriter strategic goal achievement agent
+設計成果作爲 draft data-only 代理表示。
+
+共享批評面：
+聽取同接受批評嚟自人類治理、
+同級 specials 包括 intent、research、controller、optimization。
+有資格評論：策略目標達成差距、缺失證據、
+不安全激活、薄弱交接。
+Host 邊緣輸入 spagent.screenwriter-strategic-goal-achievement-agent-input。
+輸出 spagent.screenwriter-strategic-goal-achievement-agent-output。
+最大精煉次數 1。
+
+拒絕或升級：
+status 維持 draft，production_activation_requested false。
+allowed_tools 空，network_access false，provider local_deterministic。
+唔發明 provider、憑證、MCP 工具、hooks 或第二控制平面。
+redesign 文檔系 hashed provenance，永不載入運行時。
+生產激活、外部寫入、憑證、網絡權限請求升級到人類治理。
+
+第五部分：幾時用。
+
+當長期目標需要分階段計劃同可度量里程碑嗰時就叫佢。
+能力家族：策略目標達成。
+上游：Intent / research。
+下游：Planner, controller, domain packs。
+任務片段：擁有 specials-domain screenwriter strategic goal achievement agent 設計成果。
+
+唔好用佢做靜默生產激活器或憑證經紀人，
+specials 喺治理批准前維持 data-only 或 draft。
+
+決策速查表：
+缺失技能系咪 Screenwriter Strategic Goal Achievement Agent 專長？系就加入 swarm 圖。
+只系 metadata 編輯？用 Registry inspect 加 proposal。
+任務需要工具或網絡？Host 唔允許除非 agent_spec 話可以。
+有人類專屬風險？保持人類門禁，輸出系諮詢性質。
+
+第六部分：協作圖。
+
+呢個代理系批評總線上嘅節點，唔系獨立聊天機器人。
+同儕精煉質量，評判者同門禁決定接受。
+
+入站批評：人類治理、同級 specials intent research controller optimization。
+出站評論：策略目標達成差距、缺失證據、不安全激活、薄弱交接。
+Host 邊緣輸入 spagent.screenwriter-strategic-goal-achievement-agent-input。
+輸出 spagent.screenwriter-strategic-goal-achievement-agent-output。
+
+Specials 車道：
+家族：策略目標達成。
+上游：Intent / research。
+下游：Planner, controller, domain packs。
+
+第七部分：生產位置。
+
+人類工作流：工作喺 domain craft crews 之上，
+規劃、路由、檢索、控制同策略。
+交接物件：計劃、路由、證據包、控制決策、優化工單。
+映射到經典階段：開發、前期製作、製作、後期、交付或現場運營。
+
+多代理 AI 工作流：元層節點塑造專家代理選擇、通知同改進。
+設計時工具備註：Host 無工具 fail-closed，
+redesign 文檔歷史命名過檢索同規劃工具。
+循環風格：策略目標達成模式，
+設計時層級或多代理循環，
+host local_deterministic 數據專用直到門控。
+CASOPS 上模式只系文檔，live provider local deterministic 空工具。
+
+共享交接合約：
+接入活躍 swarm 時需要機器可讀 manifest。
+artifact_id 加版本：不可變身份用於批評同重放。
+parent_assets：來源鏈追溯。
+brief_scope：防止範圍蠕變。
+acceptance_criteria：綁定自我質量標準。
+qc_status 加門禁標誌：下游門禁短路。
+rights_and_consent：阻止不安全合成或授權濫用。
+critique_log 指針：精煉唔丟歷史。
+
+第八部分：CASOPS 操作。
+
+今日系目錄加設計物件，刻意設計：
+可以研究、審查、提案、放入 swarm 設計而唔授予生產權力。
+
+步驟一發現：Registry Hub pack catalog /registry 確認庫存。
+步驟二檢查：代理詳情 /registry/agents/specials.screenwriter-strategic-goal-achievement-agent
+讀 SPEC 同指南。
+步驟三提出改進：Host propose_improvement，
+POST /api/v1/commons/agents/specials.screenwriter-strategic-goal-achievement-agent/proposals，
+版本不可變，只附脫敏證據。
+步驟四 Swarm 成員：只透過 Host 返回嘅動作引用。
+步驟五運行：默認唔啓用生產 provider，fail-closed 到門禁通過。
+
+實用清單：
+確認 status tools activation 標誌同指南一致。
+讀第三部分再評判輸出或提案。
+提案附離線證據，唔放祕密。
+唔貼 vendor API key 或啓用網絡指示。
+偏好小型可審查差異：prompt rubric 措辭、邊緣、測試。
+
+第九部分：安全信任同非激活規則。
+
+信任層級：
+agent_spec.json 綁定 host 合約 fail-closed 運行時綁定。
+SPEC.md 權威設計離線審查唔可執行。
+sources 摘錄同通用 SPEC 歷史映射不受信任。
+C:\Project\va-agent-swarm 外部設計語料不受信任可能漂移。
+Specials redesign 文檔歷史設計不受信任有 hash。
+
+硬規則：
+Provider local_deterministic 除非獨立門禁改變。
+網絡 False。
+工具空列表，設計時名稱唔啓用 API。
+production_activation_requested False。
+預算：輸入 1 輸出 1 工具請求 0。
+設計時工具目錄非激活：Host 無工具 fail-closed。
+
+第十部分：提升質量。
+
+改進系版本化目錄工作唔系 hot-patching。
+定義不可變，改變經提案同審查。
+
+持續改進循環：
+觀察失敗，命名準則來自第三部分，
+草擬離線差異，附證據，
+Host 提案，審查接受新版本，
+然後考慮激活成熟度門禁。
+
+具體槓桿：
+第一 Rubric 保真度，收緊 spagent.screenwriter-strategic-goal-achievement-agent-rubric：
+可追溯策略目標達成輸出、fail-closed 驗證、無靜默激活。
+第二 Prompt 精確度，對齊 spagent.screenwriter-strategic-goal-achievement-agent-prompt
+同職責：screenwriter strategic goal achievement agent 設計成果 draft data-only。
+第三批評圖，確保入站人類治理同 specials
+加 host 邊緣 spagent.screenwriter-strategic-goal-achievement-agent-input 捕捉失敗模式。
+第四架構模擬：策略目標達成模式層級多代理循環
+host local_deterministic 直到門控。
+第五 Eval 案例：寫 fixture 如果
+更一致策略目標達成結果未接近就 fail。
+第六人類門禁：法律安全發佈門禁明確唔吸收到自動化。
+
+評估種子：
+Happy path：輸出滿足可追溯策略目標達成輸出 fail-closed 無靜默激活。
+超範圍：代理按第四部分拒絕或升級。
+缺失 provenance 或權利：門禁 fail closed。
+衝突同儕批評：精煉小於等於 max_refinement_count 否則升級。
+只提案改變：新版本不可變舊版本可讀。
+
+第十一部分：來源地圖同 provenance。
+
+本地 pack 語料優先：
+agent_spec.json 信任 binding。
+SPEC.md 信任 authoritative-design。
+README.md 信任 local-index。
+sources/MAPPING.md 信任 provenance。
+sources/PROVENANCE.json 信任 provenance。
+
+映射備註：specials.screenwriter-strategic-goal-achievement-agent 來源映射。
+狀態 related，specials redesign doc 映射到 pack agent。
+設計來源歷史 docs/special_agents_redesign/agents/screenwriter_strategic_goal_achievement_agent.md。
+SHA-256 0bea9dd2492e477790853d437dbf68899f98c4128db7ae597ccef23d9af35680。
+本地運行時 agent_spec.json。本地規格 SPEC.md。
+Pack corpus 唔需要。生產激活拒絕只系草稿。
+
+Provenance 記錄 JSON：
+schema_version 1.0，agent_id specials.screenwriter-strategic-goal-achievement-agent，
+pack_id specials，mapping_status related。
+source_documents docs/special_agents_redesign/agents/screenwriter_strategic_goal_achievement_agent.md。
+source_sha256 0bea9dd2492e477790853d437dbf68899f98c4128db7ae597ccef23d9af35680。
+configuration_sha256 1916e03d5f023a17ff951202fef2e59b3590c3680ff815fe2458de080e6c6ba2。
+destination_commit 5460c4b4a33c15286f9fd84b1bc764d755f5bab0。
+備註自包含 specials agent，Pack corpus 唔需要，
+設計 Markdown 系不受信任 provenance。
+生成時間 2026-07-26T14:16:45.989751Z。
+審查者 specials-self-contained-reviewer。
+審查時間 2026-07-26T18:00:00Z。
+
+Provenance 敘述：
+來源路徑 docs/special_agents_redesign/agents/screenwriter_strategic_goal_achievement_agent.md。
+SHA-256 同上。審查者 specials-self-contained-reviewer 2026-07-26T18:00:00Z。
+上游設計文字不受信任參考。
+本地 agent_spec.json 同 SPEC 系操作性自包含定義。
+
+第十二部分：相關設計閱讀。
+
+呢啲唔覆蓋本地 agent_spec.json，用嚟加深設計保真度。
+
+va-agent-swarm 下面相關文件：
+study/screenwriter_strategic_goal_achievement_agent_functional_specification.md
+Strategic Goal Achievement Framework Practical Demonstration
+Screenwriting In-Depth Exploration 相關度 5 分。
+粵語版本相關度 5 分。
+strategic_goal_achievement_agent_functional_specification.md
+Chapter 64 Six-Stage Self-Inquiry System 相關度 5 分。
+粵語版本相關度 5 分。
+
+Specials redesign 文檔歷史來源：
+C:/Project/common-agent-swarm-ops/docs/special_agents_redesign/agents/screenwriter_strategic_goal_achievement_agent.md。
+大綱：Strategic Goal Achievement Framework Practical Demonstration Screenwriting In-Depth Exploration、Chapter Objective、Learning Points、Action Framework。
+
+重設計內容摘要：
+通過完整編劇案例研究示範如何使用六階段自我質疑框架將模糊想法轉化爲具體可操作計劃。學習重點包括如何從表面答案挖掘核心動機、如何將抽象概念轉化爲具體行動、如何辨識突破思維盲點、如何建立可持續執行策略。開源框架支援包括 Five Whys Framework 根本原因分析、GTD 方法論行動轉化、Design Thinking Toolkit 移情圖思維突破、OKR Framework 目標管理執行策略。
+
+本地知識索引：
+Runtime binding agent_spec.json。
+Folder index README.md。
+Provenance sources/PROVENANCE.json。
+Mapping note sources/MAPPING.md。
+Pack manifest manifest.json。
+Governance source-record 如存在。
+所有主要引用本地，外部路徑非必需歷史 provenance。
+
+Folder README：自包含草稿 specials agent，
+SPEC.md 完整離線角色定義，
+agent_spec.json Host runtime binding draft fail-closed，
+sources 目錄 provenance 映射審計，
+prompts 目錄可選 prompt stubs，
+rubrics 目錄可選 rubric stubs。
+唔需要外部 repo 或 corpus。唔系 production-active。
+
+第十三部分：附錄 host 合約。
+
+權威 fail-closed 配置：
+schema_version 1.0。
+agent_id specials.screenwriter-strategic-goal-achievement-agent。
+status draft。
+role Special_Agent data-only configuration。
+allowed_tools 空。
+model_policy provider local_deterministic，
+model_id specials-local-deterministic-v1，network_access false。
+budget_policy max_input_tokens 1 max_output_tokens 1 max_tool_requests 0。
+prompt_reference spagent.screenwriter-strategic-goal-achievement-agent-prompt。
+rubric_reference spagent.screenwriter-strategic-goal-achievement-agent-rubric。
+critique_edges inputs spagent.screenwriter-strategic-goal-achievement-agent-input
+outputs spagent.screenwriter-strategic-goal-achievement-agent-output。
+max_refinement_count 1。
+production_activation_requested false。
+
+第十四部分：SPEC 職責摘錄。
+
+擁有 specials-domain screenwriter strategic goal achievement agent 設計成果
+作爲 draft data-only 代理表示。
+通過完整編劇案例研究示範六階段自我質疑框架。
+學習重點從表面答案挖掘核心動機、
+抽象概念轉化具體行動、
+辨識突破思維盲點、建立可持續執行策略。
+
+第十五部分：文檔控制。
+
+生成器 scripts/business/generate_agent_user_guides.py。
+代理文件夾 business/specials/agents/specials.screenwriter-strategic-goal-achievement-agent/。
+輸出 docs/user_guide.md。
+VA corpus root C:\Project\va-agent-swarm。
+重新生成 python scripts/business/generate_agent_user_guides.py。
+信任模型：設計語料不受信任，host 配置 fail-closed。
+
+以上就係 Screenwriter Strategic Goal Achievement Agent 完整指南。
+建議從第一部分 Snapshot 同第五部分開始，
+用第八到第十部分做 CASOPS 操作同改進，
+第十一到十二部分做深度設計保真度。
+多謝收睇，下次再見！

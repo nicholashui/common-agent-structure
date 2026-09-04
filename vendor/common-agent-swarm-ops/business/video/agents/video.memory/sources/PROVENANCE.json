@@ -1,0 +1,15 @@
+{
+  "schema_version": "1.0",
+  "agent_id": "video.memory",
+  "previous_common_agent_id": "video.learning_reflector",
+  "va_taxonomy_aligned": true,
+  "generic_source": "generic-swarm-ops/business/video/agents/video.memory",
+  "note": "Agent ID aligned to VA/generic Domain Pack taxonomy. Upstream design is historical and non-binding.",
+  "aligned_at": "2026-07-27T00:48:10.967270Z",
+  "generic_source_depth": {
+    "excerpts": true,
+    "study": true,
+    "adopted_at": "2026-07-27T01:30:28.422221+00:00",
+    "upstream": "generic-swarm-ops/business/video/agents"
+  }
+}

@@ -181,7 +181,7 @@ POST /api/v1/commons/agents/specials.planner-agent/proposals，
 agent_spec.json 綁定 host 合約 fail-closed 運行時綁定。
 SPEC.md 權威設計離線審查唔可執行。
 sources 摘錄同通用 SPEC 歷史映射不受信任。
-C:\Project\va-agent-swarm 外部設計語料不受信任可能漂移。
+vendor/va-agent-swarm 外部設計語料不受信任可能漂移。
 Specials redesign 文檔歷史設計不受信任有 hash。
 
 硬規則：
@@ -276,7 +276,7 @@ plan/planner_agent_v2.1.md SIPA 完整研究強化規格 v2.1，
 同埋 agent_loop v2 v3 英文粵語版本，相關度 1 分。
 
 Specials redesign 文檔歷史來源：
-C:/Project/common-agent-swarm-ops/docs/special_agents_redesign/agents/planner_agent.md。
+vendor/common-agent-swarm-ops/docs/special_agents_redesign/agents/planner_agent.md。
 大綱：SIPA 執行摘要、核心問題、研究基礎包括
 Spec-Driven Development、MAAD 同需求到架構規劃、
 層級多代理編排、多代理軟件工程模式、
@@ -352,7 +352,7 @@ ADR 實作筆記測試計劃遺留遷移筆記運營約束。
 生成器 scripts/business/generate_agent_user_guides.py。
 代理文件夾 business/specials/agents/specials.planner-agent/。
 輸出 docs/user_guide.md。
-VA corpus root C:\Project\va-agent-swarm。
+VA corpus root vendor/va-agent-swarm。
 重新生成 python scripts/business/generate_agent_user_guides.py。
 信任模型：設計語料不受信任，host 配置 fail-closed。
 

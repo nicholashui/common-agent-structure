@@ -1,0 +1,51 @@
+{
+  "schema_version": "1.0",
+  "agent_id": "video.competitorintelligence",
+  "sources": [
+    {
+      "id": "src_1",
+      "title": "Meta Ad Library",
+      "description": "Meta Ad Library",
+      "license_class": "unknown_review_required",
+      "acquisition_method": "manual_or_licensed_api",
+      "local_path_hint": "sources/excerpts/ or sources/study/",
+      "refresh_sla_days": 90,
+      "owner": "video.competitorintelligence",
+      "status": "planned_or_partial"
+    },
+    {
+      "id": "src_2",
+      "title": "TikTok Top Ads",
+      "description": "TikTok Top Ads",
+      "license_class": "unknown_review_required",
+      "acquisition_method": "manual_or_licensed_api",
+      "local_path_hint": "sources/excerpts/ or sources/study/",
+      "refresh_sla_days": 90,
+      "owner": "video.competitorintelligence",
+      "status": "planned_or_partial"
+    },
+    {
+      "id": "src_3",
+      "title": "YouTube scrape",
+      "description": "YouTube scrape",
+      "license_class": "unknown_review_required",
+      "acquisition_method": "manual_or_licensed_api",
+      "local_path_hint": "sources/excerpts/ or sources/study/",
+      "refresh_sla_days": 90,
+      "owner": "video.competitorintelligence",
+      "status": "planned_or_partial"
+    },
+    {
+      "id": "src_4",
+      "title": "release trackers",
+      "description": "release trackers",
+      "license_class": "unknown_review_required",
+      "acquisition_method": "manual_or_licensed_api",
+      "local_path_hint": "sources/excerpts/ or sources/study/",
+      "refresh_sla_days": 90,
+      "owner": "video.competitorintelligence",
+      "status": "planned_or_partial"
+    }
+  ],
+  "note": "Legal review required before treating external corpora as production grounding."
+}

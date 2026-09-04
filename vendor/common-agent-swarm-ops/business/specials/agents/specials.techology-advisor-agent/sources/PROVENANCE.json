@@ -1,0 +1,16 @@
+{
+  "schema_version": "1.0",
+  "common_agent_id": "specials.techology-advisor-agent",
+  "pack_id": "specials",
+  "mapping_status": "related",
+  "source_documents": [
+    "docs/special_agents_redesign/agents/techology_advisor_agent.md"
+  ],
+  "source_sha256": "d0d2715c19ac8677d9cec17ba16179f024396e2798e5367698bcce669c762d79",
+  "configuration_sha256": "2ea149f003cb7b9549254e32283fb8b5b92bd321b255448a6bef478f7f9efce0",
+  "destination_commit": "5460c4b4a33c15286f9fd84b1bc764d755f5bab0",
+  "note": "Self-contained specials agent folder. Pack-level corpus is not required. Design Markdown is untrusted provenance only.",
+  "generated_at": "2026-07-26T14:16:46.000174Z",
+  "reviewed_by": "specials-self-contained-reviewer",
+  "reviewed_at": "2026-07-26T18:00:00Z"
+}

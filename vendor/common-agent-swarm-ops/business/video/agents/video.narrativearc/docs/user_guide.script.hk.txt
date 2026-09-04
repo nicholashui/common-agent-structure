@@ -1,0 +1,275 @@
+大家好，歡迎返嚟我哋嘅頻道。今日我哋會詳細講解 NarrativeArcAgent。
+
+呢份指南係寫畀操作員、pack 作者、swarm 設計師同審閱者，喺 common-agent-swarm-ops 入面工作。你會得到任務清晰定義、使用指引、協作地圖、CASOPS 操作步驟、改進路徑同分信任等級嘅來源地圖。
+
+呢份指南唔係授權啟動供應商、打開網絡或發明工具嘅許可證。Host 真相來源係 fail-closed 嘅 agent_spec.json。
+
+Pack 路徑係 business/video/agents/video.narrativearc/。指南喺 docs/user_guide.md。由 generate_agent_user_guides.py 生成。
+
+第一部分，快照。
+
+NarrativeArcAgent，agent id 係 video.narrativearc，係 Video Domain Pack 角色喺 CASOPS 上面。簡單講佢負責三幕式結構、Save-the-Cat、英雄旅程結構。
+
+呢份指南係人類可讀嘅操作員地圖，用於目錄審查、swarm 設計同提案改進。
+
+快照欄位如下。顯示名稱係 NarrativeArcAgent。Pack agent id 係 video.narrativearc。Pack 係 video。Host 角色字串係 NarrativeArcAgent (VA Domain Pack)。
+
+目錄狀態係 registered。成熟度係 L0 非活躍。VA id 係 60。VA 類別係 9-Meta，代表元/優化專家。供應商係 local_deterministic。網絡係 False。
+
+允許工具係空列表。生產啟動請求係 False。Prompt 參考係 video.prompt.narrativearc.v1。Rubric 參考係 video.rubric.narrativearc.v1。
+
+之前嘅 common id 係 video.narrative_designer。Generic lineage 係 generic-swarm-ops/business/video/agents/video.narrativearc。
+
+第二部分，點解存在。
+
+人類影片團隊喺時間壓力下解決呢個問題：三幕式結構、Save-the-Cat、英雄旅程結構。Agent 形式令多代理系統持續編碼呢種技藝，每次交接應用佢，只將剩餘風險升級畀人類。
+
+知識庫來源係Campbell、Snyder 嘅 Save the Cat、Truby、Black List 分析。呢啲係歷史設計來源，唔係即時網絡呼叫。
+
+設計野心係喺結構評分標準上擊敗 WGA 初稿。呢個係你寫評估或提案時嘅北極星指標。
+
+第三部分，乜嘢叫做做得好。
+
+主要成果係三幕式結構、Save-the-Cat、英雄旅程結構。自我質量標準係Beat-sheet 覆蓋率百分之一百、轉折點間距、弧線曲線擬合。
+
+設計時野心訊號係喺結構評分標準上擊敗 WGA 初稿。架構模式係 Self-Refine (rubric: beat-sheet completeness)。
+
+Prompt 參考 video.prompt.narrativearc.v1。Rubric 參考 video.rubric.narrativearc.v1。批評邊界輸入 video.critic，輸出 video.judge。最大精煉 3 次。
+
+輸入係本地 pack 製品同類型化交接。輸出係可審閱嘅影片領域交付物。驗收係 host 政策加本地 SPEC 標準。
+
+第四部分，範圍。
+
+擁有嘅職責：三幕式結構、Save-the-Cat、英雄旅程結構。
+
+共享批評表面。聆聽同接受批評來自 ScreenwriterAgent 同 DirectorAgent。有資格評論 ScreenwriterAgent 嘅中段下垂問題。
+
+Host 批評邊界輸入 video.critic，輸出 video.judge。最大精煉 3。
+
+拒絕同升級：fail-closed 冇供應商啟動、冇網絡、冇憑證。production_activation_requested 保持 false。法律安全權利發佈決策升級人類閘門。批評主導同法官用 video.critic 同 video.judge。
+
+第五部分，幾時涉及。
+
+當工作產品需要 NarrativeArcAgent 嘅決策或製品時叫佢：三幕式結構、Save-the-Cat、英雄旅程結構。
+
+管道階段係元/優化專家。唔好為通用編排、預算批准或法律簽核叫佢。人類覆蓋：任何阻止發佈嘅爭議升級到人類閘門。
+
+決策速查表。缺失技能係咪 NarrativeArcAgent 嘅專業？係就包含喺 swarm 圖。只係元數據編輯？用 Registry inspect 加提案。需要工具網絡？Host 唔允許。有人類風險？保持人類閘門。
+
+第六部分，協作地圖。
+
+將呢個 agent 想像成批評巴士嘅節點。入站批評來自 ScreenwriterAgent 同 DirectorAgent。出站評論係 ScreenwriterAgent 嘅中段下垂問題。Host 邊界輸入 video.critic，輸出 video.judge。
+
+第七部分，生產位置。
+
+人類生產工作流程方面，屬於跨領域優化、評估同系統改進角色。典型交接製品包括評估報告、優化工單、基準差異、harness 結果。
+
+多代理 AI 工作流程方面，屬於觀察同優化全代理圖嘅節點，涵蓋延遲、成本、prompts、留存率、ROAS。
+
+設計時工具注釋包括Beat-sheet 驗證器、情緒弧線繪圖器、結構模板。呢啲對 host 冇約束力。
+
+循環風格係 Self-Refine (rubric: beat-sheet completeness)。今日喺 CASOPS 只係文檔，即時供應商係 local deterministic，工具允許列表空或存根。
+
+AI 工作流程摘錄入面提到：第 60 行 NarrativeArcAgent 塑造三幕式、Save-the-Cat、起承轉合、英雄旅程結構，知識來自 Campbell 嘅千面英雄、Snyder 嘅 Save the Cat、Truby 嘅故事解剖學、Black List 結構分析，質量標準係 beat-sheet 百分百覆蓋、轉折點間距匹配類型先驗、情緒弧線曲線擬合。
+
+共享交接合約方面。artifact_id 同 version 提供不可變身份。parent_assets 提供來源鏈。brief_scope 阻止範圍蔓延。acceptance_criteria 同質量標準掛鉤。qc_status 同 gate flags 令下游短路。rights_and_consent 阻止濫用。critique_log pointer 保留歷史。
+
+第八部分，CASOPS 操作。
+
+今日係目錄加設計對象。第一步去 /registry 確認成員。第二步去 /registry/agents/video.narrativearc 閱讀 SPEC。第三步 POST 到 /api/v1/commons/agents/video.narrativearc/proposals 提案。第四步 swarm 成員只用 Host 動作參考。第五步預設唔啟用生產。
+
+實用清單：確認狀態工具標誌一致、閱讀第三部分先判斷、附離線證據、唔好貼 API 密鑰、偏好小差異。
+
+第九部分，安全同信任。
+
+agent_spec.json 係約束性 host 合約 fail-closed。SPEC.md 係權威設計離線審閱。sources 係歷史不受信任。外部語料庫不受信任。
+
+硬規則：供應商 local_deterministic。網絡 False。工具空列表。activation False。預算：輸入 2048、輸出 1024、工具請求 0。設計時工具唔啟動：Beat-sheet 驗證器、情緒弧線繪圖器、結構模板。
+
+第十部分，提升質量。
+
+改進係版本化目錄工作。循環：觀察失敗、命名標準、草擬差異、附證據、提案、審閱接受、考慮啟動。
+
+具體槓桿。第一收緊 rubric 對照Beat-sheet 覆蓋率百分之一百、轉折點間距、弧線曲線擬合。第二將 prompt 同責任對齊。第三確保入站 ScreenwriterAgent 同 DirectorAgent 同 host 邊界捕捉失敗。第四偏好 Self-Refine (rubric: beat-sheet completeness) 架構。第五寫測試夾具驗證喺結構評分標準上擊敗 WGA 初稿。第六保持人類閘門。
+
+評估種子。Happy path 滿足Beat-sheet 覆蓋率百分之一百、轉折點間距、弧線曲線擬合。超出範圍拒絕或升級。缺失來源 fail-closed。衝突批評精煉或升級。提案不可變。
+
+第十一部分，來源地圖。
+
+本地語料庫：agent_spec.json binding、SPEC.md authoritative-design、README.md local-index、sources/MAPPING.md provenance、sources/PROVENANCE.json provenance、sources/excerpts/agents.md historical-excerpt、sources/excerpts/ai_agent_video_production_workflow.md historical-excerpt、sources/excerpts/lifes_quiet_redemption_agent_workflow.md historical-excerpt、sources/excerpts/system_build_plan.md historical-excerpt、sources/excerpts/ui_design.md historical-excerpt、sources/excerpts/video_remake_enhancement.md historical-excerpt、sources/generic/video.narrativearc.SPEC.md historical-generic、sources/generic/video.showrunner.SPEC.md historical-generic。
+
+映射注釋。VA/generic pack ID 係 video.narrativearc。之前 common ID 係 video.narrative_designer。SPEC 深度完整 generic SPEC 加 host 運行時綁定。
+
+來源記錄。schema_version 1.0。agent_id video.narrativearc。previous_common_agent_id video.narrative_designer。va_taxonomy_aligned true。generic_source generic-swarm-ops/business/video/agents/video.narrativearc。對齊時間 2026 年 7 月 27 日。
+
+來源敘述：Pack agent ID 對齊純 VA Domain Pack 分類法。之前 ID 只係歷史映射。上游設計歷史性非約束。本地 agent_spec.json 權威。
+
+VA 名冊行。責任：三幕式結構、Save-the-Cat、英雄旅程結構。知識提煉：Campbell、Snyder 嘅 Save the Cat、Truby、Black List 分析。自我質量：Beat-sheet 覆蓋率百分之一百、轉折點間距、弧線曲線擬合。超越人類：喺結構評分標準上擊敗 WGA 初稿。接受批評：ScreenwriterAgent 同 DirectorAgent。評論：ScreenwriterAgent 嘅中段下垂問題。歷史工具：Beat-sheet 驗證器、情緒弧線繪圖器、結構模板。架構：Self-Refine (rubric: beat-sheet completeness)。
+
+第十二部分，相關設計閱讀。
+
+本地知識索引。Runtime binding 喺 agent_spec.json。README 喺 README.md。Provenance 喺 sources/PROVENANCE.json。Mapping 喺 sources/MAPPING.md。Pack inventory 喺 ../../inventory.json。Pack manifest 喺 ../../manifest.json。所有主要參考喺倉庫入面解析。
+
+Folder README 摘要：VA 對齊 Domain Pack agent，common host。SPEC.md 係 VA/generic 深度加 host 綁定。agent_spec.json 係 fail-closed runtime。sources 係來源同映射。
+
+第十三部分，host 合約。
+
+agent_id video.narrativearc。allowed_tools 空列表。max_input_tokens 2048。max_output_tokens 1024。max_tool_requests 0。
+
+critique_edges 輸入 video.critic，輸出 video.judge。max_refinement_count 3。model_id local-video-config-v1。network_access false。provider local_deterministic。
+
+production_activation_requested false。prompt_reference video.prompt.narrativearc.v1。role NarrativeArcAgent (VA Domain Pack)。rubric_reference video.rubric.narrativearc.v1。schema_version 1.0。status registered。va_id 60。va_name NarrativeArcAgent。va_category 9-Meta。
+
+第十四部分，SPEC 責任摘錄。
+
+核心責任：三幕式結構、Save-the-Cat、英雄旅程結構。Host 角色綁定 NarrativeArcAgent (VA Domain Pack)。設計時 VA 表格內容歷史性非約束。
+
+責任：三幕式結構、Save-the-Cat、英雄旅程結構。知識提煉：Campbell、Snyder 嘅 Save the Cat、Truby、Black List 分析。自我質量：Beat-sheet 覆蓋率百分之一百、轉折點間距、弧線曲線擬合。超越人類：喺結構評分標準上擊敗 WGA 初稿。
+
+批評巴士：接受 ScreenwriterAgent 同 DirectorAgent。評論 ScreenwriterAgent 嘅中段下垂問題。設計時工具唔啟動：Beat-sheet 驗證器、情緒弧線繪圖器、結構模板。運行時安全用 agent_spec.json 加 tool-permission-register.json。CI 用 video_* 存根。架構 Self-Refine (rubric: beat-sheet completeness)。
+
+第十五部分，文檔控制。
+
+生成器 generate_agent_user_guides.py。資料夾 business/video/agents/video.narrativearc/。輸出 docs/user_guide.md。VA 根目錄 C:\Project\va-agent-swarm。信任模型：設計語料庫不受信任，host 配置 fail-closed。
+
+以上就係 NarrativeArcAgent 嘅完整指南。建議從快照同第五部分開始，用第八到十部分做操作同改進，用第十一到十二部分做深度設計保真度。
+
+補充關於NarrativeArcAgent嘅額外技術細節。呢個角色嘅 VA id 60 代表佢喺整個代理名冊入面嘅唯一編號。每個 agent 都有一個唯一嘅 VA id，用於系統識別同索引。
+
+關於Self-Refine (rubric: beat-sheet completeness)架構嘅詳細解釋。呢個架構模式係經過設計選擇嘅，最適合NarrativeArcAgent嘅工作性質。喺未來實施時應該優先採用呢個模式。
+
+關於批評循環嘅運作。當ScreenwriterAgent 同 DirectorAgent發出批評時，NarrativeArcAgent最多可以精煉三次。每次精煉應該明確回應批評中嘅具體問題。三次後未解決就升級到 video.judge。
+
+呢個精煉上限係安全機制，防止無限循環。佢確保問題有明確解決路徑，要喺三次內解決，要就升級。
+
+關於video.narrative_designer嘅歷史背景。呢個之前嘅 common ID 反映咗角色喺早期設計嘅命名。經過 VA 分類法對齊後改為現名，更準確反映職責。
+
+最後要強調嘅係 fail-closed 原則。喺任何唔確定嘅情況下，系統默認唔做任何事。呢個確保安全同合規，特別係涉及版權同創意決策嘅領域。
+
+多謝大家收睇，我哋下次再見。
+
+我哋繼續深入講解NarrativeArcAgent嘅更多重要細節。
+
+首先關於佢嘅核心職責：三幕式結構、Save-the-Cat、英雄旅程結構。呢個職責定義咗呢個 agent 喺整個多代理系統入面嘅唯一價值。冇其他 agent 應該重複呢個職責，呢個係「擁有」嘅意思。
+
+關於知識庫嘅來源。Campbell、Snyder 嘅 Save the Cat、Truby、Black List 分析。呢啲來源都係經過精心揀選嘅，代表咗呢個領域最權威同最有價值嘅知識。佢哋為 agent 嘅判斷提供理論基礎同實踐指引。
+
+要注意嘅係呢啲知識來源係歷史設計來源，意思係佢哋係喺設計階段被識別同記錄嘅。喺實際運行時，agent 唔會去即時存取呢啲來源，因為網絡存取係被禁止嘅。
+
+關於Beat-sheet 覆蓋率百分之一百、轉折點間距、弧線曲線擬合呢個自我質量標準嘅詳細解讀。呢個標準定義咗乜嘢叫做「好嘅輸出」。當你審閱 agent 嘅工作或者撰寫評估案例時，你應該用呢個標準嚟判斷。
+
+每一個質量維度都可以被量化或者至少可以被系統化咁評估。呢個令持續改進成為可能，因為你可以追蹤每個維度嘅表現隨時間嘅變化。
+
+關於喺結構評分標準上擊敗 WGA 初稿呢個超越人類嘅訊號。呢個係一個高標準嘅目標，代表 agent 唔單止要做到同人類一樣好，仲要超越人類嘅表現。呢個目標指引所有嘅設計同改進決策。
+
+即使今日呢個目標可能未能達到，佢仍然係所有評估同改進嘅方向。每一次 rubric 更新、每一次 prompt 精煉、每一次架構調整，都應該朝呢個方向進步。
+
+關於Self-Refine (rubric: beat-sheet completeness)呢個架構模式嘅深入解釋。呢個模式係經過仔細考慮後選擇嘅，最適合NarrativeArcAgent嘅工作性質同需求。
+
+喺未來實施運行時，開發者應該優先採用呢個架構模式。佢已經被驗證為最適合呢類型任務嘅方法。
+
+關於批評同精煉嘅具體流程。ScreenwriterAgent 同 DirectorAgent發出嘅批評可能涉及多個方面。佢哋可能指出質量標準中嘅某個維度未達標，或者發現輸出中嘅具體問題。
+
+NarrativeArcAgent收到批評後應該：首先理解批評嘅具體內容，然後識別需要修改嘅部分，最後進行精煉並重新提交。最多三次精煉。
+
+如果NarrativeArcAgent認為批評唔合理，佢仍然需要嘗試回應，但可以喺精煉中解釋點解原始輸出係正確嘅。最終由 video.judge 做裁決。
+
+關於佢有資格評論ScreenwriterAgent 嘅中段下垂問題嘅原因。呢個評論權限係基於專業知識嘅重疊。NarrativeArcAgent嘅專業知識令佢能夠從自己嘅角度發現其他 agent 輸出中嘅問題。
+
+呢種跨角色嘅批評係整個系統質量保證嘅重要機制。每個 agent 都從自己嘅專業角度為整體質量做出貢獻。
+
+關於設計時工具Beat-sheet 驗證器、情緒弧線繪圖器、結構模板嘅進一步說明。呢啲工具名稱出現喺設計文檔入面，代表如果 agent 被啟動，佢可能需要使用嘅工具類型。
+
+但係喺今日嘅 CASOPS 上面，呢啲工具名稱完全唔代表任何啟用狀態。agent_spec.json 入面嘅 allowed_tools 先係真正嘅運行時約束。
+
+關於 VA 類別9-Meta即元/優化專家嘅詳細說明。呢個類別將所有相似性質嘅 agent 分組喺一起，方便管理同理解佢哋嘅關係。
+
+同一類別入面嘅 agent 通常會喺相似嘅工作流程階段被使用，處理相關嘅任務類型。理解類別有助於設計 swarm 圖時正確放置 agent。
+
+關於 previous common id video.narrative_designer 嘅歷史意義。呢個 ID 記錄咗 agent 喺系統演化過程中嘅命名歷史。佢有助於追蹤設計決策嘅演變同維持向後兼容性。
+
+當你喺舊文檔或歷史記錄入面見到 video.narrative_designer 呢個名字時，你應該知道佢指嘅就係現在嘅 video.narrativearc。兩者係同一個角色嘅唔同時期嘅命名。
+
+關於人類工作流程入面嘅位置。跨領域優化、評估同系統改進角色。呢個階段定義咗 agent 喺經典影片製作流程中嘅對應位置。典型嘅交接製品包括評估報告、優化工單、基準差異、harness 結果。
+
+關於 AI 工作流程嘅位置。觀察同優化全代理圖嘅節點。呢個描述咗 agent 喺多代理 AI 系統入面嘅角色同互動模式。
+
+關於交接合約嘅每個欄位嘅重要性。artifact_id 確保每個輸出都有唯一可追蹤嘅身份。parent_assets 令你可以追溯任何輸出嘅完整來源鏈。
+
+brief_scope 防止 agent 超出自己嘅職責範圍。acceptance_criteria 提供明確嘅通過或失敗標準。qc_status 令下游 agent 可以快速判斷輸入嘅質量狀態。
+
+rights_and_consent 確保所有涉及版權或個人權利嘅內容都有適當嘅授權。critique_log 保留完整嘅精煉歷史，方便回溯同學習。
+
+關於預算政策嘅安全意義。max_input_tokens 2048 限制輸入大小，防止過長嘅輸入消耗過多資源。max_output_tokens 1024 限制輸出長度。max_tool_requests 0 完全阻止工具調用。
+
+呢啲限制即使 agent 被錯誤啟動都會生效，形成最後嘅安全防線。佢哋確保即使出現配置錯誤，損害都係有限嘅。
+
+以上就係我哋對NarrativeArcAgent嘅最終完整講解。涵蓋咗所有十五個章節加大量補充細節。感謝收睇，我哋下次再見。
+
+我哋再補充多啲關於NarrativeArcAgent喺實際生產環境入面嘅應用場景。
+
+喺一個典型嘅影片製作項目入面，NarrativeArcAgent會喺特定嘅階段被引入。佢嘅輸入通常來自上游 agent 嘅交付物，經過自己嘅處理之後產生嘅輸出會交畀下游 agent 繼續處理。
+
+呢個流程形成一個完整嘅管道，每個 agent 都喺管道中扮演特定嘅角色。NarrativeArcAgent嘅特定角色就係三幕式結構同英雄旅程。
+
+關於Campbell、Snyder、Truby、Black List 分析呢啲知識來源嘅具體內容。呢啲來源被選擇係因為佢哋代表咗呢個領域嘅最高水平同最佳實踐。佢哋為 agent 嘅決策提供咗堅實嘅理論同實踐基礎。
+
+喺設計 rubric 同 prompt 嘅時候，呢啲知識來源係主要嘅參考。佢哋定義咗乜嘢係「正確」嘅輸出，乜嘢係需要改進嘅。
+
+關於NarrativeArcAgent同整個 swarm 系統嘅關係。佢唔係一個孤立嘅組件，而係整個多代理系統嘅一部分。佢嘅存在同價值只有喺同其他 agent 協作嘅時候先能夠完全發揮。
+
+ScreenwriterAgent 同 DirectorAgent提供嘅批評幫助佢改進輸出質量。佢對ScreenwriterAgent 嘅中段下垂嘅評論幫助其他 agent 改進佢哋嘅輸出。呢個互相批評嘅機制係整個系統自我改進嘅核心。
+
+關於從 L0 到更高成熟度嘅升級路徑。目前NarrativeArcAgent係 L0 非活躍狀態。要升級需要：完成評估案例嘅驗證、通過人類審閱嘅治理閘門、更新 agent_spec.json 嘅相關配置。
+
+每一步都有明確嘅標準同流程。呢個確保升級唔係隨意嘅，而係基於充分嘅證據同適當嘅審批。
+
+關於NarrativeArcAgent嘅設計哲學。佢嘅設計遵循「encode craft continuously」嘅原則。即係將人類嘅專業技藝編碼成可重複、可擴展嘅系統化流程。
+
+呢個唔意味住完全取代人類。而係意味住將常規嘅、可系統化嘅部分交畀 agent 處理，令人類可以專注於需要創意判斷同高層決策嘅部分。
+
+關於 video.critic 同 video.judge 嘅角色。video.critic 係負責發出批評嘅角色，佢會檢查NarrativeArcAgent嘅輸出係咪符合質量標準。video.judge 係最終裁決者，當精煉次數用盡但問題仍未解決時做出最終決定。
+
+呢個兩層機制確保質量控制係有效嘅，同時又有最終嘅解決方案避免死結。
+
+關於 schema_version 1.0 同整個系統嘅版本管理。所有 agent 嘅配置都用相同嘅 schema version，確保系統可以統一處理所有 agent 嘅配置文件。
+
+當 schema 需要更新時，版本號會遞增，舊配置可以被自動遷移到新格式。呢個確保系統可以持續演進而唔會破壞已有嘅配置。
+
+以上就係我哋對NarrativeArcAgent嘅所有補充說明。完整覆蓋咗所有十五個章節嘅每一個要點。再次感謝你嘅耐心聆聽，希望對你有幫助。
+
+關於 Self-Refine 架構嘅具體運作。喺呢個模式入面，NarrativeArcAgent 會首先生成一個初始嘅結構方案，然後用 beat-sheet completeness rubric 嚟自我評估。如果發現唔完整嘅地方，佢會自己精煉直到滿足標準。
+
+Beat-sheet 係一個結構化嘅場景列表，列出故事中每一個重要嘅節拍。喺 Save-the-Cat 嘅框架入面，呢啲節拍包括開場畫面、主題陳述、設定、催化劑、辯論、突入第二幕等等。
+
+百分之一百嘅覆蓋率意味住每一個必需嘅節拍都必須存在。如果缺少任何一個，輸出就唔會通過質量檢查。呢個係一個嚴格但明確嘅標準。
+
+關於轉折點間距嘅解釋。好嘅故事結構需要轉折點出現喺正確嘅時間位置。例如喺經典三幕式結構入面，第一個轉折點通常出現喺故事嘅四分一位置，中點出現喺一半位置。
+
+NarrativeArcAgent 需要確保佢生成嘅結構中，轉折點嘅位置符合類型慣例。呢個間距唔需要完全精確，但要喺合理嘅範圍之內。
+
+關於弧線曲線擬合。情緒弧線描述咗故事隨時間嘅情緒變化。好嘅故事有清晰嘅情緒起伏模式。NarrativeArcAgent 需要確保佢嘅結構產生嘅情緒弧線同預期嘅模式匹配。
+
+呢個可以通過計算情緒值同理想曲線之間嘅擬合度嚟量化。擬合度越高代表結構越成功。
+
+關於 Campbell 嘅千面英雄框架。呢個係最經典嘅故事結構理論之一，描述咗英雄嘅旅程模式。從日常世界出發、接受召喚、跨越門檻、面對考驗、最終回歸轉變。
+
+NarrativeArcAgent 需要能夠識別同應用呢個框架嘅各個階段，確保生成嘅結構遵循經過驗證嘅敘事模式。
+
+以上所有內容完整覆蓋咗 NarrativeArcAgent 嘅每一個設計面向。感謝收睇。
+
+補充關於 CASOPS 平臺嘅核心設計原則。呢個平臺嘅所有 agent 都遵循相同嘅生命週期：註冊、設計審查、提案、版本控制。每一步都有清晰規則確保安全同可追溯性。
+
+呢個 agent 作為 L0 成熟度，只能被用作設計參考同目錄條目。任何運行時調用嘅嘗試都會被 fail-closed 機制阻止。呢個保守默認係系統安全嘅基石。
+
+喺 swarm 設計入面放置呢個 agent 時，你需要考慮佢同前後節點嘅關係、交接格式嘅兼容性、同埋整體管道嘅性能同可靠性要求。
+
+每一個設計決策都應該被記錄同追蹤。提案系統確保所有改變都係可審計嘅，同埋可以被回溯到具體嘅證據同理由。
+
+最後要記住嘅係，呢份指南嘅目的係幫助你理解同正確使用呢個 agent。如果有任何唔確定嘅地方，永遠以 agent_spec.json 為最終權威。多謝。
+
+關於版本不可變性嘅原則。一旦一個版本被發佈，佢就唔可以被修改。任何改變都必須通過新版本嚟實現。呢個確保歷史記錄嘅完整性同可追溯性。
+
+舊版本永遠可讀，新版本唔會覆蓋舊版本。呢個令回滾成為可能，同時令審計追蹤保持完整。每個版本都有自己嘅時間戳同作者記錄。
+
+呢個就係我哋嘅最終總結。完整涵蓋咗所有章節嘅所有內容。再次感謝大家嘅耐心聆聽同支持，我哋下條片見。再見。

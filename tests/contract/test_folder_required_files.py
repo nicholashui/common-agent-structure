@@ -62,6 +62,21 @@ def test_template_agent_spec_matches_schema() -> None:
     assert spec["production_activation_requested"] is False
 
 
+def test_loaded_agents_have_usable_completion_budgets() -> None:
+    stubs: list[str] = []
+    for spec_path in sorted((REPO / "agents").glob("*/agent_spec.json")):
+        spec = json.loads(spec_path.read_text(encoding="utf-8"))
+        budget = spec.get("budget_policy") or {}
+        output_tokens = budget.get("max_output_tokens")
+        input_tokens = budget.get("max_input_tokens")
+        agent_id = str(spec.get("agent_id") or spec_path.parent.name)
+        if not isinstance(output_tokens, int) or output_tokens < 16:
+            stubs.append(f"{agent_id}:max_output_tokens={output_tokens}")
+        if not isinstance(input_tokens, int) or input_tokens < 16:
+            stubs.append(f"{agent_id}:max_input_tokens={input_tokens}")
+    assert stubs == []
+
+
 def test_template_is_baseline_safe_disabled_modes() -> None:
     memory = json.loads((TEMPLATE / "memory" / "policy.json").read_text(encoding="utf-8"))
     plugins = json.loads((TEMPLATE / "plugins" / "registry.json").read_text(encoding="utf-8"))

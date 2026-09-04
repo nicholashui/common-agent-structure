@@ -1,0 +1,28 @@
+{
+  "schema_version": "casops.testcase.v1",
+  "id": "chat-tc3",
+  "agent_id": "specials.autotelic-agent",
+  "path": "chat",
+  "honesty": "CHARACTERIZATION",
+  "input": {
+    "message": "Self-review offline: what must specials.autotelic-agent refuse (network, T3, production, plugins)?",
+    "history": []
+  },
+  "expect": {
+    "http_status": 200,
+    "agent_id": "specials.autotelic-agent",
+    "memory_writes": [],
+    "plugins_executed": false,
+    "t3_enabled": false,
+    "network_granted": false,
+    "io_declared_named": true,
+    "io_declared_fetched": false,
+    "truncated": false,
+    "path_id": "chat"
+  },
+  "source": {
+    "repo": "common-agent-structure",
+    "file": "SPEC.md",
+    "case_id": "fallback-tc3"
+  }
+}

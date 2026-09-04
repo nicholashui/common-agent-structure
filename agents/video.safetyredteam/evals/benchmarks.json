@@ -1,4 +1,26 @@
 {
   "schema_version": "3.0",
-  "benchmarks": []
+  "benchmarks": [
+    {
+      "id": "chat-tc1",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat"
+    },
+    {
+      "id": "chat-tc2",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat"
+    },
+    {
+      "id": "chat-tc3",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat"
+    },
+    {
+      "id": "run-tc1",
+      "honesty": "CHARACTERIZATION",
+      "path": "run"
+    }
+  ],
+  "note": "Fixtures are CHARACTERIZATION / policy checks. Not an eval pass. casops-eval remains NOT_RUN while instruments are unqualified."
 }

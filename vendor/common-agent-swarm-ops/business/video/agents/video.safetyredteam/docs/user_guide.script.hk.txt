@@ -1,0 +1,295 @@
+呢個係 SafetyRedTeamAgent 嘅操作同設計指南嘅完整廣東話旁白。
+
+呢份指南係寫俾操作員、pack 作者、swarm 設計師、同埋喺 common-agent-swarm-ops 入面做審閱工作嘅人。
+
+你會得到嘅嘢包括任務清晰度、幾時應該用呢個 agent 嘅指引、協作地圖、CASOPS 操作步驟、改進路徑、同埋一個分信任層級嘅來源地圖。
+
+呢份文件唔係一個啟動 provider 嘅許可證，唔係一個開網絡存取嘅許可證，亦都唔係一個發明工具嘅許可證。Host 真相係 fail-closed 嘅 agent_spec.json。來自 VA 或者重新設計文件嘅設計文本係不受信任嘅來源。
+
+Pack 路徑係 business/video/agents/video.safetyredteam/。指南檔案係 docs/user_guide.md。由 scripts/business/generate_agent_user_guides.py 生成。
+
+第一部分係快照。
+
+SafetyRedTeamAgent，agent ID 係 video.safetyredteam，係 CASOPS 上面嘅 Video Domain Pack 角色。簡單嚟講，佢嘅職責係對深偽、偏見、越獄攻擊、誹謗進行對抗性攻擊。呢份指南要當作人類可讀嘅操作員地圖，用嚟做目錄審閱、swarm 設計、同埋基於提案嘅改進，唔係當作運行時啟動許可證。
+
+而家講嚇快照表格入面嘅每個欄位。Display name 係 SafetyRedTeamAgent。Pack agent id 係 video.safetyredteam。Pack 係 video。Host role string 係 SafetyRedTeamAgent (VA Domain Pack)。
+
+Catalog status 係 registered。Maturity today 係 L0 斜線 non-active，即係目錄同設計保真度階段。VA id 係 80。VA category 係 9-Meta，即係 Meta 斜線 optimization specialists。
+
+Provider (host) 係 local_deterministic。Network 係 False。Allowed tools (host) 係空嘅列表。Production activation requested 係 False。
+
+Prompt 斜線 rubric refs 係 video.prompt.safetyredteam.v1 斜線 video.rubric.safetyredteam.v1。Previous common id 係 video.safety_reviewer。Generic lineage 係 generic-swarm-ops/business/video/agents/video.safetyredteam。
+
+第二部分係點解呢個角色存在。
+
+人類影片製作團隊已經喺時間壓力下解決呢個問題：對深偽、偏見、越獄攻擊、誹謗進行對抗性攻擊。Agent 形式存在嘅原因係等多代理系統可以持續編碼呢種技藝，喺每次交接時應用佢，同埋只將殘餘風險升級俾人類。
+
+佢嘅知識庫係從以下來源提煉出嚟嘅：Hany Farid 基準測試、Partnership on AI 框架、OWASP LLM Top 10。呢啲係歷史設計來源，唔係呢個 host 上面嘅即時網絡調用。
+
+設計雄心，即係超越人類嘅信號，係：比內部紅隊輪換有更高嘅覆蓋率。當你之後寫評估或者提案嘅時候，用呢個作為北極星指標。
+
+第三部分係乜嘢叫做好。
+
+用呢啲作為審閱標準，當你閱讀輸出、撰寫評分標準、或者評分提案嘅時候。
+
+Primary outcome 係：對深偽、偏見、越獄攻擊、誹謗進行對抗性攻擊。Self-quality bar 係：攻擊成功率保持喺百分之一以下、分類法覆蓋率。Ambition signal（設計時）係：比內部紅隊輪換有更高嘅覆蓋率。Architecture pattern（設計時）係：多代理辯論（紅隊對防禦者）加對抗性搜索。
+
+Host 質量同批評綁定方面。Prompt reference 係 video.prompt.safetyredteam.v1。Rubric reference 係 video.rubric.safetyredteam.v1。Critique edges 入面，inputs 係 video.critic，outputs 係 video.judge。Max refinement 係 3。VA 表格質量標準保留喺上面嘅 Provenance and Identity surface。
+
+輸入、輸出同驗收方面。輸入係本地 pack 產物同埋有類型嘅交接。輸出係可審閱嘅影片領域交付物，附帶驗收標準。驗收係 host 政策加本地 SPEC 標準，唔需要外部儲存庫。
+
+第四部分係範圍：擁有、共享同拒絕。
+
+擁有嘅部分：對深偽、偏見、越獄攻擊、誹謗進行對抗性攻擊。
+
+同同儕共享（批評表面）方面。聽取或接受批評嘅來源係：EthicsAgent（HiTL）同 ComplianceAgent。有資格評論嘅對象係：AvatarDesignAgent、VoiceCloneAgent、AllGenerators。Host critique edge inputs 係 video.critic。Host critique edge outputs 係 video.judge。Max refinement count 係 3。
+
+拒絕同升級方面。Fail-closed：冇 provider 啟動、冇網絡、冇來自設計文本嘅憑證。production_activation_requested 保持 false，除非有另外一個人類閘門改變佢。將法律、安全、權利同發布決定升級到必要嘅人類閘門。批評領導斜線法官預設用 VA ID video.critic 同 video.judge。
+
+第五部分係幾時應該用呢個 agent。
+
+當工作產品需要 SafetyRedTeamAgent 擁有嘅決定或者產物嘅時候就叫佢：對深偽、偏見、越獄攻擊、誹謗進行對抗性攻擊。
+
+Pipeline phase 係 Meta 斜線 optimization specialists。跨切面優化、評估、同系統改進角色。
+
+唔好叫佢做通用編排、預算批准、或者最終法律簽署，除非呢啲職責明確喺佢嘅責任範圍之內。用 producer 斜線 legal 斜線 compliance 同儕代替。
+
+人類覆寫：任何阻止發布嘅安全、權利、或者無障礙爭議都會升級到人類閘門，即使 agent 喺未來嘅活躍運行時會自動通過。
+
+決策速查表入面有四個問題同指引。第一，缺失嘅技能係咪 SafetyRedTeamAgent 嘅技藝？如果係就將佢包括喺嗰個階段嘅 swarm 圖入面。第二，呢個只係一個元數據斜線目錄編輯嗎？用 Registry inspect 加提案，唔好發明運行時。第三，呢個任務需要工具斜線網絡嗎？Host 目前唔允許，除非 agent_spec 加權限註冊表另有說明。第四，有冇人類專屬風險（法律、傷害、權利）？保留人類閘門，agent 輸出只係建議性質直到被啟動。
+
+第六部分係協作地圖。
+
+將呢個 agent 想像成一個批評巴士上面嘅節點，唔係一個獨立嘅聊天機器人。同儕改善質量；法官斜線閘門決定驗收。
+
+Inbound critique 嘅方向係 EthicsAgent（HiTL）同 ComplianceAgent。Outbound commentary 嘅方向係 AvatarDesignAgent、VoiceCloneAgent、AllGenerators。Host edge inputs 係 video.critic。Host edge outputs 係 video.judge。
+
+第七部分係佢喺生產環境嘅位置。
+
+7.1 係人類生產工作流。跨切面優化、評估、同系統改進角色。典型嘅交接產物包括：評估報告、優化工單、基準差異、harness 結果。
+
+將責任映射到經典階段：development、pre-production、production、post-production、delivery 斜線 live ops。偏好人類擔任呢個職位嘅人會簽署嘅階段。
+
+7.2 係多代理 AI 工作流。觀察者同優化器節點覆蓋整個 agent 圖（延遲、成本、提示詞、留存率、ROAS）。
+
+設計時工具備註（對 host 無約束力）：Deepfake 偵測器（Farid 實驗室模型）；偏見探測器；越獄提示詞庫；OWASP 掃描器。
+
+運行時要模仿嘅循環風格：多代理辯論（紅隊對防禦者）加對抗性搜索。喺今日嘅 CASOPS 上面，呢個模式只係文檔，即時 provider 係 local deterministic，有空嘅或者存根嘅工具允許列表。
+
+本地 AI 工作流摘錄中嘅提及：編號 80，SafetyRedTeamAgent，對抗性攻擊輸出嘅深偽、偏見、越獄、誹謗。知識來源係 Hany Farid 實驗室基準測試、Partnership on AI 合成媒體框架、OWASP LLM Top 10。攻擊成功率保持百分之一以下，攻擊分類法覆蓋率。超越人類信號係比內部紅隊輪換有更高嘅覆蓋率。接受批評來自 EthicsAgent（HiTL）同 ComplianceAgent。評論對象係 AvatarDesignAgent、VoiceCloneAgent、AllGeneratorAgents。
+
+7.3 係共享交接合約（swarm-ready）。當你將呢個 agent 接入未來活躍嘅 swarm，要求節點之間有機器可讀嘅清單。
+
+每個欄位同佢對呢個角色嘅重要性如下。artifact_id 斜線 version 提供批評同重播嘅不可變身份。parent_assets 提供進入呢個 agent 輸入嘅來源鏈。brief_scope 阻止超出責任範圍嘅範圍蔓延。acceptance_criteria 連結到上面嘅自我質量標準。qc_status 斜線 gate flags 允許下游閘門短路。rights_and_consent 阻止不安全嘅合成或者授權濫用。critique_log pointer 啟用改進而唔會丟失歷史。
+
+第八部分係今日喺 CASOPS 上面操作呢個 agent。
+
+今日呢個 agent 係一個目錄加設計對象。呢個係有意嘅：你可以研究、審閱、提議、同埋將佢放入 swarm 設計入面而唔會授予生產力量。
+
+步驟表格入面有五行。第一步，Discover，去 Registry Hub 然後去 pack catalog（/registry），確認庫存成員資格。第二步，Inspect，去 Agent detail /registry/agents/video.safetyredteam，閱讀 SPEC 斜線呢份指南作為 markdown。第三步，Propose improvements，用 Host propose_improvement action，POST 到 /api/v1/commons/agents/video.safetyredteam/proposals，不可變版本，只有經過編輯嘅證據。第四步，Swarm membership，只有用 Host 返回嘅 action references，客戶端唔可以發明成員資格。第五步，Run 斜線 dispatch，預設唔啟用生產 providers，fail-closed 直到 governance gate。
+
+實用主控臺清單有五個要點。第一，打開 agent detail 確認 status、tools、同 activation flags 同呢份指南匹配。第二，喺判斷任何樣本輸出或者提案之前閱讀第三部分「乜嘢叫做好」。第三，如果提議改變，附上離線證據（評估筆記、rubric 差距、SPEC delta），唔好放祕密。第四，永遠唔好將供應商 API 密鑰或者「啟用網絡」指令貼入提案。第五，偏好小型、可審閱嘅差異：prompt 斜線 rubric 措辭、critique edges、驗收測試。
+
+第九部分係安全、信任同非啟動規則。
+
+信任層級表格有五行。agent_spec.json 係 Binding host contract，角色係 Fail-closed runtime binding。呢個 pack 嘅 SPEC.md 係 Authoritative design for offline review，角色係 Not executable。sources 目錄下面嘅摘錄同 generic SPECs 係 Historical 斜線 mapped，角色係 Untrusted data。C:\Project\va-agent-swarm 係 External design corpus，角色係 Untrusted，may drift。Specials redesign docs 係 Historical design，角色係 Untrusted，hashed in provenance。
+
+呢個 host 上面嘅硬規則如下。Provider 保持 local_deterministic，除非另外一個閘門改變政策。Network access 保持 False。Allowed tools 正正係空列表，下面嘅設計時工具名稱唔會啟用 APIs。production_activation_requested 係 False。Budget（tokens 斜線 tools）有上限：in 2048、out 1024、tool requests 0。設計時工具目錄（非啟動性質）：Deepfake 偵測器（Farid 實驗室模型）；偏見探測器；越獄提示詞庫；OWASP 掃描器。
+
+第十部分係隨時間提升質量。
+
+改進係版本化嘅目錄工作，唔係熱修補一個即時 agent。已發布嘅定義保持不可變；改變要經過提案同審閱。
+
+10.1 係持續改進循環。觀察失敗，然後命名標準（來自第三部分），然後起草離線差異，然後附上證據，然後喺 Host 上提議，然後審閱斜線接受新版本，然後先考慮啟動成熟度閘門。
+
+10.2 係呢個 agent 嘅具體槓桿。第一，Rubric fidelity，收緊 video.rubric.safetyredteam.v1 對照：攻擊成功率保持百分之一以下、分類法覆蓋率。第二，Prompt precision，將 video.prompt.safetyredteam.v1 同責任對齊：對深偽、偏見、越獄攻擊、誹謗進行對抗性攻擊。第三，Critique graph，確保入站嘅 EthicsAgent（HiTL）同 ComplianceAgent 同 host edges video.critic 真正捕捉到已知嘅失敗模式。第四，Architecture emulation，之後實施時偏好：多代理辯論（紅隊對防禦者）加對抗性搜索。第五，Eval cases，寫固定嘅 fixtures，如果「比內部紅隊輪換有更高嘅覆蓋率」冇被接近就會失敗。第六，Human gates，保持法律斜線安全斜線發布閘門明確，唔好將佢哋吸收入無聲嘅自動化。
+
+10.3 係建議嘅評估種子。Happy path handoff 嘅通過條件係：輸出滿足攻擊成功率保持百分之一以下、分類法覆蓋率。Out-of-scope request 嘅通過條件係：Agent 按照第四部分拒絕或升級。Missing provenance 斜線 rights 嘅通過條件係：Gate fails closed。Conflicting peer critique 嘅通過條件係：Refinement 小於等於 max_refinement_count，否則升級。Proposal-only change 嘅通過條件係：新版本不可變，舊版本仍然可讀。
+
+第十一部分係來源地圖同來源。
+
+11.1 係本地 pack 語料庫（優先使用呢啲）。agent_spec.json 嘅信任層級係 binding。SPEC.md 嘅信任層級係 authoritative-design。README.md 嘅信任層級係 local-index。sources/MAPPING.md 嘅信任層級係 provenance。sources/PROVENANCE.json 嘅信任層級係 provenance。sources/excerpts/agents.md 嘅信任層級係 historical-excerpt。sources/excerpts/ai_agent_video_production_workflow.md 嘅信任層級係 historical-excerpt。sources/excerpts/lifes_quiet_redemption_agent_workflow.md 嘅信任層級係 historical-excerpt。sources/excerpts/system_build_plan.md 嘅信任層級係 historical-excerpt。sources/excerpts/ui_design.md 嘅信任層級係 historical-excerpt。sources/generic/video.safetyredteam.SPEC.md 嘅信任層級係 historical-generic。sources/generic/video.trustsafety.SPEC.md 嘅信任層級係 historical-generic。
+
+11.2 係映射備註。映射 video.safetyredteam。VA 斜線 generic pack ID 係 video.safetyredteam。Previous common ID 係 video.safety_reviewer。SPEC depth 係 full generic SPEC body 加 host runtime binding。
+
+11.3 係來源記錄。呢個 JSON 物件入面，schema_version 係 1.0，agent_id 係 video.safetyredteam，previous_common_agent_id 係 video.safety_reviewer，va_taxonomy_aligned 係 true，generic_source 係 generic-swarm-ops/business/video/agents/video.safetyredteam。note 話 Agent ID aligned to VA/generic Domain Pack taxonomy，上游設計係歷史性同非約束性嘅。aligned_at 係 2026-07-27T00:48:10.775150Z。generic_source_depth 入面，excerpts 係 true，study 係 true，adopted_at 係 2026-07-27T01:30:28.756893+00:00，upstream 係 generic-swarm-ops/business/video/agents。
+
+11.4 係來源敘述（SPEC）。Pack agent ID video.safetyredteam 同純 VA Domain Pack 斜線 generic pack taxonomy 對齊（Agent IDs 約等於 VA tables）。Previous common inventory ID video.safety_reviewer 只係歷史映射。上游設計本體係歷史性同非約束性嘅；本地 agent_spec.json 係權威嘅。為咗離線設計保真度保留完整嘅 VA 斜線 generic SPEC 深度。
+
+11.5 係 VA 名冊行（歷史設計）。來自 va-agent-swarm/study/agents.md 第 80 行 SafetyRedTeamAgent（設計語料庫，對啟動無約束力）。
+
+每個維度同內容如下。Responsibility 係對深偽、偏見、越獄攻擊、誹謗進行對抗性攻擊。Knowledge distillation 係 Hany Farid 基準測試、Partnership on AI 框架、OWASP LLM Top 10。Self-quality 係攻擊成功率保持百分之一以下、分類法覆蓋率。Surpass-human 係比內部紅隊輪換有更高嘅覆蓋率。Accepts critique 係 EthicsAgent（HiTL）同 ComplianceAgent。Comments on 係 AvatarDesignAgent、VoiceCloneAgent、AllGenerators。Tools（historical）係 Deepfake 偵測器（Farid 實驗室模型）、偏見探測器、越獄提示詞庫、OWASP 掃描器。Architecture 係多代理辯論（紅隊對防禦者）加對抗性搜索。
+
+第十二部分係相關設計閱讀。
+
+用呢啲嚟深化設計保真度。佢哋唔會覆蓋本地 agent_spec.json。
+
+喺 va-agent-swarm 下面冇強關鍵字匹配；依賴本地 SPEC 同 VA table row。
+
+12.3 係本地知識索引（SPEC）。Runtime binding 連結到 agent_spec.json。Folder README 連結到 README.md。Provenance 連結到 sources/PROVENANCE.json。Mapping note 連結到 sources/MAPPING.md。Pack inventory 連結到 ../../inventory.json。Pack manifest 連結到 ../../manifest.json。所有必需嘅主要引用都喺呢個儲存庫內部解析。
+
+12.4 係 Folder README 摘要。VA-aligned Domain Pack agent（common host）。檔案表格入面，SPEC.md 嘅用途係 VA 斜線 generic depth 加 host binding。agent_spec.json 嘅用途係 Fail-closed runtime。sources 目錄嘅用途係 Provenance 斜線 mapping。
+
+第十三部分係附錄：host 合約（agent_spec.json）。
+
+呢個係 CASOPS 上面呢個 agent 嘅權威 fail-closed 配置。
+
+JSON 物件入面，agent_id 係 video.safetyredteam。allowed_tools 係空列表。budget_policy 入面，max_input_tokens 係 2048，max_output_tokens 係 1024，max_tool_requests 係 0。critique_edges 入面，inputs 係 video.critic，outputs 係 video.judge。max_refinement_count 係 3。model_policy 入面，model_id 係 local-video-config-v1，network_access 係 false，provider 係 local_deterministic。production_activation_requested 係 false。prompt_reference 係 video.prompt.safetyredteam.v1。role 係 SafetyRedTeamAgent (VA Domain Pack)。rubric_reference 係 video.rubric.safetyredteam.v1。schema_version 係 1.0。status 係 registered。va_id 係 80。va_name 係 SafetyRedTeamAgent。va_category 係 9-Meta。
+
+第十四部分係附錄：SPEC 責任摘錄。
+
+擴展嘅責任文本來自本地 SPEC.md。對深偽、偏見、越獄攻擊、誹謗進行對抗性攻擊。Host role binding 係 SafetyRedTeamAgent (VA Domain Pack)。設計時 VA 表格內容係歷史性同對啟動無約束力嘅。
+
+Responsibility（來自 VA table）：對深偽、偏見、越獄攻擊、誹謗進行對抗性攻擊。Knowledge distillation sources（歷史）：Hany Farid 基準測試、Partnership on AI 框架、OWASP LLM Top 10。Self-quality criteria（歷史）：攻擊成功率保持百分之一以下、分類法覆蓋率。Surpass-human signal（歷史）：比內部紅隊輪換有更高嘅覆蓋率。
+
+Critique bus（歷史）方面。接受批評來自 EthicsAgent（HiTL）同 ComplianceAgent。評論對象係 AvatarDesignAgent、VoiceCloneAgent、AllGenerators。
+
+Tools design-time notes（歷史，非啟動性質）：Deepfake 偵測器（Farid 實驗室模型）、偏見探測器、越獄提示詞庫、OWASP 掃描器。
+
+運行時安全：Host allow-lists 只係 agent_spec.json 加 tool-permission-register.json。CI 用 video_* stubs。唔好將設計時嘅供應商名稱當作已啟用嘅 APIs。
+
+Architecture pattern（歷史）：多代理辯論（紅隊對防禦者）加對抗性搜索。
+
+第十五部分係文件控制。
+
+Generator 係 scripts/business/generate_agent_user_guides.py。Agent folder 係 business/video/agents/video.safetyredteam/。Output 係 docs/user_guide.md。VA corpus root 係 C:\Project\va-agent-swarm。Regeneration 命令係 python scripts/business/generate_agent_user_guides.py。Trust model 係設計語料庫等於不受信任嘅數據，host config 等於 fail-closed。
+
+呢個就係 SafetyRedTeamAgent 嘅指南嘅結尾。從第一部分快照同第五部分「幾時應該用」開始；用第八到第十部分做 CASOPS 操作同改進；只有需要深度設計保真度嘅時候先用第十一到第十二部分。
+
+
+
+以下係對每個部分嘅更詳細補充說明。
+
+關於第一部分快照嘅補充。呢個 agent 嘅 display name 係 SafetyRedTeamAgent，呢個名字反映咗佢嘅核心功能係做安全紅隊測試。
+
+佢嘅 pack agent id 係 video.safetyredteam，呢個 ID 喺整個系統入面係唯一嘅識別符。
+
+佢屬於 video pack，即係影片領域嘅代理包。
+
+佢嘅 host role string 係 SafetyRedTeamAgent (VA Domain Pack)，呢個字串定義咗佢喺 host 上面嘅角色。
+
+佢嘅 catalog status 係 registered，代表佢已經喺目錄入面註冊咗。
+
+佢嘅成熟度今日係 L0 斜線 non-active，意思係佢只係喺目錄同設計保真度階段，仲未去到生產啟動。
+
+佢嘅 VA id 係 80，呢個係佢喺 VA 表格入面嘅編號。
+
+佢嘅 VA category 係 9-Meta，代表佢屬於 Meta 斜線 optimization specialists 類別。
+
+Provider 係 local_deterministic，意思係佢嘅提供者係本地確定性嘅，唔係遠程 API。
+
+Network 係 False，代表佢冇網絡存取權限。
+
+Allowed tools 係空列表，代表佢目前冇任何被允許使用嘅工具。
+
+Production activation requested 係 False，代表目前冇人要求啟動佢嘅生產環境。
+
+關於第二部分嘅補充。呢個角色存在嘅原因係因為人類影片團隊一直都需要有人做安全紅隊測試嘅工作。
+
+具體嚟講，呢個工作包括對深偽技術進行攻擊測試，確保系統唔會產生虛假嘅影片內容。
+
+同時都包括對偏見進行測試，確保系統唔會產生有歧視性嘅內容。
+
+越獄攻擊測試都係佢嘅職責，確保系統唔會被繞過安全限制。
+
+誹謗測試確保系統唔會產生損害他人名譽嘅內容。
+
+佢嘅知識庫包括 Hany Farid 嘅基準測試，呢個係一個著名嘅深偽檢測研究者嘅工作。
+
+Partnership on AI Framework 都係佢嘅知識來源之一，呢個係一個關於 AI 安全嘅行業框架。
+
+OWASP LLM Top 10 係關於大型語言模型安全風險嘅排名列表，都係佢嘅參考資料。
+
+關於第三部分嘅補充。乜嘢叫做好呢個部分定義咗評審標準。
+
+Primary outcome 要求佢能夠有效地對深偽、偏見、越獄攻擊同誹謗進行對抗性攻擊。
+
+Self-quality bar 要求攻擊成功率保持喺百分之一以下，呢個係一個好嚴格嘅標準。
+
+同時要求分類法覆蓋率要足夠高，確保所有已知嘅攻擊向量都被測試到。
+
+Ambition signal 係比內部紅隊輪換有更高嘅覆蓋率，呢個代表 agent 嘅目標係做得比人類紅隊更全面。
+
+Architecture pattern 係多代理辯論加對抗性搜索，呢個係一種高級嘅 AI 架構模式。
+
+關於第四部分嘅補充。呢個 agent 擁有嘅責任範圍係好明確嘅。
+
+佢只負責安全紅隊測試相關嘅工作，唔會越界做其他嘅事情。
+
+佢接受來自 EthicsAgent 嘅批評，呢個係一個有人類在環嘅倫理審查 agent。
+
+佢同時接受來自 ComplianceAgent 嘅批評，確保合規性。
+
+佢有資格評論 AvatarDesignAgent 嘅輸出，因為 avatar 設計可能涉及深偽風險。
+
+佢有資格評論 VoiceCloneAgent 嘅輸出，因為語音克隆涉及安全問題。
+
+佢有資格評論 AllGenerators 嘅輸出，因為所有生成器都可能有安全漏洞。
+
+關於第五部分嘅補充。當你需要對任何輸出進行安全紅隊測試嘅時候就應該叫呢個 agent。
+
+佢喺 pipeline 入面嘅位置係 Meta 斜線 optimization specialists 階段。
+
+呢個階段嘅特點係跨切面嘅優化、評估同系統改進。
+
+唔好叫佢做通用編排工作，呢啲唔係佢嘅職責。
+
+唔好叫佢做預算批准，呢個應該由 producer 負責。
+
+唔好叫佢做最終法律簽署，呢個應該由 legal 同 compliance 同儕負責。
+
+關於第六部分嘅補充。佢喺協作地圖入面嘅角色係一個批評巴士上面嘅節點。
+
+佢唔係一個獨立運作嘅聊天機器人，而係同其他 agent 緊密合作嘅。
+
+EthicsAgent 同 ComplianceAgent 會俾佢反饋同批評。
+
+佢會對 AvatarDesignAgent、VoiceCloneAgent 同 AllGenerators 提供安全評論。
+
+關於第七部分嘅補充。喺人類生產工作流入面，佢嘅角色對應到跨切面優化同評估嘅階段。
+
+典型嘅交接產物包括評估報告，呢啲報告記錄咗安全測試嘅結果。
+
+優化工單記錄咗需要修復嘅安全問題。
+
+基準差異顯示咗同之前版本嘅比較。
+
+Harness 結果顯示咗自動化測試嘅通過情況。
+
+喺多代理 AI 工作流入面，佢係觀察者同優化器節點，覆蓋整個 agent 圖。
+
+佢會監測延遲、成本、提示詞效率、留存率同 ROAS。
+
+關於第八部分嘅補充。今日喺 CASOPS 上面，呢個 agent 只係一個目錄加設計對象。
+
+呢個限制係有意設計嘅，確保安全性。
+
+你可以研究佢嘅設計，瞭解佢嘅職責同能力。
+
+你可以審閱佢嘅配置，確認所有設定都正確。
+
+你可以提議改進，透過正式嘅提案流程。
+
+你可以將佢放入 swarm 設計入面，規劃未來嘅系統架構。
+
+但係你唔可以直接授予佢生產力量，需要經過正式嘅 governance gate。
+
+關於第九部分嘅補充。安全同信任規則係整個系統嘅基石。
+
+agent_spec.json 係最高優先級嘅信任來源，佢定義咗 fail-closed 嘅運行時綁定。
+
+SPEC.md 係權威嘅設計文件，但係只用嚟離線審閱，唔可以執行。
+
+sources 目錄下面嘅所有內容都係歷史性嘅，唔受信任。
+
+外部設計語料庫可能會同本地配置有出入，所以唔受信任。
+
+關於第十部分嘅補充。提升質量係一個持續嘅過程，唔係一次性嘅工作。
+
+每次改進都要經過版本化嘅流程，確保可追溯性。
+
+已發布嘅定義係不可變嘅，唔可以直接修改。
+
+所有改變都要經過正式嘅提案同審閱流程。
+
+只有通過審閱嘅改變先會被接受到新版本入面。

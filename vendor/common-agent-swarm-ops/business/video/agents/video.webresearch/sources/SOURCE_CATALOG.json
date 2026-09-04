@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.0",
+  "agent_id": "video.webresearch",
+  "sources": [
+    {
+      "id": "src_1",
+      "title": "Bing/Google/Brave APIs",
+      "description": "Bing/Google/Brave APIs",
+      "license_class": "unknown_review_required",
+      "acquisition_method": "manual_or_licensed_api",
+      "local_path_hint": "sources/excerpts/ or sources/study/",
+      "refresh_sla_days": 90,
+      "owner": "video.webresearch",
+      "status": "planned_or_partial"
+    },
+    {
+      "id": "src_2",
+      "title": "Common Crawl",
+      "description": "Common Crawl",
+      "license_class": "unknown_review_required",
+      "acquisition_method": "manual_or_licensed_api",
+      "local_path_hint": "sources/excerpts/ or sources/study/",
+      "refresh_sla_days": 90,
+      "owner": "video.webresearch",
+      "status": "planned_or_partial"
+    },
+    {
+      "id": "src_3",
+      "title": "Perplexity patterns",
+      "description": "Perplexity patterns",
+      "license_class": "unknown_review_required",
+      "acquisition_method": "manual_or_licensed_api",
+      "local_path_hint": "sources/excerpts/ or sources/study/",
+      "refresh_sla_days": 90,
+      "owner": "video.webresearch",
+      "status": "planned_or_partial"
+    }
+  ],
+  "note": "Legal review required before treating external corpora as production grounding."
+}

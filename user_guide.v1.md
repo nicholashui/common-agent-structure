@@ -50,10 +50,12 @@ Check Python:
 python --version
 ```
 
-Work from the repo root:
+Work from the repo root (the folder that contains `agents/` and `src/`). Do not hardcode a drive letter; this tree is meant to move.
+
+External pack sources this host needs are **copies** under `vendor/` (not junctions and not sibling checkouts). Refresh only with `python tools/vendor_external_sources.py` if a sibling tree is still present.
 
 ```powershell
-cd C:\Project\common-agent-structure
+cd <repo-root>
 ```
 
 ---
@@ -64,7 +66,7 @@ Create a venv (recommended):
 
 ```powershell
 python -m venv .venv
-.\.venv\Scripts\Activate.ps1
+./.venv\Scripts\Activate.ps1
 python -m pip install -U pip
 ```
 
@@ -105,7 +107,7 @@ If this fails, stop. Do not start HTTP services against a broken install.
 The control plane is the public API. It loads agent folders from `agents/`.
 
 ```powershell
-cd C:\Project\common-agent-structure
+cd <repo-root>
 $env:PYTHONPATH = "src"
 $env:CASOPS_AGENTS_ROOT = "agents"
 python -m uvicorn casops.api.control:create_app_from_env --factory --host 127.0.0.1 --port 18080
@@ -362,6 +364,7 @@ Invoke-RestMethod -Method POST -Headers $H "$base/api/v3/agents/$agent/safety/re
 Invoke-RestMethod "$base/api/v3/agents/$agent/improvement/candidates" | ConvertTo-Json -Depth 6
 Invoke-RestMethod "$base/api/v3/agents/$agent/improvement/ledger" | ConvertTo-Json -Depth 6
 Invoke-RestMethod "$base/api/v3/agents/$agent/regression/suite" | ConvertTo-Json
+Invoke-RestMethod "$base/api/v3/agents/$agent/evals/fixtures" | ConvertTo-Json -Depth 8
 Invoke-RestMethod "$base/api/v3/agents/$agent/validation/report" | ConvertTo-Json -Depth 8
 ```
 
@@ -386,6 +389,8 @@ Validation report with default instruments:
 - `reason`: `unqualified_instruments`
 
 That is correct. Do not treat it as a green release.
+
+Characterization cases live in `agents/<id>/evals/fixtures/` (`chat-tc1`…`chat-tc3`, `run-tc1`). The Control UI Validation tab lists them as **CHARACTERIZATION**, not a pass. Chat empty-state can load a chat-tc message into the composer; sending is still host Chat. `GET /api/v3/agents/{id}/evals/fixtures` is a UI companion read of that folder. `GET …/regression/suite` is still `evals/regression/` filenames only.
 
 ---
 
@@ -427,10 +432,12 @@ Replace `{id}` with `casops.template.baseline_safe`. POST/DELETE need the four h
 | POST | `/api/v3/agents/{id}/improvement/candidates/{cid}/approve` | Human/host approve |
 | POST | `/api/v3/agents/{id}/improvement/rollback/{version}` | Rollback |
 | GET | `/api/v3/agents/{id}/improvement/ledger` | Ledger |
-| GET | `/api/v3/agents/{id}/regression/suite` | Fixtures |
+| GET | `/api/v3/agents/{id}/regression/suite` | `evals/regression/` filenames |
 | GET | `/api/v3/agents/{id}/corrigibility/attestation` | Host attestation |
 | GET | `/api/v3/agents/{id}/validation/report` | Eval report |
 | POST | `/api/v3/agents/{id}/runtime/run` | Execute `baseline_safe` |
+
+Companion (not spec §19): `GET /api/v3/agents/{id}/evals/fixtures` lists CHARACTERIZATION cases from `evals/fixtures/`. Control UI Validation and Chat empty-state use this. Not a pass.
 
 Also: `GET /health` (not a v3 resource).
 
@@ -530,7 +537,7 @@ box = ResearchIsolation(
     root=root,
     signer=HostSigner.generate(),
     approved_repos=(root / "writable",),
-    production_root=Path(r"C:\Project\common-agent-structure"),
+    production_root=Path.cwd(),  # this repository; never a hardcoded drive path
 )
 # agent_runtime is denied
 record = box.mutate("notes.txt", b"draft", actor=ActorClass.independent_approver)

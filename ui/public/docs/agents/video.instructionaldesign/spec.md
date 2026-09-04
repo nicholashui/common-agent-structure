@@ -1931,7 +1931,7 @@ The diagram below presents the common agent as a professional operating architec
 ## Provenance
 
 - Master roster row va_id=104 from embedded agents.md content above.
-- Deep/extra text from `business/video/corpus/` and `C:\Project\va-agent-swarm`.
+- Deep/extra text from `business/video/corpus/` and `vendor/va-agent-swarm`.
 - Generator: `scripts/business/enrich_video_agent_specs.py`.
 - Upstream project name (historical only): va-agent-swarm.
 
@@ -6381,7 +6381,7 @@ for critic in critics:
 ## Provenance
 
 - Master roster row va_id=2 from embedded agents.md content above.
-- Deep/extra text from `business/video/corpus/` and `C:\Project\va-agent-swarm`.
+- Deep/extra text from `business/video/corpus/` and `vendor/va-agent-swarm`.
 - Generator: `scripts/business/enrich_video_agent_specs.py`.
 - Upstream project name (historical only): va-agent-swarm.
 
@@ -6506,27 +6506,27 @@ Live primary-source expansion remains a residual for score 100 on S3 where depth
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "让学习粘住",
+      "title": "\u8ba9\u5b66\u4e60\u7c98\u4f4f",
       "isbn13": "9787508655611",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 让学习粘住，ISBN-13 9787508655611"
+      "citation": "ZH: \u8ba9\u5b66\u4e60\u7c98\u4f4f\uff0cISBN-13 9787508655611"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "教学设计原理",
-      "author": "加涅",
+      "title": "\u6559\u5b66\u8bbe\u8ba1\u539f\u7406",
+      "author": "\u52a0\u6d85",
       "isbn13": "9787561762264",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 教学设计原理（加涅），ISBN-13 9787561762264"
+      "citation": "ZH: \u6559\u5b66\u8bbe\u8ba1\u539f\u7406\uff08\u52a0\u6d85\uff09\uff0cISBN-13 9787561762264"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "追求理解的教学设计",
+      "title": "\u8ffd\u6c42\u7406\u89e3\u7684\u6559\u5b66\u8bbe\u8ba1",
       "isbn13": "9787561799994",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 追求理解的教学设计，ISBN-13 9787561799994"
+      "citation": "ZH: \u8ffd\u6c42\u7406\u89e3\u7684\u6559\u5b66\u8bbe\u8ba1\uff0cISBN-13 9787561799994"
     },
     {
       "kind": "reference_book",
@@ -6585,44 +6585,44 @@ Live primary-source expansion remains a residual for score 100 on S3 where depth
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "设计心理学",
+      "title": "\u8bbe\u8ba1\u5fc3\u7406\u5b66",
       "isbn13": "9787115417947",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 设计心理学，ISBN-13 9787115417947"
+      "citation": "ZH: \u8bbe\u8ba1\u5fc3\u7406\u5b66\uff0cISBN-13 9787115417947"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "点石成金",
+      "title": "\u70b9\u77f3\u6210\u91d1",
       "isbn13": "9787115249494",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 点石成金，ISBN-13 9787115249494"
+      "citation": "ZH: \u70b9\u77f3\u6210\u91d1\uff0cISBN-13 9787115249494"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "界面设计模式",
+      "title": "\u754c\u9762\u8bbe\u8ba1\u6a21\u5f0f",
       "isbn13": "9787115331861",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 界面设计模式，ISBN-13 9787115331861"
+      "citation": "ZH: \u754c\u9762\u8bbe\u8ba1\u6a21\u5f0f\uff0cISBN-13 9787115331861"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "用户体验要素",
-      "author": "加瑞特",
+      "title": "\u7528\u6237\u4f53\u9a8c\u8981\u7d20",
+      "author": "\u52a0\u745e\u7279",
       "isbn13": "9787115325466",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 用户体验要素（加瑞特），ISBN-13 9787115325466"
+      "citation": "ZH: \u7528\u6237\u4f53\u9a8c\u8981\u7d20\uff08\u52a0\u745e\u7279\uff09\uff0cISBN-13 9787115325466"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "设计中的设计",
-      "author": "原研哉",
+      "title": "\u8bbe\u8ba1\u4e2d\u7684\u8bbe\u8ba1",
+      "author": "\u539f\u7814\u54c9",
       "isbn13": "9787549559787",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 设计中的设计（原研哉），ISBN-13 9787549559787"
+      "citation": "ZH: \u8bbe\u8ba1\u4e2d\u7684\u8bbe\u8ba1\uff08\u539f\u7814\u54c9\uff09\uff0cISBN-13 9787549559787"
     }
   ],
   "agent_id": "video.instructionaldesign",
@@ -6637,7 +6637,7 @@ Live primary-source expansion remains a residual for score 100 on S3 where depth
     "adopted_at": "2026-07-27T01:30:28.234640+00:00",
     "upstream": "generic-swarm-ops/business/video/agents"
   },
-  "imported_from": "C:\\Project\\common-agent-swarm-ops\\business\\video\\agents\\video.instructionaldesign",
+  "imported_from": "vendor/common-agent-swarm-ops/business/video/agents/video.instructionaldesign",
   "reference_book_origin": "spec/book_of_knowledge.md",
   "reference_book_note": "Bibliographic references from spec/book_of_knowledge.md. Does not enable network, RAG, T3, plugins, or memory writes."
 }

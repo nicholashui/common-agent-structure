@@ -1,6 +1,6 @@
 # specials.planner-agent
 
-CASOPS v3 import of `C:\Project\common-agent-swarm-ops\business\specials\agents\specials.planner-agent` as `baseline_safe`.
+CASOPS v3 import of `vendor/common-agent-swarm-ops/business/specials/agents/specials.planner-agent` as `baseline_safe`.
 Local deterministic adapter only. Not production-certified.
 
 # `specials.planner-agent`

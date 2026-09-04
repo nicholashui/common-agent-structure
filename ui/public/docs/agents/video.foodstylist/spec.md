@@ -10038,7 +10038,7 @@ Once launched, it flows through the same:
 ## Provenance
 
 - Master roster row va_id=54 from embedded agents.md content above.
-- Deep/extra text from `business/video/corpus/` and `C:\Project\va-agent-swarm`.
+- Deep/extra text from `business/video/corpus/` and `vendor/va-agent-swarm`.
 - Generator: `scripts/business/enrich_video_agent_specs.py`.
 - Upstream project name (historical only): va-agent-swarm.
 
@@ -14488,7 +14488,7 @@ for critic in critics:
 ## Provenance
 
 - Master roster row va_id=2 from embedded agents.md content above.
-- Deep/extra text from `business/video/corpus/` and `C:\Project\va-agent-swarm`.
+- Deep/extra text from `business/video/corpus/` and `vendor/va-agent-swarm`.
 - Generator: `scripts/business/enrich_video_agent_specs.py`.
 - Upstream project name (historical only): va-agent-swarm.
 
@@ -14577,11 +14577,11 @@ Live primary-source expansion remains a residual for score 100 on S3 where depth
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "食物与厨艺",
-      "author": "麦基",
+      "title": "\u98df\u7269\u4e0e\u53a8\u827a",
+      "author": "\u9ea6\u57fa",
       "isbn13": "9787532763122",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 食物与厨艺（麦基），ISBN-13 9787532763122"
+      "citation": "ZH: \u98df\u7269\u4e0e\u53a8\u827a\uff08\u9ea6\u57fa\uff09\uff0cISBN-13 9787532763122"
     },
     {
       "kind": "reference_book",
@@ -14612,26 +14612,26 @@ Live primary-source expansion remains a residual for score 100 on S3 where depth
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "美国纽约摄影学院摄影教材",
+      "title": "\u7f8e\u56fd\u7ebd\u7ea6\u6444\u5f71\u5b66\u9662\u6444\u5f71\u6559\u6750",
       "isbn13": "9787800078491",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 美国纽约摄影学院摄影教材，ISBN-13 9787800078491"
+      "citation": "ZH: \u7f8e\u56fd\u7ebd\u7ea6\u6444\u5f71\u5b66\u9662\u6444\u5f71\u6559\u6750\uff0cISBN-13 9787800078491"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "摄影师的视界",
+      "title": "\u6444\u5f71\u5e08\u7684\u89c6\u754c",
       "isbn13": "9787512201880",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 摄影师的视界，ISBN-13 9787512201880"
+      "citation": "ZH: \u6444\u5f71\u5e08\u7684\u89c6\u754c\uff0cISBN-13 9787512201880"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "论摄影",
+      "title": "\u8bba\u6444\u5f71",
       "isbn13": "9787544722599",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 论摄影，ISBN-13 9787544722599"
+      "citation": "ZH: \u8bba\u6444\u5f71\uff0cISBN-13 9787544722599"
     },
     {
       "kind": "reference_book",
@@ -14694,31 +14694,31 @@ Live primary-source expansion remains a residual for score 100 on S3 where depth
       "author": "Roger Deakins",
       "isbn13": "9781910593998",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "EN: Reflections: On Cinematography (Roger Deakins) — check latest ed. ISBN-13 9781910593998"
+      "citation": "EN: Reflections: On Cinematography (Roger Deakins) \u2014 check latest ed. ISBN-13 9781910593998"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "电影摄影：理论与实践",
+      "title": "\u7535\u5f71\u6444\u5f71\uff1a\u7406\u8bba\u4e0e\u5b9e\u8df5",
       "isbn13": "9787515331867",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 电影摄影：理论与实践，ISBN-13 9787515331867"
+      "citation": "ZH: \u7535\u5f71\u6444\u5f71\uff1a\u7406\u8bba\u4e0e\u5b9e\u8df5\uff0cISBN-13 9787515331867"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "视觉故事",
+      "title": "\u89c6\u89c9\u6545\u4e8b",
       "isbn13": "9787515302867",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 视觉故事，ISBN-13 9787515302867"
+      "citation": "ZH: \u89c6\u89c9\u6545\u4e8b\uff0cISBN-13 9787515302867"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "电影语言的语法",
+      "title": "\u7535\u5f71\u8bed\u8a00\u7684\u8bed\u6cd5",
       "isbn13": "9787532299990",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 电影语言的语法，ISBN-13 9787532299990"
+      "citation": "ZH: \u7535\u5f71\u8bed\u8a00\u7684\u8bed\u6cd5\uff0cISBN-13 9787532299990"
     }
   ],
   "agent_id": "video.foodstylist",
@@ -14733,7 +14733,7 @@ Live primary-source expansion remains a residual for score 100 on S3 where depth
     "adopted_at": "2026-07-27T01:30:28.191230+00:00",
     "upstream": "generic-swarm-ops/business/video/agents"
   },
-  "imported_from": "C:\\Project\\common-agent-swarm-ops\\business\\video\\agents\\video.foodstylist",
+  "imported_from": "vendor/common-agent-swarm-ops/business/video/agents/video.foodstylist",
   "reference_book_origin": "spec/book_of_knowledge.md",
   "reference_book_note": "Bibliographic references from spec/book_of_knowledge.md. Does not enable network, RAG, T3, plugins, or memory writes."
 }

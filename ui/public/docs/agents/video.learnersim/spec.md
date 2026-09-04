@@ -1982,7 +1982,7 @@ The diagram below presents the common agent as a professional operating architec
 ## Provenance
 
 - Master roster row va_id=114 from embedded agents.md content above.
-- Deep/extra text from `business/video/corpus/` and `C:\Project\va-agent-swarm`.
+- Deep/extra text from `business/video/corpus/` and `vendor/va-agent-swarm`.
 - Generator: `scripts/business/enrich_video_agent_specs.py`.
 - Upstream project name (historical only): va-agent-swarm.
 
@@ -2368,7 +2368,7 @@ The diagram below presents the common agent as a professional operating architec
 ## Provenance
 
 - Master roster row va_id=91 from embedded agents.md content above.
-- Deep/extra text from `business/video/corpus/` and `C:\Project\va-agent-swarm`.
+- Deep/extra text from `business/video/corpus/` and `vendor/va-agent-swarm`.
 - Generator: `scripts/business/enrich_video_agent_specs.py`.
 - Upstream project name (historical only): va-agent-swarm.
 
@@ -2493,27 +2493,27 @@ Live primary-source expansion remains a residual for score 100 on S3 where depth
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "让学习粘住",
+      "title": "\u8ba9\u5b66\u4e60\u7c98\u4f4f",
       "isbn13": "9787508655611",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 让学习粘住，ISBN-13 9787508655611"
+      "citation": "ZH: \u8ba9\u5b66\u4e60\u7c98\u4f4f\uff0cISBN-13 9787508655611"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "教学设计原理",
-      "author": "加涅",
+      "title": "\u6559\u5b66\u8bbe\u8ba1\u539f\u7406",
+      "author": "\u52a0\u6d85",
       "isbn13": "9787561762264",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 教学设计原理（加涅），ISBN-13 9787561762264"
+      "citation": "ZH: \u6559\u5b66\u8bbe\u8ba1\u539f\u7406\uff08\u52a0\u6d85\uff09\uff0cISBN-13 9787561762264"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "追求理解的教学设计",
+      "title": "\u8ffd\u6c42\u7406\u89e3\u7684\u6559\u5b66\u8bbe\u8ba1",
       "isbn13": "9787561799994",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 追求理解的教学设计，ISBN-13 9787561799994"
+      "citation": "ZH: \u8ffd\u6c42\u7406\u89e3\u7684\u6559\u5b66\u8bbe\u8ba1\uff0cISBN-13 9787561799994"
     },
     {
       "kind": "reference_book",
@@ -2608,59 +2608,59 @@ Live primary-source expansion remains a residual for score 100 on S3 where depth
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "思考，快与慢",
+      "title": "\u601d\u8003\uff0c\u5feb\u4e0e\u6162",
       "isbn13": "9787508633565",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 思考，快与慢，ISBN-13 9787508633565"
+      "citation": "ZH: \u601d\u8003\uff0c\u5feb\u4e0e\u6162\uff0cISBN-13 9787508633565"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "影响力",
+      "title": "\u5f71\u54cd\u529b",
       "isbn13": "9787508622163",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 影响力，ISBN-13 9787508622163"
+      "citation": "ZH: \u5f71\u54cd\u529b\uff0cISBN-13 9787508622163"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "怪诞行为学",
+      "title": "\u602a\u8bde\u884c\u4e3a\u5b66",
       "isbn13": "9787508615824",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 怪诞行为学，ISBN-13 9787508615824"
+      "citation": "ZH: \u602a\u8bde\u884c\u4e3a\u5b66\uff0cISBN-13 9787508615824"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "助推",
+      "title": "\u52a9\u63a8",
       "isbn13": "9787508641238",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 助推，ISBN-13 9787508641238"
+      "citation": "ZH: \u52a9\u63a8\uff0cISBN-13 9787508641238"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "心流",
+      "title": "\u5fc3\u6d41",
       "isbn13": "9787508660721",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 心流，ISBN-13 9787508660721"
+      "citation": "ZH: \u5fc3\u6d41\uff0cISBN-13 9787508660721"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "驱动力",
+      "title": "\u9a71\u52a8\u529b",
       "isbn13": "9787508621753",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 驱动力，ISBN-13 9787508621753"
+      "citation": "ZH: \u9a71\u52a8\u529b\uff0cISBN-13 9787508621753"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "社会心理学",
-      "author": "迈尔斯",
+      "title": "\u793e\u4f1a\u5fc3\u7406\u5b66",
+      "author": "\u8fc8\u5c14\u65af",
       "isbn13": "9787115412393",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 社会心理学（迈尔斯），ISBN-13 9787115412393"
+      "citation": "ZH: \u793e\u4f1a\u5fc3\u7406\u5b66\uff08\u8fc8\u5c14\u65af\uff09\uff0cISBN-13 9787115412393"
     },
     {
       "kind": "reference_book",
@@ -2719,26 +2719,26 @@ Live primary-source expansion remains a residual for score 100 on S3 where depth
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "精益数据分析",
+      "title": "\u7cbe\u76ca\u6570\u636e\u5206\u6790",
       "isbn13": "9787115384515",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 精益数据分析，ISBN-13 9787115384515"
+      "citation": "ZH: \u7cbe\u76ca\u6570\u636e\u5206\u6790\uff0cISBN-13 9787115384515"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "用数据讲故事",
+      "title": "\u7528\u6570\u636e\u8bb2\u6545\u4e8b",
       "isbn13": "9787111575558",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 用数据讲故事，ISBN-13 9787111575558"
+      "citation": "ZH: \u7528\u6570\u636e\u8bb2\u6545\u4e8b\uff0cISBN-13 9787111575558"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "赤裸裸的统计学",
+      "title": "\u8d64\u88f8\u88f8\u7684\u7edf\u8ba1\u5b66",
       "isbn13": "9787508643427",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 赤裸裸的统计学，ISBN-13 9787508643427"
+      "citation": "ZH: \u8d64\u88f8\u88f8\u7684\u7edf\u8ba1\u5b66\uff0cISBN-13 9787508643427"
     }
   ],
   "agent_id": "video.learnersim",
@@ -2753,7 +2753,7 @@ Live primary-source expansion remains a residual for score 100 on S3 where depth
     "adopted_at": "2026-07-27T01:30:28.318525+00:00",
     "upstream": "generic-swarm-ops/business/video/agents"
   },
-  "imported_from": "C:\\Project\\common-agent-swarm-ops\\business\\video\\agents\\video.learnersim",
+  "imported_from": "vendor/common-agent-swarm-ops/business/video/agents/video.learnersim",
   "reference_book_origin": "spec/book_of_knowledge.md",
   "reference_book_note": "Bibliographic references from spec/book_of_knowledge.md. Does not enable network, RAG, T3, plugins, or memory writes."
 }

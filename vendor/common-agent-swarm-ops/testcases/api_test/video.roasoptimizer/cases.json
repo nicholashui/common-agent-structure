@@ -1,0 +1,96 @@
+{
+  "agent_id": "video.roasoptimizer",
+  "kind": "pack",
+  "cases": [
+    {
+      "id": "tc1",
+      "name": "video.roasoptimizer offline case 1",
+      "method": "POST",
+      "path": "/api/v1/agent-loops/agents/video.roasoptimizer/run",
+      "body": {
+        "goal": "Rank candidate scenes for max mid-hold retention on a travel vlog",
+        "enable_v3": true,
+        "max_steps": 3,
+        "allow_production": false,
+        "allow_network": false
+      },
+      "success_criteria": {
+        "http_status": [
+          200
+        ],
+        "required_keys_any": [
+          "agent_id",
+          "ok",
+          "phases",
+          "v3",
+          "status",
+          "run_id"
+        ],
+        "json_equals": {
+          "agent_id": "video.roasoptimizer"
+        },
+        "notes": "Offline loop: expect 200 with agent_id match; prefer ok=true or v3/phases present. allow_production/allow_network must stay false."
+      }
+    },
+    {
+      "id": "tc2",
+      "name": "video.roasoptimizer offline case 2",
+      "method": "POST",
+      "path": "/api/v1/agent-loops/agents/video.roasoptimizer/run",
+      "body": {
+        "goal": "Map platform hooks for YouTube long-form vs Shorts from the same brief",
+        "enable_v3": true,
+        "max_steps": 3,
+        "allow_production": false,
+        "allow_network": false
+      },
+      "success_criteria": {
+        "http_status": [
+          200
+        ],
+        "required_keys_any": [
+          "agent_id",
+          "ok",
+          "phases",
+          "v3",
+          "status",
+          "run_id"
+        ],
+        "json_equals": {
+          "agent_id": "video.roasoptimizer"
+        },
+        "notes": "Offline loop: expect 200 with agent_id match; prefer ok=true or v3/phases present. allow_production/allow_network must stay false."
+      }
+    },
+    {
+      "id": "tc3",
+      "name": "video.roasoptimizer offline case 3",
+      "method": "POST",
+      "path": "/api/v1/agent-loops/agents/video.roasoptimizer/run",
+      "body": {
+        "goal": "Suggest CTR-worthy moment flags without inventing full itinerary text",
+        "enable_v3": true,
+        "max_steps": 2,
+        "allow_production": false,
+        "allow_network": false
+      },
+      "success_criteria": {
+        "http_status": [
+          200
+        ],
+        "required_keys_any": [
+          "agent_id",
+          "ok",
+          "phases",
+          "v3",
+          "status",
+          "run_id"
+        ],
+        "json_equals": {
+          "agent_id": "video.roasoptimizer"
+        },
+        "notes": "Offline loop: expect 200 with agent_id match; prefer ok=true or v3/phases present. allow_production/allow_network must stay false."
+      }
+    }
+  ]
+}

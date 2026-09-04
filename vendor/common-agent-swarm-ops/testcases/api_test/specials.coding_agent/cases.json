@@ -1,0 +1,77 @@
+{
+  "agent_id": "specials.coding_agent",
+  "kind": "special",
+  "cases": [
+    {
+      "id": "tc1",
+      "name": "Agent-loop smoke plan",
+      "method": "POST",
+      "path": "/api/v1/coding/plan",
+      "body": {
+        "goal": "Plan Host API smoke tests for agent-loops",
+        "area": "host",
+        "allow_network": false
+      },
+      "success_criteria": {
+        "http_status": [
+          200
+        ],
+        "required_keys_any": [
+          "ok",
+          "plan",
+          "steps",
+          "result",
+          "correlation_id"
+        ],
+        "notes": "Coding plan offline; no network/shell required."
+      }
+    },
+    {
+      "id": "tc2",
+      "name": "Token harness plan",
+      "method": "POST",
+      "path": "/api/v1/coding/plan",
+      "body": {
+        "goal": "Outline offline test harness for developer tokens",
+        "area": "host"
+      },
+      "success_criteria": {
+        "http_status": [
+          200
+        ],
+        "required_keys_any": [
+          "ok",
+          "plan",
+          "steps",
+          "result",
+          "correlation_id"
+        ],
+        "notes": "Coding plan offline; no network/shell required."
+      }
+    },
+    {
+      "id": "tc3",
+      "name": "Bearer auth regression plan",
+      "method": "POST",
+      "path": "/api/v1/coding/plan",
+      "body": {
+        "goal": "Plan fail-closed Bearer auth regression checks",
+        "area": "host",
+        "allow_shell_exec": false
+      },
+      "success_criteria": {
+        "http_status": [
+          200
+        ],
+        "required_keys_any": [
+          "ok",
+          "plan",
+          "steps",
+          "result",
+          "correlation_id"
+        ],
+        "notes": "Coding plan offline; no network/shell required."
+      }
+    }
+  ]
+}

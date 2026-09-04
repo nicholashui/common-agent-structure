@@ -1,0 +1,51 @@
+{
+  "schema_version": "1.0",
+  "agent_id": "video.trendintelligence",
+  "sources": [
+    {
+      "id": "src_1",
+      "title": "TikTok Creative Center",
+      "description": "TikTok Creative Center",
+      "license_class": "unknown_review_required",
+      "acquisition_method": "manual_or_licensed_api",
+      "local_path_hint": "sources/excerpts/ or sources/study/",
+      "refresh_sla_days": 90,
+      "owner": "video.trendintelligence",
+      "status": "planned_or_partial"
+    },
+    {
+      "id": "src_2",
+      "title": "Trendpop",
+      "description": "Trendpop",
+      "license_class": "unknown_review_required",
+      "acquisition_method": "manual_or_licensed_api",
+      "local_path_hint": "sources/excerpts/ or sources/study/",
+      "refresh_sla_days": 90,
+      "owner": "video.trendintelligence",
+      "status": "planned_or_partial"
+    },
+    {
+      "id": "src_3",
+      "title": "Tubular",
+      "description": "Tubular",
+      "license_class": "unknown_review_required",
+      "acquisition_method": "manual_or_licensed_api",
+      "local_path_hint": "sources/excerpts/ or sources/study/",
+      "refresh_sla_days": 90,
+      "owner": "video.trendintelligence",
+      "status": "planned_or_partial"
+    },
+    {
+      "id": "src_4",
+      "title": "Reddit/X firehose",
+      "description": "Reddit/X firehose",
+      "license_class": "unknown_review_required",
+      "acquisition_method": "manual_or_licensed_api",
+      "local_path_hint": "sources/excerpts/ or sources/study/",
+      "refresh_sla_days": 90,
+      "owner": "video.trendintelligence",
+      "status": "planned_or_partial"
+    }
+  ],
+  "note": "Legal review required before treating external corpora as production grounding."
+}

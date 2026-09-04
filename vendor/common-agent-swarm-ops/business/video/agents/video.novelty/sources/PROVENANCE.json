@@ -1,0 +1,15 @@
+{
+  "schema_version": "1.0",
+  "agent_id": "video.novelty",
+  "previous_common_agent_id": "video.judge_agent",
+  "va_taxonomy_aligned": true,
+  "generic_source": "generic-swarm-ops/business/video/agents/video.novelty",
+  "note": "Agent ID aligned to VA/generic Domain Pack taxonomy. Upstream design is historical and non-binding.",
+  "aligned_at": "2026-07-27T00:48:11.260951Z",
+  "generic_source_depth": {
+    "excerpts": true,
+    "study": true,
+    "adopted_at": "2026-07-27T01:30:28.542069+00:00",
+    "upstream": "generic-swarm-ops/business/video/agents"
+  }
+}

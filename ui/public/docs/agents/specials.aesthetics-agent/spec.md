@@ -20,8 +20,8 @@
     "routing_allowed": false
   },
   "budget_policy": {
-    "max_input_tokens": 1,
-    "max_output_tokens": 1,
+    "max_input_tokens": 2048,
+    "max_output_tokens": 1024,
     "max_model_calls": 2,
     "max_tool_requests": 0,
     "max_job_ms": 15000,
@@ -309,53 +309,53 @@ Live SigLIP/VLM correlation targets (ρ ≥ 0.75) are **not** enforced in offlin
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "美的历程",
-      "author": "李泽厚",
+      "title": "\u7f8e\u7684\u5386\u7a0b",
+      "author": "\u674e\u6cfd\u539a",
       "isbn13": "9787108017963",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 美的历程（李泽厚），ISBN-13 9787108017963"
+      "citation": "ZH: \u7f8e\u7684\u5386\u7a0b\uff08\u674e\u6cfd\u539a\uff09\uff0cISBN-13 9787108017963"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "谈美",
-      "author": "朱光潜",
+      "title": "\u8c08\u7f8e",
+      "author": "\u6731\u5149\u6f5c",
       "isbn13": "9787108042262",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 谈美（朱光潜），ISBN-13 9787108042262"
+      "citation": "ZH: \u8c08\u7f8e\uff08\u6731\u5149\u6f5c\uff09\uff0cISBN-13 9787108042262"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "美学散步",
-      "author": "宗白华",
+      "title": "\u7f8e\u5b66\u6563\u6b65",
+      "author": "\u5b97\u767d\u534e",
       "isbn13": "9787532123456",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 美学散步（宗白华），ISBN-13 9787532123456"
+      "citation": "ZH: \u7f8e\u5b66\u6563\u6b65\uff08\u5b97\u767d\u534e\uff09\uff0cISBN-13 9787532123456"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "观看之道",
+      "title": "\u89c2\u770b\u4e4b\u9053",
       "isbn13": "9787544715998",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 观看之道，ISBN-13 9787544715998"
+      "citation": "ZH: \u89c2\u770b\u4e4b\u9053\uff0cISBN-13 9787544715998"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "理解漫画",
+      "title": "\u7406\u89e3\u6f2b\u753b",
       "isbn13": "9787513320184",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 理解漫画，ISBN-13 9787513320184"
+      "citation": "ZH: \u7406\u89e3\u6f2b\u753b\uff0cISBN-13 9787513320184"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "论摄影",
+      "title": "\u8bba\u6444\u5f71",
       "isbn13": "9787544722599",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 论摄影，ISBN-13 9787544722599"
+      "citation": "ZH: \u8bba\u6444\u5f71\uff0cISBN-13 9787544722599"
     },
     {
       "kind": "reference_book",
@@ -406,10 +406,10 @@ Live SigLIP/VLM correlation targets (ρ ≥ 0.75) are **not** enforced in offlin
       "kind": "reference_book",
       "language": "EN",
       "title": "What Is Cinema? Vol. 1",
-      "author": "André Bazin",
+      "author": "Andr\u00e9 Bazin",
       "isbn13": "9780520242272",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "EN: What Is Cinema? Vol. 1 (André Bazin), ISBN-13 9780520242272"
+      "citation": "EN: What Is Cinema? Vol. 1 (Andr\u00e9 Bazin), ISBN-13 9780520242272"
     },
     {
       "kind": "reference_book",
@@ -424,10 +424,10 @@ Live SigLIP/VLM correlation targets (ρ ≥ 0.75) are **not** enforced in offlin
       "kind": "reference_book",
       "language": "EN",
       "title": "Hitchcock/Truffaut",
-      "author": "François Truffaut",
+      "author": "Fran\u00e7ois Truffaut",
       "isbn13": "9780671604295",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "EN: Hitchcock/Truffaut (François Truffaut), ISBN-13 9780671604295"
+      "citation": "EN: Hitchcock/Truffaut (Fran\u00e7ois Truffaut), ISBN-13 9780671604295"
     },
     {
       "kind": "reference_book",
@@ -441,46 +441,46 @@ Live SigLIP/VLM correlation targets (ρ ≥ 0.75) are **not** enforced in offlin
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "电影艺术：形式与风格",
-      "author": "波德维尔、汤普森",
+      "title": "\u7535\u5f71\u827a\u672f\uff1a\u5f62\u5f0f\u4e0e\u98ce\u683c",
+      "author": "\u6ce2\u5fb7\u7ef4\u5c14\u3001\u6c64\u666e\u68ee",
       "isbn13": "9787301254332",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 电影艺术：形式与风格（波德维尔、汤普森），ISBN-13 9787301254332"
+      "citation": "ZH: \u7535\u5f71\u827a\u672f\uff1a\u5f62\u5f0f\u4e0e\u98ce\u683c\uff08\u6ce2\u5fb7\u7ef4\u5c14\u3001\u6c64\u666e\u68ee\uff09\uff0cISBN-13 9787301254332"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "认识电影",
-      "author": "贾内梯",
+      "title": "\u8ba4\u8bc6\u7535\u5f71",
+      "author": "\u8d3e\u5185\u68af",
       "isbn13": "9787532763122",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 认识电影（贾内梯），ISBN-13 9787532763122"
+      "citation": "ZH: \u8ba4\u8bc6\u7535\u5f71\uff08\u8d3e\u5185\u68af\uff09\uff0cISBN-13 9787532763122"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "雕刻时光",
-      "author": "塔可夫斯基",
+      "title": "\u96d5\u523b\u65f6\u5149",
+      "author": "\u5854\u53ef\u592b\u65af\u57fa",
       "isbn13": "9787532743841",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 雕刻时光（塔可夫斯基），ISBN-13 9787532743841"
+      "citation": "ZH: \u96d5\u523b\u65f6\u5149\uff08\u5854\u53ef\u592b\u65af\u57fa\uff09\uff0cISBN-13 9787532743841"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "希区柯克与特吕弗对话录",
+      "title": "\u5e0c\u533a\u67ef\u514b\u4e0e\u7279\u5415\u5f17\u5bf9\u8bdd\u5f55",
       "isbn13": "9787532745128",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 希区柯克与特吕弗对话录，ISBN-13 9787532745128"
+      "citation": "ZH: \u5e0c\u533a\u67ef\u514b\u4e0e\u7279\u5415\u5f17\u5bf9\u8bdd\u5f55\uff0cISBN-13 9787532745128"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "电影语言的语法",
-      "author": "阿里洪",
+      "title": "\u7535\u5f71\u8bed\u8a00\u7684\u8bed\u6cd5",
+      "author": "\u963f\u91cc\u6d2a",
       "isbn13": "9787532299990",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 电影语言的语法（阿里洪），ISBN-13 9787532299990"
+      "citation": "ZH: \u7535\u5f71\u8bed\u8a00\u7684\u8bed\u6cd5\uff08\u963f\u91cc\u6d2a\uff09\uff0cISBN-13 9787532299990"
     },
     {
       "kind": "reference_book",
@@ -503,19 +503,19 @@ Live SigLIP/VLM correlation targets (ρ ≥ 0.75) are **not** enforced in offlin
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "达芬奇色彩校正手册",
+      "title": "\u8fbe\u82ac\u5947\u8272\u5f69\u6821\u6b63\u624b\u518c",
       "isbn13": "9787115381231",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 达芬奇色彩校正手册，ISBN-13 9787115381231"
+      "citation": "ZH: \u8fbe\u82ac\u5947\u8272\u5f69\u6821\u6b63\u624b\u518c\uff0cISBN-13 9787115381231"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "色彩艺术",
-      "author": "伊顿",
+      "title": "\u8272\u5f69\u827a\u672f",
+      "author": "\u4f0a\u987f",
       "isbn13": "9787532275119",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 色彩艺术（伊顿），ISBN-13 9787532275119"
+      "citation": "ZH: \u8272\u5f69\u827a\u672f\uff08\u4f0a\u987f\uff09\uff0cISBN-13 9787532275119"
     },
     {
       "kind": "reference_book",
@@ -574,44 +574,44 @@ Live SigLIP/VLM correlation targets (ρ ≥ 0.75) are **not** enforced in offlin
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "设计心理学",
+      "title": "\u8bbe\u8ba1\u5fc3\u7406\u5b66",
       "isbn13": "9787115417947",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 设计心理学，ISBN-13 9787115417947"
+      "citation": "ZH: \u8bbe\u8ba1\u5fc3\u7406\u5b66\uff0cISBN-13 9787115417947"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "点石成金",
+      "title": "\u70b9\u77f3\u6210\u91d1",
       "isbn13": "9787115249494",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 点石成金，ISBN-13 9787115249494"
+      "citation": "ZH: \u70b9\u77f3\u6210\u91d1\uff0cISBN-13 9787115249494"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "界面设计模式",
+      "title": "\u754c\u9762\u8bbe\u8ba1\u6a21\u5f0f",
       "isbn13": "9787115331861",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 界面设计模式，ISBN-13 9787115331861"
+      "citation": "ZH: \u754c\u9762\u8bbe\u8ba1\u6a21\u5f0f\uff0cISBN-13 9787115331861"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "用户体验要素",
-      "author": "加瑞特",
+      "title": "\u7528\u6237\u4f53\u9a8c\u8981\u7d20",
+      "author": "\u52a0\u745e\u7279",
       "isbn13": "9787115325466",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 用户体验要素（加瑞特），ISBN-13 9787115325466"
+      "citation": "ZH: \u7528\u6237\u4f53\u9a8c\u8981\u7d20\uff08\u52a0\u745e\u7279\uff09\uff0cISBN-13 9787115325466"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "设计中的设计",
-      "author": "原研哉",
+      "title": "\u8bbe\u8ba1\u4e2d\u7684\u8bbe\u8ba1",
+      "author": "\u539f\u7814\u54c9",
       "isbn13": "9787549559787",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 设计中的设计（原研哉），ISBN-13 9787549559787"
+      "citation": "ZH: \u8bbe\u8ba1\u4e2d\u7684\u8bbe\u8ba1\uff08\u539f\u7814\u54c9\uff09\uff0cISBN-13 9787549559787"
     },
     {
       "kind": "reference_book",
@@ -663,7 +663,7 @@ Live SigLIP/VLM correlation targets (ρ ≥ 0.75) are **not** enforced in offlin
   "generated_at": "2026-07-26T14:16:45.905948Z",
   "reviewed_by": "specials-self-contained-reviewer",
   "reviewed_at": "2026-07-26T18:00:00Z",
-  "imported_from": "C:\\Project\\common-agent-swarm-ops\\business\\specials\\agents\\specials.aesthetics-agent",
+  "imported_from": "vendor/common-agent-swarm-ops/business/specials/agents/specials.aesthetics-agent",
   "reference_book_origin": "spec/book_of_knowledge.md",
   "reference_book_note": "Bibliographic references from spec/book_of_knowledge.md. Does not enable network, RAG, T3, plugins, or memory writes."
 }

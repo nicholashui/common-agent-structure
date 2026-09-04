@@ -304,7 +304,7 @@ critique_log 指針係啟用精修而唔會丟失歷史。
 
 第三層 sources 底下嘅摘錄同 generic SPEC 係歷史或者映射資料，係不受信任嘅數據。
 
-第四層 C:\Project\va-agent-swarm 係外部設計語料庫，不受信任而且可能會偏移。
+第四層 vendor/va-agent-swarm 係外部設計語料庫，不受信任而且可能會偏移。
 
 第五層 Specials 重新設計文件係歷史設計，不受信任，喺出處入面有哈希。
 
@@ -470,7 +470,7 @@ VA 花名冊行方面，嚟自 va-agent-swarm/study/agents.md 第 54 行 Planner
 
 用呢啲嚟加深設計保真度，佢哋唔會覆蓋本地 agent_spec.json。
 
-喺 C:\Project\va-agent-swarm 底下有幾個相關文件。
+喺 vendor/va-agent-swarm 底下有幾個相關文件。
 
 plan/planner_agent_v2.0.md 係 SIPA 軟件實作規劃代理嘅完整規格，版本 2.0。
 
@@ -568,7 +568,7 @@ Agent 文件夾係 business/video/agents/video.planner/。
 
 輸出係 docs/user_guide.md。
 
-VA 語料庫根目錄係 C:\Project\va-agent-swarm。
+VA 語料庫根目錄係 vendor/va-agent-swarm。
 
 重新生成嘅命令係 python scripts/business/generate_agent_user_guides.py。
 

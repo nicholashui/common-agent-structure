@@ -1,0 +1,72 @@
+{
+  "agent_id": "specials.psychological_profile_agent",
+  "kind": "special",
+  "cases": [
+    {
+      "id": "tc1",
+      "name": "YouTube cohort",
+      "method": "POST",
+      "path": "/api/v1/psychology/profile",
+      "body": {
+        "brief": "Audience cohort for high-retention travel vlog viewers",
+        "platform": "youtube"
+      },
+      "success_criteria": {
+        "http_status": [
+          200
+        ],
+        "required_keys_any": [
+          "ok",
+          "profile",
+          "result",
+          "correlation_id"
+        ],
+        "notes": "Psychology profile offline."
+      }
+    },
+    {
+      "id": "tc2",
+      "name": "Documentary VO tone",
+      "method": "POST",
+      "path": "/api/v1/psychology/profile",
+      "body": {
+        "brief": "Tone profile for documentary-style VO",
+        "locale": "en"
+      },
+      "success_criteria": {
+        "http_status": [
+          200
+        ],
+        "required_keys_any": [
+          "ok",
+          "profile",
+          "result",
+          "correlation_id"
+        ],
+        "notes": "Psychology profile offline."
+      }
+    },
+    {
+      "id": "tc3",
+      "name": "Shorts hooks profile",
+      "method": "POST",
+      "path": "/api/v1/psychology/profile",
+      "body": {
+        "brief": "Lite psych profile for short-form hooks",
+        "mode": "lite"
+      },
+      "success_criteria": {
+        "http_status": [
+          200
+        ],
+        "required_keys_any": [
+          "ok",
+          "profile",
+          "result",
+          "correlation_id"
+        ],
+        "notes": "Psychology profile offline."
+      }
+    }
+  ]
+}

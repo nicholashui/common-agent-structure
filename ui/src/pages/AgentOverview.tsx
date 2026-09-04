@@ -8,6 +8,7 @@ import { StatusPill } from "../components/StatusPill";
 import { Card, Field, GhostButton, PageHeader, PrimaryButton, inputClass } from "../components/ui";
 import { useAgentId, useAsync } from "../lib/hooks";
 import { pillForValidation, validationIsPass } from "../lib/honesty";
+import { relativeAgentFolder } from "../lib/agents";
 import { parseAgentIo } from "../lib/io";
 import { useSession } from "../state/session";
 
@@ -78,7 +79,9 @@ export function AgentOverviewPage() {
               </div>
               <div>
                 <dt className="text-stone-500">folder</dt>
-                <dd className="font-mono text-xs text-stone-700">{data.structure.folder}</dd>
+                <dd className="font-mono text-xs text-stone-700">
+                  {relativeAgentFolder(data.structure.folder, agentId)}
+                </dd>
               </div>
               <div>
                 <dt className="text-stone-500">spec_bytes</dt>

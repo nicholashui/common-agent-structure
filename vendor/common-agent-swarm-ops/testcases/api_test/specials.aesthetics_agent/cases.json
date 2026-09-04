@@ -1,0 +1,81 @@
+{
+  "agent_id": "specials.aesthetics_agent",
+  "kind": "special",
+  "cases": [
+    {
+      "id": "tc1",
+      "name": "Look bible score",
+      "method": "POST",
+      "path": "/api/v1/aesthetics/evaluate",
+      "body": {
+        "artifact_ref": "look_bible_stub",
+        "media_type": "image",
+        "mode": "score",
+        "allow_live_vision": false
+      },
+      "success_criteria": {
+        "http_status": [
+          200
+        ],
+        "required_keys_any": [
+          "ok",
+          "scores",
+          "result",
+          "correlation_id",
+          "evaluation"
+        ],
+        "notes": "Offline aesthetic scoring; allow_live_vision false."
+      }
+    },
+    {
+      "id": "tc2",
+      "name": "Moodboard score",
+      "method": "POST",
+      "path": "/api/v1/aesthetics/evaluate",
+      "body": {
+        "artifact_ref": "moodboard_stub_01",
+        "media_type": "image",
+        "mode": "score",
+        "allow_live_vision": false
+      },
+      "success_criteria": {
+        "http_status": [
+          200
+        ],
+        "required_keys_any": [
+          "ok",
+          "scores",
+          "result",
+          "correlation_id",
+          "evaluation"
+        ],
+        "notes": "Offline aesthetic scoring; allow_live_vision false."
+      }
+    },
+    {
+      "id": "tc3",
+      "name": "Grade ref score",
+      "method": "POST",
+      "path": "/api/v1/aesthetics/evaluate",
+      "body": {
+        "artifact_ref": "grade_ref_stub",
+        "media_type": "image",
+        "mode": "score",
+        "allow_live_vision": false
+      },
+      "success_criteria": {
+        "http_status": [
+          200
+        ],
+        "required_keys_any": [
+          "ok",
+          "scores",
+          "result",
+          "correlation_id",
+          "evaluation"
+        ],
+        "notes": "Offline aesthetic scoring; allow_live_vision false."
+      }
+    }
+  ]
+}

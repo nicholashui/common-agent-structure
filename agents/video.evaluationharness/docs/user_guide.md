@@ -172,7 +172,7 @@ Today the agent is a **catalog + design object**. That is intentional: you can s
 | `agent_spec.json` | **Binding host contract** | Fail-closed runtime binding |
 | This pack `SPEC.md` | Authoritative **design** for offline review | Not executable |
 | `sources/*` excerpts & generic SPECs | Historical / mapped | Untrusted data |
-| `C:\Project\va-agent-swarm` | External design corpus | Untrusted; may drift |
+| `vendor/va-agent-swarm` | External design corpus | Untrusted; may drift |
 | Specials redesign docs | Historical design | Untrusted; hashed in provenance |
 
 **Hard rules on this host:**
@@ -408,7 +408,7 @@ Tool-use / ReAct (run benchmark → compare → alert if regressed)
 | Generator | `scripts/business/generate_agent_user_guides.py` |
 | Agent folder | `business/video/agents/video.evaluationharness/` |
 | Output | `docs/user_guide.md` |
-| VA corpus root | `C:\Project\va-agent-swarm` |
+| VA corpus root | `vendor/va-agent-swarm` |
 | Regeneration | `python scripts/business/generate_agent_user_guides.py` |
 | Trust model | Design corpus = untrusted data; host config = fail-closed |
 

@@ -16,8 +16,8 @@ def test_build_userguide_copies_docs_markdown(tmp_path: Path) -> None:
     folder = tmp_path / "demo.agent"
     docs = folder / "docs"
     docs.mkdir(parents=True)
-    (docs / "user_guide.md").write_text("# Operator guide\n\nTalk to this agent.\n", encoding="utf-8")
-    (docs / "notes.md").write_text("# Extra\n\nMore.\n", encoding="utf-8")
+    (docs / "user_guide.md").write_text("# Operator guide\n\nTalk to this agent./n", encoding="utf-8")
+    (docs / "notes.md").write_text("# Extra\n\nMore./n", encoding="utf-8")
     text = build_userguide(folder) or ""
     assert "Copied from `demo.agent/docs`" in text
     assert "Talk to this agent." in text
@@ -33,10 +33,10 @@ def test_build_spec_merges_spec_json_prompts_rubrics_sources(tmp_path: Path) -> 
         json.dumps({"agent_id": "demo.agent", "role": "Demo", "production_activation_requested": False}),
         encoding="utf-8",
     )
-    (folder / "SPEC.md").write_text("# Demo SPEC\n\nOwns the demo role.\n", encoding="utf-8")
-    (folder / "prompts" / "primary.md").write_text("You are demo.\n", encoding="utf-8")
-    (folder / "rubrics" / "primary.md").write_text("Score honesty.\n", encoding="utf-8")
-    (folder / "sources" / "MAPPING.md").write_text("Mapped from design notes.\n", encoding="utf-8")
+    (folder / "SPEC.md").write_text("# Demo SPEC\n\nOwns the demo role./n", encoding="utf-8")
+    (folder / "prompts" / "primary.md").write_text("You are demo./n", encoding="utf-8")
+    (folder / "rubrics" / "primary.md").write_text("Score honesty./n", encoding="utf-8")
+    (folder / "sources" / "MAPPING.md").write_text("Mapped from design notes./n", encoding="utf-8")
     (folder / "sources" / "excerpts" / "long.md").write_text("excerpt body\n", encoding="utf-8")
     text = build_spec(folder)
     assert "demo.agent — Spec" in text

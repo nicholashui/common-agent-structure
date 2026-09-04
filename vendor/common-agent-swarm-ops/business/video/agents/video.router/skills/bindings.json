@@ -1,0 +1,17 @@
+{
+  "agent_id": "video.router",
+  "special_skills": [
+    {
+      "skill_id": "agent_loop_v3",
+      "path": "business/video/special_skills/agent_loop_v3/"
+    },
+    {
+      "skill_id": "knowledge_router_agent",
+      "path": "business/video/special_skills/knowledge_router_agent/"
+    },
+    {
+      "skill_id": "intent_analysis_agent",
+      "path": "business/video/special_skills/intent_analysis_agent/"
+    }
+  ]
+}

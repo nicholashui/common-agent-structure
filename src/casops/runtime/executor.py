@@ -20,7 +20,7 @@ from casops.runtime.adapter import DeterministicAdapter
 from casops.runtime.chat import build_chat_system, load_prompt, normalize_history, require_message
 from casops.runtime.dag import compile_dag
 from casops.runtime.health import observe_health
-from casops.runtime.llm import LlmRouter
+from casops.runtime.llm import LlmRouter, parse_token_count, public_llm_view, resolve_completion_tokens
 from casops.runtime.safety import safety_gate
 from casops.runtime.trace import add_child, start_run_trace
 
@@ -102,7 +102,7 @@ class Runtime:
             if node.kind == "model":
                 prompt = (folder / "prompts" / "primary.md").read_text(encoding="utf-8")
                 budget = spec.get("budget_policy") or {}
-                max_tokens = int(budget.get("max_output_tokens") or 512)
+                max_tokens, _source = resolve_completion_tokens(budget.get("max_output_tokens"))
                 router = self.llm or LlmRouter()
                 outputs.append(
                     router.complete(
@@ -169,7 +169,8 @@ class Runtime:
         io = folder_io(folder, spec=spec, merged=False)
         system, prompt_ref = load_prompt(folder, spec)
         budget = spec.get("budget_policy") or {}
-        max_tokens = int(budget.get("max_output_tokens") or 512)
+        declared = parse_token_count(budget.get("max_output_tokens"))
+        max_tokens, max_tokens_source = resolve_completion_tokens(budget.get("max_output_tokens"))
         router = self.llm or LlmRouter()
         completion = router.complete(
             agent_id=str(spec.get("agent_id") or agent_id),
@@ -191,4 +192,10 @@ class Runtime:
             "t3_enabled": False,
             "used_prompt_reference": prompt_ref,
             "safety": safety,
+            "llm": public_llm_view(
+                completion,
+                max_tokens=max_tokens,
+                max_tokens_source=max_tokens_source,
+                declared_max_output_tokens=declared,
+            ),
         }

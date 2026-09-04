@@ -1,0 +1,75 @@
+{
+  "agent_id": "specials.psychological_recommendation_agent",
+  "kind": "special",
+  "cases": [
+    {
+      "id": "tc1",
+      "name": "Food-travel hooks",
+      "method": "POST",
+      "path": "/api/v1/psychology/recommend",
+      "body": {
+        "brief": "Recommend hook styles for curious food-travel audience",
+        "n_hooks": 3
+      },
+      "success_criteria": {
+        "http_status": [
+          200
+        ],
+        "required_keys_any": [
+          "ok",
+          "recommendations",
+          "hooks",
+          "result",
+          "correlation_id"
+        ],
+        "notes": "Psychology recommend offline."
+      }
+    },
+    {
+      "id": "tc2",
+      "name": "Mid-video re-engage",
+      "method": "POST",
+      "path": "/api/v1/psychology/recommend",
+      "body": {
+        "brief": "Suggest mid-video re-engagement beats",
+        "n_hooks": 2
+      },
+      "success_criteria": {
+        "http_status": [
+          200
+        ],
+        "required_keys_any": [
+          "ok",
+          "recommendations",
+          "hooks",
+          "result",
+          "correlation_id"
+        ],
+        "notes": "Psychology recommend offline."
+      }
+    },
+    {
+      "id": "tc3",
+      "name": "Soft CTA framing",
+      "method": "POST",
+      "path": "/api/v1/psychology/recommend",
+      "body": {
+        "brief": "CTA framing for subscribe without hard sell",
+        "n_hooks": 3
+      },
+      "success_criteria": {
+        "http_status": [
+          200
+        ],
+        "required_keys_any": [
+          "ok",
+          "recommendations",
+          "hooks",
+          "result",
+          "correlation_id"
+        ],
+        "notes": "Psychology recommend offline."
+      }
+    }
+  ]
+}

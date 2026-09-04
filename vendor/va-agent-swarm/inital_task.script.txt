@@ -1,0 +1,15 @@
+Let's walk through the task at the heart of this note. The goal is to create a brand new project, and we'll refer to it by a placeholder name throughout. That project gets built directly from a starter blueprint, a file called project starter, which lives right alongside this note. The new project lands in its own folder, named after the project itself.
+
+Now, here's the important part about that starter file. It isn't just a rough sketch or a set of loose suggestions. It's meant to be treated as the complete implementation contract. In other words, it spells out exactly what the boilerplate should contain and how it should behave, and we follow it faithfully from start to finish.
+
+So what kind of project are we building? It's an AI coding agent starter repository. The primary technology is Node, version twenty or newer, and one deliberate constraint stands out. The bootstrap scripts are designed to run with no runtime dependencies at all. That keeps the foundation lean and easy to trust.
+
+The main purpose is where it gets interesting. We're creating an executable boilerplate project, something that actually runs, that can download, audit, and synchronize the configuration files for AI coding agents across a whole family of tools. Those tools include Claude Code, Codex, the Gemini command line interface, Cursor, OpenCode, Grok Build, and GitHub Copilot. The idea is to bring all of those agent configurations under one roof, where they can be kept consistent and in sync.
+
+To be clear about the required support, the project needs to handle Claude Code, Codex, the Gemini command line interface, Cursor, OpenCode, and GitHub Copilot. These are not optional extras. They are part of what the finished project must accommodate.
+
+And there's a firm expectation attached to all of this. You must create a working project, not merely a collection of Markdown documents that describe it. The deliverable is real, functioning code.
+
+Once it's in place, there's a single command to bring it to life. You run the bootstrap step through the project's run command, and that kicks off the whole process of downloading, auditing, and syncing.
+
+Finally, the note anticipates a very practical problem. What happens if the download fails because the network simply isn't available? In that case, the instruction is clear. Finish every file you can complete locally, and then record the blocker, the thing that stopped you, in a status file so the situation is documented and nothing gets lost. That way, even when the network lets you down, the work is as complete as it can possibly be, and the next person knows exactly where things stand.

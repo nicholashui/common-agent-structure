@@ -10,6 +10,7 @@ from fastapi import FastAPI
 from casops.api.http import install_error_handler
 from casops.compose.app import create_compose_service_app
 from casops.compose.engine import Composer
+from casops.compose.folders import public_folder_ref
 from casops.corrigibility.app import create_corrigibility_service_app
 from casops.corrigibility.store import InvariantStore
 from casops.instruments.registry import InstrumentRegistry
@@ -62,7 +63,7 @@ def create_compose_app(
             "agent_id": agent_id,
             "structure_id": "casops.common_agent.v3",
             "schema_version": "3.0",
-            "folder": str(folder),
+            "folder": public_folder_ref(folder, agents_root),
             "spec_bytes": len(spec),
         }
 

@@ -460,7 +460,7 @@ Agent folder business/video/agents/video.talent/。
 
 Output docs/user_guide.md。
 
-VA corpus root C:\Project\va-agent-swarm。
+VA corpus root vendor/va-agent-swarm。
 
 Trust model 設計語料庫不受信任，host config fail-closed。
 

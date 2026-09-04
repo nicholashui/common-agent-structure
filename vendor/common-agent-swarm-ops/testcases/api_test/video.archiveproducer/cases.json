@@ -1,0 +1,96 @@
+{
+  "agent_id": "video.archiveproducer",
+  "kind": "pack",
+  "cases": [
+    {
+      "id": "tc1",
+      "name": "video.archiveproducer offline case 1",
+      "method": "POST",
+      "path": "/api/v1/agent-loops/agents/video.archiveproducer/run",
+      "body": {
+        "goal": "Plan a 90-second offline wuxia short with clear acts and contingencies",
+        "enable_v3": true,
+        "max_steps": 3,
+        "allow_production": false,
+        "allow_network": false
+      },
+      "success_criteria": {
+        "http_status": [
+          200
+        ],
+        "required_keys_any": [
+          "agent_id",
+          "ok",
+          "phases",
+          "v3",
+          "status",
+          "run_id"
+        ],
+        "json_equals": {
+          "agent_id": "video.archiveproducer"
+        },
+        "notes": "Offline loop: expect 200 with agent_id match; prefer ok=true or v3/phases present. allow_production/allow_network must stay false."
+      }
+    },
+    {
+      "id": "tc2",
+      "name": "video.archiveproducer offline case 2",
+      "method": "POST",
+      "path": "/api/v1/agent-loops/agents/video.archiveproducer/run",
+      "body": {
+        "goal": "Produce a production plan skeleton for a 6-day travel vlog (artifact kinds only)",
+        "enable_v3": true,
+        "max_steps": 3,
+        "allow_production": false,
+        "allow_network": false
+      },
+      "success_criteria": {
+        "http_status": [
+          200
+        ],
+        "required_keys_any": [
+          "agent_id",
+          "ok",
+          "phases",
+          "v3",
+          "status",
+          "run_id"
+        ],
+        "json_equals": {
+          "agent_id": "video.archiveproducer"
+        },
+        "notes": "Offline loop: expect 200 with agent_id match; prefer ok=true or v3/phases present. allow_production/allow_network must stay false."
+      }
+    },
+    {
+      "id": "tc3",
+      "name": "video.archiveproducer offline case 3",
+      "method": "POST",
+      "path": "/api/v1/agent-loops/agents/video.archiveproducer/run",
+      "body": {
+        "goal": "Coordinate a multi-agent offline run for high-retention YouTube hook",
+        "enable_v3": true,
+        "max_steps": 2,
+        "allow_production": false,
+        "allow_network": false
+      },
+      "success_criteria": {
+        "http_status": [
+          200
+        ],
+        "required_keys_any": [
+          "agent_id",
+          "ok",
+          "phases",
+          "v3",
+          "status",
+          "run_id"
+        ],
+        "json_equals": {
+          "agent_id": "video.archiveproducer"
+        },
+        "notes": "Offline loop: expect 200 with agent_id match; prefer ok=true or v3/phases present. allow_production/allow_network must stay false."
+      }
+    }
+  ]
+}

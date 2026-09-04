@@ -2,7 +2,7 @@
 
 > **Delivery note — read first.**
 >
-> 1. **This checkout is a live CASOPS host.** Unlike `common_agent_structure.v3.md`, which was written before a runnable artifact existed, v2 of the swarm structure is written **against the running tree** `C:\Project\common-agent-structure`: package `casops` `0.1.0`, public plane FastAPI `/api/v3` on `127.0.0.1:18080`, Control UI Vite+React on `127.0.0.1:15173`, member family `casops.common_agent.v3` / schema `3.0`.
+> 1. **This checkout is a live CASOPS host.** Unlike `common_agent_structure.v3.md`, which was written before a runnable artifact existed, v2 of the swarm structure is written **against the running tree** `.`: package `casops` `0.1.0`, public plane FastAPI `/api/v3` on `127.0.0.1:18080`, Control UI Vite+React on `127.0.0.1:15173`, member family `casops.common_agent.v3` / schema `3.0`.
 > 2. **Honesty about what is live.** Member agents, per-agent compose/run/chat, Fleet (UI label **Agent Swarm**), Agent Workflow SVGs, and Agent Org Chat **are implemented**. A `swarms/` folder type, `swarm_spec.json` loader, and `/api/v3/swarms/...` routes **are specified here and are not implemented in this checkout.** This document does not pretend those routes already exist.
 > 3. **This is not a production-activation license.** It does not authorize T3 enablement, network grants, plugin execution on the public plane, L5 promotion, or flipping `production_activation_requested`.
 > 4. **v1 is superseded, not deleted.** v1 (`2026-08-17`) is the design ancestor. v2 keeps v1’s thesis — a swarm composes common agents; it does not replace them — and rewrites every surface that drifted from the live host.
@@ -973,7 +973,7 @@ There is **no** `status` field on live `RunResult`. Swarm artifacts MUST NOT inv
 ```json
 {
   "swarm_id": "video.spine",
-  "folder": "C:\\Project\\common-agent-structure\\swarms\\video.spine",
+  "folder": "./\swarms\\video.spine",
   "structure_id": "casops.common_swarm.v2",
   "schema_version": "3.0",
   "owner_agent_id": "video.orchestrator",

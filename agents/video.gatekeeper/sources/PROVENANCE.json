@@ -57,35 +57,35 @@
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "项目管理知识体系指南",
-      "author": "第7版",
+      "title": "\u9879\u76ee\u7ba1\u7406\u77e5\u8bc6\u4f53\u7cfb\u6307\u5357",
+      "author": "\u7b2c7\u7248",
       "isbn13": "9787111558477",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 项目管理知识体系指南（第7版），ISBN-13 9787111558477"
+      "citation": "ZH: \u9879\u76ee\u7ba1\u7406\u77e5\u8bc6\u4f53\u7cfb\u6307\u5357\uff08\u7b2c7\u7248\uff09\uff0cISBN-13 9787111558477"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "人月神话",
+      "title": "\u4eba\u6708\u795e\u8bdd",
       "isbn13": "9787302154419",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 人月神话，ISBN-13 9787302154419"
+      "citation": "ZH: \u4eba\u6708\u795e\u8bdd\uff0cISBN-13 9787302154419"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "目标",
+      "title": "\u76ee\u6807",
       "isbn13": "9787508637020",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 目标，ISBN-13 9787508637020"
+      "citation": "ZH: \u76ee\u6807\uff0cISBN-13 9787508637020"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "高效能人士的七个习惯",
+      "title": "\u9ad8\u6548\u80fd\u4eba\u58eb\u7684\u4e03\u4e2a\u4e60\u60ef",
       "isbn13": "9787508092232",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 高效能人士的七个习惯，ISBN-13 9787508092232"
+      "citation": "ZH: \u9ad8\u6548\u80fd\u4eba\u58eb\u7684\u4e03\u4e2a\u4e60\u60ef\uff0cISBN-13 9787508092232"
     },
     {
       "kind": "reference_book",
@@ -144,10 +144,10 @@
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "影视制片管理",
+      "title": "\u5f71\u89c6\u5236\u7247\u7ba1\u7406",
       "isbn13": "9787301169186",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 影视制片管理，ISBN-13 9787301169186"
+      "citation": "ZH: \u5f71\u89c6\u5236\u7247\u7ba1\u7406\uff0cISBN-13 9787301169186"
     },
     {
       "kind": "reference_book",
@@ -188,20 +188,20 @@
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "著作权法",
-      "author": "王迁",
+      "title": "\u8457\u4f5c\u6743\u6cd5",
+      "author": "\u738b\u8fc1",
       "isbn13": "9787301249499",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 著作权法（王迁），ISBN-13 9787301249499"
+      "citation": "ZH: \u8457\u4f5c\u6743\u6cd5\uff08\u738b\u8fc1\uff09\uff0cISBN-13 9787301249499"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "知识产权法",
-      "author": "吴汉东",
+      "title": "\u77e5\u8bc6\u4ea7\u6743\u6cd5",
+      "author": "\u5434\u6c49\u4e1c",
       "isbn13": "9787301162262",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 知识产权法（吴汉东），ISBN-13 9787301162262"
+      "citation": "ZH: \u77e5\u8bc6\u4ea7\u6743\u6cd5\uff08\u5434\u6c49\u4e1c\uff09\uff0cISBN-13 9787301162262"
     }
   ],
   "agent_id": "video.gatekeeper",
@@ -216,7 +216,7 @@
     "adopted_at": "2026-07-27T01:30:28.208140+00:00",
     "upstream": "generic-swarm-ops/business/video/agents"
   },
-  "imported_from": "C:\\Project\\common-agent-swarm-ops\\business\\video\\agents\\video.gatekeeper",
+  "imported_from": "vendor/common-agent-swarm-ops/business/video/agents/video.gatekeeper",
   "reference_book_origin": "spec/book_of_knowledge.md",
   "reference_book_note": "Bibliographic references from spec/book_of_knowledge.md. Does not enable network, RAG, T3, plugins, or memory writes."
 }

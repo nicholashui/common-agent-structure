@@ -1,0 +1,75 @@
+{
+  "agent_id": "specials.screenwriter_strategic_goal_achievement_agent",
+  "kind": "special",
+  "cases": [
+    {
+      "id": "tc1",
+      "name": "Curiosity VO",
+      "method": "POST",
+      "path": "/api/v1/screenwriting/plan",
+      "body": {
+        "logline_or_goal": "Travel vlog VO that motivates day-to-day curiosity",
+        "form": "vlog"
+      },
+      "success_criteria": {
+        "http_status": [
+          200
+        ],
+        "required_keys_any": [
+          "ok",
+          "plan",
+          "beats",
+          "result",
+          "correlation_id"
+        ],
+        "notes": "Screenwriting plan offline."
+      }
+    },
+    {
+      "id": "tc2",
+      "name": "Six-day narration spine",
+      "method": "POST",
+      "path": "/api/v1/screenwriting/plan",
+      "body": {
+        "logline_or_goal": "Documentary narration spine for six days",
+        "genre": "documentary"
+      },
+      "success_criteria": {
+        "http_status": [
+          200
+        ],
+        "required_keys_any": [
+          "ok",
+          "plan",
+          "beats",
+          "result",
+          "correlation_id"
+        ],
+        "notes": "Screenwriting plan offline."
+      }
+    },
+    {
+      "id": "tc3",
+      "name": "VO motivation stages",
+      "method": "POST",
+      "path": "/api/v1/screenwriting/plan",
+      "body": {
+        "logline_or_goal": "Stages-lite VO motivation handoff",
+        "form": "voiceover"
+      },
+      "success_criteria": {
+        "http_status": [
+          200
+        ],
+        "required_keys_any": [
+          "ok",
+          "plan",
+          "beats",
+          "result",
+          "correlation_id"
+        ],
+        "notes": "Screenwriting plan offline."
+      }
+    }
+  ]
+}

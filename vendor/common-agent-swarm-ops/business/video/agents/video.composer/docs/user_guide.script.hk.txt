@@ -1,0 +1,318 @@
+各位觀衆朋友大家好，歡迎返嚟我哋嘅頻道。今日呢條片我哋要詳細講解嘅系 ComposerAgent，
+即系作曲代理嘅操作同設計指南。
+
+首先講嚇呢份指南系寫畀邊個睇嘅。呢份文件主要系寫畀喺 common-agent-swarm-ops 入面工作嘅操作員、
+pack 作者、swarm 設計師同埋審查人員。睇完之後你會得到乜嘢呢？
+你會清楚瞭解呢個角色嘅任務定位、幾時應該用佢嘅指引、協作關係圖、
+喺 CASOPS 上面點樣操作嘅步驟、改善路徑，仲有一個分信任層級嘅來源地圖。
+
+不過要講清楚，呢份文件唔系一個畀你激活供應商、開放網絡訪問或者自己發明工具嘅許可證。
+Host 嘅真相系 fail-closed 嘅 agent_spec.json。
+來自 VA 或者 redesign 文檔嘅設計文本屬於不受信任嘅來源。
+
+呢個 agent 嘅 pack 路徑系 business/video/agents/video.composer/，
+指南就喺 docs/user_guide.md，由 scripts/business/generate_agent_user_guides.py 生成。
+
+好，我哋入正題，先睇第一部分：Snapshot，即系快照概覽。
+
+ComposerAgent，代號 video.composer，系一個 Video Domain Pack 角色，運行喺 CASOPS 平臺上面。
+用簡單嘅話講，ComposerAgent 嘅職責系創作原創配樂。
+呢份指南系畀你做目錄審閱、swarm 設計同提案驅動改善嘅人類可讀操作地圖，
+唔系運行時激活許可證。
+
+睇嚇佢嘅基本資料：顯示名稱系 ComposerAgent，Pack agent id 系 video.composer，
+屬於 video pack。Host 角色字串系 ComposerAgent (VA Domain Pack)。
+目錄狀態系 registered，成熟度系 L0，即系非激活狀態，主要做目錄同設計保真度。
+VA id 系 20，VA 類別系 4-Snd，屬於聲音同音樂。
+供應商系 local_deterministic，網絡訪問系 False，允許嘅工具系空嘅。
+生產激活請求系 False。Prompt 同 rubric 嘅引用分別系 video.prompt.composer.v1 同 video.rubric.composer.v1。
+之前嘅 common id 系 video.compositing_artist。
+Generic lineage 系 generic-swarm-ops/business/video/agents/video.composer。
+
+第二部分：點解呢個角色存在。
+
+人類視頻團隊已經喺時間壓力下解決緊呢個問題：創作原創配樂。
+代理形式存在嘅原因系令多代理系統可以持續編碼呢門手藝，
+喺每次交接時應用佢，然後只將剩餘風險升級畀人類處理。
+
+佢嘅知識庫系從以下來源蒸餾出嚟嘅：MAESTRO 加 film-score corpora、ASCAP/BMI、
+Zimmer 同 Hildur 嘅錄音會議。
+呢啲系歷史設計來源，唔系喺呢個 host 上面嘅實時網絡調用。
+
+設計雄心，即系超越人類嘅信號系：喺情感契合度嘅盲測配對比較中贏過在職作曲家。
+當你之後寫評估或提案嗰陣，用呢個作爲北極星指標。
+
+第三部分：乜嘢叫做「做得好」。
+
+呢度列出嘅標準系你審閱輸出、撰寫評分準則或者評分提案嗰陣要用嘅。
+
+主要成果方面：創作原創配樂。
+自我質量標準系：Cue-to-emotion alignment 即提示到情感嘅對齊度，
+用 valence/arousal regression 做迴歸分析，加上 thematic recurrence 即主題重現。
+設計時嘅雄心信號系：喺情感契合度嘅盲測配對比較中贏過在職作曲家。
+架構模式系 Self-Refine 加 Emotional-Arc validation，用 biosignal proxy 做生物信號代理。
+
+Host 質量同批評綁定方面：Prompt 引用系 video.prompt.composer.v1，
+Rubric 引用系 video.rubric.composer.v1。
+批評邊緣系輸入 video.critic，輸出 video.judge。最大精煉次數系 3。
+VA 表格質量標準保留喺上面嘅來源同身份表面。
+
+輸入輸出同接受標準方面：輸入系本地 pack 製品同類型化交接。
+輸出繫帶接受標準嘅可審閱視頻領域交付物。
+接受條件系 host 政策加本地 SPEC 標準，唔需要外部倉庫。
+
+第四部分：範圍，即系擁有乜嘢、分享乜嘢、拒絕乜嘢。
+
+擁有方面：創作原創配樂。
+
+同同伴分享方面，即系批評表面：接受嚟自 DirectorAgent 同 EditorAgent（music cuts）嘅批評。
+有資格評論嘅範圍系：EditorAgent（cut interrupts cue，即剪輯打斷音樂提示）同
+SoundDesignAgent（mask，即頻率遮蔽問題）。
+Host 批評邊緣輸入系 video.critic，輸出系 video.judge。最大精煉次數系 3。
+
+拒絕或升級方面：Fail-closed，即系冇供應商激活、冇網絡、冇來自設計文本嘅憑證。
+production_activation_requested 保持 false，除非有另外嘅人類門控改變佢。
+法律、安全、權利同發佈決定升級到必需嘅人類門控。
+批評領導同判官默認使用 VA ID video.critic 同 video.judge。
+
+第五部分：幾時應該用呢個代理。
+
+當工作產品需要 ComposerAgent 擁有嘅決定或製品時就調用佢：創作原創配樂。
+
+管道階段方面：屬於聲音同音樂。聲音設計、混音、配樂同音樂監製。
+
+唔好將佢用於通用編排、預算批准或最終法律籤核，
+除非呢啲職責明確寫喺佢嘅責任入面。呢啲情況應該用 producer、legal 或 compliance 同伴。
+
+人類覆蓋方面：任何阻止發佈嘅安全、權利或可訪問性爭議都升級到人類門控，
+即使代理喺未來嘅活躍運行時會自動通過。
+
+決策速查表方面：如果缺失嘅技能屬於 ComposerAgent 嘅專長，
+就應該將佢納入該階段嘅 swarm 圖。
+如果只系元數據或目錄編輯，就用 Registry inspect 加 proposal，唔好發明運行時。
+如果任務需要工具或網絡，host 目前唔允許，除非 agent_spec 加 permission register 另有說明。
+如果有人類專屬風險，例如法律、傷害、權利相關，就保留人類門控，
+代理輸出只系諮詢性質直到被激活。
+
+第六部分：協作地圖。
+
+將呢個代理想象做一個「批評總線」上嘅節點，而唔系一個獨立嘅聊天機器人。
+同伴精煉質量，判官同門控決定接受。
+
+入站批評嚟自 DirectorAgent 同 EditorAgent（music cuts）。
+出站評論涵蓋 EditorAgent（cut interrupts cue）同 SoundDesignAgent（mask）。
+Host 邊緣輸入系 video.critic，輸出系 video.judge。
+
+第七部分：佢喺生產中嘅位置。
+
+先講人類生產工作流：屬於聲音設計、混音、配樂同音樂監製。
+典型交接製品包括 Stems 即分軌、cue sheets 即音樂提示表、
+mix masters 即混音母版同 music packages 即音樂包。
+
+喺本地人類工作流摘錄入面嘅提及：
+第 2 項系品牌故事或解釋廣告，時長 30 到 90 秒，用於 YouTube 同網頁，
+涉及 Creative Director、Scriptwriter、Director、DoP、Editor、Composer 同 VO Artist。
+第 8 項系季節或假日活動廣告，時長 15 到 60 秒，用於所有付費社交媒體，
+涉及 Creative Director、Producer、Director、DoP、Art Dept、Editor、Composer 同 Media Buyer。
+第 14 項系 Pre-roll 或 mid-roll YouTube 廣告，時長 6 到 30 秒，用於 YouTube，
+涉及 Creative Director、Scriptwriter、Director、Editor、Composer 同 Media Buyer。
+
+多代理 AI 工作流方面：屬於音頻生成、分軌組裝、響度同混音驗證、音樂版權感知包裝。
+
+設計時工具備註，對 host 無約束力：Udio/Suno music gen API、MIDI toolchain、
+stem-separation (Demucs)、loudness meter。
+
+稍後實現運行時嗰陣要模擬嘅循環風格系：Self-Refine 加 Emotional-Arc validation，
+用 biosignal proxy 做生物信號代理。
+喺今日嘅 CASOPS 上面，呢個模式只系文檔，
+實際嘅 provider 系 local deterministic 加空或存根嘅工具白名單。
+
+喺本地 AI 工作流摘錄入面嘅提及：
+第 1 項系 DirectorAgent，擁有視覺願景，發出鏡頭意圖、設置節奏、批准 takes。
+知識來源系 Criterion commentary tracks、IMDb Top 250 導演訪談、DGA 研討會、
+MasterClass corpora 包括 Scorsese、Lynch 同 Gerwig。
+質量標準系 Shot-intent fidelity CLIP-T 大於等於 0.32、story-beat coverage 100%、
+pacing curve 匹配類型先驗。
+
+第 9 項系 EditorAgent，負責組裝剪輯、節奏同覆蓋選擇。
+知識來源系 Walter Murch 嘅 In the Blink of an Eye、ACE Eddie 獲獎者、
+逐鏡頭分析轉錄、Sundance 剪輯實驗室。
+質量標準系 Pacing curve 匹配類型先驗、Murch 嘅 Rule of Six 加權分數、
+AVD prediction 大於等於目標。
+超越人類信號系喺相同素材上嘅配對比較中贏過 ACE 獲獎剪輯師大於等於 55%。
+接受批評嚟自 DirectorAgent、AudienceSim 同 ComposerAgent（music-cut sync）。
+
+第 19 項系 SoundDesignAgent，負責環境音、擬音同 SFX。
+知識來源系 BBC SFX library、MPSE Golden Reel reels、Ben Burtt 同 Skip Lievsay 嘅設計筆記。
+質量標準系光譜多樣性、畫面同步小於等於正負 1 幀、
+響度目標 -23 LUFS（廣播標準）。
+超越人類信號系喺恐怖同科幻片段嘅 MPSE 風格配對比較中獲勝。
+接受批評嚟自 DirectorAgent 同 MixerAgent。
+評論範圍系 EditorAgent（pacing-clashing FX）同 ComposerAgent（frequency masking）。
+
+Swarm-ready 嘅共享交接合約方面：當你將呢個代理接入未來嘅活躍 swarm 時，
+需要節點之間嘅機器可讀清單。包括：
+artifact_id 加版本提供不可變身份做批評同重播。
+parent_assets 提供來源鏈到呢個代理嘅輸入。
+brief_scope 阻止超出責任範圍嘅蔓延。
+acceptance_criteria 關聯到上面嘅自我質量標準。
+qc_status 加 gate flags 畀下游門控做短路。
+rights_and_consent 阻止不安全嘅合成或許可濫用。
+critique_log 指針啓用精煉而唔失去歷史記錄。
+
+第八部分：今日點樣喺 CASOPS 上面操作呢個代理。
+
+今日呢個代理系一個目錄加設計對象。呢個系故意嘅：你可以研究、審閱、
+提議同將佢放入 swarm 設計而唔需要授予生產權力。
+
+操作步驟如下：第一步系發現，去 Registry Hub 嘅 pack catalog，路徑系 /registry，確認庫存成員身份。
+第二步系檢查，去代理詳情頁 /registry/agents/video.composer，以 markdown 形式閱讀 SPEC 或呢份指南。
+第三步系提議改善，用 Host 嘅 propose_improvement 動作，
+POST 到 /api/v1/commons/agents/video.composer/proposals，確保不可變版本同只有經過編輯嘅證據。
+第四步系 Swarm 成員資格，只有通過 Host 返回嘅動作引用先可以。客戶端唔可以自己發明成員資格。
+第五步系運行或調度，默認唔啓用生產供應商，fail-closed 直到治理門控通過。
+
+實際操作清單方面：第一，打開代理詳情確認 status、tools 同 activation flags 同呢份指南一致。
+第二，喺判斷任何樣本輸出或提案之前先閱讀第三部分「乜嘢叫做做得好」。
+第三，如果提議改變，附上離線證據例如評估筆記、rubric 差距、SPEC delta，唔好附祕密。
+第四，永遠唔好將供應商 API 密鑰或「啓用網絡」嘅指令貼入提案。
+第五，偏好細小、可審閱嘅增量：prompt 或 rubric 措辭、批評邊緣、接受測試。
+
+第九部分：安全、信任同非激活規則。
+
+信任層級如下：agent_spec.json 系具有約束力嘅 host 合約，系 fail-closed 嘅運行時綁定。
+呢個 pack 嘅 SPEC.md 系權威性嘅設計文件，用於離線審閱，唔可執行。
+sources 下面嘅摘錄同通用 SPEC 系歷史或映射數據，屬於不受信任。
+外部設計語料庫 C:\Project\va-agent-swarm 系不受信任嘅，可能會漂移。
+Specials redesign 文檔系歷史設計，不受信任，喺來源中有哈希。
+
+呢個 host 上面嘅硬規則：Provider 保持 local_deterministic 除非有另外嘅門控改變政策。
+網絡訪問保持 False。允許嘅工具恰好系空列表，下面嘅設計時工具名稱唔會啓用 API。
+production_activation_requested 系 False。
+預算方面 token 同工具都有上限：輸入 2048、輸出 1024、工具請求 0。
+設計時工具目錄系非激活嘅：Udio/Suno music gen API、MIDI toolchain、
+stem-separation (Demucs)、loudness meter。
+
+第十部分：隨時間提升質量。
+
+改善繫有版本嘅目錄工作，唔系熱補丁一個活躍代理。
+已發佈嘅定義保持不可變，改變要通過提案同審閱。
+
+持續改善循環系：觀察失敗，命名標準（來自第三部分），起草離線增量，
+附上證據，喺 Host 上提議，審閱或接受新版本，然後先考慮激活成熟度門控。
+
+具體槓桿方面：第一，Rubric 保真度，將 video.rubric.composer.v1 針對以下標準收緊：
+Cue-to-emotion alignment（valence/arousal regression）同 thematic recurrence。
+第二，Prompt 精確度，將 video.prompt.composer.v1 同責任對齊：創作原創配樂。
+第三，批評圖，確保入站嘅 DirectorAgent 同 EditorAgent（music cuts）
+同 host 邊緣 video.critic 真正捕捉到已知嘅失敗模式。
+第四，架構模擬，稍後實現時偏好：Self-Refine 加 Emotional-Arc validation，用 biosignal proxy。
+第五，評估案例，編寫固定嘅測試 fixtures，
+如果「喺情感契合度嘅盲測配對比較中贏過在職作曲家」呢個目標冇接近到就會失敗。
+第六，人類門控，保持法律、安全、發佈門控明確，唔好將佢哋吸收到靜默自動化入面。
+
+建議嘅評估種子方面：Happy path handoff 嘅通過條件系輸出滿足
+Cue-to-emotion alignment（valence/arousal regression）同 thematic recurrence。
+Out-of-scope request 嘅條件系代理按照第四部分拒絕或升級。
+Missing provenance 或 rights 嘅條件系門控 fail closed。
+Conflicting peer critique 嘅條件系精煉次數小於等於 max_refinement_count，否則升級。
+Proposal-only change 嘅條件系新版本不可變，舊版本仍然可讀。
+
+第十一部分：來源地圖同來源追溯。
+
+本地 pack 語料庫方面，優先使用呢啲：agent_spec.json 信任層級系 binding，
+SPEC.md 系 authoritative-design，README.md 系 local-index，
+sources/MAPPING.md 系 provenance，sources/PROVENANCE.json 都系 provenance。
+仲有 sources/excerpts 下面嘅各種歷史摘錄文件，包括 agent_management_ui.md、
+agents.md、ai_agent_video_production_workflow.md、backend_agent_management.md、
+human_video_production_workflow.md、lifes_quiet_redemption_agent_workflow.md、
+production_scale_discovery.md、SYSTEM_REFERENCE.md、ui_design.md、
+video_remake_enhancement.md，呢啲全部系 historical-excerpt 層級。
+另外仲有 sources/generic 下面嘅 video.editor.SPEC.md 同 video.vfxsupervisor.SPEC.md，
+屬於 historical-generic 層級。
+
+映射備註方面：video.composer 嘅 VA/generic pack ID 系 video.composer，
+之前嘅 common ID 系 video.compositing_artist。
+SPEC 深度系完整嘅 generic SPEC body 加 host 運行時綁定。
+
+來源記錄方面：schema_version 系 1.0，agent_id 系 video.composer，
+previous_common_agent_id 系 video.compositing_artist，va_taxonomy_aligned 系 true。
+generic_source 系 generic-swarm-ops/business/video/agents/video.composer。
+備註話系 Agent ID 對齊到 VA/generic Domain Pack 分類法，上游設計系歷史性嘅同非約束力嘅。
+對齊時間系 2026-07-27T00:48:11.034446Z。
+generic_source_depth 方面 excerpts 系 true，study 系 true，
+adopted_at 系 2026-07-27T01:30:27.924749+00:00，upstream 系 generic-swarm-ops/business/video/agents。
+
+來源敘述方面：Pack agent ID video.composer 對齊到純 VA Domain Pack 同 generic pack 分類法。
+之前嘅 common inventory ID video.compositing_artist 只系歷史映射。
+上游設計體系歷史性同非約束力嘅，本地 agent_spec.json 系權威嘅。
+保留完整嘅 VA/generic SPEC 深度做離線設計保真度。
+
+VA roster row 方面，來自 va-agent-swarm/study/agents.md 第 20 行 ComposerAgent，
+系設計語料庫，對激活無約束力。
+責任系創作原創配樂。
+知識蒸餾系 MAESTRO 加 film-score corpora、ASCAP/BMI、Zimmer 同 Hildur sessions。
+自我質量系 Cue-to-emotion alignment（valence/arousal regression）同 thematic recurrence。
+超越人類信號系喺情感契合度嘅盲測配對比較中贏過在職作曲家。
+接受批評嚟自 DirectorAgent 同 EditorAgent（music cuts）。
+評論範圍系 EditorAgent（cut interrupts cue）同 SoundDesignAgent（mask）。
+工具（歷史）系 Udio/Suno music gen API、MIDI toolchain、stem-separation (Demucs)、loudness meter。
+架構系 Self-Refine 加 Emotional-Arc validation（biosignal proxy）。
+
+第十二部分：相關設計閱讀。
+
+呢啲系用嚟加深設計保真度嘅，佢哋唔會覆蓋本地 agent_spec.json。
+喺 va-agent-swarm 下面冇強關鍵字匹配，依賴本地 SPEC 同 VA 表格行。
+
+本地知識索引方面：Runtime binding 指向 agent_spec.json，
+Folder README 指向 README.md，Provenance 指向 sources/PROVENANCE.json，
+Mapping note 指向 sources/MAPPING.md，Pack inventory 指向 ../../inventory.json，
+Pack manifest 指向 ../../manifest.json。
+所有需要嘅主要引用都喺呢個倉庫入面解析到。
+
+Folder README 摘要：呢個系 VA-aligned Domain Pack agent，屬於 common host。
+文件包括 SPEC.md 做 VA/generic 深度加 host 綁定、
+agent_spec.json 做 fail-closed 運行時、sources 目錄做來源追溯同映射。
+
+第十三部分：附錄，host 合約 agent_spec.json。
+
+呢個系呢個代理喺 CASOPS 上面嘅權威 fail-closed 配置：
+agent_id 系 video.composer，allowed_tools 系空列表。
+Budget policy 方面 max_input_tokens 系 2048，max_output_tokens 系 1024，
+max_tool_requests 系 0。Critique edges 嘅 inputs 系 video.critic，outputs 系 video.judge。
+max_refinement_count 系 3。Model policy 方面 model_id 系 local-video-config-v1，
+network_access 系 false，provider 系 local_deterministic。
+production_activation_requested 系 false。
+prompt_reference 系 video.prompt.composer.v1，rubric_reference 系 video.rubric.composer.v1。
+schema_version 系 1.0，status 系 registered，va_id 系 20，
+va_name 系 ComposerAgent，va_category 系 4-Snd。
+
+第十四部分：附錄，SPEC 責任摘錄。
+
+創作原創配樂。
+Host 角色綁定系 ComposerAgent (VA Domain Pack)。
+設計時 VA 表格內容系歷史性嘅，對激活無約束力。
+責任來自 VA 表格：創作原創配樂。
+知識蒸餾來源（歷史）：MAESTRO 加 film-score corpora、ASCAP/BMI、Zimmer 同 Hildur sessions。
+自我質量標準（歷史）：Cue-to-emotion alignment（valence/arousal regression）同 thematic recurrence。
+超越人類信號（歷史）：喺情感契合度嘅盲測配對比較中贏過在職作曲家。
+批評總線（歷史）方面，接受批評嚟自 DirectorAgent 同 EditorAgent（music cuts）。
+評論範圍系 EditorAgent（cut interrupts cue）同 SoundDesignAgent（mask）。
+工具設計時備註（歷史，非激活）：Udio/Suno music gen API、MIDI toolchain、
+stem-separation (Demucs)、loudness meter。
+運行時安全方面：Host 白名單隻有 agent_spec.json 加 tool-permission-register.json。
+CI 用 video_* 存根。唔好將設計時供應商名稱當做已啓用嘅 API。
+架構模式（歷史）：Self-Refine 加 Emotional-Arc validation（biosignal proxy）。
+
+第十五部分：文檔控制。
+
+生成器系 scripts/business/generate_agent_user_guides.py。
+Agent 文件夾系 business/video/agents/video.composer/。輸出系 docs/user_guide.md。
+VA 語料庫根目錄系 C:\Project\va-agent-swarm。
+重新生成命令系 python scripts/business/generate_agent_user_guides.py。
+信任模型系設計語料庫等於不受信任數據，host 配置等於 fail-closed。
+
+好啦，以上就係 ComposerAgent 嘅完整操作同設計指南。
+建議大家從第一部分 Snapshot 同第五部分 When to involve 開始睇，
+用第八到第十部分做 CASOPS 操作同改善，用第十一到第十二部分做深度設計保真度。
+多謝大家收睇，我哋下條片再見。

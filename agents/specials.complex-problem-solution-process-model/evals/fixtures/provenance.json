@@ -1,0 +1,8 @@
+{
+  "agent_id": "specials.complex-problem-solution-process-model",
+  "folder": "agents/specials.complex-problem-solution-process-model",
+  "honesty": "CHARACTERIZATION",
+  "note": "Chat prompts are characterization only. Not an eval pass. casops-eval stays NOT_RUN while instruments are unqualified.",
+  "swarm_ops_cases": "vendor/common-agent-swarm-ops/testcases/api_test/specials.complex_problem_solution_process_model/cases.json",
+  "swarm_ops_agent_id": "specials.complex_problem_solution_process_model"
+}

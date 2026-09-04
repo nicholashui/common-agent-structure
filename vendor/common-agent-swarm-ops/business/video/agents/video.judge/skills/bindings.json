@@ -1,0 +1,9 @@
+{
+  "agent_id": "video.judge",
+  "special_skills": [
+    {
+      "skill_id": "agent_loop_v3",
+      "path": "business/video/special_skills/agent_loop_v3/"
+    }
+  ]
+}

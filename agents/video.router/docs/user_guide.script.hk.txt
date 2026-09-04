@@ -342,7 +342,7 @@ Critique 總線方面，接受批評嚟自 OrchestratorAgent 同 CostOptimizerAg
 生成器係 scripts/business/generate_agent_user_guides.py。
 Agent 文件夾係 business/video/agents/video.router/。
 輸出係 docs/user_guide.md。
-VA 語料庫根目錄係 C:\Project\va-agent-swarm。
+VA 語料庫根目錄係 vendor/va-agent-swarm。
 信任模型係設計語料庫不受信任；host 配置 fail-closed。
 
 

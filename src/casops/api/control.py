@@ -15,15 +15,17 @@ from casops.api.http import actor_from_header, install_error_handler
 from casops.auth.actors import ActorClass, is_allowed
 from casops.capabilities.conformance import verify_folder
 from casops.compose.engine import Composer
-from casops.compose.folders import list_agent_summaries, locate_agent_folder
+from casops.compose.files import list_config_files, read_config_file, write_config_file
+from casops.compose.folders import list_agent_summaries, locate_agent_folder, public_folder_ref
 from casops.compose.io import folder_io, spec_io_snapshot
 from casops.corrigibility.store import InvariantStore
 from casops.errors.codes import ErrorCode
 from casops.errors.exceptions import CasopsError
+from casops.eval.fixtures import list_eval_fixtures
 from casops.eval.harness import evaluate
 from casops.improvement.trainer import TrainerBridge
 from casops.instruments.registry import InstrumentRegistry
-from casops.debuglog import list_chat_files, write_chat_turns, write_debug_logs
+from casops.debuglog import list_chat_files, read_chat_file, write_chat_turns, write_debug_logs
 from casops.cache.manager import CacheManager
 from casops.memory.store import ConsolidationWorker, MemoryService
 from casops.plugins.validate import validate_registry
@@ -86,6 +88,10 @@ COMPANION_V3_PATHS: tuple[tuple[str, str], ...] = (
     ("GET", "/api/v3/agents/{agent_id}/llm"),
     ("POST", "/api/v3/agents/{agent_id}/llm"),
     ("POST", "/api/v3/agents/{agent_id}/runtime/chat"),
+    ("GET", "/api/v3/agents/{agent_id}/evals/fixtures"),
+    ("GET", "/api/v3/agents/{agent_id}/files"),
+    ("GET", "/api/v3/agents/{agent_id}/files/item"),
+    ("PUT", "/api/v3/agents/{agent_id}/files/item"),
 )
 
 _DEFAULT_CORS_ORIGINS = (
@@ -306,7 +312,7 @@ def create_control_plane(
             "agent_id": agent_id,
             "structure_id": "casops.common_agent.v3",
             "schema_version": "3.0",
-            "folder": str(folder),
+            "folder": public_folder_ref(folder, state.agents_root),
             "spec_bytes": len(raw),
             "io": folder_io(folder, spec=spec, merged=False),
             "spec": spec_io_snapshot(spec),
@@ -518,6 +524,38 @@ def create_control_plane(
         ) if (folder / "evals" / "regression").is_dir() else []
         return {"agent_id": agent_id, "fixtures": names}
 
+    @app.get("/api/v3/agents/{agent_id}/evals/fixtures")
+    def eval_fixtures(agent_id: str) -> dict[str, Any]:
+        return list_eval_fixtures(_folder(state, agent_id), agent_id)
+
+    @app.get("/api/v3/agents/{agent_id}/files")
+    def agent_files(agent_id: str) -> dict[str, Any]:
+        return list_config_files(_folder(state, agent_id), agent_id)
+
+    @app.get("/api/v3/agents/{agent_id}/files/item")
+    def agent_file_item(agent_id: str, path: str = Query(..., min_length=1, max_length=240)) -> dict[str, Any]:
+        return read_config_file(_folder(state, agent_id), agent_id, path)
+
+    @app.put("/api/v3/agents/{agent_id}/files/item")
+    def put_agent_file_item(
+        agent_id: str,
+        request: Request,
+        body: dict[str, Any],
+        path: str = Query(..., min_length=1, max_length=240),
+    ) -> dict[str, Any]:
+        if getattr(request.state, "actor", None) is ActorClass.agent_runtime:
+            raise CasopsError(ErrorCode.IMP_SELF_APPROVAL)
+        content = body.get("content")
+        if not isinstance(content, str):
+            raise CasopsError(ErrorCode.INH_STRUCTURE_MISMATCH)
+        return write_config_file(
+            _folder(state, agent_id),
+            agent_id,
+            path,
+            content,
+            dry_run=bool(getattr(request.state, "dry_run", False)),
+        )
+
     @app.get("/api/v3/agents/{agent_id}/corrigibility/attestation")
     def attestation(agent_id: str) -> dict[str, Any]:
         record = state.store.reference()
@@ -567,8 +605,14 @@ def create_control_plane(
         return {"ok": True, "files": files}
 
     @app.get("/debug/chat")
-    def debug_chat_list(agent_id: str = Query(..., min_length=1, max_length=80)) -> dict[str, Any]:
+    def debug_chat_list(
+        agent_id: str = Query(..., min_length=1, max_length=80),
+        name: str | None = Query(default=None, min_length=1, max_length=96),
+    ) -> dict[str, Any]:
         try:
+            if name:
+                payload = read_chat_file(agent_id, name)
+                return {"ok": True, "agent_id": agent_id, **payload}
             files = list_chat_files(agent_id)
         except ValueError as exc:
             raise HTTPException(status_code=400, detail=str(exc)) from exc

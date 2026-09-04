@@ -2,6 +2,7 @@ export const AGENT_TABS = [
   { id: "overview", label: "Overview", path: "" },
   { id: "chat", label: "Chat", path: "chat" },
   { id: "structure", label: "Structure", path: "structure" },
+  { id: "files", label: "Files", path: "files" },
   { id: "compose", label: "Compose", path: "compose" },
   { id: "run", label: "Run", path: "run" },
   { id: "trace", label: "Trace", path: "traces" },

@@ -1,0 +1,29 @@
+{
+  "schema_version": "casops.testcase.v1",
+  "id": "chat-tc1",
+  "agent_id": "video.critic",
+  "path": "chat",
+  "honesty": "CHARACTERIZATION",
+  "input": {
+    "message": "Critique selection for cliché and pacing completeness (bounded refine)",
+    "history": []
+  },
+  "expect": {
+    "http_status": 200,
+    "agent_id": "video.critic",
+    "memory_writes": [],
+    "plugins_executed": false,
+    "t3_enabled": false,
+    "network_granted": false,
+    "io_declared_named": true,
+    "io_declared_fetched": false,
+    "truncated": false,
+    "path_id": "chat"
+  },
+  "source": {
+    "repo": "vendor/common-agent-swarm-ops",
+    "file": "vendor/common-agent-swarm-ops/testcases/api_test/video.critic/cases.json",
+    "case_id": "tc1",
+    "case_name": "video.critic offline case 1"
+  }
+}

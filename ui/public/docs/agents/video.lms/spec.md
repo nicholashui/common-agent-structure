@@ -2726,7 +2726,7 @@ The diagram below presents the common agent as a professional operating architec
 ## Provenance
 
 - Master roster row va_id=104 from embedded agents.md content above.
-- Deep/extra text from `business/video/corpus/` and `C:\Project\va-agent-swarm`.
+- Deep/extra text from `business/video/corpus/` and `vendor/va-agent-swarm`.
 - Generator: `scripts/business/enrich_video_agent_specs.py`.
 - Upstream project name (historical only): va-agent-swarm.
 
@@ -6550,7 +6550,7 @@ Step 7: DELIVERY PH
 ## Provenance
 
 - Master roster row va_id=57 from embedded agents.md content above.
-- Deep/extra text from `business/video/corpus/` and `C:\Project\va-agent-swarm`.
+- Deep/extra text from `business/video/corpus/` and `vendor/va-agent-swarm`.
 - Generator: `scripts/business/enrich_video_agent_specs.py`.
 - Upstream project name (historical only): va-agent-swarm.
 
@@ -6674,27 +6674,27 @@ Live primary-source expansion remains a residual for score 100 on S3 where depth
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "让学习粘住",
+      "title": "\u8ba9\u5b66\u4e60\u7c98\u4f4f",
       "isbn13": "9787508655611",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 让学习粘住，ISBN-13 9787508655611"
+      "citation": "ZH: \u8ba9\u5b66\u4e60\u7c98\u4f4f\uff0cISBN-13 9787508655611"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "教学设计原理",
-      "author": "加涅",
+      "title": "\u6559\u5b66\u8bbe\u8ba1\u539f\u7406",
+      "author": "\u52a0\u6d85",
       "isbn13": "9787561762264",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 教学设计原理（加涅），ISBN-13 9787561762264"
+      "citation": "ZH: \u6559\u5b66\u8bbe\u8ba1\u539f\u7406\uff08\u52a0\u6d85\uff09\uff0cISBN-13 9787561762264"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "追求理解的教学设计",
+      "title": "\u8ffd\u6c42\u7406\u89e3\u7684\u6559\u5b66\u8bbe\u8ba1",
       "isbn13": "9787561799994",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 追求理解的教学设计，ISBN-13 9787561799994"
+      "citation": "ZH: \u8ffd\u6c42\u7406\u89e3\u7684\u6559\u5b66\u8bbe\u8ba1\uff0cISBN-13 9787561799994"
     },
     {
       "kind": "reference_book",
@@ -6744,34 +6744,34 @@ Live primary-source expansion remains a residual for score 100 on S3 where depth
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "代码整洁之道",
+      "title": "\u4ee3\u7801\u6574\u6d01\u4e4b\u9053",
       "isbn13": "9787115216878",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 代码整洁之道，ISBN-13 9787115216878"
+      "citation": "ZH: \u4ee3\u7801\u6574\u6d01\u4e4b\u9053\uff0cISBN-13 9787115216878"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "设计模式",
+      "title": "\u8bbe\u8ba1\u6a21\u5f0f",
       "isbn13": "9787111075752",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 设计模式，ISBN-13 9787111075752"
+      "citation": "ZH: \u8bbe\u8ba1\u6a21\u5f0f\uff0cISBN-13 9787111075752"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "SRE：Google运维解密",
+      "title": "SRE\uff1aGoogle\u8fd0\u7ef4\u89e3\u5bc6",
       "isbn13": "9787115419903",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: SRE：Google运维解密，ISBN-13 9787115419903"
+      "citation": "ZH: SRE\uff1aGoogle\u8fd0\u7ef4\u89e3\u5bc6\uff0cISBN-13 9787115419903"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "程序员修炼之道",
+      "title": "\u7a0b\u5e8f\u5458\u4fee\u70bc\u4e4b\u9053",
       "isbn13": "9787115527684",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 程序员修炼之道，ISBN-13 9787115527684"
+      "citation": "ZH: \u7a0b\u5e8f\u5458\u4fee\u70bc\u4e4b\u9053\uff0cISBN-13 9787115527684"
     }
   ],
   "agent_id": "video.lms",
@@ -6786,7 +6786,7 @@ Live primary-source expansion remains a residual for score 100 on S3 where depth
     "adopted_at": "2026-07-27T01:30:28.355038+00:00",
     "upstream": "generic-swarm-ops/business/video/agents"
   },
-  "imported_from": "C:\\Project\\common-agent-swarm-ops\\business\\video\\agents\\video.lms",
+  "imported_from": "vendor/common-agent-swarm-ops/business/video/agents/video.lms",
   "reference_book_origin": "spec/book_of_knowledge.md",
   "reference_book_note": "Bibliographic references from spec/book_of_knowledge.md. Does not enable network, RAG, T3, plugins, or memory writes."
 }

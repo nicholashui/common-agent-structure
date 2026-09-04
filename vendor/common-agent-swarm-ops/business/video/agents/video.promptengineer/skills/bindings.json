@@ -1,0 +1,13 @@
+{
+  "agent_id": "video.promptengineer",
+  "special_skills": [
+    {
+      "skill_id": "llm_usage",
+      "path": "business/video/special_skills/llm_usage/"
+    },
+    {
+      "skill_id": "optimization_agent",
+      "path": "business/video/special_skills/optimization_agent/"
+    }
+  ]
+}

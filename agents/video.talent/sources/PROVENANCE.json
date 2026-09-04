@@ -40,18 +40,18 @@
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "演员的自我修养",
+      "title": "\u6f14\u5458\u7684\u81ea\u6211\u4fee\u517b",
       "isbn13": "9787108014504",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 演员的自我修养，ISBN-13 9787108014504"
+      "citation": "ZH: \u6f14\u5458\u7684\u81ea\u6211\u4fee\u517b\uff0cISBN-13 9787108014504"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "尊重表演艺术",
+      "title": "\u5c0a\u91cd\u8868\u6f14\u827a\u672f",
       "isbn13": "9787106028893",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 尊重表演艺术，ISBN-13 9787106028893"
+      "citation": "ZH: \u5c0a\u91cd\u8868\u6f14\u827a\u672f\uff0cISBN-13 9787106028893"
     },
     {
       "kind": "reference_book",
@@ -128,20 +128,20 @@
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "电影镜头设计",
-      "author": "卡茨",
+      "title": "\u7535\u5f71\u955c\u5934\u8bbe\u8ba1",
+      "author": "\u5361\u8328",
       "isbn13": "9787115222224",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 电影镜头设计（卡茨），ISBN-13 9787115222224"
+      "citation": "ZH: \u7535\u5f71\u955c\u5934\u8bbe\u8ba1\uff08\u5361\u8328\uff09\uff0cISBN-13 9787115222224"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "导演创作完全手册",
-      "author": "拉比格",
+      "title": "\u5bfc\u6f14\u521b\u4f5c\u5b8c\u5168\u624b\u518c",
+      "author": "\u62c9\u6bd4\u683c",
       "isbn13": "9787515302867",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 导演创作完全手册（拉比格），ISBN-13 9787515302867"
+      "citation": "ZH: \u5bfc\u6f14\u521b\u4f5c\u5b8c\u5168\u624b\u518c\uff08\u62c9\u6bd4\u683c\uff09\uff0cISBN-13 9787515302867"
     },
     {
       "kind": "reference_book",
@@ -155,10 +155,10 @@
     {
       "kind": "reference_book",
       "language": "EN",
-      "title": "The True Adventures of the Worlds Greatest Stuntman My Life as Indiana Jones, James Bon…",
+      "title": "The True Adventures of the Worlds Greatest Stuntman My Life as Indiana Jones, James Bon\u2026",
       "isbn13": "9781848568747",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "EN: The True Adventures of the Worlds Greatest Stuntman My Life as Indiana Jones, James Bon…, ISBN-13 9781848568747"
+      "citation": "EN: The True Adventures of the Worlds Greatest Stuntman My Life as Indiana Jones, James Bon\u2026, ISBN-13 9781848568747"
     }
   ],
   "agent_id": "video.talent",
@@ -173,7 +173,7 @@
     "adopted_at": "2026-07-27T01:30:28.920775+00:00",
     "upstream": "generic-swarm-ops/business/video/agents"
   },
-  "imported_from": "C:\\Project\\common-agent-swarm-ops\\business\\video\\agents\\video.talent",
+  "imported_from": "vendor/common-agent-swarm-ops/business/video/agents/video.talent",
   "reference_book_origin": "spec/book_of_knowledge.md",
   "reference_book_note": "Bibliographic references from spec/book_of_knowledge.md. Does not enable network, RAG, T3, plugins, or memory writes."
 }

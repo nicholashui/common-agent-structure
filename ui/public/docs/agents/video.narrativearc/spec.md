@@ -6567,7 +6567,7 @@ This is the cycle of growth.
 ## Provenance
 
 - Master roster row va_id=4 from embedded agents.md content above.
-- Deep/extra text from `business/video/corpus/` and `C:\Project\va-agent-swarm`.
+- Deep/extra text from `business/video/corpus/` and `vendor/va-agent-swarm`.
 - Generator: `scripts/business/enrich_video_agent_specs.py`.
 - Upstream project name (historical only): va-agent-swarm.
 
@@ -6749,63 +6749,63 @@ Live primary-source expansion remains a residual for score 100 on S3 where depth
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "故事",
-      "author": "麦基",
+      "title": "\u6545\u4e8b",
+      "author": "\u9ea6\u57fa",
       "isbn13": "9787201076942",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 故事（麦基），ISBN-13 9787201076942"
+      "citation": "ZH: \u6545\u4e8b\uff08\u9ea6\u57fa\uff09\uff0cISBN-13 9787201076942"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "故事的解剖",
-      "author": "繁体麦基",
+      "title": "\u6545\u4e8b\u7684\u89e3\u5256",
+      "author": "\u7e41\u4f53\u9ea6\u57fa",
       "isbn13": "9789862135488",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 故事的解剖（繁体麦基），ISBN-13 9789862135488"
+      "citation": "ZH: \u6545\u4e8b\u7684\u89e3\u5256\uff08\u7e41\u4f53\u9ea6\u57fa\uff09\uff0cISBN-13 9789862135488"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "救猫咪",
+      "title": "\u6551\u732b\u54aa",
       "isbn13": "9787229040727",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 救猫咪，ISBN-13 9787229040727"
+      "citation": "ZH: \u6551\u732b\u54aa\uff0cISBN-13 9787229040727"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "作家之路",
-      "author": "佛格勒",
+      "title": "\u4f5c\u5bb6\u4e4b\u8def",
+      "author": "\u4f5b\u683c\u52d2",
       "isbn13": "9787513320184",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 作家之路（佛格勒），ISBN-13 9787513320184"
+      "citation": "ZH: \u4f5c\u5bb6\u4e4b\u8def\uff08\u4f5b\u683c\u52d2\uff09\uff0cISBN-13 9787513320184"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "千面英雄",
+      "title": "\u5343\u9762\u82f1\u96c4",
       "isbn13": "9787532753871",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 千面英雄，ISBN-13 9787532753871"
+      "citation": "ZH: \u5343\u9762\u82f1\u96c4\uff0cISBN-13 9787532753871"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "电影剧本写作基础",
-      "author": "悉德·菲尔德",
+      "title": "\u7535\u5f71\u5267\u672c\u5199\u4f5c\u57fa\u7840",
+      "author": "\u6089\u5fb7\u00b7\u83f2\u5c14\u5fb7",
       "isbn13": "9787106021238",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 电影剧本写作基础（悉德·菲尔德），ISBN-13 9787106021238"
+      "citation": "ZH: \u7535\u5f71\u5267\u672c\u5199\u4f5c\u57fa\u7840\uff08\u6089\u5fb7\u00b7\u83f2\u5c14\u5fb7\uff09\uff0cISBN-13 9787106021238"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "戏剧写作基础",
-      "author": "埃格里",
+      "title": "\u620f\u5267\u5199\u4f5c\u57fa\u7840",
+      "author": "\u57c3\u683c\u91cc",
       "isbn13": "9787108014504",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 戏剧写作基础（埃格里），ISBN-13 9787108014504"
+      "citation": "ZH: \u620f\u5267\u5199\u4f5c\u57fa\u7840\uff08\u57c3\u683c\u91cc\uff09\uff0cISBN-13 9787108014504"
     },
     {
       "kind": "reference_book",
@@ -6856,10 +6856,10 @@ Live primary-source expansion remains a residual for score 100 on S3 where depth
       "kind": "reference_book",
       "language": "EN",
       "title": "What Is Cinema? Vol. 1",
-      "author": "André Bazin",
+      "author": "Andr\u00e9 Bazin",
       "isbn13": "9780520242272",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "EN: What Is Cinema? Vol. 1 (André Bazin), ISBN-13 9780520242272"
+      "citation": "EN: What Is Cinema? Vol. 1 (Andr\u00e9 Bazin), ISBN-13 9780520242272"
     },
     {
       "kind": "reference_book",
@@ -6874,10 +6874,10 @@ Live primary-source expansion remains a residual for score 100 on S3 where depth
       "kind": "reference_book",
       "language": "EN",
       "title": "Hitchcock/Truffaut",
-      "author": "François Truffaut",
+      "author": "Fran\u00e7ois Truffaut",
       "isbn13": "9780671604295",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "EN: Hitchcock/Truffaut (François Truffaut), ISBN-13 9780671604295"
+      "citation": "EN: Hitchcock/Truffaut (Fran\u00e7ois Truffaut), ISBN-13 9780671604295"
     },
     {
       "kind": "reference_book",
@@ -6891,231 +6891,231 @@ Live primary-source expansion remains a residual for score 100 on S3 where depth
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "电影艺术：形式与风格",
-      "author": "波德维尔、汤普森",
+      "title": "\u7535\u5f71\u827a\u672f\uff1a\u5f62\u5f0f\u4e0e\u98ce\u683c",
+      "author": "\u6ce2\u5fb7\u7ef4\u5c14\u3001\u6c64\u666e\u68ee",
       "isbn13": "9787301254332",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 电影艺术：形式与风格（波德维尔、汤普森），ISBN-13 9787301254332"
+      "citation": "ZH: \u7535\u5f71\u827a\u672f\uff1a\u5f62\u5f0f\u4e0e\u98ce\u683c\uff08\u6ce2\u5fb7\u7ef4\u5c14\u3001\u6c64\u666e\u68ee\uff09\uff0cISBN-13 9787301254332"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "认识电影",
-      "author": "贾内梯",
+      "title": "\u8ba4\u8bc6\u7535\u5f71",
+      "author": "\u8d3e\u5185\u68af",
       "isbn13": "9787532763122",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 认识电影（贾内梯），ISBN-13 9787532763122"
+      "citation": "ZH: \u8ba4\u8bc6\u7535\u5f71\uff08\u8d3e\u5185\u68af\uff09\uff0cISBN-13 9787532763122"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "电影是什么",
-      "author": "巴赞",
+      "title": "\u7535\u5f71\u662f\u4ec0\u4e48",
+      "author": "\u5df4\u8d5e",
       "isbn13": "9787108017963",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 电影是什么（巴赞），ISBN-13 9787108017963"
+      "citation": "ZH: \u7535\u5f71\u662f\u4ec0\u4e48\uff08\u5df4\u8d5e\uff09\uff0cISBN-13 9787108017963"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "雕刻时光",
-      "author": "塔可夫斯基",
+      "title": "\u96d5\u523b\u65f6\u5149",
+      "author": "\u5854\u53ef\u592b\u65af\u57fa",
       "isbn13": "9787532743841",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 雕刻时光（塔可夫斯基），ISBN-13 9787532743841"
+      "citation": "ZH: \u96d5\u523b\u65f6\u5149\uff08\u5854\u53ef\u592b\u65af\u57fa\uff09\uff0cISBN-13 9787532743841"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "希区柯克与特吕弗对话录",
+      "title": "\u5e0c\u533a\u67ef\u514b\u4e0e\u7279\u5415\u5f17\u5bf9\u8bdd\u5f55",
       "isbn13": "9787532745128",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 希区柯克与特吕弗对话录，ISBN-13 9787532745128"
+      "citation": "ZH: \u5e0c\u533a\u67ef\u514b\u4e0e\u7279\u5415\u5f17\u5bf9\u8bdd\u5f55\uff0cISBN-13 9787532745128"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "电影语言的语法",
-      "author": "阿里洪",
+      "title": "\u7535\u5f71\u8bed\u8a00\u7684\u8bed\u6cd5",
+      "author": "\u963f\u91cc\u6d2a",
       "isbn13": "9787532299990",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 电影语言的语法（阿里洪），ISBN-13 9787532299990"
+      "citation": "ZH: \u7535\u5f71\u8bed\u8a00\u7684\u8bed\u6cd5\uff08\u963f\u91cc\u6d2a\uff09\uff0cISBN-13 9787532299990"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "AI写作：用AI倍速提升写作效率",
-      "author": "邓世超",
+      "title": "AI\u5199\u4f5c\uff1a\u7528AI\u500d\u901f\u63d0\u5347\u5199\u4f5c\u6548\u7387",
+      "author": "\u9093\u4e16\u8d85",
       "isbn13": "9787111760146",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: AI写作：用AI倍速提升写作效率（邓世超），ISBN-13 9787111760146"
+      "citation": "ZH: AI\u5199\u4f5c\uff1a\u7528AI\u500d\u901f\u63d0\u5347\u5199\u4f5c\u6548\u7387\uff08\u9093\u4e16\u8d85\uff09\uff0cISBN-13 9787111760146"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "如何写出好故事 HBO大师写作课",
+      "title": "\u5982\u4f55\u5199\u51fa\u597d\u6545\u4e8b HBO\u5927\u5e08\u5199\u4f5c\u8bfe",
       "isbn13": "9787516827482",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 如何写出好故事 HBO大师写作课，ISBN-13 9787516827482"
+      "citation": "ZH: \u5982\u4f55\u5199\u51fa\u597d\u6545\u4e8b HBO\u5927\u5e08\u5199\u4f5c\u8bfe\uff0cISBN-13 9787516827482"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "给青年编剧的信3.0",
-      "author": "宋方金",
+      "title": "\u7ed9\u9752\u5e74\u7f16\u5267\u7684\u4fe13.0",
+      "author": "\u5b8b\u65b9\u91d1",
       "isbn13": "9787559493965",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 给青年编剧的信3.0（宋方金），ISBN-13 9787559493965"
+      "citation": "ZH: \u7ed9\u9752\u5e74\u7f16\u5267\u7684\u4fe13.0\uff08\u5b8b\u65b9\u91d1\uff09\uff0cISBN-13 9787559493965"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "编剧的艺术",
-      "author": "埃格里",
+      "title": "\u7f16\u5267\u7684\u827a\u672f",
+      "author": "\u57c3\u683c\u91cc",
       "isbn13": "9787550213333",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 编剧的艺术（埃格里），ISBN-13 9787550213333"
+      "citation": "ZH: \u7f16\u5267\u7684\u827a\u672f\uff08\u57c3\u683c\u91cc\uff09\uff0cISBN-13 9787550213333"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "短视频与直播文案写作",
-      "author": "张弘李自海魏坚 主编吴曼刘哲李守勤 副主编",
+      "title": "\u77ed\u89c6\u9891\u4e0e\u76f4\u64ad\u6587\u6848\u5199\u4f5c",
+      "author": "\u5f20\u5f18\u674e\u81ea\u6d77\u9b4f\u575a \u4e3b\u7f16\u5434\u66fc\u5218\u54f2\u674e\u5b88\u52e4 \u526f\u4e3b\u7f16",
       "isbn13": "9787115638649",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 短视频与直播文案写作（张弘李自海魏坚 主编吴曼刘哲李守勤 副主编），ISBN-13 9787115638649"
+      "citation": "ZH: \u77ed\u89c6\u9891\u4e0e\u76f4\u64ad\u6587\u6848\u5199\u4f5c\uff08\u5f20\u5f18\u674e\u81ea\u6d77\u9b4f\u575a \u4e3b\u7f16\u5434\u66fc\u5218\u54f2\u674e\u5b88\u52e4 \u526f\u4e3b\u7f16\uff09\uff0cISBN-13 9787115638649"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "新媒体广告与文案写作(第2版)",
-      "author": "周颖 主编张文杰 主编朱晓虹 副主编王娜 副主编黄伟 副主编",
+      "title": "\u65b0\u5a92\u4f53\u5e7f\u544a\u4e0e\u6587\u6848\u5199\u4f5c(\u7b2c2\u7248)",
+      "author": "\u5468\u9896 \u4e3b\u7f16\u5f20\u6587\u6770 \u4e3b\u7f16\u6731\u6653\u8679 \u526f\u4e3b\u7f16\u738b\u5a1c \u526f\u4e3b\u7f16\u9ec4\u4f1f \u526f\u4e3b\u7f16",
       "isbn13": "9787115648044",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 新媒体广告与文案写作(第2版)（周颖 主编张文杰 主编朱晓虹 副主编王娜 副主编黄伟 副主编），ISBN-13 9787115648044"
+      "citation": "ZH: \u65b0\u5a92\u4f53\u5e7f\u544a\u4e0e\u6587\u6848\u5199\u4f5c(\u7b2c2\u7248)\uff08\u5468\u9896 \u4e3b\u7f16\u5f20\u6587\u6770 \u4e3b\u7f16\u6731\u6653\u8679 \u526f\u4e3b\u7f16\u738b\u5a1c \u526f\u4e3b\u7f16\u9ec4\u4f1f \u526f\u4e3b\u7f16\uff09\uff0cISBN-13 9787115648044"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "小说的骨架：好提纲成就好故事",
-      "author": "[美]凯蒂·维兰德",
+      "title": "\u5c0f\u8bf4\u7684\u9aa8\u67b6\uff1a\u597d\u63d0\u7eb2\u6210\u5c31\u597d\u6545\u4e8b",
+      "author": "[\u7f8e]\u51ef\u8482\u00b7\u7ef4\u5170\u5fb7",
       "isbn13": "9787210099529",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 小说的骨架：好提纲成就好故事（[美]凯蒂·维兰德），ISBN-13 9787210099529"
+      "citation": "ZH: \u5c0f\u8bf4\u7684\u9aa8\u67b6\uff1a\u597d\u63d0\u7eb2\u6210\u5c31\u597d\u6545\u4e8b\uff08[\u7f8e]\u51ef\u8482\u00b7\u7ef4\u5170\u5fb7\uff09\uff0cISBN-13 9787210099529"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "编剧心理学 在剧本中建构冲突（（美）尹迪克）",
+      "title": "\u7f16\u5267\u5fc3\u7406\u5b66 \u5728\u5267\u672c\u4e2d\u5efa\u6784\u51b2\u7a81\uff08\uff08\u7f8e\uff09\u5c39\u8fea\u514b\uff09",
       "isbn13": "9789571161488",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 编剧心理学 在剧本中建构冲突（（美）尹迪克），ISBN-13 9789571161488"
+      "citation": "ZH: \u7f16\u5267\u5fc3\u7406\u5b66 \u5728\u5267\u672c\u4e2d\u5efa\u6784\u51b2\u7a81\uff08\uff08\u7f8e\uff09\u5c39\u8fea\u514b\uff09\uff0cISBN-13 9789571161488"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "救猫咪-小说创作指南",
+      "title": "\u6551\u732b\u54aa-\u5c0f\u8bf4\u521b\u4f5c\u6307\u5357",
       "isbn13": "9787522513003",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 救猫咪-小说创作指南，ISBN-13 9787522513003"
+      "citation": "ZH: \u6551\u732b\u54aa-\u5c0f\u8bf4\u521b\u4f5c\u6307\u5357\uff0cISBN-13 9787522513003"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "救猫咪：电影编剧指南",
+      "title": "\u6551\u732b\u54aa\uff1a\u7535\u5f71\u7f16\u5267\u6307\u5357",
       "isbn13": "9787533963361",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 救猫咪：电影编剧指南，ISBN-13 9787533963361"
+      "citation": "ZH: \u6551\u732b\u54aa\uff1a\u7535\u5f71\u7f16\u5267\u6307\u5357\uff0cISBN-13 9787533963361"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "人物：文本、舞台、银幕角色与卡司设计的艺术（编剧教父罗伯特·麦基“虚构艺术三部曲”完结篇）",
-      "author": "罗伯特·麦基",
+      "title": "\u4eba\u7269\uff1a\u6587\u672c\u3001\u821e\u53f0\u3001\u94f6\u5e55\u89d2\u8272\u4e0e\u5361\u53f8\u8bbe\u8ba1\u7684\u827a\u672f\uff08\u7f16\u5267\u6559\u7236\u7f57\u4f2f\u7279\u00b7\u9ea6\u57fa\u201c\u865a\u6784\u827a\u672f\u4e09\u90e8\u66f2\u201d\u5b8c\u7ed3\u7bc7\uff09",
+      "author": "\u7f57\u4f2f\u7279\u00b7\u9ea6\u57fa",
       "isbn13": "9787533969585",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 人物：文本、舞台、银幕角色与卡司设计的艺术（编剧教父罗伯特·麦基“虚构艺术三部曲”完结篇）（罗伯特·麦基），ISBN-13 9787533969585"
+      "citation": "ZH: \u4eba\u7269\uff1a\u6587\u672c\u3001\u821e\u53f0\u3001\u94f6\u5e55\u89d2\u8272\u4e0e\u5361\u53f8\u8bbe\u8ba1\u7684\u827a\u672f\uff08\u7f16\u5267\u6559\u7236\u7f57\u4f2f\u7279\u00b7\u9ea6\u57fa\u201c\u865a\u6784\u827a\u672f\u4e09\u90e8\u66f2\u201d\u5b8c\u7ed3\u7bc7\uff09\uff08\u7f57\u4f2f\u7279\u00b7\u9ea6\u57fa\uff09\uff0cISBN-13 9787533969585"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "救猫咪2经典电影剧本解析",
+      "title": "\u6551\u732b\u54aa2\u7ecf\u5178\u7535\u5f71\u5267\u672c\u89e3\u6790",
       "isbn13": "9787533964108",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 救猫咪2经典电影剧本解析，ISBN-13 9787533964108"
+      "citation": "ZH: \u6551\u732b\u54aa2\u7ecf\u5178\u7535\u5f71\u5267\u672c\u89e3\u6790\uff0cISBN-13 9787533964108"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "故事的解剖",
-      "author": "羅伯特．麥基(Robert McKee)",
+      "title": "\u6545\u4e8b\u7684\u89e3\u5256",
+      "author": "\u7f85\u4f2f\u7279\uff0e\u9ea5\u57fa(Robert McKee)",
       "isbn13": "9787201094601",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 故事的解剖 (羅伯特．麥基(Robert McKee))，ISBN-13 9787201094601"
+      "citation": "ZH: \u6545\u4e8b\u7684\u89e3\u5256 (\u7f85\u4f2f\u7279\uff0e\u9ea5\u57fa(Robert McKee))\uff0cISBN-13 9787201094601"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "對白的解剖",
+      "title": "\u5c0d\u767d\u7684\u89e3\u5256",
       "isbn13": "9789864898435",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 對白的解剖，ISBN-13 9789864898435"
+      "citation": "ZH: \u5c0d\u767d\u7684\u89e3\u5256\uff0cISBN-13 9789864898435"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "人物的解剖",
+      "title": "\u4eba\u7269\u7684\u89e3\u5256",
       "isbn13": "9789864896257",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 人物的解剖，ISBN-13 9789864896257"
+      "citation": "ZH: \u4eba\u7269\u7684\u89e3\u5256\uff0cISBN-13 9789864896257"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "諾蘭變奏曲",
+      "title": "\u8afe\u862d\u8b8a\u594f\u66f2",
       "isbn13": "9789863844693",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 諾蘭變奏曲，ISBN-13 9789863844693"
+      "citation": "ZH: \u8afe\u862d\u8b8a\u594f\u66f2\uff0cISBN-13 9789863844693"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "作家的灵感宝库",
+      "title": "\u4f5c\u5bb6\u7684\u7075\u611f\u5b9d\u5e93",
       "isbn13": "9787514220155",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 作家的灵感宝库，ISBN-13 9787514220155"
+      "citation": "ZH: \u4f5c\u5bb6\u7684\u7075\u611f\u5b9d\u5e93\uff0cISBN-13 9787514220155"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "发现你的创造力类型",
+      "title": "\u53d1\u73b0\u4f60\u7684\u521b\u9020\u529b\u7c7b\u578b",
       "isbn13": "9787210108061",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 发现你的创造力类型，ISBN-13 9787210108061"
+      "citation": "ZH: \u53d1\u73b0\u4f60\u7684\u521b\u9020\u529b\u7c7b\u578b\uff0cISBN-13 9787210108061"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "畅销作家写作全技巧",
+      "title": "\u7545\u9500\u4f5c\u5bb6\u5199\u4f5c\u5168\u6280\u5de7",
       "isbn13": "9787210092452",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 畅销作家写作全技巧，ISBN-13 9787210092452"
+      "citation": "ZH: \u7545\u9500\u4f5c\u5bb6\u5199\u4f5c\u5168\u6280\u5de7\uff0cISBN-13 9787210092452"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "小说的八百万种写法",
+      "title": "\u5c0f\u8bf4\u7684\u516b\u767e\u4e07\u79cd\u5199\u6cd5",
       "isbn13": "9786263100442",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 小说的八百万种写法，ISBN-13 9786263100442"
+      "citation": "ZH: \u5c0f\u8bf4\u7684\u516b\u767e\u4e07\u79cd\u5199\u6cd5\uff0cISBN-13 9786263100442"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "写小说最重要的十件事",
+      "title": "\u5199\u5c0f\u8bf4\u6700\u91cd\u8981\u7684\u5341\u4ef6\u4e8b",
       "isbn13": "9787210108672",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 写小说最重要的十件事，ISBN-13 9787210108672"
+      "citation": "ZH: \u5199\u5c0f\u8bf4\u6700\u91cd\u8981\u7684\u5341\u4ef6\u4e8b\uff0cISBN-13 9787210108672"
     },
     {
       "kind": "reference_book",
@@ -7129,29 +7129,29 @@ Live primary-source expansion remains a residual for score 100 on S3 where depth
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "电影编剧学（修订版）",
-      "author": "汪流",
+      "title": "\u7535\u5f71\u7f16\u5267\u5b66\uff08\u4fee\u8ba2\u7248\uff09",
+      "author": "\u6c6a\u6d41",
       "isbn13": "9787811272406",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 电影编剧学（修订版）（汪流），ISBN-13 9787811272406"
+      "citation": "ZH: \u7535\u5f71\u7f16\u5267\u5b66\uff08\u4fee\u8ba2\u7248\uff09\uff08\u6c6a\u6d41\uff09\uff0cISBN-13 9787811272406"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "实用电影编剧",
-      "author": "张觉明",
+      "title": "\u5b9e\u7528\u7535\u5f71\u7f16\u5267",
+      "author": "\u5f20\u89c9\u660e",
       "isbn13": "9787106029234",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 实用电影编剧（张觉明），ISBN-13 9787106029234"
+      "citation": "ZH: \u5b9e\u7528\u7535\u5f71\u7f16\u5267\uff08\u5f20\u89c9\u660e\uff09\uff0cISBN-13 9787106029234"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "故事片创作六讲",
-      "author": "王竞",
+      "title": "\u6545\u4e8b\u7247\u521b\u4f5c\u516d\u8bb2",
+      "author": "\u738b\u7ade",
       "isbn13": "9787541151323",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 故事片创作六讲（王竞），ISBN-13 9787541151323"
+      "citation": "ZH: \u6545\u4e8b\u7247\u521b\u4f5c\u516d\u8bb2\uff08\u738b\u7ade\uff09\uff0cISBN-13 9787541151323"
     }
   ],
   "agent_id": "video.narrativearc",
@@ -7166,7 +7166,7 @@ Live primary-source expansion remains a residual for score 100 on S3 where depth
     "adopted_at": "2026-07-27T01:30:28.525741+00:00",
     "upstream": "generic-swarm-ops/business/video/agents"
   },
-  "imported_from": "C:\\Project\\common-agent-swarm-ops\\business\\video\\agents\\video.narrativearc",
+  "imported_from": "vendor/common-agent-swarm-ops/business/video/agents/video.narrativearc",
   "reference_book_origin": "spec/book_of_knowledge.md",
   "reference_book_note": "Bibliographic references from spec/book_of_knowledge.md. Does not enable network, RAG, T3, plugins, or memory writes."
 }

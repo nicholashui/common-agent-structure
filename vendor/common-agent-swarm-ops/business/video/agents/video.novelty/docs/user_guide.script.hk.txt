@@ -1,0 +1,277 @@
+大家好，歡迎返嚟我哋嘅頻道。今日我哋會詳細講解 NoveltyAgent / Anti-Cliche Critic。
+
+呢份指南係寫畀操作員、pack 作者、swarm 設計師同審閱者，喺 common-agent-swarm-ops 入面工作。你會得到任務清晰定義、使用指引、協作地圖、CASOPS 操作步驟、改進路徑同分信任等級嘅來源地圖。
+
+呢份指南唔係授權啟動供應商、打開網絡或發明工具嘅許可證。Host 真相來源係 fail-closed 嘅 agent_spec.json。設計文本嚟自 VA 或重新設計文件嘅資料係不受信任來源。
+
+Pack 路徑係 business/video/agents/video.novelty/。指南喺 docs/user_guide.md。由 generate_agent_user_guides.py 生成。
+
+第一部分，快照。
+
+NoveltyAgent / Anti-Cliche Critic，agent id 係 video.novelty，係 Video Domain Pack 角色喺 CASOPS 上面。簡單講佢負責標記老套、陳詞濫調同過度擬合嘅輸出。
+
+呢份指南係人類可讀嘅操作員地圖，用於目錄審查、swarm 設計同提案改進，唔係運行時啟動許可證。
+
+快照欄位如下。顯示名稱係 NoveltyAgent / Anti-Cliche Critic。Pack agent id 係 video.novelty。Pack 係 video。Host 角色字串係 NoveltyAgent / Anti-Cliche Critic (VA Domain Pack)。
+
+目錄狀態係 registered。成熟度係 L0 非活躍，屬於目錄同設計保真度階段。VA id 係 64。VA 類別係 9-Meta，代表元/優化專家。
+
+供應商係 local_deterministic。網絡係 False。允許工具係空列表。生產啟動請求係 False。
+
+Prompt 參考係 video.prompt.novelty.v1。Rubric 參考係 video.rubric.novelty.v1。之前嘅 common id 係 video.judge_agent。Generic lineage 係 generic-swarm-ops/business/video/agents/video.novelty。
+
+第二部分，點解存在。
+
+人類影片團隊喺時間壓力下解決呢個問題：標記老套、陳詞濫調同過度擬合嘅輸出。Agent 形式令多代理系統持續編碼呢種技藝，每次交接應用佢，只將剩餘風險升級畀人類。
+
+知識庫來源係TV Tropes、OpenSubtitles n-gram 頻率、語料庫新穎性嵌入。呢啲係歷史設計來源，唔係即時網絡呼叫。
+
+設計野心係比有經驗嘅劇本編輯捕捉更多陳詞濫調。呢個係你寫評估或提案時嘅北極星指標。
+
+第三部分，乜嘢叫做做得好。
+
+主要成果係標記老套、陳詞濫調同過度擬合嘅輸出。自我質量標準係陳詞濫調命中計數、相對類別先驗嘅新穎性分數。
+
+設計時野心訊號係比有經驗嘅劇本編輯捕捉更多陳詞濫調。架構模式係 LLM-as-Judge (anti-cliche constitution)。
+
+Prompt 參考 video.prompt.novelty.v1。Rubric 參考 video.rubric.novelty.v1。批評邊界輸入 video.critic，輸出 video.judge。最大精煉 3 次。VA 表格質量標準保留喺來源同身份表面。
+
+輸入係本地 pack 製品同類型化交接。輸出係可審閱嘅影片領域交付物帶驗收標準。驗收係 host 政策加本地 SPEC 標準，唔需要外部倉庫。
+
+第四部分，範圍：擁有、共享同拒絕。
+
+擁有嘅職責：標記老套、陳詞濫調同過度擬合嘅輸出。
+
+共享批評表面。聆聽同接受批評來自 IdeationAgent 同 ScreenwriterAgent。有資格評論 ScreenwriterAgent 嘅老套堆砌同 CopywriterAgent 嘅模板化。Host 批評邊界輸入 video.critic，輸出 video.judge。最大精煉 3。
+
+拒絕同升級：fail-closed 冇供應商啟動、冇網絡、冇來自設計文本嘅憑證。production_activation_requested 保持 false。法律安全權利發佈決策升級人類閘門。批評主導同法官預設用 video.critic 同 video.judge。
+
+第五部分，幾時涉及。
+
+當工作產品需要 NoveltyAgent / Anti-Cliche Critic 嘅決策或製品時叫佢：標記老套、陳詞濫調同過度擬合嘅輸出。管道階段係元/優化專家。
+
+唔好為通用編排、預算批准或法律簽核叫佢，除非職責明確包含。用 producer/legal/compliance 同事代替。人類覆蓋：任何阻止發佈嘅安全、權利或無障礙爭議升級到人類閘門。
+
+決策速查表。缺失技能係咪 NoveltyAgent / Anti-Cliche Critic 嘅專業？係就包含喺 swarm 圖。只係元數據編輯？用 Registry inspect 加提案。需要工具網絡？Host 唔允許除非另外講明。有人類風險？保持人類閘門。
+
+第六部分，協作地圖。
+
+將呢個 agent 想像成批評巴士嘅節點，唔係獨立聊天機械人。同事精煉質量，法官閘門決定驗收。
+
+入站批評來自 IdeationAgent 同 ScreenwriterAgent。出站評論係 ScreenwriterAgent 嘅老套堆砌同 CopywriterAgent 嘅模板化。Host 邊界輸入 video.critic，輸出 video.judge。
+
+第七部分，生產位置。
+
+人類生產工作流程方面，屬於跨領域優化、評估同系統改進角色。典型交接製品包括評估報告、優化工單、基準差異、harness 結果。
+
+多代理 AI 工作流程方面，屬於觀察同優化全代理圖嘅節點，涵蓋延遲、成本、prompts、留存率、ROAS。
+
+設計時工具注釋包括TV Tropes 抓取器、n-gram 頻率資料庫、嵌入新穎性評分器。呢啲對 host 冇約束力。
+
+循環風格係 LLM-as-Judge (anti-cliche constitution)。今日喺 CASOPS 只係文檔，即時供應商係 local_deterministic，工具允許列表係空列表。
+
+AI 工作流程摘錄入面提到：第 64 行 NoveltyAgent 即 Anti-Cliche Critic，負責標記老套、陳詞濫調同過度擬合語料庫嘅輸出。知識來自 TV Tropes、OpenSubtitles n-gram 頻率、語料庫新穎性嵌入。質量標準係每個輸出嘅陳詞濫調命中計數同相對類別先驗嘅新穎性分數。目標係喺盲測評估中比有經驗嘅劇本編輯捕捉更多陳詞濫調。接受來自 IdeationAgent 同 ScreenwriterAgent 嘅批評。評論 ScreenwriterAgent 嘅老套堆砌同 CopywriterAgent 嘅模板化問題。
+
+共享交接合約方面。artifact_id 同 version 提供不可變身份用於批評同重播。parent_assets 提供進入呢個 agent 輸入嘅來源鏈。brief_scope 阻止超出責任嘅範圍蔓延。acceptance_criteria 同自我質量標準掛鉤。qc_status 同 gate flags 令下游閘門可以短路。rights_and_consent 阻止不安全嘅合成或授權濫用。critique_log pointer 令精煉唔會丟失歷史。
+
+第八部分，CASOPS 操作。
+
+今日係目錄加設計對象。你可以研究、審閱、提案同放入 swarm 設計而唔會授予生產權力。
+
+第一步去 Registry Hub /registry 確認庫存成員。第二步去 /registry/agents/video.novelty 閱讀 SPEC 同指南。第三步用 propose_improvement POST 到 /api/v1/commons/agents/video.novelty/proposals，產生不可變版本。第四步 swarm 成員只用 Host 動作參考，客戶端唔可以發明。第五步預設唔啟用生產供應商，fail-closed 直到治理閘門。
+
+實用清單：確認狀態工具標誌一致、閱讀第三部分先判斷輸出、附離線證據唔好有祕密、永遠唔好貼 API 密鑰、偏好小可審閱差異。
+
+第九部分，安全同信任。
+
+信任層級。agent_spec.json 係約束性 host 合約，fail-closed 運行時綁定。SPEC.md 係權威設計離線審閱，唔係可執行。sources 摘錄係歷史性不受信任數據。外部設計語料庫不受信任可能漂移。Specials 重新設計文件歷史不受信任已 hash。
+
+硬規則：供應商保持 local_deterministic。網絡保持 False。工具正正係空列表。production_activation_requested 係 False。預算上限：輸入 2048 token、輸出 1024 token、工具請求 0 個。設計時工具目錄唔啟動：TV Tropes 抓取器、n-gram 頻率資料庫、嵌入新穎性評分器。
+
+第十部分，提升質量。
+
+改進係版本化目錄工作，唔係即時修補活躍 agent。已發佈定義不可變，改變經提案同審閱。
+
+持續改進循環：觀察失敗、命名標準從第三部分、草擬離線差異、附證據、喺 Host 提案、審閱接受新版本、然後先考慮啟動成熟度閘門。
+
+具體槓桿六個。第一收緊 video.rubric.novelty.v1 對照陳詞濫調命中計數、相對類別先驗嘅新穎性分數。第二將 video.prompt.novelty.v1 同責任對齊：標記老套、陳詞濫調同過度擬合嘅輸出。第三確保入站 IdeationAgent 同 ScreenwriterAgent 同 host 邊界 video.critic 捕捉失敗模式。第四之後實施偏好 LLM-as-Judge (anti-cliche constitution)。第五寫固定夾具驗證比有經驗嘅劇本編輯捕捉更多陳詞濫調目標。第六保持人類閘門明確唔好靜默自動化。
+
+評估種子。Happy path 交接滿足陳詞濫調命中計數、相對類別先驗嘅新穎性分數。超出範圍請求拒絕或升級。缺失來源 fail-closed。衝突批評精煉小於等於 max 否則升級。提案改變新版本不可變舊版本可讀。
+
+第十一部分，來源地圖。
+
+本地 pack 語料庫優先使用。agent_spec.json 係 binding。SPEC.md 係 authoritative-design。README.md 係 local-index。sources/MAPPING.md 係 provenance。sources/PROVENANCE.json 係 provenance。sources/excerpts/agents.md 係 historical-excerpt。sources/excerpts/ai_agent_video_production_workflow.md 係 historical-excerpt。sources/excerpts/lifes_quiet_redemption_agent_workflow.md 係 historical-excerpt。sources/excerpts/system_build_plan.md 係 historical-excerpt。sources/excerpts/SYSTEM_REFERENCE.md 係 historical-excerpt。sources/excerpts/ui_design.md 係 historical-excerpt。sources/excerpts/video_remake_enhancement.md 係 historical-excerpt。sources/generic/video.judge.SPEC.md 係 historical-generic。
+
+映射注釋。VA/generic pack ID 係 video.novelty。之前 common ID 係 video.judge_agent。SPEC 深度係完整 generic SPEC 主體加 host 運行時綁定。
+
+來源記錄。schema_version 1.0。agent_id video.novelty。previous_common_agent_id video.judge_agent。va_taxonomy_aligned true。generic_source generic-swarm-ops/business/video/agents/video.novelty。注釋寫住對齊到 VA/generic Domain Pack 分類法。對齊時間 2026 年 7 月 27 日。
+
+來源敘述。Pack agent ID video.novelty 對齊純 VA Domain Pack 分類法。之前 ID video.judge_agent 只係歷史映射。上游設計歷史性非約束。本地 agent_spec.json 權威。完整 VA/generic SPEC 深度為離線設計保真度保留。
+
+VA 名冊行來自 agents.md 第 64 行。責任：標記老套、陳詞濫調同過度擬合嘅輸出。知識提煉：TV Tropes、OpenSubtitles n-gram 頻率、語料庫新穎性嵌入。自我質量：陳詞濫調命中計數、相對類別先驗嘅新穎性分數。超越人類：比有經驗嘅劇本編輯捕捉更多陳詞濫調。接受批評：IdeationAgent 同 ScreenwriterAgent。評論：ScreenwriterAgent 嘅老套堆砌同 CopywriterAgent 嘅模板化。歷史工具：TV Tropes 抓取器、n-gram 頻率資料庫、嵌入新穎性評分器。架構：LLM-as-Judge (anti-cliche constitution)。
+
+第十二部分，相關設計閱讀。
+
+本地知識索引。Runtime binding 喺 agent_spec.json。Folder README 喺 README.md。Provenance 喺 sources/PROVENANCE.json。Mapping 喺 sources/MAPPING.md。Pack inventory 喺 ../../inventory.json。Pack manifest 喺 ../../manifest.json。所有主要參考喺倉庫入面解析。
+
+Folder README 摘要：VA 對齊 Domain Pack agent，common host。SPEC.md 用途係 VA/generic 深度加 host 綁定。agent_spec.json 係 fail-closed runtime。sources 目錄係來源同映射。
+
+第十三部分，host 合約 agent_spec.json。
+
+權威 fail-closed 配置。agent_id video.novelty。allowed_tools 空列表。budget_policy 入面 max_input_tokens 2048，max_output_tokens 1024，max_tool_requests 0。
+
+critique_edges 輸入 video.critic，輸出 video.judge。max_refinement_count 3。model_policy 入面 model_id local-video-config-v1，network_access false，provider local_deterministic。
+
+production_activation_requested false。prompt_reference video.prompt.novelty.v1。role NoveltyAgent / Anti-Cliche Critic (VA Domain Pack)。rubric_reference video.rubric.novelty.v1。schema_version 1.0。status registered。va_id 64。va_name NoveltyAgent / Anti-Cliche Critic。va_category 9-Meta。
+
+第十四部分，SPEC 責任摘錄。
+
+核心責任：標記老套、陳詞濫調同過度擬合嘅輸出。Host 角色綁定 NoveltyAgent / Anti-Cliche Critic (VA Domain Pack)。設計時 VA 表格內容歷史性非約束。
+
+責任從 VA 表格：標記老套、陳詞濫調同過度擬合嘅輸出。知識提煉歷史：TV Tropes、OpenSubtitles n-gram 頻率、語料庫新穎性嵌入。自我質量歷史：陳詞濫調命中計數、相對類別先驗嘅新穎性分數。超越人類歷史：比有經驗嘅劇本編輯捕捉更多陳詞濫調。
+
+批評巴士歷史。接受批評來自 IdeationAgent 同 ScreenwriterAgent。評論 ScreenwriterAgent 嘅老套堆砌同 CopywriterAgent 嘅模板化。設計時工具唔啟動：TV Tropes 抓取器、n-gram 頻率資料庫、嵌入新穎性評分器。運行時安全：Host 允許列表只係 agent_spec.json 加 tool-permission-register.json。CI 用 video_* 存根。唔好將設計時名稱當已啟用 API。架構模式歷史：LLM-as-Judge (anti-cliche constitution)。
+
+第十五部分，文檔控制。
+
+生成器 scripts/business/generate_agent_user_guides.py。Agent 資料夾 business/video/agents/video.novelty/。輸出 docs/user_guide.md。VA 語料庫根目錄 C:\Project\va-agent-swarm。重新生成命令 python scripts/business/generate_agent_user_guides.py。信任模型：設計語料庫等於不受信任數據，host 配置等於 fail-closed。
+
+補充關於 NoveltyAgent 嘅特殊設計考量。呢個 agent 嘅角色係「反面批評者」，即係佢嘅工作唔係生產內容，而係檢查其他 agent 生產嘅內容有冇落入老套同陳詞濫調嘅陷阱。
+
+TV Tropes 係一個龐大嘅敘事模式資料庫，記錄咗所有已知嘅故事套路同角色原型。通過對照呢個資料庫，agent 可以識別輸出中嘅常見套路。
+
+n-gram 頻率分析可以檢測過度使用嘅詞組同表達方式。如果某個短語喺語料庫中出現頻率過高，就可能係一個陳詞濫調嘅指標。
+
+嵌入新穎性評分器用向量空間嘅距離嚟量度一段文本同已知模式之間嘅差異。距離越大代表越新穎，距離越小代表越接近老套。
+
+LLM-as-Judge 架構嘅特點係用大語言模型作為裁判，根據一套「反陳詞濫調憲法」嚟評估輸出。呢個憲法定義咗乜嘢係可接受嘅新穎性水平，乜嘢係需要標記嘅老套。
+
+呢個 agent 嘅存在確保整個系統嘅輸出唔會因為過度訓練喺特定語料庫上面而變得千篇一律。佢係創意品質嘅守護者。
+
+喺相關設計閱讀方面，general_creative_agent_technical_specification.md 可能相關，佢討論咗通用創意代理嘅技術規格，包括 Strategic Sparse Outlier Recombination 模型，呢個同新穎性檢測有理論上嘅關聯。
+
+以上就係 NoveltyAgent / Anti-Cliche Critic 嘅完整指南講解，涵蓋所有十五個章節。建議從第一部分快照同第五部分幾時涉及開始，用第八到十部分做 CASOPS 操作同改進，用第十一到十二部分做深度設計保真度。多謝大家收睇，我哋下次再見。
+
+我哋繼續深入講解NoveltyAgent / Anti-Cliche Critic嘅更多重要技術細節。
+
+首先關於LLM-as-Judge (anti-cliche constitution)架構嘅深入解釋。呢個架構模式係經過仔細研究後選擇嘅，最適合NoveltyAgent / Anti-Cliche Critic嘅工作特性同需求。喺未來實施運行時，開發者應該優先採用呢個模式作為參考框架。
+
+關於TV Tropes、OpenSubtitles n-gram 頻率、語料庫新穎性嵌入呢啲知識來源嘅具體價值。呢啲來源代表咗行業最高水平嘅專業知識。佢哋被精心提煉成 agent 嘅知識庫，為所有決策提供理論同實踐基礎。
+
+要注意呢啲知識係歷史設計來源，喺運行時唔會即時存取。因為網絡存取被嚴格控制，所有知識都需要預先編碼到 prompt 同 rubric 入面。
+
+關於陳詞濫調命中計數同新穎性分數嘅每一個維度。呢個質量標準定義咗「好輸出」嘅精確含義。每個維度都應該可以被量化或系統化評估，令持續改進成為可能。
+
+當你審閱呢個 agent 嘅輸出或撰寫新嘅評估案例時，你應該逐個維度檢查。任何一個維度未達標都應該觸發精煉循環。
+
+關於比有經驗劇本編輯捕捉更多陳詞濫調呢個超越人類目標嘅意義。呢個目標唔係今日就要達到，而係指引所有設計同改進決策嘅方向。每次 rubric 更新、prompt 精煉、架構調整都應該朝呢個方向進步。
+
+呢個目標嘅設定本身就有價值，因為佢逼迫設計者思考人類嘅侷限性喺邊度，同埋 agent 可以喺邊啲方面做得更好。
+
+關於批評循環嘅具體運作。IdeationAgent 同 ScreenwriterAgent發出嘅批評可能涉及質量標準嘅任何維度。NoveltyAgent / Anti-Cliche Critic收到批評後需要：理解具體問題、識別修改部分、進行精煉、重新提交。最多三次。
+
+如果認為批評唔合理，仍然需要回應，可以喺精煉中解釋原始輸出嘅正確性。最終由 video.judge 裁決。呢個機制確保唔會有無解嘅僵局。
+
+關於ScreenwriterAgent 老套堆砌同 CopywriterAgent 模板化嘅評論權限。呢個權限基於專業知識嘅重疊。NoveltyAgent / Anti-Cliche Critic嘅專業令佢能夠從獨特角度發現其他 agent 輸出中嘅問題，為整體質量做出貢獻。
+
+關於TV Tropes 抓取器、n-gram 頻率 DB、嵌入新穎性評分器呢啲設計時工具。呢啲名稱只係設計參考，完全唔代表啟用狀態。agent_spec.json 嘅 allowed_tools 先係真正運行時約束。設計時工具名稱幫助理解 agent 未來可能需要嘅能力類型。
+
+關於 VA 類別 9-Meta 即元/優化專家。同一類別嘅 agent 處理相關任務類型，通常喺相似工作流程階段被使用。理解類別有助於 swarm 設計時正確定位。
+
+關於video.judge_agent嘅歷史意義。當你喺舊文檔入面見到呢個名字時，佢指嘅就係現在嘅video.novelty。命名變更係分類法對齊嘅結果，唔代表角色職責有改變。
+
+關於 LLM-as-Judge 架構嘅具體實現。呢個模式用大語言模型作為裁判角色，根據一套預定義嘅「反陳詞濫調憲法」評估每個輸出。憲法列出所有需要檢查嘅老套模式同可接受嘅新穎性閾值。
+
+每次評估產生一個分數同具體嘅標記列表。分數低於閾值嘅輸出會被退回原 agent 進行精煉。呢個機制確保整個系統嘅創意品質唔會因為過度依賴常見模式而下降。
+
+關於 TV Tropes 抓取器嘅用途。佢唔係即時網絡抓取，而係預先建立嘅老套模式資料庫。每個模式有名稱、描述同常見變體。agent 用呢個資料庫做模式匹配。
+
+n-gram 頻率資料庫記錄咗大量文本中短語出現嘅頻率。高頻短語往往係陳詞濫調嘅指標。agent 用呢個嚟識別過度使用嘅表達。
+
+關於從 L0 升級嘅路徑。需要完成評估案例驗證、通過人類審閱治理閘門、更新 agent_spec.json 配置。每步有明確標準確保升級基於充分證據。
+
+關於 CASOPS 平臺嘅核心原則。所有 agent 遵循相同生命週期：註冊、設計審查、提案、版本控制。每步有清晰規則確保安全可追溯。
+
+版本不可變性原則。發佈後唔可以修改。改變通過新版本實現。舊版本永遠可讀。呢個確保歷史完整性同可回滾能力。每個版本有時間戳同作者記錄。
+
+交接合約嘅每個欄位都有明確目的。artifact_id 確保可追蹤。parent_assets 令可追溯。brief_scope 防止蔓延。acceptance_criteria 提供通過失敗標準。rights_and_consent 確保合規。
+
+預算政策嘅安全意義。輸入輸出 token 限制防止資源過度消耗。工具請求限制阻止未授權嘅外部互動。即使被錯誤啟動，呢啲限制都會生效作為最後防線。
+
+以上就係NoveltyAgent / Anti-Cliche Critic嘅所有補充說明。完整覆蓋所有十五章每個要點。感謝耐心聆聽，下次再見。
+
+我哋最後再補充多啲關於NoveltyAgent / Anti-Cliche Critic嘅實際操作場景同行業背景。
+
+喺一個完整嘅影片製作 swarm 入面，NoveltyAgent / Anti-Cliche Critic嘅位置係非常關鍵嘅。佢標記老套陳詞濫調同過度擬合輸出嘅職責影響住整個製作管道嘅質量。
+
+具體嚟講，當一個新嘅製作項目開始時，NoveltyAgent / Anti-Cliche Critic會喺適當嘅階段被引入。佢嘅輸入來自上游 agent 嘅交付物，經過處理後產生嘅輸出會交畀下游 agent。
+
+呢個流程嘅每一步都有明確嘅驗收標準。如果NoveltyAgent / Anti-Cliche Critic嘅輸出唔符合陳詞濫調命中計數同新穎性分數嘅標準，佢會收到來自IdeationAgent 同 ScreenwriterAgent嘅批評，然後進入精煉循環。
+
+關於LLM-as-Judge (anti-cliche constitution)喺實際場景中嘅應用。呢個架構模式已經被驗證為最適合呢類任務。佢嘅優勢在於可以系統化咁處理複雜嘅判斷同決策過程。
+
+喺設計新嘅 prompt 或 rubric 時，你應該考慮呢個架構嘅特點同限制。確保你嘅設計同架構嘅工作方式相容。
+
+關於TV Tropes 抓取器、n-gram 頻率 DB、嵌入新穎性評分器嘅實際含義。雖然呢啲工具今日唔會被啟動，但佢哋代表咗NoveltyAgent / Anti-Cliche Critic未來需要嘅能力。理解呢啲工具有助於設計更好嘅 prompt 同評估案例。
+
+每個工具都對應一種特定嘅能力或資訊來源。當你思考 agent 嘅能力邊界時，呢啲工具名稱提供咗有用嘅參考框架。
+
+關於ScreenwriterAgent 同 CopywriterAgent 嘅模板化問題嘅具體場景。當NoveltyAgent / Anti-Cliche Critic發現其他 agent 嘅輸出有問題時，佢會通過批評巴士發出評論。呢個評論唔係命令，而係建議。接收者可以選擇接受或者喺精煉中解釋點解唔接受。
+
+呢種非強制性嘅批評機制鼓勵開放嘅質量對話，同時尊重每個 agent 嘅專業判斷。最終嘅裁決權喺 video.judge。
+
+關於元/優化專家類別中NoveltyAgent / Anti-Cliche Critic嘅獨特價值。雖然同一類別有多個 agent，但每個都有唔可替代嘅專業。NoveltyAgent / Anti-Cliche Critic嘅標記老套陳詞濫調同過度擬合輸出職責係獨一無二嘅，冇其他 agent 應該重複。
+
+關於新穎性評估嘅哲學思考。創意工作嘅「新穎性」係一個複雜嘅概念。過於新穎可能令觀眾難以理解，過於老套則令內容無聊。NoveltyAgent 需要喺呢兩個極端之間搵到平衡點。
+
+呢個平衡點會根據項目類型同目標觀眾而有所唔同。商業廣告可能容許更多熟悉嘅模式，而藝術電影可能要求更高嘅新穎性。agent 嘅 rubric 應該反映呢啲差異。
+
+最終，NoveltyAgent 嘅價值唔係消滅所有老套，而係確保創作者有意識咁選擇使用或避免常見模式。佢提供嘅係覺察，唔係審查。
+
+關於日常操作嘅最佳實踐。定期檢查 agent 嘅狀態同配置有冇變化。閱讀相關嘅提案同審閱記錄瞭解最新嘅改進方向。參與社區討論分享你嘅觀察同建議。
+
+關於同其他操作員嘅協作。唔同嘅操作員可能負責唔同嘅 agent。理解NoveltyAgent / Anti-Cliche Critic同其他 agent 嘅關係有助於跨團隊嘅協作同溝通。
+
+關於文檔嘅維護。呢份指南係自動生成嘅，但你仍然可以通過提案嚟改進佢嘅內容。如果你發現任何唔準確或者過時嘅資訊，請通過正式嘅提案流程提出修改建議。
+
+關於安全嘅再次強調。永遠記住 fail-closed 原則。如果有任何唔確定，唔做任何事情係最安全嘅默認行為。呢個原則保護咗整個系統免受意外嘅損害。
+
+特別係涉及標記老套陳詞濫調同過度擬合輸出呢個領域，正確嘅判斷同安全嘅操作同樣重要。寧願漏過一個問題，都好過做出一個錯誤嘅決策。
+
+以上就係我哋對NoveltyAgent / Anti-Cliche Critic嘅最終最完整講解。所有十五個章節嘅所有內容都已經涵蓋。感謝你嘅收睇同耐心，希望呢啲資訊對你有實質幫助。我哋下條片見，再見。
+
+我哋最後再講幾個關鍵嘅操作要點嚟收尾。
+
+關於提案流程嘅實際操作。當你想改進呢個 agent 時，首先需要收集離線證據。呢啲證據可以係評估結果、用戶反饋、或者你觀察到嘅具體問題案例。
+
+然後你需要明確指出問題所在同建議嘅解決方案。你嘅提案應該係具體嘅同可驗證嘅，而唔係模糊嘅建議。例如唔好寫「改進質量」，而應該寫「將某某閾值從 X 調整到 Y 因為某某原因」。
+
+提交提案後，佢會被記錄為不可變嘅版本。其他審閱者會查看你嘅提案同證據。如果被接受，新版本會被創建。舊版本保持可讀用於歷史參考。
+
+關於同其他 agent 嘅互動模式。喺批評巴士上面，每個 agent 都有明確嘅角色。有啲係批評者，有啲係被批評者，有啲兩者皆是。理解呢啲角色關係有助於正確設計 swarm 圖。
+
+關於 generic lineage 嘅意義。Generic lineage 指向通用 swarm 操作框架入面嘅模板。呢個模板為所有同類 agent 提供一致嘅結構。當模板更新時，本地 agent 可以選擇性咁採用改進。
+
+但係本地 agent_spec.json 永遠係權威。即使通用模板有更新，本地配置唔會自動改變。所有改變都需要通過正式嘅提案同審閱流程。
+
+關於 CASOPS 平臺嘅未來發展。平臺會持續演進，新嘅功能同工具會被加入。但核心嘅安全原則唔會改變：fail-closed、版本不可變、人類閘門、分層信任。
+
+呢啲原則確保即使平臺大幅擴展，安全性同可靠性都能夠維持。每個新功能嘅加入都需要符合呢啲核心原則。
+
+最後嘅最後，記住呢份指南嘅目的係幫助你正確理解同使用呢個 agent。如果有疑問，查閱 agent_spec.json。如果有改進建議，用提案流程。如果有安全顧慮，升級到人類閘門。
+
+呢個就係我哋嘅完結篇。多謝大家由頭到尾嘅耐心聆聽。希望呢份詳盡嘅講解真正幫到你喺日常工作中更好咁同呢個 agent 互動。再見。
+
+補充關於評估種子嘅具體實施方式。每個評估種子都係一個具體嘅測試場景。Happy path 測試正常流程。超出範圍測試邊界處理。缺失來源測試安全機制。衝突批評測試精煉邏輯。提案測試版本管理。
+
+呢啲測試應該被自動化執行，每次有新版本時重新運行。通過率嘅變化可以追蹤質量嘅趨勢。下降意味住需要調查同修正。
+
+關於整體系統嘅可觀測性。每個 agent 嘅執行都應該產生結構化嘅日誌。呢啲日誌記錄輸入、輸出、批評、精煉過程同最終結果。佢哋係調試同改進嘅重要資料來源。
+
+以上真正係最後嘅內容。完整涵蓋所有章節。感謝收睇。
+
+最後幾點補充。NoveltyAgent 嘅 VA id 64 喺整個名冊入面屬於中間位置，反映佢係一個支援性嘅優化角色而唔係核心創作角色。佢嘅價值在於提升整體系統嘅創意品質。
+
+呢個角色嘅命名包含 Anti-Cliche Critic 嘅副標題，清晰表達咗佢嘅核心功能。佢唔係創造新內容，而係確保其他 agent 創造嘅內容足夠新穎。呢個區分非常重要。
+
+完結。再見。

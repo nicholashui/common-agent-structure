@@ -5610,7 +5610,7 @@ ROOT
 ## Provenance
 
 - Master roster row va_id=58 from embedded agents.md content above.
-- Deep/extra text from `business/video/corpus/` and `C:\Project\va-agent-swarm`.
+- Deep/extra text from `business/video/corpus/` and `vendor/va-agent-swarm`.
 - Generator: `scripts/business/enrich_video_agent_specs.py`.
 - Upstream project name (historical only): va-agent-swarm.
 
@@ -7522,7 +7522,7 @@ Step 8: POST-RELEASE (optional)
 ## Provenance
 
 - Master roster row va_id=46 from embedded agents.md content above.
-- Deep/extra text from `business/video/corpus/` and `C:\Project\va-agent-swarm`.
+- Deep/extra text from `business/video/corpus/` and `vendor/va-agent-swarm`.
 - Generator: `scripts/business/enrich_video_agent_specs.py`.
 - Upstream project name (historical only): va-agent-swarm.
 
@@ -7602,10 +7602,10 @@ Live primary-source expansion remains a residual for score 100 on S3 where depth
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "服装设计",
+      "title": "\u670d\u88c5\u8bbe\u8ba1",
       "isbn13": "9787506492188",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 服装设计，ISBN-13 9787506492188"
+      "citation": "ZH: \u670d\u88c5\u8bbe\u8ba1\uff0cISBN-13 9787506492188"
     },
     {
       "kind": "reference_book",
@@ -7664,53 +7664,53 @@ Live primary-source expansion remains a residual for score 100 on S3 where depth
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "美的历程",
-      "author": "李泽厚",
+      "title": "\u7f8e\u7684\u5386\u7a0b",
+      "author": "\u674e\u6cfd\u539a",
       "isbn13": "9787108017963",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 美的历程（李泽厚），ISBN-13 9787108017963"
+      "citation": "ZH: \u7f8e\u7684\u5386\u7a0b\uff08\u674e\u6cfd\u539a\uff09\uff0cISBN-13 9787108017963"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "谈美",
-      "author": "朱光潜",
+      "title": "\u8c08\u7f8e",
+      "author": "\u6731\u5149\u6f5c",
       "isbn13": "9787108042262",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 谈美（朱光潜），ISBN-13 9787108042262"
+      "citation": "ZH: \u8c08\u7f8e\uff08\u6731\u5149\u6f5c\uff09\uff0cISBN-13 9787108042262"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "美学散步",
-      "author": "宗白华",
+      "title": "\u7f8e\u5b66\u6563\u6b65",
+      "author": "\u5b97\u767d\u534e",
       "isbn13": "9787532123456",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 美学散步（宗白华），ISBN-13 9787532123456"
+      "citation": "ZH: \u7f8e\u5b66\u6563\u6b65\uff08\u5b97\u767d\u534e\uff09\uff0cISBN-13 9787532123456"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "观看之道",
+      "title": "\u89c2\u770b\u4e4b\u9053",
       "isbn13": "9787544715998",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 观看之道，ISBN-13 9787544715998"
+      "citation": "ZH: \u89c2\u770b\u4e4b\u9053\uff0cISBN-13 9787544715998"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "理解漫画",
+      "title": "\u7406\u89e3\u6f2b\u753b",
       "isbn13": "9787513320184",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 理解漫画，ISBN-13 9787513320184"
+      "citation": "ZH: \u7406\u89e3\u6f2b\u753b\uff0cISBN-13 9787513320184"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "论摄影",
+      "title": "\u8bba\u6444\u5f71",
       "isbn13": "9787544722599",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 论摄影，ISBN-13 9787544722599"
+      "citation": "ZH: \u8bba\u6444\u5f71\uff0cISBN-13 9787544722599"
     },
     {
       "kind": "reference_book",
@@ -7761,7 +7761,7 @@ Live primary-source expansion remains a residual for score 100 on S3 where depth
     "adopted_at": "2026-07-27T01:30:27.992122+00:00",
     "upstream": "generic-swarm-ops/business/video/agents"
   },
-  "imported_from": "C:\\Project\\common-agent-swarm-ops\\business\\video\\agents\\video.costumedesign",
+  "imported_from": "vendor/common-agent-swarm-ops/business/video/agents/video.costumedesign",
   "reference_book_origin": "spec/book_of_knowledge.md",
   "reference_book_note": "Bibliographic references from spec/book_of_knowledge.md. Does not enable network, RAG, T3, plugins, or memory writes."
 }

@@ -20,8 +20,8 @@
     "routing_allowed": false
   },
   "budget_policy": {
-    "max_input_tokens": 1,
-    "max_output_tokens": 1,
+    "max_input_tokens": 2048,
+    "max_output_tokens": 1024,
     "max_model_calls": 2,
     "max_tool_requests": 0,
     "max_job_ms": 15000,
@@ -303,66 +303,66 @@ Success: stay inside pack responsibility; no network; no production activation.
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "竞争战略",
+      "title": "\u7ade\u4e89\u6218\u7565",
       "isbn13": "9787508633749",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 竞争战略，ISBN-13 9787508633749"
+      "citation": "ZH: \u7ade\u4e89\u6218\u7565\uff0cISBN-13 9787508633749"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "好战略，坏战略",
+      "title": "\u597d\u6218\u7565\uff0c\u574f\u6218\u7565",
       "isbn13": "9787508643427",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 好战略，坏战略，ISBN-13 9787508643427"
+      "citation": "ZH: \u597d\u6218\u7565\uff0c\u574f\u6218\u7565\uff0cISBN-13 9787508643427"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "这就是OKR",
+      "title": "\u8fd9\u5c31\u662fOKR",
       "isbn13": "9787521702330",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 这就是OKR，ISBN-13 9787521702330"
+      "citation": "ZH: \u8fd9\u5c31\u662fOKR\uff0cISBN-13 9787521702330"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "创新者的窘境",
+      "title": "\u521b\u65b0\u8005\u7684\u7a98\u5883",
       "isbn13": "9787508633336",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 创新者的窘境，ISBN-13 9787508633336"
+      "citation": "ZH: \u521b\u65b0\u8005\u7684\u7a98\u5883\uff0cISBN-13 9787508633336"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "系统之美",
+      "title": "\u7cfb\u7edf\u4e4b\u7f8e",
       "isbn13": "9787508640114",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 系统之美，ISBN-13 9787508640114"
+      "citation": "ZH: \u7cfb\u7edf\u4e4b\u7f8e\uff0cISBN-13 9787508640114"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "第五项修炼",
+      "title": "\u7b2c\u4e94\u9879\u4fee\u70bc",
       "isbn13": "9787508631332",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 第五项修炼，ISBN-13 9787508631332"
+      "citation": "ZH: \u7b2c\u4e94\u9879\u4fee\u70bc\uff0cISBN-13 9787508631332"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "超预测",
+      "title": "\u8d85\u9884\u6d4b",
       "isbn13": "9787508663098",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 超预测，ISBN-13 9787508663098"
+      "citation": "ZH: \u8d85\u9884\u6d4b\uff0cISBN-13 9787508663098"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "金字塔原理",
+      "title": "\u91d1\u5b57\u5854\u539f\u7406",
       "isbn13": "9787508633732",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 金字塔原理，ISBN-13 9787508633732"
+      "citation": "ZH: \u91d1\u5b57\u5854\u539f\u7406\uff0cISBN-13 9787508633732"
     },
     {
       "kind": "reference_book",
@@ -395,10 +395,10 @@ Success: stay inside pack responsibility; no network; no production activation.
       "kind": "reference_book",
       "language": "EN",
       "title": "Hands-On Machine Learning, 3rd ed.",
-      "author": "Aurélien Géron",
+      "author": "Aur\u00e9lien G\u00e9ron",
       "isbn13": "9781098125974",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "EN: Hands-On Machine Learning, 3rd ed. (Aurélien Géron), ISBN-13 9781098125974"
+      "citation": "EN: Hands-On Machine Learning, 3rd ed. (Aur\u00e9lien G\u00e9ron), ISBN-13 9781098125974"
     },
     {
       "kind": "reference_book",
@@ -422,10 +422,10 @@ Success: stay inside pack responsibility; no network; no production activation.
       "kind": "reference_book",
       "language": "EN",
       "title": "Introduction to Information Retrieval",
-      "author": "Manning, Raghavan, Schütze",
+      "author": "Manning, Raghavan, Sch\u00fctze",
       "isbn13": "9780521865715",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "EN: Introduction to Information Retrieval (Manning, Raghavan, Schütze), ISBN-13 9780521865715"
+      "citation": "EN: Introduction to Information Retrieval (Manning, Raghavan, Sch\u00fctze), ISBN-13 9780521865715"
     },
     {
       "kind": "reference_book",
@@ -475,80 +475,80 @@ Success: stay inside pack responsibility; no network; no production activation.
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "人工智能：一种现代的方法",
-      "author": "第4版",
+      "title": "\u4eba\u5de5\u667a\u80fd\uff1a\u4e00\u79cd\u73b0\u4ee3\u7684\u65b9\u6cd5",
+      "author": "\u7b2c4\u7248",
       "isbn13": "9787111547044",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 人工智能：一种现代的方法（第4版），ISBN-13 9787111547044"
+      "citation": "ZH: \u4eba\u5de5\u667a\u80fd\uff1a\u4e00\u79cd\u73b0\u4ee3\u7684\u65b9\u6cd5\uff08\u7b2c4\u7248\uff09\uff0cISBN-13 9787111547044"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "深度学习",
-      "author": "花书",
+      "title": "\u6df1\u5ea6\u5b66\u4e60",
+      "author": "\u82b1\u4e66",
       "isbn13": "9787115461476",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 深度学习（花书），ISBN-13 9787115461476"
+      "citation": "ZH: \u6df1\u5ea6\u5b66\u4e60\uff08\u82b1\u4e66\uff09\uff0cISBN-13 9787115461476"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "机器学习",
-      "author": "周志华",
+      "title": "\u673a\u5668\u5b66\u4e60",
+      "author": "\u5468\u5fd7\u534e",
       "isbn13": "9787302373575",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 机器学习（周志华），ISBN-13 9787302373575"
+      "citation": "ZH: \u673a\u5668\u5b66\u4e60\uff08\u5468\u5fd7\u534e\uff09\uff0cISBN-13 9787302373575"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "统计学习方法",
-      "author": "李航",
+      "title": "\u7edf\u8ba1\u5b66\u4e60\u65b9\u6cd5",
+      "author": "\u674e\u822a",
       "isbn13": "9787302423288",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 统计学习方法（李航），ISBN-13 9787302423288"
+      "citation": "ZH: \u7edf\u8ba1\u5b66\u4e60\u65b9\u6cd5\uff08\u674e\u822a\uff09\uff0cISBN-13 9787302423288"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "强化学习",
-      "author": "第2版",
+      "title": "\u5f3a\u5316\u5b66\u4e60",
+      "author": "\u7b2c2\u7248",
       "isbn13": "9787115546081",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 强化学习（第2版），ISBN-13 9787115546081"
+      "citation": "ZH: \u5f3a\u5316\u5b66\u4e60\uff08\u7b2c2\u7248\uff09\uff0cISBN-13 9787115546081"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "信息检索导论",
+      "title": "\u4fe1\u606f\u68c0\u7d22\u5bfc\u8bba",
       "isbn13": "9787115221704",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 信息检索导论，ISBN-13 9787115221704"
+      "citation": "ZH: \u4fe1\u606f\u68c0\u7d22\u5bfc\u8bba\uff0cISBN-13 9787115221704"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "数据密集型应用系统设计",
+      "title": "\u6570\u636e\u5bc6\u96c6\u578b\u5e94\u7528\u7cfb\u7edf\u8bbe\u8ba1",
       "isbn13": "9787111547532",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 数据密集型应用系统设计，ISBN-13 9787111547532"
+      "citation": "ZH: \u6570\u636e\u5bc6\u96c6\u578b\u5e94\u7528\u7cfb\u7edf\u8bbe\u8ba1\uff0cISBN-13 9787111547532"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "生命3.0",
+      "title": "\u751f\u547d3.0",
       "isbn13": "9787508684031",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 生命3.0，ISBN-13 9787508684031"
+      "citation": "ZH: \u751f\u547d3.0\uff0cISBN-13 9787508684031"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "动手学深度学习",
-      "author": "李沐等",
+      "title": "\u52a8\u624b\u5b66\u6df1\u5ea6\u5b66\u4e60",
+      "author": "\u674e\u6c90\u7b49",
       "isbn13": "9787115547460",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 动手学深度学习（李沐等），ISBN-13 9787115547460"
+      "citation": "ZH: \u52a8\u624b\u5b66\u6df1\u5ea6\u5b66\u4e60\uff08\u674e\u6c90\u7b49\uff09\uff0cISBN-13 9787115547460"
     },
     {
       "kind": "reference_book",
@@ -598,34 +598,34 @@ Success: stay inside pack responsibility; no network; no production activation.
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "代码整洁之道",
+      "title": "\u4ee3\u7801\u6574\u6d01\u4e4b\u9053",
       "isbn13": "9787115216878",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 代码整洁之道，ISBN-13 9787115216878"
+      "citation": "ZH: \u4ee3\u7801\u6574\u6d01\u4e4b\u9053\uff0cISBN-13 9787115216878"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "设计模式",
+      "title": "\u8bbe\u8ba1\u6a21\u5f0f",
       "isbn13": "9787111075752",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 设计模式，ISBN-13 9787111075752"
+      "citation": "ZH: \u8bbe\u8ba1\u6a21\u5f0f\uff0cISBN-13 9787111075752"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "SRE：Google运维解密",
+      "title": "SRE\uff1aGoogle\u8fd0\u7ef4\u89e3\u5bc6",
       "isbn13": "9787115419903",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: SRE：Google运维解密，ISBN-13 9787115419903"
+      "citation": "ZH: SRE\uff1aGoogle\u8fd0\u7ef4\u89e3\u5bc6\uff0cISBN-13 9787115419903"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "程序员修炼之道",
+      "title": "\u7a0b\u5e8f\u5458\u4fee\u70bc\u4e4b\u9053",
       "isbn13": "9787115527684",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 程序员修炼之道，ISBN-13 9787115527684"
+      "citation": "ZH: \u7a0b\u5e8f\u5458\u4fee\u70bc\u4e4b\u9053\uff0cISBN-13 9787115527684"
     },
     {
       "kind": "reference_book",
@@ -638,29 +638,29 @@ Success: stay inside pack responsibility; no network; no production activation.
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "智能体设计指南",
-      "author": "云中江树",
+      "title": "\u667a\u80fd\u4f53\u8bbe\u8ba1\u6307\u5357",
+      "author": "\u4e91\u4e2d\u6c5f\u6811",
       "isbn13": "9787111775843",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 智能体设计指南（云中江树），ISBN-13 9787111775843"
+      "citation": "ZH: \u667a\u80fd\u4f53\u8bbe\u8ba1\u6307\u5357\uff08\u4e91\u4e2d\u6c5f\u6811\uff09\uff0cISBN-13 9787111775843"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "大模型应用开发：动手做AI Agent",
-      "author": "黄佳",
+      "title": "\u5927\u6a21\u578b\u5e94\u7528\u5f00\u53d1\uff1a\u52a8\u624b\u505aAI Agent",
+      "author": "\u9ec4\u4f73",
       "isbn13": "9787115642172",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 大模型应用开发：动手做AI Agent（黄佳），ISBN-13 9787115642172"
+      "citation": "ZH: \u5927\u6a21\u578b\u5e94\u7528\u5f00\u53d1\uff1a\u52a8\u624b\u505aAI Agent\uff08\u9ec4\u4f73\uff09\uff0cISBN-13 9787115642172"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "构建Agentic AI系统",
+      "title": "\u6784\u5efaAgentic AI\u7cfb\u7edf",
       "author": "Anjanava Biswas, Wrick Talukdar",
       "isbn13": "9787302703983",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 构建Agentic AI系统（Anjanava Biswas, Wrick Talukdar），ISBN-13 9787302703983"
+      "citation": "ZH: \u6784\u5efaAgentic AI\u7cfb\u7edf\uff08Anjanava Biswas, Wrick Talukdar\uff09\uff0cISBN-13 9787302703983"
     },
     {
       "kind": "reference_book",
@@ -673,11 +673,11 @@ Success: stay inside pack responsibility; no network; no production activation.
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "AI Agent开发与应用：基于大模型的智能体构建",
-      "author": "凌峰",
+      "title": "AI Agent\u5f00\u53d1\u4e0e\u5e94\u7528\uff1a\u57fa\u4e8e\u5927\u6a21\u578b\u7684\u667a\u80fd\u4f53\u6784\u5efa",
+      "author": "\u51cc\u5cf0",
       "isbn13": "9787302685975",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: AI Agent开发与应用：基于大模型的智能体构建（凌峰），ISBN-13 9787302685975"
+      "citation": "ZH: AI Agent\u5f00\u53d1\u4e0e\u5e94\u7528\uff1a\u57fa\u4e8e\u5927\u6a21\u578b\u7684\u667a\u80fd\u4f53\u6784\u5efa\uff08\u51cc\u5cf0\uff09\uff0cISBN-13 9787302685975"
     },
     {
       "kind": "reference_book",
@@ -700,11 +700,11 @@ Success: stay inside pack responsibility; no network; no production activation.
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "从零开始构建大型语言模型Build a Large Language Model (From Scratch)",
+      "title": "\u4ece\u96f6\u5f00\u59cb\u6784\u5efa\u5927\u578b\u8bed\u8a00\u6a21\u578bBuild a Large Language Model (From Scratch)",
       "author": "SEBASTIAN RASCHKA",
       "isbn13": "9781633437166",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 从零开始构建大型语言模型Build a Large Language Model (From Scratch)（SEBASTIAN RASCHKA），ISBN-13 9781633437166"
+      "citation": "ZH: \u4ece\u96f6\u5f00\u59cb\u6784\u5efa\u5927\u578b\u8bed\u8a00\u6a21\u578bBuild a Large Language Model (From Scratch)\uff08SEBASTIAN RASCHKA\uff09\uff0cISBN-13 9781633437166"
     },
     {
       "kind": "reference_book",
@@ -718,20 +718,20 @@ Success: stay inside pack responsibility; no network; no production activation.
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "大模型项目实战 多领域智能应用开发",
-      "author": "高强文",
+      "title": "\u5927\u6a21\u578b\u9879\u76ee\u5b9e\u6218 \u591a\u9886\u57df\u667a\u80fd\u5e94\u7528\u5f00\u53d1",
+      "author": "\u9ad8\u5f3a\u6587",
       "isbn13": "9787111762348",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 大模型项目实战 多领域智能应用开发（高强文），ISBN-13 9787111762348"
+      "citation": "ZH: \u5927\u6a21\u578b\u9879\u76ee\u5b9e\u6218 \u591a\u9886\u57df\u667a\u80fd\u5e94\u7528\u5f00\u53d1\uff08\u9ad8\u5f3a\u6587\uff09\uff0cISBN-13 9787111762348"
     },
     {
       "kind": "reference_book",
       "language": "EN",
-      "title": "LLM Engineer’s Handbook",
+      "title": "LLM Engineer\u2019s Handbook",
       "author": "Paul Iusztin ,Maxime Labonne",
       "isbn13": "9781836200079",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "EN: LLM Engineer’s Handbook (Paul Iusztin ,Maxime Labonne), ISBN-13 9781836200079"
+      "citation": "EN: LLM Engineer\u2019s Handbook (Paul Iusztin ,Maxime Labonne), ISBN-13 9781836200079"
     },
     {
       "kind": "reference_book",
@@ -797,18 +797,18 @@ Success: stay inside pack responsibility; no network; no production activation.
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "从零构建大模型算法、训练与微调",
+      "title": "\u4ece\u96f6\u6784\u5efa\u5927\u6a21\u578b\u7b97\u6cd5\u3001\u8bad\u7ec3\u4e0e\u5fae\u8c03",
       "isbn13": "9787302685616",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 从零构建大模型算法、训练与微调，ISBN-13 9787302685616"
+      "citation": "ZH: \u4ece\u96f6\u6784\u5efa\u5927\u6a21\u578b\u7b97\u6cd5\u3001\u8bad\u7ec3\u4e0e\u5fae\u8c03\uff0cISBN-13 9787302685616"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "多模态大模型 从理论到实践",
+      "title": "\u591a\u6a21\u6001\u5927\u6a21\u578b \u4ece\u7406\u8bba\u5230\u5b9e\u8df5",
       "isbn13": "9787302686927",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 多模态大模型 从理论到实践，ISBN-13 9787302686927"
+      "citation": "ZH: \u591a\u6a21\u6001\u5927\u6a21\u578b \u4ece\u7406\u8bba\u5230\u5b9e\u8df5\uff0cISBN-13 9787302686927"
     },
     {
       "kind": "reference_book",
@@ -822,19 +822,19 @@ Success: stay inside pack responsibility; no network; no production activation.
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "这就是MCP",
-      "author": "艾逗笔",
+      "title": "\u8fd9\u5c31\u662fMCP",
+      "author": "\u827e\u9017\u7b14",
       "isbn13": "9787115677471",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 这就是MCP（艾逗笔），ISBN-13 9787115677471"
+      "citation": "ZH: \u8fd9\u5c31\u662fMCP\uff08\u827e\u9017\u7b14\uff09\uff0cISBN-13 9787115677471"
     },
     {
       "kind": "reference_book",
       "language": "EN",
-      "title": "Building Multimodal Generative AI and Agentic Applications Shaping concept to code for…",
+      "title": "Building Multimodal Generative AI and Agentic Applications Shaping concept to code for\u2026",
       "isbn13": "9789365898385",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "EN: Building Multimodal Generative AI and Agentic Applications Shaping concept to code for…, ISBN-13 9789365898385"
+      "citation": "EN: Building Multimodal Generative AI and Agentic Applications Shaping concept to code for\u2026, ISBN-13 9789365898385"
     },
     {
       "kind": "reference_book",
@@ -863,36 +863,36 @@ Success: stay inside pack responsibility; no network; no production activation.
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "MCP协议与AI Agent开发：标准、应用与实现",
+      "title": "MCP\u534f\u8bae\u4e0eAI Agent\u5f00\u53d1\uff1a\u6807\u51c6\u3001\u5e94\u7528\u4e0e\u5b9e\u73b0",
       "isbn13": "9787302695349",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: MCP协议与AI Agent开发：标准、应用与实现，ISBN-13 9787302695349"
+      "citation": "ZH: MCP\u534f\u8bae\u4e0eAI Agent\u5f00\u53d1\uff1a\u6807\u51c6\u3001\u5e94\u7528\u4e0e\u5b9e\u73b0\uff0cISBN-13 9787302695349"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "MCP协议与大模型集成实战",
+      "title": "MCP\u534f\u8bae\u4e0e\u5927\u6a21\u578b\u96c6\u6210\u5b9e\u6218",
       "isbn13": "9787121503863",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: MCP协议与大模型集成实战，ISBN-13 9787121503863"
+      "citation": "ZH: MCP\u534f\u8bae\u4e0e\u5927\u6a21\u578b\u96c6\u6210\u5b9e\u6218\uff0cISBN-13 9787121503863"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "LangChain核心技术与LLM项目实践",
-      "author": "凌峰",
+      "title": "LangChain\u6838\u5fc3\u6280\u672f\u4e0eLLM\u9879\u76ee\u5b9e\u8df5",
+      "author": "\u51cc\u5cf0",
       "isbn13": "9787302685630",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: LangChain核心技术与LLM项目实践（凌峰），ISBN-13 9787302685630"
+      "citation": "ZH: LangChain\u6838\u5fc3\u6280\u672f\u4e0eLLM\u9879\u76ee\u5b9e\u8df5\uff08\u51cc\u5cf0\uff09\uff0cISBN-13 9787302685630"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "LangChain 入门指南构建高可复用、可扩展的 LLM 应用程序",
-      "author": "李特丽",
+      "title": "LangChain \u5165\u95e8\u6307\u5357\u6784\u5efa\u9ad8\u53ef\u590d\u7528\u3001\u53ef\u6269\u5c55\u7684 LLM \u5e94\u7528\u7a0b\u5e8f",
+      "author": "\u674e\u7279\u4e3d",
       "isbn13": "9787121467271",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: LangChain 入门指南构建高可复用、可扩展的 LLM 应用程序（李特丽），ISBN-13 9787121467271"
+      "citation": "ZH: LangChain \u5165\u95e8\u6307\u5357\u6784\u5efa\u9ad8\u53ef\u590d\u7528\u3001\u53ef\u6269\u5c55\u7684 LLM \u5e94\u7528\u7a0b\u5e8f\uff08\u674e\u7279\u4e3d\uff09\uff0cISBN-13 9787121467271"
     },
     {
       "kind": "reference_book",
@@ -915,197 +915,197 @@ Success: stay inside pack responsibility; no network; no production activation.
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "大模型RAG实战：RAG原理、应用与系统构建",
-      "author": "汪鹏, 谷清水, 卞龙鹏",
+      "title": "\u5927\u6a21\u578bRAG\u5b9e\u6218\uff1aRAG\u539f\u7406\u3001\u5e94\u7528\u4e0e\u7cfb\u7edf\u6784\u5efa",
+      "author": "\u6c6a\u9e4f, \u8c37\u6e05\u6c34, \u535e\u9f99\u9e4f",
       "isbn13": "9787111761990",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 大模型RAG实战：RAG原理、应用与系统构建（汪鹏, 谷清水, 卞龙鹏），ISBN-13 9787111761990"
+      "citation": "ZH: \u5927\u6a21\u578bRAG\u5b9e\u6218\uff1aRAG\u539f\u7406\u3001\u5e94\u7528\u4e0e\u7cfb\u7edf\u6784\u5efa\uff08\u6c6a\u9e4f, \u8c37\u6e05\u6c34, \u535e\u9f99\u9e4f\uff09\uff0cISBN-13 9787111761990"
     },
     {
       "kind": "reference_book",
       "language": "EN",
-      "title": "Building Natural Language and LLM Pipelines Build production-grade RAG, tool contracts,…",
+      "title": "Building Natural Language and LLM Pipelines Build production-grade RAG, tool contracts,\u2026",
       "author": "Laura Funderburk",
       "isbn13": "9781835467008",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "EN: Building Natural Language and LLM Pipelines Build production-grade RAG, tool contracts,… (Laura Funderburk), ISBN-13 9781835467008"
+      "citation": "EN: Building Natural Language and LLM Pipelines Build production-grade RAG, tool contracts,\u2026 (Laura Funderburk), ISBN-13 9781835467008"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "多模态大模型 算法、应用与微调",
-      "author": "刘兆峰",
+      "title": "\u591a\u6a21\u6001\u5927\u6a21\u578b \u7b97\u6cd5\u3001\u5e94\u7528\u4e0e\u5fae\u8c03",
+      "author": "\u5218\u5146\u5cf0",
       "isbn13": "9787111754886",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 多模态大模型 算法、应用与微调（刘兆峰），ISBN-13 9787111754886"
+      "citation": "ZH: \u591a\u6a21\u6001\u5927\u6a21\u578b \u7b97\u6cd5\u3001\u5e94\u7528\u4e0e\u5fae\u8c03\uff08\u5218\u5146\u5cf0\uff09\uff0cISBN-13 9787111754886"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "AI Agent AI的下一个风口 智能体的核心技术讲解书籍 大模型时代的AI介绍书",
+      "title": "AI Agent AI\u7684\u4e0b\u4e00\u4e2a\u98ce\u53e3 \u667a\u80fd\u4f53\u7684\u6838\u5fc3\u6280\u672f\u8bb2\u89e3\u4e66\u7c4d \u5927\u6a21\u578b\u65f6\u4ee3\u7684AI\u4ecb\u7ecd\u4e66",
       "isbn13": "9787121474606",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: AI Agent AI的下一个风口 智能体的核心技术讲解书籍 大模型时代的AI介绍书，ISBN-13 9787121474606"
+      "citation": "ZH: AI Agent AI\u7684\u4e0b\u4e00\u4e2a\u98ce\u53e3 \u667a\u80fd\u4f53\u7684\u6838\u5fc3\u6280\u672f\u8bb2\u89e3\u4e66\u7c4d \u5927\u6a21\u578b\u65f6\u4ee3\u7684AI\u4ecb\u7ecd\u4e66\uff0cISBN-13 9787121474606"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "官方正版 LangChain实战 从原型到生产 动手打造 LLM 应用",
+      "title": "\u5b98\u65b9\u6b63\u7248 LangChain\u5b9e\u6218 \u4ece\u539f\u578b\u5230\u751f\u4ea7 \u52a8\u624b\u6253\u9020 LLM \u5e94\u7528",
       "isbn13": "9787121475450",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 官方正版 LangChain实战 从原型到生产 动手打造 LLM 应用，ISBN-13 9787121475450"
+      "citation": "ZH: \u5b98\u65b9\u6b63\u7248 LangChain\u5b9e\u6218 \u4ece\u539f\u578b\u5230\u751f\u4ea7 \u52a8\u624b\u6253\u9020 LLM \u5e94\u7528\uff0cISBN-13 9787121475450"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "正版包邮 LangChain编程 从入门到实践",
+      "title": "\u6b63\u7248\u5305\u90ae LangChain\u7f16\u7a0b \u4ece\u5165\u95e8\u5230\u5b9e\u8df5",
       "isbn13": "9787115639424",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 正版包邮 LangChain编程 从入门到实践，ISBN-13 9787115639424"
+      "citation": "ZH: \u6b63\u7248\u5305\u90ae LangChain\u7f16\u7a0b \u4ece\u5165\u95e8\u5230\u5b9e\u8df5\uff0cISBN-13 9787115639424"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "LLM串接所有服務：LangChain原型到產品全面開發",
+      "title": "LLM\u4e32\u63a5\u6240\u6709\u670d\u52d9\uff1aLangChain\u539f\u578b\u5230\u7522\u54c1\u5168\u9762\u958b\u767c",
       "isbn13": "9786267383919",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: LLM串接所有服務：LangChain原型到產品全面開發，ISBN-13 9786267383919"
+      "citation": "ZH: LLM\u4e32\u63a5\u6240\u6709\u670d\u52d9\uff1aLangChain\u539f\u578b\u5230\u7522\u54c1\u5168\u9762\u958b\u767c\uff0cISBN-13 9786267383919"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "極速ChatGPT開發者兵器指南：跨界整合Prompt Flow、LangChain與Semantic Kernel框架",
+      "title": "\u6975\u901fChatGPT\u958b\u767c\u8005\u5175\u5668\u6307\u5357\uff1a\u8de8\u754c\u6574\u5408Prompt Flow\u3001LangChain\u8207Semantic Kernel\u6846\u67b6",
       "isbn13": "9786263338203",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 極速ChatGPT開發者兵器指南：跨界整合Prompt Flow、LangChain與Semantic Kernel框架，ISBN-13 9786263338203"
+      "citation": "ZH: \u6975\u901fChatGPT\u958b\u767c\u8005\u5175\u5668\u6307\u5357\uff1a\u8de8\u754c\u6574\u5408Prompt Flow\u3001LangChain\u8207Semantic Kernel\u6846\u67b6\uff0cISBN-13 9786263338203"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "生成式AI实战基于Transformer、Stable Diffusion、LangChain和AI Agent",
+      "title": "\u751f\u6210\u5f0fAI\u5b9e\u6218\u57fa\u4e8eTransformer\u3001Stable Diffusion\u3001LangChain\u548cAI Agent",
       "isbn13": "9787115650443",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 生成式AI实战基于Transformer、Stable Diffusion、LangChain和AI Agent，ISBN-13 9787115650443"
+      "citation": "ZH: \u751f\u6210\u5f0fAI\u5b9e\u6218\u57fa\u4e8eTransformer\u3001Stable Diffusion\u3001LangChain\u548cAI Agent\uff0cISBN-13 9787115650443"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "LangChain技术解密 构建大模型应用的全景指南 王浩帆",
+      "title": "LangChain\u6280\u672f\u89e3\u5bc6 \u6784\u5efa\u5927\u6a21\u578b\u5e94\u7528\u7684\u5168\u666f\u6307\u5357 \u738b\u6d69\u5e06",
       "isbn13": "9787121477379",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: LangChain技术解密 构建大模型应用的全景指南 王浩帆，ISBN-13 9787121477379"
+      "citation": "ZH: LangChain\u6280\u672f\u89e3\u5bc6 \u6784\u5efa\u5927\u6a21\u578b\u5e94\u7528\u7684\u5168\u666f\u6307\u5357 \u738b\u6d69\u5e06\uff0cISBN-13 9787121477379"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "LangChain大模型AI应用开发实践",
+      "title": "LangChain\u5927\u6a21\u578bAI\u5e94\u7528\u5f00\u53d1\u5b9e\u8df5",
       "isbn13": "9787302672524",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: LangChain大模型AI应用开发实践，ISBN-13 9787302672524"
+      "citation": "ZH: LangChain\u5927\u6a21\u578bAI\u5e94\u7528\u5f00\u53d1\u5b9e\u8df5\uff0cISBN-13 9787302672524"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "AI Agent应用与项目实战",
+      "title": "AI Agent\u5e94\u7528\u4e0e\u9879\u76ee\u5b9e\u6218",
       "isbn13": "9787121491818",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: AI Agent应用与项目实战，ISBN-13 9787121491818"
+      "citation": "ZH: AI Agent\u5e94\u7528\u4e0e\u9879\u76ee\u5b9e\u6218\uff0cISBN-13 9787121491818"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "一本书读懂AI Agent：技术、应用与商业",
+      "title": "\u4e00\u672c\u4e66\u8bfb\u61c2AI Agent\uff1a\u6280\u672f\u3001\u5e94\u7528\u4e0e\u5546\u4e1a",
       "isbn13": "9787111764168",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 一本书读懂AI Agent：技术、应用与商业，ISBN-13 9787111764168"
+      "citation": "ZH: \u4e00\u672c\u4e66\u8bfb\u61c2AI Agent\uff1a\u6280\u672f\u3001\u5e94\u7528\u4e0e\u5546\u4e1a\uff0cISBN-13 9787111764168"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "大模型项目实战Agent开发与应用",
+      "title": "\u5927\u6a21\u578b\u9879\u76ee\u5b9e\u6218Agent\u5f00\u53d1\u4e0e\u5e94\u7528",
       "isbn13": "9787111777335",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 大模型项目实战Agent开发与应用，ISBN-13 9787111777335"
+      "citation": "ZH: \u5927\u6a21\u578b\u9879\u76ee\u5b9e\u6218Agent\u5f00\u53d1\u4e0e\u5e94\u7528\uff0cISBN-13 9787111777335"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "MCP开发从入门到实战：人工智能AI智能体Agent应用开发",
+      "title": "MCP\u5f00\u53d1\u4ece\u5165\u95e8\u5230\u5b9e\u6218\uff1a\u4eba\u5de5\u667a\u80fdAI\u667a\u80fd\u4f53Agent\u5e94\u7528\u5f00\u53d1",
       "isbn13": "9787115674142",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: MCP开发从入门到实战：人工智能AI智能体Agent应用开发，ISBN-13 9787115674142"
+      "citation": "ZH: MCP\u5f00\u53d1\u4ece\u5165\u95e8\u5230\u5b9e\u6218\uff1a\u4eba\u5de5\u667a\u80fdAI\u667a\u80fd\u4f53Agent\u5e94\u7528\u5f00\u53d1\uff0cISBN-13 9787115674142"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "AI Agent设计实战：智能体设计方法与技巧",
+      "title": "AI Agent\u8bbe\u8ba1\u5b9e\u6218\uff1a\u667a\u80fd\u4f53\u8bbe\u8ba1\u65b9\u6cd5\u4e0e\u6280\u5de7",
       "isbn13": "9787111779247",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: AI Agent设计实战：智能体设计方法与技巧，ISBN-13 9787111779247"
+      "citation": "ZH: AI Agent\u8bbe\u8ba1\u5b9e\u6218\uff1a\u667a\u80fd\u4f53\u8bbe\u8ba1\u65b9\u6cd5\u4e0e\u6280\u5de7\uff0cISBN-13 9787111779247"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "MCP极简开发：轻松打造高效智能体 MCP开发教程 Agent智能体大语",
+      "title": "MCP\u6781\u7b80\u5f00\u53d1\uff1a\u8f7b\u677e\u6253\u9020\u9ad8\u6548\u667a\u80fd\u4f53 MCP\u5f00\u53d1\u6559\u7a0b Agent\u667a\u80fd\u4f53\u5927\u8bed",
       "isbn13": "9787115674883",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: MCP极简开发：轻松打造高效智能体 MCP开发教程 Agent智能体大语，ISBN-13 9787115674883"
+      "citation": "ZH: MCP\u6781\u7b80\u5f00\u53d1\uff1a\u8f7b\u677e\u6253\u9020\u9ad8\u6548\u667a\u80fd\u4f53 MCP\u5f00\u53d1\u6559\u7a0b Agent\u667a\u80fd\u4f53\u5927\u8bed\uff0cISBN-13 9787115674883"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "A2A協議：多Agent系統全鏈路開發",
+      "title": "A2A\u5354\u8b70\uff1a\u591aAgent\u7cfb\u7d71\u5168\u93c8\u8def\u958b\u767c",
       "isbn13": "9787111791980",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: A2A協議：多Agent系統全鏈路開發，ISBN-13 9787111791980"
+      "citation": "ZH: A2A\u5354\u8b70\uff1a\u591aAgent\u7cfb\u7d71\u5168\u93c8\u8def\u958b\u767c\uff0cISBN-13 9787111791980"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "LangGraph實戰──構建新一代 AI 智慧體系統",
+      "title": "LangGraph\u5be6\u6230\u2500\u2500\u69cb\u5efa\u65b0\u4e00\u4ee3 AI \u667a\u6167\u9ad4\u7cfb\u7d71",
       "isbn13": "9787121507007",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: LangGraph實戰──構建新一代 AI 智慧體系統，ISBN-13 9787121507007"
+      "citation": "ZH: LangGraph\u5be6\u6230\u2500\u2500\u69cb\u5efa\u65b0\u4e00\u4ee3 AI \u667a\u6167\u9ad4\u7cfb\u7d71\uff0cISBN-13 9787121507007"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "MCP+A2A+LangGraph 驅動的智能體全流程開發",
+      "title": "MCP+A2A+LangGraph \u9a45\u52d5\u7684\u667a\u80fd\u9ad4\u5168\u6d41\u7a0b\u958b\u767c",
       "isbn13": "9787115682024",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: MCP+A2A+LangGraph 驅動的智能體全流程開發，ISBN-13 9787115682024"
+      "citation": "ZH: MCP+A2A+LangGraph \u9a45\u52d5\u7684\u667a\u80fd\u9ad4\u5168\u6d41\u7a0b\u958b\u767c\uff0cISBN-13 9787115682024"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "大模型应用开发：RAG入门与实战 大语言模型大模型多模态Prompt提示词工程RAG检索增强生成技术",
+      "title": "\u5927\u6a21\u578b\u5e94\u7528\u5f00\u53d1\uff1aRAG\u5165\u95e8\u4e0e\u5b9e\u6218 \u5927\u8bed\u8a00\u6a21\u578b\u5927\u6a21\u578b\u591a\u6a21\u6001Prompt\u63d0\u793a\u8bcd\u5de5\u7a0bRAG\u68c0\u7d22\u589e\u5f3a\u751f\u6210\u6280\u672f",
       "isbn13": "9787115648938",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 大模型应用开发：RAG入门与实战 大语言模型大模型多模态Prompt提示词工程RAG检索增强生成技术，ISBN-13 9787115648938"
+      "citation": "ZH: \u5927\u6a21\u578b\u5e94\u7528\u5f00\u53d1\uff1aRAG\u5165\u95e8\u4e0e\u5b9e\u6218 \u5927\u8bed\u8a00\u6a21\u578b\u5927\u6a21\u578b\u591a\u6a21\u6001Prompt\u63d0\u793a\u8bcd\u5de5\u7a0bRAG\u68c0\u7d22\u589e\u5f3a\u751f\u6210\u6280\u672f\uff0cISBN-13 9787115648938"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "LangChain開發手冊：OpenAI × LCEL 表達式 × Agent 自動化流程 × RAG 擴展模型知識 × 圖形資料庫 × LangSmith 除錯工具",
+      "title": "LangChain\u958b\u767c\u624b\u518a\uff1aOpenAI \u00d7 LCEL \u8868\u9054\u5f0f \u00d7 Agent \u81ea\u52d5\u5316\u6d41\u7a0b \u00d7 RAG \u64f4\u5c55\u6a21\u578b\u77e5\u8b58 \u00d7 \u5716\u5f62\u8cc7\u6599\u5eab \u00d7 LangSmith \u9664\u932f\u5de5\u5177",
       "isbn13": "9789863127918",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: LangChain開發手冊：OpenAI × LCEL 表達式 × Agent 自動化流程 × RAG 擴展模型知識 × 圖形資料庫 × LangSmith 除錯工具，ISBN-13 9789863127918"
+      "citation": "ZH: LangChain\u958b\u767c\u624b\u518a\uff1aOpenAI \u00d7 LCEL \u8868\u9054\u5f0f \u00d7 Agent \u81ea\u52d5\u5316\u6d41\u7a0b \u00d7 RAG \u64f4\u5c55\u6a21\u578b\u77e5\u8b58 \u00d7 \u5716\u5f62\u8cc7\u6599\u5eab \u00d7 LangSmith \u9664\u932f\u5de5\u5177\uff0cISBN-13 9789863127918"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "大模型RAG应用开发：构建智能生成系统",
+      "title": "\u5927\u6a21\u578bRAG\u5e94\u7528\u5f00\u53d1\uff1a\u6784\u5efa\u667a\u80fd\u751f\u6210\u7cfb\u7edf",
       "isbn13": "9787302685982",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 大模型RAG应用开发：构建智能生成系统，ISBN-13 9787302685982"
+      "citation": "ZH: \u5927\u6a21\u578bRAG\u5e94\u7528\u5f00\u53d1\uff1a\u6784\u5efa\u667a\u80fd\u751f\u6210\u7cfb\u7edf\uff0cISBN-13 9787302685982"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "LlamaIndex大模型RAG开发实践",
+      "title": "LlamaIndex\u5927\u6a21\u578bRAG\u5f00\u53d1\u5b9e\u8df5",
       "isbn13": "9787302697084",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: LlamaIndex大模型RAG开发实践，ISBN-13 9787302697084"
+      "citation": "ZH: LlamaIndex\u5927\u6a21\u578bRAG\u5f00\u53d1\u5b9e\u8df5\uff0cISBN-13 9787302697084"
     }
   ],
   "common_agent_id": "specials.techology-advisor-agent",
@@ -1121,7 +1121,7 @@ Success: stay inside pack responsibility; no network; no production activation.
   "generated_at": "2026-07-26T14:16:46.000174Z",
   "reviewed_by": "specials-self-contained-reviewer",
   "reviewed_at": "2026-07-26T18:00:00Z",
-  "imported_from": "C:\\Project\\common-agent-swarm-ops\\business\\specials\\agents\\specials.techology-advisor-agent",
+  "imported_from": "vendor/common-agent-swarm-ops/business/specials/agents/specials.techology-advisor-agent",
   "reference_book_origin": "spec/book_of_knowledge.md",
   "reference_book_note": "Bibliographic references from spec/book_of_knowledge.md. Does not enable network, RAG, T3, plugins, or memory writes."
 }

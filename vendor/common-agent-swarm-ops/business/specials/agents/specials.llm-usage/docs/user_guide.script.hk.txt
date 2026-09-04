@@ -1,0 +1,295 @@
+各位觀衆朋友大家好，歡迎返嚟我哋嘅頻道。今日呢條片我哋要詳細講解嘅系 LLM Usage，
+即系大語言模型使用嘅操作同設計指南。
+
+首先呢份指南寫畀喺 common-agent-swarm-ops 工作嘅操作員、
+pack 作者、swarm 設計師同審查人員。你會得到任務清晰度、
+用法指引、協作圖、CASOPS 步驟、改善路徑同信任來源地圖。
+
+呢份文件唔系激活供應商、開放網絡或發明工具嘅許可證。Host 真相系 fail-closed agent_spec.json。
+設計文本不受信任。
+
+Pack 路徑 business/specials/agents/specials.llm-usage/，
+指南 docs/user_guide.md。
+
+第一部分：Snapshot。
+
+LLM Usage，代號 specials.llm-usage，
+系 Specials pack 能力喺 CASOPS 上。簡單講：
+擁有 specials-domain LLM usage 設計成果作爲 draft data-only 代理表示。
+Host 角色 Special_Agent data-only configuration。
+
+基本資料：顯示名 Llm Usage，Pack agent id specials.llm-usage，
+specials pack。目錄狀態 draft，成熟度 L0 非激活。
+供應商 local_deterministic，網絡 False，
+工具空，生產激活 False。Prompt 同 rubric 引用 spagent.llm-usage-prompt 同 spagent.llm-usage-rubric。
+
+第二部分：點解存在。
+
+Specials 代理捕捉跨領域認知技能。呢個角色：擁有 LLM usage 設計成果作爲 draft data-only 表示。
+
+第三部分：做得好標準。
+
+主要成果：擁有 LLM usage 設計成果。
+
+自我質量標準：LLM usage policy 嘅可追溯輸出、
+fail-closed schema 驗證、冇靜默生產激活。
+
+設計時雄心：產出比臨時人工更一致嘅 LLM 使用政策結果。
+
+架構模式：LLM usage policy pattern，設計時層級或多代理循環，
+host local_deterministic 數據專用直到門控。
+
+Host 批評綁定：rubric spagent.llm-usage-rubric 惰性。
+Prompt 同名惰性。邊緣輸入 spagent.llm-usage-input 輸出 spagent.llm-usage-output。
+精煉 1。
+
+輸入輸出接受：本地配置、治理記錄、sources 來源。輸出可審閱 data-only 表示。
+接受 fail-closed 通過、冇激活、引用本地。
+
+第四部分：範圍。
+
+擁有：LLM usage 設計成果作爲 draft data-only 表示。
+
+分享：接受人類治理同同伴 specials 批評。評論 LLM usage policy 差距、
+缺失證據、不安全激活、薄弱交接。邊緣如上。最大精煉 1。
+
+拒絕升級：status draft，activation false。
+tools 空 network false。唔發明任何嘢。redesign 哈希來源。
+請求升級人類治理。
+
+第五部分：幾時用。
+
+當模型選擇、預算同安全 LLM 使用模式必須被管治嗰陣調用。能力家族 LLM usage policy。
+典型上游 Controller 或 planner requests。
+典型下游 All LLM-calling agents。
+
+具體任務：擁有 LLM usage 設計成果。
+
+唔好當做靜默激活器或憑證中介。
+
+決策速查：技能屬於本代理專長納入 swarm 圖。元數據用 Registry。工具網絡唔允許。人類風險保留門控。
+
+第六部分：協作地圖。
+
+批評總線節點。入站人類治理同同伴 specials。出站 LLM usage policy 差距、
+缺失證據、不安全激活、薄弱交接。
+
+Specials 通道：家族 LLM usage policy，
+上游 Controller 或 planner requests，
+下游 All LLM-calling agents。
+
+第七部分：生產位置。
+
+人類工作流：領域手藝團隊之上。交接製品計劃、路線、證據包、控制決策、優化工單。
+
+多代理 AI 工作流：元層節點。設計時工具 host 冇 fail-closed。
+運行時 LLM usage policy pattern host local_deterministic 直到門控。
+今日只文檔。
+
+Swarm-ready 合約：artifact_id 版本、parent_assets、
+brief_scope、acceptance_criteria、
+qc_status gate flags、rights_and_consent、
+critique_log。
+
+第八部分：CASOPS 操作。
+
+目錄加設計對象。步驟：發現 /registry。檢查 /registry/agents/specials.llm-usage。
+提議 POST /api/v1/commons/agents/specials.llm-usage/proposals。
+Swarm 成員 Host 引用。運行默認唔啓用。
+
+實際清單：確認 flags。讀第三部分。附證據。唔貼密鑰。細小增量。
+
+第九部分：安全信任非激活。
+
+信任層級：agent_spec.json binding。SPEC.md 權威設計。
+sources 不受信任。外部語料庫不受信任。redesign 歷史有哈希。
+
+硬規則：provider local_deterministic。
+網絡 False。工具空。activation False。預算 1/1/0。
+設計時工具非激活。
+
+第十部分：提升質量。
+
+有版本目錄工作。循環：觀察、命名、起草、附證據、提議、審閱、門控。
+
+槓桿：rubric 收緊針對 LLM usage policy 輸出。
+prompt 對齊。批評圖捕捉失敗。架構模擬 LLM usage policy pattern。
+評估案例。人類門控。
+
+評估種子：Happy path 滿足。Out-of-scope 拒絕。
+Missing provenance fail closed。
+Conflicting critique 限制。Proposal-only 不可變。
+
+第十一部分：來源地圖。
+
+本地優先：agent_spec.json binding，SPEC.md authoritative-design，
+README.md local-index，MAPPING.md provenance，
+PROVENANCE.json provenance。
+
+映射：specials.llm-usage 狀態 related。
+歷史來源 docs/special_agents_redesign/agents/llm_usage.md。
+SHA-256 6bac2d5882382f1a85920b5854879cf295edb86fa5a48cfdbcd43c72c6fb97fd。
+本地運行時 agent_spec.json。Pack 語料庫唔需要。
+
+來源記錄：schema_version 1.0，common_agent_id specials.llm-usage，
+pack_id specials，映射 related。配置 SHA-256 730b3e6005a6d6a9b94647bb151b799f58b3841023e953e14cf2ef7159304782，
+目標 commit 5460c4b4a33c15286f9fd84b1bc764d755f5bab0。
+生成 2026-07-26T14:16:45.952022Z，
+審閱 2026-07-26T18:00:00Z。
+
+第十二部分：相關設計閱讀。
+
+唔覆蓋 agent_spec.json。
+
+va-agent-swarm 下：study/llm_usage_functional_specification.md 系構建中央 LLM API 使用同成本儀表板應用嘅規格。
+仲有粵語版本。
+
+Specials redesign 文檔大綱：Build Central LLM API Usage Cost Dashboard App、
+Project Name Suggestion、Project Overview、
+Core Goals、Key Features Must-Have 包括 Provider Management、
+Usage Balance Fetching、Dashboard UI、
+Cost Calculation、Data Persistence Export、
+Security UX、Nice-to-Have Phase 2、
+Supported Providers、Technical Stack、
+Development Phases、Deliverables。
+
+核心內容好實用。項目名稱建議系 LLMUsageHub 或 MultiLLM Dashboard 或 API Cost Central 或 LLM Spend Tracker。
+
+項目概覽：創建一個網頁應用提供單一中央視圖，追蹤所有 LLM API 帳戶嘅使用、
+成本、餘額、支出同 token 消耗。用戶目前有 x.ai Grok API、
+Poe、MiniMax、Kimi Moonshot AI、OpenRouter 等多個帳戶。
+應用畀用戶加入 API 密鑰一次就可以喺一個靚儀表板睇曬所有嘢，
+包括月度總支出、剩餘積分、每供應商細分、圖表、趨勢、警報。靈感來自 cc-switch 呢個管理 Claude Code 或 Codex 或 Gemini CLI 嘅 LLM 供應商嘅流行桌面工具。
+
+核心目標：統一監控所有 LLM 支出同使用。安全本地存儲 API 密鑰唔發送到任何服務器。
+自動或按需獲取使用或賬單數據。歷史追蹤加可視化。極度可擴展容易加新供應商。
+類似 cc-switch 嘅靚現代 UI。
+
+關鍵功能方面：供應商管理可以加編輯刪除帳戶有預設。使用同餘額獲取偏好官方 API 有 fallback 選項。
+儀表板 UI 有概覽頁面顯示總估計美元支出、剩餘積分、活躍供應商數量，
+有供應商卡片網格或列表顯示餘額、月度支出同趨勢。圖表包括支出趨勢線圖、
+成本分佈餅圖、token 使用條形圖、使用熱力圖。詳細表格有每供應商曆史同模型級細分。
+警報有低餘額警告同高日支出通知。
+
+成本計算有內置定價表支持用戶覆蓋。數據持久化用本地 SQLite 支持 CSV 或 JSON 導出。
+安全方面 API 密鑰加密本地存儲用 Fernet 對稱加密。
+有暗色主題。完全離線優先。
+
+Phase 2 Nice-to-Have 包括 AI 洞察、配置導入導出、每模型成本預測、可選代理或路由模式。
+
+支持嘅供應商好多：高優先有 xAI、Poe、OpenRouter、
+MiniMax、Kimi。其他主要供應商有 OpenAI、Anthropic、
+Google Gemini、Groq、Mistral。
+
+技術棧方面後端有 API 設計用 OpenAPI，前端有響應式 UI，架構分層。開發分階段進行。
+
+本地知識索引同 Folder README 標準結構。
+
+第十三部分：host 合約。
+
+權威配置標準：agent_id specials.llm-usage，其餘同其他 specials 代理一致。
+
+第十四部分：SPEC 責任摘錄。
+
+擁有 LLM usage 設計成果作爲 draft data-only 表示。
+用戶有 x.ai、Poe、MiniMax、Kimi、OpenRouter 等多個帳戶。
+應用畀用戶加密鑰一次就睇曬所有儀表板包括月度支出、剩餘積分、供應商細分、
+圖表、趨勢、警報。
+
+第十五部分：文檔控制。
+
+標準配置同其他代理一致。
+
+好啦，以上就係 LLM Usage 嘅完整指南。呢個代理關注 LLM API 使用嘅管治同成本追蹤，
+對於管理多個 AI 供應商帳戶好實用。多謝收睇，下條片見。
+
+我再詳細展開 LLM Usage Dashboard 嘅功能設計。
+呢個應用嘅核心目標系提供一個統一嘅地方監控所有 LLM 支出。
+唔需要分別登錄唔同供應商嘅後臺睇數據。
+一個儀表板就可以睇曬所有嘢。
+安全方面 API 密鑰只存儲喺本地。
+用 Fernet 對稱加密確保安全。
+永遠唔會發送到任何外部服務器。
+呢個對於有多個 API 帳戶嘅用戶好重要。
+供應商管理功能方面：
+可以加入、編輯、刪除帳戶。
+每個帳戶有名稱、供應商類型用預設、
+API 密鑰、基礎 URL 用於自定端點、備註。
+有預建嘅預設覆蓋儘可能多嘅供應商。
+支持每個供應商有多個帳戶。
+有一鍵刷新全部同單獨刷新按鈕。
+使用同餘額獲取方面：
+優先用官方 API 例如 usage、billing、balance、token_plan/remains 端點。
+有 fallback 選項包括手動輸入同網頁儀表板抓取。
+後臺自動刷新間隔可配置加手動刷新。
+完整歷史快照存儲喺本地數據庫。
+儀表板 UI 方面：
+概覽頁面顯示今日、本月同所有時間嘅總估計美元支出。
+顯示總剩餘積分或餘額已規範化。
+顯示活躍供應商數量加快速狀態。
+供應商卡片用網格或列表佈局。
+每張卡片有名稱加 logo、當前餘額、
+本月支出加趨勢指示器、最後更新時間戳。
+圖表方面有支出趨勢線圖按日或周。
+成本分佈餅圖按供應商。
+Token 使用條形圖按模型。
+使用熱力圖或日曆視圖。
+詳細表格有每供應商使用歷史同模型級細分。
+警報有低餘額警告閾值可配置。
+高日支出通知。
+成本計算方面有內置定價表涵蓋主要模型。
+輸入輸出 token 到美元嘅換算。
+允許用戶每模型覆蓋定價。
+即使供應商只報告 token 也顯示估計美元。
+數據持久化用本地 SQLite 數據庫存所有歷史快照。
+支持導出完整數據爲 CSV 或 JSON。
+安全同用戶體驗方面：
+API 密鑰加密本地存儲用 Fernet。
+暗色同亮色主題默認暗色配合現代 AI 工具。
+基於瀏覽器嘅 UI 從 localhost 訪問。
+完全離線優先初始設置後唔需要網絡。
+響應式、乾淨、專業嘅 UI。
+Phase 2 嘅 Nice-to-Have 功能：
+AI 驅動嘅洞察例如話你本月 68% 花喺 Kimi 上面，
+建議將重任務轉到 Groq。
+導入導出配置包括可能嘅 cc-switch 導入。
+每模型成本預測。
+可選代理或路由模式類似 LiteLLM 或 cc-switch，
+可以記錄來自實際 API 調用嘅使用。
+支持嘅供應商好全面：
+高優先嘅有 xAI Grok API 用 console.x.ai 端點。
+Poe.com 用 usage/points_history 同 current_balance 端點。
+OpenRouter 用 account usage API。
+MiniMax 用 token plan remains 同 usage 端點。
+Kimi Moonshot AI 用 platform.moonshot.ai 端點。
+其他主要供應商包括 OpenAI、Anthropic Claude、
+Google Gemini 或 Vertex AI、Groq、Mistral。
+每個都有完整嘅預設包括獲取邏輯同定價。
+技術棧方面後端有 RESTful API 設計用 OpenAPI 規格。
+前端用現代框架有響應式組件。
+架構分層清晰支持擴展。
+開發分階段進行從 MVP 到完整功能。
+呢個對於管理多個 AI 供應商帳戶嘅用戶嚟講好實用。
+一個地方就可以追蹤所有嘅 LLM 支出同使用情況。
+避免超出預算或者某個供應商餘額用盡而唔知。
+
+關於開發階段嘅建議：
+Phase 1 先實現核心框架同兩三個主要供應商嘅整合。
+確保基本嘅獲取、存儲同顯示流程通暢。
+Phase 2 擴展到所有支持嘅供應商。
+加入圖表同詳細分析功能。
+Phase 3 加入高級功能如 AI 洞察同預測。
+優化性能同用戶體驗。
+每個階段都有明確嘅交付物。
+整個項目預計分幾周完成。
+從 MVP 開始然後逐步擴展。
+呢個設計確保每一步都系可用嘅產品。
+唔需要等所有功能完成先可以開始用。
+對於重度 LLM API 用戶嚟講，
+呢個工具可以節省大量嘅時間同金錢。
+清楚知道錢花喺邊度，
+邊個模型最划算，
+幾時需要補充餘額。
+呢啲洞察對於優化 AI 使用策略非常有價值。
+總結嚟講 LLM Usage 代理管治嘅系整個組織嘅 LLM 使用政策。
+確保模型選擇合理預算受控使用安全。

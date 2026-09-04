@@ -16,7 +16,7 @@ from casops.runtime.executor import Runtime
 from casops.runtime.llm import LlmRouter, LlmSettings
 
 REPO = Path(__file__).resolve().parents[2]
-SOURCE = Path(r"C:\Project\common-agent-swarm-ops\business\specials\agents")
+SOURCE = REPO / "vendor" / "common-agent-swarm-ops" / "business" / "specials" / "agents"
 SCHEMA = json.loads((REPO / "schemas" / "agent" / "agent_spec.schema.json").read_text(encoding="utf-8"))
 MUTATION = {
     "x-casops-actor": "host_service",
@@ -56,6 +56,8 @@ def test_each_source_specials_agent_is_imported_as_v3_folder() -> None:
         assert spec["model_policy"]["provider"] == "local_deterministic"
         assert spec["allowed_tools"] == []
         assert spec["allowed_plugins"] == []
+        assert spec["budget_policy"]["max_output_tokens"] >= 16
+        assert spec["budget_policy"]["max_input_tokens"] >= 16
         memory = json.loads((folder / "memory" / "policy.json").read_text(encoding="utf-8"))
         assert memory["mode"] == "none"
         background = json.loads((folder / "identity" / "background.json").read_text(encoding="utf-8"))

@@ -17,7 +17,7 @@ from casops.runtime.executor import Runtime
 from casops.runtime.llm import LlmRouter, LlmSettings
 
 REPO = Path(__file__).resolve().parents[2]
-SOURCE = Path(r"C:\Project\common-agent-swarm-ops\business\video\agents")
+SOURCE = REPO / "vendor" / "common-agent-swarm-ops" / "business" / "video" / "agents"
 SCHEMA = json.loads((REPO / "schemas" / "agent" / "agent_spec.schema.json").read_text(encoding="utf-8"))
 MUTATION = {
     "x-casops-actor": "host_service",

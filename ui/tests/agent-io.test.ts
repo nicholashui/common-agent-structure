@@ -3,7 +3,7 @@ import { AGENT_MENU_LABEL, AGENT_TABS, WORKFLOW_MENU_LABEL, WORKFLOW_TABS, locat
 import { listSubWorkflows, subWorkflowSvgSrc, workflowAgentChatHrefs, workflowSvgSrc } from "../src/lib/workflow";
 import videoWorkflowSvg from "../public/svg/video.workflow.svg?raw";
 import { ioHasContract, parseAgentIo } from "../src/lib/io";
-import { normalizeChatHistory } from "../src/lib/chat";
+import { chatHitOutputCap, normalizeChatHistory } from "../src/lib/chat";
 
 describe("agent I/O contract", () => {
   it("parses critique_edges inputs and outputs", () => {
@@ -108,6 +108,10 @@ describe("agent chat helpers", () => {
     expect(AGENT_TABS.some((tab) => tab.id === "chat" && tab.path === "chat" && tab.label === "Chat")).toBe(true);
   });
 
+  it("keeps a Files tab under the Agent menu", () => {
+    expect(AGENT_TABS.some((tab) => tab.id === "files" && tab.path === "files" && tab.label === "Files")).toBe(true);
+  });
+
   it("sends only user/assistant turns as history", () => {
     const history = normalizeChatHistory([
       { role: "user", content: "hi" },
@@ -118,5 +122,11 @@ describe("agent chat helpers", () => {
       { role: "user", content: "hi" },
       { role: "assistant", content: "hello" },
     ]);
+  });
+
+  it("treats length finish as an output-cap hit", () => {
+    expect(chatHitOutputCap({ truncated: true })).toBe(true);
+    expect(chatHitOutputCap({ finish_reason: "length" })).toBe(true);
+    expect(chatHitOutputCap({ finish_reason: "stop" })).toBe(false);
   });
 });

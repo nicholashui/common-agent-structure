@@ -77,6 +77,8 @@ def test_list_agents_includes_template() -> None:
     assert template["schema_version"] == "3.0"
     assert template["role"] == "BaselineSafeTemplate"
     assert template["memory_mode"] == "none"
+    assert template["folder"] == "agents/_template_v3"
+    assert ":" not in template["folder"]
 
 
 def test_list_agents_includes_every_folder() -> None:

@@ -1,0 +1,194 @@
+<?xml version='1.0' encoding='utf-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1480 760" role="img">
+  <title id="title">Life's Quiet Redemption — Scene Flow, Emotional Arc &amp; Retention Bands</title>
+  <desc id="desc">Timeline of the 12 scenes plus two ending cards, mapped to the four-phase emotional arc, the engineered hook, per-segment retention floors, and the generation engine assigned to each shot.</desc>
+  <defs>
+    <style>
+      .bg { fill: #F8FAFC; }
+      .panel { fill: #FFFFFF; stroke: #CBD5E1; stroke-width: 1.2; }
+      .title { font: 700 25px -apple-system, 'Segoe UI', Roboto, Arial, sans-serif; fill: #0F172A; }
+      .subtitle { font: 400 13px -apple-system, 'Segoe UI', Roboto, Arial, sans-serif; fill: #475569; }
+      .phase { font: 700 12px -apple-system, 'Segoe UI', Roboto, Arial, sans-serif; fill: #0F172A; }
+      .scene-n { font: 700 13px -apple-system, 'Segoe UI', Roboto, Arial, sans-serif; fill: #0F172A; }
+      .scene-t { font: 400 9.5px -apple-system, 'Segoe UI', Roboto, Arial, sans-serif; fill: #334155; }
+      .eng { font: 700 8px -apple-system, 'Segoe UI', Roboto, Arial, sans-serif; fill: #FFFFFF; letter-spacing:0.3px; }
+      .axis { font: 400 10px -apple-system, 'Segoe UI', Roboto, Arial, sans-serif; fill: #64748B; }
+      .band { font: 700 10px -apple-system, 'Segoe UI', Roboto, Arial, sans-serif; fill: #B45309; }
+      .footer { font: 400 10px -apple-system, 'Segoe UI', Roboto, Arial, sans-serif; fill: #64748B; }
+      .legend { font: 400 10px -apple-system, 'Segoe UI', Roboto, Arial, sans-serif; fill: #334155; }
+    </style>
+    <filter id="sh" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="1" stdDeviation="3" flood-color="#0F172A" flood-opacity="0.08" />
+    </filter>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="1480" height="760" />
+  <text x="40" y="46" class="title">Scene Flow · Emotional Arc · Retention Bands</text>
+  <text x="40" y="70" class="subtitle">14 cards (12 scenes + 2 ending cards) · ~60s · engineered hook front-loaded · per-segment retention floors.</text>
+
+  <!-- Phase ribbons -->
+  <rect x="60" y="92" width="300" height="22" rx="6" fill="#EFF6FF" stroke="#93C5FD"/>
+  <text x="70" y="108" class="phase">Youth — Ambition &amp; Dreams (1–5)</text>
+  <rect x="364" y="92" width="360" height="22" rx="6" fill="#FFFBEB" stroke="#FCD34D"/>
+  <text x="374" y="108" class="phase">Building &amp; Compromise (6–9)</text>
+  <rect x="728" y="92" width="300" height="22" rx="6" fill="#ECFDF5" stroke="#86EFAC"/>
+  <text x="738" y="108" class="phase">Quiet Acceptance &amp; Joy (10–12)</text>
+  <rect x="1032" y="92" width="388" height="22" rx="6" fill="#F5F3FF" stroke="#C4B5FD"/>
+  <text x="1042" y="108" class="phase">Reflection &amp; Grace (Ending cards)</text>
+
+  <!-- Emotional arc curve area -->
+  <text x="40" y="150" class="axis">Emotional valence ↑</text>
+  <rect x="60" y="160" width="1360" height="150" rx="8" fill="#FFFFFF" stroke="#E2E8F0"/>
+  <!-- gridlines -->
+  <line x1="60" y1="235" x2="1420" y2="235" stroke="#F1F5F9" stroke-width="1"/>
+  <!-- arc polyline across 14 points -->
+  <polyline fill="none" stroke="#7C3AED" stroke-width="3"
+    points="110,270 200,250 290,255 380,205 470,190 560,235 650,215 740,200 830,250 905,160 985,185 1075,178 1230,250 1360,205" />
+  <!-- peak markers -->
+  <circle cx="470" cy="190" r="4" fill="#7C3AED"/>
+  <circle cx="905" cy="160" r="4" fill="#7C3AED"/>
+  <text x="430" y="180" class="axis" fill="#7C3AED">graduation</text>
+  <text x="868" y="150" class="axis" fill="#7C3AED">family dinner (peak)</text>
+
+  <!-- Scene cards row -->
+  <!-- helper: 14 cards. We'll place cards with x positions; widths ~88, gap 6 -->
+  <!-- Engine color: Veo #2563EB, Kling #059669, Runway #D97706, AE #7C3AED -->
+  <g filter="url(#sh)">
+  <!-- 1 -->
+  <rect class="panel" x="66" y="340" width="88" height="92" rx="8"/>
+  <rect x="66" y="340" width="88" height="20" rx="8" fill="#2563EB"/>
+  <text x="74" y="354" class="eng">VEO 3.1</text>
+  <text x="74" y="380" class="scene-n">1 · ECU</text>
+  <text x="74" y="396" class="scene-t">Map study</text>
+  <text x="74" y="410" class="scene-t">pencil light</text>
+  <text x="74" y="424" class="scene-t">A · 4–5s</text>
+  <!-- 2 -->
+  <rect class="panel" x="160" y="340" width="88" height="92" rx="8"/>
+  <rect x="160" y="340" width="88" height="20" rx="8" fill="#059669"/>
+  <text x="168" y="354" class="eng">KLING 3</text>
+  <text x="168" y="380" class="scene-n">2 · Wide</text>
+  <text x="168" y="396" class="scene-t">Leaving home</text>
+  <text x="168" y="410" class="scene-t">suitcase</text>
+  <text x="168" y="424" class="scene-t">C · 4–5s</text>
+  <!-- 3 -->
+  <rect class="panel" x="254" y="340" width="88" height="92" rx="8"/>
+  <rect x="254" y="340" width="88" height="20" rx="8" fill="#2563EB"/>
+  <text x="262" y="354" class="eng">VEO 3.1</text>
+  <text x="262" y="380" class="scene-n">3 · CU</text>
+  <text x="262" y="396" class="scene-t">Coding all-</text>
+  <text x="262" y="410" class="scene-t">nighter</text>
+  <text x="262" y="424" class="scene-t">B · 4–5s</text>
+  <!-- 4 -->
+  <rect class="panel" x="348" y="340" width="88" height="92" rx="8"/>
+  <rect x="348" y="340" width="88" height="20" rx="8" fill="#D97706"/>
+  <text x="356" y="354" class="eng">RUNWAY 4</text>
+  <text x="356" y="380" class="scene-n">4 · Insert</text>
+  <text x="356" y="396" class="scene-t">Hello World</text>
+  <text x="356" y="410" class="scene-t">screen</text>
+  <text x="356" y="424" class="scene-t">B · 4s</text>
+  <!-- 5 -->
+  <rect class="panel" x="442" y="340" width="88" height="92" rx="8"/>
+  <rect x="442" y="340" width="88" height="20" rx="8" fill="#2563EB"/>
+  <text x="450" y="354" class="eng">VEO 3.1</text>
+  <text x="450" y="380" class="scene-n">5 · ECU</text>
+  <text x="450" y="396" class="scene-t">Graduation</text>
+  <text x="450" y="410" class="scene-t">hope, eyes</text>
+  <text x="450" y="424" class="scene-t">E · 4–5s</text>
+  <!-- 6 -->
+  <rect class="panel" x="536" y="340" width="88" height="92" rx="8"/>
+  <rect x="536" y="340" width="88" height="20" rx="8" fill="#059669"/>
+  <text x="544" y="354" class="eng">KLING 3</text>
+  <text x="544" y="380" class="scene-n">6 · Med</text>
+  <text x="544" y="396" class="scene-t">Carpenter</text>
+  <text x="544" y="410" class="scene-t">sawdust</text>
+  <text x="544" y="424" class="scene-t">E · 4–5s</text>
+  <!-- 7 -->
+  <rect class="panel" x="630" y="340" width="88" height="92" rx="8"/>
+  <rect x="630" y="340" width="88" height="20" rx="8" fill="#2563EB"/>
+  <text x="638" y="354" class="eng">VEO 3.1</text>
+  <text x="638" y="380" class="scene-n">7 · Med</text>
+  <text x="638" y="396" class="scene-t">Small shop</text>
+  <text x="638" y="410" class="scene-t">cat motif</text>
+  <text x="638" y="424" class="scene-t">E · 4–5s</text>
+  <!-- 8 -->
+  <rect class="panel" x="724" y="340" width="88" height="92" rx="8"/>
+  <rect x="724" y="340" width="88" height="20" rx="8" fill="#059669"/>
+  <text x="732" y="354" class="eng">KLING 3</text>
+  <text x="732" y="380" class="scene-n">8 · Med</text>
+  <text x="732" y="396" class="scene-t">Family life</text>
+  <text x="732" y="410" class="scene-t">mother</text>
+  <text x="732" y="424" class="scene-t">E · 4–5s</text>
+  <!-- 9 -->
+  <rect class="panel" x="818" y="340" width="88" height="92" rx="8"/>
+  <rect x="818" y="340" width="88" height="20" rx="8" fill="#2563EB"/>
+  <text x="826" y="354" class="eng">VEO 3.1</text>
+  <text x="826" y="380" class="scene-n">9 · CU</text>
+  <text x="826" y="396" class="scene-t">Worn shoes</text>
+  <text x="826" y="410" class="scene-t">shame→peace</text>
+  <text x="826" y="424" class="scene-t">F · 4s</text>
+  <!-- 10 -->
+  <rect class="panel" x="912" y="340" width="88" height="92" rx="8"/>
+  <rect x="912" y="340" width="88" height="20" rx="8" fill="#2563EB"/>
+  <text x="920" y="354" class="eng">VEO 3.1</text>
+  <text x="920" y="380" class="scene-n">10 · Wide</text>
+  <text x="920" y="396" class="scene-t">Family dinner</text>
+  <text x="920" y="410" class="scene-t">warm peak</text>
+  <text x="920" y="424" class="scene-t">all · 5s</text>
+  <!-- 11 -->
+  <rect class="panel" x="1006" y="340" width="88" height="92" rx="8"/>
+  <rect x="1006" y="340" width="88" height="20" rx="8" fill="#059669"/>
+  <text x="1014" y="354" class="eng">KLING 3</text>
+  <text x="1014" y="380" class="scene-n">11 · CU</text>
+  <text x="1014" y="396" class="scene-t">Lipstick</text>
+  <text x="1014" y="410" class="scene-t">self-care</text>
+  <text x="1014" y="424" class="scene-t">J · 4–5s</text>
+  <!-- 12 -->
+  <rect class="panel" x="1100" y="340" width="88" height="92" rx="8"/>
+  <rect x="1100" y="340" width="88" height="20" rx="8" fill="#2563EB"/>
+  <text x="1108" y="354" class="eng">VEO 3.1</text>
+  <text x="1108" y="380" class="scene-n">12 · Med</text>
+  <text x="1108" y="396" class="scene-t">Ice cream</text>
+  <text x="1108" y="410" class="scene-t">night joy</text>
+  <text x="1108" y="424" class="scene-t">J · 4–5s</text>
+  <!-- E1 -->
+  <rect class="panel" x="1194" y="340" width="106" height="92" rx="8"/>
+  <rect x="1194" y="340" width="106" height="20" rx="8" fill="#7C3AED"/>
+  <text x="1202" y="354" class="eng">AFTER EFFECTS</text>
+  <text x="1202" y="380" class="scene-n">E1 · Card</text>
+  <text x="1202" y="396" class="scene-t">「人生不是一場</text>
+  <text x="1202" y="410" class="scene-t">巨大的失敗」</text>
+  <text x="1202" y="424" class="scene-t">3s</text>
+  <!-- E2 -->
+  <rect class="panel" x="1306" y="340" width="106" height="92" rx="8"/>
+  <rect x="1306" y="340" width="106" height="20" rx="8" fill="#7C3AED"/>
+  <text x="1314" y="354" class="eng">AFTER EFFECTS</text>
+  <text x="1314" y="380" class="scene-n">E2 · Card</text>
+  <text x="1314" y="396" class="scene-t">「生活在偷偷</text>
+  <text x="1314" y="410" class="scene-t">救我們」</text>
+  <text x="1314" y="424" class="scene-t">4s</text>
+  </g>
+
+  <!-- Retention bands -->
+  <text x="40" y="475" class="axis">Retention engineering (MrBeast-style segmentation)</text>
+  <rect x="66" y="488" width="376" height="34" rx="8" fill="#FFF1F2" stroke="#FDA4AF"/>
+  <text x="80" y="503" class="band">HOOK 0–3s (frame-1 visual + ≤14-word VO)</text>
+  <text x="80" y="517" class="footer">floor: 3s-hold ≥60% (Shorts) · re-cut opener from S10/S1</text>
+
+  <rect x="448" y="488" width="458" height="34" rx="8" fill="#FFFBEB" stroke="#FCD34D"/>
+  <text x="462" y="503" class="band">BUILD 3–35s — front-loaded energy, motif payoff</text>
+  <text x="462" y="517" class="footer">floor: first-60s retention ≥ target band</text>
+
+  <rect x="912" y="488" width="500" height="34" rx="8" fill="#ECFDF5" stroke="#86EFAC"/>
+  <text x="926" y="503" class="band">PAYOFF 35–60s — emotional peak → grace resolution</text>
+  <text x="926" y="517" class="footer">target: ~70% avg retention · clean Shorts loop seam</text>
+
+  <!-- Legend -->
+  <text x="40" y="566" class="axis">Engine legend:</text>
+  <rect x="120" y="556" width="14" height="14" rx="3" fill="#2563EB"/><text x="140" y="567" class="legend">Veo 3.1 (hero / cinematic)</text>
+  <rect x="320" y="556" width="14" height="14" rx="3" fill="#059669"/><text x="340" y="567" class="legend">Kling 3.0 (motion / face)</text>
+  <rect x="520" y="556" width="14" height="14" rx="3" fill="#D97706"/><text x="540" y="567" class="legend">Runway Gen-4 (locked screen)</text>
+  <rect x="760" y="556" width="14" height="14" rx="3" fill="#7C3AED"/><text x="780" y="567" class="legend">After Effects (title cards)</text>
+
+  <text x="40" y="610" class="footer">Grok Imagine 1.5 Fast is used upstream for divergent draft/variant browsing before promoting winners to the hero engines above (see engine-routing diagram).</text>
+  <text x="40" y="630" class="footer">VO lines are timed to land on each scene's emotional peak (EmotionalArcAgent #65). Recurring motifs: paper map (A), shop cat (E).</text>
+</svg>

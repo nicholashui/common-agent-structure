@@ -1,5 +1,28 @@
 export type AgentPack = "all" | "specials" | "video" | "other";
 
+/** Display pack location as agents/<id>, never a drive-letter path. */
+export function relativeAgentFolder(folder: string | undefined, agentId?: string): string {
+  const raw = (folder || "").trim();
+  if (!raw && agentId) {
+    return `agents/${agentId}`;
+  }
+  if (!raw) {
+    return "";
+  }
+  const posix = raw.replace(/\\/g, "/");
+  const marker = "/agents/";
+  const at = posix.toLowerCase().lastIndexOf(marker);
+  if (at >= 0) {
+    return posix.slice(at + 1);
+  }
+  if (posix.toLowerCase().startsWith("agents/")) {
+    return posix;
+  }
+  const parts = posix.split("/").filter(Boolean);
+  const last = parts[parts.length - 1] || agentId || posix;
+  return last.startsWith("agents/") ? last : `agents/${last}`;
+}
+
 export interface AgentFilterFields {
   agent_id: string;
   role?: string;

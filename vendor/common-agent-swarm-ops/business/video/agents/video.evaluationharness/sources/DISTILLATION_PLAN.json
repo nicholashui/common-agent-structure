@@ -1,0 +1,27 @@
+{
+  "schema_version": "1.0",
+  "agent_id": "video.evaluationharness",
+  "plan_id": "video.evaluationharness.distill.v1",
+  "inputs": [
+    "src_1",
+    "src_2",
+    "src_3"
+  ],
+  "extractors": [
+    "markdown_excerpt",
+    "structured_table_row"
+  ],
+  "chunk_policy": {
+    "max_chars": 2000,
+    "overlap": 200
+  },
+  "owner": "video.evaluationharness",
+  "cadence": "quarterly",
+  "promotion_criteria": [
+    "source license approved or fixture-only",
+    "excerpt hash recorded in PROVENANCE",
+    "golden eval still passes L1"
+  ],
+  "memory_namespace": "pack.video.video.evaluationharness",
+  "next_review_at": "2026-10-01"
+}

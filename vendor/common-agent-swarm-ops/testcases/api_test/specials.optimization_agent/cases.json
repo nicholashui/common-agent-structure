@@ -1,0 +1,72 @@
+{
+  "agent_id": "specials.optimization_agent",
+  "kind": "special",
+  "cases": [
+    {
+      "id": "tc1",
+      "name": "Mid-hold retention",
+      "method": "POST",
+      "path": "/api/v1/optimization/recommend",
+      "body": {
+        "goal": "Improve mid-hold retention on travel vlog cuts",
+        "kind": "retention"
+      },
+      "success_criteria": {
+        "http_status": [
+          200
+        ],
+        "required_keys_any": [
+          "ok",
+          "recommendations",
+          "result",
+          "correlation_id"
+        ],
+        "notes": "Offline optimization recommend."
+      }
+    },
+    {
+      "id": "tc2",
+      "name": "Cold-open drop-off",
+      "method": "POST",
+      "path": "/api/v1/optimization/recommend",
+      "body": {
+        "goal": "Reduce drop-off after cold open",
+        "kind": "retention"
+      },
+      "success_criteria": {
+        "http_status": [
+          200
+        ],
+        "required_keys_any": [
+          "ok",
+          "recommendations",
+          "result",
+          "correlation_id"
+        ],
+        "notes": "Offline optimization recommend."
+      }
+    },
+    {
+      "id": "tc3",
+      "name": "DMAIC selection",
+      "method": "POST",
+      "path": "/api/v1/optimization/recommend",
+      "body": {
+        "goal": "DMAIC-lite suggestions for selection set",
+        "kind": "retention"
+      },
+      "success_criteria": {
+        "http_status": [
+          200
+        ],
+        "required_keys_any": [
+          "ok",
+          "recommendations",
+          "result",
+          "correlation_id"
+        ],
+        "notes": "Offline optimization recommend."
+      }
+    }
+  ]
+}

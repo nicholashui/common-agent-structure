@@ -1,0 +1,28 @@
+{
+  "schema_version": "casops.testcase.v1",
+  "id": "chat-tc1",
+  "agent_id": "specials.autotelic-agent",
+  "path": "chat",
+  "honesty": "CHARACTERIZATION",
+  "input": {
+    "message": "As specials.autotelic-agent (Special_Agent data-only configuration), stay baseline_safe and respond to: Owns the specials-domain autotelic agent design outcome as a draft, data-only agent representation. Host role string: Special Agent data-only configuration . Filename : autotelic agent.v2.md Version : 2.0 Date : 2026-07-21 Status : Safety-O",
+    "history": []
+  },
+  "expect": {
+    "http_status": 200,
+    "agent_id": "specials.autotelic-agent",
+    "memory_writes": [],
+    "plugins_executed": false,
+    "t3_enabled": false,
+    "network_granted": false,
+    "io_declared_named": true,
+    "io_declared_fetched": false,
+    "truncated": false,
+    "path_id": "chat"
+  },
+  "source": {
+    "repo": "common-agent-structure",
+    "file": "SPEC.md",
+    "case_id": "fallback-tc1"
+  }
+}

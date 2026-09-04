@@ -1,0 +1,72 @@
+{
+  "agent_id": "specials.thinking_model",
+  "kind": "special",
+  "cases": [
+    {
+      "id": "tc1",
+      "name": "Multi-hop plan",
+      "method": "POST",
+      "path": "/api/v1/thinking/recommend",
+      "body": {
+        "goal": "Multi-day multi-hop production plan"
+      },
+      "success_criteria": {
+        "http_status": [
+          200
+        ],
+        "required_keys_any": [
+          "ok",
+          "profile",
+          "recommendation",
+          "correlation_id",
+          "result"
+        ],
+        "notes": "Offline thinking recommend returns profile-like payload."
+      }
+    },
+    {
+      "id": "tc2",
+      "name": "Retention pipeline profile",
+      "method": "POST",
+      "path": "/api/v1/thinking/recommend",
+      "body": {
+        "goal": "Choose cognitive profile for retention-first vlog pipeline"
+      },
+      "success_criteria": {
+        "http_status": [
+          200
+        ],
+        "required_keys_any": [
+          "ok",
+          "profile",
+          "recommendation",
+          "correlation_id",
+          "result"
+        ],
+        "notes": "Offline thinking recommend returns profile-like payload."
+      }
+    },
+    {
+      "id": "tc3",
+      "name": "Cynefin crew planning",
+      "method": "POST",
+      "path": "/api/v1/thinking/recommend",
+      "body": {
+        "goal": "Offline Cynefin-aware planning for agent crew"
+      },
+      "success_criteria": {
+        "http_status": [
+          200
+        ],
+        "required_keys_any": [
+          "ok",
+          "profile",
+          "recommendation",
+          "correlation_id",
+          "result"
+        ],
+        "notes": "Offline thinking recommend returns profile-like payload."
+      }
+    }
+  ]
+}

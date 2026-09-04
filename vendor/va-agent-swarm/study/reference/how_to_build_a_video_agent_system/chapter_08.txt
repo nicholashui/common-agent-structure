@@ -1,0 +1,2997 @@
+<#0.5#>
+
+Here's the English translation of the text:
+
+---
+
+Let me talk about this Asset & Data Management Agent. It's an incredibly powerful system, like an intelligent librarian combined with a super-organized filing system, specifically designed to manage all video production files and data. No matter what it is, it knows exactly where everything is stored, tracks every version, and ensures nothing gets lost or duplicated—especially in large-scale video production projects.
+
+Next, let's explain the core concepts in the simplest language possible. **Digital Asset Management (DAM)** is a system for storing, organizing, and tracking all your production files—from 3D models to video clips to textures. It's like a library catalog, but designed specifically for digital content. **Metadata** is information *about* the files, like title, creation date, who made it, and which scene it's used in—it's not the file itself, but like the label on a folder. **Version Control** tracks every change to a file, like "Track Changes" in Word, but for huge video files—you can always revert to previous versions. **Continuity Tracking** ensures visual elements remain consistent across different scenes, like a character's outfit not suddenly changing in the same story moment. **Caching** puts frequently used files in fast-access storage, like keeping your most-used tools on your workbench instead of buried in the garage.
+
+Now, let's cover the main topics. First, **Core Storage Architecture**: The system uses specialized databases to store different types of info—MongDB for searchable asset metadata; MinIO for actual large video and 3D files; PostgreSQL to track complex relationships between assets. Second, **Version Control System**, using DVC (Data Version Control) to track versions of large files without duplicating storage—it's like Git but designed for multi-gigabyte video files. Third, **Search and Discovery**, powered by Elasticsearch for intelligent search—you can find assets by description, visual similarity, technical specs, or even "show me all outdoor daytime scenes." Fourth, **Intelligent Caching**, using multi-tier storage strategies to keep frequently used files easily accessible, while archiving older ones to cheaper storage. Fifth, **Continuity Detection**, using computer vision algorithms to automatically detect inconsistencies between scenes, like props suddenly appearing/disappearing or lighting changes. Sixth, **Dependency Management**, tracking relationships between assets—if you change a texture, the system knows which 3D models use it.
+
+In summary, the key points are: **Single Source of Truth**—all production assets in one unified system, no more chaotic scattered files. **Intelligent Storage Tiers**—files automatically move between fast (expensive) and slow (cheap) storage based on access frequency, like hot tier (NVMe) for current work and cold tier (cloud/tape) for archiving. **No Duplicate Storage**—using hash-based deduplication, so if the same 5GB file appears in 10 places, it's stored only once. **Git-Like Versioning for Big Files**—DVC stores only metadata in Git, with actual large files in optimized storage, giving you version control without bloating your repository. **Multi-Modal Search**—find assets by text description, visual similarity, technical parameters, or usage patterns—not just filenames. **Automated Continuity Checking**—computer vision algorithms scan scene sequences to catch visual inconsistencies before expensive reshoots. **Predictive Caching**—machine learning predicts which assets you'll need next based on your work patterns and preloads them into fast storage.
+
+Additionally, here are the key numbers and data. **Storage Architecture**: Hot Storage (NVMe SSDs) holds assets active in the last 7 days; Warm Storage (HDDs) for 30-90 day recent projects; Cold Storage (Cloud/Tape) for 90+ day archives and compliance. **Performance Specs**: Network Requirement minimum 10Gbps for smooth video streaming; Cluster Resources minimum 32 CPU cores + 128GB RAM; Storage Capacity minimum 2TB NVMe + 100TB backup. **Scale Capacity**: With proper Elasticsearch config, handles 1 billion files; 32 shards for 1.3TB metadata in distributed clusters; supports up to 50TB file sizes (MinIO max). **Cache Levels**: L1 Cache 2GB (5-min instant access); L2 Cache 10GB (1-hour frequent access); L3 Cache 50GB (24-hour occasional access).
+
+Next, the roadmap. **Implementation Phases**: Phase 1 (first 2 months)—Core Infrastructure: Deploy MongoDB, MinIO, and basic DVC integration; implement asset ingestion pipelines. Phase 2 (months 3-4)—Search Capabilities: Add Elasticsearch with visual similarity search for comprehensive search. Phase 3 (months 5-6)—Advanced Features: Implement intelligent caching and relationship tracking; deploy continuity detection system. Phase 4 (months 7-8)—Production Optimization: Performance tuning, security hardening, monitoring/alerts, and auto-scaling. **Key Decisions**: Infrastructure—cloud vs. on-premises; Storage Budget—balance performance (expensive NVMe) vs. capacity (cheap HDD/tape); Team Training—requires DVC and Git experts.
+
+Who is this important for? **Video Production Teams**—get organized asset management, automatic version tracking, and continuity checking—no more lost files or visual inconsistencies. **Technical Directors**—full visibility into asset dependencies and relationships, with automatic impact analysis for changes. **Storage Administrators**—intelligent tiering auto-optimizes storage costs while maintaining performance for active projects. **Post-Production Editors**—fast search/retrieval of assets, with predictive caching anticipating your next needs. **Project Managers**—complete audit trails showing who created/modified what and when, with automatic compliance tracking. **Budget Holders**—maximize storage ROI through deduplication (no duplicate files) and auto-archiving old content to cheap storage.
+
+Bottom line: This system turns chaotic video production file management into an intelligent, automated library—saving time, preventing errors, and scaling from small projects to enterprise-level handling of billions of files.
+
+---
+<#0.5#>
+# Asset & Data Management Agent - The Librarian
+
+<#0.5#>
+
+## Core Architecture Overview
+
+The Asset & Data Management Agent acts as the central nervous system for video production workflows. It transforms traditional asset management by providing a unified data architecture and intelligent automation. This system streamlines workflows, enhances collaboration, and ensures brand consistency, enabling teams to maximize the value of video assets. As the definitive **single source of truth** for all production assets, it implements enterprise-grade data management practices tailored for video production environments.
+
+<#0.5#>
+
+## What to Build: Comprehensive Asset Infrastructure
+
+<#0.5#>
+
+### Unified Asset Database Architecture
+
+#### Primary Storage Layer
+
+- **Metadata Repository (MongoDB)**: Utilizes MongoDB's flexible schema to store all content nodes in a single collection, regardless of type. This leverages MongoDB's JSON document model and rich query language to store and search diverse content types with varying attributes. The database employs a sophisticated metadata schema, as shown in the following example:
+
+  ```javascript
+  {
+    "_id": ObjectId("..."),
+    "asset_id": "env_downtown_001_v1",
+    "metadata": {
+      "type": "environment",
+      "category": "3d_geometry", 
+      "scene_context": "scene_03",
+      "environment_type": "exterior",
+      "lighting_conditions": "daytime",
+      "location_context": "urban",
+      "technical_specs": {
+        "file_format": "usd",
+        "file_size_gb": 0,
+        "polygon_count": 2500000,
+        "texture_resolution": "4K",
+        "compression": "lossless"
+      },
+      "creation_metadata": {
+        "created_by": "world_building_agent",
+        "creation_date": ISODate("2024-11-25T10:30:00Z"),
+        "pipeline_version": "v2.1",
+        "source_references": ["concept_art_v3", "location_scan_data"]
+      }
+    },
+    "version_info": {
+      "version": "v1",
+      "is_latest": true,
+      "parent_version": null,
+      "change_description": "Initial environment creation"
+    },
+    "dependencies": ["texture_pack_urban_001", "lighting_rig_daylight_v2"],
+    "usage_tracking": {
+      "used_in_scenes": ["scene_03", "scene_07"],
+      "usage_count": 42,
+      "last_accessed": ISODate("2024-11-25T15:22:00Z")
+    },
+    "quality_metrics": {
+      "render_time_seconds": 2,
+      "memory_usage_mb": 1024,
+      "quality_score": 95
+    }
+  }
+  ```
+
+- **Relational Data Layer (PostgreSQL)**: Manages complex asset relationships, dependency graphs, and transactional operations requiring ACID (Atomicity, Consistency, Isolation, Durability) compliance. It handles:
+  - Asset lineage tracking and impact analysis
+  - Complex dependency resolution algorithms
+  - Cross-project asset sharing relationships
+  - Audit trails and compliance tracking
+
+<#0.5#>
+
+### Advanced Version Control System
+
+Data Version Control (DVC) integrates with Git as the underlying version control layer for data, pipelines, and experiments. This enables versioning of entire machine learning (ML) projects, including source code, configurations, parameters, metrics, data assets, and processes, by committing DVC metafiles as placeholders.
+
+#### Git-Based Metadata Management
+
+- **DVC Integration**: DVC addresses the challenge of managing large datasets in version control systems. While tools like Git excel at code versioning, they struggle with massive datasets.
+- **Intelligent Caching Strategy**: When tracking large assets with DVC, files are copied to a cache, with subsequent versions stored there. For large directories with thousands of files where only a few change, DVC avoids duplicating the entire directory.
+
+#### Version Control Workflow
+
+```
+Asset Creation → Hash Generation → Metadata Commit → Cache Storage
+     ↓                ↓              ↓               ↓
+env_downtown.usd → SHA256 → env_downtown.dvc → .dvc/cache/
+(5GB file)        hash     (metadata only)    (actual storage)
+                             committed to Git
+```
+
+<#0.5#>
+
+### Intelligent Continuity Tracking System
+
+#### Multi-Modal Analysis Engine
+
+- **Visual Continuity Detection**: Computer vision algorithms analyze frame sequences to identify inconsistencies in:
+  - Character appearance and costume changes
+  - Prop placement and positioning
+  - Environmental lighting variations
+  - Background element consistency
+
+- **Temporal Relationship Mapping**: Tracks asset state changes across scenes using graph-based algorithms:
+
+  ```python
+  def detect_continuity_error(scene_a, scene_b, asset_id):
+      asset_state_a = get_asset_state(scene_a, asset_id)
+      asset_state_b = get_asset_state(scene_b, asset_id) 
+
+      if not validate_state_transition(asset_state_a, asset_state_b):
+          return ContinuityError(
+              asset_id=asset_id,
+              scenes=[scene_a, scene_b],
+              error_type="invalid_state_transition",
+              suggested_fix=generate_fix_suggestion(asset_state_a, asset_state_b)
+          )
+  ```
+
+<#0.5#>
+
+### Comprehensive Dependency Graph Architecture
+
+#### Real-Time Dependency Tracking
+
+DVC pipelines are versioned using Git, enabling better project organization and workflow reproducibility. They support simple Extract, Transform, Load (ETL) workflows or complex Directed Acyclic Graph (DAG) pipelines.
+
+#### Dependency Resolution Engine
+
+- **Forward Dependencies**: Tracks assets that depend on the current asset.
+- **Backward Dependencies**: Maps assets required by the current asset.
+- **Circular Dependency Detection**: Prevents infinite loops in asset relationships.
+- **Impact Analysis**: Calculates downstream effects of asset modifications.
+
+<#0.5#>
+
+### Enterprise-Grade Storage Optimization
+
+#### Multi-Tier Storage Architecture
+
+MinIO provides an API-compatible alternative to Amazon Simple Storage Service (S3) for unstructured data, such as photos, videos, log files, backups, and container images, with a maximum object size of 50 TB.
+
+#### Storage Tier Strategy
+
+- **Hot Storage (NVMe SSDs)**: Stores actively used assets (last 7 days), current project assets, and assets for real-time editing. MinIO handles unstructured data like log files, images, videos, and model artifacts, with full S3 API compatibility for easy integration.
+- **Warm Storage (High-Capacity HDDs)**: Stores recently completed projects (30-90 days), frequently referenced archive materials, and template/reference assets.
+- **Cold Storage (Cloud/Tape)**: Stores long-term archival data (>90 days), legal compliance data, and disaster recovery backups.
+
+#### Intelligent Caching Layer
+
+MinIO's streamlined architecture eliminates metadata bloat and POSIX overhead, optimizing throughput for AI training and inference workloads to ensure efficient infrastructure utilization.
+
+<#0.5#>
+
+## What It Does: Advanced Asset Management Operations
+
+<#0.5#>
+
+### Comprehensive Asset Lifecycle Management
+
+#### Asset Ingestion Pipeline
+
+Modern Digital Asset Management (DAM) solutions provide AI-powered metadata tagging, automated workflows, and seamless integration with editing and distribution platforms.
+
+#### Automated Metadata Extraction
+
+- **Technical Metadata**: Resolution, bitrate, codec, duration.
+- **Content Metadata**: Scene analysis, object detection, color analysis.
+- **Administrative Metadata**: Rights, usage restrictions, compliance flags.
+
+#### Quality Validation Pipeline
+
+```python
+def validate_asset_quality(asset_path):
+    quality_checks = [
+        validate_technical_specs(),
+        check_compliance_standards(),
+        verify_metadata_completeness(),
+        run_virus_scan(),
+        validate_file_integrity()
+    ]
+    return QualityReport(checks=quality_checks)
+```
+
+#### Smart Classification System
+
+Automated workflows handle video ingestion, metadata tagging, transcoding, and distribution, including detailed metadata management for technical, descriptive, and administrative aspects.
+
+<#0.5#>
+
+### Advanced Asset Discovery and Search
+
+#### Multi-Modal Search Engine
+
+As the number of stored objects grows, finding specific items becomes challenging. S3 objects include metadata that identifies properties, enabling efficient searches.
+
+#### Elasticsearch Integration
+
+For 1 billion files, indexing metadata can be time-intensive. The Alfresco Elasticsearch Connector supports multi-threaded indexing based on Node IDs from the database, with optimized Elasticsearch configurations.
+
+#### Search Capabilities
+
+- **Semantic Search**: AI-powered content understanding for natural language queries.
+- **Visual Similarity Search**: Finds assets based on visual characteristics.
+- **Technical Parameter Search**: Queries by resolution, format, file size, etc.
+- **Temporal Search**: Finds assets by creation date, modification time, or usage patterns.
+- **Contextual Search**: Locates assets by scene, character, or narrative context.
+
+<#0.5#>
+
+### Intelligent Version Control Operations
+
+#### Branch Management Strategy
+
+DVC supports Git-like branching, allowing experimental changes without affecting the main branch. Creating a new branch does not duplicate data files.
+
+#### Version Control Features
+
+- **Semantic Versioning**: Uses Major.Minor.Patch format for assets.
+- **Delta Compression**: Stores only differences between versions.
+- **Merge Conflict Resolution**: Supports automated and manual resolution.
+- **Rollback Capabilities**: Enables quick restoration to previous versions.
+
+<#0.5#>
+
+### Real-Time Continuity Monitoring
+
+#### Automated Continuity Validation
+
+```python
+class ContinuityMonitor:
+    def __init__(self):
+        self.scene_analyzer = SceneAnalyzer()
+        self.asset_tracker = AssetStateTracker()
+
+    def monitor_scene_transition(self, scene_from, scene_to):
+        """Monitor continuity across scene transitions"""
+        shared_assets = self.get_shared_assets(scene_from, scene_to)
+
+        for asset in shared_assets:
+            state_from = self.asset_tracker.get_state(scene_from, asset.id)
+            state_to = self.asset_tracker.get_state(scene_to, asset.id)
+
+            if not self.validate_continuity(state_from, state_to):
+                self.flag_continuity_error(asset, scene_from, scene_to)
+```
+
+<#0.5#>
+
+### Performance-Optimized Asset Delivery
+
+#### Content Delivery Network (CDN) Integration
+
+Full API support for image and video transformations, high-performance CDN delivery, and AI-powered transformations at scale enhance media workflows.
+
+#### Delivery Optimization
+
+- **Adaptive Bitrate Streaming**: Provides multiple quality versions for varying bandwidth conditions.
+- **Progressive Download**: Enables previews during download.
+- **Format Optimization**: Automatically converts formats for target platforms.
+- **Geographical Distribution**: Uses edge caching for global accessibility.
+
+<#0.5#>
+
+## Tools/Frameworks: Enterprise Technology Stack
+
+<#0.5#>
+
+### Database Infrastructure
+
+#### MongoDB Configuration for Asset Metadata
+
+MongoDB's JSON document model and rich query language facilitate storing and searching diverse content types with varying attributes in a single location, supporting complex hierarchical relationships.
+
+```javascript
+// Optimized MongoDB Schema for Video Assets
+{
+  shardKey: { "metadata.project_id": 1, "metadata.asset_type": 1 },
+  indexes: [
+    { "metadata.creation_date": -1 },
+    { "metadata.tags": 1 },
+    { "technical_specs.file_format": 1 },
+    { "usage_tracking.last_accessed": -1 },
+    { "dependencies": 1 },
+    { 
+      "text_search": "text", 
+      weights: { 
+        "metadata.title": 10,
+        "metadata.description": 5,
+        "metadata.tags": 3 
+      }
+    }
+  ]
+}
+```
+
+<#0.5#>
+
+### Object Storage Configuration
+
+#### MinIO Cluster Architecture
+
+MinIO delivers high performance, approaching hardware speeds, saturating 100-gigabit networks and scaling to hundreds of petabytes by adding nodes and racks.
+
+```yaml
+# MinIO Configuration for Video Asset Storage
+version: '8'
+services:
+  minio-cluster:
+    image: minio/minio:latest
+    command: server --console-address ":9001" http://minio{..4}/data{..4}
+    environment:
+      MINIO_ROOT_USER: video_production_admin
+      MINIO_ROOT_PASSWORD: ${MINIO_PASSWORD}
+      MINIO_BROWSER_REDIRECT_URL: "https://console.minio.local"
+    volumes:
+      - type: bind
+        source: /mnt/video-storage
+        target: /data
+    deploy:
+      replicas: 4
+      placement:
+        constraints:
+          - node.role == worker
+```
+
+<#0.5#>
+
+### Data Version Control Setup
+
+#### DVC Pipeline Configuration
+
+DVC uploads tracked data to "remotes," such as local directories for simplicity.
+
+```yaml
+# dvc.yaml - Asset Processing Pipeline
+stages:
+  ingest_asset:
+    cmd: python scripts/ingest_asset.py ${asset_path} ${metadata}
+    deps:
+      - scripts/ingest_asset.py
+      - ${asset_path}
+    outs:
+      - processed_assets/${asset_id}/
+    params:
+      - processing.quality_level
+      - processing.compression_ratio
+    metrics:
+      - metrics/ingestion_metrics.json
+
+  validate_continuity:
+    cmd: python scripts/continuity_check.py ${scene_id}
+    deps:
+      - scripts/continuity_check.py
+      - processed_assets/
+    outs:
+      - continuity_reports/${scene_id}.json
+```
+
+<#0.5#>
+
+### Search and Discovery Infrastructure
+
+#### Elasticsearch Cluster Configuration
+
+Shard creation depends on data volume and size. For 1 billion files with 3 TB of metadata, maintaining 40 GB per shard results in 32 shards.
+
+```json
+{
+  "settings": {
+    "number_of_shards": 32,
+    "number_of_replicas": 1,
+    "index.refresh_interval": "30s",
+    "index.translog.flush_threshold_size": "1gb"
+  },
+  "mappings": {
+    "properties": {
+      "asset_id": { "type": "keyword" },
+      "metadata": {
+        "properties": {
+          "title": { 
+            "type": "text",
+            "analyzer": "standard",
+            "search_analyzer": "standard"
+          },
+          "description": { "type": "text" },
+          "tags": { "type": "keyword" },
+          "technical_specs": {
+            "properties": {
+              "resolution": { "type": "keyword" },
+              "duration_seconds": { "type": "float" },
+              "file_size_bytes": { "type": "long" }
+            }
+          }
+        }
+      },
+      "visual_features": {
+        "type": "dense_vector",
+        "dims": 512
+      }
+    }
+  }
+}
+```
+
+<#0.5#>
+
+## Detailed Workflow Interactions
+
+<#0.5#>
+
+### Asset Creation and Ingestion Workflow
+
+```mermaid
+sequenceDiagram
+    participant WB as World-Building Agent
+    participant AM as Asset Manager
+    participant DB as MongoDB
+    participant ES as Elasticsearch
+    participant MinIO as Object Storage
+    participant DVC as Version Control
+
+    WB->>AM: Create "Downtown Street" environment
+
+    Note over AM: Asset Processing Pipeline
+    AM->>AM: Generate unique ID: env_downtown_001_v1
+    AM->>AM: Compute SHA256 hash for deduplication
+    AM->>AM: Extract technical metadata
+    AM->>AM: Generate preview thumbnails
+    AM->>AM: Run quality validation
+
+    par Store in Database
+        AM->>DB: Store metadata document
+    and Index for Search
+        AM->>ES: Index searchable content
+    and Store Binary Data  
+        AM->>MinIO: Store 3D geometry (5GB .usd)
+        AM->>MinIO: Store textures (2GB .exr)
+        AM->>MinIO: Store lighting rig (500MB)
+    and Version Control
+        AM->>DVC: Create .dvc metadata file
+        AM->>DVC: Commit to Git repository
+    end
+
+    Note over AM: Dependency Management
+    AM->>AM: Update dependency graph
+    AM->>AM: Cache optimization decisions
+    AM->>AM: Generate asset lineage record
+```
+
+<#0.5#>
+
+### Advanced Asset Retrieval and Caching
+
+```mermaid
+sequenceDiagram
+    participant CA as Cinematography Agent
+    participant AM as Asset Manager
+    participant ES as Elasticsearch
+    participant Cache as Redis Cache
+    participant MinIO as Object Storage
+    participant CDN as Content Delivery Network
+
+    CA->>AM: Request "urban exterior environments"
+
+    AM->>ES: Query with filters
+    Note over ES: Multi-field search:<br/>metadata.environment_type: "exterior"<br/>metadata.location_context: "urban"<br/>metadata.lighting_conditions: "daytime"
+
+    ES->>AM: Return matched asset IDs with scores
+
+    par Check Cache
+        AM->>Cache: Check if assets cached
+        Cache->>AM: Cache status for each asset
+    and Fetch Metadata
+        AM->>DB: Fetch full metadata for results  
+    end
+
+    loop For each uncached asset
+        AM->>MinIO: Retrieve asset data
+        AM->>Cache: Store in cache with TTL
+    end
+
+    AM->>CDN: Prepare optimized delivery
+    CDN->>CA: Stream assets (progressive download)
+
+    Note over AM: Usage Tracking
+    AM->>AM: Update access patterns
+    AM->>AM: Increment usage counters
+    AM->>AM: Log for analytics
+```
+
+<#0.5#>
+
+### Intelligent Continuity Detection System
+
+```python
+class ContinuityDetectionEngine:
+    def __init__(self):
+        self.visual_analyzer = VisualConsistencyAnalyzer()
+        self.temporal_tracker = TemporalStateTracker()
+        self.rule_engine = ContinuityRuleEngine()
+
+    def detect_continuity_issues(self, scene_sequence):
+        """
+        Advanced continuity detection across scene sequences
+        """
+        issues = []
+
+        for i in range(len(scene_sequence) - 1):
+            current_scene = scene_sequence[i]
+            next_scene = scene_sequence[i + 1]
+
+            # Time-based continuity check
+            time_gap = self.calculate_narrative_time_gap(current_scene, next_scene)
+
+            # Get shared assets between scenes
+            shared_assets = self.get_shared_assets(current_scene, next_scene)
+
+            for asset in shared_assets:
+                # Visual consistency analysis
+                visual_diff = self.visual_analyzer.compare_asset_states(
+                    asset, current_scene, next_scene
+                )
+
+                # Temporal state validation
+                state_transition = self.temporal_tracker.validate_transition(
+                    asset, current_scene, next_scene, time_gap
+                )
+
+                # Apply business rules
+                rule_violations = self.rule_engine.check_asset_rules(
+                    asset, current_scene, next_scene
+                )
+
+                if visual_diff.has_inconsistency():
+                    issues.append(ContinuityIssue(
+                        type="visual_inconsistency",
+                        asset_id=asset.id,
+                        scenes=[current_scene, next_scene],
+                        severity=visual_diff.severity,
+                        auto_fix_available=visual_diff.can_auto_fix,
+                        suggested_actions=self.generate_fix_suggestions(visual_diff)
+                    ))
+
+                if not state_transition.is_valid:
+                    issues.append(ContinuityIssue(
+                        type="temporal_inconsistency", 
+                        asset_id=asset.id,
+                        scenes=[current_scene, next_scene],
+                        violation=state_transition.violation_type,
+                        suggested_actions=state_transition.fix_suggestions
+                    ))
+
+        return ContinuityReport(issues=issues, confidence_score=self.calculate_confidence(issues))
+```
+
+<#0.5#>
+
+## Advanced Implementation Features
+
+<#0.5#>
+
+### Smart Caching and Performance Optimization
+
+#### Multi-Level Caching Strategy
+
+System speed is critical in video asset management, as delays in file discovery or collaboration can accumulate, particularly with large video files and multiple versions. Inefficient workflows can undermine business competitiveness.
+
+```python
+class IntelligentCacheManager:
+    def __init__(self):
+        self.l1_cache = MemoryCache(size_gb=16)  # Hot assets
+        self.l2_cache = NVMeCache(size_gb=500)   # Warm assets  
+        self.l3_cache = HDDCache(size_tb=10)     # Cold assets
+        self.predictor = AccessPatternPredictor()
+
+    def optimize_cache_placement(self, asset_id):
+        """Intelligent cache tier placement based on usage patterns"""
+        usage_pattern = self.get_usage_analytics(asset_id)
+        predicted_access = self.predictor.predict_next_access(usage_pattern)
+
+        if predicted_access.within_hours(1):
+            self.promote_to_l1(asset_id)
+        elif predicted_access.within_hours(24):
+            self.ensure_in_l2(asset_id) 
+        else:
+            self.move_to_l3_if_exists(asset_id)
+```
+
+<#0.5#>
+
+### Enterprise-Scale Asset Lineage Tracking
+
+#### Comprehensive Lineage System
+
+Large organizations benefit from DVC's data registry, providing centralized visibility into datasets across projects for discovery, reuse, and governance.
+
+```python
+class AssetLineageTracker:
+    def __init__(self):
+        self.graph_db = Neo4jConnection()
+        self.lineage_analyzer = LineageAnalyzer()
+
+    def track_asset_creation(self, asset_id, source_assets, transformations):
+        """Create comprehensive lineage record"""
+        lineage_record = {
+            'asset_id': asset_id,
+            'generation_timestamp': datetime.utcnow(),
+            'source_assets': source_assets,
+            'transformations': transformations,
+            'agent_responsible': self.get_creating_agent(),
+            'processing_pipeline': self.get_pipeline_info()
+        }
+
+        # Store in graph database for relationship queries
+        self.graph_db.create_lineage_node(lineage_record)
+
+        # Update dependency relationships
+        for source in source_assets:
+            self.graph_db.create_dependency_edge(source, asset_id)
+
+    def calculate_impact_analysis(self, asset_id):
+        """Calculate downstream impact of asset changes"""
+        cypher_query = """
+        MATCH (source:Asset {id: $asset_id})-[:DEPENDS_ON*]->(dependent:Asset)
+        RETURN dependent.id, dependent.type, dependent.last_used
+        ORDER BY dependent.last_used DESC
+        """
+
+        return self.graph_db.execute_query(cypher_query, asset_id=asset_id)
+```
+
+<#0.5#>
+
+### Production-Ready Code Architecture
+
+#### Asset Schema Design and Implementation
+
+```python
+from dataclasses import dataclass, field
+from typing import List, Dict, Optional, Any
+from datetime import datetime
+import hashlib
+import json
+
+@dataclass
+class TechnicalSpecification:
+    """Technical metadata for video assets"""
+    file_format: str
+    file_size_bytes: int
+    resolution: tuple[int, int] = None
+    duration_seconds: float = None
+    bitrate_kbps: int = None
+    codec: str = None
+    color_space: str = None
+    frame_rate: float = None
+
+    def to_dict(self) -> Dict[str, Any]:
+        return asdict(self)
+
+@dataclass 
+class CreationMetadata:
+    """Asset creation and provenance information"""
+    created_by: str  # Agent ID
+    creation_date: datetime
+    pipeline_version: str
+    source_references: List[str] = field(default_factory=list)
+    processing_parameters: Dict[str, Any] = field(default_factory=dict)
+
+@dataclass
+class VersionInfo:
+    """Asset version management"""
+    version: str
+    is_latest: bool = True
+    parent_version: Optional[str] = None
+    change_description: str = ""
+    hash_sha256: str = ""
+
+    def generate_hash(self, file_path: str) -> str:
+        """Generate SHA256 hash for file integrity"""
+        sha256_hash = hashlib.sha256()
+        with open(file_path, "rb") as f:
+            for chunk in iter(lambda: f.read(4096), b""):
+                sha256_hash.update(chunk)
+        self.hash_sha256 = sha256_hash.hexdigest()
+        return self.hash_sha256
+
+@dataclass
+class UsageTracking:
+    """Asset usage analytics"""
+    used_in_scenes: List[str] = field(default_factory=list)
+    usage_count: int = 0
+    last_accessed: datetime = field(default_factory=datetime.utcnow)
+    access_pattern: Dict[str, int] = field(default_factory=dict)
+
+    def record_access(self, scene_id: str = None):
+        """Record asset access for analytics"""
+        self.last_accessed = datetime.utcnow()
+        self.usage_count += 1
+        if scene_id:
+            self.used_in_scenes.append(scene_id)
+            hour_key = self.last_accessed.strftime("%H")
+            self.access_pattern[hour_key] = self.access_pattern.get(hour_key, 0) + 1
+
+@dataclass
+class AssetMetadata:
+    """Complete asset metadata structure"""
+    asset_id: str
+    type: str  # environment, character, prop, texture, etc.
+    category: str  # 3d_geometry, texture, audio, video, etc.
+    title: str
+    description: str = ""
+    tags: List[str] = field(default_factory=list)
+    technical_specs: TechnicalSpecification = None
+    creation_metadata: CreationMetadata = None
+    version_info: VersionInfo = None
+    dependencies: List[str] = field(default_factory=list)
+    usage_tracking: UsageTracking = field(default_factory=UsageTracking)
+
+    def to_mongodb_document(self) -> Dict[str, Any]:
+        """Convert to MongoDB document format"""
+        return {
+            "_id": self.asset_id,
+            "metadata": {
+                "type": self.type,
+                "category": self.category,
+                "title": self.title,
+                "description": self.description,
+                "tags": self.tags
+            },
+            "technical_specs": self.technical_specs.to_dict() if self.technical_specs else {},
+            "creation_metadata": asdict(self.creation_metadata) if self.creation_metadata else {},
+            "version_info": asdict(self.version_info) if self.version_info else {},
+            "dependencies": self.dependencies,
+            "usage_tracking": asdict(self.usage_tracking)
+        }
+```
+
+This comprehensive Asset & Data Management Agent provides a production-ready, enterprise-scale solution for modern video production workflows. Media asset management systems are essential, particularly in post-production, enabling organizations to manage large media libraries from secure, centralized locations. The system integrates advanced data management, search, version control, and automation technologies to support collaborative video production at scale.
+
+# Implementation Solutions
+
+Based on the Asset & Data Management Agent specification, this section outlines implementation approaches using open-source frameworks and technologies. Solutions are organized by capability areas, including technical implementations, architectural decisions, and integration strategies.
+
+<#0.5#>
+
+## Framework Capability Matrix
+
+| **Requirement**          | **MongoDB** | **MinIO** | **DVC**   | **Elasticsearch** | **PostgreSQL** | **Redis** | **Neo4j** |
+|---------------------------|-------------|-----------|-----------|-------------------|----------------|-----------|-----------|
+| **Asset Metadata Storage** | ✅ Primary | ❌       | ❌       | ✅ Search Only   | ✅ Relations  | ❌       | ❌       |
+| **Binary Asset Storage**  | ⚠️ GridFS Limited | ✅ Primary | ✅ Versioning | ❌              | ❌            | ❌       | ❌       |
+| **Version Control**       | ⚠️ Manual  | ⚠️ Basic | ✅ Primary | ❌              | ✅ Schema     | ❌       | ❌       |
+| **Search & Discovery**    | ⚠️ Basic   | ❌       | ❌       | ✅ Primary      | ⚠️ SQL Only  | ❌       | ⚠️ Graph |
+| **Dependency Tracking**   | ⚠️ References | ❌     | ⚠️ Pipeline | ❌             | ✅ Foreign Keys | ❌      | ✅ Primary |
+| **Caching**               | ❌         | ❌       | ⚠️ Storage | ❌              | ❌            | ✅ Primary | ❌       |
+| **Streaming Support**     | ❌         | ✅ Primary | ❌       | ❌              | ❌            | ❌       | ❌       |
+| **Scalability**           | ✅ Horizontal | ✅ Horizontal | ⚠️ Storage Only | ✅ Horizontal | ⚠️ Vertical | ✅ Horizontal | ⚠️ Cluster |
+
+<#0.5#>
+
+## Primary Implementation Stack Recommendation
+
+<#0.5#>
+
+### Core Architecture Components
+
+**Primary Stack:**
+- **MongoDB**: Asset metadata repository using a flexible document model for diverse asset types.
+- **MinIO**: High-performance object store with direct-attached storage for optimal video streaming.
+- **DVC**: Git-like version control for data, using Git as the base layer and external storage for large files.
+- **Elasticsearch**: Distributed search engine based on Apache Lucene, offering REST APIs, speed, and scalability.
+- **Redis**: Caching layer for performance optimization.
+- **PostgreSQL**: Handles complex relationships and ACID-compliant operations.
+
+<#0.5#>
+
+## Detailed Implementation Solutions
+
+<#0.5#>
+
+### Asset Metadata Management with MongoDB
+
+#### Implementation Approach
+
+MongoDB's flexible schema stores all content nodes in a single collection, ideal for diverse video production assets.
+
+#### Code Architecture
+
+```javascript
+// MongoDB Asset Schema Implementation
+const AssetSchema = {
+  _id: ObjectId,
+  asset_id: String, // Unique identifier
+  metadata: {
+    type: String, // environment, character, prop, texture
+    category: String, // 3d_geometry, texture, audio, video
+    title: String,
+    description: String,
+    tags: [String],
+    scene_context: String,
+    creation_date: Date,
+    created_by: String, // Agent ID
+
+    // Technical specifications
+    technical_specs: {
+      file_format: String,
+      file_size_bytes: Number,
+      resolution: String,
+      duration_seconds: Number,
+      codec: String,
+      bitrate_kbps: Number
+    },
+
+    // Production context
+    production_context: {
+      project_id: String,
+      scene_ids: [String],
+      continuity_notes: [String]
+    }
+  },
+
+  // Version tracking
+  version_info: {
+    version: String,
+    is_latest: Boolean,
+    parent_version: String,
+    change_description: String,
+    hash_sha256: String
+  },
+
+  // Relationships
+  dependencies: [String], // Asset IDs this asset depends on
+  dependents: [String],   // Asset IDs that depend on this asset
+
+  // Usage analytics
+  usage_tracking: {
+    access_count: Number,
+    last_accessed: Date,
+    used_in_scenes: [String],
+    performance_metrics: {
+      render_time_ms: Number,
+      memory_usage_mb: Number,
+      quality_score: Number
+    }
+  },
+
+  // Storage references
+  storage_refs: {
+    minio_bucket: String,
+    minio_object_key: String,
+    dvc_path: String,
+    cache_status: String
+  }
+}
+
+// Optimized indexes for video production queries
+db.assets.createIndex({ "metadata.type": 1, "metadata.scene_context": 1 })
+db.assets.createIndex({ "metadata.tags": 1 })
+db.assets.createIndex({ "usage_tracking.last_accessed": -1 })
+db.assets.createIndex({ "dependencies": 1 })
+db.assets.createIndex({ "version_info.is_latest": 1 })
+```
+
+#### Pros and Cons
+
+**Advantages:**
+- Rich query language for storing and searching diverse content types in one place.
+- Proven flexibility, scalability, and reliability in Fortune 500 media organizations.
+- Native support for hierarchical relationships.
+- Automatic sharding across servers and data centers.
+
+**Limitations:**
+- GridFS is unsuitable for chunking or rewriting small file portions; use external storage like S3 for binaries.
+- Limited complex join support compared to relational databases.
+- High memory usage for large datasets.
+
+#### Integration Points
+
+```javascript
+// Integration with MinIO and DVC
+class AssetManager {
+  async createAsset(assetData, binaryFile) {
+    // Store binary in MinIO
+    const minioKey = await this.minioClient.putObject(
+      'video-assets', 
+      assetData.asset_id, 
+      binaryFile
+    );
+
+    // Track with DVC
+    const dvcPath = await this.dvcClient.add(binaryFile.path);
+
+    // Store metadata in MongoDB
+    const mongoDoc = {
+      ...assetData,
+      storage_refs: {
+        minio_bucket: 'video-assets',
+        minio_object_key: assetData.asset_id,
+        dvc_path: dvcPath
+      }
+    };
+
+    await this.mongoClient.collection('assets').insertOne(mongoDoc);
+
+    // Index in Elasticsearch for search
+    await this.elasticsearchClient.index({
+      index: 'video-assets',
+      id: assetData.asset_id,
+      body: this.prepareForElasticsearch(mongoDoc)
+    });
+
+    return assetData.asset_id;
+  }
+}
+```
+
+<#0.5#>
+
+### Binary Asset Storage with MinIO
+
+#### Implementation Approach
+
+MinIO offers a high-performance, S3-compatible object store for large-scale AI/ML, data lakes, and databases, deployable on-premises or in the cloud.
+
+#### Code Architecture
+
+```yaml
+# MinIO Cluster Configuration for Video Assets
+version: '8'
+services:
+  minio-cluster:
+    image: minio/minio:latest
+    command: server --console-address ":9001" http://minio{..4}/data{..4}
+    environment:
+      MINIO_ROOT_USER: video_production_admin
+      MINIO_ROOT_PASSWORD: ${MINIO_PASSWORD}
+      MINIO_STORAGE_CLASS_STANDARD: EC:4  # Erasure coding for durability
+      MINIO_COMPRESSION_ENABLE: "on"
+      MINIO_COMPRESSION_MIME_TYPES: "video/*,image/*"
+    volumes:
+      - type: bind
+        source: /mnt/nvme-storage
+        target: /data1
+      - type: bind  
+        source: /mnt/ssd-storage
+        target: /data2
+    deploy:
+      replicas: 4
+      placement:
+        constraints:
+          - node.role == worker
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
+      interval: 30s
+      timeout: 20s
+      retries: 3
+
+  # MinIO Gateway for streaming optimization
+  minio-gateway:
+    image: minio/minio:latest
+    command: gateway nas /data --console-address ":9001"
+    environment:
+      MINIO_ROOT_USER: streaming_user
+      MINIO_ROOT_PASSWORD: ${STREAMING_PASSWORD}
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+```
+
+#### Video Streaming Implementation
+
+The `Accept-Ranges` header is essential for video streaming, as shown in production setups.
+
+```javascript
+// Optimized Video Streaming from MinIO
+class VideoStreamingService {
+  async streamVideo(assetId, rangeHeader) {
+    try {
+      // Get asset metadata from MongoDB
+      const asset = await this.mongoClient
+        .collection('assets')
+        .findOne({ asset_id: assetId });
+
+      if (!asset) {
+        throw new Error('Asset not found');
+      }
+
+      // Parse range header for byte-range requests
+      const range = this.parseRangeHeader(rangeHeader);
+      const objectName = asset.storage_refs.minio_object_key;
+
+      // Stream from MinIO with range support
+      const objectStream = await this.minioClient.getObject(
+        'video-assets', 
+        objectName
+      );
+
+      const objectStats = await this.minioClient.statObject(
+        'video-assets', 
+        objectName
+      );
+
+      // Configure streaming headers
+      const headers = {
+        'Content-Type': 'video/mp4',
+        'Accept-Ranges': 'bytes',
+        'Content-Length': objectStats.size,
+        'Cache-Control': 'public, max-age=3600',
+        'ETag': objectStats.etag
+      };
+
+      if (range) {
+        const { start, end } = range;
+        const chunkSize = (end - start) + 1;
+
+        headers['Content-Range'] = `bytes ${start}-${end}/${objectStats.size}`;
+        headers['Content-Length'] = chunkSize;
+
+        // Return partial content
+        return {
+          statusCode: 206,
+          headers,
+          stream: objectStream.slice(start, end + 1)
+        };
+      }
+
+      return {
+        statusCode: 200,
+        headers,
+        stream: objectStream
+      };
+
+    } catch (error) {
+      console.error('Streaming error:', error);
+      throw error;
+    }
+  }
+
+  parseRangeHeader(rangeHeader) {
+    if (!rangeHeader || !rangeHeader.startsWith('bytes=')) {
+      return null;
+    }
+
+    const ranges = rangeHeader.substring(6).split(',')[0].split('-');
+    return {
+      start: parseInt(ranges[0]) || 0,
+      end: parseInt(ranges[1]) || undefined
+    };
+  }
+}
+```
+
+#### Performance Optimization
+
+MinIO bypasses kernel caching to optimize streaming performance, resiliency, and durability.
+
+```javascript
+// Multi-tier storage configuration
+const StorageTierManager = {
+  async optimizeAssetPlacement(assetId, usageMetrics) {
+    const asset = await this.getAssetMetadata(assetId);
+
+    // Hot tier: NVMe storage for frequently accessed assets
+    if (usageMetrics.accessFrequency > 10 && 
+        usageMetrics.lastAccessed < Date.now() - 86400000) { // 24 hours
+      await this.moveToHotTier(assetId);
+    }
+
+    // Warm tier: SSD storage for moderate access
+    else if (usageMetrics.accessFrequency > 1 && 
+             usageMetrics.lastAccessed < Date.now() - 2592000000) { // 30 days
+      await this.moveToWarmTier(assetId);
+    }
+
+    // Cold tier: HDD/Cloud storage for archival
+    else if (usageMetrics.lastAccessed > Date.now() - 7776000000) { // 90 days
+      await this.moveToColdTier(assetId);
+    }
+  }
+};
+```
+
+#### Pros and Cons
+
+**Advantages:**
+- Direct-attached storage without additional network or software layers for video access.
+- Strict consistency, with objects and metadata written atomically.
+- Native S3 compatibility for ecosystem integration.
+- Erasure coding for high fault tolerance at low cost.
+
+**Limitations:**
+- Requires careful configuration for peak performance.
+- Limited built-in CDN features compared to cloud providers.
+- Manual implementation needed for lifecycle management.
+
+<#0.5#>
+
+### Version Control with DVC
+
+#### Implementation Approach
+
+DVC makes ML models shareable, experiments reproducible, and tracks versions of models, data, and pipelines on Git repositories and cloud storage.
+
+#### Code Architecture
+
+```yaml
+# DVC Pipeline Configuration (dvc.yaml)
+stages:
+  asset_ingestion:
+    cmd: python scripts/ingest_asset.py ${asset_path} ${metadata_file}
+    deps:
+      - scripts/ingest_asset.py
+      - ${asset_path}
+      - ${metadata_file}
+    outs:
+      - processed_assets/${asset_id}/
+      - processed_assets/${asset_id}/metadata.json
+    params:
+      - processing.quality_level
+      - processing.format_conversion
+    metrics:
+      - metrics/ingestion_${asset_id}.json
+
+  continuity_validation:
+    cmd: python scripts/continuity_check.py ${scene_id} ${asset_list}
+    deps:
+      - scripts/continuity_check.py
+      - processed_assets/
+    outs:
+      - continuity_reports/${scene_id}/
+    params:
+      - validation.strictness_level
+      - validation.auto_fix_enabled
+    metrics:
+      - metrics/continuity_${scene_id}.json
+
+  asset_optimization:
+    cmd: python scripts/optimize_assets.py ${asset_id}
+    deps:
+      - scripts/optimize_assets.py  
+      - processed_assets/${asset_id}/
+    outs:
+      - optimized_assets/${asset_id}/
+    params:
+      - optimization.compression_level
+      - optimization.target_platforms
+```
+
+#### DVC Remote Storage Configuration
+
+DVC stores large files in separate cloud storage, such as Amazon S3, Google Cloud Storage, Microsoft Azure, or remote servers.
+
+```python
+# DVC Integration with MinIO
+class DVCAssetManager:
+    def __init__(self):
+        self.dvc_repo = dvc.Repo()
+        self.minio_client = Minio(
+            'minio.internal:9000',
+            access_key='dvc_user',
+            secret_key=os.getenv('DVC_MINIO_SECRET')
+        )
+
+    def add_asset(self, asset_path, asset_id):
+        """Add asset to DVC tracking"""
+        try:
+            # Add file to DVC tracking
+            stage = self.dvc_repo.add(asset_path)
+
+            # Generate hash for deduplication
+            file_hash = self.calculate_sha256(asset_path)
+
+            # Create DVC metadata
+            dvc_metadata = {
+                'asset_id': asset_id,
+                'original_path': asset_path,
+                'dvc_stage': stage.path,
+                'file_hash': file_hash,
+                'timestamp': datetime.utcnow().isoformat()
+            }
+
+            # Store in MongoDB for tracking
+            self.mongo_client.collection('dvc_tracking').insert_one(dvc_metadata)
+
+            # Commit to Git
+            self.git_repo.index.add([stage.path, '.dvc/config'])
+            self.git_repo.index.commit(f"Add asset {asset_id}")
+
+            return {
+                'dvc_path': stage.path,
+                'hash': file_hash,
+                'status': 'tracked'
+            }
+
+        except Exception as e:
+            print(f"Error adding asset to DVC: {e}")
+            raise
+
+    def create_asset_branch(self, branch_name, base_branch='main'):
+        """Create experimental branch for asset modifications"""
+        # Create Git branch
+        new_branch = self.git_repo.create_head(branch_name, base_branch)
+        new_branch.checkout()
+
+        # DVC will automatically handle data references
+        return {
+            'branch': branch_name,
+            'status': 'created',
+            'parent': base_branch
+        }
+
+    def compare_asset_versions(self, asset_id, version_a, version_b):
+        """Compare different versions of an asset"""
+        try:
+            # Use DVC diff functionality
+            diff_result = self.dvc_repo.diff(
+                a_ref=version_a,
+                b_ref=version_b,
+                targets=[f"assets/{asset_id}"]
+            )
+
+            return {
+                'asset_id': asset_id,
+                'version_a': version_a,
+                'version_b': version_b,
+                'differences': diff_result,
+                'timestamp': datetime.utcnow().isoformat()
+            }
+
+        except Exception as e:
+            print(f"Error comparing versions: {e}")
+            raise
+```
+
+#### Pros and Cons
+
+**Advantages:**
+- Git-based versioning with data as metadata, requiring no additional services.
+- Caches data and models outside Git while maintaining a Git-like experience.
+- Tracks experiments locally, enabling comparisons and automatic reproduction.
+
+**Limitations:**
+- Lacks advanced pipeline features like monitoring, error handling, and recovery.
+- Command-line only, without GUI; no daemons or servers.
+- Requires Git expertise from team members.
+
+<#0.5#>
+
+### Search and Discovery with Elasticsearch
+
+#### Implementation Approach
+
+Video metadata is indexed in a search-friendly format using Elasticsearch, supporting near-real-time updates via distributed message queues like Kafka for parallel processing.
+
+#### Code Architecture
+
+```json
+{
+  "settings": {
+    "number_of_shards": 8,
+    "number_of_replicas": 2,
+    "index.refresh_interval": "5s",
+    "index.translog.flush_threshold_size": "1gb",
+    "analysis": {
+      "analyzer": {
+        "video_content_analyzer": {
+          "type": "custom",
+          "tokenizer": "standard",
+          "filter": ["lowercase", "stop", "snowball"]
+        }
+      }
+    }
+  },
+  "mappings": {
+    "properties": {
+      "asset_id": { "type": "keyword" },
+      "metadata": {
+        "properties": {
+          "title": { 
+            "type": "text",
+            "analyzer": "video_content_analyzer",
+            "fields": {
+              "exact": { "type": "keyword" }
+            }
+          },
+          "description": { 
+            "type": "text",
+            "analyzer": "video_content_analyzer"
+          },
+          "tags": { "type": "keyword" },
+          "type": { "type": "keyword" },
+          "category": { "type": "keyword" },
+          "scene_context": { "type": "keyword" }
+        }
+      },
+      "technical_specs": {
+        "properties": {
+          "file_format": { "type": "keyword" },
+          "resolution": { "type": "keyword" },
+          "duration_seconds": { "type": "float" },
+          "file_size_bytes": { "type": "long" }
+        }
+      },
+      "usage_tracking": {
+        "properties": {
+          "access_count": { "type": "integer" },
+          "last_accessed": { "type": "date" }
+        }
+      },
+      "visual_features": {
+        "type": "dense_vector",
+        "dims": 512,
+        "index": true,
+        "similarity": "cosine"
+      },
+      "creation_date": { "type": "date" },
+      "dependencies": { "type": "keyword" }
+    }
+  }
+}
+```
+
+#### Advanced Search Implementation
+
+Vector search supports natural language queries against video content using embeddings generated from the same model.
+
+```javascript
+class AdvancedVideoSearch {
+  async searchAssets(query, filters = {}, options = {}) {
+    const searchBody = {
+      query: {
+        bool: {
+          must: [],
+          filter: [],
+          should: []
+        }
+      },
+      sort: [],
+      highlight: {
+        fields: {
+          'metadata.title': {},
+          'metadata.description': {}
+        }
+      },
+      aggs: {
+        asset_types: {
+          terms: { field: 'metadata.type' }
+        },
+        file_formats: {
+          terms: { field: 'technical_specs.file_format' }
+        },
+        usage_trend: {
+          date_histogram: {
+            field: 'usage_tracking.last_accessed',
+            calendar_interval: 'day'
+          }
+        }
+      }
+    };
+
+    // Text search
+    if (query.text) {
+      searchBody.query.bool.must.push({
+        multi_match: {
+          query: query.text,
+          fields: [
+            'metadata.title^3',
+            'metadata.description^2',
+            'metadata.tags'
+          ],
+          type: 'best_fields',
+          fuzziness: 'AUTO'
+        }
+      });
+    }
+
+    // Visual similarity search using vector embeddings
+    if (query.visual_similarity) {
+      const embedding = await this.generateVisualEmbedding(query.visual_similarity);
+      searchBody.query.bool.should.push({
+        script_score: {
+          query: { match_all: {} },
+          script: {
+            source: "cosineSimilarity(params.query_vector, 'visual_features') + 0",
+            params: { query_vector: embedding }
+          }
+        }
+      });
+    }
+
+    // Technical filters
+    if (filters.duration_range) {
+      searchBody.query.bool.filter.push({
+        range: {
+          'technical_specs.duration_seconds': filters.duration_range
+        }
+      });
+    }
+
+    if (filters.scene_context) {
+      searchBody.query.bool.filter.push({
+        term: { 'metadata.scene_context': filters.scene_context }
+      });
+    }
+
+    // Usage-based scoring boost
+    searchBody.query.bool.should.push({
+      function_score: {
+        query: { match_all: {} },
+        functions: [
+          {
+            field_value_factor: {
+              field: 'usage_tracking.access_count',
+              factor: 1,
+              modifier: 'log1p'
+            }
+          }
+        ],
+        score_mode: 'sum'
+      }
+    });
+
+    const response = await this.elasticsearchClient.search({
+      index: 'video-assets',
+      body: searchBody
+    });
+
+    return this.processSearchResults(response);
+  }
+
+  async generateVisualEmbedding(imageData) {
+    // Integration with ML models for visual embedding generation
+    // This would typically call an ML service or model
+    return await this.mlService.generateEmbedding(imageData);
+  }
+}
+```
+
+#### Pros and Cons
+
+**Advantages:**
+- Distributed architecture based on Lucene for fast searches and analytics.
+- Configurable refresh intervals (e.g., 1 second) to balance performance and freshness.
+- Rich aggregation and analytics features.
+- Built-in vector search for similarity matching.
+
+**Limitations:**
+- Stores metadata only; requires separate storage for actual data.
+- Complex cluster management and optimization.
+- Memory-intensive for large deployments.
+
+<#0.5#>
+
+### Intelligent Caching with Redis
+
+#### Implementation Approach
+
+Implements a multi-tier caching strategy for video workflows, with predictive warming and intelligent eviction.
+
+#### Code Architecture
+
+```javascript
+class IntelligentCacheManager {
+  constructor() {
+    this.redisClient = new Redis.Cluster([
+      { port: 7000, host: 'redis-node-1' },
+      { port: 7001, host: 'redis-node-2' },
+      { port: 7002, host: 'redis-node-3' }
+    ]);
+
+    this.cacheConfig = {
+      levels: {
+        L1: { ttl: 300, maxSize: '2GB' },    // Hot cache - 5 minutes
+        L2: { ttl: 3600, maxSize: '10GB' },  // Warm cache - 1 hour  
+        L3: { ttl: 86400, maxSize: '50GB' }  // Cold cache - 24 hours
+      }
+    };
+  }
+
+  async cacheAssetMetadata(assetId, metadata, priority = 'normal') {
+    const cacheKey = `asset:meta:${assetId}`;
+    const cacheLevel = this.determineCacheLevel(priority, metadata);
+
+    const pipeline = this.redisClient.pipeline();
+
+    // Store with appropriate TTL
+    pipeline.setex(
+      cacheKey, 
+      this.cacheConfig.levels[cacheLevel].ttl,
+      JSON.stringify(metadata)
+    );
+
+    // Update access pattern
+    pipeline.zadd(
+      'asset:access_pattern', 
+      Date.now(), 
+      assetId
+    );
+
+    // Track cache level for analytics
+    pipeline.hincrby('cache:level_stats', cacheLevel, 1);
+
+    await pipeline.exec();
+
+    return { cached: true, level: cacheLevel, key: cacheKey };
+  }
+
+  async predictiveWarming() {
+    // Analyze access patterns to predict needed assets
+    const frequentAssets = await this.redisClient.zrevrange(
+      'asset:access_pattern', 
+      0, 
+      100, 
+      'WITHSCORES'
+    );
+
+    const predictions = await this.mlService.predictAssetNeeds(frequentAssets);
+
+    for (const prediction of predictions) {
+      if (prediction.confidence > 7) {
+        const metadata = await this.mongoClient
+          .collection('assets')
+          .findOne({ asset_id: prediction.assetId });
+
+        if (metadata) {
+          await this.cacheAssetMetadata(
+            prediction.assetId, 
+            metadata, 
+            'high'
+          );
+        }
+      }
+    }
+  }
+
+  determineCacheLevel(priority, metadata) {
+    if (priority === 'high' || metadata.usage_tracking?.access_count > 50) {
+      return 'L1';
+    } else if (priority === 'normal' || metadata.usage_tracking?.access_count > 10) {
+      return 'L2';
+    } else {
+      return 'L3';
+    }
+  }
+}
+```
+
+<#0.5#>
+
+### Complex Relationships with PostgreSQL
+
+#### Implementation Approach
+
+Manages asset relationships, dependency graphs, and ACID-compliant transactions.
+
+#### Code Architecture
+
+```sql
+-- PostgreSQL Schema for Complex Relationships
+CREATE TABLE asset_relationships (
+    id SERIAL PRIMARY KEY,
+    parent_asset_id VARCHAR(255) NOT NULL,
+    child_asset_id VARCHAR(255) NOT NULL,
+    relationship_type VARCHAR(50) NOT NULL,
+    dependency_strength DECIMAL(3,2) DEFAULT 0,
+    created_at TIMESTAMP DEFAULT NOW(),
+    metadata JSONB,
+
+    CONSTRAINT unique_relationship 
+        UNIQUE(parent_asset_id, child_asset_id, relationship_type),
+
+    -- Prevent self-references
+    CONSTRAINT no_self_reference 
+        CHECK (parent_asset_id != child_asset_id)
+);
+
+-- Indexes for performance
+CREATE INDEX idx_asset_rel_parent ON asset_relationships(parent_asset_id);
+CREATE INDEX idx_asset_rel_child ON asset_relationships(child_asset_id);
+CREATE INDEX idx_asset_rel_type ON asset_relationships(relationship_type);
+CREATE INDEX idx_asset_rel_metadata ON asset_relationships USING GIN(metadata);
+
+-- Asset lineage tracking
+CREATE TABLE asset_lineage (
+    id SERIAL PRIMARY KEY,
+    asset_id VARCHAR(255) NOT NULL,
+    operation_type VARCHAR(50) NOT NULL, -- created, modified, deleted
+    operation_timestamp TIMESTAMP DEFAULT NOW(),
+    agent_id VARCHAR(255),
+    change_description TEXT,
+    previous_version VARCHAR(255),
+    new_version VARCHAR(255),
+    metadata_diff JSONB
+);
+
+-- Function to detect circular dependencies
+CREATE OR REPLACE FUNCTION detect_circular_dependency(
+    p_parent_id VARCHAR(255), 
+    p_child_id VARCHAR(255)
+) RETURNS BOOLEAN AS $$
+BEGIN
+    -- Use recursive CTE to detect cycles
+    WITH RECURSIVE dependency_chain(parent_id, child_id, depth) AS (
+        SELECT parent_asset_id, child_asset_id, 1
+        FROM asset_relationships 
+        WHERE parent_asset_id = p_child_id
+
+        UNION ALL
+
+        SELECT ar.parent_asset_id, ar.child_asset_id, dc.depth + 1
+        FROM asset_relationships ar
+        JOIN dependency_chain dc ON ar.parent_asset_id = dc.child_id
+        WHERE dc.depth < 10 -- Prevent infinite recursion
+    )
+    SELECT EXISTS(
+        SELECT 1 FROM dependency_chain 
+        WHERE child_id = p_parent_id
+    );
+END;
+$$ LANGUAGE plpgsql;
+```
+
+<#0.5#>
+
+### Integration Architecture
+
+#### Unified Data Flow
+
+```python
+class UnifiedAssetManager:
+    def __init__(self):
+        self.mongodb = MongoClient('mongodb://mongodb-cluster:27017/')
+        self.minio = Minio('minio-cluster:9000')
+        self.dvc_repo = dvc.Repo()
+        self.elasticsearch = Elasticsearch(['elasticsearch-cluster:9200'])
+        self.redis = Redis(host='redis-cluster', port=6379)
+        self.postgresql = psycopg2.connect(
+            host='postgresql-cluster',
+            database='asset_relationships'
+        )
+
+    async def ingest_asset(self, file_path, metadata):
+        """Complete asset ingestion workflow"""
+        try:
+            asset_id = metadata['asset_id']
+
+            # Store binary in MinIO with optimization
+            await self.store_in_minio(file_path, asset_id, metadata)
+
+            # Track with DVC for version control
+            dvc_info = await self.track_with_dvc(file_path, asset_id)
+
+            # Store metadata in MongoDB
+            mongo_doc = await self.store_metadata(metadata, dvc_info)
+
+            # Index for search in Elasticsearch  
+            await self.index_for_search(mongo_doc)
+
+            # Cache frequently accessed metadata in Redis
+            await self.cache_metadata(asset_id, mongo_doc)
+
+            # Update relationships in PostgreSQL
+            await self.update_relationships(asset_id, metadata.get('dependencies', []))
+
+            # Trigger continuity analysis
+            if metadata.get('scene_context'):
+                await self.analyze_continuity(asset_id, metadata['scene_context'])
+
+            return {
+                'asset_id': asset_id,
+                'status': 'success',
+                'storage': {
+                    'minio_key': f'video-assets/{asset_id}',
+                    'dvc_path': dvc_info['path'],
+                    'mongo_id': str(mongo_doc['_id'])
+                }
+            }
+
+        except Exception as e:
+            await self.rollback_ingestion(asset_id)
+            raise
+```
+
+<#0.5#>
+
+## Phased Implementation Approach
+
+<#0.5#>
+
+### Phase 1: Core Infrastructure (Months 1-2)
+- Deploy MongoDB cluster for metadata storage.
+- Set up MinIO cluster for binary assets.
+- Configure basic DVC with Git integration.
+- Implement asset ingestion pipeline.
+
+<#0.5#>
+
+### Phase 2: Search and Discovery (Months 3-4)
+- Deploy Elasticsearch cluster.
+- Implement search functionality.
+- Add vector search for visual similarity.
+- Optimize search and add analytics.
+
+<#0.5#>
+
+### Phase 3: Advanced Features (Months 5-6)
+- Implement Redis caching.
+- Add PostgreSQL for relationships.
+- Deploy continuity detection.
+- Add performance optimizations.
+
+<#0.5#>
+
+### Phase 4: Production Optimization (Months 7-8)
+- Implement monitoring and alerting.
+- Add auto-scaling and failover.
+- Tune performance and conduct load testing.
+- Harden security and ensure compliance.
+
+<#0.5#>
+
+## Critical Dependencies and Prerequisites
+
+<#0.5#>
+
+### Infrastructure Requirements
+- **Kubernetes Cluster**: At least 32 CPU cores and 128 GB RAM.
+- **High-Performance Storage**: NVMe SSDs for hot tier (minimum 2 TB).
+- **Network Bandwidth**: At least 10 Gbps for video streaming.
+- **Backup Storage**: Minimum 100 TB for cold tier.
+
+<#0.5#>
+
+### Version Compatibility Matrix
+
+| **Component**    | **Minimum Version** | **Recommended Version** | **Notes**                          |
+|-------------------|---------------------|--------------------------|------------------------------------|
+| MongoDB          | 6.0                | 7.0+                    | Requires replica set for production |
+| MinIO            | RELEASE.2024-01-01 | Latest release          | S3 compatibility essential         |
+| DVC              | 3.0                | 3.48+                   | Git integration required           |
+| Elasticsearch    | 8.0                | 8.11+                   | Vector search capabilities         |
+| Redis            | 7.0                | 7.2+                    | Cluster mode for scalability       |
+| PostgreSQL       | 14                 | 16+                     | JSONB support required             |
+
+<#0.5#>
+
+### Potential Integration Challenges
+
+#### Data Consistency
+- **Challenge**: Ensuring consistency across data stores.
+- **Solution**: Use saga pattern for distributed transactions.
+- **Code Example**:
+  ```python
+  class DistributedTransaction:
+      async def execute(self, operations):
+          completed = []
+          try:
+              for op in operations:
+                  result = await op.execute()
+                  completed.append((op, result))
+          except Exception as e:
+              # Rollback in reverse order
+              for op, result in reversed(completed):
+                  await op.rollback(result)
+              raise
+  ```
+
+#### Performance Bottlenecks
+- **Challenge**: Network latency between components.
+- **Solution**: Co-locate services and use intelligent caching.
+- **Monitoring**: Apply distributed tracing to identify issues.
+
+#### Scalability Limits
+- **Challenge**: Varying scaling needs of components.
+- **Solution**: Auto-scale based on metrics.
+- **Architecture**: Use container orchestration with custom resource definitions.
+
+This implementation provides a production-ready foundation for the Asset & Data Management Agent, leveraging technology strengths while mitigating limitations through integration and architecture.
+
+<#0.5#>
+
+### Production-Ready Code Architecture
+
+<#0.5#>
+
+#### Asset Schema Design and Implementation
+
+```python
+from dataclasses import dataclass, field
+from typing import List, Dict, Optional, Any
+from datetime import datetime
+import hashlib
+import json
+
+@dataclass
+class TechnicalSpecification:
+    """Technical metadata for video assets"""
+    file_format: str
+    file_size_bytes: int
+    resolution: tuple[int, int] = None
+    duration_seconds: float = None
+    bitrate_kbps: int = None
+    codec: str = None
+    color_space: str = None
+    frame_rate: float = None
+
+    def to_dict(self) -> Dict[str, Any]:
+        return asdict(self)
+
+@dataclass 
+class CreationMetadata:
+    """Asset creation and provenance information"""
+    created_by: str  # Agent ID
+    creation_date: datetime
+    pipeline_version: str
+    source_references: List[str] = field(default_factory=list)
+    processing_parameters: Dict[str, Any] = field(default_factory=dict)
+
+@dataclass
+class VersionInfo:
+    """Asset version management"""
+    version: str
+    is_latest: bool = True
+    parent_version: Optional[str] = None
+    change_description: str = ""
+    hash_sha256: str = ""
+
+    def generate_hash(self, file_path: str) -> str:
+        """Generate SHA256 hash for file integrity"""
+        sha256_hash = hashlib.sha256()
+        with open(file_path, "rb") as f:
+            for chunk in iter(lambda: f.read(4096), b""):
+                sha256_hash.update(chunk)
+        self.hash_sha256 = sha256_hash.hexdigest()
+        return self.hash_sha256
+
+@dataclass
+class UsageTracking:
+    """Asset usage analytics"""
+    used_in_scenes: List[str] = field(default_factory=list)
+    usage_count: int = 0
+    last_accessed: datetime = field(default_factory=datetime.utcnow)
+    access_pattern: Dict[str, int] = field(default_factory=dict)
+
+    def record_access(self, scene_id: str = None):
+        """Record asset access for analytics"""
+        self.last_accessed = datetime.utcnow()
+        self.usage_count += 1
+        if scene_id:
+            self.used_in_scenes.append(scene_id)
+            hour_key = self.last_accessed.strftime("%H")
+            self.access_pattern[hour_key] = self.access_pattern.get(hour_key, 0) + 1
+
+@dataclass
+class AssetMetadata:
+    """Complete asset metadata structure"""
+    asset_id: str
+    type: str  # environment, character, prop, texture, etc.
+    category: str  # 3d_geometry, texture, audio, video, etc.
+    title: str
+    description: str = ""
+    tags: List[str] = field(default_factory=list)
+    technical_specs: TechnicalSpecification = None
+    creation_metadata: CreationMetadata = None
+    version_info: VersionInfo = None
+    dependencies: List[str] = field(default_factory=list)
+    usage_tracking: UsageTracking = field(default_factory=UsageTracking)
+
+    def to_mongodb_document(self) -> Dict[str, Any]:
+        """Convert to MongoDB document format"""
+        return {
+            "_id": self.asset_id,
+            "metadata": {
+                "type": self.type,
+                "category": self.category,
+                "title": self.title,
+                "description": self.description,
+                "tags": self.tags
+            },
+            "technical_specs": self.technical_specs.to_dict() if self.technical_specs else {},
+            "creation_metadata": asdict(self.creation_metadata) if self.creation_metadata else {},
+            "version_info": asdict(self.version_info) if self.version_info else {},
+            "dependencies": self.dependencies,
+            "usage_tracking": asdict(self.usage_tracking)
+        }
+```
+
+This comprehensive Asset & Data Management Agent provides a production-ready, enterprise-scale solution for modern video production workflows. Media asset management systems are essential, particularly in post-production, enabling organizations to manage large media libraries from secure, centralized locations. The system integrates advanced data management, search, version control, and automation technologies to support collaborative video production at scale.
+
+# Implementation Solutions
+
+Based on the Asset & Data Management Agent specification, this section outlines implementation approaches using open-source frameworks and technologies. Solutions are organized by capability areas, including technical implementations, architectural decisions, and integration strategies.
+
+## Framework Capability Matrix
+
+| **Requirement**          | **MongoDB** | **MinIO** | **DVC**   | **Elasticsearch** | **PostgreSQL** | **Redis** | **Neo4j** |
+|---------------------------|-------------|-----------|-----------|-------------------|----------------|-----------|-----------|
+| **Asset Metadata Storage** | ✅ Primary | ❌       | ❌       | ✅ Search Only   | ✅ Relations  | ❌       | ❌       |
+| **Binary Asset Storage**  | ⚠️ GridFS Limited | ✅ Primary | ✅ Versioning | ❌              | ❌            | ❌       | ❌       |
+| **Version Control**       | ⚠️ Manual  | ⚠️ Basic | ✅ Primary | ❌              | ✅ Schema     | ❌       | ❌       |
+| **Search & Discovery**    | ⚠️ Basic   | ❌       | ❌       | ✅ Primary      | ⚠️ SQL Only  | ❌       | ⚠️ Graph |
+| **Dependency Tracking**   | ⚠️ References | ❌     | ⚠️ Pipeline | ❌             | ✅ Foreign Keys | ❌      | ✅ Primary |
+| **Caching**               | ❌         | ❌       | ⚠️ Storage | ❌              | ❌            | ✅ Primary | ❌       |
+| **Streaming Support**     | ❌         | ✅ Primary | ❌       | ❌              | ❌            | ❌       | ❌       |
+| **Scalability**           | ✅ Horizontal | ✅ Horizontal | ⚠️ Storage Only | ✅ Horizontal | ⚠️ Vertical | ✅ Horizontal | ⚠️ Cluster |
+
+## Primary Implementation Stack Recommendation
+
+<#0.5#>
+
+### Core Architecture Components
+
+**Primary Stack:**
+- **MongoDB**: Asset metadata repository using a flexible document model for diverse asset types.
+- **MinIO**: High-performance object store with direct-attached storage for optimal video streaming.
+- **DVC**: Git-like version control for data, using Git as the base layer and external storage for large files.
+- **Elasticsearch**: Distributed search engine based on Apache Lucene, offering REST APIs, speed, and scalability.
+- **Redis**: Caching layer for performance optimization.
+- **PostgreSQL**: Handles complex relationships and ACID-compliant operations.
+
+## Detailed Implementation Solutions
+
+<#0.5#>
+
+### Asset Metadata Management with MongoDB
+
+<#0.5#>
+
+#### Implementation Approach
+
+MongoDB's flexible schema stores all content nodes in a single collection, ideal for diverse video production assets.
+
+<#0.5#>
+
+#### Code Architecture
+
+```javascript
+// MongoDB Asset Schema Implementation
+const AssetSchema = {
+  _id: ObjectId,
+  asset_id: String, // Unique identifier
+  metadata: {
+    type: String, // environment, character, prop, texture
+    category: String, // 3d_geometry, texture, audio, video
+    title: String,
+    description: String,
+    tags: [String],
+    scene_context: String,
+    creation_date: Date,
+    created_by: String, // Agent ID
+
+    // Technical specifications
+    technical_specs: {
+      file_format: String,
+      file_size_bytes: Number,
+      resolution: String,
+      duration_seconds: Number,
+      codec: String,
+      bitrate_kbps: Number
+    },
+
+    // Production context
+    production_context: {
+      project_id: String,
+      scene_ids: [String],
+      continuity_notes: [String]
+    }
+  },
+
+  // Version tracking
+  version_info: {
+    version: String,
+    is_latest: Boolean,
+    parent_version: String,
+    change_description: String,
+    hash_sha256: String
+  },
+
+  // Relationships
+  dependencies: [String], // Asset IDs this asset depends on
+  dependents: [String],   // Asset IDs that depend on this asset
+
+  // Usage analytics
+  usage_tracking: {
+    access_count: Number,
+    last_accessed: Date,
+    used_in_scenes: [String],
+    performance_metrics: {
+      render_time_ms: Number,
+      memory_usage_mb: Number,
+      quality_score: Number
+    }
+  },
+
+  // Storage references
+  storage_refs: {
+    minio_bucket: String,
+    minio_object_key: String,
+    dvc_path: String,
+    cache_status: String
+  }
+}
+
+// Optimized indexes for video production queries
+db.assets.createIndex({ "metadata.type": 1, "metadata.scene_context": 1 })
+db.assets.createIndex({ "metadata.tags": 1 })
+db.assets.createIndex({ "usage_tracking.last_accessed": -1 })
+db.assets.createIndex({ "dependencies": 1 })
+db.assets.createIndex({ "version_info.is_latest": 1 })
+```
+
+<#0.5#>
+
+#### Pros and Cons
+
+**Advantages:**
+- Rich query language for storing and searching diverse content types in one place.
+- Proven flexibility, scalability, and reliability in Fortune 500 media organizations.
+- Native support for hierarchical relationships.
+- Automatic sharding across servers and data centers.
+
+**Limitations:**
+- GridFS is unsuitable for chunking or rewriting small file portions; use external storage like S3 for binaries.
+- Limited complex join support compared to relational databases.
+- High memory usage for large datasets.
+
+<#0.5#>
+
+#### Integration Points
+
+```javascript
+// Integration with MinIO and DVC
+class AssetManager {
+  async createAsset(assetData, binaryFile) {
+    // Store binary in MinIO
+    const minioKey = await this.minioClient.putObject(
+      'video-assets', 
+      assetData.asset_id, 
+      binaryFile
+    );
+
+    // Track with DVC
+    const dvcPath = await this.dvcClient.add(binaryFile.path);
+
+    // Store metadata in MongoDB
+    const mongoDoc = {
+      ...assetData,
+      storage_refs: {
+        minio_bucket: 'video-assets',
+        minio_object_key: assetData.asset_id,
+        dvc_path: dvcPath
+      }
+    };
+
+    await this.mongoClient.collection('assets').insertOne(mongoDoc);
+
+    // Index in Elasticsearch for search
+    await this.elasticsearchClient.index({
+      index: 'video-assets',
+      id: assetData.asset_id,
+      body: this.prepareForElasticsearch(mongoDoc)
+    });
+
+    return assetData.asset_id;
+  }
+}
+```
+
+<#0.5#>
+
+### Binary Asset Storage with MinIO
+
+<#0.5#>
+
+#### Implementation Approach
+
+MinIO offers a high-performance, S3-compatible object store for large-scale AI/ML, data lakes, and databases, deployable on-premises or in the cloud.
+
+<#0.5#>
+
+#### Code Architecture
+
+```yaml
+# MinIO Cluster Configuration for Video Assets
+version: '8'
+services:
+  minio-cluster:
+    image: minio/minio:latest
+    command: server --console-address ":9001" http://minio{..4}/data{..4}
+    environment:
+      MINIO_ROOT_USER: video_production_admin
+      MINIO_ROOT_PASSWORD: ${MINIO_PASSWORD}
+      MINIO_STORAGE_CLASS_STANDARD: EC:4  # Erasure coding for durability
+      MINIO_COMPRESSION_ENABLE: "on"
+      MINIO_COMPRESSION_MIME_TYPES: "video/*,image/*"
+    volumes:
+      - type: bind
+        source: /mnt/nvme-storage
+        target: /data1
+      - type: bind  
+        source: /mnt/ssd-storage
+        target: /data2
+    deploy:
+      replicas: 4
+      placement:
+        constraints:
+          - node.role == worker
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
+      interval: 30s
+      timeout: 20s
+      retries: 3
+
+  # MinIO Gateway for streaming optimization
+  minio-gateway:
+    image: minio/minio:latest
+    command: gateway nas /data --console-address ":9001"
+    environment:
+      MINIO_ROOT_USER: streaming_user
+      MINIO_ROOT_PASSWORD: ${STREAMING_PASSWORD}
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+```
+
+<#0.5#>
+
+#### Video Streaming Implementation
+
+The `Accept-Ranges` header is essential for video streaming, as shown in production setups.
+
+```javascript
+// Optimized Video Streaming from MinIO
+class VideoStreamingService {
+  async streamVideo(assetId, rangeHeader) {
+    try {
+      // Get asset metadata from MongoDB
+      const asset = await this.mongoClient
+        .collection('assets')
+        .findOne({ asset_id: assetId });
+
+      if (!asset) {
+        throw new Error('Asset not found');
+      }
+
+      // Parse range header for byte-range requests
+      const range = this.parseRangeHeader(rangeHeader);
+      const objectName = asset.storage_refs.minio_object_key;
+
+      // Stream from MinIO with range support
+      const objectStream = await this.minioClient.getObject(
+        'video-assets', 
+        objectName
+      );
+
+      const objectStats = await this.minioClient.statObject(
+        'video-assets', 
+        objectName
+      );
+
+      // Configure streaming headers
+      const headers = {
+        'Content-Type': 'video/mp4',
+        'Accept-Ranges': 'bytes',
+        'Content-Length': objectStats.size,
+        'Cache-Control': 'public, max-age=3600',
+        'ETag': objectStats.etag
+      };
+
+      if (range) {
+        const { start, end } = range;
+        const chunkSize = (end - start) + 1;
+
+        headers['Content-Range'] = `bytes ${start}-${end}/${objectStats.size}`;
+        headers['Content-Length'] = chunkSize;
+
+        // Return partial content
+        return {
+          statusCode: 206,
+          headers,
+          stream: objectStream.slice(start, end + 1)
+        };
+      }
+
+      return {
+        statusCode: 200,
+        headers,
+        stream: objectStream
+      };
+
+    } catch (error) {
+      console.error('Streaming error:', error);
+      throw error;
+    }
+  }
+
+  parseRangeHeader(rangeHeader) {
+    if (!rangeHeader || !rangeHeader.startsWith('bytes=')) {
+      return null;
+    }
+
+    const ranges = rangeHeader.substring(6).split(',')[0].split('-');
+    return {
+      start: parseInt(ranges[0]) || 0,
+      end: parseInt(ranges[1]) || undefined
+    };
+  }
+}
+```
+
+<#0.5#>
+
+#### Performance Optimization
+
+MinIO bypasses kernel caching to optimize streaming performance, resiliency, and durability.
+
+```javascript
+// Multi-tier storage configuration
+const StorageTierManager = {
+  async optimizeAssetPlacement(assetId, usageMetrics) {
+    const asset = await this.getAssetMetadata(assetId);
+
+    // Hot tier: NVMe storage for frequently accessed assets
+    if (usageMetrics.accessFrequency > 10 && 
+        usageMetrics.lastAccessed < Date.now() - 86400000) { // 24 hours
+      await this.moveToHotTier(assetId);
+    }
+
+    // Warm tier: SSD storage for moderate access
+    else if (usageMetrics.accessFrequency > 1 && 
+             usageMetrics.lastAccessed < Date.now() - 2592000000) { // 30 days
+      await this.moveToWarmTier(assetId);
+    }
+
+    // Cold tier: HDD/Cloud storage for archival
+    else if (usageMetrics.lastAccessed > Date.now() - 7776000000) { // 90 days
+      await this.moveToColdTier(assetId);
+    }
+  }
+};
+```
+
+<#0.5#>
+
+#### Pros and Cons
+
+**Advantages:**
+- Direct-attached storage without additional network or software layers for video access.
+- Strict consistency, with objects and metadata written atomically.
+- Native S3 compatibility for ecosystem integration.
+- Erasure coding for high fault tolerance at low cost.
+
+**Limitations:**
+- Requires careful configuration for peak performance.
+- Limited built-in CDN features compared to cloud providers.
+- Manual implementation needed for lifecycle management.
+
+<#0.5#>
+
+### Version Control with DVC
+
+<#0.5#>
+
+#### Implementation Approach
+
+DVC makes ML models shareable, experiments reproducible, and tracks versions of models, data, and pipelines on Git repositories and cloud storage.
+
+<#0.5#>
+
+#### Code Architecture
+
+```yaml
+# DVC Pipeline Configuration (dvc.yaml)
+stages:
+  asset_ingestion:
+    cmd: python scripts/ingest_asset.py ${asset_path} ${metadata_file}
+    deps:
+      - scripts/ingest_asset.py
+      - ${asset_path}
+      - ${metadata_file}
+    outs:
+      - processed_assets/${asset_id}/
+      - processed_assets/${asset_id}/metadata.json
+    params:
+      - processing.quality_level
+      - processing.format_conversion
+    metrics:
+      - metrics/ingestion_${asset_id}.json
+
+  continuity_validation:
+    cmd: python scripts/continuity_check.py ${scene_id} ${asset_list}
+    deps:
+      - scripts/continuity_check.py
+      - processed_assets/
+    outs:
+      - continuity_reports/${scene_id}/
+    params:
+      - validation.strictness_level
+      - validation.auto_fix_enabled
+    metrics:
+      - metrics/continuity_${scene_id}.json
+
+  asset_optimization:
+    cmd: python scripts/optimize_assets.py ${asset_id}
+    deps:
+      - scripts/optimize_assets.py  
+      - processed_assets/${asset_id}/
+    outs:
+      - optimized_assets/${asset_id}/
+    params:
+      - optimization.compression_level
+      - optimization.target_platforms
+```
+
+<#0.5#>
+
+#### DVC Remote Storage Configuration
+
+DVC stores large files in separate cloud storage, such as Amazon S3, Google Cloud Storage, Microsoft Azure, or remote servers.
+
+```python
+# DVC Integration with MinIO
+class DVCAssetManager:
+    def __init__(self):
+        self.dvc_repo = dvc.Repo()
+        self.minio_client = Minio(
+            'minio.internal:9000',
+            access_key='dvc_user',
+            secret_key=os.getenv('DVC_MINIO_SECRET')
+        )
+
+    def add_asset(self, asset_path, asset_id):
+        """Add asset to DVC tracking"""
+        try:
+            # Add file to DVC tracking
+            stage = self.dvc_repo.add(asset_path)
+
+            # Generate hash for deduplication
+            file_hash = self.calculate_sha256(asset_path)
+
+            # Create DVC metadata
+            dvc_metadata = {
+                'asset_id': asset_id,
+                'original_path': asset_path,
+                'dvc_stage': stage.path,
+                'file_hash': file_hash,
+                'timestamp': datetime.utcnow().isoformat()
+            }
+
+            # Store in MongoDB for tracking
+            self.mongo_client.collection('dvc_tracking').insert_one(dvc_metadata)
+
+            # Commit to Git
+            self.git_repo.index.add([stage.path, '.dvc/config'])
+            self.git_repo.index.commit(f"Add asset {asset_id}")
+
+            return {
+                'dvc_path': stage.path,
+                'hash': file_hash,
+                'status': 'tracked'
+            }
+
+        except Exception as e:
+            print(f"Error adding asset to DVC: {e}")
+            raise
+
+    def create_asset_branch(self, branch_name, base_branch='main'):
+        """Create experimental branch for asset modifications"""
+        # Create Git branch
+        new_branch = self.git_repo.create_head(branch_name, base_branch)
+        new_branch.checkout()
+
+        # DVC will automatically handle data references
+        return {
+            'branch': branch_name,
+            'status': 'created',
+            'parent': base_branch
+        }
+
+    def compare_asset_versions(self, asset_id, version_a, version_b):
+        """Compare different versions of an asset"""
+        try:
+            # Use DVC diff functionality
+            diff_result = self.dvc_repo.diff(
+                a_ref=version_a,
+                b_ref=version_b,
+                targets=[f"assets/{asset_id}"]
+            )
+
+            return {
+                'asset_id': asset_id,
+                'version_a': version_a,
+                'version_b': version_b,
+                'differences': diff_result,
+                'timestamp': datetime.utcnow().isoformat()
+            }
+
+        except Exception as e:
+            print(f"Error comparing versions: {e}")
+            raise
+```
+
+<#0.5#>
+
+#### Pros and Cons
+
+**Advantages:**
+- Git-based versioning with data as metadata, requiring no additional services.
+- Caches data and models outside Git while maintaining a Git-like experience.
+- Tracks experiments locally, enabling comparisons and automatic reproduction.
+
+**Limitations:**
+- Lacks advanced pipeline features like monitoring, error handling, and recovery.
+- Command-line only, without GUI; no daemons or servers.
+- Requires Git expertise from team members.
+
+<#0.5#>
+
+### Search and Discovery with Elasticsearch
+
+<#0.5#>
+
+#### Implementation Approach
+
+Video metadata is indexed in a search-friendly format using Elasticsearch, supporting near-real-time updates via distributed message queues like Kafka for parallel processing.
+
+<#0.5#>
+
+#### Code Architecture
+
+```json
+{
+  "settings": {
+    "number_of_shards": 8,
+    "number_of_replicas": 2,
+    "index.refresh_interval": "5s",
+    "index.translog.flush_threshold_size": "1gb",
+    "analysis": {
+      "analyzer": {
+        "video_content_analyzer": {
+          "type": "custom",
+          "tokenizer": "standard",
+          "filter": ["lowercase", "stop", "snowball"]
+        }
+      }
+    }
+  },
+  "mappings": {
+    "properties": {
+      "asset_id": { "type": "keyword" },
+      "metadata": {
+        "properties": {
+          "title": { 
+            "type": "text",
+            "analyzer": "video_content_analyzer",
+            "fields": {
+              "exact": { "type": "keyword" }
+            }
+          },
+          "description": { 
+            "type": "text",
+            "analyzer": "video_content_analyzer"
+          },
+          "tags": { "type": "keyword" },
+          "type": { "type": "keyword" },
+          "category": { "type": "keyword" },
+          "scene_context": { "type": "keyword" }
+        }
+      },
+      "technical_specs": {
+        "properties": {
+          "file_format": { "type": "keyword" },
+          "resolution": { "type": "keyword" },
+          "duration_seconds": { "type": "float" },
+          "file_size_bytes": { "type": "long" }
+        }
+      },
+      "usage_tracking": {
+        "properties": {
+          "access_count": { "type": "integer" },
+          "last_accessed": { "type": "date" }
+        }
+      },
+      "visual_features": {
+        "type": "dense_vector",
+        "dims": 512,
+        "index": true,
+        "similarity": "cosine"
+      },
+      "creation_date": { "type": "date" },
+      "dependencies": { "type": "keyword" }
+    }
+  }
+}
+```
+
+<#0.5#>
+
+#### Advanced Search Implementation
+
+Vector search supports natural language queries against video content using embeddings generated from the same model.
+
+```javascript
+class AdvancedVideoSearch {
+  async searchAssets(query, filters = {}, options = {}) {
+    const searchBody = {
+      query: {
+        bool: {
+          must: [],
+          filter: [],
+          should: []
+        }
+      },
+      sort: [],
+      highlight: {
+        fields: {
+          'metadata.title': {},
+          'metadata.description': {}
+        }
+      },
+      aggs: {
+        asset_types: {
+          terms: { field: 'metadata.type' }
+        },
+        file_formats: {
+          terms: { field: 'technical_specs.file_format' }
+        },
+        usage_trend: {
+          date_histogram: {
+            field: 'usage_tracking.last_accessed',
+            calendar_interval: 'day'
+          }
+        }
+      }
+    };
+
+    // Text search
+    if (query.text) {
+      searchBody.query.bool.must.push({
+        multi_match: {
+          query: query.text,
+          fields: [
+            'metadata.title^3',
+            'metadata.description^2',
+            'metadata.tags'
+          ],
+          type: 'best_fields',
+          fuzziness: 'AUTO'
+        }
+      });
+    }
+
+    // Visual similarity search using vector embeddings
+    if (query.visual_similarity) {
+      const embedding = await this.generateVisualEmbedding(query.visual_similarity);
+      searchBody.query.bool.should.push({
+        script_score: {
+          query: { match_all: {} },
+          script: {
+            source: "cosineSimilarity(params.query_vector, 'visual_features') + 0",
+            params: { query_vector: embedding }
+          }
+        }
+      });
+    }
+
+    // Technical filters
+    if (filters.duration_range) {
+      searchBody.query.bool.filter.push({
+        range: {
+          'technical_specs.duration_seconds': filters.duration_range
+        }
+      });
+    }
+
+    if (filters.scene_context) {
+      searchBody.query.bool.filter.push({
+        term: { 'metadata.scene_context': filters.scene_context }
+      });
+    }
+
+    // Usage-based scoring boost
+    searchBody.query.bool.should.push({
+      function_score: {
+        query: { match_all: {} },
+        functions: [
+          {
+            field_value_factor: {
+              field: 'usage_tracking.access_count',
+              factor: 1,
+              modifier: 'log1p'
+            }
+          }
+        ],
+        score_mode: 'sum'
+      }
+    });
+
+    const response = await this.elasticsearchClient.search({
+      index: 'video-assets',
+      body: searchBody
+    });
+
+    return this.processSearchResults(response);
+  }
+
+  async generateVisualEmbedding(imageData) {
+    // Integration with ML models for visual embedding generation
+    // This would typically call an ML service or model
+    return await this.mlService.generateEmbedding(imageData);
+  }
+}
+```
+
+<#0.5#>
+
+#### Pros and Cons
+
+**Advantages:**
+- Distributed architecture based on Lucene for fast searches and analytics.
+- Configurable refresh intervals (e.g., 1 second) to balance performance and freshness.
+- Rich aggregation and analytics features.
+- Built-in vector search for similarity matching.
+
+**Limitations:**
+- Stores metadata only; requires separate storage for actual data.
+- Complex cluster management and optimization.
+- Memory-intensive for large deployments.
+
+<#0.5#>
+
+### Intelligent Caching with Redis
+
+<#0.5#>
+
+#### Implementation Approach
+
+Implements a multi-tier caching strategy for video workflows, with predictive warming and intelligent eviction.
+
+<#0.5#>
+
+#### Code Architecture
+
+```javascript
+class IntelligentCacheManager {
+  constructor() {
+    this.redisClient = new Redis.Cluster([
+      { port: 7000, host: 'redis-node-1' },
+      { port: 7001, host: 'redis-node-2' },
+      { port: 7002, host: 'redis-node-3' }
+    ]);
+
+    this.cacheConfig = {
+      levels: {
+        L1: { ttl: 300, maxSize: '2GB' },    // Hot cache - 5 minutes
+        L2: { ttl: 3600, maxSize: '10GB' },  // Warm cache - 1 hour  
+        L3: { ttl: 86400, maxSize: '50GB' }  // Cold cache - 24 hours
+      }
+    };
+  }
+
+  async cacheAssetMetadata(assetId, metadata, priority = 'normal') {
+    const cacheKey = `asset:meta:${assetId}`;
+    const cacheLevel = this.determineCacheLevel(priority, metadata);
+
+    const pipeline = this.redisClient.pipeline();
+
+    // Store with appropriate TTL
+    pipeline.setex(
+      cacheKey, 
+      this.cacheConfig.levels[cacheLevel].ttl,
+      JSON.stringify(metadata)
+    );
+
+    // Update access pattern
+    pipeline.zadd(
+      'asset:access_pattern', 
+      Date.now(), 
+      assetId
+    );
+
+    // Track cache level for analytics
+    pipeline.hincrby('cache:level_stats', cacheLevel, 1);
+
+    await pipeline.exec();
+
+    return { cached: true, level: cacheLevel, key: cacheKey };
+  }
+
+  async predictiveWarming() {
+    // Analyze access patterns to predict needed assets
+    const frequentAssets = await this.redisClient.zrevrange(
+      'asset:access_pattern', 
+      0, 
+      100, 
+      'WITHSCORES'
+    );
+
+    const predictions = await this.mlService.predictAssetNeeds(frequentAssets);
+
+    for (const prediction of predictions) {
+      if (prediction.confidence > 7) {
+        const metadata = await this.mongoClient
+          .collection('assets')
+          .findOne({ asset_id: prediction.assetId });
+
+        if (metadata) {
+          await this.cacheAssetMetadata(
+            prediction.assetId, 
+            metadata, 
+            'high'
+          );
+        }
+      }
+    }
+  }
+
+  determineCacheLevel(priority, metadata) {
+    if (priority === 'high' || metadata.usage_tracking?.access_count > 50) {
+      return 'L1';
+    } else if (priority === 'normal' || metadata.usage_tracking?.access_count > 10) {
+      return 'L2';
+    } else {
+      return 'L3';
+    }
+  }
+}
+```
+
+<#0.5#>
+
+### Complex Relationships with PostgreSQL
+
+<#0.5#>
+
+#### Implementation Approach
+
+Manages asset relationships, dependency graphs, and ACID-compliant transactions.
+
+<#0.5#>
+
+#### Code Architecture
+
+```sql
+-- PostgreSQL Schema for Complex Relationships
+CREATE TABLE asset_relationships (
+    id SERIAL PRIMARY KEY,
+    parent_asset_id VARCHAR(255) NOT NULL,
+    child_asset_id VARCHAR(255) NOT NULL,
+    relationship_type VARCHAR(50) NOT NULL,
+    dependency_strength DECIMAL(3,2) DEFAULT 0,
+    created_at TIMESTAMP DEFAULT NOW(),
+    metadata JSONB,
+
+    CONSTRAINT unique_relationship 
+        UNIQUE(parent_asset_id, child_asset_id, relationship_type),
+
+    -- Prevent self-references
+    CONSTRAINT no_self_reference 
+        CHECK (parent_asset_id != child_asset_id)
+);
+
+-- Indexes for performance
+CREATE INDEX idx_asset_rel_parent ON asset_relationships(parent_asset_id);
+CREATE INDEX idx_asset_rel_child ON asset_relationships(child_asset_id);
+CREATE INDEX idx_asset_rel_type ON asset_relationships(relationship_type);
+CREATE INDEX idx_asset_rel_metadata ON asset_relationships USING GIN(metadata);
+
+-- Asset lineage tracking
+CREATE TABLE asset_lineage (
+    id SERIAL PRIMARY KEY,
+    asset_id VARCHAR(255) NOT NULL,
+    operation_type VARCHAR(50) NOT NULL, -- created, modified, deleted
+    operation_timestamp TIMESTAMP DEFAULT NOW(),
+    agent_id VARCHAR(255),
+    change_description TEXT,
+    previous_version VARCHAR(255),
+    new_version VARCHAR(255),
+    metadata_diff JSONB
+);
+
+-- Function to detect circular dependencies
+CREATE OR REPLACE FUNCTION detect_circular_dependency(
+    p_parent_id VARCHAR(255), 
+    p_child_id VARCHAR(255)
+) RETURNS BOOLEAN AS $$
+BEGIN
+    -- Use recursive CTE to detect cycles
+    WITH RECURSIVE dependency_chain(parent_id, child_id, depth) AS (
+        SELECT parent_asset_id, child_asset_id, 1
+        FROM asset_relationships 
+        WHERE parent_asset_id = p_child_id
+
+        UNION ALL
+
+        SELECT ar.parent_asset_id, ar.child_asset_id, dc.depth + 1
+        FROM asset_relationships ar
+        JOIN dependency_chain dc ON ar.parent_asset_id = dc.child_id
+        WHERE dc.depth < 10 -- Prevent infinite recursion
+    )
+    SELECT EXISTS(
+        SELECT 1 FROM dependency_chain 
+        WHERE child_id = p_parent_id
+    );
+END;
+$$ LANGUAGE plpgsql;
+```
+
+<#0.5#>
+
+### Integration Architecture
+
+<#0.5#>
+
+#### Unified Data Flow
+
+```python
+class UnifiedAssetManager:
+    def __init__(self):
+        self.mongodb = MongoClient('mongodb://mongodb-cluster:27017/')
+        self.minio = Minio('minio-cluster:9000')
+        self.dvc_repo = dvc.Repo()
+        self.elasticsearch = Elasticsearch(['elasticsearch-cluster:9200'])
+        self.redis = Redis(host='redis-cluster', port=6379)
+        self.postgresql = psycopg2.connect(
+            host='postgresql-cluster',
+            database='asset_relationships'
+        )
+
+    async def ingest_asset(self, file_path, metadata):
+        """Complete asset ingestion workflow"""
+        try:
+            asset_id = metadata['asset_id']
+
+            # Store binary in MinIO with optimization
+            await self.store_in_minio(file_path, asset_id, metadata)
+
+            # Track with DVC for version control
+            dvc_info = await self.track_with_dvc(file_path, asset_id)
+
+            # Store metadata in MongoDB
+            mongo_doc = await self.store_metadata(metadata, dvc_info)
+
+            # Index for search in Elasticsearch  
+            await self.index_for_search(mongo_doc)
+
+            # Cache frequently accessed metadata in Redis
+            await self.cache_metadata(asset_id, mongo_doc)
+
+            # Update relationships in PostgreSQL
+            await self.update_relationships(asset_id, metadata.get('dependencies', []))
+
+            # Trigger continuity analysis
+            if metadata.get('scene_context'):
+                await self.analyze_continuity(asset_id, metadata['scene_context'])
+
+            return {
+                'asset_id': asset_id,
+                'status': 'success',
+                'storage': {
+                    'minio_key': f'video-assets/{asset_id}',
+                    'dvc_path': dvc_info['path'],
+                    'mongo_id': str(mongo_doc['_id'])
+                }
+            }
+
+        except Exception as e:
+            await self.rollback_ingestion(asset_id)
+            raise
+```
+
+## Phased Implementation Approach
+
+<#0.5#>
+
+### Phase 1: Core Infrastructure (Months 1-2)
+- Deploy MongoDB cluster for metadata storage.
+- Set up MinIO cluster for binary assets.
+- Configure basic DVC with Git integration.
+- Implement asset ingestion pipeline.
+
+<#0.5#>
+
+### Phase 2: Search and Discovery (Months 3-4)
+- Deploy Elasticsearch cluster.
+- Implement search functionality.
+- Add vector search for visual similarity.
+- Optimize search and add analytics.
+
+<#0.5#>
+
+### Phase 3: Advanced Features (Months 5-6)
+- Implement Redis caching.
+- Add PostgreSQL for relationships.
+- Deploy continuity detection.
+- Add performance optimizations.
+
+<#0.5#>
+
+### Phase 4: Production Optimization (Months 7-8)
+- Implement monitoring and alerting.
+- Add auto-scaling and failover.
+- Tune performance and conduct load testing.
+- Harden security and ensure compliance.
+
+## Critical Dependencies and Prerequisites
+
+<#0.5#>
+
+### Infrastructure Requirements
+- **Kubernetes Cluster**: At least 32 CPU cores and 128 GB RAM.
+- **High-Performance Storage**: NVMe SSDs for hot tier (minimum 2 TB).
+- **Network Bandwidth**: At least 10 Gbps for video streaming.
+- **Backup Storage**: Minimum 100 TB for cold tier.
+
+<#0.5#>
+
+### Version Compatibility Matrix
+
+| **Component**    | **Minimum Version** | **Recommended Version** | **Notes**                          |
+|-------------------|---------------------|--------------------------|------------------------------------|
+| MongoDB          | 6.0                | 7.0+                    | Requires replica set for production |
+| MinIO            | RELEASE.2024-01-01 | Latest release          | S3 compatibility essential         |
+| DVC              | 3.0                | 3.48+                   | Git integration required           |
+| Elasticsearch    | 8.0                | 8.11+                   | Vector search capabilities         |
+| Redis            | 7.0                | 7.2+                    | Cluster mode for scalability       |
+| PostgreSQL       | 14                 | 16+                     | JSONB support required             |
+
+<#0.5#>
+
+### Potential Integration Challenges
+
+<#0.5#>
+
+#### Data Consistency
+- **Challenge**: Ensuring consistency across data stores.
+- **Solution**: Use saga pattern for distributed transactions.
+- **Code Example**:
+  ```python
+  class DistributedTransaction:
+      async def execute(self, operations):
+          completed = []
+          try:
+              for op in operations:
+                  result = await op.execute()
+                  completed.append((op, result))
+          except Exception as e:
+              # Rollback in reverse order
+              for op, result in reversed(completed):
+                  await op.rollback(result)
+              raise
+  ```
+
+<#0.5#>
+
+#### Performance Bottlenecks
+- **Challenge**: Network latency between components.
+- **Solution**: Co-locate services and use intelligent caching.
+- **Monitoring**: Apply distributed tracing to identify issues.
+
+<#0.5#>
+
+#### Scalability Limits
+- **Challenge**: Varying scaling needs of components.
+- **Solution**: Auto-scale based on metrics.
+- **Architecture**: Use container orchestration with custom resource definitions.
+
+This implementation provides a production-ready foundation for the Asset & Data Management Agent, leveraging technology strengths while mitigating limitations through integration and architecture.
+
+<#0.5#>
+

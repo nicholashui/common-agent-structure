@@ -1,6 +1,6 @@
 """Import VA video pack agents into CASOPS v3 baseline_safe folders.
 
-Source: C:\\Project\\common-agent-swarm-ops\\business\\video\\agents
+Source: vendor/common-agent-swarm-ops/business/video/agents
 Dest:   agents/<agent_id>/
 
 Does not enable network, plugins, memory writes, T3, or production.
@@ -15,8 +15,15 @@ from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPO / "src"))
+from casops.runtime.llm import (  # noqa: E402
+    IMPORT_DEFAULT_INPUT_TOKENS,
+    IMPORT_DEFAULT_OUTPUT_TOKENS,
+    resolve_import_token_budget,
+)
+from reloc import VENDOR_VIDEO_AGENTS, repo_posix  # noqa: E402
+
 TEMPLATE = REPO / "agents" / "_template_v3"
-DEFAULT_SOURCE = Path(r"C:\Project\common-agent-swarm-ops\business\video\agents")
+DEFAULT_SOURCE = VENDOR_VIDEO_AGENTS
 SKIP_SUFFIXES = {".mp3", ".wav", ".png", ".jpg", ".jpeg", ".webp", ".gif"}
 OVERLAY_TOP = ("docs", "prompts", "rubrics", "skills", "sources")
 CASOPS_OWNED = {
@@ -141,8 +148,12 @@ def casops_spec(source: dict, agent_id: str) -> dict:
             "routing_allowed": False,
         },
         "budget_policy": {
-            "max_input_tokens": int(budget.get("max_input_tokens") or 2048),
-            "max_output_tokens": int(budget.get("max_output_tokens") or 1024),
+            "max_input_tokens": resolve_import_token_budget(
+                budget.get("max_input_tokens"), default=IMPORT_DEFAULT_INPUT_TOKENS
+            ),
+            "max_output_tokens": resolve_import_token_budget(
+                budget.get("max_output_tokens"), default=IMPORT_DEFAULT_OUTPUT_TOKENS
+            ),
             "max_model_calls": 2,
             "max_tool_requests": 0,
             "max_job_ms": 15000,
@@ -247,8 +258,8 @@ def import_one(src: Path, dest_root: Path, *, domain: str) -> str:
         {
             "title": source_spec.get("va_name") or source_spec.get("role") or agent_id,
             "domain": domain,
-            "source_repo": "common-agent-swarm-ops",
-            "source_folder": str(src),
+            "source_repo": "vendor/common-agent-swarm-ops",
+            "source_folder": repo_posix(src),
             "va_id": source_spec.get("va_id"),
             "va_category": source_spec.get("va_category"),
             "fictional": False,
@@ -264,7 +275,7 @@ def import_one(src: Path, dest_root: Path, *, domain: str) -> str:
         except json.JSONDecodeError:
             pass
     provenance["schema_version"] = "3.0"
-    provenance["imported_from"] = str(src)
+    provenance["imported_from"] = repo_posix(src)
     provenance["note"] = (
         "Imported into CASOPS as baseline_safe. No production activation, no network, "
         "no plugins, memory writes forbidden."
@@ -273,7 +284,7 @@ def import_one(src: Path, dest_root: Path, *, domain: str) -> str:
     readme = dest / "README.md"
     header = (
         f"# {agent_id}\n\n"
-        f"CASOPS v3 import of `{src}` as `baseline_safe`.\n"
+        f"CASOPS v3 import of `{repo_posix(src)}` as `baseline_safe`.\n"
         "Local deterministic adapter only. Not production-certified.\n\n"
     )
     existing = readme.read_text(encoding="utf-8") if readme.is_file() else ""
@@ -284,6 +295,11 @@ def import_one(src: Path, dest_root: Path, *, domain: str) -> str:
 
 def main(source_root: Path | None = None, *, domain: str = "video") -> list[str]:
     source_root = source_root or DEFAULT_SOURCE
+    if not source_root.is_dir():
+        raise FileNotFoundError(
+            f"vendor source missing: {source_root}. "
+            "Run python tools/vendor_external_sources.py while the sibling tree is available."
+        )
     dest_root = REPO / "agents"
     imported: list[str] = []
     for src in discover_source_agents(source_root):

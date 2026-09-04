@@ -30,19 +30,19 @@
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "千面英雄",
+      "title": "\u5343\u9762\u82f1\u96c4",
       "isbn13": "9787532753871",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 千面英雄，ISBN-13 9787532753871"
+      "citation": "ZH: \u5343\u9762\u82f1\u96c4\uff0cISBN-13 9787532753871"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "小说的艺术",
-      "author": "勒古恩相关中译《驾驭匠艺》",
+      "title": "\u5c0f\u8bf4\u7684\u827a\u672f",
+      "author": "\u52d2\u53e4\u6069\u76f8\u5173\u4e2d\u8bd1\u300a\u9a7e\u9a6d\u5320\u827a\u300b",
       "isbn13": "9787535672346",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 小说的艺术（勒古恩相关中译《驾驭匠艺》），ISBN-13 9787535672346"
+      "citation": "ZH: \u5c0f\u8bf4\u7684\u827a\u672f\uff08\u52d2\u53e4\u6069\u76f8\u5173\u4e2d\u8bd1\u300a\u9a7e\u9a6d\u5320\u827a\u300b\uff09\uff0cISBN-13 9787535672346"
     },
     {
       "kind": "reference_book",
@@ -155,55 +155,55 @@
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "故事",
-      "author": "麦基",
+      "title": "\u6545\u4e8b",
+      "author": "\u9ea6\u57fa",
       "isbn13": "9787201076942",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 故事（麦基），ISBN-13 9787201076942"
+      "citation": "ZH: \u6545\u4e8b\uff08\u9ea6\u57fa\uff09\uff0cISBN-13 9787201076942"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "故事的解剖",
-      "author": "繁体麦基",
+      "title": "\u6545\u4e8b\u7684\u89e3\u5256",
+      "author": "\u7e41\u4f53\u9ea6\u57fa",
       "isbn13": "9789862135488",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 故事的解剖（繁体麦基），ISBN-13 9789862135488"
+      "citation": "ZH: \u6545\u4e8b\u7684\u89e3\u5256\uff08\u7e41\u4f53\u9ea6\u57fa\uff09\uff0cISBN-13 9789862135488"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "救猫咪",
+      "title": "\u6551\u732b\u54aa",
       "isbn13": "9787229040727",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 救猫咪，ISBN-13 9787229040727"
+      "citation": "ZH: \u6551\u732b\u54aa\uff0cISBN-13 9787229040727"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "作家之路",
-      "author": "佛格勒",
+      "title": "\u4f5c\u5bb6\u4e4b\u8def",
+      "author": "\u4f5b\u683c\u52d2",
       "isbn13": "9787513320184",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 作家之路（佛格勒），ISBN-13 9787513320184"
+      "citation": "ZH: \u4f5c\u5bb6\u4e4b\u8def\uff08\u4f5b\u683c\u52d2\uff09\uff0cISBN-13 9787513320184"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "电影剧本写作基础",
-      "author": "悉德·菲尔德",
+      "title": "\u7535\u5f71\u5267\u672c\u5199\u4f5c\u57fa\u7840",
+      "author": "\u6089\u5fb7\u00b7\u83f2\u5c14\u5fb7",
       "isbn13": "9787106021238",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 电影剧本写作基础（悉德·菲尔德），ISBN-13 9787106021238"
+      "citation": "ZH: \u7535\u5f71\u5267\u672c\u5199\u4f5c\u57fa\u7840\uff08\u6089\u5fb7\u00b7\u83f2\u5c14\u5fb7\uff09\uff0cISBN-13 9787106021238"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "戏剧写作基础",
-      "author": "埃格里",
+      "title": "\u620f\u5267\u5199\u4f5c\u57fa\u7840",
+      "author": "\u57c3\u683c\u91cc",
       "isbn13": "9787108014504",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 戏剧写作基础（埃格里），ISBN-13 9787108014504"
+      "citation": "ZH: \u620f\u5267\u5199\u4f5c\u57fa\u7840\uff08\u57c3\u683c\u91cc\uff09\uff0cISBN-13 9787108014504"
     },
     {
       "kind": "reference_book",
@@ -262,45 +262,45 @@
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "美的历程",
-      "author": "李泽厚",
+      "title": "\u7f8e\u7684\u5386\u7a0b",
+      "author": "\u674e\u6cfd\u539a",
       "isbn13": "9787108017963",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 美的历程（李泽厚），ISBN-13 9787108017963"
+      "citation": "ZH: \u7f8e\u7684\u5386\u7a0b\uff08\u674e\u6cfd\u539a\uff09\uff0cISBN-13 9787108017963"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "谈美",
-      "author": "朱光潜",
+      "title": "\u8c08\u7f8e",
+      "author": "\u6731\u5149\u6f5c",
       "isbn13": "9787108042262",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 谈美（朱光潜），ISBN-13 9787108042262"
+      "citation": "ZH: \u8c08\u7f8e\uff08\u6731\u5149\u6f5c\uff09\uff0cISBN-13 9787108042262"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "美学散步",
-      "author": "宗白华",
+      "title": "\u7f8e\u5b66\u6563\u6b65",
+      "author": "\u5b97\u767d\u534e",
       "isbn13": "9787532123456",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 美学散步（宗白华），ISBN-13 9787532123456"
+      "citation": "ZH: \u7f8e\u5b66\u6563\u6b65\uff08\u5b97\u767d\u534e\uff09\uff0cISBN-13 9787532123456"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "观看之道",
+      "title": "\u89c2\u770b\u4e4b\u9053",
       "isbn13": "9787544715998",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 观看之道，ISBN-13 9787544715998"
+      "citation": "ZH: \u89c2\u770b\u4e4b\u9053\uff0cISBN-13 9787544715998"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "论摄影",
+      "title": "\u8bba\u6444\u5f71",
       "isbn13": "9787544722599",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 论摄影，ISBN-13 9787544722599"
+      "citation": "ZH: \u8bba\u6444\u5f71\uff0cISBN-13 9787544722599"
     },
     {
       "kind": "reference_book",
@@ -332,11 +332,11 @@
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "电影美术设计语言",
-      "author": "全荣哲",
+      "title": "\u7535\u5f71\u7f8e\u672f\u8bbe\u8ba1\u8bed\u8a00",
+      "author": "\u5168\u8363\u54f2",
       "isbn13": "9787550242616",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 电影美术设计语言（全荣哲），ISBN-13 9787550242616"
+      "citation": "ZH: \u7535\u5f71\u7f8e\u672f\u8bbe\u8ba1\u8bed\u8a00\uff08\u5168\u8363\u54f2\uff09\uff0cISBN-13 9787550242616"
     }
   ],
   "agent_id": "video.worldbuilding",
@@ -351,7 +351,7 @@
     "adopted_at": "2026-07-27T01:30:29.042559+00:00",
     "upstream": "generic-swarm-ops/business/video/agents"
   },
-  "imported_from": "C:\\Project\\common-agent-swarm-ops\\business\\video\\agents\\video.worldbuilding",
+  "imported_from": "vendor/common-agent-swarm-ops/business/video/agents/video.worldbuilding",
   "reference_book_origin": "spec/book_of_knowledge.md",
   "reference_book_note": "Bibliographic references from spec/book_of_knowledge.md. Does not enable network, RAG, T3, plugins, or memory writes."
 }

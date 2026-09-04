@@ -62,7 +62,7 @@
       "author": "Roger Deakins",
       "isbn13": "9781910593998",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "EN: Reflections: On Cinematography (Roger Deakins) — check latest ed. ISBN-13 9781910593998"
+      "citation": "EN: Reflections: On Cinematography (Roger Deakins) \u2014 check latest ed. ISBN-13 9781910593998"
     },
     {
       "kind": "reference_book",
@@ -76,51 +76,51 @@
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "电影摄影：理论与实践",
+      "title": "\u7535\u5f71\u6444\u5f71\uff1a\u7406\u8bba\u4e0e\u5b9e\u8df5",
       "isbn13": "9787515331867",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 电影摄影：理论与实践，ISBN-13 9787515331867"
+      "citation": "ZH: \u7535\u5f71\u6444\u5f71\uff1a\u7406\u8bba\u4e0e\u5b9e\u8df5\uff0cISBN-13 9787515331867"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "视觉故事",
+      "title": "\u89c6\u89c9\u6545\u4e8b",
       "isbn13": "9787515302867",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 视觉故事，ISBN-13 9787515302867"
+      "citation": "ZH: \u89c6\u89c9\u6545\u4e8b\uff0cISBN-13 9787515302867"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "电影语言的语法",
+      "title": "\u7535\u5f71\u8bed\u8a00\u7684\u8bed\u6cd5",
       "isbn13": "9787532299990",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 电影语言的语法，ISBN-13 9787532299990"
+      "citation": "ZH: \u7535\u5f71\u8bed\u8a00\u7684\u8bed\u6cd5\uff0cISBN-13 9787532299990"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "美国纽约摄影学院摄影教材",
+      "title": "\u7f8e\u56fd\u7ebd\u7ea6\u6444\u5f71\u5b66\u9662\u6444\u5f71\u6559\u6750",
       "isbn13": "9787800078491",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 美国纽约摄影学院摄影教材，ISBN-13 9787800078491"
+      "citation": "ZH: \u7f8e\u56fd\u7ebd\u7ea6\u6444\u5f71\u5b66\u9662\u6444\u5f71\u6559\u6750\uff0cISBN-13 9787800078491"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "论摄影",
-      "author": "桑塔格",
+      "title": "\u8bba\u6444\u5f71",
+      "author": "\u6851\u5854\u683c",
       "isbn13": "9787544722599",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 论摄影（桑塔格），ISBN-13 9787544722599"
+      "citation": "ZH: \u8bba\u6444\u5f71\uff08\u6851\u5854\u683c\uff09\uff0cISBN-13 9787544722599"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "摄影师的视界",
+      "title": "\u6444\u5f71\u5e08\u7684\u89c6\u754c",
       "isbn13": "9787512201880",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 摄影师的视界，ISBN-13 9787512201880"
+      "citation": "ZH: \u6444\u5f71\u5e08\u7684\u89c6\u754c\uff0cISBN-13 9787512201880"
     },
     {
       "kind": "reference_book",
@@ -161,19 +161,19 @@
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "达芬奇色彩校正手册",
+      "title": "\u8fbe\u82ac\u5947\u8272\u5f69\u6821\u6b63\u624b\u518c",
       "isbn13": "9787115381231",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 达芬奇色彩校正手册，ISBN-13 9787115381231"
+      "citation": "ZH: \u8fbe\u82ac\u5947\u8272\u5f69\u6821\u6b63\u624b\u518c\uff0cISBN-13 9787115381231"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "色彩艺术",
-      "author": "伊顿",
+      "title": "\u8272\u5f69\u827a\u672f",
+      "author": "\u4f0a\u987f",
       "isbn13": "9787532275119",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 色彩艺术（伊顿），ISBN-13 9787532275119"
+      "citation": "ZH: \u8272\u5f69\u827a\u672f\uff08\u4f0a\u987f\uff09\uff0cISBN-13 9787532275119"
     },
     {
       "kind": "reference_book",
@@ -196,18 +196,18 @@
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "手機攝影技術教程",
+      "title": "\u624b\u6a5f\u651d\u5f71\u6280\u8853\u6559\u7a0b",
       "isbn13": "9787210129653",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 手機攝影技術教程，ISBN-13 9787210129653"
+      "citation": "ZH: \u624b\u6a5f\u651d\u5f71\u6280\u8853\u6559\u7a0b\uff0cISBN-13 9787210129653"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "爆款短视频拍摄：118个分镜脚本与摄影技巧新媒体抖音运营流量",
+      "title": "\u7206\u6b3e\u77ed\u89c6\u9891\u62cd\u6444\uff1a118\u4e2a\u5206\u955c\u811a\u672c\u4e0e\u6444\u5f71\u6280\u5de7\u65b0\u5a92\u4f53\u6296\u97f3\u8fd0\u8425\u6d41\u91cf",
       "isbn13": "9787122699984",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 爆款短视频拍摄：118个分镜脚本与摄影技巧新媒体抖音运营流量，ISBN-13 9787122699984"
+      "citation": "ZH: \u7206\u6b3e\u77ed\u89c6\u9891\u62cd\u6444\uff1a118\u4e2a\u5206\u955c\u811a\u672c\u4e0e\u6444\u5f71\u6280\u5de7\u65b0\u5a92\u4f53\u6296\u97f3\u8fd0\u8425\u6d41\u91cf\uff0cISBN-13 9787122699984"
     },
     {
       "kind": "reference_book",
@@ -221,11 +221,11 @@
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "电影照明技巧与创作",
-      "author": "雷载兴",
+      "title": "\u7535\u5f71\u7167\u660e\u6280\u5de7\u4e0e\u521b\u4f5c",
+      "author": "\u96f7\u8f7d\u5174",
       "isbn13": "9787106050399",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 电影照明技巧与创作（雷载兴），ISBN-13 9787106050399"
+      "citation": "ZH: \u7535\u5f71\u7167\u660e\u6280\u5de7\u4e0e\u521b\u4f5c\uff08\u96f7\u8f7d\u5174\uff09\uff0cISBN-13 9787106050399"
     }
   ],
   "agent_id": "video.cinematographer",
@@ -240,7 +240,7 @@
     "adopted_at": "2026-07-27T01:30:27.806375+00:00",
     "upstream": "generic-swarm-ops/business/video/agents"
   },
-  "imported_from": "C:\\Project\\common-agent-swarm-ops\\business\\video\\agents\\video.cinematographer",
+  "imported_from": "vendor/common-agent-swarm-ops/business/video/agents/video.cinematographer",
   "reference_book_origin": "spec/book_of_knowledge.md",
   "reference_book_note": "Bibliographic references from spec/book_of_knowledge.md. Does not enable network, RAG, T3, plugins, or memory writes."
 }

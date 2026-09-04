@@ -2214,7 +2214,7 @@ MemoryAgent                                  S7: Memory Panel
 ## Provenance
 
 - Master roster row va_id=93 from embedded agents.md content above.
-- Deep/extra text from `business/video/corpus/` and `C:\Project\va-agent-swarm`.
+- Deep/extra text from `business/video/corpus/` and `vendor/va-agent-swarm`.
 - Generator: `scripts/business/enrich_video_agent_specs.py`.
 - Upstream project name (historical only): va-agent-swarm.
 
@@ -2305,18 +2305,18 @@ Omitted here; same document as `SPEC.md` above.
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "威胁建模",
+      "title": "\u5a01\u80c1\u5efa\u6a21",
       "isbn13": "9787115419903",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 威胁建模，ISBN-13 9787115419903"
+      "citation": "ZH: \u5a01\u80c1\u5efa\u6a21\uff0cISBN-13 9787115419903"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "算法霸权",
+      "title": "\u7b97\u6cd5\u9738\u6743",
       "isbn13": "9787508684031",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 算法霸权，ISBN-13 9787508684031"
+      "citation": "ZH: \u7b97\u6cd5\u9738\u6743\uff0cISBN-13 9787508684031"
     },
     {
       "kind": "reference_book",
@@ -2357,20 +2357,20 @@ Omitted here; same document as `SPEC.md` above.
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "著作权法",
-      "author": "王迁",
+      "title": "\u8457\u4f5c\u6743\u6cd5",
+      "author": "\u738b\u8fc1",
       "isbn13": "9787301249499",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 著作权法（王迁），ISBN-13 9787301249499"
+      "citation": "ZH: \u8457\u4f5c\u6743\u6cd5\uff08\u738b\u8fc1\uff09\uff0cISBN-13 9787301249499"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "知识产权法",
-      "author": "吴汉东",
+      "title": "\u77e5\u8bc6\u4ea7\u6743\u6cd5",
+      "author": "\u5434\u6c49\u4e1c",
       "isbn13": "9787301162262",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 知识产权法（吴汉东），ISBN-13 9787301162262"
+      "citation": "ZH: \u77e5\u8bc6\u4ea7\u6743\u6cd5\uff08\u5434\u6c49\u4e1c\uff09\uff0cISBN-13 9787301162262"
     },
     {
       "kind": "reference_book",
@@ -2393,11 +2393,11 @@ Omitted here; same document as `SPEC.md` above.
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "中国电影伦理学",
-      "author": "贾磊磊、袁智忠",
+      "title": "\u4e2d\u56fd\u7535\u5f71\u4f26\u7406\u5b66",
+      "author": "\u8d3e\u78ca\u78ca\u3001\u8881\u667a\u5fe0",
       "isbn13": "9787562187752",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 中国电影伦理学（贾磊磊、袁智忠），ISBN-13 9787562187752"
+      "citation": "ZH: \u4e2d\u56fd\u7535\u5f71\u4f26\u7406\u5b66\uff08\u8d3e\u78ca\u78ca\u3001\u8881\u667a\u5fe0\uff09\uff0cISBN-13 9787562187752"
     }
   ],
   "agent_id": "video.trustsafety",
@@ -2412,7 +2412,7 @@ Omitted here; same document as `SPEC.md` above.
     "adopted_at": "2026-07-27T01:30:28.967558+00:00",
     "upstream": "generic-swarm-ops/business/video/agents"
   },
-  "imported_from": "C:\\Project\\common-agent-swarm-ops\\business\\video\\agents\\video.trustsafety",
+  "imported_from": "vendor/common-agent-swarm-ops/business/video/agents/video.trustsafety",
   "reference_book_origin": "spec/book_of_knowledge.md",
   "reference_book_note": "Bibliographic references from spec/book_of_knowledge.md. Does not enable network, RAG, T3, plugins, or memory writes."
 }

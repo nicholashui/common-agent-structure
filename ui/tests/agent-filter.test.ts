@@ -5,6 +5,7 @@ import {
   filterAgentIds,
   groupFleetCards,
   listAgentCategories,
+  relativeAgentFolder,
 } from "../src/lib/agents";
 
 const sample = [
@@ -14,6 +15,17 @@ const sample = [
   { agent_id: "video.director", role: "director", folder: "agents/video.director" },
   { agent_id: "video.screenwriter", role: "writer", folder: "agents/video.screenwriter" },
 ];
+
+describe("relative agent folder", () => {
+  it("strips drive-letter roots down to agents/<id>", () => {
+    expect(relativeAgentFolder("C:\\Project\\common-agent-structure\\agents\\video.director", "video.director")).toBe(
+      "agents/video.director",
+    );
+    expect(relativeAgentFolder("C:/tmp/agents/_template_v3")).toBe("agents/_template_v3");
+    expect(relativeAgentFolder("agents/specials.planner-agent")).toBe("agents/specials.planner-agent");
+    expect(relativeAgentFolder("", "common.health")).toBe("agents/common.health");
+  });
+});
 
 describe("agent list filtering", () => {
   it("returns every id when the query is empty", () => {

@@ -1,0 +1,4191 @@
+<#0.5#>
+
+An ultra-powerful AI system called Model Ensemble Agent works like an AI committee, where multiple AI models collaborate instead of relying on a single model. Through voting, debate, and cooperation, it produces better, more reliable results. Imagine it like in a hospital: instead of one general practitioner, you assemble cardiologists and neurologists for a meeting to solve complex problems.
+
+Let's break down the key concepts simply. **Model Ensemble** is assembling an expert team, where each AI model has its strengths, combined to tackle big challenges. **Democratic Voting** means multiple models independently analyze the same task, then vote on the answer, with a coordinator tallying votes—like a jury deliberating a verdict. **Model Registry** is a central directory system, like a library catalog, tracking all available AI models, their capabilities, version history, and performance metrics, so you always know which models are available and how they perform. **Task Routing** is an intelligent system that automatically assigns tasks to the most suitable model, considering speed, cost, accuracy, and task type.
+
+Now, onto the main topics. First, **Model Registry & Management**: a comprehensive system for classifying, version-controlling, and tracking all your AI models, including capabilities, costs, performance metrics, and compliance features. Next, **Intelligent Task Routing**: an advanced decision system that analyzes each task and automatically selects the best model based on quality requirements, budget limits, speed needs, and compliance standards. Second, **Ensemble Orchestration**: coordinates multiple models in a pipeline for preprocessing, inference, and post-processing, using parallel execution to reduce costs and maximize efficiency. Then, **Democratic Voting Systems**: implements various voting strategies where multiple models independently evaluate tasks, then reach consensus via majority vote, confidence-weighted voting, or structured debate. Also, **Performance Monitoring**: real-time tracking of model performance, cost efficiency, response time, and quality metrics, with automatic alerts and dashboard visualizations. Finally, **Auto-scaling & Load Balancing**: automatically adjusts compute resources based on demand, intelligently distributing workloads to available models to optimize performance and costs.
+
+Key takeaways in summary: By combining diverse AI models, you get more accurate, reliable results—like how a diverse team outperforms a single decision-maker. **Cost-quality trade-offs**: the system intelligently balances, using expensive high-quality models only when needed and cheaper ones for simple tasks. **Automation intelligence**: task routing happens automatically based on requirements, eliminating manual model selection to optimize speed, cost, and accuracy. **Built-in redundancy**: if one model fails or has low confidence, others step in, making it more reliable than single-model systems. **Transparent decisions**: all votes, model selections, and performance metrics are tracked and logged for full visibility into how conclusions are reached. **Production-ready architecture**: built with enterprise tools like MLflow, Triton, BentoML, and ClearML for large-scale deployment, including monitoring, auto-scaling, and zero-downtime updates. **Progressive rollout**: supports canary deployments, where new model versions get limited traffic and automatically promote or roll back based on performance.
+
+On numbers and data, here are the performance metrics. **Consensus threshold**: 0.6-0.8 (60-80% agreement for high-confidence decisions). **Latency targets**: P95 latency under 5 seconds for most tasks. **Auto-scaling range**: 1-10 replicas based on load. **Batch sizes**: 1-32 requests processed together for efficiency. **Monitoring intervals**: health checks every 60 seconds. Cost examples: GPT-4 Turbo at $0.03 per 1,000 tokens; DALL-E 3 at $0.04-0.08 per image; self-hosted Stable Diffusion at ~$0.006 per image. **GPU costs**: $0.50 per hour for inference. Quality benchmarks: BLEU scores 0.85-0.92 (text quality); CLIP scores 0.82-0.91 (image-text alignment); confidence thresholds above 0.8 for auto-approval.
+
+Next steps for implementation: 1. Set up MLflow Model Registry to catalog your models. 2. Deploy BentoML services for model serving. 3. Use scikit-learn for basic voting mechanisms. 4. Add Triton Inference Server for high-performance inference. 5. Deploy Prometheus and Grafana for monitoring. 6. Gradually add advanced features like debate, auto-scaling, and canary deployments. Consider your needs: which AI models for the initial ensemble? Quality-cost trade-offs for your use cases. Compliance requirements like GDPR or HIPAA. Infrastructure choices like cloud providers or GPU types. Voting strategies suited to your domain. Role divisions: **DevOps Team** handles infrastructure setup, monitoring, and deployment pipelines; **ML Engineers** manage model registration, performance tuning, and ensemble config; **Data Scientists** select voting strategies and quality benchmarks; **Product Team** defines requirements, success criteria, and budgets.
+
+Who is this for? **ML Engineers & Data Scientists**: build more robust AI systems by combining models, avoiding single-model blind spots or inconsistencies. **Engineering Leaders**: reduce model failure risks, boost reliability, and optimize cost-quality via smart selection and auto-routing. **Product Managers**: deliver higher-quality AI features with built-in redundancy, transparent decisions, and flexible speed/cost/accuracy balancing for specific use cases. **Enterprise Architects**: deploy production-grade AI with version control, compliance tracking, monitoring, auto-scaling, and zero-downtime updates. **Business Stakeholders**: optimize AI spend by auto-using premium models only when needed, maintaining quality standards, and reducing ops risks via redundancy.
+
+Why does this approach work? No single expert knows everything, and no single AI model is perfect for all tasks. By combining specialized models with intelligent coordination, you achieve better results, higher reliability, and more efficient resource use—far superior to single-model methods.
+<#0.5#>
+# Model Ensemble Agent - The Committee of AIs
+
+<#0.5#>
+
+## Core Architecture & System Overview
+
+<#0.5#>
+
+### What to Build
+- **Advanced Model Registry**: A centralized model store with APIs and a user interface (UI) for collaborative management of the full model lifecycle. It supports lineage tracking, versioning, aliasing, metadata tagging, and annotation.
+- **Intelligent Task Router**: A dynamic assignment system that uses multi-criteria optimization to select models.
+- **Ensemble Coordinator**: A pipeline orchestration system that represents multiple models and connects input/output tensors between them. It encapsulates procedures involving multiple models, such as data preprocessing → inference → data postprocessing.
+- **Democratic Voting System**: Multiple AI agents independently propose or evaluate solutions. A coordinator agent aggregates their votes to make final decisions, mimicking a council of experts where each agent provides a unique perspective.
+- **Confidence Aggregator**: A system for uncertainty quantification and weighted prediction aggregation.
+- **Performance Tracker**: Continuous monitoring with A/B testing and drift detection.
+- **Dynamic Model Selector**: Context-aware adaptation with real-time optimization.
+
+<#0.5#>
+
+### What It Does
+- **Model Registration & Cataloging**: Maintains provenance for encapsulated models. It manages and versions ensembles as single artifacts, reducing complexity for easier debugging and validation.
+- **Intelligent Task Routing**: Performs multi-dimensional model selection based on quality, cost, speed, and consistency requirements.
+- **Ensemble Orchestration**: Coordinates single or multiple services, with models serving as pipeline components or standalone entities that communicate across services. It supports concurrent execution for different task aspects.
+- **Democratic Voting Implementation**: Employs voting strategies for final classification, including majority vote systems and other algorithmic approaches.
+- **Confidence-Based Aggregation**: Combines model outputs probabilistically with uncertainty estimates.
+- **Performance Analytics**: Provides real-time tracking with statistical comparisons and champion/challenger analysis.
+- **Adaptive Selection**: Routes models contextually with continuous optimization.
+
+<#0.5#>
+
+### Advanced Tools/Frameworks
+
+#### Model Registry & Management
+- **MLflow Model Registry**: Offers version control with automatic tracking of model versions, structured metadata and tagging support, plus governance and compliance features for enterprise-grade machine learning operations (MLOps).
+- **BentoML**: A Python library for building online serving systems optimized for AI applications and model inference. It supports multi-model pipelines and composition.
+- **DVC**: Provides data and model version control with pipeline reproducibility.
+- **ClearML Serving**: Handles model lifecycle management with ensemble modeling strategies to overcome limitations of single models by combining predictions from multiple models.
+
+#### Ensemble & Orchestration
+- **Triton Inference Server**: Supports ensemble models for routing data between composing models. It avoids overhead from transferring intermediate tensors and minimizes requests to the server.
+- **Scikit-learn VotingClassifier**: A soft voting or majority rule classifier that combines conceptually different machine learning classifiers using majority vote or averaged predicted probabilities for class prediction.
+- **TorchServe**: Enables multi-model serving with batching and A/B testing.
+- **TensorFlow Serving**: Provides high-performance serving with ensemble support.
+- **Ray Serve**: Offers distributed model serving with autoscaling.
+
+#### Routing & Load Balancing
+- **NGINX**: Advanced load balancing with health checks and failover.
+- **HAProxy**: High-availability load balancing with sophisticated routing rules.
+- **LangChain Router**: Intelligent routing based on query analysis and model capabilities.
+- **Custom Decision Trees**: Rule-based routing with multi-criteria optimization.
+
+#### Monitoring & Analytics
+- **Evidently AI**: Machine learning model monitoring with drift detection and data quality assessment.
+- **WhyLabs**: A data and ML monitoring platform with anomaly detection.
+- **Arize AI**: An ML observability platform with performance tracking.
+- **Prometheus + Grafana**: Metrics collection and visualization for ensemble performance.
+
+#### Orchestration & Deployment
+- **Kubernetes**: Container orchestration with service mesh for model communication.
+- **Docker**: Containerization with multi-stage builds for ensemble services.
+- **Prefect**: Workflow orchestration with conditional logic and error handling.
+- **Apache Airflow**: Pipeline orchestration with complex dependencies.
+
+<#0.5#>
+
+## Production Implementation: Advanced Multi-Modal Content Generation Pipeline
+
+<#0.5#>
+
+### Scenario: Enterprise Content Generation System
+```
+Production Challenge:
+- Task: Generate 10,000 diverse marketing assets (images, copy, videos)
+- Requirements:
+  - Multi-modal outputs (text, image, video, audio)
+  - Brand consistency across all assets
+  - Personalization for 50+ market segments
+  - Quality assurance with human-level standards
+  - Cost optimization ($50K budget, 72-hour deadline)
+  - Regulatory compliance (GDPR, accessibility)
+- Problem: No single model handles all modalities effectively
+  - GPT-4: Excellent for text, but expensive and slow for large batches
+  - DALL-E 3: High-quality images, but limited style control
+  - Stable Diffusion: Fast images, but variable quality
+  - Claude: Good reasoning, moderate cost
+  - Whisper: Audio transcription, limited generation
+- Solution: Advanced ensemble approach with democratic consensus
+```
+
+<#0.5#>
+
+## PHASE 1 - ADVANCED MODEL REGISTRY (COMPREHENSIVE CATALOGING)
+
+<#0.5#>
+
+### 1. Multi-Dimensional Model Profiling System
+
+```python
+import mlflow
+import numpy as np
+import pandas as pd
+from dataclasses import dataclass, field
+from typing import Dict, List, Optional, Tuple, Any, Union
+from enum import Enum
+import json
+import yaml
+from datetime import datetime, timedelta
+import asyncio
+from concurrent.futures import ThreadPoolExecutor
+import hashlib
+import sqlite3
+
+class ModelCapability(Enum):
+    TEXT_GENERATION = "text_generation"
+    IMAGE_GENERATION = "image_generation"
+    VIDEO_GENERATION = "video_generation"
+    AUDIO_GENERATION = "audio_generation"
+    TEXT_TO_IMAGE = "text_to_image"
+    IMAGE_TO_TEXT = "image_to_text"
+    TRANSLATION = "translation"
+    SUMMARIZATION = "summarization"
+    CODE_GENERATION = "code_generation"
+    REASONING = "reasoning"
+    ANALYSIS = "analysis"
+    CLASSIFICATION = "classification"
+
+class PerformanceMetrics:
+    def __init__(self):
+        self.accuracy_scores = {}
+        self.latency_percentiles = {}
+        self.throughput_metrics = {}
+        self.resource_utilization = {}
+        self.cost_metrics = {}
+        self.quality_scores = {}
+
+    def add_metric(self, metric_name: str, value: float, timestamp: datetime = None):
+        if timestamp is None:
+            timestamp = datetime.now()
+
+        if metric_name not in self.accuracy_scores:
+            self.accuracy_scores[metric_name] = []
+
+        self.accuracy_scores[metric_name].append({
+            'value': value,
+            'timestamp': timestamp
+        })
+
+@dataclass
+class ModelProfile:
+    name: str
+    version: str
+    model_id: str
+    capabilities: List[ModelCapability]
+    performance_metrics: PerformanceMetrics
+    cost_structure: Dict[str, float]  # e.g., per_token, per_image, per_second
+    latency_profile: Dict[str, float]  # e.g., p50, p95, p99
+    resource_requirements: Dict[str, Any]  # e.g., GPU, CPU, memory
+    quality_benchmarks: Dict[str, float]  # e.g., BLEU, ROUGE, FID, CLIP scores
+    constraints: Dict[str, Any]  # e.g., rate_limits, batch_sizes, context_length
+    strengths: List[str]
+    weaknesses: List[str]
+    supported_formats: List[str]
+    api_endpoints: Dict[str, str]
+    authentication: Dict[str, str]
+    scaling_characteristics: Dict[str, Any]
+    compliance_features: List[str]  # e.g., GDPR, SOX, HIPAA
+    created_at: datetime = field(default_factory=datetime.now)
+    updated_at: datetime = field(default_factory=datetime.now)
+    metadata: Dict[str, Any] = field(default_factory=dict)
+
+class AdvancedModelRegistry:
+    """
+    Enterprise-grade model registry with comprehensive profiling,
+    automated benchmarking, and intelligent recommendations.
+    """
+
+    def __init__(self, tracking_uri: str = "sqlite:///ensemble_registry.db"):
+        self.tracking_uri = tracking_uri
+        self.models: Dict[str, ModelProfile] = {}
+        self.performance_db = sqlite3.connect("performance_metrics.db")
+        self.benchmark_executor = ThreadPoolExecutor(max_workers=4)
+        self._initialize_database()
+
+        # Initialize MLflow for enterprise features
+        mlflow.set_tracking_uri(tracking_uri)
+        mlflow.set_experiment("ensemble_model_registry")
+
+    def _initialize_database(self):
+        """Initialize performance tracking database"""
+        cursor = self.performance_db.cursor()
+        cursor.execute("""
+            CREATE TABLE IF NOT EXISTS model_performance (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                model_id TEXT,
+                metric_name TEXT,
+                metric_value REAL,
+                test_case TEXT,
+                timestamp DATETIME,
+                environment TEXT,
+                version TEXT
+            )
+        """)
+
+        cursor.execute("""
+            CREATE TABLE IF NOT EXISTS benchmark_results (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                model_id TEXT,
+                benchmark_type TEXT,
+                score REAL,
+                details TEXT,
+                timestamp DATETIME,
+                test_configuration TEXT
+            )
+        """)
+
+        cursor.execute("""
+            CREATE TABLE IF NOT EXISTS model_interactions (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                model_id TEXT,
+                input_hash TEXT,
+                output_hash TEXT,
+                latency_ms INTEGER,
+                tokens_used INTEGER,
+                cost_usd REAL,
+                success BOOLEAN,
+                timestamp DATETIME
+            )
+        """)
+
+        self.performance_db.commit()
+
+    async def register_model(self, profile: ModelProfile) -> str:
+        """Register model with comprehensive profiling and benchmarking"""
+
+        # Generate unique model ID
+        model_key = f"{profile.name}_{profile.version}"
+        profile.model_id = hashlib.md5(model_key.encode()).hexdigest()
+
+        # Store in registry
+        self.models[profile.model_id] = profile
+
+        # Register with MLflow
+        with mlflow.start_run(run_name=f"register_{profile.name}_{profile.version}"):
+            # Log basic info
+            mlflow.log_params({
+                "model_name": profile.name,
+                "version": profile.version,
+                "capabilities": [cap.value for cap in profile.capabilities],
+                "supported_formats": profile.supported_formats
+            })
+
+            # Log performance metrics
+            for metric_name, values in profile.performance_metrics.accuracy_scores.items():
+                if values:
+                    latest_value = values[-1]['value']
+                    mlflow.log_metric(metric_name, latest_value)
+
+            # Log cost metrics
+            mlflow.log_params(profile.cost_structure)
+
+            # Store profile as artifact
+            profile_path = f"model_profiles/{profile.model_id}.json"
+            with open(profile_path, 'w') as f:
+                # Custom serialization for enum and datetime objects
+                json.dump({
+                    'name': profile.name,
+                    'version': profile.version,
+                    'model_id': profile.model_id,
+                    'capabilities': [cap.value for cap in profile.capabilities],
+                    'cost_structure': profile.cost_structure,
+                    'latency_profile': profile.latency_profile,
+                    'resource_requirements': profile.resource_requirements,
+                    'quality_benchmarks': profile.quality_benchmarks,
+                    'constraints': profile.constraints,
+                    'strengths': profile.strengths,
+                    'weaknesses': profile.weaknesses,
+                    'supported_formats': profile.supported_formats,
+                    'api_endpoints': profile.api_endpoints,
+                    'scaling_characteristics': profile.scaling_characteristics,
+                    'compliance_features': profile.compliance_features,
+                    'created_at': profile.created_at.isoformat(),
+                    'updated_at': profile.updated_at.isoformat(),
+                    'metadata': profile.metadata
+                }, f, indent=2)
+
+            mlflow.log_artifact(profile_path)
+
+        # Schedule comprehensive benchmarking
+        await self._schedule_benchmarking(profile)
+
+        print(f"✅ Registered model {profile.name} v{profile.version} with ID: {profile.model_id}")
+        return profile.model_id
+
+    async def _schedule_benchmarking(self, profile: ModelProfile):
+        """Schedule comprehensive benchmarking tasks"""
+
+        benchmark_tasks = []
+
+        # Schedule capability-specific benchmarks
+        for capability in profile.capabilities:
+            if capability == ModelCapability.TEXT_GENERATION:
+                benchmark_tasks.append(
+                    self._benchmark_text_generation(profile)
+                )
+            elif capability == ModelCapability.IMAGE_GENERATION:
+                benchmark_tasks.append(
+                    self._benchmark_image_generation(profile)
+                )
+            elif capability == ModelCapability.REASONING:
+                benchmark_tasks.append(
+                    self._benchmark_reasoning(profile)
+                )
+
+        # Schedule performance benchmarks
+        benchmark_tasks.extend([
+            self._benchmark_latency(profile),
+            self._benchmark_throughput(profile),
+            self._benchmark_cost_efficiency(profile)
+        ])
+
+        # Execute benchmarks concurrently
+        results = await asyncio.gather(*benchmark_tasks, return_exceptions=True)
+
+        # Process results and update profile
+        await self._process_benchmark_results(profile, results)
+
+    async def _benchmark_text_generation(self, profile: ModelProfile) -> Dict:
+        """Benchmark text generation capabilities"""
+
+        test_prompts = [
+            "Write a professional email about project updates",
+            "Explain quantum computing to a 10-year-old",
+            "Create a compelling product description for a smartphone",
+            "Summarize the key points of machine learning",
+            "Generate creative marketing copy for a coffee shop"
+        ]
+
+        results = {
+            'benchmark_type': 'text_generation',
+            'scores': {},
+            'details': {}
+        }
+
+        for i, prompt in enumerate(test_prompts):
+            try:
+                start_time = datetime.now()
+
+                # Make API call to model (pseudo-implementation)
+                response = await self._call_model_api(profile, prompt)
+
+                end_time = datetime.now()
+                latency = (end_time - start_time).total_seconds() * 1000
+
+                # Calculate quality metrics
+                bleu_score = self._calculate_bleu_score(response, prompt)
+                coherence_score = self._calculate_coherence(response)
+                relevance_score = self._calculate_relevance(response, prompt)
+
+                results['scores'][f'test_{i}'] = {
+                    'bleu_score': bleu_score,
+                    'coherence_score': coherence_score,
+                    'relevance_score': relevance_score,
+                    'latency_ms': latency,
+                    'response_length': len(response),
+                    'prompt': prompt[:100],  # Store truncated prompt
+                    'response_preview': response[:200]  # Store preview
+                }
+
+            except Exception as e:
+                results['scores'][f'test_{i}'] = {
+                    'error': str(e),
+                    'prompt': prompt
+                }
+
+        # Calculate aggregate scores
+        successful_tests = [s for s in results['scores'].values() if 'error' not in s]
+        if successful_tests:
+            results['aggregate_scores'] = {
+                'avg_bleu': np.mean([t['bleu_score'] for t in successful_tests]),
+                'avg_coherence': np.mean([t['coherence_score'] for t in successful_tests]),
+                'avg_relevance': np.mean([t['relevance_score'] for t in successful_tests]),
+                'avg_latency_ms': np.mean([t['latency_ms'] for t in successful_tests]),
+                'success_rate': len(successful_tests) / len(test_prompts)
+            }
+
+        return results
+
+    async def _benchmark_image_generation(self, profile: ModelProfile) -> Dict:
+        """Benchmark image generation capabilities"""
+
+        test_prompts = [
+            "A professional headshot of a businesswoman in modern office",
+            "Abstract art with blue and gold geometric shapes",
+            "A cozy cafe interior with natural lighting",
+            "Product photo of a luxury watch on marble surface",
+            "Minimalist logo design for a tech startup"
+        ]
+
+        results = {
+            'benchmark_type': 'image_generation',
+            'scores': {},
+            'details': {}
+        }
+
+        for i, prompt in enumerate(test_prompts):
+            try:
+                start_time = datetime.now()
+
+                # Make API call to model
+                image_data = await self._call_model_api(profile, prompt, output_type='image')
+
+                end_time = datetime.now()
+                latency = (end_time - start_time).total_seconds() * 1000
+
+                # Calculate image quality metrics
+                aesthetic_score = self._calculate_aesthetic_score(image_data)
+                clip_score = self._calculate_clip_score(image_data, prompt)
+                technical_quality = self._assess_technical_quality(image_data)
+
+                results['scores'][f'test_{i}'] = {
+                    'aesthetic_score': aesthetic_score,
+                    'clip_score': clip_score,
+                    'technical_quality': technical_quality,
+                    'latency_ms': latency,
+                    'prompt': prompt,
+                    'image_size': len(image_data) if isinstance(image_data, bytes) else 'unknown'
+                }
+
+            except Exception as e:
+                results['scores'][f'test_{i}'] = {
+                    'error': str(e),
+                    'prompt': prompt
+                }
+
+        # Calculate aggregate scores
+        successful_tests = [s for s in results['scores'].values() if 'error' not in s]
+        if successful_tests:
+            results['aggregate_scores'] = {
+                'avg_aesthetic': np.mean([t['aesthetic_score'] for t in successful_tests]),
+                'avg_clip': np.mean([t['clip_score'] for t in successful_tests]),
+                'avg_technical': np.mean([t['technical_quality'] for t in successful_tests]),
+                'avg_latency_ms': np.mean([t['latency_ms'] for t in successful_tests]),
+                'success_rate': len(successful_tests) / len(test_prompts)
+            }
+
+        return results
+
+    async def _call_model_api(self, profile: ModelProfile, prompt: str, output_type: str = 'text') -> Any:
+        """Make API call to model (implementation depends on specific model)"""
+        # This would be implemented based on the specific model's API
+        # For demonstration, we'll simulate the call
+        await asyncio.sleep(0.5)  # Simulate API latency
+
+        if output_type == 'text':
+            return f"Generated response for: {prompt[:50]}..."
+        elif output_type == 'image':
+            return b"fake_image_data"  # Would be actual image bytes
+        else:
+            return "Unknown output type"
+
+    def _calculate_bleu_score(self, response: str, reference: str) -> float:
+        """Calculate BLEU score for text quality assessment"""
+        # Simplified BLEU calculation for demonstration
+        # In production, use nltk.translate.bleu_score or similar
+        words_response = set(response.lower().split())
+        words_reference = set(reference.lower().split())
+
+        if not words_reference:
+            return 0.0
+
+        overlap = len(words_response.intersection(words_reference))
+        return overlap / len(words_reference)
+
+    def _calculate_coherence(self, text: str) -> float:
+        """Calculate text coherence score"""
+        # Simplified coherence calculation
+        # In production, use more sophisticated NLP metrics
+        sentences = text.split('.')
+        if len(sentences) < 2:
+            return 0.0
+
+        # Simple heuristic: consistent sentence length suggests coherence
+        lengths = [len(s.split()) for s in sentences if s.strip()]
+        if not lengths:
+            return 0.0
+
+        variance = np.var(lengths)
+        return max(0.0, 1.0 - (variance / 100.0))  # Normalize variance
+
+    def _calculate_relevance(self, response: str, prompt: str) -> float:
+        """Calculate relevance score"""
+        # Simplified relevance calculation
+        prompt_words = set(prompt.lower().split())
+        response_words = set(response.lower().split())
+
+        if not prompt_words:
+            return 0.0
+
+        overlap = len(prompt_words.intersection(response_words))
+        return overlap / len(prompt_words)
+
+    def _calculate_aesthetic_score(self, image_data: bytes) -> float:
+        """Calculate aesthetic score for images"""
+        # In production, use actual image analysis libraries
+        # For demo, return random score
+        return np.random.uniform(6.0, 9.0)
+
+    def _calculate_clip_score(self, image_data: bytes, prompt: str) -> float:
+        """Calculate CLIP score for image-text alignment"""
+        # In production, use actual CLIP model
+        # For demo, return random score based on prompt complexity
+        return min(9.0, max(4.0, np.random.uniform(5.0, 8.0) + len(prompt.split()) * 0.1))
+
+    def _assess_technical_quality(self, image_data: bytes) -> float:
+        """Assess technical image quality (sharpness, noise, etc.)"""
+        # In production, use image quality assessment algorithms
+        return np.random.uniform(7.0, 9.5)
+
+    async def get_model_recommendations(self, 
+                                     requirements: Dict[str, Any]) -> List[Tuple[str, float]]:
+        """Get ranked model recommendations based on requirements"""
+
+        recommendations = []
+
+        for model_id, profile in self.models.items():
+            score = await self._calculate_model_fitness(profile, requirements)
+            recommendations.append((model_id, score, profile.name))
+
+        # Sort by score (descending)
+        recommendations.sort(key=lambda x: x[1], reverse=True)
+
+        return recommendations
+
+    async def _calculate_model_fitness(self, 
+                                     profile: ModelProfile, 
+                                     requirements: Dict[str, Any]) -> float:
+        """Calculate how well a model fits the requirements"""
+
+        score = 0.0
+        weights = requirements.get('weights', {
+            'capability_match': 30.0,
+            'quality': 25.0,
+            'cost': 20.0,
+            'latency': 15.0,
+            'compliance': 10.0
+        })
+
+        # Capability matching
+        required_capabilities = requirements.get('capabilities', [])
+        if required_capabilities:
+            model_caps = set(cap.value for cap in profile.capabilities)
+            required_caps = set(required_capabilities)
+            match_ratio = len(required_caps.intersection(model_caps)) / len(required_caps)
+            score += weights['capability_match'] * match_ratio
+        else:
+            score += weights['capability_match']  # Full score if no specific requirements
+
+        # Quality score
+        quality_scores = []
+        if profile.quality_benchmarks:
+            quality_scores = list(profile.quality_benchmarks.values())
+        if quality_scores:
+            avg_quality = np.mean(quality_scores)
+            score += weights['quality'] * min(10.0, avg_quality)
+
+        # Cost efficiency
+        max_cost = requirements.get('max_cost_per_unit', float('inf'))
+        if 'per_token' in profile.cost_structure:
+            cost = profile.cost_structure['per_token']
+            if cost <= max_cost:
+                cost_score = max(0.0, 1.0 - (cost / max_cost))
+                score += weights['cost'] * cost_score
+        else:
+            score += weights['cost'] * 0.5  # Neutral score if cost unknown
+
+        # Latency requirements
+        max_latency = requirements.get('max_latency_ms', float('inf'))
+        if 'p95' in profile.latency_profile:
+            latency = profile.latency_profile['p95']
+            if latency <= max_latency:
+                latency_score = max(0.0, 1.0 - (latency / max_latency))
+                score += weights['latency'] * latency_score
+        else:
+            score += weights['latency'] * 0.5
+
+        # Compliance requirements
+        required_compliance = requirements.get('compliance', [])
+        if required_compliance:
+            compliance_match = len(set(required_compliance).intersection(
+                set(profile.compliance_features))) / len(required_compliance)
+            score += weights['compliance'] * compliance_match
+        else:
+            score += weights['compliance']
+
+        return score
+
+# Example model registration
+async def register_example_models():
+    """Register example models for the content generation use case"""
+
+    registry = AdvancedModelRegistry()
+
+    # Register GPT-4 Turbo
+    gpt4_profile = ModelProfile(
+        name="gpt-4-turbo",
+        version="2024-04-09",
+        model_id="",  # Will be generated
+        capabilities=[
+            ModelCapability.TEXT_GENERATION,
+            ModelCapability.REASONING,
+            ModelCapability.CODE_GENERATION,
+            ModelCapability.ANALYSIS
+        ],
+        performance_metrics=PerformanceMetrics(),
+        cost_structure={
+            "per_token": 0.003,  # $0.003 per 1K tokens
+            "per_request": 0.01
+        },
+        latency_profile={
+            "p50": 1200,  # milliseconds
+            "p95": 3000,
+            "p99": 5000
+        },
+        resource_requirements={
+            "gpu_memory_gb": 0,  # API-based
+            "cpu_cores": 0,
+            "ram_gb": 0
+        },
+        quality_benchmarks={
+            "bleu_score": 8.9,
+            "coherence": 9.2,
+            "relevance": 8.8
+        },
+        constraints={
+            "context_length": 128000,
+            "rate_limit_rpm": 500,
+            "max_tokens_per_request": 4000
+        },
+        strengths=[
+            "Excellent reasoning and analysis",
+            "High-quality text generation",
+            "Large context window",
+            "Multi-lingual support"
+        ],
+        weaknesses=[
+            "Higher cost per token",
+            "API rate limits",
+            "No image generation",
+            "Slower for large batches"
+        ],
+        supported_formats=["text", "json", "markdown"],
+        api_endpoints={
+            "chat": "https://api.openai.com/v1/chat/completions",
+            "completions": "https://api.openai.com/v1/completions"
+        },
+        authentication={
+            "type": "bearer_token",
+            "header": "Authorization"
+        },
+        scaling_characteristics={
+            "horizontal_scaling": True,
+            "auto_scaling": True,
+            "max_concurrent_requests": 100
+        },
+        compliance_features=["GDPR", "SOC2", "HIPAA"]
+    )
+
+    await registry.register_model(gpt4_profile)
+
+    # Register DALL-E 3
+    dalle3_profile = ModelProfile(
+        name="dall-e-3",
+        version="2024-01",
+        model_id="",
+        capabilities=[ModelCapability.IMAGE_GENERATION, ModelCapability.TEXT_TO_IMAGE],
+        performance_metrics=PerformanceMetrics(),
+        cost_structure={
+            "per_image": 0.040,  # $0.040 per image (1024x1024)
+            "per_hd_image": 0.080
+        },
+        latency_profile={
+            "p50": 12000,  # ~12 seconds
+            "p95": 25000,
+            "p99": 40000
+        },
+        resource_requirements={
+            "gpu_memory_gb": 0,  # API-based
+            "cpu_cores": 0,
+            "ram_gb": 0
+        },
+        quality_benchmarks={
+            "clip_score": 9.1,
+            "aesthetic_score": 8.7,
+            "fid_score": 2.0
+        },
+        constraints={
+            "max_resolution": "1024x1024",
+            "rate_limit_rpm": 50,  # Very limited
+            "batch_size": 1
+        },
+        strengths=[
+            "Highest quality image generation",
+            "Excellent prompt adherence",
+            "Creative and artistic outputs",
+            "Good text rendering in images"
+        ],
+        weaknesses=[
+            "Very slow generation",
+            "Expensive per image",
+            "Strict rate limits",
+            "Limited customization"
+        ],
+        supported_formats=["png", "webp"],
+        api_endpoints={
+            "generate": "https://api.openai.com/v1/images/generations"
+        },
+        authentication={
+            "type": "bearer_token",
+            "header": "Authorization"
+        },
+        scaling_characteristics={
+            "horizontal_scaling": False,
+            "auto_scaling": False,
+            "max_concurrent_requests": 1
+        },
+        compliance_features=["GDPR", "SOC2"]
+    )
+
+    await registry.register_model(dalle3_profile)
+
+    # Register Stable Diffusion XL
+    sdxl_profile = ModelProfile(
+        name="stable-diffusion-xl",
+        version="1.0",
+        model_id="",
+        capabilities=[
+            ModelCapability.IMAGE_GENERATION,
+            ModelCapability.TEXT_TO_IMAGE
+        ],
+        performance_metrics=PerformanceMetrics(),
+        cost_structure={
+            "per_image": 0.006,  # Self-hosted cost
+            "gpu_hour": 0.50
+        },
+        latency_profile={
+            "p50": 3500,  # ~3.5 seconds
+            "p95": 6000,
+            "p99": 8000
+        },
+        resource_requirements={
+            "gpu_memory_gb": 12,
+            "cpu_cores": 4,
+            "ram_gb": 16
+        },
+        quality_benchmarks={
+            "clip_score": 8.2,
+            "aesthetic_score": 7.8,
+            "fid_score": 4.0
+        },
+        constraints={
+            "max_resolution": "1024x1024",
+            "batch_size": 4,
+            "context_length": 77  # tokens
+        },
+        strengths=[
+            "Fast generation",
+            "Cost effective",
+            "Customizable with LoRAs",
+            "Good batch processing"
+        ],
+        weaknesses=[
+            "Lower quality than DALL-E",
+            "Requires GPU infrastructure",
+            "Less consistent outputs",
+            "Limited prompt understanding"
+        ],
+        supported_formats=["png", "jpg", "webp"],
+        api_endpoints={
+            "generate": "http://localhost:8080/generate",
+            "health": "http://localhost:8080/health"
+        },
+        authentication={
+            "type": "none"
+        },
+        scaling_characteristics={
+            "horizontal_scaling": True,
+            "auto_scaling": True,
+            "max_concurrent_requests": 10
+        },
+        compliance_features=["On-premise deployment"]
+    )
+
+    await registry.register_model(sdxl_profile)
+
+    print("✅ Registered example models successfully")
+    return registry
+
+# Initialize the registry
+print("Initializing Advanced Model Registry...")
+# registry = asyncio.run(register_example_models())
+```
+
+<#0.5#>
+
+### 2. Dynamic Capability Assessment System
+
+```python
+class CapabilityAssessor:
+    """
+    Advanced system for assessing and monitoring model capabilities
+    with real-time performance tracking and adaptation.
+    """
+
+    def __init__(self, registry: AdvancedModelRegistry):
+        self.registry = registry
+        self.capability_cache = {}
+        self.performance_history = {}
+        self.assessment_tasks = {}
+
+    async def assess_model_capability(self, 
+                                   model_id: str, 
+                                   capability: ModelCapability,
+                                   test_suite: str = "standard") -> Dict[str, float]:
+        """
+        Comprehensive capability assessment with multiple evaluation dimensions
+        """
+
+        profile = self.registry.models.get(model_id)
+        if not profile:
+            raise ValueError(f"Model {model_id} not found in registry")
+
+        assessment_key = f"{model_id}_{capability.value}_{test_suite}"
+
+        # Check cache for recent assessment
+        if assessment_key in self.capability_cache:
+            cached_result = self.capability_cache[assessment_key]
+            if (datetime.now() - cached_result['timestamp']).total_seconds() / 3600 < 24:
+                return cached_result['scores']
+
+        # Perform comprehensive assessment
+        assessment_results = await self._run_capability_assessment(
+            profile, capability, test_suite
+        )
+
+        # Cache results
+        self.capability_cache[assessment_key] = {
+            'scores': assessment_results,
+            'timestamp': datetime.now()
+        }
+
+        # Update performance history
+        await self._update_performance_history(model_id, capability, assessment_results)
+
+        return assessment_results
+
+    async def _run_capability_assessment(self, 
+                                       profile: ModelProfile,
+                                       capability: ModelCapability,
+                                       test_suite: str) -> Dict[str, float]:
+        """Run specific capability assessment based on type"""
+
+        assessment_methods = {
+            ModelCapability.TEXT_GENERATION: self._assess_text_generation,
+            ModelCapability.IMAGE_GENERATION: self._assess_image_generation,
+            ModelCapability.REASONING: self._assess_reasoning,
+            ModelCapability.TRANSLATION: self._assess_translation,
+            ModelCapability.SUMMARIZATION: self._assess_summarization,
+            ModelCapability.CODE_GENERATION: self._assess_code_generation
+        }
+
+        assessment_method = assessment_methods.get(capability)
+        if not assessment_method:
+            return {"overall_score": 0.0, "error": "Capability not supported"}
+
+        return await assessment_method(profile, test_suite)
+
+    async def _assess_text_generation(self, 
+                                    profile: ModelProfile,
+                                    test_suite: str) -> Dict[str, float]:
+        """Comprehensive text generation assessment"""
+
+        test_cases = {
+            "standard": [
+                {
+                    "prompt": "Write a professional email requesting a meeting",
+                    "evaluation_criteria": ["coherence", "professionalism", "structure"],
+                    "expected_length": (100, 300)
+                },
+                {
+                    "prompt": "Explain artificial intelligence in simple terms",
+                    "evaluation_criteria": ["clarity", "accuracy", "accessibility"],
+                    "expected_length": (200, 500)
+                },
+                {
+                    "prompt": "Create a compelling product description for a new smartphone",
+                    "evaluation_criteria": ["persuasiveness", "creativity", "factual_consistency"],
+                    "expected_length": (150, 400)
+                }
+            ],
+            "creative": [
+                {
+                    "prompt": "Write a short story about a robot discovering emotions",
+                    "evaluation_criteria": ["creativity", "narrative_structure", "emotional_depth"],
+                    "expected_length": (500, 1500)
+                },
+                {
+                    "prompt": "Compose a haiku about machine learning",
+                    "evaluation_criteria": ["poetic_form", "relevance", "aesthetic_quality"],
+                    "expected_length": (15, 25)
+                }
+            ],
+            "technical": [
+                {
+                    "prompt": "Explain the differences between supervised and unsupervised learning",
+                    "evaluation_criteria": ["technical_accuracy", "completeness", "clarity"],
+                    "expected_length": (300, 800)
+                },
+                {
+                    "prompt": "Describe the architecture of a neural network",
+                    "evaluation_criteria": ["technical_depth", "accuracy", "pedagogical_value"],
+                    "expected_length": (400, 1000)
+                }
+            ]
+        }
+
+        test_set = test_cases.get(test_suite, test_cases["standard"])
+        results = []
+
+        for test_case in test_set:
+            try:
+                # Generate response
+                start_time = datetime.now()
+                response = await self.registry._call_model_api(profile, test_case["prompt"])
+                end_time = datetime.now()
+
+                generation_time = (end_time - start_time).total_seconds()
+
+                # Evaluate response
+                scores = await self._evaluate_text_response(
+                    response, test_case, generation_time
+                )
+                results.append(scores)
+
+            except Exception as e:
+                results.append({
+                    "error": str(e),
+                    "prompt": test_case["prompt"][:50]
+                })
+
+        # Aggregate results
+        successful_results = [r for r in results if "error" not in r]
+        if not successful_results:
+            return {"overall_score": 0.0, "error": "All test cases failed"}
+
+        aggregate_scores = {
+            "overall_score": np.mean([r["overall_score"] for r in successful_results]),
+            "coherence": np.mean([r.get("coherence", 0.0) for r in successful_results]),
+            "relevance": np.mean([r.get("relevance", 0.0) for r in successful_results]),
+            "quality": np.mean([r.get("quality", 0.0) for r in successful_results]),
+            "avg_generation_time": np.mean([r.get("generation_time", 0.0) for r in successful_results]),
+            "success_rate": len(successful_results) / len(test_set),
+            "consistency": self._calculate_consistency(successful_results)
+        }
+
+        return aggregate_scores
+
+    async def _evaluate_text_response(self, 
+                                    response: str,
+                                    test_case: Dict[str, Any],
+                                    generation_time: float) -> Dict[str, float]:
+        """Evaluate text response against multiple criteria"""
+
+        scores = {"generation_time": generation_time}
+
+        # Length appropriateness
+        response_length = len(response.split())
+        expected_min, expected_max = test_case.get("expected_length", (0, float('inf')))
+
+        if expected_min <= response_length <= expected_max:
+            scores["length_appropriateness"] = 1.0
+        else:
+            # Penalty for being too short or too long
+            if response_length < expected_min:
+                scores["length_appropriateness"] = response_length / expected_min
+            else:
+                scores["length_appropriateness"] = expected_max / response_length
+
+        # Evaluate each criterion
+        for criterion in test_case.get("evaluation_criteria", []):
+            if criterion == "coherence":
+                scores["coherence"] = self._evaluate_coherence(response)
+            elif criterion == "professionalism":
+                scores["professionalism"] = self._evaluate_professionalism(response)
+            elif criterion == "clarity":
+                scores["clarity"] = self._evaluate_clarity(response)
+            elif criterion == "creativity":
+                scores["creativity"] = self._evaluate_creativity(response)
+            elif criterion == "technical_accuracy":
+                scores["technical_accuracy"] = await self._evaluate_technical_accuracy(
+                    response, test_case["prompt"]
+                )
+
+        # Calculate relevance to prompt
+        scores["relevance"] = self._calculate_relevance(response, test_case["prompt"])
+
+        # Calculate overall quality
+        scores["quality"] = self._calculate_overall_quality(response)
+
+        # Calculate overall score as weighted average
+        weights = {
+            "coherence": 20.0,
+            "relevance": 20.0,
+            "quality": 20.0,
+            "length_appropriateness": 10.0,
+            "professionalism": 10.0,
+            "clarity": 10.0,
+            "creativity": 10.0
+        }
+
+        overall_score = 0.0
+        total_weight = 0.0
+
+        for criterion, weight in weights.items():
+            if criterion in scores:
+                overall_score += scores[criterion] * weight
+                total_weight += weight
+
+        if total_weight > 0:
+            scores["overall_score"] = overall_score / total_weight
+        else:
+            scores["overall_score"] = 0.0
+
+        return scores
+
+    def _evaluate_coherence(self, text: str) -> float:
+        """Evaluate text coherence using linguistic features"""
+
+        sentences = [s.strip() for s in text.split('.') if s.strip()]
+        if len(sentences) < 2:
+            return 0.0  # Single sentence is trivially coherent
+
+        coherence_indicators = []
+
+        # Sentence length consistency
+        lengths = [len(s.split()) for s in sentences]
+        length_variance = np.var(lengths)
+        length_coherence = max(0.0, 1.0 - (length_variance / 100.0))
+        coherence_indicators.append(length_coherence)
+
+        # Lexical repetition (simple proxy for topic consistency)
+        all_words = text.lower().split()
+        unique_words = set(all_words)
+        repetition_rate = 1.0 - (len(unique_words) / len(all_words))
+        repetition_coherence = min(1.0, repetition_rate * 3.0)  # Scale up moderate repetition
+        coherence_indicators.append(repetition_coherence)
+
+        # Transition word usage (simple heuristic)
+        transition_words = ['however', 'therefore', 'moreover', 'furthermore', 
+                          'additionally', 'consequently', 'nevertheless', 'thus']
+        transition_count = sum(1 for word in all_words if word in transition_words)
+        transition_coherence = min(1.0, transition_count / len(sentences))
+        coherence_indicators.append(transition_coherence)
+
+        return np.mean(coherence_indicators)
+
+    def _evaluate_professionalism(self, text: str) -> float:
+        """Evaluate professionalism of text"""
+
+        professional_indicators = []
+
+        # Formal language indicators
+        formal_words = ['please', 'thank you', 'sincerely', 'respectfully', 
+                       'regarding', 'concerning', 'furthermore', 'however']
+        formal_count = sum(1 for word in text.lower().split() if word in formal_words)
+        formal_score = min(1.0, formal_count / 5.0)  # Normalize to reasonable expectation
+        professional_indicators.append(formal_score)
+
+        # Avoid informal language
+        informal_words = ['gonna', 'wanna', 'yeah', 'ok', 'cool', 'awesome']
+        informal_count = sum(1 for word in text.lower().split() if word in informal_words)
+        informal_penalty = max(0.0, 1.0 - (informal_count * 0.2))
+        professional_indicators.append(informal_penalty)
+
+        # Proper sentence structure (basic check)
+        sentences = [s.strip() for s in text.split('.') if s.strip()]
+        capitalized = sum(1 for s in sentences if s and s[0].isupper())
+        capitalization_score = capitalized / len(sentences) if sentences else 0.0
+        professional_indicators.append(capitalization_score)
+
+        return np.mean(professional_indicators)
+
+    def _evaluate_clarity(self, text: str) -> float:
+        """Evaluate clarity of text"""
+
+        clarity_indicators = []
+
+        # Average sentence length (moderate length preferred)
+        sentences = [s.strip() for s in text.split('.') if s.strip()]
+        if sentences:
+            avg_sentence_length = np.mean([len(s.split()) for s in sentences])
+            # Optimal sentence length is around 15-20 words
+            if 10 <= avg_sentence_length <= 25:
+                length_clarity = 1.0
+            else:
+                length_clarity = max(0.0, 1.0 - abs(avg_sentence_length - 17.5) / 17.5)
+            clarity_indicators.append(length_clarity)
+
+        # Word complexity (prefer common words)
+        words = text.lower().split()
+        # Simple heuristic: shorter words are generally more common/clear
+        avg_word_length = np.mean([len(word) for word in words])
+        word_clarity = max(0.0, 1.0 - (avg_word_length - 5.0) / 10.0)  # Normalize around 5 chars
+        clarity_indicators.append(word_clarity)
+
+        # Punctuation usage (proper punctuation aids clarity)
+        punct_chars = '.!?;,:'
+        punct_count = sum(1 for char in text if char in punct_chars)
+        expected_punct = len(sentences)  # Roughly one punct per sentence
+        punct_score = 1.0 if punct_count >= expected_punct * 0.8 else punct_count / expected_punct
+        clarity_indicators.append(punct_score)
+
+        return np.mean(clarity_indicators)
+
+    def _evaluate_creativity(self, text: str) -> float:
+        """Evaluate creativity of text"""
+
+        creativity_indicators = []
+
+        # Vocabulary diversity
+        words = [word.lower() for word in text.split() if word.isalpha()]
+        if words:
+            unique_words = set(words)
+            vocab_diversity = len(unique_words) / len(words)
+            creativity_indicators.append(vocab_diversity)
+
+        # Metaphor/figurative language detection (simple heuristic)
+        figurative_words = ['like', 'as', 'metaphor', 'symbolize', 'represents', 
+                          'imagine', 'envision', 'dream', 'fantasy']
+        figurative_count = sum(1 for word in text.lower().split() if word in figurative_words)
+        figurative_score = min(1.0, figurative_count / 3.0)
+        creativity_indicators.append(figurative_score)
+
+        # Sentence structure variety
+        sentences = [s.strip() for s in text.split('.') if s.strip()]
+        if len(sentences) > 1:
+            sentence_lengths = [len(s.split()) for s in sentences]
+            length_variety = np.std(sentence_lengths) / np.mean(sentence_lengths) if np.mean(sentence_lengths) > 0 else 0.0
+            variety_score = min(1.0, length_variety)
+            creativity_indicators.append(variety_score)
+
+        return np.mean(creativity_indicators) if creativity_indicators else 0.5
+
+    async def _evaluate_technical_accuracy(self, response: str, prompt: str) -> float:
+        """Evaluate technical accuracy of response"""
+        # This would typically involve domain-specific fact checking
+        # For demo, we'll use a simple keyword matching approach
+
+        # Extract technical terms from prompt
+        technical_terms = self._extract_technical_terms(prompt)
+
+        # Check if response addresses these terms
+        response_lower = response.lower()
+        addressed_terms = sum(1 for term in technical_terms if term.lower() in response_lower)
+
+        if not technical_terms:
+            return 0.8  # Neutral score if no technical terms identified
+
+        coverage_score = addressed_terms / len(technical_terms)
+
+        # Additional heuristics for technical accuracy
+        # Check for common technical patterns
+        technical_patterns = ['algorithm', 'method', 'approach', 'technique', 
+                            'process', 'system', 'model', 'data']
+        pattern_count = sum(1 for pattern in technical_patterns if pattern in response_lower)
+        pattern_score = min(1.0, pattern_count / 3.0)
+
+        return np.mean([coverage_score, pattern_score])
+
+    def _extract_technical_terms(self, text: str) -> List[str]:
+        """Extract technical terms from text (simplified approach)"""
+        # In production, this would use NER or technical domain dictionaries
+        common_technical_terms = [
+            'algorithm', 'machine learning', 'neural network', 'data science',
+            'artificial intelligence', 'deep learning', 'supervised learning',
+            'unsupervised learning', 'classification', 'regression', 'clustering'
+        ]
+
+        text_lower = text.lower()
+        found_terms = [term for term in common_technical_terms if term in text_lower]
+        return found_terms
+
+    def _calculate_consistency(self, results: List[Dict[str, float]]) -> float:
+        """Calculate consistency across multiple test results"""
+        if len(results) < 2:
+            return 1.0
+
+        # Calculate standard deviation of overall scores
+        overall_scores = [r.get("overall_score", 0.0) for r in results]
+        if not overall_scores:
+            return 0.0
+
+        consistency = 1.0 - np.std(overall_scores)
+        return max(0.0, consistency)
+
+    def _calculate_overall_quality(self, text: str) -> float:
+        """Calculate overall text quality score"""
+        # Simple composite score based on basic text features
+        # In production, use more sophisticated metrics
+        word_count = len(text.split())
+        sentence_count = len([s for s in text.split('.') if s.strip()])
+        
+        if word_count == 0:
+            return 0.0
+        
+        avg_sentence_length = word_count / max(1, sentence_count)
+        quality_score = min(1.0, max(0.0, 1.0 - abs(avg_sentence_length - 17.5) / 17.5))
+        
+        return quality_score
+
+# Example usage
+async def demonstrate_capability_assessment():
+    """Demonstrate the capability assessment system"""
+
+    # Initialize registry and assessor
+    registry = await register_example_models()
+    assessor = CapabilityAssessor(registry)
+
+    # Get a model ID for assessment
+    model_ids = list(registry.models.keys())
+    if model_ids:
+        model_id = model_ids[0]  # Use first registered model
+
+        # Assess text generation capability
+        print(f"\n🧪 Assessing text generation capability for model: {model_id}")
+
+        assessment_results = await assessor.assess_model_capability(
+            model_id, 
+            ModelCapability.TEXT_GENERATION,
+            test_suite="standard"
+        )
+
+        print("Assessment Results:")
+        for metric, score in assessment_results.items():
+            print(f"  {metric}: {score:.3f}")
+
+        # Assess with different test suite
+        print(f"\n🧪 Assessing with technical test suite...")
+
+        technical_results = await assessor.assess_model_capability(
+            model_id,
+            ModelCapability.TEXT_GENERATION,
+            test_suite="technical"
+        )
+
+        print("Technical Assessment Results:")
+        for metric, score in technical_results.items():
+            print(f"  {metric}: {score:.3f}")
+
+    return assessor
+
+# Run demonstration
+# assessor = asyncio.run(demonstrate_capability_assessment())
+```
+
+<#0.5#>
+
+## PHASE 2 - INTELLIGENT TASK ROUTING (ADVANCED ORCHESTRATION)
+
+<#0.5#>
+
+### 1. Multi-Dimensional Routing Engine
+
+```python
+from typing import Protocol, runtime_checkable
+from abc import ABC, abstractmethod
+import networkx as nx
+from scipy.optimize import linear_sum_assignment
+import pulp
+from dataclasses import asdict
+import pickle
+import redis
+from sklearn.preprocessing import StandardScaler
+from sklearn.ensemble import RandomForestClassifier
+import joblib
+
+@runtime_checkable
+class RoutingStrategy(Protocol):
+    """Protocol for routing strategies"""
+
+    def calculate_fitness(self, 
+                         model_profile: ModelProfile,
+                         task_requirements: Dict[str, Any]) -> float:
+        """Calculate fitness score for model-task pairing"""
+        ...
+
+    def select_models(self,
+                     available_models: List[ModelProfile],
+                     task_requirements: Dict[str, Any],
+                     num_models: int = 1) -> List[Tuple[str, float]]:
+        """Select best models for the task"""
+        ...
+
+class TaskRequirements:
+    """Comprehensive task requirements specification"""
+
+    def __init__(self):
+        self.capabilities: List[ModelCapability] = []
+        self.quality_threshold: float = 8.0
+        self.max_latency_ms: float = 5000.0
+        self.max_cost_per_unit: float = 10.0
+        self.min_throughput: float = 0.0  # requests per second
+        self.batch_size: int = 1
+        self.compliance_requirements: List[str] = []
+        self.geographic_constraints: List[str] = []
+        self.reliability_requirement: float = 99.0
+        self.scalability_requirement: str = "medium"  # low, medium, high
+        self.resource_constraints: Dict[str, Any] = {}
+        self.deadline: Optional[datetime] = None
+        self.priority: str = "normal"  # low, normal, high, critical
+        self.context: Dict[str, Any] = {}
+        self.multi_modal: bool = False
+        self.ensemble_preference: str = "auto"  # none, preferred, required, auto
+
+class MultiCriteriaRoutingStrategy:
+    """
+    Advanced routing strategy using multi-criteria decision analysis
+    with machine learning optimization
+    """
+
+    def __init__(self):
+        self.scaler = StandardScaler()
+        self.routing_model = RandomForestClassifier(n_estimators=100)
+        self.is_trained = False
+        self.criteria_weights = {
+            'capability_match': 25.0,
+            'quality_score': 20.0,
+            'cost_efficiency': 20.0,
+            'latency_performance': 15.0,
+            'reliability': 10.0,
+            'compliance': 10.0
+        }
+        self.historical_data = []
+
+    def calculate_fitness(self, 
+                         model_profile: ModelProfile,
+                         task_requirements: TaskRequirements) -> Dict[str, float]:
+        """Calculate detailed fitness scores across multiple criteria"""
+
+        scores = {}
+
+        # Capability Matching Score
+        required_caps = set(cap.value for cap in task_requirements.capabilities)
+        model_caps = set(cap.value for cap in model_profile.capabilities)
+
+        if required_caps:
+            capability_overlap = len(required_caps.intersection(model_caps))
+            capability_coverage = capability_overlap / len(required_caps)
+            capability_precision = capability_overlap / len(model_caps) if model_caps else 0.0
+            scores['capability_match'] = np.mean([capability_coverage, capability_precision])
+        else:
+            scores['capability_match'] = 1.0
+
+        # Quality Score
+        quality_metrics = []
+        for benchmark_name, benchmark_score in model_profile.quality_benchmarks.items():
+            if benchmark_score >= task_requirements.quality_threshold:
+                quality_metrics.append(benchmark_score)
+            else:
+                quality_metrics.append(benchmark_score * 0.5)  # Penalty for below threshold
+
+        scores['quality_score'] = np.mean(quality_metrics) if quality_metrics else 0.5
+
+        # Cost Efficiency Score
+        cost_score = self._calculate_cost_efficiency(model_profile, task_requirements)
+        scores['cost_efficiency'] = cost_score
+
+        # Latency Performance Score
+        latency_score = self._calculate_latency_score(model_profile, task_requirements)
+        scores['latency_performance'] = latency_score
+
+        # Reliability Score
+        reliability_score = self._calculate_reliability_score(model_profile, task_requirements)
+        scores['reliability'] = reliability_score
+
+        # Compliance Score
+        compliance_score = self._calculate_compliance_score(model_profile, task_requirements)
+        scores['compliance'] = compliance_score
+
+        # Context-specific scores
+        context_scores = self._calculate_context_scores(model_profile, task_requirements)
+        scores.update(context_scores)
+
+        # Calculate weighted overall fitness
+        overall_fitness = 0.0
+        for criterion, weight in self.criteria_weights.items():
+            if criterion in scores:
+                overall_fitness += scores[criterion] * weight
+
+        scores['overall_fitness'] = overall_fitness
+
+        return scores
+
+    def _calculate_cost_efficiency(self, 
+                                 model_profile: ModelProfile,
+                                 task_requirements: TaskRequirements) -> float:
+        """Calculate cost efficiency score"""
+
+        # Estimate total cost based on task requirements
+        estimated_cost = 0.0
+
+        if 'per_token' in model_profile.cost_structure:
+            # Estimate tokens needed (rough heuristic)
+            estimated_tokens = task_requirements.context.get('estimated_tokens', 1000)
+            estimated_cost = model_profile.cost_structure['per_token'] * estimated_tokens
+        elif 'per_image' in model_profile.cost_structure:
+            estimated_images = task_requirements.context.get('estimated_images', 1)
+            estimated_cost = model_profile.cost_structure['per_image'] * estimated_images
+        elif 'per_request' in model_profile.cost_structure:
+            estimated_cost = model_profile.cost_structure['per_request']
+
+        # Calculate efficiency score
+        if estimated_cost <= task_requirements.max_cost_per_unit:
+            # Linear scoring: cheaper is better
+            max_cost = task_requirements.max_cost_per_unit
+            cost_efficiency = max(0.0, 1.0 - (estimated_cost / max_cost))
+        else:
+            # Penalty for exceeding budget
+            cost_efficiency = 0.0
+
+        return cost_efficiency
+
+    def _calculate_latency_score(self, 
+                               model_profile: ModelProfile,
+                               task_requirements: TaskRequirements) -> float:
+        """Calculate latency performance score"""
+
+        # Use P95 latency as primary metric
+        model_latency = model_profile.latency_profile.get('p95', float('inf'))
+        max_latency = task_requirements.max_latency_ms
+
+        if model_latency <= max_latency:
+            # Non-linear scoring: much faster is significantly better
+            latency_ratio = model_latency / max_latency
+            latency_score = 1.0 - (latency_ratio ** 0.5)  # Square root for non-linear benefit
+        else:
+            # Severe penalty for exceeding latency requirements
+            latency_score = max(0.0, 0.5 - ((model_latency - max_latency) / max_latency))
+
+        return max(0.0, latency_score)
+
+    def _calculate_reliability_score(self, 
+                                   model_profile: ModelProfile,
+                                   task_requirements: TaskRequirements) -> float:
+        """Calculate reliability score based on historical performance"""
+
+        # Use scaling characteristics and historical data
+        scaling_info = model_profile.scaling_characteristics
+
+        reliability_factors = []
+
+        # Auto-scaling capability
+        if scaling_info.get('auto_scaling', False):
+            reliability_factors.append(0.9)
+        else:
+            reliability_factors.append(0.7)
+
+        # Horizontal scaling support
+        if scaling_info.get('horizontal_scaling', False):
+            reliability_factors.append(0.9)
+        else:
+            reliability_factors.append(0.6)
+
+        # API-based models generally have higher reliability
+        if not model_profile.resource_requirements.get('gpu_memory_gb', 0):
+            reliability_factors.append(0.95)  # Managed service
+        else:
+            reliability_factors.append(0.85)  # Self-hosted
+
+        base_reliability = np.mean(reliability_factors)
+
+        # Adjust based on requirements
+        if base_reliability >= task_requirements.reliability_requirement / 100.0:
+            return base_reliability
+        else:
+            # Penalty for not meeting reliability requirement
+            return base_reliability * 0.5
+
+    def _calculate_compliance_score(self, 
+                                  model_profile: ModelProfile,
+                                  task_requirements: TaskRequirements) -> float:
+        """Calculate compliance score"""
+
+        if not task_requirements.compliance_requirements:
+            return 1.0  # No specific requirements
+
+        model_compliance = set(model_profile.compliance_features)
+        required_compliance = set(task_requirements.compliance_requirements)
+
+        if required_compliance.issubset(model_compliance):
+            return 1.0  # All requirements met
+        else:
+            # Partial compliance
+            met_requirements = len(required_compliance.intersection(model_compliance))
+            return met_requirements / len(required_compliance)
+
+    def _calculate_context_scores(self, 
+                                model_profile: ModelProfile,
+                                task_requirements: TaskRequirements) -> Dict[str, float]:
+        """Calculate context-specific scores"""
+
+        context_scores = {}
+
+        # Multi-modal handling
+        if task_requirements.multi_modal:
+            # Prefer models that support multiple modalities
+            modality_count = len([cap for cap in model_profile.capabilities 
+                                if cap in [ModelCapability.TEXT_GENERATION, 
+                                          ModelCapability.IMAGE_GENERATION,
+                                          ModelCapability.VIDEO_GENERATION,
+                                          ModelCapability.AUDIO_GENERATION]])
+            context_scores['multi_modal_support'] = min(1.0, modality_count / 4.0)
+
+        # Batch processing capability
+        if task_requirements.batch_size > 1:
+            max_batch = model_profile.constraints.get('batch_size', 1)
+            if max_batch >= task_requirements.batch_size:
+                context_scores['batch_support'] = 1.0
+            else:
+                context_scores['batch_support'] = max_batch / task_requirements.batch_size
+
+        # Geographic constraints
+        if task_requirements.geographic_constraints:
+            # This would typically check model deployment regions
+            # For demo, assume compliance
+            context_scores['geographic_compliance'] = 1.0
+
+        return context_scores
+
+    def select_models(self,
+                     available_models: List[ModelProfile],
+                     task_requirements: TaskRequirements,
+                     num_models: int = 1) -> List[Tuple[str, float, Dict[str, float], str]]:
+        """Select best models using multi-criteria analysis"""
+
+        model_scores = []
+
+        for model in available_models:
+            fitness_scores = self.calculate_fitness(model, task_requirements)
+            model_scores.append((
+                model.model_id,
+                fitness_scores['overall_fitness'],
+                fitness_scores,
+                model.name
+            ))
+
+        # Sort by overall fitness (descending)
+        model_scores.sort(key=lambda x: x[1], reverse=True)
+
+        # Apply ensemble logic if needed
+        if task_requirements.ensemble_preference in ['preferred', 'required', 'auto']:
+            return self._apply_ensemble_selection(model_scores, task_requirements, num_models)
+        else:
+            return model_scores[:num_models]
+
+    def _apply_ensemble_selection(self,
+                                model_scores: List[Tuple],
+                                task_requirements: TaskRequirements,
+                                num_models: int) -> List[Tuple]:
+        """Apply ensemble selection logic"""
+
+        if task_requirements.ensemble_preference == 'required' or num_models > 1:
+            # Force ensemble selection
+            return self._select_complementary_models(model_scores, num_models)
+        elif task_requirements.ensemble_preference == 'auto':
+            # Decide based on task complexity and available budget
+            return self._auto_ensemble_decision(model_scores, task_requirements, num_models)
+        else:
+            # Preferred: use ensemble if it significantly improves outcomes
+            ensemble_benefit = self._estimate_ensemble_benefit(model_scores, task_requirements)
+            if ensemble_benefit > 0.1:  # 10% improvement threshold
+                return self._select_complementary_models(model_scores, min(3, len(model_scores)))
+            else:
+                return model_scores[:1]  # Single best model
+
+    def _select_complementary_models(self, 
+                                   model_scores: List[Tuple],
+                                   num_models: int) -> List[Tuple]:
+        """Select models that complement each other"""
+
+        if len(model_scores) <= num_models:
+            return model_scores
+
+        selected_models = [model_scores[0]]  # Start with best model
+        remaining_models = model_scores[1:]
+
+        for _ in range(num_models - 1):
+            best_complement = None
+            best_complement_score = -1.0
+
+            for candidate in remaining_models:
+                # Calculate complementarity score
+                complement_score = self._calculate_complementarity(
+                    selected_models, candidate
+                )
+
+                if complement_score > best_complement_score:
+                    best_complement_score = complement_score
+                    best_complement = candidate
+
+            if best_complement:
+                selected_models.append(best_complement)
+                remaining_models.remove(best_complement)
+
+        return selected_models
+
+    def _calculate_complementarity(self, 
+                                 selected_models: List[Tuple],
+                                 candidate: Tuple) -> float:
+        """Calculate how well a candidate model complements selected models"""
+
+        # Extract detailed scores for analysis
+        candidate_scores = candidate[2]  # fitness_scores dict
+
+        complementarity_factors = []
+
+        for selected_model in selected_models:
+            selected_scores = selected_model[2]
+
+            # Different strengths are complementary
+            strength_diversity = 0.0
+            for metric in ['quality_score', 'cost_efficiency', 'latency_performance']:
+                if metric in selected_scores and metric in candidate_scores:
+                    # Reward diversity in strengths
+                    score_diff = abs(selected_scores[metric] - candidate_scores[metric])
+                    strength_diversity += score_diff
+
+            complementarity_factors.append(strength_diversity)
+
+        # Normalize and combine
+        return np.mean(complementarity_factors) if complementarity_factors else 0.0
+
+    def _estimate_ensemble_benefit(self,
+                                 model_scores: List[Tuple],
+                                 task_requirements: TaskRequirements) -> float:
+        """Estimate potential benefit of using ensemble vs single model"""
+
+        if len(model_scores) < 2:
+            return 0.0
+
+        # Simple heuristic: ensemble benefit increases with model diversity
+        top_models = model_scores[:3]
+
+        diversity_metrics = []
+        for i in range(len(top_models)):
+            for j in range(i + 1, len(top_models)):
+                model_i_scores = top_models[i][2]
+                model_j_scores = top_models[j][2]
+
+                # Calculate score differences across criteria
+                differences = []
+                for metric in ['quality_score', 'cost_efficiency', 'latency_performance']:
+                    if metric in model_i_scores and metric in model_j_scores:
+                        diff = abs(model_i_scores[metric] - model_j_scores[metric])
+                        differences.append(diff)
+
+                if differences:
+                    diversity_metrics.append(np.mean(differences))
+
+        if not diversity_metrics:
+            return 0.0
+
+        diversity_score = np.mean(diversity_metrics)
+
+        # Additional factors
+        complexity_factor = len(task_requirements.capabilities) / 5.0  # More complex tasks benefit more
+        quality_threshold_factor = task_requirements.quality_threshold / 10.0  # Higher quality needs benefit more
+
+        ensemble_benefit = diversity_score * complexity_factor * quality_threshold_factor
+        return min(1.0, ensemble_benefit)
+
+class IntelligentTaskRouter:
+    """
+    Advanced task routing system with machine learning optimization,
+    load balancing, and dynamic adaptation
+    """
+
+    def __init__(self, registry: AdvancedModelRegistry):
+        self.registry = registry
+        self.routing_strategy = MultiCriteriaRoutingStrategy()
+        self.load_balancer = LoadBalancer()
+        self.performance_tracker = PerformanceTracker()
+        self.redis_client = None  # Initialize if needed
+        self.routing_cache = {}
+
+        # Routing history for ML optimization
+        self.routing_history = []
+        self.optimization_model = None
+
+    async def route_task(self, 
+                        task_requirements: TaskRequirements,
+                        context: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
+        """
+        Route task to optimal model(s) with comprehensive optimization
+        """
+
+        routing_key = self._generate_routing_key(task_requirements)
+
+        # Check cache for similar recent routing decisions
+        cached_routing = self._check_routing_cache(routing_key)
+        if cached_routing and self._is_cache_valid(cached_routing):
+            return cached_routing['routing_decision']
+
+        # Get available models
+        available_models = list(self.registry.models.values())
+        if not available_models:
+            raise ValueError("No models available in registry")
+
+        # Filter models based on hard constraints
+        viable_models = self._filter_viable_models(available_models, task_requirements)
+
+        if not viable_models:
+            return {
+                'status': 'error',
+                'message': 'No viable models found for the given requirements',
+                'requirements': asdict(task_requirements),
+                'available_models': [m.name for m in available_models]
+            }
+
+        # Calculate routing decision
+        routing_decision = await self._calculate_optimal_routing(
+            viable_models, task_requirements, context
+        )
+
+        # Cache the decision
+        self._cache_routing_decision(routing_key, routing_decision)
+
+        # Update performance tracking
+        await self.performance_tracker.log_routing_decision(routing_decision)
+
+        return routing_decision
+
+    def _filter_viable_models(self, 
+                            available_models: List[ModelProfile],
+                            task_requirements: TaskRequirements) -> List[ModelProfile]:
+        """Filter models that meet hard constraints"""
+
+        viable_models = []
+
+        for model in available_models:
+            # Check capability requirements
+            if task_requirements.capabilities:
+                model_caps = set(cap.value for cap in model.capabilities)
+                required_caps = set(cap.value for cap in task_requirements.capabilities)
+                if not required_caps.intersection(model_caps):
+                    continue  # No capability overlap
+
+            # Check hard cost constraint
+            estimated_cost = self._estimate_model_cost(model, task_requirements)
+            if estimated_cost > task_requirements.max_cost_per_unit * 2.0:  # 2x buffer for estimation errors
+                continue
+
+            # Check hard latency constraint
+            model_latency = model.latency_profile.get('p95', float('inf'))
+            if model_latency > task_requirements.max_latency_ms * 1.5:  # 1.5x buffer
+                continue
+
+            # Check compliance requirements (hard constraint)
+            if task_requirements.compliance_requirements:
+                model_compliance = set(model.compliance_features)
+                required_compliance = set(task_requirements.compliance_requirements)
+                if not required_compliance.issubset(model_compliance):
+                    continue
+
+            viable_models.append(model)
+
+        return viable_models
+
+    def _estimate_model_cost(self, 
+                           model: ModelProfile,
+                           task_requirements: TaskRequirements) -> float:
+        """Estimate cost for model based on task requirements"""
+
+        if 'per_token' in model.cost_structure:
+            estimated_tokens = task_requirements.context.get('estimated_tokens', 1000)
+            return model.cost_structure['per_token'] * estimated_tokens
+        elif 'per_image' in model.cost_structure:
+            estimated_images = task_requirements.context.get('estimated_images', 1)
+            return model.cost_structure['per_image'] * estimated_images
+        elif 'per_request' in model.cost_structure:
+            return model.cost_structure['per_request']
+        else:
+            return 0.01  # Default small cost estimate
+
+    async def _calculate_optimal_routing(self,
+                                       viable_models: List[ModelProfile],
+                                       task_requirements: TaskRequirements,
+                                       context: Optional[Dict[str, Any]]) -> Dict[str, Any]:
+        """Calculate optimal routing decision"""
+
+        # Determine number of models to select
+        num_models = self._determine_ensemble_size(task_requirements, len(viable_models))
+
+        # Select optimal models
+        selected_models = self.routing_strategy.select_models(
+            viable_models, task_requirements, num_models
+        )
+
+        # Create routing plan
+        routing_plan = await self._create_routing_plan(selected_models, task_requirements)
+
+        # Calculate expected performance
+        expected_performance = await self._calculate_expected_performance(
+            routing_plan, task_requirements
+        )
+
+        routing_decision = {
+            'status': 'success',
+            'routing_plan': routing_plan,
+            'expected_performance': expected_performance,
+            'selected_models': [
+                {
+                    'model_id': model_info[0],
+                    'model_name': model_info[3],
+                    'fitness_score': model_info[1],
+                    'detailed_scores': model_info[2]
+                }
+                for model_info in selected_models
+            ],
+            'ensemble_strategy': 'voting' if len(selected_models) > 1 else 'single',
+            'load_balancing': await self.load_balancer.get_load_distribution(selected_models),
+            'fallback_options': await self._identify_fallback_options(viable_models, selected_models),
+            'cost_estimate': await self._calculate_total_cost_estimate(routing_plan),
+            'latency_estimate': await self._calculate_latency_estimate(routing_plan),
+            'timestamp': datetime.now().isoformat(),
+            'routing_id': self._generate_routing_id()
+        }
+
+        return routing_decision
+
+    def _determine_ensemble_size(self, 
+                               task_requirements: TaskRequirements,
+                               available_models: int) -> int:
+        """Determine optimal ensemble size"""
+
+        if task_requirements.ensemble_preference == 'none':
+            return 1
+        elif task_requirements.ensemble_preference == 'required':
+            return min(3, available_models)  # Standard ensemble size
+        elif task_requirements.priority == 'critical':
+            return min(3, available_models)  # Use ensemble for critical tasks
+        elif task_requirements.quality_threshold > 9.0:
+            return min(2, available_models)  # Use ensemble for high quality requirements
+        else:
+            return 1  # Single model for standard tasks
+
+    async def _create_routing_plan(self,
+                                 selected_models: List[Tuple],
+                                 task_requirements: TaskRequirements) -> Dict[str, Any]:
+        """Create detailed routing execution plan"""
+
+        if len(selected_models) == 1:
+            return {
+                'type': 'single_model',
+                'primary_model': selected_models[0][0],
+                'execution_strategy': 'direct',
+                'retry_policy': 'exponential_backoff',
+                'timeout_ms': task_requirements.max_latency_ms
+            }
+        else:
+            return {
+                'type': 'ensemble',
+                'models': [model[0] for model in selected_models],
+                'voting_strategy': 'confidence_weighted',
+                'execution_strategy': 'parallel',
+                'consensus_threshold': 0.8,
+                'timeout_ms': task_requirements.max_latency_ms,
+                'failure_handling': 'partial_results_acceptable'
+            }
+
+    def _generate_routing_key(self, task_requirements: TaskRequirements) -> str:
+        """Generate cache key for routing decision"""
+
+        key_components = [
+            str(sorted([cap.value for cap in task_requirements.capabilities])),
+            str(task_requirements.quality_threshold),
+            str(task_requirements.max_latency_ms),
+            str(task_requirements.max_cost_per_unit),
+            task_requirements.priority,
+            task_requirements.ensemble_preference
+        ]
+
+        key_string = "|".join(key_components)
+        return hashlib.md5(key_string.encode()).hexdigest()
+
+    def _generate_routing_id(self) -> str:
+        """Generate unique routing ID"""
+        return f"route_{datetime.now().strftime('%Y%m%d_%H%M%S')}_{np.random.randint(1000, 9999)}"
+
+class LoadBalancer:
+    """Load balancing and capacity management for ensemble routing"""
+
+    def __init__(self):
+        self.model_loads = {}
+        self.health_status = {}
+        self.performance_history = {}
+
+    async def get_load_distribution(self, selected_models: List[Tuple]) -> Dict[str, Any]:
+        """Calculate optimal load distribution across selected models"""
+
+        if len(selected_models) == 1:
+            return {
+                'strategy': 'single_model',
+                'distribution': {selected_models[0][0]: 1.0}
+            }
+
+        # Calculate current loads
+        current_loads = {}
+        for model_info in selected_models:
+            model_id = model_info[0]
+            current_loads[model_id] = self.model_loads.get(model_id, 0.0)
+
+        # Calculate fitness-based weights
+        fitness_scores = [model_info[1] for model_info in selected_models]
+        total_fitness = sum(fitness_scores)
+
+        if total_fitness > 0:
+            fitness_weights = [score / total_fitness for score in fitness_scores]
+        else:
+            fitness_weights = [1.0 / len(selected_models)] * len(selected_models)
+
+        # Adjust for current load (prefer less loaded models)
+        load_adjusted_weights = []
+        for i, model_info in enumerate(selected_models):
+            model_id = model_info[0]
+            current_load = current_loads[model_id]
+
+            # Reduce weight if model is heavily loaded
+            load_factor = max(0.1, 1.0 - current_load)
+            adjusted_weight = fitness_weights[i] * load_factor
+            load_adjusted_weights.append(adjusted_weight)
+
+        # Normalize weights
+        total_adjusted_weight = sum(load_adjusted_weights)
+        if total_adjusted_weight > 0:
+            final_weights = [w / total_adjusted_weight for w in load_adjusted_weights]
+        else:
+            final_weights = fitness_weights
+
+        # Create distribution
+        distribution = {}
+        for i, model_info in enumerate(selected_models):
+            model_id = model_info[0]
+            distribution[model_id] = final_weights[i]
+
+        return {
+            'strategy': 'weighted_distribution',
+            'distribution': distribution,
+            'load_balancing_factor': 0.3,  # How much to consider current load
+            'health_check_interval': 60,  # seconds
+            'failover_enabled': True
+        }
+
+class PerformanceTracker:
+    """Track routing performance and optimize decisions"""
+
+    def __init__(self):
+        self.routing_history = []
+        self.performance_metrics = {}
+
+    async def log_routing_decision(self, routing_decision: Dict[str, Any]):
+        """Log routing decision for analysis"""
+
+        self.routing_history.append({
+            'timestamp': datetime.now(),
+            'routing_id': routing_decision.get('routing_id'),
+            'selected_models': routing_decision.get('selected_models', []),
+            'expected_performance': routing_decision.get('expected_performance', {}),
+            'cost_estimate': routing_decision.get('cost_estimate', 0.0),
+            'latency_estimate': routing_decision.get('latency_estimate', 0.0)
+        })
+
+        # Maintain history size
+        if len(self.routing_history) > 10000:
+            self.routing_history = self.routing_history[-5000:]  # Keep recent 5000
+
+# Example usage and demonstration
+async def demonstrate_intelligent_routing():
+    """Demonstrate the intelligent task routing system"""
+
+    print("🚀 Initializing Intelligent Task Router...")
+
+    # Initialize components
+    registry = await register_example_models()
+    router = IntelligentTaskRouter(registry)
+
+    # Example 1: Simple text generation task
+    print("\n📝 Example 1: Simple Text Generation Task")
+
+    simple_requirements = TaskRequirements()
+    simple_requirements.capabilities = [ModelCapability.TEXT_GENERATION]
+    simple_requirements.quality_threshold = 7.0
+    simple_requirements.max_latency_ms = 3000.0
+    simple_requirements.max_cost_per_unit = 0.05
+    simple_requirements.context = {'estimated_tokens': 500}
+
+    routing_result = await router.route_task(simple_requirements)
+
+    print(f"Status: {routing_result['status']}")
+    if routing_result['status'] == 'success':
+        print(f"Selected models: {[m['model_name'] for m in routing_result['selected_models']]}")
+        print(f"Ensemble strategy: {routing_result['ensemble_strategy']}")
+        print(f"Expected cost: ${routing_result['cost_estimate']:.4f}")
+        print(f"Expected latency: {routing_result['latency_estimate']:.0f}ms")
+
+    # Example 2: High-quality multi-modal task
+    print("\n🎨 Example 2: High-Quality Multi-Modal Task")
+
+    multimodal_requirements = TaskRequirements()
+    multimodal_requirements.capabilities = [
+        ModelCapability.TEXT_GENERATION,
+        ModelCapability.IMAGE_GENERATION
+    ]
+    multimodal_requirements.quality_threshold = 9.0
+    multimodal_requirements.max_latency_ms = 15000.0
+    multimodal_requirements.max_cost_per_unit = 0.20
+    multimodal_requirements.multi_modal = True
+    multimodal_requirements.ensemble_preference = 'preferred'
+    multimodal_requirements.context = {
+        'estimated_tokens': 2000,
+        'estimated_images': 5
+    }
+
+    routing_result = await router.route_task(multimodal_requirements)
+
+    print(f"Status: {routing_result['status']}")
+    if routing_result['status'] == 'success':
+        print(f"Selected models: {[m['model_name'] for m in routing_result['selected_models']]}")
+        print(f"Routing plan type: {routing_result['routing_plan']['type']}")
+        if 'voting_strategy' in routing_result['routing_plan']:
+            print(f"Voting strategy: {routing_result['routing_plan']['voting_strategy']}")
+
+    # Example 3: Critical task with strict requirements
+    print("\n⚡ Example 3: Critical Task with Strict Requirements")
+
+    critical_requirements = TaskRequirements()
+    critical_requirements.capabilities = [ModelCapability.TEXT_GENERATION, ModelCapability.REASONING]
+    critical_requirements.quality_threshold = 9.5
+    critical_requirements.max_latency_ms = 2000.0
+    critical_requirements.max_cost_per_unit = 0.10
+    critical_requirements.priority = 'critical'
+    critical_requirements.reliability_requirement = 99.0
+    critical_requirements.compliance_requirements = ['GDPR', 'SOC2']
+    critical_requirements.ensemble_preference = 'auto'
+
+    routing_result = await router.route_task(critical_requirements)
+
+    print(f"Status: {routing_result['status']}")
+    if routing_result['status'] == 'success':
+        selected_models = routing_result['selected_models']
+        print(f"Selected {len(selected_models)} model(s):")
+        for model in selected_models:
+            print(f"  - {model['model_name']} (fitness: {model['fitness_score']:.3f})")
+
+        print(f"Load balancing: {routing_result['load_balancing']['strategy']}")
+    elif routing_result['status'] == 'error':
+        print(f"Error: {routing_result['message']}")
+
+    return router
+
+# Run demonstration
+# router = asyncio.run(demonstrate_intelligent_routing())
+```
+
+<#0.5#>
+
+## Implementation Solutions
+
+This section maps capabilities to frameworks, implementation approaches, and architectural recommendations for a production-grade ensemble AI system.
+
+<#0.5#>
+
+### Framework Capability Matrix
+
+| **Requirement/Capability** | **BentoML** | **MLflow** | **Triton** | **Scikit-learn** | **Multi-Agent AI** | **ClearML Serving** |
+|----------------------------|-------------|------------|------------|------------------|-------------------|---------------------|
+| **Model Registry & Versioning** | ✅ Basic | ✅ Enterprise | ❌ No | ❌ No | ❌ No | ✅ Full |
+| **Multi-Model Serving** | ✅ Excellent | ❌ No | ✅ Excellent | ❌ No | ✅ Yes | ✅ Good |
+| **Ensemble Orchestration** | ✅ Pipeline Support | ✅ PyFunc Custom | ✅ Native Ensembles | ❌ No | ✅ Voting/Debate | ✅ A/B Testing |
+| **Voting Mechanisms** | ❌ Custom Only | ❌ Custom Only | ❌ No | ✅ Hard/Soft Voting | ✅ Democratic Patterns | ❌ Custom Only |
+| **Dynamic Batching** | ✅ Micro-batching | ❌ No | ✅ Advanced | ❌ No | ❌ No | ✅ Yes |
+| **Load Balancing** | ✅ Built-in | ❌ No | ✅ Instance Groups | ❌ No | ❌ No | ✅ Canary/A/B |
+| **Performance Monitoring** | ✅ Basic Metrics | ✅ Tracking | ✅ Detailed | ❌ No | ❌ No | ✅ Prometheus/Grafana |
+| **Auto-scaling** | ✅ Yes | ❌ No | ✅ Yes | ❌ No | ❌ No | ✅ Yes |
+| **GPU Support** | ✅ Full | ❌ No | ✅ Optimized | ❌ No | ❌ No | ✅ Full |
+| **Cloud Deployment** | ✅ Multi-cloud | ❌ No | ✅ Kubernetes | ❌ No | ❌ No | ✅ Kubernetes |
+
+<#0.5#>
+
+### Primary Implementation Stack Recommendation
+
+#### **Recommended Architecture: Triton + BentoML + MLflow + Custom Voting Layer**
+
+**Core Justification**: Triton's ensemble models represent "a pipeline of one or more models and the connection of input and output tensors between those models" that are "intended to be used to encapsulate a procedure that involves multiple models, such as 'data preprocessing → inference → data postprocessing'" while avoiding "the overhead of transferring intermediate tensors and minimize the number of requests that must be sent to Triton".
+
+<#0.5#>
+
+### Detailed Implementation Solutions by Capability
+
+#### Model Registry & Management
+
+##### **Primary Solution: MLflow Model Registry + ClearML Integration**
+
+MLflow Model Registry is "a centralized model store, set of APIs and a UI designed to collaboratively manage the full lifecycle of a model" providing "lineage (e.g., which MLflow experiment and run produced the model), versioning, aliasing, metadata tagging and annotation support".
+
+**Implementation Approach:**
+```python
+# Enhanced Model Registration with Ensemble Support
+import mlflow
+from mlflow.models import infer_signature
+import clearml
+from clearml import Model, Task
+from typing import List
+
+class EnsembleModelRegistry:
+    def __init__(self, mlflow_uri: str, clearml_project: str):
+        mlflow.set_tracking_uri(mlflow_uri)
+        self.clearml_task = Task.init(project_name=clearml_project, 
+                                     task_name="Ensemble_Registry")
+
+    def register_ensemble_model(self, constituent_models: List[str], 
+                               voting_strategy: str, weights: List[float]):
+        """Register ensemble model with full provenance tracking"""
+        with mlflow.start_run(run_name="ensemble_registration"):
+            # Log ensemble metadata
+            mlflow.log_params({
+                "ensemble_type": "voting_classifier",
+                "voting_strategy": voting_strategy,
+                "constituent_models": constituent_models,
+                "model_weights": weights
+            })
+
+            # Register with versioning and aliasing
+            ensemble_model = EnsembleWrapper(models=constituent_models, 
+                                           strategy=voting_strategy)
+
+            mlflow.pyfunc.log_model(
+                artifact_path="ensemble_model",
+                python_model=ensemble_model,
+                registered_model_name="production_ensemble",
+                signature=infer_signature(X_sample, predictions)
+            )
+
+            # Cross-register with ClearML for deployment
+            clearml_model = Model(uri=mlflow.get_artifact_uri("ensemble_model"))
+            clearml_model.publish()
+```
+
+**Architecture Benefits:**
+- "Provenance back to the encapsulated models needs to be maintained" with "a single artifact" that makes it "easy to debug and validate before the model gets placed in the registry".
+- **Version Control**: Automatic ensemble versioning with rollback capabilities.
+- **Metadata Tracking**: Complete lineage from constituent models to ensemble decisions.
+
+**Integration Points:**
+- **BentoML**: Load registered ensembles for serving.
+- **ClearML**: Automatic deployment triggers on model publication.
+- **Triton**: Model repository integration for high-performance serving.
+
+#### Multi-Model Pipeline Orchestration
+
+##### **Primary Solution: NVIDIA Triton Ensemble Models + BentoML Composition**
+
+Triton's ensemble scheduler handles ensemble models as specifications of "dataflow between models within the ensemble as ModelEnsembling::Step entries" where "the scheduler collects the output tensors in each step, provides them as input tensors for other steps according to the specification".
+
+**Implementation Approach:**
+
+**Triton Ensemble Configuration:**
+```python
+# config.pbtxt for ensemble model
+name: "committee_ensemble"
+platform: "ensemble"
+max_batch_size: 16
+
+input [
+  {
+    name: "input_text"
+    data_type: TYPE_STRING
+    dims: [ -1 ]
+  }
+]
+
+output [
+  {
+    name: "ensemble_prediction" 
+    data_type: TYPE_FP32
+    dims: [ -1 ]
+  },
+  {
+    name: "confidence_scores"
+    data_type: TYPE_FP32  
+    dims: [ -1 ]
+  }
+]
+
+ensemble_scheduling {
+  step [
+    {
+      model_name: "preprocessing_model"
+      model_version: -1
+      input_map {
+        key: "raw_input"
+        value: "input_text"
+      }
+      output_map {
+        key: "processed_input"
+        value: "preprocessed_data"
+      }
+    },
+    {
+      model_name: "gpt4_model"
+      model_version: -1
+      input_map {
+        key: "model_input" 
+        value: "preprocessed_data"
+      }
+      output_map {
+        key: "gpt4_output"
+        value: "gpt4_prediction"
+      }
+    },
+    {
+      model_name: "claude_model"
+      model_version: -1
+      input_map {
+        key: "model_input"
+        value: "preprocessed_data" 
+      }
+      output_map {
+        key: "claude_output"
+        value: "claude_prediction"
+      }
+    },
+    {
+      model_name: "voting_aggregator"
+      model_version: -1
+      input_map [
+        {
+          key: "prediction_1"
+          value: "gpt4_prediction"
+        },
+        {
+          key: "prediction_2"  
+          value: "claude_prediction"
+        }
+      ]
+      output_map [
+        {
+          key: "final_prediction"
+          value: "ensemble_prediction"
+        },
+        {
+          key: "confidence"
+          value: "confidence_scores"
+        }
+      ]
+    }
+  ]
+}
+```
+
+**BentoML Service Integration:**
+```python
+import bentoml
+from typing import List, Dict, Any
+import tritonclient.grpc as grpcclient
+import numpy as np
+
+@bentoml.service(
+    image=bentoml.images.Image(
+        python_version="3.11"
+    ).python_packages([
+        "torch", "transformers", "tritonclient[grpc]", "mlflow"
+    ]),
+    resources={"gpu": 2, "gpu_type": "nvidia-a100"}
+)
+class CommitteeEnsembleService:
+    """Advanced ensemble service with Triton integration"""
+
+    def __init__(self):
+        # Load ensemble configuration from MLflow
+        self.ensemble_config = mlflow.pyfunc.load_model("models:/committee_ensemble/production")
+
+        # Initialize Triton client for high-performance inference  
+        self.triton_client = grpcclient.InferenceServerClient(url="triton:8001")
+
+        # Load voting strategies
+        self.voting_strategies = {
+            "hard": self._hard_voting,
+            "soft": self._soft_voting, 
+            "confidence_weighted": self._confidence_weighted_voting,
+            "democratic_debate": self._democratic_debate_voting
+        }
+
+    @bentoml.api
+    async def ensemble_predict(self, 
+                             input_data: Dict[str, Any],
+                             voting_strategy: str = "confidence_weighted",
+                             require_consensus: bool = False) -> Dict[str, Any]:
+        """Main ensemble prediction endpoint"""
+
+        # Route to Triton ensemble for parallel model execution
+        triton_response = await self._triton_ensemble_inference(input_data)
+
+        # Apply voting strategy to aggregate results
+        voting_func = self.voting_strategies[voting_strategy]
+        ensemble_result = voting_func(triton_response)
+
+        # Check consensus requirements
+        if require_consensus and ensemble_result['confidence'] < 0.8:
+            # Trigger additional debate round
+            debate_result = await self._trigger_debate_round(input_data, triton_response)
+            return debate_result
+
+        return ensemble_result
+
+    async def _triton_ensemble_inference(self, input_data: Dict[str, Any]):
+        """Execute inference through Triton ensemble"""
+        # Prepare Triton inputs
+        inputs = []
+        inputs.append(grpcclient.InferInput("input_text", 
+                                           [1], "BYTES"))
+        inputs[0].set_data_from_numpy(np.array([input_data['text'].encode()]))
+
+        # Execute ensemble inference
+        response = await self.triton_client.infer(
+            model_name="committee_ensemble",
+            inputs=inputs
+        )
+
+        return {
+            'predictions': response.as_numpy("ensemble_prediction"),
+            'confidences': response.as_numpy("confidence_scores")
+        }
+```
+
+**Architecture Benefits:**
+- Triton's pipeline approach reduces overhead by eliminating intermediate tensor transfers and minimizing server requests.
+- BentoML enables "high performance inference APIs leveraging built-in serving optimization features like dynamic batching, model parallelism, multi-stage pipeline and multi-model inference-graph orchestration".
+- **Parallel Execution**: Multiple models run concurrently within Triton.
+- **Dynamic Batching**: Automatic request batching for efficiency.
+- **GPU Optimization**: Optimal GPU utilization across ensemble members.
+
+#### Democratic Voting & Consensus Mechanisms
+
+##### **Primary Solution: Scikit-learn VotingClassifier + Custom Multi-Agent Voting**
+
+Scikit-learn's VotingClassifier supports both "hard" voting using "predicted class labels for majority rule voting" and "soft" voting that "predicts the class label based on the argmax of the sums of the predicted probabilities, which is recommended for an ensemble of well-calibrated classifiers".
+
+**Implementation Approach:**
+
+**Enhanced Voting System:**
+```python
+from sklearn.ensemble import VotingClassifier
+import numpy as np
+from typing import List, Dict, Tuple, Any
+from enum import Enum
+import asyncio
+from datetime import datetime
+
+class VotingStrategy(Enum):
+    MAJORITY = "majority"
+    CONFIDENCE_WEIGHTED = "confidence_weighted"
+    DEMOCRATIC_DEBATE = "democratic_debate"
+    CONSENSUS_REQUIRED = "consensus_required"
+
+class AdvancedEnsembleVoting:
+    """
+    Advanced voting system implementing multiple democratic patterns
+    for AI ensemble decision making
+    """
+
+    def __init__(self, models: List[Any], strategy: VotingStrategy = VotingStrategy.CONFIDENCE_WEIGHTED):
+        self.models = models
+        self.strategy = strategy
+        self.vote_history = []
+
+        # Initialize sklearn voting classifier for baseline comparison
+        self.sklearn_voter = VotingClassifier(
+            estimators=[(f"model_{i}", model) for i, model in enumerate(models)],
+            voting='soft'  # Use probability-based soft voting
+        )
+
+    async def democratic_ensemble_predict(self, 
+                                        X: np.ndarray,
+                                        require_consensus: bool = False,
+                                        confidence_threshold: float = 0.8,
+                                        max_debate_rounds: int = 3) -> Dict[str, Any]:
+        """
+        Advanced prediction with democratic voting patterns
+        """
+
+        # Stage 1: Independent model predictions
+        individual_predictions = await self._gather_independent_predictions(X)
+
+        # Stage 2: Apply voting strategy
+        if self.strategy == VotingStrategy.MAJORITY:
+            result = self._majority_voting(individual_predictions)
+        elif self.strategy == VotingStrategy.CONFIDENCE_WEIGHTED:
+            result = self._confidence_weighted_voting(individual_predictions)
+        elif self.strategy == VotingStrategy.DEMOCRATIC_DEBATE:
+            result = await self._democratic_debate_voting(X, individual_predictions, max_debate_rounds)
+        elif self.strategy == VotingStrategy.CONSENSUS_REQUIRED:
+            result = await self._consensus_voting(X, individual_predictions, confidence_threshold)
+
+        # Stage 3: Validation and consensus checking
+        if require_consensus and result['confidence'] < confidence_threshold:
+            result = await self._escalate_to_debate(X, result, max_debate_rounds)
+
+        # Log voting decision for analysis
+        self._log_voting_decision(X, individual_predictions, result)
+
+        return result
+
+    async def _gather_independent_predictions(self, X: np.ndarray) -> List[Dict]:
+        """Gather predictions from all models independently"""
+
+        async def predict_single_model(model, X):
+            """Single model prediction with confidence estimation"""
+            try:
+                if hasattr(model, 'predict_proba'):
+                    probs = model.predict_proba(X)
+                    prediction = model.predict(X)
+                    confidence = np.max(probs, axis=1)
+                else:
+                    prediction = model.predict(X)
+                    confidence = np.ones(len(prediction)) * 0.5  # Default confidence
+
+                return {
+                    'model_id': id(model),
+                    'prediction': prediction,
+                    'confidence': confidence,
+                    'probabilities': probs if hasattr(model, 'predict_proba') else None,
+                    'reasoning': self._extract_reasoning(model, X) if hasattr(model, 'explain') else None
+                }
+            except Exception as e:
+                return {
+                    'model_id': id(model),
+                    'error': str(e),
+                    'prediction': None,
+                    'confidence': 0.0
+                }
+
+        # Execute all predictions concurrently
+        prediction_tasks = [predict_single_model(model, X) for model in self.models]
+        predictions = await asyncio.gather(*prediction_tasks, return_exceptions=True)
+
+        # Filter out failed predictions
+        valid_predictions = [p for p in predictions if isinstance(p, dict) and p.get('prediction') is not None]
+
+        return valid_predictions
+
+    def _confidence_weighted_voting(self, predictions: List[Dict]) -> Dict[str, Any]:
+        """
+        Confidence-weighted voting that gives more weight to confident predictions
+        """
+        if not predictions:
+            return {'prediction': None, 'confidence': 0.0, 'voting_method': 'confidence_weighted'}
+
+        # Extract predictions and confidences
+        pred_values = [p['prediction'] for p in predictions]
+        confidences = [p['confidence'] for p in predictions]
+
+        # Handle different prediction types
+        if isinstance(pred_values[0], np.ndarray):
+            # Multi-class predictions
+            weighted_probs = np.zeros((len(pred_values[0]), len(np.unique(pred_values[0]))))
+
+            for pred, conf in zip(pred_values, confidences):
+                for i, class_pred in enumerate(pred):
+                    weighted_probs[i, class_pred] += conf
+
+            final_prediction = np.argmax(weighted_probs, axis=1)
+            final_confidence = np.max(weighted_probs, axis=1) / len(predictions)
+
+        else:
+            # Single value predictions
+            weighted_sum = sum(pred * conf for pred, conf in zip(pred_values, confidences))
+            total_confidence = sum(confidences)
+
+            if total_confidence > 0:
+                final_prediction = weighted_sum / total_confidence
+                final_confidence = total_confidence / len(predictions)
+            else:
+                final_prediction = np.mean(pred_values)
+                final_confidence = 0.0
+
+        return {
+            'prediction': final_prediction,
+            'confidence': final_confidence,
+            'voting_method': 'confidence_weighted',
+            'individual_predictions': predictions,
+            'vote_distribution': self._calculate_vote_distribution(predictions)
+        }
+
+    async def _democratic_debate_voting(self, 
+                                      X: np.ndarray, 
+                                      initial_predictions: List[Dict],
+                                      max_rounds: int = 3) -> Dict[str, Any]:
+        """
+        Multi-agent debate pattern for consensus building
+        """
+        # This implements "multiple AI agents independently propose or evaluate solutions, and a coordinator agent aggregates their votes to make a final decision" mimicking "a council of experts: each agent offers a unique perspective, and collectively they often reach a better answer than any single agent alone"
+
+        debate_history = []
+        current_predictions = initial_predictions.copy()
+
+        for round_num in range(max_rounds):
+            # Stage 1: Present disagreements and evidence
+            disagreement_analysis = self._analyze_disagreements(current_predictions)
+
+            if disagreement_analysis['consensus_level'] > 0.8:
+                break  # Sufficient consensus reached
+
+            # Stage 2: Each agent provides reasoning for their position
+            debate_round = {
+                'round': round_num,
+                'arguments': [],
+                'rebuttals': []
+            }
+
+            for i, pred in enumerate(current_predictions):
+                # Generate argument for this model's position
+                argument = await self._generate_argument(
+                    model_id=pred['model_id'],
+                    position=pred['prediction'],
+                    evidence=X,
+                    opposing_views=[p for j, p in enumerate(current_predictions) if j != i]
+                )
+                debate_round['arguments'].append(argument)
+
+            # Stage 3: Allow models to revise predictions based on debate
+            revised_predictions = []
+            for i, model in enumerate(self.models):
+                revised_pred = await self._revise_prediction_after_debate(
+                    model=model,
+                    original_prediction=current_predictions[i],
+                    debate_context=debate_round,
+                    evidence=X
+                )
+                revised_predictions.append(revised_pred)
+
+            current_predictions = revised_predictions
+            debate_history.append(debate_round)
+
+        # Final aggregation after debate
+        final_result = self._confidence_weighted_voting(current_predictions)
+        final_result['debate_history'] = debate_history
+        final_result['voting_method'] = 'democratic_debate'
+        final_result['debate_rounds'] = len(debate_history)
+
+        return final_result
+
+    async def _generate_argument(self, 
+                               model_id: str,
+                               position: Any,
+                               evidence: np.ndarray,
+                               opposing_views: List[Dict]) -> Dict[str, Any]:
+        """Generate argument for a model's position in debate"""
+
+        # Analyze why this model's prediction differs
+        differences = []
+        for opposing in opposing_views:
+            if opposing['prediction'] != position:
+                difference = {
+                    'opposing_prediction': opposing['prediction'],
+                    'confidence_gap': abs(opposing['confidence'] - self._get_confidence_for_prediction(model_id, position)),
+                    'reasoning_conflict': self._compare_reasoning(model_id, opposing['model_id'], evidence)
+                }
+                differences.append(difference)
+
+        argument = {
+            'model_id': model_id,
+            'position': position,
+            'supporting_evidence': self._extract_supporting_evidence(model_id, position, evidence),
+            'confidence_justification': self._explain_confidence(model_id, position, evidence),
+            'counterarguments': differences,
+            'timestamp': datetime.now().isoformat()
+        }
+
+        return argument
+
+    def _calculate_vote_distribution(self, predictions: List[Dict]) -> Dict:
+        """Calculate vote distribution for analysis"""
+        if not predictions:
+            return {}
+        
+        unique_predictions = set(p['prediction'] for p in predictions if p['prediction'] is not None)
+        distribution = {}
+        
+        for pred in unique_predictions:
+            count = sum(1 for p in predictions if p['prediction'] == pred)
+            distribution[pred] = count / len(predictions)
+        
+        return distribution
+```
+
+**Architecture Benefits:**
+- Ensures "multiple independent analyses are considered before making a decision" analogous to "ensemble techniques in machine learning, where combining multiple models' outputs can yield more accurate and robust results than any single model alone".
+- **Transparency**: Complete voting audit trail and reasoning.
+- **Adaptive Consensus**: Dynamic adjustment based on confidence levels.
+- **Debate Integration**: Structured debate where "agents engage in a structured debate or discussion, exchanging arguments and iteratively improving their answers until a consensus is reached".
+
+#### Performance Monitoring & Analytics
+
+##### **Primary Solution: ClearML Serving + Prometheus + Grafana**
+
+ClearML serving "send serving statistics (count/latency) automatically to Prometheus, and Grafana can be used to visualize and create live dashboards" with "the default docker-compose installation is preconfigured with Prometheus and Grafana".
+
+**Implementation Approach:**
+
+**Comprehensive Monitoring Stack:**
+```python
+import prometheus_client
+from prometheus_client import Counter, Histogram, Gauge, Summary
+import time
+from typing import Dict, Any, List
+from dataclasses import dataclass
+import json
+import logging
+
+@dataclass
+class EnsembleMetrics:
+    """Ensemble-specific metrics tracking"""
+    ensemble_requests: Counter
+    ensemble_latency: Histogram  
+    model_agreement: Gauge
+    confidence_distribution: Histogram
+    voting_strategy_usage: Counter
+    consensus_failures: Counter
+    debate_rounds: Histogram
+    model_performance: Dict[str, Gauge]
+
+class EnsembleMonitoringService:
+    """Comprehensive monitoring for ensemble AI systems"""
+
+    def __init__(self, service_name: str = "committee_ensemble"):
+        self.service_name = service_name
+        self.setup_prometheus_metrics()
+        self.setup_logging()
+
+    def setup_prometheus_metrics(self):
+        """Initialize Prometheus metrics for ensemble monitoring"""
+
+        self.metrics = EnsembleMetrics(
+            ensemble_requests=Counter(
+                'ensemble_requests_total', 
+                'Total ensemble prediction requests',
+                ['voting_strategy', 'consensus_required', 'status']
+            ),
+
+            ensemble_latency=Histogram(
+                'ensemble_prediction_duration_seconds',
+                'Time spent on ensemble predictions',
+                ['voting_strategy', 'model_count'],
+                buckets=[0.1, 0.5, 1.0, 2.0, 5.0, 10.0]
+            ),
+
+            model_agreement=Gauge(
+                'ensemble_model_agreement_ratio',
+                'Ratio of models agreeing on prediction',
+                ['prediction_type']
+            ),
+
+            confidence_distribution=Histogram(
+                'ensemble_confidence_distribution',
+                'Distribution of ensemble confidence scores',
+                ['voting_strategy'],
+                buckets=[0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]
+            ),
+
+            voting_strategy_usage=Counter(
+                'voting_strategy_usage_total',
+                'Usage count per voting strategy',
+                ['strategy', 'success']
+            ),
+
+            consensus_failures=Counter(
+                'consensus_failures_total',
+                'Count of consensus failures requiring escalation',
+                ['reason', 'resolution_method']
+            ),
+
+            debate_rounds=Histogram(
+                'debate_rounds_distribution', 
+                'Distribution of debate rounds needed for consensus',
+                buckets=[0, 1, 2, 3, 4, 5, 10]
+            ),
+
+            model_performance={}
+        )
+
+        # Initialize per-model performance metrics
+        for model_id in self.get_registered_models():
+            self.metrics.model_performance[model_id] = Gauge(
+                f'model_{model_id}_performance_score',
+                f'Performance score for model {model_id}',
+                ['metric_type']
+            )
+
+    async def track_ensemble_request(self,
+                                   voting_strategy: str,
+                                   model_count: int,
+                                   consensus_required: bool,
+                                   execution_func: callable) -> Dict[str, Any]:
+        """Track ensemble request with comprehensive metrics"""
+
+        start_time = time.time()
+        status = "success"
+
+        try:
+            # Execute the ensemble prediction
+            result = await execution_func()
+
+            # Track success metrics
+            self.metrics.ensemble_requests.labels(
+                voting_strategy=voting_strategy,
+                consensus_required=str(consensus_required),
+                status=status
+            ).inc()
+
+            # Track performance metrics
+            self._track_performance_metrics(result, voting_strategy)
+
+            return result
+
+        except Exception as e:
+            status = "error"
+            self.metrics.ensemble_requests.labels(
+                voting_strategy=voting_strategy,
+                consensus_required=str(consensus_required), 
+                status=status
+            ).inc()
+            raise
+
+        finally:
+            # Track latency regardless of success/failure
+            duration = time.time() - start_time
+            self.metrics.ensemble_latency.labels(
+                voting_strategy=voting_strategy,
+                model_count=str(model_count)
+            ).observe(duration)
+
+    def _track_performance_metrics(self, result: Dict[str, Any], voting_strategy: str):
+        """Track detailed performance metrics from ensemble result"""
+
+        # Track confidence distribution
+        if 'confidence' in result:
+            self.metrics.confidence_distribution.labels(
+                voting_strategy=voting_strategy
+            ).observe(result['confidence'])
+
+        # Track model agreement
+        if 'vote_distribution' in result:
+            agreement_ratio = self._calculate_agreement_ratio(result['vote_distribution'])
+            self.metrics.model_agreement.labels(
+                prediction_type=result.get('prediction_type', 'unknown')
+            ).set(agreement_ratio)
+
+        # Track voting strategy success
+        self.metrics.voting_strategy_usage.labels(
+            strategy=voting_strategy,
+            success=str(result.get('confidence', 0.0) > 0.5)
+        ).inc()
+
+        # Track debate metrics if available
+        if 'debate_rounds' in result:
+            self.metrics.debate_rounds.observe(result['debate_rounds'])
+
+        # Track consensus failures
+        if result.get('consensus_failed'):
+            self.metrics.consensus_failures.labels(
+                reason=result.get('failure_reason', 'unknown'),
+                resolution_method=result.get('resolution_method', 'unknown')
+            ).inc()
+
+    def _calculate_agreement_ratio(self, vote_distribution: Dict) -> float:
+        """Calculate model agreement ratio from vote distribution"""
+        if not vote_distribution:
+            return 0.0
+        
+        max_votes = max(vote_distribution.values())
+        total_votes = sum(vote_distribution.values())
+        return max_votes / total_votes if total_votes > 0 else 0.0
+
+    def setup_logging(self):
+        """Setup structured logging for ensemble operations"""
+        logging.basicConfig(
+            level=logging.INFO,
+            format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+        )
+        self.logger = logging.getLogger(__name__)
+
+    def get_registered_models(self) -> List[str]:
+        """Get list of registered model IDs (placeholder)"""
+        # In production, this would query the model registry
+        return ['model_1', 'model_2', 'model_3']
+```
+
+**Custom ClearML Serving Integration:**
+```python
+# ClearML Serving custom metrics integration
+import clearml_serving
+
+class EnsembleClearMLMetrics:
+    """Integration with ClearML Serving metrics system"""
+
+    def __init__(self, service_id: str):
+        self.service_id = service_id
+        self.setup_custom_metrics()
+
+    def setup_custom_metrics(self):
+        """Setup ensemble-specific metrics in ClearML Serving"""
+
+        # Custom scalar metrics for ensemble performance
+        clearml_serving.metrics_add(
+            service_id=self.service_id,
+            endpoint="committee_ensemble",
+            variable_scalar={
+                "ensemble_confidence": "0.0,0.1,0.5,0.75,0.9,1.0",
+                "model_agreement_ratio": "0.0,0.1,0.3,0.5,0.7,0.9,1.0", 
+                "debate_effectiveness": "0.0,0.2,0.4,0.6,0.8,1.0"
+            },
+            variable_enum={
+                "voting_strategy": ["majority", "confidence_weighted", "democratic_debate"],
+                "consensus_outcome": ["achieved", "failed", "escalated"]
+            }
+        )
+```
+
+**Architecture Benefits:**
+- **Real-time Monitoring**: Live dashboards for ensemble performance.
+- **Detailed Analytics**: Model-level and ensemble-level metrics.
+- Support for "many custom metrics on the input/predictions of your models" with CLI-based metric configuration.
+- **Alerting**: Automated alerts on consensus failures or performance degradation.
+
+#### Auto-scaling & Load Balancing
+
+##### **Primary Solution: BentoML + ClearML Serving Canary Deployment**
+
+BentoML provides "scalability" with "features like dynamic batching and adaptive micro-batching to handle production-scale traffic efficiently".
+
+**Implementation Approach:**
+
+**Dynamic Scaling Configuration:**
+```python
+import bentoml
+from bentoml.io import JSON, Image, Text
+import asyncio
+from typing import Dict, Any, Optional, List
+import os
+
+@bentoml.service(
+    name="committee-ensemble-autoscale",
+    image=bentoml.images.Image(
+        python_version="3.11"
+    ).python_packages([
+        "torch", "transformers", "prometheus-client", "clearml-serving"
+    ]),
+    resources={
+        "gpu": 2,
+        "gpu_type": "nvidia-a100",
+        "memory": "32Gi"
+    },
+    scaling={
+        "min_replicas": 1,
+        "max_replicas": 10,
+        "target_cpu_utilization": 70,
+        "target_gpu_utilization": 80,
+        "scale_up_threshold": 0.8,
+        "scale_down_threshold": 0.3,
+        "scale_up_cooldown": 60,  # seconds
+        "scale_down_cooldown": 300
+    }
+)
+class AutoScalingEnsembleService:
+    """Auto-scaling ensemble service with intelligent load balancing"""
+
+    def __init__(self):
+        self.model_pool = ModelPool()
+        self.load_balancer = IntelligentLoadBalancer()
+        self.performance_monitor = PerformanceMonitor()
+
+        # Initialize adaptive batching
+        self.batch_processor = AdaptiveBatchProcessor(
+            max_batch_size=32,
+            max_wait_time_ms=100,
+            target_batch_utilization=0.8
+        )
+
+    @bentoml.api(
+        input_schema=JSON(),
+        output_schema=JSON(),
+        route="/predict",
+        batchable=True
+    )
+    async def ensemble_predict_batch(self, 
+                                   requests: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+        """Batched ensemble prediction with intelligent routing"""
+
+        # Route requests based on current load and model availability
+        routing_decisions = await self.load_balancer.route_batch(requests)
+
+        # Execute predictions with optimal resource utilization
+        results = await self._execute_batched_predictions(routing_decisions)
+
+        # Update performance metrics for auto-scaling decisions
+        self.performance_monitor.update_batch_metrics(requests, results)
+
+        return results
+
+    async def _execute_batched_predictions(self, 
+                                         routing_decisions: List[Dict]) -> List[Dict[str, Any]]:
+        """Execute predictions with dynamic model allocation"""
+
+        # Group requests by assigned model configuration
+        model_groups = self._group_by_model_config(routing_decisions)
+
+        # Execute each group with optimal batching
+        execution_tasks = []
+        for model_config, batch_requests in model_groups.items():
+            task = self._execute_model_batch(model_config, batch_requests)
+            execution_tasks.append(task)
+
+        # Wait for all batches to complete
+        batch_results = await asyncio.gather(*execution_tasks)
+
+        # Merge results back to original order
+        return self._merge_batch_results(batch_results, routing_decisions)
+
+class IntelligentLoadBalancer:
+    """Intelligent load balancer for ensemble models"""
+
+    def __init__(self):
+        self.model_loads = {}
+        self.performance_history = {}
+        self.routing_strategies = {
+            'round_robin': self._round_robin_routing,
+            'least_connections': self._least_connections_routing,
+            'performance_weighted': self._performance_weighted_routing,
+            'adaptive': self._adaptive_routing
+        }
+
+    async def route_batch(self, requests: List[Dict]) -> List[Dict]:
+        """Route batch of requests to optimal model configurations"""
+
+        routing_decisions = []
+
+        for request in requests:
+            # Analyze request characteristics
+            request_profile = self._analyze_request(request)
+
+            # Select optimal routing strategy based on current conditions
+            strategy = self._select_routing_strategy(request_profile)
+
+            # Route request using selected strategy  
+            routing_decision = await self.routing_strategies[strategy](request, request_profile)
+            routing_decisions.append(routing_decision)
+
+        return routing_decisions
+
+    def _adaptive_routing(self, request: Dict, profile: Dict) -> Dict:
+        """Adaptive routing based on real-time performance data"""
+
+        # Consider multiple factors for routing decision
+        factors = {
+            'current_load': self._get_current_loads(),
+            'model_performance': self._get_model_performance_scores(),
+            'request_complexity': profile.get('complexity', 0.5),
+            'latency_requirements': profile.get('max_latency', float('inf')),
+            'quality_requirements': profile.get('min_quality', 0.0)
+        }
+
+        # Score each available model configuration
+        model_scores = {}
+        for model_config in self._get_available_models():
+            score = self._calculate_routing_score(model_config, factors)
+            model_scores[model_config] = score
+
+        # Select best model configuration
+        best_model = max(model_scores, key=model_scores.get)
+
+        return {
+            'request': request,
+            'assigned_model': best_model,
+            'routing_score': model_scores[best_model],
+            'routing_strategy': 'adaptive',
+            'factors_considered': factors
+        }
+
+# ClearML Serving Canary Deployment Integration
+class CanaryDeploymentManager:
+    """Manage canary deployments for ensemble model updates"""
+
+    def __init__(self, service_id: str):
+        self.service_id = service_id
+        self.canary_configs = {}
+
+    async def deploy_ensemble_canary(self, 
+                                   ensemble_version: str,
+                                   traffic_split: float = 0.1,
+                                   success_criteria: Dict = None):
+        """Deploy new ensemble version with canary traffic splitting"""
+
+        # ClearML Serving supports canary deployments that "always split the load between the last two deployed models" with automatic traffic distribution updates when "a new model endpoint version" is added
+
+        # Configure canary endpoint with traffic splitting
+        canary_config = {
+            "endpoint": f"ensemble_canary_{ensemble_version}",
+            "weights": [1.0 - traffic_split, traffic_split],  # [production, canary]
+            "success_criteria": success_criteria or {
+                "min_requests": 1000,
+                "max_error_rate": 0.01,
+                "min_performance_ratio": 0.95
+            }
+        }
+
+        # Deploy using ClearML Serving CLI
+        await self._execute_canary_deployment(canary_config)
+
+        # Monitor canary performance
+        monitoring_task = asyncio.create_task(
+            self._monitor_canary_performance(canary_config)
+        )
+
+        return {
+            "canary_endpoint": canary_config["endpoint"],
+            "traffic_split": traffic_split,
+            "monitoring_task": monitoring_task
+        }
+
+    async def _monitor_canary_performance(self, canary_config: Dict):
+        """Monitor canary deployment and auto-promote or rollback"""
+
+        monitoring_duration = 3600  # 1 hour
+        check_interval = 300  # 5 minutes
+
+        for _ in range(monitoring_duration // check_interval):
+            await asyncio.sleep(check_interval)
+
+            # Gather performance metrics
+            metrics = await self._gather_canary_metrics(canary_config["endpoint"])
+
+            # Check success criteria
+            if self._evaluate_canary_success(metrics, canary_config["success_criteria"]):
+                await self._promote_canary(canary_config)
+                return "promoted"
+
+            # Check failure criteria
+            if self._evaluate_canary_failure(metrics, canary_config["success_criteria"]):
+                await self._rollback_canary(canary_config)
+                return "rolled_back"
+
+        # Manual review required if no automatic decision
+        return "manual_review_required"
+```
+
+**Architecture Benefits:**
+- **Intelligent Auto-scaling**: Based on real-time performance metrics.
+- **Risk Mitigation**: Gradual traffic shifting with automatic distribution updates when new versions are deployed.
+- **Performance Optimization**: Adaptive routing based on model performance.
+- **Zero-downtime Deployments**: Seamless model updates with traffic splitting.
+
+<#0.5#>
+
+### Integration Challenges & Solutions
+
+#### **Framework Version Compatibility**
+
+**Challenge**: Triton version compatibility issues where "Triton only serves TensorRT model binaries that are compiled for exactly its own version and nothing else. No backwards compatibility. ONNX versions are tied in lockstep to TensorRT versions to ensure compatibility".
+
+**Solution**: 
+- Containerized deployment with pinned versions.
+- Automated compatibility checking in CI/CD pipelines.  
+- Version matrix testing for all framework combinations.
+
+#### **Multi-framework Data Format Consistency**
+
+**Challenge**: Different serialization formats between MLflow, BentoML, and Triton.
+
+**Solution:**
+```python
+class UniversalModelWrapper:
+    """Universal wrapper for consistent model interfaces across frameworks"""
+
+    def __init__(self, model_source: str, framework: str):
+        self.framework = framework
+        self.model = self._load_model(model_source, framework)
+        self.preprocessor = self._get_preprocessor()
+        self.postprocessor = self._get_postprocessor()
+
+    def predict(self, inputs: Any) -> Any:
+        """Unified prediction interface"""
+        processed_inputs = self.preprocessor(inputs)
+
+        if self.framework == 'triton':
+            return self._triton_predict(processed_inputs)
+        elif self.framework == 'bentoml':
+            return self._bentoml_predict(processed_inputs)
+        elif self.framework == 'mlflow':
+            return self._mlflow_predict(processed_inputs)
+
+        return self.postprocessor(raw_outputs)
+```
+
+#### **Distributed Consensus at Scale**
+
+**Challenge**: Democratic debate patterns can be "powerful for complex problems" but require "careful design to ensure the debate remains productive and concludes in a reasonable time".
+
+**Solution:**
+- Timeout-based consensus with fallback to voting.
+- Hierarchical debate with escalation protocols.
+- Caching of debate outcomes for similar requests.
+
+<#0.5#>
+
+### Phased Implementation Approach
+
+#### **Phase 1: Foundation (Weeks 1-4)**
+- Set up MLflow Model Registry with basic ensemble support.
+- Implement BentoML services for individual model serving.
+- Deploy Prometheus + Grafana monitoring.
+
+#### **Phase 2: Basic Ensemble (Weeks 5-8)**
+- Implement scikit-learn VotingClassifier integration.
+- Deploy Triton Inference Server with simple ensemble models.
+- Add basic performance tracking and metrics.
+
+#### **Phase 3: Advanced Voting (Weeks 9-12)**
+- Implement custom democratic voting patterns.
+- Add multi-agent debate capabilities.
+- Integrate ClearML Serving for advanced deployments.
+
+#### **Phase 4: Production Optimization (Weeks 13-16)**
+- Implement auto-scaling and load balancing.
+- Deploy canary deployment system.
+- Add comprehensive monitoring and alerting.
+- Performance optimization and tuning.
+
+#### **Phase 5: Enterprise Features (Weeks 17-20)**
+- Add advanced consensus mechanisms.
+- Implement sophisticated routing algorithms.  
+- Integration with enterprise authentication/authorization.
+- Advanced analytics and reporting.
+
+This implementation approach provides a comprehensive solution for building a production-ready Model Ensemble Agent using the best capabilities from each framework while addressing integration challenges and providing a clear path to deployment.
+
+---
+
+<#0.5#>
+
+#### Multi-Model Pipeline Orchestration
+
+##### **Primary Solution: NVIDIA Triton Ensemble Models + BentoML Composition**
+
+Triton's ensemble scheduler handles ensemble models as specifications of "dataflow between models within the ensemble as ModelEnsembling::Step entries" where "the scheduler collects the output tensors in each step, provides them as input tensors for other steps according to the specification".
+
+**Implementation Approach:**
+
+**Triton Ensemble Configuration:**
+```python
+# config.pbtxt for ensemble model
+name: "committee_ensemble"
+platform: "ensemble"
+max_batch_size: 16
+
+input [
+  {
+    name: "input_text"
+    data_type: TYPE_STRING
+    dims: [ -1 ]
+  }
+]
+
+output [
+  {
+    name: "ensemble_prediction" 
+    data_type: TYPE_FP32
+    dims: [ -1 ]
+  },
+  {
+    name: "confidence_scores"
+    data_type: TYPE_FP32  
+    dims: [ -1 ]
+  }
+]
+
+ensemble_scheduling {
+  step [
+    {
+      model_name: "preprocessing_model"
+      model_version: -1
+      input_map {
+        key: "raw_input"
+        value: "input_text"
+      }
+      output_map {
+        key: "processed_input"
+        value: "preprocessed_data"
+      }
+    },
+    {
+      model_name: "gpt4_model"
+      model_version: -1
+      input_map {
+        key: "model_input" 
+        value: "preprocessed_data"
+      }
+      output_map {
+        key: "gpt4_output"
+        value: "gpt4_prediction"
+      }
+    },
+    {
+      model_name: "claude_model"
+      model_version: -1
+      input_map {
+        key: "model_input"
+        value: "preprocessed_data" 
+      }
+      output_map {
+        key: "claude_output"
+        value: "claude_prediction"
+      }
+    },
+    {
+      model_name: "voting_aggregator"
+      model_version: -1
+      input_map [
+        {
+          key: "prediction_1"
+          value: "gpt4_prediction"
+        },
+        {
+          key: "prediction_2"  
+          value: "claude_prediction"
+        }
+      ]
+      output_map [
+        {
+          key: "final_prediction"
+          value: "ensemble_prediction"
+        },
+        {
+          key: "confidence"
+          value: "confidence_scores"
+        }
+      ]
+    }
+  ]
+}
+```
+
+**BentoML Service Integration:**
+```python
+import bentoml
+from typing import List, Dict, Any
+import tritonclient.grpc as grpcclient
+import numpy as np
+
+@bentoml.service(
+    image=bentoml.images.Image(
+        python_version="3.11"
+    ).python_packages([
+        "torch", "transformers", "tritonclient[grpc]", "mlflow"
+    ]),
+    resources={"gpu": 2, "gpu_type": "nvidia-a100"}
+)
+class CommitteeEnsembleService:
+    """Advanced ensemble service with Triton integration"""
+
+    def __init__(self):
+        # Load ensemble configuration from MLflow
+        self.ensemble_config = mlflow.pyfunc.load_model("models:/committee_ensemble/production")
+
+        # Initialize Triton client for high-performance inference  
+        self.triton_client = grpcclient.InferenceServerClient(url="triton:8001")
+
+        # Load voting strategies
+        self.voting_strategies = {
+            "hard": self._hard_voting,
+            "soft": self._soft_voting, 
+            "confidence_weighted": self._confidence_weighted_voting,
+            "democratic_debate": self._democratic_debate_voting
+        }
+
+    @bentoml.api
+    async def ensemble_predict(self, 
+                             input_data: Dict[str, Any],
+                             voting_strategy: str = "confidence_weighted",
+                             require_consensus: bool = False) -> Dict[str, Any]:
+        """Main ensemble prediction endpoint"""
+
+        # Route to Triton ensemble for parallel model execution
+        triton_response = await self._triton_ensemble_inference(input_data)
+
+        # Apply voting strategy to aggregate results
+        voting_func = self.voting_strategies[voting_strategy]
+        ensemble_result = voting_func(triton_response)
+
+        # Check consensus requirements
+        if require_consensus and ensemble_result['confidence'] < 0.8:
+            # Trigger additional debate round
+            debate_result = await self._trigger_debate_round(input_data, triton_response)
+            return debate_result
+
+        return ensemble_result
+
+    async def _triton_ensemble_inference(self, input_data: Dict[str, Any]):
+        """Execute inference through Triton ensemble"""
+        # Prepare Triton inputs
+        inputs = []
+        inputs.append(grpcclient.InferInput("input_text", 
+                                           [1], "BYTES"))
+        inputs[0].set_data_from_numpy(np.array([input_data['text'].encode()]))
+
+        # Execute ensemble inference
+        response = await self.triton_client.infer(
+            model_name="committee_ensemble",
+            inputs=inputs
+        )
+
+        return {
+            'predictions': response.as_numpy("ensemble_prediction"),
+            'confidences': response.as_numpy("confidence_scores")
+        }
+```
+
+**Architecture Benefits:**
+- Triton's pipeline approach reduces overhead by eliminating intermediate tensor transfers and minimizing server requests.
+- BentoML enables "high performance inference APIs leveraging built-in serving optimization features like dynamic batching, model parallelism, multi-stage pipeline and multi-model inference-graph orchestration".
+- **Parallel Execution**: Multiple models run concurrently within Triton.
+- **Dynamic Batching**: Automatic request batching for efficiency.
+- **GPU Optimization**: Optimal GPU utilization across ensemble members.
+
+<#0.5#>
+
+#### Democratic Voting & Consensus Mechanisms
+
+##### **Primary Solution: Scikit-learn VotingClassifier + Custom Multi-Agent Voting**
+
+Scikit-learn's VotingClassifier supports both "hard" voting using "predicted class labels for majority rule voting" and "soft" voting that "predicts the class label based on the argmax of the sums of the predicted probabilities, which is recommended for an ensemble of well-calibrated classifiers".
+
+**Implementation Approach:**
+
+**Enhanced Voting System:**
+```python
+from sklearn.ensemble import VotingClassifier
+import numpy as np
+from typing import List, Dict, Tuple, Any
+from enum import Enum
+import asyncio
+from datetime import datetime
+
+class VotingStrategy(Enum):
+    MAJORITY = "majority"
+    CONFIDENCE_WEIGHTED = "confidence_weighted"
+    DEMOCRATIC_DEBATE = "democratic_debate"
+    CONSENSUS_REQUIRED = "consensus_required"
+
+class AdvancedEnsembleVoting:
+    """
+    Advanced voting system implementing multiple democratic patterns
+    for AI ensemble decision making
+    """
+
+    def __init__(self, models: List[Any], strategy: VotingStrategy = VotingStrategy.CONFIDENCE_WEIGHTED):
+        self.models = models
+        self.strategy = strategy
+        self.vote_history = []
+
+        # Initialize sklearn voting classifier for baseline comparison
+        self.sklearn_voter = VotingClassifier(
+            estimators=[(f"model_{i}", model) for i, model in enumerate(models)],
+            voting='soft'  # Use probability-based soft voting
+        )
+
+    async def democratic_ensemble_predict(self, 
+                                        X: np.ndarray,
+                                        require_consensus: bool = False,
+                                        confidence_threshold: float = 0.8,
+                                        max_debate_rounds: int = 3) -> Dict[str, Any]:
+        """
+        Advanced prediction with democratic voting patterns
+        """
+
+        # Stage 1: Independent model predictions
+        individual_predictions = await self._gather_independent_predictions(X)
+
+        # Stage 2: Apply voting strategy
+        if self.strategy == VotingStrategy.MAJORITY:
+            result = self._majority_voting(individual_predictions)
+        elif self.strategy == VotingStrategy.CONFIDENCE_WEIGHTED:
+            result = self._confidence_weighted_voting(individual_predictions)
+        elif self.strategy == VotingStrategy.DEMOCRATIC_DEBATE:
+            result = await self._democratic_debate_voting(X, individual_predictions, max_debate_rounds)
+        elif self.strategy == VotingStrategy.CONSENSUS_REQUIRED:
+            result = await self._consensus_voting(X, individual_predictions, confidence_threshold)
+
+        # Stage 3: Validation and consensus checking
+        if require_consensus and result['confidence'] < confidence_threshold:
+            result = await self._escalate_to_debate(X, result, max_debate_rounds)
+
+        # Log voting decision for analysis
+        self._log_voting_decision(X, individual_predictions, result)
+
+        return result
+
+    async def _gather_independent_predictions(self, X: np.ndarray) -> List[Dict]:
+        """Gather predictions from all models independently"""
+
+        async def predict_single_model(model, X):
+            """Single model prediction with confidence estimation"""
+            try:
+                if hasattr(model, 'predict_proba'):
+                    probs = model.predict_proba(X)
+                    prediction = model.predict(X)
+                    confidence = np.max(probs, axis=1)
+                else:
+                    prediction = model.predict(X)
+                    confidence = np.ones(len(prediction)) * 0.5  # Default confidence
+
+                return {
+                    'model_id': id(model),
+                    'prediction': prediction,
+                    'confidence': confidence,
+                    'probabilities': probs if hasattr(model, 'predict_proba') else None,
+                    'reasoning': self._extract_reasoning(model, X) if hasattr(model, 'explain') else None
+                }
+            except Exception as e:
+                return {
+                    'model_id': id(model),
+                    'error': str(e),
+                    'prediction': None,
+                    'confidence': 0.0
+                }
+
+        # Execute all predictions concurrently
+        prediction_tasks = [predict_single_model(model, X) for model in self.models]
+        predictions = await asyncio.gather(*prediction_tasks, return_exceptions=True)
+
+        # Filter out failed predictions
+        valid_predictions = [p for p in predictions if isinstance(p, dict) and p.get('prediction') is not None]
+
+        return valid_predictions
+
+    def _confidence_weighted_voting(self, predictions: List[Dict]) -> Dict[str, Any]:
+        """
+        Confidence-weighted voting that gives more weight to confident predictions
+        """
+        if not predictions:
+            return {'prediction': None, 'confidence': 0.0, 'voting_method': 'confidence_weighted'}
+
+        # Extract predictions and confidences
+        pred_values = [p['prediction'] for p in predictions]
+        confidences = [p['confidence'] for p in predictions]
+
+        # Handle different prediction types
+        if isinstance(pred_values[0], np.ndarray):
+            # Multi-class predictions
+            weighted_probs = np.zeros((len(pred_values[0]), len(np.unique(pred_values[0]))))
+
+            for pred, conf in zip(pred_values, confidences):
+                for i, class_pred in enumerate(pred):
+                    weighted_probs[i, class_pred] += conf
+
+            final_prediction = np.argmax(weighted_probs, axis=1)
+            final_confidence = np.max(weighted_probs, axis=1) / len(predictions)
+
+        else:
+            # Single value predictions
+            weighted_sum = sum(pred * conf for pred, conf in zip(pred_values, confidences))
+            total_confidence = sum(confidences)
+
+            if total_confidence > 0:
+                final_prediction = weighted_sum / total_confidence
+                final_confidence = total_confidence / len(predictions)
+            else:
+                final_prediction = np.mean(pred_values)
+                final_confidence = 0.0
+
+        return {
+            'prediction': final_prediction,
+            'confidence': final_confidence,
+            'voting_method': 'confidence_weighted',
+            'individual_predictions': predictions,
+            'vote_distribution': self._calculate_vote_distribution(predictions)
+        }
+
+    async def _democratic_debate_voting(self, 
+                                      X: np.ndarray, 
+                                      initial_predictions: List[Dict],
+                                      max_rounds: int = 3) -> Dict[str, Any]:
+        """
+        Multi-agent debate pattern for consensus building
+        """
+        # This implements "multiple AI agents independently propose or evaluate solutions, and a coordinator agent aggregates their votes to make a final decision" mimicking "a council of experts: each agent offers a unique perspective, and collectively they often reach a better answer than any single agent alone"
+
+        debate_history = []
+        current_predictions = initial_predictions.copy()
+
+        for round_num in range(max_rounds):
+            # Stage 1: Present disagreements and evidence
+            disagreement_analysis = self._analyze_disagreements(current_predictions)
+
+            if disagreement_analysis['consensus_level'] > 0.8:
+                break  # Sufficient consensus reached
+
+            # Stage 2: Each agent provides reasoning for their position
+            debate_round = {
+                'round': round_num,
+                'arguments': [],
+                'rebuttals': []
+            }
+
+            for i, pred in enumerate(current_predictions):
+                # Generate argument for this model's position
+                argument = await self._generate_argument(
+                    model_id=pred['model_id'],
+                    position=pred['prediction'],
+                    evidence=X,
+                    opposing_views=[p for j, p in enumerate(current_predictions) if j != i]
+                )
+                debate_round['arguments'].append(argument)
+
+            # Stage 3: Allow models to revise predictions based on debate
+            revised_predictions = []
+            for i, model in enumerate(self.models):
+                revised_pred = await self._revise_prediction_after_debate(
+                    model=model,
+                    original_prediction=current_predictions[i],
+                    debate_context=debate_round,
+                    evidence=X
+                )
+                revised_predictions.append(revised_pred)
+
+            current_predictions = revised_predictions
+            debate_history.append(debate_round)
+
+        # Final aggregation after debate
+        final_result = self._confidence_weighted_voting(current_predictions)
+        final_result['debate_history'] = debate_history
+        final_result['voting_method'] = 'democratic_debate'
+        final_result['debate_rounds'] = len(debate_history)
+
+        return final_result
+
+    async def _generate_argument(self, 
+                               model_id: str,
+                               position: Any,
+                               evidence: np.ndarray,
+                               opposing_views: List[Dict]) -> Dict[str, Any]:
+        """Generate argument for a model's position in debate"""
+
+        # Analyze why this model's prediction differs
+        differences = []
+        for opposing in opposing_views:
+            if opposing['prediction'] != position:
+                difference = {
+                    'opposing_prediction': opposing['prediction'],
+                    'confidence_gap': abs(opposing['confidence'] - self._get_confidence_for_prediction(model_id, position)),
+                    'reasoning_conflict': self._compare_reasoning(model_id, opposing['model_id'], evidence)
+                }
+                differences.append(difference)
+
+        argument = {
+            'model_id': model_id,
+            'position': position,
+            'supporting_evidence': self._extract_supporting_evidence(model_id, position, evidence),
+            'confidence_justification': self._explain_confidence(model_id, position, evidence),
+            'counterarguments': differences,
+            'timestamp': datetime.now().isoformat()
+        }
+
+        return argument
+
+    def _calculate_vote_distribution(self, predictions: List[Dict]) -> Dict:
+        """Calculate vote distribution for analysis"""
+        if not predictions:
+            return {}
+        
+        unique_predictions = set(p['prediction'] for p in predictions if p['prediction'] is not None)
+        distribution = {}
+        
+        for pred in unique_predictions:
+            count = sum(1 for p in predictions if p['prediction'] == pred)
+            distribution[pred] = count / len(predictions)
+        
+        return distribution
+```
+
+**Architecture Benefits:**
+- Ensures "multiple independent analyses are considered before making a decision" analogous to "ensemble techniques in machine learning, where combining multiple models' outputs can yield more accurate and robust results than any single model alone".
+- **Transparency**: Complete voting audit trail and reasoning.
+- **Adaptive Consensus**: Dynamic adjustment based on confidence levels.
+- **Debate Integration**: Structured debate where "agents engage in a structured debate or discussion, exchanging arguments and iteratively improving their answers until a consensus is reached".
+
+<#0.5#>
+
+#### Performance Monitoring & Analytics
+
+##### **Primary Solution: ClearML Serving + Prometheus + Grafana**
+
+ClearML serving "send serving statistics (count/latency) automatically to Prometheus, and Grafana can be used to visualize and create live dashboards" with "the default docker-compose installation is preconfigured with Prometheus and Grafana".
+
+**Implementation Approach:**
+
+**Comprehensive Monitoring Stack:**
+```python
+import prometheus_client
+from prometheus_client import Counter, Histogram, Gauge, Summary
+import time
+from typing import Dict, Any, List
+from dataclasses import dataclass
+import json
+import logging
+
+@dataclass
+class EnsembleMetrics:
+    """Ensemble-specific metrics tracking"""
+    ensemble_requests: Counter
+    ensemble_latency: Histogram  
+    model_agreement: Gauge
+    confidence_distribution: Histogram
+    voting_strategy_usage: Counter
+    consensus_failures: Counter
+    debate_rounds: Histogram
+    model_performance: Dict[str, Gauge]
+
+class EnsembleMonitoringService:
+    """Comprehensive monitoring for ensemble AI systems"""
+
+    def __init__(self, service_name: str = "committee_ensemble"):
+        self.service_name = service_name
+        self.setup_prometheus_metrics()
+        self.setup_logging()
+
+    def setup_prometheus_metrics(self):
+        """Initialize Prometheus metrics for ensemble monitoring"""
+
+        self.metrics = EnsembleMetrics(
+            ensemble_requests=Counter(
+                'ensemble_requests_total', 
+                'Total ensemble prediction requests',
+                ['voting_strategy', 'consensus_required', 'status']
+            ),
+
+            ensemble_latency=Histogram(
+                'ensemble_prediction_duration_seconds',
+                'Time spent on ensemble predictions',
+                ['voting_strategy', 'model_count'],
+                buckets=[0.1, 0.5, 1.0, 2.0, 5.0, 10.0]
+            ),
+
+            model_agreement=Gauge(
+                'ensemble_model_agreement_ratio',
+                'Ratio of models agreeing on prediction',
+                ['prediction_type']
+            ),
+
+            confidence_distribution=Histogram(
+                'ensemble_confidence_distribution',
+                'Distribution of ensemble confidence scores',
+                ['voting_strategy'],
+                buckets=[0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]
+            ),
+
+            voting_strategy_usage=Counter(
+                'voting_strategy_usage_total',
+                'Usage count per voting strategy',
+                ['strategy', 'success']
+            ),
+
+            consensus_failures=Counter(
+                'consensus_failures_total',
+                'Count of consensus failures requiring escalation',
+                ['reason', 'resolution_method']
+            ),
+
+            debate_rounds=Histogram(
+                'debate_rounds_distribution', 
+                'Distribution of debate rounds needed for consensus',
+                buckets=[0, 1, 2, 3, 4, 5, 10]
+            ),
+
+            model_performance={}
+        )
+
+        # Initialize per-model performance metrics
+        for model_id in self.get_registered_models():
+            self.metrics.model_performance[model_id] = Gauge(
+                f'model_{model_id}_performance_score',
+                f'Performance score for model {model_id}',
+                ['metric_type']
+            )
+
+    async def track_ensemble_request(self,
+                                   voting_strategy: str,
+                                   model_count: int,
+                                   consensus_required: bool,
+                                   execution_func: callable) -> Dict[str, Any]:
+        """Track ensemble request with comprehensive metrics"""
+
+        start_time = time.time()
+        status = "success"
+
+        try:
+            # Execute the ensemble prediction
+            result = await execution_func()
+
+            # Track success metrics
+            self.metrics.ensemble_requests.labels(
+                voting_strategy=voting_strategy,
+                consensus_required=str(consensus_required),
+                status=status
+            ).inc()
+
+            # Track performance metrics
+            self._track_performance_metrics(result, voting_strategy)
+
+            return result
+
+        except Exception as e:
+            status = "error"
+            self.metrics.ensemble_requests.labels(
+                voting_strategy=voting_strategy,
+                consensus_required=str(consensus_required), 
+                status=status
+            ).inc()
+            raise
+
+        finally:
+            # Track latency regardless of success/failure
+            duration = time.time() - start_time
+            self.metrics.ensemble_latency.labels(
+                voting_strategy=voting_strategy,
+                model_count=str(model_count)
+            ).observe(duration)
+
+    def _track_performance_metrics(self, result: Dict[str, Any], voting_strategy: str):
+        """Track detailed performance metrics from ensemble result"""
+
+        # Track confidence distribution
+        if 'confidence' in result:
+            self.metrics.confidence_distribution.labels(
+                voting_strategy=voting_strategy
+            ).observe(result['confidence'])
+
+        # Track model agreement
+        if 'vote_distribution' in result:
+            agreement_ratio = self._calculate_agreement_ratio(result['vote_distribution'])
+            self.metrics.model_agreement.labels(
+                prediction_type=result.get('prediction_type', 'unknown')
+            ).set(agreement_ratio)
+
+        # Track voting strategy success
+        self.metrics.voting_strategy_usage.labels(
+            strategy=voting_strategy,
+            success=str(result.get('confidence', 0.0) > 0.5)
+        ).inc()
+
+        # Track debate metrics if available
+        if 'debate_rounds' in result:
+            self.metrics.debate_rounds.observe(result['debate_rounds'])
+
+        # Track consensus failures
+        if result.get('consensus_failed'):
+            self.metrics.consensus_failures.labels(
+                reason=result.get('failure_reason', 'unknown'),
+                resolution_method=result.get('resolution_method', 'unknown')
+            ).inc()
+
+    def _calculate_agreement_ratio(self, vote_distribution: Dict) -> float:
+        """Calculate model agreement ratio from vote distribution"""
+        if not vote_distribution:
+            return 0.0
+        
+        max_votes = max(vote_distribution.values())
+        total_votes = sum(vote_distribution.values())
+        return max_votes / total_votes if total_votes > 0 else 0.0
+
+    def setup_logging(self):
+        """Setup structured logging for ensemble operations"""
+        logging.basicConfig(
+            level=logging.INFO,
+            format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+        )
+        self.logger = logging.getLogger(__name__)
+
+    def get_registered_models(self) -> List[str]:
+        """Get list of registered model IDs (placeholder)"""
+        # In production, this would query the model registry
+        return ['model_1', 'model_2', 'model_3']
+```
+
+**Custom ClearML Serving Integration:**
+```python
+# ClearML Serving custom metrics integration
+import clearml_serving
+
+class EnsembleClearMLMetrics:
+    """Integration with ClearML Serving metrics system"""
+
+    def __init__(self, service_id: str):
+        self.service_id = service_id
+        self.setup_custom_metrics()
+
+    def setup_custom_metrics(self):
+        """Setup ensemble-specific metrics in ClearML Serving"""
+
+        # Custom scalar metrics for ensemble performance
+        clearml_serving.metrics_add(
+            service_id=self.service_id,
+            endpoint="committee_ensemble",
+            variable_scalar={
+                "ensemble_confidence": "0.0,0.1,0.5,0.75,0.9,1.0",
+                "model_agreement_ratio": "0.0,0.1,0.3,0.5,0.7,0.9,1.0", 
+                "debate_effectiveness": "0.0,0.2,0.4,0.6,0.8,1.0"
+            },
+            variable_enum={
+                "voting_strategy": ["majority", "confidence_weighted", "democratic_debate"],
+                "consensus_outcome": ["achieved", "failed", "escalated"]
+            }
+        )
+```
+
+**Architecture Benefits:**
+- **Real-time Monitoring**: Live dashboards for ensemble performance.
+- **Detailed Analytics**: Model-level and ensemble-level metrics.
+- Support for "many custom metrics on the input/predictions of your models" with CLI-based metric configuration.
+- **Alerting**: Automated alerts on consensus failures or performance degradation.
+
+<#0.5#>
+
+#### Auto-scaling & Load Balancing
+
+##### **Primary Solution: BentoML + ClearML Serving Canary Deployment**
+
+BentoML provides "scalability" with "features like dynamic batching and adaptive micro-batching to handle production-scale traffic efficiently".
+
+**Implementation Approach:**
+
+**Dynamic Scaling Configuration:**
+```python
+import bentoml
+from bentoml.io import JSON, Image, Text
+import asyncio
+from typing import Dict, Any, Optional, List
+import os
+
+@bentoml.service(
+    name="committee-ensemble-autoscale",
+    image=bentoml.images.Image(
+        python_version="3.11"
+    ).python_packages([
+        "torch", "transformers", "prometheus-client", "clearml-serving"
+    ]),
+    resources={
+        "gpu": 2,
+        "gpu_type": "nvidia-a100",
+        "memory": "32Gi"
+    },
+    scaling={
+        "min_replicas": 1,
+        "max_replicas": 10,
+        "target_cpu_utilization": 70,
+        "target_gpu_utilization": 80,
+        "scale_up_threshold": 0.8,
+        "scale_down_threshold": 0.3,
+        "scale_up_cooldown": 60,  # seconds
+        "scale_down_cooldown": 300
+    }
+)
+class AutoScalingEnsembleService:
+    """Auto-scaling ensemble service with intelligent load balancing"""
+
+    def __init__(self):
+        self.model_pool = ModelPool()
+        self.load_balancer = IntelligentLoadBalancer()
+        self.performance_monitor = PerformanceMonitor()
+
+        # Initialize adaptive batching
+        self.batch_processor = AdaptiveBatchProcessor(
+            max_batch_size=32,
+            max_wait_time_ms=100,
+            target_batch_utilization=0.8
+        )
+
+    @bentoml.api(
+        input_schema=JSON(),
+        output_schema=JSON(),
+        route="/predict",
+        batchable=True
+    )
+    async def ensemble_predict_batch(self, 
+                                   requests: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+        """Batched ensemble prediction with intelligent routing"""
+
+        # Route requests based on current load and model availability
+        routing_decisions = await self.load_balancer.route_batch(requests)
+
+        # Execute predictions with optimal resource utilization
+        results = await self._execute_batched_predictions(routing_decisions)
+
+        # Update performance metrics for auto-scaling decisions
+        self.performance_monitor.update_batch_metrics(requests, results)
+
+        return results
+
+    async def _execute_batched_predictions(self, 
+                                         routing_decisions: List[Dict]) -> List[Dict[str, Any]]:
+        """Execute predictions with dynamic model allocation"""
+
+        # Group requests by assigned model configuration
+        model_groups = self._group_by_model_config(routing_decisions)
+
+        # Execute each group with optimal batching
+        execution_tasks = []
+        for model_config, batch_requests in model_groups.items():
+            task = self._execute_model_batch(model_config, batch_requests)
+            execution_tasks.append(task)
+
+        # Wait for all batches to complete
+        batch_results = await asyncio.gather(*execution_tasks)
+
+        # Merge results back to original order
+        return self._merge_batch_results(batch_results, routing_decisions)
+
+class IntelligentLoadBalancer:
+    """Intelligent load balancer for ensemble models"""
+
+    def __init__(self):
+        self.model_loads = {}
+        self.performance_history = {}
+        self.routing_strategies = {
+            'round_robin': self._round_robin_routing,
+            'least_connections': self._least_connections_routing,
+            'performance_weighted': self._performance_weighted_routing,
+            'adaptive': self._adaptive_routing
+        }
+
+    async def route_batch(self, requests: List[Dict]) -> List[Dict]:
+        """Route batch of requests to optimal model configurations"""
+
+        routing_decisions = []
+
+        for request in requests:
+            # Analyze request characteristics
+            request_profile = self._analyze_request(request)
+
+            # Select optimal routing strategy based on current conditions
+            strategy = self._select_routing_strategy(request_profile)
+
+            # Route request using selected strategy  
+            routing_decision = await self.routing_strategies[strategy](request, request_profile)
+            routing_decisions.append(routing_decision)
+
+        return routing_decisions
+
+    def _adaptive_routing(self, request: Dict, profile: Dict) -> Dict:
+        """Adaptive routing based on real-time performance data"""
+
+        # Consider multiple factors for routing decision
+        factors = {
+            'current_load': self._get_current_loads(),
+            'model_performance': self._get_model_performance_scores(),
+            'request_complexity': profile.get('complexity', 0.5),
+            'latency_requirements': profile.get('max_latency', float('inf')),
+            'quality_requirements': profile.get('min_quality', 0.0)
+        }
+
+        # Score each available model configuration
+        model_scores = {}
+        for model_config in self._get_available_models():
+            score = self._calculate_routing_score(model_config, factors)
+            model_scores[model_config] = score
+
+        # Select best model configuration
+        best_model = max(model_scores, key=model_scores.get)
+
+        return {
+            'request': request,
+            'assigned_model': best_model,
+            'routing_score': model_scores[best_model],
+            'routing_strategy': 'adaptive',
+            'factors_considered': factors
+        }
+
+# ClearML Serving Canary Deployment Integration
+class CanaryDeploymentManager:
+    """Manage canary deployments for ensemble model updates"""
+
+    def __init__(self, service_id: str):
+        self.service_id = service_id
+        self.canary_configs = {}
+
+    async def deploy_ensemble_canary(self, 
+                                   ensemble_version: str,
+                                   traffic_split: float = 0.1,
+                                   success_criteria: Dict = None):
+        """Deploy new ensemble version with canary traffic splitting"""
+
+        # ClearML Serving supports canary deployments that "always split the load between the last two deployed models" with automatic traffic distribution updates when "a new model endpoint version" is added
+
+        # Configure canary endpoint with traffic splitting
+        canary_config = {
+            "endpoint": f"ensemble_canary_{ensemble_version}",
+            "weights": [1.0 - traffic_split, traffic_split],  # [production, canary]
+            "success_criteria": success_criteria or {
+                "min_requests": 1000,
+                "max_error_rate": 0.01,
+                "min_performance_ratio": 0.95
+            }
+        }
+
+        # Deploy using ClearML Serving CLI
+        await self._execute_canary_deployment(canary_config)
+
+        # Monitor canary performance
+        monitoring_task = asyncio.create_task(
+            self._monitor_canary_performance(canary_config)
+        )
+
+        return {
+            "canary_endpoint": canary_config["endpoint"],
+            "traffic_split": traffic_split,
+            "monitoring_task": monitoring_task
+        }
+
+    async def _monitor_canary_performance(self, canary_config: Dict):
+        """Monitor canary deployment and auto-promote or rollback"""
+
+        monitoring_duration = 3600  # 1 hour
+        check_interval = 300  # 5 minutes
+
+        for _ in range(monitoring_duration // check_interval):
+            await asyncio.sleep(check_interval)
+
+            # Gather performance metrics
+            metrics = await self._gather_canary_metrics(canary_config["endpoint"])
+
+            # Check success criteria
+            if self._evaluate_canary_success(metrics, canary_config["success_criteria"]):
+                await self._promote_canary(canary_config)
+                return "promoted"
+
+            # Check failure criteria
+            if self._evaluate_canary_failure(metrics, canary_config["success_criteria"]):
+                await self._rollback_canary(canary_config)
+                return "rolled_back"
+
+        # Manual review required if no automatic decision
+        return "manual_review_required"
+```
+
+**Architecture Benefits:**
+- **Intelligent Auto-scaling**: Based on real-time performance metrics.
+- **Risk Mitigation**: Gradual traffic shifting with automatic distribution updates when new versions are deployed.
+- **Performance Optimization**: Adaptive routing based on model performance.
+- **Zero-downtime Deployments**: Seamless model updates with traffic splitting.
+
+<#0.5#>
+
+### Integration Challenges & Solutions
+
+<#0.5#>
+
+#### **Framework Version Compatibility**
+
+**Challenge**: Triton version compatibility issues where "Triton only serves TensorRT model binaries that are compiled for exactly its own version and nothing else. No backwards compatibility. ONNX versions are tied in lockstep to TensorRT versions to ensure compatibility".
+
+**Solution**: 
+- Containerized deployment with pinned versions.
+- Automated compatibility checking in CI/CD pipelines.  
+- Version matrix testing for all framework combinations.
+
+<#0.5#>
+
+#### **Multi-framework Data Format Consistency**
+
+**Challenge**: Different serialization formats between MLflow, BentoML, and Triton.
+
+**Solution:**
+```python
+class UniversalModelWrapper:
+    """Universal wrapper for consistent model interfaces across frameworks"""
+
+    def __init__(self, model_source: str, framework: str):
+        self.framework = framework
+        self.model = self._load_model(model_source, framework)
+        self.preprocessor = self._get_preprocessor()
+        self.postprocessor = self._get_postprocessor()
+
+    def predict(self, inputs: Any) -> Any:
+        """Unified prediction interface"""
+        processed_inputs = self.preprocessor(inputs)
+
+        if self.framework == 'triton':
+            return self._triton_predict(processed_inputs)
+        elif self.framework == 'bentoml':
+            return self._bentoml_predict(processed_inputs)
+        elif self.framework == 'mlflow':
+            return self._mlflow_predict(processed_inputs)
+
+        return self.postprocessor(raw_outputs)
+```
+
+<#0.5#>
+
+#### **Distributed Consensus at Scale**
+
+**Challenge**: Democratic debate patterns can be "powerful for complex problems" but require "careful design to ensure the debate remains productive and concludes in a reasonable time".
+
+**Solution:**
+- Timeout-based consensus with fallback to voting.
+- Hierarchical debate with escalation protocols.
+- Caching of debate outcomes for similar requests.
+
+<#0.5#>
+
+### Phased Implementation Approach
+
+<#0.5#>
+
+#### **Phase 1: Foundation (Weeks 1-4)**
+- Set up MLflow Model Registry with basic ensemble support.
+- Implement BentoML services for individual model serving.
+- Deploy Prometheus + Grafana monitoring.
+
+<#0.5#>
+
+#### **Phase 2: Basic Ensemble (Weeks 5-8)**
+- Implement scikit-learn VotingClassifier integration.
+- Deploy Triton Inference Server with simple ensemble models.
+- Add basic performance tracking and metrics.
+
+<#0.5#>
+
+#### **Phase 3: Advanced Voting (Weeks 9-12)**
+- Implement custom democratic voting patterns.
+- Add multi-agent debate capabilities.
+- Integrate ClearML Serving for advanced deployments.
+
+<#0.5#>
+
+#### **Phase 4: Production Optimization (Weeks 13-16)**
+- Implement auto-scaling and load balancing.
+- Deploy canary deployment system.
+- Add comprehensive monitoring and alerting.
+- Performance optimization and tuning.
+
+<#0.5#>
+
+#### **Phase 5: Enterprise Features (Weeks 17-20)**
+- Add advanced consensus mechanisms.
+- Implement sophisticated routing algorithms.  
+- Integration with enterprise authentication/authorization.
+- Advanced analytics and reporting.
+
+This implementation approach provides a comprehensive solution for building a production-ready Model Ensemble Agent using the best capabilities from each framework while addressing integration challenges and providing a clear path to deployment.
+
+---
+
+<#0.5#>
+

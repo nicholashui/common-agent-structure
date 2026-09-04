@@ -1,7 +1,8 @@
 import { useState } from "react";
+import { DryRunControl, OperatorContractFields } from "../components/ActorStrip";
 import { CommonBadge } from "../components/CommonBadge";
 import { ErrorBanner } from "../components/RecoveryBanner";
-import { Card, JsonWell, PageHeader, PrimaryButton } from "../components/ui";
+import { Card, EmptyState, JsonWell, PageHeader, PrimaryButton } from "../components/ui";
 import type { ComposePreviewResponse } from "../api/types";
 import { useAgentId } from "../lib/hooks";
 import { wroteLocksTone } from "../lib/honesty";
@@ -26,6 +27,15 @@ export function ComposePage() {
   const [asOf, setAsOf] = useState<Date | null>(null);
   const [busy, setBusy] = useState(false);
   const locks = result ? wroteLocksTone(Boolean(result.wrote_locks)) : null;
+  const blocked = !session.mutationReady
+    ? session.stale
+      ? "Connection is stale. Refresh first."
+      : !session.healthOk
+        ? "Control plane is unavailable."
+        : session.containment
+          ? "Containment is on. Mutations stay disabled."
+          : "Enter a mutation reason, then run Compose preview."
+    : null;
 
   async function run() {
     setBusy(true);
@@ -47,12 +57,21 @@ export function ComposePage() {
         title="Compose"
         asOf={asOf}
         actions={
-          <PrimaryButton type="button" disabled={!session.mutationReady || busy} onClick={() => void run()}>
-            {session.stale ? "Stale — Refresh First" : session.mutationLabel("Compose preview", "Preview")}
-          </PrimaryButton>
+          <>
+            <DryRunControl />
+            <PrimaryButton type="button" disabled={!session.mutationReady || busy} onClick={() => void run()}>
+              {session.stale ? "Stale — Refresh First" : session.mutationLabel("Compose preview", "Preview")}
+            </PrimaryButton>
+          </>
         }
       />
-      <p className="mb-4 text-sm text-stone-500">Prospective lock only. This never implies files were written.</p>
+      <p className="mb-4 text-sm text-stone-500">
+        Prospective lock only. This page does not load a GET. It POSTs <span className="font-mono">/compose-preview</span>{" "}
+        with mutation headers and never implies files were written.
+      </p>
+      <div className="mb-5">
+        <OperatorContractFields />
+      </div>
       <ErrorBanner error={error} />
       {result ? (
         <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
@@ -99,7 +118,15 @@ export function ComposePage() {
             <JsonWell value={pretty({ compose_hash: result.compose_hash, lock: result.lock, wrote_locks: result.wrote_locks })} />
           </Card>
         </div>
-      ) : null}
+      ) : (
+        <EmptyState
+          title="No compose preview yet"
+          body={
+            blocked ||
+            `Run Compose preview for ${agentId}. That POSTs a prospective lock (wrote_locks false). Structure already has a GET resolved view if you only need MRO.`
+          }
+        />
+      )}
     </div>
   );
 }

@@ -1,0 +1,4108 @@
+<#0.5#>
+
+This section is talking about a Social Media Agent, which is an AI-driven automated system specifically designed to manage the entire social media lifecycle for movie promotional campaigns. Imagine it as a virtual social media team that creates content, schedules posts, responds to comments, and analyzes performance, covering all major platforms like Instagram, Facebook, TikTok, LinkedIn, YouTube, and more. The system operates efficiently with AI, but key decisions are still controlled by humans.
+
+Next, let's explain the core concepts in the simplest language possible. LangGraph Workflow is like a flowchart showing how tasks connect—it's the system's "brain," deciding when things happen, like when to create content, wait for approval, or post. Human-in-the-Loop means the AI handles the heavy lifting, but final decisions are made by humans—like the AI preparing everything and waiting for you to say "OK" before acting. Multi-Platform Publishing means you write content once, and the system automatically adapts it to each platform's requirements, such as word limits, image sizes, and hashtag rules. Sentiment Analysis is the AI reading all comments to determine if people are happy, angry, or confused—like someone scanning thousands of comments to tell you the overall mood. API (Application Programming Interface) is the digital "bridge" that lets different software communicate, like how the system posts to Instagram without you manually logging in.
+
+In summary, here are the main topics. First, Content Creation and Scheduling: The system plans and creates social media posts for a six-month movie promo campaign, automatically generating images, videos, and text tailored to each platform. Second, Multi-Platform Management: Publishes content simultaneously across more than ten social media platforms, respecting each one's unique requirements and best practices. Third, Engagement Monitoring: Tracks all mentions, comments, and interactions in real-time, analyzes sentiment, and identifies opportunities or issues. Fourth, Automated Responses: Uses AI for appropriate replies to comments and messages, escalating complex issues to the human team. Fifth, Analytics and Optimization: Measures performance across all platforms and uses data to improve future content and timing decisions. Sixth, Influencer Management: Helps discover, contact, and track collaborations with social media influencers who can promote the movie.
+
+Now, the key highlights. Massive Time Savings: Automates 80% of routine social media tasks while maintaining quality through human oversight at key checkpoints. Unified Platform Management: Manage all social media accounts from one system—no need to log into a dozen different platforms daily. AI-Powered Content Creation: Automatically generates images (using DALL-E 3), videos, and text based on campaign guidelines—like similar systems have created nearly 29 million images for social posts. Real-Time Crisis Detection: Monitors sentiment across all platforms 24/7, alerting the team instantly to negative trends. Cost-Effective Operations: Open-source implementation costs just $2–5 per month, compared to over $50 for commercial enterprise solutions. Smart Engagement: AI handles routine comment replies instantly, passing complex ones to the human team. Data-Driven Decisions: Tracks top-performing content and automatically optimizes posting times and hashtag strategies.
+
+Additionally, key stats and data. Platforms Supported: More than ten, including Instagram, Facebook, TikTok, LinkedIn, YouTube, Twitter, Reddit, Pinterest, and Bluesky. Content Generation Scale: Similar AI systems have created nearly 29 million images for social media posts. Cost Savings: Using open-source models like DeepSeek reduces AI costs by 90%, at just $0.0027 per million tokens vs. $0.025 for premium APIs. Sentiment Analysis Accuracy: GPT-4 sentiment classification agrees with human analysts 77% of the time (k = 0.77). Implementation Timeline: Three phases, fully deployed in 12 weeks. Monthly Operating Costs: $2–5 with open-source vs. over $50 for commercial alternatives. Influencer Database: Over 200 million creators on Instagram, TikTok, and YouTube. Response Time: Monitors and replies to comments every 5 minutes using automated sentiment analysis.
+
+Next, action steps. For implementation, it's divided into three phases. Phase 1 (Weeks 1–4): Set up core infrastructure, install LangGraph and n8n platforms, connect social accounts, and create basic posting workflows. Phase 2 (Weeks 5–8): Build AI capabilities, deploy content generation models, set up analytics dashboards, and configure approval workflows. Phase 3 (Weeks 9–12): Advanced features, full automation, performance optimization, and scaling for high traffic. Technical Requirements: Server with at least 16GB RAM, developer accounts for all platforms, Python and JavaScript skills, and a $2–5 monthly hosting budget. Decisions Needed: Choose hosted solutions like Ayrshare API or self-hosted like Mixpost; define approval workflow requirements; set human intervention escalation rules; establish AI model usage budget.
+
+Who is this for? Marketing Teams: Reduces 80% of manual work, boosts posting consistency and engagement across platforms. Movie Studios: Efficiently manages large-scale promo campaigns with real-time tracking and crisis detection. Social Media Managers: Eliminates repetitive tasks like scheduling and routine replies, freeing you for strategy and creativity. Budget-Conscious Organizations: Delivers enterprise-grade capabilities at 90% lower cost than commercial alternatives. Content Creators: Automatically adapts content across platforms while maintaining quality and brand voice. Data Analysts: Provides unified analytics from all platforms—no manual data merging. Customer Service Teams: Automates routine queries, escalates complex ones to the right human agent with full context. Small Businesses/Startups: Enterprise-level social media management for $2–5/month vs. over $50, leveling the playing field.
+
+Finally, mission accomplished: This summary makes the complex social media agent system understandable to everyone—from budget-setting executives to daily users. All technical terms are explained, numbers have context, and real benefits are crystal clear.
+<#0.5#>
+# Social Media Agent - The Engagement Driver
+
+<#0.5#>
+
+## Overview and Architecture
+
+The Social Media Agent is a sophisticated multi-platform automation system built on LangGraph workflows. It orchestrates the entire social media content lifecycle—from creation to engagement analysis—while incorporating human oversight. This human-in-the-loop design delivers efficiency gains and ensures quality control through strategic intervention points.
+
+<#0.5#>
+
+### Core Agent Architecture
+
+The system comprises interconnected LangGraph workflows, each handling specific aspects of post creation and publishing. The modular architecture includes:
+
+- **Content Generation Pipeline**: AI-driven content creation that maintains brand voice consistency.
+- **Cross-Platform Distribution Engine**: Unified API management for multiple social networks.
+- **Real-Time Engagement Monitor**: Sentiment analysis and automated response system.
+- **Analytics and Optimization Module**: Performance tracking with predictive insights.
+- **Influencer Collaboration Hub**: Discovery, outreach, and campaign management.
+- **Compliance and Safety Layer**: Content moderation and platform policy adherence.
+
+<#0.5#>
+
+## What to Build
+
+<#0.5#>
+
+### Advanced Content Calendar System
+
+- **Intelligent Scheduling Engine**: Supports multi-platform scheduling across Instagram, Facebook, TikTok, LinkedIn, Google Business Profile, YouTube, Threads, Reddit, Pinterest, and Bluesky via unified API management.
+- **Audience Optimization**: Analyzes peak engagement times based on demographics.
+- **Content Flow Management**: Automates content batching and queue management.
+- **Campaign Timeline Orchestration**: Deploys multi-phase campaigns with automated triggers.
+- **Platform-Specific Formatting**: Adapts content automatically to each platform's requirements.
+- **A/B Testing Framework**: Tests variants automatically and optimizes based on performance.
+
+<#0.5#>
+
+### AI-Powered Asset Generation System
+
+- **Advanced Image Generator**: Integrates with Magic Media's text-to-image, DALL·E, and Google Cloud's Imagen to create unique images from text descriptions.
+- **Dynamic Video Creation**: Generates automated trailer clips, behind-the-scenes content, and promotional videos.
+- **Brand-Consistent Graphics**: Uses Canva's 20,000+ templates with AI-powered customization.
+- **Custom Meme Generator**: Detects trending formats and overlays content automatically.
+- **Interactive Content Builder**: Creates polls, quizzes, and engagement-optimized formats.
+- **Accessibility Features**: Generates alt text automatically and checks compliance.
+
+<#0.5#>
+
+### Intelligent Hashtag Optimization Engine
+
+- **Trending Analysis System**: Tracks real-time hashtag performance across platforms.
+- **Competition Research Tool**: Performs hashtag gap analysis to identify opportunities.
+- **Audience Alignment Checker**: Scores hashtag relevance for target demographics.
+- **Performance Prediction**: Forecasts effectiveness using historical data analysis.
+- **Banned Hashtag Monitoring**: Detects and replaces shadowbanned tags automatically.
+- **Localization Features**: Recommends hashtags based on geography and language.
+
+<#0.5#>
+
+### Comprehensive Engagement Tracking Infrastructure
+
+- **Real-Time Metrics Dashboard**: Monitors mentions, hashtags, keywords, and engagement metrics across platforms for brand reputation tracking.
+- **Sentiment Analysis Engine**: Uses GPT-4 for sentiment classification, achieving substantial agreement (κ = 0.77) with human annotations.
+- **Competitor Benchmarking**: Automates competitive analysis and performance comparisons.
+- **Influencer Impact Measurement**: Tracks campaign attribution and ROI for partnerships.
+- **Crisis Detection System**: Alerts for negative sentiment with escalation protocols.
+- **Engagement Quality Scoring**: Detects bots and identifies authentic interactions.
+
+<#0.5#>
+
+### Advanced Reply Bot System
+
+- **Contextual Response Engine**: Analyzes social media posts, customer reviews, and support tickets with GPT-4 to extract sentiment insights for personalized responses.
+- **Brand Voice Consistency**: Adapts tone and style to brand guidelines.
+- **Multi-Language Support**: Provides automated translation and culturally appropriate responses.
+- **Escalation Management**: Triggers human handoff for complex or sensitive interactions.
+- **Response Time Optimization**: Manages priority-based queues for urgent situations.
+- **Learning Algorithm**: Improves continuously based on engagement outcomes.
+
+<#0.5#>
+
+### Sophisticated Influencer Outreach Platform
+
+- **AI-Powered Discovery Engine**: Accesses databases of over 200 million creators on Instagram, TikTok, and YouTube, searchable by follower count, niche, engagement, and location.
+- **Authenticity Verification**: Detects fake followers and analyzes engagement quality.
+- **Relationship Management CRM**: Tracks communication history and partnerships.
+- **Campaign Performance Analytics**: Measures ROI and scores influencer effectiveness.
+- **Contract Management**: Generates agreements automatically and monitors compliance.
+- **Payment Integration**: Processes compensation and handles tax documentation.
+
+<#0.5#>
+
+### Enterprise Analytics Dashboard
+
+- **Unified Data Integration**: Provides single-endpoint access to data from Facebook, Instagram Business, TikTok, YouTube, and LinkedIn, eliminating multiple native API management.
+- **Predictive Analytics Engine**: Uses machine learning for growth forecasting.
+- **Custom Report Builder**: Creates stakeholder-specific dashboards with automated delivery.
+- **Cross-Platform Attribution**: Models multi-touch attribution for campaign effectiveness.
+- **Budget Optimization Advisor**: Recommends spend allocation based on performance data.
+- **Compliance Reporting**: Generates automated documentation for regulatory requirements.
+
+<#0.5#>
+
+## What It Does
+
+<#0.5#>
+
+### Strategic Content Planning and Execution
+
+The Social Media Agent orchestrates content strategy, managing the lifecycle from ideation to performance analysis. It supports real-time content updates, automated publishing schedules, and synchronized distribution across platforms, ensuring consistent messaging optimized for platform-specific audiences.
+
+#### Intelligent Content Strategy Development
+
+- **Audience Analysis**: Profiles demographics and psychographics for targeted creation.
+- **Trend Forecasting**: Predicts viral opportunities with AI.
+- **Content Gap Analysis**: Identifies underserved topics.
+- **Seasonal Campaign Planning**: Develops calendars for holidays and events.
+- **Brand Narrative Consistency**: Enforces voice across all content.
+- **Competitive Content Intelligence**: Analyzes competitor strategies in real time.
+
+#### Dynamic Asset Creation and Optimization
+
+The system uses AI to produce visuals like images, infographics, and branded videos tailored to brand style, including automatic background removal, retouching, and text-to-content generation. The pipeline features:
+
+- **Automated Visual Content**: Integrates AI image generation, which has created nearly 290 million images for social posts, presentations, flyers, and logos.
+- **Video Content Assembly**: Compiles trailer clips, behind-the-scenes footage, and promotional materials automatically.
+- **Interactive Media Creation**: Assembles polls, quizzes, and optimized formats.
+- **Brand Asset Management**: Maintains a centralized library with automatic tagging and categorization.
+- **Quality Control Automation**: Implements AI-powered approval workflows with human oversight.
+- **Performance-Based Iteration**: Generates variations based on engagement analytics.
+
+<#0.5#>
+
+### Advanced Multi-Platform Optimization
+
+#### Cross-Platform Content Adaptation
+
+- **Format Intelligence**: Resizes and reformats content for platform specifications.
+- **Timing Optimization**: Optimizes schedules per platform, accounting for varying analytics and requirements.
+- **Audience Segmentation**: Targets and customizes content for platform audiences.
+- **Hashtag Strategy Deployment**: Selects and places hashtags appropriately.
+- **Engagement Protocol Management**: Applies platform-specific interaction strategies.
+- **Algorithm Adaptation**: Optimizes content for each platform's ranking algorithms.
+
+#### Real-Time Performance Monitoring
+
+The system tracks mentions, hashtags, keywords, and metrics in real time across Twitter, Facebook, Instagram, LinkedIn, TikTok, YouTube, and Pinterest for reputation monitoring and decision-making. This includes:
+
+- **Live Engagement Tracking**: Monitors likes, comments, shares, and saves.
+- **Viral Content Detection**: Identifies and amplifies high-performing content automatically.
+- **Crisis Monitoring**: Detects negative sentiment spikes or brand mentions immediately.
+- **Opportunity Identification**: Alerts for trending topics and engagement chances.
+- **Performance Benchmarking**: Compares continuously against industry and competitors.
+- **ROI Calculation**: Tracks cost-per-engagement and conversions in real time.
+
+<#0.5#>
+
+### Intelligent Community Management
+
+#### Automated Engagement System
+
+The system monitors platforms to assess sentiment and track reputation in real time, helping identify trends and conversations. Capabilities include:
+
+- **Context-Aware Responses**: Generates replies that understand conversation context.
+- **Sentiment-Based Interaction**: Tailors strategies to user emotional states.
+- **Escalation Management**: Routes complex issues to human agents automatically.
+- **Community Building**: Applies proactive strategies to grow brand communities.
+- **User-Generated Content Amplification**: Detects and promotes positive user content.
+- **Influencer Relationship Nurturing**: Engages key community members and advocates ongoingly.
+
+#### Advanced Analytics and Insights
+
+##### Predictive Performance Modeling
+
+- **Content Performance Forecasting**: Predicts virality and engagement potential with AI.
+- **Audience Growth Modeling**: Analyzes follower acquisition and retention predictively.
+- **Campaign ROI Projections**: Models spend optimization.
+- **Trend Analysis**: Recognizes patterns for emerging opportunities.
+- **Seasonal Performance Patterns**: Analyzes historical data for optimal timing.
+- **Cross-Platform Synergy Analysis**: Assesses interaction effects between platforms.
+
+<#0.5#>
+
+## Tools and Frameworks
+
+<#0.5#>
+
+### Advanced Scheduling and Automation Platforms
+
+#### Enterprise-Grade Scheduling Infrastructure
+
+- **Hootsuite Enterprise API**: Provides advanced scheduling, analytics, and social listening for enterprise automation.
+- **Buffer Business Integration**: Offers cost-effective scheduling with team collaboration and approval workflows.
+- **Later Visual Planning**: Features drag-and-drop calendars for Instagram, Facebook, Twitter, TikTok, Pinterest, and LinkedIn.
+- **Sprout Social Enterprise**: Includes analytics export, queue management, message archiving, and CRM/BI integration.
+- **Sendible Agency Management**: Supports multi-client management with white-label options.
+- **Publer API Integration**: Automates post creation, drafting, scheduling, and publishing across accounts.
+
+#### Unified API Management
+
+- **Late Social API**: Single REST API for Twitter (X), Instagram, TikTok, LinkedIn, Facebook, YouTube, Threads, Reddit, Pinterest, and Bluesky.
+- **Ayrshare Social API**: Handles setup and maintenance for multiple networks, including comments and auto-scheduling.
+- **Sociality.io Unified Platform**: Provides endpoints for analytics, competitor analysis, listening, engagement, and publishing with webhook support.
+
+<#0.5#>
+
+### AI-Powered Content Generation Stack
+
+#### Advanced Image and Visual Generation
+
+- **DALL·E 3 Integration**: OpenAI's model integrated with Canva for high-quality, relevant visuals.
+- **Canva Magic Studio**: Automates design with Magic Design, Magic Write, and text-to-image for instant posts.
+- **Adobe Express Firefly**: Commercially safe visuals powered by Adobe's Firefly model with brand consistency.
+- **Midjourney Professional**: Generates custom graphics, illustrations, and visuals for written materials.
+- **Stable Diffusion API**: Open-source for custom model training and specialized visuals.
+
+#### Content Writing and Copy Generation
+
+- **GPT-4 Turbo Integration**: Enhances natural language processing for real-time generation with speed and efficiency.
+- **Jasper AI Platform**: Marketer-focused generative AI with brand voice centralization and multi-agent architecture.
+- **Copy.ai Automation**: Generates platform-optimized social content with engagement analysis.
+- **Claude Advanced**: Handles long-form processing, file analysis, and project workflows.
+
+<#0.5#>
+
+### Hashtag and Trend Intelligence Systems
+
+#### Advanced Hashtag Research and Analysis
+
+- **RiteTag Pro**: Analyzes real-time hashtag performance and identifies trends.
+- **Hashtagify Premium**: Researches hashtags with competitor analysis and influence scoring.
+- **Instagram Graph API**: Integrates for hashtag data and insights.
+- **TikTok Content Discovery API**: Supports posting and trend analysis (requires partner status).
+- **Twitter API v2**: Analyzes tweets and hashtag trends in real time.
+- **Custom Trend Detection**: Uses machine learning for emerging hashtag and viral prediction.
+
+<#0.5#>
+
+### Comprehensive Engagement and Analytics Infrastructure
+
+#### Multi-Platform Analytics Integration
+
+- **Google Analytics 4**: Models attribution and tracks cross-platform journeys.
+- **Facebook Graph API**: Accesses engagement metrics and audience behavior.
+- **Instagram Business API**: Provides post performance, audience insights, and story metrics.
+- **TikTok Analytics API**: Delivers video data, demographics, and trends.
+- **LinkedIn Campaign Manager**: Tracks B2B performance and lead generation.
+- **YouTube Analytics API**: Manages video data and uploads for dashboards.
+
+#### Advanced Sentiment Analysis and Monitoring
+
+- **GPT-4 Sentiment Analysis**: Applies zero-shot and one-shot learning for classification (κ = 0.77 agreement with humans).
+- **Natural Language Processing Toolkit**: Trains custom models on social data for brand-specific analysis.
+- **Real-Time Monitoring Systems**: Automates LinkedIn engagement with sentiment analysis and contextual comments.
+- **Crisis Detection Algorithms**: Recognizes negative sentiment spikes and escalates automatically.
+
+<#0.5#>
+
+### Influencer Discovery and Management Platforms
+
+#### Comprehensive Influencer Intelligence
+
+- **Modash Database Access**: API for 200+ million creators on Instagram, TikTok, and YouTube, searchable by metrics.
+- **BuzzSumo Influencer Discovery**: Identifies influencers with performance tracking and outreach automation.
+- **Klear Influencer Intelligence**: Analyzes influencers with fraud detection and campaign management.
+- **Creator.co Partnership Platform**: Manages end-to-end campaigns with automated payments.
+- **AspireIQ Creator Management**: Focuses on relationships with long-term partnership tracking.
+
+<#0.5#>
+
+### Enterprise Integration and Workflow Automation
+
+#### Advanced Workflow Orchestration
+
+- **LangChain Framework**: Supports human-in-the-loop agents from data collection to publication.
+- **LangGraph Platform**: Handles diverse control flows with statefulness for collaboration.
+- **n8n Workflow Automation**: Self-hosted solution for social media workflows.
+- **Zapier Enterprise**: Provides premium integrations and webhook support.
+- **Make (formerly Integromat)**: Handles complex scenarios with data transformation.
+
+#### Development and API Integration Tools
+
+- **Postman Collections**: Pre-built for rapid social media integration.
+- **Swagger/OpenAPI Documentation**: Offers API documentation and testing.
+- **Docker Containerization**: Enables scalable microservices deployment.
+- **Kubernetes Orchestration**: Manages containers for high availability.
+- **Redis Caching**: Supports high-performance caching for analytics and tracking.
+- **PostgreSQL/MongoDB**: Provides robust storage for analytics, user data, and content.
+
+<#0.5#>
+
+## Detailed Technical Implementation
+
+<#0.5#>
+
+### Phase 1 - Advanced Content Calendar System
+
+#### Enterprise-Level Scheduling Architecture
+
+The system integrates with Slack for content submission, fetching messages from channels and transforming them into scheduled posts via automated workflows.
+
+```python
+import asyncio
+import aiohttp
+from datetime import datetime, timedelta
+from dataclasses import dataclass
+from typing import List, Dict, Optional
+import pandas as pd
+from langchain.agents import initialize_agent, Tool
+from langchain.llms import OpenAI
+from langchain.memory import ConversationBufferMemory
+
+@dataclass
+class SocialMediaPost:
+    content: str
+    platform: List[str]
+    scheduled_time: datetime
+    media_urls: List[str]
+    hashtags: List[str]
+    target_audience: Dict[str, any]
+    campaign_id: str
+    priority: int
+    approval_status: str = "pending"
+
+class AdvancedContentCalendar:
+    def __init__(self, api_keys: Dict[str, str]):
+        self.api_keys = api_keys
+        self.platforms = {
+            'late': LateAPI(api_keys['late']),
+            'hootsuite': HootsuiteAPI(api_keys['hootsuite']),
+            'ayrshare': AyrshareAPI(api_keys['ayrshare'])
+        }
+        self.ai_optimizer = OpenAI(temperature=0.7)
+        self.content_queue = []
+        self.performance_data = pd.DataFrame()
+
+    async def create_6_month_campaign(self, campaign_config: Dict):
+        """Generate comprehensive 6-month content calendar with AI optimization."""
+        start_date = datetime(2025, 6, 1)
+        end_date = start_date + timedelta(days=180)
+
+        # Phase-based content strategy
+        phases = {
+            "teaser": {"start": 0, "end": 60, "frequency": 3, "focus": "awareness"},
+            "trailer": {"start": 60, "end": 120, "frequency": 7, "focus": "engagement"},
+            "hype": {"start": 120, "end": 150, "frequency": 14, "focus": "conversion"},
+            "release": {"start": 150, "end": 180, "frequency": 21, "focus": "sales"}
+        }
+
+        content_calendar = []
+
+        for phase_name, phase_config in phases.items():
+            phase_content = await self.generate_phase_content(
+                phase_name, phase_config, campaign_config
+            )
+            content_calendar.extend(phase_content)
+
+        # AI-powered optimization
+        optimized_calendar = await self.optimize_content_timing(content_calendar)
+
+        # Schedule all content
+        for post in optimized_calendar:
+            await self.schedule_post(post)
+
+        return optimized_calendar
+
+    async def optimize_content_timing(self, content_list: List[SocialMediaPost]):
+        """AI-powered optimal timing based on audience behavior analysis."""
+        audience_analytics = await self.analyze_audience_patterns()
+
+        optimized_content = []
+        for post in content_list:
+            # AI determines optimal posting time
+            optimal_time = await self.calculate_optimal_timing(
+                post, audience_analytics
+            )
+            post.scheduled_time = optimal_time
+            optimized_content.append(post)
+
+        return optimized_content
+
+    async def schedule_post(self, post: SocialMediaPost):
+        """Multi-platform scheduling with error handling and retry logic."""
+        results = {}
+
+        for platform in post.platform:
+            try:
+                if platform in self.platforms:
+                    api = self.platforms[platform]
+                    result = await api.schedule_post(
+                        content=post.content,
+                        media=post.media_urls,
+                        hashtags=post.hashtags,
+                        scheduled_time=post.scheduled_time
+                    )
+                    results[platform] = {"status": "success", "post_id": result.get("id")}
+                else:
+                    results[platform] = {"status": "error", "message": "Platform not supported"}
+
+            except Exception as e:
+                results[platform] = {"status": "error", "message": str(e)}
+                # Implement retry logic
+                await self.retry_post_scheduling(post, platform)
+
+        return results
+
+class LateAPI:
+    """Unified social media API integration."""
+    def __init__(self, api_key: str):
+        self.api_key = api_key
+        self.base_url = "https://api.late.dev/v1"
+
+    async def schedule_post(self, content: str, media: List[str], 
+                          hashtags: List[str], scheduled_time: datetime):
+        """Schedule post across multiple platforms simultaneously."""
+        headers = {"Authorization": f"Bearer {self.api_key}"}
+
+        payload = {
+            "text": f"{content} {' '.join(hashtags)}",
+            "media": media,
+            "platforms": ["instagram", "twitter", "tiktok", "linkedin", "facebook"],
+            "scheduledDate": scheduled_time.isoformat(),
+            "options": {
+                "instagram": {"firstComment": " ".join(hashtags)},
+                "twitter": {"threadMode": False},
+                "linkedin": {"visibility": "public"}
+            }
+        }
+
+        async with aiohttp.ClientSession() as session:
+            async with session.post(
+                f"{self.base_url}/posts", 
+                json=payload, 
+                headers=headers
+            ) as response:
+                return await response.json()
+
+# Advanced campaign metrics tracking
+class CampaignAnalytics:
+    def __init__(self, platforms: Dict):
+        self.platforms = platforms
+        self.metrics_cache = {}
+
+    async def track_campaign_performance(self, campaign_id: str):
+        """Comprehensive campaign performance tracking."""
+        metrics = {
+            "reach": 0,
+            "impressions": 0,
+            "engagement": 0,
+            "clicks": 0,
+            "conversions": 0,
+            "cost_per_engagement": 0,
+            "roi": 0
+        }
+
+        # Collect metrics from all platforms
+        for platform_name, platform_api in self.platforms.items():
+            platform_metrics = await platform_api.get_campaign_metrics(campaign_id)
+
+            # Aggregate metrics
+            for metric, value in platform_metrics.items():
+                if metric in metrics:
+                    metrics[metric] += value
+
+        # Calculate derived metrics
+        metrics["engagement_rate"] = (
+            metrics["engagement"] / metrics["reach"] * 100 
+            if metrics["reach"] > 0 else 0
+        )
+
+        return metrics
+```
+
+<#0.5#>
+
+### Phase 2 - AI-Powered Asset Generation
+
+#### Advanced Visual Content Creation Pipeline
+
+The system leverages Magic Media's text-to-image capabilities, which have generated nearly 290 million images, to accelerate content creation and overcome creative blocks.
+
+```python
+import openai
+from PIL import Image, ImageDraw, ImageFont, ImageEnhance
+import requests
+import cv2
+import numpy as np
+from moviepy.editor import VideoFileClip, TextClip, CompositeVideoClip
+import subprocess
+from typing import Tuple, List
+
+class AdvancedAssetGenerator:
+    def __init__(self, openai_key: str, canva_key: str):
+        self.openai_client = openai.OpenAI(api_key=openai_key)
+        self.canva_key = canva_key
+        self.brand_guidelines = self.load_brand_guidelines()
+
+    async def generate_campaign_assets(self, campaign_brief: Dict) -> Dict[str, List[str]]:
+        """Generate comprehensive asset library for campaign."""
+        assets = {
+            "images": [],
+            "videos": [],
+            "graphics": [],
+            "memes": []
+        }
+
+        # Generate hero images
+        hero_prompts = self.create_image_prompts(campaign_brief, "hero")
+        for prompt in hero_prompts:
+            image_url = await self.generate_dalle_image(prompt, "1792x1024")  # Landscape
+            image_url_vertical = await self.generate_dalle_image(prompt, "1024x1792")  # Portrait
+            assets["images"].extend([image_url, image_url_vertical])
+
+        # Generate quote graphics
+        quotes = campaign_brief.get("quotes", [])
+        for quote in quotes:
+            quote_graphic = await self.create_quote_graphic(quote)
+            assets["graphics"].append(quote_graphic)
+
+        # Generate video assets
+        if campaign_brief.get("video_content"):
+            video_clips = await self.process_video_content(campaign_brief["video_content"])
+            assets["videos"].extend(video_clips)
+
+        # Generate trending memes
+        trending_formats = await self.get_trending_meme_formats()
+        for format_data in trending_formats:
+            meme = await self.generate_branded_meme(format_data, campaign_brief)
+            assets["memes"].append(meme)
+
+        return assets
+
+    async def generate_dalle_image(self, prompt: str, size: str) -> str:
+        """Generate high-quality images with DALL·E 3."""
+        # Enhance prompt with brand guidelines
+        enhanced_prompt = self.enhance_prompt_with_brand(prompt)
+
+        try:
+            response = self.openai_client.images.generate(
+                model="dall-e-3",
+                prompt=enhanced_prompt,
+                n=1,
+                size=size,
+                quality="hd",
+                style="vivid"
+            )
+
+            image_url = response.data[0].url
+
+            # Download and process image
+            processed_url = await self.post_process_image(image_url)
+            return processed_url
+
+        except Exception as e:
+            print(f"DALL·E generation failed: {e}")
+            return await self.fallback_image_generation(prompt)
+
+    async def create_quote_graphic(self, quote: Dict) -> str:
+        """Create branded quote graphics with automatic styling."""
+        base_image = await self.generate_dalle_image(
+            f"Abstract background, {self.brand_guidelines['style']}, cinematic",
+            "1080x1080"
+        )
+
+        # Load base image
+        img = Image.open(requests.get(base_image, stream=True).raw)
+        draw = ImageDraw.Draw(img)
+
+        # Apply brand typography
+        font_size = self.calculate_optimal_font_size(quote["text"], img.size)
+        font = ImageFont.truetype(self.brand_guidelines["font_path"], font_size)
+
+        # Add text with proper positioning
+        text_bbox = draw.textbbox((0, 0), quote["text"], font=font)
+        text_width = text_bbox[2] - text_bbox[0]
+        text_height = text_bbox[3] - text_bbox[1]
+
+        x = (img.width - text_width) // 2
+        y = (img.height - text_height) // 2
+
+        # Add text shadow
+        draw.text((x+2, y+2), quote["text"], font=font, fill=(0, 0, 0, 128))
+        # Add main text
+        draw.text((x, y), quote["text"], font=font, fill=self.brand_guidelines["primary_color"])
+
+        # Add attribution
+        if quote.get("attribution"):
+            attr_font = ImageFont.truetype(self.brand_guidelines["font_path"], font_size // 2)
+            draw.text((x, y + text_height + 20), f"- {quote['attribution']}", 
+                     font=attr_font, fill=self.brand_guidelines["secondary_color"])
+
+        # Save and upload
+        output_path = f"quote_graphic_{hash(quote['text'])}.jpg"
+        img.save(output_path, quality=95)
+
+        uploaded_url = await self.upload_to_cdn(output_path)
+        return uploaded_url
+
+    async def process_video_content(self, video_config: Dict) -> List[str]:
+        """Advanced video processing for social media optimization."""
+        source_video = video_config["source_path"]
+        clip_configs = video_config["clips"]
+
+        processed_videos = []
+
+        for config in clip_configs:
+            # Extract clip
+            start_time = config["start"]
+            duration = config["duration"]
+            output_format = config.get("format", "mp4")
+            target_platform = config.get("platform", "instagram")
+
+            # Platform-specific processing
+            platform_specs = self.get_platform_video_specs(target_platform)
+
+            # FFmpeg command for optimal processing
+            output_path = f"clip_{start_time}_{duration}_{target_platform}.{output_format}"
+
+            ffmpeg_cmd = [
+                "ffmpeg", "-i", source_video,
+                "-ss", str(start_time),
+                "-t", str(duration),
+                "-vf", f"scale={platform_specs['width']}:{platform_specs['height']}:force_original_aspect_ratio=decrease,pad={platform_specs['width']}:{platform_specs['height']}:(ow-iw)/2:(oh-ih)/2",
+                "-c:v", "libx264",
+                "-preset", "fast",
+                "-crf", "23",
+                "-c:a", "aac",
+                "-b:a", "128k",
+                "-r", str(platform_specs['fps']),
+                "-t", str(min(duration, platform_specs['max_duration'])),
+                output_path
+            ]
+
+            subprocess.run(ffmpeg_cmd, check=True)
+
+            # Add branded overlay
+            branded_video = await self.add_brand_overlay(output_path, target_platform)
+
+            # Upload to CDN
+            uploaded_url = await self.upload_to_cdn(branded_video)
+            processed_videos.append(uploaded_url)
+
+        return processed_videos
+
+    def get_platform_video_specs(self, platform: str) -> Dict:
+        """Platform-specific video specifications."""
+        specs = {
+            "instagram": {"width": 1080, "height": 1920, "fps": 30, "max_duration": 60},
+            "tiktok": {"width": 1080, "height": 1920, "fps": 30, "max_duration": 60},
+            "twitter": {"width": 1280, "height": 720, "fps": 30, "max_duration": 140},
+            "youtube": {"width": 1920, "height": 1080, "fps": 60, "max_duration": 900},
+            "facebook": {"width": 1280, "height": 720, "fps": 30, "max_duration": 240}
+        }
+        return specs.get(platform, specs["instagram"])
+
+    async def generate_branded_meme(self, meme_format: Dict, campaign_brief: Dict) -> str:
+        """Generate branded memes using trending formats."""
+        template_path = meme_format["template_path"]
+        text_positions = meme_format["text_positions"]
+
+        # Open meme template
+        img = Image.open(template_path)
+        draw = ImageDraw.Draw(img)
+
+        # Generate meme text using AI
+        meme_prompt = f"Create a funny meme text for {campaign_brief['movie_title']} using the {meme_format['name']} format. Keep it humorous and engaging."
+
+        response = self.openai_client.chat.completions.create(
+            model="gpt-4",
+            messages=[
+                {"role": "system", "content": "You are a viral meme creator. Create short, punchy, humorous text for memes."},
+                {"role": "user", "content": meme_prompt}
+            ],
+            max_tokens=100
+        )
+
+        meme_texts = response.choices[0].message.content.split("|")
+
+        # Add text to meme positions
+        font = ImageFont.truetype("fonts/impact.ttf", 48)
+
+        for i, text in enumerate(meme_texts[:len(text_positions)]):
+            position = text_positions[i]
+
+            # Add white outline for text visibility
+            x, y = position["x"], position["y"]
+            for adj in range(-2, 3):
+                for adj2 in range(-2, 3):
+                    draw.text((x+adj, y+adj2), text.upper(), font=font, fill="white")
+
+            # Add main text
+            draw.text((x, y), text.upper(), font=font, fill="black")
+
+        # Save and upload
+        output_path = f"meme_{meme_format['name']}_{hash(str(meme_texts))}.jpg"
+        img.save(output_path, quality=95)
+
+        uploaded_url = await self.upload_to_cdn(output_path)
+        return uploaded_url
+```
+
+<#0.5#>
+
+### Phase 3 - Intelligent Hashtag Optimization
+
+#### Advanced Hashtag Intelligence System
+
+The system uses AI-powered suggestions to enhance reach and engagement through intelligent analysis and selection.
+
+```python
+import asyncio
+import aiohttp
+from collections import Counter
+from datetime import datetime, timedelta
+import pandas as pd
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.cluster import KMeans
+import networkx as nx
+from typing import Dict, List, Tuple, Set
+import json
+
+class AdvancedHashtagOptimizer:
+    def __init__(self, api_keys: Dict[str, str]):
+        self.api_keys = api_keys
+        self.hashtag_database = pd.DataFrame()
+        self.trend_analyzer = TrendAnalyzer()
+        self.performance_tracker = HashtagPerformanceTracker()
+        self.banned_hashtags = set()
+
+    async def generate_optimal_hashtag_strategy(self, content: str, 
+                                               target_audience: Dict,
+                                               platforms: List[str]) -> Dict[str, List[str]]:
+        """Generate platform-specific hashtag strategies."""
+        # Analyze content context
+        content_keywords = await self.extract_content_keywords(content)
+
+        # Get trending hashtags
+        trending_data = await self.get_trending_hashtags(platforms)
+
+        # Analyze competitor hashtags
+        competitor_hashtags = await self.analyze_competitor_hashtags(
+            target_audience.get("competitors", [])
+        )
+
+        # Generate hashtag recommendations
+        platform_strategies = {}
+
+        for platform in platforms:
+            strategy = await self.create_platform_strategy(
+                platform, content_keywords, trending_data, 
+                competitor_hashtags, target_audience
+            )
+            platform_strategies[platform] = strategy
+
+        return platform_strategies
+
+    async def extract_content_keywords(self, content: str) -> List[Dict]:
+        """Extract semantic keywords and entities from content."""
+        # Use OpenAI for advanced content analysis
+        response = await self.openai_client.chat.completions.create(
+            model="gpt-4",
+            messages=[
+                {"role": "system", "content": """
+                Extract key themes, emotions, and relevant hashtag categories from this content.
+                Return as JSON with: themes, emotions, categories, entities, industry_terms.
+                """},
+                {"role": "user", "content": content}
+            ],
+            temperature=0.3
+        )
+
+        keywords_data = json.loads(response.choices[0].message.content)
+
+        # Enhance with TF-IDF analysis
+        vectorizer = TfidfVectorizer(stop_words='english', max_features=20)
+        tfidf_matrix = vectorizer.fit_transform([content])
+        feature_names = vectorizer.get_feature_names_out()
+        scores = tfidf_matrix.toarray()[0]
+
+        tfidf_keywords = [
+            {"term": term, "score": score} 
+            for term, score in zip(feature_names, scores)
+            if score > 0.1
+        ]
+
+        keywords_data["tfidf_keywords"] = tfidf_keywords
+        return keywords_data
+
+    async def get_trending_hashtags(self, platforms: List[str]) -> Dict[str, List[Dict]]:
+        """Fetch real-time trending hashtags across platforms."""
+        trending_data = {}
+
+        for platform in platforms:
+            if platform == "instagram":
+                trending_data[platform] = await self.get_instagram_trends()
+            elif platform == "twitter":
+                trending_data[platform] = await self.get_twitter_trends()
+            elif platform == "tiktok":
+                trending_data[platform] = await self.get_tiktok_trends()
+            elif platform == "linkedin":
+                trending_data[platform] = await self.get_linkedin_trends()
+
+        return trending_data
+
+    async def get_instagram_trends(self) -> List[Dict]:
+        """Get Instagram trending hashtags using Graph API."""
+        headers = {"Authorization": f"Bearer {self.api_keys['instagram']}"}
+
+        # Get trending hashtags from top posts
+        trending_hashtags = []
+
+        async with aiohttp.ClientSession() as session:
+            # Analyze top performing posts in relevant categories
+            categories = ["entertainment", "movies", "thriller", "cinema"]
+
+            for category in categories:
+                url = f"https://graph.instagram.com/v18.0/ig_hashtag_search"
+                params = {"user_id": "me", "q": category}
+
+                async with session.get(url, headers=headers, params=params) as response:
+                    data = await response.json()
+
+                    if "data" in data:
+                        for hashtag_data in data["data"]:
+                            hashtag_info = await self.get_hashtag_metrics(
+                                hashtag_data["id"], session, headers
+                            )
+                            trending_hashtags.append(hashtag_info)
+
+        # Sort by engagement and recency
+        trending_hashtags.sort(key=lambda x: x.get("engagement_score", 0), reverse=True)
+        return trending_hashtags[:50]
+
+    async def analyze_competitor_hashtags(self, competitors: List[str]) -> Dict[str, List[Dict]]:
+        """Deep analysis of competitor hashtag strategies."""
+        competitor_analysis = {}
+
+        for competitor in competitors:
+            hashtag_data = await self.scrape_competitor_hashtags(competitor)
+
+            # Analyze hashtag performance patterns
+            performance_analysis = self.analyze_hashtag_performance(hashtag_data)
+
+            competitor_analysis[competitor] = {
+                "top_hashtags": hashtag_data["top_performing"],
+                "growth_hashtags": hashtag_data["fastest_growing"],
+                "pattern_analysis": performance_analysis
+            }
+
+        return competitor_analysis
+
+    async def create_platform_strategy(self, platform: str, content_keywords: Dict,
+                                     trending_data: Dict, competitor_data: Dict,
+                                     target_audience: Dict) -> List[str]:
+        """Create optimized hashtag strategy for specific platform."""
+
+        # Get platform-specific constraints
+        platform_config = self.get_platform_constraints(platform)
+        max_hashtags = platform_config["max_hashtags"]
+
+        # Hashtag categories with weights
+        hashtag_categories = {
+            "branded": {"weight": 2, "max_count": 2},
+            "trending": {"weight": 3, "max_count": 5},
+            "niche": {"weight": 2.5, "max_count": 4},
+            "community": {"weight": 1.5, "max_count": 3},
+            "location": {"weight": 1, "max_count": 1}
+        }
+
+        selected_hashtags = []
+
+        # Add branded hashtags
+        branded_tags = ["#TheFutureIsNow", "#SciFiThriller2025"]
+        selected_hashtags.extend(branded_tags[:hashtag_categories["branded"]["max_count"]])
+
+        # Add trending hashtags
+        trending_tags = self.filter_relevant_trending(
+            trending_data.get(platform, []), 
+            content_keywords,
+            hashtag_categories["trending"]["max_count"]
+        )
+        selected_hashtags.extend(trending_tags)
+
+        # Add niche hashtags
+        niche_tags = await self.generate_niche_hashtags(
+            content_keywords, target_audience, 
+            hashtag_categories["niche"]["max_count"]
+        )
+        selected_hashtags.extend(niche_tags)
+
+        # Add community hashtags
+        community_tags = self.get_community_hashtags(
+            platform, hashtag_categories["community"]["max_count"]
+        )
+        selected_hashtags.extend(community_tags)
+
+        # Remove banned hashtags and duplicates
+        selected_hashtags = self.clean_hashtag_list(selected_hashtags)
+
+        # Ensure within platform limits
+        return selected_hashtags[:max_hashtags]
+
+    def get_platform_constraints(self, platform: str) -> Dict:
+        """Platform-specific hashtag constraints and best practices."""
+        constraints = {
+            "instagram": {"max_hashtags": 30, "optimal_range": (5, 11)},
+            "twitter": {"max_hashtags": 10, "optimal_range": (1, 3)},
+            "tiktok": {"max_hashtags": 100, "optimal_range": (3, 5)},
+            "linkedin": {"max_hashtags": 3, "optimal_range": (2, 3)},
+            "facebook": {"max_hashtags": 30, "optimal_range": (2, 5)}
+        }
+        return constraints.get(platform, {"max_hashtags": 30, "optimal_range": (5, 10)})
+
+    async def generate_niche_hashtags(self, content_keywords: Dict, 
+                                    target_audience: Dict, max_count: int) -> List[str]:
+        """Generate highly targeted niche hashtags using AI."""
+        prompt = f"""
+        Generate {max_count} highly specific hashtags for:
+        Content themes: {content_keywords.get('themes', [])}
+        Target audience: {target_audience.get('demographics', {})}
+        Industry terms: {content_keywords.get('industry_terms', [])}
+
+        Focus on hashtags that have:
+        - Medium competition (10K-100K posts)
+        - High engagement potential
+        - Specific to thriller/sci-fi movie marketing
+        - Appeal to target demographic
+
+        Return only hashtag names with #
+        """
+
+        response = await self.openai_client.chat.completions.create(
+            model="gpt-4",
+            messages=[
+                {"role": "system", "content": "You are a hashtag strategist specializing in social media optimization."},
+                {"role": "user", "content": prompt}
+            ],
+            temperature=0.4
+        )
+
+        suggested_hashtags = response.choices[0].message.content.strip().split('\n')
+        return [tag.strip() for tag in suggested_hashtags if tag.startswith('#')]
+
+    def filter_relevant_trending(self, trending_list: List[Dict], 
+                               content_keywords: Dict, max_count: int) -> List[str]:
+        """Filter trending hashtags for relevance and performance."""
+        relevant_hashtags = []
+
+        # Calculate relevance scores
+        for hashtag_data in trending_list:
+            relevance_score = self.calculate_hashtag_relevance(
+                hashtag_data, content_keywords
+            )
+
+            if relevance_score > 0.3:  # Relevance threshold
+                relevant_hashtags.append({
+                    "hashtag": hashtag_data["name"],
+                    "relevance_score": relevance_score,
+                    "trend_score": hashtag_data.get("trend_score", 0)
+                })
+
+        # Sort by combined relevance and trend score
+        relevant_hashtags.sort(
+            key=lambda x: x["relevance_score"] * 0.6 + x["trend_score"] * 0.4, 
+            reverse=True
+        )
+
+        return [item["hashtag"] for item in relevant_hashtags[:max_count]]
+
+class HashtagPerformanceTracker:
+    """Advanced hashtag performance analysis."""
+
+    def __init__(self):
+        self.performance_database = pd.DataFrame()
+        self.trend_indicators = {}
+
+    async def track_hashtag_performance(self, hashtags: List[str], 
+                                      post_metrics: Dict) -> Dict:
+        """Track performance of hashtags across posts."""
+        performance_data = {
+            "timestamp": datetime.now(),
+            "hashtags": hashtags,
+            "reach": post_metrics.get("reach", 0),
+            "impressions": post_metrics.get("impressions", 0),
+            "engagement": post_metrics.get("engagement", 0),
+            "saves": post_metrics.get("saves", 0),
+            "shares": post_metrics.get("shares", 0)
+        }
+
+        # Calculate hashtag attribution scores
+        hashtag_scores = await self.calculate_hashtag_attribution(
+            hashtags, performance_data
+        )
+
+        # Update performance database
+        self.update_performance_database(hashtag_scores)
+
+        return hashtag_scores
+
+    async def calculate_hashtag_attribution(self, hashtags: List[str], 
+                                          metrics: Dict) -> Dict[str, float]:
+        """Advanced attribution modeling for hashtag performance."""
+        # Use machine learning model to attribute performance to individual hashtags
+        # This is a simplified version - actual implementation would use more sophisticated models
+
+        base_score = metrics["engagement"] / len(hashtags)
+        hashtag_scores = {}
+
+        for hashtag in hashtags:
+            # Factor in hashtag popularity, competition, and historical performance
+            popularity_factor = await self.get_hashtag_popularity_factor(hashtag)
+            historical_performance = self.get_historical_performance(hashtag)
+
+            attributed_score = base_score * popularity_factor * historical_performance
+            hashtag_scores[hashtag] = attributed_score
+
+        return hashtag_scores
+
+    def generate_hashtag_recommendations(self, performance_history: pd.DataFrame) -> Dict:
+        """Generate data-driven hashtag recommendations."""
+        # Analyze top performing hashtags
+        top_performers = performance_history.groupby('hashtag').agg({
+            'engagement': 'mean',
+            'reach': 'mean',
+            'post_count': 'count'
+        }).sort_values('engagement', ascending=False)
+
+        recommendations = {
+            "top_performers": top_performers.head(10).to_dict(),
+            "emerging_hashtags": self.identify_emerging_hashtags(performance_history),
+            "declining_hashtags": self.identify_declining_hashtags(performance_history),
+            "seasonal_patterns": self.analyze_seasonal_patterns(performance_history)
+        }
+
+        return recommendations
+```
+
+<#0.5#>
+
+### Phase 4 - Advanced Engagement Tracking and Analytics
+
+#### Real-Time Comprehensive Analytics System
+
+The system tracks mentions, hashtags, keywords, and engagement metrics in real time across platforms for reputation monitoring and decision-making.
+
+```python
+import asyncio
+import aiohttp
+import pandas as pd
+import numpy as np
+from datetime import datetime, timedelta
+from typing import Dict, List, Optional
+import plotly.graph_objects as go
+import plotly.express as px
+import streamlit as st
+from dataclasses import dataclass
+import json
+import openai
+import time
+
+@dataclass
+class EngagementMetric:
+    timestamp: datetime
+    platform: str
+    post_id: str
+    metric_type: str
+    value: int
+    user_id: Optional[str] = None
+    content_type: Optional[str] = None
+
+class AdvancedEngagementTracker:
+    def __init__(self, api_keys: Dict[str, str]):
+        self.api_keys = api_keys
+        self.metrics_buffer = []
+        self.real_time_data = pd.DataFrame()
+        self.alert_thresholds = self.load_alert_thresholds()
+        self.sentiment_analyzer = AdvancedSentimentAnalyzer()
+
+    async def start_real_time_monitoring(self):
+        """Initialize real-time monitoring across all platforms."""
+        monitoring_tasks = [
+            self.monitor_instagram_engagement(),
+            self.monitor_twitter_engagement(),
+            self.monitor_tiktok_engagement(),
+            self.monitor_facebook_engagement(),
+            self.monitor_linkedin_engagement()
+        ]
+
+        # Run all monitoring tasks concurrently
+        await asyncio.gather(*monitoring_tasks)
+
+    async def monitor_instagram_engagement(self):
+        """Real-time Instagram engagement monitoring."""
+        headers = {"Authorization": f"Bearer {self.api_keys['instagram']}"}
+
+        while True:
+            try:
+                # Get recent posts
+                recent_posts = await self.get_recent_instagram_posts()
+
+                for post in recent_posts:
+                    # Get detailed metrics for each post
+                    metrics = await self.get_instagram_post_metrics(post['id'])
+
+                    # Process and store metrics
+                    await self.process_engagement_data('instagram', post['id'], metrics)
+
+                    # Check for viral content or issues
+                    await self.check_engagement_alerts('instagram', post['id'], metrics)
+
+                # Wait before next check (respect rate limits)
+                await asyncio.sleep(60)  # Check every minute
+
+            except Exception as e:
+                print(f"Instagram monitoring error: {e}")
+                await asyncio.sleep(300)  # Wait 5 minutes before retry
+
+    async def get_instagram_post_metrics(self, post_id: str) -> Dict:
+        """Get comprehensive Instagram post metrics."""
+        headers = {"Authorization": f"Bearer {self.api_keys['instagram']}"}
+
+        async with aiohttp.ClientSession() as session:
+            # Get post insights
+            insights_url = f"https://graph.instagram.com/{post_id}/insights"
+            insights_params = {
+                "metric": "impressions,reach,engagement,saves,video_views,website_clicks",
+                "access_token": self.api_keys['instagram']
+            }
+
+            async with session.get(insights_url, params=insights_params) as response:
+                insights_data = await response.json()
+
+            # Get comments for sentiment analysis
+            comments_url = f"https://graph.instagram.com/{post_id}/comments"
+            comments_params = {"access_token": self.api_keys['instagram']}
+
+            async with session.get(comments_url, params=comments_params) as response:
+                comments_data = await response.json()
+
+            # Process metrics
+            processed_metrics = await self.process_instagram_metrics(
+                insights_data, comments_data
+            )
+
+            return processed_metrics
+
+    async def process_engagement_data(self, platform: str, post_id: str, 
+                                    metrics: Dict):
+        """Process and normalize engagement data across platforms."""
+        timestamp = datetime.now()
+
+        # Normalize metrics across platforms
+        normalized_metrics = self.normalize_platform_metrics(platform, metrics)
+
+        # Create engagement metric objects
+        engagement_records = []
+        for metric_name, value in normalized_metrics.items():
+            record = EngagementMetric(
+                timestamp=timestamp,
+                platform=platform,
+                post_id=post_id,
+                metric_type=metric_name,
+                value=value
+            )
+            engagement_records.append(record)
+
+        # Store in buffer and database
+        self.metrics_buffer.extend(engagement_records)
+
+        # Process sentiment analysis
+        if metrics.get('comments'):
+            sentiment_data = await self.sentiment_analyzer.analyze_comments(
+                metrics['comments']
+            )
+            await self.store_sentiment_data(platform, post_id, sentiment_data)
+
+        # Update real-time dashboard
+        await self.update_real_time_dashboard(engagement_records)
+
+    def normalize_platform_metrics(self, platform: str, metrics: Dict) -> Dict:
+        """Normalize metrics across different platforms for comparison."""
+        normalized = {}
+
+        if platform == "instagram":
+            normalized = {
+                "impressions": metrics.get("impressions", 0),
+                "reach": metrics.get("reach", 0),
+                "likes": metrics.get("likes", 0),
+                "comments": metrics.get("comment_count", 0),
+                "shares": metrics.get("shares", 0),
+                "saves": metrics.get("saves", 0),
+                "engagement_rate": self.calculate_engagement_rate(metrics)
+            }
+        elif platform == "twitter":
+            normalized = {
+                "impressions": metrics.get("impression_count", 0),
+                "reach": metrics.get("impression_count", 0),  # Twitter uses impressions
+                "likes": metrics.get("like_count", 0),
+                "comments": metrics.get("reply_count", 0),
+                "shares": metrics.get("retweet_count", 0),
+                "saves": 0,  # Twitter doesn't have saves
+                "engagement_rate": self.calculate_engagement_rate(metrics)
+            }
+        elif platform == "tiktok":
+            normalized = {
+                "impressions": metrics.get("video_view_count", 0),
+                "reach": metrics.get("video_view_count", 0),
+                "likes": metrics.get("like_count", 0),
+                "comments": metrics.get("comment_count", 0),
+                "shares": metrics.get("share_count", 0),
+                "saves": 0,  # TikTok doesn't expose saves via API
+                "engagement_rate": self.calculate_engagement_rate(metrics)
+            }
+
+        return normalized
+
+    async def check_engagement_alerts(self, platform: str, post_id: str, 
+                                    metrics: Dict):
+        """Monitor for engagement anomalies and opportunities."""
+        normalized_metrics = self.normalize_platform_metrics(platform, metrics)
+
+        # Check for viral content (engagement spike)
+        if normalized_metrics.get("engagement_rate", 0) > self.alert_thresholds["viral_threshold"]:
+            await self.trigger_viral_alert(platform, post_id, normalized_metrics)
+
+        # Check for negative sentiment spike
+        if metrics.get("sentiment_score", 5) < self.alert_thresholds["negative_sentiment_threshold"]:
+            await self.trigger_negative_sentiment_alert(platform, post_id, metrics)
+
+        # Check for unusual engagement patterns
+        engagement_anomaly = await self.detect_engagement_anomaly(
+            platform, normalized_metrics
+        )
+        if engagement_anomaly:
+            await self.trigger_anomaly_alert(platform, post_id, engagement_anomaly)
+
+    async def create_real_time_dashboard(self) -> str:
+        """Create comprehensive real-time analytics dashboard."""
+        st.set_page_config(page_title="Social Media Real-Time Analytics", layout="wide")
+        st.title("🚀 Social Media Engagement Dashboard - The Future Is Now")
+
+        # Key metrics row
+        col1, col2, col3, col4, col5 = st.columns(5)
+
+        with col1:
+            total_followers = await self.get_total_followers()
+            st.metric("Total Followers", f"{total_followers:,}", 
+                     delta=await self.get_follower_change())
+
+        with col2:
+            avg_engagement = await self.get_average_engagement_rate()
+            st.metric("Avg Engagement Rate", f"{avg_engagement:.2f}%",
+                     delta=f"{await self.get_engagement_change():.2f}%")
+
+        with col3:
+            today_reach = await self.get_todays_reach()
+            st.metric("Today's Reach", f"{today_reach:,}",
+                     delta=await self.get_reach_change())
+
+        with col4:
+            sentiment_score = await self.get_overall_sentiment()
+            st.metric("Sentiment Score", f"{sentiment_score:.2f}/5",
+                     delta=f"{await self.get_sentiment_change():.2f}")
+
+        with col5:
+            trending_hashtags = await self.get_trending_hashtag_count()
+            st.metric("Trending Hashtags", trending_hashtags,
+                     delta=await self.get_hashtag_trend_change())
+
+        # Platform breakdown
+        st.subheader("📱 Platform Performance")
+        platform_data = await self.get_platform_performance_data()
+
+        fig_platforms = px.bar(
+            platform_data,
+            x="Platform",
+            y="Engagement Rate",
+            color="Follower Count",
+            title="Platform Performance Comparison"
+        )
+        st.plotly_chart(fig_platforms, use_container_width=True)
+
+        # Real-time engagement timeline
+        st.subheader("⚡ Real-Time Engagement Timeline")
+        timeline_data = await self.get_engagement_timeline()
+
+        fig_timeline = go.Figure()
+        for platform in timeline_data['platform'].unique():
+            platform_data = timeline_data[timeline_data['platform'] == platform]
+            fig_timeline.add_trace(go.Scatter(
+                x=platform_data['timestamp'],
+                y=platform_data['engagement'],
+                mode='lines+markers',
+                name=platform.title(),
+                hovertemplate=f'<b>{platform.title()}</b><br>Time: %{{x}}<br>Engagement: %{{y}}<extra></extra>'
+            ))
+
+        fig_timeline.update_layout(
+            title="Live Engagement Tracking",
+            xaxis_title="Time",
+            yaxis_title="Engagement Count",
+            hovermode="x unified"
+        )
+        st.plotly_chart(fig_timeline, use_container_width=True)
+
+        # Sentiment analysis
+        col1, col2 = st.columns(2)
+
+        with col1:
+            st.subheader("😊 Sentiment Analysis")
+            sentiment_breakdown = await self.get_sentiment_breakdown()
+
+            fig_sentiment = px.pie(
+                values=list(sentiment_breakdown.values()),
+                names=list(sentiment_breakdown.keys()),
+                title="Comment Sentiment Distribution"
+            )
+            st.plotly_chart(fig_sentiment, use_container_width=True)
+
+        with col2:
+            st.subheader("🔥 Top Performing Content")
+            top_content = await self.get_top_performing_content()
+
+            for i, content in enumerate(top_content[:5], 1):
+                st.write(f"**{i}. {content['platform'].title()}**")
+                st.write(f"Engagement: {content['engagement']:,}")
+                st.write(f"Reach: {content['reach']:,}")
+                st.write(f"Content: {content['preview'][:100]}...")
+                st.divider()
+
+        # Alerts and notifications
+        st.subheader("🚨 Live Alerts")
+        alerts = await self.get_recent_alerts()
+
+        for alert in alerts:
+            alert_type = alert['type']
+            if alert_type == 'viral':
+                st.success(f"🔥 Viral Alert: {alert['message']}")
+            elif alert_type == 'negative_sentiment':
+                st.warning(f"⚠️ Sentiment Alert: {alert['message']}")
+            elif alert_type == 'engagement_spike':
+                st.info(f"📈 Engagement Spike: {alert['message']}")
+
+        # Auto-refresh
+        time.sleep(30)  # Refresh every 30 seconds
+        st.rerun()
+
+class AdvancedSentimentAnalyzer:
+    """GPT-4 powered sentiment analysis for social media content."""
+
+    def __init__(self):
+        self.openai_client = openai.OpenAI()
+        self.sentiment_cache = {}
+
+    async def analyze_comments(self, comments: List[Dict]) -> Dict:
+        """Comprehensive sentiment analysis of comments using GPT-4."""
+        if not comments:
+            return {"overall_sentiment": 5, "breakdown": {}, "insights": []}
+
+        # Batch process comments for efficiency
+        comment_batches = self.create_comment_batches(comments, batch_size=20)
+        sentiment_results = []
+
+        for batch in comment_batches:
+            batch_result = await self.analyze_comment_batch(batch)
+            sentiment_results.extend(batch_result)
+
+        # Aggregate results
+        aggregated_sentiment = self.aggregate_sentiment_results(sentiment_results)
+
+        # Generate insights
+        insights = await self.generate_sentiment_insights(aggregated_sentiment)
+
+        return {
+            "overall_sentiment": aggregated_sentiment["overall_score"],
+            "breakdown": aggregated_sentiment["breakdown"],
+            "insights": insights,
+            "comment_analysis": sentiment_results
+        }
+
+    async def analyze_comment_batch(self, comments: List[Dict]) -> List[Dict]:
+        """Analyze a batch of comments using GPT-4."""
+        comment_texts = [comment.get("text", "") for comment in comments]
+
+        prompt = f"""
+        Analyze the sentiment of these social media comments about "The Future Is Now" movie.
+        For each comment, provide:
+        Sentiment score (1-5): 1=very negative, 2=negative, 3=neutral, 4=positive, 5=very positive
+        Emotion category: joy, excitement, anticipation, skepticism, disappointment, anger, fear, curiosity
+        Intent: praise, criticism, question, suggestion, spam, promotional
+        Key themes mentioned
+
+        Comments:
+        {json.dumps(comment_texts, indent=2)}
+
+        Return as JSON array with analysis for each comment.
+        """
+
+        try:
+            response = await self.openai_client.chat.completions.create(
+                model="gpt-4",
+                messages=[
+                    {"role": "system", "content": """You are an expert sentiment analyst specializing in social media and entertainment marketing. 
+                     Provide accurate, nuanced sentiment analysis that captures both explicit and implicit emotional content."""},
+                    {"role": "user", "content": prompt}
+                ],
+                temperature=0.3,
+                max_tokens=2000
+            )
+
+            analysis_results = json.loads(response.choices[0].message.content)
+
+            # Combine with original comment data
+            enriched_results = []
+            for i, (comment, analysis) in enumerate(zip(comments, analysis_results)):
+                enriched_result = {
+                    "comment_id": comment.get("id"),
+                    "user_id": comment.get("from", {}).get("id"),
+                    "timestamp": comment.get("created_time"),
+                    "text": comment.get("text"),
+                    **analysis
+                }
+                enriched_results.append(enriched_result)
+
+            return enriched_results
+
+        except Exception as e:
+            print(f"Sentiment analysis error: {e}")
+            # Fallback to simple sentiment scoring
+            return self.fallback_sentiment_analysis(comments)
+
+    def aggregate_sentiment_results(self, sentiment_results: List[Dict]) -> Dict:
+        """Aggregate individual sentiment analyses into overall metrics."""
+        if not sentiment_results:
+            return {"overall_score": 5, "breakdown": {}}
+
+        # Calculate overall sentiment score (weighted by engagement)
+        total_weight = 0
+        weighted_sentiment = 0
+
+        sentiment_counts = {"very_negative": 0, "negative": 0, "neutral": 0, "positive": 0, "very_positive": 0}
+        emotion_counts = {}
+        intent_counts = {}
+        theme_counts = {}
+
+        for result in sentiment_results:
+            weight = 1  # Can be enhanced with engagement weight later
+            sentiment_score = result.get("sentiment_score", 3)
+
+            weighted_sentiment += sentiment_score * weight
+            total_weight += weight
+
+            # Count sentiment distribution
+            if sentiment_score == 1:
+                sentiment_counts["very_negative"] += 1
+            elif sentiment_score == 2:
+                sentiment_counts["negative"] += 1
+            elif sentiment_score == 3:
+                sentiment_counts["neutral"] += 1
+            elif sentiment_score == 4:
+                sentiment_counts["positive"] += 1
+            elif sentiment_score == 5:
+                sentiment_counts["very_positive"] += 1
+
+            # Count emotions and intents
+            emotion = result.get("emotion_category", "neutral")
+            emotion_counts[emotion] = emotion_counts.get(emotion, 0) + 1
+
+            intent = result.get("intent", "unknown")
+            intent_counts[intent] = intent_counts.get(intent, 0) + 1
+
+            # Count themes
+            themes = result.get("key_themes", [])
+            for theme in themes:
+                theme_counts[theme] = theme_counts.get(theme, 0) + 1
+
+        overall_score = weighted_sentiment / total_weight if total_weight > 0 else 3
+
+        return {
+            "overall_score": overall_score,
+            "breakdown": {
+                "sentiment_distribution": sentiment_counts,
+                "emotion_distribution": emotion_counts,
+                "intent_distribution": intent_counts,
+                "theme_distribution": theme_counts
+            }
+        }
+
+    async def generate_sentiment_insights(self, aggregated_data: Dict) -> List[str]:
+        """Generate actionable insights from sentiment analysis."""
+        prompt = f"""
+        Based on this sentiment analysis data for "The Future Is Now" movie social media engagement:
+
+        Overall sentiment score: {aggregated_data['overall_score']}/5
+        Breakdown: {json.dumps(aggregated_data['breakdown'], indent=2)}
+
+        Generate 5 actionable insights for the social media team:
+        What's working well that should be amplified
+        What concerns need addressing
+        Content opportunities based on themes
+        Engagement strategy recommendations
+        Crisis prevention/management suggestions
+
+        Keep insights specific, actionable, and focused on improving engagement.
+        """
+
+        try:
+            response = await self.openai_client.chat.completions.create(
+                model="gpt-4",
+                messages=[
+                    {"role": "system", "content": "You are a social media strategist providing actionable insights based on sentiment analysis data."},
+                    {"role": "user", "content": prompt}
+                ],
+                temperature=0.4,
+                max_tokens=800
+            )
+
+            insights_text = response.choices[0].message.content
+            insights = [insight.strip() for insight in insights_text.split('\n') if insight.strip()]
+
+            return insights
+
+        except Exception as e:
+            print(f"Insight generation error: {e}")
+            return ["Unable to generate insights at this time."]
+```
+
+<#0.5#>
+
+### Phase 5 - Advanced Reply Bot System
+
+#### Intelligent Conversational AI for Community Management
+
+The system analyzes social media data with GPT-4 to extract sentiment insights and deliver personalized responses.
+
+```python
+import asyncio
+import openai
+from datetime import datetime, timedelta
+from typing import Dict, List, Optional, Tuple
+import json
+import re
+from dataclasses import dataclass, asdict
+import spacy
+import aiohttp
+
+@dataclass
+class ConversationContext:
+    user_id: str
+    platform: str
+    conversation_history: List[Dict]
+    user_sentiment: float
+    user_intent: str
+    escalation_level: int = 0
+    last_interaction: datetime = datetime.now()
+
+class AdvancedReplyBot:
+    def __init__(self, openai_key: str, brand_guidelines: Dict):
+        self.openai_client = openai.OpenAI(api_key=openai_key)
+        self.brand_guidelines = brand_guidelines
+        self.conversation_contexts = {}
+        self.escalation_triggers = self.load_escalation_triggers()
+        self.response_templates = self.load_response_templates()
+        self.nlp = spacy.load("en_core_web_sm")
+        self.replied_users = set()
+        self.api_keys = {}  # Add API keys for platforms
+
+    async def start_comment_monitoring(self):
+        """Start continuous monitoring and response system."""
+        monitoring_tasks = [
+            self.monitor_instagram_comments(),
+            self.monitor_twitter_mentions(),
+            self.monitor_facebook_comments(),
+            self.monitor_tiktok_comments(),
+            self.monitor_linkedin_comments()
+        ]
+
+        await asyncio.gather(*monitoring_tasks)
+
+    async def monitor_instagram_comments(self):
+        """Monitor and respond to Instagram comments."""
+        while True:
+            try:
+                # Get latest comments across all posts
+                recent_comments = await self.get_recent_instagram_comments()
+
+                for comment in recent_comments:
+                    if not await self.should_respond_to_comment(comment):
+                        continue
+
+                    # Process comment and generate response
+                    response_data = await self.process_comment_for_response(comment, "instagram")
+
+                    if response_data["should_respond"]:
+                        await self.post_instagram_reply(comment, response_data["response"])
+
+                        # Log interaction
+                        await self.log_bot_interaction(comment, response_data, "instagram")
+
+                await asyncio.sleep(300)  # Check every 5 minutes
+
+            except Exception as e:
+                print(f"Instagram comment monitoring error: {e}")
+                await asyncio.sleep(600)  # Wait 10 minutes on error
+
+    async def process_comment_for_response(self, comment: Dict, platform: str) -> Dict:
+        """Comprehensive comment analysis and response generation."""
+        user_id = comment.get("from", {}).get("id", "unknown")
+        comment_text = comment.get("text", "")
+
+        # Get or create conversation context
+        context = await self.get_conversation_context(user_id, platform)
+
+        # Update conversation history
+        context.conversation_history.append({
+            "timestamp": datetime.now(),
+            "user_message": comment_text,
+            "comment_id": comment.get("id")
+        })
+
+        # Analyze comment sentiment and intent
+        analysis = await self.analyze_comment_comprehensive(comment_text, context)
+
+        # Update context with new analysis
+        context.user_sentiment = analysis["sentiment_score"]
+        context.user_intent = analysis["intent"]
+
+        # Check if response is needed
+        should_respond = await self.should_generate_response(analysis, context)
+
+        if not should_respond:
+            return {"should_respond": False, "reason": "No response needed"}
+
+        # Generate contextual response
+        response = await self.generate_contextual_response(
+            comment_text, analysis, context, platform
+        )
+
+        # Check for escalation needs
+        if await self.check_escalation_needed(analysis, context):
+            await self.trigger_human_escalation(comment, analysis, context)
+
+        return {
+            "should_respond": True,
+            "response": response,
+            "analysis": analysis,
+            "context": asdict(context)
+        }
+
+    async def analyze_comment_comprehensive(self, comment_text: str, 
+                                         context: ConversationContext) -> Dict:
+        """Deep analysis of comment using GPT-4 and NLP."""
+
+        # Extract entities and keywords using spaCy
+        doc = self.nlp(comment_text)
+        entities = [(ent.text, ent.label_) for ent in doc.ents]
+        keywords = [token.lemma_ for token in doc if not token.is_stop and not token.is_punct]
+
+        # GPT-4 comprehensive analysis
+        analysis_prompt = f"""
+        Analyze this social media comment about "The Future Is Now" movie for customer service response:
+
+        Comment: "{comment_text}"
+        User history: {len(context.conversation_history)} previous interactions
+        Previous sentiment: {context.user_sentiment}
+        Previous intent: {context.user_intent}
+
+        Provide analysis as JSON:
+        {{
+            "sentiment_score": (1-5 scale),
+            "sentiment_label": "very_negative/negative/neutral/positive/very_positive",
+            "emotion": "primary emotion detected",
+            "intent": "praise/complaint/question/request/spam/promotional",
+            "urgency": (1-5 scale),
+            "response_needed": true/false,
+            "escalation_recommended": true/false,
+            "key_topics": ["topic1", "topic2"],
+            "user_type": "fan/critic/casual/influencer/spam",
+            "response_tone": "enthusiastic/professional/empathetic/educational",
+            "specific_concerns": ["concern1", "concern2"],
+            "opportunities": ["opportunity1", "opportunity2"]
+        }}
+        """
+
+        try:
+            response = await self.openai_client.chat.completions.create(
+                model="gpt-4",
+                messages=[
+                    {"role": "system", "content": """You are an expert social media analyst specializing in entertainment marketing. 
+                     Provide detailed, accurate analysis that helps customer service teams respond appropriately."""},
+                    {"role": "user", "content": analysis_prompt}
+                ],
+                temperature=0.2,
+                max_tokens=500
+            )
+
+            analysis = json.loads(response.choices[0].message.content)
+
+            # Enhance with NLP data
+            analysis["entities"] = entities
+            analysis["keywords"] = keywords
+
+            return analysis
+
+        except Exception as e:
+            print(f"Comment analysis error: {e}")
+            return self.fallback_analysis(comment_text)
+
+    async def generate_contextual_response(self, original_comment: str, 
+                                         analysis: Dict, 
+                                         context: ConversationContext,
+                                         platform: str) -> str:
+        """Generate contextual, brand-aligned response using GPT-4."""
+
+        # Build context for response generation
+        conversation_summary = self.summarize_conversation_history(context.conversation_history)
+        brand_voice = self.brand_guidelines.get("voice", "friendly and professional")
+        platform_constraints = self.get_platform_response_constraints(platform)
+
+        response_prompt = f"""
+        Generate a response for this social media comment about "The Future Is Now" movie:
+
+        Original comment: "{original_comment}"
+
+        Context:
+        - Platform: {platform}
+        - User sentiment: {analysis['sentiment_label']}
+        - User intent: {analysis['intent']}
+        - User emotion: {analysis.get('emotion', 'neutral')}
+        - Recommended tone: {analysis.get('response_tone', 'professional')}
+        - Previous interactions: {len(context.conversation_history)}
+        - Conversation summary: {conversation_summary}
+
+        Brand Guidelines:
+        - Voice: {brand_voice}
+        - Movie: Sci-fi thriller "The Future Is Now" releasing December 25, 2025
+        - Brand personality: Innovative, mysterious, engaging, authentic
+        - Key messaging: The truth will change everything, Christmas 2025, IMAX experience
+
+        Platform Constraints:
+        - Max length: {platform_constraints['max_length']} characters
+        - Emoji usage: {platform_constraints['emoji_style']}
+        - Hashtag strategy: {platform_constraints['hashtag_approach']}
+
+        Response Requirements:
+        Address the user's specific point/question
+        Maintain brand voice and personality
+        Include relevant call-to-action when appropriate
+        Show genuine engagement, not automation
+        Add value to the conversation
+
+        Generate ONLY the response text (no quotes or explanations):
+        """
+
+        try:
+            response = await self.openai_client.chat.completions.create(
+                model="gpt-4",
+                messages=[
+                    {"role": "system", "content": """You are the social media manager for "The Future Is Now" movie. 
+                     Create engaging, authentic responses that build community and excitement while staying true to the brand voice."""},
+                    {"role": "user", "content": response_prompt}
+                ],
+                temperature=0.7,
+                max_tokens=300
+            )
+
+            generated_response = response.choices[0].message.content.strip()
+
+            # Post-process response
+            final_response = await self.post_process_response(
+                generated_response, platform, analysis
+            )
+
+            return final_response
+
+        except Exception as e:
+            print(f"Response generation error: {e}")
+            return self.get_fallback_response(analysis["intent"], platform)
+
+    async def post_process_response(self, response: str, platform: str, 
+                                  analysis: Dict) -> str:
+        """Post-process generated response for platform optimization."""
+
+        # Add platform-specific formatting
+        if platform == "instagram" and analysis.get("response_tone") == "enthusiastic":
+            # Add relevant emojis for Instagram
+            response = self.add_instagram_emojis(response)
+
+        elif platform == "twitter":
+            # Ensure under character limit
+            response = self.truncate_for_twitter(response)
+
+        elif platform == "linkedin":
+            # More professional tone
+            response = self.professionalize_for_linkedin(response)
+
+        # Add personalization
+        if analysis.get("user_type") == "influencer":
+            response = self.add_influencer_recognition(response)
+
+        # Add appropriate call-to-action
+        cta = self.select_contextual_cta(analysis, platform)
+        if cta and len(response) + len(cta) < self.get_platform_response_constraints(platform)["max_length"]:
+            response += f" {cta}"
+
+        return response
+
+    async def check_escalation_needed(self, analysis: Dict, 
+                                    context: ConversationContext) -> bool:
+        """Determine if human escalation is needed."""
+        escalation_indicators = [
+            analysis.get("urgency", 1) >= 4,
+            analysis.get("sentiment_score", 3) <= 2 and context.escalation_level >= 2,
+            "complaint" in analysis.get("intent", "").lower(),
+            any(trigger in analysis.get("key_topics", []) for trigger in self.escalation_triggers),
+            len(context.conversation_history) > 5,  # Long conversation
+            analysis.get("escalation_recommended", False)
+        ]
+
+        return any(escalation_indicators)
+
+    async def trigger_human_escalation(self, comment: Dict, analysis: Dict, 
+                                     context: ConversationContext):
+        """Trigger human escalation with comprehensive context."""
+        escalation_data = {
+            "timestamp": datetime.now(),
+            "platform": context.platform,
+            "user_id": context.user_id,
+            "comment": comment,
+            "analysis": analysis,
+            "conversation_history": context.conversation_history,
+            "escalation_reason": self.determine_escalation_reason(analysis, context),
+            "priority": self.calculate_escalation_priority(analysis, context),
+            "suggested_actions": await self.generate_escalation_suggestions(analysis, context)
+        }
+
+        # Send to human team (implementation depends on your system)
+        await self.notify_human_team(escalation_data)
+
+        # Mark in context to prevent duplicate escalations
+        context.escalation_level += 1
+
+    def get_platform_response_constraints(self, platform: str) -> Dict:
+        """Platform-specific response constraints and best practices."""
+        constraints = {
+            "instagram": {
+                "max_length": 2200,
+                "emoji_style": "moderate",
+                "hashtag_approach": "minimal",
+                "tone": "friendly"
+            },
+            "twitter": {
+                "max_length": 280,
+                "emoji_style": "light",
+                "hashtag_approach": "strategic",
+                "tone": "conversational"
+            },
+            "facebook": {
+                "max_length": 1000,
+                "emoji_style": "moderate",
+                "hashtag_approach": "minimal",
+                "tone": "professional"
+            },
+            "tiktok": {
+                "max_length": 300,
+                "emoji_style": "heavy",
+                "hashtag_approach": "trending",
+                "tone": "energetic"
+            },
+            "linkedin": {
+                "max_length": 700,
+                "emoji_style": "professional",
+                "hashtag_approach": "industry",
+                "tone": "professional"
+            }
+        }
+
+        return constraints.get(platform, constraints["instagram"])
+
+    def select_contextual_cta(self, analysis: Dict, platform: str) -> str:
+        """Select appropriate call-to-action based on context."""
+        intent = analysis.get("intent", "")
+        sentiment = analysis.get("sentiment_label", "neutral")
+
+        ctas = {
+            "positive_fan": "🎬 Can't wait for you to see it!",
+            "curious": "🔗 Check out more at [link in bio]",
+            "question": "💭 Got more questions? We're here!",
+            "excitement": "🔥 The countdown begins! December 25th!",
+            "neutral": "🌟 Thanks for following our journey!"
+        }
+
+        if "positive" in sentiment and "praise" in intent:
+            return ctas["positive_fan"]
+        elif "question" in intent:
+            return ctas["question"]
+        elif "neutral" in sentiment:
+            return ctas["curious"]
+        else:
+            return ctas["neutral"]
+
+    async def post_instagram_reply(self, comment: Dict, response: str):
+        """Post reply to Instagram comment."""
+        headers = {"Authorization": f"Bearer {self.api_keys['instagram']}"}
+
+        reply_data = {
+            "message": response
+        }
+
+        async with aiohttp.ClientSession() as session:
+            url = f"https://graph.instagram.com/{comment['id']}/replies"
+            async with session.post(url, json=reply_data, headers=headers) as response:
+                result = await response.json()
+                return result
+
+    async def log_bot_interaction(self, comment: Dict, response_data: Dict, platform: str):
+        """Log bot interaction for analysis and improvement."""
+        log_entry = {
+            "timestamp": datetime.now(),
+            "platform": platform,
+            "comment_id": comment.get("id"),
+            "user_id": comment.get("from", {}).get("id"),
+            "original_comment": comment.get("text"),
+            "bot_response": response_data["response"],
+            "analysis": response_data["analysis"],
+            "response_time": (datetime.now() - datetime.fromisoformat(comment.get("created_time", datetime.now().isoformat()))).total_seconds()
+        }
+
+        # Store in database for analysis
+        await self.store_interaction_log(log_entry)
+
+        # Add to replied users to prevent duplicate responses
+        self.replied_users.add(comment.get("from", {}).get("id"))
+```
+
+This documentation details a production-ready social media management platform using LangGraph for orchestration, ensuring enterprise-scale operations with quality and brand consistency.
+
+<#0.5#>
+
+## Implementation Solutions
+
+<#0.5#>
+
+### Overview
+
+This section analyzes open-source frameworks and tools for implementing the Social Media Agent. It identifies suitable technologies and provides roadmaps for major capabilities based on market research.
+
+<#0.5#>
+
+### Framework Compatibility Matrix
+
+| Requirement/Capability       | LangChain/LangGraph | n8n  | Ayrshare API | Mixpost | Haystack | Open Source LLMs |
+|------------------------------|---------------------|------|--------------|---------|----------|------------------|
+| **Content Calendar**         | ✅ Core Framework   | ✅ Visual Workflows | ✅ Multi-Platform API | ✅ Self-hosted | ⚠️ Partial | ❌ Not Applicable |
+| **AI Asset Generation**      | ✅ LLM Integration  | ✅ OpenAI Nodes | ❌ Limited    | ✅ Basic Support | ✅ Multi-modal | ✅ Content Creation |
+| **Hashtag Optimization**     | ✅ AI Analysis      | ✅ Custom Logic | ⚠️ Basic      | ✅ Management | ✅ Text Analysis | ✅ Pattern Recognition |
+| **Engagement Tracking**      | ✅ Analytics Pipeline | ✅ Data Processing | ✅ Native Analytics | ✅ Comprehensive | ⚠️ Limited | ⚠️ Analysis Only |
+| **Reply Bot System**         | ✅ Conversation AI  | ✅ Automated Responses | ⚠️ Basic      | ✅ Inbox Management | ✅ Conversational AI | ✅ Response Generation |
+| **Influencer Outreach**      | ✅ Workflow Management | ✅ CRM Integration | ❌ Not Supported | ⚠️ Limited | ❌ Not Applicable | ✅ Content Analysis |
+| **Multi-Platform Publishing**| ✅ API Orchestration | ✅ Native Integrations | ✅ Core Feature | ✅ 11 Platforms | ❌ Not Applicable | ❌ Not Applicable |
+| **Human-in-the-Loop**        | ✅ Built-in Feature | ✅ Approval Workflows | ❌ Limited    | ✅ Team Collaboration | ⚠️ Custom Implementation | ❌ Not Applicable |
+
+**Legend**: ✅ Full Support | ⚠️ Partial/Custom Required | ❌ Not Supported
+
+<#0.5#>
+
+### Primary Implementation Stack Recommendation
+
+#### Core Architecture: LangChain + LangGraph Foundation
+
+LangGraph, an MIT-licensed open-source library, builds stateful, multi-actor applications with human-in-the-loop support, ideal for this system.
+
+**Why This Stack**:
+- Statefulness enables human collaboration, with agents drafting for review.
+- Durable execution persists through failures and resumes automatically.
+- Proven with existing GitHub implementations for social media agents.
+
+**Architecture Components**:
+- **LangGraph Workflows**: Core orchestration.
+- **n8n Integration Layer**: Visual workflow and API coordination.
+- **Unified Social Media APIs**: Publishing and analytics.
+- **Open Source AI Models**: Content generation and analysis.
+- **Self-hosted Analytics**: Tracking and optimization.
+
+<#0.5#>
+
+### Detailed Implementation Solutions by Capability
+
+#### Advanced Content Calendar System
+
+##### Primary Framework: LangGraph + n8n
+
+**LangGraph Implementation**:
+- Fetch Slack messages and process through daily generate_post workflows.
+- Use background jobs for scheduling and campaigns.
+
+**n8n Workflow Automation**:
+n8n, a free open-source tool, connects apps via node-based interfaces.
+
+**Implementation Approach**:
+```typescript
+// LangGraph State Management
+interface ContentCalendarState {
+  campaigns: Campaign[];
+  scheduledPosts: ScheduledPost[];
+  approvalQueue: PendingPost[];
+  publishedContent: PublishedPost[];
+}
+
+// n8n Workflow Triggers
+- Cron Schedule: Daily content generation
+- Webhook: Manual content submission
+- Calendar Integration: Event-based posting
+- Approval Gates: Human review checkpoints
+```
+
+**Integration Points**:
+- Notion for planning, Google Drive for videos, Google Sheets for status.
+
+**Pros**:
+- Draft once, publish everywhere with consistent schedules.
+- Visual, no-code design with error handling.
+
+**Cons**:
+- Initial setup required; custom nodes for some platforms.
+
+#### AI-Powered Asset Generation System
+
+##### Primary Framework: Haystack + Open Source Models
+
+**Haystack Framework**:
+An open-source AI framework for LLM-powered agents, supporting multi-modal tasks like image generation.
+
+**Implementation Architecture**:
+```python
+# Multi-Modal Pipeline
+@component
+class ContentGenerationPipeline:
+    def __init__(self):
+        self.text_generator = OpenAIGenerator()
+        self.image_generator = StableDiffusionGenerator()  
+        self.video_processor = FFmpegProcessor()
+
+    def generate_campaign_assets(self, brief: str) -> Dict:
+        # Leverage Haystack's standardized interface
+        return {
+            "hero_images": self.create_hero_visuals(brief),
+            "social_copy": self.generate_platform_copy(brief),
+            "video_clips": self.process_video_content(brief)
+        }
+```
+
+**Open Source Model Integration**:
+- **Falcon 180B**: Advanced language model for text generation.
+- **Stable Diffusion**: For images.
+- **AudioCraft**: For audio (MusicGen, AudioGen).
+
+**Content Pipeline Features**:
+- Jinja-2 templates for workflow matching.
+- Function-calling with branching and looping.
+
+**Pros**:
+- Modular for production; cost-effective; fine-tunable.
+
+**Cons**:
+- Hosting costs; technical expertise needed.
+
+#### Multi-Platform Social Media API Management
+
+##### Primary Framework: Ayrshare Social Media API
+
+**Unified API Approach**:
+Ayrshare manages networks like X/Twitter, Facebook, Instagram, LinkedIn, YouTube, Google Business Profile, Telegram, TikTok, and Reddit.
+
+**Implementation Example**:
+```javascript
+const SocialMediaAPI = require("social-media-api");
+const social = new SocialMediaAPI(API_KEY);
+
+// Multi-platform posting
+const post = await social.post({
+    post: "The future is now! 🚀 #SciFiThriller2025",
+    platforms: ["twitter", "facebook", "instagram", "linkedin"],
+    mediaUrls: ["https://img.example.com/movie-poster.jpg"],
+    scheduledTime: "2025-12-25T09:00:00Z"
+});
+```
+
+**Alternative: Self-Hosted Mixpost**:
+Self-hosted management with no fees, full privacy, supporting 11 platforms.
+
+**Mixpost Features**:
+- Unified dashboard and inbox.
+- Team collaboration with approvals.
+
+**Integration Points**:
+- API for client profiles; webhooks; analytics.
+
+**Pros**:
+- Cost savings; unified format; compliance.
+
+**Cons**:
+- Third-party dependency; platform policy limits.
+
+#### Workflow Automation and Orchestration
+
+##### Primary Framework: n8n with LangGraph Integration
+
+**n8n Automation Capabilities**:
+Connects apps with visual building and AI integration for agents.
+
+**Social Media Automation Examples**:
+Automates from trends to publication with tracking.
+
+**Workflow Architecture**:
+```yaml
+# n8n Social Media Workflow
+Trigger: Cron (Daily at 6 AM & 6 PM)
+Steps:
+  Google Trends API → Fetch trending topics
+  OpenAI GPT → Select optimal. Perplexity AI → Research selected. GPT-4 → Generate platform-specific content
+  Image Generation → Create accompanying visuals
+  Multi-Platform Post → Publish to all channels
+  Analytics → Log performance to Google Sheets
+```
+
+**Real-World Implementation**:
+AI scheduler using n8n and DeepSeek, reducing costs by 90%.
+
+**Advanced Features**:
+- Transforms content across formats.
+- Integrates CRM, Drive, approvals.
+
+**Pros**:
+- Scalable, open-source; 300+ integrations.
+
+**Cons**:
+- Learning curve; maintenance.
+
+#### AI-Powered Engagement and Analytics
+
+##### Primary Framework: Custom LangGraph + Open Source Analytics
+
+**Sentiment Analysis Implementation**:
+DeepPavlov for conversational AI and sentiment tools.
+
+**Analytics Pipeline**:
+```python
+# LangGraph Analytics Workflow
+class EngagementAnalyzer:
+    def __init__(self):
+        self.sentiment_analyzer = DeepPavlovSentiment()
+        self.trend_detector = TrendAnalysisModel()
+        self.influencer_scorer = InfluencerRankingModel()
+
+    def analyze_engagement(self, posts_data):
+        results = {
+            "sentiment_scores": self.analyze_sentiment_batch(posts_data),
+            "viral_predictions": self.predict_virality(posts_data),
+            "optimal_times": self.calculate_posting_times(posts_data)
+        }
+        return results
+```
+
+**Open Source Analytics Stack**:
+- **Text Processing**: Falcon 180B for analysis.
+- **Data Storage**: PostgreSQL/MongoDB.
+- **Visualization**: Grafana.
+- **Stream Processing**: Apache Kafka.
+
+**Pros**:
+- Full control; privacy; customizable.
+
+**Cons**:
+- Development effort; infrastructure overhead.
+
+#### Human-in-the-Loop Integration
+
+##### Primary Framework: LangGraph Built-in HITL
+
+**LangGraph Human Oversight**:
+Inspects/modifies state during execution with short- and long-term memory.
+
+**Implementation Pattern**:
+```python
+# Human Review Checkpoints
+@checkpoint(human_review=True)
+def content_approval_gate(state: ContentState):
+    if state.content_risk_score > threshold:
+        return HUMAN_REVIEW_REQUIRED
+    return AUTO_APPROVE
+
+# Approval Workflow
+workflow = StateGraph(ContentWorkflowState)
+workflow.add_node("generate_content", generate_post)
+workflow.add_node("human_review", human_approval_gate)
+workflow.add_node("publish_content", publish_to_platforms)
+```
+
+**Integration with Team Tools**:
+- Slack notifications; web dashboard.
+
+**Pros**:
+- Time-travel functionality; audit trails.
+
+**Cons**:
+- Team training; potential slowdowns.
+
+<#0.5#>
+
+### Phased Implementation Roadmap
+
+#### Phase 1: Foundation (Weeks 1-4)
+- Set up LangGraph environment and configuration.
+- Deploy n8n and configure APIs.
+- Test multi-platform posting.
+
+#### Phase 2: Core Features (Weeks 5-8)
+- Implement AI generation with Haystack and models.
+- Build analytics with DeepPavlov and dashboards.
+- Configure HITL workflows.
+
+#### Phase 3: Advanced Features (Weeks 9-12)
+- Deploy end-to-end automation.
+- Optimize performance and scale.
+
+<#0.5#>
+
+### Critical Dependencies and Prerequisites
+
+#### Technical Requirements
+- **Server**: 16GB RAM, 4 CPU cores.
+- **API Keys**: Platform developer access.
+- **Skills**: Python, JavaScript, Docker, DevOps.
+
+#### Integration Challenges
+- Rate limits; compliance; hosting costs.
+
+#### Mitigation Strategies
+- API tools for limits; moderation checks; hybrid cloud.
+
+<#0.5#>
+
+### Cost Analysis and Total Cost of Ownership
+
+#### Open Source Stack (Estimated Monthly Costs)
+- **Infrastructure**: $200-500.
+- **API Usage**: $50-200.
+- **Maintenance**: 20-40 hours.
+
+#### Compared to Commercial Solutions
+- **Commercial**: $500-2000.
+- **Enterprise**: $5000+.
+
+#### ROI Considerations
+- Long-term savings; customization; no lock-in.
+
+<#0.5#>
+
+### Conclusion and Recommendations
+
+The **LangGraph + n8n + Ayrshare + Open Source AI** stack balances functionality, cost, and scalability. It leverages proven technologies like LangChain agents, production-ready Haystack, and cost-efficient DeepSeek for a competitive, customizable platform.
+
+<#0.5#>
+
+#### Advanced Visual Content Creation Pipeline
+
+The system leverages Magic Media's text-to-image capabilities, which have generated nearly 290 million images, to accelerate content creation and overcome creative blocks.
+
+```python
+import openai
+from PIL import Image, ImageDraw, ImageFont, ImageEnhance
+import requests
+import cv2
+import numpy as np
+from moviepy.editor import VideoFileClip, TextClip, CompositeVideoClip
+import subprocess
+from typing import Tuple, List
+
+class AdvancedAssetGenerator:
+    def __init__(self, openai_key: str, canva_key: str):
+        self.openai_client = openai.OpenAI(api_key=openai_key)
+        self.canva_key = canva_key
+        self.brand_guidelines = self.load_brand_guidelines()
+
+    async def generate_campaign_assets(self, campaign_brief: Dict) -> Dict[str, List[str]]:
+        """Generate comprehensive asset library for campaign."""
+        assets = {
+            "images": [],
+            "videos": [],
+            "graphics": [],
+            "memes": []
+        }
+
+        # Generate hero images
+        hero_prompts = self.create_image_prompts(campaign_brief, "hero")
+        for prompt in hero_prompts:
+            image_url = await self.generate_dalle_image(prompt, "1792x1024")  # Landscape
+            image_url_vertical = await self.generate_dalle_image(prompt, "1024x1792")  # Portrait
+            assets["images"].extend([image_url, image_url_vertical])
+
+        # Generate quote graphics
+        quotes = campaign_brief.get("quotes", [])
+        for quote in quotes:
+            quote_graphic = await self.create_quote_graphic(quote)
+            assets["graphics"].append(quote_graphic)
+
+        # Generate video assets
+        if campaign_brief.get("video_content"):
+            video_clips = await self.process_video_content(campaign_brief["video_content"])
+            assets["videos"].extend(video_clips)
+
+        # Generate trending memes
+        trending_formats = await self.get_trending_meme_formats()
+        for format_data in trending_formats:
+            meme = await self.generate_branded_meme(format_data, campaign_brief)
+            assets["memes"].append(meme)
+
+        return assets
+
+    async def generate_dalle_image(self, prompt: str, size: str) -> str:
+        """Generate high-quality images with DALL·E 3."""
+        # Enhance prompt with brand guidelines
+        enhanced_prompt = self.enhance_prompt_with_brand(prompt)
+
+        try:
+            response = self.openai_client.images.generate(
+                model="dall-e-3",
+                prompt=enhanced_prompt,
+                n=1,
+                size=size,
+                quality="hd",
+                style="vivid"
+            )
+
+            image_url = response.data[0].url
+
+            # Download and process image
+            processed_url = await self.post_process_image(image_url)
+            return processed_url
+
+        except Exception as e:
+            print(f"DALL·E generation failed: {e}")
+            return await self.fallback_image_generation(prompt)
+
+    async def create_quote_graphic(self, quote: Dict) -> str:
+        """Create branded quote graphics with automatic styling."""
+        base_image = await self.generate_dalle_image(
+            f"Abstract background, {self.brand_guidelines['style']}, cinematic",
+            "1080x1080"
+        )
+
+        # Load base image
+        img = Image.open(requests.get(base_image, stream=True).raw)
+        draw = ImageDraw.Draw(img)
+
+        # Apply brand typography
+        font_size = self.calculate_optimal_font_size(quote["text"], img.size)
+        font = ImageFont.truetype(self.brand_guidelines["font_path"], font_size)
+
+        # Add text with proper positioning
+        text_bbox = draw.textbbox((0, 0), quote["text"], font=font)
+        text_width = text_bbox[2] - text_bbox[0]
+        text_height = text_bbox[3] - text_bbox[1]
+
+        x = (img.width - text_width) // 2
+        y = (img.height - text_height) // 2
+
+        # Add text shadow
+        draw.text((x+2, y+2), quote["text"], font=font, fill=(0, 0, 0, 128))
+        # Add main text
+        draw.text((x, y), quote["text"], font=font, fill=self.brand_guidelines["primary_color"])
+
+        # Add attribution
+        if quote.get("attribution"):
+            attr_font = ImageFont.truetype(self.brand_guidelines["font_path"], font_size // 2)
+            draw.text((x, y + text_height + 20), f"- {quote['attribution']}", 
+                     font=attr_font, fill=self.brand_guidelines["secondary_color"])
+
+        # Save and upload
+        output_path = f"quote_graphic_{hash(quote['text'])}.jpg"
+        img.save(output_path, quality=95)
+
+        uploaded_url = await self.upload_to_cdn(output_path)
+        return uploaded_url
+
+    async def process_video_content(self, video_config: Dict) -> List[str]:
+        """Advanced video processing for social media optimization."""
+        source_video = video_config["source_path"]
+        clip_configs = video_config["clips"]
+
+        processed_videos = []
+
+        for config in clip_configs:
+            # Extract clip
+            start_time = config["start"]
+            duration = config["duration"]
+            output_format = config.get("format", "mp4")
+            target_platform = config.get("platform", "instagram")
+
+            # Platform-specific processing
+            platform_specs = self.get_platform_video_specs(target_platform)
+
+            # FFmpeg command for optimal processing
+            output_path = f"clip_{start_time}_{duration}_{target_platform}.{output_format}"
+
+            ffmpeg_cmd = [
+                "ffmpeg", "-i", source_video,
+                "-ss", str(start_time),
+                "-t", str(duration),
+                "-vf", f"scale={platform_specs['width']}:{platform_specs['height']}:force_original_aspect_ratio=decrease,pad={platform_specs['width']}:{platform_specs['height']}:(ow-iw)/2:(oh-ih)/2",
+                "-c:v", "libx264",
+                "-preset", "fast",
+                "-crf", "23",
+                "-c:a", "aac",
+                "-b:a", "128k",
+                "-r", str(platform_specs['fps']),
+                "-t", str(min(duration, platform_specs['max_duration'])),
+                output_path
+            ]
+
+            subprocess.run(ffmpeg_cmd, check=True)
+
+            # Add branded overlay
+            branded_video = await self.add_brand_overlay(output_path, target_platform)
+
+            # Upload to CDN
+            uploaded_url = await self.upload_to_cdn(branded_video)
+            processed_videos.append(uploaded_url)
+
+        return processed_videos
+
+    def get_platform_video_specs(self, platform: str) -> Dict:
+        """Platform-specific video specifications."""
+        specs = {
+            "instagram": {"width": 1080, "height": 1920, "fps": 30, "max_duration": 60},
+            "tiktok": {"width": 1080, "height": 1920, "fps": 30, "max_duration": 60},
+            "twitter": {"width": 1280, "height": 720, "fps": 30, "max_duration": 140},
+            "youtube": {"width": 1920, "height": 1080, "fps": 60, "max_duration": 900},
+            "facebook": {"width": 1280, "height": 720, "fps": 30, "max_duration": 240}
+        }
+        return specs.get(platform, specs["instagram"])
+
+    async def generate_branded_meme(self, meme_format: Dict, campaign_brief: Dict) -> str:
+        """Generate branded memes using trending formats."""
+        template_path = meme_format["template_path"]
+        text_positions = meme_format["text_positions"]
+
+        # Open meme template
+        img = Image.open(template_path)
+        draw = ImageDraw.Draw(img)
+
+        # Generate meme text using AI
+        meme_prompt = f"Create a funny meme text for {campaign_brief['movie_title']} using the {meme_format['name']} format. Keep it humorous and engaging."
+
+        response = self.openai_client.chat.completions.create(
+            model="gpt-4",
+            messages=[
+                {"role": "system", "content": "You are a viral meme creator. Create short, punchy, humorous text for memes."},
+                {"role": "user", "content": meme_prompt}
+            ],
+            max_tokens=100
+        )
+
+        meme_texts = response.choices[0].message.content.split("|")
+
+        # Add text to meme positions
+        font = ImageFont.truetype("fonts/impact.ttf", 48)
+
+        for i, text in enumerate(meme_texts[:len(text_positions)]):
+            position = text_positions[i]
+
+            # Add white outline for text visibility
+            x, y = position["x"], position["y"]
+            for adj in range(-2, 3):
+                for adj2 in range(-2, 3):
+                    draw.text((x+adj, y+adj2), text.upper(), font=font, fill="white")
+
+            # Add main text
+            draw.text((x, y), text.upper(), font=font, fill="black")
+
+        # Save and upload
+        output_path = f"meme_{meme_format['name']}_{hash(str(meme_texts))}.jpg"
+        img.save(output_path, quality=95)
+
+        uploaded_url = await self.upload_to_cdn(output_path)
+        return uploaded_url
+```
+
+<#0.5#>
+
+### Phase 3 - Intelligent Hashtag Optimization
+
+<#0.5#>
+
+#### Advanced Hashtag Intelligence System
+
+The system uses AI-powered suggestions to enhance reach and engagement through intelligent analysis and selection.
+
+```python
+import asyncio
+import aiohttp
+from collections import Counter
+from datetime import datetime, timedelta
+import pandas as pd
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.cluster import KMeans
+import networkx as nx
+from typing import Dict, List, Tuple, Set
+import json
+
+class AdvancedHashtagOptimizer:
+    def __init__(self, api_keys: Dict[str, str]):
+        self.api_keys = api_keys
+        self.hashtag_database = pd.DataFrame()
+        self.trend_analyzer = TrendAnalyzer()
+        self.performance_tracker = HashtagPerformanceTracker()
+        self.banned_hashtags = set()
+
+    async def generate_optimal_hashtag_strategy(self, content: str, 
+                                               target_audience: Dict,
+                                               platforms: List[str]) -> Dict[str, List[str]]:
+        """Generate platform-specific hashtag strategies."""
+        # Analyze content context
+        content_keywords = await self.extract_content_keywords(content)
+
+        # Get trending hashtags
+        trending_data = await self.get_trending_hashtags(platforms)
+
+        # Analyze competitor hashtags
+        competitor_hashtags = await self.analyze_competitor_hashtags(
+            target_audience.get("competitors", [])
+        )
+
+        # Generate hashtag recommendations
+        platform_strategies = {}
+
+        for platform in platforms:
+            strategy = await self.create_platform_strategy(
+                platform, content_keywords, trending_data, 
+                competitor_hashtags, target_audience
+            )
+            platform_strategies[platform] = strategy
+
+        return platform_strategies
+
+    async def extract_content_keywords(self, content: str) -> List[Dict]:
+        """Extract semantic keywords and entities from content."""
+        # Use OpenAI for advanced content analysis
+        response = await self.openai_client.chat.completions.create(
+            model="gpt-4",
+            messages=[
+                {"role": "system", "content": """
+                Extract key themes, emotions, and relevant hashtag categories from this content.
+                Return as JSON with: themes, emotions, categories, entities, industry_terms.
+                """},
+                {"role": "user", "content": content}
+            ],
+            temperature=0.3
+        )
+
+        keywords_data = json.loads(response.choices[0].message.content)
+
+        # Enhance with TF-IDF analysis
+        vectorizer = TfidfVectorizer(stop_words='english', max_features=20)
+        tfidf_matrix = vectorizer.fit_transform([content])
+        feature_names = vectorizer.get_feature_names_out()
+        scores = tfidf_matrix.toarray()[0]
+
+        tfidf_keywords = [
+            {"term": term, "score": score} 
+            for term, score in zip(feature_names, scores)
+            if score > 0.1
+        ]
+
+        keywords_data["tfidf_keywords"] = tfidf_keywords
+        return keywords_data
+
+    async def get_trending_hashtags(self, platforms: List[str]) -> Dict[str, List[Dict]]:
+        """Fetch real-time trending hashtags across platforms."""
+        trending_data = {}
+
+        for platform in platforms:
+            if platform == "instagram":
+                trending_data[platform] = await self.get_instagram_trends()
+            elif platform == "twitter":
+                trending_data[platform] = await self.get_twitter_trends()
+            elif platform == "tiktok":
+                trending_data[platform] = await self.get_tiktok_trends()
+            elif platform == "linkedin":
+                trending_data[platform] = await self.get_linkedin_trends()
+
+        return trending_data
+
+    async def get_instagram_trends(self) -> List[Dict]:
+        """Get Instagram trending hashtags using Graph API."""
+        headers = {"Authorization": f"Bearer {self.api_keys['instagram']}"}
+
+        # Get trending hashtags from top posts
+        trending_hashtags = []
+
+        async with aiohttp.ClientSession() as session:
+            # Analyze top performing posts in relevant categories
+            categories = ["entertainment", "movies", "thriller", "cinema"]
+
+            for category in categories:
+                url = f"https://graph.instagram.com/v18.0/ig_hashtag_search"
+                params = {"user_id": "me", "q": category}
+
+                async with session.get(url, headers=headers, params=params) as response:
+                    data = await response.json()
+
+                    if "data" in data:
+                        for hashtag_data in data["data"]:
+                            hashtag_info = await self.get_hashtag_metrics(
+                                hashtag_data["id"], session, headers
+                            )
+                            trending_hashtags.append(hashtag_info)
+
+        # Sort by engagement and recency
+        trending_hashtags.sort(key=lambda x: x.get("engagement_score", 0), reverse=True)
+        return trending_hashtags[:50]
+
+    async def analyze_competitor_hashtags(self, competitors: List[str]) -> Dict[str, List[Dict]]:
+        """Deep analysis of competitor hashtag strategies."""
+        competitor_analysis = {}
+
+        for competitor in competitors:
+            hashtag_data = await self.scrape_competitor_hashtags(competitor)
+
+            # Analyze hashtag performance patterns
+            performance_analysis = self.analyze_hashtag_performance(hashtag_data)
+
+            competitor_analysis[competitor] = {
+                "top_hashtags": hashtag_data["top_performing"],
+                "growth_hashtags": hashtag_data["fastest_growing"],
+                "pattern_analysis": performance_analysis
+            }
+
+        return competitor_analysis
+
+    async def create_platform_strategy(self, platform: str, content_keywords: Dict,
+                                     trending_data: Dict, competitor_data: Dict,
+                                     target_audience: Dict) -> List[str]:
+        """Create optimized hashtag strategy for specific platform."""
+
+        # Get platform-specific constraints
+        platform_config = self.get_platform_constraints(platform)
+        max_hashtags = platform_config["max_hashtags"]
+
+        # Hashtag categories with weights
+        hashtag_categories = {
+            "branded": {"weight": 2, "max_count": 2},
+            "trending": {"weight": 3, "max_count": 5},
+            "niche": {"weight": 2.5, "max_count": 4},
+            "community": {"weight": 1.5, "max_count": 3},
+            "location": {"weight": 1, "max_count": 1}
+        }
+
+        selected_hashtags = []
+
+        # Add branded hashtags
+        branded_tags = ["#TheFutureIsNow", "#SciFiThriller2025"]
+        selected_hashtags.extend(branded_tags[:hashtag_categories["branded"]["max_count"]])
+
+        # Add trending hashtags
+        trending_tags = self.filter_relevant_trending(
+            trending_data.get(platform, []), 
+            content_keywords,
+            hashtag_categories["trending"]["max_count"]
+        )
+        selected_hashtags.extend(trending_tags)
+
+        # Add niche hashtags
+        niche_tags = await self.generate_niche_hashtags(
+            content_keywords, target_audience, 
+            hashtag_categories["niche"]["max_count"]
+        )
+        selected_hashtags.extend(niche_tags)
+
+        # Add community hashtags
+        community_tags = self.get_community_hashtags(
+            platform, hashtag_categories["community"]["max_count"]
+        )
+        selected_hashtags.extend(community_tags)
+
+        # Remove banned hashtags and duplicates
+        selected_hashtags = self.clean_hashtag_list(selected_hashtags)
+
+        # Ensure within platform limits
+        return selected_hashtags[:max_hashtags]
+
+    def get_platform_constraints(self, platform: str) -> Dict:
+        """Platform-specific hashtag constraints and best practices."""
+        constraints = {
+            "instagram": {"max_hashtags": 30, "optimal_range": (5, 11)},
+            "twitter": {"max_hashtags": 10, "optimal_range": (1, 3)},
+            "tiktok": {"max_hashtags": 100, "optimal_range": (3, 5)},
+            "linkedin": {"max_hashtags": 3, "optimal_range": (2, 3)},
+            "facebook": {"max_hashtags": 30, "optimal_range": (2, 5)}
+        }
+        return constraints.get(platform, {"max_hashtags": 30, "optimal_range": (5, 10)})
+
+    async def generate_niche_hashtags(self, content_keywords: Dict, 
+                                    target_audience: Dict, max_count: int) -> List[str]:
+        """Generate highly targeted niche hashtags using AI."""
+        prompt = f"""
+        Generate {max_count} highly specific hashtags for:
+        Content themes: {content_keywords.get('themes', [])}
+        Target audience: {target_audience.get('demographics', {})}
+        Industry terms: {content_keywords.get('industry_terms', [])}
+
+        Focus on hashtags that have:
+        - Medium competition (10K-100K posts)
+        - High engagement potential
+        - Specific to thriller/sci-fi movie marketing
+        - Appeal to target demographic
+
+        Return only hashtag names with #
+        """
+
+        response = await self.openai_client.chat.completions.create(
+            model="gpt-4",
+            messages=[
+                {"role": "system", "content": "You are a hashtag strategist specializing in social media optimization."},
+                {"role": "user", "content": prompt}
+            ],
+            temperature=0.4
+        )
+
+        suggested_hashtags = response.choices[0].message.content.strip().split('\n')
+        return [tag.strip() for tag in suggested_hashtags if tag.startswith('#')]
+
+    def filter_relevant_trending(self, trending_list: List[Dict], 
+                               content_keywords: Dict, max_count: int) -> List[str]:
+        """Filter trending hashtags for relevance and performance."""
+        relevant_hashtags = []
+
+        # Calculate relevance scores
+        for hashtag_data in trending_list:
+            relevance_score = self.calculate_hashtag_relevance(
+                hashtag_data, content_keywords
+            )
+
+            if relevance_score > 0.3:  # Relevance threshold
+                relevant_hashtags.append({
+                    "hashtag": hashtag_data["name"],
+                    "relevance_score": relevance_score,
+                    "trend_score": hashtag_data.get("trend_score", 0)
+                })
+
+        # Sort by combined relevance and trend score
+        relevant_hashtags.sort(
+            key=lambda x: x["relevance_score"] * 0.6 + x["trend_score"] * 0.4, 
+            reverse=True
+        )
+
+        return [item["hashtag"] for item in relevant_hashtags[:max_count]]
+
+class HashtagPerformanceTracker:
+    """Advanced hashtag performance analysis."""
+
+    def __init__(self):
+        self.performance_database = pd.DataFrame()
+        self.trend_indicators = {}
+
+    async def track_hashtag_performance(self, hashtags: List[str], 
+                                      post_metrics: Dict) -> Dict:
+        """Track performance of hashtags across posts."""
+        performance_data = {
+            "timestamp": datetime.now(),
+            "hashtags": hashtags,
+            "reach": post_metrics.get("reach", 0),
+            "impressions": post_metrics.get("impressions", 0),
+            "engagement": post_metrics.get("engagement", 0),
+            "saves": post_metrics.get("saves", 0),
+            "shares": post_metrics.get("shares", 0)
+        }
+
+        # Calculate hashtag attribution scores
+        hashtag_scores = await self.calculate_hashtag_attribution(
+            hashtags, performance_data
+        )
+
+        # Update performance database
+        self.update_performance_database(hashtag_scores)
+
+        return hashtag_scores
+
+    async def calculate_hashtag_attribution(self, hashtags: List[str], 
+                                          metrics: Dict) -> Dict[str, float]:
+        """Advanced attribution modeling for hashtag performance."""
+        # Use machine learning model to attribute performance to individual hashtags
+        # This is a simplified version - actual implementation would use more sophisticated models
+
+        base_score = metrics["engagement"] / len(hashtags)
+        hashtag_scores = {}
+
+        for hashtag in hashtags:
+            # Factor in hashtag popularity, competition, and historical performance
+            popularity_factor = await self.get_hashtag_popularity_factor(hashtag)
+            historical_performance = self.get_historical_performance(hashtag)
+
+            attributed_score = base_score * popularity_factor * historical_performance
+            hashtag_scores[hashtag] = attributed_score
+
+        return hashtag_scores
+
+    def generate_hashtag_recommendations(self, performance_history: pd.DataFrame) -> Dict:
+        """Generate data-driven hashtag recommendations."""
+        # Analyze top performing hashtags
+        top_performers = performance_history.groupby('hashtag').agg({
+            'engagement': 'mean',
+            'reach': 'mean',
+            'post_count': 'count'
+        }).sort_values('engagement', ascending=False)
+
+        recommendations = {
+            "top_performers": top_performers.head(10).to_dict(),
+            "emerging_hashtags": self.identify_emerging_hashtags(performance_history),
+            "declining_hashtags": self.identify_declining_hashtags(performance_history),
+            "seasonal_patterns": self.analyze_seasonal_patterns(performance_history)
+        }
+
+        return recommendations
+```
+
+<#0.5#>
+
+### Phase 4 - Advanced Engagement Tracking and Analytics
+
+<#0.5#>
+
+#### Real-Time Comprehensive Analytics System
+
+The system tracks mentions, hashtags, keywords, and engagement metrics in real time across platforms for reputation monitoring and decision-making.
+
+```python
+import asyncio
+import aiohttp
+import pandas as pd
+import numpy as np
+from datetime import datetime, timedelta
+from typing import Dict, List, Optional
+import plotly.graph_objects as go
+import plotly.express as px
+import streamlit as st
+from dataclasses import dataclass
+import json
+import openai
+import time
+
+@dataclass
+class EngagementMetric:
+    timestamp: datetime
+    platform: str
+    post_id: str
+    metric_type: str
+    value: int
+    user_id: Optional[str] = None
+    content_type: Optional[str] = None
+
+class AdvancedEngagementTracker:
+    def __init__(self, api_keys: Dict[str, str]):
+        self.api_keys = api_keys
+        self.metrics_buffer = []
+        self.real_time_data = pd.DataFrame()
+        self.alert_thresholds = self.load_alert_thresholds()
+        self.sentiment_analyzer = AdvancedSentimentAnalyzer()
+
+    async def start_real_time_monitoring(self):
+        """Initialize real-time monitoring across all platforms."""
+        monitoring_tasks = [
+            self.monitor_instagram_engagement(),
+            self.monitor_twitter_engagement(),
+            self.monitor_tiktok_engagement(),
+            self.monitor_facebook_engagement(),
+            self.monitor_linkedin_engagement()
+        ]
+
+        # Run all monitoring tasks concurrently
+        await asyncio.gather(*monitoring_tasks)
+
+    async def monitor_instagram_engagement(self):
+        """Real-time Instagram engagement monitoring."""
+        headers = {"Authorization": f"Bearer {self.api_keys['instagram']}"}
+
+        while True:
+            try:
+                # Get recent posts
+                recent_posts = await self.get_recent_instagram_posts()
+
+                for post in recent_posts:
+                    # Get detailed metrics for each post
+                    metrics = await self.get_instagram_post_metrics(post['id'])
+
+                    # Process and store metrics
+                    await self.process_engagement_data('instagram', post['id'], metrics)
+
+                    # Check for viral content or issues
+                    await self.check_engagement_alerts('instagram', post['id'], metrics)
+
+                # Wait before next check (respect rate limits)
+                await asyncio.sleep(60)  # Check every minute
+
+            except Exception as e:
+                print(f"Instagram monitoring error: {e}")
+                await asyncio.sleep(300)  # Wait 5 minutes before retry
+
+    async def get_instagram_post_metrics(self, post_id: str) -> Dict:
+        """Get comprehensive Instagram post metrics."""
+        headers = {"Authorization": f"Bearer {self.api_keys['instagram']}"}
+
+        async with aiohttp.ClientSession() as session:
+            # Get post insights
+            insights_url = f"https://graph.instagram.com/{post_id}/insights"
+            insights_params = {
+                "metric": "impressions,reach,engagement,saves,video_views,website_clicks",
+                "access_token": self.api_keys['instagram']
+            }
+
+            async with session.get(insights_url, params=insights_params) as response:
+                insights_data = await response.json()
+
+            # Get comments for sentiment analysis
+            comments_url = f"https://graph.instagram.com/{post_id}/comments"
+            comments_params = {"access_token": self.api_keys['instagram']}
+
+            async with session.get(comments_url, params=comments_params) as response:
+                comments_data = await response.json()
+
+            # Process metrics
+            processed_metrics = await self.process_instagram_metrics(
+                insights_data, comments_data
+            )
+
+            return processed_metrics
+
+    async def process_engagement_data(self, platform: str, post_id: str, 
+                                    metrics: Dict):
+        """Process and normalize engagement data across platforms."""
+        timestamp = datetime.now()
+
+        # Normalize metrics across platforms
+        normalized_metrics = self.normalize_platform_metrics(platform, metrics)
+
+        # Create engagement metric objects
+        engagement_records = []
+        for metric_name, value in normalized_metrics.items():
+            record = EngagementMetric(
+                timestamp=timestamp,
+                platform=platform,
+                post_id=post_id,
+                metric_type=metric_name,
+                value=value
+            )
+            engagement_records.append(record)
+
+        # Store in buffer and database
+        self.metrics_buffer.extend(engagement_records)
+
+        # Process sentiment analysis
+        if metrics.get('comments'):
+            sentiment_data = await self.sentiment_analyzer.analyze_comments(
+                metrics['comments']
+            )
+            await self.store_sentiment_data(platform, post_id, sentiment_data)
+
+        # Update real-time dashboard
+        await self.update_real_time_dashboard(engagement_records)
+
+    def normalize_platform_metrics(self, platform: str, metrics: Dict) -> Dict:
+        """Normalize metrics across different platforms for comparison."""
+        normalized = {}
+
+        if platform == "instagram":
+            normalized = {
+                "impressions": metrics.get("impressions", 0),
+                "reach": metrics.get("reach", 0),
+                "likes": metrics.get("likes", 0),
+                "comments": metrics.get("comment_count", 0),
+                "shares": metrics.get("shares", 0),
+                "saves": metrics.get("saves", 0),
+                "engagement_rate": self.calculate_engagement_rate(metrics)
+            }
+        elif platform == "twitter":
+            normalized = {
+                "impressions": metrics.get("impression_count", 0),
+                "reach": metrics.get("impression_count", 0),  # Twitter uses impressions
+                "likes": metrics.get("like_count", 0),
+                "comments": metrics.get("reply_count", 0),
+                "shares": metrics.get("retweet_count", 0),
+                "saves": 0,  # Twitter doesn't have saves
+                "engagement_rate": self.calculate_engagement_rate(metrics)
+            }
+        elif platform == "tiktok":
+            normalized = {
+                "impressions": metrics.get("video_view_count", 0),
+                "reach": metrics.get("video_view_count", 0),
+                "likes": metrics.get("like_count", 0),
+                "comments": metrics.get("comment_count", 0),
+                "shares": metrics.get("share_count", 0),
+                "saves": 0,  # TikTok doesn't expose saves via API
+                "engagement_rate": self.calculate_engagement_rate(metrics)
+            }
+
+        return normalized
+
+    async def check_engagement_alerts(self, platform: str, post_id: str, 
+                                    metrics: Dict):
+        """Monitor for engagement anomalies and opportunities."""
+        normalized_metrics = self.normalize_platform_metrics(platform, metrics)
+
+        # Check for viral content (engagement spike)
+        if normalized_metrics.get("engagement_rate", 0) > self.alert_thresholds["viral_threshold"]:
+            await self.trigger_viral_alert(platform, post_id, normalized_metrics)
+
+        # Check for negative sentiment spike
+        if metrics.get("sentiment_score", 5) < self.alert_thresholds["negative_sentiment_threshold"]:
+            await self.trigger_negative_sentiment_alert(platform, post_id, metrics)
+
+        # Check for unusual engagement patterns
+        engagement_anomaly = await self.detect_engagement_anomaly(
+            platform, normalized_metrics
+        )
+        if engagement_anomaly:
+            await self.trigger_anomaly_alert(platform, post_id, engagement_anomaly)
+
+    async def create_real_time_dashboard(self) -> str:
+        """Create comprehensive real-time analytics dashboard."""
+        st.set_page_config(page_title="Social Media Real-Time Analytics", layout="wide")
+        st.title("🚀 Social Media Engagement Dashboard - The Future Is Now")
+
+        # Key metrics row
+        col1, col2, col3, col4, col5 = st.columns(5)
+
+        with col1:
+            total_followers = await self.get_total_followers()
+            st.metric("Total Followers", f"{total_followers:,}", 
+                     delta=await self.get_follower_change())
+
+        with col2:
+            avg_engagement = await self.get_average_engagement_rate()
+            st.metric("Avg Engagement Rate", f"{avg_engagement:.2f}%",
+                     delta=f"{await self.get_engagement_change():.2f}%")
+
+        with col3:
+            today_reach = await self.get_todays_reach()
+            st.metric("Today's Reach", f"{today_reach:,}",
+                     delta=await self.get_reach_change())
+
+        with col4:
+            sentiment_score = await self.get_overall_sentiment()
+            st.metric("Sentiment Score", f"{sentiment_score:.2f}/5",
+                     delta=f"{await self.get_sentiment_change():.2f}")
+
+        with col5:
+            trending_hashtags = await self.get_trending_hashtag_count()
+            st.metric("Trending Hashtags", trending_hashtags,
+                     delta=await self.get_hashtag_trend_change())
+
+        # Platform breakdown
+        st.subheader("📱 Platform Performance")
+        platform_data = await self.get_platform_performance_data()
+
+        fig_platforms = px.bar(
+            platform_data,
+            x="Platform",
+            y="Engagement Rate",
+            color="Follower Count",
+            title="Platform Performance Comparison"
+        )
+        st.plotly_chart(fig_platforms, use_container_width=True)
+
+        # Real-time engagement timeline
+        st.subheader("⚡ Real-Time Engagement Timeline")
+        timeline_data = await self.get_engagement_timeline()
+
+        fig_timeline = go.Figure()
+        for platform in timeline_data['platform'].unique():
+            platform_data = timeline_data[timeline_data['platform'] == platform]
+            fig_timeline.add_trace(go.Scatter(
+                x=platform_data['timestamp'],
+                y=platform_data['engagement'],
+                mode='lines+markers',
+                name=platform.title(),
+                hovertemplate=f'<b>{platform.title()}</b><br>Time: %{{x}}<br>Engagement: %{{y}}<extra></extra>'
+            ))
+
+        fig_timeline.update_layout(
+            title="Live Engagement Tracking",
+            xaxis_title="Time",
+            yaxis_title="Engagement Count",
+            hovermode="x unified"
+        )
+        st.plotly_chart(fig_timeline, use_container_width=True)
+
+        # Sentiment analysis
+        col1, col2 = st.columns(2)
+
+        with col1:
+            st.subheader("😊 Sentiment Analysis")
+            sentiment_breakdown = await self.get_sentiment_breakdown()
+
+            fig_sentiment = px.pie(
+                values=list(sentiment_breakdown.values()),
+                names=list(sentiment_breakdown.keys()),
+                title="Comment Sentiment Distribution"
+            )
+            st.plotly_chart(fig_sentiment, use_container_width=True)
+
+        with col2:
+            st.subheader("🔥 Top Performing Content")
+            top_content = await self.get_top_performing_content()
+
+            for i, content in enumerate(top_content[:5], 1):
+                st.write(f"**{i}. {content['platform'].title()}**")
+                st.write(f"Engagement: {content['engagement']:,}")
+                st.write(f"Reach: {content['reach']:,}")
+                st.write(f"Content: {content['preview'][:100]}...")
+                st.divider()
+
+        # Alerts and notifications
+        st.subheader("🚨 Live Alerts")
+        alerts = await self.get_recent_alerts()
+
+        for alert in alerts:
+            alert_type = alert['type']
+            if alert_type == 'viral':
+                st.success(f"🔥 Viral Alert: {alert['message']}")
+            elif alert_type == 'negative_sentiment':
+                st.warning(f"⚠️ Sentiment Alert: {alert['message']}")
+            elif alert_type == 'engagement_spike':
+                st.info(f"📈 Engagement Spike: {alert['message']}")
+
+        # Auto-refresh
+        time.sleep(30)  # Refresh every 30 seconds
+        st.rerun()
+
+class AdvancedSentimentAnalyzer:
+    """GPT-4 powered sentiment analysis for social media content."""
+
+    def __init__(self):
+        self.openai_client = openai.OpenAI()
+        self.sentiment_cache = {}
+
+    async def analyze_comments(self, comments: List[Dict]) -> Dict:
+        """Comprehensive sentiment analysis of comments using GPT-4."""
+        if not comments:
+            return {"overall_sentiment": 5, "breakdown": {}, "insights": []}
+
+        # Batch process comments for efficiency
+        comment_batches = self.create_comment_batches(comments, batch_size=20)
+        sentiment_results = []
+
+        for batch in comment_batches:
+            batch_result = await self.analyze_comment_batch(batch)
+            sentiment_results.extend(batch_result)
+
+        # Aggregate results
+        aggregated_sentiment = self.aggregate_sentiment_results(sentiment_results)
+
+        # Generate insights
+        insights = await self.generate_sentiment_insights(aggregated_sentiment)
+
+        return {
+            "overall_sentiment": aggregated_sentiment["overall_score"],
+            "breakdown": aggregated_sentiment["breakdown"],
+            "insights": insights,
+            "comment_analysis": sentiment_results
+        }
+
+    async def analyze_comment_batch(self, comments: List[Dict]) -> List[Dict]:
+        """Analyze a batch of comments using GPT-4."""
+        comment_texts = [comment.get("text", "") for comment in comments]
+
+        prompt = f"""
+        Analyze the sentiment of these social media comments about "The Future Is Now" movie.
+        For each comment, provide:
+        Sentiment score (1-5): 1=very negative, 2=negative, 3=neutral, 4=positive, 5=very positive
+        Emotion category: joy, excitement, anticipation, skepticism, disappointment, anger, fear, curiosity
+        Intent: praise, criticism, question, suggestion, spam, promotional
+        Key themes mentioned
+
+        Comments:
+        {json.dumps(comment_texts, indent=2)}
+
+        Return as JSON array with analysis for each comment.
+        """
+
+        try:
+            response = await self.openai_client.chat.completions.create(
+                model="gpt-4",
+                messages=[
+                    {"role": "system", "content": """You are an expert sentiment analyst specializing in social media and entertainment marketing. 
+                     Provide accurate, nuanced sentiment analysis that captures both explicit and implicit emotional content."""},
+                    {"role": "user", "content": prompt}
+                ],
+                temperature=0.3,
+                max_tokens=2000
+            )
+
+            analysis_results = json.loads(response.choices[0].message.content)
+
+            # Combine with original comment data
+            enriched_results = []
+            for i, (comment, analysis) in enumerate(zip(comments, analysis_results)):
+                enriched_result = {
+                    "comment_id": comment.get("id"),
+                    "user_id": comment.get("from", {}).get("id"),
+                    "timestamp": comment.get("created_time"),
+                    "text": comment.get("text"),
+                    **analysis
+                }
+                enriched_results.append(enriched_result)
+
+            return enriched_results
+
+        except Exception as e:
+            print(f"Sentiment analysis error: {e}")
+            # Fallback to simple sentiment scoring
+            return self.fallback_sentiment_analysis(comments)
+
+    def aggregate_sentiment_results(self, sentiment_results: List[Dict]) -> Dict:
+        """Aggregate individual sentiment analyses into overall metrics."""
+        if not sentiment_results:
+            return {"overall_score": 5, "breakdown": {}}
+
+        # Calculate overall sentiment score (weighted by engagement)
+        total_weight = 0
+        weighted_sentiment = 0
+
+        sentiment_counts = {"very_negative": 0, "negative": 0, "neutral": 0, "positive": 0, "very_positive": 0}
+        emotion_counts = {}
+        intent_counts = {}
+        theme_counts = {}
+
+        for result in sentiment_results:
+            weight = 1  # Can be enhanced with engagement weight later
+            sentiment_score = result.get("sentiment_score", 3)
+
+            weighted_sentiment += sentiment_score * weight
+            total_weight += weight
+
+            # Count sentiment distribution
+            if sentiment_score == 1:
+                sentiment_counts["very_negative"] += 1
+            elif sentiment_score == 2:
+                sentiment_counts["negative"] += 1
+            elif sentiment_score == 3:
+                sentiment_counts["neutral"] += 1
+            elif sentiment_score == 4:
+                sentiment_counts["positive"] += 1
+            elif sentiment_score == 5:
+                sentiment_counts["very_positive"] += 1
+
+            # Count emotions and intents
+            emotion = result.get("emotion_category", "neutral")
+            emotion_counts[emotion] = emotion_counts.get(emotion, 0) + 1
+
+            intent = result.get("intent", "unknown")
+            intent_counts[intent] = intent_counts.get(intent, 0) + 1
+
+            # Count themes
+            themes = result.get("key_themes", [])
+            for theme in themes:
+                theme_counts[theme] = theme_counts.get(theme, 0) + 1
+
+        overall_score = weighted_sentiment / total_weight if total_weight > 0 else 3
+
+        return {
+            "overall_score": overall_score,
+            "breakdown": {
+                "sentiment_distribution": sentiment_counts,
+                "emotion_distribution": emotion_counts,
+                "intent_distribution": intent_counts,
+                "theme_distribution": theme_counts
+            }
+        }
+
+    async def generate_sentiment_insights(self, aggregated_data: Dict) -> List[str]:
+        """Generate actionable insights from sentiment analysis."""
+        prompt = f"""
+        Based on this sentiment analysis data for "The Future Is Now" movie social media engagement:
+
+        Overall sentiment score: {aggregated_data['overall_score']}/5
+        Breakdown: {json.dumps(aggregated_data['breakdown'], indent=2)}
+
+        Generate 5 actionable insights for the social media team:
+        What's working well that should be amplified
+        What concerns need addressing
+        Content opportunities based on themes
+        Engagement strategy recommendations
+        Crisis prevention/management suggestions
+
+        Keep insights specific, actionable, and focused on improving engagement.
+        """
+
+        try:
+            response = await self.openai_client.chat.completions.create(
+                model="gpt-4",
+                messages=[
+                    {"role": "system", "content": "You are a social media strategist providing actionable insights based on sentiment analysis data."},
+                    {"role": "user", "content": prompt}
+                ],
+                temperature=0.4,
+                max_tokens=800
+            )
+
+            insights_text = response.choices[0].message.content
+            insights = [insight.strip() for insight in insights_text.split('\n') if insight.strip()]
+
+            return insights
+
+        except Exception as e:
+            print(f"Insight generation error: {e}")
+            return ["Unable to generate insights at this time."]
+```
+
+<#0.5#>
+
+### Phase 5 - Advanced Reply Bot System
+
+<#0.5#>
+
+#### Intelligent Conversational AI for Community Management
+
+The system analyzes social media data with GPT-4 to extract sentiment insights and deliver personalized responses.
+
+```python
+import asyncio
+import openai
+from datetime import datetime, timedelta
+from typing import Dict, List, Optional, Tuple
+import json
+import re
+from dataclasses import dataclass, asdict
+import spacy
+import aiohttp
+
+@dataclass
+class ConversationContext:
+    user_id: str
+    platform: str
+    conversation_history: List[Dict]
+    user_sentiment: float
+    user_intent: str
+    escalation_level: int = 0
+    last_interaction: datetime = datetime.now()
+
+class AdvancedReplyBot:
+    def __init__(self, openai_key: str, brand_guidelines: Dict):
+        self.openai_client = openai.OpenAI(api_key=openai_key)
+        self.brand_guidelines = brand_guidelines
+        self.conversation_contexts = {}
+        self.escalation_triggers = self.load_escalation_triggers()
+        self.response_templates = self.load_response_templates()
+        self.nlp = spacy.load("en_core_web_sm")
+        self.replied_users = set()
+        self.api_keys = {}  # Add API keys for platforms
+
+    async def start_comment_monitoring(self):
+        """Start continuous monitoring and response system."""
+        monitoring_tasks = [
+            self.monitor_instagram_comments(),
+            self.monitor_twitter_mentions(),
+            self.monitor_facebook_comments(),
+            self.monitor_tiktok_comments(),
+            self.monitor_linkedin_comments()
+        ]
+
+        await asyncio.gather(*monitoring_tasks)
+
+    async def monitor_instagram_comments(self):
+        """Monitor and respond to Instagram comments."""
+        while True:
+            try:
+                # Get latest comments across all posts
+                recent_comments = await self.get_recent_instagram_comments()
+
+                for comment in recent_comments:
+                    if not await self.should_respond_to_comment(comment):
+                        continue
+
+                    # Process comment and generate response
+                    response_data = await self.process_comment_for_response(comment, "instagram")
+
+                    if response_data["should_respond"]:
+                        await self.post_instagram_reply(comment, response_data["response"])
+
+                        # Log interaction
+                        await self.log_bot_interaction(comment, response_data, "instagram")
+
+                await asyncio.sleep(300)  # Check every 5 minutes
+
+            except Exception as e:
+                print(f"Instagram comment monitoring error: {e}")
+                await asyncio.sleep(600)  # Wait 10 minutes on error
+
+    async def process_comment_for_response(self, comment: Dict, platform: str) -> Dict:
+        """Comprehensive comment analysis and response generation."""
+        user_id = comment.get("from", {}).get("id", "unknown")
+        comment_text = comment.get("text", "")
+
+        # Get or create conversation context
+        context = await self.get_conversation_context(user_id, platform)
+
+        # Update conversation history
+        context.conversation_history.append({
+            "timestamp": datetime.now(),
+            "user_message": comment_text,
+            "comment_id": comment.get("id")
+        })
+
+        # Analyze comment sentiment and intent
+        analysis = await self.analyze_comment_comprehensive(comment_text, context)
+
+        # Update context with new analysis
+        context.user_sentiment = analysis["sentiment_score"]
+        context.user_intent = analysis["intent"]
+
+        # Check if response is needed
+        should_respond = await self.should_generate_response(analysis, context)
+
+        if not should_respond:
+            return {"should_respond": False, "reason": "No response needed"}
+
+        # Generate contextual response
+        response = await self.generate_contextual_response(
+            comment_text, analysis, context, platform
+        )
+
+        # Check for escalation needs
+        if await self.check_escalation_needed(analysis, context):
+            await self.trigger_human_escalation(comment, analysis, context)
+
+        return {
+            "should_respond": True,
+            "response": response,
+            "analysis": analysis,
+            "context": asdict(context)
+        }
+
+    async def analyze_comment_comprehensive(self, comment_text: str, 
+                                         context: ConversationContext) -> Dict:
+        """Deep analysis of comment using GPT-4 and NLP."""
+
+        # Extract entities and keywords using spaCy
+        doc = self.nlp(comment_text)
+        entities = [(ent.text, ent.label_) for ent in doc.ents]
+        keywords = [token.lemma_ for token in doc if not token.is_stop and not token.is_punct]
+
+        # GPT-4 comprehensive analysis
+        analysis_prompt = f"""
+        Analyze this social media comment about "The Future Is Now" movie for customer service response:
+
+        Comment: "{comment_text}"
+        User history: {len(context.conversation_history)} previous interactions
+        Previous sentiment: {context.user_sentiment}
+        Previous intent: {context.user_intent}
+
+        Provide analysis as JSON:
+        {{
+            "sentiment_score": (1-5 scale),
+            "sentiment_label": "very_negative/negative/neutral/positive/very_positive",
+            "emotion": "primary emotion detected",
+            "intent": "praise/complaint/question/request/spam/promotional",
+            "urgency": (1-5 scale),
+            "response_needed": true/false,
+            "escalation_recommended": true/false,
+            "key_topics": ["topic1", "topic2"],
+            "user_type": "fan/critic/casual/influencer/spam",
+            "response_tone": "enthusiastic/professional/empathetic/educational",
+            "specific_concerns": ["concern1", "concern2"],
+            "opportunities": ["opportunity1", "opportunity2"]
+        }}
+        """
+
+        try:
+            response = await self.openai_client.chat.completions.create(
+                model="gpt-4",
+                messages=[
+                    {"role": "system", "content": """You are an expert social media analyst specializing in entertainment marketing. 
+                     Provide detailed, accurate analysis that helps customer service teams respond appropriately."""},
+                    {"role": "user", "content": analysis_prompt}
+                ],
+                temperature=0.2,
+                max_tokens=500
+            )
+
+            analysis = json.loads(response.choices[0].message.content)
+
+            # Enhance with NLP data
+            analysis["entities"] = entities
+            analysis["keywords"] = keywords
+
+            return analysis
+
+        except Exception as e:
+            print(f"Comment analysis error: {e}")
+            return self.fallback_analysis(comment_text)
+
+    async def generate_contextual_response(self, original_comment: str, 
+                                         analysis: Dict, 
+                                         context: ConversationContext,
+                                         platform: str) -> str:
+        """Generate contextual, brand-aligned response using GPT-4."""
+
+        # Build context for response generation
+        conversation_summary = self.summarize_conversation_history(context.conversation_history)
+        brand_voice = self.brand_guidelines.get("voice", "friendly and professional")
+        platform_constraints = self.get_platform_response_constraints(platform)
+
+        response_prompt = f"""
+        Generate a response for this social media comment about "The Future Is Now" movie:
+
+        Original comment: "{original_comment}"
+
+        Context:
+        - Platform: {platform}
+        - User sentiment: {analysis['sentiment_label']}
+        - User intent: {analysis['intent']}
+        - User emotion: {analysis.get('emotion', 'neutral')}
+        - Recommended tone: {analysis.get('response_tone', 'professional')}
+        - Previous interactions: {len(context.conversation_history)}
+        - Conversation summary: {conversation_summary}
+
+        Brand Guidelines:
+        - Voice: {brand_voice}
+        - Movie: Sci-fi thriller "The Future Is Now" releasing December 25, 2025
+        - Brand personality: Innovative, mysterious, engaging, authentic
+        - Key messaging: The truth will change everything, Christmas 2025, IMAX experience
+
+        Platform Constraints:
+        - Max length: {platform_constraints['max_length']} characters
+        - Emoji usage: {platform_constraints['emoji_style']}
+        - Hashtag strategy: {platform_constraints['hashtag_approach']}
+
+        Response Requirements:
+        Address the user's specific point/question
+        Maintain brand voice and personality
+        Include relevant call-to-action when appropriate
+        Show genuine engagement, not automation
+        Add value to the conversation
+
+        Generate ONLY the response text (no quotes or explanations):
+        """
+
+        try:
+            response = await self.openai_client.chat.completions.create(
+                model="gpt-4",
+                messages=[
+                    {"role": "system", "content": """You are the social media manager for "The Future Is Now" movie. 
+                     Create engaging, authentic responses that build community and excitement while staying true to the brand voice."""},
+                    {"role": "user", "content": response_prompt}
+                ],
+                temperature=0.7,
+                max_tokens=300
+            )
+
+            generated_response = response.choices[0].message.content.strip()
+
+            # Post-process response
+            final_response = await self.post_process_response(
+                generated_response, platform, analysis
+            )
+
+            return final_response
+
+        except Exception as e:
+            print(f"Response generation error: {e}")
+            return self.get_fallback_response(analysis["intent"], platform)
+
+    async def post_process_response(self, response: str, platform: str, 
+                                  analysis: Dict) -> str:
+        """Post-process generated response for platform optimization."""
+
+        # Add platform-specific formatting
+        if platform == "instagram" and analysis.get("response_tone") == "enthusiastic":
+            # Add relevant emojis for Instagram
+            response = self.add_instagram_emojis(response)
+
+        elif platform == "twitter":
+            # Ensure under character limit
+            response = self.truncate_for_twitter(response)
+
+        elif platform == "linkedin":
+            # More professional tone
+            response = self.professionalize_for_linkedin(response)
+
+        # Add personalization
+        if analysis.get("user_type") == "influencer":
+            response = self.add_influencer_recognition(response)
+
+        # Add appropriate call-to-action
+        cta = self.select_contextual_cta(analysis, platform)
+        if cta and len(response) + len(cta) < self.get_platform_response_constraints(platform)["max_length"]:
+            response += f" {cta}"
+
+        return response
+
+    async def check_escalation_needed(self, analysis: Dict, 
+                                    context: ConversationContext) -> bool:
+        """Determine if human escalation is needed."""
+        escalation_indicators = [
+            analysis.get("urgency", 1) >= 4,
+            analysis.get("sentiment_score", 3) <= 2 and context.escalation_level >= 2,
+            "complaint" in analysis.get("intent", "").lower(),
+            any(trigger in analysis.get("key_topics", []) for trigger in self.escalation_triggers),
+            len(context.conversation_history) > 5,  # Long conversation
+            analysis.get("escalation_recommended", False)
+        ]
+
+        return any(escalation_indicators)
+
+    async def trigger_human_escalation(self, comment: Dict, analysis: Dict, 
+                                     context: ConversationContext):
+        """Trigger human escalation with comprehensive context."""
+        escalation_data = {
+            "timestamp": datetime.now(),
+            "platform": context.platform,
+            "user_id": context.user_id,
+            "comment": comment,
+            "analysis": analysis,
+            "conversation_history": context.conversation_history,
+            "escalation_reason": self.determine_escalation_reason(analysis, context),
+            "priority": self.calculate_escalation_priority(analysis, context),
+            "suggested_actions": await self.generate_escalation_suggestions(analysis, context)
+        }
+
+        # Send to human team (implementation depends on your system)
+        await self.notify_human_team(escalation_data)
+
+        # Mark in context to prevent duplicate escalations
+        context.escalation_level += 1
+
+    def get_platform_response_constraints(self, platform: str) -> Dict:
+        """Platform-specific response constraints and best practices."""
+        constraints = {
+            "instagram": {
+                "max_length": 2200,
+                "emoji_style": "moderate",
+                "hashtag_approach": "minimal",
+                "tone": "friendly"
+            },
+            "twitter": {
+                "max_length": 280,
+                "emoji_style": "light",
+                "hashtag_approach": "strategic",
+                "tone": "conversational"
+            },
+            "facebook": {
+                "max_length": 1000,
+                "emoji_style": "moderate",
+                "hashtag_approach": "minimal",
+                "tone": "professional"
+            },
+            "tiktok": {
+                "max_length": 300,
+                "emoji_style": "heavy",
+                "hashtag_approach": "trending",
+                "tone": "energetic"
+            },
+            "linkedin": {
+                "max_length": 700,
+                "emoji_style": "professional",
+                "hashtag_approach": "industry",
+                "tone": "professional"
+            }
+        }
+
+        return constraints.get(platform, constraints["instagram"])
+
+    def select_contextual_cta(self, analysis: Dict, platform: str) -> str:
+        """Select appropriate call-to-action based on context."""
+        intent = analysis.get("intent", "")
+        sentiment = analysis.get("sentiment_label", "neutral")
+
+        ctas = {
+            "positive_fan": "🎬 Can't wait for you to see it!",
+            "curious": "🔗 Check out more at [link in bio]",
+            "question": "💭 Got more questions? We're here!",
+            "excitement": "🔥 The countdown begins! December 25th!",
+            "neutral": "🌟 Thanks for following our journey!"
+        }
+
+        if "positive" in sentiment and "praise" in intent:
+            return ctas["positive_fan"]
+        elif "question" in intent:
+            return ctas["question"]
+        elif "neutral" in sentiment:
+            return ctas["curious"]
+        else:
+            return ctas["neutral"]
+
+    async def post_instagram_reply(self, comment: Dict, response: str):
+        """Post reply to Instagram comment."""
+        headers = {"Authorization": f"Bearer {self.api_keys['instagram']}"}
+
+        reply_data = {
+            "message": response
+        }
+
+        async with aiohttp.ClientSession() as session:
+            url = f"https://graph.instagram.com/{comment['id']}/replies"
+            async with session.post(url, json=reply_data, headers=headers) as response:
+                result = await response.json()
+                return result
+
+    async def log_bot_interaction(self, comment: Dict, response_data: Dict, platform: str):
+        """Log bot interaction for analysis and improvement."""
+        log_entry = {
+            "timestamp": datetime.now(),
+            "platform": platform,
+            "comment_id": comment.get("id"),
+            "user_id": comment.get("from", {}).get("id"),
+            "original_comment": comment.get("text"),
+            "bot_response": response_data["response"],
+            "analysis": response_data["analysis"],
+            "response_time": (datetime.now() - datetime.fromisoformat(comment.get("created_time", datetime.now().isoformat()))).total_seconds()
+        }
+
+        # Store in database for analysis
+        await self.store_interaction_log(log_entry)
+
+        # Add to replied users to prevent duplicate responses
+        self.replied_users.add(comment.get("from", {}).get("id"))
+```
+
+This documentation details a production-ready social media management platform using LangGraph for orchestration, ensuring enterprise-scale operations with quality and brand consistency.
+
+## Implementation Solutions
+
+<#0.5#>
+
+### Overview
+
+This section analyzes open-source frameworks and tools for implementing the Social Media Agent. It identifies suitable technologies and provides roadmaps for major capabilities based on market research.
+
+<#0.5#>
+
+### Framework Compatibility Matrix
+
+| Requirement/Capability       | LangChain/LangGraph | n8n  | Ayrshare API | Mixpost | Haystack | Open Source LLMs |
+|------------------------------|---------------------|------|--------------|---------|----------|------------------|
+| **Content Calendar**         | ✅ Core Framework   | ✅ Visual Workflows | ✅ Multi-Platform API | ✅ Self-hosted | ⚠️ Partial | ❌ Not Applicable |
+| **AI Asset Generation**      | ✅ LLM Integration  | ✅ OpenAI Nodes | ❌ Limited    | ✅ Basic Support | ✅ Multi-modal | ✅ Content Creation |
+| **Hashtag Optimization**     | ✅ AI Analysis      | ✅ Custom Logic | ⚠️ Basic      | ✅ Management | ✅ Text Analysis | ✅ Pattern Recognition |
+| **Engagement Tracking**      | ✅ Analytics Pipeline | ✅ Data Processing | ✅ Native Analytics | ✅ Comprehensive | ⚠️ Limited | ⚠️ Analysis Only |
+| **Reply Bot System**         | ✅ Conversation AI  | ✅ Automated Responses | ⚠️ Basic      | ✅ Inbox Management | ✅ Conversational AI | ✅ Response Generation |
+| **Influencer Outreach**      | ✅ Workflow Management | ✅ CRM Integration | ❌ Not Supported | ⚠️ Limited | ❌ Not Applicable | ✅ Content Analysis |
+| **Multi-Platform Publishing**| ✅ API Orchestration | ✅ Native Integrations | ✅ Core Feature | ✅ 11 Platforms | ❌ Not Applicable | ❌ Not Applicable |
+| **Human-in-the-Loop**        | ✅ Built-in Feature | ✅ Approval Workflows | ❌ Limited    | ✅ Team Collaboration | ⚠️ Custom Implementation | ❌ Not Applicable |
+
+**Legend**: ✅ Full Support | ⚠️ Partial/Custom Required | ❌ Not Supported
+
+<#0.5#>
+
+### Primary Implementation Stack Recommendation
+
+<#0.5#>
+
+#### Core Architecture: LangChain + LangGraph Foundation
+
+LangGraph, an MIT-licensed open-source library, builds stateful, multi-actor applications with human-in-the-loop support, ideal for this system.
+
+**Why This Stack**:
+- Statefulness enables human collaboration, with agents drafting for review.
+- Durable execution persists through failures and resumes automatically.
+- Proven with existing GitHub implementations for social media agents.
+
+**Architecture Components**:
+- **LangGraph Workflows**: Core orchestration.
+- **n8n Integration Layer**: Visual workflow and API coordination.
+- **Unified Social Media APIs**: Publishing and analytics.
+- **Open Source AI Models**: Content generation and analysis.
+- **Self-hosted Analytics**: Tracking and optimization.
+
+<#0.5#>
+
+### Detailed Implementation Solutions by Capability
+
+<#0.5#>
+
+#### Advanced Content Calendar System
+
+##### Primary Framework: LangGraph + n8n
+
+**LangGraph Implementation**:
+- Fetch Slack messages and process through daily generate_post workflows.
+- Use background jobs for scheduling and campaigns.
+
+**n8n Workflow Automation**:
+n8n, a free open-source tool, connects apps via node-based interfaces.
+
+**Implementation Approach**:
+```typescript
+// LangGraph State Management
+interface ContentCalendarState {
+  campaigns: Campaign[];
+  scheduledPosts: ScheduledPost[];
+  approvalQueue: PendingPost[];
+  publishedContent: PublishedPost[];
+}
+
+// n8n Workflow Triggers
+- Cron Schedule: Daily content generation
+- Webhook: Manual content submission
+- Calendar Integration: Event-based posting
+- Approval Gates: Human review checkpoints
+```
+
+**Integration Points**:
+- Notion for planning, Google Drive for videos, Google Sheets for status.
+
+**Pros**:
+- Draft once, publish everywhere with consistent schedules.
+- Visual, no-code design with error handling.
+
+**Cons**:
+- Initial setup required; custom nodes for some platforms.
+
+<#0.5#>
+
+#### AI-Powered Asset Generation System
+
+##### Primary Framework: Haystack + Open Source Models
+
+**Haystack Framework**:
+An open-source AI framework for LLM-powered agents, supporting multi-modal tasks like image generation.
+
+**Implementation Architecture**:
+```python
+# Multi-Modal Pipeline
+@component
+class ContentGenerationPipeline:
+    def __init__(self):
+        self.text_generator = OpenAIGenerator()
+        self.image_generator = StableDiffusionGenerator()  
+        self.video_processor = FFmpegProcessor()
+
+    def generate_campaign_assets(self, brief: str) -> Dict:
+        # Leverage Haystack's standardized interface
+        return {
+            "hero_images": self.create_hero_visuals(brief),
+            "social_copy": self.generate_platform_copy(brief),
+            "video_clips": self.process_video_content(brief)
+        }
+```
+
+**Open Source Model Integration**:
+- **Falcon 180B**: Advanced language model for text generation.
+- **Stable Diffusion**: For images.
+- **AudioCraft**: For audio (MusicGen, AudioGen).
+
+**Content Pipeline Features**:
+- Jinja-2 templates for workflow matching.
+- Function-calling with branching and looping.
+
+**Pros**:
+- Modular for production; cost-effective; fine-tunable.
+
+**Cons**:
+- Hosting costs; technical expertise needed.
+
+<#0.5#>
+
+#### Multi-Platform Social Media API Management
+
+##### Primary Framework: Ayrshare Social Media API
+
+**Unified API Approach**:
+Ayrshare manages networks like X/Twitter, Facebook, Instagram, LinkedIn, YouTube, Google Business Profile, Telegram, TikTok, and Reddit.
+
+**Implementation Example**:
+```javascript
+const SocialMediaAPI = require("social-media-api");
+const social = new SocialMediaAPI(API_KEY);
+
+// Multi-platform posting
+const post = await social.post({
+    post: "The future is now! 🚀 #SciFiThriller2025",
+    platforms: ["twitter", "facebook", "instagram", "linkedin"],
+    mediaUrls: ["https://img.example.com/movie-poster.jpg"],
+    scheduledTime: "2025-12-25T09:00:00Z"
+});
+```
+
+**Alternative: Self-Hosted Mixpost**:
+Self-hosted management with no fees, full privacy, supporting 11 platforms.
+
+**Mixpost Features**:
+- Unified dashboard and inbox.
+- Team collaboration with approvals.
+
+**Integration Points**:
+- API for client profiles; webhooks; analytics.
+
+**Pros**:
+- Cost savings; unified format; compliance.
+
+**Cons**:
+- Third-party dependency; platform policy limits.
+
+<#0.5#>
+
+#### Workflow Automation and Orchestration
+
+##### Primary Framework: n8n with LangGraph Integration
+
+**n8n Automation Capabilities**:
+Connects apps with visual building and AI integration for agents.
+
+**Social Media Automation Examples**:
+Automates from trends to publication with tracking.
+
+**Workflow Architecture**:
+```yaml
+# n8n Social Media Workflow
+Trigger: Cron (Daily at 6 AM & 6 PM)
+Steps:
+  Google Trends API → Fetch trending topics
+  OpenAI GPT → Select optimal. Perplexity AI → Research selected. GPT-4 → Generate platform-specific content
+  Image Generation → Create accompanying visuals
+  Multi-Platform Post → Publish to all channels
+  Analytics → Log performance to Google Sheets
+```
+
+**Real-World Implementation**:
+AI scheduler using n8n and DeepSeek, reducing costs by 90%.
+
+**Advanced Features**:
+- Transforms content across formats.
+- Integrates CRM, Drive, approvals.
+
+**Pros**:
+- Scalable, open-source; 300+ integrations.
+
+**Cons**:
+- Learning curve; maintenance.
+
+<#0.5#>
+
+#### AI-Powered Engagement and Analytics
+
+##### Primary Framework: Custom LangGraph + Open Source Analytics
+
+**Sentiment Analysis Implementation**:
+DeepPavlov for conversational AI and sentiment tools.
+
+**Analytics Pipeline**:
+```python
+# LangGraph Analytics Workflow
+class EngagementAnalyzer:
+    def __init__(self):
+        self.sentiment_analyzer = DeepPavlovSentiment()
+        self.trend_detector = TrendAnalysisModel()
+        self.influencer_scorer = InfluencerRankingModel()
+
+    def analyze_engagement(self, posts_data):
+        results = {
+            "sentiment_scores": self.analyze_sentiment_batch(posts_data),
+            "viral_predictions": self.predict_virality(posts_data),
+            "optimal_times": self.calculate_posting_times(posts_data)
+        }
+        return results
+```
+
+**Open Source Analytics Stack**:
+- **Text Processing**: Falcon 180B for analysis.
+- **Data Storage**: PostgreSQL/MongoDB.
+- **Visualization**: Grafana.
+- **Stream Processing**: Apache Kafka.
+
+**Pros**:
+- Full control; privacy; customizable.
+
+**Cons**:
+- Development effort; infrastructure overhead.
+
+<#0.5#>
+
+#### Human-in-the-Loop Integration
+
+##### Primary Framework: LangGraph Built-in HITL
+
+**LangGraph Human Oversight**:
+Inspects/modifies state during execution with short- and long-term memory.
+
+**Implementation Pattern**:
+```python
+# Human Review Checkpoints
+@checkpoint(human_review=True)
+def content_approval_gate(state: ContentState):
+    if state.content_risk_score > threshold:
+        return HUMAN_REVIEW_REQUIRED
+    return AUTO_APPROVE
+
+# Approval Workflow
+workflow = StateGraph(ContentWorkflowState)
+workflow.add_node("generate_content", generate_post)
+workflow.add_node("human_review", human_approval_gate)
+workflow.add_node("publish_content", publish_to_platforms)
+```
+
+**Integration with Team Tools**:
+- Slack notifications; web dashboard.
+
+**Pros**:
+- Time-travel functionality; audit trails.
+
+**Cons**:
+- Team training; potential slowdowns.
+
+<#0.5#>
+
+### Phased Implementation Roadmap
+
+<#0.5#>
+
+#### Phase 1: Foundation (Weeks 1-4)
+- Set up LangGraph environment and configuration.
+- Deploy n8n and configure APIs.
+- Test multi-platform posting.
+
+<#0.5#>
+
+#### Phase 2: Core Features (Weeks 5-8)
+- Implement AI generation with Haystack and models.
+- Build analytics with DeepPavlov and dashboards.
+- Configure HITL workflows.
+
+<#0.5#>
+
+#### Phase 3: Advanced Features (Weeks 9-12)
+- Deploy end-to-end automation.
+- Optimize performance and scale.
+
+<#0.5#>
+
+### Critical Dependencies and Prerequisites
+
+<#0.5#>
+
+#### Technical Requirements
+- **Server**: 16GB RAM, 4 CPU cores.
+- **API Keys**: Platform developer access.
+- **Skills**: Python, JavaScript, Docker, DevOps.
+
+<#0.5#>
+
+#### Integration Challenges
+- Rate limits; compliance; hosting costs.
+
+<#0.5#>
+
+#### Mitigation Strategies
+- API tools for limits; moderation checks; hybrid cloud.
+
+<#0.5#>
+
+### Cost Analysis and Total Cost of Ownership
+
+<#0.5#>
+
+#### Open Source Stack (Estimated Monthly Costs)
+- **Infrastructure**: $200-500.
+- **API Usage**: $50-200.
+- **Maintenance**: 20-40 hours.
+
+<#0.5#>
+
+#### Compared to Commercial Solutions
+- **Commercial**: $500-2000.
+- **Enterprise**: $5000+.
+
+<#0.5#>
+
+#### ROI Considerations
+- Long-term savings; customization; no lock-in.
+
+<#0.5#>
+
+### Conclusion and Recommendations
+
+The **LangGraph + n8n + Ayrshare + Open Source AI** stack balances functionality, cost, and scalability. It leverages proven technologies like LangChain agents, production-ready Haystack, and cost-efficient DeepSeek for a competitive, customizable platform.
+
+<#0.5#>
+

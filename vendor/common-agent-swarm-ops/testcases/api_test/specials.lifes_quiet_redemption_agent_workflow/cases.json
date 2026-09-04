@@ -1,0 +1,75 @@
+{
+  "agent_id": "specials.lifes_quiet_redemption_agent_workflow",
+  "kind": "special",
+  "cases": [
+    {
+      "id": "tc1",
+      "name": "Six-day redemption",
+      "method": "POST",
+      "path": "/api/v1/lqr/overview",
+      "body": {
+        "logline": "Quiet redemption arc across six travel days",
+        "variant": "default"
+      },
+      "success_criteria": {
+        "http_status": [
+          200
+        ],
+        "required_keys_any": [
+          "ok",
+          "overview",
+          "stages",
+          "result",
+          "correlation_id"
+        ],
+        "notes": "LQR overview offline."
+      }
+    },
+    {
+      "id": "tc2",
+      "name": "Food rituals belonging",
+      "method": "POST",
+      "path": "/api/v1/lqr/overview",
+      "body": {
+        "logline": "Character finds belonging through local food rituals",
+        "variant": "default"
+      },
+      "success_criteria": {
+        "http_status": [
+          200
+        ],
+        "required_keys_any": [
+          "ok",
+          "overview",
+          "stages",
+          "result",
+          "correlation_id"
+        ],
+        "notes": "LQR overview offline."
+      }
+    },
+    {
+      "id": "tc3",
+      "name": "Soft hope VO",
+      "method": "POST",
+      "path": "/api/v1/lqr/overview",
+      "body": {
+        "logline": "Soft hope without melodrama for documentary VO",
+        "variant": "default"
+      },
+      "success_criteria": {
+        "http_status": [
+          200
+        ],
+        "required_keys_any": [
+          "ok",
+          "overview",
+          "stages",
+          "result",
+          "correlation_id"
+        ],
+        "notes": "LQR overview offline."
+      }
+    }
+  ]
+}

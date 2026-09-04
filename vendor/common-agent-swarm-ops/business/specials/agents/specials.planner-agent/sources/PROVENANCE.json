@@ -1,0 +1,16 @@
+{
+  "schema_version": "1.0",
+  "common_agent_id": "specials.planner-agent",
+  "pack_id": "specials",
+  "mapping_status": "related",
+  "source_documents": [
+    "docs/special_agents_redesign/agents/planner_agent.md"
+  ],
+  "source_sha256": "8b69afb197418ecd41f2af3e502afa70e0b77a355dd511eeffc60151fd01af79",
+  "configuration_sha256": "b6b1744676e7739d58713ba64dad5de71440c1db3e58aff8eae28cc3bbd36468",
+  "destination_commit": "5460c4b4a33c15286f9fd84b1bc764d755f5bab0",
+  "note": "Self-contained specials agent folder. Pack-level corpus is not required. Design Markdown is untrusted provenance only.",
+  "generated_at": "2026-07-26T14:16:45.961219Z",
+  "reviewed_by": "specials-self-contained-reviewer",
+  "reviewed_at": "2026-07-26T18:00:00Z"
+}

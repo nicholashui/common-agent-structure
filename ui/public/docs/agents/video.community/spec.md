@@ -3288,34 +3288,34 @@ Omitted here; same document as `SPEC.md` above.
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "理解媒介",
+      "title": "\u7406\u89e3\u5a92\u4ecb",
       "isbn13": "9787508040318",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 理解媒介，ISBN-13 9787508040318"
+      "citation": "ZH: \u7406\u89e3\u5a92\u4ecb\uff0cISBN-13 9787508040318"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "娱乐至死",
+      "title": "\u5a31\u4e50\u81f3\u6b7b",
       "isbn13": "9787563397648",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 娱乐至死，ISBN-13 9787563397648"
+      "citation": "ZH: \u5a31\u4e50\u81f3\u6b7b\uff0cISBN-13 9787563397648"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "融合文化",
+      "title": "\u878d\u5408\u6587\u5316",
       "isbn13": "9787301162262",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 融合文化，ISBN-13 9787301162262"
+      "citation": "ZH: \u878d\u5408\u6587\u5316\uff0cISBN-13 9787301162262"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "认知盈余",
+      "title": "\u8ba4\u77e5\u76c8\u4f59",
       "isbn13": "9787213044661",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 认知盈余，ISBN-13 9787213044661"
+      "citation": "ZH: \u8ba4\u77e5\u76c8\u4f59\uff0cISBN-13 9787213044661"
     },
     {
       "kind": "reference_book",
@@ -3437,82 +3437,82 @@ Omitted here; same document as `SPEC.md` above.
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "这就是营销",
+      "title": "\u8fd9\u5c31\u662f\u8425\u9500",
       "isbn13": "9787521702330",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 这就是营销，ISBN-13 9787521702330"
+      "citation": "ZH: \u8fd9\u5c31\u662f\u8425\u9500\uff0cISBN-13 9787521702330"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "疯传",
+      "title": "\u75af\u4f20",
       "isbn13": "9787508641238",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 疯传，ISBN-13 9787508641238"
+      "citation": "ZH: \u75af\u4f20\uff0cISBN-13 9787508641238"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "让创意更有黏性",
+      "title": "\u8ba9\u521b\u610f\u66f4\u6709\u9ecf\u6027",
       "isbn13": "9787508641245",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 让创意更有黏性，ISBN-13 9787508641245"
+      "citation": "ZH: \u8ba9\u521b\u610f\u66f4\u6709\u9ecf\u6027\uff0cISBN-13 9787508641245"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "跨越鸿沟",
+      "title": "\u8de8\u8d8a\u9e3f\u6c9f",
       "isbn13": "9787111456780",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 跨越鸿沟，ISBN-13 9787111456780"
+      "citation": "ZH: \u8de8\u8d8a\u9e3f\u6c9f\uff0cISBN-13 9787111456780"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "精益创业",
+      "title": "\u7cbe\u76ca\u521b\u4e1a",
       "isbn13": "9787115293701",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 精益创业，ISBN-13 9787115293701"
+      "citation": "ZH: \u7cbe\u76ca\u521b\u4e1a\uff0cISBN-13 9787115293701"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "一个广告人的自白",
+      "title": "\u4e00\u4e2a\u5e7f\u544a\u4eba\u7684\u81ea\u767d",
       "isbn13": "9787111496182",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 一个广告人的自白，ISBN-13 9787111496182"
+      "citation": "ZH: \u4e00\u4e2a\u5e7f\u544a\u4eba\u7684\u81ea\u767d\uff0cISBN-13 9787111496182"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "文案训练手册",
+      "title": "\u6587\u6848\u8bad\u7ec3\u624b\u518c",
       "isbn13": "9787115351555",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 文案训练手册，ISBN-13 9787115351555"
+      "citation": "ZH: \u6587\u6848\u8bad\u7ec3\u624b\u518c\uff0cISBN-13 9787115351555"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "上瘾",
+      "title": "\u4e0a\u763e",
       "isbn13": "9787508648017",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 上瘾，ISBN-13 9787508648017"
+      "citation": "ZH: \u4e0a\u763e\uff0cISBN-13 9787508648017"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "增长黑客",
+      "title": "\u589e\u957f\u9ed1\u5ba2",
       "isbn13": "9787213066948",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 增长黑客，ISBN-13 9787213066948"
+      "citation": "ZH: \u589e\u957f\u9ed1\u5ba2\uff0cISBN-13 9787213066948"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "参与感",
+      "title": "\u53c2\u4e0e\u611f",
       "isbn13": "9787213055375",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 参与感，ISBN-13 9787213055375"
+      "citation": "ZH: \u53c2\u4e0e\u611f\uff0cISBN-13 9787213055375"
     },
     {
       "kind": "reference_book",
@@ -3607,69 +3607,69 @@ Omitted here; same document as `SPEC.md` above.
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "思考，快与慢",
+      "title": "\u601d\u8003\uff0c\u5feb\u4e0e\u6162",
       "isbn13": "9787508633565",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 思考，快与慢，ISBN-13 9787508633565"
+      "citation": "ZH: \u601d\u8003\uff0c\u5feb\u4e0e\u6162\uff0cISBN-13 9787508633565"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "影响力",
+      "title": "\u5f71\u54cd\u529b",
       "isbn13": "9787508622163",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 影响力，ISBN-13 9787508622163"
+      "citation": "ZH: \u5f71\u54cd\u529b\uff0cISBN-13 9787508622163"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "怪诞行为学",
+      "title": "\u602a\u8bde\u884c\u4e3a\u5b66",
       "isbn13": "9787508615824",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 怪诞行为学，ISBN-13 9787508615824"
+      "citation": "ZH: \u602a\u8bde\u884c\u4e3a\u5b66\uff0cISBN-13 9787508615824"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "心流",
+      "title": "\u5fc3\u6d41",
       "isbn13": "9787508660721",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 心流，ISBN-13 9787508660721"
+      "citation": "ZH: \u5fc3\u6d41\uff0cISBN-13 9787508660721"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "驱动力",
+      "title": "\u9a71\u52a8\u529b",
       "isbn13": "9787508621753",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 驱动力，ISBN-13 9787508621753"
+      "citation": "ZH: \u9a71\u52a8\u529b\uff0cISBN-13 9787508621753"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "社会心理学",
-      "author": "迈尔斯",
+      "title": "\u793e\u4f1a\u5fc3\u7406\u5b66",
+      "author": "\u8fc8\u5c14\u65af",
       "isbn13": "9787115412393",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 社会心理学（迈尔斯），ISBN-13 9787115412393"
+      "citation": "ZH: \u793e\u4f1a\u5fc3\u7406\u5b66\uff08\u8fc8\u5c14\u65af\uff09\uff0cISBN-13 9787115412393"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "从零开始做内容：爆款内容的底层逻辑",
-      "author": "吕白",
+      "title": "\u4ece\u96f6\u5f00\u59cb\u505a\u5185\u5bb9\uff1a\u7206\u6b3e\u5185\u5bb9\u7684\u5e95\u5c42\u903b\u8f91",
+      "author": "\u5415\u767d",
       "isbn13": "9787111664604",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 从零开始做内容：爆款内容的底层逻辑（吕白），ISBN-13 9787111664604"
+      "citation": "ZH: \u4ece\u96f6\u5f00\u59cb\u505a\u5185\u5bb9\uff1a\u7206\u6b3e\u5185\u5bb9\u7684\u5e95\u5c42\u903b\u8f91\uff08\u5415\u767d\uff09\uff0cISBN-13 9787111664604"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "YouTube视频之王的崛起之路",
-      "author": "【美】马克·伯根",
+      "title": "YouTube\u89c6\u9891\u4e4b\u738b\u7684\u5d1b\u8d77\u4e4b\u8def",
+      "author": "\u3010\u7f8e\u3011\u9a6c\u514b\u00b7\u4f2f\u6839",
       "isbn13": "9787516837474",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: YouTube视频之王的崛起之路（【美】马克·伯根），ISBN-13 9787516837474"
+      "citation": "ZH: YouTube\u89c6\u9891\u4e4b\u738b\u7684\u5d1b\u8d77\u4e4b\u8def\uff08\u3010\u7f8e\u3011\u9a6c\u514b\u00b7\u4f2f\u6839\uff09\uff0cISBN-13 9787516837474"
     },
     {
       "kind": "reference_book",
@@ -3683,10 +3683,10 @@ Omitted here; same document as `SPEC.md` above.
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "新媒体营销圣经",
+      "title": "\u65b0\u5a92\u4f53\u8425\u9500\u5723\u7ecf",
       "isbn13": "9787550272101",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 新媒体营销圣经，ISBN-13 9787550272101"
+      "citation": "ZH: \u65b0\u5a92\u4f53\u8425\u9500\u5723\u7ecf\uff0cISBN-13 9787550272101"
     }
   ],
   "agent_id": "video.community",
@@ -3701,7 +3701,7 @@ Omitted here; same document as `SPEC.md` above.
     "adopted_at": "2026-07-27T01:30:27.883468+00:00",
     "upstream": "generic-swarm-ops/business/video/agents"
   },
-  "imported_from": "C:\\Project\\common-agent-swarm-ops\\business\\video\\agents\\video.community",
+  "imported_from": "vendor/common-agent-swarm-ops/business/video/agents/video.community",
   "reference_book_origin": "spec/book_of_knowledge.md",
   "reference_book_note": "Bibliographic references from spec/book_of_knowledge.md. Does not enable network, RAG, T3, plugins, or memory writes."
 }

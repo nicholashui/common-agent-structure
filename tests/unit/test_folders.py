@@ -5,7 +5,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-from casops.compose.folders import list_agent_summaries, locate_agent_folder
+from casops.compose.folders import list_agent_summaries, locate_agent_folder, public_folder_ref
 
 
 def _write_spec(folder: Path, agent_id: str, role: str = "", va_category: str | None = None) -> None:
@@ -61,7 +61,15 @@ def test_list_includes_unreadable_spec_folder(tmp_path: Path) -> None:
     (bad / "agent_spec.json").write_text("{", encoding="utf-8")
     listed = {row["agent_id"]: row for row in list_agent_summaries(tmp_path)}
     assert set(listed) == {"pack.good", "broken.agent"}
-    assert listed["broken.agent"]["folder"] == str(bad)
+    assert listed["broken.agent"]["folder"] == "agents/broken.agent"
+    assert listed["pack.good"]["folder"] == "agents/good"
+
+
+def test_public_folder_ref_is_repo_relative(tmp_path: Path) -> None:
+    root = tmp_path / "agents"
+    folder = root / "video.director"
+    folder.mkdir(parents=True)
+    assert public_folder_ref(folder, root) == "agents/video.director"
 
 
 def test_locate_ignores_corrupt_sibling(tmp_path: Path) -> None:

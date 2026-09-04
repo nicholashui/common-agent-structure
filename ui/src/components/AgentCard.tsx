@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { CommonBadge } from "./CommonBadge";
 import { StatusPill } from "./StatusPill";
 import type { StatusKind } from "./statusCfg";
+import { relativeAgentFolder } from "../lib/agents";
 import { GhostButton, PrimaryButton } from "./ui";
 
 export interface AgentCardModel {
@@ -37,7 +38,7 @@ export function AgentCard({
           </div>
           <p className="mt-1 truncate text-sm text-stone-500">
             {agent.role || "unspecified role"}
-            {agent.folder ? ` · ${agent.folder}` : ""}
+            {agent.folder ? ` · ${relativeAgentFolder(agent.folder, agent.agent_id)}` : ""}
           </p>
         </div>
       </div>

@@ -2807,18 +2807,18 @@ Omitted here; same document as `SPEC.md` above.
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "分镜的艺术",
+      "title": "\u5206\u955c\u7684\u827a\u672f",
       "isbn13": "9787535672346",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 分镜的艺术，ISBN-13 9787535672346"
+      "citation": "ZH: \u5206\u955c\u7684\u827a\u672f\uff0cISBN-13 9787535672346"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "电影镜头设计",
+      "title": "\u7535\u5f71\u955c\u5934\u8bbe\u8ba1",
       "isbn13": "9787115222224",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 电影镜头设计，ISBN-13 9787115222224"
+      "citation": "ZH: \u7535\u5f71\u955c\u5934\u8bbe\u8ba1\uff0cISBN-13 9787115222224"
     },
     {
       "kind": "reference_book",
@@ -2904,20 +2904,20 @@ Omitted here; same document as `SPEC.md` above.
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "拍电影",
-      "author": "卢梅",
+      "title": "\u62cd\u7535\u5f71",
+      "author": "\u5362\u6885",
       "isbn13": "9787106028893",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 拍电影（卢梅），ISBN-13 9787106028893"
+      "citation": "ZH: \u62cd\u7535\u5f71\uff08\u5362\u6885\uff09\uff0cISBN-13 9787106028893"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "导演创作完全手册",
-      "author": "拉比格",
+      "title": "\u5bfc\u6f14\u521b\u4f5c\u5b8c\u5168\u624b\u518c",
+      "author": "\u62c9\u6bd4\u683c",
       "isbn13": "9787515302867",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 导演创作完全手册（拉比格），ISBN-13 9787515302867"
+      "citation": "ZH: \u5bfc\u6f14\u521b\u4f5c\u5b8c\u5168\u624b\u518c\uff08\u62c9\u6bd4\u683c\uff09\uff0cISBN-13 9787515302867"
     },
     {
       "kind": "reference_book",
@@ -2980,7 +2980,7 @@ Omitted here; same document as `SPEC.md` above.
       "author": "Roger Deakins",
       "isbn13": "9781910593998",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "EN: Reflections: On Cinematography (Roger Deakins) — check latest ed. ISBN-13 9781910593998"
+      "citation": "EN: Reflections: On Cinematography (Roger Deakins) \u2014 check latest ed. ISBN-13 9781910593998"
     },
     {
       "kind": "reference_book",
@@ -2994,68 +2994,68 @@ Omitted here; same document as `SPEC.md` above.
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "电影摄影：理论与实践",
+      "title": "\u7535\u5f71\u6444\u5f71\uff1a\u7406\u8bba\u4e0e\u5b9e\u8df5",
       "isbn13": "9787515331867",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 电影摄影：理论与实践，ISBN-13 9787515331867"
+      "citation": "ZH: \u7535\u5f71\u6444\u5f71\uff1a\u7406\u8bba\u4e0e\u5b9e\u8df5\uff0cISBN-13 9787515331867"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "电影语言的语法",
+      "title": "\u7535\u5f71\u8bed\u8a00\u7684\u8bed\u6cd5",
       "isbn13": "9787532299990",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 电影语言的语法，ISBN-13 9787532299990"
+      "citation": "ZH: \u7535\u5f71\u8bed\u8a00\u7684\u8bed\u6cd5\uff0cISBN-13 9787532299990"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "美国纽约摄影学院摄影教材",
+      "title": "\u7f8e\u56fd\u7ebd\u7ea6\u6444\u5f71\u5b66\u9662\u6444\u5f71\u6559\u6750",
       "isbn13": "9787800078491",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 美国纽约摄影学院摄影教材，ISBN-13 9787800078491"
+      "citation": "ZH: \u7f8e\u56fd\u7ebd\u7ea6\u6444\u5f71\u5b66\u9662\u6444\u5f71\u6559\u6750\uff0cISBN-13 9787800078491"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "论摄影",
-      "author": "桑塔格",
+      "title": "\u8bba\u6444\u5f71",
+      "author": "\u6851\u5854\u683c",
       "isbn13": "9787544722599",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 论摄影（桑塔格），ISBN-13 9787544722599"
+      "citation": "ZH: \u8bba\u6444\u5f71\uff08\u6851\u5854\u683c\uff09\uff0cISBN-13 9787544722599"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "摄影师的视界",
+      "title": "\u6444\u5f71\u5e08\u7684\u89c6\u754c",
       "isbn13": "9787512201880",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 摄影师的视界，ISBN-13 9787512201880"
+      "citation": "ZH: \u6444\u5f71\u5e08\u7684\u89c6\u754c\uff0cISBN-13 9787512201880"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "分镜设计 脚本 镜头语言与 AI 技术应用从入门到精通",
+      "title": "\u5206\u955c\u8bbe\u8ba1 \u811a\u672c \u955c\u5934\u8bed\u8a00\u4e0e AI \u6280\u672f\u5e94\u7528\u4ece\u5165\u95e8\u5230\u7cbe\u901a",
       "isbn13": "9787122474100",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 分镜设计 脚本 镜头语言与 AI 技术应用从入门到精通，ISBN-13 9787122474100"
+      "citation": "ZH: \u5206\u955c\u8bbe\u8ba1 \u811a\u672c \u955c\u5934\u8bed\u8a00\u4e0e AI \u6280\u672f\u5e94\u7528\u4ece\u5165\u95e8\u5230\u7cbe\u901a\uff0cISBN-13 9787122474100"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "爆款短视频拍摄：118个分镜脚本与摄影技巧新媒体抖音运营流量",
+      "title": "\u7206\u6b3e\u77ed\u89c6\u9891\u62cd\u6444\uff1a118\u4e2a\u5206\u955c\u811a\u672c\u4e0e\u6444\u5f71\u6280\u5de7\u65b0\u5a92\u4f53\u6296\u97f3\u8fd0\u8425\u6d41\u91cf",
       "isbn13": "9787122699984",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 爆款短视频拍摄：118个分镜脚本与摄影技巧新媒体抖音运营流量，ISBN-13 9787122699984"
+      "citation": "ZH: \u7206\u6b3e\u77ed\u89c6\u9891\u62cd\u6444\uff1a118\u4e2a\u5206\u955c\u811a\u672c\u4e0e\u6444\u5f71\u6280\u5de7\u65b0\u5a92\u4f53\u6296\u97f3\u8fd0\u8425\u6d41\u91cf\uff0cISBN-13 9787122699984"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "分镜头设计",
-      "author": "王威",
+      "title": "\u5206\u955c\u5934\u8bbe\u8ba1",
+      "author": "\u738b\u5a01",
       "isbn13": "9787122424273",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 分镜头设计（王威），ISBN-13 9787122424273"
+      "citation": "ZH: \u5206\u955c\u5934\u8bbe\u8ba1\uff08\u738b\u5a01\uff09\uff0cISBN-13 9787122424273"
     }
   ],
   "agent_id": "video.storyboard",
@@ -3070,7 +3070,7 @@ Omitted here; same document as `SPEC.md` above.
     "adopted_at": "2026-07-27T01:30:28.894681+00:00",
     "upstream": "generic-swarm-ops/business/video/agents"
   },
-  "imported_from": "C:\\Project\\common-agent-swarm-ops\\business\\video\\agents\\video.storyboard",
+  "imported_from": "vendor/common-agent-swarm-ops/business/video/agents/video.storyboard",
   "reference_book_origin": "spec/book_of_knowledge.md",
   "reference_book_note": "Bibliographic references from spec/book_of_knowledge.md. Does not enable network, RAG, T3, plugins, or memory writes."
 }

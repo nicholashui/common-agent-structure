@@ -1,0 +1,1767 @@
+<#0.5#>
+
+This section details the design and implementation of two AI agents—cinematography and lighting—that automate the visual elements of professional filmmaking. These two agents analyze scripts, generate camera movements, design lighting setups, and use advanced computer graphics and AI techniques to produce photorealistic renders.
+
+Next, let's explain the key concepts in simple language. What are these two agents? Imagine them as virtual cinematographers and lighting directors. The cinematography agent is like a camera operator, planning shots and moving the camera, while the lighting agent is like a gaffer, setting up all the lights on set. Path tracing: imagine light as millions of tiny particles bouncing around a room. The computer simulates every bounce to create realistic lighting, just like in the real world. CLIP (Contrastive Language-Image Pretraining) is an AI that "sees" images and understands what they show, like a helper that instantly tells you if a shot follows the rule of thirds or has good composition. OptiX is NVIDIA technology that uses gaming GPUs to compute lighting super fast—turning hours of rendering into minutes. Blender is free professional 3D software for creating virtual scenes, cameras, and lights. Think of it as a complete movie studio inside your computer.
+
+With that, let's return to the main topics. First, the cinematography agent plans and executes camera work, including shot composition, camera movements (dolly, crane, handheld), and ensuring proper framing rules. Second, the lighting agent designs and simulates professional lighting setups with physically accurate light behavior, shadows, and color temperatures. Third, technical implementation: how to build these systems using Blender, NVIDIA OptiX, CLIP AI, and web preview tools. Fourth, integration workflow: how all components work together from initial script to final rendered clips.
+
+In summary, the key points. Two specialized AI agents automate cinematography and lighting in filmmaking, replacing manual technical work while maintaining professional quality standards. The cinematography agent uses CLIP AI to analyze shot composition, with accuracy rates of 75% to 91% across aspects (shot scale, angle, color), and mathematical algorithms to generate smooth camera movements. The lighting agent simulates real physics through virtual scenes by tracing light rays, computing bounces on surfaces up to 12 times, to produce photorealistic effects. NVIDIA OptiX acceleration drastically shortens render times—CPU might take 18 minutes per frame, but RTX GPUs enable real-time rendering. The system requires powerful hardware: at least NVIDIA RTX 3080 GPU, 64GB RAM, and fast storage for handling complex 3D scenes and real-time previews. Implementation uses fully open-source tools (Blender, BlenderProc, React Three Fiber), except for NVIDIA OptiX, which only runs on NVIDIA GPUs. The workflow follows film production standards: director provides shot list → agents generate camera/lighting plans → real-time preview → director feedback → final high-quality render.
+
+Additionally, key numbers and data. Performance metrics: CLIP accuracy 75% for shot scale, 82.5% for angle detection, 91.67% for color understanding; preview rendering 720p at 45 seconds per frame; final rendering 4K at 18 minutes per frame, 512 samples; camera shake simulation 0.3Hz primary + 0.8Hz secondary + 0.2Hz breathing frequency. Technical specs: max ray bounces 12 total (8 diffuse, 6 glossy, 4 transmissive); production render resolution 4K (3840×2160 pixels); samples preview 64, final 512; lighting intensity key light 2200 lumens, fill lights 400-650 lumens. Hardware requirements: GPU at least NVIDIA RTX 3080; RAM at least 64GB; storage NVMe SSD required; CPU 16+ cores recommended. Timeline: Phase 1 (basics) 3 months; Phase 2 (advanced features) 3 months; Phase 3 (production polish) 3 months; total development time 9 months.
+
+Next, next steps and actions. Implementation: 1. Set up development environment with Blender 4.0+, CUDA Toolkit, and Python 3.11; 2. Start with Phase 1 for basic camera control and CLIP integration; 3. Establish data pipelines to export camera/lighting between systems; 4. Build simple web previews with React Three Fiber. Key decisions: GPU budget allocation (RTX 3080 vs high-end RTX 4090); cloud rendering vs local infrastructure; web vs desktop director interface. Immediate actions: Install required software stack (Blender, CUDA, Python dependencies); acquire or create test 3D scene assets for development; set up version control for code and assets.
+
+Finally, why this matters and for whom. Film directors and cinematographers: Automates technical camera and lighting work, letting you focus on creative decisions instead of manual setup. Provides instant previews for rapid iteration. 3D artists and VFX teams: Simplifies production pipelines with automated shot planning and lighting design. Reduces manual keyframing and lighting setup time. AI/ML engineers: Demonstrates practical applications of computer vision (CLIP) and physically based rendering in creative workflows. Indie filmmakers: Makes professional-quality cinematography and lighting accessible without expensive gear or big teams—just powerful computer hardware. Software developers: Provides a detailed implementation roadmap for integrating Blender, OptiX, and AI systems into production pipelines using open-source tools. Production studios: Offers scalable solutions to generate high-quality clips, maintain consistent visual quality across projects, and reduce production time and costs.
+<#0.5#>
+# Cinematography & Lighting Agents - The Visual Team
+
+<#0.5#>
+
+## What to Build
+
+<#0.5#>
+
+### Cinematography Agent
+
+#### Core Visual Analysis Systems
+- **Shot Composition Analyzer**: Evaluates seven core dimensions—shot scale, angle, composition, camera movement, lighting, color, and focal length.
+- **Advanced Camera Path Generator**: Supports multiple movement types (crane, dolly, Steadicam, handheld) with parametric controls for location, rotation, and lens properties via Blender's low-level API.
+- **Comprehensive Framing Rule Checker**: Implements rule of thirds, headroom calculations, lead room analysis, and symmetry detection.
+- **Intelligent Coverage Planner**: Generates complete scene documentation, including master shots, medium shots, close-ups, insert shots, and reaction shots.
+
+#### Advanced Motion Control Systems
+- **Parametric Camera Trajectory Generation**: Uses mathematical interpolation algorithms for smooth paths.
+- **Real-Time Camera Shake Simulation**: Applies procedural noise functions with customizable frequency and amplitude for handheld aesthetics.
+- **Dynamic Focus Pulling Systems**: Automates rack focus based on subject tracking.
+- **Multi-Axis Gimbal Simulation**: Reproduces Steadicam-style movements.
+- **Lens Distortion and Chromatic Aberration Modeling**: Simulates realistic optical behavior.
+
+#### Computer Vision Integration
+- **CLIP-Based Visual Composition Analysis**: Leverages Contrastive Language-Image Pretraining (CLIP) to learn visual concepts from natural language supervision for cinematography classification.
+- **Automated Feature Extraction**: Identifies lighting, composition, and beauty ideal features for scene analysis.
+- **Real-Time Shot Classification and Quality Assessment**: Uses image feature vectors to match visual elements with cinematographic descriptions.
+- **Content-Aware Framing Suggestions**: Provides recommendations based on subject detection and scene analysis.
+
+<#0.5#>
+
+### Lighting Agent
+
+#### Physical Light Simulation Engine
+- **Comprehensive 3-Point Lighting Auto-Setup**: Calculates key, fill, and rim lights.
+- **Advanced Path Tracing Implementation**: Supports multiple light bounces with configurable maximum counts for diffuse, glossy, and transmission rays.
+- **Motivated Lighting Analyzer**: Identifies and utilizes practical sources (e.g., windows, lamps, screens, fire).
+- **Dynamic Lighting Simulator**: Handles complex scenarios, including flickering flames, moving vehicle headlights, and animated screen emissions.
+- **Probabilistic Ray-Tracing Engine**: Uses random path tracing to approximate real-world light behavior with mathematical accuracy.
+
+#### Advanced Rendering Technologies
+- **Path-Traced Preview Renderer**: Utilizes Blender's Cycles integrator with direct light sampling; calculates each ray bounce in one direction with single light sampling for faster computation, though requiring more samples for noise reduction.
+- **Branched Path Tracing Implementation**: Splits rays to sample multiple directions and material components simultaneously, accounting for light from multiple directions to reduce noise.
+- **Real-Time Global Illumination Preview**: Employs ambient occlusion approximations for fast interactive viewport rendering as an alternative to full global illumination.
+- **NVIDIA OptiX Integration**: Enables hardware-accelerated ray tracing with RTX technology for real-time photorealistic lighting calculations.
+
+#### Professional Lighting Tools
+- **IES Profile Library Integration**: Supports industry-standard lighting fixture characteristics.
+- **HDRI Environment Mapping**: Handles panoramic projections, including equirectangular, fisheye equidistant, and fisheye equisolid formats for realistic environment lighting.
+- **Color Temperature and Spectral Power Distribution Modeling**: Ensures accurate light source representation.
+- **Advanced Shadow Calculation Systems**: Generates soft shadows and contact shadows.
+
+<#0.5#>
+
+## What They Do
+
+<#0.5#>
+
+### Cinematography Agent Operations
+
+#### Intelligent Shot Design
+- Analyzes director's shot lists and generates optimal camera placements based on scene geometry and narrative requirements.
+- Creates sophisticated camera movements to enhance storytelling through dynamic composition changes.
+- Maintains visual consistency across scenes by preserving eyelines, screen direction, and visual motifs.
+- Generates comprehensive 360° coverage plans for editorial flexibility with multiple angle options.
+
+#### Advanced Composition Analysis
+- Implements static cinematographic technique understanding: scale analysis (75% accuracy), angle detection (50% accuracy), and color understanding (67% accuracy) using multimodal large language models.
+- Performs real-time rule of thirds analysis with mathematical precision to calculate optimal subject placement within frame divisions.
+- Analyzes headroom, lead room, and nose room for proper subject framing per cinematic conventions.
+- Evaluates depth of field requirements and suggests appropriate lens choices for desired aesthetic effects.
+
+#### Motion Planning Systems
+- Generates smooth camera paths using Bézier curve interpolation for professional-quality movements.
+- Calculates optimal dolly and crane movements based on subject tracking and scene blocking.
+- Simulates authentic handheld camera movement with procedural algorithms that replicate natural operator behavior patterns.
+- Coordinates multi-camera setups for complex scenes requiring simultaneous coverage.
+
+<#0.5#>
+
+### Lighting Agent Operations
+
+#### Professional Lighting Design
+- Designs comprehensive lighting setups that match specified mood, time of day, and atmospheric conditions.
+- Simulates real-world lighting fixtures with physically accurate color temperature, intensity falloff, and spectral characteristics.
+- Handles complex scenarios, including multiple practical sources, mixed color temperatures, and challenging contrast situations.
+- Computes realistic shadows and bounce light using path tracing, where virtual light rays trace backwards from camera to light sources for accurate results.
+
+#### Real-Time Lighting Computation
+- Manages maximum light bounces with configurable settings; total bounces (default maximum) serve as master control, with specific limits for diffuse surfaces, glossy materials, and transmission materials.
+- Achieves lighting convergence through increased sample counts and bounce calculations, approximating real-world lighting as samples approach infinity.
+- Implements advanced global illumination using diffuse ray bouncing, where rays from the camera hit surfaces and continue bouncing for realistic effects, though with increased precision and longer render times.
+- Optimizes rendering performance via intelligent light sampling strategies that randomly select relevant light sources while avoiding non-contributing lights, reducing noise and improving efficiency.
+
+<#0.5#>
+
+## Tools and Frameworks
+
+<#0.5#>
+
+### Cinematography Tools
+
+#### Camera Path Generation
+- **Blender Python API Integration**: Provides low-level camera API with direct object creation for precise control over lens properties, location vectors, and Euler rotation angles.
+- **Mathematical Path Generation**: Employs custom algorithms using spline interpolation and parametric curve equations for smooth trajectories.
+- **Real-Time Preview Systems**: Implements Three.js or Babylon.js for interactive camera movement visualization.
+- **Lens Simulation Engine**: Models advanced optics, including bokeh simulation, chromatic aberration, and focal length-specific distortion.
+
+#### Composition Analysis Systems
+- **CLIP Integration**: Uses the Contrastive Language-Image Pretraining model to learn visual concepts from natural language supervision, enabling zero-shot classification of cinematographic elements.
+- **Custom Computer Vision Models**: Deploys specialized neural networks trained on cinematographic datasets for recognition of shot scale, angle, composition, camera movement, lighting, color, and focal length.
+- **Feature Extraction Pipeline**: Generates CLIP-based image feature vectors for cosine similarity calculations between cinematographic concepts and visual content.
+
+<#0.5#>
+
+### Lighting Simulation Framework
+
+#### Professional Rendering Engines
+- **Blender Cycles Integration**: Offers advanced path tracing with direct light sampling, optimized for various setups but requiring configuration for complex situations like caustics.
+- **NVIDIA OptiX Implementation**: Delivers high-performance GPU-accelerated ray tracing, leveraging NVIDIA hardware to process complex scenes with numerous geometric objects, textures, and lights.
+- **Real-Time Preview Systems**: Uses RTX-powered real-time ray tracing for immediate lighting feedback with accurate shadows, reflections, and global illumination.
+
+#### Advanced Lighting Technologies
+- **IES Profile Library**: Includes a comprehensive database of real fixture light distributions from industry leaders (e.g., ARRI, Astera, Kino Flo) with accurate photometric data.
+- **HDRI Environment Integration**: Supports Polyhaven HDRI library with multiple panoramic projections, including equirectangular for environment maps and specialized fisheye formats for fulldome and lens simulation.
+- **Hardware Acceleration**: Utilizes NVIDIA OptiX on RTX hardware for real-time ray tracing of large scenes with dense geometry approaching pixel-sized microtriangles.
+
+<#0.5#>
+
+## Interactions
+
+The following diagram illustrates the workflow for processing a director's shot list for Scene 5 in a Victorian mansion interior during a tense confrontation at late afternoon.
+
+```
+Director sends comprehensive shot list for Scene 5:
+  - Shot 1: Wide master, handheld aesthetic, 270° character orbit
+  - Shot 2: Close-up, Sarah, over-shoulder coverage
+  - Shot 3: Close-up, suspect, Dutch angle, psychological tension
+  - Environmental context: Victorian mansion interior, late afternoon, tense confrontation
+    ↓
+Cinematography Agent Processing:
+  Environment Analysis:
+     - Loads Victorian mansion asset with architectural measurements
+     - Analyzes room geometry: 24' × 18' parlor, 12' ceilings
+     - Identifies blocking areas and camera accessibility zones
+     - Maps furniture positions for optimal movement paths
+
+  Shot 1 Design (Wide Master):
+     - Camera Placement Calculation:
+        * Initial position: 14 feet from character center mass
+        * Height: 5 feet (standard eye level for natural perspective)
+        * Lens Selection: 35mm (wide angle without distortion)
+     - Handheld Path Generation:
+        * Frequency: 3Hz primary shake, 8Hz secondary micro-movements
+        * Amplitude: 2-pixel horizontal, 5-pixel vertical displacement
+        * Breathing simulation: 2Hz subtle camera drift
+     - 270° Orbit Calculation:
+        * Duration: 12 seconds for natural pacing
+        * Radius variance: 12-16 feet (dynamic closer/farther movement)
+        * Height variation: 2-8 feet (subtle parallax shifts)
+     - Composition Verification:
+        * Rule of thirds compliance: ✓ (subjects positioned at intersection points)
+        * Headroom analysis: ✓ (6% frame height above highest subject)
+        * Lead room calculation: ✓ (20% frame width in look direction)
+
+  Shot 2 Design (Close-up, Sarah, Over-Shoulder):
+     - Camera positioning: 4 feet from Sarah, 30° off-axis from suspect
+     - Lens: 85mm for natural facial compression
+     - Depth of field: f/8 for background separation
+     - Focus point: Sarah's near eye with 8mm depth tolerance
+
+  Shot 3 Design (Close-up, Suspect, Dutch Angle):
+     - Camera tilt: 15° clockwise for psychological unease
+     - Low angle: 8 feet height for intimidating perspective
+     - Lens: 50mm for natural perspective with slight psychological edge
+     - Extreme close framing: eyes at upper third intersection
+
+  Advanced Analysis Output:
+     - Total coverage redundancy: 285% (multiple angle options)
+     - Eyeline consistency maintained across all shots
+     - Screen direction continuity verified
+     - Edit-point compatibility confirmed for seamless cutting
+    ↓
+Lighting Agent Processing:
+
+  Environmental Light Analysis:
+     - Scene Context: Victorian mansion parlor
+     - Time Specification: 4:30 PM, late autumn
+     - Weather Condition: Overcast exterior
+     - Mood Requirement: Tense confrontation atmosphere
+
+  Practical Light Source Inventory:
+     - Window Sources:
+        * 3 tall windows, east-facing (secondary light)
+        * Window area: 6' × 10' each
+        * Overcast daylight: 5600K color temperature
+        * Measured intensity: 1200 lumens per square meter
+     - Interior Practicals:
+        * Victorian chandelier: 8 bulbs, 2700K warm tungsten
+        * Fireplace: Active coal fire, 1900K-2200K variable temperature
+        * Table lamps: 2 units, 2850K tungsten with fabric shades
+
+  Advanced Lighting Rig Design:
+     Key Light Configuration:
+       - Source: Motivated by largest eastern window
+       - Quality: Large soft source (8' × 6' virtual softbox)
+       - Color Temperature: 5400K (slightly warm overcast)
+       - Intensity: 2200 lumens total output
+       - Position: Camera right, 45° horizontal, 35° vertical angle
+       - Falloff: Inverse square law with 15% edge softness
+       - IES Profile: Arri SkyPanel S360-C equivalent distribution
+
+     Fill Light System:
+       - Primary Fill: Fireplace practical
+         * Color Temperature: 1950K (warm coal fire)
+         * Intensity: Variable 400-650 lumens (flickering algorithm)
+         * Custom shader: Perlin noise-driven brightness fluctuation
+         * Cast shadows: Enabled with 3 blur radius
+       - Secondary Fill: Chandelier bounce
+         * Reflected light from ceiling and walls
+         * Color Temperature: 2800K (tungsten character)
+         * Intensity: 180 lumens diffused contribution
+
+     Back Light Array:
+       - Chandelier Rim Light:
+         * Direct practical visibility: 150 lumens per bulb
+         * Creates hair rim on both subjects
+         * Motivated source within frame
+         * Realistic filament modeling with thermal gradient
+       - Window Edge Light:
+         * Grazing window light creating edge definition
+         * Intensity: 300 lumens, highly directional
+         * Color: Cool 5600K exterior spill
+
+     Environmental Lighting:
+       - Global HDRI Contribution:
+         * Source: Custom Victorian interior HDRI
+         * Intensity: 3 multiplier (subtle ambient contribution)
+         * Color grading: Slight sepia tint (+15 amber shift)
+       - Bounce Light Calculation:
+         * Wall surfaces: 18% reflectance, warm color bias
+         * Ceiling: 65% reflectance, neutral color
+         * Furniture: Variable 8-35% based on material properties
+
+  Path-Traced Rendering Configuration:
+     - Rendering Engine: Cycles with OptiX acceleration
+     - Sample Strategy: Progressive path tracing
+     - Light Path Settings:
+        * Maximum bounces: 12 (for accurate global illumination)
+        * Diffuse bounces: 8 (critical for interior lighting)
+        * Glossy bounces: 6 (reflections on furniture)
+        * Transmission bounces: 4 (window glass and crystal)
+     - Preview Render Settings:
+        * Resolution: 720p for speed
+        * Sample count: 64 (balance of speed and quality)
+        * Render time estimate: 45 seconds per frame
+        * Denoising: OptiX AI denoiser enabled
+
+  Physical Accuracy Simulation:
+     - Photometric Units: Accurate lumen-based lighting values
+     - Color Science: Blackbody radiation for all tungsten sources
+     - Atmospheric Perspective: Subtle haze modeling for depth
+     - Volume Scattering: Dust mote simulation in window light shafts
+    ↓
+Director Review Process:
+  - Receives 720p path-traced preview showing lighting setup
+  - Reviews camera movement via real-time viewport playback
+  - Provides feedback: "Beautiful mood, but shadows too deep on suspect's face"
+    ↓
+Lighting Agent Adjustment Phase:
+  Adaptive Lighting Modification:
+     - Problem Analysis: Insufficient fill light on camera left subject
+     - Solution Implementation:
+        * Add negative fill flag: Black silk panel, camera left
+        * Increase fireplace fill by 25% (500-800 lumen range)
+        * Subtle bounce card: Virtual white card reflecting window light
+        * Adjustment maintains mood while improving readability
+     - Re-render Preview:
+        * Same technical settings, updated lighting values
+        * Render time: 38 seconds (cached geometry acceleration)
+        * Quality assessment: Improved shadow detail without mood loss
+    ↓
+Final Approval and Render Preparation:
+  - Director approves revised lighting setup
+  - Both agents compile final technical specifications:
+
+  Camera Export Data:
+    * 3D camera paths with frame-accurate keyframes
+    * Lens focal length automation curves
+    * Focus pull timing with distance measurements
+    * Handheld motion data with randomization seeds
+
+  Lighting Export Data:
+    * Complete shader network for all light sources
+    * Practical light animation curves (fireplace flicker)
+    * IES profile assignments and intensity mappings
+    * Material property definitions with accurate reflectance values
+    * HDRI environment setup with rotation and intensity data
+
+  Render Configuration:
+    * Output Resolution: 4K (3840×2160) for final delivery
+    * Sample Count: 512 per pixel for production quality
+    * Estimated render time: 18 minutes per frame
+    * Color space: ACES workflow for professional color management
+    * File format: OpenEXR with full float precision and render layers
+    ↓
+Rendering Agent Handoff:
+  - Receives optimized scene file with complete lighting and camera data
+  - Inherits OptiX acceleration configurations for maximum efficiency
+  - Begins final 4K render sequence with professional color pipeline
+```
+
+<#0.5#>
+
+## Advanced Technical Implementation
+
+<#0.5#>
+
+### Camera Path Generation Algorithms
+The cinematography agent uses sophisticated mathematical models for camera movement. Through Blender's low-level Python API, it creates cameras with precise parametric control over location vectors, rotation Euler angles, and lens properties. The handheld simulation employs multi-layered Perlin noise functions at varying frequencies (3Hz primary shake, 8Hz secondary tremor, 2Hz breathing drift) to replicate authentic operator patterns.
+
+<#0.5#>
+
+### Professional Lighting Computation
+The lighting agent implements advanced light bounce control with configurable maximum counts for interaction types: while infinite bounces yield perfect accuracy, practical rendering uses finite limits for diffuse reflection, glossy reflection, and transmission bounces. Branched path tracing splits rays at surface intersections to sample multiple directions and material components simultaneously, considering light from multiple directions rather than single-direction sampling.
+
+<#0.5#>
+
+### Real-Time Performance Optimization
+NVIDIA OptiX on RTX hardware supports real-time ray tracing for large scenes with dense geometry, using acceleration structure refitting to reuse search trees in dynamic scenes where vertex positions change but triangle connectivity remains constant. Recent OptiX versions enable parallel compilation of OptiXModule objects for faster times and expand ray payload from 8 to 32 registers for greater data flexibility.
+
+<#0.5#>
+
+## Code Demo Focus
+
+<#0.5#>
+
+### Advanced Camera Path Generation
+- Implements smooth trajectory algorithms using cubic Bézier interpolation.
+- Performs real-time composition analysis with mathematical rule of thirds validation.
+- Generates procedural handheld motion with realistic operator behavior modeling.
+
+<#0.5#>
+
+### Professional Lighting Systems
+- Simulates physics-based light transport with accurate inverse square falloff.
+- Applies probabilistic ray tracing using Monte Carlo sampling for realistic light approximation.
+- Manages dynamic light sources, including flicker algorithms for practical sources.
+
+<#0.5#>
+
+### Lens and Optical Simulation
+- Generates realistic bokeh using physical aperture blade modeling.
+- Simulates chromatic aberration with wavelength-dependent refractive indices.
+- Calculates depth of field with circle of confusion accuracy.
+
+<#0.5#>
+
+### Rendering Pipeline Integration
+- Configures branched path tracing with fine-grained sampling control, where the first ray hit splits paths for different surface components and accounts for all lights.
+- Optimizes OptiX acceleration structures using bounding volume hierarchies and kd-trees to reduce ray-object intersection complexity.
+- Balances quality and interactivity in real-time preview systems for professional workflows.
+
+The cinematography and lighting agents integrate computer vision, physically-based rendering, and professional cinematographic knowledge to automate visually compelling content that meets industry standards for technical and artistic excellence.
+
+---
+
+# Implementation Solutions
+
+This roadmap outlines implementation for the cinematography and lighting agents using open-source frameworks, based on the provided specification.
+
+<#0.5#>
+
+## Framework Capability Matrix
+
+| Requirement                  | Blender Python API | CLIP     | NVIDIA OptiX | BlenderProc | React Three Fiber |
+|------------------------------|--------------------|----------|--------------|-------------|-------------------|
+| Camera Path Generation       | ✅ Complete        | ❌ No    | ❌ No        | ✅ Complete | ✅ Basic          |
+| Shot Composition Analysis    | ⚠️ Manual         | ✅ Complete | ❌ No      | ⚠️ Basic    | ❌ No             |
+| Physical Light Simulation    | ✅ Complete        | ❌ No    | ✅ Complete  | ✅ Complete | ⚠️ Basic          |
+| Real-time Ray Tracing        | ⚠️ Preview        | ❌ No    | ✅ Complete  | ❌ No       | ⚠️ Basic          |
+| Procedural Scene Generation  | ✅ Complete        | ❌ No    | ❌ No        | ✅ Complete | ✅ Complete       |
+| Computer Vision Integration  | ⚠️ External       | ✅ Complete | ❌ No      | ✅ Complete | ⚠️ External       |
+
+<#0.5#>
+
+## Core Implementation Architecture
+
+<#0.5#>
+
+### Primary Technology Stack
+- **Blender Python API (bpy)**: Primary 3D engine and automation.
+- **NVIDIA OptiX**: Advanced ray tracing and lighting simulation.
+- **OpenAI CLIP**: Computer vision and composition analysis.
+- **BlenderProc**: Automated data generation and scene management.
+- **React Three Fiber**: Real-time preview and interaction layer.
+
+<#0.5#>
+
+### Cinematography Agent Implementation
+
+#### Framework Selection: Blender Python API + CLIP
+
+**Implementation Approach**
+
+The Blender Python API enables programmatic access to Blender's features, including object manipulation, scene creation, material adjustments, and rendering. Scripts automate tasks such as UI interactions, import/export, and custom toolsets, editing data like scenes, meshes, and particles.
+
+```python
+# Core Cinematography Agent Architecture
+import bpy
+import bmesh
+import mathutils
+from mathutils import Vector, Euler
+import numpy as np
+import clip
+import torch
+
+class CinematographyAgent:
+    def __init__(self):
+        self.device = "cuda" if torch.cuda.is_available() else "cpu"
+        self.clip_model, self.clip_preprocess = clip.load('ViT-B/32', self.device)
+
+    def setup_camera_rig(self, scene_bounds: dict, shot_type: str):
+        """Generate camera with precise parametric control"""
+        # Create camera with low-level API access
+        camera_data = bpy.data.cameras.new(name="CineCamera")
+        camera_object = bpy.data.objects.new("CineCamera", camera_data)
+        bpy.context.collection.objects.link(camera_object)
+
+        # Configure lens properties based on shot type
+        if shot_type == "wide_master":
+            camera_data.lens = 35  # 35mm lens
+            camera_data.clip_end = 1000
+        elif shot_type == "close_up":
+            camera_data.lens = 85  # Portrait lens
+            camera_data.dof.use_dof = True
+            camera_data.dof.aperture_fstop = 8
+
+        return camera_object
+
+    def generate_camera_path(self, camera_obj, movement_type: str, duration: int):
+        """Generate smooth camera trajectories using spline interpolation"""
+        if movement_type == "handheld":
+            # Multi-layered Perlin noise for authentic operator movement
+            for frame in range(1, duration + 1):
+                bpy.context.scene.frame_set(frame)
+
+                # Primary shake (3Hz)
+                primary_offset = self._perlin_noise(frame * 3) * 0.02
+                # Secondary tremor (8Hz) 
+                secondary_offset = self._perlin_noise(frame * 8) * 0.015
+                # Breathing drift (2Hz)
+                breathing_offset = self._perlin_noise(frame * 2) * 0.01
+
+                total_offset = Vector((
+                    primary_offset + secondary_offset,
+                    breathing_offset,
+                    secondary_offset * 0.5
+                ))
+
+                camera_obj.location += total_offset
+                camera_obj.keyframe_insert(data_path="location")
+
+        elif movement_type == "orbital":
+            # 270° orbit with dynamic radius variation
+            center = Vector((0, 0, 0))
+            for frame in range(1, duration + 1):
+                angle = (frame / duration) * (270 * np.pi / 180)
+                radius = 14 + 2 * np.sin(angle * 5)  # 12-16 feet variance
+
+                x = center.x + radius * np.cos(angle)
+                y = center.y + radius * np.sin(angle)
+                z = 5 + 3 * np.sin(angle * 2)  # Height variation
+
+                camera_obj.location = Vector((x, y, z))
+                camera_obj.keyframe_insert(data_path="location")
+
+    def analyze_composition(self, rendered_image_path: str):
+        """Use CLIP for composition analysis"""
+        from PIL import Image
+
+        image = Image.open(rendered_image_path)
+        image_input = self.clip_preprocess(image).unsqueeze(0).to(self.device)
+
+        # Define cinematographic concepts for analysis
+        cinematography_concepts = [
+            "rule of thirds composition",
+            "symmetrical framing", 
+            "leading lines composition",
+            "depth of field photography",
+            "low angle dramatic shot",
+            "high angle overhead shot",
+            "close up portrait",
+            "wide establishing shot"
+        ]
+
+        text_inputs = torch.cat([
+            clip.tokenize(f"a photo with {concept}") 
+            for concept in cinematography_concepts
+        ]).to(self.device)
+
+        with torch.no_grad():
+            image_features = self.clip_model.encode_image(image_input)
+            text_features = self.clip_model.encode_text(text_inputs)
+
+            # Calculate cosine similarity 
+            image_features /= image_features.norm(dim=-1, keepdim=True)
+            text_features /= text_features.norm(dim=-1, keepdim=True)
+            similarity = (100 * image_features @ text_features.T).softmax(dim=-1)
+
+        return {concept: float(sim) for concept, sim in 
+                zip(cinematography_concepts, similarity[0])}
+
+    def _perlin_noise(self, t):
+        """Simplified Perlin noise implementation"""
+        # Placeholder for Perlin noise function
+        return np.sin(t) * 0.1
+```
+
+**Pros**
+- Offers complete control over camera mechanics via location vectors, rotation Euler angles, and lens properties.
+- CLIP learns visual concepts from natural language supervision, mapping text and images to a shared embedding space trained on 400 million image-text pairs.
+- Features a mature ecosystem with extensive documentation.
+- Supports hardware-agnostic implementation.
+
+**Cons**
+- Requires execution within Blender's Python environment to access the API.
+- CLIP may need fine-tuning for cinematography-specific concepts.
+- Composition analysis is CPU-bound unless using GPU-accelerated CLIP.
+
+<#0.5#>
+
+### Lighting Agent Implementation
+
+#### Framework Selection: NVIDIA OptiX + Blender Cycles
+
+**Implementation Approach**
+
+NVIDIA OptiX is a GPU-accelerated ray-casting API for efficient ray tracing on NVIDIA GPUs, processing complex scenes with numerous geometric objects, textures, and lights.
+
+```python
+# Advanced Lighting Agent with OptiX Integration
+import bpy
+import optix  # NVIDIA OptiX Python bindings
+import numpy as np
+from typing import Dict, List, Tuple
+from mathutils import Vector
+
+class LightingAgent:
+    def __init__(self):
+        self.optix_context = None
+        self.setup_optix_context()
+
+    def setup_optix_context(self):
+        """Initialize OptiX for hardware-accelerated ray tracing"""
+        try:
+            # Initialize OptiX context for ray tracing
+            self.optix_context = optix.Context()
+            self.optix_context.set_ray_type_count(2)  # Primary and shadow rays
+            self.optix_context.set_entry_point_count(1)
+
+            # Configure for RTX hardware acceleration
+            if optix.has_rtx_support():
+                self.optix_context.set_acceleration_builder("RTX")
+
+        except Exception as e:
+            print(f"OptiX initialization failed: {e}, falling back to CPU")
+            self.optix_context = None
+
+    def setup_three_point_lighting(self, scene_context: dict):
+        """Automated 3-point lighting with IES profiles"""
+
+        # Key Light Configuration
+        key_light = self.create_area_light(
+            name="KeyLight",
+            location=Vector((10, -5, 8)),
+            size=(8, 6),  # 8' × 6' virtual softbox
+            energy=2200,  # Lumens
+            color_temp=5400,  # Slightly warm overcast
+            ies_profile="arri_skypanel_s360c.ies"
+        )
+
+        # Fill Light - Fireplace practical
+        fill_light = self.create_point_light(
+            name="FillLight", 
+            location=Vector((-5, 0, 1)),
+            energy_range=(400, 650),  # Variable for flickering
+            color_temp_range=(1900, 2200),  # Coal fire spectrum
+            use_flicker=True
+        )
+
+        # Rim Light Array - Chandelier motivated
+        rim_lights = []
+        chandelier_positions = self.get_chandelier_bulb_positions()
+        for i, pos in enumerate(chandelier_positions):
+            rim_light = self.create_point_light(
+                name=f"RimLight_{i}",
+                location=pos,
+                energy=150,
+                color_temp=2800,
+                use_filament_model=True
+            )
+            rim_lights.append(rim_light)
+
+        return {
+            'key': key_light,
+            'fill': fill_light, 
+            'rims': rim_lights
+        }
+
+    def configure_cycles_path_tracing(self):
+        """Configure advanced path tracing with OptiX acceleration"""
+        scene = bpy.context.scene
+        scene.render.engine = 'CYCLES'
+
+        # Enable OptiX if available
+        cycles_prefs = bpy.context.preferences.addons['cycles'].preferences
+        if 'OptiX' in [device.type for device in cycles_prefs.devices]:
+            scene.cycles.device = 'GPU'
+            bpy.context.scene.cycles.feature_set = 'EXPERIMENTAL'
+
+            # Advanced OptiX settings
+            scene.cycles.use_optix_ai_denoising = True
+
+        # Configure light path settings for physically accurate bounces
+        scene.cycles.max_bounces = 12        # Total bounces
+        scene.cycles.diffuse_bounces = 8     # Critical for interior lighting  
+        scene.cycles.glossy_bounces = 6      # Reflections on furniture
+        scene.cycles.transmission_bounces = 4 # Window glass and crystal
+        scene.cycles.transparent_max_bounces = 8
+
+        # Sampling strategy
+        scene.cycles.samples = 512  # Production quality
+        scene.cycles.adaptive_threshold = 0.01
+        scene.cycles.use_adaptive_sampling = True
+
+    def simulate_physically_accurate_lighting(self, light_setup: dict):
+        """Implement physically-based light transport"""
+
+        # Set up global illumination with HDRI
+        world = bpy.context.scene.world
+        world.use_nodes = True
+        world_nodes = world.node_tree.nodes
+
+        # Custom Victorian interior HDRI
+        env_texture = world_nodes.new(type='ShaderNodeTexEnvironment')
+        env_texture.image = bpy.data.images.load("victorian_interior.hdr")
+
+        # Color correction for sepia tint
+        color_ramp = world_nodes.new(type='ShaderNodeValToRGB')
+        color_ramp.color_ramp.elements[0].color = (1.0, 0.95, 0.85, 1.0)  # Warm tint
+
+        # Connect nodes for global illumination
+        world.node_tree.links.new(
+            env_texture.outputs['Color'],
+            color_ramp.inputs['Fac']
+        )
+
+        # Configure light sampling for OptiX acceleration
+        if self.optix_context:
+            self._setup_optix_light_sampling(light_setup)
+
+    def _setup_optix_light_sampling(self, lights: dict):
+        """Configure OptiX for optimized light sampling"""
+        # OptiX-specific optimization for light sampling
+        # This reduces noise by intelligently sampling relevant light sources
+
+        for light_name, light_obj in lights.items():
+            if hasattr(light_obj, 'data') and hasattr(light_obj.data, 'cycles'):
+                # Enable Multiple Importance Sampling
+                light_obj.data.cycles.use_multiple_importance_sampling = True
+
+                # Configure sample count based on light contribution
+                if light_name == 'key':
+                    light_obj.data.cycles.samples = 16  # Higher for key light
+                else:
+                    light_obj.data.cycles.samples = 8   # Lower for fill/rim
+
+    def render_with_optix_acceleration(self, output_path: str):
+        """Render with full OptiX path tracing acceleration"""
+        scene = bpy.context.scene
+
+        # Configure output for production
+        scene.render.resolution_x = 3840
+        scene.render.resolution_y = 2160
+        scene.render.image_settings.file_format = 'OPEN_EXR'
+        scene.render.image_settings.color_depth = '32'
+        scene.render.image_settings.exr_codec = 'DWAA'  # Lossy compression
+
+        # Enable render layers for compositing
+        view_layer = scene.view_layers["ViewLayer"]
+        view_layer.use_pass_diffuse_direct = True
+        view_layer.use_pass_diffuse_indirect = True
+        view_layer.use_pass_glossy_direct = True
+        view_layer.use_pass_glossy_indirect = True
+        view_layer.use_pass_shadow = True
+
+        # Start render with OptiX acceleration
+        scene.render.filepath = output_path
+        bpy.ops.render.render(write_still=True)
+
+        return output_path
+
+    # Placeholder methods
+    def create_area_light(self, **kwargs):
+        light_data = bpy.data.lights.new(name=kwargs['name'], type='AREA')
+        light_obj = bpy.data.objects.new(kwargs['name'], light_data)
+        bpy.context.collection.objects.link(light_obj)
+        light_obj.location = kwargs['location']
+        light_data.energy = kwargs['energy']
+        # Additional configurations...
+        return light_obj
+
+    def create_point_light(self, **kwargs):
+        light_data = bpy.data.lights.new(name=kwargs['name'], type='POINT')
+        light_obj = bpy.data.objects.new(kwargs['name'], light_data)
+        bpy.context.collection.objects.link(light_obj)
+        light_obj.location = kwargs['location']
+        light_data.energy = kwargs['energy']
+        # Additional configurations...
+        return light_obj
+
+    def get_chandelier_bulb_positions(self):
+        return [Vector((0, 0, 8)) for _ in range(8)]
+```
+
+**Pros**
+- OptiX AI-accelerated denoiser uses GPU-based artificial intelligence to reduce render times for high-fidelity, visually noiseless images.
+- Hardware acceleration processes complex scenes efficiently with bounding volume hierarchies (BVH) and kd-trees for optimized ray-object intersections.
+- Enables real-time cinematic-quality rendering for immediate decision-making.
+
+**Cons**
+- Requires CUDA-capable NVIDIA GPU.
+- Involves complex setup and integration.
+- Creates vendor lock-in to the NVIDIA ecosystem.
+
+<#0.5#>
+
+### Scene Generation and Management
+
+#### Framework Selection: BlenderProc + Custom Automation
+
+**Implementation Approach**
+
+BlenderProc automates lighting (e.g., setting or sampling lights in 3D-FRONT scenes), camera control (e.g., posing or loading from files), and rendering (e.g., RGB, depth, normals, segmentation). It loads or constructs 3D scenes, sets camera poses, and generates image sequences.
+
+```python
+# Scene Management with BlenderProc Integration
+import blenderproc as bproc
+import numpy as np
+from typing import Dict, List
+import json
+
+class SceneManager:
+    def __init__(self):
+        bproc.init()
+        self.scene_config = {}
+
+    def setup_victorian_mansion_scene(self, config_path: str):
+        """Load and configure Victorian mansion environment"""
+
+        # Load scene configuration
+        with open(config_path, 'r') as f:
+            self.scene_config = json.load(f)
+
+        # Load 3D-FRONT scene with automatic lighting
+        mansion_path = self.scene_config['mansion_model_path']
+        objs = bproc.loader.load_3d_front(
+            json_path=mansion_path,
+            future_model_path=self.scene_config['furniture_path']
+        )
+
+        # Set up materials with PBR properties
+        self.configure_pbr_materials(objs)
+
+        # Configure procedural lighting for Victorian interior
+        self.setup_procedural_lighting()
+
+        return objs
+
+    def configure_pbr_materials(self, objects: List):
+        """Configure physically-based rendering materials"""
+
+        for obj in objects:
+            if obj.get_mesh() is not None:
+                # Get or create material
+                materials = obj.get_materials()
+                if not materials:
+                    mat = bproc.material.create("PBRMaterial")
+                    obj.set_material(0, mat)
+                    materials = [mat]
+
+                # Configure PBR properties based on object type
+                for mat in materials:
+                    if "wood" in obj.get_name().lower():
+                        # Wood material configuration
+                        mat.set_principled_shader_value("Base Color", [0.4, 0.2, 0.1, 1.0])
+                        mat.set_principled_shader_value("Roughness", 0.7)
+                        mat.set_principled_shader_value("Specular", 0.3)
+
+                    elif "fabric" in obj.get_name().lower():
+                        # Fabric/upholstery material  
+                        mat.set_principled_shader_value("Base Color", [0.3, 0.1, 0.1, 1.0])
+                        mat.set_principled_shader_value("Roughness", 0.9)
+                        mat.set_principled_shader_value("Specular", 0.1)
+
+                    elif "metal" in obj.get_name().lower():
+                        # Metallic surfaces (fixtures, handles)
+                        mat.set_principled_shader_value("Base Color", [0.7, 0.7, 0.7, 1.0])
+                        mat.set_principled_shader_value("Metallic", 0.9)
+                        mat.set_principled_shader_value("Roughness", 0.2)
+
+    def setup_procedural_lighting(self):
+        """Configure automated lighting with domain randomization"""
+
+        # Window light sampling based on scene configuration  
+        window_locations = self.scene_config.get('window_positions', [])
+        for i, pos in enumerate(window_locations):
+            # Sample natural light with time-of-day variation
+            energy = np.random.uniform(800, 1500)  # Overcast daylight range
+            color_temp = np.random.uniform(5200, 5800)  # Cool daylight
+
+            light = bproc.types.Light()
+            light.set_type("AREA")
+            light.set_location(pos)
+            light.set_energy(energy)
+            light.set_color(self._color_temp_to_rgb(color_temp))
+
+        # Procedural interior lighting
+        self._add_practical_lights()
+
+    def _add_practical_lights(self):
+        """Add motivated interior light sources"""
+
+        # Chandelier configuration
+        if 'chandelier_position' in self.scene_config:
+            chandelier_pos = self.scene_config['chandelier_position']
+
+            # Multiple bulbs with slight variation
+            for i in range(8):  # 8-bulb chandelier
+                angle = (i / 8) * 2 * np.pi
+                offset_x = 0.5 * np.cos(angle)
+                offset_y = 0.5 * np.sin(angle) 
+
+                bulb_light = bproc.types.Light()
+                bulb_light.set_type("POINT")
+                bulb_light.set_location([
+                    chandelier_pos[0] + offset_x,
+                    chandelier_pos[1] + offset_y, 
+                    chandelier_pos[2]
+                ])
+                bulb_light.set_energy(np.random.uniform(140, 160))
+                bulb_light.set_color(self._color_temp_to_rgb(2800))
+
+        # Fireplace with flickering animation
+        if 'fireplace_position' in self.scene_config:
+            fireplace_light = bproc.types.Light()
+            fireplace_light.set_type("POINT")
+            fireplace_light.set_location(self.scene_config['fireplace_position'])
+
+            # Animate flickering
+            for frame in range(1, 250):
+                energy = np.random.uniform(400, 700)  
+                fireplace_light.set_energy(energy, frame)
+
+                # Color variation for flame effect
+                temp = np.random.uniform(1900, 2200)
+                fireplace_light.set_color(self._color_temp_to_rgb(temp), frame)
+
+    def generate_camera_sampling_constraints(self) -> Dict:
+        """Define camera sampling constraints for scene"""
+
+        # Room boundaries for camera placement
+        room_bounds = self.scene_config.get('room_dimensions', {
+            'min_x': -10, 'max_x': 10,
+            'min_y': -8, 'max_y': 8, 
+            'min_z': 1, 'max_z': 7
+        })
+
+        # Obstacle avoidance for furniture
+        furniture_bounds = [
+            obj.get_bound_box() for obj in bproc.object.get_all_mesh_objects()
+            if 'furniture' in obj.get_name().lower()
+        ]
+
+        return {
+            'room_bounds': room_bounds,
+            'obstacles': furniture_bounds,
+            'min_subject_distance': 2,  # Minimum 2 feet from subjects
+            'max_subject_distance': 20,  # Maximum 20 feet
+            'preferred_height_range': (5, 7),  # Eye level range
+            'excluded_zones': self.scene_config.get('no_camera_zones', [])
+        }
+
+    def _color_temp_to_rgb(self, temp_k: float) -> List[float]:
+        """Convert color temperature to RGB values"""
+        # Simplified blackbody radiation approximation
+        if temp_k < 3000:
+            return [1.0, 0.7, 0.4, 1.0]  # Warm tungsten
+        elif temp_k < 4000:
+            return [1.0, 0.9, 0.7, 1.0]  # Warm white
+        elif temp_k < 5500:
+            return [1.0, 1.0, 0.9, 1.0]  # Neutral white
+        else:
+            return [0.95, 0.95, 1.0, 1.0]  # Cool daylight
+```
+
+**Pros**
+- Supports automated procedural generation, physics simulation, large-scale capabilities, and Python scripting for parameter configuration.
+- Provides an open-source modular pipeline for photorealistic rendering to train computer vision models (e.g., semantic segmentation, depth estimation).
+- Includes built-in domain randomization.
+
+**Cons**
+- Requires Blender's Python environment and BlenderProc CLI, not standard Python.
+- Limited to Blender's capabilities.
+- Involves a learning curve for complex configurations.
+
+<#0.5#>
+
+### Real-time Preview System
+
+#### Framework Selection: React Three Fiber + Three.js
+
+**Implementation Approach**
+
+React Three Fiber renders components outside React with no overhead, outperforming Three.js at scale via React's scheduling. It converts JSX to Three.js objects and provides instant access to new Three.js features without library dependencies.
+
+```typescript
+// Real-time Preview System with React Three Fiber
+import React, { useRef, useState, useEffect, Suspense } from 'react'
+import { Canvas, useFrame, useThree } from '@react-three/fiber'
+import { OrbitControls, PerspectiveCamera, Environment } from '@react-three/drei'
+import * as THREE from 'three'
+
+interface CameraPreviewProps {
+  cameraPath: Array<{
+    position: [number, number, number]
+    rotation: [number, number, number] 
+    focal_length: number
+    frame: number
+  }>
+  currentFrame: number
+  onFrameChange: (frame: number) => void
+}
+
+const CinematographyPreview: React.FC<CameraPreviewProps> = ({
+  cameraPath,
+  currentFrame,
+  onFrameChange
+}) => {
+  const cameraRef = useRef<THREE.PerspectiveCamera>(null!)
+  const [isPlaying, setIsPlaying] = useState(false)
+  const [previewQuality, setPreviewQuality] = useState<'low' | 'medium' | 'high'>('medium')
+
+  // Camera animation with frame interpolation
+  useFrame((state, delta) => {
+    if (isPlaying && cameraPath.length > 0) {
+      const nextFrame = Math.min(currentFrame + 1, cameraPath.length - 1)
+      onFrameChange(nextFrame)
+
+      // Interpolate camera position and rotation
+      if (cameraRef.current && cameraPath[currentFrame]) {
+        const current = cameraPath[currentFrame]
+        const position = new THREE.Vector3(...current.position)
+        const rotation = new THREE.Euler(...current.rotation)
+
+        cameraRef.current.position.lerp(position, 0.1)
+        cameraRef.current.rotation.x = rotation.x
+        cameraRef.current.rotation.y = rotation.y 
+        cameraRef.current.rotation.z = rotation.z
+        cameraRef.current.fov = current.focal_length * (180 / Math.PI) / 35 * 50  // Approximate conversion
+        cameraRef.current.updateProjectionMatrix()
+      }
+    }
+  })
+
+  return (
+    <>
+      <PerspectiveCamera
+        ref={cameraRef}
+        makeDefault
+        fov={50}
+        near={0.1}
+        far={1000}
+        position={[0, 2, 5]}
+      />
+
+      <CameraVisualization 
+        cameraPath={cameraPath}
+        currentFrame={currentFrame}
+      />
+
+      <PreviewControls
+        isPlaying={isPlaying}
+        onPlayPause={() => setIsPlaying(!isPlaying)}
+        quality={previewQuality}
+        onQualityChange={setPreviewQuality}
+        frame={currentFrame}
+        totalFrames={cameraPath.length}
+        onFrameSeek={onFrameChange}
+      />
+    </>
+  )
+}
+
+const CameraVisualization: React.FC<{
+  cameraPath: any[]
+  currentFrame: number
+}> = ({ cameraPath, currentFrame }) => {
+  const pathRef = useRef<THREE.Line>(null!)
+
+  useEffect(() => {
+    if (cameraPath.length > 0 && pathRef.current) {
+      // Generate camera path visualization
+      const points = cameraPath.map(keyframe => 
+        new THREE.Vector3(...keyframe.position)
+      )
+
+      const geometry = new THREE.BufferGeometry().setFromPoints(points)
+      pathRef.current.geometry = geometry
+    }
+  }, [cameraPath])
+
+  return (
+    <group>
+      {/* Camera path visualization */}
+      <line ref={pathRef}>
+        <bufferGeometry />
+        <lineBasicMaterial color="#00ff00" linewidth={2} />
+      </line>
+
+      {/* Current camera position indicator */}
+      {cameraPath[currentFrame] && (
+        <mesh position={new THREE.Vector3(...cameraPath[currentFrame].position)}>
+          <coneGeometry args={[0.2, 0.5, 4]} />
+          <meshBasicMaterial color="#ff0000" />
+        </mesh>
+      )}
+
+      {/* Frame rulers and guides */}
+      <RuleOfThirdsGrid />
+    </group>
+  )
+}
+
+const RuleOfThirdsGrid: React.FC = () => {
+  return (
+    <group>
+      {/* Horizontal lines */}
+      {[-1/3, 1/3].map((y, index) => (
+        <line key={`h-${index}`}>
+          <bufferGeometry>
+            <bufferAttribute
+              attach="attributes-position"
+              count={2}
+              array={new Float32Array([-20, y * 10, 0, 20, y * 10, 0])}
+              itemSize={3}
+            />
+          </bufferGeometry>
+          <lineBasicMaterial color="#ffffff" opacity={0.3} transparent />
+        </line>
+      ))}
+
+      {/* Vertical lines */} 
+      {[-1/3, 1/3].map((x, index) => (
+        <line key={`v-${index}`}>
+          <bufferGeometry>
+            <bufferAttribute
+              attach="attributes-position"
+              count={2}
+              array={new Float32Array([x * 10, -20, 0, x * 10, 20, 0])}
+              itemSize={3}
+            />
+          </bufferGeometry>
+          <lineBasicMaterial color="#ffffff" opacity={0.3} transparent />
+        </line>
+      ))}
+    </group>
+  )
+}
+
+const PreviewControls: React.FC<{
+  isPlaying: boolean
+  onPlayPause: () => void
+  quality: 'low' | 'medium' | 'high'
+  onQualityChange: (quality: 'low' | 'medium' | 'high') => void
+  frame: number
+  totalFrames: number
+  onFrameSeek: (frame: number) => void
+}> = ({ isPlaying, onPlayPause, quality, onQualityChange, frame, totalFrames, onFrameSeek }) => {
+  return (
+    <div style={{
+      position: 'absolute',
+      bottom: '20px',
+      left: '20px',
+      background: 'rgba(0,0,0,0.7)',
+      padding: '10px',
+      borderRadius: '5px',
+      color: 'white'
+    }}>
+      <button onClick={onPlayPause}>
+        {isPlaying ? '⏸️ Pause' : '▶️ Play'}
+      </button>
+
+      <input
+        type="range"
+        min={0}
+        max={totalFrames - 1}
+        value={frame}
+        onChange={(e) => onFrameSeek(parseInt(e.target.value))}
+        style={{ margin: '0 10px' }}
+      />
+
+      <select 
+        value={quality} 
+        onChange={(e) => onQualityChange(e.target.value as any)}
+      >
+        <option value="low">Low Quality</option>
+        <option value="medium">Medium Quality</option>
+        <option value="high">High Quality</option>
+      </select>
+
+      <span>Frame: {frame + 1}/{totalFrames}</span>
+    </div>
+  )
+}
+
+// Main preview application
+const CinematographyApp: React.FC = () => {
+  const [cameraPath, setCameraPath] = useState<any[]>([])
+  const [currentFrame, setCurrentFrame] = useState(0)
+
+  useEffect(() => {
+    // Load camera path from Blender export
+    fetch('/api/camera-path')
+      .then(res => res.json())
+      .then(data => setCameraPath(data.keyframes))
+  }, [])
+
+  return (
+    <div style={{ width: '100vw', height: '100vh' }}>
+      <Canvas 
+        shadows
+        dpr={[1, 2]} 
+        camera={{ position: [0, 2, 5], fov: 50 }}
+        gl={{ 
+          antialias: true,
+          alpha: false,
+          powerPreference: 'high-performance'
+        }}
+      >
+        <Suspense fallback={null}>
+          <Environment preset="studio" />
+          <OrbitControls enableDamping />
+
+          <CinematographyPreview
+            cameraPath={cameraPath}
+            currentFrame={currentFrame}
+            onFrameChange={setCurrentFrame}
+          />
+
+          {/* Scene content */}
+          <SceneVisualization />
+        </Suspense>
+      </Canvas>
+    </div>
+  )
+}
+
+// Placeholder component
+const SceneVisualization: React.FC = () => {
+  return (
+    <mesh>
+      <boxGeometry args={[1, 1, 1]} />
+      <meshStandardMaterial color="orange" />
+    </mesh>
+  )
+}
+
+export default CinematographyApp
+```
+
+**Pros**
+- Exposes the full Three.js API as React components.
+- Provides real-time interaction and visual feedback.
+- Supports extensive post-processing effects.
+- Enables web-based deployment for remote collaboration.
+
+**Cons**
+- WebGL text rendering is complex; HTML overlays are often preferred for custom fonts.
+- Constrained by browser and WebGL limitations.
+- Unsuitable for final production rendering.
+
+<#0.5#>
+
+## Integration Architecture
+
+<#0.5#>
+
+### Unified Pipeline Design
+
+```python
+# Master coordination system
+class CinematographyLightingPipeline:
+    def __init__(self):
+        self.cinematography_agent = CinematographyAgent()
+        self.lighting_agent = LightingAgent() 
+        self.scene_manager = SceneManager()
+        self.preview_server = PreviewServer()
+
+    async def process_director_request(self, shot_list: Dict):
+        """Main coordination pipeline"""
+
+        # Scene Setup
+        scene_objects = await self.scene_manager.setup_scene(
+            shot_list['environment']
+        )
+
+        # Camera Planning
+        camera_plan = await self.cinematography_agent.plan_shots(
+            shot_list['shots'],
+            scene_objects
+        )
+
+        # Lighting Design  
+        lighting_plan = await self.lighting_agent.design_lighting(
+            shot_list['mood'],
+            camera_plan,
+            scene_objects
+        )
+
+        # Real-time Preview
+        preview_data = await self.preview_server.generate_preview(
+            camera_plan,
+            lighting_plan
+        )
+
+        # Director Feedback Loop
+        feedback = await self.get_director_feedback(preview_data)
+
+        if feedback['approved']:
+            # Final High-Quality Render
+            final_renders = await self.render_final_shots(
+                camera_plan,
+                lighting_plan
+            )
+            return final_renders
+        else:
+            # Iterate based on feedback
+            return await self.process_director_request(
+                self.apply_feedback(shot_list, feedback)
+            )
+
+    # Placeholder methods
+    async def get_director_feedback(self, data):
+        return {'approved': True}
+
+    def apply_feedback(self, shot_list, feedback):
+        return shot_list
+
+    async def render_final_shots(self, camera_plan, lighting_plan):
+        return "Final renders complete"
+```
+
+<#0.5#>
+
+## Recommended Implementation Phases
+
+<#0.5#>
+
+### Phase 1: Foundation (Months 1-3)
+- **Core Blender Python API Integration**:
+  - Basic camera control and path generation.
+  - Simple lighting setups with Cycles.
+  - CLIP integration for composition analysis.
+- **Data Pipeline Establishment**:
+  - BlenderProc scene management.
+  - Export/import workflows for camera and lighting data.
+  - Basic preview system with React Three Fiber.
+
+<#0.5#>
+
+### Phase 2: Advanced Features (Months 4-6)
+- **OptiX Integration for Lighting**:
+  - Hardware-accelerated ray tracing.
+  - AI denoising implementation.
+  - Complex light transport simulation.
+- **Enhanced Cinematography Tools**:
+  - Advanced camera movement algorithms.
+  - CLIP fine-tuning for cinematographic concepts.
+  - Automated coverage planning.
+
+<#0.5#>
+
+### Phase 3: Production Polish (Months 7-9)
+- **Full Pipeline Integration**:
+  - Seamless data flow between components.
+  - Real-time feedback and iteration.
+  - Production-quality output generation.
+- **User Interface and Workflow**:
+  - Web-based director interface.
+  - Real-time collaboration tools.
+  - Export compatibility with major digital content creation (DCC) tools.
+
+<#0.5#>
+
+## Critical Dependencies and Prerequisites
+
+<#0.5#>
+
+### Hardware Requirements
+- **NVIDIA RTX GPU**: Minimum RTX 3080 for OptiX acceleration.
+- **RAM**: 64GB minimum for complex scenes.
+- **Storage**: NVMe SSD for fast asset streaming.
+- **CPU**: Multi-core (16+ cores) for Blender operations.
+
+<#0.5#>
+
+### Software Dependencies
+- **Blender**: Version 3.0+ with Python API.
+- **CUDA Toolkit**: Version 11.8+ for OptiX support.
+- **Python**: Version 3.11 for Blender compatibility.
+- **Node.js**: Version 18+ for React Three Fiber preview.
+- **OpenCV**: For computer vision operations.
+
+<#0.5#>
+
+### Integration Challenges
+- **Memory Management**: Coordinate GPU memory across Blender, OptiX, and CLIP.
+- **Real-Time Sync**: Maintain coherent state across frameworks.
+- **Performance Optimization**: Balance quality and interactive speed.
+- **Version Compatibility**: Manage dependencies in evolving frameworks.
+
+This roadmap establishes a production-ready foundation using proven open-source technologies, with flexibility for emerging tools.
+
+---
+
+<#0.5#>
+
+#### Framework Selection: React Three Fiber + Three.js
+
+**Implementation Approach**
+
+React Three Fiber renders components outside React with no overhead, outperforming Three.js at scale via React's scheduling. It converts JSX to Three.js objects and provides instant access to new Three.js features without library dependencies.
+
+```typescript
+// Real-time Preview System with React Three Fiber
+import React, { useRef, useState, useEffect, Suspense } from 'react'
+import { Canvas, useFrame, useThree } from '@react-three/fiber'
+import { OrbitControls, PerspectiveCamera, Environment } from '@react-three/drei'
+import * as THREE from 'three'
+
+interface CameraPreviewProps {
+  cameraPath: Array<{
+    position: [number, number, number]
+    rotation: [number, number, number] 
+    focal_length: number
+    frame: number
+  }>
+  currentFrame: number
+  onFrameChange: (frame: number) => void
+}
+
+const CinematographyPreview: React.FC<CameraPreviewProps> = ({
+  cameraPath,
+  currentFrame,
+  onFrameChange
+}) => {
+  const cameraRef = useRef<THREE.PerspectiveCamera>(null!)
+  const [isPlaying, setIsPlaying] = useState(false)
+  const [previewQuality, setPreviewQuality] = useState<'low' | 'medium' | 'high'>('medium')
+
+  // Camera animation with frame interpolation
+  useFrame((state, delta) => {
+    if (isPlaying && cameraPath.length > 0) {
+      const nextFrame = Math.min(currentFrame + 1, cameraPath.length - 1)
+      onFrameChange(nextFrame)
+
+      // Interpolate camera position and rotation
+      if (cameraRef.current && cameraPath[currentFrame]) {
+        const current = cameraPath[currentFrame]
+        const position = new THREE.Vector3(...current.position)
+        const rotation = new THREE.Euler(...current.rotation)
+
+        cameraRef.current.position.lerp(position, 0.1)
+        cameraRef.current.rotation.x = rotation.x
+        cameraRef.current.rotation.y = rotation.y 
+        cameraRef.current.rotation.z = rotation.z
+        cameraRef.current.fov = current.focal_length * (180 / Math.PI) / 35 * 50  // Approximate conversion
+        cameraRef.current.updateProjectionMatrix()
+      }
+    }
+  })
+
+  return (
+    <>
+      <PerspectiveCamera
+        ref={cameraRef}
+        makeDefault
+        fov={50}
+        near={0.1}
+        far={1000}
+        position={[0, 2, 5]}
+      />
+
+      <CameraVisualization 
+        cameraPath={cameraPath}
+        currentFrame={currentFrame}
+      />
+
+      <PreviewControls
+        isPlaying={isPlaying}
+        onPlayPause={() => setIsPlaying(!isPlaying)}
+        quality={previewQuality}
+        onQualityChange={setPreviewQuality}
+        frame={currentFrame}
+        totalFrames={cameraPath.length}
+        onFrameSeek={onFrameChange}
+      />
+    </>
+  )
+}
+
+const CameraVisualization: React.FC<{
+  cameraPath: any[]
+  currentFrame: number
+}> = ({ cameraPath, currentFrame }) => {
+  const pathRef = useRef<THREE.Line>(null!)
+
+  useEffect(() => {
+    if (cameraPath.length > 0 && pathRef.current) {
+      // Generate camera path visualization
+      const points = cameraPath.map(keyframe => 
+        new THREE.Vector3(...keyframe.position)
+      )
+
+      const geometry = new THREE.BufferGeometry().setFromPoints(points)
+      pathRef.current.geometry = geometry
+    }
+  }, [cameraPath])
+
+  return (
+    <group>
+      {/* Camera path visualization */}
+      <line ref={pathRef}>
+        <bufferGeometry />
+        <lineBasicMaterial color="#00ff00" linewidth={2} />
+      </line>
+
+      {/* Current camera position indicator */}
+      {cameraPath[currentFrame] && (
+        <mesh position={new THREE.Vector3(...cameraPath[currentFrame].position)}>
+          <coneGeometry args={[0.2, 0.5, 4]} />
+          <meshBasicMaterial color="#ff0000" />
+        </mesh>
+      )}
+
+      {/* Frame rulers and guides */}
+      <RuleOfThirdsGrid />
+    </group>
+  )
+}
+
+const RuleOfThirdsGrid: React.FC = () => {
+  return (
+    <group>
+      {/* Horizontal lines */}
+      {[-1/3, 1/3].map((y, index) => (
+        <line key={`h-${index}`}>
+          <bufferGeometry>
+            <bufferAttribute
+              attach="attributes-position"
+              count={2}
+              array={new Float32Array([-20, y * 10, 0, 20, y * 10, 0])}
+              itemSize={3}
+            />
+          </bufferGeometry>
+          <lineBasicMaterial color="#ffffff" opacity={0.3} transparent />
+        </line>
+      ))}
+
+      {/* Vertical lines */} 
+      {[-1/3, 1/3].map((x, index) => (
+        <line key={`v-${index}`}>
+          <bufferGeometry>
+            <bufferAttribute
+              attach="attributes-position"
+              count={2}
+              array={new Float32Array([x * 10, -20, 0, x * 10, 20, 0])}
+              itemSize={3}
+            />
+          </bufferGeometry>
+          <lineBasicMaterial color="#ffffff" opacity={0.3} transparent />
+        </line>
+      ))}
+    </group>
+  )
+}
+
+const PreviewControls: React.FC<{
+  isPlaying: boolean
+  onPlayPause: () => void
+  quality: 'low' | 'medium' | 'high'
+  onQualityChange: (quality: 'low' | 'medium' | 'high') => void
+  frame: number
+  totalFrames: number
+  onFrameSeek: (frame: number) => void
+}> = ({ isPlaying, onPlayPause, quality, onQualityChange, frame, totalFrames, onFrameSeek }) => {
+  return (
+    <div style={{
+      position: 'absolute',
+      bottom: '20px',
+      left: '20px',
+      background: 'rgba(0,0,0,0.7)',
+      padding: '10px',
+      borderRadius: '5px',
+      color: 'white'
+    }}>
+      <button onClick={onPlayPause}>
+        {isPlaying ? '⏸️ Pause' : '▶️ Play'}
+      </button>
+
+      <input
+        type="range"
+        min={0}
+        max={totalFrames - 1}
+        value={frame}
+        onChange={(e) => onFrameSeek(parseInt(e.target.value))}
+        style={{ margin: '0 10px' }}
+      />
+
+      <select 
+        value={quality} 
+        onChange={(e) => onQualityChange(e.target.value as any)}
+      >
+        <option value="low">Low Quality</option>
+        <option value="medium">Medium Quality</option>
+        <option value="high">High Quality</option>
+      </select>
+
+      <span>Frame: {frame + 1}/{totalFrames}</span>
+    </div>
+  )
+}
+
+// Main preview application
+const CinematographyApp: React.FC = () => {
+  const [cameraPath, setCameraPath] = useState<any[]>([])
+  const [currentFrame, setCurrentFrame] = useState(0)
+
+  useEffect(() => {
+    // Load camera path from Blender export
+    fetch('/api/camera-path')
+      .then(res => res.json())
+      .then(data => setCameraPath(data.keyframes))
+  }, [])
+
+  return (
+    <div style={{ width: '100vw', height: '100vh' }}>
+      <Canvas 
+        shadows
+        dpr={[1, 2]} 
+        camera={{ position: [0, 2, 5], fov: 50 }}
+        gl={{ 
+          antialias: true,
+          alpha: false,
+          powerPreference: 'high-performance'
+        }}
+      >
+        <Suspense fallback={null}>
+          <Environment preset="studio" />
+          <OrbitControls enableDamping />
+
+          <CinematographyPreview
+            cameraPath={cameraPath}
+            currentFrame={currentFrame}
+            onFrameChange={setCurrentFrame}
+          />
+
+          {/* Scene content */}
+          <SceneVisualization />
+        </Suspense>
+      </Canvas>
+    </div>
+  )
+}
+
+// Placeholder component
+const SceneVisualization: React.FC = () => {
+  return (
+    <mesh>
+      <boxGeometry args={[1, 1, 1]} />
+      <meshStandardMaterial color="orange" />
+    </mesh>
+  )
+}
+
+export default CinematographyApp
+```
+
+**Pros**
+- Exposes the full Three.js API as React components.
+- Provides real-time interaction and visual feedback.
+- Supports extensive post-processing effects.
+- Enables web-based deployment for remote collaboration.
+
+**Cons**
+- WebGL text rendering is complex; HTML overlays are often preferred for custom fonts.
+- Constrained by browser and WebGL limitations.
+- Unsuitable for final production rendering.
+
+## Integration Architecture
+
+<#0.5#>
+
+### Unified Pipeline Design
+
+```python
+# Master coordination system
+class CinematographyLightingPipeline:
+    def __init__(self):
+        self.cinematography_agent = CinematographyAgent()
+        self.lighting_agent = LightingAgent() 
+        self.scene_manager = SceneManager()
+        self.preview_server = PreviewServer()
+
+    async def process_director_request(self, shot_list: Dict):
+        """Main coordination pipeline"""
+
+        # Scene Setup
+        scene_objects = await self.scene_manager.setup_scene(
+            shot_list['environment']
+        )
+
+        # Camera Planning
+        camera_plan = await self.cinematography_agent.plan_shots(
+            shot_list['shots'],
+            scene_objects
+        )
+
+        # Lighting Design  
+        lighting_plan = await self.lighting_agent.design_lighting(
+            shot_list['mood'],
+            camera_plan,
+            scene_objects
+        )
+
+        # Real-time Preview
+        preview_data = await self.preview_server.generate_preview(
+            camera_plan,
+            lighting_plan
+        )
+
+        # Director Feedback Loop
+        feedback = await self.get_director_feedback(preview_data)
+
+        if feedback['approved']:
+            # Final High-Quality Render
+            final_renders = await self.render_final_shots(
+                camera_plan,
+                lighting_plan
+            )
+            return final_renders
+        else:
+            # Iterate based on feedback
+            return await self.process_director_request(
+                self.apply_feedback(shot_list, feedback)
+            )
+
+    # Placeholder methods
+    async def get_director_feedback(self, data):
+        return {'approved': True}
+
+    def apply_feedback(self, shot_list, feedback):
+        return shot_list
+
+    async def render_final_shots(self, camera_plan, lighting_plan):
+        return "Final renders complete"
+```
+
+## Recommended Implementation Phases
+
+<#0.5#>
+
+### Phase 1: Foundation (Months 1-3)
+- **Core Blender Python API Integration**:
+  - Basic camera control and path generation.
+  - Simple lighting setups with Cycles.
+  - CLIP integration for composition analysis.
+- **Data Pipeline Establishment**:
+  - BlenderProc scene management.
+  - Export/import workflows for camera and lighting data.
+  - Basic preview system with React Three Fiber.
+
+<#0.5#>
+
+### Phase 2: Advanced Features (Months 4-6)
+- **OptiX Integration for Lighting**:
+  - Hardware-accelerated ray tracing.
+  - AI denoising implementation.
+  - Complex light transport simulation.
+- **Enhanced Cinematography Tools**:
+  - Advanced camera movement algorithms.
+  - CLIP fine-tuning for cinematographic concepts.
+  - Automated coverage planning.
+
+<#0.5#>
+
+### Phase 3: Production Polish (Months 7-9)
+- **Full Pipeline Integration**:
+  - Seamless data flow between components.
+  - Real-time feedback and iteration.
+  - Production-quality output generation.
+- **User Interface and Workflow**:
+  - Web-based director interface.
+  - Real-time collaboration tools.
+  - Export compatibility with major digital content creation (DCC) tools.
+
+## Critical Dependencies and Prerequisites
+
+<#0.5#>
+
+### Hardware Requirements
+- **NVIDIA RTX GPU**: Minimum RTX 3080 for OptiX acceleration.
+- **RAM**: 64GB minimum for complex scenes.
+- **Storage**: NVMe SSD for fast asset streaming.
+- **CPU**: Multi-core (16+ cores) for Blender operations.
+
+<#0.5#>
+
+### Software Dependencies
+- **Blender**: Version 3.0+ with Python API.
+- **CUDA Toolkit**: Version 11.8+ for OptiX support.
+- **Python**: Version 3.11 for Blender compatibility.
+- **Node.js**: Version 18+ for React Three Fiber preview.
+- **OpenCV**: For computer vision operations.
+
+<#0.5#>
+
+### Integration Challenges
+- **Memory Management**: Coordinate GPU memory across Blender, OptiX, and CLIP.
+- **Real-Time Sync**: Maintain coherent state across frameworks.
+- **Performance Optimization**: Balance quality and interactive speed.
+- **Version Compatibility**: Manage dependencies in evolving frameworks.
+
+This roadmap establishes a production-ready foundation using proven open-source technologies, with flexibility for emerging tools.
+
+---
+
+<#0.5#>
+

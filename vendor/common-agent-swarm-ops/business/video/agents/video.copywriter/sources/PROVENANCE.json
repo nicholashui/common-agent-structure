@@ -1,0 +1,15 @@
+{
+  "schema_version": "1.0",
+  "agent_id": "video.copywriter",
+  "previous_common_agent_id": "video.hook_specialist",
+  "va_taxonomy_aligned": true,
+  "generic_source": "generic-swarm-ops/business/video/agents/video.copywriter",
+  "note": "Agent ID aligned to VA/generic Domain Pack taxonomy. Upstream design is historical and non-binding.",
+  "aligned_at": "2026-07-27T00:48:10.512217Z",
+  "generic_source_depth": {
+    "excerpts": true,
+    "study": true,
+    "adopted_at": "2026-07-27T01:30:27.960754+00:00",
+    "upstream": "generic-swarm-ops/business/video/agents"
+  }
+}

@@ -89,6 +89,101 @@ def canonicalize_provider(value: str | None) -> str:
     return text
 
 
+MIN_USABLE_COMPLETION_TOKENS = 16
+DEFAULT_COMPLETION_TOKENS = 512
+IMPORT_DEFAULT_OUTPUT_TOKENS = 1024
+IMPORT_DEFAULT_INPUT_TOKENS = 2048
+_LENGTH_FINISH_REASONS = {"length", "max_tokens", "max_output_tokens"}
+
+
+def parse_token_count(value: Any) -> int | None:
+    if value is None or value == "":
+        return None
+    try:
+        return int(value)
+    except (TypeError, ValueError):
+        return None
+
+
+def resolve_completion_tokens(
+    declared: Any,
+    *,
+    default: int = DEFAULT_COMPLETION_TOKENS,
+    floor: int = MIN_USABLE_COMPLETION_TOKENS,
+) -> tuple[int, str]:
+    raw = parse_token_count(declared)
+    if raw is None:
+        return default, "host_default"
+    if raw < floor:
+        return default, "host_floor"
+    return raw, "spec"
+
+
+def resolve_import_token_budget(value: Any, *, default: int) -> int:
+    raw = parse_token_count(value)
+    if raw is None or raw < MIN_USABLE_COMPLETION_TOKENS:
+        return default
+    return raw
+
+
+def _message_content_text(message: dict[str, Any]) -> str:
+    content = message.get("content")
+    if isinstance(content, str):
+        return content
+    if isinstance(content, list):
+        parts: list[str] = []
+        for block in content:
+            if isinstance(block, str):
+                parts.append(block)
+            elif isinstance(block, dict):
+                parts.append(str(block.get("text") or ""))
+        return "".join(parts)
+    return ""
+
+
+def _public_usage(body: dict[str, Any]) -> dict[str, int]:
+    usage = body.get("usage") if isinstance(body.get("usage"), dict) else {}
+    public: dict[str, int] = {}
+    for key in ("prompt_tokens", "completion_tokens", "total_tokens", "input_tokens", "output_tokens"):
+        value = usage.get(key)
+        if isinstance(value, int):
+            public[key] = value
+    details = usage.get("completion_tokens_details")
+    if isinstance(details, dict):
+        reasoning = details.get("reasoning_tokens")
+        if isinstance(reasoning, int):
+            public["reasoning_tokens"] = reasoning
+    return public
+
+
+def truncated_finish(reason: str | None) -> bool:
+    return (reason or "").strip().lower() in _LENGTH_FINISH_REASONS
+
+
+def public_llm_view(
+    completion: dict[str, Any],
+    *,
+    max_tokens: int,
+    max_tokens_source: str,
+    declared_max_output_tokens: int | None,
+) -> dict[str, Any]:
+    finish = str(completion.get("finish_reason") or "")
+    text = str(completion.get("text") or "")
+    view: dict[str, Any] = {
+        "max_tokens": max_tokens,
+        "max_tokens_source": max_tokens_source,
+        "declared_max_output_tokens": declared_max_output_tokens,
+        "finish_reason": finish,
+        "content_chars": int(completion.get("content_chars") or len(text)),
+        "model": str(completion.get("model") or ""),
+        "truncated": bool(completion.get("truncated")) or truncated_finish(finish),
+    }
+    usage = completion.get("usage")
+    if isinstance(usage, dict) and usage:
+        view["usage"] = usage
+    return view
+
+
 def env_default_llm() -> str:
     canonical = canonicalize_provider(os.environ.get("DEFAULT_LLM"))
     if canonical:
@@ -231,16 +326,24 @@ class LlmRouter:
         max_tokens: int = 512,
         system: str = "",
         history: list[dict[str, str]] | None = None,
-    ) -> dict[str, str]:
+    ) -> dict[str, Any]:
         provider = self.resolve(agent_id)
         turns = _chat_turns(prompt=prompt, system=system, history=history)
         if provider == "local_deterministic":
             blob = "\n\n".join(f"{turn['role']}: {turn['content']}" for turn in turns)
-            return self.local.complete(prompt=blob, node_id=node_id, agent_id=agent_id)
+            local = self.local.complete(prompt=blob, node_id=node_id, agent_id=agent_id)
+            text = str(local.get("text") or "")
+            local["model"] = "local_deterministic"
+            local["finish_reason"] = "stop"
+            local["content_chars"] = len(text)
+            local["truncated"] = False
+            return local
         spec = PROVIDER_CATALOG[provider]
         key = os.environ.get(spec["key_env"], "").strip()
         base = (os.environ.get(spec.get("base_env", ""), "") or spec.get("default_base") or "").rstrip("/")
         model = os.environ.get(spec.get("model_env", ""), "") or spec.get("default_model") or "unknown"
+        finish_reason = ""
+        usage: dict[str, int] = {}
         if spec["kind"] == "openai_compat":
             body = self.post(
                 f"{base}/chat/completions",
@@ -252,8 +355,11 @@ class LlmRouter:
                 },
             )
             choices = body.get("choices") or []
-            message = (choices[0].get("message") or {}) if choices else {}
-            text = str(message.get("content") or "")
+            choice = choices[0] if choices and isinstance(choices[0], dict) else {}
+            message = choice.get("message") if isinstance(choice.get("message"), dict) else {}
+            text = _message_content_text(message)
+            finish_reason = str(choice.get("finish_reason") or "")
+            usage = _public_usage(body)
         elif spec["kind"] == "anthropic":
             system_text = "\n\n".join(
                 turn["content"] for turn in turns if turn["role"] == "system"
@@ -276,13 +382,21 @@ class LlmRouter:
             )
             blocks = body.get("content") or []
             text = "".join(str(block.get("text") or "") for block in blocks if isinstance(block, dict))
+            finish_reason = str(body.get("stop_reason") or "")
+            usage = _public_usage(body)
         else:
             raise CasopsError(ErrorCode.PERF_ROUTE_UNAVAILABLE, detail=f"unsupported LLM kind {spec['kind']}")
         digest = sha256_json({"provider": provider, "model": model, "text": text, "agent_id": agent_id})
-        return {
+        result: dict[str, Any] = {
             "provider": provider,
             "model": model,
             "node_id": node_id,
             "text": text,
             "digest": digest,
+            "finish_reason": finish_reason,
+            "content_chars": len(text),
+            "truncated": truncated_finish(finish_reason),
         }
+        if usage:
+            result["usage"] = usage
+        return result

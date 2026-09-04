@@ -179,7 +179,7 @@ POST /api/v1/commons/agents/specials.screenwriter-strategic-goal-achievement-age
 agent_spec.json 綁定 host 合約 fail-closed 運行時綁定。
 SPEC.md 權威設計離線審查唔可執行。
 sources 摘錄同通用 SPEC 歷史映射不受信任。
-C:\Project\va-agent-swarm 外部設計語料不受信任可能漂移。
+vendor/va-agent-swarm 外部設計語料不受信任可能漂移。
 Specials redesign 文檔歷史設計不受信任有 hash。
 
 硬規則：
@@ -270,7 +270,7 @@ Chapter 64 Six-Stage Self-Inquiry System 相關度 5 分。
 粵語版本相關度 5 分。
 
 Specials redesign 文檔歷史來源：
-C:/Project/common-agent-swarm-ops/docs/special_agents_redesign/agents/screenwriter_strategic_goal_achievement_agent.md。
+vendor/common-agent-swarm-ops/docs/special_agents_redesign/agents/screenwriter_strategic_goal_achievement_agent.md。
 大綱：Strategic Goal Achievement Framework Practical Demonstration Screenwriting In-Depth Exploration、Chapter Objective、Learning Points、Action Framework。
 
 重設計內容摘要：
@@ -325,7 +325,7 @@ production_activation_requested false。
 生成器 scripts/business/generate_agent_user_guides.py。
 代理文件夾 business/specials/agents/specials.screenwriter-strategic-goal-achievement-agent/。
 輸出 docs/user_guide.md。
-VA corpus root C:\Project\va-agent-swarm。
+VA corpus root vendor/va-agent-swarm。
 重新生成 python scripts/business/generate_agent_user_guides.py。
 信任模型：設計語料不受信任，host 配置 fail-closed。
 

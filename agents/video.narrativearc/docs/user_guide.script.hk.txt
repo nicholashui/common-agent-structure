@@ -130,7 +130,7 @@ production_activation_requested false。prompt_reference video.prompt.narrativea
 
 第十五部分，文檔控制。
 
-生成器 generate_agent_user_guides.py。資料夾 business/video/agents/video.narrativearc/。輸出 docs/user_guide.md。VA 根目錄 C:\Project\va-agent-swarm。信任模型：設計語料庫不受信任，host 配置 fail-closed。
+生成器 generate_agent_user_guides.py。資料夾 business/video/agents/video.narrativearc/。輸出 docs/user_guide.md。VA 根目錄 vendor/va-agent-swarm。信任模型：設計語料庫不受信任，host 配置 fail-closed。
 
 以上就係 NarrativeArcAgent 嘅完整指南。建議從快照同第五部分開始，用第八到十部分做操作同改進，用第十一到十二部分做深度設計保真度。
 

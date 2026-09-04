@@ -1,0 +1,455 @@
+大家好，歡迎收睇今日嘅影片。
+
+今日我哋會詳細介紹 StyleTransferAgent 嘅操作員同設計指南。
+
+呢份文件係俾操作員、pack 作者、swarm 設計師同審核人員使用嘅。
+
+呢份指南提供任務清晰度、幾時使用嘅指引、協作地圖、CASOPS 操作步驟、改進路徑同分信任層級嘅來源地圖。
+
+重要聲明，呢份文件唔係啟動 provider 嘅許可證。
+
+唔係開放網絡嘅授權。
+
+唔係發明工具嘅許可。
+
+Host 真相係 fail-closed 嘅 agent_spec.json。
+
+VA 或 redesign 文件嘅設計文字係不受信任來源。
+
+Pack 路徑係 business/video/agents/video.styletransfer/。
+
+指南位於 docs/user_guide.md。
+
+由 scripts/business/generate_agent_user_guides.py 生成。
+
+第一部分，快照。
+
+StyleTransferAgent，pack agent id 係 video.styletransfer。
+
+佢係 Video Domain Pack 角色運行喺 CASOPS 上。
+
+簡單講，佢嘅工作係將指定嘅美學風格一致地應用到各個鏡頭上面。
+
+呢份指南係人類可讀嘅操作員地圖。
+
+基本資料逐項講。
+
+Display name 係 StyleTransferAgent。
+
+Pack agent id 係 video.styletransfer。
+
+Pack 係 video。
+
+Host role string 係 StyleTransferAgent (VA Domain Pack)。
+
+Catalog status 係 registered。
+
+Maturity today 係 L0 非活動狀態。
+
+VA id 係 61。
+
+VA category 係 9-Meta，即 Meta 同優化專家類別。
+
+呢個 agent 比較特別，Provider 係 media_host。
+
+Network 係 True，即有網絡存取權限。
+
+Allowed tools 係 media.stub、media.runway 同 media.veo，即有三個被允許嘅工具。
+
+Production activation requested 係 True，即已經請求生產啟動。
+
+Prompt 同 rubric 參考係 video.prompt.styletransfer.v1 同 video.rubric.styletransfer.v1。
+
+Previous common id 係 video.image_generation_operator。
+
+Generic lineage 係 generic-swarm-ops/business/video/agents/video.styletransfer。
+
+第二部分，點解存在。
+
+人類影片團隊已經喺時間壓力下解決呢個問題：將指定美學一致地應用到各鏡頭。
+
+Agent 形式令多代理系統持續編碼呢種工藝。
+
+喺每次交接時應用，只將殘餘風險升級俾人類。
+
+知識庫來源第一個係策劃過嘅風格語料庫。
+
+第二個係 LoRA 同 seed 註冊表。
+
+第三個係參考幀庫。
+
+呢啲係歷史設計來源。
+
+設計野心係：喺盲測偏好中贏過人類調色師加調色員。
+
+用呢個做北極星指標。
+
+第三部分，乜嘢叫做好。
+
+Primary outcome 係將指定美學一致地應用到各鏡頭。
+
+Self-quality bar 第一個係 Style-similarity，即 CLIP 同 DINO 相似度大於或等於 0.85。
+
+第二個係跨鏡頭方差小於或等於 tau。
+
+Ambition signal 係喺盲測偏好中贏過做同一風格嘅人類調色師加調色員。
+
+Architecture pattern 係 Self-Refine，即用 CLIP 風格評分作為反饋。
+
+Host quality 同 critique binding。
+
+Prompt reference video.prompt.styletransfer.v1。
+
+Rubric reference video.rubric.styletransfer.v1。
+
+Critique edges inputs video.critic，outputs video.judge。
+
+Max refinement 3。
+
+輸入輸出驗收。
+
+Inputs 本地 pack 工件同類型化交接。
+
+Outputs 可審查交付物。
+
+Acceptance host 政策加 SPEC 標準。
+
+第四部分，範圍。
+
+擁有：將指定美學一致地應用到各鏡頭。
+
+共享批評表面。
+
+聽取 DirectorAgent 嘅批評。
+
+聽取 ColoristAgent 嘅批評。
+
+有資格評論 GeneratorAgent 嘅 off-style 問題即偏離風格。
+
+Host critique edge inputs video.critic。
+
+outputs video.judge。
+
+Max refinement count 3。
+
+拒絕同升級：Fail-closed。
+
+production_activation_requested 保持 false 除非人類閘門改變。
+
+法律安全版權發布升級人類閘門。
+
+第五部分，幾時用。
+
+當工作需要 StyleTransferAgent 嘅決定或工件時叫佢。
+
+即一致應用指定美學風格。
+
+Pipeline phase 係 Meta 同優化專家。
+
+即跨領域優化、評估同系統改進角色。
+
+唔好用佢做一般編排、預算或法律簽署。
+
+Human override：阻礙發布嘅爭議升級人類閘門。
+
+決策小抄。
+
+技能係 StyleTransferAgent 嘅工藝？加入 swarm 圖。
+
+只係元數據？用 Registry。
+
+需要工具網絡？Host 目前唔允許除非 agent_spec 另有說明。
+
+人類風險？保留閘門。
+
+第六部分，協作地圖。
+
+Inbound critique 來自 DirectorAgent 同 ColoristAgent。
+
+Outbound commentary 針對 GeneratorAgent 嘅 off-style。
+
+Host edge inputs video.critic。
+
+outputs video.judge。
+
+第七部分，生產位置。
+
+人類工作流程階段係跨領域優化、評估同系統改進。
+
+典型交接工件包括評估報告。
+
+仲有優化票。
+
+仲有基準差異。
+
+同埋 harness 結果。
+
+多代理 AI 工作流程方面，係觀察同優化整個 agent 圖嘅節點。
+
+涵蓋延遲、成本、提示、留存率同 ROAS。
+
+設計時工具備註第一個係 LoRA weights per style 即每種風格嘅 LoRA 權重。
+
+第二個係 CLIP/DINO similarity scorer 即相似度評分器。
+
+第三個係 Runway style-lock mode 即 Runway 風格鎖定模式。
+
+第四個係 ComfyUI。
+
+循環風格係 Self-Refine，用 CLIP 風格評分作為反饋。
+
+今日 CASOPS 上只係文檔。
+
+AI 工作流程摘錄提到第 61 號 StyleTransferAgent。
+
+職責係將指定美學，例如 Wes Anderson、A24、cyberpunk、vaporwave、Studio Ghibli 等一致地應用。
+
+知識來源係策劃過嘅風格語料庫、LoRA 同 seed 註冊表、參考幀庫。
+
+自我質量係 CLIP 同 DINO 風格相似度大於等於 0.85，各鏡頭方差小於等於 tau。
+
+超越人類係喺盲測偏好中贏過人類調色師。
+
+接受批評來自 DirectorAgent 同 ColoristAgent。
+
+共享交接合約方面。
+
+artifact_id version 不可變身份。
+
+parent_assets 來源鏈。
+
+brief_scope 阻止範圍蔓延。
+
+acceptance_criteria 同質量標準掛鉤。
+
+qc_status gate flags 下游短路。
+
+rights_and_consent 阻止濫用。
+
+critique_log pointer 保存歷史。
+
+第八部分，CASOPS 操作。
+
+今日係目錄加設計物件。
+
+步驟一 Discover 去 /registry。
+
+步驟二 Inspect 去 /registry/agents/video.styletransfer。
+
+步驟三 POST 到 /api/v1/commons/agents/video.styletransfer/proposals。
+
+步驟四隻用 Host 引用。
+
+步驟五預設唔啟用。
+
+操作檯檢查清單。
+
+確認旗標。
+
+先閱讀第三部分。
+
+附離線證據。
+
+唔好貼密鑰。
+
+偏好小差異。
+
+第九部分，安全信任。
+
+agent_spec.json 約束力合約。
+
+SPEC.md 權威設計。
+
+sources 歷史不受信任。
+
+外部語料庫唔受信任。
+
+硬規則方面呢個 agent 比較特別。
+
+Provider 保持 media_host。
+
+Network access 保持 True。
+
+Allowed tools 準確係 media.stub、media.runway 同 media.veo。
+
+production_activation_requested 係 True。
+
+Budget 上限：輸入 2048，輸出 1024，工具請求 4。
+
+設計時工具目錄非啟動：LoRA weights、CLIP/DINO scorer、Runway style-lock、ComfyUI。
+
+第十部分，提升質量。
+
+版本化目錄工作。
+
+循環：觀察失敗、命名標準、起草差異、附證據、提案、審查、考慮閘門。
+
+具體槓桿六個。
+
+第一 Rubric fidelity 收緊對照 CLIP/DINO 大於等於 0.85 同方差小於等於 tau。
+
+第二 Prompt precision 對齊責任。
+
+第三 Critique graph 確保 DirectorAgent 同 ColoristAgent 捕捉失敗。
+
+第四 Architecture 偏好 Self-Refine CLIP 評分反饋。
+
+第五 Eval cases 寫 fixtures。
+
+第六 Human gates 保持明確。
+
+評估種子。
+
+Happy path：Style-similarity 大於等於 0.85 同方差小於等於 tau。
+
+Out-of-scope：拒絕升級。
+
+Missing provenance：fail closed。
+
+Conflicting critique：唔超過 max count。
+
+Proposal-only：不可變。
+
+第十一部分，來源地圖。
+
+agent_spec.json binding。
+
+SPEC.md authoritative-design。
+
+README.md local-index。
+
+sources/MAPPING.md provenance。
+
+sources/PROVENANCE.json provenance。
+
+sources/excerpts/agents.md historical-excerpt。
+
+sources/excerpts/ai_agent_video_production_workflow.md historical-excerpt。
+
+sources/excerpts/lifes_quiet_redemption_agent_workflow.md historical-excerpt。
+
+sources/excerpts/system_build_plan.md historical-excerpt。
+
+sources/excerpts/ui_design.md historical-excerpt。
+
+sources/excerpts/video_remake_enhancement.md historical-excerpt。
+
+sources/generic/video.promptengineer.SPEC.md historical-generic。
+
+sources/generic/video.styletransfer.SPEC.md historical-generic。
+
+Mapping note：VA ID video.styletransfer，之前 ID video.image_generation_operator，SPEC 深度完整。
+
+Provenance record：schema_version 1.0，agent_id video.styletransfer，previous_common_agent_id video.image_generation_operator。
+
+va_taxonomy_aligned true，generic_source generic-swarm-ops/business/video/agents/video.styletransfer。
+
+aligned_at 2026 年 7 月 27 日。
+
+VA roster row 第 61 行。
+
+Responsibility 將指定美學一致地應用。
+
+Knowledge distillation 策劃風格語料庫、LoRA/seed 註冊表、參考幀庫。
+
+Self-quality CLIP/DINO 大於等於 0.85 同方差小於等於 tau。
+
+Surpass-human 盲測贏過人類調色師。
+
+Accepts critique DirectorAgent 同 ColoristAgent。
+
+Comments on GeneratorAgent off-style。
+
+Tools 歷史性 LoRA weights、CLIP/DINO scorer、Runway style-lock、ComfyUI。
+
+Architecture Self-Refine CLIP 評分反饋。
+
+第十二部分，相關設計閱讀。
+
+冇強匹配。
+
+本地索引包括各參考檔案。
+
+第十三部分，host 合約。
+
+agent_id video.styletransfer。
+
+allowed_tools media.stub、media.runway、media.veo。
+
+max_input_tokens 2048。
+
+max_output_tokens 1024。
+
+max_tool_requests 4。
+
+critique_edges inputs video.critic outputs video.judge。
+
+max_refinement_count 3。
+
+model_id local-video-config-v1。
+
+network_access true。
+
+provider media_host。
+
+production_activation_requested true。
+
+prompt_reference video.prompt.styletransfer.v1。
+
+role StyleTransferAgent (VA Domain Pack)。
+
+rubric_reference video.rubric.styletransfer.v1。
+
+schema_version 1.0。
+
+status registered。
+
+va_id 61。
+
+va_name StyleTransferAgent。
+
+va_category 9-Meta。
+
+第十四部分，SPEC 責任摘錄。
+
+責任係將指定美學一致地應用。
+
+Host role binding StyleTransferAgent (VA Domain Pack)。
+
+Knowledge distillation 歷史性。
+
+Self-quality criteria 歷史性。
+
+Surpass-human 歷史性。
+
+Critique bus：接受 DirectorAgent 同 ColoristAgent 批評。
+
+評論 GeneratorAgent off-style。
+
+Tools 非啟動。
+
+Runtime safety Host allow-lists 只有 agent_spec.json。
+
+Architecture Self-Refine。
+
+第十五部分，文件控制。
+
+Generator scripts/business/generate_agent_user_guides.py。
+
+Agent folder business/video/agents/video.styletransfer/。
+
+Output docs/user_guide.md。
+
+VA corpus root C:\Project\va-agent-swarm。
+
+Trust model 設計語料庫不受信任，host config fail-closed。
+
+以上就係 StyleTransferAgent 完整指南。
+
+由第一部分同第五部分開始。
+
+用第八到第十做操作改進。
+
+用第十一到第十二做深度設計。
+
+多謝收睇。

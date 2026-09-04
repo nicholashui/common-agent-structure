@@ -1,0 +1,2142 @@
+<#0.5#>
+
+This section discusses a comprehensive AI system called the "Prompt Optimizer Agent," which is essentially an automated expert designed to optimize AI prompts, making systems like ChatGPT or image generators work better. Think of it as a quality control specialist that tests, refines, and improves the instructions you give to AI.
+
+The system uses advanced techniques from evolutionary biology, statistics, and machine learning to automatically find the best prompt expressions, resulting in more consistent, higher-quality, and cost-effective AI outputs.
+
+Now, let's cover the key concepts in simple language. What is prompt optimization? A prompt is the instruction you give to AI; optimization makes it work better. The system automatically tests thousands of variations to find the most effective one—it's like spell-checking, but for AI instructions.
+
+Next, genetic algorithms. Imagine it like breeding dogs for specific traits. The system generates many prompt variations, tests them, keeps the best ones, combines their strengths, and repeats. After many "generations," you get a highly optimized prompt.
+
+Then, A/B testing. Similar to testing different button colors on a website, the system uses real user tests on different prompt versions to see which performs better, backed by statistical analysis.
+
+Also, token management. AI models charge by "tokens" (roughly word fragments), so it's like a budget manager that controls costs while maintaining quality—trimming unnecessary words without losing meaning.
+
+Additionally, multi-modal evaluation. The system evaluates text and images together using CLIP (a technique that understands image-text relationships) to ensure generated images match the text descriptions.
+
+With those concepts covered, let's move to the main topics. First, the core architecture components.
+
+**Advanced Prompt Analyzer**: Uses natural language processing (NLP) to break down prompts, identify patterns that lead to better results, and measure complexity and readability.
+
+**Template Library System**: Stores proven effective prompt patterns, learns which templates suit different tasks, and automatically suggests the best template for new requests.
+
+**A/B Testing Framework**: Scientifically compares prompt variations with statistical proof of which version is truly better, tracking long-term performance.
+
+**Genetic Optimizer Engine**: Evolves prompts like natural selection, combining successful elements from different prompts while optimizing multiple goals like quality, cost, and speed.
+
+**Token Counter and Optimizer**: Precisely calculates each prompt's cost, compresses prompts without losing meaning, and manages budgets across components.
+
+**Multi-Modal Evaluator**: Scores the match between images and text prompts, detects biases and safety issues, and tracks quality trends.
+
+Second, what the system does. It deeply analyzes prompts for grammar, structure, and meaning, identifies improvement opportunities, and scores effectiveness across multiple dimensions.
+
+It stores and retrieves intelligent templates, maintains a library of successful prompts, finds similar past solutions, and learns from usage patterns.
+
+It systematically tests variations through controlled experiments, provides statistical confidence, and identifies truly impactful changes.
+
+It evolves better prompts by automatically generating and testing variations, combining successful elements, and optimizing for your specific goals.
+
+It manages context and memory by remembering conversation history, selecting relevant examples, and maintaining user preferences.
+
+It optimizes token usage by compressing to reduce costs 20-40% while preserving semantics and intelligently allocating budgets.
+
+It comprehensively evaluates results by measuring quality, consistency, and relevance, detecting potential issues, and providing actionable feedback.
+
+In summary, the key points:
+
+1. **Automated Optimization**: The system automatically improves prompts—no manual trial-and-error, saving massive time and effort.
+
+2. **Multi-Objective Balance**: Optimizes quality, cost, speed, and safety simultaneously, not just one metric.
+
+3. **Statistical Rigor**: Uses proper A/B testing and statistical analysis to prove improvements are real, not random.
+
+4. **Cost Reduction**: Intelligent token management cuts API costs 20-40% while maintaining output quality.
+
+5. **Learning System**: Continuously improves from usage patterns and stores successful templates.
+
+6. **Production-Ready**: Designed for real deployment with monitoring, version control, and scalability.
+
+7. **Framework Flexibility**: Built on proven open-source tech like spaCy, DEAP, Optuna, and CLIP—customizable and extensible.
+
+Key numbers and data: Performance metrics include 20-40% cost reduction via token optimization; genetic optimization with typically 50 individuals over 20 generations; A/B tests with at least 80% statistical power at 5% significance level; token limits vary by model (4K to 100K, e.g., GPT-3.5 to Claude-2).
+
+System requirements: Python 3.8+ with GPU support, minimum 16GB RAM, MongoDB 4.4+ for storage; estimated API budget $500-1,000/month during development.
+
+Optimization parameters: 70% crossover probability, 30% mutation rate, retain 5 elite individuals per generation, tournament selection size 3.
+
+Timeline: Phase 1 (core infrastructure) 4 weeks; Phase 2 (optimization engine) 4 weeks; Phase 3 (advanced features) 4 weeks; Phase 4 (production hardening) 4 weeks; total 16 weeks to full deployment.
+
+Next steps: For implementation—set up dev environment and frameworks; secure OpenAI API access and budget; deploy MongoDB instance; start Phase 1 development; establish testing protocols and quality metrics.
+
+For evaluation—define success criteria for your use case; identify baseline prompts to optimize; decide cost/quality trade-offs; plan real-user A/B testing; set up monitoring and alerts.
+
+Who is this for? Primary audience: AI/ML engineers building production LLM or image gen systems; product teams managing AI features and costs; data scientists optimizing model performance and evaluation; DevOps engineers deploying/scaling AI apps.
+
+Why should they care? AI engineers: Reduces manual prompt engineering time by 80%+ with superior results via automation. Product teams: Cuts AI API costs 20-40%, improves output consistency—directly boosting user satisfaction and profits. Data scientists: Provides rigorous stats framework for evaluating prompt changes, eliminating guesswork. DevOps: Offers production-ready monitoring, versioning, and scalability for AI systems.
+
+Secondary beneficiaries: Content creators using AI tools; businesses deploying chatbots/AI assistants; researchers in prompt engineering; anyone spending heavily on AI API calls.
+
+This system turns prompt engineering from an art into a science, making AI systems more reliable, cost-effective, and efficient.
+<#0.5#>
+# Prompt Optimizer Agent - The AI Whisperer
+
+<#0.5#>
+
+## What to Build
+
+<#0.5#>
+
+### Core Architecture Components
+
+#### Advanced Prompt Analyzer
+The **Advanced Prompt Analyzer** serves as the intelligence engine that evaluates prompt effectiveness across multiple dimensions.
+
+- **Linguistic Feature Extraction**: Leverages spaCy's advanced Natural Language Processing (NLP) capabilities to analyze part-of-speech (POS) tags, syntactic dependencies, named entity recognition (NER), and semantic relationships within prompts.
+- **Token Distribution Analysis**: Examines token frequency, vocabulary diversity, and semantic clustering to identify optimization opportunities.
+- **Structural Pattern Recognition**: Identifies successful prompt structures, formatting conventions, and linguistic patterns correlated with high-performing outputs.
+- **Sentiment and Tone Analysis**: Evaluates emotional undertones, formality levels, and instructional clarity to improve model response quality.
+- **Cross-Modal Coherence**: For multi-modal prompts, analyzes alignment between textual instructions and visual elements using CLIP embeddings.
+- **Complexity Metrics**: Measures readability scores, syntactic complexity, and cognitive load to optimize prompt comprehension.
+
+#### Intelligent Template Library System
+A sophisticated knowledge base that stores and manages proven prompt patterns.
+
+- **Hierarchical Template Organization**: Categorizes templates by domain (e.g., creative writing, technical analysis, image generation), task type (e.g., summarization, classification, generation), and complexity level.
+- **Template Versioning and Evolution**: Tracks template performance over time, maintains optimization lineage, and supports rollback capabilities.
+- **Semantic Template Matching**: Uses transformer-based embeddings to match user requirements with appropriate template patterns.
+- **Dynamic Template Composition**: Automatically combines template components to create custom patterns for novel use cases.
+- **Performance-Based Template Ranking**: Continuously updates template effectiveness scores based on real-world usage and outcome metrics.
+- **Template Generalization Engine**: Abstracts successful patterns into reusable components adaptable across domains.
+
+#### Multi-Dimensional A/B Testing Framework
+A comprehensive experimentation platform for systematic prompt optimization.
+
+- **Stratified Randomization**: Implements user allocation strategies ensuring statistical validity while tracking metrics such as response latency, cost, token usage, and evaluation scores.
+- **Multi-Armed Bandit Integration**: Dynamically adjusts traffic allocation to higher-performing variants while exploring alternatives.
+- **Statistical Power Analysis**: Calculates required sample sizes for statistically significant results and provides confidence intervals.
+- **Effect Size Measurement**: Quantifies practical significance beyond statistical significance to inform decisions.
+- **Interaction Effect Detection**: Identifies performance variations across user segments, use cases, and conditions.
+- **Longitudinal Performance Tracking**: Monitors prompt degradation or improvement over time to detect temporal effects.
+
+#### Advanced Genetic Optimizer Engine
+An evolutionary algorithm system using the DEAP framework that treats prompts as evolving organisms.
+
+- **Multi-Objective Fitness Functions**: Optimizes for accuracy, coherence, creativity, safety, and efficiency simultaneously.
+- **Adaptive Mutation Strategies**: Implements context-aware mutation operators respecting linguistic and semantic constraints.
+- **Crossover Mechanisms**: Develops recombination strategies that preserve semantic meaning while exploring new structures.
+- **Population Diversity Maintenance**: Ensures exploration of diverse prompt spaces to avoid premature convergence.
+- **Constraint Satisfaction**: Integrates domain-specific constraints into the evolutionary process.
+- **Multi-Population Evolution**: Runs parallel processes for different prompt categories and cross-pollinates successful strategies.
+
+#### Contextual Memory Manager
+A system for maintaining conversation coherence and example management.
+
+- **Hierarchical Context Modeling**: Maintains context from immediate conversations to long-term user preferences and domain knowledge.
+- **Dynamic Example Selection**: Selects relevant few-shot examples based on current task requirements and user history.
+- **Context Compression Algorithms**: Summarizes long conversations while preserving critical information for prompt construction.
+- **Semantic Memory Networks**: Creates knowledge graphs of user interactions to inform future optimizations.
+- **Attention-Based Context Weighting**: Uses transformer attention mechanisms to prioritize relevant contextual elements.
+- **Cross-Session Context Persistence**: Maintains user-specific optimization insights across sessions.
+
+#### Precision Token Counter and Optimizer
+An advanced tokenization system for optimal prompt length management.
+
+- **Model-Specific Tokenization**: Uses tiktoken for accurate counts across models like GPT-4, GPT-3.5-turbo, and others with different encoding schemes.
+- **Intelligent Token Budgeting**: Allocates token limits across prompt components (instructions, examples, context) based on importance weights.
+- **Compression Without Quality Loss**: Applies text summarization and paraphrasing to maintain semantic content while reducing token count.
+- **Token Efficiency Optimization**: Identifies redundant or low-impact tokens and suggests replacements or eliminations.
+- **Dynamic Length Adaptation**: Adjusts prompt length based on model capabilities and task complexity.
+- **Cross-Model Token Translation**: Provides token count estimates when migrating prompts between language models.
+
+#### Multi-Modal Result Evaluator
+A comprehensive evaluation system measuring prompt effectiveness across dimensions.
+
+- **CLIP-Based Semantic Alignment**: Uses CLIP's multimodal embedding space to measure alignment between text prompts and generated images.
+- **Automated Quality Scoring**: Implements metrics for factual accuracy, coherence, relevance, and creativity.
+- **Human-AI Collaborative Evaluation**: Integrates human feedback with automated metrics for comprehensive assessment.
+- **Bias and Safety Detection**: Monitors outputs for biases, harmful content, or ethical concerns.
+- **Performance Trend Analysis**: Tracks evaluation metrics over time to detect patterns.
+- **Multi-Stakeholder Evaluation**: Accommodates different criteria for various user types and use cases.
+
+<#0.5#>
+
+## What It Does
+
+<#0.5#>
+
+### Comprehensive Prompt Analysis Pipeline
+
+#### Deep Linguistic Analysis
+The system performs multi-layered analysis of prompt effectiveness.
+
+- **Syntactic Structure Evaluation**: Analyzes sentence complexity, clause distribution, and grammatical patterns influencing model comprehension.
+- **Semantic Coherence Assessment**: Measures meaning consistency using transformer-based similarity metrics.
+- **Pragmatic Effectiveness Analysis**: Evaluates communication of intent and desired outcomes.
+- **Domain-Specific Terminology Optimization**: Adjusts vocabulary and technical terms based on target domain and model capabilities.
+- **Cross-Cultural Adaptation**: Considers cultural and linguistic variations for global applications.
+- **Accessibility Enhancement**: Ensures prompts are understandable across user skill levels and backgrounds.
+
+#### Intelligent Template Storage and Retrieval
+The template library operates as a living knowledge base.
+
+- **Contextual Template Matching**: Uses semantic search to find appropriate templates based on requirements and task characteristics.
+- **Template Performance Analytics**: Tracks effectiveness across contexts and user populations.
+- **Adaptive Template Evolution**: Updates templates based on performance feedback and changing requirements.
+- **Cross-Domain Template Transfer**: Adapts successful patterns across application domains.
+- **Template Composition Strategies**: Combines elements to create optimized prompts for complex tasks.
+- **Version Control and Lineage Tracking**: Maintains history of modifications and performance implications.
+
+#### Sophisticated Variation Testing
+The A/B testing system verifies improvements with quality scores before deployment.
+
+- **Multi-Variable Experimentation**: Tests multiple prompt elements simultaneously with statistical rigor.
+- **Interaction Effect Analysis**: Identifies how components influence overall performance.
+- **Segment-Specific Optimization**: Customizes prompts for different user segments or use cases.
+- **Statistical Significance Testing**: Applies rigorous methods to ensure meaningful improvements.
+- **Effect Size Quantification**: Measures practical significance beyond statistical significance.
+- **Long-Term Impact Assessment**: Evaluates performance over extended periods.
+
+#### Evolutionary Prompt Optimization
+The genetic algorithm system implements evolutionary computation techniques.
+
+- **Multi-Objective Optimization**: Optimizes for accuracy, efficiency, safety, and user satisfaction using Pareto optimization.
+- **Adaptive Evolution Parameters**: Adjusts mutation rates, crossover probabilities, and selection pressure based on progress.
+- **Niching and Speciation**: Maintains diverse populations to explore optimization strategies simultaneously.
+- **Constraint-Aware Evolution**: Ensures semantic validity and domain-specific requirements.
+- **Hybrid Optimization**: Combines evolutionary algorithms with gradient-based optimization.
+- **Population Memory Management**: Maintains archives of successful patterns for future efforts.
+
+#### Context-Aware Memory Management
+The system maintains sophisticated contextual awareness.
+
+- **Hierarchical Context Processing**: Manages context from immediate conversation to long-term preferences.
+- **Dynamic Context Weighting**: Adjusts importance of contextual elements based on task requirements.
+- **Cross-Modal Context Integration**: Combines textual, visual, and interaction history into coherent representations.
+- **Context Compression and Summarization**: Manages large context windows while preserving essential information.
+- **Personalization Memory**: Learns user preferences and optimization patterns for personalized enhancement.
+- **Domain Knowledge Integration**: Incorporates external knowledge sources to enhance effectiveness.
+
+#### Advanced Token Management
+The token counting system provides accurate estimates.
+
+- **Predictive Token Modeling**: Estimates consumption for prompt variations before execution.
+- **Intelligent Token Allocation**: Optimizes distribution across components based on importance and effectiveness.
+- **Model-Specific Optimization**: Adapts strategies for different model architectures and capabilities.
+- **Cost-Performance Balancing**: Finds optimal trade-offs between token usage and output quality.
+- **Dynamic Length Adjustment**: Automatically adjusts prompt length based on model constraints and task complexity.
+- **Token Efficiency Metrics**: Measures and optimizes tokens per unit of output quality.
+
+#### Comprehensive Result Evaluation
+The evaluation system calculates cosine similarity between image and text embeddings to measure relevance.
+
+- **Multi-Dimensional Quality Assessment**: Evaluates prompts across accuracy, coherence, creativity, safety, and efficiency.
+- **Real-Time Performance Monitoring**: Tracks performance and alerts to degradation or improvement opportunities.
+- **Comparative Analysis**: Benchmarks performance against industry standards and competitor approaches.
+- **User Satisfaction Correlation**: Links objective metrics to subjective satisfaction scores.
+- **Bias and Fairness Evaluation**: Tests for and mitigates biases in prompt outputs.
+- **Long-Term Performance Tracking**: Monitors effectiveness over extended periods to identify improvement opportunities.
+
+<#0.5#>
+
+## Tools and Frameworks
+
+<#0.5#>
+
+### Natural Language Processing and Analysis
+
+#### spaCy Advanced Integration
+The system leverages spaCy's comprehensive linguistic features for deep prompt analysis, including POS tagging, dependency parsing, NER, and noun phrase extraction.
+
+- **Industrial-Strength NLP Pipeline**: Utilizes transformer-based models (`en_core_web_trf`) for maximum accuracy.
+- **Custom Component Development**: Creates specialized spaCy pipeline components for prompt-specific analysis.
+- **Multilingual Support**: Integrates multiple spaCy language models for global optimization.
+- **Real-Time Processing**: Optimizes spaCy pipeline for low-latency analysis in production environments.
+- **Custom Entity Recognition**: Trains domain-specific NER for specialized optimization tasks.
+
+#### NLTK Complementary Features
+Integrates NLTK for specialized linguistic analysis complementing spaCy's capabilities.
+
+- **Advanced Tokenization**: Uses NLTK's specialized tokenizers for domain-specific text processing.
+- **Sentiment Analysis Enhancement**: Implements VADER and other NLTK sentiment analyzers for tone evaluation.
+- **Corpus-Based Analysis**: Leverages NLTK's corpora for comparative linguistic analysis.
+- **Statistical Language Modeling**: Uses NLTK's statistical tools for prompt pattern recognition and optimization.
+
+<#0.5#>
+
+### Optimization and Evolutionary Algorithms
+
+#### DEAP (Distributed Evolutionary Algorithms in Python)
+DEAP serves as the core evolutionary computation framework, providing rapid prototyping and transparent data structures supporting genetic algorithms, genetic programming, and particle swarm optimization.
+
+- **Custom Fitness Functions**: Implements multi-objective evaluation for prompt optimization across criteria.
+- **Advanced Selection Strategies**: Uses tournament selection, roulette wheel selection, and NSGA-II for multi-objective optimization.
+- **Sophisticated Crossover Operators**: Develops semantic-aware crossover operations preserving prompt meaning.
+- **Adaptive Mutation Mechanisms**: Implements context-sensitive mutation operators understanding linguistic constraints.
+- **Population Diversity Management**: Maintains genetic diversity through niching and speciation techniques.
+- **Parallel Evolution**: Distributes computation across multiple processes and machines for scalable optimization.
+
+#### Optuna Integration
+Optuna provides automatic hyperparameter optimization with a define-by-run style API enabling dynamic search space construction.
+
+- **Bayesian Optimization**: Employs Tree-structured Parzen Estimator (TPE) for intelligent search based on trial history.
+- **Automated Pruning**: Stops unpromising trials early using pruners like MedianPruner and HyperbandPruner.
+- **Multi-Objective Optimization**: Optimizes multiple prompt effectiveness metrics simultaneously.
+- **Integration with ML Frameworks**: Works seamlessly with PyTorch, TensorFlow, and scikit-learn.
+- **Distributed Optimization**: Scales across multiple workers and machines.
+- **Visualization and Analysis**: Provides optimization history analysis and hyperparameter importance assessment.
+
+<#0.5#>
+
+### Model Testing and Evaluation Platforms
+
+#### OpenAI API Integration
+Comprehensive integration with OpenAI's model ecosystem.
+
+- **Multi-Model Support**: Tests prompts across GPT-4, GPT-3.5-turbo, and DALL-E models.
+- **Rate Limiting and Optimization**: Manages requests to maximize efficiency while respecting API limits.
+- **Cost Optimization**: Balances testing thoroughness with API cost considerations.
+- **Response Quality Analysis**: Analyzes outputs for consistency, accuracy, and alignment with prompt intent.
+- **Performance Metrics Collection**: Gathers latency, token usage, and quality metrics.
+
+#### Claude API Integration
+Extends testing capabilities across different model architectures.
+
+- **Cross-Model Comparison**: Evaluates prompt performance across LLM architectures and training approaches.
+- **Model-Specific Optimization**: Adapts strategies for Anthropic's Constitutional AI approach.
+- **Safety and Alignment Testing**: Leverages Claude's focus on helpful, harmless, and honest responses.
+- **Complementary Analysis**: Uses different models' strengths for comprehensive evaluation.
+
+#### Stable Diffusion Integration
+For image generation prompt optimization.
+
+- **Text-to-Image Prompt Testing**: Optimizes prompts for visual content generation with quality evaluation.
+- **Style and Quality Analysis**: Evaluates generated images for consistency, quality, and prompt adherence.
+- **Parameter Optimization**: Tests generation parameters (steps, CFG scale, samplers) for optimal results.
+- **Batch Processing**: Generates and evaluates large image sets for statistical validation.
+
+<#0.5#>
+
+### Evaluation and Scoring Systems
+
+#### CLIP (Contrastive Language-Image Pre-training)
+CLIP is a neural network trained on 400 million text-image pairs using contrastive learning to unify text and images.
+
+- **Multimodal Embedding Generation**: Creates embeddings in a shared space where similarity reflects semantic correspondence.
+- **Text-Image Alignment Scoring**: Quantifies image-prompt matching using cosine similarity metrics.
+- **Zero-Shot Classification**: Enables prompt evaluation across categories without task-specific training.
+- **Cross-Modal Retrieval**: Facilitates finding relevant examples and templates across modalities.
+- **Similarity Visualization**: Uses dimensionality reduction (PCA, UMAP, t-SNE) to visualize embeddings.
+
+#### BERTScore Implementation
+Advanced semantic similarity evaluation.
+
+- **Contextual Similarity Measurement**: Uses BERT embeddings to evaluate semantic similarity between generated and reference texts.
+- **Token-Level Alignment**: Provides fine-grained analysis of content alignment with expected outcomes.
+- **Language-Agnostic Evaluation**: Supports multiple languages for global applications.
+- **Robust Evaluation Metrics**: Provides precision, recall, and F1 scores for comprehensive assessment.
+
+<#0.5#>
+
+### Storage and Caching Systems
+
+#### MongoDB Advanced Implementation
+MongoDB provides flexible document storage supporting various data structures.
+
+- **Template Database Design**: Implements schema designs for efficient template storage and retrieval.
+- **Performance Analytics Storage**: Stores prompt performance metrics with efficient querying.
+- **Version Control Implementation**: Maintains history of template modifications and performance evolution.
+- **Aggregation Pipeline Optimization**: Uses MongoDB's aggregation framework for complex analytics.
+- **Indexing Strategy**: Optimizes performance with compound indexes for complex queries.
+- **Replication and Sharding**: Ensures high availability and scalability for production deployments.
+
+#### Redis High-Performance Caching
+Strategic caching implementation for optimal performance.
+
+- **Intelligent Cache Management**: Implements caching strategies for frequently accessed templates and results.
+- **Session State Management**: Maintains user-specific optimization state across interactions.
+- **Real-Time Analytics**: Provides low-latency access to performance metrics and statistics.
+- **Distributed Caching**: Scales across multiple nodes for high-throughput applications.
+- **Cache Invalidation Strategies**: Ensures data consistency through intelligent invalidation policies.
+
+<#0.5#>
+
+### Monitoring and Analytics Platforms
+
+#### Weights & Biases Integration
+Comprehensive experiment tracking and model management.
+
+- **Experiment Tracking**: Logs optimization experiments with metrics, hyperparameters, and results.
+- **Model Performance Visualization**: Creates dashboards for monitoring optimization progress.
+- **Collaboration Features**: Enables team collaboration on prompt optimization projects.
+- **Artifact Management**: Tracks prompt templates, datasets, and optimization results as versioned artifacts.
+- **Automated Reporting**: Generates reports on optimization progress and performance trends.
+
+#### MLflow Integration
+Machine learning lifecycle management.
+
+- **Model Registry**: Maintains registry of optimized prompts with versioning and stage management.
+- **Experiment Comparison**: Provides comparison tools for different optimization strategies.
+- **Deployment Management**: Manages deployment of optimized prompts to production environments.
+- **Performance Monitoring**: Tracks prompt performance in production with degradation alerting.
+- **Integration Flexibility**: Supports various ML frameworks and deployment strategies.
+
+<#0.5#>
+
+## Detailed Implementation Examples
+
+<#0.5#>
+
+### Phase 1: Enhanced Prompt Analysis (Baseline Evaluation)
+
+#### Comprehensive Linguistic Analysis Engine
+
+```python
+import spacy
+import numpy as np
+from sklearn.feature_extraction.text import TfidfVectorizer
+from textstat import flesch_reading_ease, flesch_kincaid_grade
+import networkx as nx
+from collections import Counter
+import pandas as pd
+from sentence_transformers import SentenceTransformer
+
+class AdvancedPromptAnalyzer:
+    """Performs multi-dimensional analysis of prompt effectiveness."""
+    
+    def __init__(self):
+        # Load advanced spaCy model with transformer
+        self.nlp = spacy.load("en_core_web_trf")
+        self.tfidf_vectorizer = TfidfVectorizer(max_features=1000)
+        self.semantic_model = SentenceTransformer('all-MiniLM-L6-v2')
+        self.complexity_analyzer = self._init_complexity_analyzer()
+
+    def comprehensive_analysis(self, prompt_text: str) -> dict:
+        """Performs multi-dimensional prompt analysis."""
+        doc = self.nlp(prompt_text)
+        
+        analysis_results = {
+            "linguistic_features": self._extract_linguistic_features(doc),
+            "semantic_coherence": self._analyze_semantic_coherence(doc),
+            "complexity_metrics": self._analyze_complexity(prompt_text),
+            "structural_patterns": self._analyze_structure(doc),
+            "token_distribution": self._analyze_token_distribution(doc),
+            "readability_scores": self._calculate_readability(prompt_text),
+            "entity_density": self._analyze_entity_density(doc),
+            "syntactic_diversity": self._calculate_syntactic_diversity(doc)
+        }
+        
+        return analysis_results
+
+    def _extract_linguistic_features(self, doc) -> dict:
+        """Extracts comprehensive linguistic features."""
+        return {
+            "tokens": [token.text for token in doc],
+            "lemmas": [token.lemma_ for token in doc],
+            "pos_tags": [(token.text, token.pos_, token.tag_) for token in doc],
+            "dependencies": [(token.text, token.dep_, token.head.text) for token in doc],
+            "noun_phrases": [chunk.text for chunk in doc.noun_chunks],
+            "entities": [(ent.text, ent.label_, ent.start_char, ent.end_char) for ent in doc.ents],
+            "sentence_structures": self._analyze_sentence_structures(doc)
+        }
+
+    def _analyze_semantic_coherence(self, doc) -> dict:
+        """Analyzes semantic coherence and consistency."""
+        sentences = list(doc.sents)
+        
+        if len(sentences) < 2:
+            return {"coherence_score": 0.0, "sentence_similarities": []}
+
+        # Calculate sentence similarity matrix
+        sentence_vectors = np.array([sent.vector for sent in sentences])
+        similarities = []
+        
+        for i in range(len(sentence_vectors)):
+            for j in range(i + 1, len(sentence_vectors)):
+                sim = np.dot(sentence_vectors[i], sentence_vectors[j]) / (
+                    np.linalg.norm(sentence_vectors[i]) * np.linalg.norm(sentence_vectors[j])
+                )
+                similarities.append(sim)
+
+        coherence_score = np.mean(similarities) if similarities else 0.0
+        
+        return {
+            "coherence_score": coherence_score,
+            "sentence_similarities": similarities,
+            "semantic_density": self._calculate_semantic_density(doc),
+            "concept_clustering": self._analyze_concept_clustering(doc)
+        }
+
+    def _analyze_complexity(self, text: str) -> dict:
+        """Analyzes multiple dimensions of text complexity."""
+        return {
+            "flesch_reading_ease": flesch_reading_ease(text),
+            "flesch_kincaid_grade": flesch_kincaid_grade(text),
+            "sentence_length_variance": self._calculate_sentence_length_variance(text),
+            "vocabulary_complexity": self._assess_vocabulary_complexity(text),
+            "syntactic_complexity": self._measure_syntactic_complexity(text)
+        }
+
+class SemanticCoherenceAnalyzer:
+    """Advanced semantic analysis for prompt coherence."""
+    
+    def __init__(self):
+        self.sentence_model = SentenceTransformer('all-MiniLM-L6-v2')
+
+    def analyze_coherence(self, sentences: list) -> float:
+        """Analyzes semantic coherence across sentences."""
+        if len(sentences) < 2:
+            return 0.0
+
+        embeddings = self.sentence_model.encode(sentences)
+        similarities = []
+        
+        for i in range(len(embeddings)):
+            for j in range(i + 1, len(embeddings)):
+                sim = np.cosine(embeddings[i], embeddings[j])
+                similarities.append(sim)
+
+        return np.mean(similarities)
+
+def enhanced_baseline_evaluation(prompt_text: str) -> dict:
+    """Performs comprehensive baseline evaluation of prompt effectiveness."""
+    analyzer = AdvancedPromptAnalyzer()
+    analysis = analyzer.comprehensive_analysis(prompt_text)
+    
+    # Generate baseline outputs (placeholder for actual generation)
+    baseline_outputs = []  # Implement generation logic here
+    
+    # Calculate consistency and semantic alignment metrics
+    consistency_metrics = {}  # Implement consistency calculation
+    semantic_scores = {}  # Implement semantic alignment evaluation
+    
+    # Calculate overall effectiveness
+    effectiveness_score = 0.0  # Implement effectiveness calculation
+    
+    baseline_report = {
+        "prompt_analysis": analysis,
+        "consistency_metrics": consistency_metrics,
+        "semantic_alignment": semantic_scores,
+        "effectiveness_score": effectiveness_score,
+        "improvement_recommendations": []  # Implement recommendations
+    }
+    
+    return baseline_report
+```
+
+<#0.5#>
+
+### Phase 2: Advanced Template Library with Intelligence
+
+#### Sophisticated Template Management System
+
+```python
+import pymongo
+from sentence_transformers import SentenceTransformer
+import numpy as np
+from datetime import datetime, timedelta
+from typing import Dict, List, Optional
+import json
+
+class IntelligentTemplateLibrary:
+    """Manages template storage, retrieval, and performance tracking."""
+    
+    def __init__(self, mongodb_uri: str, database_name: str = "prompt_library"):
+        self.client = pymongo.MongoClient(mongodb_uri)
+        self.db = self.client[database_name]
+        self.templates = self.db["templates"]
+        self.performance_logs = self.db["performance_logs"]
+        self.user_interactions = self.db["user_interactions"]
+        
+        # Initialize semantic search model
+        self.semantic_model = SentenceTransformer('all-mpnet-base-v2')
+        self._create_indexes()
+
+    def _create_indexes(self):
+        """Creates optimized database indexes."""
+        self.templates.create_index([("category", 1), ("avg_consistency", -1)])
+        self.templates.create_index([("tags", 1), ("use_count", -1)])
+        self.templates.create_index([("embedding", "2dsphere")])
+        self.performance_logs.create_index([("template_id", 1), ("timestamp", -1)])
+
+    def store_enhanced_template(self, template_data: Dict) -> str:
+        """Stores template with comprehensive metadata and versioning."""
+        # Generate semantic embedding
+        template_text = template_data['template']
+        embedding = self.semantic_model.encode(template_text).tolist()
+        
+        # Enhanced template document
+        enhanced_template = {
+            "template_id": template_data.get('template_id', self._generate_template_id()),
+            "category": template_data['category'],
+            "subcategory": template_data.get('subcategory', ''),
+            "template": template_text,
+            "description": template_data.get('description', ''),
+            "example": template_data.get('example', ''),
+            "tags": template_data.get('tags', []),
+            "parameters": template_data.get('parameters', {}),
+            "constraints": template_data.get('constraints', {}),
+            "target_models": template_data.get('target_models', []),
+            "domain_specific": template_data.get('domain_specific', False),
+            
+            # Performance metrics
+            "avg_consistency": template_data.get('avg_consistency', 0.0),
+            "avg_quality_score": template_data.get('avg_quality_score', 0.0),
+            "avg_user_rating": template_data.get('avg_user_rating', 0.0),
+            "success_rate": template_data.get('success_rate', 0.0),
+            "cost_efficiency": template_data.get('cost_efficiency', 0.0),
+            
+            # Usage statistics
+            "use_count": 0,
+            "success_count": 0,
+            "last_used": None,
+            "creation_date": datetime.now(),
+            "last_updated": datetime.now(),
+            
+            # Semantic information
+            "embedding": embedding,
+            "semantic_clusters": [],
+            "similar_templates": [],
+            
+            # Version control
+            "version": "1.0",
+            "parent_template": None,
+            "child_templates": [],
+            "modification_history": []
+        }
+        
+        # Store in database
+        result = self.templates.insert_one(enhanced_template)
+        self._update_semantic_clusters(result.inserted_id, embedding)
+        
+        return str(result.inserted_id)
+
+    def intelligent_template_search(self, query: str, context: Dict = None, 
+                                  filters: Dict = None) -> List[Dict]:
+        """Performs advanced template search with semantic matching and contextual ranking."""
+        query_embedding = self.semantic_model.encode(query)
+        
+        # Build MongoDB aggregation pipeline
+        pipeline = []
+        
+        # Apply filters if provided
+        if filters:
+            match_conditions = {}
+            if 'category' in filters:
+                match_conditions['category'] = filters['category']
+            if 'tags' in filters:
+                match_conditions['tags'] = {'$in': filters['tags']}
+            if 'min_consistency' in filters:
+                match_conditions['avg_consistency'] = {'$gte': filters['min_consistency']}
+            
+            if match_conditions:
+                pipeline.append({"$match": match_conditions})
+        
+        # Add semantic similarity scoring and ranking
+        pipeline.extend([
+            {
+                "$addFields": {
+                    "semantic_similarity": {
+                        "$function": {
+                            "body": f"""
+                                function(embedding) {{
+                                    let queryEmbed = {query_embedding.tolist()};
+                                    let dotProduct = 0;
+                                    let normA = 0;
+                                    let normB = 0;
+                                    for (let i = 0; i < queryEmbed.length; i++) {{
+                                        dotProduct += queryEmbed[i] * embedding[i];
+                                        normA += queryEmbed[i] * queryEmbed[i];
+                                        normB += embedding[i] * embedding[i];
+                                    }}
+                                    return dotProduct / (Math.sqrt(normA) * Math.sqrt(normB));
+                                }}
+                            """,
+                            "args": ["$embedding"],
+                            "lang": "js"
+                        }
+                    }
+                }
+            },
+            {
+                "$addFields": {
+                    "composite_score": {
+                        "$add": [
+                            {"$multiply": ["$semantic_similarity", 0.4]},
+                            {"$multiply": ["$avg_consistency", 0.2]},
+                            {"$multiply": ["$avg_quality_score", 0.2]},
+                            {"$multiply": ["$success_rate", 0.1]},
+                            {"$multiply": [{"$log": {"$add": ["$use_count", 1]}}, 0.1]}
+                        ]
+                    }
+                }
+            },
+            {"$sort": {"composite_score": -1}},
+            {"$limit": 20}
+        ])
+        
+        results = list(self.templates.aggregate(pipeline))
+        
+        # Apply contextual re-ranking if context provided
+        if context:
+            results = self._contextual_rerank(results, context)
+        
+        return results
+
+    def _contextual_rerank(self, results: List[Dict], context: Dict) -> List[Dict]:
+        """Re-ranks results based on contextual factors."""
+        for result in results:
+            contextual_boost = 0.0
+            
+            # User history boost
+            if 'user_id' in context:
+                user_preference = self._get_user_preference(
+                    context['user_id'], result['template_id']
+                )
+                contextual_boost += user_preference * 0.1
+            
+            # Task similarity boost
+            if 'current_task' in context:
+                task_similarity = self._calculate_task_similarity(
+                    context['current_task'], result['category']
+                )
+                contextual_boost += task_similarity * 0.15
+            
+            # Recency boost
+            if result['last_used']:
+                days_since_use = (datetime.now() - result['last_used']).days
+                recency_boost = max(0, 1 - days_since_use / 30) * 0.05
+                contextual_boost += recency_boost
+            
+            result['composite_score'] += contextual_boost
+        
+        # Re-sort by updated composite score
+        return sorted(results, key=lambda x: x['composite_score'], reverse=True)
+
+    def dynamic_template_composition(self, requirements: Dict) -> Dict:
+        """Intelligently composes templates from multiple sources."""
+        components = self._find_template_components(requirements)
+        
+        # Use genetic algorithm to find optimal composition
+        composer = TemplateComposer(components)
+        optimized_template = composer.evolve_composition(requirements)
+        
+        # Store composed template
+        composed_id = self.store_enhanced_template(optimized_template)
+        
+        return {
+            "template_id": composed_id,
+            "composed_template": optimized_template,
+            "component_sources": [comp['template_id'] for comp in components],
+            "composition_strategy": composer.get_strategy_description()
+        }
+
+class TemplatePerformanceTracker:
+    """Tracks and analyzes template performance over time."""
+    
+    def __init__(self, template_library: IntelligentTemplateLibrary):
+        self.library = template_library
+
+    def log_usage(self, template_id: str, performance_metrics: Dict, 
+                  context: Dict = None):
+        """Logs template usage with comprehensive metrics."""
+        usage_log = {
+            "template_id": template_id,
+            "timestamp": datetime.now(),
+            "performance_metrics": performance_metrics,
+            "context": context or {},
+            "session_id": context.get('session_id') if context else None,
+            "user_id": context.get('user_id') if context else None
+        }
+        
+        # Store usage log
+        self.library.performance_logs.insert_one(usage_log)
+        
+        # Update template statistics
+        self._update_template_statistics(template_id, performance_metrics)
+
+    def _update_template_statistics(self, template_id: str, metrics: Dict):
+        """Updates rolling statistics for template performance."""
+        time_windows = [7, 30, 90, 365]  # days
+        
+        for window_days in time_windows:
+            start_date = datetime.now() - timedelta(days=window_days)
+            
+            # Get recent performance data
+            recent_logs = list(self.library.performance_logs.find({
+                "template_id": template_id,
+                "timestamp": {"$gte": start_date}
+            }))
+            
+            if recent_logs:
+                # Calculate statistics
+                consistency_scores = [log['performance_metrics'].get('consistency', 0.0) 
+                                    for log in recent_logs]
+                quality_scores = [log['performance_metrics'].get('quality', 0.0) 
+                                for log in recent_logs]
+                
+                avg_consistency = np.mean(consistency_scores)
+                avg_quality = np.mean(quality_scores)
+                
+                # Update template document
+                self.library.templates.update_one(
+                    {"template_id": template_id},
+                    {
+                        "$set": {
+                            f"avg_consistency_{window_days}d": avg_consistency,
+                            f"avg_quality_{window_days}d": avg_quality,
+                            "last_updated": datetime.now()
+                        },
+                        "$inc": {"use_count": 1}
+                    }
+                )
+```
+
+<#0.5#>
+
+### Phase 3: Multi-Dimensional A/B Testing Framework
+
+#### Advanced A/B Testing System
+
+```python
+import numpy as np
+from scipy import stats
+from typing import Dict, List, Tuple, Optional
+import asyncio
+import aiohttp
+from dataclasses import dataclass
+from enum import Enum
+import hashlib
+import json
+from datetime import datetime, timedelta
+
+class ExperimentStatus(Enum):
+    """Defines experiment lifecycle states."""
+    DRAFT = "draft"
+    RUNNING = "running"
+    PAUSED = "paused"
+    COMPLETED = "completed"
+    STOPPED = "stopped"
+
+@dataclass
+class ExperimentVariant:
+    """Represents an experiment variant with prompt configuration."""
+    variant_id: str
+    name: str
+    prompt_template: str
+    model_config: Dict
+    traffic_allocation: float
+    parameters: Dict = None
+
+class AdvancedABTestingFramework:
+    """Implements comprehensive A/B testing with statistical rigor."""
+    
+    def __init__(self, storage_backend, analytics_backend):
+        self.storage = storage_backend
+        self.analytics = analytics_backend
+        self.running_experiments = {}
+
+    async def create_experiment(self, experiment_config: Dict) -> str:
+        """Creates a new A/B testing experiment."""
+        experiment = {
+            "experiment_id": self._generate_experiment_id(),
+            "name": experiment_config['name'],
+            "description": experiment_config.get('description', ''),
+            "hypothesis": experiment_config.get('hypothesis', ''),
+            "primary_metric": experiment_config['primary_metric'],
+            "secondary_metrics": experiment_config.get('secondary_metrics', []),
+            "variants": experiment_config['variants'],
+            "traffic_allocation": experiment_config.get('traffic_allocation', {}),
+            "statistical_config": self._setup_statistical_config(experiment_config),
+            "status": ExperimentStatus.DRAFT,
+            "created_at": datetime.now(),
+            "started_at": None,
+            "ended_at": None,
+            "results": None
+        }
+        
+        # Validate experiment configuration
+        validation_result = self._validate_experiment_config(experiment)
+        if not validation_result['valid']:
+            raise ValueError(f"Invalid experiment configuration: {validation_result['errors']}")
+        
+        # Calculate required sample sizes
+        sample_sizes = self._calculate_sample_sizes(experiment)
+        experiment['sample_size_requirements'] = sample_sizes
+        
+        # Store experiment
+        experiment_id = await self.storage.store_experiment(experiment)
+        
+        return experiment_id
+
+    def _setup_statistical_config(self, config: Dict) -> Dict:
+        """Sets up statistical configuration for the experiment."""
+        return {
+            "significance_level": config.get('significance_level', 0.05),
+            "power": config.get('power', 0.8),
+            "minimum_effect_size": config.get('minimum_effect_size', 0.05),
+            "multiple_testing_correction": config.get('multiple_testing_correction', 'bonferroni'),
+            "sequential_testing": config.get('sequential_testing', False),
+            "early_stopping_rules": config.get('early_stopping_rules', {}),
+            "stratification_variables": config.get('stratification_variables', [])
+        }
+
+    def _calculate_sample_sizes(self, experiment: Dict) -> Dict:
+        """Calculates required sample sizes using power analysis."""
+        config = experiment['statistical_config']
+        alpha = config['significance_level']
+        power = config['power']
+        effect_size = config['minimum_effect_size']
+        
+        # Adjust for multiple testing
+        if len(experiment['variants']) > 2:
+            if config['multiple_testing_correction'] == 'bonferroni':
+                alpha_adjusted = alpha / len(experiment['variants'])
+            else:
+                alpha_adjusted = alpha
+        else:
+            alpha_adjusted = alpha
+        
+        # Calculate sample size using Cohen's formulas
+        from statsmodels.stats.power import TTestIndPower
+        power_analysis = TTestIndPower()
+        
+        sample_size_per_variant = int(
+            power_analysis.solve_power(effect_size, power=power, alpha=alpha_adjusted, ratio=1.0)
+        ) + 100  # Add buffer
+        
+        total_sample_size = sample_size_per_variant * len(experiment['variants'])
+        
+        return {
+            "sample_size_per_variant": sample_size_per_variant,
+            "total_sample_size": total_sample_size,
+            "confidence_level": 1 - alpha,
+            "power": power,
+            "effect_size": effect_size
+        }
+
+    async def assign_variant(self, experiment_id: str, user_id: str, 
+                           context: Dict = None) -> Optional[str]:
+        """Assigns user to experiment variant with stratification."""
+        experiment = await self.storage.get_experiment(experiment_id)
+        
+        if experiment['status'] != ExperimentStatus.RUNNING:
+            return None
+        
+        # Check if user already assigned
+        existing_assignment = await self.storage.get_user_assignment(
+            experiment_id, user_id
+        )
+        if existing_assignment:
+            return existing_assignment['variant_id']
+        
+        # Perform stratified assignment if configured
+        stratum = self._determine_stratum(user_id, context, experiment)
+        
+        # Get current assignments for this stratum
+        current_assignments = await self.storage.get_stratum_assignments(
+            experiment_id, stratum
+        )
+        
+        # Calculate assignment probabilities
+        variant_id = self._probabilistic_assignment(
+            experiment['variants'], 
+            current_assignments,
+            experiment['traffic_allocation']
+        )
+        
+        # Record assignment
+        assignment = {
+            "experiment_id": experiment_id,
+            "user_id": user_id,
+            "variant_id": variant_id,
+            "stratum": stratum,
+            "assigned_at": datetime.now(),
+            "context": context or {}
+        }
+        
+        await self.storage.store_assignment(assignment)
+        
+        return variant_id
+
+    def _probabilistic_assignment(self, variants: List[Dict], 
+                                 current_assignments: Dict,
+                                 traffic_allocation: Dict) -> str:
+        """Assigns variant using probabilistic assignment with balancing."""
+        total_assignments = sum(current_assignments.values())
+        
+        if total_assignments == 0:
+            # First assignments - use pure random based on target allocation
+            weights = [traffic_allocation.get(v['variant_id'], 0.0) for v in variants]
+            return np.random.choice(
+                [v['variant_id'] for v in variants],
+                p=np.array(weights) / sum(weights)
+            )
+        
+        # Calculate deviation from target allocation
+        target_ratios = {v['variant_id']: traffic_allocation.get(v['variant_id'], 0.0) 
+                        for v in variants}
+        total_target_weight = sum(target_ratios.values())
+        
+        # Normalize target ratios
+        target_ratios = {k: v/total_target_weight for k, v in target_ratios.items()}
+        
+        # Calculate current ratios
+        current_ratios = {k: v/total_assignments for k, v in current_assignments.items()}
+        
+        # Bias assignment toward under-represented variants
+        assignment_weights = {}
+        for variant in variants:
+            variant_id = variant['variant_id']
+            target_ratio = target_ratios[variant_id]
+            current_ratio = current_ratios.get(variant_id, 0.0)
+            
+            # Higher weight for variants that are under-represented
+            if current_ratio < target_ratio:
+                assignment_weights[variant_id] = target_ratio + (target_ratio - current_ratio)
+            else:
+                assignment_weights[variant_id] = target_ratio * 0.8  # Reduce probability
+        
+        # Normalize weights
+        total_weight = sum(assignment_weights.values())
+        probabilities = [assignment_weights[v['variant_id']]/total_weight for v in variants]
+        
+        return np.random.choice(
+            [v['variant_id'] for v in variants],
+            p=probabilities
+        )
+
+    async def record_metric(self, experiment_id: str, user_id: str, 
+                           metric_name: str, value: float, 
+                           timestamp: datetime = None):
+        """Records experiment metric with validation."""
+        if timestamp is None:
+            timestamp = datetime.now()
+        
+        # Validate metric
+        experiment = await self.storage.get_experiment(experiment_id)
+        valid_metrics = [experiment['primary_metric']] + experiment['secondary_metrics']
+        
+        if metric_name not in valid_metrics:
+            raise ValueError(f"Invalid metric: {metric_name}")
+        
+        # Get user assignment
+        assignment = await self.storage.get_user_assignment(experiment_id, user_id)
+        if not assignment:
+            raise ValueError(f"User {user_id} not assigned to experiment {experiment_id}")
+        
+        # Record metric
+        metric_record = {
+            "experiment_id": experiment_id,
+            "user_id": user_id,
+            "variant_id": assignment['variant_id'],
+            "metric_name": metric_name,
+            "value": value,
+            "timestamp": timestamp,
+            "stratum": assignment.get('stratum')
+        }
+        
+        await self.storage.store_metric(metric_record)
+        
+        # Check for early stopping conditions
+        if experiment['statistical_config'].get('sequential_testing', False):
+            await self._check_early_stopping(experiment_id)
+
+    async def analyze_experiment(self, experiment_id: str) -> Dict:
+        """Performs comprehensive statistical analysis of experiment results."""
+        experiment = await self.storage.get_experiment(experiment_id)
+        metrics_data = await self.storage.get_experiment_metrics(experiment_id)
+        
+        if not metrics_data:
+            return {"status": "no_data", "message": "No metrics data available"}
+        
+        analysis_results = {}
+        
+        # Analyze primary metric
+        primary_analysis = await self._analyze_metric(
+            metrics_data, 
+            experiment['primary_metric'], 
+            experiment
+        )
+        analysis_results['primary_metric'] = primary_analysis
+        
+        # Analyze secondary metrics
+        secondary_analyses = {}
+        for metric in experiment['secondary_metrics']:
+            secondary_analysis = await self._analyze_metric(
+                metrics_data, 
+                metric, 
+                experiment
+            )
+            secondary_analyses[metric] = secondary_analysis
+        
+        analysis_results['secondary_metrics'] = secondary_analyses
+        
+        # Generate overall conclusions
+        analysis_results['conclusions'] = self._generate_conclusions(
+            primary_analysis, 
+            secondary_analyses, 
+            experiment
+        )
+        
+        # Calculate effect sizes and confidence intervals
+        analysis_results['effect_sizes'] = self._calculate_effect_sizes(
+            metrics_data, 
+            experiment
+        )
+        
+        analysis_results['confidence_intervals'] = self._calculate_confidence_intervals(
+            metrics_data, 
+            experiment
+        )
+        
+        return analysis_results
+
+    async def _analyze_metric(self, metrics_data: List[Dict], 
+                             metric_name: str, experiment: Dict) -> Dict:
+        """Performs statistical analysis for a specific metric."""
+        # Filter data for this metric
+        metric_data = [m for m in metrics_data if m['metric_name'] == metric_name]
+        
+        if not metric_data:
+            return {"status": "no_data", "metric": metric_name}
+        
+        # Group by variant
+        variant_data = {}
+        for record in metric_data:
+            variant_id = record['variant_id']
+            if variant_id not in variant_data:
+                variant_data[variant_id] = []
+            variant_data[variant_id].append(record['value'])
+        
+        # Perform statistical tests
+        if len(variant_data) == 2:
+            # Two-sample t-test
+            variants = list(variant_data.keys())
+            sample1 = np.array(variant_data[variants[0]])
+            sample2 = np.array(variant_data[variants[1]])
+            
+            # Check normality assumptions
+            normality_test1 = stats.shapiro(sample1) if len(sample1) < 5000 else stats.jarque_bera(sample1)
+            normality_test2 = stats.shapiro(sample2) if len(sample2) < 5000 else stats.jarque_bera(sample2)
+            
+            # Choose appropriate test
+            if normality_test1.pvalue > 0.05 and normality_test2.pvalue > 0.05:
+                # Use Welch's t-test
+                statistic, p_value = stats.ttest_ind(sample1, sample2, equal_var=False)
+                test_used = "welch_t_test"
+            else:
+                # Use Mann-Whitney U test
+                statistic, p_value = stats.mannwhitneyu(sample1, sample2, alternative='two-sided')
+                test_used = "mann_whitney_u"
+        
+        else:
+            # ANOVA for multiple variants
+            samples = [np.array(variant_data[variant_id]) for variant_id in variant_data.keys()]
+            statistic, p_value = stats.f_oneway(*samples)
+            test_used = "anova"
+        
+        # Calculate descriptive statistics
+        descriptive_stats = {}
+        for variant_id, values in variant_data.items():
+            values_array = np.array(values)
+            descriptive_stats[variant_id] = {
+                "count": len(values),
+                "mean": np.mean(values_array),
+                "std": np.std(values_array),
+                "median": np.median(values_array),
+                "min": np.min(values_array),
+                "max": np.max(values_array),
+                "quartiles": np.percentile(values_array, [25, 50, 75]).tolist()
+            }
+        
+        # Apply multiple testing correction
+        corrected_p_value = self._apply_multiple_testing_correction(
+            p_value, 
+            experiment
+        )
+        
+        return {
+            "metric": metric_name,
+            "test_statistic": float(statistic),
+            "p_value": float(p_value),
+            "corrected_p_value": float(corrected_p_value),
+            "test_used": test_used,
+            "significant": corrected_p_value < experiment['statistical_config']['significance_level'],
+            "descriptive_stats": descriptive_stats,
+            "sample_sizes": {k: len(v) for k, v in variant_data.items()}
+        }
+```
+
+<#0.5#>
+
+#### Comprehensive Result Evaluation
+The evaluation system calculates cosine similarity between image and text embeddings to measure relevance.
+
+- **Multi-Dimensional Quality Assessment**: Evaluates prompts across accuracy, coherence, creativity, safety, and efficiency.
+- **Real-Time Performance Monitoring**: Tracks performance and alerts to degradation or improvement opportunities.
+- **Comparative Analysis**: Benchmarks performance against industry standards and competitor approaches.
+- **User Satisfaction Correlation**: Links objective metrics to subjective satisfaction scores.
+- **Bias and Fairness Evaluation**: Tests for and mitigates biases in prompt outputs.
+- **Long-Term Performance Tracking**: Monitors effectiveness over extended periods to identify improvement opportunities.
+
+## Tools and Frameworks
+
+<#0.5#>
+
+### Natural Language Processing and Analysis
+
+<#0.5#>
+
+#### spaCy Advanced Integration
+The system leverages spaCy's comprehensive linguistic features for deep prompt analysis, including POS tagging, dependency parsing, NER, and noun phrase extraction.
+
+- **Industrial-Strength NLP Pipeline**: Utilizes transformer-based models (`en_core_web_trf`) for maximum accuracy.
+- **Custom Component Development**: Creates specialized spaCy pipeline components for prompt-specific analysis.
+- **Multilingual Support**: Integrates multiple spaCy language models for global optimization.
+- **Real-Time Processing**: Optimizes spaCy pipeline for low-latency analysis in production environments.
+- **Custom Entity Recognition**: Trains domain-specific NER for specialized optimization tasks.
+
+<#0.5#>
+
+#### NLTK Complementary Features
+Integrates NLTK for specialized linguistic analysis complementing spaCy's capabilities.
+
+- **Advanced Tokenization**: Uses NLTK's specialized tokenizers for domain-specific text processing.
+- **Sentiment Analysis Enhancement**: Implements VADER and other NLTK sentiment analyzers for tone evaluation.
+- **Corpus-Based Analysis**: Leverages NLTK's corpora for comparative linguistic analysis.
+- **Statistical Language Modeling**: Uses NLTK's statistical tools for prompt pattern recognition and optimization.
+
+<#0.5#>
+
+### Optimization and Evolutionary Algorithms
+
+<#0.5#>
+
+#### DEAP (Distributed Evolutionary Algorithms in Python)
+DEAP serves as the core evolutionary computation framework, providing rapid prototyping and transparent data structures supporting genetic algorithms, genetic programming, and particle swarm optimization.
+
+- **Custom Fitness Functions**: Implements multi-objective evaluation for prompt optimization across criteria.
+- **Advanced Selection Strategies**: Uses tournament selection, roulette wheel selection, and NSGA-II for multi-objective optimization.
+- **Sophisticated Crossover Operators**: Develops semantic-aware crossover operations preserving prompt meaning.
+- **Adaptive Mutation Mechanisms**: Implements context-sensitive mutation operators understanding linguistic constraints.
+- **Population Diversity Management**: Maintains genetic diversity through niching and speciation techniques.
+- **Parallel Evolution**: Distributes computation across multiple processes and machines for scalable optimization.
+
+<#0.5#>
+
+#### Optuna Integration
+Optuna provides automatic hyperparameter optimization with a define-by-run style API enabling dynamic search space construction.
+
+- **Bayesian Optimization**: Employs Tree-structured Parzen Estimator (TPE) for intelligent search based on trial history.
+- **Automated Pruning**: Stops unpromising trials early using pruners like MedianPruner and HyperbandPruner.
+- **Multi-Objective Optimization**: Optimizes multiple prompt effectiveness metrics simultaneously.
+- **Integration with ML Frameworks**: Works seamlessly with PyTorch, TensorFlow, and scikit-learn.
+- **Distributed Optimization**: Scales across multiple workers and machines.
+- **Visualization and Analysis**: Provides optimization history analysis and hyperparameter importance assessment.
+
+<#0.5#>
+
+### Model Testing and Evaluation Platforms
+
+<#0.5#>
+
+#### OpenAI API Integration
+Comprehensive integration with OpenAI's model ecosystem.
+
+- **Multi-Model Support**: Tests prompts across GPT-4, GPT-3.5-turbo, and DALL-E models.
+- **Rate Limiting and Optimization**: Manages requests to maximize efficiency while respecting API limits.
+- **Cost Optimization**: Balances testing thoroughness with API cost considerations.
+- **Response Quality Analysis**: Analyzes outputs for consistency, accuracy, and alignment with prompt intent.
+- **Performance Metrics Collection**: Gathers latency, token usage, and quality metrics.
+
+<#0.5#>
+
+#### Claude API Integration
+Extends testing capabilities across different model architectures.
+
+- **Cross-Model Comparison**: Evaluates prompt performance across LLM architectures and training approaches.
+- **Model-Specific Optimization**: Adapts strategies for Anthropic's Constitutional AI approach.
+- **Safety and Alignment Testing**: Leverages Claude's focus on helpful, harmless, and honest responses.
+- **Complementary Analysis**: Uses different models' strengths for comprehensive evaluation.
+
+<#0.5#>
+
+#### Stable Diffusion Integration
+For image generation prompt optimization.
+
+- **Text-to-Image Prompt Testing**: Optimizes prompts for visual content generation with quality evaluation.
+- **Style and Quality Analysis**: Evaluates generated images for consistency, quality, and prompt adherence.
+- **Parameter Optimization**: Tests generation parameters (steps, CFG scale, samplers) for optimal results.
+- **Batch Processing**: Generates and evaluates large image sets for statistical validation.
+
+<#0.5#>
+
+### Evaluation and Scoring Systems
+
+<#0.5#>
+
+#### CLIP (Contrastive Language-Image Pre-training)
+CLIP is a neural network trained on 400 million text-image pairs using contrastive learning to unify text and images.
+
+- **Multimodal Embedding Generation**: Creates embeddings in a shared space where similarity reflects semantic correspondence.
+- **Text-Image Alignment Scoring**: Quantifies image-prompt matching using cosine similarity metrics.
+- **Zero-Shot Classification**: Enables prompt evaluation across categories without task-specific training.
+- **Cross-Modal Retrieval**: Facilitates finding relevant examples and templates across modalities.
+- **Similarity Visualization**: Uses dimensionality reduction (PCA, UMAP, t-SNE) to visualize embeddings.
+
+<#0.5#>
+
+#### BERTScore Implementation
+Advanced semantic similarity evaluation.
+
+- **Contextual Similarity Measurement**: Uses BERT embeddings to evaluate semantic similarity between generated and reference texts.
+- **Token-Level Alignment**: Provides fine-grained analysis of content alignment with expected outcomes.
+- **Language-Agnostic Evaluation**: Supports multiple languages for global applications.
+- **Robust Evaluation Metrics**: Provides precision, recall, and F1 scores for comprehensive assessment.
+
+<#0.5#>
+
+### Storage and Caching Systems
+
+<#0.5#>
+
+#### MongoDB Advanced Implementation
+MongoDB provides flexible document storage supporting various data structures.
+
+- **Template Database Design**: Implements schema designs for efficient template storage and retrieval.
+- **Performance Analytics Storage**: Stores prompt performance metrics with efficient querying.
+- **Version Control Implementation**: Maintains history of template modifications and performance evolution.
+- **Aggregation Pipeline Optimization**: Uses MongoDB's aggregation framework for complex analytics.
+- **Indexing Strategy**: Optimizes performance with compound indexes for complex queries.
+- **Replication and Sharding**: Ensures high availability and scalability for production deployments.
+
+<#0.5#>
+
+#### Redis High-Performance Caching
+Strategic caching implementation for optimal performance.
+
+- **Intelligent Cache Management**: Implements caching strategies for frequently accessed templates and results.
+- **Session State Management**: Maintains user-specific optimization state across interactions.
+- **Real-Time Analytics**: Provides low-latency access to performance metrics and statistics.
+- **Distributed Caching**: Scales across multiple nodes for high-throughput applications.
+- **Cache Invalidation Strategies**: Ensures data consistency through intelligent invalidation policies.
+
+<#0.5#>
+
+### Monitoring and Analytics Platforms
+
+<#0.5#>
+
+#### Weights & Biases Integration
+Comprehensive experiment tracking and model management.
+
+- **Experiment Tracking**: Logs optimization experiments with metrics, hyperparameters, and results.
+- **Model Performance Visualization**: Creates dashboards for monitoring optimization progress.
+- **Collaboration Features**: Enables team collaboration on prompt optimization projects.
+- **Artifact Management**: Tracks prompt templates, datasets, and optimization results as versioned artifacts.
+- **Automated Reporting**: Generates reports on optimization progress and performance trends.
+
+<#0.5#>
+
+#### MLflow Integration
+Machine learning lifecycle management.
+
+- **Model Registry**: Maintains registry of optimized prompts with versioning and stage management.
+- **Experiment Comparison**: Provides comparison tools for different optimization strategies.
+- **Deployment Management**: Manages deployment of optimized prompts to production environments.
+- **Performance Monitoring**: Tracks prompt performance in production with degradation alerting.
+- **Integration Flexibility**: Supports various ML frameworks and deployment strategies.
+
+## Detailed Implementation Examples
+
+<#0.5#>
+
+### Phase 1: Enhanced Prompt Analysis (Baseline Evaluation)
+
+<#0.5#>
+
+#### Comprehensive Linguistic Analysis Engine
+
+```python
+import spacy
+import numpy as np
+from sklearn.feature_extraction.text import TfidfVectorizer
+from textstat import flesch_reading_ease, flesch_kincaid_grade
+import networkx as nx
+from collections import Counter
+import pandas as pd
+from sentence_transformers import SentenceTransformer
+
+class AdvancedPromptAnalyzer:
+    """Performs multi-dimensional analysis of prompt effectiveness."""
+    
+    def __init__(self):
+        # Load advanced spaCy model with transformer
+        self.nlp = spacy.load("en_core_web_trf")
+        self.tfidf_vectorizer = TfidfVectorizer(max_features=1000)
+        self.semantic_model = SentenceTransformer('all-MiniLM-L6-v2')
+        self.complexity_analyzer = self._init_complexity_analyzer()
+
+    def comprehensive_analysis(self, prompt_text: str) -> dict:
+        """Performs multi-dimensional prompt analysis."""
+        doc = self.nlp(prompt_text)
+        
+        analysis_results = {
+            "linguistic_features": self._extract_linguistic_features(doc),
+            "semantic_coherence": self._analyze_semantic_coherence(doc),
+            "complexity_metrics": self._analyze_complexity(prompt_text),
+            "structural_patterns": self._analyze_structure(doc),
+            "token_distribution": self._analyze_token_distribution(doc),
+            "readability_scores": self._calculate_readability(prompt_text),
+            "entity_density": self._analyze_entity_density(doc),
+            "syntactic_diversity": self._calculate_syntactic_diversity(doc)
+        }
+        
+        return analysis_results
+
+    def _extract_linguistic_features(self, doc) -> dict:
+        """Extracts comprehensive linguistic features."""
+        return {
+            "tokens": [token.text for token in doc],
+            "lemmas": [token.lemma_ for token in doc],
+            "pos_tags": [(token.text, token.pos_, token.tag_) for token in doc],
+            "dependencies": [(token.text, token.dep_, token.head.text) for token in doc],
+            "noun_phrases": [chunk.text for chunk in doc.noun_chunks],
+            "entities": [(ent.text, ent.label_, ent.start_char, ent.end_char) for ent in doc.ents],
+            "sentence_structures": self._analyze_sentence_structures(doc)
+        }
+
+    def _analyze_semantic_coherence(self, doc) -> dict:
+        """Analyzes semantic coherence and consistency."""
+        sentences = list(doc.sents)
+        
+        if len(sentences) < 2:
+            return {"coherence_score": 0.0, "sentence_similarities": []}
+
+        # Calculate sentence similarity matrix
+        sentence_vectors = np.array([sent.vector for sent in sentences])
+        similarities = []
+        
+        for i in range(len(sentence_vectors)):
+            for j in range(i + 1, len(sentence_vectors)):
+                sim = np.dot(sentence_vectors[i], sentence_vectors[j]) / (
+                    np.linalg.norm(sentence_vectors[i]) * np.linalg.norm(sentence_vectors[j])
+                )
+                similarities.append(sim)
+
+        coherence_score = np.mean(similarities) if similarities else 0.0
+        
+        return {
+            "coherence_score": coherence_score,
+            "sentence_similarities": similarities,
+            "semantic_density": self._calculate_semantic_density(doc),
+            "concept_clustering": self._analyze_concept_clustering(doc)
+        }
+
+    def _analyze_complexity(self, text: str) -> dict:
+        """Analyzes multiple dimensions of text complexity."""
+        return {
+            "flesch_reading_ease": flesch_reading_ease(text),
+            "flesch_kincaid_grade": flesch_kincaid_grade(text),
+            "sentence_length_variance": self._calculate_sentence_length_variance(text),
+            "vocabulary_complexity": self._assess_vocabulary_complexity(text),
+            "syntactic_complexity": self._measure_syntactic_complexity(text)
+        }
+
+class SemanticCoherenceAnalyzer:
+    """Advanced semantic analysis for prompt coherence."""
+    
+    def __init__(self):
+        self.sentence_model = SentenceTransformer('all-MiniLM-L6-v2')
+
+    def analyze_coherence(self, sentences: list) -> float:
+        """Analyzes semantic coherence across sentences."""
+        if len(sentences) < 2:
+            return 0.0
+
+        embeddings = self.sentence_model.encode(sentences)
+        similarities = []
+        
+        for i in range(len(embeddings)):
+            for j in range(i + 1, len(embeddings)):
+                sim = np.cosine(embeddings[i], embeddings[j])
+                similarities.append(sim)
+
+        return np.mean(similarities)
+
+def enhanced_baseline_evaluation(prompt_text: str) -> dict:
+    """Performs comprehensive baseline evaluation of prompt effectiveness."""
+    analyzer = AdvancedPromptAnalyzer()
+    analysis = analyzer.comprehensive_analysis(prompt_text)
+    
+    # Generate baseline outputs (placeholder for actual generation)
+    baseline_outputs = []  # Implement generation logic here
+    
+    # Calculate consistency and semantic alignment metrics
+    consistency_metrics = {}  # Implement consistency calculation
+    semantic_scores = {}  # Implement semantic alignment evaluation
+    
+    # Calculate overall effectiveness
+    effectiveness_score = 0.0  # Implement effectiveness calculation
+    
+    baseline_report = {
+        "prompt_analysis": analysis,
+        "consistency_metrics": consistency_metrics,
+        "semantic_alignment": semantic_scores,
+        "effectiveness_score": effectiveness_score,
+        "improvement_recommendations": []  # Implement recommendations
+    }
+    
+    return baseline_report
+```
+
+<#0.5#>
+
+### Phase 2: Advanced Template Library with Intelligence
+
+<#0.5#>
+
+#### Sophisticated Template Management System
+
+```python
+import pymongo
+from sentence_transformers import SentenceTransformer
+import numpy as np
+from datetime import datetime, timedelta
+from typing import Dict, List, Optional
+import json
+
+class IntelligentTemplateLibrary:
+    """Manages template storage, retrieval, and performance tracking."""
+    
+    def __init__(self, mongodb_uri: str, database_name: str = "prompt_library"):
+        self.client = pymongo.MongoClient(mongodb_uri)
+        self.db = self.client[database_name]
+        self.templates = self.db["templates"]
+        self.performance_logs = self.db["performance_logs"]
+        self.user_interactions = self.db["user_interactions"]
+        
+        # Initialize semantic search model
+        self.semantic_model = SentenceTransformer('all-mpnet-base-v2')
+        self._create_indexes()
+
+    def _create_indexes(self):
+        """Creates optimized database indexes."""
+        self.templates.create_index([("category", 1), ("avg_consistency", -1)])
+        self.templates.create_index([("tags", 1), ("use_count", -1)])
+        self.templates.create_index([("embedding", "2dsphere")])
+        self.performance_logs.create_index([("template_id", 1), ("timestamp", -1)])
+
+    def store_enhanced_template(self, template_data: Dict) -> str:
+        """Stores template with comprehensive metadata and versioning."""
+        # Generate semantic embedding
+        template_text = template_data['template']
+        embedding = self.semantic_model.encode(template_text).tolist()
+        
+        # Enhanced template document
+        enhanced_template = {
+            "template_id": template_data.get('template_id', self._generate_template_id()),
+            "category": template_data['category'],
+            "subcategory": template_data.get('subcategory', ''),
+            "template": template_text,
+            "description": template_data.get('description', ''),
+            "example": template_data.get('example', ''),
+            "tags": template_data.get('tags', []),
+            "parameters": template_data.get('parameters', {}),
+            "constraints": template_data.get('constraints', {}),
+            "target_models": template_data.get('target_models', []),
+            "domain_specific": template_data.get('domain_specific', False),
+            
+            # Performance metrics
+            "avg_consistency": template_data.get('avg_consistency', 0.0),
+            "avg_quality_score": template_data.get('avg_quality_score', 0.0),
+            "avg_user_rating": template_data.get('avg_user_rating', 0.0),
+            "success_rate": template_data.get('success_rate', 0.0),
+            "cost_efficiency": template_data.get('cost_efficiency', 0.0),
+            
+            # Usage statistics
+            "use_count": 0,
+            "success_count": 0,
+            "last_used": None,
+            "creation_date": datetime.now(),
+            "last_updated": datetime.now(),
+            
+            # Semantic information
+            "embedding": embedding,
+            "semantic_clusters": [],
+            "similar_templates": [],
+            
+            # Version control
+            "version": "1.0",
+            "parent_template": None,
+            "child_templates": [],
+            "modification_history": []
+        }
+        
+        # Store in database
+        result = self.templates.insert_one(enhanced_template)
+        self._update_semantic_clusters(result.inserted_id, embedding)
+        
+        return str(result.inserted_id)
+
+    def intelligent_template_search(self, query: str, context: Dict = None, 
+                                  filters: Dict = None) -> List[Dict]:
+        """Performs advanced template search with semantic matching and contextual ranking."""
+        query_embedding = self.semantic_model.encode(query)
+        
+        # Build MongoDB aggregation pipeline
+        pipeline = []
+        
+        # Apply filters if provided
+        if filters:
+            match_conditions = {}
+            if 'category' in filters:
+                match_conditions['category'] = filters['category']
+            if 'tags' in filters:
+                match_conditions['tags'] = {'$in': filters['tags']}
+            if 'min_consistency' in filters:
+                match_conditions['avg_consistency'] = {'$gte': filters['min_consistency']}
+            
+            if match_conditions:
+                pipeline.append({"$match": match_conditions})
+        
+        # Add semantic similarity scoring and ranking
+        pipeline.extend([
+            {
+                "$addFields": {
+                    "semantic_similarity": {
+                        "$function": {
+                            "body": f"""
+                                function(embedding) {{
+                                    let queryEmbed = {query_embedding.tolist()};
+                                    let dotProduct = 0;
+                                    let normA = 0;
+                                    let normB = 0;
+                                    for (let i = 0; i < queryEmbed.length; i++) {{
+                                        dotProduct += queryEmbed[i] * embedding[i];
+                                        normA += queryEmbed[i] * queryEmbed[i];
+                                        normB += embedding[i] * embedding[i];
+                                    }}
+                                    return dotProduct / (Math.sqrt(normA) * Math.sqrt(normB));
+                                }}
+                            """,
+                            "args": ["$embedding"],
+                            "lang": "js"
+                        }
+                    }
+                }
+            },
+            {
+                "$addFields": {
+                    "composite_score": {
+                        "$add": [
+                            {"$multiply": ["$semantic_similarity", 0.4]},
+                            {"$multiply": ["$avg_consistency", 0.2]},
+                            {"$multiply": ["$avg_quality_score", 0.2]},
+                            {"$multiply": ["$success_rate", 0.1]},
+                            {"$multiply": [{"$log": {"$add": ["$use_count", 1]}}, 0.1]}
+                        ]
+                    }
+                }
+            },
+            {"$sort": {"composite_score": -1}},
+            {"$limit": 20}
+        ])
+        
+        results = list(self.templates.aggregate(pipeline))
+        
+        # Apply contextual re-ranking if context provided
+        if context:
+            results = self._contextual_rerank(results, context)
+        
+        return results
+
+    def _contextual_rerank(self, results: List[Dict], context: Dict) -> List[Dict]:
+        """Re-ranks results based on contextual factors."""
+        for result in results:
+            contextual_boost = 0.0
+            
+            # User history boost
+            if 'user_id' in context:
+                user_preference = self._get_user_preference(
+                    context['user_id'], result['template_id']
+                )
+                contextual_boost += user_preference * 0.1
+            
+            # Task similarity boost
+            if 'current_task' in context:
+                task_similarity = self._calculate_task_similarity(
+                    context['current_task'], result['category']
+                )
+                contextual_boost += task_similarity * 0.15
+            
+            # Recency boost
+            if result['last_used']:
+                days_since_use = (datetime.now() - result['last_used']).days
+                recency_boost = max(0, 1 - days_since_use / 30) * 0.05
+                contextual_boost += recency_boost
+            
+            result['composite_score'] += contextual_boost
+        
+        # Re-sort by updated composite score
+        return sorted(results, key=lambda x: x['composite_score'], reverse=True)
+
+    def dynamic_template_composition(self, requirements: Dict) -> Dict:
+        """Intelligently composes templates from multiple sources."""
+        components = self._find_template_components(requirements)
+        
+        # Use genetic algorithm to find optimal composition
+        composer = TemplateComposer(components)
+        optimized_template = composer.evolve_composition(requirements)
+        
+        # Store composed template
+        composed_id = self.store_enhanced_template(optimized_template)
+        
+        return {
+            "template_id": composed_id,
+            "composed_template": optimized_template,
+            "component_sources": [comp['template_id'] for comp in components],
+            "composition_strategy": composer.get_strategy_description()
+        }
+
+class TemplatePerformanceTracker:
+    """Tracks and analyzes template performance over time."""
+    
+    def __init__(self, template_library: IntelligentTemplateLibrary):
+        self.library = template_library
+
+    def log_usage(self, template_id: str, performance_metrics: Dict, 
+                  context: Dict = None):
+        """Logs template usage with comprehensive metrics."""
+        usage_log = {
+            "template_id": template_id,
+            "timestamp": datetime.now(),
+            "performance_metrics": performance_metrics,
+            "context": context or {},
+            "session_id": context.get('session_id') if context else None,
+            "user_id": context.get('user_id') if context else None
+        }
+        
+        # Store usage log
+        self.library.performance_logs.insert_one(usage_log)
+        
+        # Update template statistics
+        self._update_template_statistics(template_id, performance_metrics)
+
+    def _update_template_statistics(self, template_id: str, metrics: Dict):
+        """Updates rolling statistics for template performance."""
+        time_windows = [7, 30, 90, 365]  # days
+        
+        for window_days in time_windows:
+            start_date = datetime.now() - timedelta(days=window_days)
+            
+            # Get recent performance data
+            recent_logs = list(self.library.performance_logs.find({
+                "template_id": template_id,
+                "timestamp": {"$gte": start_date}
+            }))
+            
+            if recent_logs:
+                # Calculate statistics
+                consistency_scores = [log['performance_metrics'].get('consistency', 0.0) 
+                                    for log in recent_logs]
+                quality_scores = [log['performance_metrics'].get('quality', 0.0) 
+                                for log in recent_logs]
+                
+                avg_consistency = np.mean(consistency_scores)
+                avg_quality = np.mean(quality_scores)
+                
+                # Update template document
+                self.library.templates.update_one(
+                    {"template_id": template_id},
+                    {
+                        "$set": {
+                            f"avg_consistency_{window_days}d": avg_consistency,
+                            f"avg_quality_{window_days}d": avg_quality,
+                            "last_updated": datetime.now()
+                        },
+                        "$inc": {"use_count": 1}
+                    }
+                )
+```
+
+<#0.5#>
+
+### Phase 3: Multi-Dimensional A/B Testing Framework
+
+<#0.5#>
+
+#### Advanced A/B Testing System
+
+```python
+import numpy as np
+from scipy import stats
+from typing import Dict, List, Tuple, Optional
+import asyncio
+import aiohttp
+from dataclasses import dataclass
+from enum import Enum
+import hashlib
+import json
+from datetime import datetime, timedelta
+
+class ExperimentStatus(Enum):
+    """Defines experiment lifecycle states."""
+    DRAFT = "draft"
+    RUNNING = "running"
+    PAUSED = "paused"
+    COMPLETED = "completed"
+    STOPPED = "stopped"
+
+@dataclass
+class ExperimentVariant:
+    """Represents an experiment variant with prompt configuration."""
+    variant_id: str
+    name: str
+    prompt_template: str
+    model_config: Dict
+    traffic_allocation: float
+    parameters: Dict = None
+
+class AdvancedABTestingFramework:
+    """Implements comprehensive A/B testing with statistical rigor."""
+    
+    def __init__(self, storage_backend, analytics_backend):
+        self.storage = storage_backend
+        self.analytics = analytics_backend
+        self.running_experiments = {}
+
+    async def create_experiment(self, experiment_config: Dict) -> str:
+        """Creates a new A/B testing experiment."""
+        experiment = {
+            "experiment_id": self._generate_experiment_id(),
+            "name": experiment_config['name'],
+            "description": experiment_config.get('description', ''),
+            "hypothesis": experiment_config.get('hypothesis', ''),
+            "primary_metric": experiment_config['primary_metric'],
+            "secondary_metrics": experiment_config.get('secondary_metrics', []),
+            "variants": experiment_config['variants'],
+            "traffic_allocation": experiment_config.get('traffic_allocation', {}),
+            "statistical_config": self._setup_statistical_config(experiment_config),
+            "status": ExperimentStatus.DRAFT,
+            "created_at": datetime.now(),
+            "started_at": None,
+            "ended_at": None,
+            "results": None
+        }
+        
+        # Validate experiment configuration
+        validation_result = self._validate_experiment_config(experiment)
+        if not validation_result['valid']:
+            raise ValueError(f"Invalid experiment configuration: {validation_result['errors']}")
+        
+        # Calculate required sample sizes
+        sample_sizes = self._calculate_sample_sizes(experiment)
+        experiment['sample_size_requirements'] = sample_sizes
+        
+        # Store experiment
+        experiment_id = await self.storage.store_experiment(experiment)
+        
+        return experiment_id
+
+    def _setup_statistical_config(self, config: Dict) -> Dict:
+        """Sets up statistical configuration for the experiment."""
+        return {
+            "significance_level": config.get('significance_level', 0.05),
+            "power": config.get('power', 0.8),
+            "minimum_effect_size": config.get('minimum_effect_size', 0.05),
+            "multiple_testing_correction": config.get('multiple_testing_correction', 'bonferroni'),
+            "sequential_testing": config.get('sequential_testing', False),
+            "early_stopping_rules": config.get('early_stopping_rules', {}),
+            "stratification_variables": config.get('stratification_variables', [])
+        }
+
+    def _calculate_sample_sizes(self, experiment: Dict) -> Dict:
+        """Calculates required sample sizes using power analysis."""
+        config = experiment['statistical_config']
+        alpha = config['significance_level']
+        power = config['power']
+        effect_size = config['minimum_effect_size']
+        
+        # Adjust for multiple testing
+        if len(experiment['variants']) > 2:
+            if config['multiple_testing_correction'] == 'bonferroni':
+                alpha_adjusted = alpha / len(experiment['variants'])
+            else:
+                alpha_adjusted = alpha
+        else:
+            alpha_adjusted = alpha
+        
+        # Calculate sample size using Cohen's formulas
+        from statsmodels.stats.power import TTestIndPower
+        power_analysis = TTestIndPower()
+        
+        sample_size_per_variant = int(
+            power_analysis.solve_power(effect_size, power=power, alpha=alpha_adjusted, ratio=1.0)
+        ) + 100  # Add buffer
+        
+        total_sample_size = sample_size_per_variant * len(experiment['variants'])
+        
+        return {
+            "sample_size_per_variant": sample_size_per_variant,
+            "total_sample_size": total_sample_size,
+            "confidence_level": 1 - alpha,
+            "power": power,
+            "effect_size": effect_size
+        }
+
+    async def assign_variant(self, experiment_id: str, user_id: str, 
+                           context: Dict = None) -> Optional[str]:
+        """Assigns user to experiment variant with stratification."""
+        experiment = await self.storage.get_experiment(experiment_id)
+        
+        if experiment['status'] != ExperimentStatus.RUNNING:
+            return None
+        
+        # Check if user already assigned
+        existing_assignment = await self.storage.get_user_assignment(
+            experiment_id, user_id
+        )
+        if existing_assignment:
+            return existing_assignment['variant_id']
+        
+        # Perform stratified assignment if configured
+        stratum = self._determine_stratum(user_id, context, experiment)
+        
+        # Get current assignments for this stratum
+        current_assignments = await self.storage.get_stratum_assignments(
+            experiment_id, stratum
+        )
+        
+        # Calculate assignment probabilities
+        variant_id = self._probabilistic_assignment(
+            experiment['variants'], 
+            current_assignments,
+            experiment['traffic_allocation']
+        )
+        
+        # Record assignment
+        assignment = {
+            "experiment_id": experiment_id,
+            "user_id": user_id,
+            "variant_id": variant_id,
+            "stratum": stratum,
+            "assigned_at": datetime.now(),
+            "context": context or {}
+        }
+        
+        await self.storage.store_assignment(assignment)
+        
+        return variant_id
+
+    def _probabilistic_assignment(self, variants: List[Dict], 
+                                 current_assignments: Dict,
+                                 traffic_allocation: Dict) -> str:
+        """Assigns variant using probabilistic assignment with balancing."""
+        total_assignments = sum(current_assignments.values())
+        
+        if total_assignments == 0:
+            # First assignments - use pure random based on target allocation
+            weights = [traffic_allocation.get(v['variant_id'], 0.0) for v in variants]
+            return np.random.choice(
+                [v['variant_id'] for v in variants],
+                p=np.array(weights) / sum(weights)
+            )
+        
+        # Calculate deviation from target allocation
+        target_ratios = {v['variant_id']: traffic_allocation.get(v['variant_id'], 0.0) 
+                        for v in variants}
+        total_target_weight = sum(target_ratios.values())
+        
+        # Normalize target ratios
+        target_ratios = {k: v/total_target_weight for k, v in target_ratios.items()}
+        
+        # Calculate current ratios
+        current_ratios = {k: v/total_assignments for k, v in current_assignments.items()}
+        
+        # Bias assignment toward under-represented variants
+        assignment_weights = {}
+        for variant in variants:
+            variant_id = variant['variant_id']
+            target_ratio = target_ratios[variant_id]
+            current_ratio = current_ratios.get(variant_id, 0.0)
+            
+            # Higher weight for variants that are under-represented
+            if current_ratio < target_ratio:
+                assignment_weights[variant_id] = target_ratio + (target_ratio - current_ratio)
+            else:
+                assignment_weights[variant_id] = target_ratio * 0.8  # Reduce probability
+        
+        # Normalize weights
+        total_weight = sum(assignment_weights.values())
+        probabilities = [assignment_weights[v['variant_id']]/total_weight for v in variants]
+        
+        return np.random.choice(
+            [v['variant_id'] for v in variants],
+            p=probabilities
+        )
+
+    async def record_metric(self, experiment_id: str, user_id: str, 
+                           metric_name: str, value: float, 
+                           timestamp: datetime = None):
+        """Records experiment metric with validation."""
+        if timestamp is None:
+            timestamp = datetime.now()
+        
+        # Validate metric
+        experiment = await self.storage.get_experiment(experiment_id)
+        valid_metrics = [experiment['primary_metric']] + experiment['secondary_metrics']
+        
+        if metric_name not in valid_metrics:
+            raise ValueError(f"Invalid metric: {metric_name}")
+        
+        # Get user assignment
+        assignment = await self.storage.get_user_assignment(experiment_id, user_id)
+        if not assignment:
+            raise ValueError(f"User {user_id} not assigned to experiment {experiment_id}")
+        
+        # Record metric
+        metric_record = {
+            "experiment_id": experiment_id,
+            "user_id": user_id,
+            "variant_id": assignment['variant_id'],
+            "metric_name": metric_name,
+            "value": value,
+            "timestamp": timestamp,
+            "stratum": assignment.get('stratum')
+        }
+        
+        await self.storage.store_metric(metric_record)
+        
+        # Check for early stopping conditions
+        if experiment['statistical_config'].get('sequential_testing', False):
+            await self._check_early_stopping(experiment_id)
+
+    async def analyze_experiment(self, experiment_id: str) -> Dict:
+        """Performs comprehensive statistical analysis of experiment results."""
+        experiment = await self.storage.get_experiment(experiment_id)
+        metrics_data = await self.storage.get_experiment_metrics(experiment_id)
+        
+        if not metrics_data:
+            return {"status": "no_data", "message": "No metrics data available"}
+        
+        analysis_results = {}
+        
+        # Analyze primary metric
+        primary_analysis = await self._analyze_metric(
+            metrics_data, 
+            experiment['primary_metric'], 
+            experiment
+        )
+        analysis_results['primary_metric'] = primary_analysis
+        
+        # Analyze secondary metrics
+        secondary_analyses = {}
+        for metric in experiment['secondary_metrics']:
+            secondary_analysis = await self._analyze_metric(
+                metrics_data, 
+                metric, 
+                experiment
+            )
+            secondary_analyses[metric] = secondary_analysis
+        
+        analysis_results['secondary_metrics'] = secondary_analyses
+        
+        # Generate overall conclusions
+        analysis_results['conclusions'] = self._generate_conclusions(
+            primary_analysis, 
+            secondary_analyses, 
+            experiment
+        )
+        
+        # Calculate effect sizes and confidence intervals
+        analysis_results['effect_sizes'] = self._calculate_effect_sizes(
+            metrics_data, 
+            experiment
+        )
+        
+        analysis_results['confidence_intervals'] = self._calculate_confidence_intervals(
+            metrics_data, 
+            experiment
+        )
+        
+        return analysis_results
+
+    async def _analyze_metric(self, metrics_data: List[Dict], 
+                             metric_name: str, experiment: Dict) -> Dict:
+        """Performs statistical analysis for a specific metric."""
+        # Filter data for this metric
+        metric_data = [m for m in metrics_data if m['metric_name'] == metric_name]
+        
+        if not metric_data:
+            return {"status": "no_data", "metric": metric_name}
+        
+        # Group by variant
+        variant_data = {}
+        for record in metric_data:
+            variant_id = record['variant_id']
+            if variant_id not in variant_data:
+                variant_data[variant_id] = []
+            variant_data[variant_id].append(record['value'])
+        
+        # Perform statistical tests
+        if len(variant_data) == 2:
+            # Two-sample t-test
+            variants = list(variant_data.keys())
+            sample1 = np.array(variant_data[variants[0]])
+            sample2 = np.array(variant_data[variants[1]])
+            
+            # Check normality assumptions
+            normality_test1 = stats.shapiro(sample1) if len(sample1) < 5000 else stats.jarque_bera(sample1)
+            normality_test2 = stats.shapiro(sample2) if len(sample2) < 5000 else stats.jarque_bera(sample2)
+            
+            # Choose appropriate test
+            if normality_test1.pvalue > 0.05 and normality_test2.pvalue > 0.05:
+                # Use Welch's t-test
+                statistic, p_value = stats.ttest_ind(sample1, sample2, equal_var=False)
+                test_used = "welch_t_test"
+            else:
+                # Use Mann-Whitney U test
+                statistic, p_value = stats.mannwhitneyu(sample1, sample2, alternative='two-sided')
+                test_used = "mann_whitney_u"
+        
+        else:
+            # ANOVA for multiple variants
+            samples = [np.array(variant_data[variant_id]) for variant_id in variant_data.keys()]
+            statistic, p_value = stats.f_oneway(*samples)
+            test_used = "anova"
+        
+        # Calculate descriptive statistics
+        descriptive_stats = {}
+        for variant_id, values in variant_data.items():
+            values_array = np.array(values)
+            descriptive_stats[variant_id] = {
+                "count": len(values),
+                "mean": np.mean(values_array),
+                "std": np.std(values_array),
+                "median": np.median(values_array),
+                "min": np.min(values_array),
+                "max": np.max(values_array),
+                "quartiles": np.percentile(values_array, [25, 50, 75]).tolist()
+            }
+        
+        # Apply multiple testing correction
+        corrected_p_value = self._apply_multiple_testing_correction(
+            p_value, 
+            experiment
+        )
+        
+        return {
+            "metric": metric_name,
+            "test_statistic": float(statistic),
+            "p_value": float(p_value),
+            "corrected_p_value": float(corrected_p_value),
+            "test_used": test_used,
+            "significant": corrected_p_value < experiment['statistical_config']['significance_level'],
+            "descriptive_stats": descriptive_stats,
+            "sample_sizes": {k: len(v) for k, v in variant_data.items()}
+        }
+```
+
+<#0.5#>
+

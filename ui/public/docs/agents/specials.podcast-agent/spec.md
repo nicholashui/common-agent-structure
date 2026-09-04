@@ -20,8 +20,8 @@
     "routing_allowed": false
   },
   "budget_policy": {
-    "max_input_tokens": 1,
-    "max_output_tokens": 1,
+    "max_input_tokens": 2048,
+    "max_output_tokens": 1024,
     "max_model_calls": 2,
     "max_tool_requests": 0,
     "max_job_ms": 15000,
@@ -241,18 +241,18 @@ Success: stay inside pack responsibility; no network; no production activation.
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "声音设计",
+      "title": "\u58f0\u97f3\u8bbe\u8ba1",
       "isbn13": "9787106031237",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 声音设计，ISBN-13 9787106031237"
+      "citation": "ZH: \u58f0\u97f3\u8bbe\u8ba1\uff0cISBN-13 9787106031237"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "采访的艺术",
+      "title": "\u91c7\u8bbf\u7684\u827a\u672f",
       "isbn13": "9787301169186",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 采访的艺术，ISBN-13 9787301169186"
+      "citation": "ZH: \u91c7\u8bbf\u7684\u827a\u672f\uff0cISBN-13 9787301169186"
     },
     {
       "kind": "reference_book",
@@ -311,10 +311,10 @@ Success: stay inside pack responsibility; no network; no production activation.
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "现代录音技术",
+      "title": "\u73b0\u4ee3\u5f55\u97f3\u6280\u672f",
       "isbn13": "9787115331861",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 现代录音技术，ISBN-13 9787115331861"
+      "citation": "ZH: \u73b0\u4ee3\u5f55\u97f3\u6280\u672f\uff0cISBN-13 9787115331861"
     },
     {
       "kind": "reference_book",
@@ -372,34 +372,34 @@ Success: stay inside pack responsibility; no network; no production activation.
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "新闻的十大基本原则",
+      "title": "\u65b0\u95fb\u7684\u5341\u5927\u57fa\u672c\u539f\u5219",
       "isbn13": "9787301161111",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 新闻的十大基本原则，ISBN-13 9787301161111"
+      "citation": "ZH: \u65b0\u95fb\u7684\u5341\u5927\u57fa\u672c\u539f\u5219\uff0cISBN-13 9787301161111"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "如何阅读一本书",
+      "title": "\u5982\u4f55\u9605\u8bfb\u4e00\u672c\u4e66",
       "isbn13": "9787100040945",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 如何阅读一本书，ISBN-13 9787100040945"
+      "citation": "ZH: \u5982\u4f55\u9605\u8bfb\u4e00\u672c\u4e66\uff0cISBN-13 9787100040945"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "研究是一门艺术",
+      "title": "\u7814\u7a76\u662f\u4e00\u95e8\u827a\u672f",
       "isbn13": "9787300116226",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 研究是一门艺术，ISBN-13 9787300116226"
+      "citation": "ZH: \u7814\u7a76\u662f\u4e00\u95e8\u827a\u672f\uff0cISBN-13 9787300116226"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "秒懂声音掘金：重塑声音 打造声音IP 声音创副业 AI配音 AI解说",
+      "title": "\u79d2\u61c2\u58f0\u97f3\u6398\u91d1\uff1a\u91cd\u5851\u58f0\u97f3 \u6253\u9020\u58f0\u97f3IP \u58f0\u97f3\u521b\u526f\u4e1a AI\u914d\u97f3 AI\u89e3\u8bf4",
       "isbn13": "9787122477637",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 秒懂声音掘金：重塑声音 打造声音IP 声音创副业 AI配音 AI解说，ISBN-13 9787122477637"
+      "citation": "ZH: \u79d2\u61c2\u58f0\u97f3\u6398\u91d1\uff1a\u91cd\u5851\u58f0\u97f3 \u6253\u9020\u58f0\u97f3IP \u58f0\u97f3\u521b\u526f\u4e1a AI\u914d\u97f3 AI\u89e3\u8bf4\uff0cISBN-13 9787122477637"
     },
     {
       "kind": "reference_book",
@@ -422,19 +422,19 @@ Success: stay inside pack responsibility; no network; no production activation.
     {
       "kind": "reference_book",
       "language": "EN",
-      "title": "Production Sound Mixing The Art and Craft of Sound Recording for the Moving Image (The…",
+      "title": "Production Sound Mixing The Art and Craft of Sound Recording for the Moving Image (The\u2026",
       "author": "John J. Murphy",
       "isbn13": "9781501307102",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "EN: Production Sound Mixing The Art and Craft of Sound Recording for the Moving Image (The… (John J. Murphy), ISBN-13 9781501307102"
+      "citation": "EN: Production Sound Mixing The Art and Craft of Sound Recording for the Moving Image (The\u2026 (John J. Murphy), ISBN-13 9781501307102"
     },
     {
       "kind": "reference_book",
       "language": "EN",
-      "title": "Sound design the expressive power of music， voice and sound effects in cinema eng",
+      "title": "Sound design the expressive power of music\uff0c voice and sound effects in cinema eng",
       "isbn13": "9781032592183",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "EN: Sound design the expressive power of music， voice and sound effects in cinema eng, ISBN-13 9781032592183"
+      "citation": "EN: Sound design the expressive power of music\uff0c voice and sound effects in cinema eng, ISBN-13 9781032592183"
     },
     {
       "kind": "reference_book",
@@ -466,11 +466,11 @@ Success: stay inside pack responsibility; no network; no production activation.
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "电影电视声音创作与录音制作教程",
-      "author": "姚国强",
+      "title": "\u7535\u5f71\u7535\u89c6\u58f0\u97f3\u521b\u4f5c\u4e0e\u5f55\u97f3\u5236\u4f5c\u6559\u7a0b",
+      "author": "\u59da\u56fd\u5f3a",
       "isbn13": "9787106032937",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 电影电视声音创作与录音制作教程（姚国强），ISBN-13 9787106032937"
+      "citation": "ZH: \u7535\u5f71\u7535\u89c6\u58f0\u97f3\u521b\u4f5c\u4e0e\u5f55\u97f3\u5236\u4f5c\u6559\u7a0b\uff08\u59da\u56fd\u5f3a\uff09\uff0cISBN-13 9787106032937"
     }
   ],
   "common_agent_id": "specials.podcast-agent",
@@ -486,7 +486,7 @@ Success: stay inside pack responsibility; no network; no production activation.
   "generated_at": "2026-07-26T14:16:45.966484Z",
   "reviewed_by": "specials-self-contained-reviewer",
   "reviewed_at": "2026-07-26T18:00:00Z",
-  "imported_from": "C:\\Project\\common-agent-swarm-ops\\business\\specials\\agents\\specials.podcast-agent",
+  "imported_from": "vendor/common-agent-swarm-ops/business/specials/agents/specials.podcast-agent",
   "reference_book_origin": "spec/book_of_knowledge.md",
   "reference_book_note": "Bibliographic references from spec/book_of_knowledge.md. Does not enable network, RAG, T3, plugins, or memory writes."
 }

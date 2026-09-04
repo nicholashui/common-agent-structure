@@ -1,0 +1,18 @@
+{
+  "schema_version": "1.0",
+  "agent_id": "video.brand",
+  "sources": [
+    {
+      "id": "src_1",
+      "title": "Brand books, approved campaigns, legal claim guardrails, tone guides",
+      "description": "Brand books, approved campaigns, legal claim guardrails, tone guides",
+      "license_class": "unknown_review_required",
+      "acquisition_method": "manual_or_licensed_api",
+      "local_path_hint": "sources/excerpts/ or sources/study/",
+      "refresh_sla_days": 90,
+      "owner": "video.brand",
+      "status": "planned_or_partial"
+    }
+  ],
+  "note": "Legal review required before treating external corpora as production grounding."
+}

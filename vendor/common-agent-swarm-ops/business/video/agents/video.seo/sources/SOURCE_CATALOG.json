@@ -1,0 +1,18 @@
+{
+  "schema_version": "1.0",
+  "agent_id": "video.seo",
+  "sources": [
+    {
+      "id": "src_1",
+      "title": "Search ranking studies, video metadata best practices, keyword taxonomies",
+      "description": "Search ranking studies, video metadata best practices, keyword taxonomies",
+      "license_class": "unknown_review_required",
+      "acquisition_method": "manual_or_licensed_api",
+      "local_path_hint": "sources/excerpts/ or sources/study/",
+      "refresh_sla_days": 90,
+      "owner": "video.seo",
+      "status": "planned_or_partial"
+    }
+  ],
+  "note": "Legal review required before treating external corpora as production grounding."
+}

@@ -1,0 +1,471 @@
+各位觀眾大家好，歡迎返嚟我哋嘅頻道。今日呢條片我哋會詳細講解 LipSyncAgent 嘅操作員同設計指南。
+
+呢份指南係寫畀邊個睇㗎呢？主要係畀操作員、pack 作者、swarm 設計師，同埋喺 common-agent-swarm-ops 入面做 review 嘅人睇嘅。
+
+睇完呢份指南你會得到咩呢？你會清楚瞭解佢嘅任務、幾時要用佢、協作地圖、CASOPS 操作步驟、改進路徑，同埋一個有信任分級嘅來源地圖。
+
+不過要強調一點，呢份指南唔係一個授權書嚟畀你去啟動 provider、開放網絡存取、或者自己發明工具。Host 嘅真相係 fail-closed 嘅 agent_spec.json。來自 VA 或者 redesign 文件嘅設計文字係屬於不受信任嘅來源。
+
+Pack 路徑係 business/video/agents/video.lipsync/。指南路徑係 docs/user_guide.md。呢份文件係由 scripts/business/generate_agent_user_guides.py 自動生成嘅。
+
+好，我哋而家進入第一部分，快照。
+
+LipSyncAgent 嘅 pack agent id 係 video.lipsync，佢係一個 Video Domain Pack 角色，運行喺 CASOPS 上面。
+
+用簡單嘅語言嚟講，佢嘅工作就係驗證同精煉音素到口型嘅對齊，作為一個專門嘅關卡。
+
+你要將呢份指南當作人類可讀嘅操作員地圖，用嚟做目錄審查、swarm 設計同埋提案驅動嘅改進，而唔係當作運行時啟動許可證。
+
+而家我逐個欄位同你講解快照表格入面嘅資料。
+
+Display name 顯示名稱係 LipSyncAgent。
+
+Pack agent id 係 video.lipsync。
+
+Pack 係 video。
+
+Host role string 主機角色字串係 LipSyncAgent (VA Domain Pack)。
+
+Catalog status 目錄狀態係 registered，即係已經註冊咗。
+
+Maturity today 即係而家嘅成熟度係 L0，即 non-active，屬於目錄同設計保真度階段。
+
+VA id 係 99。
+
+VA category 類別係 10-Sup，即係 Workflow support 同 release gates，工作流程支援同發佈關卡。
+
+Provider，即主機供應商係 local_deterministic。
+
+Network 網絡存取係 False，即係冇網絡存取權限。
+
+Allowed tools 允許嘅工具係空嘅，即係一個空列表。
+
+Production activation requested 生產激活請求係 False，即係冇人申請過生產激活。
+
+Prompt 同 rubric refs 分別係 video.prompt.lipsync.v1 同 video.rubric.lipsync.v1。
+
+Previous common id 之前嘅通用 ID 係 video.data_governance_officer。
+
+Generic lineage 通用譜系係 generic-swarm-ops/business/video/agents/video.lipsync。
+
+好，而家去到第二部分，點解呢個角色會存在。
+
+人類嘅影片製作團隊已經喺時間壓力下解決緊呢個問題：驗證同精煉音素到口型嘅對齊，作為一個專門嘅關卡。Agent 嘅形式存在，係為咗令多代理系統可以持續編碼呢門手藝，喺每一次交接都應用佢，然後只將殘餘風險升級畀人類處理。
+
+佢嘅知識庫係從以下來源蒸餾出嚟嘅：口型同步研究、動畫時間參考、口型數據集。呢啲係歷史設計來源，唔係喺呢個 host 上面做嘅實時網絡調用。
+
+設計野心，即超越人類嘅信號係：比一般 QC 審查更精確咁搵到同步漂移。當你之後寫 eval 或者提案嘅時候，要用呢個作為北極星指標。
+
+
+而家去到第三部分，咩叫做好嘅表現。
+
+當你閱讀輸出、撰寫評分標準、或者評估提案嘅時候，用以下呢啲作為審查標準。
+
+Primary outcome 主要成果係：驗證同精煉音素到口型嘅對齊，作為一個專門嘅關卡。
+
+Self-quality bar 自我質量標準有三個指標：同步錯誤低於閾值、修正特異性、低假陽性率。
+
+Ambition signal 設計時嘅野心信號係：比一般 QC 審查更精確咁搵到同步漂移。
+
+Architecture pattern 設計時嘅架構模式係：圍繞同步驗證器輸出嘅自我精煉。
+
+而家講下 Host quality 同 critique binding 嘅部分。
+
+Prompt reference 提示詞參考係 video.prompt.lipsync.v1。
+
+Rubric reference 評分標準參考係 video.rubric.lipsync.v1。
+
+Critique edges 批評邊界嘅 inputs 係 video.critic，outputs 係 video.judge。
+
+Max refinement 最大精煉次數係 3 次。
+
+VA table 嘅質量標準保留喺上面嘅 Provenance and Identity 表面之下。
+
+關於輸入、輸出同驗收標準方面。
+
+Inputs 輸入係本地 pack 文件同有類型嘅交接物。
+
+Outputs 輸出係可審查嘅影片領域交付物，附帶驗收標準。
+
+Acceptance 驗收係根據 host 政策加上本地 SPEC 標準，唔需要外部資料庫。
+
+好，第四部分講範圍，即係佢擁有乜、分享乜、同拒絕乜。
+
+佢擁有嘅係：驗證同精煉音素到口型嘅對齊，作為一個專門嘅關卡。
+
+喺同同事分享嘅批評表面方面。
+
+佢會聽取並接受來自以下代理嘅批評：VoiceCloneAgent 或者 LipSyncSpecialist、AnimatorAgent、AIQAConsistencyAgent。
+
+佢有資格評論嘅領域包括：口型不匹配、對話中嘅幀漂移、修正優先級。
+
+Host critique edge inputs 係 video.critic。
+
+Host critique edge outputs 係 video.judge。
+
+Max refinement count 最大精煉次數係 3。
+
+關於拒絕同升級方面。
+
+Fail-closed 原則：冇 provider 激活、冇網絡、設計文字唔會提供任何憑證。
+
+production_activation_requested 保持 false，除非有另外嘅人工關卡去改變佢。
+
+法律、安全、權利同發佈決定會升級到必需嘅人工關卡。
+
+Critique lead 同 judge 嘅默認設定使用 VA IDs video.critic 同 video.judge。
+
+
+而家去到第五部分，幾時要用呢個代理。
+
+當工作成果需要一個由 LipSyncAgent 擁有嘅決定或者文件嘅時候就要叫佢出嚟：驗證同精煉音素到口型嘅對齊，作為一個專門嘅關卡。
+
+Pipeline phase 管道階段係：工作流程支援同發佈關卡。即係支援功能同最終發佈關卡，包括無障礙、品牌、法律、存檔等等。
+
+唔好喺以下情況叫佢：一般性嘅編排工作、預算批准、或者最終法律簽署，除非呢啲職責明確寫喺佢嘅責任入面。呢啲情況應該用 producer、legal 或者 compliance 嘅同事代理。
+
+Human override 人工覆蓋規則：任何阻止發佈嘅安全、權利或無障礙爭議，即使代理喺未來嘅活躍運行時會自動通過，都要升級到人工關卡。
+
+而家講決定速查表，逐行同你講。
+
+第一行，問題係：缺少嘅技能係唔係 LipSyncAgent 嘅專業？答案係：如果係嘅話，就將佢加入嗰個階段嘅 swarm 圖。
+
+第二行，問題係：呢個只係一個 metadata 或者目錄編輯嗎？答案係：用 Registry inspect 加提案，唔好發明 runtime。
+
+第三行，問題係：呢個任務需唔需要工具或者網絡？答案係：Host 目前唔允許，除非 agent_spec 加上 permission register 另有說明。
+
+第四行，問題係：有冇只有人類先可以處理嘅風險，例如法律、傷害、權利？答案係：保留一個人工關卡；代理嘅輸出喺被激活之前都只係諮詢性質。
+
+第六部分講協作地圖。
+
+你要將呢個代理理解為批評總線上嘅一個節點，而唔係一個獨立嘅 chatbot。同事精煉質量；judges 同 gates 決定是否接受。
+
+Inbound critique 入站批評係嚟自：VoiceCloneAgent 或者 LipSyncSpecialist、AnimatorAgent、AIQAConsistencyAgent。
+
+Outbound commentary 出站評論嘅主題係：口型不匹配、對話中嘅幀漂移、修正優先級。
+
+Host edge inputs 係 video.critic。
+
+Host edge outputs 係 video.judge。
+
+而家去到第七部分，佢喺生產環境入面嘅位置。
+
+首先係 7.1 人類生產工作流程。
+
+佢嘅階段係：支援功能同最終發佈關卡，包括無障礙、品牌、法律、存檔等等。
+
+典型嘅交接文件包括：關卡決定、合規包、無障礙層、存檔母版、更正。
+
+將責任映射到經典階段：開發、前期製作、製作、後期製作、交付或者直播運營。優先選擇一個有呢個職銜嘅人會簽署嘅階段。
+
+而家講 7.2 多代理 AI 工作流程。
+
+佢喺 AI 工作流程入面嘅角色類型係：關卡同支援節點，喺發佈前或者上線後接受或拒絕交接。
+
+設計時嘅工具備註（對 host 冇約束力）：音素到口型對齊器、幀級同步工具。
+
+Loop style 循環風格係：圍繞同步驗證器輸出嘅自我精煉。喺今日嘅 CASOPS 上面，呢個模式只係文檔而已，實際嘅 provider 係 local deterministic，工具允許清單係空嘅或者只係 stub。
+
+而家講 AI 工作流程摘錄入面嘅提及。
+
+第一個提及：第 12 號係 AnimatorAgent（2D/3D），負責角色動作、重量同時間控制。知識來源包括 Richard Williams 嘅 Animator's Survival Kit、Annie Award 作品集、Pixar SparkShorts 評論、Aaron Blaise 課程。質量指標係 12 原則清單分數、弧線平滑度、口型同步音素準確度。超越人類嘅信號係喺 Annie Awards 評分標準上超越初級動畫師，以五倍產出量等同資深動畫師。佢同 DirectorAgent 同 LipSyncAgent 協作，同時同 StoryboardAgent 有互動。
+
+
+第二個提及：第 47 號係 AvatarDesignAgent，負責合成主持人身份設計。知識來源包括 Synthesia/HeyGen 設計文件、deepfake 偵測文獻（Hany Farid）、C2PA 規範。質量指標係跨鏡頭嘅身份一致性哈希、同意文件鏈、C2PA 已簽署。超越人類嘅信號係 C2PA 可驗證加上 Partnership-on-AI 框架大規模全通過。佢同 ComplianceAgent（同意方面）同 DeepfakeDetectionAgent 協作，同時同 VoiceCloneAgent（偏離肖像方面）同 LipSyncAgent 有互動。
+
+第三個提及：第 48 號係 VoiceCloneAgent 或者 LipSyncSpecialist，負責語音克隆加口型同步。知識來源包括 ElevenLabs 安全文件、Wav2Lip/Sync.so 論文、James Baxter 口型同步動畫參考。質量指標係語音 MOS 大於或等於 4.2、音素到口型對齊錯誤小於 40 毫秒、同意標誌已驗證。超越人類嘅信號係喺盲測 MOS 中勝過專業 ADR 加口型替換。佢同 ComplianceAgent（同意方面）同 AnimatorAgent（口型同步金標準）協作，同時同 AvatarDesignAgent（面部閃爍方面）有互動。
+
+而家講 7.3 共享交接合約，即 swarm-ready 嘅版本。
+
+當你將呢個代理接入未來嘅活躍 swarm 嘅時候，要求節點之間有機器可讀嘅清單。
+
+逐個欄位講解。
+
+artifact_id 加 version：為批評同重播提供不可變嘅身份。
+
+parent_assets：進入呢個代理輸入嘅來源鏈。
+
+brief_scope：防止責任之外嘅範圍蔓延。
+
+acceptance_criteria：同上面嘅自我質量標準掛鈎。
+
+qc_status 加 gate flags：令下游關卡可以短路處理。
+
+rights_and_consent：阻止不安全嘅合成或授權濫用。
+
+critique_log pointer：令精煉過程唔會失去歷史記錄。
+
+第八部分，今日喺 CASOPS 上面點樣操作呢個代理。
+
+今日呢個代理係一個目錄加設計物件。呢個係故意嘅：你可以研究、審查、提案，同埋將佢放入 swarm 設計入面，而唔需要授予生產權力。
+
+逐步講解五個步驟。
+
+第一步，Discover 發現：去 Registry Hub 嘅 pack catalog，路徑係 /registry。目的係確認佢嘅庫存成員資格。
+
+第二步，Inspect 檢查：去代理詳情頁面 /registry/agents/video.lipsync。目的係閱讀 SPEC 或者呢份指南嘅 markdown 版本。
+
+第三步，Propose improvements 提出改進：用 Host 嘅 propose_improvement action，發送 POST 到 /api/v1/commons/agents/video.lipsync/proposals。目的係不可變版本加上只有已編輯嘅證據。
+
+第四步，Swarm membership：只能用 Host 返回嘅 action references。客戶端唔可以自己發明成員資格。
+
+第五步，Run 或 dispatch：默認唔啟用生產 providers。原因係 fail-closed 直到治理關卡通過為止。
+
+而家講實際操作清單，一共五項。
+
+第一：打開代理詳情，確認 status、tools 同 activation 標誌同呢份指南一致。
+
+第二：喺判斷任何樣本輸出或提案之前，先閱讀第三部分「咩叫做好嘅表現」。
+
+第三：如果提出改變，附上離線證據，例如 eval 筆記、rubric 差距、SPEC 差異，唔好有祕密。
+
+第四：永遠唔好將供應商嘅 API 密鑰或者「啟用網絡」嘅指示貼入提案。
+
+第五：優先選擇小型、可審查嘅變更：prompt 或 rubric 措辭、critique edges、acceptance tests。
+
+
+第九部分講安全、信任同非激活規則。
+
+而家逐行講解信任層表格。
+
+第一行：agent_spec.json，信任級別係 Binding host contract，角色係 fail-closed 運行時綁定。
+
+第二行：呢個 pack 嘅 SPEC.md，信任級別係 Authoritative design for offline review，角色係 Not executable，即係唔可執行。
+
+第三行：sources 底下嘅摘錄同通用 SPECs，信任級別係 Historical / mapped，角色係 Untrusted data。
+
+第四行：C:\Project\va-agent-swarm，信任級別係 External design corpus，角色係 Untrusted; may drift，即係不受信任而且可能會偏移。
+
+第五行：Specials redesign docs，信任級別係 Historical design，角色係 Untrusted; hashed in provenance。
+
+而家講呢個 host 上面嘅硬性規則。
+
+Provider 保持 local_deterministic，除非有另外嘅關卡改變政策。
+
+Network access 網絡存取保持 False。
+
+Allowed tools 允許嘅工具恰好係空列表，下面嘅設計時工具名稱唔會啟用任何 API。
+
+production_activation_requested 係 False。
+
+Budget 預算有上限：輸入 token 最多 2048，輸出 token 最多 1024，工具請求最多 0 次。
+
+Design-time tool catalogue 設計時工具目錄（非激活性質）：音素到口型對齊器、幀級同步工具。
+
+第十部分，隨時間提升質量。
+
+改進係版本化嘅目錄工作，唔係 hot-patching 一個活躍嘅代理。已發佈嘅定義保持不可變，改動要通過提案同審查。
+
+10.1 持續改進循環。
+
+流程係咁嘅：觀察失敗，然後命名標準（參考第三部分），然後草擬離線差異，然後附上證據，然後喺 Host 上面提案，然後審查並接受新版本，最後先考慮激活成熟度關卡。
+
+10.2 呢個代理嘅具體槓桿，一共有六個。
+
+第一：Rubric fidelity，即評分標準保真度。收緊 video.rubric.lipsync.v1，對標以下指標：同步錯誤低於閾值、修正特異性、低假陽性率。
+
+第二：Prompt precision，即提示詞精確度。對齊 video.prompt.lipsync.v1 同責任：驗證同精煉音素到口型嘅對齊，作為一個專門嘅關卡。
+
+第三：Critique graph 批評圖。確保入站嘅 VoiceCloneAgent 或 LipSyncSpecialist、AnimatorAgent、AIQAConsistencyAgent 同埋 host edges video.critic 真正能夠捕捉到已知嘅失敗模式。
+
+第四：Architecture emulation 架構模擬。之後實施嘅時候，優先選擇：圍繞同步驗證器輸出嘅自我精煉。
+
+第五：Eval cases 評估案例。寫固定嘅 fixture，如果「比一般 QC 審查更精確咁搵到同步漂移」呢個目標冇被接近嘅話，呢啲 fixture 就應該失敗。
+
+第六：Human gates 人工關卡。保持法律、安全同發佈關卡明確；唔好將佢哋吸收入靜默自動化入面。
+
+10.3 建議嘅評估種子，一共有五行。
+
+第一行：Happy path handoff，通過條件係：輸出滿足同步錯誤低於閾值、修正特異性、低假陽性率。
+
+第二行：Out-of-scope request，通過條件係：代理根據第四部分拒絕或升級。
+
+第三行：Missing provenance / rights，通過條件係：關卡 fail-closed。
+
+第四行：Conflicting peer critique，通過條件係：精煉次數少於或等於 max_refinement_count，否則升級。
+
+第五行：Proposal-only change，通過條件係：新版本不可變，舊版本仍然可讀。
+
+
+第十一部分，來源地圖同出處。
+
+11.1 本地 pack 語料庫，優先使用呢啲。
+
+逐個路徑同信任級別講解。
+
+agent_spec.json，信任級別係 binding。
+
+SPEC.md，信任級別係 authoritative-design。
+
+README.md，信任級別係 local-index。
+
+sources/MAPPING.md，信任級別係 provenance。
+
+sources/PROVENANCE.json，信任級別係 provenance。
+
+sources/excerpts/agents.md，信任級別係 historical-excerpt。
+
+sources/excerpts/ai_agent_video_production_workflow.md，信任級別係 historical-excerpt。
+
+sources/excerpts/system_build_plan.md，信任級別係 historical-excerpt。
+
+sources/excerpts/SYSTEM_REFERENCE.md，信任級別係 historical-excerpt。
+
+sources/generic/video.legal.SPEC.md，信任級別係 historical-generic。
+
+sources/generic/video.trustsafety.SPEC.md，信任級別係 historical-generic。
+
+11.2 映射備註。
+
+video.lipsync 嘅映射入面，VA/generic pack ID 係 video.lipsync。Previous common ID 之前嘅通用 ID 係 video.data_governance_officer。SPEC depth 即規格深度係完整嘅通用 SPEC 本體加上 host 運行時綁定。
+
+11.3 出處記錄。
+
+而家逐個 JSON 欄位同你講。
+
+schema_version 係 1.0。
+
+agent_id 係 video.lipsync。
+
+previous_common_agent_id 係 video.data_governance_officer。
+
+va_taxonomy_aligned 係 true，即係同 VA 分類法對齊咗。
+
+generic_source 係 generic-swarm-ops/business/video/agents/video.lipsync。
+
+note 備註係：Agent ID 已對齊到 VA/generic Domain Pack 分類法。上游設計係歷史性嘅且無約束力。
+
+aligned_at 對齊時間係 2026-07-27T00:48:11.208579Z。
+
+generic_source_depth 嘅 excerpts 係 true，study 係 true，adopted_at 係 2026-07-27T01:30:28.341682+00:00，upstream 係 generic-swarm-ops/business/video/agents。
+
+11.4 出處敘述，來自 SPEC。
+
+Pack agent ID video.lipsync 係對齊到純 VA Domain Pack 或通用 pack 分類法嘅，Agent IDs 大約等於 VA 表格。
+
+Previous common inventory ID video.data_governance_officer 只係歷史映射而已。
+
+上游設計本體係歷史性同無約束力嘅，本地嘅 agent_spec.json 先係權威。
+
+完整嘅 VA/generic SPEC 深度被保留用於離線設計保真度，包括類別名冊行同通用代理結構（如果上游有嘅話）。
+
+11.5 VA 名冊行，歷史設計。
+
+來自 va-agent-swarm/study/agents.md 嘅第 99 行 LipSyncAgent，呢個係設計語料庫，對激活冇約束力。
+
+逐個維度講解。
+
+Responsibility 職責係：驗證同精煉音素到口型嘅對齊，作為一個專門嘅關卡。
+
+Knowledge distillation 知識蒸餾係：口型同步研究、動畫時間參考、口型數據集。
+
+Self-quality 自我質量係：同步錯誤低於閾值、修正特異性、低假陽性率。
+
+Surpass-human 超越人類係：比一般 QC 審查更精確咁搵到同步漂移。
+
+Accepts critique 接受批評嘅來源係：VoiceCloneAgent 或者 LipSyncSpecialist、AnimatorAgent、AIQAConsistencyAgent。
+
+Comments on 評論嘅領域係：口型不匹配、對話中嘅幀漂移、修正優先級。
+
+Tools（歷史性）工具係：音素到口型對齊器、幀級同步工具。
+
+Architecture 架構係：圍繞同步驗證器輸出嘅自我精煉。
+
+
+第十二部分，相關設計閱讀。
+
+呢啲資料喺加深設計保真度嘅時候使用。佢哋唔會覆蓋本地嘅 agent_spec.json。
+
+喺 va-agent-swarm 底下冇強烈嘅關鍵詞匹配，依賴本地 SPEC 同 VA 表格行。
+
+本地知識索引方面。
+
+Runtime binding 運行時綁定喺 agent_spec.json。
+
+Folder README 文件夾自述文件喺 README.md。
+
+Provenance 出處喺 sources/PROVENANCE.json。
+
+Mapping note 映射備註喺 sources/MAPPING.md。
+
+Pack inventory pack 庫存喺 ../../inventory.json。
+
+Pack manifest pack 清單喺 ../../manifest.json。
+
+所有需要嘅主要參考都喺呢個 repository 入面解析。
+
+文件夾 README 摘要：VA-aligned Domain Pack agent（common host）。文件列表入面，SPEC.md 嘅用途係 VA/generic depth 加 host binding。agent_spec.json 嘅用途係 Fail-closed runtime。sources/ 嘅用途係 Provenance / mapping。
+
+第十三部分，Host contract 附錄，即 agent_spec.json。
+
+呢個係呢個代理喺 CASOPS 上面嘅權威 fail-closed 配置。逐個 JSON 欄位講解。
+
+agent_id 係 video.lipsync。
+
+allowed_tools 允許嘅工具係空列表。
+
+budget_policy 預算政策方面，max_input_tokens 最大輸入 token 係 2048，max_output_tokens 最大輸出 token 係 1024，max_tool_requests 最大工具請求係 0。
+
+critique_edges 批評邊界方面，inputs 係 video.critic，outputs 係 video.judge。
+
+max_refinement_count 最大精煉次數係 3。
+
+model_policy 模型政策方面，model_id 係 local-video-config-v1，network_access 網絡存取係 false，provider 供應商係 local_deterministic。
+
+production_activation_requested 生產激活請求係 false。
+
+prompt_reference 提示詞參考係 video.prompt.lipsync.v1。
+
+role 角色係 LipSyncAgent (VA Domain Pack)。
+
+rubric_reference 評分標準參考係 video.rubric.lipsync.v1。
+
+schema_version 架構版本係 1.0。
+
+status 狀態係 registered。
+
+va_id 係 99。
+
+va_name 係 LipSyncAgent。
+
+va_category 係 10-Sup。
+
+第十四部分，SPEC responsibility excerpt 附錄。
+
+呢度係來自本地 SPEC.md 嘅擴展責任文字。
+
+主要職責係：驗證同精煉音素到口型嘅對齊，作為一個專門嘅關卡。
+
+Host role binding 主機角色綁定係 LipSyncAgent (VA Domain Pack)。設計時 VA 表格內容係歷史性嘅，對激活冇約束力。
+
+Responsibility from VA table：驗證同精煉音素到口型嘅對齊，作為一個專門嘅關卡。
+
+Knowledge distillation sources（歷史性）：口型同步研究、動畫時間參考、口型數據集。
+
+Self-quality criteria（歷史性）：同步錯誤低於閾值、修正特異性、低假陽性率。
+
+Surpass-human signal（歷史性）：比一般 QC 審查更精確咁搵到同步漂移。
+
+Critique bus（歷史性）方面。接受批評嘅來源係 VoiceCloneAgent 或者 LipSyncSpecialist、AnimatorAgent、AIQAConsistencyAgent。評論嘅領域係口型不匹配、對話中嘅幀漂移、修正優先級。
+
+Tools design-time notes（歷史性，非激活性質）：音素到口型對齊器、幀級同步工具。
+
+Runtime safety 運行時安全方面：Host 允許清單只有 agent_spec.json 加上 tool-permission-register.json。CI 用 video_* stubs。唔好將設計時嘅供應商名稱當作已啟用嘅 API。
+
+Architecture pattern（歷史性）架構模式：圍繞同步驗證器輸出嘅自我精煉。
+
+第十五部分，文件控制。
+
+Generator 生成器係 scripts/business/generate_agent_user_guides.py。
+
+Agent folder 代理文件夾係 business/video/agents/video.lipsync/。
+
+Output 輸出係 docs/user_guide.md。
+
+VA corpus root 語料庫根目錄係 C:\Project\va-agent-swarm。
+
+Regeneration 重新生成命令係 python scripts/business/generate_agent_user_guides.py。
+
+Trust model 信任模型係：設計語料庫等於不受信任嘅數據，host config 等於 fail-closed。
+
+好啦，以上就係 LipSyncAgent 嘅完整操作員同設計指南。建議你由第一部分快照同第五部分「幾時要用」開始睇。用第八到第十部分嚟做 CASOPS 操作同改進。只有喺需要深入設計保真度嘅時候先去睇第十一到第十二部分。多謝各位收睇，我哋下條片再見。

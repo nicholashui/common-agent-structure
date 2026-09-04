@@ -8279,7 +8279,7 @@ Once launched, it flows through the same:
 ## Provenance
 
 - Master roster row va_id=53 from embedded agents.md content above.
-- Deep/extra text from `business/video/corpus/` and `C:\Project\va-agent-swarm`.
+- Deep/extra text from `business/video/corpus/` and `vendor/va-agent-swarm`.
 - Generator: `scripts/business/enrich_video_agent_specs.py`.
 - Upstream project name (historical only): va-agent-swarm.
 
@@ -12732,7 +12732,7 @@ for critic in critics:
 ## Provenance
 
 - Master roster row va_id=2 from embedded agents.md content above.
-- Deep/extra text from `business/video/corpus/` and `C:\Project\va-agent-swarm`.
+- Deep/extra text from `business/video/corpus/` and `vendor/va-agent-swarm`.
 - Generator: `scripts/business/enrich_video_agent_specs.py`.
 - Upstream project name (historical only): va-agent-swarm.
 
@@ -12821,11 +12821,11 @@ Live primary-source expansion remains a residual for score 100 on S3 where depth
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "播音主持创作基础",
-      "author": "张颂",
+      "title": "\u64ad\u97f3\u4e3b\u6301\u521b\u4f5c\u57fa\u7840",
+      "author": "\u5f20\u9882",
       "isbn13": "9787565701238",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 播音主持创作基础（张颂），ISBN-13 9787565701238"
+      "citation": "ZH: \u64ad\u97f3\u4e3b\u6301\u521b\u4f5c\u57fa\u7840\uff08\u5f20\u9882\uff09\uff0cISBN-13 9787565701238"
     },
     {
       "kind": "reference_book",
@@ -12858,10 +12858,10 @@ Live primary-source expansion remains a residual for score 100 on S3 where depth
       "kind": "reference_book",
       "language": "EN",
       "title": "Hands-On Machine Learning, 3rd ed.",
-      "author": "Aurélien Géron",
+      "author": "Aur\u00e9lien G\u00e9ron",
       "isbn13": "9781098125974",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "EN: Hands-On Machine Learning, 3rd ed. (Aurélien Géron), ISBN-13 9781098125974"
+      "citation": "EN: Hands-On Machine Learning, 3rd ed. (Aur\u00e9lien G\u00e9ron), ISBN-13 9781098125974"
     },
     {
       "kind": "reference_book",
@@ -12885,10 +12885,10 @@ Live primary-source expansion remains a residual for score 100 on S3 where depth
       "kind": "reference_book",
       "language": "EN",
       "title": "Introduction to Information Retrieval",
-      "author": "Manning, Raghavan, Schütze",
+      "author": "Manning, Raghavan, Sch\u00fctze",
       "isbn13": "9780521865715",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "EN: Introduction to Information Retrieval (Manning, Raghavan, Schütze), ISBN-13 9780521865715"
+      "citation": "EN: Introduction to Information Retrieval (Manning, Raghavan, Sch\u00fctze), ISBN-13 9780521865715"
     },
     {
       "kind": "reference_book",
@@ -12938,88 +12938,88 @@ Live primary-source expansion remains a residual for score 100 on S3 where depth
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "人工智能：一种现代的方法",
-      "author": "第4版",
+      "title": "\u4eba\u5de5\u667a\u80fd\uff1a\u4e00\u79cd\u73b0\u4ee3\u7684\u65b9\u6cd5",
+      "author": "\u7b2c4\u7248",
       "isbn13": "9787111547044",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 人工智能：一种现代的方法（第4版），ISBN-13 9787111547044"
+      "citation": "ZH: \u4eba\u5de5\u667a\u80fd\uff1a\u4e00\u79cd\u73b0\u4ee3\u7684\u65b9\u6cd5\uff08\u7b2c4\u7248\uff09\uff0cISBN-13 9787111547044"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "深度学习",
-      "author": "花书",
+      "title": "\u6df1\u5ea6\u5b66\u4e60",
+      "author": "\u82b1\u4e66",
       "isbn13": "9787115461476",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 深度学习（花书），ISBN-13 9787115461476"
+      "citation": "ZH: \u6df1\u5ea6\u5b66\u4e60\uff08\u82b1\u4e66\uff09\uff0cISBN-13 9787115461476"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "机器学习",
-      "author": "周志华",
+      "title": "\u673a\u5668\u5b66\u4e60",
+      "author": "\u5468\u5fd7\u534e",
       "isbn13": "9787302373575",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 机器学习（周志华），ISBN-13 9787302373575"
+      "citation": "ZH: \u673a\u5668\u5b66\u4e60\uff08\u5468\u5fd7\u534e\uff09\uff0cISBN-13 9787302373575"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "统计学习方法",
-      "author": "李航",
+      "title": "\u7edf\u8ba1\u5b66\u4e60\u65b9\u6cd5",
+      "author": "\u674e\u822a",
       "isbn13": "9787302423288",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 统计学习方法（李航），ISBN-13 9787302423288"
+      "citation": "ZH: \u7edf\u8ba1\u5b66\u4e60\u65b9\u6cd5\uff08\u674e\u822a\uff09\uff0cISBN-13 9787302423288"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "强化学习",
-      "author": "第2版",
+      "title": "\u5f3a\u5316\u5b66\u4e60",
+      "author": "\u7b2c2\u7248",
       "isbn13": "9787115546081",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 强化学习（第2版），ISBN-13 9787115546081"
+      "citation": "ZH: \u5f3a\u5316\u5b66\u4e60\uff08\u7b2c2\u7248\uff09\uff0cISBN-13 9787115546081"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "信息检索导论",
+      "title": "\u4fe1\u606f\u68c0\u7d22\u5bfc\u8bba",
       "isbn13": "9787115221704",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 信息检索导论，ISBN-13 9787115221704"
+      "citation": "ZH: \u4fe1\u606f\u68c0\u7d22\u5bfc\u8bba\uff0cISBN-13 9787115221704"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "数据密集型应用系统设计",
+      "title": "\u6570\u636e\u5bc6\u96c6\u578b\u5e94\u7528\u7cfb\u7edf\u8bbe\u8ba1",
       "isbn13": "9787111547532",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 数据密集型应用系统设计，ISBN-13 9787111547532"
+      "citation": "ZH: \u6570\u636e\u5bc6\u96c6\u578b\u5e94\u7528\u7cfb\u7edf\u8bbe\u8ba1\uff0cISBN-13 9787111547532"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "超级智能",
+      "title": "\u8d85\u7ea7\u667a\u80fd",
       "isbn13": "9787508663098",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 超级智能，ISBN-13 9787508663098"
+      "citation": "ZH: \u8d85\u7ea7\u667a\u80fd\uff0cISBN-13 9787508663098"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "生命3.0",
+      "title": "\u751f\u547d3.0",
       "isbn13": "9787508684031",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 生命3.0，ISBN-13 9787508684031"
+      "citation": "ZH: \u751f\u547d3.0\uff0cISBN-13 9787508684031"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "动手学深度学习",
-      "author": "李沐等",
+      "title": "\u52a8\u624b\u5b66\u6df1\u5ea6\u5b66\u4e60",
+      "author": "\u674e\u6c90\u7b49",
       "isbn13": "9787115547460",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 动手学深度学习（李沐等），ISBN-13 9787115547460"
+      "citation": "ZH: \u52a8\u624b\u5b66\u6df1\u5ea6\u5b66\u4e60\uff08\u674e\u6c90\u7b49\uff09\uff0cISBN-13 9787115547460"
     },
     {
       "kind": "reference_book",
@@ -13033,26 +13033,26 @@ Live primary-source expansion remains a residual for score 100 on S3 where depth
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "威胁建模",
+      "title": "\u5a01\u80c1\u5efa\u6a21",
       "isbn13": "9787115419903",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 威胁建模，ISBN-13 9787115419903"
+      "citation": "ZH: \u5a01\u80c1\u5efa\u6a21\uff0cISBN-13 9787115419903"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "生成式AI实战基于Transformer、Stable Diffusion、LangChain和AI Agent",
+      "title": "\u751f\u6210\u5f0fAI\u5b9e\u6218\u57fa\u4e8eTransformer\u3001Stable Diffusion\u3001LangChain\u548cAI Agent",
       "isbn13": "9787115650443",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 生成式AI实战基于Transformer、Stable Diffusion、LangChain和AI Agent，ISBN-13 9787115650443"
+      "citation": "ZH: \u751f\u6210\u5f0fAI\u5b9e\u6218\u57fa\u4e8eTransformer\u3001Stable Diffusion\u3001LangChain\u548cAI Agent\uff0cISBN-13 9787115650443"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "Stable Diffusion AI 繪圖",
+      "title": "Stable Diffusion AI \u7e6a\u5716",
       "isbn13": "9787302656333",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: Stable Diffusion AI 繪圖，ISBN-13 9787302656333"
+      "citation": "ZH: Stable Diffusion AI \u7e6a\u5716\uff0cISBN-13 9787302656333"
     },
     {
       "kind": "reference_book",
@@ -13065,34 +13065,34 @@ Live primary-source expansion remains a residual for score 100 on S3 where depth
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "ComfyUI 工作流",
+      "title": "ComfyUI \u5de5\u4f5c\u6d41",
       "isbn13": "9787122466532",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: ComfyUI 工作流，ISBN-13 9787122466532"
+      "citation": "ZH: ComfyUI \u5de5\u4f5c\u6d41\uff0cISBN-13 9787122466532"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "AI短视频创作：一本通剪映+即梦+可灵+文心一格",
+      "title": "AI\u77ed\u89c6\u9891\u521b\u4f5c\uff1a\u4e00\u672c\u901a\u526a\u6620+\u5373\u68a6+\u53ef\u7075+\u6587\u5fc3\u4e00\u683c",
       "isbn13": "9787122470027",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: AI短视频创作：一本通剪映+即梦+可灵+文心一格，ISBN-13 9787122470027"
+      "citation": "ZH: AI\u77ed\u89c6\u9891\u521b\u4f5c\uff1a\u4e00\u672c\u901a\u526a\u6620+\u5373\u68a6+\u53ef\u7075+\u6587\u5fc3\u4e00\u683c\uff0cISBN-13 9787122470027"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "可灵AI ComfyUI+Deform 人工智能AI视频制作技巧",
+      "title": "\u53ef\u7075AI ComfyUI+Deform \u4eba\u5de5\u667a\u80fdAI\u89c6\u9891\u5236\u4f5c\u6280\u5de7",
       "isbn13": "9787122466556",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 可灵AI ComfyUI+Deform 人工智能AI视频制作技巧，ISBN-13 9787122466556"
+      "citation": "ZH: \u53ef\u7075AI ComfyUI+Deform \u4eba\u5de5\u667a\u80fdAI\u89c6\u9891\u5236\u4f5c\u6280\u5de7\uff0cISBN-13 9787122466556"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "AI數位人全面應用：形象製作+口播視頻+直播帶貨+客服溝通",
+      "title": "AI\u6578\u4f4d\u4eba\u5168\u9762\u61c9\u7528\uff1a\u5f62\u8c61\u88fd\u4f5c+\u53e3\u64ad\u8996\u983b+\u76f4\u64ad\u5e36\u8ca8+\u5ba2\u670d\u6e9d\u901a",
       "isbn13": "9787302695332",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: AI數位人全面應用：形象製作+口播視頻+直播帶貨+客服溝通，ISBN-13 9787302695332"
+      "citation": "ZH: AI\u6578\u4f4d\u4eba\u5168\u9762\u61c9\u7528\uff1a\u5f62\u8c61\u88fd\u4f5c+\u53e3\u64ad\u8996\u983b+\u76f4\u64ad\u5e36\u8ca8+\u5ba2\u670d\u6e9d\u901a\uff0cISBN-13 9787302695332"
     }
   ],
   "agent_id": "video.voiceclone",
@@ -13107,7 +13107,7 @@ Live primary-source expansion remains a residual for score 100 on S3 where depth
     "adopted_at": "2026-07-27T01:30:29.005169+00:00",
     "upstream": "generic-swarm-ops/business/video/agents"
   },
-  "imported_from": "C:\\Project\\common-agent-swarm-ops\\business\\video\\agents\\video.voiceclone",
+  "imported_from": "vendor/common-agent-swarm-ops/business/video/agents/video.voiceclone",
   "reference_book_origin": "spec/book_of_knowledge.md",
   "reference_book_note": "Bibliographic references from spec/book_of_knowledge.md. Does not enable network, RAG, T3, plugins, or memory writes."
 }

@@ -3051,7 +3051,7 @@ Step 8: POST-RELEASE (optional)
 ## Provenance
 
 - Master roster row va_id=46 from embedded agents.md content above.
-- Deep/extra text from `business/video/corpus/` and `C:\Project\va-agent-swarm`.
+- Deep/extra text from `business/video/corpus/` and `vendor/va-agent-swarm`.
 - Generator: `scripts/business/enrich_video_agent_specs.py`.
 - Upstream project name (historical only): va-agent-swarm.
 
@@ -4086,7 +4086,7 @@ Optimization Meta-Agents                     S21: Optimization Panel
 ## Provenance
 
 - Master roster row va_id=73 from embedded agents.md content above.
-- Deep/extra text from `business/video/corpus/` and `C:\Project\va-agent-swarm`.
+- Deep/extra text from `business/video/corpus/` and `vendor/va-agent-swarm`.
 - Generator: `scripts/business/enrich_video_agent_specs.py`.
 - Upstream project name (historical only): va-agent-swarm.
 
@@ -4166,10 +4166,10 @@ Live primary-source expansion remains a residual for score 100 on S3 where depth
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "数字资源长期保存",
+      "title": "\u6570\u5b57\u8d44\u6e90\u957f\u671f\u4fdd\u5b58",
       "isbn13": "9787501355419",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 数字资源长期保存，ISBN-13 9787501355419"
+      "citation": "ZH: \u6570\u5b57\u8d44\u6e90\u957f\u671f\u4fdd\u5b58\uff0cISBN-13 9787501355419"
     },
     {
       "kind": "reference_book",
@@ -4201,19 +4201,19 @@ Live primary-source expansion remains a residual for score 100 on S3 where depth
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "纪录片也要讲故事",
+      "title": "\u7eaa\u5f55\u7247\u4e5f\u8981\u8bb2\u6545\u4e8b",
       "isbn13": "9787532753888",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 纪录片也要讲故事，ISBN-13 9787532753888"
+      "citation": "ZH: \u7eaa\u5f55\u7247\u4e5f\u8981\u8bb2\u6545\u4e8b\uff0cISBN-13 9787532753888"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "纪录片导论",
-      "author": "尼科尔斯",
+      "title": "\u7eaa\u5f55\u7247\u5bfc\u8bba",
+      "author": "\u5c3c\u79d1\u5c14\u65af",
       "isbn13": "9787301161111",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 纪录片导论（尼科尔斯），ISBN-13 9787301161111"
+      "citation": "ZH: \u7eaa\u5f55\u7247\u5bfc\u8bba\uff08\u5c3c\u79d1\u5c14\u65af\uff09\uff0cISBN-13 9787301161111"
     },
     {
       "kind": "reference_book",
@@ -4272,18 +4272,18 @@ Live primary-source expansion remains a residual for score 100 on S3 where depth
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "影视制片管理",
+      "title": "\u5f71\u89c6\u5236\u7247\u7ba1\u7406",
       "isbn13": "9787301169186",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 影视制片管理，ISBN-13 9787301169186"
+      "citation": "ZH: \u5f71\u89c6\u5236\u7247\u7ba1\u7406\uff0cISBN-13 9787301169186"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "纪录影片及数字视频编导与制作",
+      "title": "\u7eaa\u5f55\u5f71\u7247\u53ca\u6570\u5b57\u89c6\u9891\u7f16\u5bfc\u4e0e\u5236\u4f5c",
       "isbn13": "9787504380302",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 纪录影片及数字视频编导与制作，ISBN-13 9787504380302"
+      "citation": "ZH: \u7eaa\u5f55\u5f71\u7247\u53ca\u6570\u5b57\u89c6\u9891\u7f16\u5bfc\u4e0e\u5236\u4f5c\uff0cISBN-13 9787504380302"
     },
     {
       "kind": "reference_book",
@@ -4307,7 +4307,7 @@ Live primary-source expansion remains a residual for score 100 on S3 where depth
     "adopted_at": "2026-07-27T01:30:27.640746+00:00",
     "upstream": "generic-swarm-ops/business/video/agents"
   },
-  "imported_from": "C:\\Project\\common-agent-swarm-ops\\business\\video\\agents\\video.archiveproducer",
+  "imported_from": "vendor/common-agent-swarm-ops/business/video/agents/video.archiveproducer",
   "reference_book_origin": "spec/book_of_knowledge.md",
   "reference_book_note": "Bibliographic references from spec/book_of_knowledge.md. Does not enable network, RAG, T3, plugins, or memory writes."
 }

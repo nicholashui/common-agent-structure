@@ -180,7 +180,7 @@ def inventory() -> str:
 NARRATIVE = r'''# CASOPS: The Complete Book
 
 **Title.** Common-Agent Swarm Operations Host — The Complete, Self-Contained Operator and Implementer Book  
-**Work.** `C:\Project\common-agent-structure`  
+**Work.** this repository (paths are relative to the repo root)  
 **Host package.** `casops` version `0.1.0`  
 **Agent structure.** `casops.common_agent.v3`  
 **Schema.** `3.0`  
@@ -305,8 +305,8 @@ You do **not** talk to internal ports `8081`–`8087` from the browser.
 ## I.5 Repository layout (complete top level that matters)
 
 ```
-C:\Project\common-agent-structure\
-  agents\                      loadable agent folders (135 with agent_spec.json)
+<repo-root>\
+  agents\                      loadable agent folders (scan agent_spec.json; do not freeze a count)
   src\casops\                  host library
   services\                    eight process Dockerfiles + main.py
   ui\                          Control UI (mandatory UI source root)
@@ -347,7 +347,7 @@ Python package discovery: `[tool.setuptools.packages.find] where = ["src"]`. Imp
 
 ```powershell
 python --version
-cd C:\Project\common-agent-structure
+cd <repo-root>
 ```
 
 ## II.2 Create a venv and install
@@ -366,7 +366,7 @@ Expect printed version `0.1.0`.
 UI:
 
 ```powershell
-cd C:\Project\common-agent-structure\ui
+cd <repo-root>\ui
 npm install
 ```
 
@@ -375,7 +375,7 @@ npm install
 ## II.3 Prove the host
 
 ```powershell
-cd C:\Project\common-agent-structure
+cd <repo-root>
 $env:PYTHONPATH = "src"
 python -m pytest tests -q
 ```
@@ -385,7 +385,7 @@ Expect exit code 0. If this fails, do not start HTTP.
 UI tests:
 
 ```powershell
-cd C:\Project\common-agent-structure\ui
+cd <repo-root>\ui
 npm test
 ```
 
@@ -394,7 +394,7 @@ npm test
 Recommended:
 
 ```powershell
-powershell -File C:\Project\common-agent-structure\scripts\start_all.ps1
+powershell -File scripts/start_all.ps1
 ```
 
 This starts:
@@ -407,13 +407,13 @@ It writes `var\casops-servers.json` and logs to `logs\control-plane.out.log`, `l
 Stop:
 
 ```powershell
-powershell -File C:\Project\common-agent-structure\scripts\stop_all.ps1
+powershell -File scripts/stop_all.ps1
 ```
 
 Manual equivalent:
 
 ```powershell
-cd C:\Project\common-agent-structure
+cd <repo-root>
 $env:PYTHONPATH = "src"
 $env:CASOPS_AGENTS_ROOT = "agents"
 python -m uvicorn casops.api.control:create_app_from_env --factory --host 127.0.0.1 --port 18080
@@ -422,7 +422,7 @@ python -m uvicorn casops.api.control:create_app_from_env --factory --host 127.0.
 Second window:
 
 ```powershell
-cd C:\Project\common-agent-structure\ui
+cd <repo-root>\ui
 npx vite --host 127.0.0.1 --port 15173
 ```
 
@@ -578,7 +578,7 @@ That is why the template is called with id `casops.template.baseline_safe` while
 ```json
 {
   "agent_id": "casops.template.baseline_safe",
-  "folder": "C:\\Project\\common-agent-structure\\agents\\_template_v3",
+  "folder": "agents/_template_v3",
   "structure_id": "casops.common_agent.v3",
   "schema_version": "3.0",
   "role": "BaselineSafeTemplate",
@@ -721,7 +721,7 @@ Body `{ "provider": "<id>" }` or `"default"` / `"__default__"` / empty to clear 
   "agent_id": "casops.template.baseline_safe",
   "structure_id": "casops.common_agent.v3",
   "schema_version": "3.0",
-  "folder": "C:\\Project\\common-agent-structure\\agents\\_template_v3",
+  "folder": "agents/_template_v3",
   "spec_bytes": 0,
   "io": {
     "defined": false,
@@ -1402,7 +1402,7 @@ Read-only. Use it to see critique edges, not to send operator chat.
 ### Step 13 — Stop
 
 ```powershell
-powershell -File C:\Project\common-agent-structure\scripts\stop_all.ps1
+powershell -File scripts/stop_all.ps1
 ```
 
 ---

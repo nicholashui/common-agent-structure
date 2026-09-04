@@ -1,0 +1,7 @@
+{
+  "agent_id": "specials.autotelic-agent",
+  "folder": "agents/specials.autotelic-agent",
+  "honesty": "CHARACTERIZATION",
+  "note": "Chat prompts are characterization only. Not an eval pass. casops-eval stays NOT_RUN while instruments are unqualified.",
+  "fallback": "role+SPEC.md"
+}

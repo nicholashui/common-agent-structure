@@ -3828,7 +3828,7 @@ Step 2: MULTI-AGENT EVALUATION (parallel, ~30 seconds)
 ## Provenance
 
 - Master roster row va_id=9 from embedded agents.md content above.
-- Deep/extra text from `business/video/corpus/` and `C:\Project\va-agent-swarm`.
+- Deep/extra text from `business/video/corpus/` and `vendor/va-agent-swarm`.
 - Generator: `scripts/business/enrich_video_agent_specs.py`.
 - Upstream project name (historical only): va-agent-swarm.
 
@@ -8278,7 +8278,7 @@ for critic in critics:
 ## Provenance
 
 - Master roster row va_id=2 from embedded agents.md content above.
-- Deep/extra text from `business/video/corpus/` and `C:\Project\va-agent-swarm`.
+- Deep/extra text from `business/video/corpus/` and `vendor/va-agent-swarm`.
 - Generator: `scripts/business/enrich_video_agent_specs.py`.
 - Upstream project name (historical only): va-agent-swarm.
 
@@ -8376,11 +8376,11 @@ Live primary-source expansion remains a residual for score 100 on S3 where depth
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "这就是音乐产业",
-      "author": "Passman 中译常见",
+      "title": "\u8fd9\u5c31\u662f\u97f3\u4e50\u4ea7\u4e1a",
+      "author": "Passman \u4e2d\u8bd1\u5e38\u89c1",
       "isbn13": "9787111456780",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 这就是音乐产业（Passman 中译常见），ISBN-13 9787111456780"
+      "citation": "ZH: \u8fd9\u5c31\u662f\u97f3\u4e50\u4ea7\u4e1a\uff08Passman \u4e2d\u8bd1\u5e38\u89c1\uff09\uff0cISBN-13 9787111456780"
     },
     {
       "kind": "reference_book",
@@ -8448,34 +8448,34 @@ Live primary-source expansion remains a residual for score 100 on S3 where depth
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "定位",
+      "title": "\u5b9a\u4f4d",
       "isbn13": "9787111320586",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 定位，ISBN-13 9787111320586"
+      "citation": "ZH: \u5b9a\u4f4d\uff0cISBN-13 9787111320586"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "品牌的起源",
+      "title": "\u54c1\u724c\u7684\u8d77\u6e90",
       "isbn13": "9787111323051",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 品牌的起源，ISBN-13 9787111323051"
+      "citation": "ZH: \u54c1\u724c\u7684\u8d77\u6e90\uff0cISBN-13 9787111323051"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "战略品牌管理",
+      "title": "\u6218\u7565\u54c1\u724c\u7ba1\u7406",
       "isbn13": "9787300162263",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 战略品牌管理，ISBN-13 9787300162263"
+      "citation": "ZH: \u6218\u7565\u54c1\u724c\u7ba1\u7406\uff0cISBN-13 9787300162263"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "品牌如何增长",
+      "title": "\u54c1\u724c\u5982\u4f55\u589e\u957f",
       "isbn13": "9787111558477",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 品牌如何增长，ISBN-13 9787111558477"
+      "citation": "ZH: \u54c1\u724c\u5982\u4f55\u589e\u957f\uff0cISBN-13 9787111558477"
     },
     {
       "kind": "reference_book",
@@ -8534,10 +8534,10 @@ Live primary-source expansion remains a residual for score 100 on S3 where depth
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "影视制片管理",
+      "title": "\u5f71\u89c6\u5236\u7247\u7ba1\u7406",
       "isbn13": "9787301169186",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 影视制片管理，ISBN-13 9787301169186"
+      "citation": "ZH: \u5f71\u89c6\u5236\u7247\u7ba1\u7406\uff0cISBN-13 9787301169186"
     },
     {
       "kind": "reference_book",
@@ -8597,7 +8597,7 @@ Live primary-source expansion remains a residual for score 100 on S3 where depth
     "adopted_at": "2026-07-27T01:30:28.291884+00:00",
     "upstream": "generic-swarm-ops/business/video/agents"
   },
-  "imported_from": "C:\\Project\\common-agent-swarm-ops\\business\\video\\agents\\video.labela_r",
+  "imported_from": "vendor/common-agent-swarm-ops/business/video/agents/video.labela_r",
   "reference_book_origin": "spec/book_of_knowledge.md",
   "reference_book_note": "Bibliographic references from spec/book_of_knowledge.md. Does not enable network, RAG, T3, plugins, or memory writes."
 }

@@ -1,0 +1,96 @@
+{
+  "agent_id": "video.templatedesign",
+  "kind": "pack",
+  "cases": [
+    {
+      "id": "tc1",
+      "name": "video.templatedesign offline case 1",
+      "method": "POST",
+      "path": "/api/v1/agent-loops/agents/video.templatedesign/run",
+      "body": {
+        "goal": "As video.templatedesign, perform offline craft work for: short travel vlog high retention",
+        "enable_v3": true,
+        "max_steps": 3,
+        "allow_production": false,
+        "allow_network": false
+      },
+      "success_criteria": {
+        "http_status": [
+          200
+        ],
+        "required_keys_any": [
+          "agent_id",
+          "ok",
+          "phases",
+          "v3",
+          "status",
+          "run_id"
+        ],
+        "json_equals": {
+          "agent_id": "video.templatedesign"
+        },
+        "notes": "Offline loop: expect 200 with agent_id match; prefer ok=true or v3/phases present. allow_production/allow_network must stay false."
+      }
+    },
+    {
+      "id": "tc2",
+      "name": "video.templatedesign offline case 2",
+      "method": "POST",
+      "path": "/api/v1/agent-loops/agents/video.templatedesign/run",
+      "body": {
+        "goal": "Produce structure-only artifacts for role 'templatedesign' on a 6-day Osaka-style brief",
+        "enable_v3": true,
+        "max_steps": 3,
+        "allow_production": false,
+        "allow_network": false
+      },
+      "success_criteria": {
+        "http_status": [
+          200
+        ],
+        "required_keys_any": [
+          "agent_id",
+          "ok",
+          "phases",
+          "v3",
+          "status",
+          "run_id"
+        ],
+        "json_equals": {
+          "agent_id": "video.templatedesign"
+        },
+        "notes": "Offline loop: expect 200 with agent_id match; prefer ok=true or v3/phases present. allow_production/allow_network must stay false."
+      }
+    },
+    {
+      "id": "tc3",
+      "name": "video.templatedesign offline case 3",
+      "method": "POST",
+      "path": "/api/v1/agent-loops/agents/video.templatedesign/run",
+      "body": {
+        "goal": "Self-review offline Plan→Act→Self-Review output for video.templatedesign quality gates",
+        "enable_v3": true,
+        "max_steps": 2,
+        "allow_production": false,
+        "allow_network": false
+      },
+      "success_criteria": {
+        "http_status": [
+          200
+        ],
+        "required_keys_any": [
+          "agent_id",
+          "ok",
+          "phases",
+          "v3",
+          "status",
+          "run_id"
+        ],
+        "json_equals": {
+          "agent_id": "video.templatedesign"
+        },
+        "notes": "Offline loop: expect 200 with agent_id match; prefer ok=true or v3/phases present. allow_production/allow_network must stay false."
+      }
+    }
+  ]
+}

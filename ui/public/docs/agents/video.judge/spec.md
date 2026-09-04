@@ -9045,7 +9045,7 @@ Step 7: DELIVERY PH
 ## Provenance
 
 - Master roster row va_id=57 from embedded agents.md content above.
-- Deep/extra text from `business/video/corpus/` and `C:\Project\va-agent-swarm`.
+- Deep/extra text from `business/video/corpus/` and `vendor/va-agent-swarm`.
 - Generator: `scripts/business/enrich_video_agent_specs.py`.
 - Upstream project name (historical only): va-agent-swarm.
 
@@ -9182,66 +9182,66 @@ Omitted here; same document as `SPEC.md` above.
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "竞争战略",
+      "title": "\u7ade\u4e89\u6218\u7565",
       "isbn13": "9787508633749",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 竞争战略，ISBN-13 9787508633749"
+      "citation": "ZH: \u7ade\u4e89\u6218\u7565\uff0cISBN-13 9787508633749"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "好战略，坏战略",
+      "title": "\u597d\u6218\u7565\uff0c\u574f\u6218\u7565",
       "isbn13": "9787508643427",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 好战略，坏战略，ISBN-13 9787508643427"
+      "citation": "ZH: \u597d\u6218\u7565\uff0c\u574f\u6218\u7565\uff0cISBN-13 9787508643427"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "这就是OKR",
+      "title": "\u8fd9\u5c31\u662fOKR",
       "isbn13": "9787521702330",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 这就是OKR，ISBN-13 9787521702330"
+      "citation": "ZH: \u8fd9\u5c31\u662fOKR\uff0cISBN-13 9787521702330"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "创新者的窘境",
+      "title": "\u521b\u65b0\u8005\u7684\u7a98\u5883",
       "isbn13": "9787508633336",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 创新者的窘境，ISBN-13 9787508633336"
+      "citation": "ZH: \u521b\u65b0\u8005\u7684\u7a98\u5883\uff0cISBN-13 9787508633336"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "系统之美",
+      "title": "\u7cfb\u7edf\u4e4b\u7f8e",
       "isbn13": "9787508640114",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 系统之美，ISBN-13 9787508640114"
+      "citation": "ZH: \u7cfb\u7edf\u4e4b\u7f8e\uff0cISBN-13 9787508640114"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "第五项修炼",
+      "title": "\u7b2c\u4e94\u9879\u4fee\u70bc",
       "isbn13": "9787508631332",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 第五项修炼，ISBN-13 9787508631332"
+      "citation": "ZH: \u7b2c\u4e94\u9879\u4fee\u70bc\uff0cISBN-13 9787508631332"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "超预测",
+      "title": "\u8d85\u9884\u6d4b",
       "isbn13": "9787508663098",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 超预测，ISBN-13 9787508663098"
+      "citation": "ZH: \u8d85\u9884\u6d4b\uff0cISBN-13 9787508663098"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "金字塔原理",
+      "title": "\u91d1\u5b57\u5854\u539f\u7406",
       "isbn13": "9787508633732",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 金字塔原理，ISBN-13 9787508633732"
+      "citation": "ZH: \u91d1\u5b57\u5854\u539f\u7406\uff0cISBN-13 9787508633732"
     },
     {
       "kind": "reference_book",
@@ -9336,59 +9336,59 @@ Omitted here; same document as `SPEC.md` above.
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "思考，快与慢",
+      "title": "\u601d\u8003\uff0c\u5feb\u4e0e\u6162",
       "isbn13": "9787508633565",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 思考，快与慢，ISBN-13 9787508633565"
+      "citation": "ZH: \u601d\u8003\uff0c\u5feb\u4e0e\u6162\uff0cISBN-13 9787508633565"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "影响力",
+      "title": "\u5f71\u54cd\u529b",
       "isbn13": "9787508622163",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 影响力，ISBN-13 9787508622163"
+      "citation": "ZH: \u5f71\u54cd\u529b\uff0cISBN-13 9787508622163"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "怪诞行为学",
+      "title": "\u602a\u8bde\u884c\u4e3a\u5b66",
       "isbn13": "9787508615824",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 怪诞行为学，ISBN-13 9787508615824"
+      "citation": "ZH: \u602a\u8bde\u884c\u4e3a\u5b66\uff0cISBN-13 9787508615824"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "助推",
+      "title": "\u52a9\u63a8",
       "isbn13": "9787508641238",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 助推，ISBN-13 9787508641238"
+      "citation": "ZH: \u52a9\u63a8\uff0cISBN-13 9787508641238"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "心流",
+      "title": "\u5fc3\u6d41",
       "isbn13": "9787508660721",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 心流，ISBN-13 9787508660721"
+      "citation": "ZH: \u5fc3\u6d41\uff0cISBN-13 9787508660721"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "驱动力",
+      "title": "\u9a71\u52a8\u529b",
       "isbn13": "9787508621753",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 驱动力，ISBN-13 9787508621753"
+      "citation": "ZH: \u9a71\u52a8\u529b\uff0cISBN-13 9787508621753"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "社会心理学",
-      "author": "迈尔斯",
+      "title": "\u793e\u4f1a\u5fc3\u7406\u5b66",
+      "author": "\u8fc8\u5c14\u65af",
       "isbn13": "9787115412393",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 社会心理学（迈尔斯），ISBN-13 9787115412393"
+      "citation": "ZH: \u793e\u4f1a\u5fc3\u7406\u5b66\uff08\u8fc8\u5c14\u65af\uff09\uff0cISBN-13 9787115412393"
     },
     {
       "kind": "reference_book",
@@ -9421,10 +9421,10 @@ Omitted here; same document as `SPEC.md` above.
       "kind": "reference_book",
       "language": "EN",
       "title": "Hands-On Machine Learning, 3rd ed.",
-      "author": "Aurélien Géron",
+      "author": "Aur\u00e9lien G\u00e9ron",
       "isbn13": "9781098125974",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "EN: Hands-On Machine Learning, 3rd ed. (Aurélien Géron), ISBN-13 9781098125974"
+      "citation": "EN: Hands-On Machine Learning, 3rd ed. (Aur\u00e9lien G\u00e9ron), ISBN-13 9781098125974"
     },
     {
       "kind": "reference_book",
@@ -9448,10 +9448,10 @@ Omitted here; same document as `SPEC.md` above.
       "kind": "reference_book",
       "language": "EN",
       "title": "Introduction to Information Retrieval",
-      "author": "Manning, Raghavan, Schütze",
+      "author": "Manning, Raghavan, Sch\u00fctze",
       "isbn13": "9780521865715",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "EN: Introduction to Information Retrieval (Manning, Raghavan, Schütze), ISBN-13 9780521865715"
+      "citation": "EN: Introduction to Information Retrieval (Manning, Raghavan, Sch\u00fctze), ISBN-13 9780521865715"
     },
     {
       "kind": "reference_book",
@@ -9501,80 +9501,80 @@ Omitted here; same document as `SPEC.md` above.
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "人工智能：一种现代的方法",
-      "author": "第4版",
+      "title": "\u4eba\u5de5\u667a\u80fd\uff1a\u4e00\u79cd\u73b0\u4ee3\u7684\u65b9\u6cd5",
+      "author": "\u7b2c4\u7248",
       "isbn13": "9787111547044",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 人工智能：一种现代的方法（第4版），ISBN-13 9787111547044"
+      "citation": "ZH: \u4eba\u5de5\u667a\u80fd\uff1a\u4e00\u79cd\u73b0\u4ee3\u7684\u65b9\u6cd5\uff08\u7b2c4\u7248\uff09\uff0cISBN-13 9787111547044"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "深度学习",
-      "author": "花书",
+      "title": "\u6df1\u5ea6\u5b66\u4e60",
+      "author": "\u82b1\u4e66",
       "isbn13": "9787115461476",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 深度学习（花书），ISBN-13 9787115461476"
+      "citation": "ZH: \u6df1\u5ea6\u5b66\u4e60\uff08\u82b1\u4e66\uff09\uff0cISBN-13 9787115461476"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "机器学习",
-      "author": "周志华",
+      "title": "\u673a\u5668\u5b66\u4e60",
+      "author": "\u5468\u5fd7\u534e",
       "isbn13": "9787302373575",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 机器学习（周志华），ISBN-13 9787302373575"
+      "citation": "ZH: \u673a\u5668\u5b66\u4e60\uff08\u5468\u5fd7\u534e\uff09\uff0cISBN-13 9787302373575"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "统计学习方法",
-      "author": "李航",
+      "title": "\u7edf\u8ba1\u5b66\u4e60\u65b9\u6cd5",
+      "author": "\u674e\u822a",
       "isbn13": "9787302423288",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 统计学习方法（李航），ISBN-13 9787302423288"
+      "citation": "ZH: \u7edf\u8ba1\u5b66\u4e60\u65b9\u6cd5\uff08\u674e\u822a\uff09\uff0cISBN-13 9787302423288"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "强化学习",
-      "author": "第2版",
+      "title": "\u5f3a\u5316\u5b66\u4e60",
+      "author": "\u7b2c2\u7248",
       "isbn13": "9787115546081",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 强化学习（第2版），ISBN-13 9787115546081"
+      "citation": "ZH: \u5f3a\u5316\u5b66\u4e60\uff08\u7b2c2\u7248\uff09\uff0cISBN-13 9787115546081"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "信息检索导论",
+      "title": "\u4fe1\u606f\u68c0\u7d22\u5bfc\u8bba",
       "isbn13": "9787115221704",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 信息检索导论，ISBN-13 9787115221704"
+      "citation": "ZH: \u4fe1\u606f\u68c0\u7d22\u5bfc\u8bba\uff0cISBN-13 9787115221704"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "数据密集型应用系统设计",
+      "title": "\u6570\u636e\u5bc6\u96c6\u578b\u5e94\u7528\u7cfb\u7edf\u8bbe\u8ba1",
       "isbn13": "9787111547532",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 数据密集型应用系统设计，ISBN-13 9787111547532"
+      "citation": "ZH: \u6570\u636e\u5bc6\u96c6\u578b\u5e94\u7528\u7cfb\u7edf\u8bbe\u8ba1\uff0cISBN-13 9787111547532"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "生命3.0",
+      "title": "\u751f\u547d3.0",
       "isbn13": "9787508684031",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 生命3.0，ISBN-13 9787508684031"
+      "citation": "ZH: \u751f\u547d3.0\uff0cISBN-13 9787508684031"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "动手学深度学习",
-      "author": "李沐等",
+      "title": "\u52a8\u624b\u5b66\u6df1\u5ea6\u5b66\u4e60",
+      "author": "\u674e\u6c90\u7b49",
       "isbn13": "9787115547460",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 动手学深度学习（李沐等），ISBN-13 9787115547460"
+      "citation": "ZH: \u52a8\u624b\u5b66\u6df1\u5ea6\u5b66\u4e60\uff08\u674e\u6c90\u7b49\uff09\uff0cISBN-13 9787115547460"
     },
     {
       "kind": "reference_book",
@@ -9624,11 +9624,11 @@ Omitted here; same document as `SPEC.md` above.
     {
       "kind": "reference_book",
       "language": "EN",
-      "title": "The Big Show High Times and Dirty Dealings Backstage at the Academy Awards®",
+      "title": "The Big Show High Times and Dirty Dealings Backstage at the Academy Awards\u00ae",
       "author": "Steve Pond",
       "isbn13": "9780571211937",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "EN: The Big Show High Times and Dirty Dealings Backstage at the Academy Awards® (Steve Pond), ISBN-13 9780571211937"
+      "citation": "EN: The Big Show High Times and Dirty Dealings Backstage at the Academy Awards\u00ae (Steve Pond), ISBN-13 9780571211937"
     }
   ],
   "agent_id": "video.judge",
@@ -9643,7 +9643,7 @@ Omitted here; same document as `SPEC.md` above.
     "adopted_at": "2026-07-27T01:30:28.286380+00:00",
     "upstream": "generic-swarm-ops/business/video/agents"
   },
-  "imported_from": "C:\\Project\\common-agent-swarm-ops\\business\\video\\agents\\video.judge",
+  "imported_from": "vendor/common-agent-swarm-ops/business/video/agents/video.judge",
   "reference_book_origin": "spec/book_of_knowledge.md",
   "reference_book_note": "Bibliographic references from spec/book_of_knowledge.md. Does not enable network, RAG, T3, plugins, or memory writes."
 }

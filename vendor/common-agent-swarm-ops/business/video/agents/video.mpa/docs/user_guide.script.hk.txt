@@ -1,0 +1,547 @@
+呢份係 MPAAgent 嘅操作同設計指南完整旁白。
+
+呢份指南係寫畀操作員、pack 作者、swarm 設計師同埋喺 common-agent-swarm-ops 入面做審核嘅人睇嘅。
+
+你會得到任務清晰度、幾時用呢個 agent 嘅指引、協作地圖、CASOPS 操作步驟、改善路徑，同埋一個分信任層級嘅來源地圖。
+
+要留意嘅係，呢份文件唔係一個授權去啟動 provider、開網絡存取或者發明工具。
+
+Host 嘅真相係 fail-closed 嘅 agent_spec.json。來自 VA 或者 redesign 文件嘅設計文字係唔受信任嘅來源。
+
+Pack 路徑係 business/video/agents/video.mpa/。指南檔案係 docs/user_guide.md。由 scripts/business/generate_agent_user_guides.py 產生。
+
+第一部分，快照。
+
+MPAAgent，agent ID 係 video.mpa，係 CASOPS 上面嘅 Video Domain Pack 角色。
+
+用簡單嘅講法就係：為 feature 工作流程準備同評級相關嘅包裝同發佈準備輸入。
+
+你應該將呢份指南當作人可讀嘅操作員地圖，用嚟做目錄審核、swarm 設計同埋以提案驅動嘅改善，唔係當作運行時啟動嘅授權。
+
+Display name 係 MPAAgent。
+
+Pack agent id 係 video.mpa。
+
+Pack 係 video。
+
+Host role string 係 MPAAgent (VA Domain Pack)。
+
+Catalog status 係 registered。
+
+Maturity today 係 L0 斜線 non-active，即係目錄同設計保真度。
+
+VA id 係 110。
+
+VA category 係 10-Sup，即係 Workflow support 同 release gates。
+
+Provider (host) 係 local_deterministic。
+
+Network 係 False。
+
+Allowed tools (host) 係空嘅列表。
+
+Production activation requested 係 False。
+
+Prompt 斜線 rubric refs 分別係 video.prompt.mpa.v1 同 video.rubric.mpa.v1。
+
+Previous common id 係 video.platform_policy_reviewer。
+
+Generic lineage 係 generic-swarm-ops/business/video/agents/video.mpa。
+
+第二部分，點解呢個角色存在。
+
+人類影片團隊已經喺時間壓力下解決呢個問題：為 feature 工作流程準備同評級相關嘅包裝同發佈準備輸入。
+
+Agent 形式存在嘅原因係令多代理人系統可以持續編碼呢個工藝，喺每次交接時應用，同埋只將剩餘風險上報畀人類。
+
+佢嘅知識庫係從以下來源提煉嘅：Rating submission references、content advisories、theatrical packaging rules。
+
+呢啲係歷史設計來源，唔係喺呢個 host 上面嘅即時網絡調用。
+
+設計野心，即係超越人類嘅信號，係：比手動準備更加乾淨嘅 feature-release classification packages。
+
+當你之後寫 eval 或者提案嘅時候，用呢個做北極星指標。
+
+第三部分，好嘅表現係點樣。
+
+呢啲係審核標準，當你讀輸出、寫 rubric 或者評分提案嘅時候用。
+
+Primary outcome 係為 feature 工作流程準備同評級相關嘅包裝同發佈準備輸入。
+
+Self-quality bar 係 Rating-package completeness、advisory clarity、escalation quality。
+
+Ambition signal（設計時）係比手動準備更加乾淨嘅 feature-release classification packages。
+
+Architecture pattern（設計時）係 Human-in-the-loop with structured packaging support。
+
+
+Host quality 同 critique binding 方面。
+
+Prompt reference 係 video.prompt.mpa.v1。
+
+Rubric reference 係 video.rubric.mpa.v1。
+
+Critique edges 嘅 inputs 係 video.critic，outputs 係 video.judge。
+
+Max refinement 係 3。
+
+VA table quality criteria 保留喺上面嘅 Provenance and Identity surface。
+
+Inputs、outputs 同 acceptance 方面。
+
+Inputs 係本地 pack artifacts 同 typed handoffs。
+
+Outputs 係可審核嘅 video-domain deliverables，有 acceptance criteria。
+
+Acceptance 係 host policy 加本地 SPEC criteria，唔需要外部 repository。
+
+第四部分，範圍：擁有、共享同拒絕。
+
+擁有方面。呢個 agent 擁有嘅職責係為 feature 工作流程準備同評級相關嘅包裝同發佈準備輸入。
+
+同 peer 共享方面，即係 critique surface。
+
+佢聽取同接受來自 ProducerAgent 斜線 EP、LegalAgent、EthicsAgent 嘅 critique。
+
+佢有資格評論 Missing advisories、incomplete rating prep、unclear classification support。
+
+Host critique edge inputs 係 video.critic。
+
+Host critique edge outputs 係 video.judge。
+
+Max refinement count 係 3。
+
+拒絕同上報方面。
+
+Fail-closed：冇 provider 啟動，冇網絡，冇來自設計文字嘅 credentials。
+
+production_activation_requested 保持 false，除非有另外嘅人類 gate 改變佢。
+
+上報法律、安全、權利同發佈決定去需要嘅人類 gate。
+
+Critique lead 同 judge 預設用 VA IDs video.critic 同 video.judge。
+
+第五部分，幾時要用呢個 agent。
+
+當工作產品需要 MPAAgent 擁有嘅決定或者 artifact 嘅時候就叫呢個 agent。
+
+具體係為 feature 工作流程準備同評級相關嘅包裝同發佈準備輸入。
+
+Pipeline phase 係 Workflow support 同 release gates。
+
+支援功能同最終發佈 gates，包括 accessibility、brand、legal、archive 等等。
+
+唔好為咗一般嘅 orchestration、預算審批或者最終法律簽署而叫佢，除非呢啲職責明確喺佢嘅責任範圍內。
+
+用 producer、legal 或者 compliance peers 代替。
+
+Human override 方面：任何阻止發佈嘅安全、權利或者 accessibility 爭議都會上報去人類 gate，即使 agent 喺未來嘅 active runtime 會自動通過。
+
+決策 cheat-sheet 方面。
+
+第一個問題：欠缺嘅技能係咪 MPAAgent 嘅工藝？指引係：如果係，就將佢加入嗰個階段嘅 swarm graph。
+
+第二個問題：呢個只係 metadata 或者 catalog edit 嗎？指引係：用 Registry inspect 加 proposal，唔好發明 runtime。
+
+第三個問題：呢個任務需要工具或者網絡嗎？指引係：Host 目前唔允許，除非 agent_spec 加 permission register 另外說明。
+
+第四個問題：有冇只限人類嘅風險，例如法律、傷害、權利？指引係：保留人類 gate，agent 輸出係 advisory 直到被啟動。
+
+
+第六部分，協作地圖。
+
+將呢個 agent 想像為 critique bus 上嘅一個節點，唔係一個獨立嘅 chatbot。
+
+Peers 改善質量；judges 同 gates 決定接受與否。
+
+Inbound critique 方向，來自 ProducerAgent 斜線 EP、LegalAgent、EthicsAgent。
+
+Outbound commentary 方向，評論 Missing advisories、incomplete rating prep、unclear classification support。
+
+Host edge inputs 係 video.critic。
+
+Host edge outputs 係 video.judge。
+
+第七部分，佢喺生產中嘅位置。
+
+7.1，人類生產工作流程。
+
+呢個角色屬於支援功能同最終發佈 gates，包括 accessibility、brand、legal、archive 等等。
+
+典型嘅交接 artifacts 包括 Gate decisions、compliance packs、accessibility layers、archive masters、corrections。
+
+本地人類工作流程摘錄中嘅相關提及如下。
+
+第一個係 30 到 60 秒嘅內容類型，包括 Short ads、Explainer hooks、Talking-head intros、Before/After videos、Mini stories。
+
+仲有 Product demos、Brand-story micro-ads、AI-avatar testimonials、Concept trailers、Music 斜線 lyric videos。
+
+同埋 Day in the life clips、FAQ snippets、LinkedIn posts、Moving infographics、Kids story videos。
+
+平臺係 Reels、Shorts、Ad campaigns。難度係 Easy。Volume 係 High。呢個係 marketing videos 嘅 sweet spot。
+
+第二個係編號 8，Seasonal 斜線 holiday campaign spots，15 到 60 秒，所有 paid social 平臺。
+
+需要嘅人員係 Creative Director、Producer、Director、DoP、Art Dept、Editor、Composer、Media Buyer。
+
+第三個係編號 11，Comparison 斜線 vs competitor videos，30 到 60 秒，YouTube 同 web 平臺。
+
+需要嘅人員係 Product Researcher、Scriptwriter、Presenter、Editor、Legal Reviewer。
+
+7.2，多代理人 AI 工作流程。
+
+佢係 Gate 同 support nodes，喺 publish 之前或者 launch 之後接受或拒絕 handoffs。
+
+設計時工具備註（對 host 唔具約束力）：Submission packages、advisory templates、classification checklists。
+
+之後實施 runtime 時要模擬嘅 loop 風格係 Human-in-the-loop with structured packaging support。
+
+喺今日嘅 CASOPS 上，呢個 pattern 只係文件記錄。即時 provider 係 local deterministic，有空嘅或者 stub 嘅 tool allow-lists。
+
+本地 AI 工作流程摘錄中嘅相關提及如下。
+
+第一個係 Companion to human_video_production_workflow.md，為人類團隊名冊中嘅每一個角色，定義取代或增強佢嘅 AI agent。
+
+包括職責範圍、知識蒸餾管道、自我質量標準、超越人類專業人員嘅信號、agent 點樣接受其他 agent 嘅 critique，同埋 agent 有資格 critique 咩。
+
+第二個係 Delivery fabric，將 masters 打包成 theatrical、streaming、broadcast、archive、trailer 同 campaign variants。
+
+Distribution 係一個分支管道，有 outlet-specific specs、captions、metadata、DRM/KDM 同 provenance payloads。
+
+第三個係編號 16，ProductionDesignAgent，負責 Sets、locations、world look。
+
+知識來自 ADG Awards archive、AMPAS Production Design submissions、Hannah Beachler 斜線 Rick Carter talks。
+
+自我質量係 Period accuracy（cross-ref）、palette coherence、build feasibility（for hybrid）。
+
+超越人類係 Wins ADG blind comparisons on period-research depth。
+
+接受 critique 來自 DirectorAgent 同 DoPAgent，評論 ConceptArtistAgent（style break）同 CostumeAgent。
+
+7.3，共享交接合約，即 swarm-ready。
+
+當你將呢個 agent 接入未來嘅 active swarm 時，要求節點之間有機器可讀嘅 manifests。
+
+artifact_id 斜線 version 欄位，對呢個角色重要嘅原因係提供不可變嘅身份用於 critique 同 replay。
+
+parent_assets 欄位，原因係追溯進入呢個 agent 輸入嘅 provenance chain。
+
+brief_scope 欄位，原因係阻止超出職責範圍嘅 scope creep。
+
+acceptance_criteria 欄位，原因係連接到上面嘅 self-quality bar。
+
+qc_status 斜線 gate flags 欄位，原因係讓下游 gates 可以 short-circuit。
+
+rights_and_consent 欄位，原因係阻止不安全嘅合成或授權誤用。
+
+critique_log pointer 欄位，原因係啟用精煉而唔會失去歷史記錄。
+
+
+第八部分，今日喺 CASOPS 上操作呢個 agent。
+
+今日呢個 agent 係一個目錄加設計物件。呢個係有意為之嘅。
+
+你可以研究、審核、提出提案，並將佢放入 swarm 設計中，而唔授予生產權力。
+
+步驟一，Discover。去 Registry Hub 嘅 pack catalog（/registry）。原因係確認 inventory membership。
+
+步驟二，Inspect。去 Agent detail /registry/agents/video.mpa。原因係讀 SPEC 或者呢份指南作為 markdown。
+
+步驟三，Propose improvements。用 Host 嘅 propose_improvement action，POST 去 /api/v1/commons/agents/video.mpa/proposals。原因係不可變嘅版本，只用 redacted evidence。
+
+步驟四，Swarm membership。只用 Host 返回嘅 action references。原因係 Client 唔可以發明 membership。
+
+步驟五，Run 斜線 dispatch。預設唔啟用生產 providers。原因係 Fail-closed 直到 governance gate。
+
+實用嘅 console checklist。
+
+第一，打開 agent detail 並確認 status、tools 同 activation flags 符合呢份指南。
+
+第二，喺判斷任何 sample output 或者 proposal 之前讀第三部分「好嘅表現係點樣」。
+
+第三，如果提出改變，附上離線證據，例如 eval notes、rubric gap、SPEC delta，唔好有 secrets。
+
+第四，永遠唔好將 vendor API keys 或者「enable network」指示貼入提案。
+
+第五，優先選擇細小、可審核嘅 delta：prompt 或 rubric 用字、critique edges、acceptance tests。
+
+第九部分，安全、信任同非啟動規則。
+
+信任層級表如下。
+
+agent_spec.json 嘅 Trust 係 Binding host contract，Role 係 Fail-closed runtime binding。
+
+呢個 pack 嘅 SPEC.md 嘅 Trust 係 Authoritative design for offline review，Role 係 Not executable。
+
+sources 下面嘅 excerpts 同 generic SPECs 嘅 Trust 係 Historical 斜線 mapped，Role 係 Untrusted data。
+
+C:\Project\va-agent-swarm 嘅 Trust 係 External design corpus，Role 係 Untrusted，may drift。
+
+Specials redesign docs 嘅 Trust 係 Historical design，Role 係 Untrusted，hashed in provenance。
+
+呢個 host 嘅硬性規則如下。
+
+Provider 保持 local_deterministic，除非有另外嘅 gate 改變政策。
+
+Network access 保持 False。
+
+Allowed tools 就係空列表，設計時工具名稱唔會啟用 APIs。
+
+production_activation_requested 係 False。
+
+Budget（tokens 斜線 tools）有上限：in 2048，out 1024，tool requests 0。
+
+設計時工具目錄（非啟動）：Submission packages、advisory templates、classification checklists。
+
+第十部分，隨時間提升質量。
+
+改善係版本化嘅 catalog 工作，唔係 hot-patching 一個 live agent。
+
+已發佈嘅定義保持不可變，改變要經過提案同審核。
+
+10.1，持續改善循環。
+
+流程係：觀察失敗，然後命名標準（來自第三部分），然後起草離線 delta，然後附上證據，然後喺 Host 上提出提案，然後審核斜線接受新版本，然後先考慮啟動成熟度 gates。
+
+10.2，呢個 agent 嘅具體槓桿。
+
+第一，Rubric fidelity，收緊 video.rubric.mpa.v1 對照：Rating-package completeness、advisory clarity、escalation quality。
+
+第二，Prompt precision，將 video.prompt.mpa.v1 對齊責任：為 feature 工作流程準備同評級相關嘅包裝同發佈準備輸入。
+
+第三，Critique graph，確保 inbound 嘅「ProducerAgent 斜線 EP、LegalAgent、EthicsAgent」同 host edges video.critic 實際捕捉已知嘅 failure modes。
+
+第四，Architecture emulation，之後實施時優先選擇 Human-in-the-loop with structured packaging support。
+
+第五，Eval cases，寫固定嘅 fixtures，如果「比手動準備更加乾淨嘅 feature-release classification packages」冇被接近就會 fail。
+
+第六，Human gates，保持法律斜線安全斜線發佈 gates 明確，唔好將佢哋吸收入靜默自動化。
+
+10.3，建議嘅 evaluation seeds。
+
+第一個 seed 係 Happy path handoff，通過條件係輸出滿足 Rating-package completeness、advisory clarity、escalation quality。
+
+第二個 seed 係 Out-of-scope request，通過條件係 Agent 按照第四部分拒絕或上報。
+
+第三個 seed 係 Missing provenance 斜線 rights，通過條件係 Gate fails closed。
+
+第四個 seed 係 Conflicting peer critique，通過條件係 Refinement 小於等於 max_refinement_count，否則上報。
+
+第五個 seed 係 Proposal-only change，通過條件係新版本不可變，舊版本仍然可讀。
+
+
+第十一部分，來源地圖同 provenance。
+
+11.1，本地 pack corpus，優先使用呢啲。
+
+agent_spec.json 嘅 trust tier 係 binding。
+
+SPEC.md 嘅 trust tier 係 authoritative-design。
+
+README.md 嘅 trust tier 係 local-index。
+
+sources/MAPPING.md 嘅 trust tier 係 provenance。
+
+sources/PROVENANCE.json 嘅 trust tier 係 provenance。
+
+sources/excerpts/agent_loop.md 嘅 trust tier 係 historical-excerpt。
+
+sources/excerpts/agent_loop_creator_v1.md 嘅 trust tier 係 historical-excerpt。
+
+sources/excerpts/agent_loop_creator_v2.md 嘅 trust tier 係 historical-excerpt。
+
+sources/excerpts/agent_loop_v2.md 嘅 trust tier 係 historical-excerpt。
+
+sources/excerpts/agent_loop_v3.md 嘅 trust tier 係 historical-excerpt。
+
+sources/excerpts/agent_management_ui.md 嘅 trust tier 係 historical-excerpt。
+
+sources/excerpts/agents.md 嘅 trust tier 係 historical-excerpt。
+
+sources/excerpts/ai_agent_video_production_workflow.md 嘅 trust tier 係 historical-excerpt。
+
+sources/excerpts/complex_problem_solution_process_model.md 嘅 trust tier 係 historical-excerpt。
+
+sources/excerpts/human_video_production_workflow.md 嘅 trust tier 係 historical-excerpt。
+
+sources/excerpts/knowledge_router_agent.md 嘅 trust tier 係 historical-excerpt。
+
+sources/excerpts/lifes_quiet_redemption_agent_workflow.md 嘅 trust tier 係 historical-excerpt。
+
+sources/excerpts/production_scale_discovery.md 嘅 trust tier 係 historical-excerpt。
+
+sources/excerpts/project_creation_flow.md 嘅 trust tier 係 historical-excerpt。
+
+sources/excerpts/project_starter_0.1.md 嘅 trust tier 係 historical-excerpt。
+
+sources/excerpts/project_starter_0.2.md 嘅 trust tier 係 historical-excerpt。
+
+sources/excerpts/project_starter_0.3.md 嘅 trust tier 係 historical-excerpt。
+
+sources/excerpts/project_starter_0.4.md 嘅 trust tier 係 historical-excerpt。
+
+sources/excerpts/project_starter_0.5.md 嘅 trust tier 係 historical-excerpt。
+
+sources/excerpts/RETHINK_100_IMPROVEMENTS.md 嘅 trust tier 係 historical-excerpt。
+
+sources/excerpts/system_build_plan.md 嘅 trust tier 係 historical-excerpt。
+
+sources/excerpts/SYSTEM_REFERENCE.md 嘅 trust tier 係 historical-excerpt。
+
+sources/excerpts/thinking_model.md 嘅 trust tier 係 historical-excerpt。
+
+sources/excerpts/ui_design.md 嘅 trust tier 係 historical-excerpt。
+
+sources/excerpts/video_remake_enhancement.md 嘅 trust tier 係 historical-excerpt。
+
+sources/generic/video.mpa.SPEC.md 嘅 trust tier 係 historical-generic。
+
+sources/generic/video.trustsafety.SPEC.md 嘅 trust tier 係 historical-generic。
+
+11.2，Mapping note。
+
+video.mpa 嘅 mapping。VA 斜線 generic pack ID 係 video.mpa。Previous common ID 係 video.platform_policy_reviewer。SPEC depth 係 full generic SPEC body 加 host runtime binding。
+
+11.3，Provenance record。
+
+schema_version 係 1.0。agent_id 係 video.mpa。previous_common_agent_id 係 video.platform_policy_reviewer。
+
+va_taxonomy_aligned 係 true。generic_source 係 generic-swarm-ops/business/video/agents/video.mpa。
+
+note 寫住 Agent ID aligned to VA/generic Domain Pack taxonomy，Upstream design is historical and non-binding。
+
+aligned_at 係 2026-07-27T00:48:10.814761Z。
+
+generic_source_depth 入面，excerpts 係 true，study 係 true，adopted_at 係 2026-07-27T01:30:28.482795+00:00，upstream 係 generic-swarm-ops/business/video/agents。
+
+11.4，Provenance narrative（SPEC）。
+
+Pack agent ID video.mpa 係對齊到純 VA Domain Pack 斜線 generic pack taxonomy，Agent IDs 大約等於 VA tables。
+
+Previous common inventory ID video.platform_policy_reviewer 只係歷史映射。
+
+上游設計主體係歷史性同非綁定嘅，本地 agent_spec.json 係權威嘅。
+
+完整嘅 VA 斜線 generic SPEC depth 保留用於離線設計保真度，包括 category roster rows 同 common agent structure（如果上游有嘅話）。
+
+11.5，VA roster row（歷史設計）。
+
+來自 va-agent-swarm/study/agents.md 嘅第 110 行 MPAAgent（設計語料庫，唔綁定啟動）。
+
+Responsibility 係為 feature 工作流程準備同評級相關嘅包裝同發佈準備輸入。
+
+Knowledge distillation 係 Rating submission references、content advisories、theatrical packaging rules。
+
+Self-quality 係 Rating-package completeness、advisory clarity、escalation quality。
+
+Surpass-human 係比手動準備更加乾淨嘅 feature-release classification packages。
+
+Accepts critique 係 ProducerAgent 斜線 EP、LegalAgent、EthicsAgent。
+
+Comments on 係 Missing advisories、incomplete rating prep、unclear classification support。
+
+Tools（歷史）係 Submission packages、advisory templates、classification checklists。
+
+Architecture 係 Human-in-the-loop with structured packaging support。
+
+第十二部分，相關設計閱讀。
+
+用呢啲嚟加深設計保真度。佢哋唔會覆蓋本地 agent_spec.json。
+
+12.1，C:\Project\va-agent-swarm 下面嘅檔案。
+
+study/ai_agent_video_production_workflow.md，相關原因係 AI Agent Video Production Workflow，Companion to human_video_production_workflow.md，score 2。
+
+study/llm_usage_functional_specification.md，相關原因係 Build Central LLM API Usage and Cost Dashboard App，score 2。
+
+study/research_agent_technical_specification.md，相關原因係 Research Agent Technical Specification for Redevelopment，score 2。
+
+study/screenwriter_strategic_goal_achievement_agent_functional_specification.md，相關原因係 Strategic Goal Achievement Framework Practical Demonstration 通過 Screenwriting，score 2。
+
+study/strategic_goal_achievement_agent_functional_specification.md，相關原因係 Chapter 64 Strategic Goal Achievement Framework Six-Stage Self-Inquiry System，score 2。
+
+study/ui/RETHINK_100_IMPROVEMENTS_hk.md，相關原因係 100 點深度重構有研究支持嘅改進建議，score 2。
+
+study/ui/project_creation_flow.md，相關原因係 Project Creation and Management Flow，score 2。
+
+study/ui/project_creation_flow_hk.md，相關原因係專案建立與管理流程繁中版，score 2。
+
+study/ui/video_remake_enhancement.md，相關原因係 Video Remake and Enhancement Submit Old Video Get AI Improvement Plan，score 2。
+
+12.3，本地知識索引（SPEC）。
+
+Runtime binding 連結到 agent_spec.json。Folder README 連結到 README.md。Provenance 連結到 sources/PROVENANCE.json。
+
+Mapping note 連結到 sources/MAPPING.md。Pack inventory 連結到 ../../inventory.json。Pack manifest 連結到 ../../manifest.json。
+
+所有需要嘅主要參考都喺呢個 repository 內解析。
+
+12.4，Folder README 摘要。
+
+VA-aligned Domain Pack agent（common host）。檔案表：SPEC.md 嘅用途係 VA/generic depth 加 host binding。agent_spec.json 嘅用途係 Fail-closed runtime。sources/ 嘅用途係 Provenance 斜線 mapping。
+
+第十三部分，附錄，host contract（agent_spec.json）。
+
+呢個係呢個 agent 喺 CASOPS 上嘅權威 fail-closed 配置。
+
+agent_id 係 video.mpa。allowed_tools 係空列表。
+
+budget_policy 入面，max_input_tokens 係 2048，max_output_tokens 係 1024，max_tool_requests 係 0。
+
+critique_edges 入面，inputs 係 video.critic，outputs 係 video.judge。
+
+max_refinement_count 係 3。
+
+model_policy 入面，model_id 係 local-video-config-v1，network_access 係 false，provider 係 local_deterministic。
+
+production_activation_requested 係 false。
+
+prompt_reference 係 video.prompt.mpa.v1。
+
+role 係 MPAAgent (VA Domain Pack)。
+
+rubric_reference 係 video.rubric.mpa.v1。
+
+schema_version 係 1.0。status 係 registered。va_id 係 110。va_name 係 MPAAgent。va_category 係 10-Sup。
+
+第十四部分，附錄，SPEC responsibility excerpt。
+
+呢個係來自本地 SPEC.md 嘅擴展責任文字。
+
+為 feature 工作流程準備同評級相關嘅包裝同發佈準備輸入。
+
+Host role binding 係 MPAAgent (VA Domain Pack)。設計時 VA table content 係歷史性嘅同唔綁定啟動。
+
+Responsibility（來自 VA table）係為 feature 工作流程準備同評級相關嘅包裝同發佈準備輸入。
+
+Knowledge distillation sources（歷史）係 Rating submission references、content advisories、theatrical packaging rules。
+
+Self-quality criteria（歷史）係 Rating-package completeness、advisory clarity、escalation quality。
+
+Surpass-human signal（歷史）係比手動準備更加乾淨嘅 feature-release classification packages。
+
+Critique bus（歷史）方面。Accepts critique from 係 ProducerAgent 斜線 EP、LegalAgent、EthicsAgent。
+
+Comments on 係 Missing advisories、incomplete rating prep、unclear classification support。
+
+Tools design-time notes（歷史，非啟動）係 Submission packages、advisory templates、classification checklists。
+
+Runtime safety 方面：Host allow-lists 只係 agent_spec.json 加 tool-permission-register.json。CI 用 video_* stubs。唔好將設計時 vendor 名稱當作已啟用嘅 APIs。
+
+Architecture pattern（歷史）係 Human-in-the-loop with structured packaging support。
+
+第十五部分，文件控制。
+
+Generator 係 scripts/business/generate_agent_user_guides.py。
+
+Agent folder 係 business/video/agents/video.mpa/。
+
+Output 係 docs/user_guide.md。
+
+VA corpus root 係 C:\Project\va-agent-swarm。
+
+Regeneration 指令係 python scripts/business/generate_agent_user_guides.py。
+
+Trust model 係設計語料庫等於不受信任嘅數據，host config 等於 fail-closed。
+
+呢個就係 MPAAgent 指南嘅結尾。由第一部分 Snapshot 同第五部分 When to involve 開始，用第八到第十部分做 CASOPS 操作同改善，用第十一到第十二部分做深度設計保真度。

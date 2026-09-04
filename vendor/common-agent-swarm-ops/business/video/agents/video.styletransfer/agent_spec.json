@@ -1,0 +1,58 @@
+{
+  "agent_id": "video.styletransfer",
+  "allowed_tools": [
+    "media.stub",
+    "media.runway",
+    "media.veo"
+  ],
+  "budget_policy": {
+    "max_input_tokens": 2048,
+    "max_output_tokens": 1024,
+    "max_tool_requests": 4
+  },
+  "critique_edges": {
+    "inputs": [
+      "video.critic",
+      "video.director",
+      "video.colorist"
+    ],
+    "outputs": [
+      "video.judge"
+    ]
+  },
+  "max_refinement_count": 3,
+  "model_policy": {
+    "model_id": "local-video-config-v1",
+    "network_access": true,
+    "provider": "media_host"
+  },
+  "production_activation_requested": true,
+  "prompt_reference": "video.prompt.styletransfer.v1",
+  "role": "StyleTransferAgent (VA Domain Pack)",
+  "rubric_reference": "video.rubric.styletransfer.v1",
+  "schema_version": "1.0",
+  "status": "registered",
+  "va_id": 61,
+  "va_name": "StyleTransferAgent",
+  "va_category": "9-Meta",
+  "does_not_own": [
+    "Host credential storage",
+    "Silent production activation without fail-closed gates",
+    "Inventing action references for irreversible mutations",
+    "Owning other agents' exclusive craft outputs without handoff contract"
+  ],
+  "improvement": {
+    "plan": "agent_improvement_plan_v1.md",
+    "wave": "A_artifacts",
+    "prompt_materialized": true,
+    "rubric_materialized": true,
+    "skills_harness": true,
+    "updated_at": "2026-07-30T14:45:34Z",
+    "research_doc": "business/video/IMPROVEMENT_RESEARCH_SOURCES_v1.md",
+    "rethink_100": true,
+    "rethink_doc": "ui/RETHINK_100_IMPROVEMENTS.md",
+    "rethink_item_count": 21,
+    "rethink_applied_at": "2026-07-31T06:22:31Z",
+    "rethink_record": "sources/RETHINK_100_APPLIED.json"
+  }
+}

@@ -3496,7 +3496,7 @@ interface CritiqueMessage {
 ## Provenance
 
 - Master roster row va_id=95 from embedded agents.md content above.
-- Deep/extra text from `business/video/corpus/` and `C:\Project\va-agent-swarm`.
+- Deep/extra text from `business/video/corpus/` and `vendor/va-agent-swarm`.
 - Generator: `scripts/business/enrich_video_agent_specs.py`.
 - Upstream project name (historical only): va-agent-swarm.
 
@@ -3638,29 +3638,29 @@ Live primary-source expansion remains a residual for score 100 on S3 where depth
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "拍电影",
-      "author": "卢梅",
+      "title": "\u62cd\u7535\u5f71",
+      "author": "\u5362\u6885",
       "isbn13": "9787106028893",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 拍电影（卢梅），ISBN-13 9787106028893"
+      "citation": "ZH: \u62cd\u7535\u5f71\uff08\u5362\u6885\uff09\uff0cISBN-13 9787106028893"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "电影镜头设计",
-      "author": "卡茨",
+      "title": "\u7535\u5f71\u955c\u5934\u8bbe\u8ba1",
+      "author": "\u5361\u8328",
       "isbn13": "9787115222224",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 电影镜头设计（卡茨），ISBN-13 9787115222224"
+      "citation": "ZH: \u7535\u5f71\u955c\u5934\u8bbe\u8ba1\uff08\u5361\u8328\uff09\uff0cISBN-13 9787115222224"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "导演创作完全手册",
-      "author": "拉比格",
+      "title": "\u5bfc\u6f14\u521b\u4f5c\u5b8c\u5168\u624b\u518c",
+      "author": "\u62c9\u6bd4\u683c",
       "isbn13": "9787515302867",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 导演创作完全手册（拉比格），ISBN-13 9787515302867"
+      "citation": "ZH: \u5bfc\u6f14\u521b\u4f5c\u5b8c\u5168\u624b\u518c\uff08\u62c9\u6bd4\u683c\uff09\uff0cISBN-13 9787515302867"
     },
     {
       "kind": "reference_book",
@@ -3723,7 +3723,7 @@ Live primary-source expansion remains a residual for score 100 on S3 where depth
       "author": "Roger Deakins",
       "isbn13": "9781910593998",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "EN: Reflections: On Cinematography (Roger Deakins) — check latest ed. ISBN-13 9781910593998"
+      "citation": "EN: Reflections: On Cinematography (Roger Deakins) \u2014 check latest ed. ISBN-13 9781910593998"
     },
     {
       "kind": "reference_book",
@@ -3737,43 +3737,43 @@ Live primary-source expansion remains a residual for score 100 on S3 where depth
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "电影摄影：理论与实践",
+      "title": "\u7535\u5f71\u6444\u5f71\uff1a\u7406\u8bba\u4e0e\u5b9e\u8df5",
       "isbn13": "9787515331867",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 电影摄影：理论与实践，ISBN-13 9787515331867"
+      "citation": "ZH: \u7535\u5f71\u6444\u5f71\uff1a\u7406\u8bba\u4e0e\u5b9e\u8df5\uff0cISBN-13 9787515331867"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "电影语言的语法",
+      "title": "\u7535\u5f71\u8bed\u8a00\u7684\u8bed\u6cd5",
       "isbn13": "9787532299990",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 电影语言的语法，ISBN-13 9787532299990"
+      "citation": "ZH: \u7535\u5f71\u8bed\u8a00\u7684\u8bed\u6cd5\uff0cISBN-13 9787532299990"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "美国纽约摄影学院摄影教材",
+      "title": "\u7f8e\u56fd\u7ebd\u7ea6\u6444\u5f71\u5b66\u9662\u6444\u5f71\u6559\u6750",
       "isbn13": "9787800078491",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 美国纽约摄影学院摄影教材，ISBN-13 9787800078491"
+      "citation": "ZH: \u7f8e\u56fd\u7ebd\u7ea6\u6444\u5f71\u5b66\u9662\u6444\u5f71\u6559\u6750\uff0cISBN-13 9787800078491"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "论摄影",
-      "author": "桑塔格",
+      "title": "\u8bba\u6444\u5f71",
+      "author": "\u6851\u5854\u683c",
       "isbn13": "9787544722599",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 论摄影（桑塔格），ISBN-13 9787544722599"
+      "citation": "ZH: \u8bba\u6444\u5f71\uff08\u6851\u5854\u683c\uff09\uff0cISBN-13 9787544722599"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "摄影师的视界",
+      "title": "\u6444\u5f71\u5e08\u7684\u89c6\u754c",
       "isbn13": "9787512201880",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 摄影师的视界，ISBN-13 9787512201880"
+      "citation": "ZH: \u6444\u5f71\u5e08\u7684\u89c6\u754c\uff0cISBN-13 9787512201880"
     },
     {
       "kind": "reference_book",
@@ -3814,27 +3814,27 @@ Live primary-source expansion remains a residual for score 100 on S3 where depth
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "这就是音乐产业",
-      "author": "Passman 中译常见",
+      "title": "\u8fd9\u5c31\u662f\u97f3\u4e50\u4ea7\u4e1a",
+      "author": "Passman \u4e2d\u8bd1\u5e38\u89c1",
       "isbn13": "9787111456780",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 这就是音乐产业（Passman 中译常见），ISBN-13 9787111456780"
+      "citation": "ZH: \u8fd9\u5c31\u662f\u97f3\u4e50\u4ea7\u4e1a\uff08Passman \u4e2d\u8bd1\u5e38\u89c1\uff09\uff0cISBN-13 9787111456780"
     },
     {
       "kind": "reference_book",
       "language": "EN",
-      "title": "Becoming an Actor’s Director Directing Actors for Film and Television",
+      "title": "Becoming an Actor\u2019s Director Directing Actors for Film and Television",
       "isbn13": "9780367191870",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "EN: Becoming an Actor’s Director Directing Actors for Film and Television, ISBN-13 9780367191870"
+      "citation": "EN: Becoming an Actor\u2019s Director Directing Actors for Film and Television, ISBN-13 9780367191870"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "纪录影片及数字视频编导与制作",
+      "title": "\u7eaa\u5f55\u5f71\u7247\u53ca\u6570\u5b57\u89c6\u9891\u7f16\u5bfc\u4e0e\u5236\u4f5c",
       "isbn13": "9787504380302",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 纪录影片及数字视频编导与制作，ISBN-13 9787504380302"
+      "citation": "ZH: \u7eaa\u5f55\u5f71\u7247\u53ca\u6570\u5b57\u89c6\u9891\u7f16\u5bfc\u4e0e\u5236\u4f5c\uff0cISBN-13 9787504380302"
     },
     {
       "kind": "reference_book",
@@ -3847,10 +3847,10 @@ Live primary-source expansion remains a residual for score 100 on S3 where depth
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "AI 數字人 從製作到商用",
+      "title": "AI \u6578\u5b57\u4eba \u5f9e\u88fd\u4f5c\u5230\u5546\u7528",
       "isbn13": "9787122450753",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: AI 數字人 從製作到商用，ISBN-13 9787122450753"
+      "citation": "ZH: AI \u6578\u5b57\u4eba \u5f9e\u88fd\u4f5c\u5230\u5546\u7528\uff0cISBN-13 9787122450753"
     },
     {
       "kind": "reference_book",
@@ -3890,10 +3890,10 @@ Live primary-source expansion remains a residual for score 100 on S3 where depth
     {
       "kind": "reference_book",
       "language": "EN",
-      "title": "The Properties Director’s Toolkit Creativity, Collaboration, and Communication for Prop…",
+      "title": "The Properties Director\u2019s Toolkit Creativity, Collaboration, and Communication for Prop\u2026",
       "isbn13": "9781315146201",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "EN: The Properties Director’s Toolkit Creativity, Collaboration, and Communication for Prop…, ISBN-13 9781315146201"
+      "citation": "EN: The Properties Director\u2019s Toolkit Creativity, Collaboration, and Communication for Prop\u2026, ISBN-13 9781315146201"
     },
     {
       "kind": "reference_book",
@@ -3925,20 +3925,20 @@ Live primary-source expansion remains a residual for score 100 on S3 where depth
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "电影导演艺术教程（修订版）",
-      "author": "韩小磊",
+      "title": "\u7535\u5f71\u5bfc\u6f14\u827a\u672f\u6559\u7a0b\uff08\u4fee\u8ba2\u7248\uff09",
+      "author": "\u97e9\u5c0f\u78ca",
       "isbn13": "9787106053840",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 电影导演艺术教程（修订版）（韩小磊），ISBN-13 9787106053840"
+      "citation": "ZH: \u7535\u5f71\u5bfc\u6f14\u827a\u672f\u6559\u7a0b\uff08\u4fee\u8ba2\u7248\uff09\uff08\u97e9\u5c0f\u78ca\uff09\uff0cISBN-13 9787106053840"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "故事片创作六讲",
-      "author": "王竞",
+      "title": "\u6545\u4e8b\u7247\u521b\u4f5c\u516d\u8bb2",
+      "author": "\u738b\u7ade",
       "isbn13": "9787541151323",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 故事片创作六讲（王竞），ISBN-13 9787541151323"
+      "citation": "ZH: \u6545\u4e8b\u7247\u521b\u4f5c\u516d\u8bb2\uff08\u738b\u7ade\uff09\uff0cISBN-13 9787541151323"
     }
   ],
   "agent_id": "video.musicvideodirector",
@@ -3953,7 +3953,7 @@ Live primary-source expansion remains a residual for score 100 on S3 where depth
     "adopted_at": "2026-07-27T01:30:28.510628+00:00",
     "upstream": "generic-swarm-ops/business/video/agents"
   },
-  "imported_from": "C:\\Project\\common-agent-swarm-ops\\business\\video\\agents\\video.musicvideodirector",
+  "imported_from": "vendor/common-agent-swarm-ops/business/video/agents/video.musicvideodirector",
   "reference_book_origin": "spec/book_of_knowledge.md",
   "reference_book_note": "Bibliographic references from spec/book_of_knowledge.md. Does not enable network, RAG, T3, plugins, or memory writes."
 }

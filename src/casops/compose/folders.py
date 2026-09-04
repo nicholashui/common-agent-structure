@@ -7,6 +7,18 @@ from pathlib import Path
 from typing import Any
 
 
+def public_folder_ref(folder: Path, agents_root: Path) -> str:
+    """Repo-relative pack location for the public plane, e.g. agents/video.director."""
+    try:
+        inner = folder.resolve().relative_to(agents_root.resolve()).as_posix()
+    except ValueError:
+        inner = folder.name
+    inner = inner.replace("\\", "/").strip("/")
+    if inner.startswith("agents/"):
+        return inner
+    return f"agents/{inner}" if inner else "agents"
+
+
 def list_agent_summaries(agents_root: Path) -> list[dict[str, Any]]:
     """Return public-plane summaries for every loadable agent folder."""
     summaries: list[dict[str, Any]] = []
@@ -22,7 +34,7 @@ def list_agent_summaries(agents_root: Path) -> list[dict[str, Any]]:
         summaries.append(
             {
                 "agent_id": str(payload.get("agent_id") or child.name),
-                "folder": str(child),
+                "folder": public_folder_ref(child, agents_root),
                 "structure_id": str(payload.get("structure_id") or "casops.common_agent.v3"),
                 "schema_version": str(payload.get("schema_version") or "3.0"),
                 "role": str(payload.get("role") or ""),

@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://casops.local/schemas/eval/testcase.schema.json",
+  "title": "casops.testcase.v1",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "schema_version",
+    "id",
+    "agent_id",
+    "path",
+    "honesty",
+    "input",
+    "expect"
+  ],
+  "properties": {
+    "schema_version": { "type": "string", "const": "casops.testcase.v1" },
+    "id": { "type": "string", "minLength": 1 },
+    "agent_id": { "type": "string", "minLength": 1 },
+    "path": { "type": "string", "enum": ["chat", "run"] },
+    "honesty": {
+      "type": "string",
+      "enum": ["CHARACTERIZATION", "INDICATIVE", "NOT_RUN"]
+    },
+    "input": {
+      "type": "object",
+      "properties": {
+        "message": { "type": "string" },
+        "history": {
+          "type": "array",
+          "items": { "type": "object" }
+        }
+      }
+    },
+    "expect": {
+      "type": "object",
+      "required": ["agent_id", "memory_writes", "plugins_executed", "t3_enabled", "path_id"],
+      "properties": {
+        "http_status": { "type": "integer" },
+        "agent_id": { "type": "string" },
+        "memory_writes": { "type": "array", "maxItems": 0 },
+        "plugins_executed": { "type": "boolean", "const": false },
+        "t3_enabled": { "type": "boolean", "const": false },
+        "network_granted": { "type": "boolean", "const": false },
+        "io_declared_named": { "type": "boolean" },
+        "io_declared_fetched": { "type": "boolean", "const": false },
+        "truncated": { "type": "boolean" },
+        "containment_stop": { "type": ["string", "null"] },
+        "path_id": { "type": "string", "enum": ["chat", "run"] }
+      }
+    },
+    "source": { "type": "object" }
+  }
+}

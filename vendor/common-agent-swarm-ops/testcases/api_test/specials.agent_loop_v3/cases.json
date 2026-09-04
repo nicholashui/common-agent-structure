@@ -1,0 +1,66 @@
+{
+  "agent_id": "specials.agent_loop_v3",
+  "kind": "special",
+  "cases": [
+    {
+      "id": "tc1",
+      "name": "v3 policy read A",
+      "method": "GET",
+      "path": "/api/v1/agent-loops/v3/policy",
+      "body": {},
+      "success_criteria": {
+        "http_status": [
+          200
+        ],
+        "required_keys_any": [
+          "patterns",
+          "critic_modes",
+          "note",
+          "correlation_id",
+          "activation_policy"
+        ],
+        "notes": "agent_loop_v3 Host policy endpoint (GET); three probes for stability."
+      }
+    },
+    {
+      "id": "tc2",
+      "name": "v3 policy read B",
+      "method": "GET",
+      "path": "/api/v1/agent-loops/v3/policy",
+      "body": {},
+      "success_criteria": {
+        "http_status": [
+          200
+        ],
+        "required_keys_any": [
+          "patterns",
+          "critic_modes",
+          "note",
+          "correlation_id",
+          "activation_policy"
+        ],
+        "notes": "agent_loop_v3 Host policy endpoint (GET); three probes for stability."
+      }
+    },
+    {
+      "id": "tc3",
+      "name": "v3 policy read C",
+      "method": "GET",
+      "path": "/api/v1/agent-loops/v3/policy",
+      "body": {},
+      "success_criteria": {
+        "http_status": [
+          200
+        ],
+        "required_keys_any": [
+          "patterns",
+          "critic_modes",
+          "note",
+          "correlation_id",
+          "activation_policy"
+        ],
+        "notes": "agent_loop_v3 Host policy endpoint (GET); three probes for stability."
+      }
+    }
+  ]
+}

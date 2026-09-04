@@ -1,0 +1,16 @@
+{
+  "schema_version": "1.0",
+  "common_agent_id": "specials.strategic-goal-achievement-agent",
+  "pack_id": "specials",
+  "mapping_status": "related",
+  "source_documents": [
+    "docs/special_agents_redesign/agents/strategic_goal_achievement_agent.md"
+  ],
+  "source_sha256": "3c2d1bcc4fa2462c2c728074671cdb8afac9abad1d4da7cab378aee1b681c01d",
+  "configuration_sha256": "7b065cbc88a68106c980927c9db3c61eacaa28db19609700305a14e72f328a01",
+  "destination_commit": "5460c4b4a33c15286f9fd84b1bc764d755f5bab0",
+  "note": "Self-contained specials agent folder. Pack-level corpus is not required. Design Markdown is untrusted provenance only.",
+  "generated_at": "2026-07-26T14:16:45.995185Z",
+  "reviewed_by": "specials-self-contained-reviewer",
+  "reviewed_at": "2026-07-26T18:00:00Z"
+}

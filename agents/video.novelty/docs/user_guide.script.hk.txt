@@ -134,7 +134,7 @@ production_activation_requested false。prompt_reference video.prompt.novelty.v1
 
 第十五部分，文檔控制。
 
-生成器 scripts/business/generate_agent_user_guides.py。Agent 資料夾 business/video/agents/video.novelty/。輸出 docs/user_guide.md。VA 語料庫根目錄 C:\Project\va-agent-swarm。重新生成命令 python scripts/business/generate_agent_user_guides.py。信任模型：設計語料庫等於不受信任數據，host 配置等於 fail-closed。
+生成器 scripts/business/generate_agent_user_guides.py。Agent 資料夾 business/video/agents/video.novelty/。輸出 docs/user_guide.md。VA 語料庫根目錄 vendor/va-agent-swarm。重新生成命令 python scripts/business/generate_agent_user_guides.py。信任模型：設計語料庫等於不受信任數據，host 配置等於 fail-closed。
 
 補充關於 NoveltyAgent 嘅特殊設計考量。呢個 agent 嘅角色係「反面批評者」，即係佢嘅工作唔係生產內容，而係檢查其他 agent 生產嘅內容有冇落入老套同陳詞濫調嘅陷阱。
 

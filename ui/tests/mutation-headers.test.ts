@@ -52,6 +52,21 @@ describe("mutation headers", () => {
     expect(calls[0].init.method).toBe("DELETE");
   });
 
+  it("injects headers on PUT of an agent file", async () => {
+    const { client, calls } = capture({
+      actor: "human_operator",
+      reason: "edit prompt",
+      expectedParent: "none",
+      dryRun: true,
+    });
+    await client.putAgentFile("agent", "prompts/primary.md", "# x\n");
+    expect(calls[0].init.method).toBe("PUT");
+    expect(header(calls[0].init, "x-casops-actor")).toBe("human_operator");
+    expect(header(calls[0].init, "x-casops-reason")).toBe("edit prompt");
+    expect(header(calls[0].init, "x-casops-dry-run")).toBe("true");
+    expect(calls[0].url).toContain("path=prompts%2Fprimary.md");
+  });
+
   it("does not send mutation headers on GET", async () => {
     const { client, calls } = capture({
       actor: "human_operator",
@@ -99,5 +114,28 @@ describe("mutation headers", () => {
     await client.chatAgent("video.director", { message: "hello" });
     expect(header(calls[0].init, "x-casops-reason")).toBe("operator chat");
     expect(JSON.parse(String(calls[0].init.body))).toEqual({ message: "hello" });
+  });
+
+  it("stops chat generation without treating abort as UNAVAILABLE", async () => {
+    const controller = new AbortController();
+    controller.abort();
+    const client = createClient({
+      getBaseUrl: () => "http://127.0.0.1:18080",
+      getMutation: () => ({
+        actor: "human_operator",
+        reason: "operator chat",
+        expectedParent: "none",
+        dryRun: true,
+      }),
+      fetchImpl: async (_url, init) => {
+        if (init?.signal?.aborted) {
+          throw new DOMException("Aborted", "AbortError");
+        }
+        return new Response("{}", { status: 200, headers: { "Content-Type": "application/json" } });
+      },
+    });
+    await expect(client.chatAgent("video.director", { message: "hello" }, { signal: controller.signal })).rejects.toMatchObject({
+      name: "RequestAbortedError",
+    });
   });
 });

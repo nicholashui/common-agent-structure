@@ -4296,7 +4296,7 @@ Step 2: MULTI-AGENT EVALUATION (parallel, ~30 seconds)
 ## Provenance
 
 - Master roster row va_id=9 from embedded agents.md content above.
-- Deep/extra text from `business/video/corpus/` and `C:\Project\va-agent-swarm`.
+- Deep/extra text from `business/video/corpus/` and `vendor/va-agent-swarm`.
 - Generator: `scripts/business/enrich_video_agent_specs.py`.
 - Upstream project name (historical only): va-agent-swarm.
 
@@ -4479,82 +4479,82 @@ Omitted here; same document as `SPEC.md` above.
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "这就是营销",
+      "title": "\u8fd9\u5c31\u662f\u8425\u9500",
       "isbn13": "9787521702330",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 这就是营销，ISBN-13 9787521702330"
+      "citation": "ZH: \u8fd9\u5c31\u662f\u8425\u9500\uff0cISBN-13 9787521702330"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "疯传",
+      "title": "\u75af\u4f20",
       "isbn13": "9787508641238",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 疯传，ISBN-13 9787508641238"
+      "citation": "ZH: \u75af\u4f20\uff0cISBN-13 9787508641238"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "让创意更有黏性",
+      "title": "\u8ba9\u521b\u610f\u66f4\u6709\u9ecf\u6027",
       "isbn13": "9787508641245",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 让创意更有黏性，ISBN-13 9787508641245"
+      "citation": "ZH: \u8ba9\u521b\u610f\u66f4\u6709\u9ecf\u6027\uff0cISBN-13 9787508641245"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "跨越鸿沟",
+      "title": "\u8de8\u8d8a\u9e3f\u6c9f",
       "isbn13": "9787111456780",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 跨越鸿沟，ISBN-13 9787111456780"
+      "citation": "ZH: \u8de8\u8d8a\u9e3f\u6c9f\uff0cISBN-13 9787111456780"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "精益创业",
+      "title": "\u7cbe\u76ca\u521b\u4e1a",
       "isbn13": "9787115293701",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 精益创业，ISBN-13 9787115293701"
+      "citation": "ZH: \u7cbe\u76ca\u521b\u4e1a\uff0cISBN-13 9787115293701"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "一个广告人的自白",
+      "title": "\u4e00\u4e2a\u5e7f\u544a\u4eba\u7684\u81ea\u767d",
       "isbn13": "9787111496182",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 一个广告人的自白，ISBN-13 9787111496182"
+      "citation": "ZH: \u4e00\u4e2a\u5e7f\u544a\u4eba\u7684\u81ea\u767d\uff0cISBN-13 9787111496182"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "文案训练手册",
+      "title": "\u6587\u6848\u8bad\u7ec3\u624b\u518c",
       "isbn13": "9787115351555",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 文案训练手册，ISBN-13 9787115351555"
+      "citation": "ZH: \u6587\u6848\u8bad\u7ec3\u624b\u518c\uff0cISBN-13 9787115351555"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "上瘾",
+      "title": "\u4e0a\u763e",
       "isbn13": "9787508648017",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 上瘾，ISBN-13 9787508648017"
+      "citation": "ZH: \u4e0a\u763e\uff0cISBN-13 9787508648017"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "增长黑客",
+      "title": "\u589e\u957f\u9ed1\u5ba2",
       "isbn13": "9787213066948",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 增长黑客，ISBN-13 9787213066948"
+      "citation": "ZH: \u589e\u957f\u9ed1\u5ba2\uff0cISBN-13 9787213066948"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "参与感",
+      "title": "\u53c2\u4e0e\u611f",
       "isbn13": "9787213055375",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 参与感，ISBN-13 9787213055375"
+      "citation": "ZH: \u53c2\u4e0e\u611f\uff0cISBN-13 9787213055375"
     },
     {
       "kind": "reference_book",
@@ -4613,34 +4613,34 @@ Omitted here; same document as `SPEC.md` above.
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "理解媒介",
+      "title": "\u7406\u89e3\u5a92\u4ecb",
       "isbn13": "9787508040318",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 理解媒介，ISBN-13 9787508040318"
+      "citation": "ZH: \u7406\u89e3\u5a92\u4ecb\uff0cISBN-13 9787508040318"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "娱乐至死",
+      "title": "\u5a31\u4e50\u81f3\u6b7b",
       "isbn13": "9787563397648",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 娱乐至死，ISBN-13 9787563397648"
+      "citation": "ZH: \u5a31\u4e50\u81f3\u6b7b\uff0cISBN-13 9787563397648"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "融合文化",
+      "title": "\u878d\u5408\u6587\u5316",
       "isbn13": "9787301162262",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 融合文化，ISBN-13 9787301162262"
+      "citation": "ZH: \u878d\u5408\u6587\u5316\uff0cISBN-13 9787301162262"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "认知盈余",
+      "title": "\u8ba4\u77e5\u76c8\u4f59",
       "isbn13": "9787213044661",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 认知盈余，ISBN-13 9787213044661"
+      "citation": "ZH: \u8ba4\u77e5\u76c8\u4f59\uff0cISBN-13 9787213044661"
     },
     {
       "kind": "reference_book",
@@ -4735,226 +4735,226 @@ Omitted here; same document as `SPEC.md` above.
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "思考，快与慢",
+      "title": "\u601d\u8003\uff0c\u5feb\u4e0e\u6162",
       "isbn13": "9787508633565",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 思考，快与慢，ISBN-13 9787508633565"
+      "citation": "ZH: \u601d\u8003\uff0c\u5feb\u4e0e\u6162\uff0cISBN-13 9787508633565"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "影响力",
+      "title": "\u5f71\u54cd\u529b",
       "isbn13": "9787508622163",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 影响力，ISBN-13 9787508622163"
+      "citation": "ZH: \u5f71\u54cd\u529b\uff0cISBN-13 9787508622163"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "怪诞行为学",
+      "title": "\u602a\u8bde\u884c\u4e3a\u5b66",
       "isbn13": "9787508615824",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 怪诞行为学，ISBN-13 9787508615824"
+      "citation": "ZH: \u602a\u8bde\u884c\u4e3a\u5b66\uff0cISBN-13 9787508615824"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "心流",
+      "title": "\u5fc3\u6d41",
       "isbn13": "9787508660721",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 心流，ISBN-13 9787508660721"
+      "citation": "ZH: \u5fc3\u6d41\uff0cISBN-13 9787508660721"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "驱动力",
+      "title": "\u9a71\u52a8\u529b",
       "isbn13": "9787508621753",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 驱动力，ISBN-13 9787508621753"
+      "citation": "ZH: \u9a71\u52a8\u529b\uff0cISBN-13 9787508621753"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "社会心理学",
-      "author": "迈尔斯",
+      "title": "\u793e\u4f1a\u5fc3\u7406\u5b66",
+      "author": "\u8fc8\u5c14\u65af",
       "isbn13": "9787115412393",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 社会心理学（迈尔斯），ISBN-13 9787115412393"
+      "citation": "ZH: \u793e\u4f1a\u5fc3\u7406\u5b66\uff08\u8fc8\u5c14\u65af\uff09\uff0cISBN-13 9787115412393"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "从零开始做内容：爆款内容的底层逻辑",
-      "author": "吕白",
+      "title": "\u4ece\u96f6\u5f00\u59cb\u505a\u5185\u5bb9\uff1a\u7206\u6b3e\u5185\u5bb9\u7684\u5e95\u5c42\u903b\u8f91",
+      "author": "\u5415\u767d",
       "isbn13": "9787111664604",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 从零开始做内容：爆款内容的底层逻辑（吕白），ISBN-13 9787111664604"
+      "citation": "ZH: \u4ece\u96f6\u5f00\u59cb\u505a\u5185\u5bb9\uff1a\u7206\u6b3e\u5185\u5bb9\u7684\u5e95\u5c42\u903b\u8f91\uff08\u5415\u767d\uff09\uff0cISBN-13 9787111664604"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "短视频与直播文案写作",
-      "author": "张弘李自海魏坚 主编吴曼刘哲李守勤 副主编",
+      "title": "\u77ed\u89c6\u9891\u4e0e\u76f4\u64ad\u6587\u6848\u5199\u4f5c",
+      "author": "\u5f20\u5f18\u674e\u81ea\u6d77\u9b4f\u575a \u4e3b\u7f16\u5434\u66fc\u5218\u54f2\u674e\u5b88\u52e4 \u526f\u4e3b\u7f16",
       "isbn13": "9787115638649",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 短视频与直播文案写作（张弘李自海魏坚 主编吴曼刘哲李守勤 副主编），ISBN-13 9787115638649"
+      "citation": "ZH: \u77ed\u89c6\u9891\u4e0e\u76f4\u64ad\u6587\u6848\u5199\u4f5c\uff08\u5f20\u5f18\u674e\u81ea\u6d77\u9b4f\u575a \u4e3b\u7f16\u5434\u66fc\u5218\u54f2\u674e\u5b88\u52e4 \u526f\u4e3b\u7f16\uff09\uff0cISBN-13 9787115638649"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "新媒体广告与文案写作(第2版)",
-      "author": "周颖 主编张文杰 主编朱晓虹 副主编王娜 副主编黄伟 副主编",
+      "title": "\u65b0\u5a92\u4f53\u5e7f\u544a\u4e0e\u6587\u6848\u5199\u4f5c(\u7b2c2\u7248)",
+      "author": "\u5468\u9896 \u4e3b\u7f16\u5f20\u6587\u6770 \u4e3b\u7f16\u6731\u6653\u8679 \u526f\u4e3b\u7f16\u738b\u5a1c \u526f\u4e3b\u7f16\u9ec4\u4f1f \u526f\u4e3b\u7f16",
       "isbn13": "9787115648044",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 新媒体广告与文案写作(第2版)（周颖 主编张文杰 主编朱晓虹 副主编王娜 副主编黄伟 副主编），ISBN-13 9787115648044"
+      "citation": "ZH: \u65b0\u5a92\u4f53\u5e7f\u544a\u4e0e\u6587\u6848\u5199\u4f5c(\u7b2c2\u7248)\uff08\u5468\u9896 \u4e3b\u7f16\u5f20\u6587\u6770 \u4e3b\u7f16\u6731\u6653\u8679 \u526f\u4e3b\u7f16\u738b\u5a1c \u526f\u4e3b\u7f16\u9ec4\u4f1f \u526f\u4e3b\u7f16\uff09\uff0cISBN-13 9787115648044"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "新时代高等院校新闻传播学系列教材·广告与消费心理学(第二版)",
-      "author": "江波",
+      "title": "\u65b0\u65f6\u4ee3\u9ad8\u7b49\u9662\u6821\u65b0\u95fb\u4f20\u64ad\u5b66\u7cfb\u5217\u6559\u6750\u00b7\u5e7f\u544a\u4e0e\u6d88\u8d39\u5fc3\u7406\u5b66(\u7b2c\u4e8c\u7248)",
+      "author": "\u6c5f\u6ce2",
       "isbn13": "9787566834799",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 新时代高等院校新闻传播学系列教材·广告与消费心理学(第二版)（江波），ISBN-13 9787566834799"
+      "citation": "ZH: \u65b0\u65f6\u4ee3\u9ad8\u7b49\u9662\u6821\u65b0\u95fb\u4f20\u64ad\u5b66\u7cfb\u5217\u6559\u6750\u00b7\u5e7f\u544a\u4e0e\u6d88\u8d39\u5fc3\u7406\u5b66(\u7b2c\u4e8c\u7248)\uff08\u6c5f\u6ce2\uff09\uff0cISBN-13 9787566834799"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "诡辩术 60种诡辩方法",
-      "author": "华玉洪,姜成林",
+      "title": "\u8be1\u8fa9\u672f 60\u79cd\u8be1\u8fa9\u65b9\u6cd5",
+      "author": "\u534e\u7389\u6d2a,\u59dc\u6210\u6797",
       "isbn13": "9787563400393",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 诡辩术 60种诡辩方法（华玉洪,姜成林），ISBN-13 9787563400393"
+      "citation": "ZH: \u8be1\u8fa9\u672f 60\u79cd\u8be1\u8fa9\u65b9\u6cd5\uff08\u534e\u7389\u6d2a,\u59dc\u6210\u6797\uff09\uff0cISBN-13 9787563400393"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "YouTube视频之王的崛起之路",
-      "author": "【美】马克·伯根",
+      "title": "YouTube\u89c6\u9891\u4e4b\u738b\u7684\u5d1b\u8d77\u4e4b\u8def",
+      "author": "\u3010\u7f8e\u3011\u9a6c\u514b\u00b7\u4f2f\u6839",
       "isbn13": "9787516837474",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: YouTube视频之王的崛起之路（【美】马克·伯根），ISBN-13 9787516837474"
+      "citation": "ZH: YouTube\u89c6\u9891\u4e4b\u738b\u7684\u5d1b\u8d77\u4e4b\u8def\uff08\u3010\u7f8e\u3011\u9a6c\u514b\u00b7\u4f2f\u6839\uff09\uff0cISBN-13 9787516837474"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "DeepSeek+爆款短视频一本通流量时代的AI生产力",
-      "author": "张守刚张小平",
+      "title": "DeepSeek+\u7206\u6b3e\u77ed\u89c6\u9891\u4e00\u672c\u901a\u6d41\u91cf\u65f6\u4ee3\u7684AI\u751f\u4ea7\u529b",
+      "author": "\u5f20\u5b88\u521a\u5f20\u5c0f\u5e73",
       "isbn13": "9787115670014",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: DeepSeek+爆款短视频一本通流量时代的AI生产力（张守刚张小平），ISBN-13 9787115670014"
+      "citation": "ZH: DeepSeek+\u7206\u6b3e\u77ed\u89c6\u9891\u4e00\u672c\u901a\u6d41\u91cf\u65f6\u4ee3\u7684AI\u751f\u4ea7\u529b\uff08\u5f20\u5b88\u521a\u5f20\u5c0f\u5e73\uff09\uff0cISBN-13 9787115670014"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "剪映+DeepSeek短视频剪辑全能一本通",
+      "title": "\u526a\u6620+DeepSeek\u77ed\u89c6\u9891\u526a\u8f91\u5168\u80fd\u4e00\u672c\u901a",
       "author": "Jack",
       "isbn13": "9787115669780",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 剪映+DeepSeek短视频剪辑全能一本通（Jack），ISBN-13 9787115669780"
+      "citation": "ZH: \u526a\u6620+DeepSeek\u77ed\u89c6\u9891\u526a\u8f91\u5168\u80fd\u4e00\u672c\u901a\uff08Jack\uff09\uff0cISBN-13 9787115669780"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "剪映：手机短视频制作（全彩慕课版）",
-      "author": "尹涛 陈杰",
+      "title": "\u526a\u6620\uff1a\u624b\u673a\u77ed\u89c6\u9891\u5236\u4f5c\uff08\u5168\u5f69\u6155\u8bfe\u7248\uff09",
+      "author": "\u5c39\u6d9b \u9648\u6770",
       "isbn13": "9787115611772",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 剪映：手机短视频制作（全彩慕课版）（尹涛 陈杰），ISBN-13 9787115611772"
+      "citation": "ZH: \u526a\u6620\uff1a\u624b\u673a\u77ed\u89c6\u9891\u5236\u4f5c\uff08\u5168\u5f69\u6155\u8bfe\u7248\uff09\uff08\u5c39\u6d9b \u9648\u6770\uff09\uff0cISBN-13 9787115611772"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "手机短视频拍摄与制作（微课版）",
-      "author": "王武林 主编；马千里；蔡静 副主编",
+      "title": "\u624b\u673a\u77ed\u89c6\u9891\u62cd\u6444\u4e0e\u5236\u4f5c\uff08\u5fae\u8bfe\u7248\uff09",
+      "author": "\u738b\u6b66\u6797 \u4e3b\u7f16\uff1b\u9a6c\u5343\u91cc\uff1b\u8521\u9759 \u526f\u4e3b\u7f16",
       "isbn13": "9787115630629",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 手机短视频拍摄与制作（微课版）（王武林 主编；马千里；蔡静 副主编），ISBN-13 9787115630629"
+      "citation": "ZH: \u624b\u673a\u77ed\u89c6\u9891\u62cd\u6444\u4e0e\u5236\u4f5c\uff08\u5fae\u8bfe\u7248\uff09\uff08\u738b\u6b66\u6797 \u4e3b\u7f16\uff1b\u9a6c\u5343\u91cc\uff1b\u8521\u9759 \u526f\u4e3b\u7f16\uff09\uff0cISBN-13 9787115630629"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "抖音+剪映+Premiere短视频创作实战（全彩微课版）",
-      "author": "李晓斌；张晓景 编著",
+      "title": "\u6296\u97f3+\u526a\u6620+Premiere\u77ed\u89c6\u9891\u521b\u4f5c\u5b9e\u6218\uff08\u5168\u5f69\u5fae\u8bfe\u7248\uff09",
+      "author": "\u674e\u6653\u658c\uff1b\u5f20\u6653\u666f \u7f16\u8457",
       "isbn13": "9787302632870",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 抖音+剪映+Premiere短视频创作实战（全彩微课版）（李晓斌；张晓景 编著），ISBN-13 9787302632870"
+      "citation": "ZH: \u6296\u97f3+\u526a\u6620+Premiere\u77ed\u89c6\u9891\u521b\u4f5c\u5b9e\u6218\uff08\u5168\u5f69\u5fae\u8bfe\u7248\uff09\uff08\u674e\u6653\u658c\uff1b\u5f20\u6653\u666f \u7f16\u8457\uff09\uff0cISBN-13 9787302632870"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "短视频制作实战策划 拍摄 制作 运营(全彩慕课版)(第2版)",
-      "author": "郭韬 主编刘琴琴 副主编",
+      "title": "\u77ed\u89c6\u9891\u5236\u4f5c\u5b9e\u6218\u7b56\u5212 \u62cd\u6444 \u5236\u4f5c \u8fd0\u8425(\u5168\u5f69\u6155\u8bfe\u7248)(\u7b2c2\u7248)",
+      "author": "\u90ed\u97ec \u4e3b\u7f16\u5218\u7434\u7434 \u526f\u4e3b\u7f16",
       "isbn13": "9787115672063",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 短视频制作实战策划 拍摄 制作 运营(全彩慕课版)(第2版)（郭韬 主编刘琴琴 副主编），ISBN-13 9787115672063"
+      "citation": "ZH: \u77ed\u89c6\u9891\u5236\u4f5c\u5b9e\u6218\u7b56\u5212 \u62cd\u6444 \u5236\u4f5c \u8fd0\u8425(\u5168\u5f69\u6155\u8bfe\u7248)(\u7b2c2\u7248)\uff08\u90ed\u97ec \u4e3b\u7f16\u5218\u7434\u7434 \u526f\u4e3b\u7f16\uff09\uff0cISBN-13 9787115672063"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "短视频拍摄与剪辑零基础一本通",
-      "author": "千知影像学院 编著",
+      "title": "\u77ed\u89c6\u9891\u62cd\u6444\u4e0e\u526a\u8f91\u96f6\u57fa\u7840\u4e00\u672c\u901a",
+      "author": "\u5343\u77e5\u5f71\u50cf\u5b66\u9662 \u7f16\u8457",
       "isbn13": "9787115635402",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 短视频拍摄与剪辑零基础一本通（千知影像学院 编著），ISBN-13 9787115635402"
+      "citation": "ZH: \u77ed\u89c6\u9891\u62cd\u6444\u4e0e\u526a\u8f91\u96f6\u57fa\u7840\u4e00\u672c\u901a\uff08\u5343\u77e5\u5f71\u50cf\u5b66\u9662 \u7f16\u8457\uff09\uff0cISBN-13 9787115635402"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "短视频策划、拍摄与制作(微课版)",
-      "author": "吕子燕 主编卢玲 副主编",
+      "title": "\u77ed\u89c6\u9891\u7b56\u5212\u3001\u62cd\u6444\u4e0e\u5236\u4f5c(\u5fae\u8bfe\u7248)",
+      "author": "\u5415\u5b50\u71d5 \u4e3b\u7f16\u5362\u73b2 \u526f\u4e3b\u7f16",
       "isbn13": "9787115569295",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 短视频策划、拍摄与制作(微课版)（吕子燕 主编卢玲 副主编），ISBN-13 9787115569295"
+      "citation": "ZH: \u77ed\u89c6\u9891\u7b56\u5212\u3001\u62cd\u6444\u4e0e\u5236\u4f5c(\u5fae\u8bfe\u7248)\uff08\u5415\u5b50\u71d5 \u4e3b\u7f16\u5362\u73b2 \u526f\u4e3b\u7f16\uff09\uff0cISBN-13 9787115569295"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "手機攝影技術教程",
+      "title": "\u624b\u6a5f\u651d\u5f71\u6280\u8853\u6559\u7a0b",
       "isbn13": "9787210129653",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 手機攝影技術教程，ISBN-13 9787210129653"
+      "citation": "ZH: \u624b\u6a5f\u651d\u5f71\u6280\u8853\u6559\u7a0b\uff0cISBN-13 9787210129653"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "短視頻編劇全流程",
+      "title": "\u77ed\u8996\u983b\u7de8\u5287\u5168\u6d41\u7a0b",
       "isbn13": "9787122452696",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 短視頻編劇全流程，ISBN-13 9787122452696"
+      "citation": "ZH: \u77ed\u8996\u983b\u7de8\u5287\u5168\u6d41\u7a0b\uff0cISBN-13 9787122452696"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "AI短视频创作：一本通剪映+即梦+可灵+文心一格",
+      "title": "AI\u77ed\u89c6\u9891\u521b\u4f5c\uff1a\u4e00\u672c\u901a\u526a\u6620+\u5373\u68a6+\u53ef\u7075+\u6587\u5fc3\u4e00\u683c",
       "isbn13": "9787122470027",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: AI短视频创作：一本通剪映+即梦+可灵+文心一格，ISBN-13 9787122470027"
+      "citation": "ZH: AI\u77ed\u89c6\u9891\u521b\u4f5c\uff1a\u4e00\u672c\u901a\u526a\u6620+\u5373\u68a6+\u53ef\u7075+\u6587\u5fc3\u4e00\u683c\uff0cISBN-13 9787122470027"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "爆款短视频拍摄：118个分镜脚本与摄影技巧新媒体抖音运营流量",
+      "title": "\u7206\u6b3e\u77ed\u89c6\u9891\u62cd\u6444\uff1a118\u4e2a\u5206\u955c\u811a\u672c\u4e0e\u6444\u5f71\u6280\u5de7\u65b0\u5a92\u4f53\u6296\u97f3\u8fd0\u8425\u6d41\u91cf",
       "isbn13": "9787122699984",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 爆款短视频拍摄：118个分镜脚本与摄影技巧新媒体抖音运营流量，ISBN-13 9787122699984"
+      "citation": "ZH: \u7206\u6b3e\u77ed\u89c6\u9891\u62cd\u6444\uff1a118\u4e2a\u5206\u955c\u811a\u672c\u4e0e\u6444\u5f71\u6280\u5de7\u65b0\u5a92\u4f53\u6296\u97f3\u8fd0\u8425\u6d41\u91cf\uff0cISBN-13 9787122699984"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "剪映视频后期剪辑零基础入门到精通",
-      "author": "许放",
+      "title": "\u526a\u6620\u89c6\u9891\u540e\u671f\u526a\u8f91\u96f6\u57fa\u7840\u5165\u95e8\u5230\u7cbe\u901a",
+      "author": "\u8bb8\u653e",
       "isbn13": "9787115634979",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 剪映视频后期剪辑零基础入门到精通（许放），ISBN-13 9787115634979"
+      "citation": "ZH: \u526a\u6620\u89c6\u9891\u540e\u671f\u526a\u8f91\u96f6\u57fa\u7840\u5165\u95e8\u5230\u7cbe\u901a\uff08\u8bb8\u653e\uff09\uff0cISBN-13 9787115634979"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "剪映+數字人",
+      "title": "\u526a\u6620+\u6578\u5b57\u4eba",
       "isbn13": "9787122452511",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 剪映+數字人，ISBN-13 9787122452511"
+      "citation": "ZH: \u526a\u6620+\u6578\u5b57\u4eba\uff0cISBN-13 9787122452511"
     },
     {
       "kind": "reference_book",
@@ -4968,10 +4968,10 @@ Omitted here; same document as `SPEC.md` above.
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "新媒体营销圣经",
+      "title": "\u65b0\u5a92\u4f53\u8425\u9500\u5723\u7ecf",
       "isbn13": "9787550272101",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 新媒体营销圣经，ISBN-13 9787550272101"
+      "citation": "ZH: \u65b0\u5a92\u4f53\u8425\u9500\u5723\u7ecf\uff0cISBN-13 9787550272101"
     }
   ],
   "agent_id": "video.socialmediastrategist",
@@ -4986,7 +4986,7 @@ Omitted here; same document as `SPEC.md` above.
     "adopted_at": "2026-07-27T01:30:28.836019+00:00",
     "upstream": "generic-swarm-ops/business/video/agents"
   },
-  "imported_from": "C:\\Project\\common-agent-swarm-ops\\business\\video\\agents\\video.socialmediastrategist",
+  "imported_from": "vendor/common-agent-swarm-ops/business/video/agents/video.socialmediastrategist",
   "reference_book_origin": "spec/book_of_knowledge.md",
   "reference_book_note": "Bibliographic references from spec/book_of_knowledge.md. Does not enable network, RAG, T3, plugins, or memory writes."
 }

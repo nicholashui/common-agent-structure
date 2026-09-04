@@ -1,0 +1,86 @@
+{
+  "agent_id": "specials.llm_usage",
+  "kind": "special",
+  "cases": [
+    {
+      "id": "tc1",
+      "name": "Record pack loop usage",
+      "method": "POST",
+      "path": "/api/v1/llm-usage/record",
+      "body": {
+        "operation": "api_test_pack_loop",
+        "estimated_input_tokens": 1200,
+        "estimated_output_tokens": 400,
+        "agent_id": "video.planner",
+        "offline": true
+      },
+      "success_criteria": {
+        "http_status": [
+          200
+        ],
+        "required_keys_any": [
+          "ok",
+          "recorded",
+          "ledger",
+          "result",
+          "correlation_id",
+          "status"
+        ],
+        "notes": "Offline usage ledger record."
+      }
+    },
+    {
+      "id": "tc2",
+      "name": "Record special usage",
+      "method": "POST",
+      "path": "/api/v1/llm-usage/record",
+      "body": {
+        "operation": "api_test_special_intent",
+        "estimated_input_tokens": 800,
+        "estimated_output_tokens": 200,
+        "offline": true
+      },
+      "success_criteria": {
+        "http_status": [
+          200
+        ],
+        "required_keys_any": [
+          "ok",
+          "recorded",
+          "ledger",
+          "result",
+          "correlation_id",
+          "status"
+        ],
+        "notes": "Offline usage ledger record."
+      }
+    },
+    {
+      "id": "tc3",
+      "name": "Record budget gate usage",
+      "method": "POST",
+      "path": "/api/v1/llm-usage/record",
+      "body": {
+        "operation": "api_test_budget_gate",
+        "estimated_input_tokens": 5000,
+        "estimated_output_tokens": 1000,
+        "agent_id": "video.orchestrator",
+        "offline": true
+      },
+      "success_criteria": {
+        "http_status": [
+          200
+        ],
+        "required_keys_any": [
+          "ok",
+          "recorded",
+          "ledger",
+          "result",
+          "correlation_id",
+          "status"
+        ],
+        "notes": "Offline usage ledger record."
+      }
+    }
+  ]
+}

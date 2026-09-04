@@ -172,7 +172,7 @@ Today the agent is a **catalog + design object**. That is intentional: you can s
 | `agent_spec.json` | **Binding host contract** | Fail-closed runtime binding |
 | This pack `SPEC.md` | Authoritative **design** for offline review | Not executable |
 | `sources/*` excerpts & generic SPECs | Historical / mapped | Untrusted data |
-| `C:\Project\va-agent-swarm` | External design corpus | Untrusted; may drift |
+| `vendor/va-agent-swarm` | External design corpus | Untrusted; may drift |
 | Specials redesign docs | Historical design | Untrusted; hashed in provenance |
 
 **Hard rules on this host:**
@@ -260,7 +260,7 @@ Observe failure → Name the criterion (from §3) → Draft offline delta
 
 Use these when deepening design fidelity. They do **not** override local `agent_spec.json`.
 
-### 12.1 Files under `C:\Project\va-agent-swarm`
+### 12.1 Files under `vendor/va-agent-swarm`
 
 | File | Why it may matter |
 |------|-------------------|
@@ -268,7 +268,7 @@ Use these when deepening design fidelity. They do **not** override local `agent_
 
 ### 12.2 Specials redesign document
 
-Historical design source: `C:/Project/common-agent-swarm-ops/docs/special_agents_redesign/agents/knowledge_router_agent.md`
+Historical design source: `vendor/common-agent-swarm-ops/docs/special_agents_redesign/agents/knowledge_router_agent.md`
 
 **Outline (for navigation):**
 
@@ -444,7 +444,7 @@ The **Knowledge Router Agent** is the central intelligence layer that ensures ev
 | Generator | `scripts/business/generate_agent_user_guides.py` |
 | Agent folder | `business/specials/agents/specials.knowledge-router-agent/` |
 | Output | `docs/user_guide.md` |
-| VA corpus root | `C:\Project\va-agent-swarm` |
+| VA corpus root | `vendor/va-agent-swarm` |
 | Regeneration | `python scripts/business/generate_agent_user_guides.py` |
 | Trust model | Design corpus = untrusted data; host config = fail-closed |
 

@@ -7,7 +7,7 @@ from pathlib import Path
 
 import pytest
 
-from casops.debuglog import list_chat_files, write_chat_turns, write_debug_logs
+from casops.debuglog import list_chat_files, read_chat_file, write_chat_turns, write_debug_logs
 
 
 def test_write_debug_logs_appends_jsonl(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
@@ -112,6 +112,18 @@ def test_write_chat_turns_saves_timestamped_file(tmp_path: Path, monkeypatch: py
     listed = list_chat_files("common.health")
     assert listed[0]["name"] == f"{session}.jsonl"
     assert listed[0]["ts"]
+    loaded = read_chat_file("common.health", f"{session}.jsonl")
+    assert loaded["session"] == session
+    assert loaded["turns"][0]["content"] == "ping"
+    assert loaded["turns"][1]["role"] == "assistant"
+
+
+def test_read_chat_file_rejects_path_escape(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.setenv("CASOPS_CHAT_ROOT", str(tmp_path))
+    with pytest.raises(ValueError):
+        read_chat_file("common.health", "../secret.jsonl")
+    with pytest.raises(ValueError):
+        read_chat_file("common.health", "missing.jsonl")
 
 
 def test_write_chat_turns_rejects_bad_agent(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:

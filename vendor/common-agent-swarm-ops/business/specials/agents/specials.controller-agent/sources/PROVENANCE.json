@@ -1,0 +1,16 @@
+{
+  "schema_version": "1.0",
+  "common_agent_id": "specials.controller-agent",
+  "pack_id": "specials",
+  "mapping_status": "related",
+  "source_documents": [
+    "docs/special_agents_redesign/agents/controller_agent.md"
+  ],
+  "source_sha256": "ab695387fe27a4fb05d5b861d5f9daceea37a29511c49afce35751ca0b1f564a",
+  "configuration_sha256": "b4a488e7b4ff9749af0645bcc3b7ea7e4dc2f6cd160ccb2709bf3e5cb075dbdf",
+  "destination_commit": "5460c4b4a33c15286f9fd84b1bc764d755f5bab0",
+  "note": "Self-contained specials agent folder. Pack-level corpus is not required. Design Markdown is untrusted provenance only.",
+  "generated_at": "2026-07-26T14:16:45.930785Z",
+  "reviewed_by": "specials-self-contained-reviewer",
+  "reviewed_at": "2026-07-26T18:00:00Z"
+}

@@ -1,11 +1,18 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
 import {
+  canRegenerate,
   clearThread,
+  exportThreadJson,
+  exportThreadMarkdown,
   loadThread,
   rememberChatFiles,
+  replaceThread,
   resetChatForTests,
   saveThread,
+  sessionFromFileName,
 } from "../src/lib/chat";
+import { followUpChips } from "../src/lib/followUps";
+import { isPinnedToBottom } from "../src/lib/chatScroll";
 import { enqueueChatPersist, flushChatNow, resetChatPersistForTests, startChatSink } from "../src/lib/chatPersist";
 
 afterEach(() => {
@@ -45,7 +52,7 @@ describe("chat transcript sink", () => {
         return new Response(
           JSON.stringify({
             ok: true,
-            files: { transcript: "C:/Project/common-agent-structure/logs/chat/common.health/session.jsonl" },
+            files: { transcript: "./logs/chat/common.health/session.jsonl" },
           }),
           { status: 200, headers: { "Content-Type": "application/json" } },
         );
@@ -65,5 +72,59 @@ describe("chat transcript sink", () => {
     expect(body.entries[0].ts).toBe("2026-09-02T12:00:00.000Z");
     expect(body.entries[0].role).toBe("user");
     expect(loadThread("common.health").files[0].name).toBe("session.jsonl");
+  });
+});
+
+describe("chat transcript helpers", () => {
+  it("exports markdown and json without claiming a run pass", () => {
+    const turns = [
+      { role: "user" as const, content: "hello", ts: "2026-09-04T12:00:00.000Z" },
+      { role: "assistant" as const, content: "hi", provider: "xai", ts: "2026-09-04T12:00:01.000Z" },
+    ];
+    const md = exportThreadMarkdown("video.director", turns);
+    expect(md).toContain("# Chat with video.director");
+    expect(md).toContain("Not a sealed Run");
+    expect(md).toContain("## user");
+    expect(md).toContain("hello");
+    const json = JSON.parse(exportThreadJson("video.director", "sess-1", turns));
+    expect(json.agent_id).toBe("video.director");
+    expect(json.honesty).toBe("CHARACTERIZATION");
+    expect(json.turns).toHaveLength(2);
+  });
+
+  it("regenerates only after an assistant reply", () => {
+    expect(canRegenerate([{ role: "user", content: "hi" }])).toBe(false);
+    expect(
+      canRegenerate([
+        { role: "user", content: "hi" },
+        { role: "assistant", content: "hello" },
+      ]),
+    ).toBe(true);
+  });
+
+  it("loads a transcript into a named session", () => {
+    expect(sessionFromFileName("2026-09-04-00-58-35-810-jzswag.jsonl")).toBe(
+      "2026-09-04-00-58-35-810-jzswag",
+    );
+    const next = replaceThread(
+      "common.health",
+      [{ role: "user", content: "loaded" }],
+      "2026-09-04-00-58-35-810-jzswag",
+    );
+    expect(next.session).toBe("2026-09-04-00-58-35-810-jzswag");
+    expect(loadThread("common.health").turns[0].content).toBe("loaded");
+  });
+
+  it("builds follow-up chips from questions or fallbacks", () => {
+    const fromQuestion = followUpChips("You could try X.\nWhat should we do next?");
+    expect(fromQuestion[0]).toBe("What should we do next?");
+    expect(fromQuestion).toHaveLength(3);
+    const fallback = followUpChips("No questions here.");
+    expect(fallback[0]).toMatch(/Summarize/i);
+  });
+
+  it("treats near-bottom as pinned", () => {
+    expect(isPinnedToBottom({ scrollHeight: 400, scrollTop: 320, clientHeight: 80 } as HTMLElement)).toBe(true);
+    expect(isPinnedToBottom({ scrollHeight: 400, scrollTop: 10, clientHeight: 80 } as HTMLElement)).toBe(false);
   });
 });

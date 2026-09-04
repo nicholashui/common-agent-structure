@@ -1,0 +1,275 @@
+大家好，歡迎返嚟我哋嘅頻道。今日我哋詳細講解 PersonalizationEngineerAgent。
+
+呢份指南寫畀操作員、pack 作者、swarm 設計師同審閱者，喺 common-agent-swarm-ops 工作。你會得到任務清晰定義、使用指引、協作地圖、CASOPS 步驟、改進路徑同來源地圖。
+
+呢份指南唔係授權啟動供應商、打開網絡或發明工具嘅許可證。Host 真相係 fail-closed 嘅 agent_spec.json。
+
+Pack 路徑 business/video/agents/video.personalizationengineer/。指南 docs/user_guide.md。由 generate_agent_user_guides.py 生成。
+
+第一部分，快照。
+
+PersonalizationEngineerAgent，agent id video.personalizationengineer，Video Domain Pack 角色喺 CASOPS。簡單講負責變量模板包括名字、面部同聲音替換。呢份指南係操作員地圖用於目錄審查、swarm 設計同提案改進。
+
+顯示名稱 PersonalizationEngineerAgent。Pack agent id video.personalizationengineer。Pack video。Host 角色字串 PersonalizationEngineerAgent (VA Domain Pack)。
+
+目錄狀態 registered。成熟度 L0 非活躍。VA id 50。VA 類別 8-AI 代表AI 時代合成專家。供應商 local_deterministic。網絡 False。
+
+允許工具空列表。生產啟動請求 False。Prompt 參考 video.prompt.personalizationengineer.v1。Rubric 參考 video.rubric.personalizationengineer.v1。
+
+之前 common id video.refine_coordinator。Generic lineage generic-swarm-ops/business/video/agents/video.personalizationengineer。
+
+第二部分，點解存在。
+
+人類影片團隊喺時間壓力下解決：變量模板包括名字、面部同聲音替換。Agent 形式令多代理系統持續編碼技藝，每次交接應用，只將剩餘風險升級人類。
+
+知識庫Idomoo 案例研究、DMA 活動、MarTech 文獻。歷史設計來源唔係即時網絡呼叫。
+
+設計野心比最佳人工模板化活動更高嘅分享率。北極星指標。
+
+第三部分，做得好。
+
+主要成果變量模板包括名字、面部同聲音替換。自我質量渲染成功率大於等於百分之九十九點五、抽查通過、隱私審計通過。野心訊號比最佳人工模板化活動更高嘅分享率。架構 ReAct (assemble template, render, validate, deliver)。
+
+Prompt video.prompt.personalizationengineer.v1。Rubric video.rubric.personalizationengineer.v1。批評邊界輸入 video.critic 輸出 video.judge。最大精煉 3。
+
+輸入本地 pack 製品同類型化交接。輸出可審閱影片領域交付物帶驗收標準。驗收 host 政策加本地 SPEC。
+
+第四部分，範圍。
+
+擁有變量模板包括名字、面部同聲音替換。
+
+共享批評。聆聽ComplianceAgent 關於 GDPR/CCPA 同 AnalystAgent。評論TemplateDesignerAgent 嘅模板脆弱性。Host 邊界輸入 video.critic 輸出 video.judge。精煉 3。
+
+拒絕：fail-closed 冇啟動冇網絡冇憑證。activation false。法律安全權利升級人類。
+
+第五部分，幾時涉及。
+
+需要PersonalizationEngineerAgent嘅決策時叫佢：變量模板包括名字、面部同聲音替換。管道AI 時代合成專家。唔好為通用編排預算法律叫佢。人類覆蓋：阻止發佈嘅爭議升級。
+
+速查表：係專業就包含 swarm。元數據就用 Registry。需要工具就檢查允許。有風險就保持人類閘門。
+
+第六部分，協作地圖。
+
+批評巴士節點。入站ComplianceAgent 關於 GDPR/CCPA 同 AnalystAgent。出站TemplateDesignerAgent 嘅模板脆弱性。Host video.critic 同 video.judge。
+
+第七部分，生產位置。
+
+人類工作流程合成媒體、複製、虛擬化身同深偽風險工藝。製品合成資產、同意記錄、鑑識分數、身份 hash。
+
+AI 工作流程帶有強來源記錄、同意同鑑識閘門嘅專門生成節點。設計時工具Idomoo/Pirsonal APIs、HeyGen 個人化、GDPR 同意管理平臺。循環 ReAct (assemble template, render, validate, deliver)。今日只文檔。
+
+AI 摘錄：第 50 行 PersonalizationEngineerAgent 負責變量模板即名字面部聲音替換，知識來自 Idomoo 案例、DMA 同行評審活動、MarTech 自動化文獻，質量係渲染成功率大於九十九點五同抽查通過同隱私審計通過，目標係比最佳人工模板活動更高嘅禮物分享率。接受 ComplianceAgent GDPR/CCPA 同 AnalystAgent 批評。評論 TemplateDesignerAgent 模板脆弱性。另外 Concept 階段由 TemplateDesignAgent 加 PersonalizationEngineerAgent 負責。Production 階段由 PersonalizationEngineerAgent 加 VoiceCloneAgent 負責。
+
+交接合約：artifact_id 不可變身份、parent_assets 來源鏈、brief_scope 防蔓延、acceptance_criteria 質量掛鉤、qc_status 下游短路、rights_and_consent 防濫用、critique_log 保歷史。
+
+第八部分，CASOPS 操作。
+
+目錄加設計對象。步驟：/registry 確認、/registry/agents/video.personalizationengineer 閱讀、POST proposals 提案、Host 動作參考做成員、預設唔啟用。
+
+清單：確認一致、閱讀第三部分、附證據、唔貼密鑰、小差異。
+
+第九部分，安全信任。
+
+agent_spec.json 約束性。SPEC.md 權威設計。sources 歷史不受信任。外部語料庫不受信任。
+
+硬規則：provider local_deterministic、network False、tools 空列表、activation False、budget 2048/1024/0。設計時工具唔啟動：Idomoo/Pirsonal APIs、HeyGen 個人化、GDPR 同意管理平臺。
+
+第十部分，提升質量。
+
+版本化工作。循環：觀察、命名、草擬、附證據、提案、審閱、考慮啟動。
+
+槓桿：rubric 對照渲染成功率大於等於百分之九十九點五、抽查通過、隱私審計通過、prompt 對齊責任、批評圖捕捉失敗、架構 ReAct (assemble template, render, validate, deliver)、測試夾具驗證比最佳人工模板化活動更高嘅分享率、人類閘門明確。
+
+種子：happy path 滿足渲染成功率大於等於百分之九十九點五、抽查通過、隱私審計通過、超出範圍拒絕、缺失來源 fail-closed、衝突精煉或升級、提案不可變。
+
+第十一部分，來源地圖。
+
+本地語料庫：agent_spec.json binding、SPEC.md authoritative-design、README.md local-index、sources/MAPPING.md provenance、sources/PROVENANCE.json provenance、sources/excerpts/agents.md historical-excerpt、sources/excerpts/ai_agent_video_production_workflow.md historical-excerpt、sources/excerpts/lifes_quiet_redemption_agent_workflow.md historical-excerpt、sources/excerpts/system_build_plan.md historical-excerpt、sources/excerpts/SYSTEM_REFERENCE.md historical-excerpt、sources/generic/video.critic.SPEC.md historical-generic、sources/generic/video.promptoptimizer.SPEC.md historical-generic
+
+映射：ID video.personalizationengineer、prev video.refine_coordinator、深度完整 generic 加 host 綁定。
+
+來源記錄：schema 1.0、agent_id video.personalizationengineer、prev video.refine_coordinator、aligned true、source generic-swarm-ops/business/video/agents/video.personalizationengineer、時間 2026-07-27。
+
+敘述：對齊 VA 分類法。prev 歷史映射。上游非約束。本地權威。
+
+VA 行第 50：責任變量模板包括名字、面部同聲音替換、知識Idomoo 案例研究、DMA 活動、MarTech 文獻、質量渲染成功率大於等於百分之九十九點五、抽查通過、隱私審計通過、超越比最佳人工模板化活動更高嘅分享率、批評ComplianceAgent 關於 GDPR/CCPA 同 AnalystAgent、評論TemplateDesignerAgent 嘅模板脆弱性、工具Idomoo/Pirsonal APIs、HeyGen 個人化、GDPR 同意管理平臺、架構ReAct (assemble template, render, validate, deliver)。
+
+第十二部分，相關閱讀。
+
+知識索引：agent_spec.json、README.md、PROVENANCE.json、MAPPING.md、inventory.json、manifest.json。全部喺倉庫解析。
+
+README 摘要：VA 對齊 Domain Pack agent。SPEC.md VA/generic 深度加 host 綁定。agent_spec.json fail-closed。sources 來源映射。
+
+第十三部分，host 合約。
+
+agent_id video.personalizationengineer。tools 空列表。tokens 2048/1024。tool_requests 0。edges video.critic/video.judge。refinement 3。model local-video-config-v1。network false。provider local_deterministic。activation false。prompt video.prompt.personalizationengineer.v1。role PersonalizationEngineerAgent (VA Domain Pack)。rubric video.rubric.personalizationengineer.v1。schema 1.0。status registered。va_id 50。va_name PersonalizationEngineerAgent。category 8-AI。
+
+第十四部分，SPEC 摘錄。
+
+責任變量模板包括名字、面部同聲音替換。綁定 PersonalizationEngineerAgent (VA Domain Pack)。歷史非約束。
+
+VA 表格：責任變量模板包括名字、面部同聲音替換。知識Idomoo 案例研究、DMA 活動、MarTech 文獻。質量渲染成功率大於等於百分之九十九點五、抽查通過、隱私審計通過。超越比最佳人工模板化活動更高嘅分享率。批評ComplianceAgent 關於 GDPR/CCPA 同 AnalystAgent。評論TemplateDesignerAgent 嘅模板脆弱性。工具Idomoo/Pirsonal APIs、HeyGen 個人化、GDPR 同意管理平臺。安全用 agent_spec.json。架構ReAct (assemble template, render, validate, deliver)。
+
+第十五部分，文檔控制。
+
+生成器 generate_agent_user_guides.py。資料夾 video.personalizationengineer/。輸出 user_guide.md。根目錄 va-agent-swarm。信任：語料庫不受信任、配置 fail-closed。
+
+補充關於 PersonalizationEngineerAgent 嘅技術背景。個人化影片係一種為每個觀眾生成獨特版本嘅影片技術。通過替換模板中嘅變量元素，例如名字、面部、聲音，每個觀眾都會收到感覺係專門為佢哋製作嘅內容。
+
+Idomoo 係呢個領域嘅領先公司之一，佢哋嘅案例研究展示咗個人化影片可以顯著提升觀眾參與度同分享率。DMA 即 Direct Marketing Association 嘅活動提供咗大量關於個人化營銷效果嘅數據。
+
+渲染成功率大於百分之九十九點五係一個極高嘅要求。呢意味住每一萬個個人化影片中最多只可以有五個渲染失敗。呢個需要極其穩健嘅模板設計同渲染系統。
+
+隱私審計通過係呢個角色嘅關鍵要求。個人化影片涉及處理個人數據，包括名字、面部影像同聲音。GDPR 同 CCPA 等隱私法規對呢啲數據嘅處理有嚴格要求。
+
+ComplianceAgent 嘅批評重點正正係隱私合規方面。佢會檢查每個個人化操作係咪有適當嘅同意記錄、數據處理係咪符合法規要求、同埋數據保留係咪喺規定期限內。
+
+ReAct 架構嘅四個步驟：assemble template 組裝模板、render 渲染個人化版本、validate 驗證輸出質量同合規、deliver 交付最終產品。每個步驟都有明確嘅輸入輸出同驗證標準。
+
+關於 TemplateDesignerAgent 嘅模板脆弱性評論。如果模板設計得唔夠穩健，某啲變量值可能會導致渲染失敗或視覺異常。PersonalizationEngineerAgent 能夠識別呢啲潛在問題因為佢有大量嘅渲染經驗。
+
+VA 類別 8-AI 代表 AI 時代合成專家。呢個類別嘅 agent 處理嘅都係傳統影片製作中唔存在嘅工作，例如面部替換、聲音複製、虛擬化身等。佢哋帶嚟全新嘅能力同時亦帶嚟全新嘅風險。
+
+rights_and_consent 欄位喺呢個 agent 嘅交接合約入面特別重要。每個面部替換同聲音替換都需要明確嘅同意記錄。缺少同意嘅操作必須被閘門阻止。
+
+關於 HeyGen 個人化工具。呢個代表 AI 驅動嘅影片個人化服務，可以生成帶有個人化面部同聲音嘅影片。雖然今日唔會被啟動，但佢代表呢個角色未來嘅能力方向。
+
+GDPR 同意管理平臺確保所有個人數據嘅使用都有合法基礎。呢個唔單止係法律要求，仲係用戶信任嘅基礎。冇信任就冇人願意分享佢哋嘅個人化影片。
+
+以上PersonalizationEngineerAgent完整指南。從快照同第五部分開始，第八到十做操作改進，第十一十二做設計保真度。多謝收睇再見。
+
+我哋繼續深入講解PersonalizationEngineerAgent嘅更多重要細節。
+
+首先關於ReAct (assemble, render, validate, deliver)架構嘅深入解釋。呢個模式經過仔細研究選擇，最適合PersonalizationEngineerAgent嘅工作特性。未來實施時應優先採用。
+
+關於Idomoo 案例、DMA 活動、MarTech 文獻嘅具體價值。呢啲來源代表行業最高水平。為 agent 決策提供理論同實踐基礎。注意係歷史設計來源，運行時唔會即時存取。
+
+關於渲染成功率九十九點五、抽查通過、隱私審計通過嘅每個維度。定義「好輸出」嘅精確含義。每個維度可被量化或系統化評估。審閱時逐維度檢查，未達標觸發精煉。
+
+關於比人工模板更高分享率嘅意義。指引所有設計改進決策。呢個目標嘅設定逼迫思考人類侷限同 agent 優勢。
+
+關於批評循環。ComplianceAgent GDPR/CCPA 同 AnalystAgent發批評可涉及質量任何維度。PersonalizationEngineerAgent需要理解問題、識別修改、精煉、重交。最多三次。最終 video.judge 裁決。
+
+關於TemplateDesignerAgent 模板脆弱性嘅評論權限。基於專業知識重疊。PersonalizationEngineerAgent從獨特角度發現問題，為整體質量貢獻。
+
+關於Idomoo/Pirsonal APIs、HeyGen、GDPR 同意管理設計時工具。唔代表啟用。agent_spec.json 嘅 allowed_tools 係真正約束。工具名幫助理解未來能力需求。
+
+關於8-AI即AI 時代合成專家。同類 agent 處理相關任務。理解類別有助 swarm 設計正確定位。
+
+關於video.refine_coordinator歷史意義。舊文檔見到呢個名就係video.personalizationengineer。命名變更係分類法對齊結果。
+
+關於人類工作流程位置。PersonalizationEngineerAgent對應特定製作階段。人類同職位嘅人會簽核嘅位置。
+
+關於 AI 工作流程。PersonalizationEngineerAgent喺多代理系統嘅角色同互動模式由設計文檔定義。
+
+關於 ReAct 四步流程嘅詳細說明。第一步 assemble template：收集所有需要個人化嘅變量同模板定義。確認所有必需數據都可用。
+
+第二步 render：用實際數據渲染個人化影片。呢個步驟需要確保面部替換自然、聲音同步準確、名字顯示正確。
+
+第三步 validate：驗證渲染結果嘅質量同合規性。檢查面部比例、脣音同步、文字可讀性、同隱私合規。
+
+第四步 deliver：將驗證通過嘅個人化影片交付到指定渠道。確保格式正確同元數據完整。
+
+每個步驟失敗都會觸發重試或升級。呢個確保只有質量同合規都通過嘅影片先會被交付到最終用戶。
+
+關於隱私嘅特殊重要性。面部替換同聲音替換涉及深度偽造技術嘅邊界。必須有極其嚴格嘅同意機制確保所有操作都係經授權嘅。
+
+關於交接合約詳解。artifact_id 確保可追蹤。parent_assets 令可追溯。brief_scope 防蔓延。acceptance_criteria 通過失敗標準。qc_status 下游判斷。rights_and_consent 確保合規。critique_log 保完整歷史。
+
+關於預算安全意義。輸入輸出限制防資源過度消耗。工具請求限制阻止未授權互動。即使錯誤啟動限制都生效。
+
+關於從 L0 升級。需完成評估驗證、通過治理閘門、更新配置。每步有標準確保基於證據。
+
+關於版本不可變。發佈後唔可修改。改變通過新版本。舊版本永遠可讀。確保歷史完整同可回滾。
+
+關於 CASOPS 核心原則。所有 agent 遵循相同生命週期。fail-closed、版本不可變、人類閘門、分層信任。呢啲確保安全可靠。
+
+關於提案流程。收集離線證據、明確問題同建議、草擬具體可驗證差異、提交後不可變、審閱者查看決定。
+
+關於同其他操作員協作。唔同操作員負責唔同 agent。理解關係有助跨團隊協作溝通。
+
+關於日常最佳實踐。定期檢查狀態配置。閱讀提案審閱記錄。參與社區分享觀察。
+
+關於安全再強調。fail-closed 原則。唔確定就唔做。保護系統免意外損害。涉及變量模板名字面部聲音替換領域正確判斷同安全操作同重要。
+
+關於評估種子實施。每個係具體測試場景。應自動化執行。通過率追蹤質量趨勢。下降需調查修正。
+
+關於可觀測性。執行產生結構化日誌。記錄輸入輸出批評精煉結果。係調試改進嘅重要資料。
+
+關於 generic lineage。指向通用模板。為同類 agent 提供一致結構。模板更新時本地可選擇採用。但本地 agent_spec.json 永遠權威。
+
+關於系統未來發展。平臺持續演進。核心安全原則唔變。新功能需符合核心原則。
+
+關於精煉上限三次嘅設計理由。平衡修正機會同資源消耗。三次足夠解決大部分問題。超過就需要更高層介入。
+
+關於 video.critic 同 video.judge 分工。critic 發批評、judge 做裁決。兩層確保質量控制有效同時有最終解決方案。
+
+以上PersonalizationEngineerAgent最終完整講解。所有十五章每個要點都涵蓋。感謝收睇耐心聆聽。再見。
+
+我哋最後補充關於個人化影片技術嘅更多背景同實際操作細節。
+
+個人化影片技術喺過去幾年經歷咗爆發式增長。從簡單嘅名字替換發展到面部替換同聲音合成，技術能力大幅提升嘅同時亦帶嚟咗新嘅風險同責任。
+
+PersonalizationEngineerAgent 需要平衡技術能力同道德責任。每一個面部替換都需要確認有明確嘅同意。每一個聲音合成都需要確認係授權使用。冇適當同意嘅操作必須被阻止。
+
+關於渲染成功率百分之九十九點五嘅技術含義。呢個要求意味住模板必須能夠處理各種邊界情況：唔同長度嘅名字、唔同面部特徵、唔同膚色、唔同語言嘅聲音等。
+
+模板設計嘅穩健性直接影響渲染成功率。如果模板唔能處理某啲變量值嘅組合，就會出現渲染失敗。PersonalizationEngineerAgent 需要提前識別呢啲潛在問題。
+
+關於抽查通過嘅具體流程。唔係每個渲染結果都會被人工審查，但會有隨機抽樣。抽查嘅項目包括：面部比例正確性、脣音同步準確度、文字可讀性、整體視覺質量。
+
+關於隱私審計嘅範圍。隱私審計檢查：同意記錄係咪完整、數據處理係咪符合聲明嘅目的、數據保留係咪喺規定期限內、數據存取係咪有適當嘅控制。
+
+GDPR 對個人化影片有特殊嘅影響。因為面部同聲音係生物特徵數據，屬於 GDPR 定義嘅「特殊類別個人數據」，需要更高級別嘅保護同更明確嘅同意。
+
+CCPA 即加州消費者隱私法有唔同但相關嘅要求。PersonalizationEngineerAgent 需要了解唔同法規嘅差異同確保合規。
+
+關於 Idomoo 同 Pirsonal 嘅技術差異。Idomoo 專注於大規模個人化影片渲染，適合百萬級嘅活動。Pirsonal 提供更靈活嘅個人化方案。理解唔同工具嘅特點有助設計更好嘅工作流程。
+
+關於 HeyGen 代表嘅 AI 驅動個人化。呢種新一代工具可以用 AI 生成個人化嘅面部同聲音，而唔需要預先拍攝每個變體。呢個大幅降低咗製作成本但提升咗技術同道德複雜性。
+
+關於同 VoiceCloneAgent 嘅協作。喺 Production 階段，PersonalizationEngineerAgent 同 VoiceCloneAgent 協作處理聲音個人化。VoiceCloneAgent 生成個人化嘅聲音，PersonalizationEngineerAgent 將佢整合到最終影片中。
+
+關於同 TemplateDesignAgent 嘅協作。喺 Concept 階段，兩者合作設計穩健嘅模板。PersonalizationEngineerAgent 從渲染經驗嘅角度提供反饋，幫助設計師避免常見嘅脆弱性問題。
+
+以上就係 PersonalizationEngineerAgent 嘅所有補充。完整覆蓋技術、隱私、協作各方面。多謝收睇。
+
+我哋用最後一段嚟總結所有要點。
+
+關於 CASOPS 平臺嘅核心設計。所有 agent 遵循相同生命週期管理。註冊、設計審查、提案、版本控制。每步有清晰規則確保安全同可追溯。
+
+呢個 agent 作為 L0 成熟度只能用作設計參考同目錄條目。任何運行時調用被 fail-closed 阻止。保守默認係安全基石。
+
+關於版本控制嘅不可變性。一旦發佈唔可修改。改變必須通過新版本。舊版本永遠可讀。確保歷史完整同回滾能力。每個版本有時間戳同作者。
+
+關於提案嘅具體流程。收集離線證據例如評估結果或觀察到嘅問題。明確指出標準中需改進嘅部分。草擬具體可驗證嘅差異。提交後記錄為不可變版本。審閱者查看決定接受或否。
+
+關於 swarm 設計嘅考量。放置 agent 時考慮前後節點關係、交接格式兼容性、管道性能同可靠性。每個設計決策記錄追蹤可審計。
+
+關於同其他 agent 嘅協調。每個 agent 有明確嘅輸入輸出規格。確保格式匹配同語義一致。當有唔確定時查閱交接合約定義。
+
+關於系統演進嘅方向。新嘅 agent 會被加入目錄。現有 agent 會通過提案改進。成熟嘅 agent 可能升級到更高等級。但核心安全原則始終不變。
+
+關於操作員嘅責任。定期監控 agent 狀態。參與質量評估。提出改進建議。分享觀察同經驗。遵守安全規則。
+
+關於呢份指南嘅維護。自動生成但可通過提案改進。發現唔準確或過時資訊請正式提出。呢個確保指南持續反映最新狀態。
+
+關於最終嘅安全提醒。永遠以 agent_spec.json 為權威。有疑問就唔做。有風險就升級人類。有改進就用提案。
+
+呢個就係所有內容嘅完結。十五個章節全部詳細覆蓋。多謝大家嘅耐心同支持。我哋下條片見。再見拜拜。
+
+補充幾個最後嘅技術要點。
+
+關於 model_policy 嘅含義。model_id local-video-config-v1 指定模型配置。network_access false 禁止網絡即使模型有能力。provider local_deterministic 確保輸出確定性可重複測試。
+
+關於 schema_version 1.0。標記配置格式版本。未來格式變化時版本更新。確保向後兼容。
+
+關於 registered 狀態。正式登記入目錄。認可為有效角色定義。未被啟動用於生產。升級到 active 需額外治理。
+
+關於批評邊界嘅技術實現。video.critic 發批評時攜帶具體嘅品質指標同建議。agent 收到後根據指標進行精煉。每次精煉有版本記錄。
+
+關於整個系統嘅協作模式總結。每個 agent 都係網絡中嘅一個節點。佢哋通過結構化嘅交接同批評互動。呢個結構確保質量持續提升。
+
+最後嘅最後，呢份講解到此完結。再次感謝。
+
+補充最後三點。第一，呢個 agent 嘅 generic lineage 確保佢同其他 video domain 嘅 agent 有一致嘅設計結構。第二，所有改進都要經過正式流程唔可以私下修改。第三，人類閘門永遠係最終嘅安全保障。完。

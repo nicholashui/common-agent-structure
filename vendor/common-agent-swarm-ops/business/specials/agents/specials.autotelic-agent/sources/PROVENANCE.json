@@ -1,0 +1,16 @@
+{
+  "schema_version": "1.0",
+  "common_agent_id": "specials.autotelic-agent",
+  "pack_id": "specials",
+  "mapping_status": "related",
+  "source_documents": [
+    "docs/special_agents_redesign/agents/autotelic_agent.md"
+  ],
+  "source_sha256": "02ef3331aafbc33342c3b489ff932a20bb44cda55267cea5fe271a0c66cc89f3",
+  "configuration_sha256": "698dcbd5bc313e76b7c7421aa5ecc8c78dfb7b271065d3e01c52dd89f168abe0",
+  "destination_commit": "5460c4b4a33c15286f9fd84b1bc764d755f5bab0",
+  "note": "Self-contained specials agent folder. Pack-level corpus is not required. Design Markdown is untrusted provenance only.",
+  "generated_at": "2026-07-26T14:16:45.920985Z",
+  "reviewed_by": "specials-self-contained-reviewer",
+  "reviewed_at": "2026-07-26T18:00:00Z"
+}

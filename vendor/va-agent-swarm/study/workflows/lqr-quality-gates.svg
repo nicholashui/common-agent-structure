@@ -1,0 +1,146 @@
+<?xml version='1.0' encoding='utf-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1480 760" role="img">
+  <title id="title">Quality Gate Ladder &amp; VBench Scorecard</title>
+  <desc id="desc">The three-layer gate every shot and phase must pass: L1 spec validation, L2 craft rubric scored against a VBench multi-dimensional scorecard, and L3 audience-preference test, all signed off by the GateKeeper with C2PA provenance.</desc>
+  <defs>
+    <style>
+      .bg { fill: #F8FAFC; }
+      .panel { fill: #FFFFFF; stroke: #CBD5E1; stroke-width: 1.5; }
+      .panel-blue { fill: #EFF6FF; stroke: #93C5FD; stroke-width: 1.5; }
+      .panel-green { fill: #ECFDF5; stroke: #86EFAC; stroke-width: 1.5; }
+      .panel-amber { fill: #FFFBEB; stroke: #FCD34D; stroke-width: 1.5; }
+      .panel-purple { fill: #F5F3FF; stroke: #C4B5FD; stroke-width: 1.5; }
+      .panel-dark { fill: #0F172A; stroke: #0F172A; }
+      .title { font: 700 25px -apple-system, 'Segoe UI', Roboto, Arial, sans-serif; fill: #0F172A; }
+      .subtitle { font: 400 13px -apple-system, 'Segoe UI', Roboto, Arial, sans-serif; fill: #475569; }
+      .h1 { font: 700 15px -apple-system, 'Segoe UI', Roboto, Arial, sans-serif; fill: #0F172A; }
+      .h1w { font: 700 15px -apple-system, 'Segoe UI', Roboto, Arial, sans-serif; fill: #FFFFFF; }
+      .body { font: 400 11px -apple-system, 'Segoe UI', Roboto, Arial, sans-serif; fill: #334155; }
+      .mono { font: 400 10px ui-monospace, Menlo, Consolas, monospace; fill: #475569; }
+      .badge { font: 700 10px -apple-system, 'Segoe UI', Roboto, Arial, sans-serif; letter-spacing: 0.6px; fill: #FFFFFF; }
+      .dim { font: 400 10px -apple-system, 'Segoe UI', Roboto, Arial, sans-serif; fill: #334155; }
+      .thr { font: 700 10px -apple-system, 'Segoe UI', Roboto, Arial, sans-serif; fill: #059669; }
+      .footer { font: 400 10px -apple-system, 'Segoe UI', Roboto, Arial, sans-serif; fill: #64748B; }
+      .cite { font: 400 9px ui-monospace, Menlo, Consolas, monospace; fill: #7C3AED; }
+    </style>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#64748B"/></marker>
+    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#E11D48"/></marker>
+    <filter id="sh" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#0F172A" flood-opacity="0.08"/></filter>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="1480" height="760" />
+  <text x="40" y="46" class="title">Quality Gate Ladder &amp; VBench Scorecard</text>
+  <text x="40" y="70" class="subtitle">Every shot and phase clears three layers before GateKeeper #57 advances and C2PA-signs it.</text>
+
+  <!-- L1 -->
+  <g filter="url(#sh)"><rect class="panel-blue" x="40" y="110" width="300" height="180" rx="12"/></g>
+  <rect x="40" y="110" width="70" height="26" rx="13" fill="#2563EB"/>
+  <text x="58" y="128" class="badge">L1</text>
+  <text x="122" y="130" class="h1">Spec</text>
+  <text x="58" y="162" class="body">Did it meet the structured brief?</text>
+  <text x="58" y="184" class="mono">codec · aspect · duration</text>
+  <text x="58" y="202" class="mono">frame count · file integrity</text>
+  <text x="58" y="230" class="body">Owner: JSON schema + tool</text>
+  <text x="58" y="246" class="body">validators</text>
+  <text x="58" y="274" class="thr">THRESHOLD: 100% pass</text>
+
+  <!-- L2 -->
+  <g filter="url(#sh)"><rect class="panel-amber" x="370" y="110" width="300" height="180" rx="12"/></g>
+  <rect x="370" y="110" width="70" height="26" rx="13" fill="#D97706"/>
+  <text x="388" y="128" class="badge">L2</text>
+  <text x="452" y="130" class="h1">Rubric</text>
+  <text x="388" y="162" class="body">Does it meet the craft rubric?</text>
+  <text x="388" y="184" class="body">Scored on the VBench scorecard →</text>
+  <text x="388" y="206" class="body">Owner: LLM-as-Judge +</text>
+  <text x="388" y="222" class="body">Aesthetics Agent (chain-of-query)</text>
+  <text x="388" y="250" class="thr">THRESHOLD: ≥85/100</text>
+  <text x="388" y="270" class="mono">≤3 Self-Refine iters; else MCTS</text>
+
+  <!-- L3 -->
+  <g filter="url(#sh)"><rect class="panel-green" x="700" y="110" width="300" height="180" rx="12"/></g>
+  <rect x="700" y="110" width="70" height="26" rx="13" fill="#059669"/>
+  <text x="718" y="128" class="badge">L3</text>
+  <text x="782" y="130" class="h1">Preference</text>
+  <text x="718" y="162" class="body">Would the audience pick it over</text>
+  <text x="718" y="178" class="body">a human-made baseline?</text>
+  <text x="718" y="202" class="body">Owner: AudienceSim #82 pairwise</text>
+  <text x="718" y="218" class="body">panel + HiTL sample</text>
+  <text x="718" y="250" class="thr">THRESHOLD: win ≥50% (parity)</text>
+  <text x="718" y="270" class="thr">≥55% (surpass)</text>
+
+  <!-- GateKeeper -->
+  <g filter="url(#sh)"><rect class="panel-dark" x="1030" y="110" width="410" height="180" rx="12"/></g>
+  <text x="1052" y="146" class="h1w">GateKeeper #57</text>
+  <text x="1052" y="176" class="body" fill="#CBD5E1">Verifies L1 · L2 · L3 at every phase.</text>
+  <text x="1052" y="198" class="body" fill="#CBD5E1">Signs C2PA provenance manifest.</text>
+  <text x="1052" y="220" class="body" fill="#CBD5E1">Disputes → JudgeAgent #56 → HiTL.</text>
+  <text x="1052" y="250" class="mono" fill="#86EFAC">PASS → advance DAG node</text>
+  <text x="1052" y="270" class="mono" fill="#FDA4AF">FAIL → return to per-shot loop</text>
+
+  <!-- arrows L1->L2->L3->Gate -->
+  <line x1="340" y1="200" x2="370" y2="200" stroke="#64748B" stroke-width="2" marker-end="url(#a)"/>
+  <line x1="670" y1="200" x2="700" y2="200" stroke="#64748B" stroke-width="2" marker-end="url(#a)"/>
+  <line x1="1000" y1="200" x2="1030" y2="200" stroke="#64748B" stroke-width="2" marker-end="url(#a)"/>
+
+  <!-- VBench scorecard panel -->
+  <text x="40" y="340" class="h1">L2 — VBench / VMBench Scorecard (per shot)</text>
+  <text x="40" y="358" class="footer">16-dimension disentangled assessment via MLLM evaluator with few-shot scoring + chain-of-query.</text>
+
+  <!-- scorecard grid: 8 dims as bars -->
+  <g filter="url(#sh)"><rect class="panel" x="40" y="372" width="1400" height="290" rx="12"/></g>
+
+  <!-- helper rows -->
+  <!-- row template: label, threshold, judge -->
+  <text x="64" y="404" class="dim">Subject (identity) consistency</text>
+  <rect x="420" y="394" width="700" height="12" rx="6" fill="#E2E8F0"/>
+  <rect x="420" y="394" width="630" height="12" rx="6" fill="#2563EB"/>
+  <text x="1130" y="404" class="thr">≥0.90</text>
+  <text x="1230" y="404" class="footer">AIQA #49</text>
+
+  <text x="64" y="434" class="dim">Temporal flicker</text>
+  <rect x="420" y="424" width="700" height="12" rx="6" fill="#E2E8F0"/>
+  <rect x="420" y="424" width="560" height="12" rx="6" fill="#2563EB"/>
+  <text x="1130" y="434" class="thr">below τ</text>
+  <text x="1230" y="434" class="footer">AIQA #49</text>
+
+  <text x="64" y="464" class="dim">Motion smoothness</text>
+  <rect x="420" y="454" width="700" height="12" rx="6" fill="#E2E8F0"/>
+  <rect x="420" y="454" width="600" height="12" rx="6" fill="#059669"/>
+  <text x="1130" y="464" class="thr">≥ rubric</text>
+  <text x="1230" y="464" class="footer">VMBench</text>
+
+  <text x="64" y="494" class="dim">Motion (human-perception)</text>
+  <rect x="420" y="484" width="700" height="12" rx="6" fill="#E2E8F0"/>
+  <rect x="420" y="484" width="585" height="12" rx="6" fill="#059669"/>
+  <text x="1130" y="494" class="thr">≥ band</text>
+  <text x="1230" y="494" class="footer">VMBench</text>
+
+  <text x="64" y="524" class="dim">Imaging quality (grain / sharpness)</text>
+  <rect x="420" y="514" width="700" height="12" rx="6" fill="#E2E8F0"/>
+  <rect x="420" y="514" width="610" height="12" rx="6" fill="#D97706"/>
+  <text x="1130" y="524" class="thr">≥ rubric</text>
+  <text x="1230" y="524" class="footer">Aesthetics</text>
+
+  <text x="64" y="554" class="dim">Aesthetic quality ("warm memory")</text>
+  <rect x="420" y="544" width="700" height="12" rx="6" fill="#E2E8F0"/>
+  <rect x="420" y="544" width="630" height="12" rx="6" fill="#D97706"/>
+  <text x="1130" y="554" class="thr">≥85/100</text>
+  <text x="1230" y="554" class="footer">Aesthetics</text>
+
+  <text x="64" y="584" class="dim">Spatial relationship (eyeline)</text>
+  <rect x="420" y="574" width="700" height="12" rx="6" fill="#E2E8F0"/>
+  <rect x="420" y="574" width="640" height="12" rx="6" fill="#7C3AED"/>
+  <text x="1130" y="584" class="thr">pass</text>
+  <text x="1230" y="584" class="footer">AIQA #49</text>
+
+  <text x="64" y="614" class="dim">Text–video relevance (prompt adherence)</text>
+  <rect x="420" y="604" width="700" height="12" rx="6" fill="#E2E8F0"/>
+  <rect x="420" y="604" width="595" height="12" rx="6" fill="#7C3AED"/>
+  <text x="1130" y="614" class="thr">CLIP-T ≥0.32</text>
+  <text x="1230" y="614" class="footer">AIQA #49</text>
+
+  <text x="64" y="644" class="cite">VBench arXiv 2311.17982 · VMBench 2503.10076 · Video-Bench 2504.04907 (MLLM chain-of-query)</text>
+
+  <text x="40" y="700" class="footer">A failing dimension routes the shot back into the per-shot generation loop (MCTS search / prompt optimization), never silently passing. Phase gates aggregate per-shot results.</text>
+  <text x="40" y="720" class="footer">L3 preference parity (≥50%) means "as good as human baseline"; ≥55% means "surpasses it" — the target for hero shots.</text>
+</svg>

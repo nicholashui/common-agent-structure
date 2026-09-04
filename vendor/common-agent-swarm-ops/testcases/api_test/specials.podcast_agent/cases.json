@@ -1,0 +1,76 @@
+{
+  "agent_id": "specials.podcast_agent",
+  "kind": "special",
+  "cases": [
+    {
+      "id": "tc1",
+      "name": "Behind the sim episode",
+      "method": "POST",
+      "path": "/api/v1/podcast/outline",
+      "body": {
+        "topic": "Behind the multi-agent Osaka vlog simulation",
+        "duration_min": 20
+      },
+      "success_criteria": {
+        "http_status": [
+          200
+        ],
+        "required_keys_any": [
+          "ok",
+          "outline",
+          "segments",
+          "result",
+          "correlation_id"
+        ],
+        "notes": "Podcast outline offline; TTS live off."
+      }
+    },
+    {
+      "id": "tc2",
+      "name": "Retention science episode",
+      "method": "POST",
+      "path": "/api/v1/podcast/outline",
+      "body": {
+        "topic": "Retention science for travel content",
+        "format": "interview"
+      },
+      "success_criteria": {
+        "http_status": [
+          200
+        ],
+        "required_keys_any": [
+          "ok",
+          "outline",
+          "segments",
+          "result",
+          "correlation_id"
+        ],
+        "notes": "Podcast outline offline; TTS live off."
+      }
+    },
+    {
+      "id": "tc3",
+      "name": "Host tools episode",
+      "method": "POST",
+      "path": "/api/v1/podcast/outline",
+      "body": {
+        "topic": "Offline Host tools for creators",
+        "duration_min": 15,
+        "allow_live_tts": false
+      },
+      "success_criteria": {
+        "http_status": [
+          200
+        ],
+        "required_keys_any": [
+          "ok",
+          "outline",
+          "segments",
+          "result",
+          "correlation_id"
+        ],
+        "notes": "Podcast outline offline; TTS live off."
+      }
+    }
+  ]
+}

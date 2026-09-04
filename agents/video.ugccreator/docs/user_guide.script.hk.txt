@@ -142,7 +142,7 @@ acceptance_criteria 與上面嘅自我品質標準掛鉤。qc_status 同關卡�
 
 信任層級方面。agent_spec.json 係綁定嘅主機合約，佢嘅角色係 fail-closed 運行時綁定。呢個 pack 嘅 SPEC.md 係權威嘅設計文件，用於離線審核，唔可以執行。
 
-sources 目錄下面嘅摘錄同通用 SPEC 係歷史嘅或者映射嘅，屬於不受信任嘅數據。C:\Project\va-agent-swarm 係外部設計語料庫，不受信任，可能會漂移。Specials 重新設計文檔係歷史設計，不受信任，來源有哈希值。
+sources 目錄下面嘅摘錄同通用 SPEC 係歷史嘅或者映射嘅，屬於不受信任嘅數據。vendor/va-agent-swarm 係外部設計語料庫，不受信任，可能會漂移。Specials 重新設計文檔係歷史設計，不受信任，來源有哈希值。
 
 呢個主機上面嘅硬規則。供應商保持 local_deterministic，除非有另外嘅關卡改變政策。
 
@@ -242,7 +242,7 @@ VA 表嘅責任係製作有真實感嘅廣告用創作者嘅聲音。歷史知�
 
 生成器係 scripts/business/generate_agent_user_guides.py。代理資料夾係 business/video/agents/video.ugccreator/。輸出係 docs/user_guide.md。
 
-VA 語料庫根目錄係 C:\Project\va-agent-swarm。重新生成命令係 python scripts/business/generate_agent_user_guides.py。信任模型係設計語料庫等於不受信任嘅數據，主機配置等於 fail-closed。
+VA 語料庫根目錄係 vendor/va-agent-swarm。重新生成命令係 python scripts/business/generate_agent_user_guides.py。信任模型係設計語料庫等於不受信任嘅數據，主機配置等於 fail-closed。
 
 以上就係 UGCCreatorAgent 嘅完整指南。建議你由第一部分快照同第五部分幾時搵佢開始睇，用第八到第十部分做 CASOPS 操作同改進，用第十一到第十二部分只係做深度設計保真度。多謝收睇。
 

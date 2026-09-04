@@ -1,0 +1,21 @@
+{
+  "skill_id": "video-ethics",
+  "agent_id": "video.ethics",
+  "kind": "pack_agent_harness",
+  "status": "scaffolded",
+  "prompt_reference": "video.prompt.ethics.v1",
+  "rubric_reference": "video.rubric.ethics.v1",
+  "patterns": [
+    "Constitutional AI",
+    "Multi-agent debate",
+    "Agent Skills"
+  ],
+  "bindings": [],
+  "entrypoint": {
+    "type": "host_agent_runner",
+    "agent_id": "video.ethics"
+  },
+  "fail_closed": true,
+  "generated_by": "improve_agents_from_plan_v1.py",
+  "generated_at": "2026-07-30T14:45:34Z"
+}

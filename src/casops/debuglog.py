@@ -142,3 +142,39 @@ def list_chat_files(agent_id: str) -> list[dict[str, Any]]:
                 }
             )
     return rows
+
+
+def read_chat_file(agent_id: str, name: str) -> dict[str, Any]:
+    folder = (chat_root() / _safe_id(agent_id, "agent id")).resolve()
+    raw = Path(str(name or "")).name
+    if not raw.endswith(".jsonl"):
+        raise ValueError("invalid transcript name")
+    _safe_id(raw[: -len(".jsonl")], "session id")
+    path = (folder / raw).resolve()
+    if not path.is_relative_to(folder) or not path.is_file():
+        raise ValueError("transcript not found")
+    turns: list[dict[str, str]] = []
+    with _LOCK:
+        text = path.read_text(encoding="utf-8")
+    for line in text.splitlines():
+        line = line.strip()
+        if not line:
+            continue
+        try:
+            item = json.loads(line)
+        except json.JSONDecodeError:
+            continue
+        if not isinstance(item, dict):
+            continue
+        role = str(item.get("role") or "").strip().lower()
+        if role not in _ROLES:
+            continue
+        turns.append(
+            {
+                "ts": str(item.get("ts") or ""),
+                "role": role,
+                "content": str(item.get("content") or ""),
+                "provider": str(item.get("provider") or ""),
+            }
+        )
+    return {"name": raw, "session": raw[: -len(".jsonl")], "turns": turns}

@@ -3116,7 +3116,7 @@ The diagram below presents the common agent as a professional operating architec
 ## Provenance
 
 - Master roster row va_id=13 from embedded agents.md content above.
-- Deep/extra text from `business/video/corpus/` and `C:\Project\va-agent-swarm`.
+- Deep/extra text from `business/video/corpus/` and `vendor/va-agent-swarm`.
 - Generator: `scripts/business/enrich_video_agent_specs.py`.
 - Upstream project name (historical only): va-agent-swarm.
 
@@ -4416,7 +4416,7 @@ Apply these Python-only upgrades before declaring v1.1 of N1ch01as Architect. Th
 ## Provenance
 
 - Master roster row va_id=89 from embedded agents.md content above.
-- Deep/extra text from `business/video/corpus/` and `C:\Project\va-agent-swarm`.
+- Deep/extra text from `business/video/corpus/` and `vendor/va-agent-swarm`.
 - Generator: `scripts/business/enrich_video_agent_specs.py`.
 - Upstream project name (historical only): va-agent-swarm.
 
@@ -4505,11 +4505,11 @@ Live primary-source expansion remains a residual for score 100 on S3 where depth
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "播音主持创作基础",
-      "author": "张颂",
+      "title": "\u64ad\u97f3\u4e3b\u6301\u521b\u4f5c\u57fa\u7840",
+      "author": "\u5f20\u9882",
       "isbn13": "9787565701238",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 播音主持创作基础（张颂），ISBN-13 9787565701238"
+      "citation": "ZH: \u64ad\u97f3\u4e3b\u6301\u521b\u4f5c\u57fa\u7840\uff08\u5f20\u9882\uff09\uff0cISBN-13 9787565701238"
     },
     {
       "kind": "reference_book",
@@ -4550,18 +4550,18 @@ Live primary-source expansion remains a residual for score 100 on S3 where depth
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "演员的自我修养",
+      "title": "\u6f14\u5458\u7684\u81ea\u6211\u4fee\u517b",
       "isbn13": "9787108014504",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 演员的自我修养，ISBN-13 9787108014504"
+      "citation": "ZH: \u6f14\u5458\u7684\u81ea\u6211\u4fee\u517b\uff0cISBN-13 9787108014504"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "尊重表演艺术",
+      "title": "\u5c0a\u91cd\u8868\u6f14\u827a\u672f",
       "isbn13": "9787106028893",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 尊重表演艺术，ISBN-13 9787106028893"
+      "citation": "ZH: \u5c0a\u91cd\u8868\u6f14\u827a\u672f\uff0cISBN-13 9787106028893"
     },
     {
       "kind": "reference_book",
@@ -4592,18 +4592,18 @@ Live primary-source expansion remains a residual for score 100 on S3 where depth
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "风格的要素",
+      "title": "\u98ce\u683c\u7684\u8981\u7d20",
       "isbn13": "9787100040945",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 风格的要素，ISBN-13 9787100040945"
+      "citation": "ZH: \u98ce\u683c\u7684\u8981\u7d20\uff0cISBN-13 9787100040945"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "写作法宝",
+      "title": "\u5199\u4f5c\u6cd5\u5b9d",
       "isbn13": "9787301161111",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 写作法宝，ISBN-13 9787301161111"
+      "citation": "ZH: \u5199\u4f5c\u6cd5\u5b9d\uff0cISBN-13 9787301161111"
     }
   ],
   "agent_id": "video.audiobooknarrator",
@@ -4618,7 +4618,7 @@ Live primary-source expansion remains a residual for score 100 on S3 where depth
     "adopted_at": "2026-07-27T01:30:27.683783+00:00",
     "upstream": "generic-swarm-ops/business/video/agents"
   },
-  "imported_from": "C:\\Project\\common-agent-swarm-ops\\business\\video\\agents\\video.audiobooknarrator",
+  "imported_from": "vendor/common-agent-swarm-ops/business/video/agents/video.audiobooknarrator",
   "reference_book_origin": "spec/book_of_knowledge.md",
   "reference_book_note": "Bibliographic references from spec/book_of_knowledge.md. Does not enable network, RAG, T3, plugins, or memory writes."
 }

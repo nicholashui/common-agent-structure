@@ -1,0 +1,276 @@
+大家好，歡迎返嚟我哋嘅頻道。今日我哋會詳細講解 MUAAgent，即係化妝、髮型同特效化妝代理。
+
+呢份指南係寫畀操作員、pack 作者、swarm 設計師同埋審閱者睇嘅，佢哋全部都喺 common-agent-swarm-ops 入面工作。你會得到任務清晰定義、幾時使用嘅指引、協作地圖、CASOPS 操作步驟、改進路徑同埋分信任等級嘅來源地圖。
+
+但係呢份指南唔係一個授權你啟動供應商、打開網絡或者發明工具嘅許可證。Host 嘅真相來源係 fail-closed 嘅 agent_spec.json。設計文本入面嚟自 VA 或重新設計文件嘅資料係不受信任嘅來源。
+
+Pack 路徑係 business/video/agents/video.mua_makeup/。指南喺 docs/user_guide.md。由 scripts/business/generate_agent_user_guides.py 生成。
+
+第一部分，快照。
+
+MUAAgent (Makeup/Hair/SFX)，agent id 係 video.mua_makeup，係一個 Video Domain Pack 角色，運行喺 CASOPS 上面。簡單講，佢嘅工作係處理演員嘅面部化妝、髮型同埋假體特效。
+
+你要將呢份指南當做人類可讀嘅操作員地圖，用於目錄審查、swarm 設計同提案驅動嘅改進。
+
+逐個欄位睇快照資料。顯示名稱係 MUAAgent (Makeup/Hair/SFX)。Pack agent id 係 video.mua_makeup。所屬 Pack 係 video。Host 角色字串係 MUAAgent (Makeup/Hair/SFX) (VA Domain Pack)。
+
+目錄狀態係 registered。成熟度係 L0 非活躍。VA id 係 18。VA 類別係 3-Edit，代表剪輯同完成。供應商係 local_deterministic。網絡係 False。
+
+允許嘅工具係空列表。生產啟動請求係 False。Prompt 參考係 video.prompt.mua_makeup.v1。Rubric 參考係 video.rubric.mua_makeup.v1。
+
+之前嘅 common id 係 video.escalation_manager。Generic lineage 係 generic-swarm-ops/business/video/agents/video.mua_makeup。
+
+第二部分，點解呢個角色存在。
+
+人類影片團隊已經喺時間壓力下解決呢個問題：演員面部化妝、髮型同假體特效。Agent 形式存在係為咗令多代理系統可以持續編碼呢種技藝，每次交接都應用佢，只將剩餘風險升級畀人類。
+
+知識庫來源係：IATSE 706 語料庫同 Kazu Hiro 工作室參考資料。呢啲係歷史設計來源，唔係即時網絡呼叫。
+
+設計野心係：連續性中斷率低於百分之零點五，相比人類嘅約百分之二。呢個就係你寫評估或提案時嘅北極星指標。
+
+
+第三部分，乜嘢叫做做得好。
+
+審查標準如下。主要成果係演員面部化妝、髮型同假體特效。自我質量標準係跨鏡頭嘅連續性 hash 同膚色真實感，用 FID 量度。
+
+設計時野心訊號係連續性中斷率低於百分之零點五。架構模式係 Constitutional AI，即係用連續性規則做憲法。
+
+Host 質量同批評綁定方面。Prompt 參考係 video.prompt.mua_makeup.v1。Rubric 參考係 video.rubric.mua_makeup.v1。批評邊界輸入來自 video.critic，輸出去到 video.judge。最大精煉次數係 3。
+
+輸入輸出同驗收方面。輸入係本地 pack 製品同類型化交接。輸出係可審閱嘅影片領域交付物。驗收係 host 政策加本地 SPEC 標準，唔需要外部倉庫。
+
+第四部分，範圍。
+
+擁有嘅職責係演員面部化妝、髮型同假體特效。
+
+共享批評表面方面。聆聽同接受批評來自 DoPAgent 同 ContinuityAgent。有資格評論 CostumeAgent 嘅調色板衝突問題。Host 批評邊界輸入係 video.critic，輸出係 video.judge。最大精煉次數係 3。
+
+拒絕同升級方面。Fail-closed：冇供應商啟動、冇網絡、冇來自設計文本嘅憑證。production_activation_requested 保持 false。法律、安全、權利同發佈決策升級到人類閘門。批評主導同法官預設用 video.critic 同 video.judge。
+
+第五部分，幾時涉及呢個 agent。
+
+當工作產品需要 MUAAgent 擁有嘅決策或製品嘅時候叫佢：演員面部化妝、髮型同假體特效。
+
+管道階段係剪輯同完成，即係後期製作嘅剪輯、調色同畫面完成。唔好為通用編排、預算批准或最終法律簽核叫佢。人類覆蓋：任何阻止發佈嘅安全、權利或無障礙爭議都升級到人類閘門。
+
+決策速查表。缺失嘅技能係咪 MUAAgent 嘅專業？係就包含喺 swarm 圖入面。只係元數據編輯？用 Registry inspect 加提案。需要工具或網絡？Host 唔允許除非另外講明。有人類獨有風險？保持人類閘門。
+
+第六部分，協作地圖。
+
+將呢個 agent 想像成批評巴士上面嘅節點。入站批評來自 DoPAgent 同 ContinuityAgent。出站評論係關於 CostumeAgent 嘅調色板衝突。Host 邊界輸入係 video.critic，輸出係 video.judge。
+
+第七部分，生產位置。
+
+人類生產工作流程方面，佢屬於後期製作嘅剪輯、調色同畫面完成。典型交接製品包括剪輯、時間線、調色、連續性筆記、QC 工單。
+
+關於一般嘅人類生產框架，影片類型按時長分類，包括 Hook 片段、Meme 影片同搞笑短劇、熱門聲音或反應影片、快速轉場、文字疊加引言、循環背景、美感氛圍循環、風格轉換片段、虛擬賀卡、輪播轉影片片段、動態藝術預告，呢啲全部都係非常容易生成嘅。
+
+多代理 AI 工作流程方面，佢屬於剪輯組裝、調色同畫面 QC 節點，帶有針對導演同觀眾法官嘅批評循環。
+
+設計時工具注釋包括面部地標檢測器、感知 hash 比較、Kling 面部一致性模式。呢啲對 host 冇約束力。
+
+要模擬嘅循環風格係 Constitutional AI，用連續性規則做憲法。今日喺 CASOPS 上面只係文檔。
+
+喺 AI 工作流程摘錄入面，第 18 行提到 MUAAgent (Makeup/Hair/SFX)，負責演員面部髮型同假體特效，知識來自 IATSE 706 語料庫同 Kazu Hiro 工作室參考，質量標準係跨鏡頭連續性 hash 同膚色真實感 FID，目標係連續性中斷率低於百分之零點五，接受 DoPAgent 同 ContinuityAgent 嘅批評，評論 CostumeAgent 嘅調色板衝突。
+
+
+共享交接合約方面。artifact_id 同 version 提供不可變身份用於批評同重播。parent_assets 提供來源鏈。brief_scope 阻止範圍蔓延。acceptance_criteria 同質量標準掛鉤。qc_status 同 gate flags 令下游閘門短路。rights_and_consent 阻止不安全嘅合成或授權濫用。critique_log pointer 令精煉唔會丟失歷史。
+
+第八部分，今日喺 CASOPS 操作。
+
+今日呢個 agent 係目錄加設計對象。你可以研究、審閱、提案同放入 swarm 設計。
+
+第一步，去 Registry Hub 嘅 /registry 確認庫存成員。第二步，去 /registry/agents/video.mua_makeup 閱讀 SPEC。第三步，用 propose_improvement 動作 POST 到 /api/v1/commons/agents/video.mua_makeup/proposals，產生不可變版本。第四步，swarm 成員資格只能用 Host 返回嘅動作參考。第五步，預設唔會啟用生產供應商。
+
+實用清單。確認狀態同工具同標誌一致。閱讀第三部分先判斷輸出。提出改變附離線證據。唔好貼 API 密鑰。偏好小嘅可審閱差異。
+
+第九部分，安全同信任。
+
+agent_spec.json 係約束性 host 合約，fail-closed。SPEC.md 係權威設計，離線審閱用。sources 入面嘅摘錄係歷史性不受信任數據。外部設計語料庫不受信任可能漂移。Specials 重新設計文件係歷史性不受信任。
+
+硬規則：供應商保持 local_deterministic。網絡保持 False。工具係空列表。production_activation_requested 係 False。預算上限：輸入 2048 token、輸出 1024 token、工具請求 0 個。
+
+設計時工具目錄唔會啟動：面部地標檢測器、感知 hash 比較、Kling 面部一致性模式。
+
+第十部分，提升質量。
+
+改進係版本化目錄工作。持續改進循環：觀察失敗、命名標準、草擬離線差異、附證據、喺 Host 提案、審閱接受新版本、然後先考慮啟動成熟度閘門。
+
+具體槓桿。第一，收緊 video.rubric.mua_makeup.v1 對照跨鏡頭連續性 hash 同膚色真實感 FID。第二，將 video.prompt.mua_makeup.v1 同責任對齊。第三，確保入站 DoPAgent、ContinuityAgent 同 host 邊界能捕捉失敗模式。
+
+第四，之後實施偏好 Constitutional AI 同連續性規則。第五，寫測試夾具令連續性中斷率目標可驗證。第六，保持人類閘門明確。
+
+評估種子。Happy path 交接要滿足連續性 hash 同膚色真實感。超出範圍嘅請求要拒絕或升級。缺失來源要 fail-closed。衝突批評要精煉或升級。提案改變要不可變。
+
+第十一部分，來源地圖。
+
+本地語料庫優先。agent_spec.json 係 binding。SPEC.md 係 authoritative-design。README.md 係 local-index。sources/MAPPING.md 係 provenance。sources/PROVENANCE.json 係 provenance。
+
+sources/excerpts/agents.md 係 historical-excerpt。sources/excerpts/ai_agent_video_production_workflow.md 係 historical-excerpt。sources/excerpts/human_video_production_workflow.md 係 historical-excerpt。sources/excerpts/lifes_quiet_redemption_agent_workflow.md 係 historical-excerpt。sources/excerpts/SYSTEM_REFERENCE.md 係 historical-excerpt。
+
+sources/generic/video.gatekeeper.SPEC.md 係 historical-generic。sources/generic/video.producer.SPEC.md 係 historical-generic。
+
+映射注釋。VA/generic pack ID 係 video.mua_makeup。之前嘅 common ID 係 video.escalation_manager。SPEC 深度係完整 generic SPEC 主體加 host 運行時綁定。
+
+來源記錄。schema_version 係 1.0。agent_id 係 video.mua_makeup。previous_common_agent_id 係 video.escalation_manager。va_taxonomy_aligned 係 true。generic_source 係 generic-swarm-ops/business/video/agents/video.mua_makeup。
+
+注釋寫住 Agent ID 對齊到 VA/generic Domain Pack 分類法，上游設計歷史性非約束。對齊時間 2026 年 7 月 27 日。generic_source_depth 入面 excerpts 同 study 都係 true。
+
+來源敘述方面，Pack agent ID video.mua_makeup 對齊純 VA Domain Pack 分類法。之前嘅 ID video.escalation_manager 只係歷史映射。上游設計歷史性非約束，本地 agent_spec.json 權威。
+
+
+VA 名冊行來自 agents.md 第 18 行 MUAAgent。責任係演員面部髮型同假體。知識提煉係 IATSE 706 語料庫同 Kazu Hiro 工作室。自我質量係跨鏡頭連續性 hash 同膚色真實感 FID。超越人類係連續性中斷率低於百分之零點五。
+
+接受批評來自 DoPAgent 同 ContinuityAgent。評論 CostumeAgent 嘅調色板衝突。歷史工具係面部地標檢測器、感知 hash 比較、Kling 面部一致性模式。架構係 Constitutional AI 用連續性規則。
+
+第十二部分，相關設計閱讀。
+
+喺 va-agent-swarm 下面冇強關鍵字匹配，依賴本地 SPEC 同 VA 表格行。
+
+本地知識索引。Runtime binding 喺 agent_spec.json。Folder README 喺 README.md。Provenance 喺 sources/PROVENANCE.json。Mapping note 喺 sources/MAPPING.md。Pack inventory 喺 ../../inventory.json。Pack manifest 喺 ../../manifest.json。所有主要參考都喺倉庫入面解析。
+
+Folder README 摘要：VA 對齊嘅 Domain Pack agent，common host。SPEC.md 係 VA/generic 深度加 host 綁定。agent_spec.json 係 fail-closed runtime。sources 係來源同映射。
+
+第十三部分，host 合約。
+
+權威 fail-closed 配置。agent_id 係 video.mua_makeup。allowed_tools 空列表。budget_policy 入面 max_input_tokens 2048，max_output_tokens 1024，max_tool_requests 0。
+
+critique_edges 輸入 video.critic，輸出 video.judge。max_refinement_count 3。model_policy 入面 model_id 係 local-video-config-v1，network_access false，provider local_deterministic。
+
+production_activation_requested false。prompt_reference video.prompt.mua_makeup.v1。role 係 MUAAgent (Makeup/Hair/SFX) (VA Domain Pack)。rubric_reference video.rubric.mua_makeup.v1。schema_version 1.0。status registered。va_id 18。va_name MUAAgent (Makeup/Hair/SFX)。va_category 3-Edit。
+
+第十四部分，SPEC 責任摘錄。
+
+核心責任係演員面部髮型同假體。Host 角色綁定係 MUAAgent (Makeup/Hair/SFX) (VA Domain Pack)。設計時 VA 表格內容歷史性非約束。
+
+責任：演員面部髮型同假體。知識提煉：IATSE 706 語料庫同 Kazu Hiro 工作室。自我質量：跨鏡頭連續性 hash 同膚色真實感 FID。超越人類：連續性中斷率低於百分之零點五。
+
+批評巴士，接受來自 DoPAgent 同 ContinuityAgent。評論 CostumeAgent 調色板衝突。設計時工具唔啟動：面部地標檢測器、感知 hash 比較、Kling 面部一致性模式。
+
+運行時安全：Host 允許列表只係 agent_spec.json 加 tool-permission-register.json。CI 用 video_* 存根。架構模式係 Constitutional AI 用連續性規則。
+
+第十五部分，文檔控制。
+
+生成器係 scripts/business/generate_agent_user_guides.py。Agent 資料夾 business/video/agents/video.mua_makeup/。輸出 docs/user_guide.md。VA 語料庫根目錄 C:\Project\va-agent-swarm。重新生成命令 python scripts/business/generate_agent_user_guides.py。信任模型：設計語料庫等於不受信任數據，host 配置等於 fail-closed。
+
+關於 IATSE 706 嘅補充說明，呢個係美國嘅化妝師同髮型師工會，佢哋嘅語料庫包含大量關於專業化妝、假體製作同髮型設計嘅標準同最佳實踐。
+
+Kazu Hiro 係一位著名嘅特效化妝藝術家，佢嘅工作室參考資料為呢個 agent 嘅知識庫提供咗世界級嘅假體同特效化妝技術標準。呢啲參考確保 agent 嘅質量標準同業界最高水平一致。
+
+關於 FID 指標嘅解釋，FID 即係 Fréchet Inception Distance，係一個量度生成影像同真實影像之間差異嘅指標。喺呢個場景入面用嚟量度化妝效果嘅膚色真實感。
+
+以上就係 MUAAgent 嘅完整指南講解。建議從快照同第五部分開始，用第八到十部分做操作同改進，用第十一到十二部分做深度設計保真度。多謝大家收睇。
+
+
+我哋再深入講解多啲關於 MUAAgent 嘅重要技術細節。
+
+首先關於連續性 hash 呢個概念。喺影片製作入面，連續性係一個極其重要嘅問題。演員嘅化妝同髮型必須喺唔同嘅鏡頭之間保持完全一致，即使呢啲鏡頭可能喺唔同嘅日子拍攝。
+
+傳統上，呢個工作由人類嘅連續性管理員負責，佢哋用相片同筆記嚟記錄每一個場景嘅化妝狀態。但係人類嘅錯誤率大約係百分之二，即係每一百個鏡頭入面大約有兩個會出現化妝連續性嘅問題。
+
+MUAAgent 嘅設計目標係將呢個錯誤率降低到百分之零點五以下，即係提升四倍嘅準確度。呢個係通過系統化嘅 hash 比較來實現嘅，每一個鏡頭嘅化妝狀態都會被計算出一個唯一嘅 hash 值，然後同前後鏡頭進行比較。
+
+關於假體特效方面，呢個涵蓋咗所有需要物理附加到演員面部或身體嘅元素。包括年齡化妝、傷疤、異形特效、歷史人物嘅面部重塑等等。每一個假體都需要精確嘅顏色匹配同混合邊緣處理。
+
+喺 AI 系統入面，假體嘅設計同應用可以通過面部地標檢測器嚟輔助。呢啲檢測器能夠精確定位面部嘅關鍵點，確保假體嘅放置位置同比例喺每一次應用時都完全一致。
+
+感知 hash 比較係另一個重要工具。唔同於加密 hash，感知 hash 係根據影像嘅視覺特徵計算嘅。兩個視覺上相似嘅影像會產生相近嘅 hash 值，即使佢哋唔係完全相同嘅。呢個特性令佢非常適合用嚟做化妝連續性嘅檢查。
+
+Kling 面部一致性模式係一個特定嘅技術方案，用於確保喺 AI 生成嘅影片內容入面，面部特徵保持一致。呢個對於使用 AI 輔助嘅影片製作特別重要。
+
+關於 Constitutional AI 架構嘅詳細解釋。呢個架構嘅核心概念係建立一套「憲法規則」，所有嘅輸出都必須遵守呢啲規則。喺 MUAAgent 嘅場景入面，呢啲規則就係連續性規則。
+
+例如規則可以包括：同一場景入面演員嘅脣色必須一致、髮型嘅分界線位置唔可以改變、假體嘅邊緣混合必須自然等等。每一個輸出都會被對照呢啲規則進行檢查。
+
+關於 DoPAgent 點樣批評 MUAAgent。DoPAgent 即係攝影指導代理，佢會從光線同鏡頭嘅角度嚟批評化妝效果。例如，某個化妝效果喺特定光線條件下可能會出現反光或者顏色偏差，DoPAgent 就會提出呢啲問題。
+
+ContinuityAgent 嘅批評則更加專注於跨鏡頭嘅一致性問題。如果佢發現某個鏡頭入面嘅化妝同前一個鏡頭有細微差異，佢就會向 MUAAgent 發出批評。
+
+而 MUAAgent 有資格評論 CostumeAgent 嘅調色板衝突，因為化妝同服裝嘅顏色必須協調。如果服裝嘅顏色同演員嘅化妝產生視覺衝突，MUAAgent 可以提出呢個問題。
+
+關於佢嘅 VA 類別 3-Edit 嘅進一步解釋。呢個類別代表剪輯同完成階段，包括後期製作中嘅所有視覺精修工作。化妝連續性嘅檢查通常喺呢個階段進行，因為只有當所有鏡頭都拍攝完成之後，先可以全面檢查連續性。
+
+之前嘅 common ID video.escalation_manager 反映咗呢個角色喺早期設計入面嘅定位有所唔同。經過 VA 分類法對齊之後，佢被重新定義為專注於化妝髮型同特效嘅角色。
+
+關於精煉過程嘅詳細說明。當 video.critic 發出批評畀 MUAAgent 時，佢最多可以精煉三次。每次精煉都應該解決批評中指出嘅具體問題。如果三次精煉後仍未解決，問題會升級到 video.judge 做最終裁決。
+
+呢個機制確保質量問題唔會被忽視，同時又唔會陷入無限嘅修改循環。三次精煉嘅上限係經過設計嘅平衡點，既畀足夠嘅機會修正問題，又唔會浪費過多資源。
+
+關於生產啟動嘅路徑。雖然今日 MUAAgent 只係一個設計對象，但未來如果要啟動佢，需要經過以下步驟：首先通過治理閘門嘅審批，然後更新 agent_spec.json 入面嘅相關欄位，最後配置適當嘅工具同網絡權限。
+
+呢個過程係有意設計為嚴格同漸進嘅，確保每一步都有適當嘅人類監督。尤其係涉及面部特徵處理嘅工作，privacy 同 consent 嘅考量特別重要。
+
+最後補充關於呢個 agent 同其他 agent 嘅協作模式。喺一個完整嘅影片製作 swarm 入面，MUAAgent 會同多個其他角色互動。佢接收來自導演嘅創意方向，配合攝影指導嘅光線需求，同服裝設計師協調顏色，同埋滿足連續性管理員嘅一致性要求。
+
+呢種多方位嘅協作正正係 swarm 設計嘅核心價值。每個 agent 都唔係孤立運作，而係喺一個結構化嘅批評同精煉網絡入面互相提升質量。
+
+以上就係我哋對 MUAAgent 即係化妝髮型特效代理嘅全面深入講解。希望呢份詳盡嘅說明幫到大家理解呢個角色嘅方方面面。下次見。
+
+
+我哋繼續補充多啲實際操作方面嘅細節。
+
+關於操作步驟入面嘅第三步提案改進，當你想改善 MUAAgent 嘅時候，你需要準備乜嘢呢？首先你需要有離線嘅評估證據，例如你觀察到某個連續性問題冇被正確檢測，你就需要記錄呢個具體案例。
+
+然後你需要指出係邊個標準需要改進。係 rubric 入面嘅連續性 hash 檢查唔夠嚴格？定係膚色真實感嘅 FID 閾值設得太寬鬆？你需要明確指出問題所在。
+
+之後你就可以草擬一個差異文件，描述你建議嘅改變。例如你可能建議將 FID 閾值從某個數值降低到另一個更嚴格嘅數值。呢個差異文件就係你提案嘅核心內容。
+
+提交到 POST /api/v1/commons/agents/video.mua_makeup/proposals 之後，呢個提案就會被記錄為一個不可變嘅版本。其他審閱者可以查看你嘅提案同附帶嘅證據，然後決定係咪接受呢個改變。
+
+關於信任層級嘅實際應用。當你遇到唔同來源嘅資訊有衝突嘅時候，你應該點做呢？答案係永遠以 agent_spec.json 為準。如果 SPEC.md 入面嘅描述同 agent_spec.json 有矛盾，以 agent_spec.json 為準。
+
+如果歷史摘錄入面嘅工具列表包含某啲工具，但 agent_spec.json 嘅 allowed_tools 係空列表，咁就以空列表為準。呢啲歷史工具名稱只係設計參考，唔代表佢哋喺運行時被啟用。
+
+關於預算政策嘅詳細解釋。max_input_tokens 2048 意味住呢個 agent 最多可以接收 2048 個 token 嘅輸入。max_output_tokens 1024 意味住佢最多可以產生 1024 個 token 嘅輸出。max_tool_requests 0 意味住佢唔可以發出任何工具請求。
+
+呢啲限制係安全設計嘅一部分。即使 agent 被錯誤啟動，呢啲預算上限都會防止佢消耗過多資源或者造成意外嘅副作用。
+
+關於 model_policy 嘅進一步說明。model_id local-video-config-v1 指定咗要用嘅模型配置。network_access false 確保即使模型有能力訪問網絡，呢個權限都唔會被授予。provider local_deterministic 確保所有輸出都係確定性嘅，即係相同嘅輸入會產生相同嘅輸出。
+
+呢個確定性嘅特點對於質量保證特別重要，因為佢令測試同驗證變得可重複。你可以用相同嘅輸入多次運行，確認輸出都係一致嘅。
+
+關於 schema_version 1.0 嘅意義。呢個版本號標記咗 agent_spec.json 嘅格式版本。如果未來格式有改變，版本號會相應更新，確保向後兼容性。
+
+關於 registered 狀態嘅含義。呢個狀態表示 agent 已經被正式登記入目錄系統。佢被認可為一個有效嘅角色定義，但仲未被啟動用於生產環境。從 registered 到 active 需要經過額外嘅治理流程。
+
+最後關於 va_category 3-Edit 嘅全面解釋。呢個類別入面嘅所有 agent 都同後期製作嘅視覺品質有關。除咗 MUAAgent 之外，呢個類別可能仲包含其他處理視覺效果、調色、特效合成等方面嘅角色。佢哋共同確保最終畫面嘅品質達到標準。
+
+呢啲 agent 之間嘅協作形成一個品質保證嘅網絡，每個 agent 從自己嘅專業角度檢查同提升畫面品質。MUAAgent 專注於化妝同特效嘅部分，而其他 agent 負責各自嘅範疇。
+
+再次感謝大家嘅耐心聆聽，呢個就係 MUAAgent 嘅全部內容。記住，有任何問題都可以查閱原始嘅 SPEC.md 同 agent_spec.json 檔案。我哋下條片見。
+
+
+我哋再加多啲關於實際場景嘅應用補充。
+
+想像一下一個典型嘅電影製作場景。導演需要一個角色喺唔同場景之間經歷時間跨度，例如從年輕變到年老。呢個時候 MUAAgent 嘅假體特效知識就變得極其重要。
+
+喺傳統製作中，化妝師需要設計多套年齡化妝方案，每套都要精確記錄所有細節。皺紋嘅位置、深度、方向，色斑嘅分佈，皮膚質感嘅變化，全部都要有系統咁記錄。
+
+MUAAgent 嘅角色就係將呢啲記錄系統化，用 hash 值確保每次應用都完全一致。即使係唔同日子拍攝嘅場景，化妝效果都能夠無縫銜接。
+
+另一個重要嘅應用場景係多角度拍攝。當一個場景需要從多個角度拍攝時，每次重新開始都需要確保化妝狀態完全一樣。呢個喺傳統工作流程中係一個常見嘅痛點。
+
+MUAAgent 通過面部地標檢測同感知 hash 比較，可以喺每次化妝完成後即時驗證同上一次嘅一致性。如果有任何偏差，系統會立即標記出嚟。
+
+關於同 CostumeAgent 嘅調色板衝突評論。化妝師需要了解服裝嘅顏色方案，因為某啲化妝顏色會同特定嘅服裝顏色產生唔協調嘅視覺效果。
+
+例如演員嘅脣色如果同服裝嘅主色調太接近，可能會令面部特徵「消失」喺服裝入面。或者某啲化妝效果嘅色溫同服裝嘅色溫唔匹配，造成畫面嘅視覺唔和諧。
+
+MUAAgent 有能力識別呢啲問題並向 CostumeAgent 提出建議。呢個就係跨角色批評嘅實際價值，每個專業領域嘅 agent 都能夠從自己嘅專業角度發現同解決問題。
+
+最後要強調嘅一點係，呢個 agent 嘅所有設計都係以尊重演員嘅尊嚴同隱私為前提。涉及面部處理嘅任何操作都必須有適當嘅同意同權限記錄。呢個係 rights_and_consent 欄位喺交接合約入面如此重要嘅原因。
+
+好啦，以上就係 MUAAgent 化妝髮型特效代理嘅完整同詳盡講解。涵蓋咗所有十五個章節嘅每一個細節。感謝收睇，下次再見。
+
+
+補充關於 CASOPS 平臺嘅一般操作原則。喺呢個平臺上面，所有 agent 都遵循相同嘅生命週期管理流程。從註冊到設計審查，從提案到版本控制，每一步都有清晰嘅規則。
+
+MUAAgent 作為 L0 成熟度嘅 agent，佢目前只能被用作設計參考同目錄條目。任何嘗試喺運行時調用佢嘅行為都會被 fail-closed 機制阻止。
+
+呢個保守嘅默認行為係整個系統安全設計嘅基石。寧願唔做，都好過做錯。尤其係涉及面部識別同處理嘅領域，安全同道德考量必須放喺首位。
+
+喺未來嘅發展路線圖入面，當 MUAAgent 準備好升級到更高嘅成熟度等級時，佢會需要通過一系列嚴格嘅評估同測試。包括連續性準確度測試、膚色真實感評估、同埋 privacy 影響評估。
+
+只有當所有呢啲評估都通過，並且有適當嘅人類審批之後，佢先可以被考慮升級到 L1 或更高等級。呢個過程確保咗技術能力同治理控制嘅平衡。
+
+呢個就係我哋對整個 MUAAgent 系統嘅最完整講解。多謝各位嘅收睇同支持。

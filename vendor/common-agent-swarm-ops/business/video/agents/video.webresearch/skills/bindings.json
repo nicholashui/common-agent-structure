@@ -1,0 +1,9 @@
+{
+  "agent_id": "video.webresearch",
+  "special_skills": [
+    {
+      "skill_id": "research_agent",
+      "path": "business/video/special_skills/research_agent/"
+    }
+  ]
+}

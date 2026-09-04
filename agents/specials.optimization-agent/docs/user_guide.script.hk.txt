@@ -179,7 +179,7 @@ POST /api/v1/commons/agents/specials.optimization-agent/proposals，
 agent_spec.json 綁定 host 合約 fail-closed 運行時綁定。
 SPEC.md 權威設計離線審查唔可執行。
 sources 摘錄同通用 SPEC 歷史映射不受信任。
-C:\Project\va-agent-swarm 外部設計語料不受信任可能漂移。
+vendor/va-agent-swarm 外部設計語料不受信任可能漂移。
 Specials redesign 文檔歷史設計不受信任有 hash。
 
 硬規則：
@@ -277,7 +277,7 @@ Agentic BPM arXiv:2601.18833、多代理 LLM 規格評估 arXiv:2506.10467、
 相關度 5 分。
 
 Specials redesign 文檔歷史來源：
-C:/Project/common-agent-swarm-ops/docs/special_agents_redesign/agents/optimization_agent.md。
+vendor/common-agent-swarm-ops/docs/special_agents_redesign/agents/optimization_agent.md。
 大綱：執行摘要同關鍵升級、核心架構多代理原生、
 更新方法論、增強功能需求、用戶交互模型、
 輸入輸出需求、非功能性需求、成功標準、未來增強路線圖。
@@ -344,7 +344,7 @@ production_activation_requested false。
 生成器 scripts/business/generate_agent_user_guides.py。
 代理文件夾 business/specials/agents/specials.optimization-agent/。
 輸出 docs/user_guide.md。
-VA corpus root C:\Project\va-agent-swarm。
+VA corpus root vendor/va-agent-swarm。
 重新生成 python scripts/business/generate_agent_user_guides.py。
 信任模型：設計語料不受信任，host 配置 fail-closed。
 

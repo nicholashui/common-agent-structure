@@ -3075,7 +3075,7 @@ Optimization Meta-Agents                     S21: Optimization Panel
 ## Provenance
 
 - Master roster row va_id=83 from embedded agents.md content above.
-- Deep/extra text from `business/video/corpus/` and `C:\Project\va-agent-swarm`.
+- Deep/extra text from `business/video/corpus/` and `vendor/va-agent-swarm`.
 - Generator: `scripts/business/enrich_video_agent_specs.py`.
 - Upstream project name (historical only): va-agent-swarm.
 
@@ -3177,20 +3177,20 @@ Omitted here; same document as `SPEC.md` above.
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "为真实的世界设计",
-      "author": "帕帕奈克",
+      "title": "\u4e3a\u771f\u5b9e\u7684\u4e16\u754c\u8bbe\u8ba1",
+      "author": "\u5e15\u5e15\u5948\u514b",
       "isbn13": "9787566905321",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 为真实的世界设计（帕帕奈克），ISBN-13 9787566905321"
+      "citation": "ZH: \u4e3a\u771f\u5b9e\u7684\u4e16\u754c\u8bbe\u8ba1\uff08\u5e15\u5e15\u5948\u514b\uff09\uff0cISBN-13 9787566905321"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "无障碍设计基础",
-      "author": "国内教材",
+      "title": "\u65e0\u969c\u788d\u8bbe\u8ba1\u57fa\u7840",
+      "author": "\u56fd\u5185\u6559\u6750",
       "isbn13": "9787115417947",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 无障碍设计基础（国内教材），ISBN-13 9787115417947"
+      "citation": "ZH: \u65e0\u969c\u788d\u8bbe\u8ba1\u57fa\u7840\uff08\u56fd\u5185\u6559\u6750\uff09\uff0cISBN-13 9787115417947"
     },
     {
       "kind": "reference_book",
@@ -3249,36 +3249,36 @@ Omitted here; same document as `SPEC.md` above.
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "点石成金",
+      "title": "\u70b9\u77f3\u6210\u91d1",
       "isbn13": "9787115249494",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 点石成金，ISBN-13 9787115249494"
+      "citation": "ZH: \u70b9\u77f3\u6210\u91d1\uff0cISBN-13 9787115249494"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "界面设计模式",
+      "title": "\u754c\u9762\u8bbe\u8ba1\u6a21\u5f0f",
       "isbn13": "9787115331861",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 界面设计模式，ISBN-13 9787115331861"
+      "citation": "ZH: \u754c\u9762\u8bbe\u8ba1\u6a21\u5f0f\uff0cISBN-13 9787115331861"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "用户体验要素",
-      "author": "加瑞特",
+      "title": "\u7528\u6237\u4f53\u9a8c\u8981\u7d20",
+      "author": "\u52a0\u745e\u7279",
       "isbn13": "9787115325466",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 用户体验要素（加瑞特），ISBN-13 9787115325466"
+      "citation": "ZH: \u7528\u6237\u4f53\u9a8c\u8981\u7d20\uff08\u52a0\u745e\u7279\uff09\uff0cISBN-13 9787115325466"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "设计中的设计",
-      "author": "原研哉",
+      "title": "\u8bbe\u8ba1\u4e2d\u7684\u8bbe\u8ba1",
+      "author": "\u539f\u7814\u54c9",
       "isbn13": "9787549559787",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 设计中的设计（原研哉），ISBN-13 9787549559787"
+      "citation": "ZH: \u8bbe\u8ba1\u4e2d\u7684\u8bbe\u8ba1\uff08\u539f\u7814\u54c9\uff09\uff0cISBN-13 9787549559787"
     },
     {
       "kind": "reference_book",
@@ -3319,19 +3319,19 @@ Omitted here; same document as `SPEC.md` above.
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "达芬奇色彩校正手册",
+      "title": "\u8fbe\u82ac\u5947\u8272\u5f69\u6821\u6b63\u624b\u518c",
       "isbn13": "9787115381231",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 达芬奇色彩校正手册，ISBN-13 9787115381231"
+      "citation": "ZH: \u8fbe\u82ac\u5947\u8272\u5f69\u6821\u6b63\u624b\u518c\uff0cISBN-13 9787115381231"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "色彩艺术",
-      "author": "伊顿",
+      "title": "\u8272\u5f69\u827a\u672f",
+      "author": "\u4f0a\u987f",
       "isbn13": "9787532275119",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 色彩艺术（伊顿），ISBN-13 9787532275119"
+      "citation": "ZH: \u8272\u5f69\u827a\u672f\uff08\u4f0a\u987f\uff09\uff0cISBN-13 9787532275119"
     }
   ],
   "agent_id": "video.accessibilityoptimizer",
@@ -3346,7 +3346,7 @@ Omitted here; same document as `SPEC.md` above.
     "adopted_at": "2026-07-27T01:30:27.586756+00:00",
     "upstream": "generic-swarm-ops/business/video/agents"
   },
-  "imported_from": "C:\\Project\\common-agent-swarm-ops\\business\\video\\agents\\video.accessibilityoptimizer",
+  "imported_from": "vendor/common-agent-swarm-ops/business/video/agents/video.accessibilityoptimizer",
   "reference_book_origin": "spec/book_of_knowledge.md",
   "reference_book_note": "Bibliographic references from spec/book_of_knowledge.md. Does not enable network, RAG, T3, plugins, or memory writes."
 }

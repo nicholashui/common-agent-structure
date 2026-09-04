@@ -58,18 +58,18 @@
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "眨眼之间",
+      "title": "\u7728\u773c\u4e4b\u95f4",
       "isbn13": "9787515340128",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 眨眼之间，ISBN-13 9787515340128"
+      "citation": "ZH: \u7728\u773c\u4e4b\u95f4\uff0cISBN-13 9787515340128"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "电影剪辑技巧",
+      "title": "\u7535\u5f71\u526a\u8f91\u6280\u5de7",
       "isbn13": "9787115222224",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 电影剪辑技巧，ISBN-13 9787115222224"
+      "citation": "ZH: \u7535\u5f71\u526a\u8f91\u6280\u5de7\uff0cISBN-13 9787115222224"
     },
     {
       "kind": "reference_book",
@@ -120,10 +120,10 @@
       "kind": "reference_book",
       "language": "EN",
       "title": "What Is Cinema? Vol. 1",
-      "author": "André Bazin",
+      "author": "Andr\u00e9 Bazin",
       "isbn13": "9780520242272",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "EN: What Is Cinema? Vol. 1 (André Bazin), ISBN-13 9780520242272"
+      "citation": "EN: What Is Cinema? Vol. 1 (Andr\u00e9 Bazin), ISBN-13 9780520242272"
     },
     {
       "kind": "reference_book",
@@ -138,10 +138,10 @@
       "kind": "reference_book",
       "language": "EN",
       "title": "Hitchcock/Truffaut",
-      "author": "François Truffaut",
+      "author": "Fran\u00e7ois Truffaut",
       "isbn13": "9780671604295",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "EN: Hitchcock/Truffaut (François Truffaut), ISBN-13 9780671604295"
+      "citation": "EN: Hitchcock/Truffaut (Fran\u00e7ois Truffaut), ISBN-13 9780671604295"
     },
     {
       "kind": "reference_book",
@@ -155,55 +155,55 @@
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "电影艺术：形式与风格",
-      "author": "波德维尔、汤普森",
+      "title": "\u7535\u5f71\u827a\u672f\uff1a\u5f62\u5f0f\u4e0e\u98ce\u683c",
+      "author": "\u6ce2\u5fb7\u7ef4\u5c14\u3001\u6c64\u666e\u68ee",
       "isbn13": "9787301254332",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 电影艺术：形式与风格（波德维尔、汤普森），ISBN-13 9787301254332"
+      "citation": "ZH: \u7535\u5f71\u827a\u672f\uff1a\u5f62\u5f0f\u4e0e\u98ce\u683c\uff08\u6ce2\u5fb7\u7ef4\u5c14\u3001\u6c64\u666e\u68ee\uff09\uff0cISBN-13 9787301254332"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "认识电影",
-      "author": "贾内梯",
+      "title": "\u8ba4\u8bc6\u7535\u5f71",
+      "author": "\u8d3e\u5185\u68af",
       "isbn13": "9787532763122",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 认识电影（贾内梯），ISBN-13 9787532763122"
+      "citation": "ZH: \u8ba4\u8bc6\u7535\u5f71\uff08\u8d3e\u5185\u68af\uff09\uff0cISBN-13 9787532763122"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "电影是什么",
-      "author": "巴赞",
+      "title": "\u7535\u5f71\u662f\u4ec0\u4e48",
+      "author": "\u5df4\u8d5e",
       "isbn13": "9787108017963",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 电影是什么（巴赞），ISBN-13 9787108017963"
+      "citation": "ZH: \u7535\u5f71\u662f\u4ec0\u4e48\uff08\u5df4\u8d5e\uff09\uff0cISBN-13 9787108017963"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "雕刻时光",
-      "author": "塔可夫斯基",
+      "title": "\u96d5\u523b\u65f6\u5149",
+      "author": "\u5854\u53ef\u592b\u65af\u57fa",
       "isbn13": "9787532743841",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 雕刻时光（塔可夫斯基），ISBN-13 9787532743841"
+      "citation": "ZH: \u96d5\u523b\u65f6\u5149\uff08\u5854\u53ef\u592b\u65af\u57fa\uff09\uff0cISBN-13 9787532743841"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "希区柯克与特吕弗对话录",
+      "title": "\u5e0c\u533a\u67ef\u514b\u4e0e\u7279\u5415\u5f17\u5bf9\u8bdd\u5f55",
       "isbn13": "9787532745128",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 希区柯克与特吕弗对话录，ISBN-13 9787532745128"
+      "citation": "ZH: \u5e0c\u533a\u67ef\u514b\u4e0e\u7279\u5415\u5f17\u5bf9\u8bdd\u5f55\uff0cISBN-13 9787532745128"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "电影语言的语法",
-      "author": "阿里洪",
+      "title": "\u7535\u5f71\u8bed\u8a00\u7684\u8bed\u6cd5",
+      "author": "\u963f\u91cc\u6d2a",
       "isbn13": "9787532299990",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 电影语言的语法（阿里洪），ISBN-13 9787532299990"
+      "citation": "ZH: \u7535\u5f71\u8bed\u8a00\u7684\u8bed\u6cd5\uff08\u963f\u91cc\u6d2a\uff09\uff0cISBN-13 9787532299990"
     },
     {
       "kind": "reference_book",
@@ -262,157 +262,157 @@
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "声音设计：电影中语言、音乐和音响的表现力",
+      "title": "\u58f0\u97f3\u8bbe\u8ba1\uff1a\u7535\u5f71\u4e2d\u8bed\u8a00\u3001\u97f3\u4e50\u548c\u97f3\u54cd\u7684\u8868\u73b0\u529b",
       "isbn13": "9787106031237",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 声音设计：电影中语言、音乐和音响的表现力，ISBN-13 9787106031237"
+      "citation": "ZH: \u58f0\u97f3\u8bbe\u8ba1\uff1a\u7535\u5f71\u4e2d\u8bed\u8a00\u3001\u97f3\u4e50\u548c\u97f3\u54cd\u7684\u8868\u73b0\u529b\uff0cISBN-13 9787106031237"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "现代录音技术",
+      "title": "\u73b0\u4ee3\u5f55\u97f3\u6280\u672f",
       "isbn13": "9787115331861",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 现代录音技术，ISBN-13 9787115331861"
+      "citation": "ZH: \u73b0\u4ee3\u5f55\u97f3\u6280\u672f\uff0cISBN-13 9787115331861"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "短视频与直播文案写作",
-      "author": "张弘李自海魏坚 主编吴曼刘哲李守勤 副主编",
+      "title": "\u77ed\u89c6\u9891\u4e0e\u76f4\u64ad\u6587\u6848\u5199\u4f5c",
+      "author": "\u5f20\u5f18\u674e\u81ea\u6d77\u9b4f\u575a \u4e3b\u7f16\u5434\u66fc\u5218\u54f2\u674e\u5b88\u52e4 \u526f\u4e3b\u7f16",
       "isbn13": "9787115638649",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 短视频与直播文案写作（张弘李自海魏坚 主编吴曼刘哲李守勤 副主编），ISBN-13 9787115638649"
+      "citation": "ZH: \u77ed\u89c6\u9891\u4e0e\u76f4\u64ad\u6587\u6848\u5199\u4f5c\uff08\u5f20\u5f18\u674e\u81ea\u6d77\u9b4f\u575a \u4e3b\u7f16\u5434\u66fc\u5218\u54f2\u674e\u5b88\u52e4 \u526f\u4e3b\u7f16\uff09\uff0cISBN-13 9787115638649"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "DeepSeek+爆款短视频一本通流量时代的AI生产力",
-      "author": "张守刚张小平",
+      "title": "DeepSeek+\u7206\u6b3e\u77ed\u89c6\u9891\u4e00\u672c\u901a\u6d41\u91cf\u65f6\u4ee3\u7684AI\u751f\u4ea7\u529b",
+      "author": "\u5f20\u5b88\u521a\u5f20\u5c0f\u5e73",
       "isbn13": "9787115670014",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: DeepSeek+爆款短视频一本通流量时代的AI生产力（张守刚张小平），ISBN-13 9787115670014"
+      "citation": "ZH: DeepSeek+\u7206\u6b3e\u77ed\u89c6\u9891\u4e00\u672c\u901a\u6d41\u91cf\u65f6\u4ee3\u7684AI\u751f\u4ea7\u529b\uff08\u5f20\u5b88\u521a\u5f20\u5c0f\u5e73\uff09\uff0cISBN-13 9787115670014"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "剪映+DeepSeek短视频剪辑全能一本通",
+      "title": "\u526a\u6620+DeepSeek\u77ed\u89c6\u9891\u526a\u8f91\u5168\u80fd\u4e00\u672c\u901a",
       "author": "Jack",
       "isbn13": "9787115669780",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 剪映+DeepSeek短视频剪辑全能一本通（Jack），ISBN-13 9787115669780"
+      "citation": "ZH: \u526a\u6620+DeepSeek\u77ed\u89c6\u9891\u526a\u8f91\u5168\u80fd\u4e00\u672c\u901a\uff08Jack\uff09\uff0cISBN-13 9787115669780"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "剪映：手机短视频制作（全彩慕课版）",
-      "author": "尹涛 陈杰",
+      "title": "\u526a\u6620\uff1a\u624b\u673a\u77ed\u89c6\u9891\u5236\u4f5c\uff08\u5168\u5f69\u6155\u8bfe\u7248\uff09",
+      "author": "\u5c39\u6d9b \u9648\u6770",
       "isbn13": "9787115611772",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 剪映：手机短视频制作（全彩慕课版）（尹涛 陈杰），ISBN-13 9787115611772"
+      "citation": "ZH: \u526a\u6620\uff1a\u624b\u673a\u77ed\u89c6\u9891\u5236\u4f5c\uff08\u5168\u5f69\u6155\u8bfe\u7248\uff09\uff08\u5c39\u6d9b \u9648\u6770\uff09\uff0cISBN-13 9787115611772"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "剪辑师宝典：视频剪辑思维与案例实战",
-      "author": "杨超",
+      "title": "\u526a\u8f91\u5e08\u5b9d\u5178\uff1a\u89c6\u9891\u526a\u8f91\u601d\u7ef4\u4e0e\u6848\u4f8b\u5b9e\u6218",
+      "author": "\u6768\u8d85",
       "isbn13": "9787121450723",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 剪辑师宝典：视频剪辑思维与案例实战（杨超），ISBN-13 9787121450723"
+      "citation": "ZH: \u526a\u8f91\u5e08\u5b9d\u5178\uff1a\u89c6\u9891\u526a\u8f91\u601d\u7ef4\u4e0e\u6848\u4f8b\u5b9e\u6218\uff08\u6768\u8d85\uff09\uff0cISBN-13 9787121450723"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "手机短视频拍摄与制作（微课版）",
-      "author": "王武林 主编；马千里；蔡静 副主编",
+      "title": "\u624b\u673a\u77ed\u89c6\u9891\u62cd\u6444\u4e0e\u5236\u4f5c\uff08\u5fae\u8bfe\u7248\uff09",
+      "author": "\u738b\u6b66\u6797 \u4e3b\u7f16\uff1b\u9a6c\u5343\u91cc\uff1b\u8521\u9759 \u526f\u4e3b\u7f16",
       "isbn13": "9787115630629",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 手机短视频拍摄与制作（微课版）（王武林 主编；马千里；蔡静 副主编），ISBN-13 9787115630629"
+      "citation": "ZH: \u624b\u673a\u77ed\u89c6\u9891\u62cd\u6444\u4e0e\u5236\u4f5c\uff08\u5fae\u8bfe\u7248\uff09\uff08\u738b\u6b66\u6797 \u4e3b\u7f16\uff1b\u9a6c\u5343\u91cc\uff1b\u8521\u9759 \u526f\u4e3b\u7f16\uff09\uff0cISBN-13 9787115630629"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "抖音+剪映+Premiere短视频创作实战（全彩微课版）",
-      "author": "李晓斌；张晓景 编著",
+      "title": "\u6296\u97f3+\u526a\u6620+Premiere\u77ed\u89c6\u9891\u521b\u4f5c\u5b9e\u6218\uff08\u5168\u5f69\u5fae\u8bfe\u7248\uff09",
+      "author": "\u674e\u6653\u658c\uff1b\u5f20\u6653\u666f \u7f16\u8457",
       "isbn13": "9787302632870",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 抖音+剪映+Premiere短视频创作实战（全彩微课版）（李晓斌；张晓景 编著），ISBN-13 9787302632870"
+      "citation": "ZH: \u6296\u97f3+\u526a\u6620+Premiere\u77ed\u89c6\u9891\u521b\u4f5c\u5b9e\u6218\uff08\u5168\u5f69\u5fae\u8bfe\u7248\uff09\uff08\u674e\u6653\u658c\uff1b\u5f20\u6653\u666f \u7f16\u8457\uff09\uff0cISBN-13 9787302632870"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "短视频制作实战策划 拍摄 制作 运营(全彩慕课版)(第2版)",
-      "author": "郭韬 主编刘琴琴 副主编",
+      "title": "\u77ed\u89c6\u9891\u5236\u4f5c\u5b9e\u6218\u7b56\u5212 \u62cd\u6444 \u5236\u4f5c \u8fd0\u8425(\u5168\u5f69\u6155\u8bfe\u7248)(\u7b2c2\u7248)",
+      "author": "\u90ed\u97ec \u4e3b\u7f16\u5218\u7434\u7434 \u526f\u4e3b\u7f16",
       "isbn13": "9787115672063",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 短视频制作实战策划 拍摄 制作 运营(全彩慕课版)(第2版)（郭韬 主编刘琴琴 副主编），ISBN-13 9787115672063"
+      "citation": "ZH: \u77ed\u89c6\u9891\u5236\u4f5c\u5b9e\u6218\u7b56\u5212 \u62cd\u6444 \u5236\u4f5c \u8fd0\u8425(\u5168\u5f69\u6155\u8bfe\u7248)(\u7b2c2\u7248)\uff08\u90ed\u97ec \u4e3b\u7f16\u5218\u7434\u7434 \u526f\u4e3b\u7f16\uff09\uff0cISBN-13 9787115672063"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "短视频拍摄与剪辑零基础一本通",
-      "author": "千知影像学院 编著",
+      "title": "\u77ed\u89c6\u9891\u62cd\u6444\u4e0e\u526a\u8f91\u96f6\u57fa\u7840\u4e00\u672c\u901a",
+      "author": "\u5343\u77e5\u5f71\u50cf\u5b66\u9662 \u7f16\u8457",
       "isbn13": "9787115635402",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 短视频拍摄与剪辑零基础一本通（千知影像学院 编著），ISBN-13 9787115635402"
+      "citation": "ZH: \u77ed\u89c6\u9891\u62cd\u6444\u4e0e\u526a\u8f91\u96f6\u57fa\u7840\u4e00\u672c\u901a\uff08\u5343\u77e5\u5f71\u50cf\u5b66\u9662 \u7f16\u8457\uff09\uff0cISBN-13 9787115635402"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "短视频策划、拍摄与制作(微课版)",
-      "author": "吕子燕 主编卢玲 副主编",
+      "title": "\u77ed\u89c6\u9891\u7b56\u5212\u3001\u62cd\u6444\u4e0e\u5236\u4f5c(\u5fae\u8bfe\u7248)",
+      "author": "\u5415\u5b50\u71d5 \u4e3b\u7f16\u5362\u73b2 \u526f\u4e3b\u7f16",
       "isbn13": "9787115569295",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 短视频策划、拍摄与制作(微课版)（吕子燕 主编卢玲 副主编），ISBN-13 9787115569295"
+      "citation": "ZH: \u77ed\u89c6\u9891\u7b56\u5212\u3001\u62cd\u6444\u4e0e\u5236\u4f5c(\u5fae\u8bfe\u7248)\uff08\u5415\u5b50\u71d5 \u4e3b\u7f16\u5362\u73b2 \u526f\u4e3b\u7f16\uff09\uff0cISBN-13 9787115569295"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "手機攝影技術教程",
+      "title": "\u624b\u6a5f\u651d\u5f71\u6280\u8853\u6559\u7a0b",
       "isbn13": "9787210129653",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 手機攝影技術教程，ISBN-13 9787210129653"
+      "citation": "ZH: \u624b\u6a5f\u651d\u5f71\u6280\u8853\u6559\u7a0b\uff0cISBN-13 9787210129653"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "短視頻編劇全流程",
+      "title": "\u77ed\u8996\u983b\u7de8\u5287\u5168\u6d41\u7a0b",
       "isbn13": "9787122452696",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 短視頻編劇全流程，ISBN-13 9787122452696"
+      "citation": "ZH: \u77ed\u8996\u983b\u7de8\u5287\u5168\u6d41\u7a0b\uff0cISBN-13 9787122452696"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "AI短视频创作：一本通剪映+即梦+可灵+文心一格",
+      "title": "AI\u77ed\u89c6\u9891\u521b\u4f5c\uff1a\u4e00\u672c\u901a\u526a\u6620+\u5373\u68a6+\u53ef\u7075+\u6587\u5fc3\u4e00\u683c",
       "isbn13": "9787122470027",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: AI短视频创作：一本通剪映+即梦+可灵+文心一格，ISBN-13 9787122470027"
+      "citation": "ZH: AI\u77ed\u89c6\u9891\u521b\u4f5c\uff1a\u4e00\u672c\u901a\u526a\u6620+\u5373\u68a6+\u53ef\u7075+\u6587\u5fc3\u4e00\u683c\uff0cISBN-13 9787122470027"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "爆款短视频拍摄：118个分镜脚本与摄影技巧新媒体抖音运营流量",
+      "title": "\u7206\u6b3e\u77ed\u89c6\u9891\u62cd\u6444\uff1a118\u4e2a\u5206\u955c\u811a\u672c\u4e0e\u6444\u5f71\u6280\u5de7\u65b0\u5a92\u4f53\u6296\u97f3\u8fd0\u8425\u6d41\u91cf",
       "isbn13": "9787122699984",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 爆款短视频拍摄：118个分镜脚本与摄影技巧新媒体抖音运营流量，ISBN-13 9787122699984"
+      "citation": "ZH: \u7206\u6b3e\u77ed\u89c6\u9891\u62cd\u6444\uff1a118\u4e2a\u5206\u955c\u811a\u672c\u4e0e\u6444\u5f71\u6280\u5de7\u65b0\u5a92\u4f53\u6296\u97f3\u8fd0\u8425\u6d41\u91cf\uff0cISBN-13 9787122699984"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "剪映视频后期剪辑零基础入门到精通",
-      "author": "许放",
+      "title": "\u526a\u6620\u89c6\u9891\u540e\u671f\u526a\u8f91\u96f6\u57fa\u7840\u5165\u95e8\u5230\u7cbe\u901a",
+      "author": "\u8bb8\u653e",
       "isbn13": "9787115634979",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 剪映视频后期剪辑零基础入门到精通（许放），ISBN-13 9787115634979"
+      "citation": "ZH: \u526a\u6620\u89c6\u9891\u540e\u671f\u526a\u8f91\u96f6\u57fa\u7840\u5165\u95e8\u5230\u7cbe\u901a\uff08\u8bb8\u653e\uff09\uff0cISBN-13 9787115634979"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "剪映+數字人",
+      "title": "\u526a\u6620+\u6578\u5b57\u4eba",
       "isbn13": "9787122452511",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 剪映+數字人，ISBN-13 9787122452511"
+      "citation": "ZH: \u526a\u6620+\u6578\u5b57\u4eba\uff0cISBN-13 9787122452511"
     },
     {
       "kind": "reference_book",
@@ -436,10 +436,10 @@
       "kind": "reference_book",
       "language": "EN",
       "title": "Making the Cut at Pixar The Art of Editing Animation",
-      "author": "Bill Kinder Bobbie O’steen",
+      "author": "Bill Kinder Bobbie O\u2019steen",
       "isbn13": "9780367766146",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "EN: Making the Cut at Pixar The Art of Editing Animation (Bill Kinder Bobbie O’steen), ISBN-13 9780367766146"
+      "citation": "EN: Making the Cut at Pixar The Art of Editing Animation (Bill Kinder Bobbie O\u2019steen), ISBN-13 9780367766146"
     }
   ],
   "agent_id": "video.editor",
@@ -454,7 +454,7 @@
     "adopted_at": "2026-07-27T01:30:28.119430+00:00",
     "upstream": "generic-swarm-ops/business/video/agents"
   },
-  "imported_from": "C:\\Project\\common-agent-swarm-ops\\business\\video\\agents\\video.editor",
+  "imported_from": "vendor/common-agent-swarm-ops/business/video/agents/video.editor",
   "reference_book_origin": "spec/book_of_knowledge.md",
   "reference_book_note": "Bibliographic references from spec/book_of_knowledge.md. Does not enable network, RAG, T3, plugins, or memory writes."
 }

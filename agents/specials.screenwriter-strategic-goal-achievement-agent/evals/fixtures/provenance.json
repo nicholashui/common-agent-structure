@@ -1,0 +1,8 @@
+{
+  "agent_id": "specials.screenwriter-strategic-goal-achievement-agent",
+  "folder": "agents/specials.screenwriter-strategic-goal-achievement-agent",
+  "honesty": "CHARACTERIZATION",
+  "note": "Chat prompts are characterization only. Not an eval pass. casops-eval stays NOT_RUN while instruments are unqualified.",
+  "swarm_ops_cases": "vendor/common-agent-swarm-ops/testcases/api_test/specials.screenwriter_strategic_goal_achievement_agent/cases.json",
+  "swarm_ops_agent_id": "specials.screenwriter_strategic_goal_achievement_agent"
+}

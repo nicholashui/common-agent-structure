@@ -1,0 +1,96 @@
+{
+  "agent_id": "video.aiqaconsistency",
+  "kind": "pack",
+  "cases": [
+    {
+      "id": "tc1",
+      "name": "video.aiqaconsistency offline case 1",
+      "method": "POST",
+      "path": "/api/v1/agent-loops/agents/video.aiqaconsistency/run",
+      "body": {
+        "goal": "Critique selection for cliché and pacing completeness (bounded refine)",
+        "enable_v3": true,
+        "max_steps": 3,
+        "allow_production": false,
+        "allow_network": false
+      },
+      "success_criteria": {
+        "http_status": [
+          200
+        ],
+        "required_keys_any": [
+          "agent_id",
+          "ok",
+          "phases",
+          "v3",
+          "status",
+          "run_id"
+        ],
+        "json_equals": {
+          "agent_id": "video.aiqaconsistency"
+        },
+        "notes": "Offline loop: expect 200 with agent_id match; prefer ok=true or v3/phases present. allow_production/allow_network must stay false."
+      }
+    },
+    {
+      "id": "tc2",
+      "name": "video.aiqaconsistency offline case 2",
+      "method": "POST",
+      "path": "/api/v1/agent-loops/agents/video.aiqaconsistency/run",
+      "body": {
+        "goal": "Apply offline QC consistency checks across multi-day stub assets",
+        "enable_v3": true,
+        "max_steps": 3,
+        "allow_production": false,
+        "allow_network": false
+      },
+      "success_criteria": {
+        "http_status": [
+          200
+        ],
+        "required_keys_any": [
+          "agent_id",
+          "ok",
+          "phases",
+          "v3",
+          "status",
+          "run_id"
+        ],
+        "json_equals": {
+          "agent_id": "video.aiqaconsistency"
+        },
+        "notes": "Offline loop: expect 200 with agent_id match; prefer ok=true or v3/phases present. allow_production/allow_network must stay false."
+      }
+    },
+    {
+      "id": "tc3",
+      "name": "video.aiqaconsistency offline case 3",
+      "method": "POST",
+      "path": "/api/v1/agent-loops/agents/video.aiqaconsistency/run",
+      "body": {
+        "goal": "Gate package release with HITL-required decision notes only",
+        "enable_v3": true,
+        "max_steps": 2,
+        "allow_production": false,
+        "allow_network": false
+      },
+      "success_criteria": {
+        "http_status": [
+          200
+        ],
+        "required_keys_any": [
+          "agent_id",
+          "ok",
+          "phases",
+          "v3",
+          "status",
+          "run_id"
+        ],
+        "json_equals": {
+          "agent_id": "video.aiqaconsistency"
+        },
+        "notes": "Offline loop: expect 200 with agent_id match; prefer ok=true or v3/phases present. allow_production/allow_network must stay false."
+      }
+    }
+  ]
+}

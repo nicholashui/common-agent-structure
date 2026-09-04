@@ -1,0 +1,75 @@
+{
+  "agent_id": "specials.knowledge_router_agent",
+  "kind": "special",
+  "cases": [
+    {
+      "id": "tc1",
+      "name": "Logistics route",
+      "method": "POST",
+      "path": "/api/v1/knowledge/route",
+      "body": {
+        "query": "Osaka logistics and vlog production",
+        "allow_live_web": false
+      },
+      "success_criteria": {
+        "http_status": [
+          200
+        ],
+        "required_keys_any": [
+          "ok",
+          "primary",
+          "route",
+          "correlation_id",
+          "result"
+        ],
+        "notes": "Offline knowledge router; no live web."
+      }
+    },
+    {
+      "id": "tc2",
+      "name": "Memory vs pack route",
+      "method": "POST",
+      "path": "/api/v1/knowledge/route",
+      "body": {
+        "query": "Route memory vs pack vs RAG for travel brief",
+        "allow_live_web": false
+      },
+      "success_criteria": {
+        "http_status": [
+          200
+        ],
+        "required_keys_any": [
+          "ok",
+          "primary",
+          "route",
+          "correlation_id",
+          "result"
+        ],
+        "notes": "Offline knowledge router; no live web."
+      }
+    },
+    {
+      "id": "tc3",
+      "name": "Handoff storage route",
+      "method": "POST",
+      "path": "/api/v1/knowledge/route",
+      "body": {
+        "query": "Where to store production plan handoffs",
+        "allow_live_web": false
+      },
+      "success_criteria": {
+        "http_status": [
+          200
+        ],
+        "required_keys_any": [
+          "ok",
+          "primary",
+          "route",
+          "correlation_id",
+          "result"
+        ],
+        "notes": "Offline knowledge router; no live web."
+      }
+    }
+  ]
+}

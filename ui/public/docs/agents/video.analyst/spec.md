@@ -3102,26 +3102,26 @@ Omitted here; same document as `SPEC.md` above.
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "精益数据分析",
+      "title": "\u7cbe\u76ca\u6570\u636e\u5206\u6790",
       "isbn13": "9787115384515",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 精益数据分析，ISBN-13 9787115384515"
+      "citation": "ZH: \u7cbe\u76ca\u6570\u636e\u5206\u6790\uff0cISBN-13 9787115384515"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "用数据讲故事",
+      "title": "\u7528\u6570\u636e\u8bb2\u6545\u4e8b",
       "isbn13": "9787111575558",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 用数据讲故事，ISBN-13 9787111575558"
+      "citation": "ZH: \u7528\u6570\u636e\u8bb2\u6545\u4e8b\uff0cISBN-13 9787111575558"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "赤裸裸的统计学",
+      "title": "\u8d64\u88f8\u88f8\u7684\u7edf\u8ba1\u5b66",
       "isbn13": "9787508643427",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 赤裸裸的统计学，ISBN-13 9787508643427"
+      "citation": "ZH: \u8d64\u88f8\u88f8\u7684\u7edf\u8ba1\u5b66\uff0cISBN-13 9787508643427"
     },
     {
       "kind": "reference_book",
@@ -3198,58 +3198,58 @@ Omitted here; same document as `SPEC.md` above.
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "竞争战略",
+      "title": "\u7ade\u4e89\u6218\u7565",
       "isbn13": "9787508633749",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 竞争战略，ISBN-13 9787508633749"
+      "citation": "ZH: \u7ade\u4e89\u6218\u7565\uff0cISBN-13 9787508633749"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "这就是OKR",
+      "title": "\u8fd9\u5c31\u662fOKR",
       "isbn13": "9787521702330",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 这就是OKR，ISBN-13 9787521702330"
+      "citation": "ZH: \u8fd9\u5c31\u662fOKR\uff0cISBN-13 9787521702330"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "创新者的窘境",
+      "title": "\u521b\u65b0\u8005\u7684\u7a98\u5883",
       "isbn13": "9787508633336",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 创新者的窘境，ISBN-13 9787508633336"
+      "citation": "ZH: \u521b\u65b0\u8005\u7684\u7a98\u5883\uff0cISBN-13 9787508633336"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "系统之美",
+      "title": "\u7cfb\u7edf\u4e4b\u7f8e",
       "isbn13": "9787508640114",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 系统之美，ISBN-13 9787508640114"
+      "citation": "ZH: \u7cfb\u7edf\u4e4b\u7f8e\uff0cISBN-13 9787508640114"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "第五项修炼",
+      "title": "\u7b2c\u4e94\u9879\u4fee\u70bc",
       "isbn13": "9787508631332",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 第五项修炼，ISBN-13 9787508631332"
+      "citation": "ZH: \u7b2c\u4e94\u9879\u4fee\u70bc\uff0cISBN-13 9787508631332"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "超预测",
+      "title": "\u8d85\u9884\u6d4b",
       "isbn13": "9787508663098",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 超预测，ISBN-13 9787508663098"
+      "citation": "ZH: \u8d85\u9884\u6d4b\uff0cISBN-13 9787508663098"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "金字塔原理",
+      "title": "\u91d1\u5b57\u5854\u539f\u7406",
       "isbn13": "9787508633732",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 金字塔原理，ISBN-13 9787508633732"
+      "citation": "ZH: \u91d1\u5b57\u5854\u539f\u7406\uff0cISBN-13 9787508633732"
     },
     {
       "kind": "reference_book",
@@ -3371,74 +3371,74 @@ Omitted here; same document as `SPEC.md` above.
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "疯传",
+      "title": "\u75af\u4f20",
       "isbn13": "9787508641238",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 疯传，ISBN-13 9787508641238"
+      "citation": "ZH: \u75af\u4f20\uff0cISBN-13 9787508641238"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "让创意更有黏性",
+      "title": "\u8ba9\u521b\u610f\u66f4\u6709\u9ecf\u6027",
       "isbn13": "9787508641245",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 让创意更有黏性，ISBN-13 9787508641245"
+      "citation": "ZH: \u8ba9\u521b\u610f\u66f4\u6709\u9ecf\u6027\uff0cISBN-13 9787508641245"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "跨越鸿沟",
+      "title": "\u8de8\u8d8a\u9e3f\u6c9f",
       "isbn13": "9787111456780",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 跨越鸿沟，ISBN-13 9787111456780"
+      "citation": "ZH: \u8de8\u8d8a\u9e3f\u6c9f\uff0cISBN-13 9787111456780"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "精益创业",
+      "title": "\u7cbe\u76ca\u521b\u4e1a",
       "isbn13": "9787115293701",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 精益创业，ISBN-13 9787115293701"
+      "citation": "ZH: \u7cbe\u76ca\u521b\u4e1a\uff0cISBN-13 9787115293701"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "一个广告人的自白",
+      "title": "\u4e00\u4e2a\u5e7f\u544a\u4eba\u7684\u81ea\u767d",
       "isbn13": "9787111496182",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 一个广告人的自白，ISBN-13 9787111496182"
+      "citation": "ZH: \u4e00\u4e2a\u5e7f\u544a\u4eba\u7684\u81ea\u767d\uff0cISBN-13 9787111496182"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "文案训练手册",
+      "title": "\u6587\u6848\u8bad\u7ec3\u624b\u518c",
       "isbn13": "9787115351555",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 文案训练手册，ISBN-13 9787115351555"
+      "citation": "ZH: \u6587\u6848\u8bad\u7ec3\u624b\u518c\uff0cISBN-13 9787115351555"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "上瘾",
+      "title": "\u4e0a\u763e",
       "isbn13": "9787508648017",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 上瘾，ISBN-13 9787508648017"
+      "citation": "ZH: \u4e0a\u763e\uff0cISBN-13 9787508648017"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "增长黑客",
+      "title": "\u589e\u957f\u9ed1\u5ba2",
       "isbn13": "9787213066948",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 增长黑客，ISBN-13 9787213066948"
+      "citation": "ZH: \u589e\u957f\u9ed1\u5ba2\uff0cISBN-13 9787213066948"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "参与感",
+      "title": "\u53c2\u4e0e\u611f",
       "isbn13": "9787213055375",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 参与感，ISBN-13 9787213055375"
+      "citation": "ZH: \u53c2\u4e0e\u611f\uff0cISBN-13 9787213055375"
     },
     {
       "kind": "reference_book",
@@ -3461,11 +3461,11 @@ Omitted here; same document as `SPEC.md` above.
     {
       "kind": "reference_book",
       "language": "EN",
-      "title": "The Global Film Market Transformation in the Post-Pandemic Era Production, Distribution…",
+      "title": "The Global Film Market Transformation in the Post-Pandemic Era Production, Distribution\u2026",
       "author": "Qiao Li, David Wilson, Yanqiu Guan",
       "isbn13": "9781003345251",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "EN: The Global Film Market Transformation in the Post-Pandemic Era Production, Distribution… (Qiao Li, David Wilson, Yanqiu Guan), ISBN-13 9781003345251"
+      "citation": "EN: The Global Film Market Transformation in the Post-Pandemic Era Production, Distribution\u2026 (Qiao Li, David Wilson, Yanqiu Guan), ISBN-13 9781003345251"
     },
     {
       "kind": "reference_book",
@@ -3479,20 +3479,20 @@ Omitted here; same document as `SPEC.md` above.
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "电影市场营销（第2版）",
-      "author": "于丽",
+      "title": "\u7535\u5f71\u5e02\u573a\u8425\u9500\uff08\u7b2c2\u7248\uff09",
+      "author": "\u4e8e\u4e3d",
       "isbn13": "9787106053994",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 电影市场营销（第2版）（于丽），ISBN-13 9787106053994"
+      "citation": "ZH: \u7535\u5f71\u5e02\u573a\u8425\u9500\uff08\u7b2c2\u7248\uff09\uff08\u4e8e\u4e3d\uff09\uff0cISBN-13 9787106053994"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "电影发行与市场营销",
-      "author": "刘嘉等",
+      "title": "\u7535\u5f71\u53d1\u884c\u4e0e\u5e02\u573a\u8425\u9500",
+      "author": "\u5218\u5609\u7b49",
       "isbn13": "9787010167718",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 电影发行与市场营销（刘嘉等），ISBN-13 9787010167718"
+      "citation": "ZH: \u7535\u5f71\u53d1\u884c\u4e0e\u5e02\u573a\u8425\u9500\uff08\u5218\u5609\u7b49\uff09\uff0cISBN-13 9787010167718"
     }
   ],
   "agent_id": "video.analyst",
@@ -3507,7 +3507,7 @@ Omitted here; same document as `SPEC.md` above.
     "adopted_at": "2026-07-27T01:30:27.615675+00:00",
     "upstream": "generic-swarm-ops/business/video/agents"
   },
-  "imported_from": "C:\\Project\\common-agent-swarm-ops\\business\\video\\agents\\video.analyst",
+  "imported_from": "vendor/common-agent-swarm-ops/business/video/agents/video.analyst",
   "reference_book_origin": "spec/book_of_knowledge.md",
   "reference_book_note": "Bibliographic references from spec/book_of_knowledge.md. Does not enable network, RAG, T3, plugins, or memory writes."
 }

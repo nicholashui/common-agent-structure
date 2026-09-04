@@ -46,6 +46,19 @@ export function resetChatPersistForTests(): void {
   }
 }
 
+export async function loadChatTranscript(agentId: string, name: string): Promise<ChatTurn[]> {
+  const base = getBaseUrl().replace(/\/$/, "");
+  const response = await fetch(
+    `${base}/debug/chat?agent_id=${encodeURIComponent(agentId)}&name=${encodeURIComponent(name)}`,
+    { headers: { Accept: "application/json" } },
+  );
+  if (!response.ok) {
+    throw new Error("Could not load that transcript");
+  }
+  const body = (await response.json()) as { turns?: ChatTurn[] };
+  return (body.turns ?? []).filter((turn) => turn.role === "user" || turn.role === "assistant");
+}
+
 export async function refreshChatFiles(agentId: string): Promise<ChatFile[]> {
   const base = getBaseUrl().replace(/\/$/, "");
   const response = await fetch(`${base}/debug/chat?agent_id=${encodeURIComponent(agentId)}`, {

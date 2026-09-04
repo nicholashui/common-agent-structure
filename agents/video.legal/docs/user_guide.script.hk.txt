@@ -240,7 +240,7 @@ critique_log pointer：令精煉過程唔會失去歷史記錄。
 
 第三行：sources 底下嘅摘錄同通用 SPECs，信任級別係 Historical / mapped，角色係 Untrusted data。
 
-第四行：C:\Project\va-agent-swarm，信任級別係 External design corpus，角色係 Untrusted; may drift，即係不受信任而且可能會偏移。
+第四行：vendor/va-agent-swarm，信任級別係 External design corpus，角色係 Untrusted; may drift，即係不受信任而且可能會偏移。
 
 第五行：Specials redesign docs，信任級別係 Historical design，角色係 Untrusted; hashed in provenance。
 
@@ -475,7 +475,7 @@ Agent folder 代理文件夾係 business/video/agents/video.legal/。
 
 Output 輸出係 docs/user_guide.md。
 
-VA corpus root 語料庫根目錄係 C:\Project\va-agent-swarm。
+VA corpus root 語料庫根目錄係 vendor/va-agent-swarm。
 
 Regeneration 重新生成命令係 python scripts/business/generate_agent_user_guides.py。
 

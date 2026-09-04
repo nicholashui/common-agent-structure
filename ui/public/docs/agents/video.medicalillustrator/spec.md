@@ -1801,7 +1801,7 @@ These remain non-negotiably human (per current ethics + regulation, May 2026):
 ## Provenance
 
 - Master roster row va_id=107 from embedded agents.md content above.
-- Deep/extra text from `business/video/corpus/` and `C:\Project\va-agent-swarm`.
+- Deep/extra text from `business/video/corpus/` and `vendor/va-agent-swarm`.
 - Generator: `scripts/business/enrich_video_agent_specs.py`.
 - Upstream project name (historical only): va-agent-swarm.
 
@@ -5625,7 +5625,7 @@ Step 7: DELIVERY PH
 ## Provenance
 
 - Master roster row va_id=57 from embedded agents.md content above.
-- Deep/extra text from `business/video/corpus/` and `C:\Project\va-agent-swarm`.
+- Deep/extra text from `business/video/corpus/` and `vendor/va-agent-swarm`.
 - Generator: `scripts/business/enrich_video_agent_specs.py`.
 - Upstream project name (historical only): va-agent-swarm.
 
@@ -5703,18 +5703,18 @@ Live primary-source expansion remains a residual for score 100 on S3 where depth
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "奈特人体解剖彩色图谱",
+      "title": "\u5948\u7279\u4eba\u4f53\u89e3\u5256\u5f69\u8272\u56fe\u8c31",
       "isbn13": "9787117207683",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 奈特人体解剖彩色图谱，ISBN-13 9787117207683"
+      "citation": "ZH: \u5948\u7279\u4eba\u4f53\u89e3\u5256\u5f69\u8272\u56fe\u8c31\uff0cISBN-13 9787117207683"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "格氏解剖学",
+      "title": "\u683c\u6c0f\u89e3\u5256\u5b66",
       "isbn13": "9787117207690",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 格氏解剖学，ISBN-13 9787117207690"
+      "citation": "ZH: \u683c\u6c0f\u89e3\u5256\u5b66\uff0cISBN-13 9787117207690"
     },
     {
       "kind": "reference_book",
@@ -5737,10 +5737,10 @@ Live primary-source expansion remains a residual for score 100 on S3 where depth
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "色彩与光线",
+      "title": "\u8272\u5f69\u4e0e\u5149\u7ebf",
       "isbn13": "9787515301235",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 色彩与光线，ISBN-13 9787515301235"
+      "citation": "ZH: \u8272\u5f69\u4e0e\u5149\u7ebf\uff0cISBN-13 9787515301235"
     }
   ],
   "agent_id": "video.medicalillustrator",
@@ -5755,7 +5755,7 @@ Live primary-source expansion remains a residual for score 100 on S3 where depth
     "adopted_at": "2026-07-27T01:30:28.386715+00:00",
     "upstream": "generic-swarm-ops/business/video/agents"
   },
-  "imported_from": "C:\\Project\\common-agent-swarm-ops\\business\\video\\agents\\video.medicalillustrator",
+  "imported_from": "vendor/common-agent-swarm-ops/business/video/agents/video.medicalillustrator",
   "reference_book_origin": "spec/book_of_knowledge.md",
   "reference_book_note": "Bibliographic references from spec/book_of_knowledge.md. Does not enable network, RAG, T3, plugins, or memory writes."
 }

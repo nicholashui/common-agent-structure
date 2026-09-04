@@ -1,0 +1,193 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 740" font-family="Segoe UI, Arial, sans-serif" shape-rendering="geometricPrecision" text-rendering="geometricPrecision">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#BFD2EA" />
+      <stop offset="55%" stop-color="#B8CAE6" />
+      <stop offset="100%" stop-color="#B1C5E3" />
+    </linearGradient>
+    <linearGradient id="fog" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.55" />
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0.0" />
+    </linearGradient>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#0F172A" flood-opacity="0.18" />
+    </filter>
+    <marker id="arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#FFFFFF" fill-opacity="0.9" />
+    </marker>
+    <linearGradient id="pconcept" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#7F81F3" />
+      <stop offset="60%" stop-color="#6366F1" />
+      <stop offset="100%" stop-color="#4D4FBB" />
+    </linearGradient>
+    <linearGradient id="pproduction" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#4C7FEE" />
+      <stop offset="60%" stop-color="#2563EB" />
+      <stop offset="100%" stop-color="#1C4DB7" />
+    </linearGradient>
+    <linearGradient id="ppostproduction" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#34A4BF" />
+      <stop offset="60%" stop-color="#0891B2" />
+      <stop offset="100%" stop-color="#06718A" />
+    </linearGradient>
+    <linearGradient id="previewqa" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#3FB36A" />
+      <stop offset="60%" stop-color="#16A34A" />
+      <stop offset="100%" stop-color="#117F39" />
+    </linearGradient>
+    <linearGradient id="pdistribution" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#DF8F32" />
+      <stop offset="60%" stop-color="#D97706" />
+      <stop offset="100%" stop-color="#A95C04" />
+    </linearGradient>
+    <linearGradient id="ppostlaunch" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#E24D4D" />
+      <stop offset="60%" stop-color="#DC2626" />
+      <stop offset="100%" stop-color="#AB1D1D" />
+    </linearGradient>
+  </defs>
+  <rect x="0" y="0" width="1400" height="740" fill="url(#bg)" />
+  <rect x="0" y="0" width="1400" height="220" fill="url(#fog)" />
+  <g opacity="0.95">
+    <circle cx="170" cy="160" r="160" fill="#FFFFFF" fill-opacity="0.14" />
+    <circle cx="1210" cy="140" r="200" fill="#FFFFFF" fill-opacity="0.12" />
+    <circle cx="1100" cy="640" r="240" fill="#FFFFFF" fill-opacity="0.10" />
+  </g>
+  <text x="70" y="60" font-size="26" font-weight="800" fill="#0F172A">Workflow F — Corporate Training Video</text>
+  <text x="70" y="86" font-size="14" fill="#0F172A" opacity="0.75">Professional &amp; Business  ·  3–10 minutes</text>
+  <g opacity="0.9">
+    <path d="M 453.0 252.5 L 465.0 252.5" stroke="#FFFFFF" stroke-width="3" stroke-dasharray="7 10" fill="none" marker-end="url(#arrow)" />
+    <path d="M 870.0 252.5 L 882.0 252.5" stroke="#FFFFFF" stroke-width="3" stroke-dasharray="7 10" fill="none" marker-end="url(#arrow)" />
+    <path d="M 453.0 522.5 L 465.0 522.5" stroke="#FFFFFF" stroke-width="3" stroke-dasharray="7 10" fill="none" marker-end="url(#arrow)" />
+    <path d="M 870.0 522.5 L 882.0 522.5" stroke="#FFFFFF" stroke-width="3" stroke-dasharray="7 10" fill="none" marker-end="url(#arrow)" />
+    <path d="M 1084.5 375.0 C 1204.5 445.0 130.5 330.0 250.5 400.0" stroke="#FFFFFF" stroke-width="3" stroke-dasharray="7 10" fill="none" marker-end="url(#arrow)" />
+  </g>
+  <g filter="url(#softShadow)">
+    <rect x="58.0" y="140.0" width="385.0" height="225.0" rx="18" fill="#FFFFFF" fill-opacity="0.10" stroke="#FFFFFF" stroke-opacity="0.80" stroke-width="2.5" stroke-dasharray="8 10" />
+  </g>
+  <rect x="84.0" y="122.0" width="260.0" height="36" rx="18" fill="#FFFFFF" fill-opacity="0.90" />
+  <rect x="94.0" y="130.0" width="20" height="20" rx="10" fill="url(#pconcept)" opacity="0.95" />
+  <text x="124.0" y="146.0" font-size="16" font-weight="700" fill="#0F172A">Concept</text>
+  <g>
+    <rect x="78.0" y="191.8" width="73.8" height="43.2" rx="9.0" fill="#FFFFFF" fill-opacity="0.92" />
+    <rect x="78.0" y="181.0" width="73.8" height="18.0" rx="9.0" fill="#0F172A" fill-opacity="0.22" />
+    <path d="M 83.4 182.8 l 9.0 14.4" stroke="#FFFFFF" stroke-width="2.7" opacity="0.75" />
+    <path d="M 94.2 182.8 l 9.0 14.4" stroke="#FFFFFF" stroke-width="2.7" opacity="0.75" />
+    <path d="M 105.0 182.8 l 9.0 14.4" stroke="#FFFFFF" stroke-width="2.7" opacity="0.75" />
+    <path d="M 115.80000000000001 182.8 l 9.0 14.4" stroke="#FFFFFF" stroke-width="2.7" opacity="0.75" />
+    <path d="M 126.60000000000001 182.8 l 9.0 14.4" stroke="#FFFFFF" stroke-width="2.7" opacity="0.75" />
+    <path d="M 137.4 182.8 l 9.0 14.4" stroke="#FFFFFF" stroke-width="2.7" opacity="0.75" />
+    <rect x="87.0" y="202.6" width="55.800000000000004" height="9.0" rx="4.5" fill="#6366F1" fill-opacity="0.85" />
+  </g>
+  <text x="183.0" y="192.0" font-size="11" font-weight="700" letter-spacing="1" fill="#FFFFFF" opacity="0.95">KEY STEPS</text>
+  <text x="183.0" y="212.0" font-size="12.5" fill="#0F172A" opacity="0.95">• Needs analysis +</text>
+  <text x="183.0" y="230.0" font-size="12.5" fill="#0F172A" opacity="0.95">• learning objectives</text>
+  <text x="183.0" y="248.0" font-size="12.5" fill="#0F172A" opacity="0.95">• Compliance review</text>
+  <text x="183.0" y="266.0" font-size="12.5" fill="#0F172A" opacity="0.95">• Script + scenarios</text>
+  <path d="M 183.0 308.0 H 419.0" stroke="#FFFFFF" stroke-opacity="0.55" stroke-width="1.5" />
+  <text x="183.0" y="330.0" font-size="11" font-weight="700" letter-spacing="1" fill="#FFFFFF" opacity="0.95">CREW</text>
+  <g filter="url(#softShadow)">
+    <rect x="475.0" y="140.0" width="385.0" height="225.0" rx="18" fill="#FFFFFF" fill-opacity="0.10" stroke="#FFFFFF" stroke-opacity="0.80" stroke-width="2.5" stroke-dasharray="8 10" />
+  </g>
+  <rect x="501.0" y="122.0" width="260.0" height="36" rx="18" fill="#FFFFFF" fill-opacity="0.90" />
+  <rect x="511.0" y="130.0" width="20" height="20" rx="10" fill="url(#pproduction)" opacity="0.95" />
+  <text x="541.0" y="146.0" font-size="16" font-weight="700" fill="#0F172A">Production</text>
+  <g>
+    <rect x="495.0" y="182.8" width="64.8" height="39.6" rx="9.0" fill="#0F172A" fill-opacity="0.18" />
+    <rect x="502.2" y="188.2" width="50.4" height="30.6" rx="8.1" fill="#FFFFFF" fill-opacity="0.92" />
+    <circle cx="522.0" cy="203.5" r="9.0" fill="#2563EB" fill-opacity="0.95" />
+    <circle cx="522.0" cy="203.5" r="4.95" fill="#FFFFFF" fill-opacity="0.85" />
+    <path d="M 552.6 193.6 L 572.4 186.4 L 572.4 218.8 L 552.6 211.6 Z" fill="#FFFFFF" fill-opacity="0.92" />
+  </g>
+  <text x="600.0" y="192.0" font-size="11" font-weight="700" letter-spacing="1" fill="#FFFFFF" opacity="0.95">KEY STEPS</text>
+  <text x="600.0" y="212.0" font-size="12.5" fill="#0F172A" opacity="0.95">• Shoot presenter or</text>
+  <text x="600.0" y="230.0" font-size="12.5" fill="#0F172A" opacity="0.95">• render avatar</text>
+  <text x="600.0" y="248.0" font-size="12.5" fill="#0F172A" opacity="0.95">• Screen-recordings</text>
+  <text x="600.0" y="266.0" font-size="12.5" fill="#0F172A" opacity="0.95">• + animations</text>
+  <path d="M 600.0 308.0 H 836.0" stroke="#FFFFFF" stroke-opacity="0.55" stroke-width="1.5" />
+  <text x="600.0" y="330.0" font-size="11" font-weight="700" letter-spacing="1" fill="#FFFFFF" opacity="0.95">CREW</text>
+  <g filter="url(#softShadow)">
+    <rect x="892.0" y="140.0" width="385.0" height="225.0" rx="18" fill="#FFFFFF" fill-opacity="0.10" stroke="#FFFFFF" stroke-opacity="0.80" stroke-width="2.5" stroke-dasharray="8 10" />
+  </g>
+  <rect x="918.0" y="122.0" width="260.0" height="36" rx="18" fill="#FFFFFF" fill-opacity="0.90" />
+  <rect x="928.0" y="130.0" width="20" height="20" rx="10" fill="url(#ppostproduction)" opacity="0.95" />
+  <text x="958.0" y="146.0" font-size="16" font-weight="700" fill="#0F172A">Post-Production</text>
+  <g>
+    <circle cx="949.8" cy="209.8" r="28.8" fill="#FFFFFF" fill-opacity="0.9" />
+    <circle cx="949.8" cy="209.8" r="28.8" fill="#0891B2" fill-opacity="0.16" />
+    <circle cx="949.8" cy="209.8" r="7.2" fill="#0891B2" fill-opacity="0.9" />
+    <circle cx="949.8" cy="191.8" r="5.4" fill="#FFFFFF" fill-opacity="0.85" />
+    <circle cx="966.0" cy="209.8" r="5.4" fill="#FFFFFF" fill-opacity="0.85" />
+    <circle cx="949.8" cy="227.8" r="5.4" fill="#FFFFFF" fill-opacity="0.85" />
+    <circle cx="933.6" cy="209.8" r="5.4" fill="#FFFFFF" fill-opacity="0.85" />
+    <path d="M 978.6 231.4 C 994.8 242.2, 998.4 258.4, 989.4 272.8" stroke="#FFFFFF" stroke-width="6.3" stroke-linecap="round" opacity="0.6" fill="none" />
+  </g>
+  <text x="1017.0" y="192.0" font-size="11" font-weight="700" letter-spacing="1" fill="#FFFFFF" opacity="0.95">KEY STEPS</text>
+  <text x="1017.0" y="212.0" font-size="12.5" fill="#0F172A" opacity="0.95">• Edit, captions</text>
+  <text x="1017.0" y="230.0" font-size="12.5" fill="#0F172A" opacity="0.95">• (mandatory)</text>
+  <text x="1017.0" y="248.0" font-size="12.5" fill="#0F172A" opacity="0.95">• Audio description</text>
+  <path d="M 1017.0 308.0 H 1253.0" stroke="#FFFFFF" stroke-opacity="0.55" stroke-width="1.5" />
+  <text x="1017.0" y="330.0" font-size="11" font-weight="700" letter-spacing="1" fill="#FFFFFF" opacity="0.95">CREW</text>
+  <g filter="url(#softShadow)">
+    <rect x="58.0" y="410.0" width="385.0" height="225.0" rx="18" fill="#FFFFFF" fill-opacity="0.10" stroke="#FFFFFF" stroke-opacity="0.80" stroke-width="2.5" stroke-dasharray="8 10" />
+  </g>
+  <rect x="84.0" y="392.0" width="260.0" height="36" rx="18" fill="#FFFFFF" fill-opacity="0.90" />
+  <rect x="94.0" y="400.0" width="20" height="20" rx="10" fill="url(#previewqa)" opacity="0.95" />
+  <text x="124.0" y="416.0" font-size="16" font-weight="700" fill="#0F172A">Review &amp; Qa</text>
+  <g>
+    <circle cx="115.80000000000001" cy="478.0" r="27.0" fill="#FFFFFF" fill-opacity="0.9" />
+    <circle cx="115.80000000000001" cy="478.0" r="27.0" fill="#16A34A" fill-opacity="0.18" />
+    <path d="M 103.2 478.0 L 112.2 487.0 L 130.2 467.2" stroke="#16A34A" stroke-width="6.3" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+  </g>
+  <text x="183.0" y="462.0" font-size="11" font-weight="700" letter-spacing="1" fill="#FFFFFF" opacity="0.95">KEY STEPS</text>
+  <text x="183.0" y="482.0" font-size="12.5" fill="#0F172A" opacity="0.95">• SME accuracy</text>
+  <text x="183.0" y="500.0" font-size="12.5" fill="#0F172A" opacity="0.95">• Compliance sign-off</text>
+  <text x="183.0" y="518.0" font-size="12.5" fill="#0F172A" opacity="0.95">• WCAG 2.2 check</text>
+  <path d="M 183.0 578.0 H 419.0" stroke="#FFFFFF" stroke-opacity="0.55" stroke-width="1.5" />
+  <text x="183.0" y="600.0" font-size="11" font-weight="700" letter-spacing="1" fill="#FFFFFF" opacity="0.95">CREW</text>
+  <g filter="url(#softShadow)">
+    <rect x="475.0" y="410.0" width="385.0" height="225.0" rx="18" fill="#FFFFFF" fill-opacity="0.10" stroke="#FFFFFF" stroke-opacity="0.80" stroke-width="2.5" stroke-dasharray="8 10" />
+  </g>
+  <rect x="501.0" y="392.0" width="260.0" height="36" rx="18" fill="#FFFFFF" fill-opacity="0.90" />
+  <rect x="511.0" y="400.0" width="20" height="20" rx="10" fill="url(#pdistribution)" opacity="0.95" />
+  <text x="541.0" y="416.0" font-size="16" font-weight="700" fill="#0F172A">Distribution</text>
+  <g>
+    <path d="M 532.8 451.0 C 550.8 465.4, 554.4 488.8, 532.8 506.8 C 511.2 488.8, 514.8 465.4, 532.8 451.0 Z" fill="#FFFFFF" fill-opacity="0.92" />
+    <circle cx="532.8" cy="478.0" r="8.1" fill="#D97706" fill-opacity="0.9" />
+    <circle cx="532.8" cy="478.0" r="3.6" fill="#FFFFFF" fill-opacity="0.85" />
+    <path d="M 532.8 506.8 L 525.6 519.4 L 532.8 515.8 L 540.0 519.4 Z" fill="#D97706" fill-opacity="0.85" />
+    <path d="M 532.8 519.4 C 529.2 530.2, 536.4 530.2, 532.8 541.0" stroke="#FFFFFF" stroke-width="5.4" stroke-linecap="round" opacity="0.55" />
+  </g>
+  <text x="600.0" y="462.0" font-size="11" font-weight="700" letter-spacing="1" fill="#FFFFFF" opacity="0.95">KEY STEPS</text>
+  <text x="600.0" y="482.0" font-size="12.5" fill="#0F172A" opacity="0.95">• Upload to LMS</text>
+  <text x="600.0" y="500.0" font-size="12.5" fill="#0F172A" opacity="0.95">• Assign cohort</text>
+  <text x="600.0" y="518.0" font-size="12.5" fill="#0F172A" opacity="0.95">• Track completion</text>
+  <path d="M 600.0 578.0 H 836.0" stroke="#FFFFFF" stroke-opacity="0.55" stroke-width="1.5" />
+  <text x="600.0" y="600.0" font-size="11" font-weight="700" letter-spacing="1" fill="#FFFFFF" opacity="0.95">CREW</text>
+  <g filter="url(#softShadow)">
+    <rect x="892.0" y="410.0" width="385.0" height="225.0" rx="18" fill="#FFFFFF" fill-opacity="0.10" stroke="#FFFFFF" stroke-opacity="0.80" stroke-width="2.5" stroke-dasharray="8 10" />
+  </g>
+  <rect x="918.0" y="392.0" width="260.0" height="36" rx="18" fill="#FFFFFF" fill-opacity="0.90" />
+  <rect x="928.0" y="400.0" width="20" height="20" rx="10" fill="url(#ppostlaunch)" opacity="0.95" />
+  <text x="958.0" y="416.0" font-size="16" font-weight="700" fill="#0F172A">Post-Launch</text>
+  <g>
+    <path d="M 921.0 505.0 L 976.8 451.0" stroke="#FFFFFF" stroke-width="9.0" stroke-linecap="round" opacity="0.9" />
+    <path d="M 921.0 505.0 L 976.8 451.0" stroke="#DC2626" stroke-width="4.5" stroke-linecap="round" opacity="0.9" />
+    <circle cx="976.8" cy="451.0" r="5.4" fill="#FFFFFF" fill-opacity="0.95" />
+    <circle cx="976.8" cy="451.0" r="2.7" fill="#DC2626" fill-opacity="0.95" />
+    <circle cx="976.8" cy="451.0" r="5.4" fill="#FFFFFF" fill-opacity="0.75" />
+    <circle cx="958.8" cy="469.0" r="3.6" fill="#FFFFFF" fill-opacity="0.75" />
+    <circle cx="993.0" cy="467.2" r="3.15" fill="#FFFFFF" fill-opacity="0.75" />
+  </g>
+  <text x="1017.0" y="462.0" font-size="11" font-weight="700" letter-spacing="1" fill="#FFFFFF" opacity="0.95">KEY STEPS</text>
+  <text x="1017.0" y="482.0" font-size="12.5" fill="#0F172A" opacity="0.95">• Completion %</text>
+  <text x="1017.0" y="500.0" font-size="12.5" fill="#0F172A" opacity="0.95">• Quiz scores</text>
+  <text x="1017.0" y="518.0" font-size="12.5" fill="#0F172A" opacity="0.95">• Behavior change</text>
+  <text x="1017.0" y="536.0" font-size="12.5" fill="#0F172A" opacity="0.95">• 30/60/90 reviews</text>
+  <path d="M 1017.0 578.0 H 1253.0" stroke="#FFFFFF" stroke-opacity="0.55" stroke-width="1.5" />
+  <text x="1017.0" y="600.0" font-size="11" font-weight="700" letter-spacing="1" fill="#FFFFFF" opacity="0.95">CREW</text>
+  <rect x="70.0" y="675.0" width="1260.0" height="50.0" rx="18" fill="#FFFFFF" fill-opacity="0.18" stroke="#FFFFFF" stroke-opacity="0.55" stroke-width="2" filter="url(#softShadow)" />
+  <text x="90.0" y="697.0" font-size="11" font-weight="800" letter-spacing="1" fill="#FFFFFF" opacity="0.95">CRITIC LOOP</text>
+  <text x="220.0" y="697.0" font-size="13" fill="#0F172A" opacity="0.92">ATD peer review  ·  completion &gt;85%, L2 quiz &gt;80%</text>
+  <text x="220.0" y="715.0" font-size="12" fill="#0F172A" opacity="0.80">Cathy Moore action-mapping; Kirkpatrick L1–L4 evaluation</text>
+</svg>

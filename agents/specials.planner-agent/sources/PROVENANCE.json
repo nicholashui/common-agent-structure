@@ -57,35 +57,35 @@
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "项目管理知识体系指南",
-      "author": "第7版",
+      "title": "\u9879\u76ee\u7ba1\u7406\u77e5\u8bc6\u4f53\u7cfb\u6307\u5357",
+      "author": "\u7b2c7\u7248",
       "isbn13": "9787111558477",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 项目管理知识体系指南（第7版），ISBN-13 9787111558477"
+      "citation": "ZH: \u9879\u76ee\u7ba1\u7406\u77e5\u8bc6\u4f53\u7cfb\u6307\u5357\uff08\u7b2c7\u7248\uff09\uff0cISBN-13 9787111558477"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "人月神话",
+      "title": "\u4eba\u6708\u795e\u8bdd",
       "isbn13": "9787302154419",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 人月神话，ISBN-13 9787302154419"
+      "citation": "ZH: \u4eba\u6708\u795e\u8bdd\uff0cISBN-13 9787302154419"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "目标",
+      "title": "\u76ee\u6807",
       "isbn13": "9787508637020",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 目标，ISBN-13 9787508637020"
+      "citation": "ZH: \u76ee\u6807\uff0cISBN-13 9787508637020"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "高效能人士的七个习惯",
+      "title": "\u9ad8\u6548\u80fd\u4eba\u58eb\u7684\u4e03\u4e2a\u4e60\u60ef",
       "isbn13": "9787508092232",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 高效能人士的七个习惯，ISBN-13 9787508092232"
+      "citation": "ZH: \u9ad8\u6548\u80fd\u4eba\u58eb\u7684\u4e03\u4e2a\u4e60\u60ef\uff0cISBN-13 9787508092232"
     },
     {
       "kind": "reference_book",
@@ -135,34 +135,34 @@
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "代码整洁之道",
+      "title": "\u4ee3\u7801\u6574\u6d01\u4e4b\u9053",
       "isbn13": "9787115216878",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 代码整洁之道，ISBN-13 9787115216878"
+      "citation": "ZH: \u4ee3\u7801\u6574\u6d01\u4e4b\u9053\uff0cISBN-13 9787115216878"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "设计模式",
+      "title": "\u8bbe\u8ba1\u6a21\u5f0f",
       "isbn13": "9787111075752",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 设计模式，ISBN-13 9787111075752"
+      "citation": "ZH: \u8bbe\u8ba1\u6a21\u5f0f\uff0cISBN-13 9787111075752"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "SRE：Google运维解密",
+      "title": "SRE\uff1aGoogle\u8fd0\u7ef4\u89e3\u5bc6",
       "isbn13": "9787115419903",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: SRE：Google运维解密，ISBN-13 9787115419903"
+      "citation": "ZH: SRE\uff1aGoogle\u8fd0\u7ef4\u89e3\u5bc6\uff0cISBN-13 9787115419903"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "程序员修炼之道",
+      "title": "\u7a0b\u5e8f\u5458\u4fee\u70bc\u4e4b\u9053",
       "isbn13": "9787115527684",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 程序员修炼之道，ISBN-13 9787115527684"
+      "citation": "ZH: \u7a0b\u5e8f\u5458\u4fee\u70bc\u4e4b\u9053\uff0cISBN-13 9787115527684"
     },
     {
       "kind": "reference_book",
@@ -239,154 +239,154 @@
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "竞争战略",
+      "title": "\u7ade\u4e89\u6218\u7565",
       "isbn13": "9787508633749",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 竞争战略，ISBN-13 9787508633749"
+      "citation": "ZH: \u7ade\u4e89\u6218\u7565\uff0cISBN-13 9787508633749"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "好战略，坏战略",
+      "title": "\u597d\u6218\u7565\uff0c\u574f\u6218\u7565",
       "isbn13": "9787508643427",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 好战略，坏战略，ISBN-13 9787508643427"
+      "citation": "ZH: \u597d\u6218\u7565\uff0c\u574f\u6218\u7565\uff0cISBN-13 9787508643427"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "这就是OKR",
+      "title": "\u8fd9\u5c31\u662fOKR",
       "isbn13": "9787521702330",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 这就是OKR，ISBN-13 9787521702330"
+      "citation": "ZH: \u8fd9\u5c31\u662fOKR\uff0cISBN-13 9787521702330"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "创新者的窘境",
+      "title": "\u521b\u65b0\u8005\u7684\u7a98\u5883",
       "isbn13": "9787508633336",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 创新者的窘境，ISBN-13 9787508633336"
+      "citation": "ZH: \u521b\u65b0\u8005\u7684\u7a98\u5883\uff0cISBN-13 9787508633336"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "系统之美",
+      "title": "\u7cfb\u7edf\u4e4b\u7f8e",
       "isbn13": "9787508640114",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 系统之美，ISBN-13 9787508640114"
+      "citation": "ZH: \u7cfb\u7edf\u4e4b\u7f8e\uff0cISBN-13 9787508640114"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "第五项修炼",
+      "title": "\u7b2c\u4e94\u9879\u4fee\u70bc",
       "isbn13": "9787508631332",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 第五项修炼，ISBN-13 9787508631332"
+      "citation": "ZH: \u7b2c\u4e94\u9879\u4fee\u70bc\uff0cISBN-13 9787508631332"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "超预测",
+      "title": "\u8d85\u9884\u6d4b",
       "isbn13": "9787508663098",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 超预测，ISBN-13 9787508663098"
+      "citation": "ZH: \u8d85\u9884\u6d4b\uff0cISBN-13 9787508663098"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "金字塔原理",
+      "title": "\u91d1\u5b57\u5854\u539f\u7406",
       "isbn13": "9787508633732",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 金字塔原理，ISBN-13 9787508633732"
+      "citation": "ZH: \u91d1\u5b57\u5854\u539f\u7406\uff0cISBN-13 9787508633732"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "TRIZ进阶及实战",
-      "author": "赵敏 张武城 王冠殊",
+      "title": "TRIZ\u8fdb\u9636\u53ca\u5b9e\u6218",
+      "author": "\u8d75\u654f \u5f20\u6b66\u57ce \u738b\u51a0\u6b8a",
       "isbn13": "9787111518488",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: TRIZ进阶及实战（赵敏 张武城 王冠殊），ISBN-13 9787111518488"
+      "citation": "ZH: TRIZ\u8fdb\u9636\u53ca\u5b9e\u6218\uff08\u8d75\u654f \u5f20\u6b66\u57ce \u738b\u51a0\u6b8a\uff09\uff0cISBN-13 9787111518488"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "创新思维与TRIZ创新方法",
+      "title": "\u521b\u65b0\u601d\u7ef4\u4e0eTRIZ\u521b\u65b0\u65b9\u6cd5",
       "isbn13": "9787302500117",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 创新思维与TRIZ创新方法，ISBN-13 9787302500117"
+      "citation": "ZH: \u521b\u65b0\u601d\u7ef4\u4e0eTRIZ\u521b\u65b0\u65b9\u6cd5\uff0cISBN-13 9787302500117"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "因果推理：基础与学习算法",
+      "title": "\u56e0\u679c\u63a8\u7406\uff1a\u57fa\u7840\u4e0e\u5b66\u4e60\u7b97\u6cd5",
       "author": "Jonas Peters, Dominik Janzing etc.",
       "isbn13": "9787111640301",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 因果推理：基础与学习算法（Jonas Peters, Dominik Janzing etc.），ISBN-13 9787111640301"
+      "citation": "ZH: \u56e0\u679c\u63a8\u7406\uff1a\u57fa\u7840\u4e0e\u5b66\u4e60\u7b97\u6cd5\uff08Jonas Peters, Dominik Janzing etc.\uff09\uff0cISBN-13 9787111640301"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "如何系统思考",
-      "author": "邱昭良",
+      "title": "\u5982\u4f55\u7cfb\u7edf\u601d\u8003",
+      "author": "\u90b1\u662d\u826f",
       "isbn13": "9787111585893",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 如何系统思考（邱昭良），ISBN-13 9787111585893"
+      "citation": "ZH: \u5982\u4f55\u7cfb\u7edf\u601d\u8003\uff08\u90b1\u662d\u826f\uff09\uff0cISBN-13 9787111585893"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "思维模型",
-      "author": "彼得·霍林斯 (Peter Hollins)",
+      "title": "\u601d\u7ef4\u6a21\u578b",
+      "author": "\u5f7c\u5f97\u00b7\u970d\u6797\u65af (Peter Hollins)",
       "isbn13": "9787515360744",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 思维模型 (彼得·霍林斯 (Peter Hollins))，ISBN-13 9787515360744"
+      "citation": "ZH: \u601d\u7ef4\u6a21\u578b (\u5f7c\u5f97\u00b7\u970d\u6797\u65af (Peter Hollins))\uff0cISBN-13 9787515360744"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "把問題化繁為簡的思考架構圖鑑",
+      "title": "\u628a\u554f\u984c\u5316\u7e41\u70ba\u7c21\u7684\u601d\u8003\u67b6\u69cb\u5716\u9451",
       "isbn13": "9789865070885",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 把問題化繁為簡的思考架構圖鑑，ISBN-13 9789865070885"
+      "citation": "ZH: \u628a\u554f\u984c\u5316\u7e41\u70ba\u7c21\u7684\u601d\u8003\u67b6\u69cb\u5716\u9451\uff0cISBN-13 9789865070885"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "案例解析！超高效心智圖法入門",
-      "author": "孫易新",
+      "title": "\u6848\u4f8b\u89e3\u6790\uff01\u8d85\u9ad8\u6548\u5fc3\u667a\u5716\u6cd5\u5165\u9580",
+      "author": "\u5b6b\u6613\u65b0",
       "isbn13": "9789862729496",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 案例解析！超高效心智圖法入門（孫易新），ISBN-13 9789862729496"
+      "citation": "ZH: \u6848\u4f8b\u89e3\u6790\uff01\u8d85\u9ad8\u6548\u5fc3\u667a\u5716\u6cd5\u5165\u9580\uff08\u5b6b\u6613\u65b0\uff09\uff0cISBN-13 9789862729496"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "模型思维 The Model Thinker",
-      "author": "斯科特·佩奇 Scott E. Page",
+      "title": "\u6a21\u578b\u601d\u7ef4 The Model Thinker",
+      "author": "\u65af\u79d1\u7279\u00b7\u4f69\u5947 Scott E. Page",
       "isbn13": "9787213095436",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 模型思维 The Model Thinker（斯科特·佩奇 Scott E. Page），ISBN-13 9787213095436"
+      "citation": "ZH: \u6a21\u578b\u601d\u7ef4 The Model Thinker\uff08\u65af\u79d1\u7279\u00b7\u4f69\u5947 Scott E. Page\uff09\uff0cISBN-13 9787213095436"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "灰度决策：如何处理复杂、棘手、高风险的难题",
-      "author": "小约瑟夫·巴达拉克",
+      "title": "\u7070\u5ea6\u51b3\u7b56\uff1a\u5982\u4f55\u5904\u7406\u590d\u6742\u3001\u68d8\u624b\u3001\u9ad8\u98ce\u9669\u7684\u96be\u9898",
+      "author": "\u5c0f\u7ea6\u745f\u592b\u00b7\u5df4\u8fbe\u62c9\u514b",
       "isbn13": "9787111584643",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 灰度决策：如何处理复杂、棘手、高风险的难题（小约瑟夫·巴达拉克），ISBN-13 9787111584643"
+      "citation": "ZH: \u7070\u5ea6\u51b3\u7b56\uff1a\u5982\u4f55\u5904\u7406\u590d\u6742\u3001\u68d8\u624b\u3001\u9ad8\u98ce\u9669\u7684\u96be\u9898\uff08\u5c0f\u7ea6\u745f\u592b\u00b7\u5df4\u8fbe\u62c9\u514b\uff09\uff0cISBN-13 9787111584643"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "科学分析--逻辑与科学演绎方法",
-      "author": "周建武",
+      "title": "\u79d1\u5b66\u5206\u6790--\u903b\u8f91\u4e0e\u79d1\u5b66\u6f14\u7ece\u65b9\u6cd5",
+      "author": "\u5468\u5efa\u6b66",
       "isbn13": "9787122371232",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 科学分析--逻辑与科学演绎方法（周建武），ISBN-13 9787122371232"
+      "citation": "ZH: \u79d1\u5b66\u5206\u6790--\u903b\u8f91\u4e0e\u79d1\u5b66\u6f14\u7ece\u65b9\u6cd5\uff08\u5468\u5efa\u6b66\uff09\uff0cISBN-13 9787122371232"
     },
     {
       "kind": "reference_book",
@@ -399,88 +399,88 @@
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "严密系统设计-方法、趋势与挑战",
-      "author": "【法】【希腊】约瑟夫·希发基思",
+      "title": "\u4e25\u5bc6\u7cfb\u7edf\u8bbe\u8ba1-\u65b9\u6cd5\u3001\u8d8b\u52bf\u4e0e\u6311\u6218",
+      "author": "\u3010\u6cd5\u3011\u3010\u5e0c\u814a\u3011\u7ea6\u745f\u592b\u00b7\u5e0c\u53d1\u57fa\u601d",
       "isbn13": "9787121467653",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 严密系统设计-方法、趋势与挑战（【法】【希腊】约瑟夫·希发基思），ISBN-13 9787121467653"
+      "citation": "ZH: \u4e25\u5bc6\u7cfb\u7edf\u8bbe\u8ba1-\u65b9\u6cd5\u3001\u8d8b\u52bf\u4e0e\u6311\u6218\uff08\u3010\u6cd5\u3011\u3010\u5e0c\u814a\u3011\u7ea6\u745f\u592b\u00b7\u5e0c\u53d1\u57fa\u601d\uff09\uff0cISBN-13 9787121467653"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "TRIZ：产品创新设计",
-      "author": "高常青",
+      "title": "TRIZ\uff1a\u4ea7\u54c1\u521b\u65b0\u8bbe\u8ba1",
+      "author": "\u9ad8\u5e38\u9752",
       "isbn13": "9787111610298",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: TRIZ：产品创新设计（高常青），ISBN-13 9787111610298"
+      "citation": "ZH: TRIZ\uff1a\u4ea7\u54c1\u521b\u65b0\u8bbe\u8ba1\uff08\u9ad8\u5e38\u9752\uff09\uff0cISBN-13 9787111610298"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "架构师启示录-知识模型、落地方法与思维模式",
-      "author": "灵犀",
+      "title": "\u67b6\u6784\u5e08\u542f\u793a\u5f55-\u77e5\u8bc6\u6a21\u578b\u3001\u843d\u5730\u65b9\u6cd5\u4e0e\u601d\u7ef4\u6a21\u5f0f",
+      "author": "\u7075\u7280",
       "isbn13": "9787111749080",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 架构师启示录-知识模型、落地方法与思维模式（灵犀），ISBN-13 9787111749080"
+      "citation": "ZH: \u67b6\u6784\u5e08\u542f\u793a\u5f55-\u77e5\u8bc6\u6a21\u578b\u3001\u843d\u5730\u65b9\u6cd5\u4e0e\u601d\u7ef4\u6a21\u5f0f\uff08\u7075\u7280\uff09\uff0cISBN-13 9787111749080"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "模型思维简化世界的人工智能模型",
-      "author": "龚才春",
+      "title": "\u6a21\u578b\u601d\u7ef4\u7b80\u5316\u4e16\u754c\u7684\u4eba\u5de5\u667a\u80fd\u6a21\u578b",
+      "author": "\u9f9a\u624d\u6625",
       "isbn13": "9787121408984",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 模型思维简化世界的人工智能模型（龚才春），ISBN-13 9787121408984"
+      "citation": "ZH: \u6a21\u578b\u601d\u7ef4\u7b80\u5316\u4e16\u754c\u7684\u4eba\u5de5\u667a\u80fd\u6a21\u578b\uff08\u9f9a\u624d\u6625\uff09\uff0cISBN-13 9787121408984"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "分析思维的准则",
+      "title": "\u5206\u6790\u601d\u7ef4\u7684\u51c6\u5219",
       "isbn13": "9787573917065",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 分析思维的准则，ISBN-13 9787573917065"
+      "citation": "ZH: \u5206\u6790\u601d\u7ef4\u7684\u51c6\u5219\uff0cISBN-13 9787573917065"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "战略思维的六项修炼",
+      "title": "\u6218\u7565\u601d\u7ef4\u7684\u516d\u9879\u4fee\u70bc",
       "isbn13": "9787521773033",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 战略思维的六项修炼，ISBN-13 9787521773033"
+      "citation": "ZH: \u6218\u7565\u601d\u7ef4\u7684\u516d\u9879\u4fee\u70bc\uff0cISBN-13 9787521773033"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "第一性原理：21堂科学通识课",
+      "title": "\u7b2c\u4e00\u6027\u539f\u7406\uff1a21\u5802\u79d1\u5b66\u901a\u8bc6\u8bfe",
       "isbn13": "9787523605103",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 第一性原理：21堂科学通识课，ISBN-13 9787523605103"
+      "citation": "ZH: \u7b2c\u4e00\u6027\u539f\u7406\uff1a21\u5802\u79d1\u5b66\u901a\u8bc6\u8bfe\uff0cISBN-13 9787523605103"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "百知思维模型从模型应用到思维探源",
-      "author": "圆中",
+      "title": "\u767e\u77e5\u601d\u7ef4\u6a21\u578b\u4ece\u6a21\u578b\u5e94\u7528\u5230\u601d\u7ef4\u63a2\u6e90",
+      "author": "\u5706\u4e2d",
       "isbn13": "9787572295386",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 百知思维模型从模型应用到思维探源（圆中），ISBN-13 9787572295386"
+      "citation": "ZH: \u767e\u77e5\u601d\u7ef4\u6a21\u578b\u4ece\u6a21\u578b\u5e94\u7528\u5230\u601d\u7ef4\u63a2\u6e90\uff08\u5706\u4e2d\uff09\uff0cISBN-13 9787572295386"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "100+思维模型合集",
-      "author": "模型思维",
+      "title": "100+\u601d\u7ef4\u6a21\u578b\u5408\u96c6",
+      "author": "\u6a21\u578b\u601d\u7ef4",
       "isbn13": "9787115652201",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 100+思维模型合集（模型思维），ISBN-13 9787115652201"
+      "citation": "ZH: 100+\u601d\u7ef4\u6a21\u578b\u5408\u96c6\uff08\u6a21\u578b\u601d\u7ef4\uff09\uff0cISBN-13 9787115652201"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "穷查理宝典：查理·芒格智慧箴言录（全新增订本）（价值投资圣经，人生智慧宝典。全新升级版发布！97岁的查理•芒格还在不断学习精进 我们怎么...",
+      "title": "\u7a77\u67e5\u7406\u5b9d\u5178\uff1a\u67e5\u7406\u00b7\u8292\u683c\u667a\u6167\u7bb4\u8a00\u5f55\uff08\u5168\u65b0\u589e\u8ba2\u672c\uff09\uff08\u4ef7\u503c\u6295\u8d44\u5723\u7ecf\uff0c\u4eba\u751f\u667a\u6167\u5b9d\u5178\u3002\u5168\u65b0\u5347\u7ea7\u7248\u53d1\u5e03\uff0197\u5c81\u7684\u67e5\u7406\u2022\u8292\u683c\u8fd8\u5728\u4e0d\u65ad\u5b66\u4e60\u7cbe\u8fdb \u6211\u4eec\u600e\u4e48...",
       "isbn13": "9787521730401",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 穷查理宝典：查理·芒格智慧箴言录（全新增订本）（价值投资圣经，人生智慧宝典。全新升级版发布！97岁的查理•芒格还在不断学习精进 我们怎么...，ISBN-13 9787521730401"
+      "citation": "ZH: \u7a77\u67e5\u7406\u5b9d\u5178\uff1a\u67e5\u7406\u00b7\u8292\u683c\u667a\u6167\u7bb4\u8a00\u5f55\uff08\u5168\u65b0\u589e\u8ba2\u672c\uff09\uff08\u4ef7\u503c\u6295\u8d44\u5723\u7ecf\uff0c\u4eba\u751f\u667a\u6167\u5b9d\u5178\u3002\u5168\u65b0\u5347\u7ea7\u7248\u53d1\u5e03\uff0197\u5c81\u7684\u67e5\u7406\u2022\u8292\u683c\u8fd8\u5728\u4e0d\u65ad\u5b66\u4e60\u7cbe\u8fdb \u6211\u4eec\u600e\u4e48...\uff0cISBN-13 9787521730401"
     }
   ],
   "common_agent_id": "specials.planner-agent",
@@ -496,7 +496,7 @@
   "generated_at": "2026-07-26T14:16:45.961219Z",
   "reviewed_by": "specials-self-contained-reviewer",
   "reviewed_at": "2026-07-26T18:00:00Z",
-  "imported_from": "C:\\Project\\common-agent-swarm-ops\\business\\specials\\agents\\specials.planner-agent",
+  "imported_from": "vendor/common-agent-swarm-ops/business/specials/agents/specials.planner-agent",
   "reference_book_origin": "spec/book_of_knowledge.md",
   "reference_book_note": "Bibliographic references from spec/book_of_knowledge.md. Does not enable network, RAG, T3, plugins, or memory writes."
 }

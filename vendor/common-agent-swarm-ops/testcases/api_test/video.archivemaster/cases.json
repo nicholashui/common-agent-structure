@@ -1,0 +1,96 @@
+{
+  "agent_id": "video.archivemaster",
+  "kind": "pack",
+  "cases": [
+    {
+      "id": "tc1",
+      "name": "video.archivemaster offline case 1",
+      "method": "POST",
+      "path": "/api/v1/agent-loops/agents/video.archivemaster/run",
+      "body": {
+        "goal": "Build an offline research brief skeleton for Osaka transit and season themes",
+        "enable_v3": true,
+        "max_steps": 3,
+        "allow_production": false,
+        "allow_network": false
+      },
+      "success_criteria": {
+        "http_status": [
+          200
+        ],
+        "required_keys_any": [
+          "agent_id",
+          "ok",
+          "phases",
+          "v3",
+          "status",
+          "run_id"
+        ],
+        "json_equals": {
+          "agent_id": "video.archivemaster"
+        },
+        "notes": "Offline loop: expect 200 with agent_id match; prefer ok=true or v3/phases present. allow_production/allow_network must stay false."
+      }
+    },
+    {
+      "id": "tc2",
+      "name": "video.archivemaster offline case 2",
+      "method": "POST",
+      "path": "/api/v1/agent-loops/agents/video.archivemaster/run",
+      "body": {
+        "goal": "List fact-check claims that a travel VO might make (structure only)",
+        "enable_v3": true,
+        "max_steps": 3,
+        "allow_production": false,
+        "allow_network": false
+      },
+      "success_criteria": {
+        "http_status": [
+          200
+        ],
+        "required_keys_any": [
+          "agent_id",
+          "ok",
+          "phases",
+          "v3",
+          "status",
+          "run_id"
+        ],
+        "json_equals": {
+          "agent_id": "video.archivemaster"
+        },
+        "notes": "Offline loop: expect 200 with agent_id match; prefer ok=true or v3/phases present. allow_production/allow_network must stay false."
+      }
+    },
+    {
+      "id": "tc3",
+      "name": "video.archivemaster offline case 3",
+      "method": "POST",
+      "path": "/api/v1/agent-loops/agents/video.archivemaster/run",
+      "body": {
+        "goal": "Assemble redacted research bundle refs for multi-day documentary lane",
+        "enable_v3": true,
+        "max_steps": 2,
+        "allow_production": false,
+        "allow_network": false
+      },
+      "success_criteria": {
+        "http_status": [
+          200
+        ],
+        "required_keys_any": [
+          "agent_id",
+          "ok",
+          "phases",
+          "v3",
+          "status",
+          "run_id"
+        ],
+        "json_equals": {
+          "agent_id": "video.archivemaster"
+        },
+        "notes": "Offline loop: expect 200 with agent_id match; prefer ok=true or v3/phases present. allow_production/allow_network must stay false."
+      }
+    }
+  ]
+}

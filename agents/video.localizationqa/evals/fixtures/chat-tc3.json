@@ -1,0 +1,29 @@
+{
+  "schema_version": "casops.testcase.v1",
+  "id": "chat-tc3",
+  "agent_id": "video.localizationqa",
+  "path": "chat",
+  "honesty": "CHARACTERIZATION",
+  "input": {
+    "message": "Gate package release with HITL-required decision notes only",
+    "history": []
+  },
+  "expect": {
+    "http_status": 200,
+    "agent_id": "video.localizationqa",
+    "memory_writes": [],
+    "plugins_executed": false,
+    "t3_enabled": false,
+    "network_granted": false,
+    "io_declared_named": true,
+    "io_declared_fetched": false,
+    "truncated": false,
+    "path_id": "chat"
+  },
+  "source": {
+    "repo": "vendor/common-agent-swarm-ops",
+    "file": "vendor/common-agent-swarm-ops/testcases/api_test/video.localizationqa/cases.json",
+    "case_id": "tc3",
+    "case_name": "video.localizationqa offline case 3"
+  }
+}

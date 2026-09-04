@@ -120,3 +120,64 @@ def test_chat_empty_message_fails_closed(tmp_path: Path, monkeypatch: pytest.Mon
     with pytest.raises(CasopsError) as raised:
         runtime.chat("casops.template.baseline_safe", message="  ")
     assert raised.value.code == ErrorCode.CTX_BUDGET
+
+
+def test_chat_stub_output_budget_uses_host_floor_and_drops_reasoning(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    import shutil
+
+    dest = tmp_path / "stub.chat"
+    shutil.copytree(REPO / "agents" / "_template_v3", dest)
+    spec_path = dest / "agent_spec.json"
+    spec = json.loads(spec_path.read_text(encoding="utf-8"))
+    spec["agent_id"] = "stub.chat"
+    spec["budget_policy"]["max_output_tokens"] = 1
+    spec_path.write_text(json.dumps(spec, indent=2) + "\n", encoding="utf-8")
+    captured: dict[str, object] = {}
+
+    def post(url: str, headers: dict[str, str], payload: dict[str, object]) -> dict[str, object]:
+        del url, headers
+        captured["payload"] = payload
+        return {
+            "choices": [
+                {
+                    "finish_reason": "length",
+                    "message": {"content": "I", "reasoning_content": "hidden thinking"},
+                }
+            ]
+        }
+
+    monkeypatch.setenv("DEFAULT_LLM", "openai")
+    monkeypatch.setenv("OPENAI_API_KEY", "sk-test")
+    llm = LlmRouter(settings=LlmSettings(path=tmp_path / "llm.json", default_llm="openai"), post=post)
+    runtime = Runtime(agents_root=tmp_path, store=InvariantStore.with_host_defaults(), llm=llm)
+    result = runtime.chat("stub.chat", message="what you are thinking?")
+    assert captured["payload"]["max_tokens"] == 512
+    assert result["reply"] == "I"
+    assert "hidden" not in result["reply"]
+    assert result["llm"]["truncated"] is True
+    assert result["llm"]["max_tokens_source"] == "host_floor"
+    assert result["llm"]["declared_max_output_tokens"] == 1
+    assert result["llm"]["finish_reason"] == "length"
+
+
+def test_chat_declared_budget_above_floor_is_honoured(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    captured: dict[str, object] = {}
+
+    def post(url: str, headers: dict[str, str], payload: dict[str, object]) -> dict[str, object]:
+        del url, headers
+        captured["payload"] = payload
+        return {"choices": [{"finish_reason": "stop", "message": {"content": "ok"}}]}
+
+    monkeypatch.setenv("DEFAULT_LLM", "openai")
+    monkeypatch.setenv("OPENAI_API_KEY", "sk-test")
+    llm = LlmRouter(settings=LlmSettings(path=tmp_path / "llm.json", default_llm="openai"), post=post)
+    runtime = Runtime(agents_root=REPO / "agents", store=InvariantStore.with_host_defaults(), llm=llm)
+    result = runtime.chat("video.director", message="hello from operator")
+    assert captured["payload"]["max_tokens"] == 1024
+    assert result["reply"] == "ok"
+    assert result["llm"]["max_tokens_source"] == "spec"
+    assert result["llm"]["truncated"] is False

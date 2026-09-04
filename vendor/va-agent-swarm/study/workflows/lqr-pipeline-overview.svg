@@ -1,0 +1,155 @@
+<?xml version='1.0' encoding='utf-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1480 760" role="img">
+  <title id="title">Life's Quiet Redemption — 6-Phase Production Pipeline</title>
+  <desc id="desc">End-to-end agent-orchestrated pipeline from intent to delivery, with the GateKeeper L1/L2/L3 sign-off between phases and an analytics feedback loop into the next episode.</desc>
+  <defs>
+    <style>
+      .bg { fill: #F8FAFC; }
+      .panel { fill: #FFFFFF; stroke: #CBD5E1; stroke-width: 1.5; }
+      .panel-blue { fill: #EFF6FF; stroke: #93C5FD; stroke-width: 1.5; }
+      .panel-green { fill: #ECFDF5; stroke: #86EFAC; stroke-width: 1.5; }
+      .panel-amber { fill: #FFFBEB; stroke: #FCD34D; stroke-width: 1.5; }
+      .panel-purple { fill: #F5F3FF; stroke: #C4B5FD; stroke-width: 1.5; }
+      .panel-rose { fill: #FFF1F2; stroke: #FDA4AF; stroke-width: 1.5; }
+      .panel-dark { fill: #0F172A; stroke: #0F172A; }
+      .title { font: 700 26px -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; fill: #0F172A; }
+      .subtitle { font: 400 13px -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; fill: #475569; }
+      .h1 { font: 700 15px -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; fill: #0F172A; }
+      .h2 { font: 700 12px -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; fill: #0F172A; }
+      .body { font: 400 11px -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; fill: #334155; }
+      .mono { font: 400 10px ui-monospace, Menlo, Consolas, monospace; fill: #475569; }
+      .badge { font: 700 9px -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; letter-spacing: 0.8px; fill: #FFFFFF; }
+      .gate { font: 700 10px -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; fill: #B45309; }
+      .footer { font: 400 10px -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; fill: #64748B; }
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#64748B" />
+    </marker>
+    <marker id="arrow-rose" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#E11D48" />
+    </marker>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#0F172A" flood-opacity="0.08" />
+    </filter>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="1480" height="760" />
+  <text x="40" y="48" class="title">Life's Quiet Redemption — 6-Phase Production Pipeline</text>
+  <text x="40" y="72" class="subtitle">Agent-orchestrated DAG from intent to delivery. Every phase exits through a GateKeeper (#57) L1/L2/L3 sign-off.</text>
+
+  <!-- Phase cards: 4 top row, 3 bottom row -->
+  <!-- Row 1 -->
+  <g filter="url(#shadow)">
+    <rect class="panel-blue" x="40" y="110" width="320" height="150" rx="12" />
+  </g>
+  <rect class="panel-dark" x="40" y="110" width="74" height="24" rx="12" />
+  <text x="58" y="127" class="badge">PHASE 0</text>
+  <text x="126" y="128" class="h1">Intent &amp; Concept</text>
+  <text x="58" y="160" class="h2">IntentAnalysis · Planner #54 · Producer #2</text>
+  <text x="58" y="182" class="body">Parse the brief into a phased DAG,</text>
+  <text x="58" y="198" class="body">budget, schedule, emotional-arc target.</text>
+  <text x="58" y="224" class="mono">OUT: parsed brief · character-bible seed · DAG</text>
+  <text x="58" y="246" class="gate">GATE: brief unambiguous · budget var &lt;10%</text>
+
+  <g filter="url(#shadow)">
+    <rect class="panel-purple" x="400" y="110" width="320" height="150" rx="12" />
+  </g>
+  <rect class="panel-dark" x="400" y="110" width="74" height="24" rx="12" />
+  <text x="418" y="127" class="badge">PHASE 1</text>
+  <text x="486" y="128" class="h1">Creative Development</text>
+  <text x="418" y="160" class="h2">Director #1 · Screenwriter #3 · GCA</text>
+  <text x="418" y="182" class="body">Treatment, 12-scene + ending storyboard,</text>
+  <text x="418" y="198" class="body">refined narration, motifs, emotion curve.</text>
+  <text x="418" y="224" class="mono">OUT: locked storyboard · VO script · lookbook</text>
+  <text x="418" y="246" class="gate">GATE: beats 100% · cliché &lt; τ</text>
+
+  <g filter="url(#shadow)">
+    <rect class="panel-green" x="760" y="110" width="320" height="150" rx="12" />
+  </g>
+  <rect class="panel-dark" x="760" y="110" width="74" height="24" rx="12" />
+  <text x="778" y="127" class="badge">PHASE 2</text>
+  <text x="846" y="128" class="h1">Pre-Production</text>
+  <text x="778" y="160" class="h2">ConceptArtist #15 · Casting #5 · Continuity #98</text>
+  <text x="778" y="182" class="body">Character refs (young/adult), age pairs,</text>
+  <text x="778" y="198" class="body">wardrobe, set look, identity hashes.</text>
+  <text x="778" y="224" class="mono">OUT: /refs portraits · style LoRAs · manifest</text>
+  <text x="778" y="246" class="gate">GATE: identity hash locked · consent signed</text>
+
+  <g filter="url(#shadow)">
+    <rect class="panel-amber" x="1120" y="110" width="320" height="150" rx="12" />
+  </g>
+  <rect class="panel-dark" x="1120" y="110" width="74" height="24" rx="12" />
+  <text x="1138" y="127" class="badge">PHASE 3</text>
+  <text x="1206" y="128" class="h1">Production / Generation</text>
+  <text x="1138" y="160" class="h2">PromptEngineer #46 · Cinematographer #6</text>
+  <text x="1138" y="182" class="body">Keyframes → image-to-video clips,</text>
+  <text x="1138" y="198" class="body">VO takes, score, SFX / ambience.</text>
+  <text x="1138" y="224" class="mono">OUT: raw shot clips · audio stems · VO</text>
+  <text x="1138" y="246" class="gate">GATE: CLIP-T ≥0.32 · drift=0 · ≤3 iters</text>
+
+  <!-- Row 2 -->
+  <g filter="url(#shadow)">
+    <rect class="panel-rose" x="40" y="350" width="320" height="150" rx="12" />
+  </g>
+  <rect class="panel-dark" x="40" y="350" width="74" height="24" rx="12" />
+  <text x="58" y="367" class="badge">PHASE 4</text>
+  <text x="126" y="368" class="h1">Post-Production</text>
+  <text x="58" y="400" class="h2">Editor #9 · Colorist #10 · SoundMixer #22</text>
+  <text x="58" y="422" class="body">Assemble to VO rhythm, warm grade,</text>
+  <text x="58" y="438" class="body">ending cards, mix, AIQA pass.</text>
+  <text x="58" y="464" class="mono">OUT: graded master · mixed audio · QC report</text>
+  <text x="58" y="486" class="gate">GATE: ΔE &lt;2 · LUFS spec · artifacts &gt;95%</text>
+
+  <g filter="url(#shadow)">
+    <rect class="panel-blue" x="400" y="350" width="320" height="150" rx="12" />
+  </g>
+  <rect class="panel-dark" x="400" y="350" width="74" height="24" rx="12" />
+  <text x="418" y="367" class="badge">PHASE 5</text>
+  <text x="486" y="368" class="h1">QA · Compliance · A11y</text>
+  <text x="418" y="400" class="h2">GateKeeper #57 · Compliance #37 · A11y #83</text>
+  <text x="418" y="422" class="body">Bilingual subs, C2PA signing, synthetic</text>
+  <text x="418" y="438" class="body">disclosure, rights clearance.</text>
+  <text x="418" y="464" class="mono">OUT: signed master · caption tracks</text>
+  <text x="418" y="486" class="gate">GATE: WCAG AA 100% · zero rights flags</text>
+
+  <g filter="url(#shadow)">
+    <rect class="panel-green" x="760" y="350" width="320" height="150" rx="12" />
+  </g>
+  <rect class="panel-dark" x="760" y="350" width="74" height="24" rx="12" />
+  <text x="778" y="367" class="badge">PHASE 6</text>
+  <text x="846" y="368" class="h1">Delivery &amp; Optimization</text>
+  <text x="778" y="400" class="h2">SocialStrategist #28 · Trailer #51 · Analyst #81</text>
+  <text x="778" y="422" class="body">Platform variants (16:9 + 9:16), titles,</text>
+  <text x="778" y="438" class="body">Shorts hook, post-launch analytics.</text>
+  <text x="778" y="464" class="mono">OUT: outlet packages · campaign · dashboard</text>
+  <text x="778" y="486" class="gate">GATE: outlet specs met · KPIs tracked</text>
+
+  <!-- Cross-cutting backbone -->
+  <g filter="url(#shadow)">
+    <rect class="panel" x="1120" y="350" width="320" height="150" rx="12" />
+  </g>
+  <text x="1138" y="376" class="h1">Cross-Cutting Backbone</text>
+  <text x="1138" y="402" class="body">Orchestrator #53 · Router #55 · Memory #58</text>
+  <text x="1138" y="420" class="body">Aesthetics Agent · Agentic RAG · Judge #56</text>
+  <text x="1138" y="444" class="mono">C2PA-signed artifact contract on every handoff</text>
+  <text x="1138" y="466" class="mono">CritiqueMessage bus · 3E loop per node</text>
+  <text x="1138" y="488" class="body">Operates across all phases, not one node.</text>
+
+  <!-- Flow arrows row 1 -->
+  <line x1="360" y1="185" x2="400" y2="185" stroke="#64748B" stroke-width="2" marker-end="url(#arrow)" />
+  <line x1="720" y1="185" x2="760" y2="185" stroke="#64748B" stroke-width="2" marker-end="url(#arrow)" />
+  <line x1="1080" y1="185" x2="1120" y2="185" stroke="#64748B" stroke-width="2" marker-end="url(#arrow)" />
+  <!-- wrap arrow P3 -> P4 -->
+  <path d="M 1280 260 L 1280 305 L 200 305 L 200 350" fill="none" stroke="#64748B" stroke-width="2" marker-end="url(#arrow)" />
+  <!-- Flow arrows row 2 -->
+  <line x1="360" y1="425" x2="400" y2="425" stroke="#64748B" stroke-width="2" marker-end="url(#arrow)" />
+  <line x1="720" y1="425" x2="760" y2="425" stroke="#64748B" stroke-width="2" marker-end="url(#arrow)" />
+
+  <!-- Feedback loop: Analyst -> next episode (back to Phase 0) -->
+  <path d="M 920 500 L 920 560 L 200 560 L 200 260" fill="none" stroke="#E11D48" stroke-width="2" stroke-dasharray="6 5" marker-end="url(#arrow-rose)" />
+  <rect x="430" y="548" width="380" height="24" rx="12" fill="#FFF1F2" stroke="#FDA4AF" />
+  <text x="448" y="565" class="body" fill="#9F1239">Analytics feedback loop → next episode (RLAIF / Reflexion)</text>
+
+  <text x="40" y="618" class="footer">L1 Spec (schema) · L2 Rubric (LLM-as-Judge + Aesthetics, ≥85/100) · L3 Preference (AudienceSim pairwise, win ≥50%). See §5 of the workflow doc.</text>
+  <text x="40" y="638" class="footer">Maps to workflow variant E — AI Short Film. Cross-cutting services per SYSTEM_REFERENCE §4–§6.</text>
+</svg>

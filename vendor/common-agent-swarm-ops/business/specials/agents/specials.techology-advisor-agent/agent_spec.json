@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.0",
+  "agent_id": "specials.techology-advisor-agent",
+  "status": "draft",
+  "role": "Special_Agent data-only configuration",
+  "allowed_tools": [],
+  "model_policy": {
+    "provider": "local_deterministic",
+    "model_id": "specials-local-deterministic-v1",
+    "network_access": false
+  },
+  "budget_policy": {
+    "max_input_tokens": 1,
+    "max_output_tokens": 1,
+    "max_tool_requests": 0
+  },
+  "prompt_reference": "spagent.techology-advisor-agent-prompt",
+  "rubric_reference": "spagent.techology-advisor-agent-rubric",
+  "critique_edges": {
+    "inputs": ["spagent.techology-advisor-agent-input"],
+    "outputs": ["spagent.techology-advisor-agent-output"]
+  },
+  "max_refinement_count": 1,
+  "production_activation_requested": false
+}

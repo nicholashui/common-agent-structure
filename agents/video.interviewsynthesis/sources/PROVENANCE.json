@@ -57,34 +57,34 @@
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "新闻的十大基本原则",
+      "title": "\u65b0\u95fb\u7684\u5341\u5927\u57fa\u672c\u539f\u5219",
       "isbn13": "9787301161111",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 新闻的十大基本原则，ISBN-13 9787301161111"
+      "citation": "ZH: \u65b0\u95fb\u7684\u5341\u5927\u57fa\u672c\u539f\u5219\uff0cISBN-13 9787301161111"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "采访的艺术",
+      "title": "\u91c7\u8bbf\u7684\u827a\u672f",
       "isbn13": "9787301169186",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 采访的艺术，ISBN-13 9787301169186"
+      "citation": "ZH: \u91c7\u8bbf\u7684\u827a\u672f\uff0cISBN-13 9787301169186"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "如何阅读一本书",
+      "title": "\u5982\u4f55\u9605\u8bfb\u4e00\u672c\u4e66",
       "isbn13": "9787100040945",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 如何阅读一本书，ISBN-13 9787100040945"
+      "citation": "ZH: \u5982\u4f55\u9605\u8bfb\u4e00\u672c\u4e66\uff0cISBN-13 9787100040945"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "研究是一门艺术",
+      "title": "\u7814\u7a76\u662f\u4e00\u95e8\u827a\u672f",
       "isbn13": "9787300116226",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 研究是一门艺术，ISBN-13 9787300116226"
+      "citation": "ZH: \u7814\u7a76\u662f\u4e00\u95e8\u827a\u672f\uff0cISBN-13 9787300116226"
     },
     {
       "kind": "reference_book",
@@ -179,59 +179,59 @@
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "思考，快与慢",
+      "title": "\u601d\u8003\uff0c\u5feb\u4e0e\u6162",
       "isbn13": "9787508633565",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 思考，快与慢，ISBN-13 9787508633565"
+      "citation": "ZH: \u601d\u8003\uff0c\u5feb\u4e0e\u6162\uff0cISBN-13 9787508633565"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "影响力",
+      "title": "\u5f71\u54cd\u529b",
       "isbn13": "9787508622163",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 影响力，ISBN-13 9787508622163"
+      "citation": "ZH: \u5f71\u54cd\u529b\uff0cISBN-13 9787508622163"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "怪诞行为学",
+      "title": "\u602a\u8bde\u884c\u4e3a\u5b66",
       "isbn13": "9787508615824",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 怪诞行为学，ISBN-13 9787508615824"
+      "citation": "ZH: \u602a\u8bde\u884c\u4e3a\u5b66\uff0cISBN-13 9787508615824"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "助推",
+      "title": "\u52a9\u63a8",
       "isbn13": "9787508641238",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 助推，ISBN-13 9787508641238"
+      "citation": "ZH: \u52a9\u63a8\uff0cISBN-13 9787508641238"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "心流",
+      "title": "\u5fc3\u6d41",
       "isbn13": "9787508660721",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 心流，ISBN-13 9787508660721"
+      "citation": "ZH: \u5fc3\u6d41\uff0cISBN-13 9787508660721"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "驱动力",
+      "title": "\u9a71\u52a8\u529b",
       "isbn13": "9787508621753",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 驱动力，ISBN-13 9787508621753"
+      "citation": "ZH: \u9a71\u52a8\u529b\uff0cISBN-13 9787508621753"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "社会心理学",
-      "author": "迈尔斯",
+      "title": "\u793e\u4f1a\u5fc3\u7406\u5b66",
+      "author": "\u8fc8\u5c14\u65af",
       "isbn13": "9787115412393",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 社会心理学（迈尔斯），ISBN-13 9787115412393"
+      "citation": "ZH: \u793e\u4f1a\u5fc3\u7406\u5b66\uff08\u8fc8\u5c14\u65af\uff09\uff0cISBN-13 9787115412393"
     }
   ],
   "agent_id": "video.interviewsynthesis",
@@ -246,7 +246,7 @@
     "adopted_at": "2026-07-27T01:30:28.246190+00:00",
     "upstream": "generic-swarm-ops/business/video/agents"
   },
-  "imported_from": "C:\\Project\\common-agent-swarm-ops\\business\\video\\agents\\video.interviewsynthesis",
+  "imported_from": "vendor/common-agent-swarm-ops/business/video/agents/video.interviewsynthesis",
   "reference_book_origin": "spec/book_of_knowledge.md",
   "reference_book_note": "Bibliographic references from spec/book_of_knowledge.md. Does not enable network, RAG, T3, plugins, or memory writes."
 }

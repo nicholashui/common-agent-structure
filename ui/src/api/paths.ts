@@ -45,6 +45,10 @@ export const COMPANION_V3_PATHS = [
   ["GET", "/api/v3/agents/{agent_id}/llm"],
   ["POST", "/api/v3/agents/{agent_id}/llm"],
   ["POST", "/api/v3/agents/{agent_id}/runtime/chat"],
+  ["GET", "/api/v3/agents/{agent_id}/evals/fixtures"],
+  ["GET", "/api/v3/agents/{agent_id}/files"],
+  ["GET", "/api/v3/agents/{agent_id}/files/item"],
+  ["PUT", "/api/v3/agents/{agent_id}/files/item"],
 ] as const;
 
 export type HttpMethod = "GET" | "POST" | "PUT" | "PATCH" | "DELETE";
@@ -93,6 +97,10 @@ export const CLIENT_BINDINGS = {
   getAgentLlm: ["GET", "/api/v3/agents/{agent_id}/llm"],
   setAgentLlm: ["POST", "/api/v3/agents/{agent_id}/llm"],
   chatAgent: ["POST", "/api/v3/agents/{agent_id}/runtime/chat"],
+  getEvalFixtures: ["GET", "/api/v3/agents/{agent_id}/evals/fixtures"],
+  listAgentFiles: ["GET", "/api/v3/agents/{agent_id}/files"],
+  getAgentFile: ["GET", "/api/v3/agents/{agent_id}/files/item"],
+  putAgentFile: ["PUT", "/api/v3/agents/{agent_id}/files/item"],
 } as const;
 
 export const MUTATING = new Set<string>(["POST", "PUT", "PATCH", "DELETE"]);

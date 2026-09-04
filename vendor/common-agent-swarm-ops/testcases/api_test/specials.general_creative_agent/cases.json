@@ -1,0 +1,76 @@
+{
+  "agent_id": "specials.general_creative_agent",
+  "kind": "special",
+  "cases": [
+    {
+      "id": "tc1",
+      "name": "Night market hooks",
+      "method": "POST",
+      "path": "/api/v1/creative/ideate",
+      "body": {
+        "brief": "Distinctive Osaka night market visual hooks",
+        "n_candidates": 3,
+        "domain": "video"
+      },
+      "success_criteria": {
+        "http_status": [
+          200
+        ],
+        "required_keys_any": [
+          "ok",
+          "candidates",
+          "ideas",
+          "result",
+          "correlation_id"
+        ],
+        "notes": "Creative ideate offline."
+      }
+    },
+    {
+      "id": "tc2",
+      "name": "Cold-open motifs",
+      "method": "POST",
+      "path": "/api/v1/creative/ideate",
+      "body": {
+        "brief": "Cold-open motifs for travel documentary vlog",
+        "genre": "documentary"
+      },
+      "success_criteria": {
+        "http_status": [
+          200
+        ],
+        "required_keys_any": [
+          "ok",
+          "candidates",
+          "ideas",
+          "result",
+          "correlation_id"
+        ],
+        "notes": "Creative ideate offline."
+      }
+    },
+    {
+      "id": "tc3",
+      "name": "Food B-roll ideation",
+      "method": "POST",
+      "path": "/api/v1/creative/ideate",
+      "body": {
+        "brief": "SSOR-lite ideation for food B-roll patterns",
+        "n_candidates": 2
+      },
+      "success_criteria": {
+        "http_status": [
+          200
+        ],
+        "required_keys_any": [
+          "ok",
+          "candidates",
+          "ideas",
+          "result",
+          "correlation_id"
+        ],
+        "notes": "Creative ideate offline."
+      }
+    }
+  ]
+}

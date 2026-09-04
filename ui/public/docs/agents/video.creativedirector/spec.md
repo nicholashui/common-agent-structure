@@ -4954,7 +4954,7 @@ DirectorAgent-service ──┐
 ## Provenance
 
 - Master roster row va_id=1 from embedded agents.md content above.
-- Deep/extra text from `business/video/corpus/` and `C:\Project\va-agent-swarm`.
+- Deep/extra text from `business/video/corpus/` and `vendor/va-agent-swarm`.
 - Generator: `scripts/business/enrich_video_agent_specs.py`.
 - Upstream project name (historical only): va-agent-swarm.
 
@@ -5097,29 +5097,29 @@ Live primary-source expansion remains a residual for score 100 on S3 where depth
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "拍电影",
-      "author": "卢梅",
+      "title": "\u62cd\u7535\u5f71",
+      "author": "\u5362\u6885",
       "isbn13": "9787106028893",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 拍电影（卢梅），ISBN-13 9787106028893"
+      "citation": "ZH: \u62cd\u7535\u5f71\uff08\u5362\u6885\uff09\uff0cISBN-13 9787106028893"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "电影镜头设计",
-      "author": "卡茨",
+      "title": "\u7535\u5f71\u955c\u5934\u8bbe\u8ba1",
+      "author": "\u5361\u8328",
       "isbn13": "9787115222224",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 电影镜头设计（卡茨），ISBN-13 9787115222224"
+      "citation": "ZH: \u7535\u5f71\u955c\u5934\u8bbe\u8ba1\uff08\u5361\u8328\uff09\uff0cISBN-13 9787115222224"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "导演创作完全手册",
-      "author": "拉比格",
+      "title": "\u5bfc\u6f14\u521b\u4f5c\u5b8c\u5168\u624b\u518c",
+      "author": "\u62c9\u6bd4\u683c",
       "isbn13": "9787515302867",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 导演创作完全手册（拉比格），ISBN-13 9787515302867"
+      "citation": "ZH: \u5bfc\u6f14\u521b\u4f5c\u5b8c\u5168\u624b\u518c\uff08\u62c9\u6bd4\u683c\uff09\uff0cISBN-13 9787515302867"
     },
     {
       "kind": "reference_book",
@@ -5241,82 +5241,82 @@ Live primary-source expansion remains a residual for score 100 on S3 where depth
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "这就是营销",
+      "title": "\u8fd9\u5c31\u662f\u8425\u9500",
       "isbn13": "9787521702330",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 这就是营销，ISBN-13 9787521702330"
+      "citation": "ZH: \u8fd9\u5c31\u662f\u8425\u9500\uff0cISBN-13 9787521702330"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "疯传",
+      "title": "\u75af\u4f20",
       "isbn13": "9787508641238",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 疯传，ISBN-13 9787508641238"
+      "citation": "ZH: \u75af\u4f20\uff0cISBN-13 9787508641238"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "让创意更有黏性",
+      "title": "\u8ba9\u521b\u610f\u66f4\u6709\u9ecf\u6027",
       "isbn13": "9787508641245",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 让创意更有黏性，ISBN-13 9787508641245"
+      "citation": "ZH: \u8ba9\u521b\u610f\u66f4\u6709\u9ecf\u6027\uff0cISBN-13 9787508641245"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "跨越鸿沟",
+      "title": "\u8de8\u8d8a\u9e3f\u6c9f",
       "isbn13": "9787111456780",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 跨越鸿沟，ISBN-13 9787111456780"
+      "citation": "ZH: \u8de8\u8d8a\u9e3f\u6c9f\uff0cISBN-13 9787111456780"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "精益创业",
+      "title": "\u7cbe\u76ca\u521b\u4e1a",
       "isbn13": "9787115293701",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 精益创业，ISBN-13 9787115293701"
+      "citation": "ZH: \u7cbe\u76ca\u521b\u4e1a\uff0cISBN-13 9787115293701"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "一个广告人的自白",
+      "title": "\u4e00\u4e2a\u5e7f\u544a\u4eba\u7684\u81ea\u767d",
       "isbn13": "9787111496182",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 一个广告人的自白，ISBN-13 9787111496182"
+      "citation": "ZH: \u4e00\u4e2a\u5e7f\u544a\u4eba\u7684\u81ea\u767d\uff0cISBN-13 9787111496182"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "文案训练手册",
+      "title": "\u6587\u6848\u8bad\u7ec3\u624b\u518c",
       "isbn13": "9787115351555",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 文案训练手册，ISBN-13 9787115351555"
+      "citation": "ZH: \u6587\u6848\u8bad\u7ec3\u624b\u518c\uff0cISBN-13 9787115351555"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "上瘾",
+      "title": "\u4e0a\u763e",
       "isbn13": "9787508648017",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 上瘾，ISBN-13 9787508648017"
+      "citation": "ZH: \u4e0a\u763e\uff0cISBN-13 9787508648017"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "增长黑客",
+      "title": "\u589e\u957f\u9ed1\u5ba2",
       "isbn13": "9787213066948",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 增长黑客，ISBN-13 9787213066948"
+      "citation": "ZH: \u589e\u957f\u9ed1\u5ba2\uff0cISBN-13 9787213066948"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "参与感",
+      "title": "\u53c2\u4e0e\u611f",
       "isbn13": "9787213055375",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 参与感，ISBN-13 9787213055375"
+      "citation": "ZH: \u53c2\u4e0e\u611f\uff0cISBN-13 9787213055375"
     },
     {
       "kind": "reference_book",
@@ -5384,34 +5384,34 @@ Live primary-source expansion remains a residual for score 100 on S3 where depth
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "定位",
+      "title": "\u5b9a\u4f4d",
       "isbn13": "9787111320586",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 定位，ISBN-13 9787111320586"
+      "citation": "ZH: \u5b9a\u4f4d\uff0cISBN-13 9787111320586"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "品牌的起源",
+      "title": "\u54c1\u724c\u7684\u8d77\u6e90",
       "isbn13": "9787111323051",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 品牌的起源，ISBN-13 9787111323051"
+      "citation": "ZH: \u54c1\u724c\u7684\u8d77\u6e90\uff0cISBN-13 9787111323051"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "战略品牌管理",
+      "title": "\u6218\u7565\u54c1\u724c\u7ba1\u7406",
       "isbn13": "9787300162263",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 战略品牌管理，ISBN-13 9787300162263"
+      "citation": "ZH: \u6218\u7565\u54c1\u724c\u7ba1\u7406\uff0cISBN-13 9787300162263"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "品牌如何增长",
+      "title": "\u54c1\u724c\u5982\u4f55\u589e\u957f",
       "isbn13": "9787111558477",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 品牌如何增长，ISBN-13 9787111558477"
+      "citation": "ZH: \u54c1\u724c\u5982\u4f55\u589e\u957f\uff0cISBN-13 9787111558477"
     },
     {
       "kind": "reference_book",
@@ -5497,58 +5497,58 @@ Live primary-source expansion remains a residual for score 100 on S3 where depth
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "六顶思考帽",
+      "title": "\u516d\u9876\u601d\u8003\u5e3d",
       "isbn13": "9787508631332",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 六顶思考帽，ISBN-13 9787508631332"
+      "citation": "ZH: \u516d\u9876\u601d\u8003\u5e3d\uff0cISBN-13 9787508631332"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "水平思考",
+      "title": "\u6c34\u5e73\u601d\u8003",
       "isbn13": "9787508622170",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 水平思考，ISBN-13 9787508622170"
+      "citation": "ZH: \u6c34\u5e73\u601d\u8003\uff0cISBN-13 9787508622170"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "产生创意的方法",
+      "title": "\u4ea7\u751f\u521b\u610f\u7684\u65b9\u6cd5",
       "isbn13": "9787220101236",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 产生创意的方法，ISBN-13 9787220101236"
+      "citation": "ZH: \u4ea7\u751f\u521b\u610f\u7684\u65b9\u6cd5\uff0cISBN-13 9787220101236"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "偷师学艺",
+      "title": "\u5077\u5e08\u5b66\u827a",
       "isbn13": "9787550261235",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 偷师学艺，ISBN-13 9787550261235"
+      "citation": "ZH: \u5077\u5e08\u5b66\u827a\uff0cISBN-13 9787550261235"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "艺术之战",
+      "title": "\u827a\u672f\u4e4b\u6218",
       "isbn13": "9787532753871",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 艺术之战，ISBN-13 9787532753871"
+      "citation": "ZH: \u827a\u672f\u4e4b\u6218\uff0cISBN-13 9787532753871"
     },
     {
       "kind": "reference_book",
       "language": "EN",
-      "title": "Becoming an Actor’s Director Directing Actors for Film and Television",
+      "title": "Becoming an Actor\u2019s Director Directing Actors for Film and Television",
       "isbn13": "9780367191870",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "EN: Becoming an Actor’s Director Directing Actors for Film and Television, ISBN-13 9780367191870"
+      "citation": "EN: Becoming an Actor\u2019s Director Directing Actors for Film and Television, ISBN-13 9780367191870"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "纪录影片及数字视频编导与制作",
+      "title": "\u7eaa\u5f55\u5f71\u7247\u53ca\u6570\u5b57\u89c6\u9891\u7f16\u5bfc\u4e0e\u5236\u4f5c",
       "isbn13": "9787504380302",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 纪录影片及数字视频编导与制作，ISBN-13 9787504380302"
+      "citation": "ZH: \u7eaa\u5f55\u5f71\u7247\u53ca\u6570\u5b57\u89c6\u9891\u7f16\u5bfc\u4e0e\u5236\u4f5c\uff0cISBN-13 9787504380302"
     },
     {
       "kind": "reference_book",
@@ -5561,10 +5561,10 @@ Live primary-source expansion remains a residual for score 100 on S3 where depth
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "AI 數字人 從製作到商用",
+      "title": "AI \u6578\u5b57\u4eba \u5f9e\u88fd\u4f5c\u5230\u5546\u7528",
       "isbn13": "9787122450753",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: AI 數字人 從製作到商用，ISBN-13 9787122450753"
+      "citation": "ZH: AI \u6578\u5b57\u4eba \u5f9e\u88fd\u4f5c\u5230\u5546\u7528\uff0cISBN-13 9787122450753"
     },
     {
       "kind": "reference_book",
@@ -5595,28 +5595,28 @@ Live primary-source expansion remains a residual for score 100 on S3 where depth
     {
       "kind": "reference_book",
       "language": "EN",
-      "title": "The Properties Director’s Toolkit Creativity, Collaboration, and Communication for Prop…",
+      "title": "The Properties Director\u2019s Toolkit Creativity, Collaboration, and Communication for Prop\u2026",
       "isbn13": "9781315146201",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "EN: The Properties Director’s Toolkit Creativity, Collaboration, and Communication for Prop…, ISBN-13 9781315146201"
+      "citation": "EN: The Properties Director\u2019s Toolkit Creativity, Collaboration, and Communication for Prop\u2026, ISBN-13 9781315146201"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "电影导演艺术教程（修订版）",
-      "author": "韩小磊",
+      "title": "\u7535\u5f71\u5bfc\u6f14\u827a\u672f\u6559\u7a0b\uff08\u4fee\u8ba2\u7248\uff09",
+      "author": "\u97e9\u5c0f\u78ca",
       "isbn13": "9787106053840",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 电影导演艺术教程（修订版）（韩小磊），ISBN-13 9787106053840"
+      "citation": "ZH: \u7535\u5f71\u5bfc\u6f14\u827a\u672f\u6559\u7a0b\uff08\u4fee\u8ba2\u7248\uff09\uff08\u97e9\u5c0f\u78ca\uff09\uff0cISBN-13 9787106053840"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "故事片创作六讲",
-      "author": "王竞",
+      "title": "\u6545\u4e8b\u7247\u521b\u4f5c\u516d\u8bb2",
+      "author": "\u738b\u7ade",
       "isbn13": "9787541151323",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 故事片创作六讲（王竞），ISBN-13 9787541151323"
+      "citation": "ZH: \u6545\u4e8b\u7247\u521b\u4f5c\u516d\u8bb2\uff08\u738b\u7ade\uff09\uff0cISBN-13 9787541151323"
     }
   ],
   "agent_id": "video.creativedirector",
@@ -5631,7 +5631,7 @@ Live primary-source expansion remains a residual for score 100 on S3 where depth
     "adopted_at": "2026-07-27T01:30:28.001792+00:00",
     "upstream": "generic-swarm-ops/business/video/agents"
   },
-  "imported_from": "C:\\Project\\common-agent-swarm-ops\\business\\video\\agents\\video.creativedirector",
+  "imported_from": "vendor/common-agent-swarm-ops/business/video/agents/video.creativedirector",
   "reference_book_origin": "spec/book_of_knowledge.md",
   "reference_book_note": "Bibliographic references from spec/book_of_knowledge.md. Does not enable network, RAG, T3, plugins, or memory writes."
 }

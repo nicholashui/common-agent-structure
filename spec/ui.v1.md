@@ -227,7 +227,7 @@ GET does not send the contract. If any mutation header is missing, the host retu
 | POST | `/api/v3/agents/{id}/improvement/candidates/{cid}/approve` | Approve (`independent_approver` or `host_service` only) |
 | POST | `/api/v3/agents/{id}/improvement/rollback/{version}` | Rollback |
 | GET | `/api/v3/agents/{id}/improvement/ledger` | Ledger table |
-| GET | `/api/v3/agents/{id}/regression/suite` | Eval / regression |
+| GET | `/api/v3/agents/{id}/regression/suite` | Eval / regression filenames (`evals/regression/`) |
 | GET | `/api/v3/agents/{id}/corrigibility/attestation` | Attestation banner on every agent page |
 | GET | `/api/v3/agents/{id}/validation/report` | Validation tab |
 | POST | `/api/v3/agents/{id}/runtime/run` | Run tab primary action |
@@ -249,7 +249,10 @@ Today’s OpenAPI **does not** include `GET /api/v3/agents` (list). Complete fle
 
 ```text
 GET /api/v3/agents
+GET /api/v3/agents/{id}/evals/fixtures
 ```
+
+`GET …/evals/fixtures` lists CHARACTERIZATION cases from `evals/fixtures/` for Validation and Chat empty-state. It is not spec §19 and not an eval pass.
 
 Response (illustrative):
 
@@ -308,7 +311,7 @@ Shell
     ├── Cache                GET stats, POST invalidate
     ├── Safety               incidents, POST redteam
     ├── Improvement          candidates, evaluate, approve, rollback, ledger
-    ├── Validation           /validation/report, /regression/suite
+    ├── Validation           /validation/report, /evals/fixtures, /regression/suite
     └── Corrigibility        /corrigibility/attestation
 Settings                     /settings               base URL, actor defaults, known agent IDs
 ```
@@ -578,7 +581,8 @@ No “promote to production” button.
 - If `verdict` is `NOT_RUN` or `pass` is false: large stone/amber panel, **not** a green check. Show `reason` and instrument list.
 - `INDICATIVE` screening: violet pill “Screening — not a release pass”.
 - `MEASURED_LOCAL`: emerald only if `pass: true`.
-- Regression suite names: `GET …/regression/suite`.
+- Characterization cases: `GET …/evals/fixtures` (companion). Label **CHARACTERIZATION**. Do not style as a pass. Chat cases link to Chat with `?fixture=<id>` and fill the composer only. Run cases link to the Run tab; do not auto-execute.
+- Regression suite names: `GET …/regression/suite` (`evals/regression/` filenames; still `.gitkeep` for the pack).
 
 Do not embed `casops-eval` CLI. Optional: link to `user_guide.v1.md` §13.
 

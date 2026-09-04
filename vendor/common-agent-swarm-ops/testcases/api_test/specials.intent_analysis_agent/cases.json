@@ -1,0 +1,75 @@
+{
+  "agent_id": "specials.intent_analysis_agent",
+  "kind": "special",
+  "cases": [
+    {
+      "id": "tc1",
+      "name": "Travel vlog brief",
+      "method": "POST",
+      "path": "/api/v1/intent/analyze",
+      "body": {
+        "text": "Make a 6-day Osaka travel vlog for high retention",
+        "channel": "video_brief"
+      },
+      "success_criteria": {
+        "http_status": [
+          200
+        ],
+        "required_keys_any": [
+          "ok",
+          "primary_intent",
+          "intent",
+          "correlation_id",
+          "result"
+        ],
+        "notes": "Expect 200 offline intent analysis without live LLM."
+      }
+    },
+    {
+      "id": "tc2",
+      "name": "B2B marketing brief",
+      "method": "POST",
+      "path": "/api/v1/intent/analyze",
+      "body": {
+        "text": "Explain our SaaS pricing to enterprise buyers",
+        "channel": "marketing"
+      },
+      "success_criteria": {
+        "http_status": [
+          200
+        ],
+        "required_keys_any": [
+          "ok",
+          "primary_intent",
+          "intent",
+          "correlation_id",
+          "result"
+        ],
+        "notes": "Expect 200 offline intent analysis without live LLM."
+      }
+    },
+    {
+      "id": "tc3",
+      "name": "Explicit offline classify",
+      "method": "POST",
+      "path": "/api/v1/intent/analyze",
+      "body": {
+        "text": "Offline only: classify multi-hop production intent",
+        "channel": "video_brief"
+      },
+      "success_criteria": {
+        "http_status": [
+          200
+        ],
+        "required_keys_any": [
+          "ok",
+          "primary_intent",
+          "intent",
+          "correlation_id",
+          "result"
+        ],
+        "notes": "Expect 200 offline intent analysis without live LLM."
+      }
+    }
+  ]
+}

@@ -1,6 +1,4 @@
-import ReactMarkdown from "react-markdown";
-import remarkGfm from "remark-gfm";
-import { htmlImgsToMarkdown, resolveAssetUrl } from "./markdown";
+import { MarkdownBody } from "../components/MarkdownBody";
 import type { MarkdownState } from "./useMarkdown";
 
 export function MarkdownView({ state }: { state: MarkdownState }) {
@@ -22,26 +20,5 @@ export function MarkdownView({ state }: { state: MarkdownState }) {
       </div>
     );
   }
-  const basePath = state.path || "/docs/";
-  const source = htmlImgsToMarkdown(state.text);
-  return (
-    <div className="help-md text-sm text-stone-800">
-      <ReactMarkdown
-        remarkPlugins={[remarkGfm]}
-        urlTransform={(url) => resolveAssetUrl(url, basePath)}
-        components={{
-          a: ({ href, children }) => (
-            <a href={href} className="text-indigo-700 underline decoration-indigo-200 hover:text-indigo-900">
-              {children}
-            </a>
-          ),
-          img: ({ src, alt }) => (
-            <img src={src} alt={alt ?? ""} className="my-3 max-w-full rounded-lg border border-stone-200" />
-          ),
-        }}
-      >
-        {source}
-      </ReactMarkdown>
-    </div>
-  );
+  return <MarkdownBody text={state.text} basePath={state.path || "/docs/"} />;
 }

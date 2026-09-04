@@ -2321,18 +2321,18 @@ Omitted here; same document as `SPEC.md` above.
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "理解漫画",
+      "title": "\u7406\u89e3\u6f2b\u753b",
       "isbn13": "9787513320184",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 理解漫画，ISBN-13 9787513320184"
+      "citation": "ZH: \u7406\u89e3\u6f2b\u753b\uff0cISBN-13 9787513320184"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "动态图形设计",
+      "title": "\u52a8\u6001\u56fe\u5f62\u8bbe\u8ba1",
       "isbn13": "9787115331861",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 动态图形设计，ISBN-13 9787115331861"
+      "citation": "ZH: \u52a8\u6001\u56fe\u5f62\u8bbe\u8ba1\uff0cISBN-13 9787115331861"
     },
     {
       "kind": "reference_book",
@@ -2382,45 +2382,45 @@ Omitted here; same document as `SPEC.md` above.
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "美的历程",
-      "author": "李泽厚",
+      "title": "\u7f8e\u7684\u5386\u7a0b",
+      "author": "\u674e\u6cfd\u539a",
       "isbn13": "9787108017963",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 美的历程（李泽厚），ISBN-13 9787108017963"
+      "citation": "ZH: \u7f8e\u7684\u5386\u7a0b\uff08\u674e\u6cfd\u539a\uff09\uff0cISBN-13 9787108017963"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "谈美",
-      "author": "朱光潜",
+      "title": "\u8c08\u7f8e",
+      "author": "\u6731\u5149\u6f5c",
       "isbn13": "9787108042262",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 谈美（朱光潜），ISBN-13 9787108042262"
+      "citation": "ZH: \u8c08\u7f8e\uff08\u6731\u5149\u6f5c\uff09\uff0cISBN-13 9787108042262"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "美学散步",
-      "author": "宗白华",
+      "title": "\u7f8e\u5b66\u6563\u6b65",
+      "author": "\u5b97\u767d\u534e",
       "isbn13": "9787532123456",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 美学散步（宗白华），ISBN-13 9787532123456"
+      "citation": "ZH: \u7f8e\u5b66\u6563\u6b65\uff08\u5b97\u767d\u534e\uff09\uff0cISBN-13 9787532123456"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "观看之道",
+      "title": "\u89c2\u770b\u4e4b\u9053",
       "isbn13": "9787544715998",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 观看之道，ISBN-13 9787544715998"
+      "citation": "ZH: \u89c2\u770b\u4e4b\u9053\uff0cISBN-13 9787544715998"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "论摄影",
+      "title": "\u8bba\u6444\u5f71",
       "isbn13": "9787544722599",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 论摄影，ISBN-13 9787544722599"
+      "citation": "ZH: \u8bba\u6444\u5f71\uff0cISBN-13 9787544722599"
     },
     {
       "kind": "reference_book",
@@ -2479,79 +2479,79 @@ Omitted here; same document as `SPEC.md` above.
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "设计心理学",
+      "title": "\u8bbe\u8ba1\u5fc3\u7406\u5b66",
       "isbn13": "9787115417947",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 设计心理学，ISBN-13 9787115417947"
+      "citation": "ZH: \u8bbe\u8ba1\u5fc3\u7406\u5b66\uff0cISBN-13 9787115417947"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "点石成金",
+      "title": "\u70b9\u77f3\u6210\u91d1",
       "isbn13": "9787115249494",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 点石成金，ISBN-13 9787115249494"
+      "citation": "ZH: \u70b9\u77f3\u6210\u91d1\uff0cISBN-13 9787115249494"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "用户体验要素",
-      "author": "加瑞特",
+      "title": "\u7528\u6237\u4f53\u9a8c\u8981\u7d20",
+      "author": "\u52a0\u745e\u7279",
       "isbn13": "9787115325466",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 用户体验要素（加瑞特），ISBN-13 9787115325466"
+      "citation": "ZH: \u7528\u6237\u4f53\u9a8c\u8981\u7d20\uff08\u52a0\u745e\u7279\uff09\uff0cISBN-13 9787115325466"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "设计中的设计",
-      "author": "原研哉",
+      "title": "\u8bbe\u8ba1\u4e2d\u7684\u8bbe\u8ba1",
+      "author": "\u539f\u7814\u54c9",
       "isbn13": "9787549559787",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 设计中的设计（原研哉），ISBN-13 9787549559787"
+      "citation": "ZH: \u8bbe\u8ba1\u4e2d\u7684\u8bbe\u8ba1\uff08\u539f\u7814\u54c9\uff09\uff0cISBN-13 9787549559787"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "生成式AI实战基于Transformer、Stable Diffusion、LangChain和AI Agent",
+      "title": "\u751f\u6210\u5f0fAI\u5b9e\u6218\u57fa\u4e8eTransformer\u3001Stable Diffusion\u3001LangChain\u548cAI Agent",
       "isbn13": "9787115650443",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 生成式AI实战基于Transformer、Stable Diffusion、LangChain和AI Agent，ISBN-13 9787115650443"
+      "citation": "ZH: \u751f\u6210\u5f0fAI\u5b9e\u6218\u57fa\u4e8eTransformer\u3001Stable Diffusion\u3001LangChain\u548cAI Agent\uff0cISBN-13 9787115650443"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "剪映+DeepSeek短视频剪辑全能一本通",
+      "title": "\u526a\u6620+DeepSeek\u77ed\u89c6\u9891\u526a\u8f91\u5168\u80fd\u4e00\u672c\u901a",
       "author": "Jack",
       "isbn13": "9787115669780",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 剪映+DeepSeek短视频剪辑全能一本通（Jack），ISBN-13 9787115669780"
+      "citation": "ZH: \u526a\u6620+DeepSeek\u77ed\u89c6\u9891\u526a\u8f91\u5168\u80fd\u4e00\u672c\u901a\uff08Jack\uff09\uff0cISBN-13 9787115669780"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "剪辑师宝典：视频剪辑思维与案例实战",
-      "author": "杨超",
+      "title": "\u526a\u8f91\u5e08\u5b9d\u5178\uff1a\u89c6\u9891\u526a\u8f91\u601d\u7ef4\u4e0e\u6848\u4f8b\u5b9e\u6218",
+      "author": "\u6768\u8d85",
       "isbn13": "9787121450723",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 剪辑师宝典：视频剪辑思维与案例实战（杨超），ISBN-13 9787121450723"
+      "citation": "ZH: \u526a\u8f91\u5e08\u5b9d\u5178\uff1a\u89c6\u9891\u526a\u8f91\u601d\u7ef4\u4e0e\u6848\u4f8b\u5b9e\u6218\uff08\u6768\u8d85\uff09\uff0cISBN-13 9787121450723"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "短视频拍摄与剪辑零基础一本通",
-      "author": "千知影像学院 编著",
+      "title": "\u77ed\u89c6\u9891\u62cd\u6444\u4e0e\u526a\u8f91\u96f6\u57fa\u7840\u4e00\u672c\u901a",
+      "author": "\u5343\u77e5\u5f71\u50cf\u5b66\u9662 \u7f16\u8457",
       "isbn13": "9787115635402",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 短视频拍摄与剪辑零基础一本通（千知影像学院 编著），ISBN-13 9787115635402"
+      "citation": "ZH: \u77ed\u89c6\u9891\u62cd\u6444\u4e0e\u526a\u8f91\u96f6\u57fa\u7840\u4e00\u672c\u901a\uff08\u5343\u77e5\u5f71\u50cf\u5b66\u9662 \u7f16\u8457\uff09\uff0cISBN-13 9787115635402"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "Stable Diffusion AI 繪圖",
+      "title": "Stable Diffusion AI \u7e6a\u5716",
       "isbn13": "9787302656333",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: Stable Diffusion AI 繪圖，ISBN-13 9787302656333"
+      "citation": "ZH: Stable Diffusion AI \u7e6a\u5716\uff0cISBN-13 9787302656333"
     },
     {
       "kind": "reference_book",
@@ -2564,52 +2564,52 @@ Omitted here; same document as `SPEC.md` above.
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "ComfyUI 工作流",
+      "title": "ComfyUI \u5de5\u4f5c\u6d41",
       "isbn13": "9787122466532",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: ComfyUI 工作流，ISBN-13 9787122466532"
+      "citation": "ZH: ComfyUI \u5de5\u4f5c\u6d41\uff0cISBN-13 9787122466532"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "AI短视频创作：一本通剪映+即梦+可灵+文心一格",
+      "title": "AI\u77ed\u89c6\u9891\u521b\u4f5c\uff1a\u4e00\u672c\u901a\u526a\u6620+\u5373\u68a6+\u53ef\u7075+\u6587\u5fc3\u4e00\u683c",
       "isbn13": "9787122470027",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: AI短视频创作：一本通剪映+即梦+可灵+文心一格，ISBN-13 9787122470027"
+      "citation": "ZH: AI\u77ed\u89c6\u9891\u521b\u4f5c\uff1a\u4e00\u672c\u901a\u526a\u6620+\u5373\u68a6+\u53ef\u7075+\u6587\u5fc3\u4e00\u683c\uff0cISBN-13 9787122470027"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "可灵AI ComfyUI+Deform 人工智能AI视频制作技巧",
+      "title": "\u53ef\u7075AI ComfyUI+Deform \u4eba\u5de5\u667a\u80fdAI\u89c6\u9891\u5236\u4f5c\u6280\u5de7",
       "isbn13": "9787122466556",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 可灵AI ComfyUI+Deform 人工智能AI视频制作技巧，ISBN-13 9787122466556"
+      "citation": "ZH: \u53ef\u7075AI ComfyUI+Deform \u4eba\u5de5\u667a\u80fdAI\u89c6\u9891\u5236\u4f5c\u6280\u5de7\uff0cISBN-13 9787122466556"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "AI數位人全面應用：形象製作+口播視頻+直播帶貨+客服溝通",
+      "title": "AI\u6578\u4f4d\u4eba\u5168\u9762\u61c9\u7528\uff1a\u5f62\u8c61\u88fd\u4f5c+\u53e3\u64ad\u8996\u983b+\u76f4\u64ad\u5e36\u8ca8+\u5ba2\u670d\u6e9d\u901a",
       "isbn13": "9787302695332",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: AI數位人全面應用：形象製作+口播視頻+直播帶貨+客服溝通，ISBN-13 9787302695332"
+      "citation": "ZH: AI\u6578\u4f4d\u4eba\u5168\u9762\u61c9\u7528\uff1a\u5f62\u8c61\u88fd\u4f5c+\u53e3\u64ad\u8996\u983b+\u76f4\u64ad\u5e36\u8ca8+\u5ba2\u670d\u6e9d\u901a\uff0cISBN-13 9787302695332"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "剪映视频后期剪辑零基础入门到精通",
-      "author": "许放",
+      "title": "\u526a\u6620\u89c6\u9891\u540e\u671f\u526a\u8f91\u96f6\u57fa\u7840\u5165\u95e8\u5230\u7cbe\u901a",
+      "author": "\u8bb8\u653e",
       "isbn13": "9787115634979",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 剪映视频后期剪辑零基础入门到精通（许放），ISBN-13 9787115634979"
+      "citation": "ZH: \u526a\u6620\u89c6\u9891\u540e\u671f\u526a\u8f91\u96f6\u57fa\u7840\u5165\u95e8\u5230\u7cbe\u901a\uff08\u8bb8\u653e\uff09\uff0cISBN-13 9787115634979"
     },
     {
       "kind": "reference_book",
       "language": "EN",
-      "title": "Making Movie Magic A Lifetime Creating Special Effects for James Bond, Harry Potter, Su…",
+      "title": "Making Movie Magic A Lifetime Creating Special Effects for James Bond, Harry Potter, Su\u2026",
       "author": "John Richardson, Richard Donner",
       "isbn13": "9780750994392",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "EN: Making Movie Magic A Lifetime Creating Special Effects for James Bond, Harry Potter, Su… (John Richardson, Richard Donner), ISBN-13 9780750994392"
+      "citation": "EN: Making Movie Magic A Lifetime Creating Special Effects for James Bond, Harry Potter, Su\u2026 (John Richardson, Richard Donner), ISBN-13 9780750994392"
     },
     {
       "kind": "reference_book",
@@ -2624,10 +2624,10 @@ Omitted here; same document as `SPEC.md` above.
       "kind": "reference_book",
       "language": "EN",
       "title": "Making the Cut at Pixar The Art of Editing Animation",
-      "author": "Bill Kinder Bobbie O’steen",
+      "author": "Bill Kinder Bobbie O\u2019steen",
       "isbn13": "9780367766146",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "EN: Making the Cut at Pixar The Art of Editing Animation (Bill Kinder Bobbie O’steen), ISBN-13 9780367766146"
+      "citation": "EN: Making the Cut at Pixar The Art of Editing Animation (Bill Kinder Bobbie O\u2019steen), ISBN-13 9780367766146"
     }
   ],
   "agent_id": "video.motiongraphics",
@@ -2642,7 +2642,7 @@ Omitted here; same document as `SPEC.md` above.
     "adopted_at": "2026-07-27T01:30:28.447457+00:00",
     "upstream": "generic-swarm-ops/business/video/agents"
   },
-  "imported_from": "C:\\Project\\common-agent-swarm-ops\\business\\video\\agents\\video.motiongraphics",
+  "imported_from": "vendor/common-agent-swarm-ops/business/video/agents/video.motiongraphics",
   "reference_book_origin": "spec/book_of_knowledge.md",
   "reference_book_note": "Bibliographic references from spec/book_of_knowledge.md. Does not enable network, RAG, T3, plugins, or memory writes."
 }

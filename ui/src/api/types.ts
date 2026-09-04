@@ -42,6 +42,13 @@ export class CasopsHttpError extends Error {
   }
 }
 
+export class RequestAbortedError extends Error {
+  constructor(message = "Request stopped") {
+    super(message);
+    this.name = "RequestAbortedError";
+  }
+}
+
 export class MutationContractError extends CasopsHttpError {
   constructor(code: "IMP_UNSIGNED" | "IMP_SELF_APPROVAL", message: string) {
     super(409, { error: { code, message, containment_required: false } });
@@ -115,6 +122,67 @@ export interface MemoryRecord {
   text: string;
 }
 
+export interface EvalFixtureSource {
+  repo?: string;
+  file?: string;
+  case_id?: string;
+  case_name?: string;
+  note?: string;
+}
+
+export interface EvalFixture {
+  id: string;
+  filename?: string;
+  agent_id?: string;
+  path: string;
+  honesty?: string;
+  schema_version?: string;
+  input?: { message?: string; history?: unknown[] };
+  expect?: Record<string, unknown>;
+  source?: EvalFixtureSource;
+}
+
+export interface EvalFixturesResponse {
+  agent_id: string;
+  honesty: string;
+  note?: string;
+  fixtures: EvalFixture[];
+  provenance?: Record<string, unknown> | null;
+}
+
+export interface AgentFileRow {
+  path: string;
+  bytes: number;
+  kind: string;
+  writable: boolean;
+}
+
+export interface AgentFileFolder {
+  name: string;
+  present: boolean;
+  files: AgentFileRow[];
+}
+
+export interface AgentFilesResponse {
+  agent_id: string;
+  folders: AgentFileFolder[];
+  max_bytes?: number;
+}
+
+export interface AgentFileItem {
+  agent_id: string;
+  path: string;
+  bytes: number;
+  kind: string;
+  writable: boolean;
+  host_owned?: boolean;
+  encoding?: string | null;
+  content?: string | null;
+  sha256?: string | null;
+  saved?: boolean;
+  dry_run?: boolean;
+}
+
 export interface ValidationReport {
   agent_id?: string;
   verdict?: string;
@@ -179,6 +247,17 @@ export interface AgentLlmView {
   dry_run?: boolean;
 }
 
+export interface ChatLlmView {
+  max_tokens?: number;
+  max_tokens_source?: string;
+  declared_max_output_tokens?: number | null;
+  finish_reason?: string;
+  content_chars?: number;
+  model?: string;
+  truncated?: boolean;
+  usage?: Record<string, number>;
+}
+
 export interface ChatResponse {
   agent_id: string;
   reply: string;
@@ -189,6 +268,7 @@ export interface ChatResponse {
   plugins_executed: boolean;
   t3_enabled: boolean;
   used_prompt_reference?: string;
+  llm?: ChatLlmView;
 }
 
 export interface CacheStats {

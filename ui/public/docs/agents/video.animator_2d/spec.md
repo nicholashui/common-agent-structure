@@ -2158,26 +2158,26 @@ Omitted here; same document as `SPEC.md` above.
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "动画师生存手册",
+      "title": "\u52a8\u753b\u5e08\u751f\u5b58\u624b\u518c",
       "isbn13": "9787115215208",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 动画师生存手册，ISBN-13 9787115215208"
+      "citation": "ZH: \u52a8\u753b\u5e08\u751f\u5b58\u624b\u518c\uff0cISBN-13 9787115215208"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "生命的幻象：迪斯尼动画造型设计",
+      "title": "\u751f\u547d\u7684\u5e7b\u8c61\uff1a\u8fea\u65af\u5c3c\u52a8\u753b\u9020\u578b\u8bbe\u8ba1",
       "isbn13": "9787532275119",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 生命的幻象：迪斯尼动画造型设计，ISBN-13 9787532275119"
+      "citation": "ZH: \u751f\u547d\u7684\u5e7b\u8c61\uff1a\u8fea\u65af\u5c3c\u52a8\u753b\u9020\u578b\u8bbe\u8ba1\uff0cISBN-13 9787532275119"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "动画时间掌握",
+      "title": "\u52a8\u753b\u65f6\u95f4\u638c\u63e1",
       "isbn13": "9787532275126",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 动画时间掌握，ISBN-13 9787532275126"
+      "citation": "ZH: \u52a8\u753b\u65f6\u95f4\u638c\u63e1\uff0cISBN-13 9787532275126"
     },
     {
       "kind": "reference_book",
@@ -2218,18 +2218,18 @@ Omitted here; same document as `SPEC.md` above.
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "分镜的艺术",
+      "title": "\u5206\u955c\u7684\u827a\u672f",
       "isbn13": "9787535672346",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 分镜的艺术，ISBN-13 9787535672346"
+      "citation": "ZH: \u5206\u955c\u7684\u827a\u672f\uff0cISBN-13 9787535672346"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "电影镜头设计",
+      "title": "\u7535\u5f71\u955c\u5934\u8bbe\u8ba1",
       "isbn13": "9787115222224",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 电影镜头设计，ISBN-13 9787115222224"
+      "citation": "ZH: \u7535\u5f71\u955c\u5934\u8bbe\u8ba1\uff0cISBN-13 9787115222224"
     },
     {
       "kind": "reference_book",
@@ -2270,18 +2270,18 @@ Omitted here; same document as `SPEC.md` above.
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "演员的自我修养",
+      "title": "\u6f14\u5458\u7684\u81ea\u6211\u4fee\u517b",
       "isbn13": "9787108014504",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 演员的自我修养，ISBN-13 9787108014504"
+      "citation": "ZH: \u6f14\u5458\u7684\u81ea\u6211\u4fee\u517b\uff0cISBN-13 9787108014504"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "尊重表演艺术",
+      "title": "\u5c0a\u91cd\u8868\u6f14\u827a\u672f",
       "isbn13": "9787106028893",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 尊重表演艺术，ISBN-13 9787106028893"
+      "citation": "ZH: \u5c0a\u91cd\u8868\u6f14\u827a\u672f\uff0cISBN-13 9787106028893"
     }
   ],
   "agent_id": "video.animator_2d",
@@ -2296,7 +2296,7 @@ Omitted here; same document as `SPEC.md` above.
     "adopted_at": "2026-07-27T01:30:27.627608+00:00",
     "upstream": "generic-swarm-ops/business/video/agents"
   },
-  "imported_from": "C:\\Project\\common-agent-swarm-ops\\business\\video\\agents\\video.animator_2d",
+  "imported_from": "vendor/common-agent-swarm-ops/business/video/agents/video.animator_2d",
   "reference_book_origin": "spec/book_of_knowledge.md",
   "reference_book_note": "Bibliographic references from spec/book_of_knowledge.md. Does not enable network, RAG, T3, plugins, or memory writes."
 }

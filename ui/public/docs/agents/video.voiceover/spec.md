@@ -3104,7 +3104,7 @@ The diagram below presents the common agent as a professional operating architec
 ## Provenance
 
 - Master roster row va_id=48 from embedded agents.md content above.
-- Deep/extra text from `business/video/corpus/` and `C:\Project\va-agent-swarm`.
+- Deep/extra text from `business/video/corpus/` and `vendor/va-agent-swarm`.
 - Generator: `scripts/business/enrich_video_agent_specs.py`.
 - Upstream project name (historical only): va-agent-swarm.
 
@@ -3197,11 +3197,11 @@ Omitted here; same document as `SPEC.md` above.
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "播音主持创作基础",
-      "author": "张颂",
+      "title": "\u64ad\u97f3\u4e3b\u6301\u521b\u4f5c\u57fa\u7840",
+      "author": "\u5f20\u9882",
       "isbn13": "9787565701238",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 播音主持创作基础（张颂），ISBN-13 9787565701238"
+      "citation": "ZH: \u64ad\u97f3\u4e3b\u6301\u521b\u4f5c\u57fa\u7840\uff08\u5f20\u9882\uff09\uff0cISBN-13 9787565701238"
     },
     {
       "kind": "reference_book",
@@ -3242,26 +3242,26 @@ Omitted here; same document as `SPEC.md` above.
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "演员的自我修养",
+      "title": "\u6f14\u5458\u7684\u81ea\u6211\u4fee\u517b",
       "isbn13": "9787108014504",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 演员的自我修养，ISBN-13 9787108014504"
+      "citation": "ZH: \u6f14\u5458\u7684\u81ea\u6211\u4fee\u517b\uff0cISBN-13 9787108014504"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "尊重表演艺术",
+      "title": "\u5c0a\u91cd\u8868\u6f14\u827a\u672f",
       "isbn13": "9787106028893",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 尊重表演艺术，ISBN-13 9787106028893"
+      "citation": "ZH: \u5c0a\u91cd\u8868\u6f14\u827a\u672f\uff0cISBN-13 9787106028893"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "秒懂声音掘金：重塑声音 打造声音IP 声音创副业 AI配音 AI解说",
+      "title": "\u79d2\u61c2\u58f0\u97f3\u6398\u91d1\uff1a\u91cd\u5851\u58f0\u97f3 \u6253\u9020\u58f0\u97f3IP \u58f0\u97f3\u521b\u526f\u4e1a AI\u914d\u97f3 AI\u89e3\u8bf4",
       "isbn13": "9787122477637",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 秒懂声音掘金：重塑声音 打造声音IP 声音创副业 AI配音 AI解说，ISBN-13 9787122477637"
+      "citation": "ZH: \u79d2\u61c2\u58f0\u97f3\u6398\u91d1\uff1a\u91cd\u5851\u58f0\u97f3 \u6253\u9020\u58f0\u97f3IP \u58f0\u97f3\u521b\u526f\u4e1a AI\u914d\u97f3 AI\u89e3\u8bf4\uff0cISBN-13 9787122477637"
     },
     {
       "kind": "reference_book",
@@ -3284,19 +3284,19 @@ Omitted here; same document as `SPEC.md` above.
     {
       "kind": "reference_book",
       "language": "EN",
-      "title": "Production Sound Mixing The Art and Craft of Sound Recording for the Moving Image (The…",
+      "title": "Production Sound Mixing The Art and Craft of Sound Recording for the Moving Image (The\u2026",
       "author": "John J. Murphy",
       "isbn13": "9781501307102",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "EN: Production Sound Mixing The Art and Craft of Sound Recording for the Moving Image (The… (John J. Murphy), ISBN-13 9781501307102"
+      "citation": "EN: Production Sound Mixing The Art and Craft of Sound Recording for the Moving Image (The\u2026 (John J. Murphy), ISBN-13 9781501307102"
     },
     {
       "kind": "reference_book",
       "language": "EN",
-      "title": "Sound design the expressive power of music， voice and sound effects in cinema eng",
+      "title": "Sound design the expressive power of music\uff0c voice and sound effects in cinema eng",
       "isbn13": "9781032592183",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "EN: Sound design the expressive power of music， voice and sound effects in cinema eng, ISBN-13 9781032592183"
+      "citation": "EN: Sound design the expressive power of music\uff0c voice and sound effects in cinema eng, ISBN-13 9781032592183"
     },
     {
       "kind": "reference_book",
@@ -3328,11 +3328,11 @@ Omitted here; same document as `SPEC.md` above.
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "电影电视声音创作与录音制作教程",
-      "author": "姚国强",
+      "title": "\u7535\u5f71\u7535\u89c6\u58f0\u97f3\u521b\u4f5c\u4e0e\u5f55\u97f3\u5236\u4f5c\u6559\u7a0b",
+      "author": "\u59da\u56fd\u5f3a",
       "isbn13": "9787106032937",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 电影电视声音创作与录音制作教程（姚国强），ISBN-13 9787106032937"
+      "citation": "ZH: \u7535\u5f71\u7535\u89c6\u58f0\u97f3\u521b\u4f5c\u4e0e\u5f55\u97f3\u5236\u4f5c\u6559\u7a0b\uff08\u59da\u56fd\u5f3a\uff09\uff0cISBN-13 9787106032937"
     }
   ],
   "agent_id": "video.voiceover",
@@ -3347,7 +3347,7 @@ Omitted here; same document as `SPEC.md` above.
     "adopted_at": "2026-07-27T01:30:29.015858+00:00",
     "upstream": "generic-swarm-ops/business/video/agents"
   },
-  "imported_from": "C:\\Project\\common-agent-swarm-ops\\business\\video\\agents\\video.voiceover",
+  "imported_from": "vendor/common-agent-swarm-ops/business/video/agents/video.voiceover",
   "reference_book_origin": "spec/book_of_knowledge.md",
   "reference_book_note": "Bibliographic references from spec/book_of_knowledge.md. Does not enable network, RAG, T3, plugins, or memory writes."
 }

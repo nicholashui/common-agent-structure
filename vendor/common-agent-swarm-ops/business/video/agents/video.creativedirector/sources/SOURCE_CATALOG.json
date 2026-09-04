@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.0",
+  "agent_id": "video.creativedirector",
+  "sources": [
+    {
+      "id": "src_1",
+      "title": "Cannes Lions Grand Prix",
+      "description": "Cannes Lions Grand Prix",
+      "license_class": "unknown_review_required",
+      "acquisition_method": "manual_or_licensed_api",
+      "local_path_hint": "sources/excerpts/ or sources/study/",
+      "refresh_sla_days": 90,
+      "owner": "video.creativedirector",
+      "status": "planned_or_partial"
+    },
+    {
+      "id": "src_2",
+      "title": "D&AD Pencils",
+      "description": "D&AD Pencils",
+      "license_class": "unknown_review_required",
+      "acquisition_method": "manual_or_licensed_api",
+      "local_path_hint": "sources/excerpts/ or sources/study/",
+      "refresh_sla_days": 90,
+      "owner": "video.creativedirector",
+      "status": "planned_or_partial"
+    },
+    {
+      "id": "src_3",
+      "title": "agency case studies",
+      "description": "agency case studies",
+      "license_class": "unknown_review_required",
+      "acquisition_method": "manual_or_licensed_api",
+      "local_path_hint": "sources/excerpts/ or sources/study/",
+      "refresh_sla_days": 90,
+      "owner": "video.creativedirector",
+      "status": "planned_or_partial"
+    }
+  ],
+  "note": "Legal review required before treating external corpora as production grounding."
+}

@@ -1,0 +1,75 @@
+{
+  "agent_id": "specials.complex_problem_solution_process_model",
+  "kind": "special",
+  "cases": [
+    {
+      "id": "tc1",
+      "name": "Multi-agent sim",
+      "method": "POST",
+      "path": "/api/v1/complex-problem/solve",
+      "body": {
+        "problem": "Coordinate multi-agent Osaka vlog simulation without live media",
+        "max_steps": 5
+      },
+      "success_criteria": {
+        "http_status": [
+          200
+        ],
+        "required_keys_any": [
+          "ok",
+          "steps",
+          "solution",
+          "result",
+          "correlation_id"
+        ],
+        "notes": "Complex-problem offline process model."
+      }
+    },
+    {
+      "id": "tc2",
+      "name": "Retention vs directing",
+      "method": "POST",
+      "path": "/api/v1/complex-problem/solve",
+      "body": {
+        "problem": "Balance retention scoring vs directing cost",
+        "context": "T3 before T4"
+      },
+      "success_criteria": {
+        "http_status": [
+          200
+        ],
+        "required_keys_any": [
+          "ok",
+          "steps",
+          "solution",
+          "result",
+          "correlation_id"
+        ],
+        "notes": "Complex-problem offline process model."
+      }
+    },
+    {
+      "id": "tc3",
+      "name": "HITL package",
+      "method": "POST",
+      "path": "/api/v1/complex-problem/solve",
+      "body": {
+        "problem": "Fail-closed package release with HITL",
+        "max_steps": 4
+      },
+      "success_criteria": {
+        "http_status": [
+          200
+        ],
+        "required_keys_any": [
+          "ok",
+          "steps",
+          "solution",
+          "result",
+          "correlation_id"
+        ],
+        "notes": "Complex-problem offline process model."
+      }
+    }
+  ]
+}

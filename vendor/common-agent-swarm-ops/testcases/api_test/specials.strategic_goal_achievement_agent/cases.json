@@ -1,0 +1,75 @@
+{
+  "agent_id": "specials.strategic_goal_achievement_agent",
+  "kind": "special",
+  "cases": [
+    {
+      "id": "tc1",
+      "name": "Ship vlog goal",
+      "method": "POST",
+      "path": "/api/v1/strategic/plan",
+      "body": {
+        "goal": "Ship high-retention Osaka travel vlog",
+        "domain": "video"
+      },
+      "success_criteria": {
+        "http_status": [
+          200
+        ],
+        "required_keys_any": [
+          "ok",
+          "plan",
+          "objectives",
+          "correlation_id",
+          "result"
+        ],
+        "notes": "Strategic offline plan without live OKR systems."
+      }
+    },
+    {
+      "id": "tc2",
+      "name": "Package HITL KRs",
+      "method": "POST",
+      "path": "/api/v1/strategic/plan",
+      "body": {
+        "goal": "Define KRs for offline simulated package HITL",
+        "horizon": "project"
+      },
+      "success_criteria": {
+        "http_status": [
+          200
+        ],
+        "required_keys_any": [
+          "ok",
+          "plan",
+          "objectives",
+          "correlation_id",
+          "result"
+        ],
+        "notes": "Strategic offline plan without live OKR systems."
+      }
+    },
+    {
+      "id": "tc3",
+      "name": "Stages-lite multi-agent",
+      "method": "POST",
+      "path": "/api/v1/strategic/plan",
+      "body": {
+        "goal": "Stages-lite plan for multi-agent vlog simulation",
+        "domain": "video"
+      },
+      "success_criteria": {
+        "http_status": [
+          200
+        ],
+        "required_keys_any": [
+          "ok",
+          "plan",
+          "objectives",
+          "correlation_id",
+          "result"
+        ],
+        "notes": "Strategic offline plan without live OKR systems."
+      }
+    }
+  ]
+}

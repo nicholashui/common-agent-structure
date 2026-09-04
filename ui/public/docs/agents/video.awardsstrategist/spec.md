@@ -2022,7 +2022,7 @@ Optimization Meta-Agents                     S21: Optimization Panel
 ## Provenance
 
 - Master roster row va_id=83 from embedded agents.md content above.
-- Deep/extra text from `business/video/corpus/` and `C:\Project\va-agent-swarm`.
+- Deep/extra text from `business/video/corpus/` and `vendor/va-agent-swarm`.
 - Generator: `scripts/business/enrich_video_agent_specs.py`.
 - Upstream project name (historical only): va-agent-swarm.
 
@@ -2102,10 +2102,10 @@ Live primary-source expansion remains a residual for score 100 on S3 where depth
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "认识电影",
+      "title": "\u8ba4\u8bc6\u7535\u5f71",
       "isbn13": "9787532763122",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 认识电影，ISBN-13 9787532763122"
+      "citation": "ZH: \u8ba4\u8bc6\u7535\u5f71\uff0cISBN-13 9787532763122"
     },
     {
       "kind": "reference_book",
@@ -2164,10 +2164,10 @@ Live primary-source expansion remains a residual for score 100 on S3 where depth
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "影视制片管理",
+      "title": "\u5f71\u89c6\u5236\u7247\u7ba1\u7406",
       "isbn13": "9787301169186",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 影视制片管理，ISBN-13 9787301169186"
+      "citation": "ZH: \u5f71\u89c6\u5236\u7247\u7ba1\u7406\uff0cISBN-13 9787301169186"
     },
     {
       "kind": "reference_book",
@@ -2218,10 +2218,10 @@ Live primary-source expansion remains a residual for score 100 on S3 where depth
       "kind": "reference_book",
       "language": "EN",
       "title": "What Is Cinema? Vol. 1",
-      "author": "André Bazin",
+      "author": "Andr\u00e9 Bazin",
       "isbn13": "9780520242272",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "EN: What Is Cinema? Vol. 1 (André Bazin), ISBN-13 9780520242272"
+      "citation": "EN: What Is Cinema? Vol. 1 (Andr\u00e9 Bazin), ISBN-13 9780520242272"
     },
     {
       "kind": "reference_book",
@@ -2236,10 +2236,10 @@ Live primary-source expansion remains a residual for score 100 on S3 where depth
       "kind": "reference_book",
       "language": "EN",
       "title": "Hitchcock/Truffaut",
-      "author": "François Truffaut",
+      "author": "Fran\u00e7ois Truffaut",
       "isbn13": "9780671604295",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "EN: Hitchcock/Truffaut (François Truffaut), ISBN-13 9780671604295"
+      "citation": "EN: Hitchcock/Truffaut (Fran\u00e7ois Truffaut), ISBN-13 9780671604295"
     },
     {
       "kind": "reference_book",
@@ -2253,46 +2253,46 @@ Live primary-source expansion remains a residual for score 100 on S3 where depth
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "电影艺术：形式与风格",
-      "author": "波德维尔、汤普森",
+      "title": "\u7535\u5f71\u827a\u672f\uff1a\u5f62\u5f0f\u4e0e\u98ce\u683c",
+      "author": "\u6ce2\u5fb7\u7ef4\u5c14\u3001\u6c64\u666e\u68ee",
       "isbn13": "9787301254332",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 电影艺术：形式与风格（波德维尔、汤普森），ISBN-13 9787301254332"
+      "citation": "ZH: \u7535\u5f71\u827a\u672f\uff1a\u5f62\u5f0f\u4e0e\u98ce\u683c\uff08\u6ce2\u5fb7\u7ef4\u5c14\u3001\u6c64\u666e\u68ee\uff09\uff0cISBN-13 9787301254332"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "电影是什么",
-      "author": "巴赞",
+      "title": "\u7535\u5f71\u662f\u4ec0\u4e48",
+      "author": "\u5df4\u8d5e",
       "isbn13": "9787108017963",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 电影是什么（巴赞），ISBN-13 9787108017963"
+      "citation": "ZH: \u7535\u5f71\u662f\u4ec0\u4e48\uff08\u5df4\u8d5e\uff09\uff0cISBN-13 9787108017963"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "雕刻时光",
-      "author": "塔可夫斯基",
+      "title": "\u96d5\u523b\u65f6\u5149",
+      "author": "\u5854\u53ef\u592b\u65af\u57fa",
       "isbn13": "9787532743841",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 雕刻时光（塔可夫斯基），ISBN-13 9787532743841"
+      "citation": "ZH: \u96d5\u523b\u65f6\u5149\uff08\u5854\u53ef\u592b\u65af\u57fa\uff09\uff0cISBN-13 9787532743841"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "希区柯克与特吕弗对话录",
+      "title": "\u5e0c\u533a\u67ef\u514b\u4e0e\u7279\u5415\u5f17\u5bf9\u8bdd\u5f55",
       "isbn13": "9787532745128",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 希区柯克与特吕弗对话录，ISBN-13 9787532745128"
+      "citation": "ZH: \u5e0c\u533a\u67ef\u514b\u4e0e\u7279\u5415\u5f17\u5bf9\u8bdd\u5f55\uff0cISBN-13 9787532745128"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "电影语言的语法",
-      "author": "阿里洪",
+      "title": "\u7535\u5f71\u8bed\u8a00\u7684\u8bed\u6cd5",
+      "author": "\u963f\u91cc\u6d2a",
       "isbn13": "9787532299990",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 电影语言的语法（阿里洪），ISBN-13 9787532299990"
+      "citation": "ZH: \u7535\u5f71\u8bed\u8a00\u7684\u8bed\u6cd5\uff08\u963f\u91cc\u6d2a\uff09\uff0cISBN-13 9787532299990"
     },
     {
       "kind": "reference_book",
@@ -2342,11 +2342,11 @@ Live primary-source expansion remains a residual for score 100 on S3 where depth
     {
       "kind": "reference_book",
       "language": "EN",
-      "title": "The Big Show High Times and Dirty Dealings Backstage at the Academy Awards®",
+      "title": "The Big Show High Times and Dirty Dealings Backstage at the Academy Awards\u00ae",
       "author": "Steve Pond",
       "isbn13": "9780571211937",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "EN: The Big Show High Times and Dirty Dealings Backstage at the Academy Awards® (Steve Pond), ISBN-13 9780571211937"
+      "citation": "EN: The Big Show High Times and Dirty Dealings Backstage at the Academy Awards\u00ae (Steve Pond), ISBN-13 9780571211937"
     }
   ],
   "agent_id": "video.awardsstrategist",
@@ -2361,7 +2361,7 @@ Live primary-source expansion remains a residual for score 100 on S3 where depth
     "adopted_at": "2026-07-27T01:30:27.705398+00:00",
     "upstream": "generic-swarm-ops/business/video/agents"
   },
-  "imported_from": "C:\\Project\\common-agent-swarm-ops\\business\\video\\agents\\video.awardsstrategist",
+  "imported_from": "vendor/common-agent-swarm-ops/business/video/agents/video.awardsstrategist",
   "reference_book_origin": "spec/book_of_knowledge.md",
   "reference_book_note": "Bibliographic references from spec/book_of_knowledge.md. Does not enable network, RAG, T3, plugins, or memory writes."
 }

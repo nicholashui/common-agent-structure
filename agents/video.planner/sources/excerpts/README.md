@@ -30,7 +30,7 @@
 
 1. Open `business/video/agents/<pack_id>/SPEC.md` first (self-contained).  
 2. Then open files listed under **Related local documents**.  
-3. Do **not** require `C:\Project\va-agent-swarm` to exist.  
+3. Do **not** require `vendor/va-agent-swarm` to exist.  
 4. Design-time “Tool Access” text is **not** an automatic runtime allow-list.
 
 ## Integrity

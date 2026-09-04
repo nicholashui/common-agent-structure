@@ -89,6 +89,10 @@ describe("SPEC_V3 client coverage", () => {
     await client.getAgentLlm("a");
     await client.setAgentLlm("a", "openai");
     await client.chatAgent("a", { message: "hello" });
+    await client.getEvalFixtures("a");
+    await client.listAgentFiles("a");
+    await client.getAgentFile("a", "prompts/primary.md");
+    await client.putAgentFile("a", "prompts/primary.md", "# x\n");
 
     const normalized = seen.map((row) =>
       row
@@ -111,5 +115,9 @@ describe("SPEC_V3 client coverage", () => {
     expect(normalized).toContain("GET /api/v3/agents/{agent_id}/llm");
     expect(normalized).toContain("POST /api/v3/agents/{agent_id}/llm");
     expect(normalized).toContain("POST /api/v3/agents/{agent_id}/runtime/chat");
+    expect(normalized).toContain("GET /api/v3/agents/{agent_id}/evals/fixtures");
+    expect(normalized).toContain("GET /api/v3/agents/{agent_id}/files");
+    expect(normalized).toContain("GET /api/v3/agents/{agent_id}/files/item");
+    expect(normalized).toContain("PUT /api/v3/agents/{agent_id}/files/item");
   });
 });

@@ -25,6 +25,7 @@ def test_structure_exposes_video_director_io() -> None:
     client = TestClient(create_control_plane(agents_root=REPO / "agents"))
     body = client.get("/api/v3/agents/video.director/structure").json()
     assert body["agent_id"] == "video.director"
+    assert body["folder"] == "agents/video.director"
     assert body["spec_bytes"] > 0
     assert body["io"]["defined"] is True
     assert body["io"]["merged"] is False
@@ -105,6 +106,8 @@ def test_chat_returns_reply_without_memory_or_plugins(
     assert body["memory_writes"] == []
     assert body["plugins_executed"] is False
     assert body["t3_enabled"] is False
+    assert body["llm"]["max_tokens_source"] == "spec"
+    assert body["llm"]["truncated"] is False
     assert "video.critic" in body["io"]["inputs"]
     payload = json.loads(body["reply"])
     other = client.post(

@@ -1,0 +1,314 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <linearGradient id="topbar-bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1E293B"/>
+      <stop offset="100%" stop-color="#0F172A"/>
+    </linearGradient>
+    <linearGradient id="sidenav-bg" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#1E293B"/>
+      <stop offset="100%" stop-color="#1E293B"/>
+    </linearGradient>
+    <linearGradient id="canvas-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#F8FAFC"/>
+      <stop offset="100%" stop-color="#F1F5F9"/>
+    </linearGradient>
+    <linearGradient id="node-running" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#3B82F6"/>
+      <stop offset="100%" stop-color="#2563EB"/>
+    </linearGradient>
+    <linearGradient id="node-complete" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#22C55E"/>
+      <stop offset="100%" stop-color="#16A34A"/>
+    </linearGradient>
+    <linearGradient id="node-gate" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#F59E0B"/>
+      <stop offset="100%" stop-color="#D97706"/>
+    </linearGradient>
+    <linearGradient id="drawer-bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#F8FAFC"/>
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#0F172A" flood-opacity="0.12"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1600" height="1000" fill="#0F172A"/>
+
+
+  <!-- TOP BAR -->
+  <rect x="0" y="0" width="1600" height="64" fill="url(#topbar-bg)"/>
+  <text x="24" y="40" fill="#F8FAFC" font-size="18" font-weight="700">VA Agent Swarm</text>
+  <!-- Search bar -->
+  <rect x="200" y="16" width="500" height="32" rx="16" fill="#334155"/>
+  <text x="220" y="37" fill="#94A3B8" font-size="13">Search agents, artifacts, actions... (Cmd+K)</text>
+  <!-- Right nav items -->
+  <rect x="1340" y="20" width="24" height="24" rx="4" fill="#334155"/>
+  <text x="1346" y="37" fill="#F8FAFC" font-size="11">N</text>
+  <circle cx="1360" cy="24" r="6" fill="#EF4444"/>
+  <text x="1356" y="27" fill="white" font-size="8">3</text>
+  <rect x="1400" y="20" width="24" height="24" rx="4" fill="#334155"/>
+  <text x="1406" y="37" fill="#F8FAFC" font-size="11">U</text>
+  <rect x="1460" y="20" width="24" height="24" rx="4" fill="#334155"/>
+  <text x="1466" y="37" fill="#F8FAFC" font-size="11">S</text>
+  <!-- Top bar labels -->
+  <text x="1335" y="56" fill="#64748B" font-size="9">Notif</text>
+  <text x="1395" y="56" fill="#64748B" font-size="9">User</text>
+  <text x="1450" y="56" fill="#64748B" font-size="9">Settings</text>
+
+  <!-- SIDE NAV -->
+  <rect x="0" y="64" width="72" height="936" fill="url(#sidenav-bg)"/>
+  <!-- Nav icons -->
+  <rect x="16" y="84" width="40" height="40" rx="8" fill="#3B82F6" opacity="0.2"/>
+  <text x="24" y="109" fill="#3B82F6" font-size="11" font-weight="600">Dash</text>
+  <rect x="16" y="140" width="40" height="40" rx="8" fill="transparent"/>
+  <text x="20" y="165" fill="#94A3B8" font-size="11">Brief</text>
+  <rect x="16" y="196" width="40" height="40" rx="8" fill="#3B82F6" opacity="0.15"/>
+  <text x="20" y="221" fill="#E2E8F0" font-size="11">Prod</text>
+  <rect x="16" y="252" width="40" height="40" rx="8" fill="transparent"/>
+  <text x="16" y="277" fill="#94A3B8" font-size="11">Agents</text>
+  <rect x="16" y="308" width="40" height="40" rx="8" fill="transparent"/>
+  <text x="18" y="333" fill="#94A3B8" font-size="11">Mem</text>
+  <rect x="16" y="364" width="40" height="40" rx="8" fill="transparent"/>
+  <text x="18" y="389" fill="#94A3B8" font-size="11">Deliv</text>
+  <rect x="16" y="420" width="40" height="40" rx="8" fill="transparent"/>
+  <text x="20" y="445" fill="#94A3B8" font-size="11">Help</text>
+
+  <!-- MAIN CANVAS AREA -->
+  <rect x="72" y="64" width="1528" height="888" fill="url(#canvas-bg)"/>
+
+
+  <!-- CONTEXT BAR -->
+  <rect x="72" y="64" width="1528" height="48" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="92" y="93" fill="#1E293B" font-size="14" font-weight="600">Production: "Luna"</text>
+  <text x="260" y="93" fill="#64748B" font-size="12">Type: E (AI Short Film)</text>
+  <text x="440" y="93" fill="#64748B" font-size="12">Phase: Production</text>
+  <!-- Phase pills -->
+  <rect x="600" y="78" width="60" height="22" rx="11" fill="#22C55E" opacity="0.15"/>
+  <text x="610" y="93" fill="#16A34A" font-size="10">Pre ✓</text>
+  <rect x="670" y="78" width="70" height="22" rx="11" fill="#3B82F6" opacity="0.15"/>
+  <text x="680" y="93" fill="#2563EB" font-size="10">Prod ●</text>
+  <rect x="750" y="78" width="60" height="22" rx="11" fill="#94A3B8" opacity="0.15"/>
+  <text x="760" y="93" fill="#64748B" font-size="10">Post ○</text>
+  <rect x="820" y="78" width="60" height="22" rx="11" fill="#94A3B8" opacity="0.15"/>
+  <text x="830" y="93" fill="#64748B" font-size="10">Deliv ○</text>
+  <!-- Budget / Time -->
+  <text x="1300" y="93" fill="#64748B" font-size="12">Budget: $42/$100</text>
+  <text x="1450" y="93" fill="#64748B" font-size="12">ETA: 3m</text>
+
+  <!-- VIEW TABS -->
+  <rect x="72" y="112" width="1528" height="36" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="0.5"/>
+  <rect x="82" y="118" width="80" height="24" rx="4" fill="#3B82F6"/>
+  <text x="100" y="135" fill="#FFFFFF" font-size="11" font-weight="600">DAG Canvas</text>
+  <text x="180" y="135" fill="#64748B" font-size="11">Timeline</text>
+  <text x="260" y="135" fill="#64748B" font-size="11">Gallery</text>
+  <text x="340" y="135" fill="#64748B" font-size="11">Critique Feed</text>
+  <text x="450" y="135" fill="#64748B" font-size="11">Quality</text>
+  <text x="540" y="135" fill="#64748B" font-size="11">Prompt Lab</text>
+
+  <!-- DAG CANVAS (Primary View) -->
+  <rect x="82" y="158" width="1508" height="530" rx="8" fill="#F8FAFC" filter="url(#shadow)"/>
+
+  <!-- Brief Node -->
+  <rect x="720" y="175" width="120" height="40" rx="20" fill="#6366F1" filter="url(#shadow)"/>
+  <text x="755" y="200" fill="#FFFFFF" font-size="12" font-weight="600">[Brief]</text>
+
+  <!-- Arrow down from Brief -->
+  <line x1="780" y1="215" x2="780" y2="240" stroke="#94A3B8" stroke-width="2" marker-end="url(#arrow-marker)"/>
+
+  <!-- PlannerAgent Node (Complete) -->
+  <rect x="710" y="240" width="140" height="44" rx="8" fill="url(#node-complete)" filter="url(#shadow)"/>
+  <text x="730" y="260" fill="#FFFFFF" font-size="11" font-weight="600">PlannerAgent</text>
+  <text x="730" y="275" fill="#DCFCE7" font-size="9">✓ Complete</text>
+
+  <!-- Arrow down -->
+  <line x1="780" y1="284" x2="780" y2="310" stroke="#94A3B8" stroke-width="2"/>
+
+  <!-- OrchestratorAgent Node (Running) -->
+  <rect x="700" y="310" width="160" height="44" rx="8" fill="url(#node-running)" filter="url(#shadow)"/>
+  <text x="718" y="330" fill="#FFFFFF" font-size="11" font-weight="600">OrchestratorAgent</text>
+  <text x="718" y="345" fill="#BFDBFE" font-size="9">● Running</text>
+
+  <!-- Branch to MemoryAgent -->
+  <line x1="860" y1="332" x2="960" y2="332" stroke="#94A3B8" stroke-width="1.5" stroke-dasharray="4"/>
+  <rect x="960" y="315" width="130" height="36" rx="8" fill="#8B5CF6" opacity="0.8"/>
+  <text x="978" y="337" fill="#FFFFFF" font-size="10">MemoryAgent ●</text>
+
+  <!-- Arrow down to RouterAgent -->
+  <line x1="780" y1="354" x2="780" y2="380" stroke="#94A3B8" stroke-width="2"/>
+
+  <!-- RouterAgent Node (Running) -->
+  <rect x="710" y="380" width="140" height="44" rx="8" fill="url(#node-running)" filter="url(#shadow)"/>
+  <text x="738" y="400" fill="#FFFFFF" font-size="11" font-weight="600">RouterAgent</text>
+  <text x="738" y="415" fill="#BFDBFE" font-size="9">● Routing tasks</text>
+
+
+  <!-- Fan-out to Craft Agents -->
+  <line x1="740" y1="424" x2="340" y2="470" stroke="#94A3B8" stroke-width="1.5"/>
+  <line x1="760" y1="424" x2="520" y2="470" stroke="#94A3B8" stroke-width="1.5"/>
+  <line x1="780" y1="424" x2="700" y2="470" stroke="#94A3B8" stroke-width="1.5"/>
+  <line x1="800" y1="424" x2="880" y2="470" stroke="#94A3B8" stroke-width="1.5"/>
+  <line x1="820" y1="424" x2="1060" y2="470" stroke="#94A3B8" stroke-width="1.5"/>
+  <line x1="840" y1="424" x2="1240" y2="470" stroke="#94A3B8" stroke-width="1.5"/>
+
+  <!-- Craft Agent Nodes -->
+  <rect x="280" y="470" width="120" height="38" rx="6" fill="url(#node-running)" opacity="0.9"/>
+  <text x="296" y="490" fill="#FFFFFF" font-size="10" font-weight="600">DirectorAgent</text>
+  <text x="296" y="502" fill="#BFDBFE" font-size="8">● Shot #5</text>
+
+  <rect x="460" y="470" width="120" height="38" rx="6" fill="#94A3B8" opacity="0.4"/>
+  <text x="490" y="490" fill="#1E293B" font-size="10" font-weight="600">DoPAgent</text>
+  <text x="490" y="502" fill="#64748B" font-size="8">○ Queued</text>
+
+  <rect x="640" y="470" width="120" height="38" rx="6" fill="#94A3B8" opacity="0.4"/>
+  <text x="666" y="490" fill="#1E293B" font-size="10" font-weight="600">EditorAgent</text>
+  <text x="666" y="502" fill="#64748B" font-size="8">○ Queued</text>
+
+  <rect x="820" y="470" width="120" height="38" rx="6" fill="#94A3B8" opacity="0.4"/>
+  <text x="835" y="490" fill="#1E293B" font-size="10" font-weight="600">ComposerAgent</text>
+  <text x="835" y="502" fill="#64748B" font-size="8">○ Queued</text>
+
+  <rect x="1000" y="470" width="120" height="38" rx="6" fill="#94A3B8" opacity="0.4"/>
+  <text x="1020" y="490" fill="#1E293B" font-size="10" font-weight="600">VFX Sup</text>
+  <text x="1020" y="502" fill="#64748B" font-size="8">○ Queued</text>
+
+  <rect x="1180" y="470" width="120" height="38" rx="6" fill="url(#node-running)" opacity="0.9"/>
+  <text x="1192" y="490" fill="#FFFFFF" font-size="10" font-weight="600">PromptEng</text>
+  <text x="1192" y="502" fill="#BFDBFE" font-size="8">● Optimizing</text>
+
+  <!-- Critique Messages (arrows between craft agents) -->
+  <line x1="400" y1="495" x2="460" y2="495" stroke="#F59E0B" stroke-width="1" stroke-dasharray="3"/>
+  <line x1="580" y1="495" x2="640" y2="495" stroke="#F59E0B" stroke-width="1" stroke-dasharray="3"/>
+
+  <!-- Down to GateKeeper -->
+  <line x1="340" y1="508" x2="620" y2="560" stroke="#94A3B8" stroke-width="1.5"/>
+  <line x1="700" y1="508" x2="680" y2="560" stroke="#94A3B8" stroke-width="1.5"/>
+  <line x1="1060" y1="508" x2="720" y2="560" stroke="#94A3B8" stroke-width="1.5"/>
+
+  <!-- JudgeAgent -->
+  <rect x="430" y="555" width="120" height="38" rx="6" fill="#7C3AED" opacity="0.85"/>
+  <text x="453" y="575" fill="#FFFFFF" font-size="10" font-weight="600">JudgeAgent</text>
+  <text x="453" y="587" fill="#E9D5FF" font-size="8">● Scoring</text>
+  <line x1="550" y1="574" x2="600" y2="574" stroke="#94A3B8" stroke-width="1.5"/>
+
+  <!-- GateKeeper Node -->
+  <rect x="600" y="555" width="160" height="44" rx="8" fill="url(#node-gate)" filter="url(#shadow)"/>
+  <text x="625" y="575" fill="#FFFFFF" font-size="11" font-weight="600">GateKeeperAgent</text>
+  <text x="625" y="590" fill="#FEF3C7" font-size="9">⚠ Awaiting Approval</text>
+
+
+  <!-- Meta-Agent Clusters (bottom region) -->
+  <!-- Creative Meta -->
+  <rect x="100" y="620" width="400" height="48" rx="8" fill="#6366F1" opacity="0.1" stroke="#6366F1" stroke-width="1"/>
+  <text x="115" y="640" fill="#4338CA" font-size="9" font-weight="700">CREATIVE META</text>
+  <text x="115" y="656" fill="#6366F1" font-size="8">Ideation · NarrativeArc · StyleTransfer · MoodBoard · Novelty · EmotionalArc</text>
+
+  <!-- Research Meta -->
+  <rect x="520" y="620" width="440" height="48" rx="8" fill="#0891B2" opacity="0.1" stroke="#0891B2" stroke-width="1"/>
+  <text x="535" y="640" fill="#0E7490" font-size="9" font-weight="700">RESEARCH META</text>
+  <text x="535" y="656" fill="#0891B2" font-size="8">WebResearch · Archive · TrendIntel · CompetitorIntel · Citation · Interview · Benchmark</text>
+
+  <!-- Optimization Meta -->
+  <rect x="980" y="620" width="480" height="48" rx="8" fill="#059669" opacity="0.1" stroke="#059669" stroke-width="1"/>
+  <text x="995" y="640" fill="#047857" font-size="9" font-weight="700">OPTIMIZATION META</text>
+  <text x="995" y="656" fill="#059669" font-size="8">PromptOpt · CostOpt · LatencyOpt · RetentionOpt · ROASOpt · A11yOpt · EvalHarness · SafetyRedTeam</text>
+
+  <!-- Dashed arrows from meta clusters up to craft agents -->
+  <line x1="300" y1="620" x2="340" y2="508" stroke="#6366F1" stroke-width="1" stroke-dasharray="4" opacity="0.5"/>
+  <line x1="740" y1="620" x2="700" y2="508" stroke="#0891B2" stroke-width="1" stroke-dasharray="4" opacity="0.5"/>
+  <line x1="1200" y1="620" x2="1240" y2="508" stroke="#059669" stroke-width="1" stroke-dasharray="4" opacity="0.5"/>
+
+  <!-- DETAIL DRAWER (collapsed state indicator) -->
+  <rect x="82" y="698" width="1508" height="240" rx="12" fill="url(#drawer-bg)" stroke="#E2E8F0" stroke-width="1" filter="url(#shadow)"/>
+  <!-- Drawer handle -->
+  <rect x="800" y="702" width="60" height="4" rx="2" fill="#CBD5E1"/>
+  <text x="92" y="725" fill="#1E293B" font-size="13" font-weight="700">AGENT INSPECTOR: DirectorAgent (#1)</text>
+  <text x="1460" y="725" fill="#3B82F6" font-size="11">[Full Screen]</text>
+
+  <!-- Drawer content sections -->
+  <!-- Identity section -->
+  <rect x="100" y="740" width="260" height="80" rx="6" fill="#F1F5F9"/>
+  <text x="115" y="760" fill="#475569" font-size="10" font-weight="600">IDENTITY</text>
+  <text x="115" y="778" fill="#64748B" font-size="9">Category: Above-the-Line</text>
+  <text x="115" y="792" fill="#64748B" font-size="9">Pattern: Self-Refine</text>
+  <text x="115" y="806" fill="#64748B" font-size="9">Tools: Sora 2, Veo 3.1, Runway Gen-4</text>
+
+  <!-- Current Task section -->
+  <rect x="375" y="740" width="300" height="80" rx="6" fill="#F1F5F9"/>
+  <text x="390" y="760" fill="#475569" font-size="10" font-weight="600">CURRENT TASK</text>
+  <text x="390" y="778" fill="#1E293B" font-size="9">Generate Shot Intent #5</text>
+  <text x="390" y="792" fill="#3B82F6" font-size="9">● Running (iteration 2/5)</text>
+  <text x="390" y="806" fill="#64748B" font-size="9">Started: 12:03:22 · Est: 12:04:50</text>
+
+  <!-- Metrics section -->
+  <rect x="690" y="740" width="340" height="80" rx="6" fill="#F1F5F9"/>
+  <text x="705" y="760" fill="#475569" font-size="10" font-weight="600">QUALITY METRICS</text>
+  <!-- CLIP-T bar -->
+  <text x="705" y="778" fill="#64748B" font-size="9">CLIP-T:</text>
+  <rect x="760" y="770" width="200" height="8" rx="4" fill="#E2E8F0"/>
+  <rect x="760" y="770" width="170" height="8" rx="4" fill="#22C55E"/>
+  <text x="968" y="778" fill="#16A34A" font-size="9">0.34 ✓</text>
+  <!-- Beat Coverage bar -->
+  <text x="705" y="796" fill="#64748B" font-size="9">Beats:</text>
+  <rect x="760" y="788" width="200" height="8" rx="4" fill="#E2E8F0"/>
+  <rect x="760" y="788" width="200" height="8" rx="4" fill="#22C55E"/>
+  <text x="968" y="796" fill="#16A34A" font-size="9">12/12 ✓</text>
+
+  <!-- Critique Bus section -->
+  <rect x="1045" y="740" width="340" height="80" rx="6" fill="#F1F5F9"/>
+  <text x="1060" y="760" fill="#475569" font-size="10" font-weight="600">CRITIQUE BUS</text>
+  <text x="1060" y="778" fill="#F59E0B" font-size="9">← EditorAgent: "Shot 4 transition too abrupt"</text>
+  <text x="1060" y="792" fill="#F59E0B" font-size="9">← AudienceSim: "Scene 2 clarity 0.6 &lt; 0.7"</text>
+  <text x="1060" y="806" fill="#3B82F6" font-size="9">→ DoPAgent: "Use wider lens for Scene 3"</text>
+
+  <!-- Drawer action buttons -->
+  <rect x="100" y="835" width="80" height="28" rx="6" fill="#3B82F6"/>
+  <text x="118" y="854" fill="#FFFFFF" font-size="10">Retry</text>
+  <rect x="195" y="835" width="70" height="28" rx="6" fill="#64748B"/>
+  <text x="215" y="854" fill="#FFFFFF" font-size="10">Skip</text>
+  <rect x="280" y="835" width="110" height="28" rx="6" fill="#6366F1"/>
+  <text x="293" y="854" fill="#FFFFFF" font-size="10">Send Critique</text>
+  <rect x="405" y="835" width="100" height="28" rx="6" fill="transparent" stroke="#94A3B8" stroke-width="1"/>
+  <text x="420" y="854" fill="#64748B" font-size="10">Full History</text>
+
+
+  <!-- STATUS BAR -->
+  <rect x="0" y="968" width="1600" height="32" fill="#1E293B"/>
+  <text x="24" y="988" fill="#94A3B8" font-size="10">Running Agents: 12/27</text>
+  <text x="200" y="988" fill="#94A3B8" font-size="10">│</text>
+  <text x="220" y="988" fill="#94A3B8" font-size="10">Phase: Production</text>
+  <text x="400" y="988" fill="#94A3B8" font-size="10">│</text>
+  <text x="420" y="988" fill="#94A3B8" font-size="10">Budget: $42/$100</text>
+  <!-- Budget mini-bar -->
+  <rect x="540" y="981" width="100" height="6" rx="3" fill="#334155"/>
+  <rect x="540" y="981" width="42" height="6" rx="3" fill="#22C55E"/>
+  <text x="660" y="988" fill="#94A3B8" font-size="10">│</text>
+  <text x="680" y="988" fill="#94A3B8" font-size="10">ETA: 3m</text>
+  <text x="800" y="988" fill="#94A3B8" font-size="10">│</text>
+  <text x="820" y="988" fill="#94A3B8" font-size="10">Gates Pending: 1</text>
+  <text x="1000" y="988" fill="#94A3B8" font-size="10">│</text>
+  <text x="1020" y="988" fill="#94A3B8" font-size="10">Critiques: 4 open</text>
+  <text x="1200" y="988" fill="#94A3B8" font-size="10">│</text>
+  <text x="1220" y="988" fill="#94A3B8" font-size="10">Artifacts: 47</text>
+
+  <!-- LEGEND -->
+  <rect x="1320" y="160" width="260" height="150" rx="8" fill="#FFFFFF" stroke="#E2E8F0" filter="url(#shadow)"/>
+  <text x="1340" y="182" fill="#1E293B" font-size="11" font-weight="700">LEGEND</text>
+  <rect x="1340" y="192" width="12" height="12" rx="3" fill="#22C55E"/>
+  <text x="1360" y="203" fill="#475569" font-size="10">Complete</text>
+  <rect x="1340" y="212" width="12" height="12" rx="3" fill="#3B82F6"/>
+  <text x="1360" y="223" fill="#475569" font-size="10">Running</text>
+  <rect x="1340" y="232" width="12" height="12" rx="3" fill="#94A3B8" opacity="0.5"/>
+  <text x="1360" y="243" fill="#475569" font-size="10">Idle / Queued</text>
+  <rect x="1340" y="252" width="12" height="12" rx="3" fill="#F59E0B"/>
+  <text x="1360" y="263" fill="#475569" font-size="10">Awaiting Approval</text>
+  <rect x="1340" y="272" width="12" height="12" rx="3" fill="#EF4444"/>
+  <text x="1360" y="283" fill="#475569" font-size="10">Failed</text>
+  <line x1="1340" y1="292" x2="1380" y2="292" stroke="#F59E0B" stroke-width="1.5" stroke-dasharray="3"/>
+  <text x="1390" y="296" fill="#475569" font-size="10">Critique message</text>
+
+  <!-- Annotation: Zones -->
+  <text x="82" y="955" fill="#CBD5E1" font-size="9" font-style="italic">Primary View: DAG Canvas showing live Composition Diagram execution</text>
+
+</svg>

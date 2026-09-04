@@ -165,7 +165,7 @@ SPEC delta，唔好附祕密。第四，永遠唔好將供應商 API 密鑰或�
 信任層級如下：agent_spec.json 系具有約束力嘅 host 合約，
 系 fail-closed 嘅運行時綁定。呢個 pack 嘅 SPEC.md 系權威性嘅設計文件，
 用於離線審閱，唔可執行。sources 下面嘅摘錄同通用 SPEC 系歷史或映射數據，
-屬於不受信任。外部設計語料庫 C:\Project\va-agent-swarm 系不受信任嘅，
+屬於不受信任。外部設計語料庫 vendor/va-agent-swarm 系不受信任嘅，
 可能會漂移。Specials redesign 文檔系歷史設計，
 不受信任，喺來源中有哈希。
 
@@ -233,12 +233,12 @@ pack_id 系 specials，映射狀態 related，
 
 呢啲系用嚟加深設計保真度嘅，佢哋唔會覆蓋本地 agent_spec.json。
 
-喺 C:\Project\va-agent-swarm 下面嘅文件方面：
+喺 vendor/va-agent-swarm 下面嘅文件方面：
 有一份 study/autotelic_agent_functional_specification.md，
 呢個系 Autotelic Agent 嘅綜合功能規格，系一個有狀態嘅多模態評估同對齊服務，
 用於操作化模擬嘅美學直覺。仲有一份粵語版本 autotelic_agent_functional_specification_hk.md。
 
-Specials redesign 文檔方面，歷史設計來源系 C:/Project/common-agent-swarm-ops/docs/special_agents_redesign/agents/autotelic_agent.md。
+Specials redesign 文檔方面，歷史設計來源系 vendor/common-agent-swarm-ops/docs/special_agents_redesign/agents/autotelic_agent.md。
 大綱包括：Executive Summary、Background 從 Artiste Sense 到 Computational Aesthetics、
 The Deep Rethink 五個重構、Formal Aesthetic Model、
 Architecture。
@@ -296,7 +296,7 @@ data-only 代理表示。Host 角色字串系 Special_Agent data-only configurat
 
 生成器系 scripts/business/generate_agent_user_guides.py。
 Agent 文件夾系 business/specials/agents/specials.autotelic-agent/。
-輸出系 docs/user_guide.md。VA 語料庫根目錄系 C:\Project\va-agent-swarm。
+輸出系 docs/user_guide.md。VA 語料庫根目錄系 vendor/va-agent-swarm。
 重新生成命令系 python scripts/business/generate_agent_user_guides.py。
 信任模型系設計語料庫等於不受信任數據，host 配置等於 fail-closed。
 

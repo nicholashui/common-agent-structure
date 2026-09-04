@@ -1,0 +1,51 @@
+{
+  "schema_version": "1.0",
+  "agent_id": "video.analyst",
+  "sources": [
+    {
+      "id": "src_1",
+      "title": "Platform analytics dashboards",
+      "description": "Platform analytics dashboards",
+      "license_class": "unknown_review_required",
+      "acquisition_method": "manual_or_licensed_api",
+      "local_path_hint": "sources/excerpts/ or sources/study/",
+      "refresh_sla_days": 90,
+      "owner": "video.analyst",
+      "status": "planned_or_partial"
+    },
+    {
+      "id": "src_2",
+      "title": "experiment logs",
+      "description": "experiment logs",
+      "license_class": "unknown_review_required",
+      "acquisition_method": "manual_or_licensed_api",
+      "local_path_hint": "sources/excerpts/ or sources/study/",
+      "refresh_sla_days": 90,
+      "owner": "video.analyst",
+      "status": "planned_or_partial"
+    },
+    {
+      "id": "src_3",
+      "title": "evaluation-harness outputs",
+      "description": "evaluation-harness outputs",
+      "license_class": "unknown_review_required",
+      "acquisition_method": "manual_or_licensed_api",
+      "local_path_hint": "sources/excerpts/ or sources/study/",
+      "refresh_sla_days": 90,
+      "owner": "video.analyst",
+      "status": "planned_or_partial"
+    },
+    {
+      "id": "src_4",
+      "title": "benchmark histories",
+      "description": "benchmark histories",
+      "license_class": "unknown_review_required",
+      "acquisition_method": "manual_or_licensed_api",
+      "local_path_hint": "sources/excerpts/ or sources/study/",
+      "refresh_sla_days": 90,
+      "owner": "video.analyst",
+      "status": "planned_or_partial"
+    }
+  ],
+  "note": "Legal review required before treating external corpora as production grounding."
+}

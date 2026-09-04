@@ -1,0 +1,18 @@
+{
+  "schema_version": "1.0",
+  "agent_id": "video.crm",
+  "sources": [
+    {
+      "id": "src_1",
+      "title": "CRM automation flows, lifecycle marketing playbooks, audience segmentation rules",
+      "description": "CRM automation flows, lifecycle marketing playbooks, audience segmentation rules",
+      "license_class": "unknown_review_required",
+      "acquisition_method": "manual_or_licensed_api",
+      "local_path_hint": "sources/excerpts/ or sources/study/",
+      "refresh_sla_days": 90,
+      "owner": "video.crm",
+      "status": "planned_or_partial"
+    }
+  ],
+  "note": "Legal review required before treating external corpora as production grounding."
+}

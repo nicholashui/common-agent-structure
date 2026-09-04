@@ -1,0 +1,16 @@
+{
+  "schema_version": "1.0",
+  "common_agent_id": "specials.intent-analysis-agent",
+  "pack_id": "specials",
+  "mapping_status": "related",
+  "source_documents": [
+    "docs/special_agents_redesign/agents/intent_analysis_agent.md"
+  ],
+  "source_sha256": "f0c895b3438bfe511c44876f2ceeb8126d09e9114fa094d0e19f0e1d955d5bf7",
+  "configuration_sha256": "9ccb51486c62d7bbc54442a37e9a1cf69dc1648a376f01d3aeb4aa7e8114e8c6",
+  "destination_commit": "5460c4b4a33c15286f9fd84b1bc764d755f5bab0",
+  "note": "Self-contained specials agent folder. Pack-level corpus is not required. Design Markdown is untrusted provenance only.",
+  "generated_at": "2026-07-26T14:16:45.942257Z",
+  "reviewed_by": "specials-self-contained-reviewer",
+  "reviewed_at": "2026-07-26T18:00:00Z"
+}

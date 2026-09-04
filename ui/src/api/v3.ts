@@ -9,6 +9,7 @@ import { clipLogText, logApi, shouldSkipApiLog } from "../log/bus";
 import {
   CasopsHttpError,
   MutationContractError,
+  RequestAbortedError,
   type MutationContract,
   type AgentSummary,
   type Attestation,
@@ -24,6 +25,9 @@ import {
   type LlmSettingsView,
   type AgentLlmView,
   type ChatResponse,
+  type EvalFixturesResponse,
+  type AgentFileItem,
+  type AgentFilesResponse,
 } from "./types";
 
 export type FetchLike = (input: string, init?: RequestInit) => Promise<Response>;
@@ -112,6 +116,7 @@ export function createClient(options: ClientOptions) {
       timeoutMs?: number;
       body?: unknown;
       reasonFallback?: string;
+      signal?: AbortSignal;
     },
   ): Promise<T> {
     const filled = fill(path, init?.params ?? {});
@@ -131,8 +136,21 @@ export function createClient(options: ClientOptions) {
       payload = JSON.stringify(init.body);
     }
     const controller = new AbortController();
+    const external = init?.signal;
+    const onAbort = () => controller.abort();
+    if (external) {
+      if (external.aborted) {
+        controller.abort();
+      } else {
+        external.addEventListener("abort", onAbort, { once: true });
+      }
+    }
     const timeoutMs = init?.timeoutMs ?? DEFAULT_TIMEOUT_MS;
-    const timer = setTimeout(() => controller.abort(), timeoutMs);
+    let timedOut = false;
+    const timer = setTimeout(() => {
+      timedOut = true;
+      controller.abort();
+    }, timeoutMs);
     const started = Date.now();
     const skipLog = shouldSkipApiLog(url);
     try {
@@ -156,6 +174,10 @@ export function createClient(options: ClientOptions) {
       if (error instanceof CasopsHttpError) {
         throw error;
       }
+      const abortedByUser = Boolean(external?.aborted) && !timedOut;
+      if (abortedByUser) {
+        throw new RequestAbortedError("Generation stopped");
+      }
       const elapsed = Date.now() - started;
       if (!skipLog) {
         logApi(
@@ -174,6 +196,9 @@ export function createClient(options: ClientOptions) {
       options.onError?.(wrapped);
       throw wrapped;
     } finally {
+      if (external) {
+        external.removeEventListener("abort", onAbort);
+      }
       clearTimeout(timer);
     }
   }
@@ -258,6 +283,18 @@ export function createClient(options: ClientOptions) {
     getLedger: (agentId: string) => bound("getLedger", { agent_id: agentId }) as Promise<{ ledger: unknown[] }>,
     getRegressionSuite: (agentId: string) =>
       bound("getRegressionSuite", { agent_id: agentId }) as Promise<{ fixtures: string[] }>,
+    getEvalFixtures: (agentId: string) =>
+      bound("getEvalFixtures", { agent_id: agentId }) as Promise<EvalFixturesResponse>,
+    listAgentFiles: (agentId: string) =>
+      bound("listAgentFiles", { agent_id: agentId }) as Promise<AgentFilesResponse>,
+    getAgentFile: (agentId: string, path: string) =>
+      bound("getAgentFile", { agent_id: agentId }, { query: { path } }) as Promise<AgentFileItem>,
+    putAgentFile: (agentId: string, path: string, content: string) =>
+      request<AgentFileItem>("PUT", "/api/v3/agents/{agent_id}/files/item", {
+        params: { agent_id: agentId },
+        query: { path },
+        body: { content },
+      }),
     getAttestation: (agentId: string) => bound("getAttestation", { agent_id: agentId }) as Promise<Attestation>,
     getValidationReport: (agentId: string) =>
       bound("getValidationReport", { agent_id: agentId }) as Promise<ValidationReport>,
@@ -273,12 +310,17 @@ export function createClient(options: ClientOptions) {
         params: { agent_id: agentId },
         body: { provider },
       }),
-    chatAgent: (agentId: string, body: { message: string; history?: { role: string; content: string }[] }) =>
+    chatAgent: (
+      agentId: string,
+      body: { message: string; history?: { role: string; content: string }[] },
+      extra?: { signal?: AbortSignal },
+    ) =>
       request<ChatResponse>("POST", "/api/v3/agents/{agent_id}/runtime/chat", {
         params: { agent_id: agentId },
         body,
         timeoutMs: LONG_TIMEOUT_MS,
         reasonFallback: "operator chat",
+        signal: extra?.signal,
       }),
   };
 }

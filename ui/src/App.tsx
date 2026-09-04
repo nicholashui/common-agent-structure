@@ -5,6 +5,7 @@ import { ThemeProvider } from "./theme/ThemeProvider";
 import { FleetPage } from "./pages/Fleet";
 import { AgentOverviewPage } from "./pages/AgentOverview";
 import { StructurePage } from "./pages/Structure";
+import { FilesPage } from "./pages/Files";
 import { ChatPage } from "./pages/Chat";
 import { ComposePage } from "./pages/Compose";
 import { RunPage } from "./pages/Run";
@@ -40,6 +41,7 @@ export function App() {
               <Route path="/agents/:agentId" element={<AgentOverviewPage />} />
               <Route path="/agents/:agentId/chat" element={<ChatPage />} />
               <Route path="/agents/:agentId/structure" element={<StructurePage />} />
+              <Route path="/agents/:agentId/files" element={<FilesPage />} />
               <Route path="/agents/:agentId/compose" element={<ComposePage />} />
               <Route path="/agents/:agentId/run" element={<RunPage />} />
               <Route path="/agents/:agentId/traces" element={<TracePage />} />

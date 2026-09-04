@@ -78,8 +78,8 @@ describe("debug log file sink", () => {
           JSON.stringify({
             ok: true,
             files: {
-              api: "C:/Project/common-agent-structure/logs/debug/session-api.log",
-              ui: "C:/Project/common-agent-structure/logs/debug/session-ui.log",
+              api: "./logs/debug/session-api.log",
+              ui: "./logs/debug/session-ui.log",
             },
           }),
           { status: 200, headers: { "Content-Type": "application/json" } },

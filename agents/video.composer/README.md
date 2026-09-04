@@ -1,6 +1,6 @@
 # video.composer
 
-CASOPS v3 import of `C:\Project\common-agent-swarm-ops\business\video\agents\video.composer` as `baseline_safe`.
+CASOPS v3 import of `vendor/common-agent-swarm-ops/business/video/agents/video.composer` as `baseline_safe`.
 Local deterministic adapter only. Not production-certified.
 
 # `video.composer`

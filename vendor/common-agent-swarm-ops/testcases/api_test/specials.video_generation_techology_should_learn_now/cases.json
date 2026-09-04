@@ -1,0 +1,75 @@
+{
+  "agent_id": "specials.video_generation_techology_should_learn_now",
+  "kind": "special",
+  "cases": [
+    {
+      "id": "tc1",
+      "name": "media_stub prefer",
+      "method": "POST",
+      "path": "/api/v1/tech-radar/advise",
+      "body": {
+        "goal": "Prefer offline media_stub for package simulation",
+        "prefer_offline": true
+      },
+      "success_criteria": {
+        "http_status": [
+          200
+        ],
+        "required_keys_any": [
+          "ok",
+          "advice",
+          "providers",
+          "result",
+          "correlation_id"
+        ],
+        "notes": "Tech radar offline advice."
+      }
+    },
+    {
+      "id": "tc2",
+      "name": "Stub timeline providers",
+      "method": "POST",
+      "path": "/api/v1/tech-radar/advise",
+      "body": {
+        "goal": "Advise provider posture for travel vlog stub timeline",
+        "prefer_offline": true
+      },
+      "success_criteria": {
+        "http_status": [
+          200
+        ],
+        "required_keys_any": [
+          "ok",
+          "advice",
+          "providers",
+          "result",
+          "correlation_id"
+        ],
+        "notes": "Tech radar offline advice."
+      }
+    },
+    {
+      "id": "tc3",
+      "name": "Learn-later radar",
+      "method": "POST",
+      "path": "/api/v1/tech-radar/advise",
+      "body": {
+        "goal": "List tech to learn later without enabling live media",
+        "prefer_offline": true
+      },
+      "success_criteria": {
+        "http_status": [
+          200
+        ],
+        "required_keys_any": [
+          "ok",
+          "advice",
+          "providers",
+          "result",
+          "correlation_id"
+        ],
+        "notes": "Tech radar offline advice."
+      }
+    }
+  ]
+}

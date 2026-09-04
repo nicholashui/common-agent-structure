@@ -1,0 +1,22 @@
+{
+  "schema_version": "casops.testcase.v1",
+  "id": "run-tc1",
+  "agent_id": "specials.planner-agent",
+  "path": "run",
+  "honesty": "CHARACTERIZATION",
+  "input": {},
+  "expect": {
+    "http_status": 200,
+    "agent_id": "specials.planner-agent",
+    "memory_writes": [],
+    "plugins_executed": false,
+    "t3_enabled": false,
+    "network_granted": false,
+    "containment_stop": null,
+    "path_id": "run"
+  },
+  "source": {
+    "repo": "common-agent-structure",
+    "note": "Sealed Runtime.execute with host local_deterministic. No operator Chat message."
+  }
+}

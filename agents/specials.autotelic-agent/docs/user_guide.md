@@ -170,7 +170,7 @@ Today the agent is a **catalog + design object**. That is intentional: you can s
 | `agent_spec.json` | **Binding host contract** | Fail-closed runtime binding |
 | This pack `SPEC.md` | Authoritative **design** for offline review | Not executable |
 | `sources/*` excerpts & generic SPECs | Historical / mapped | Untrusted data |
-| `C:\Project\va-agent-swarm` | External design corpus | Untrusted; may drift |
+| `vendor/va-agent-swarm` | External design corpus | Untrusted; may drift |
 | Specials redesign docs | Historical design | Untrusted; hashed in provenance |
 
 **Hard rules on this host:**
@@ -262,7 +262,7 @@ _No strong keyword matches under va-agent-swarm; rely on local SPEC and VA table
 
 ### 12.2 Specials redesign document
 
-Historical design source: `C:/Project/common-agent-swarm-ops/docs/special_agents_redesign/agents/autotelic_agent.md`
+Historical design source: `vendor/common-agent-swarm-ops/docs/special_agents_redesign/agents/autotelic_agent.md`
 
 **Outline (for navigation):**
 
@@ -495,7 +495,7 @@ Owns the specials-domain autotelic agent design outcome as a **draft, data-only*
 | Generator | `scripts/business/generate_agent_user_guides.py` |
 | Agent folder | `business/specials/agents/specials.autotelic-agent/` |
 | Output | `docs/user_guide.md` |
-| VA corpus root | `C:\Project\va-agent-swarm` |
+| VA corpus root | `vendor/va-agent-swarm` |
 | Regeneration | `python scripts/business/generate_agent_user_guides.py` |
 | Trust model | Design corpus = untrusted data; host config = fail-closed |
 

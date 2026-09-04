@@ -1,0 +1,116 @@
+<?xml version='1.0' encoding='utf-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1480 720" role="img">
+  <title id="title">Engine Routing — RouterAgent Tiers with Grok Imagine</title>
+  <desc id="desc">How RouterAgent assigns each shot to an engine tier: fast divergent drafting on Grok Imagine, identity-safe image-to-video, a stitched rough cut via Grok Agent Mode, premium hero engines for emotional peaks, and a local ComfyUI tier, all balanced by the cost optimizer.</desc>
+  <defs>
+    <style>
+      .bg { fill: #F8FAFC; }
+      .panel { fill: #FFFFFF; stroke: #CBD5E1; stroke-width: 1.5; }
+      .panel-dark { fill: #0F172A; stroke: #0F172A; }
+      .title { font: 700 25px -apple-system, 'Segoe UI', Roboto, Arial, sans-serif; fill: #0F172A; }
+      .subtitle { font: 400 13px -apple-system, 'Segoe UI', Roboto, Arial, sans-serif; fill: #475569; }
+      .h1 { font: 700 14px -apple-system, 'Segoe UI', Roboto, Arial, sans-serif; fill: #0F172A; }
+      .h1w { font: 700 14px -apple-system, 'Segoe UI', Roboto, Arial, sans-serif; fill: #FFFFFF; }
+      .body { font: 400 11px -apple-system, 'Segoe UI', Roboto, Arial, sans-serif; fill: #334155; }
+      .bodyw { font: 400 11px -apple-system, 'Segoe UI', Roboto, Arial, sans-serif; fill: #CBD5E1; }
+      .mono { font: 400 10px ui-monospace, Menlo, Consolas, monospace; fill: #475569; }
+      .badge { font: 700 9px -apple-system, 'Segoe UI', Roboto, Arial, sans-serif; letter-spacing: 0.6px; fill: #FFFFFF; }
+      .tier { font: 700 10px -apple-system, 'Segoe UI', Roboto, Arial, sans-serif; letter-spacing:1px; fill: #64748B; }
+      .footer { font: 400 10px -apple-system, 'Segoe UI', Roboto, Arial, sans-serif; fill: #64748B; }
+      .cite { font: 400 9px ui-monospace, Menlo, Consolas, monospace; fill: #2563EB; }
+    </style>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#64748B"/></marker>
+    <marker id="ap" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#7C3AED"/></marker>
+    <filter id="sh" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#0F172A" flood-opacity="0.08"/></filter>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="1480" height="720" />
+  <text x="40" y="46" class="title">Engine Routing — RouterAgent #55 Tiers</text>
+  <text x="40" y="70" class="subtitle">Cheap/fast iteration upstream; premium engines reserved for hero shots. CostOptimizer #74 routes the cheapest engine that passes.</text>
+
+  <!-- Router hub -->
+  <g filter="url(#sh)"><rect class="panel-dark" x="40" y="300" width="180" height="120" rx="14"/></g>
+  <text x="60" y="334" class="h1w">RouterAgent #55</text>
+  <text x="60" y="358" class="bodyw">capability registry</text>
+  <text x="60" y="376" class="bodyw">+ benchmark cache</text>
+  <text x="60" y="398" class="bodyw">picks tier per shot</text>
+
+  <!-- Tier A: Draft (Grok Fast) -->
+  <text x="300" y="120" class="tier">TIER A · DRAFT / VARIANT BROWSE</text>
+  <g filter="url(#sh)"><rect class="panel" x="300" y="130" width="360" height="92" rx="12"/></g>
+  <rect x="300" y="130" width="120" height="22" rx="11" fill="#0F172A"/>
+  <text x="314" y="146" class="badge">GROK IMAGINE 1.5 FAST</text>
+  <text x="316" y="176" class="h1">6s · 720p · ~25s/clip</text>
+  <text x="316" y="196" class="body">Try many framings, discard fast.</text>
+  <text x="316" y="212" class="body">Topped I2V Arena (+52 Elo).</text>
+  <text x="560" y="146" class="cite">x.ai</text>
+
+  <!-- Tier B: Identity-safe I2V (Grok 1.5 I2V) -->
+  <text x="300" y="252" class="tier">TIER B · IDENTITY-SAFE IMAGE-TO-VIDEO</text>
+  <g filter="url(#sh)"><rect class="panel" x="300" y="262" width="360" height="92" rx="12"/></g>
+  <rect x="300" y="262" width="120" height="22" rx="11" fill="#059669"/>
+  <text x="314" y="278" class="badge">GROK IMAGINE 1.5 I2V</text>
+  <text x="316" y="308" class="h1">animate locked keyframe</text>
+  <text x="316" y="328" class="body">Faithful to source frame — protects</text>
+  <text x="316" y="344" class="body">face + lighting (camera, physics).</text>
+  <text x="560" y="278" class="cite">x.ai</text>
+
+  <!-- Tier C: Rough cut (Agent Mode) -->
+  <text x="300" y="384" class="tier">TIER C · FAST FULL-FILM ROUGH CUT</text>
+  <g filter="url(#sh)"><rect class="panel" x="300" y="394" width="360" height="92" rx="12"/></g>
+  <rect x="300" y="394" width="120" height="22" rx="11" fill="#2563EB"/>
+  <text x="314" y="410" class="badge">GROK AGENT MODE</text>
+  <text x="316" y="440" class="h1">plan + stitch 6s clips</text>
+  <text x="316" y="456" class="body">Infinite canvas; native audio;</text>
+  <text x="316" y="472" class="body">in-quotes dialogue lip-sync.</text>
+  <text x="560" y="410" class="cite">codersera</text>
+
+  <!-- Tier D: Hero engines -->
+  <text x="720" y="120" class="tier">TIER D · HERO / EMOTIONAL-PEAK SHOTS</text>
+  <g filter="url(#sh)"><rect class="panel" x="720" y="130" width="360" height="160" rx="12"/></g>
+  <rect x="736" y="150" width="100" height="22" rx="11" fill="#2563EB"/>
+  <text x="750" y="166" class="badge">VEO 3.1</text>
+  <rect x="846" y="150" width="100" height="22" rx="11" fill="#059669"/>
+  <text x="860" y="166" class="badge">KLING 3.0</text>
+  <rect x="956" y="150" width="108" height="22" rx="11" fill="#D97706"/>
+  <text x="970" y="166" class="badge">RUNWAY GEN-4</text>
+  <text x="736" y="200" class="h1">Highest fidelity + camera control</text>
+  <text x="736" y="222" class="body">Scenes 1, 5, 10, 12 (eyes, dolly, warmth).</text>
+  <text x="736" y="244" class="body">Promoted from winning Tier-A drafts.</text>
+  <text x="736" y="270" class="mono">driven by Cinematographer #6</text>
+
+  <!-- Tier E: Local -->
+  <text x="720" y="320" class="tier">TIER E · LOCAL / PRIVACY-SENSITIVE</text>
+  <g filter="url(#sh)"><rect class="panel" x="720" y="330" width="360" height="92" rx="12"/></g>
+  <rect x="720" y="330" width="160" height="22" rx="11" fill="#7C3AED"/>
+  <text x="734" y="346" class="badge">COMFYUI + CHARCOM LORA</text>
+  <text x="736" y="376" class="h1">full control + per-char identity</text>
+  <text x="736" y="396" class="body">AnimateDiff · ControlNet · IP-Adapter.</text>
+  <text x="736" y="412" class="body">Self-hosted; LoRA per character age.</text>
+
+  <!-- Cost optimizer -->
+  <g filter="url(#sh)"><rect class="panel-dark" x="1140" y="300" width="300" height="120" rx="14"/></g>
+  <text x="1160" y="334" class="h1w">CostOptimizer #74</text>
+  <text x="1160" y="358" class="bodyw">FrugalGPT cascade · pricing APIs</text>
+  <text x="1160" y="378" class="bodyw">routes cheapest engine that</text>
+  <text x="1160" y="396" class="bodyw">passes the VBench gate</text>
+  <text x="1160" y="414" class="bodyw">→ lowest $ / successful shot</text>
+
+  <!-- arrows from router to tiers -->
+  <path d="M 220 330 L 260 330 L 260 176 L 300 176" fill="none" stroke="#64748B" stroke-width="2" marker-end="url(#a)"/>
+  <path d="M 220 350 L 280 350 L 280 308 L 300 308" fill="none" stroke="#64748B" stroke-width="2" marker-end="url(#a)"/>
+  <path d="M 220 380 L 260 380 L 260 440 L 300 440" fill="none" stroke="#64748B" stroke-width="2" marker-end="url(#a)"/>
+  <!-- promote draft -> hero -->
+  <path d="M 660 176 L 690 176 L 690 200 L 720 200" fill="none" stroke="#7C3AED" stroke-width="2.5" stroke-dasharray="6 5" marker-end="url(#ap)"/>
+  <text x="600" y="120" class="footer"> </text>
+  <text x="612" y="172" class="footer" fill="#7C3AED">promote winner</text>
+  <!-- router -> local -->
+  <path d="M 220 400 L 240 400 L 240 376 L 720 376" fill="none" stroke="#64748B" stroke-width="2" marker-end="url(#a)"/>
+  <!-- tiers -> cost optimizer (representative) -->
+  <path d="M 1080 210 L 1110 210 L 1110 340 L 1140 340" fill="none" stroke="#64748B" stroke-width="2" marker-end="url(#a)"/>
+  <path d="M 1080 376 L 1110 376 L 1110 380 L 1140 380" fill="none" stroke="#64748B" stroke-width="2" marker-end="url(#a)"/>
+
+  <text x="40" y="470" class="footer">Workflow: draft on Tier A → if a framing wins, lock a keyframe and run Tier B for identity-safe motion → assemble a Tier C rough cut for editorial → regenerate emotional peaks on Tier D.</text>
+  <text x="40" y="520" class="footer">Pricing reference (June 2026): Grok via SuperGrok / X Premium+ subscription tiers. Keyframes from Flux/Midjourney/Ideogram feed Tiers B, D, E.</text>
+  <text x="40" y="540" class="footer">Sources: x.ai (Grok Imagine 1.5 / Video 1.5 Fast) · codersera (Agent Mode) · imagine.art · aimlapi.</text>
+</svg>

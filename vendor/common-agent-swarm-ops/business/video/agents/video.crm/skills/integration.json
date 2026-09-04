@@ -1,0 +1,20 @@
+{
+  "skill_id": "video-crm",
+  "agent_id": "video.crm",
+  "kind": "pack_agent_harness",
+  "status": "scaffolded",
+  "prompt_reference": "video.prompt.crm.v1",
+  "rubric_reference": "video.rubric.crm.v1",
+  "patterns": [
+    "ReAct",
+    "Agent Skills"
+  ],
+  "bindings": [],
+  "entrypoint": {
+    "type": "host_agent_runner",
+    "agent_id": "video.crm"
+  },
+  "fail_closed": true,
+  "generated_by": "improve_agents_from_plan_v1.py",
+  "generated_at": "2026-07-30T14:45:34Z"
+}

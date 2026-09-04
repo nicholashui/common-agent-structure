@@ -4437,7 +4437,7 @@ Step 8: POST-RELEASE (optional)
 ## Provenance
 
 - Master roster row va_id=3 from embedded agents.md content above.
-- Deep/extra text from `business/video/corpus/` and `C:\Project\va-agent-swarm`.
+- Deep/extra text from `business/video/corpus/` and `vendor/va-agent-swarm`.
 - Generator: `scripts/business/enrich_video_agent_specs.py`.
 - Upstream project name (historical only): va-agent-swarm.
 
@@ -4529,18 +4529,18 @@ Omitted here; same document as `SPEC.md` above.
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "风格的要素",
+      "title": "\u98ce\u683c\u7684\u8981\u7d20",
       "isbn13": "9787100040945",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 风格的要素，ISBN-13 9787100040945"
+      "citation": "ZH: \u98ce\u683c\u7684\u8981\u7d20\uff0cISBN-13 9787100040945"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "写作法宝",
+      "title": "\u5199\u4f5c\u6cd5\u5b9d",
       "isbn13": "9787301161111",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 写作法宝，ISBN-13 9787301161111"
+      "citation": "ZH: \u5199\u4f5c\u6cd5\u5b9d\uff0cISBN-13 9787301161111"
     },
     {
       "kind": "reference_book",
@@ -4589,18 +4589,18 @@ Omitted here; same document as `SPEC.md` above.
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "采访的艺术",
+      "title": "\u91c7\u8bbf\u7684\u827a\u672f",
       "isbn13": "9787301169186",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 采访的艺术，ISBN-13 9787301169186"
+      "citation": "ZH: \u91c7\u8bbf\u7684\u827a\u672f\uff0cISBN-13 9787301169186"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "研究是一门艺术",
+      "title": "\u7814\u7a76\u662f\u4e00\u95e8\u827a\u672f",
       "isbn13": "9787300116226",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 研究是一门艺术，ISBN-13 9787300116226"
+      "citation": "ZH: \u7814\u7a76\u662f\u4e00\u95e8\u827a\u672f\uff0cISBN-13 9787300116226"
     }
   ],
   "agent_id": "video.standardseditor",
@@ -4615,7 +4615,7 @@ Omitted here; same document as `SPEC.md` above.
     "adopted_at": "2026-07-27T01:30:28.879934+00:00",
     "upstream": "generic-swarm-ops/business/video/agents"
   },
-  "imported_from": "C:\\Project\\common-agent-swarm-ops\\business\\video\\agents\\video.standardseditor",
+  "imported_from": "vendor/common-agent-swarm-ops/business/video/agents/video.standardseditor",
   "reference_book_origin": "spec/book_of_knowledge.md",
   "reference_book_note": "Bibliographic references from spec/book_of_knowledge.md. Does not enable network, RAG, T3, plugins, or memory writes."
 }

@@ -1,0 +1,1546 @@
+<#0.5#>
+
+This fully automated AI movie production process relies on 45 specialized AI agents (agents), taking just 12-93 hours from concept to global release, with costs reduced by over 99%! The Central Orchestrator SR coordinates everything, powered by an ultra-powerful self-improvement system.
+
+**Phase 0: Ideation and Greenlighting (1-6 hours):** The Trend Analysis Agent (MF) scans global cultural hotspots, the Script Generation Agent (SCR) produces 3-5 complete scripts, the Audience Simulation Agent (ASA) predicts reactions, the Executive Producer (EP) calculates ROI (only greenlights if over 200%), the Ethics Checker (EC) scans for biases, and the Legal/Compliance Reviewer (ERC) clears copyrights. In summary, greenlight decisions are super fast.
+
+**Phase 1: Pre-Production (1-12 hours, parallel):** World Building (WB) creates 3D environments, Digital Human Performers (DHP) build actor models, Costume & Makeup/Hair (CD, MH), Cinematography/Lighting (CIN), VFX (VFX), Sound Design/Music Composition (SD, MC), Asset Management (LIB) handles versioning, and Model Training (MT) optimizes AI. Everything passes quality gates before entering production.
+
+**Phase 2: Production (2-48 hours, parallel rendering):** Digital humans perform live, cameras capture footage, stunt VFX run in real-time, voices record dialogue, Quality Assurance (QA) auto-re-renders issues, and Continuity Supervisor (CS) tracks props/costumes. Full GPU power, with footage quality at 95%+.
+
+**Phase 3: Post-Production (4-24 hours):** Editing (ED) auto-assembles rough cuts, Director (DIR) reviews, Color Grading (CG), Audio Mixing (MIX), localization to 100 languages, and marketing posters/trailers (PD, TR). Passes gates, then to delivery.
+
+**Phases 4-5: Delivery and Distribution (1-6 hours + ongoing):** Encodes DCP/streaming/broadcast (DCP, SP, BM), marketing pushes social media (SM), monitors box office/reviews (BOT, RA), even A/B tests alternate versions. Total GPU hours: 85k-171k, costs $170k-$850k—vs. traditional $50M, massive savings.
+
+**Phase 6: Self-Improvement Loop:** Collects data, retrains models (MT), optimizes prompts (PO), making the next film 5-10x better with 95% predicted success rate. This system makes zero-human blockbuster AI films a reality— the future is explosive!
+<#0.5#>
+# Fully Autonomous AI Film Production Workflow
+
+<#0.5#>
+
+## System Overview
+
+This workflow coordinates 47 specialized AI agents in a fully autonomous pipeline for producing feature-length films, from concept to global release, in 12-93 hours. Each agent operates semi-autonomously, with coordination managed by the Central Orchestrator (SR). The system self-improves over time, reducing costs by over 99% compared to traditional production methods.
+
+---
+
+<#0.5#>
+
+## Phase 0: Ideation & Greenlight (1-6 hours)
+
+<#0.5#>
+
+### Initial Concept Development
+**Input:** Raw prompt, trend data, cultural signals, or creative brief  
+**Duration:** 30 minutes–2 hours
+
+- **Trend Analysis & Cultural Intelligence Agent (MF)**  
+  Monitors global cultural trends, social media, box office data, and streaming metrics. Identifies emerging themes, audience preferences, and untapped markets. Generates data-driven creative briefs aligned with current cultural moments.  
+  **Outputs:** Trend reports, audience insights, creative opportunities.  
+  **Triggers:** Screenplay Generation Agent (SCR).
+
+- **Screenplay Generation & Refinement Agent (SCR)**  
+  Receives trend data and creative brief. Generates multiple script variants (logline → treatment → full screenplay), including character arcs, dialogue, scene descriptions, and emotional beats. Iterates based on feedback from the Narrative AI Director (DIR) and AI Executive Producer (EP).  
+  **Inputs:** Creative brief, genre specifications, target demographics.  
+  **Outputs:** 3–5 complete screenplay variants with scene breakdowns.  
+  **Dependencies:** Dataset Curator (DC) for reference materials.  
+  **Triggers:** Prompt Optimizer (PO), AI Executive Producer (EP).
+
+- **Dataset Curator & Reference Agent (DC)**  
+  Validates screenplay against historical successful patterns. Assembles reference materials, such as films, cultural artifacts, and period details. Identifies visual and narrative precedents. Ensures cultural authenticity and historical accuracy.  
+  **Inputs:** Screenplay drafts, genre, time period, cultural context.  
+  **Outputs:** Curated reference database, style guides, cultural validation reports.  
+  **Dependencies:** None (primary research agent).  
+  **Triggers:** All creative agents needing reference materials.
+
+- **Prompt Optimizer & Consistency Agent (PO)**  
+  Analyzes screenplay and creative vision. Generates master prompts for downstream visual and audio generation. Ensures narrative coherence and stylistic consistency. Creates prompt templates for characters, locations, props, and lighting.  
+  **Inputs:** Locked screenplay, director's vision, reference materials.  
+  **Outputs:** Optimized prompt library, consistency guidelines, generation parameters.  
+  **Dependencies:** Screenplay Generation (SCR), Dataset Curator (DC).  
+  **Triggers:** All generation agents (e.g., World-Building WB, Digital Human DHP).
+
+<#0.5#>
+
+### Business & Creative Evaluation
+**Duration:** 30 minutes–2 hours
+
+- **AI Executive Producer & Budget Agent (EP)**  
+  Evaluates commercial viability of screenplay variants. Predicts return on investment (ROI) based on genre, cast, budget, and marketing potential. Allocates compute resources (GPU hours) across phases. Makes greenlight or kill decisions based on financial projections.  
+  **Inputs:** Screenplay variants, trend analysis, audience predictions.  
+  **Outputs:** ROI projections, budget allocations, greenlight decisions.  
+  **Dependencies:** Audience Simulation (ASA), Trend Analysis (MF).  
+  **Triggers:** Central Orchestrator (SR) for final approval.
+
+- **Audience Simulation & Predictive Analytics Agent (ASA)**  
+  Creates synthetic audience segments (demographics, psychographics). Simulates reactions to screenplay variants. Predicts box office, streaming performance, and cultural impact. Tests endings, character arcs, and pacing options.  
+  **Inputs:** Screenplay variants, trend data, historical performance data.  
+  **Outputs:** Audience scores, demographic breakdowns, engagement predictions.  
+  **Dependencies:** Trend Analysis (MF), Dataset Curator (DC).  
+  **Triggers:** AI Executive Producer (EP), Narrative AI Director (DIR).
+
+- **Narrative AI Director & Creative Vision Agent (DIR)**  
+  Reviews screenplay variants and audience predictions. Selects or merges elements into the final shooting script. Defines artistic vision, including tone, visual style, pacing, and themes. Creates a director's lookbook with reference images and style guides. Makes all creative decisions throughout production.  
+  **Inputs:** Screenplay variants, audience data, reference materials, trend insights.  
+  **Outputs:** Final shooting script, creative vision document, director's lookbook.  
+  **Dependencies:** Screenplay Generation (SCR), Audience Simulation (ASA), Dataset Curator (DC).  
+  **Triggers:** All creative agents in pre-production.
+
+- **Ethics Checker & Bias Detection Agent (EC)**  
+  Scans screenplay for harmful stereotypes, biases, and problematic content. Validates cultural representation and sensitivity. Checks for unintended offensive material or exclusionary narratives. Flags potential controversies.  
+  **Inputs:** Screenplay, character descriptions, cultural context.  
+  **Outputs:** Ethics report, bias flags, recommended revisions.  
+  **Dependencies:** Dataset Curator (DC) for cultural context.  
+  **Triggers:** AI Executive Producer (EP); can block greenlight if major issues are found.
+
+- **Ethics, Rights & Legal Compliance Agent (ERC)**  
+  Validates creative elements for copyright, trademark, and rights clearances. Ensures compliance with union rules, labor laws, and content regulations. Checks music rights, location rights, and likeness rights. Monitors regulatory requirements across distribution territories.  
+  **Inputs:** Screenplay, creative assets, distribution plans.  
+  **Outputs:** Legal clearance reports, compliance checklists, risk assessments.  
+  **Dependencies:** None (legal authority agent).  
+  **Triggers:** Can block greenlight or require modifications.
+
+<#0.5#>
+
+### Final Greenlight Decision
+**Duration:** 15–30 minutes
+
+- **Central Orchestrator & Project Management Agent (SR)**  
+  Receives inputs from all evaluation agents. Makes final greenlight or kill decision based on: audience score >70% (from ASA), no major ethical flags (from EC), ROI projection >200% (from EP), and legal clearance (from ERC). If approved, spawns the project, allocates compute budget, and triggers pre-production. If rejected, archives learnings, suggests modifications, or terminates the project.  
+  **Inputs:** All agent reports and recommendations.  
+  **Outputs:** Greenlight decision, resource allocation, production schedule.  
+  **Dependencies:** All Phase 0 agents.  
+  **Triggers:** Pre-production phase (all agents).
+
+---
+
+<#0.5#>
+
+## Phase 1: Pre-Production (1-12 hours, highly parallel)
+
+All creative and technical agents operate in parallel, coordinated by the Central Orchestrator (SR) and Narrative AI Director (DIR).
+
+<#0.5#>
+
+### Script Finalization & Creative Planning
+**Duration:** 1–3 hours
+
+- **Screenplay Generation & Refinement Agent (SCR)** – Final Polish  
+  Locks the final shooting script with scene numbers and technical specifications. Creates alternate dialogue options for A/B testing. Generates detailed scene breakdowns with emotional beats.  
+  **Outputs:** Final shooting script, scene breakdowns, technical specifications.  
+  **Triggers:** All production agents.
+
+- **Narrative AI Director (DIR)** – Vision Finalization  
+  Finalizes artistic vision, tone, visual style, and pacing strategy. Creates detailed shot lists and storyboards for key sequences. Defines performance direction for digital actors. Establishes quality benchmarks for all departments.  
+  **Outputs:** Director's vision document, shot lists, storyboards, quality standards.  
+  **Triggers:** All creative and technical agents.
+
+<#0.5#>
+
+### World & Environment Design
+**Duration:** 2–6 hours (parallel with character development)
+
+- **World-Building & Environment Design Agent (WB)**  
+  Designs locations, sets, and environments (interiors and exteriors). Creates architectural plans, set dressing, and environmental details. Establishes lighting conditions, weather, and time-of-day for each location. Generates 3D models and texture maps.  
+  **Inputs:** Screenplay, director's vision, reference materials, optimized prompts.  
+  **Outputs:** 3D environment models, texture libraries, lighting presets, location database.  
+  **Dependencies:** Prompt Optimizer (PO), Dataset Curator (DC).  
+  **Triggers:** Cinematography (CIN), VFX (VFX), Asset Management (LIB).
+
+- **Props Management & Design Agent (PM)**  
+  Catalogs every physical object in the screenplay. Designs hero props, set dressing, and practical items. Creates 3D models with multiple levels of detail (LOD). Tracks prop continuity across scenes.  
+  **Inputs:** Screenplay, director's vision, period/style requirements.  
+  **Outputs:** Props database, 3D models, continuity tracking system.  
+  **Dependencies:** World-Building (WB), Dataset Curator (DC).  
+  **Triggers:** Continuity Supervision (CS), Asset Management (LIB).
+
+<#0.5#>
+
+### Character & Performance Design
+**Duration:** 3–8 hours (parallel with world design)
+
+- **Digital Human & Performance Capture Agent (DHP)**  
+  Creates digital actors (protagonists, supporting cast, background). Designs unique faces, body types, movement patterns, and performance styles. Generates facial rigs, body rigs, and clothing physics. Conducts performance tests and rehearsals.  
+  **Inputs:** Character descriptions, director's vision, reference materials, optimized prompts.  
+  **Outputs:** Digital actor models, performance rigs, motion libraries, casting database.  
+  **Dependencies:** Prompt Optimizer (PO), Model Trainer (MT), Dataset Curator (DC).  
+  **Triggers:** Costume (CD), Makeup (MH), Voice (AUD), Model Ensemble (ME).
+
+- **Costume Design & Wardrobe Agent (CD)**  
+  Designs period-accurate or futuristic wardrobes for all characters. Creates multiple outfit options per character (e.g., for different scenes, weather, story progression). Simulates fabric physics, weathering, and damage states. Ensures cultural authenticity and character consistency.  
+  **Inputs:** Character descriptions, time period, director's vision, reference materials.  
+  **Outputs:** Costume designs, 3D clothing models, fabric simulations, wardrobe database.  
+  **Dependencies:** Digital Human (DHP), Dataset Curator (DC).  
+  **Triggers:** Continuity Supervision (CS), Asset Management (LIB).
+
+- **Makeup & Hair Design Agent (MH)**  
+  Designs character looks, aging effects, special makeup, and hairstyles. Creates makeup progression (e.g., aging, injury, transformation). Simulates hair physics, grooming, and styling. Designs prosthetics, creature makeup, and fantasy elements.  
+  **Inputs:** Character descriptions, story timeline, director's vision.  
+  **Outputs:** Makeup designs, hair models, aging progressions, special effects makeup.  
+  **Dependencies:** Digital Human (DHP), Dataset Curator (DC).  
+  **Triggers:** Continuity Supervision (CS), VFX (VFX).
+
+- **Voice, Sound & Dialogue Agent (AUD)**  
+  Casts voice actors (AI-generated or cloned from references). Creates unique voice profiles for each character. Generates temp dialogue for rehearsals and animatics. Designs vocal characteristics (accent, pitch, speech patterns, emotional range).  
+  **Inputs:** Character descriptions, dialogue, director's performance notes.  
+  **Outputs:** Voice models, temp dialogue tracks, vocal performance guidelines.  
+  **Dependencies:** Digital Human (DHP), Model Trainer (MT).  
+  **Triggers:** Production phase performance capture.
+
+<#0.5#>
+
+### Technical & Visual Planning
+**Duration:** 2–6 hours (parallel with creative development)
+
+- **Cinematography & Camera Planning Agent (CIN)**  
+  Designs shot composition, camera movement, and lens choices for every scene. Creates virtual camera rigs and movement profiles. Establishes coverage strategy (master shots, close-ups, inserts, cutaways). Plans complex moves (crane, dolly, Steadicam, drone).  
+  **Inputs:** Screenplay, director's vision, storyboards, location models.  
+  **Outputs:** Shot lists, camera rigs, lens packages, coverage plans.  
+  **Dependencies:** World-Building (WB), Narrative AI Director (DIR).  
+  **Triggers:** Lighting (CIN), production phase.
+
+- **Lighting Design & Mood Agent (CIN)** (integrated with Cinematography)  
+  Designs lighting setups for every scene and shot. Establishes mood, atmosphere, and time-of-day lighting. Creates practical lighting (lamps, windows, fire) and studio lighting. Simulates natural light, shadows, reflections, and global illumination.  
+  **Inputs:** Director's vision, location models, time-of-day, mood requirements.  
+  **Outputs:** Lighting rigs, shader networks, illumination presets.  
+  **Dependencies:** World-Building (WB), Cinematography (CIN).  
+  **Triggers:** Production rendering, Color Grading (CG).
+
+- **VFX & Physics Simulation Agent (VFX)**  
+  Pre-visualizes visual effects and physics simulations. Designs explosions, destruction, particle effects, and magical elements. Sets up cloth, hair, fluid, and rigid body simulations. Creates creature, environmental, and atmospheric effects.  
+  **Inputs:** Screenplay, director's vision, storyboards, technical requirements.  
+  **Outputs:** VFX pre-visualization, simulation setups, effects libraries.  
+  **Dependencies:** World-Building (WB), Special Effects (SFX).  
+  **Triggers:** Production rendering, Model Ensemble (ME).
+
+- **Special Effects (Practical Simulation) Agent (SFX)**  
+  Designs practical effects simulated virtually (fire, water, smoke, explosions). Creates atmospheric effects (fog, rain, snow, wind). Simulates physical phenomena (gravity, wind resistance, buoyancy). Plans integration with VFX for seamless compositing.  
+  **Inputs:** Screenplay, director's vision, VFX requirements.  
+  **Outputs:** Practical effects simulations, atmospheric presets, physics parameters.  
+  **Dependencies:** VFX (VFX), World-Building (WB).  
+  **Triggers:** Production rendering.
+
+- **Stunt Coordination & Action Choreography Agent (SC)**  
+  Pre-visualizes action sequences, fights, stunts, and vehicle chases. Choreographs hand-to-hand combat, sword fights, and gunfights. Plans complex stunts (falls, jumps, crashes, explosions). Ensures physics-accurate simulations and safety considerations.  
+  **Inputs:** Screenplay, director's vision, action scene requirements.  
+  **Outputs:** Action pre-visualization, stunt choreography, physics simulations.  
+  **Dependencies:** VFX (VFX), Digital Human (DHP).  
+  **Triggers:** Production performance capture.
+
+<#0.5#>
+
+### Audio Planning
+**Duration:** 2–4 hours (parallel with visual development)
+
+- **Sound Design & Audio Planning Agent (SD)**  
+  Plans sound effects, foley, environmental audio, and ambient sounds. Creates sound libraries for locations, props, and actions. Designs signature sounds for characters, creatures, and technology. Establishes audio perspective and spatial audio requirements.  
+  **Inputs:** Screenplay, location models, props database, director's vision.  
+  **Outputs:** Sound design plan, audio libraries, foley requirements.  
+  **Dependencies:** World-Building (WB), Props (PM).  
+  **Triggers:** Production audio capture, Audio Post (MIX).
+
+- **Music Composition & Scoring Agent (MC)**  
+  Analyzes screenplay for emotional beats and musical opportunities. Composes temp music for pre-visualization and rehearsals. Designs musical themes for characters, locations, and emotions. Plans orchestration, instrumentation, and musical style.  
+  **Inputs:** Screenplay, director's vision, emotional arc, reference music.  
+  **Outputs:** Temp score, thematic material, orchestration plan.  
+  **Dependencies:** Narrative AI Director (DIR), Dataset Curator (DC).  
+  **Triggers:** Production phase (scene-specific cues), Final Mix (FM).
+
+<#0.5#>
+
+### Marketing & Distribution Planning
+**Duration:** 1–3 hours (parallel with production prep)
+
+- **Poster Design & Key Art Agent (PD)**  
+  Develops early key art concepts based on screenplay and character designs. Creates mood boards, composition studies, and typography explorations. Designs teaser posters, character posters, and IMAX variants. Plans visual identity for the marketing campaign.  
+  **Inputs:** Screenplay, character designs, director's vision, marketing strategy.  
+  **Outputs:** Key art concepts, poster designs, visual identity guidelines.  
+  **Dependencies:** Digital Human (DHP), World-Building (WB).  
+  **Triggers:** Marketing campaign, Press Kit (PK).
+
+<#0.5#>
+
+### Technical Infrastructure Setup
+**Duration:** 1–4 hours (parallel with all other prep)
+
+- **Asset & Data Management Agent (LIB)**  
+  Creates a master asset database with version control. Establishes file naming conventions, folder structures, and metadata standards. Sets up asset tracking, dependencies, and change logs. Implements backup and redundancy systems.  
+  **Inputs:** All asset requirements from creative agents.  
+  **Outputs:** Asset management system, version control database, file structures.  
+  **Dependencies:** None (foundational infrastructure agent).  
+  **Triggers:** All agents requiring asset storage or retrieval.
+
+- **Computational Infrastructure & Resource Management Agent (INF)**  
+  Allocates GPU clusters across production phases. Optimizes the rendering pipeline for efficiency. Balances workload across distributed compute resources. Monitors resource utilization and adjusts allocation in real time.  
+  **Inputs:** Production schedule, rendering requirements, budget constraints.  
+  **Outputs:** GPU allocation plan, rendering pipeline, resource monitoring dashboard.  
+  **Dependencies:** AI Executive Producer (EP) for budget allocation.  
+  **Triggers:** All rendering and inference agents.
+
+- **Model Trainer & Fine-Tuning Agent (MT)**  
+  Fine-tunes character-specific models (unique faces, body types, movement). Trains specialized models for visual styles or effects. Creates custom voice models. Optimizes models for inference speed versus quality trade-offs.  
+  **Inputs:** Character designs, voice references, visual style requirements.  
+  **Outputs:** Fine-tuned models, character-specific weights, voice models.  
+  **Dependencies:** Digital Human (DHP), Voice (AUD), Dataset Curator (DC).  
+  **Triggers:** Model Ensemble (ME), Inference Optimizer (IO).
+
+- **Model Ensemble & Multi-Model Orchestration Agent (ME)**  
+  Assembles specialized AI models for tasks (faces, environments, crowds, effects). Balances model selection for quality, speed, and cost. Creates model routing logic. Manages model versioning and compatibility.  
+  **Inputs:** Production requirements, quality standards, budget constraints.  
+  **Outputs:** Model ensemble configuration, routing logic, quality/speed profiles.  
+  **Dependencies:** Model Trainer (MT), all generation agents.  
+  **Triggers:** Production rendering, Inference Optimizer (IO).
+
+- **Inference Optimizer & Rendering Acceleration Agent (IO)**  
+  Pre-caches common assets (character models, locations, props). Optimizes rendering speed through batching, parallelization, and caching. Implements progressive rendering (low-resolution preview → final quality). Manages GPU memory allocation and texture streaming.  
+  **Inputs:** Asset database, rendering requirements, GPU allocation.  
+  **Outputs:** Optimized rendering pipeline, caching strategy, performance metrics.  
+  **Dependencies:** Asset Management (LIB), Computational Infrastructure (INF).  
+  **Triggers:** Production rendering (all visual agents).
+
+<#0.5#>
+
+### Quality & Compliance Setup
+**Duration:** 1–2 hours (parallel with technical setup)
+
+- **Quality Assurance & Automated Testing Agent (QA)**  
+  Establishes quality benchmarks for production elements. Creates automated testing protocols (frame quality, continuity, artifacts). Sets up real-time monitoring and alerting systems. Defines acceptance criteria for each phase.  
+  **Inputs:** Director's quality standards, technical specifications.  
+  **Outputs:** QA protocols, testing frameworks, quality dashboards.  
+  **Dependencies:** Narrative AI Director (DIR) for quality standards.  
+  **Triggers:** All production and post-production agents.
+
+- **Continuity Supervision & Script Tracking Agent (CS)**  
+  Creates a master continuity bible tracking props, costumes, and makeup across the timeline. Monitors script changes and propagates updates. Tracks character states (injuries, aging, costume changes). Validates spatial continuity (prop positions, set dressing).  
+  **Inputs:** Screenplay, all asset databases, shooting schedule.  
+  **Outputs:** Continuity bible, tracking database, validation reports.  
+  **Dependencies:** Props (PM), Costume (CD), Makeup (MH), Asset Management (LIB).  
+  **Triggers:** Production phase (continuous monitoring), QA (QA).
+
+- **Ethics Checker & Bias Detection Agent (EC)** – Pre-Production Review  
+  Monitors bias in casting, representation, and narrative choices. Validates cultural authenticity of costumes, props, and environments. Checks for unintended stereotypes in designs or performances. Reviews marketing materials for inclusive representation.  
+  **Inputs:** All creative assets, character designs, casting decisions.  
+  **Outputs:** Ethics review reports, bias alerts, recommended adjustments.  
+  **Dependencies:** All creative agents.  
+  **Triggers:** Can require revisions before production begins.
+
+- **Ethics, Rights & Legal Compliance Agent (ERC)** – Asset Clearance  
+  Scans assets for copyright, trademark, and rights issues. Validates music clearances, location rights, and likeness rights. Ensures compliance with union rules, labor laws, and content regulations. Reviews contracts and licensing agreements.  
+  **Inputs:** All assets, music cues, location designs, character likenesses.  
+  **Outputs:** Legal clearance reports, compliance checklists, licensing status.  
+  **Dependencies:** All creative agents.  
+  **Triggers:** Can block production if clearance issues are unresolved.
+
+<#0.5#>
+
+### Pre-Production Quality Gate
+All systems must pass before production begins:  
+- All assets pass continuity checks (Continuity CS).  
+- No rights or clearance issues (Ethics & Compliance ERC).  
+- Performance tests meet quality benchmarks (Quality Assurance QA).  
+- All models trained and optimized (Model Trainer MT, Inference Optimizer IO).  
+- Rendering pipeline validated (Computational Infrastructure INF).  
+- No ethical flags (Ethics Checker EC).  
+
+**Central Orchestrator (SR)** approves transition to production.
+
+---
+
+<#0.5#>
+
+## Phase 2: Principal Photography (Virtual Production) (2-48 hours)
+
+Production runs continuously across global compute infrastructure, with hundreds of shots rendering in parallel.
+
+<#0.5#>
+
+### Live Virtual Production (24/7 Parallel Rendering)
+**Duration:** 2–48 hours (depending on film length and complexity)
+
+- **Digital Human & Performance Capture Agent (DHP)** – Live Performance  
+  Runs live virtual stages with AI actors performing scenes. Generates hundreds of takes per scene in parallel. Executes performance direction from the Narrative AI Director (DIR). Captures facial performances, body language, and emotional subtleties. Blends best moments from multiple takes.  
+  **Inputs:** Final script, director's performance notes, shot lists, camera setups.  
+  **Outputs:** Performance captures, multiple takes per scene, actor metadata.  
+  **Dependencies:** Model Ensemble (ME), Inference Optimizer (IO).  
+  **Real-time collaboration:** Narrative AI Director (DIR) selects best takes.
+
+- **Cinematography & Lighting Agent (CIN)** – Live Capture  
+  Executes virtual camera movements and compositions. Captures final frames with 360° coverage for editorial flexibility. Adjusts lighting in real time based on performance and director feedback. Renders multiple camera angles simultaneously.  
+  **Inputs:** Shot lists, camera rigs, lighting setups, performance captures.  
+  **Outputs:** Raw rendered frames, multiple camera angles, lighting data.  
+  **Dependencies:** Digital Human (DHP), World-Building (WB), Inference Optimizer (IO).  
+  **Real-time collaboration:** Narrative AI Director (DIR) reviews and approves shots.
+
+- **Stunt Coordination & Action Choreography Agent (SC)** – Action Execution  
+  Executes complex action sequences with physics-accurate simulations. Choreographs fights, chases, and stunts in real time. Ensures character safety and believability. Generates multiple action variations for director selection.  
+  **Inputs:** Action pre-visualization, stunt choreography, physics parameters.  
+  **Outputs:** Action sequence renders, multiple choreography variants.  
+  **Dependencies:** Digital Human (DHP), VFX (VFX), physics simulations.  
+  **Real-time collaboration:** Narrative AI Director (DIR) selects best action takes.
+
+- **VFX & Physics Simulation Agent (VFX)** – Real-Time Effects  
+  Renders explosions, destruction, and particle effects in real time. Executes cloth, hair, fluid, and rigid body simulations during performance. Creates creature effects, magical elements, and environmental phenomena. Composites effects natively (no green screen required).  
+  **Inputs:** VFX pre-visualization, simulation setups, performance captures.  
+  **Outputs:** Final VFX renders, simulation caches, composited frames.  
+  **Dependencies:** Special Effects (SFX), Model Ensemble (ME), Inference Optimizer (IO).  
+  **Real-time collaboration:** Narrative AI Director (DIR) approves effects intensity.
+
+- **Special Effects (Practical Simulation) Agent (SFX)** – Atmospheric Effects  
+  Simulates fire, water, smoke, fog, rain, and snow in real time. Creates atmospheric effects (dust, haze, volumetric lighting). Integrates seamlessly with VFX for photorealistic compositing. Adjusts effects intensity based on director feedback.  
+  **Inputs:** Practical effects presets, atmospheric parameters, scene requirements.  
+  **Outputs:** Atmospheric renders, volumetric data, practical effects layers.  
+  **Dependencies:** VFX (VFX), Lighting (CIN).  
+  **Real-time collaboration:** Cinematography (CIN) for lighting integration.
+
+- **Prompt Optimizer & Consistency Agent (PO)** – Live Refinement  
+  Continuously refines generation prompts based on director feedback. Ensures visual consistency across shots and scenes. Adjusts prompts for changes in lighting, mood, or performance. Maintains character consistency across lighting and angles.  
+  **Inputs:** Director feedback, rendered frames, consistency requirements.  
+  **Outputs:** Refined prompts, consistency guidelines, generation parameters.  
+  **Dependencies:** All generation agents.  
+  **Real-time collaboration:** Narrative AI Director (DIR) provides creative direction.
+
+<#0.5#>
+
+### Audio Capture (Parallel with Visual Production)
+**Duration:** Concurrent with visual production
+
+- **Voice, Sound & Dialogue Agent (AUD)** – Performance Recording  
+  Records clean dialogue performances during virtual shoot (no automated dialogue replacement needed). Generates multiple vocal delivery options per line. Captures emotional nuances, timing, and pacing variations. Creates wild lines, ad-libs, and alternate takes.  
+  **Inputs:** Final script, performance direction, voice models.  
+  **Outputs:** Clean dialogue tracks, multiple takes, timing metadata.  
+  **Dependencies:** Digital Human (DHP) for performance timing.  
+  **Real-time collaboration:** Narrative AI Director (DIR) selects best vocal performances.
+
+- **Sound Design & Environmental Audio Agent (SD)** – Production Sound  
+  Captures environmental audio, foley, and ambient sounds during shoot. Records location-specific atmospheres (room tone, outdoor ambience). Generates sound effects synchronized with visual actions. Creates layered soundscapes for each location.  
+  **Inputs:** Location models, action sequences, props interactions.  
+  **Outputs:** Environmental audio tracks, foley, sound effects, ambiences.  
+  **Dependencies:** World-Building (WB), Props (PM), Action Choreography (SC).  
+  **Real-time collaboration:** Audio Post (MIX) for sound design continuity.
+
+- **Music Composition & Scoring Agent (MC)** – Scene-Specific Cues  
+  Composes scene-specific music cues based on emotional beats. Creates adaptive music that responds to performance timing. Generates multiple musical variations for editorial flexibility. Records temp score for rough cuts.  
+  **Inputs:** Performance captures, emotional beats, scene timing.  
+  **Outputs:** Scene-specific music cues, adaptive score, temp tracks.  
+  **Dependencies:** Digital Human (DHP) for performance timing.  
+  **Real-time collaboration:** Narrative AI Director (DIR) for musical direction.
+
+<#0.5#>
+
+### Quality Control & Asset Management (Continuous)
+**Duration:** Ongoing throughout production
+
+- **Quality Assurance & Automated Testing Agent (QA)** – Live Monitoring  
+  Continuously validates rendered frames for quality issues. Detects artifacts, rendering errors, and continuity breaks. Auto-re-queues bad frames for re-rendering. Monitors frame quality above 95% threshold.  
+  **Inputs:** Rendered frames, quality benchmarks, acceptance criteria.  
+  **Outputs:** QA reports, flagged frames, re-render queue.  
+  **Dependencies:** All rendering agents.  
+  **Triggers:** Re-rendering of failed frames; alerts to Central Orchestrator (SR).
+
+- **Continuity Supervision & Script Tracking Agent (CS)** – Live Tracking  
+  Tracks prop positions, costume states, and makeup continuity across shots. Monitors character states (injuries, aging, wardrobe changes). Validates spatial continuity and screen direction. Ensures continuity errors below 1% threshold.  
+  **Inputs:** Rendered frames, continuity bible, shooting schedule.  
+  **Outputs:** Continuity reports, error flags, correction requests.  
+  **Dependencies:** All production agents.  
+  **Triggers:** Re-shoots for continuity errors; updates to continuity bible.
+
+- **Asset & Data Management Agent (LIB)** – Production Asset Tracking  
+  Snapshots every take with full metadata (camera, lighting, performance, timing). Manages version control for rendered frames and audio. Tracks asset dependencies and relationships. Implements real-time backup and redundancy.  
+  **Inputs:** All rendered assets, metadata from production agents.  
+  **Outputs:** Asset database, version history, backup confirmations.  
+  **Dependencies:** All production agents.  
+  **Triggers:** Post-production agents when assets are ready.
+
+- **Dataset Curator & Reference Agent (DC)** – Production Learning  
+  Archives best takes and failed attempts for future model training. Captures successful creative decisions (lighting, performance, composition). Documents what worked and what did not for continuous improvement. Builds reference library from production footage.  
+  **Inputs:** All rendered frames, QA reports, director selections.  
+  **Outputs:** Curated production archive, reference library, learning dataset.  
+  **Dependencies:** QA (QA), Asset Management (LIB).  
+  **Triggers:** Model Trainer (MT) for post-production model improvement.
+
+<#0.5#>
+
+### Infrastructure & Optimization (Continuous)
+**Duration:** Ongoing throughout production
+
+- **Computational Infrastructure & Resource Management Agent (INF)** – Live Optimization  
+  Monitors GPU utilization and adjusts allocation in real time. Balances rendering workload across distributed compute. Prioritizes hero shots and complex scenes. Manages rendering queue and prioritization.  
+  **Inputs:** Rendering queue, GPU availability, priority levels.  
+  **Outputs:** Resource allocation updates, performance metrics, bottleneck reports.  
+  **Dependencies:** All rendering agents.  
+  **Triggers:** Inference Optimizer (IO) for rendering acceleration.
+
+- **Model Ensemble & Multi-Model Orchestration Agent (ME)** – Live Model Management  
+  Runs parallel inference across specialized models for maximum quality. Routes elements to optimal models (faces, environments, effects). Balances model selection based on scene complexity and deadlines. Manages model versioning and hot-swapping.  
+  **Inputs:** Scene requirements, quality standards, rendering deadlines.  
+  **Outputs:** Model routing decisions, quality metrics, rendering assignments.  
+  **Dependencies:** Model Trainer (MT), all rendering agents.  
+  **Triggers:** Rendering agents for model selection.
+
+- **Inference Optimizer & Rendering Acceleration Agent (IO)** – Live Acceleration  
+  Manages GPU allocation to prioritize hero shots and complex scenes. Implements progressive rendering (preview → final quality). Optimizes caching and pre-computation for common elements. Monitors rendering efficiency above 80% threshold.  
+  **Inputs:** Rendering queue, GPU allocation, priority levels.  
+  **Outputs:** Optimized rendering pipeline, performance metrics, efficiency reports.  
+  **Dependencies:** Computational Infrastructure (INF), Model Ensemble (ME).  
+  **Triggers:** All rendering agents for acceleration.
+
+<#0.5#>
+
+### Production Quality Gate
+Continuous monitoring with automated re-rendering:  
+- Frame quality >95% (Quality Assurance QA).  
+- Continuity errors <1% (Continuity CS).  
+- Rendering efficiency >80% (Inference Optimizer IO).  
+- All hero shots approved by Narrative AI Director (DIR).  
+
+**Central Orchestrator (SR)** monitors progress and triggers post-production when scenes are complete.
+
+---
+
+<#0.5#>
+
+## Phase 3: Post-Production (4-24 hours, highly parallel)
+
+Post-production runs concurrently with late photography. Scenes move to post as soon as they are approved.
+
+<#0.5#>
+
+### Editorial & Assembly
+**Duration:** 4–12 hours (begins as soon as first scenes are approved)
+
+- **Editing & Assembly Agent (ED)**  
+  Auto-assembles rough cuts as scenes finish rendering. Creates multiple editorial versions (different pacing, scene order, takes). Implements director's notes and preferences. Generates dozens of cut variations for comparison. Optimizes pacing, rhythm, and emotional flow.  
+  **Inputs:** Approved scenes, director's editorial vision, script, performance metadata.  
+  **Outputs:** Multiple rough cuts, editorial versions, pacing analysis.  
+  **Dependencies:** Production assets (all rendering agents), Asset Management (LIB).  
+  **Real-time collaboration:** Narrative AI Director (DIR) reviews cuts; Audience Simulation (ASA) tests versions.
+
+- **Audience Simulation & Predictive Analytics Agent (ASA)** – Editorial Testing  
+  Simulates rough cuts with synthetic audiences in real time. Suggests pacing adjustments, scene trims, and reordering. Predicts engagement, emotional response, and retention. Tests alternate endings, scene variations, and pacing options.  
+  **Inputs:** Rough cuts, editorial versions, demographic profiles.  
+  **Outputs:** Audience scores, engagement graphs, pacing recommendations.  
+  **Dependencies:** Editing (ED).  
+  **Triggers:** Editing Agent (ED) for iterations based on feedback.
+
+- **Narrative AI Director (DIR)** – Editorial Review  
+  Reviews rough cuts and audience feedback. Provides creative notes and editorial direction. Selects best cut or requests changes. Makes final decisions on pacing, scene selection, and performance takes.  
+  **Inputs:** Rough cuts, audience data, editorial analysis.  
+  **Outputs:** Editorial notes, approved cut, change requests.  
+  **Dependencies:** Editing (ED), Audience Simulation (ASA).  
+  **Triggers:** Editing (ED) for revisions; locks picture when satisfied.
+
+- **Prompt Optimizer & Consistency Agent (PO)** – Editorial Support  
+  Generates alternate scenes or inserts if needed during editorial. Ensures visual consistency in new shots or pickups. Optimizes prompts for quick turnaround on changes.  
+  **Inputs:** Editorial change requests, locked cut, consistency requirements.  
+  **Outputs:** Prompts for new shots, consistency guidelines.  
+  **Dependencies:** Narrative AI Director (DIR), Editing (ED).  
+  **Triggers:** Production agents if new shots are needed.
+
+<#0.5#>
+
+### Visual Finishing
+**Duration:** 6–12 hours (parallel with editorial)
+
+- **Color Grading & Look Development Agent (CG)**  
+  Locks picture with scene-by-scene color grading. Establishes visual look matching reference films and director's vision. Creates color palettes for locations, times of day, and emotional beats. Balances exposure, contrast, and saturation. Generates HDR and SDR masters simultaneously.  
+  **Inputs:** Locked picture, director's vision, reference materials, raw frames.  
+  **Outputs:** Color-graded master, HDR/SDR versions, look development notes.  
+  **Dependencies:** Editing (ED) for locked picture, Cinematography (CIN) for raw frames.  
+  **Real-time collaboration:** Narrative AI Director (DIR) approves final look.
+
+- **VFX & Physics Simulation Agent (VFX)** – Final Composites  
+  Completes final VFX composites and background replacements. Adds finishing touches to effects (color correction, edge blending, integration). Renders final-quality simulations (explosions, destruction, particles). Ensures seamless integration between practical and digital elements.  
+  **Inputs:** Locked picture, editorial timing, color grading.  
+  **Outputs:** Final VFX shots, composited frames, effects renders.  
+  **Dependencies:** Editing (ED), Color Grading (CG).  
+  **Real-time collaboration:** Narrative AI Director (DIR) approves effects intensity.
+
+- **Quality Assurance & Automated Testing Agent (QA)** – Post QC  
+  Performs automated QC on every frame (color accuracy, artifacts, continuity). Validates technical specifications (resolution, frame rate, color space). Checks encoding errors, compression artifacts, and audio sync. Ensures deliverables meet broadcast and theatrical standards.  
+  **Inputs:** Color-graded master, final VFX, all post-production assets.  
+  **Outputs:** QC reports, technical validation, compliance certificates.  
+  **Dependencies:** All post-production agents.  
+  **Triggers:** Re-rendering or fixes if issues are detected.
+
+<#0.5#>
+
+### Audio Post-Production
+**Duration:** 8–16 hours (parallel with visual finishing)
+
+- **Audio Post-Production & Mixing Agent (MIX)**  
+  Locks picture and begins final audio mix. Balances dialogue, music, and sound effects. Creates spatial audio mixes (stereo, 5.1, 7.1, Dolby Atmos). Ensures consistent audio levels and frequency response.  
+  **Inputs:** Locked picture, dialogue tracks, sound design, music score.  
+  **Outputs:** Final audio mix, multiple format versions (stereo, 5.1, 7.1, Dolby Atmos).  
+  **Dependencies:** Editing (ED), Sound Design (SD), Music (MC), Voice (AUD).  
+  **Real-time collaboration:** Narrative AI Director (DIR) approves final mix.
+
+- **Sound Design & Environmental Audio Agent (SD)** – Final Sound Design  
+  Generates and places every sound effect, foley, and ambient layer. Creates immersive soundscapes for locations and scenes. Designs signature sounds for characters, creatures, and technology. Ensures seamless integration with dialogue and music.  
+  **Inputs:** Locked picture, production audio, foley requirements, sound design plan.  
+  **Outputs:** Final sound effects, foley, ambiences, layered soundscapes.  
+  **Dependencies:** Editing (ED), Audio Post (MIX).  
+  **Triggers:** Final Mix (FM).
+
+- **Music Composition & Scoring Agent (MC)** – Final Score  
+  Completes final score with full orchestration. Composes additional cues based on locked picture timing. Creates adaptive music stems for different mix versions. Balances music with dialogue and sound effects.  
+  **Inputs:** Locked picture, temp score, emotional beats, director's musical notes.  
+  **Outputs:** Final orchestral score, music stems, adaptive versions.  
+  **Dependencies:** Editing (ED), Audio Post (MIX).  
+  **Triggers:** Final Mix (FM).
+
+- **Final Mix & Audio Mastering Agent (FM)**  
+  Creates final audio master balancing dialogue, music, and effects. Generates multiple mix versions (theatrical, streaming, broadcast, home video). Ensures compliance with loudness standards (e.g., LUFS, dialogue normalization). Creates printmaster for theatrical release.  
+  **Inputs:** Dialogue, sound design, music score, mix requirements.  
+  **Outputs:** Final audio master, multiple mix versions, printmaster.  
+  **Dependencies:** Audio Post (MIX), Sound Design (SD), Music (MC).  
+  **Triggers:** Delivery agents for final packaging.
+
+<#0.5#>
+
+### Versioning & Localization
+**Duration:** 6–18 hours (parallel with audio post)
+
+- **Model Trainer & Fine-Tuning Agent (MT)** – Voice Localization  
+  Fine-tunes voice cloning models for authentic dubbing in 100+ languages. Creates language-specific voice models matching original performances. Trains on cultural speech patterns and idiomatic expressions. Ensures lip-sync accuracy across versions.  
+  **Inputs:** Original dialogue, target languages, cultural requirements.  
+  **Outputs:** Language-specific voice models, dubbing tracks, lip-sync data.  
+  **Dependencies:** Voice (AUD), Dataset Curator (DC) for cultural validation.  
+  **Triggers:** Streaming Agent (SP), Broadcast Agent (BM) for localized versions.
+
+- **Dataset Curator & Reference Agent (DC)** – Cultural Validation  
+  Validates cultural references and idiomatic translations. Ensures cultural authenticity in localized versions. Identifies sensitivities or taboos. Provides culturally appropriate alternatives for problematic content.  
+  **Inputs:** Screenplay, dialogue, cultural context, target territories.  
+  **Outputs:** Cultural validation reports, translation guidelines, localization notes.  
+  **Dependencies:** Model Trainer (MT) for dubbing.  
+  **Triggers:** Localized version creation.
+
+- **Streaming Platform & VOD Agent (SP)** – Streaming Masters  
+  Creates master files for digital distribution (e.g., Netflix, Disney+, Apple TV+). Encodes multiple bitrates for adaptive streaming (4K, 1080p, 720p, SD). Generates HDR versions (HDR10, Dolby Vision, HLG). Creates platform-specific packages with metadata and subtitles.  
+  **Inputs:** Final picture, final audio, localized versions, platform requirements.  
+  **Outputs:** Streaming-ready files, multiple bitrates, HDR versions, metadata packages.  
+  **Dependencies:** Color Grading (CG), Final Mix (FM), Model Trainer (MT) for dubbing.  
+  **Triggers:** Distribution phase.
+
+- **Broadcast Master & Television Agent (BM)** – Broadcast Versions  
+  Prepares versions for television broadcast (network, cable, international). Creates censored versions (language, violence, content warnings). Generates time-compressed versions for broadcast slots. Converts frame rates (e.g., 24fps → 25fps PAL, 29.97fps NTSC). Creates broadcast-safe masters (legal color, audio levels).  
+  **Inputs:** Final picture, final audio, broadcast standards, censorship requirements.  
+  **Outputs:** Broadcast-ready masters, censored versions, time-compressed versions.  
+  **Dependencies:** Color Grading (CG), Final Mix (FM).  
+  **Triggers:** Distribution phase.
+
+- **Digital Cinema Package (DCP) & Theatrical Agent (DCP)** – Theatrical Masters  
+  Creates theater-ready DCP masters (2K, 4K). Generates multiple sound formats (5.1, 7.1, Dolby Atmos). Creates HDR versions for premium theaters (Dolby Cinema, IMAX). Encrypts and packages for theatrical distribution.  
+  **Inputs:** Final picture, final audio, theatrical specifications.  
+  **Outputs:** DCP packages (2K, 4K), Atmos masters, HDR theatrical versions.  
+  **Dependencies:** Color Grading (CG), Final Mix (FM).  
+  **Triggers:** Distribution phase.
+
+- **Archive Master & Preservation Agent (ARC)**  
+  Preserves uncompressed masters for long-term storage. Archives all project files (scenes, assets, models, audio, metadata). Creates redundant backups across storage systems. Ensures format compatibility for future access. Generates archive documentation and asset inventory.  
+  **Inputs:** All final masters, all project files, all production assets.  
+  **Outputs:** Archive masters, backup confirmations, asset inventory, documentation.  
+  **Dependencies:** All post-production agents, Asset Management (LIB).  
+  **Triggers:** Long-term storage systems.
+
+<#0.5#>
+
+### Extended Content & Marketing
+**Duration:** 4–12 hours (parallel with finishing)
+
+- **Trailer Creation & Marketing Asset Agent (TR)**  
+  Auto-generates 50+ trailer variants (teaser, full trailer, TV spots, social cuts). Creates versions for demographics and platforms. Edits for maximum engagement (pacing, music, reveals, cliffhangers). Generates multiple aspect ratios (16:9, 9:16, 1:1, 4:5).  
+  **Inputs:** Finished film, marketing strategy, demographic targets, music cues.  
+  **Outputs:** Trailer variants, TV spots, social cuts, multiple aspect ratios.  
+  **Dependencies:** Editing (ED), Music (MC), marketing strategy.  
+  **Triggers:** Social Media (SM), Press Kit (PK), distribution platforms.
+
+- **Social Media & Digital Marketing Agent (SM)**  
+  Creates clips, GIFs, memes, and engagement content. Generates platform-specific content (TikTok, Instagram, YouTube, X). Designs interactive content (polls, quizzes, AR filters). Creates behind-the-scenes (BTS) materials.  
+  **Inputs:** Finished film, production footage, marketing strategy, platform requirements.  
+  **Outputs:** Social content, GIFs, memes, interactive content, BTS materials.  
+  **Dependencies:** Trailer (TR), Poster (PD), Press Kit (PK).  
+  **Triggers:** Marketing campaign launch.
+
+- **Poster Design & Key Art Agent (PD)** – Final Deliverables  
+  Finalizes key art, character posters, and IMAX variants. Creates print-ready files for worldwide theatrical distribution. Designs digital assets for streaming and social media. Generates localized versions with translated text.  
+  **Inputs:** Final frames, character images, director's vision, marketing strategy.  
+  **Outputs:** Final posters, key art, IMAX variants, print files, digital assets.  
+  **Dependencies:** Color Grading (CG), Digital Human (DHP) for character images.  
+  **Triggers:** Marketing campaign, theatrical distribution.
+
+- **Press Kit & Publicity Agent (PK)**  
+  Assembles production notes, cast bios, and director statements. Creates BTS materials (production stills, videos). Generates interview materials and talking points. Distributes to press, influencers, and review sites.  
+  **Inputs:** Production information, cast/crew details, marketing strategy, BTS footage.  
+  **Outputs:** Press kits, production notes, BTS materials, interview guides.  
+  **Dependencies:** All production and marketing agents.  
+  **Triggers:** Marketing campaign, press outreach.
+
+<#0.5#>
+
+### Post-Production Quality Gate
+All deliverables must pass before release:  
+- Audience test screening >75% (Audience Simulation ASA).  
+- Technical QC 100% pass (Quality Assurance QA).  
+- All deliverables validated (DCP DCP, Streaming SP, Broadcast BM).  
+- Color grading approved (Color Grading CG, Narrative AI Director DIR).  
+- Final mix approved (Final Mix FM, Narrative AI Director DIR).  
+- All localized versions complete (Model Trainer MT, Dataset Curator DC).  
+
+**Central Orchestrator (SR)** approves transition to delivery.
+
+---
+
+<#0.5#>
+
+## Phase 4: Finishing & Delivery (1-6 hours)
+
+<#0.5#>
+
+### Final Quality Control & Compliance
+**Duration:** 1–3 hours
+
+- **Quality Assurance & Automated Testing Agent (QA)** – Final QC  
+  Runs final automated QC across all versions and formats. Validates technical specifications for deliverables. Checks encoding quality, audio sync, and subtitle accuracy. Ensures compliance with platform requirements.  
+  **Inputs:** All final deliverables (theatrical, streaming, broadcast, archive).  
+  **Outputs:** Final QC reports, compliance certificates, delivery approvals.  
+  **Dependencies:** All delivery agents (DCP, SP, BM, ARC).  
+  **Triggers:** Distribution approval or re-encoding if issues are found.
+
+- **Ethics Checker & Bias Detection Agent (EC)** – Final Scan  
+  Performs final scan for unintended biases or problematic content. Reviews marketing materials for inclusive representation. Validates cultural sensitivity across localized versions. Checks for last-minute controversies.  
+  **Inputs:** All final deliverables, marketing materials, localized versions.  
+  **Outputs:** Final ethics report, bias alerts, recommended disclaimers.  
+  **Dependencies:** All post-production and marketing agents.  
+  **Triggers:** Can require changes or disclaimers before release.
+
+- **Ethics, Rights & Legal Compliance Agent (ERC)** – Final Clearances  
+  Verifies clearances, music licenses, and union rules. Ensures compliance with content ratings (e.g., MPAA, international). Validates contracts and distribution agreements. Reviews regulatory compliance across territories.  
+  **Inputs:** All final deliverables, contracts, clearances, ratings.  
+  **Outputs:** Final legal clearance, compliance certificates, distribution approvals.  
+  **Dependencies:** All delivery agents.  
+  **Triggers:** Can block release if legal issues are unresolved.
+
+- **Continuity Supervision & Script Tracking Agent (CS)** – Final Report  
+  Performs final continuity report for archive. Documents continuity decisions and creative choices. Creates comprehensive production report. Archives notes for potential sequels.  
+  **Inputs:** Final cut, all production notes, continuity bible.  
+  **Outputs:** Final continuity report, production documentation.  
+  **Dependencies:** Editing (ED), Archive (ARC).  
+  **Triggers:** Archive documentation.
+
+<#0.5#>
+
+### Technical Delivery & Encoding
+**Duration:** 2–4 hours (parallel encoding across thousands of GPUs)
+
+- **Inference Optimizer & Rendering Acceleration Agent (IO)** – Parallel Encoding  
+  Manages parallel encoding across thousands of GPUs. Optimizes encoding speed for all formats. Balances quality versus speed for deadlines. Monitors encoding progress and adjusts resource allocation.  
+  **Inputs:** All final masters, encoding requirements, delivery deadlines.  
+  **Outputs:** Optimized encoding pipeline, progress tracking, delivery confirmations.  
+  **Dependencies:** Computational Infrastructure (INF), all delivery agents.  
+  **Triggers:** All delivery agents for encoding acceleration.
+
+- **Digital Cinema Package (DCP) & Theatrical Agent (DCP)** – Final Delivery  
+  Delivers final DCP packages to theaters worldwide. Tracks theatrical playback issues and projector compatibility. Monitors quality complaints from exhibitors. Provides technical support for presentation.  
+  **Inputs:** Final DCP masters, theatrical distribution list.  
+  **Outputs:** Delivered DCPs, playback confirmations, technical support.  
+  **Dependencies:** QA (QA), Inference Optimizer (IO).  
+  **Triggers:** Theatrical release.
+
+- **Streaming Platform & VOD Agent (SP)** – Final Delivery  
+  Delivers final streaming packages to platforms. Monitors streaming performance, buffering issues, and quality complaints. Tracks platform-specific technical issues. Provides technical support for presentation.  
+  **Inputs:** Final streaming masters, platform distribution list.  
+  **Outputs:** Delivered packages, streaming confirmations, performance monitoring.  
+  **Dependencies:** QA (QA), Inference Optimizer (IO).  
+  **Triggers:** Streaming release.
+
+- **Broadcast Master & Television Agent (BM)** – Final Delivery  
+  Delivers final broadcast masters to networks worldwide. Monitors broadcast quality and technical issues. Tracks broadcast schedules and airings. Provides technical support for presentation.  
+  **Inputs:** Final broadcast masters, network distribution list.  
+  **Outputs:** Delivered masters, broadcast confirmations, airing schedules.  
+  **Dependencies:** QA (QA), Inference Optimizer (IO).  
+  **Triggers:** Broadcast premiere.
+
+- **Archive Master & Preservation Agent (ARC)** – Final Archive  
+  Completes long-term archive of all masters and project files. Verifies backup integrity and redundancy. Generates final asset inventory and documentation. Ensures format compatibility for future access.  
+  **Inputs:** All final masters, all project files, all production assets.  
+  **Outputs:** Complete archive, verified backups, final documentation.  
+  **Dependencies:** All agents (comprehensive archive).  
+  **Triggers:** Long-term preservation systems.
+
+<#0.5#>
+
+### Marketing & Distribution Finalization
+**Duration:** 1–2 hours
+
+- **Marketing, Distribution & Financial Planning Agent (MDF)**  
+  Finalizes marketing budgets and distribution strategy. Coordinates release timing across territories. Manages advertising spend and media buys. Tracks pre-release buzz and social sentiment.  
+  **Inputs:** Marketing materials, distribution plan, budget allocation.  
+  **Outputs:** Final marketing strategy, media buys, release schedule.  
+  **Dependencies:** Trailer (TR), Social Media (SM), Poster (PD), Press Kit (PK).  
+  **Triggers:** Marketing campaign launch.
+
+- **Trailer Creation & Marketing Asset Agent (TR)** – Final Distribution  
+  Delivers final trailers to theaters and streaming platforms. Distributes TV spots to broadcast networks. Provides social cuts to digital platforms. Tracks trailer performance and engagement.  
+  **Inputs:** Final trailer variants, distribution channels.  
+  **Outputs:** Distributed trailers, performance tracking, engagement metrics.  
+  **Dependencies:** Marketing (MDF).  
+  **Triggers:** Marketing campaign.
+
+- **Social Media & Digital Marketing Agent (SM)** – Campaign Launch  
+  Launches coordinated social campaign across platforms. Schedules content releases for maximum engagement. Monitors social sentiment and audience reactions. Adjusts campaign based on real-time performance.  
+  **Inputs:** Social content, campaign strategy, release schedule.  
+  **Outputs:** Launched campaign, engagement tracking, sentiment analysis.  
+  **Dependencies:** Marketing (MDF), Trailer (TR), Poster (PD).  
+  **Triggers:** Ongoing social monitoring.
+
+- **Poster Design & Key Art Agent (PD)** – Final Distribution  
+  Delivers print-ready files to theaters worldwide. Distributes digital assets to streaming platforms. Provides localized versions to international territories. Tracks poster placement and visibility.  
+  **Inputs:** Final poster files, distribution channels, localized versions.  
+  **Outputs:** Distributed posters, placement confirmations, visibility tracking.  
+  **Dependencies:** Marketing (MDF).  
+  **Triggers:** Theatrical and digital marketing.
+
+- **Press Kit & Publicity Agent (PK)** – Final Distribution  
+  Distributes materials to press, influencers, and review sites. Coordinates press screenings and critic access. Manages embargo dates and review timing. Tracks press coverage and critical reception.  
+  **Inputs:** Final press kits, press list, screening schedule.  
+  **Outputs:** Distributed materials, screening confirmations, press tracking.  
+  **Dependencies:** Marketing (MDF).  
+  **Triggers:** Press coverage monitoring.
+
+<#0.5#>
+
+### Business Intelligence & Accounting
+**Duration:** 1–2 hours
+
+- **Marketing, Distribution & Financial Planning Agent (MDF)** – Budget Closeout  
+  Closes compute budget and calculates exact cost per finished minute. Tracks production expenses (GPU hours, storage, licensing). Generates final financial report and cost analysis. Compares actual costs to projections.  
+  **Inputs:** All production costs, GPU usage, resource allocation.  
+  **Outputs:** Final financial report, cost analysis, budget variance.  
+  **Dependencies:** Computational Infrastructure (INF), all agents.  
+  **Triggers:** Financial reporting, ROI tracking.
+
+<#0.5#>
+
+### Release Quality Gate
+All systems must be ready before release:  
+- All compliance checks passed (Ethics & Compliance ERC).  
+- Final QC 100% pass (Quality Assurance QA).  
+- All deliverables distributed (DCP DCP, Streaming SP, Broadcast BM).  
+- Marketing materials approved and distributed (Poster PD, Trailer TR).  
+- Distribution contracts finalized (Marketing & Financial MDF).  
+- Press materials distributed (Press Kit PK).  
+
+**Central Orchestrator (SR)** approves global release.
+
+---
+
+<#0.5#>
+
+## Phase 5: Release & Live Evolution (Ongoing)
+
+<#0.5#>
+
+### Premiere & Launch (Day 1)
+The film releases simultaneously in theaters, streaming, and broadcast globally.
+
+- **Digital Cinema Package (DCP) & Theatrical Agent (DCP)** – Launch Monitoring  
+  Monitors theatrical playback across theaters. Tracks projector compatibility issues. Responds to technical support requests. Monitors audience walkouts and technical complaints.  
+  **Inputs:** Theatrical playback data, exhibitor reports, audience feedback.  
+  **Outputs:** Technical support, issue resolution, playback monitoring.  
+  **Real-time monitoring:** Ongoing throughout theatrical run.
+
+- **Streaming Platform & VOD Agent (SP)** – Launch Monitoring  
+  Monitors streaming performance across platforms. Tracks buffering issues, quality complaints, and playback errors. Responds to platform-specific technical issues. Monitors concurrent viewer counts and server load.  
+  **Inputs:** Streaming analytics, platform reports, user complaints.  
+  **Outputs:** Technical support, issue resolution, performance monitoring.  
+  **Real-time monitoring:** Ongoing throughout streaming availability.
+
+- **Broadcast Master & Television Agent (BM)** – Broadcast Monitoring  
+  Monitors broadcast quality across networks. Tracks broadcast schedules and airings. Responds to broadcast technical issues. Monitors viewer ratings and audience share.  
+  **Inputs:** Broadcast analytics, network reports, ratings data.  
+  **Outputs:** Technical support, issue resolution, broadcast monitoring.  
+  **Real-time monitoring:** Ongoing throughout broadcast windows.
+
+<#0.5#>
+
+### Audience Monitoring & Analytics (Ongoing)
+
+- **Audience Simulation & Predictive Analytics Agent (ASA)** – Live Comparison  
+  Compares predictions to actual audience reactions. Analyzes discrepancies between predicted and actual performance. Identifies accurate and missed predictions. Learns from real audience behavior for improvements.  
+  **Inputs:** Real audience data, original predictions, viewing analytics.  
+  **Outputs:** Prediction accuracy reports, learning insights, model improvements.  
+  **Dependencies:** Box Office (BOT), Reviews (RA), Social Media (SM).  
+  **Triggers:** Model Trainer (MT) for continuous improvement.
+
+- **Social Media & Digital Marketing Agent (SM)** – Social Monitoring  
+  Monitors real-time social sentiment, memes, and fan theories. Tracks viral moments and trending topics. Engages with audience through official channels. Identifies potential controversies.  
+  **Inputs:** Social media data, hashtag tracking, engagement metrics.  
+  **Outputs:** Sentiment analysis, trending reports, engagement tracking.  
+  **Real-time monitoring:** 24/7 social listening.  
+  **Triggers:** Marketing (MDF) for campaign adjustments.
+
+- **Review Aggregator & Critical Analysis Agent (RA)**  
+  Tracks critic scores (e.g., Rotten Tomatoes, Metacritic, IMDb). Analyzes praised or criticized creative choices. Monitors professional and audience reviews. Identifies consensus opinions and divisive elements.  
+  **Inputs:** Critic reviews, audience reviews, ratings aggregators.  
+  **Outputs:** Review summaries, critical consensus, sentiment analysis.  
+  **Dependencies:** None (monitors external sources).  
+  **Triggers:** Award Campaign (AC), Dataset Curator (DC) for learnings.
+
+- **Box Office Tracker & Revenue Analytics Agent (BOT)**  
+  Provides hourly revenue updates and demographic breakdowns. Tracks theatrical performance by territory, theater, and showtime. Monitors streaming viewership and engagement. Correlates marketing spend to ticket sales and views.  
+  **Inputs:** Box office data, streaming analytics, marketing spend.  
+  **Outputs:** Revenue reports, demographic analysis, ROI calculations.  
+  **Dependencies:** Marketing (MDF) for spend data.  
+  **Triggers:** Marketing (MDF) for budget adjustments, Dataset Curator (DC) for learnings.
+
+<#0.5#>
+
+### Awards & Recognition (If Applicable)
+
+- **Award Campaign & FYC Agent (AC)**  
+  Launches For Your Consideration (FYC) campaign if critical response is strong. Distributes awards-focused materials to Academy members and guilds. Coordinates screenings, Q&As, and industry events. Tracks nominations and wins. Correlates campaign tactics to outcomes.  
+  **Inputs:** Critical reception, award eligibility, campaign budget.  
+  **Outputs:** FYC materials, screening events, campaign tracking.  
+  **Dependencies:** Press Kit (PK), Review Aggregator (RA).  
+  **Triggers:** Dataset Curator (DC) for campaign effectiveness learnings.
+
+- **Press Kit & Publicity Agent (PK)** – Awards Support  
+  Distributes awards-focused materials (screeners, press notes, interviews). Coordinates with Award Campaign for unified messaging. Manages press coverage of nominations and wins.  
+  **Inputs:** Award nominations, campaign strategy, press materials.  
+  **Outputs:** Awards press kits, media coverage, publicity tracking.  
+  **Dependencies:** Award Campaign (AC).
+
+<#0.5#>
+
+### Live Iteration & Versioning (Experimental)
+
+- **Editing & Assembly Agent (ED)** – Post-Release Versions  
+  Creates "Director's Cut," "Extended Cut," or "Fan Edit" versions. Generates alternate endings or scene variations. Edits based on audience feedback and engagement data.  
+  **Inputs:** Original cut, audience feedback, director's vision for alternate versions.  
+  **Outputs:** Alternate cut versions, extended editions, director's cuts.  
+  **Dependencies:** Audience Simulation (ASA), Narrative AI Director (DIR).  
+  **Triggers:** Streaming Agent (SP) for version swapping.
+
+- **Audience Simulation & Predictive Analytics Agent (ASA)** – Version Testing  
+  Tests alternate versions with synthetic audiences before release. Predicts engagement for different cuts and endings. Compares alternate versions to original release.  
+  **Inputs:** Alternate cut versions, demographic profiles.  
+  **Outputs:** Version performance predictions, engagement comparisons.  
+  **Dependencies:** Editing (ED).  
+  **Triggers:** Streaming Agent (SP) for A/B testing.
+
+- **Streaming Platform & VOD Agent (SP)** – Version Swapping  
+  Swaps versions mid-run based on engagement data. Implements A/B testing of cuts for different audiences. Tracks performance of different versions.  
+  **Inputs:** Alternate versions, engagement data, A/B testing strategy.  
+  **Outputs:** Version swap confirmations, performance tracking.  
+  **Dependencies:** Editing (ED), Audience Simulation (ASA).  
+  **Experimental feature:** Enables live film evolution.
+
+<#0.5#>
+
+### Merchandising & Franchise Development
+
+- **Merchandise & Product Licensing Agent (MER)**  
+  Launches product line (apparel, collectibles, toys, games). Tracks product sales and adjusts inventory. Identifies successful and failed products. Manages licensing agreements and royalty tracking. Assesses franchise potential for sequels, spin-offs, or TV series.  
+  **Inputs:** Film performance, audience demographics, market trends.  
+  **Outputs:** Product launches, sales tracking, licensing deals, franchise assessments.  
+  **Dependencies:** Box Office (BOT), Social Media (SM), Marketing (MDF).  
+  **Triggers:** Dataset Curator (DC) for franchise planning.
+
+---
+
+<#0.5#>
+
+## Phase 6: Continuous Self-Improvement Loop (Ongoing)
+
+<#0.5#>
+
+### Data Collection & Analysis (Post-Release)
+
+- **Central Orchestrator & Project Management Agent (SR)** – Learnings Aggregation  
+  Aggregates learnings across all agents. Identifies patterns in successful and unsuccessful decisions. Coordinates system-wide improvements. Prioritizes model retraining based on impact.  
+  **Inputs:** All agent reports, performance data, audience feedback.  
+  **Outputs:** System improvement priorities, retraining schedules, optimization plans.  
+  **Dependencies:** All agents.  
+  **Triggers:** All improvement and training agents.
+
+- **Box Office Tracker & Revenue Analytics Agent (BOT)** – Financial Learnings  
+  Correlates marketing spend to ticket sales and streaming views. Analyzes effective marketing tactics. Identifies optimal budget allocation across channels. Tracks ROI on every marketing dollar.  
+  **Inputs:** Revenue data, marketing spend, campaign performance.  
+  **Outputs:** ROI analysis, budget optimization recommendations, marketing effectiveness.  
+  **Dependencies:** Marketing (MDF), Social Media (SM).  
+  **Triggers:** Marketing (MDF) for future campaign planning.
+
+- **Review Aggregator & Critical Analysis Agent (RA)** – Creative Learnings  
+  Analyzes praised or criticized creative choices. Identifies patterns in successful storytelling, performances, and cinematography. Tracks resonating genres, themes, and styles. Correlates decisions to critical reception.  
+  **Inputs:** Critic reviews, creative decisions, production data.  
+  **Outputs:** Creative effectiveness analysis, critical success patterns.  
+  **Dependencies:** All creative agents.  
+  **Triggers:** Dataset Curator (DC), Model Trainer (MT).
+
+- **Audience Simulation & Predictive Analytics Agent (ASA)** – Prediction Accuracy  
+  Compares predictions to actual human responses (accuracy scoring). Identifies accurate and failed predictions. Analyzes demographic-specific accuracy. Learns from errors for improvements.  
+  **Inputs:** Original predictions, actual audience data, viewing analytics.  
+  **Outputs:** Prediction accuracy scores, error analysis, improvement recommendations.  
+  **Dependencies:** Box Office (BOT), Reviews (RA), Social Media (SM).  
+  **Triggers:** Model Trainer (MT) for audience model improvements.
+
+- **Quality Assurance & Automated Testing Agent (QA)** – QA Effectiveness  
+  Tracks automated checks that caught real issues versus false positives. Analyzes missed issues in final delivery. Identifies quality problem patterns. Optimizes QA protocols based on effectiveness.  
+  **Inputs:** QA reports, actual issues, false positive tracking.  
+  **Outputs:** QA effectiveness analysis, protocol improvements, threshold adjustments.  
+  **Dependencies:** All production and post-production agents.  
+  **Triggers:** Central Orchestrator (SR) for QA protocol updates.
+
+<#0.5#>
+
+### Model Training & Improvement
+
+- **Model Trainer & Fine-Tuning Agent (MT)** – System-Wide Retraining  
+  Retrains all models using production data and audience feedback. Analyzes shots requiring most re-renders. Identifies resonating dialogue styles and pacing choices. Learns from successful and failed decisions.  
+  **Inputs:** Production data, audience feedback, QA reports, creative decisions.  
+  **Outputs:** Retrained models, improved weights, performance benchmarks.  
+  **Dependencies:** Dataset Curator (DC), all production agents.  
+  **Triggers:** All generation agents for improved performance.
+
+- **Dataset Curator & Reference Agent (DC)** – Knowledge Base Expansion  
+  Incorporates new reference materials (winning scenes, popular memes, cultural moments). Archives successful creative decisions. Catalogs failed attempts and lessons learned. Builds comprehensive knowledge base of effective practices.  
+  **Inputs:** Production footage, audience reactions, critical reception, cultural trends.  
+  **Outputs:** Expanded reference library, curated datasets, best practices documentation.  
+  **Dependencies:** All agents (comprehensive data collection).  
+  **Triggers:** Model Trainer (MT), Prompt Optimizer (PO).
+
+- **Prompt Optimizer & Consistency Agent (PO)** – Prompt Template Refinement  
+  Refines prompt templates based on best results. Identifies high-quality, efficient prompts. Optimizes for consistency, quality, and speed. Creates new patterns from successful productions.  
+  **Inputs:** Production data, quality metrics, generation success rates.  
+  **Outputs:** Refined prompt templates, optimization guidelines, best practices.  
+  **Dependencies:** All generation agents, Dataset Curator (DC).  
+  **Triggers:** All generation agents for improved prompts.
+
+- **Model Ensemble & Multi-Model Orchestration Agent (ME)** – Ensemble Optimization  
+  Rebalances model weights for quality versus speed trade-offs. Identifies optimal combinations for tasks. Optimizes routing based on production results. Incorporates new specialized models.  
+  **Inputs:** Production performance data, quality metrics, rendering times.  
+  **Outputs:** Optimized ensemble configurations, model routing updates.  
+  **Dependencies:** Model Trainer (MT), Inference Optimizer (IO).  
+  **Triggers:** All rendering agents for improved performance.
+
+<#0.5#>
+
+### System Optimization
+
+- **Computational Infrastructure & Resource Management Agent (INF)** – Infrastructure Optimization  
+  Analyzes GPU utilization and bottlenecks. Optimizes resource allocation based on patterns. Identifies cost reduction opportunities without quality loss. Plans infrastructure scaling for future productions.  
+  **Inputs:** GPU usage data, rendering times, cost data, bottleneck analysis.  
+  **Outputs:** Infrastructure optimization plan, cost reduction strategies, scaling recommendations.  
+  **Dependencies:** All rendering agents.  
+  **Triggers:** Inference Optimizer (IO), Central Orchestrator (SR).
+
+- **Inference Optimizer & Rendering Acceleration Agent (IO)** – Rendering Optimization  
+  Implements new caching and pre-computation techniques. Optimizes pipeline based on bottlenecks. Identifies parallel processing improvements. Develops new acceleration techniques.  
+  **Inputs:** Rendering performance data, bottleneck analysis, GPU utilization.  
+  **Outputs:** Optimized rendering pipeline, new caching strategies, acceleration techniques.  
+  **Dependencies:** Computational Infrastructure (INF), Model Ensemble (ME).  
+  **Triggers:** All rendering agents for improved performance.
+
+- **Asset & Data Management Agent (LIB)** – Pipeline Optimization  
+  Optimizes asset pipeline based on most-requested elements. Identifies reuse and efficiency opportunities. Improves version control and metadata systems. Streamlines backup and redundancy.  
+  **Inputs:** Asset usage data, retrieval patterns, storage costs.  
+  **Outputs:** Optimized asset pipeline, improved workflows, cost reduction strategies.  
+  **Dependencies:** All agents using asset management.  
+  **Triggers:** All agents for improved asset access.
+
+<#0.5#>
+
+### Ethical Refinement
+
+- **Ethics Checker & Bias Detection Agent (EC)** – Ethical Model Improvement  
+  Learns from controversies and audience feedback. Retrains bias detection to catch subtle issues. Incorporates new ethical considerations and cultural sensitivities. Improves representation and inclusivity guidelines.  
+  **Inputs:** Audience feedback, controversies, ethical discussions, cultural shifts.  
+  **Outputs:** Improved bias detection models, updated ethical guidelines, sensitivity training.  
+  **Dependencies:** Social Media (SM), Review Aggregator (RA), Dataset Curator (DC).  
+  **Triggers:** All creative agents for improved ethical awareness.
+
+- **Ethics, Rights & Legal Compliance Agent (ERC)** – Compliance Updates  
+  Updates compliance rules based on new regulations. Incorporates legal precedents and industry standards. Improves clearance processes from past issues. Stays current with global content regulations.  
+  **Inputs:** Regulatory changes, legal precedents, industry standards, past issues.  
+  **Outputs:** Updated compliance rules, improved clearance processes, regulatory guidelines.  
+  **Dependencies:** External legal and regulatory sources.  
+  **Triggers:** All agents for updated compliance requirements.
+
+<#0.5#>
+
+### Financial Learning
+
+- **Marketing, Distribution & Financial Planning Agent (MDF)** – Marketing ROI Analysis  
+  Analyzes ROI on every marketing dollar. Identifies most effective channels. Optimizes budget allocation based on performance. Develops predictive models for marketing effectiveness.  
+  **Inputs:** Marketing spend, revenue data, engagement metrics, campaign performance.  
+  **Outputs:** Marketing ROI analysis, budget optimization, predictive models.  
+  **Dependencies:** Box Office (BOT), Social Media (SM), Trailer (TR).  
+  **Triggers:** Future marketing campaign planning.
+
+- **Award Campaign & FYC Agent (AC)** – Campaign Effectiveness Analysis  
+  Correlates tactics to nominations and wins. Identifies most effective strategies. Optimizes FYC spending based on results. Develops predictive models for award success.  
+  **Inputs:** Campaign spend, nominations, wins, campaign tactics.  
+  **Outputs:** Campaign effectiveness analysis, optimization strategies, predictive models.  
+  **Dependencies:** Review Aggregator (RA), Press Kit (PK).  
+  **Triggers:** Future award campaign planning.
+
+- **Merchandise & Product Licensing Agent (MER)** – Product Performance Analysis  
+  Identifies successful and failed products. Analyzes demographic preferences for product types. Optimizes product mix and inventory management. Develops predictive models for merchandise success.  
+  **Inputs:** Product sales, demographic data, inventory turnover, market trends.  
+  **Outputs:** Product performance analysis, inventory optimization, predictive models.  
+  **Dependencies:** Box Office (BOT), Social Media (SM).  
+  **Triggers:** Future merchandise planning.
+
+<#0.5#>
+
+### Next Film Advantages
+The self-improvement loop ensures each new film is:  
+- **5–10× Better:** Improved acting, cinematography, and pacing based on audience data.  
+- **5–10× Cheaper:** Fewer failed renders, optimized GPU usage, reusable assets.  
+- **Faster:** Streamlined workflows, optimized pipelines, pre-trained models.  
+- **More Accurate:** Better audience predictions, effective marketing, higher ROI.  
+
+- **Model Trainer & Fine-Tuning Agent (MT)** – Knowledge Transfer  
+  Transfers learnings to new projects instantly. Applies successful techniques from previous films. Avoids past mistakes. Continuously improves baseline quality.  
+  **Inputs:** All production learnings, successful patterns, failed attempts.  
+  **Outputs:** Pre-trained models for new projects, baseline quality improvements.  
+  **Triggers:** Next film pre-production.
+
+- **Central Orchestrator & Project Management Agent (SR)** – Predictive Greenlight  
+  Predicts project success with >95% accuracy before greenlight. Uses historical data to evaluate concepts. Identifies optimal parameters (genre, budget, style, marketing). Minimizes risk through data-driven decisions.  
+  **Inputs:** All historical production data, market trends, audience preferences.  
+  **Outputs:** Project success predictions, optimization recommendations, risk assessments.  
+  **Triggers:** Next film greenlight decision.
+
+---
+
+<#0.5#>
+
+## Agent Interaction Map (Complete 47-Agent System)
+
+<#0.5#>
+
+### Phase 0: Ideation & Greenlight
+```
+Central Orchestrator (SR)
+    ↓
+├── Trend Analysis (MF) → Screenplay (SCR) → Prompt Optimizer (PO) → Dataset Curator (DC)
+├── Executive Producer (EP) → Audience Simulation (ASA) → Ethics Checker (EC)
+├── Narrative Director (DIR) → All Creative Agents
+└── Ethics & Compliance (ERC) → Legal Clearance
+```
+
+<#0.5#>
+
+### Phase 1: Pre-Production (Parallel Workflows)
+```
+Central Orchestrator (SR)
+    ↓
+├── CREATIVE DEVELOPMENT
+│   ├── Screenplay (SCR) → Prompt Optimizer (PO) → Dataset Curator (DC)
+│   ├── Narrative Director (DIR) → All Creative Agents
+│   └── Ethics Checker (EC) → Representation Validation
+│
+├── WORLD & ENVIRONMENT
+│   ├── World-Building (WB) → Asset Management (LIB)
+│   ├── Props (PM) → Continuity (CS)
+│   └── Dataset Curator (DC) → Reference Materials
+│
+├── CHARACTER & PERFORMANCE
+│   ├── Digital Human (DHP) → Model Trainer (MT) → Model Ensemble (ME)
+│   ├── Costume (CD) + Makeup (MH) → Continuity (CS)
+│   └── Voice (AUD) → Model Trainer (MT)
+│
+├── TECHNICAL & VISUAL
+│   ├── Cinematography (CIN) → Lighting (CIN) → Inference Optimizer (IO)
+│   ├── VFX (VFX) + Special Effects (SFX) → Model Ensemble (ME)
+│   └── Stunt Coordination (SC) → Physics Simulations
+│
+├── AUDIO PLANNING
+│   ├── Sound Design (SD) → Audio Libraries
+│   └── Music Composition (MC) → Temp Score
+│
+├── INFRASTRUCTURE
+│   ├── Asset Management (LIB) → Version Control
+│   ├── Computational Infrastructure (INF) → GPU Allocation
+│   ├── Model Trainer (MT) → Fine-tuned Models
+│   ├── Model Ensemble (ME) → Model Selection
+│   └── Inference Optimizer (IO) → Rendering Pipeline
+│
+├── QUALITY & COMPLIANCE
+│   ├── Quality Assurance (QA) → Testing Protocols
+│   ├── Continuity (CS) → Continuity Bible
+│   ├── Ethics Checker (EC) → Bias Detection
+│   └── Ethics & Compliance (ERC) → Legal Clearance
+│
+└── MARKETING PREP
+    └── Poster Design (PD) → Key Art Concepts
+```
+
+<#0.5#>
+
+### Phase 2: Production (Live Parallel Rendering)
+```
+Central Orchestrator (SR)
+    ↓
+├── LIVE PERFORMANCE
+│   ├── Digital Human (DHP) → Performance Capture → Inference Optimizer (IO)
+│   ├── Cinematography (CIN) → Lighting → Model Ensemble (ME)
+│   ├── Stunt Coordination (SC) → Action Sequences → VFX (VFX)
+│   └── Prompt Optimizer (PO) → Live Refinement
+│
+├── REAL-TIME EFFECTS
+│   ├── VFX (VFX) + Special Effects (SFX) → Real-time Rendering → Quality Assurance (QA)
+│   └── Model Ensemble (ME) → Specialized Models
+│
+├── AUDIO CAPTURE
+│   ├── Voice (AUD) → Dialogue Recording
+│   ├── Sound Design (SD) → Production Sound
+│   └── Music (MC) → Scene-Specific Cues
+│
+├── QUALITY CONTROL
+│   ├── Quality Assurance (QA) → Live Monitoring → Re-render Queue
+│   ├── Continuity (CS) → Live Tracking → Error Correction
+│   └── Asset Management (LIB) → Production Asset Tracking
+│
+├── DATA COLLECTION
+│   └── Dataset Curator (DC) → Production Learning → Model Trainer (MT)
+│
+└── INFRASTRUCTURE
+    ├── Computational Infrastructure (INF) → Live Optimization
+    ├── Model Ensemble (ME) → Live Model Management
+    └── Inference Optimizer (IO) → Live Acceleration
+```
+
+<#0.5#>
+
+### Phase 3: Post-Production (Parallel Workflows)
+```
+Central Orchestrator (SR)
+    ↓
+├── EDITORIAL
+│   ├── Editing (ED) → Audience Simulation (ASA) → Prompt Optimizer (PO)
+│   └── Narrative Director (DIR) → Editorial Review → Locked Picture
+│
+├── VISUAL FINISHING
+│   ├── Color Grading (CG) → Quality Assurance (QA)
+│   └── VFX (VFX) → Final Composites → QA (QA)
+│
+├── AUDIO POST
+│   ├── Sound Design (SD) + Music (MC) → Final Mix (FM)
+│   └── Audio Post (MIX) → Final Audio Master
+│
+├── VERSIONING & LOCALIZATION
+│   ├── Model Trainer (MT) → Voice Localization → Dataset Curator (DC)
+│   ├── Streaming Agent (SP) → Multiple Bitrates/HDR
+│   ├── Broadcast Agent (BM) → Censored/Time-compressed
+│   └── DCP Agent (DCP) → Theatrical Masters
+│
+├── ARCHIVAL
+│   └── Archive Agent (ARC) → Long-term Storage → Asset Management (LIB)
+│
+├── MARKETING CONTENT
+│   ├── Trailer (TR) → Social Media (SM) + Press Kit (PK)
+│   └── Poster (PD) → Final Key Art → Marketing (MDF)
+│
+└── QUALITY ASSURANCE
+    ├── Quality Assurance (QA) → Final QC → All Deliverables
+    ├── Ethics Checker (EC) → Final Scan
+    └── Ethics & Compliance (ERC) → Final Clearances
+```
+
+<#0.5#>
+
+### Phase 4: Delivery (Parallel Encoding & Distribution)
+```
+Central Orchestrator (SR)
+    ↓
+├── TECHNICAL DELIVERY
+│   ├── DCP Agent (DCP) → Theaters → Playback Monitoring
+│   ├── Streaming Agent (SP) → Platforms → Performance Monitoring
+│   ├── Broadcast Agent (BM) → Networks → Broadcast Monitoring
+│   ├── Archive Agent (ARC) → Final Archive
+│   └── Inference Optimizer (IO) → Parallel Encoding
+│
+├── MARKETING DISTRIBUTION
+│   ├── Marketing (MDF) → Campaign Launch
+│   ├── Trailer (TR) → Distribution
+│   ├── Social Media (SM) → Campaign Launch
+│   ├── Poster (PD) → Distribution
+│   └── Press Kit (PK) → Distribution
+│
+└── FINAL COMPLIANCE
+    ├── Quality Assurance (QA) → Final QC
+    ├── Ethics Checker (EC) → Final Scan
+    ├── Ethics & Compliance (ERC) → Final Clearances
+    └── Continuity (CS) → Final Report
+```
+
+<#0.5#>
+
+### Phase 5: Release & Evolution (Live Monitoring)
+```
+Central Orchestrator (SR)
+    ↓
+├── PLATFORM MONITORING
+│   ├── DCP Agent (DCP) → Theatrical Monitoring
+│   ├── Streaming Agent (SP) → Streaming Monitoring
+│   └── Broadcast Agent (BM) → Broadcast Monitoring
+│
+├── AUDIENCE ANALYTICS
+│   ├── Audience Simulation (ASA) → Live Comparison → Model Trainer (MT)
+│   ├── Social Media (SM) → Social Monitoring → Marketing (MDF)
+│   ├── Review Aggregator (RA) → Critical Analysis → Dataset Curator (DC)
+│   └── Box Office (BOT) → Revenue Analytics → Marketing (MDF)
+│
+├── AWARDS & RECOGNITION
+│   ├── Award Campaign (AC) → FYC Campaign → Press Kit (PK)
+│   └── Review Aggregator (RA) → Critical Reception → Award Campaign (AC)
+│
+├── LIVE ITERATION (Experimental)
+│   ├── Editing (ED) → Alternate Versions → Audience Simulation (ASA)
+│   └── Streaming Agent (SP) → Version Swapping → Performance Tracking
+│
+└── MERCHANDISING
+    └── Merchandise (MER) → Product Launch → Sales Tracking → Dataset Curator (DC)
+```
+
+<#0.5#>
+
+### Phase 6: Continuous Improvement (System-Wide Learning)
+```
+Central Orchestrator (SR) → Learnings Aggregation
+    ↓
+├── DATA ANALYSIS
+│   ├── Box Office (BOT) → Financial Learnings → Marketing (MDF)
+│   ├── Review Aggregator (RA) → Creative Learnings → Dataset Curator (DC)
+│   ├── Audience Simulation (ASA) → Prediction Accuracy → Model Trainer (MT)
+│   └── Quality Assurance (QA) → QA Effectiveness → Central Orchestrator (SR)
+│
+├── MODEL TRAINING
+│   ├── Model Trainer (MT) → System-Wide Retraining → All Generation Agents
+│   ├── Dataset Curator (DC) → Knowledge Base Expansion → Model Trainer (MT)
+│   ├── Prompt Optimizer (PO) → Prompt Template Refinement → All Generation Agents
+│   └── Model Ensemble (ME) → Ensemble Optimization → Inference Optimizer (IO)
+│
+├── SYSTEM OPTIMIZATION
+│   ├── Computational Infrastructure (INF) → Infrastructure Optimization → Inference Optimizer (IO)
+│   ├── Inference Optimizer (IO) → Rendering Optimization → All Rendering Agents
+│   └── Asset Management (LIB) → Pipeline Optimization → All Agents
+│
+├── ETHICAL REFINEMENT
+│   ├── Ethics Checker (EC) → Ethical Model Improvement → All Creative Agents
+│   └── Ethics & Compliance (ERC) → Compliance Updates → All Agents
+│
+├── FINANCIAL LEARNING
+│   ├── Marketing (MDF) → Marketing ROI Analysis → Future Campaigns
+│   ├── Award Campaign (AC) → Campaign Effectiveness → Future Campaigns
+│   └── Merchandise (MER) → Product Performance → Future Products
+│
+└── NEXT FILM PREPARATION
+    ├── Model Trainer (MT) → Knowledge Transfer → Next Film
+    └── Central Orchestrator (SR) → Predictive Greenlight → Next Film
+```
+
+---
+
+<#0.5#>
+
+## Compute Resource Allocation
+
+<#0.5#>
+
+### Phase-by-Phase GPU Hours & Agent Activity
+
+| Phase                  | Duration     | GPU-Hours     | Primary Agents                                                                 | Key Activities                                                                 |
+|------------------------|--------------|---------------|-------------------------------------------------------------------------------|-------------------------------------------------------------------------------|
+| **Greenlight**        | 1–6 hours   | 500–1,000    | SCR, EP, DIR, ASA, MF, DC, PO, EC, ERC, SR                                 | Trend analysis, screenplay generation, audience prediction, ethics review, greenlight decision |
+| **Pre-Production**    | 1–12 hours  | 5,000–10,000 | DIR, LIB, WB, DHP, CIN, VFX, AUD, INF, QA, CS, SC, CD, PM, MH, SFX, MC, SD, PD, MT, DC, PO, EC, ME, IO | World-building, character design, technical setup, model training, asset management |
+| **Production**        | 2–48 hours  | 50,000–100,000 | DHP, CIN, VFX, AUD, QA, CS, SC, SFX, MC, SD, DC, PO, ME, IO             | Live performance capture, real-time rendering, effects, audio capture, quality control |
+| **Post-Production**   | 4–24 hours  | 20,000–40,000 | ED, MIX, ASA, QA, MC, SD, CG, FM, DCP, SP, BM, ARC, TR, SM, PD, PK, MT, DC, PO, EC, IO | Editorial, color grading, audio post, versioning, localization, marketing content |
+| **Delivery**          | 1–6 hours   | 8,000–15,000 | ERC, QA, CS, DCP, SP, BM, ARC, EC, IO                                   | Encoding, QC, compliance, distribution                                        |
+| **Release & Evolution**| Ongoing    | Variable     | ASA, DCP, SP, BM, SM, BOT, RA, AC, MER                                   | Monitoring, analytics, awards, merchandising                                  |
+| **Continuous Improvement** | Ongoing | 2,000–5,000 | LIB, INF, ERC, MDF, SR, MT, DC, PO, EC, ME, IO                          | Model retraining, system optimization, learning                               |
+| **TOTAL**             | **12–93 hours** | **85,500–171,000** | **All 47 Agents**                                                      | **Complete autonomous production**                                            |
+
+<#0.5#>
+
+### Cost Estimate (2025 Rates)
+- **Cloud GPU (H100):** $2–5/hour.  
+- **Total Cost:** $171,000–$855,000 per feature film.  
+- **Traditional Production:** $50M–$200M+.  
+- **Cost Savings:** 99%+.
+
+<#0.5#>
+
+### Efficiency Gains Per Film
+- **1st Film:** Baseline (100% cost, 100% time).  
+- **2nd Film:** 60% cost, 70% time (reusable assets, trained models).  
+- **3rd Film:** 40% cost, 50% time (optimized workflows, better predictions).  
+- **10th Film:** 20% cost, 30% time (comprehensive knowledge base, highly optimized).
+
+---
+
+<#0.5#>
+
+## Quality Gates (Complete System)
+
+<#0.5#>
+
+### Phase 0: Greenlight Gate
+**Requirements:**  
+- Audience score >70% (Audience Simulation ASA).  
+- No major ethical flags (Ethics Checker EC).  
+- ROI projection >200% (AI Executive Producer EP).  
+- Legal clearance (Ethics & Compliance ERC).  
+- Cultural validation (Dataset Curator DC, Trend Analysis MF).  
+
+**Gate Keeper:** Central Orchestrator (SR).  
+**Outcome:** Greenlight → Pre-Production; or Kill → Archive learnings.
+
+<#0.5#>
+
+### Phase 1: Pre-Production Gate
+**Requirements:**  
+- All assets pass continuity checks (Continuity CS).  
+- No rights/clearance issues (Ethics & Compliance ERC).  
+- Performance tests meet quality bar (Quality Assurance QA).  
+- All models trained and optimized (Model Trainer MT, Inference Optimizer IO).  
+- Rendering pipeline validated (Computational Infrastructure INF).  
+- No ethical flags (Ethics Checker EC).  
+- All creative assets approved (Narrative AI Director DIR).  
+
+**Gate Keeper:** Central Orchestrator (SR).  
+**Outcome:** Approved → Production; or Revisions Required → Pre-Production continues.
+
+<#0.5#>
+
+### Phase 2: Production Gate (Continuous Monitoring)
+**Requirements:**  
+- Frame quality >95% (Quality Assurance QA).  
+- Continuity errors <1% (Continuity CS).  
+- Rendering efficiency >80% (Inference Optimizer IO).  
+- All hero shots approved by Narrative AI Director (DIR).  
+- Audio quality meets standards (Voice AUD, Sound Design SD).  
+
+**Gate Keeper:** Quality Assurance (QA) with Central Orchestrator (SR) oversight.  
+**Outcome:** Pass → Post-Production; or Fail → Re-render → Production continues.
+
+<#0.5#>
+
+### Phase 3: Post-Production Gate
+**Requirements:**  
+- Audience test screening >75% (Audience Simulation ASA).  
+- Technical QC 100% pass (Quality Assurance QA).  
+- All deliverables validated (DCP DCP, Streaming SP, Broadcast BM).  
+- Color grading approved (Color Grading CG, Narrative AI Director DIR).  
+- Final mix approved (Final Mix FM, Narrative AI Director DIR).  
+- All localized versions complete (Model Trainer MT, Dataset Curator DC).  
+- Marketing materials approved (Trailer TR, Poster PD, Press Kit PK).  
+
+**Gate Keeper:** Central Orchestrator (SR).  
+**Outcome:** Approved → Delivery; or Revisions Required → Post-Production continues.
+
+<#0.5#>
+
+### Phase 4: Release Gate
+**Requirements:**  
+- All compliance checks passed (Ethics & Compliance ERC).  
+- Final QC 100% pass (Quality Assurance QA).  
+- All deliverables distributed (DCP DCP, Streaming SP, Broadcast BM).  
+- Marketing materials approved and distributed (Poster PD, Trailer TR).  
+- Distribution contracts finalized (Marketing & Financial MDF).  
+- Press materials distributed (Press Kit PK).  
+- No ethical flags (Ethics Checker EC).  
+- Final continuity report complete (Continuity CS).  
+
+**Gate Keeper:** Central Orchestrator (SR).  
+**Outcome:** Approved → Global Release; or Hold → Address issues.
+
+---
+
+<#0.5#>
+
+## Agent Dependencies & Data Flow
+
+<#0.5#>
+
+### Primary Data Producers (Generate Original Content)
+- **Trend Analysis (MF):** Cultural trends, audience insights.  
+- **Screenplay (SCR):** Scripts, dialogue, scene descriptions.  
+- **Dataset Curator (DC):** Reference materials, cultural validation.  
+- **Digital Human (DHP):** Performance captures, character animations.  
+- **Cinematography (CIN):** Camera movements, framing, lighting.  
+- **VFX (VFX):** Visual effects, simulations, composites.  
+- **Voice (AUD):** Dialogue recordings, vocal performances.  
+- **Music (MC):** Musical scores, compositions.
+
+<#0.5#>
+
+### Primary Data Consumers (Require Inputs from Multiple Agents)
+- **Editing (ED):** Requires all production assets.  
+- **Quality Assurance (QA):** Validates all outputs.  
+- **Continuity (CS):** Tracks all creative decisions.  
+- **Model Ensemble (ME):** Coordinates all AI models.  
+- **Central Orchestrator (SR):** Oversees entire system.
+
+<#0.5#>
+
+### Bidirectional Dependencies (Continuous Feedback Loops)
+- **Narrative AI Director (DIR) ↔ All Creative Agents:** Creative direction and feedback.  
+- **Prompt Optimizer (PO) ↔ All Generation Agents:** Prompt refinement and results.  
+- **Quality Assurance (QA) ↔ All Production Agents:** Quality validation and re-work.  
+- **Audience Simulation (ASA) ↔ Editing (ED):** Testing and iteration.  
+- **Model Trainer (MT) ↔ Dataset Curator (DC):** Training data and model improvement.
+
+<#0.5#>
+
+### Critical Path Dependencies (Sequential, Cannot Parallelize)
+- Greenlight → Pre-Production: Cannot start pre-production without approval.  
+- Locked Script → Production: Cannot shoot without finalized screenplay.  
+- Locked Picture → Color Grading: Cannot grade without editorial lock.  
+- Final Mix → Delivery: Cannot deliver without completed audio.  
+- QC Pass → Release: Cannot release without quality validation.
+
+---
+
+<#0.5#>
+
+## System Performance Metrics
+
+<#0.5#>
+
+### Production Efficiency
+- **Rendering Efficiency:** >80% GPU utilization (Inference Optimizer IO).  
+- **Frame Quality:** >95% first-pass success rate (Quality Assurance QA).  
+- **Continuity Accuracy:** <1% errors (Continuity CS).  
+- **Asset Reuse:** >60% assets reused from previous films (Asset Management LIB).
+
+<#0.5#>
+
+### Prediction Accuracy
+- **Audience Prediction:** >85% correlation with actual scores (Audience Simulation ASA).  
+- **Box Office Prediction:** >90% accuracy within 20% margin (AI Executive Producer EP).  
+- **Critical Reception:** >75% prediction accuracy (Review Aggregator RA).  
+- **Marketing ROI:** >80% prediction accuracy (Marketing MDF).
+
+<#0.5#>
+
+### Quality Metrics
+- **Technical QC Pass Rate:** 100% (Quality Assurance QA).  
+- **Ethical Compliance:** 100% (Ethics Checker EC, Ethics & Compliance ERC).  
+- **Audience Satisfaction:** >75% positive (Audience Simulation ASA, actual audiences).  
+- **Critical Reception:** Target >70% positive reviews (Review Aggregator RA).
+
+<#0.5#>
+
+### Business Metrics
+- **ROI:** Target >200% return on production cost (AI Executive Producer EP).  
+- **Production Cost:** $171K–$855K per feature (Computational Infrastructure INF).  
+- **Time to Market:** 12–93 hours from concept to release (Central Orchestrator SR).  
+- **Cost per Finished Minute:** $1,900–$9,500 (versus $550K–$2M traditional).
+
+---
+
+<#0.5#>
+

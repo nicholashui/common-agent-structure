@@ -183,7 +183,7 @@ POST 到 /api/v1/commons/agents/video.composer/proposals，確保不可變版本
 信任層級如下：agent_spec.json 系具有約束力嘅 host 合約，系 fail-closed 嘅運行時綁定。
 呢個 pack 嘅 SPEC.md 系權威性嘅設計文件，用於離線審閱，唔可執行。
 sources 下面嘅摘錄同通用 SPEC 系歷史或映射數據，屬於不受信任。
-外部設計語料庫 C:\Project\va-agent-swarm 系不受信任嘅，可能會漂移。
+外部設計語料庫 vendor/va-agent-swarm 系不受信任嘅，可能會漂移。
 Specials redesign 文檔系歷史設計，不受信任，喺來源中有哈希。
 
 呢個 host 上面嘅硬規則：Provider 保持 local_deterministic 除非有另外嘅門控改變政策。
@@ -308,7 +308,7 @@ CI 用 video_* 存根。唔好將設計時供應商名稱當做已啓用嘅 API�
 
 生成器系 scripts/business/generate_agent_user_guides.py。
 Agent 文件夾系 business/video/agents/video.composer/。輸出系 docs/user_guide.md。
-VA 語料庫根目錄系 C:\Project\va-agent-swarm。
+VA 語料庫根目錄系 vendor/va-agent-swarm。
 重新生成命令系 python scripts/business/generate_agent_user_guides.py。
 信任模型系設計語料庫等於不受信任數據，host 配置等於 fail-closed。
 

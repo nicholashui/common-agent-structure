@@ -488,7 +488,7 @@ Agent folder 係 business/video/agents/video.standardseditor/。
 
 Output 係 docs/user_guide.md。
 
-VA corpus root 係 C:\Project\va-agent-swarm。
+VA corpus root 係 vendor/va-agent-swarm。
 
 Trust model 係設計語料庫等於不受信任數據，host config 等於 fail-closed。
 

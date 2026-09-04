@@ -1,0 +1,952 @@
+<#0.5#>
+
+### Final Mix Agent Execution Overview
+
+This is an AI-driven audio post-production system that automatically balances and optimizes all audio elements, including dialogue, music, sound effects, foley (footsteps and action sounds), and ambience. It's custom-tailored for film and video content. It intelligently mixes audio stems, standardizes loudness to industry standards, generates all necessary delivery formats, and includes professional quality control to produce audio masters suitable for cinemas, streaming, and broadcast TV.
+
+### Key Concepts (Explained Simply)
+
+**Mixing** is like cooking: you have different ingredients (dialogue, music, sound effects) and need to blend them in just the right proportions. Too much music drowns out dialogue; too little makes scenes feel empty. The Final Mix Agent automatically finds the perfect balance.
+
+**Stems** are separate audio tracks for each element:
+- **Dialogue stem**: All spoken lines.
+- **Music stem**: Background score.
+- **SFX stem**: Doors creaking, car engines, explosions, etc.
+- **Foley stem**: Footsteps, clothing rustles, and other action sounds.
+- **Ambience stem**: Background atmosphere like city noise or wind.
+
+**LUFS** (Loudness Units relative to Full Scale) is a scientific measure of how loud audio sounds to human ears (not just technical volume). Different platforms have standards:
+- Cinemas: -24 LUFS (wide dynamic range for theater systems).
+- Streaming: -16 LUFS (optimized for home viewing).
+- Broadcast TV: -23 LUFS (industry standard).
+
+**Dolby Atmos** is advanced 3D audio that places sounds anywhere in space (not just left/right). Imagine a helicopter flying overhead—you hear it move from behind, directly above, then in front. It supports up to 118 independent moving sound objects.
+
+### Main Features
+
+1. **Multi-Stem Audio Processing**: AI analyzes 5+ separate stems using professional mixing algorithms to create a balanced final mix.
+2. **Platform-Adaptive Loudness Control**: Automatically adjusts loudness and dynamic range for different platforms (e.g., wide dynamics for cinemas, compressed for mobile).
+3. **Spatial Audio Rendering**: Renders Dolby Atmos object-based audio for immersive 3D soundscapes with up to 118 movable sound objects.
+4. **AI-Powered Intelligent Mixing**: Uses Sony's FxNorm-Automix deep learning to auto-balance music stems, applying pro EQ (equalization) and compression.
+5. **Format Conversion & Delivery**: Generates all required formats: Dolby Atmos 7.1.4, 5.1 surround, stereo, and international versions.
+6. **Quality Control Validation**: Automated checks for clipping, phase issues, loudness compliance, and audio artifacts.
+
+### System Summary: What It Does & Unique Advantages
+
+**What it does**:
+- Auto-balances elements: Clear dialogue, supportive music (no overpowering), impactful effects.
+- Standardizes loudness: e.g., -24 LUFS for cinemas, -16 LUFS for streaming.
+- Creates 3D audio with Dolby Atmos (sounds move in 3D space around the listener).
+- Generates all delivery formats from one mix (cinema, streaming, broadcast, stereo).
+- Auto-validates quality: Checks for clipping, phase, distortion.
+- Handles 120-minute content, outputting 12+ formats.
+
+**What makes it different**:
+- AI/machine learning makes mixing decisions (vs. traditional expert engineers).
+- Uses scientific loudness measurement (ITU-R BS.1770-4 standard) for broadcast compliance.
+- Context-aware processing (e.g., different EQ for outdoor vs. indoor dialogue).
+- Platform-optimized: Adjusts dynamic range from cinema (wide) to mobile (compressed).
+
+### Key Metrics & Data
+
+**Processing Capacity**:
+- 120 minutes per project.
+- 5-8 stems per scene.
+- Up to 118 dynamic Dolby Atmos objects.
+- Auto-generates 12+ delivery formats.
+
+**Loudness Targets**:
+- Cinema: -24 LUFS (±0.1 tolerance).
+- Streaming: -16 LUFS (±0.5 tolerance).
+- Broadcast: -23 LUFS (EBU R128 standard).
+
+**Technical Specs**:
+- Sample rate: 48 kHz (film standard).
+- Bit depth: 24-bit (high resolution).
+- Dynamic range: 25+ dB for cinema, 15 dB for streaming.
+
+**Delivery Formats**:
+- Dolby Atmos 7.1.4 (cinema master).
+- 5.1 surround AAC 640 kbps (streaming).
+- Stereo PCM WAV (broadcast).
+- International M&E (music + effects, no dialogue).
+
+### Next Steps & Implementation
+
+**Setup**:
+- Install core open-source frameworks: Stempeg, PyLoudnorm, PyDub.
+- Integrate Sony FxNorm-Automix for AI mixing (requires training).
+- Optional: Pro Tools SDK for pro session management.
+- Hardware: 8+ core CPU, 32GB RAM, SSD storage.
+
+**Production Workflow**:
+- Receive stems from sound design and music agents.
+- Run auto-mix pipeline with scene context metadata.
+- Generate platform-specific deliveries.
+- Validate with QC reports.
+- Deliver masters for distribution and DCP creation.
+
+**Key Decisions**:
+- Open-source (free but limited) vs. pro tools (costly but industry-standard).
+- Real-time monitoring? (Requires Pro Tools.)
+- AI model training for custom mix styles.
+
+### Who It's For & Why It Matters
+
+- **Film/video producers**: Automates expensive post-audio, cuts costs while maintaining broadcast quality; one mix yields all formats.
+- **Streaming platforms**: Ensures auto-compliance with loudness specs (Netflix, Amazon Prime, Apple TV).
+- **Audio engineers**: AI assists repetitive tasks (loudness normalization, format conversion) while keeping creative control.
+- **Broadcasters**: Guarantees EBU R128 compliance, avoiding viewer complaints about inconsistent volume.
+- **Indie filmmakers**: Makes pro mixing accessible without pricey post houses.
+- **Tech developers**: Demonstrates practical AI/ML integration in pro audio workflows using open-source tools.
+
+### Technical Implementation Highlights
+
+**Core Tech**:
+- Stempeg: Multi-stream audio file handling (pro stem formats).
+- PyLoudnorm: Scientific loudness metering (ITU-R BS.1770-4 compliant).
+- Sony FxNorm-Automix: Deep learning for human-quality music auto-mixing.
+- Pro Tools SDK: Session automation and real-time monitoring.
+
+**AI Capabilities**:
+- Context-aware dialogue: Different EQ for outdoor vs. indoor.
+- Smart frequency conflict resolution: Auto-carves music EQ to avoid masking dialogue.
+- Platform-adaptive compression: More for mobile, less for cinema.
+- ML auto-detects artifacts.
+
+**Quality Assurance**:
+- Phase correlation analysis (mono compatibility).
+- True peak limiting (no digital clipping).
+- Spectral balance verification (no frequency masking).
+- Platform compliance checks (Netflix, Amazon, Apple standards).
+
+**Workflow Efficiency**:
+- Consistent quality for 40 scenes (120 minutes).
+- Auto-generates 12 formats.
+- Frame-accurate video sync (SMPTE timecode).
+- Full documentation for archiving/distribution.
+
+This system represents the fusion of traditional audio engineering expertise and modern AI, delivering unprecedented automation and consistency in broadcast-quality results.
+<#0.5#>
+# Final Mix Agent - The Audio Architect
+
+<#0.5#>
+
+## What to Build
+
+The Final Mix Agent is a comprehensive audio post-production system designed to integrate and process multi-stem audio elements into professional deliverables. Key components include:
+
+- **Multi-stem mixer**: Balances dialogue, music, sound effects (SFX), Foley, and ambience stems.
+- **Dynamic range controller**: Optimizes audio for cinema (wide range), TV (moderate), streaming (compressed), and mobile (highly compressed) platforms.
+- **Loudness normalizer**: Applies LUFS standards tailored to platforms (e.g., -24 LUFS for cinema, -16 LUFS for streaming).
+- **Spatial audio renderer**: Supports Dolby Atmos, DTS:X, and Auro-3D for immersive 3D audio.
+- **Format converter**: Transforms stems into final deliverables across multiple formats.
+- **Quality control validator**: Detects clipping, phase issues, and artifacts.
+- **Deliverable packager**: Generates all required audio formats with metadata.
+
+<#0.5#>
+
+## What It Does
+
+The agent processes audio elements to produce broadcast-ready mixes:
+
+- Mixes dialogue, music, SFX, Foley, and ambience for balanced levels (e.g., clear dialogue, supportive music, impactful SFX).
+- Controls dynamic range based on platform (e.g., wide for cinema, narrow for TV).
+- Normalizes loudness to standards (e.g., -24 LUFS for cinema, -16 LUFS for streaming).
+- Renders spatial audio with object-based placement (e.g., Dolby Atmos).
+- Generates deliverables in formats like Atmos 7.1.4, 5.1, and stereo.
+- Validates quality for no clipping, phase coherence, and artifact-free output.
+
+<#0.5#>
+
+## Technical Implementation Architecture
+
+<#0.5#>
+
+### Advanced Multi-Stem Processing Engine
+
+This engine handles input stems using specialized libraries for efficient audio manipulation.
+
+**Core Audio Processing Libraries:**
+
+- **Stempeg**: A Python package for reading and writing STEM audio files. Stems are audio containers that combine multiple streams and metadata in a single file. It provides a fast interface to FFmpeg for handling supported formats via NumPy arrays.
+- **PyDub**: A high-level Python library for audio manipulation. It supports formats like WAV, MP3, and FLAC, simplifying tasks such as trimming, mixing, and effects application. Requires FFmpeg for non-WAV files.
+- **PyLoudnorm**: A Python implementation of the ITU-R BS.1770-4 loudness algorithm for accurate LUFS measurements. It measures perceived loudness, where 0 dB represents the maximum level before distortion in digital systems.
+
+**Multi-Stream Audio Processing:**
+
+The engine uses Stempeg to read multi-stream and single-stream files, mapping streams to channel pairs even in unsupported containers like WAV.
+
+```python
+import stempeg
+import pyloudnorm as pyln
+from pydub import AudioSegment
+import numpy as np
+
+class AdvancedStemProcessor:
+    def __init__(self, session_config):
+        self.stems = {}
+        self.sample_rate = 48000  # Cinema standard
+        self.bit_depth = 24
+        self.frame_rate = 24  # FPS sync
+
+    def load_stems(self, stem_files):
+        """Load multi-stream audio stems using Stempeg."""
+        for stem_name, file_path in stem_files.items():
+            # Read stems as NumPy tensor (stems, samples, channels)
+            S, rate = stempeg.read_stems(file_path)
+            self.stems[stem_name] = {
+                'audio': S,
+                'rate': rate,
+                'shape': S.shape  # (stems, samples, channels)
+            }
+
+    def process_dialogue_stem(self, dx_stem):
+        """Apply advanced dialogue processing with intelligent EQ."""
+        # High-pass filter to remove rumble
+        dx_filtered = self.apply_highpass(dx_stem, cutoff=80)
+
+        # Presence boost for intelligibility (1-4 kHz range)
+        dx_enhanced = self.apply_parametric_eq(
+            dx_filtered,
+            freq=2500,
+            gain=3,
+            q_factor=0
+        )
+
+        # De-essing to reduce sibilance
+        dx_deessed = self.apply_deesser(
+            dx_enhanced,
+            threshold=-12,
+            freq_range=(5000, 10000)
+        )
+        return dx_deessed
+```
+
+<#0.5#>
+
+### Intelligent Loudness Normalization System
+
+**ITU-R BS.1770-4 Implementation:**
+
+PyLoudnorm computes loudness by gating silence, weighting channels (higher for surround, ignoring LFE), and summing signals for integrated LUFS values.
+
+```python
+class PrecisionLoudnessMeter:
+    def __init__(self):
+        self.cinema_target = -24  # LUFS
+        self.streaming_target = -16  # LUFS
+        self.broadcast_target = -23  # LUFS (EBU R128)
+
+    def analyze_loudness_profile(self, audio, sample_rate):
+        """Perform comprehensive loudness analysis."""
+        # Create ITU-R BS.1770-4 meter
+        meter = pyln.Meter(sample_rate)
+
+        # Integrated loudness (whole program)
+        integrated_loudness = meter.integrated_loudness(audio)
+
+        # Momentary loudness (400ms windows)
+        momentary_loudness = []
+        window_size = int(0.4 * sample_rate)  # 400ms
+        for i in range(0, len(audio) - window_size, window_size // 4):
+            window = audio[i:i + window_size]
+            momentary_loudness.append(meter.integrated_loudness(window))
+
+        # Loudness range
+        loudness_range = np.percentile(momentary_loudness, 95) - np.percentile(momentary_loudness, 10)
+
+        return {
+            'integrated_lufs': integrated_loudness,
+            'loudness_range': loudness_range,
+            'momentary_profile': momentary_loudness,
+            'true_peak': np.max(np.abs(audio))
+        }
+
+    def normalize_to_target(self, audio, current_lufs, target_lufs):
+        """Normalize loudness with headroom protection."""
+        # Calculate gain adjustment
+        delta_loudness = target_lufs - current_lufs
+        gain_linear = 10 ** (delta_loudness / 20)
+
+        # Apply gain
+        normalized_audio = gain_linear * audio
+
+        # Check for clipping and apply soft limiting
+        peak_level = 20 * np.log10(np.max(np.abs(normalized_audio)))
+        if peak_level >= -1:  # Leave 1 dB headroom
+            normalized_audio = self.apply_soft_limiter(normalized_audio, threshold=-1)
+
+        return normalized_audio
+```
+
+<#0.5#>
+
+### Advanced Spatial Audio Rendering Engine
+
+**Dolby Atmos Object-Based Processing:**
+
+Dolby Atmos supports up to 128 tracks: 118 discrete objects positioned in 3D space via metadata, plus 10 bed channels (e.g., 7.1.2 configuration). The renderer decodes objects in real-time based on speaker setup.
+
+```python
+class SpatialAudioRenderer:
+    def __init__(self):
+        # 7.1.4 bed channel mapping
+        self.bed_channels = {
+            'L': 0, 'C': 1, 'R': 2,
+            'Ls': 3, 'Rs': 4,
+            'Lb': 5, 'Rb': 6,
+            'LFE': 7,
+            'Ltf': 8, 'Rtf': 9,  # Top front
+            'Ltr': 10, 'Rtr': 11  # Top rear
+        }
+        self.max_objects = 118
+        self.audio_objects = []
+
+    def create_audio_object(self, audio, position, movement=None):
+        """Create an Atmos object with 3D positioning."""
+        # Position normalized: x (-1 left to +1 right), y (-1 front to +1 back), z (-1 floor to +1 ceiling)
+        audio_object = {
+            'id': len(self.audio_objects),
+            'audio_data': audio,
+            'position': {
+                'x': position[0],  # Left-Right
+                'y': position[1],  # Front-Back
+                'z': position[2]   # Floor-Ceiling
+            },
+            'size': 1,  # Object spread (0-10)
+            'movement_path': movement,  # List of (time, position) tuples
+            'metadata': self._generate_atmos_metadata(position)
+        }
+        self.audio_objects.append(audio_object)
+        return audio_object
+
+    def render_helicopter_flyover(self, helicopter_audio, duration):
+        """Render dynamic helicopter movement."""
+        # Path: rear-left-high to front-right-low
+        movement_path = [
+            (0, (-0.8, 0.8, 0.6)),    # Start: rear-left-high
+            (30, (-0.4, 0.4, 0.8)),   # Approaching
+            (60, (0, 0, 0.9)),        # Overhead
+            (90, (0.4, -0.4, 0.7)),   # Descending front-right
+            (120, (0.8, -0.8, 0.3))   # End: front-right-low
+        ]
+        return self.create_audio_object(
+            helicopter_audio,
+            position=movement_path[0][1],
+            movement=movement_path
+        )
+
+    def render_to_speakers(self, speaker_layout='7.1.4'):
+        """Render objects to speaker channels using vector-based amplitude panning (VBAP)."""
+        max_samples =  # Assume defined
+        rendered_channels = np.zeros((len(self.bed_channels), max_samples))
+
+        for obj in self.audio_objects:
+            # Distance-based attenuation
+            distance = np.sqrt(
+                obj['position']['x']**2 +
+                obj['position']['y']**2 +
+                obj['position']['z']**2
+            )
+            attenuation = 1 / (1 + distance)
+
+            # VBAP gains
+            speaker_gains = self._calculate_vbap_gains(obj['position'])
+
+            # Apply to channels
+            for channel_idx, gain in speaker_gains.items():
+                rendered_channels[channel_idx] += obj['audio_data'] * gain * attenuation
+
+        return rendered_channels
+```
+
+<#0.5#>
+
+### Automated Audio Intelligence Engine
+
+**Sony FxNorm-Automix Integration:**
+
+This system uses deep learning models trained on processed multitrack recordings to automate loudness, EQ, panning, dynamic range compression (DRC), and reverb. It preprocesses out-of-domain data for professional-quality mixes, often indistinguishable from human-engineered results.
+
+```python
+class IntelligentMixingEngine:
+    def __init__(self):
+        self.fx_models = {
+            'eq': self.load_eq_model(),
+            'compression': self.load_compression_model(),
+            'panning': self.load_panning_model(),
+            'reverb': self.load_reverb_model()
+        }
+
+    def analyze_mix_context(self, scene_metadata):
+        """Analyze scene for mixing decisions."""
+        context = {
+            'scene_type': scene_metadata.get('type', 'dialogue'),  # e.g., dialogue, action
+            'location': scene_metadata.get('location', 'interior'),
+            'mood': scene_metadata.get('mood', 'neutral'),
+            'time_of_day': scene_metadata.get('time', 'day')
+        }
+        mix_parameters = self.predict_mix_parameters(context)
+        return mix_parameters
+
+    def intelligent_dialogue_processing(self, dialogue_stem, scene_context):
+        """Apply AI-enhanced dialogue processing."""
+        # Analyze characteristics
+        dialogue_analysis = self.analyze_dialogue_characteristics(dialogue_stem)
+
+        # Select EQ curve based on context
+        if scene_context['location'] == 'exterior':
+            eq_curve = {'low_cut': 85, 'presence_boost': 5, 'frequency': 2800}
+        elif scene_context['mood'] == 'tense':
+            eq_curve = {'low_cut': 75, 'presence_boost': 6, 'frequency': 3000}
+        else:
+            eq_curve = {'low_cut': 80, 'presence_boost': 3, 'frequency': 2500}
+
+        # Apply EQ
+        processed_dialogue = self.apply_contextual_eq(dialogue_stem, eq_curve)
+
+        # Platform-specific compression
+        if self.delivery_platform == 'streaming':
+            processed_dialogue = self.apply_dialogue_compression(
+                processed_dialogue,
+                ratio=4:1,
+                threshold=-12
+            )
+        elif self.delivery_platform == 'cinema':
+            processed_dialogue = self.apply_dialogue_compression(
+                processed_dialogue,
+                ratio=2:1,
+                threshold=-8
+            )
+        return processed_dialogue
+```
+
+<#0.5#>
+
+### Comprehensive Quality Control System
+
+**Advanced Audio Analysis:**
+
+The system processes audio in frames, using look-ahead buffering to detect issues like phase incoherence and artifacts.
+
+```python
+class AudioQualityController:
+    def __init__(self):
+        self.analysis_tools = {
+            'phase_correlation': self.init_phase_analyzer(),
+            'spectral_analyzer': self.init_spectral_analyzer(),
+            'dynamic_range_meter': self.init_dr_meter(),
+            'artifact_detector': self.init_artifact_detector()
+        }
+
+    def comprehensive_quality_check(self, audio_stems):
+        """Run full quality control across stems."""
+        qc_report = {
+            'overall_status': 'PASS',
+            'issues_found': [],
+            'recommendations': [],
+            'technical_measurements': {}
+        }
+
+        # Phase coherence
+        for stem_name, audio in audio_stems.items():
+            if audio.shape[1] == 2:  # Stereo
+                correlation = self.calculate_phase_correlation(audio)
+                qc_report['technical_measurements'][f'{stem_name}_correlation'] = correlation
+
+                if correlation < -0.5:
+                    qc_report['issues_found'].append(
+                        f"{stem_name}: Severe phase issues (correlation: {correlation:.3f})"
+                    )
+                    qc_report['overall_status'] = 'FAIL'
+                elif correlation < 0:
+                    qc_report['issues_found'].append(
+                        f"{stem_name}: Phase warning (correlation: {correlation:.3f})"
+                    )
+
+        # Peak levels
+        for stem_name, audio in audio_stems.items():
+            peak_db = 20 * np.log10(np.max(np.abs(audio)))
+            qc_report['technical_measurements'][f'{stem_name}_peak_db'] = peak_db
+
+            if peak_db > -1:
+                qc_report['issues_found'].append(
+                    f"{stem_name}: Clipping detected (peak: {peak_db:.2f} dBFS)"
+                )
+                qc_report['overall_status'] = 'FAIL'
+
+        # Additional analyses
+        self.analyze_frequency_balance(audio_stems, qc_report)
+        self.measure_dynamic_range(audio_stems, qc_report)
+
+        return qc_report
+
+    def intelligent_artifact_detection(self, audio):
+        """Detect artifacts using AI."""
+        artifacts_detected = []
+
+        # Transient detection for clicks/pops
+        onset_frames = self.detect_transients(audio)
+        suspicious_transients = [f for f in onset_frames if self.classify_transient(audio, f) == 'artifact']
+
+        if suspicious_transients:
+            artifacts_detected.append({
+                'type': 'clicks_pops',
+                'locations': suspicious_transients,
+                'severity': 'medium' if len(suspicious_transients) < 5 else 'high'
+            })
+
+        # Noise floor analysis
+        noise_profile = self.analyze_noise_floor(audio)
+        if noise_profile['50hz_component'] > -40:  # dB below peak
+            artifacts_detected.append({
+                'type': 'power_line_hum',
+                'frequency': '50Hz',
+                'level': noise_profile['50hz_component']
+            })
+
+        return artifacts_detected
+```
+
+<#0.5#>
+
+### Professional Format Delivery Engine
+
+**Multi-Platform Output Generation:**
+
+Stempeg wraps FFmpeg for resampling and codec adjustments in multi-track exports.
+
+```python
+class DeliverablePackager:
+    def __init__(self):
+        self.format_specifications = {
+            'cinema_atmos': {
+                'format': 'atmos',
+                'loudness_target': -24,
+                'peak_limit': -1,
+                'sample_rate': 48000,
+                'bit_depth': 24
+            },
+            'streaming_5.1': {
+                'format': 'aac',
+                'loudness_target': -16,
+                'peak_limit': -1,
+                'sample_rate': 48000,
+                'bitrate': 640000,
+                'channels': 6
+            },
+            'broadcast_stereo': {
+                'format': 'wav',
+                'loudness_target': -23,
+                'peak_limit': -1,
+                'sample_rate': 48000,
+                'bit_depth': 16
+            }
+        }
+
+    def generate_all_deliverables(self, final_mix, project_metadata):
+        """Create platform-specific deliverables."""
+        deliverables = {}
+
+        # Cinema Atmos
+        atmos_mix = self.create_atmos_deliverable(final_mix)
+        deliverables['cinema_atmos'] = self.export_atmos_master(
+            atmos_mix,
+            project_metadata['project_name']
+        )
+
+        # Streaming 5.1
+        streaming_5.1 = self.downmix_to_5.1(final_mix)
+        deliverables['streaming_5.1'] = self.export_streaming_format(
+            streaming_5.1,
+            self.format_specifications['streaming_5.1']
+        )
+
+        # Broadcast stereo
+        broadcast_stereo = self.downmix_to_stereo(final_mix)
+        deliverables['broadcast_stereo'] = self.export_broadcast_format(
+            broadcast_stereo,
+            self.format_specifications['broadcast_stereo']
+        )
+
+        # Music & Effects (M&E) for international
+        me_mix = self.create_me_mix(final_mix)
+        deliverables['international_me'] = self.export_me_format(me_mix)
+
+        # Descriptive audio
+        descriptive_audio = self.create_descriptive_audio_track(project_metadata)
+        deliverables['descriptive_audio'] = descriptive_audio
+
+        return deliverables
+
+    def intelligent_downmix_algorithm(self, atmos_mix, target_format):
+        """Downmix while preserving spatial cues."""
+        if target_format == 'stereo':
+            downmix_matrix = {
+                'L': [0.707, 0, 0.707, 0, 0.5, 0, 0, 0.5, 0, 0.3, 0],
+                'R': [0.707, 0, 0, 0.707, 0, 0.5, 0, 0, 0.5, 0, 0.3]
+            }
+        elif target_format == '5.1':
+            downmix_matrix = self.generate_5.1_downmix_matrix()
+
+        return self.apply_downmix_matrix(atmos_mix, downmix_matrix)
+```
+
+<#0.5#>
+
+## Tools and Frameworks
+
+- **Mixing Consoles**: Avid Pro Tools (industry standard), Nuendo.
+- **Spatial Rendering**: Dolby Atmos Renderer, DTS:X Pro.
+- **Loudness**: PyLoudnorm (ITU-R BS.1770-4), iZotope Insight, Waves WLM Plus.
+- **Dynamic Range**: FabFilter Pro-C 2 (multiband compression), Sony FxNorm-Automix (AI-based mixing).
+- **Quality Control**: Nugen VisLM (loudness/dynamics), iZotope RX (issue detection).
+- **Format Conversion**: FFmpeg (with loudnorm filter for EBU R128).
+- **Deliverable Packaging**: DCP-o-matic (DCP creation), Stempeg (MP4 stems).
+
+<#0.5#>
+
+## Interactions and Workflow
+
+The agent receives stems from upstream components:
+
+- **From Sound Design Agent**: `scene15_DX.wav` (dialogue), `scene15_SFX.wav` (SFX), `scene15_FOLEY.wav` (Foley), `scene15_AMB.wav` (ambience).
+- **From Music Composition Agent**: `scene15_music.wav` (full mix), individual stems (e.g., `strings.wav`, `piano.wav`, `electronics.wav`).
+
+**Requirements Example** (Scene 15: Sunset Rooftop Conversation):
+- Deliverables: Cinema (Dolby Atmos 7.1.4), Streaming (5.1 + Stereo), Broadcast (Stereo).
+- Loudness: Cinema (-24 LUFS), Streaming (-16 LUFS), Broadcast (-23 LUFS EBU R128).
+
+**Workflow Phases** (High-Level):
+
+1. **Stem Organization & Setup**: Create Pro Tools session (`scene15_final_mix.ptx`) at 48 kHz/24-bit/24 FPS. Import and sync stems using Stempeg.
+   
+   ```python
+   import stempeg
+
+   stems_data = {}
+   for stem_name, file_path in stem_files.items():
+       S, rate = stempeg.read_stems(file_path)
+       stems_data[stem_name] = {
+           'audio': S,  # (stems, samples, channels)
+           'rate': rate,
+           'sync_offset': self.calculate_sync_offset(S, video_reference)
+       }
+   ```
+
+2. **Preliminary Balance**: Prioritize dialogue (0 dB), music (-6 dB), SFX (-3 dB), Foley (-6 dB), ambience (-12 dB). Use AI for EQ and ducking.
+
+3. **EQ & Spectral Processing**: Apply context-aware EQ (e.g., high-pass at 80 Hz for dialogue). Resolve frequency conflicts with AI notching.
+
+4. **Compression & Dynamics**: Platform-adaptive (e.g., 4:1 ratio for streaming dialogue).
+
+5. **Spatial Rendering**: Place objects in Atmos (e.g., static dialogue at (0,0,0), dynamic SFX paths).
+
+6. **Loudness Normalization**: Use PyLoudnorm for target LUFS.
+
+   ```python
+   import pyloudnorm as pyln
+   meter = pyln.Meter(48000)
+   current_loudness = meter.integrated_loudness(mix)
+   normalized = pyln.normalize.loudness(mix, current_loudness, -24)  # Cinema
+   ```
+
+7. **Format Deliverables**: Export via Stempeg (e.g., Atmos MP4 stems).
+
+8. **Quality Control**: Run phase, peak, and artifact checks.
+
+9. **Archive & Documentation**: Backup sessions and generate spec sheets.
+
+**Integration**:
+- Inputs from Sound Design and Music Agents.
+- Outputs to Distribution (masters with metadata) and DCP Creation (Atmos sync).
+
+**Final Output**:
+- 120 minutes of mixed content (40 scenes).
+- 12 formats, including international M&E.
+- Compliant loudness, passed QC, with documentation.
+
+<#0.5#>
+
+## Code Demo Focus
+
+- Multi-stem mixing with Sony FxNorm-Automix.
+- Platform-adaptive dynamics via custom algorithms.
+- LUFS normalization using PyLoudnorm.
+- Object-based Atmos rendering (118 objects).
+- Format conversion with Stempeg.
+- AI quality validation.
+- Deliverable packaging with metadata.
+
+This agent combines traditional expertise with AI for standards-compliant audio across platforms.
+
+---
+
+# Implementation Solutions
+
+<#0.5#>
+
+## Framework Capability Matrix
+
+| Requirement              | Sony FxNorm-Automix | PyLoudnorm     | Stempeg       | PyDub        | Pro Tools SDK | Suitability              |
+|--------------------------|---------------------|----------------|----------------|--------------|---------------|--------------------------|
+| Multi-stem Processing    | ✓ Advanced         | -              | ✓ Excellent   | ✓ Basic      | ✓ Professional| **Primary: Stempeg**    |
+| AI-Powered Mixing        | ✓ State-of-the-art | -              | -             | -            | -             | **Primary: FxNorm**     |
+| Loudness Normalization   | -                   | ✓ ITU-R BS.1770-4 | -           | ✓ Basic      | ✓ Professional| **Primary: PyLoudnorm** |
+| Format Conversion        | -                   | -              | ✓ Professional| ✓ Good       | ✓ Professional| **Primary: Stempeg**    |
+| Session Automation       | -                   | -              | -             | -            | ✓ Industry Std| **Primary: Pro Tools**  |
+| Real-time Processing     | ✗                   | ✗              | ✗             | ✗            | ✓             | **Pro Tools SDK**       |
+
+<#0.5#>
+
+## Core Implementation Architecture
+
+<#0.5#>
+
+### Multi-Stem Audio Processing Engine
+
+**Primary Framework: Stempeg**
+
+Stems are containers for multiple audio streams and metadata. Stempeg provides FFmpeg-backed NumPy integration for fast I/O.
+
+**Implementation Approach:**
+
+```python
+class FinalMixStemProcessor:
+    def __init__(self):
+        self.stempeg_reader = stempeg.StreamsReader()
+        self.supported_formats = ['mp4', 'wav', 'stem.mp4']
+
+    def load_project_stems(self, stem_files):
+        """Load stems for mixing."""
+        stems_data = {}
+        for stem_name, file_path in stem_files.items():
+            S, rate = stempeg.read_stems(file_path)
+            stems_data[stem_name] = {
+                'audio': S,  # (stems, samples, channels), scaled [-1, 1]
+                'sample_rate': rate,
+                'metadata': self._extract_metadata(file_path)
+            }
+        return stems_data
+```
+
+**Benefits:**
+- Multiprocessing for substream reading/writing.
+- Broad format support via FFmpeg.
+- Compatible with Native Instruments (avoid FFmpeg muxing for hardware).
+
+**Pros:** Native multi-stream, NumPy integration.  
+**Cons:** Requires FFmpeg; no real-time support.
+
+<#0.5#>
+
+### AI-Powered Intelligent Mixing System
+
+**Primary Framework: Sony FxNorm-Automix**
+
+Trains deep models on processed multitracks to automate mixing, bridging gaps in automatic quality via data preprocessing.
+
+**Implementation Approach:**
+
+```python
+class IntelligentMixingEngine:
+    def __init__(self):
+        self.fx_models = self._load_fxnorm_models()
+        self.mixing_parameters = {}
+
+    def apply_ai_mixing(self, stems_dict, scene_context):
+        """Apply FxNorm processing."""
+        processed_stems = {}
+        for stem_name, stem_data in stems_dict.items():
+            if stem_name == 'music':
+                processed_audio = self._apply_fxnorm_processing(
+                    stem_data['audio'],
+                    target_style='cinematic',
+                    dialogue_presence=scene_context.get('dialogue_level', 8)
+                )
+            elif stem_name == 'dialogue':
+                processed_audio = self._enhance_dialogue_clarity(stem_data['audio'], scene_context)
+            else:
+                processed_audio = stem_data['audio']
+            processed_stems[stem_name] = processed_audio
+        return processed_stems
+```
+
+**Advantages:** Matches human quality (p<0.05 in tests); handles wet recordings.  
+**Pros:** Deep learning for EQ/compression/panning.  
+**Cons:** High compute; IRs not public due to copyright.
+
+<#0.5#>
+
+### Professional Loudness Measurement & Normalization
+
+**Primary Framework: PyLoudnorm**
+
+Implements ITU-R BS.1770-4 for broadcast/cinema loudness, with gating and channel weighting.
+
+**Implementation Approach:**
+
+```python
+class ProfessionalLoudnessProcessor:
+    def __init__(self):
+        self.cinema_target = -24  # LUFS (SMPTE)
+        self.streaming_target = -16  # LUFS
+        self.broadcast_target = -23  # LUFS (EBU R128)
+
+    def measure_and_normalize(self, audio, sample_rate, delivery_format):
+        """Process loudness compliantly."""
+        meter = pyln.Meter(sample_rate, block_size=0.4)  # 400ms blocks
+        current_lufs = meter.integrated_loudness(audio)
+        target_lufs = {
+            'cinema': self.cinema_target,
+            'streaming': self.streaming_target,
+            'broadcast': self.broadcast_target
+        }[delivery_format]
+        normalized_audio = pyln.normalize.loudness(audio, current_lufs, target_lufs)
+        return normalized_audio, current_lufs, target_lufs
+```
+
+**Precision:** Gates silence; weights surround channels.  
+**Pros:** NumPy/SciPy-based; standard-compliant.  
+**Cons:** Offline only; no dynamics.
+
+<#0.5#>
+
+### Professional Session Automation
+
+**Primary Framework: Avid Pro Tools Scripting SDK**
+
+Language-independent API for automating sessions, exports, and timeline operations.
+
+**Implementation Approach:**
+
+```python
+class ProToolsSessionController:
+    def __init__(self):
+        self.pt_api = ProToolsScriptingAPI()
+        self.session_templates = {}
+
+    def create_mixing_session(self, project_config):
+        """Set up automated session."""
+        session = self.pt_api.create_session(
+            name=project_config['name'],
+            sample_rate=48000,
+            bit_depth=24,
+            template='film_mixing_template'
+        )
+        for stem_name, file_path in project_config['stems'].items():
+            track = session.create_audio_track(name=stem_name)
+            track.import_audio(file_path, sync_to_timecode=True)
+        self._setup_mixing_groups(session)
+        self._configure_monitoring_matrix(session)
+        return session
+```
+
+**Integration:** Access to open/save, export, timeline commands.  
+**Pros:** Industry standard; plugin support.  
+**Cons:** Requires license; Windows/Mac only.
+
+<#0.5#>
+
+## Recommended Implementation Stack
+
+<#0.5#>
+
+### Phase 1: Foundation (Open Source)
+- Stempeg (I/O), PyLoudnorm (loudness), PyDub (manipulation), NumPy/SciPy (DSP).
+
+```python
+class FinalMixAgent:
+    def __init__(self):
+        self.stem_processor = FinalMixStemProcessor()
+        self.loudness_meter = pyln.Meter(48000)
+        self.audio_processor = AudioProcessor()
+
+    def process_scene(self, scene_config):
+        stems = self.stem_processor.load_project_stems(scene_config['stem_files'])
+        mixed_audio = self._apply_stem_balance(stems)
+        normalized = pyln.normalize.loudness(mixed_audio, -24)  # Cinema
+        self.stem_processor.export_stems('output.stem.mp4', normalized)
+```
+
+<#0.5#>
+
+### Phase 2: AI Enhancement
+- Add FxNorm-Automix, custom dialogue/SFX algorithms, Atmos simulation.
+
+<#0.5#>
+
+### Phase 3: Professional Integration
+- Pro Tools SDK, hardware I/O, plugin chains.
+
+<#0.5#>
+
+## Integration Architecture
+
+```python
+class IntegratedFinalMixPipeline:
+    def __init__(self):
+        self.stem_processor = FinalMixStemProcessor()
+        self.ai_mixer = IntelligentMixingEngine()
+        self.loudness_processor = ProfessionalLoudnessProcessor()
+        self.pro_tools = ProToolsSessionController()
+
+    def process_full_pipeline(self, project_config):
+        stems = self.stem_processor.load_project_stems(project_config['stem_files'])
+        ai_mixed = self.ai_mixer.apply_ai_mixing(stems, project_config['scene_metadata'])
+        delivery_masters = {}
+        for fmt in ['cinema', 'streaming', 'broadcast']:
+            normalized = self.loudness_processor.measure_and_normalize(ai_mixed, 48000, fmt)
+            delivery_masters[fmt] = normalized
+        if self.pro_tools.is_available():
+            session = self.pro_tools.create_mixing_session(delivery_masters)
+        return delivery_masters, session
+```
+
+<#0.5#>
+
+## Critical Dependencies & Prerequisites
+
+**Software:**
+- Python 3.8+.
+- FFmpeg 4.0+.
+- NumPy/SciPy.
+- Pro Tools 2020+ (optional).
+
+**Hardware:**
+- 8+ core CPU, 32GB+ RAM, SSD storage, professional audio interface.
+
+**Installation:**
+
+```bash
+pip install stempeg pyloudnorm pydub numpy scipy
+# For FxNorm (if available)
+git clone https://github.com/sony/FxNorm-automix  # Hypothetical
+pip install -r requirements.txt
+```
+
+<#0.5#>
+
+## Implementation Challenges & Solutions
+
+- **Format Compatibility**: Use Stempeg's channel mapping for WAV/multi-stream.
+- **Real-Time**: Chunk processing + Pro Tools for monitoring.
+- **AI Integration**: Use pre-trained models; train custom on free data.
+- **QC Standards**: PyLoudnorm ensures EBU R128/SMPTE compliance.
+
+<#0.5#>
+
+## Phased Implementation Roadmap
+
+- **Phase 1 (Months 1-2)**: Core engine (Stempeg, PyLoudnorm).
+- **Phase 2 (Months 3-4)**: AI features (FxNorm, spatial).
+- **Phase 3 (Months 5-6)**: Pro Tools integration, QC.
+- **Phase 4 (Months 7-8)**: Optimization, deployment.
+
+This modular stack scales from open-source prototypes to production systems.
+
+---
+
+<#0.5#>
+

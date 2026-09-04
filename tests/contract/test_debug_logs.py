@@ -109,3 +109,10 @@ def test_debug_chat_writes_and_lists_files(tmp_path: Path, monkeypatch: pytest.M
     assert files[0]["name"] == f"{session}.jsonl"
     spec = client.get("/openapi.json").json()
     assert "/debug/chat" not in spec["paths"]
+    loaded = client.get("/debug/chat", params={"agent_id": "video.director", "name": f"{session}.jsonl"})
+    assert loaded.status_code == 200
+    turns = loaded.json()["turns"]
+    assert turns[0]["content"] == "hello"
+    assert turns[1]["provider"] == "xai"
+    escaped = client.get("/debug/chat", params={"agent_id": "video.director", "name": "../secret.jsonl"})
+    assert escaped.status_code == 400

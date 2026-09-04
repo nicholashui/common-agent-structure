@@ -22,10 +22,10 @@
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "化妆造型设计",
+      "title": "\u5316\u5986\u9020\u578b\u8bbe\u8ba1",
       "isbn13": "9787506492188",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 化妆造型设计，ISBN-13 9787506492188"
+      "citation": "ZH: \u5316\u5986\u9020\u578b\u8bbe\u8ba1\uff0cISBN-13 9787506492188"
     },
     {
       "kind": "reference_book",
@@ -88,7 +88,7 @@
       "author": "Roger Deakins",
       "isbn13": "9781910593998",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "EN: Reflections: On Cinematography (Roger Deakins) — check latest ed. ISBN-13 9781910593998"
+      "citation": "EN: Reflections: On Cinematography (Roger Deakins) \u2014 check latest ed. ISBN-13 9781910593998"
     },
     {
       "kind": "reference_book",
@@ -102,60 +102,60 @@
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "电影摄影：理论与实践",
+      "title": "\u7535\u5f71\u6444\u5f71\uff1a\u7406\u8bba\u4e0e\u5b9e\u8df5",
       "isbn13": "9787515331867",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 电影摄影：理论与实践，ISBN-13 9787515331867"
+      "citation": "ZH: \u7535\u5f71\u6444\u5f71\uff1a\u7406\u8bba\u4e0e\u5b9e\u8df5\uff0cISBN-13 9787515331867"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "视觉故事",
+      "title": "\u89c6\u89c9\u6545\u4e8b",
       "isbn13": "9787515302867",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 视觉故事，ISBN-13 9787515302867"
+      "citation": "ZH: \u89c6\u89c9\u6545\u4e8b\uff0cISBN-13 9787515302867"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "电影语言的语法",
+      "title": "\u7535\u5f71\u8bed\u8a00\u7684\u8bed\u6cd5",
       "isbn13": "9787532299990",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 电影语言的语法，ISBN-13 9787532299990"
+      "citation": "ZH: \u7535\u5f71\u8bed\u8a00\u7684\u8bed\u6cd5\uff0cISBN-13 9787532299990"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "美国纽约摄影学院摄影教材",
+      "title": "\u7f8e\u56fd\u7ebd\u7ea6\u6444\u5f71\u5b66\u9662\u6444\u5f71\u6559\u6750",
       "isbn13": "9787800078491",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 美国纽约摄影学院摄影教材，ISBN-13 9787800078491"
+      "citation": "ZH: \u7f8e\u56fd\u7ebd\u7ea6\u6444\u5f71\u5b66\u9662\u6444\u5f71\u6559\u6750\uff0cISBN-13 9787800078491"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "论摄影",
-      "author": "桑塔格",
+      "title": "\u8bba\u6444\u5f71",
+      "author": "\u6851\u5854\u683c",
       "isbn13": "9787544722599",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 论摄影（桑塔格），ISBN-13 9787544722599"
+      "citation": "ZH: \u8bba\u6444\u5f71\uff08\u6851\u5854\u683c\uff09\uff0cISBN-13 9787544722599"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "摄影师的视界",
+      "title": "\u6444\u5f71\u5e08\u7684\u89c6\u754c",
       "isbn13": "9787512201880",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 摄影师的视界，ISBN-13 9787512201880"
+      "citation": "ZH: \u6444\u5f71\u5e08\u7684\u89c6\u754c\uff0cISBN-13 9787512201880"
     },
     {
       "kind": "reference_book",
       "language": "EN",
-      "title": "A Beginner’s Guide to Special Makeup Effects Monsters, Maniacs and More",
+      "title": "A Beginner\u2019s Guide to Special Makeup Effects Monsters, Maniacs and More",
       "author": "Christopher Payne Andrew Kjos",
       "isbn13": "9781003093701",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "EN: A Beginner’s Guide to Special Makeup Effects Monsters, Maniacs and More (Christopher Payne Andrew Kjos), ISBN-13 9781003093701"
+      "citation": "EN: A Beginner\u2019s Guide to Special Makeup Effects Monsters, Maniacs and More (Christopher Payne Andrew Kjos), ISBN-13 9781003093701"
     }
   ],
   "agent_id": "video.mua_makeup",
@@ -170,7 +170,7 @@
     "adopted_at": "2026-07-27T01:30:28.493408+00:00",
     "upstream": "generic-swarm-ops/business/video/agents"
   },
-  "imported_from": "C:\\Project\\common-agent-swarm-ops\\business\\video\\agents\\video.mua_makeup",
+  "imported_from": "vendor/common-agent-swarm-ops/business/video/agents/video.mua_makeup",
   "reference_book_origin": "spec/book_of_knowledge.md",
   "reference_book_note": "Bibliographic references from spec/book_of_knowledge.md. Does not enable network, RAG, T3, plugins, or memory writes."
 }

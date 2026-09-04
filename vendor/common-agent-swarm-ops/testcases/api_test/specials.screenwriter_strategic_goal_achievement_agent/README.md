@@ -1,0 +1,5 @@
+# specials.screenwriter_strategic_goal_achievement_agent
+
+- kind: `special`
+- cases: 3
+- run: `python run_all_api_tests.py --only specials.screenwriter_strategic_goal_achievement_agent`

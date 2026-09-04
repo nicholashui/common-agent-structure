@@ -1,0 +1,15 @@
+{
+  "schema_version": "1.0",
+  "agent_id": "video.community",
+  "previous_common_agent_id": "video.community_manager",
+  "va_taxonomy_aligned": true,
+  "generic_source": "generic-swarm-ops/business/video/agents/video.community",
+  "note": "Agent ID aligned to VA/generic Domain Pack taxonomy. Upstream design is historical and non-binding.",
+  "aligned_at": "2026-07-27T00:48:10.891368Z",
+  "generic_source_depth": {
+    "excerpts": true,
+    "study": true,
+    "adopted_at": "2026-07-27T01:30:27.883468+00:00",
+    "upstream": "generic-swarm-ops/business/video/agents"
+  }
+}

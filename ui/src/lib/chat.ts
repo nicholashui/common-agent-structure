@@ -4,7 +4,19 @@ export interface ChatTurn {
   role: ChatRole;
   content: string;
   provider?: string;
+  truncated?: boolean;
   ts?: string;
+}
+
+export function chatHitOutputCap(llm?: { truncated?: boolean; finish_reason?: string } | null): boolean {
+  if (!llm) {
+    return false;
+  }
+  if (llm.truncated) {
+    return true;
+  }
+  const reason = (llm.finish_reason || "").toLowerCase();
+  return reason === "length" || reason === "max_tokens" || reason === "max_output_tokens";
 }
 
 export interface ChatFile {
@@ -141,5 +153,105 @@ export function resetChatForTests(): void {
     localStorage.removeItem(THREAD_KEY);
   } catch {
     // ignore
+  }
+}
+
+export function sessionFromFileName(name: string): string {
+  return name.replace(/\.jsonl$/i, "");
+}
+
+export function replaceThread(agentId: string, turns: ChatTurn[], session: string): ChatThread {
+  const current = loadThread(agentId);
+  const next: ChatThread = {
+    session: session || makeChatSessionId(),
+    turns: turns.filter(isTurn).slice(-MAX_STORED),
+    files: current.files,
+  };
+  persistAgent(agentId, next);
+  return next;
+}
+
+export function lastUserIndex(turns: ChatTurn[]): number {
+  for (let index = turns.length - 1; index >= 0; index -= 1) {
+    if (turns[index]?.role === "user" && turns[index].content.trim()) {
+      return index;
+    }
+  }
+  return -1;
+}
+
+export function canRegenerate(turns: ChatTurn[]): boolean {
+  if (turns.length < 2) {
+    return false;
+  }
+  const last = turns[turns.length - 1];
+  return last.role === "assistant" && lastUserIndex(turns) >= 0;
+}
+
+export function exportThreadMarkdown(agentId: string, turns: ChatTurn[]): string {
+  const lines = [
+    `# Chat with ${agentId}`,
+    "",
+    "Honesty: host Chat transcript. Not a sealed Run. Not an eval pass.",
+    "",
+  ];
+  for (const turn of turns) {
+    lines.push(`## ${turn.role}`);
+    if (turn.ts) {
+      lines.push(`_${turn.ts}_${turn.provider ? ` · ${turn.provider}` : ""}`);
+      lines.push("");
+    }
+    lines.push(turn.content.trim() || "(empty)");
+    lines.push("");
+  }
+  return lines.join("\n");
+}
+
+export function exportThreadJson(agentId: string, session: string, turns: ChatTurn[]): string {
+  return `${JSON.stringify(
+    {
+      agent_id: agentId,
+      session,
+      honesty: "CHARACTERIZATION",
+      note: "Host Chat transcript. Not a sealed Run. Not an eval pass.",
+      turns,
+    },
+    null,
+    2,
+  )}\n`;
+}
+
+export function downloadText(filename: string, text: string, mime: string): void {
+  const blob = new Blob([text], { type: mime });
+  const href = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  link.href = href;
+  link.download = filename;
+  link.click();
+  URL.revokeObjectURL(href);
+}
+
+export async function copyText(text: string): Promise<boolean> {
+  try {
+    if (navigator.clipboard?.writeText) {
+      await navigator.clipboard.writeText(text);
+      return true;
+    }
+  } catch {
+    // fall through
+  }
+  try {
+    const area = document.createElement("textarea");
+    area.value = text;
+    area.setAttribute("readonly", "true");
+    area.style.position = "fixed";
+    area.style.left = "-9999px";
+    document.body.appendChild(area);
+    area.select();
+    const ok = document.execCommand("copy");
+    area.remove();
+    return ok;
+  } catch {
+    return false;
   }
 }

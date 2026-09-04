@@ -1,0 +1,24 @@
+{
+  "skill_id": "video-router",
+  "agent_id": "video.router",
+  "kind": "pack_agent_harness",
+  "status": "scaffolded",
+  "prompt_reference": "video.prompt.router.v1",
+  "rubric_reference": "video.rubric.router.v1",
+  "patterns": [
+    "ReAct",
+    "Agent Skills"
+  ],
+  "bindings": [
+    "agent_loop_v3",
+    "knowledge_router_agent",
+    "intent_analysis_agent"
+  ],
+  "entrypoint": {
+    "type": "host_agent_runner",
+    "agent_id": "video.router"
+  },
+  "fail_closed": true,
+  "generated_by": "improve_agents_from_plan_v1.py",
+  "generated_at": "2026-07-30T14:45:34Z"
+}

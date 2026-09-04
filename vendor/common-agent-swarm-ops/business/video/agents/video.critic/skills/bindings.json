@@ -1,0 +1,9 @@
+{
+  "agent_id": "video.critic",
+  "special_skills": [
+    {
+      "skill_id": "optimization_agent",
+      "path": "business/video/special_skills/optimization_agent/"
+    }
+  ]
+}

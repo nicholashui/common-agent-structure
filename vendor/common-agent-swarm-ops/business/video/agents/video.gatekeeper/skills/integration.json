@@ -1,0 +1,23 @@
+{
+  "skill_id": "video-gatekeeper",
+  "agent_id": "video.gatekeeper",
+  "kind": "pack_agent_harness",
+  "status": "scaffolded",
+  "prompt_reference": "video.prompt.gatekeeper.v1",
+  "rubric_reference": "video.rubric.gatekeeper.v1",
+  "patterns": [
+    "Constitutional AI",
+    "Agent Skills"
+  ],
+  "bindings": [
+    "agent_loop_v3",
+    "llm_usage"
+  ],
+  "entrypoint": {
+    "type": "host_agent_runner",
+    "agent_id": "video.gatekeeper"
+  },
+  "fail_closed": true,
+  "generated_by": "improve_agents_from_plan_v1.py",
+  "generated_at": "2026-07-30T14:45:34Z"
+}

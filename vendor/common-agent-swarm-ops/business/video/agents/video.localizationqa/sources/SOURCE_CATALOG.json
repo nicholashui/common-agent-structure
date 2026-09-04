@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.0",
+  "agent_id": "video.localizationqa",
+  "sources": [
+    {
+      "id": "src_1",
+      "title": "LISA QA model",
+      "description": "LISA QA model",
+      "license_class": "unknown_review_required",
+      "acquisition_method": "manual_or_licensed_api",
+      "local_path_hint": "sources/excerpts/ or sources/study/",
+      "refresh_sla_days": 90,
+      "owner": "video.localizationqa",
+      "status": "planned_or_partial"
+    },
+    {
+      "id": "src_2",
+      "title": "MQM error typology",
+      "description": "MQM error typology",
+      "license_class": "unknown_review_required",
+      "acquisition_method": "manual_or_licensed_api",
+      "local_path_hint": "sources/excerpts/ or sources/study/",
+      "refresh_sla_days": 90,
+      "owner": "video.localizationqa",
+      "status": "planned_or_partial"
+    },
+    {
+      "id": "src_3",
+      "title": "ATA cert prep",
+      "description": "ATA cert prep",
+      "license_class": "unknown_review_required",
+      "acquisition_method": "manual_or_licensed_api",
+      "local_path_hint": "sources/excerpts/ or sources/study/",
+      "refresh_sla_days": 90,
+      "owner": "video.localizationqa",
+      "status": "planned_or_partial"
+    }
+  ],
+  "note": "Legal review required before treating external corpora as production grounding."
+}

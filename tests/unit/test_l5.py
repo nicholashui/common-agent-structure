@@ -40,7 +40,7 @@ def test_l5_cannot_write_production_or_forbidden_surfaces(tmp_path: Path) -> Non
         box.mutate("corrigibility/invariants.json", b"nope", actor=ActorClass.host_service)
     assert raised.value.code == ErrorCode.IMP_SCOPE
     with pytest.raises(CasopsError):
-        box.mutate("..\\production\\agent.py", b"nope", actor=ActorClass.host_service)
+        box.mutate("../\production\\agent.py", b"nope", actor=ActorClass.host_service)
 
 
 def test_l5_mutate_rollback_and_never_promotes(tmp_path: Path) -> None:

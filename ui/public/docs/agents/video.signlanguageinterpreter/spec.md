@@ -2863,7 +2863,7 @@ Step 8: POST-RELEASE (optional)
 ## Provenance
 
 - Master roster row va_id=81 from embedded agents.md content above.
-- Deep/extra text from `business/video/corpus/` and `C:\Project\va-agent-swarm`.
+- Deep/extra text from `business/video/corpus/` and `vendor/va-agent-swarm`.
 - Generator: `scripts/business/enrich_video_agent_specs.py`.
 - Upstream project name (historical only): va-agent-swarm.
 
@@ -5869,7 +5869,7 @@ Optimization Meta-Agents                     S21: Optimization Panel
 ## Provenance
 
 - Master roster row va_id=79 from embedded agents.md content above.
-- Deep/extra text from `business/video/corpus/` and `C:\Project\va-agent-swarm`.
+- Deep/extra text from `business/video/corpus/` and `vendor/va-agent-swarm`.
 - Generator: `scripts/business/enrich_video_agent_specs.py`.
 - Upstream project name (historical only): va-agent-swarm.
 
@@ -5949,10 +5949,10 @@ Live primary-source expansion remains a residual for score 100 on S3 where depth
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "手语翻译理论与实践",
+      "title": "\u624b\u8bed\u7ffb\u8bd1\u7406\u8bba\u4e0e\u5b9e\u8df5",
       "isbn13": "9787301169186",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 手语翻译理论与实践，ISBN-13 9787301169186"
+      "citation": "ZH: \u624b\u8bed\u7ffb\u8bd1\u7406\u8bba\u4e0e\u5b9e\u8df5\uff0cISBN-13 9787301169186"
     },
     {
       "kind": "reference_book",
@@ -5993,20 +5993,20 @@ Live primary-source expansion remains a residual for score 100 on S3 where depth
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "为真实的世界设计",
-      "author": "帕帕奈克",
+      "title": "\u4e3a\u771f\u5b9e\u7684\u4e16\u754c\u8bbe\u8ba1",
+      "author": "\u5e15\u5e15\u5948\u514b",
       "isbn13": "9787566905321",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 为真实的世界设计（帕帕奈克），ISBN-13 9787566905321"
+      "citation": "ZH: \u4e3a\u771f\u5b9e\u7684\u4e16\u754c\u8bbe\u8ba1\uff08\u5e15\u5e15\u5948\u514b\uff09\uff0cISBN-13 9787566905321"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "无障碍设计基础",
-      "author": "国内教材",
+      "title": "\u65e0\u969c\u788d\u8bbe\u8ba1\u57fa\u7840",
+      "author": "\u56fd\u5185\u6559\u6750",
       "isbn13": "9787115417947",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 无障碍设计基础（国内教材），ISBN-13 9787115417947"
+      "citation": "ZH: \u65e0\u969c\u788d\u8bbe\u8ba1\u57fa\u7840\uff08\u56fd\u5185\u6559\u6750\uff09\uff0cISBN-13 9787115417947"
     }
   ],
   "agent_id": "video.signlanguageinterpreter",
@@ -6021,7 +6021,7 @@ Live primary-source expansion remains a residual for score 100 on S3 where depth
     "adopted_at": "2026-07-27T01:30:28.809441+00:00",
     "upstream": "generic-swarm-ops/business/video/agents"
   },
-  "imported_from": "C:\\Project\\common-agent-swarm-ops\\business\\video\\agents\\video.signlanguageinterpreter",
+  "imported_from": "vendor/common-agent-swarm-ops/business/video/agents/video.signlanguageinterpreter",
   "reference_book_origin": "spec/book_of_knowledge.md",
   "reference_book_note": "Bibliographic references from spec/book_of_knowledge.md. Does not enable network, RAG, T3, plugins, or memory writes."
 }

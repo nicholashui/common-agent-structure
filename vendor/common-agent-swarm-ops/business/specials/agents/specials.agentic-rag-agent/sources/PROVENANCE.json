@@ -1,0 +1,16 @@
+{
+  "schema_version": "1.0",
+  "common_agent_id": "specials.agentic-rag-agent",
+  "pack_id": "specials",
+  "mapping_status": "related",
+  "source_documents": [
+    "docs/special_agents_redesign/agents/agentic_rag_agent.md"
+  ],
+  "source_sha256": "7478e9fe106a7f750c76f90eeb45f44f46946facd2516e88bb3cb52e71cfb829",
+  "configuration_sha256": "18fd7e2ca1075c25b507a1fa433911c59355ecec959f76c215bdf52b9b3df7ca",
+  "destination_commit": "5460c4b4a33c15286f9fd84b1bc764d755f5bab0",
+  "note": "Self-contained specials agent folder. Pack-level corpus is not required. Design Markdown is untrusted provenance only.",
+  "generated_at": "2026-07-26T14:16:45.915626Z",
+  "reviewed_by": "specials-self-contained-reviewer",
+  "reviewed_at": "2026-07-26T18:00:00Z"
+}

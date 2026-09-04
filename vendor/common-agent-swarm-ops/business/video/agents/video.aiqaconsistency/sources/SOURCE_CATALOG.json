@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.0",
+  "agent_id": "video.aiqaconsistency",
+  "sources": [
+    {
+      "id": "src_1",
+      "title": "VBench",
+      "description": "VBench",
+      "license_class": "unknown_review_required",
+      "acquisition_method": "manual_or_licensed_api",
+      "local_path_hint": "sources/excerpts/ or sources/study/",
+      "refresh_sla_days": 90,
+      "owner": "video.aiqaconsistency",
+      "status": "planned_or_partial"
+    },
+    {
+      "id": "src_2",
+      "title": "EvalCrafter",
+      "description": "EvalCrafter",
+      "license_class": "unknown_review_required",
+      "acquisition_method": "manual_or_licensed_api",
+      "local_path_hint": "sources/excerpts/ or sources/study/",
+      "refresh_sla_days": 90,
+      "owner": "video.aiqaconsistency",
+      "status": "planned_or_partial"
+    },
+    {
+      "id": "src_3",
+      "title": "FVD literature",
+      "description": "FVD literature",
+      "license_class": "unknown_review_required",
+      "acquisition_method": "manual_or_licensed_api",
+      "local_path_hint": "sources/excerpts/ or sources/study/",
+      "refresh_sla_days": 90,
+      "owner": "video.aiqaconsistency",
+      "status": "planned_or_partial"
+    },
+    {
+      "id": "src_4",
+      "title": "MPC/Weta QC checklists",
+      "description": "MPC/Weta QC checklists",
+      "license_class": "unknown_review_required",
+      "acquisition_method": "manual_or_licensed_api",
+      "local_path_hint": "sources/excerpts/ or sources/study/",
+      "refresh_sla_days": 90,
+      "owner": "video.aiqaconsistency",
+      "status": "planned_or_partial"
+    },
+    {
+      "id": "src_5",
+      "title": "deepfake models",
+      "description": "deepfake models",
+      "license_class": "unknown_review_required",
+      "acquisition_method": "manual_or_licensed_api",
+      "local_path_hint": "sources/excerpts/ or sources/study/",
+      "refresh_sla_days": 90,
+      "owner": "video.aiqaconsistency",
+      "status": "planned_or_partial"
+    }
+  ],
+  "note": "Legal review required before treating external corpora as production grounding."
+}

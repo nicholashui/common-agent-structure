@@ -5066,7 +5066,7 @@ Research Meta-Agents                         S20: Research Panel
 ## Provenance
 
 - Master roster row va_id=70 from embedded agents.md content above.
-- Deep/extra text from `business/video/corpus/` and `C:\Project\va-agent-swarm`.
+- Deep/extra text from `business/video/corpus/` and `vendor/va-agent-swarm`.
 - Generator: `scripts/business/enrich_video_agent_specs.py`.
 - Upstream project name (historical only): va-agent-swarm.
 
@@ -5185,34 +5185,34 @@ Omitted here; same document as `SPEC.md` above.
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "新闻的十大基本原则",
+      "title": "\u65b0\u95fb\u7684\u5341\u5927\u57fa\u672c\u539f\u5219",
       "isbn13": "9787301161111",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 新闻的十大基本原则，ISBN-13 9787301161111"
+      "citation": "ZH: \u65b0\u95fb\u7684\u5341\u5927\u57fa\u672c\u539f\u5219\uff0cISBN-13 9787301161111"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "采访的艺术",
+      "title": "\u91c7\u8bbf\u7684\u827a\u672f",
       "isbn13": "9787301169186",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 采访的艺术，ISBN-13 9787301169186"
+      "citation": "ZH: \u91c7\u8bbf\u7684\u827a\u672f\uff0cISBN-13 9787301169186"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "如何阅读一本书",
+      "title": "\u5982\u4f55\u9605\u8bfb\u4e00\u672c\u4e66",
       "isbn13": "9787100040945",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 如何阅读一本书，ISBN-13 9787100040945"
+      "citation": "ZH: \u5982\u4f55\u9605\u8bfb\u4e00\u672c\u4e66\uff0cISBN-13 9787100040945"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "研究是一门艺术",
+      "title": "\u7814\u7a76\u662f\u4e00\u95e8\u827a\u672f",
       "isbn13": "9787300116226",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 研究是一门艺术，ISBN-13 9787300116226"
+      "citation": "ZH: \u7814\u7a76\u662f\u4e00\u95e8\u827a\u672f\uff0cISBN-13 9787300116226"
     },
     {
       "kind": "reference_book",
@@ -5243,19 +5243,19 @@ Omitted here; same document as `SPEC.md` above.
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "信息检索导论",
+      "title": "\u4fe1\u606f\u68c0\u7d22\u5bfc\u8bba",
       "isbn13": "9787115221704",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 信息检索导论，ISBN-13 9787115221704"
+      "citation": "ZH: \u4fe1\u606f\u68c0\u7d22\u5bfc\u8bba\uff0cISBN-13 9787115221704"
     },
     {
       "kind": "reference_book",
       "language": "ZH",
-      "title": "推荐系统实践",
-      "author": "项亮",
+      "title": "\u63a8\u8350\u7cfb\u7edf\u5b9e\u8df5",
+      "author": "\u9879\u4eae",
       "isbn13": "9787115281708",
       "origin": "spec/book_of_knowledge.md",
-      "citation": "ZH: 推荐系统实践（项亮），ISBN-13 9787115281708"
+      "citation": "ZH: \u63a8\u8350\u7cfb\u7edf\u5b9e\u8df5\uff08\u9879\u4eae\uff09\uff0cISBN-13 9787115281708"
     }
   ],
   "agent_id": "video.factchecker",
@@ -5270,7 +5270,7 @@ Omitted here; same document as `SPEC.md` above.
     "adopted_at": "2026-07-27T01:30:28.168711+00:00",
     "upstream": "generic-swarm-ops/business/video/agents"
   },
-  "imported_from": "C:\\Project\\common-agent-swarm-ops\\business\\video\\agents\\video.factchecker",
+  "imported_from": "vendor/common-agent-swarm-ops/business/video/agents/video.factchecker",
   "reference_book_origin": "spec/book_of_knowledge.md",
   "reference_book_note": "Bibliographic references from spec/book_of_knowledge.md. Does not enable network, RAG, T3, plugins, or memory writes."
 }

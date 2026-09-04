@@ -50,6 +50,7 @@ describe("help markdown guards", () => {
 
   it("converts raw HTML images and resolves relative assets", () => {
     expect(htmlImgsToMarkdown('before <img src="./shot.png" alt="Shot"> after')).toBe("before ![Shot](./shot.png) after");
+    expect(htmlImgsToMarkdown("# already markdown")).toBe("# already markdown");
     expect(resolveAssetUrl("./shot.png", "/docs/workflow/spec.md")).toBe("/docs/workflow/shot.png");
     expect(resolveAssetUrl("/img/logo.svg", "/docs/workflow/spec.md")).toBe("/img/logo.svg");
     expect(resolveAssetUrl("https://example.com/a.png", "/docs/workflow/spec.md")).toBe("https://example.com/a.png");
