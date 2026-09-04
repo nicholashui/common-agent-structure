@@ -109,6 +109,15 @@ def test_chat_returns_reply_without_memory_or_plugins(
     assert body["llm"]["max_tokens_source"] == "spec"
     assert body["llm"]["truncated"] is False
     assert "video.critic" in body["io"]["inputs"]
+    context = body["context"]
+    assert context["compaction"] == "disabled"
+    assert context["skills"] == []
+    assert "skills/SKILL.md" in context["omitted"]
+    assert "memory" in context["omitted"]
+    assert "tools" in context["omitted"]
+    names = {row["name"]: row for row in context["segments"]}
+    assert names["task"]["tokens"] <= names["task"]["budget"]
+    assert names["memory"]["included"] is False
     payload = json.loads(body["reply"])
     other = client.post(
         "/api/v3/agents/video.director/runtime/chat",

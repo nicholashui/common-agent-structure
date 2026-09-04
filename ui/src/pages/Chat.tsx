@@ -6,8 +6,7 @@ import { CharacterizationBadge, ChatFixtureList } from "../components/EvalFixtur
 import { ErrorBanner } from "../components/RecoveryBanner";
 import { IoPanel } from "../components/IoPanel";
 import { DangerButton, GhostButton, PageHeader, PrimaryButton } from "../components/ui";
-import { RequestAbortedError } from "../api/types";
-import type { EvalFixture } from "../api/types";
+import { RequestAbortedError, type ChatContextPack, type EvalFixture } from "../api/types";
 import {
   canRegenerate,
   clearThread,
@@ -38,6 +37,39 @@ function fileLabel(path: string): string {
   return path.replace(/\\/g, "/").split("/").slice(-2).join("/");
 }
 
+function ContextPack({ pack }: { pack: ChatContextPack }) {
+  const segments = pack.segments ?? [];
+  const skills = pack.skills ?? [];
+  return (
+    <section className="rounded-2xl border border-stone-200 bg-white p-5" data-testid="chat-context">
+      <h2 className="mb-1 text-sm font-semibold text-stone-900">Context pack</h2>
+      <p className="mb-3 text-xs text-stone-500">
+        Host packed this turn from folder segments. Compaction {pack.compaction ?? "disabled"}. Not an eval pass.
+        Memory, plugins, and T3 stay off.
+      </p>
+      <ul className="space-y-1 font-mono text-[11px] text-stone-700">
+        {segments.map((row) => (
+          <li key={row.name}>
+            {row.name} {row.tokens}/{row.budget}
+            {row.included ? "" : " omitted"}
+            {row.clipped ? " clipped" : ""}
+          </li>
+        ))}
+      </ul>
+      <p className="mt-3 text-[11px] text-stone-500">
+        prompt {pack.prompt_reference ?? "—"} · system {pack.system_tokens ?? 0} tok · history {pack.history_turns ?? 0}
+        {pack.history_clipped ? " clipped" : ""}
+      </p>
+      <p className="mt-1 text-[11px] text-stone-500">
+        skills {skills.length ? skills.map((item) => item.skill_id).join(", ") : "(none enabled)"}
+      </p>
+      {pack.omitted?.length ? (
+        <p className="mt-1 break-all text-[11px] text-stone-400">omitted {pack.omitted.join(", ")}</p>
+      ) : null}
+    </section>
+  );
+}
+
 function turnTime(ts?: string): string {
   if (!ts) {
     return "";
@@ -66,6 +98,7 @@ export function ChatPage() {
   const [pinned, setPinned] = useState(true);
   const [copiedKey, setCopiedKey] = useState<string>("");
   const [loadTarget, setLoadTarget] = useState<ChatFile | null>(null);
+  const [contextPack, setContextPack] = useState<ChatContextPack | null>(null);
   const logRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const abortRef = useRef<AbortController | null>(null);
@@ -83,6 +116,7 @@ export function ChatPage() {
     setDraft("");
     setError(null);
     setStopped(false);
+    setContextPack(null);
     setPinned(true);
     abortRef.current?.abort();
     abortRef.current = null;
@@ -173,6 +207,7 @@ export function ChatPage() {
       saveThread(agentId, withReply);
       enqueueChatPersist(agentId, loadThread(agentId).session, assistantTurn);
       void flushChatNow();
+      setContextPack(result.context ?? null);
       logUi(`chat reply ${agentId} ${result.provider ?? ""}`, clipLogText(result.reply));
     } catch (err) {
       if (err instanceof RequestAbortedError) {
@@ -280,15 +315,17 @@ export function ChatPage() {
         }
       />
       <p className="mb-4 text-sm text-stone-500">
-        Type a text message to talk to <span className="font-mono">{agentId}</span>. Host LLM{" "}
-        <span className="font-mono">{panel.data?.llm.provider ?? "local_deterministic"}</span> is used by default.
-        History is kept per agent and saved to timestamped files. Export is a Chat transcript, not a sealed Run. Does
-        not write memory, run plugins, enable T3, or grant network.
+        Type a text message to talk to <span className="font-mono">{agentId}</span>. The host packs identity plus the
+        operational prompt under <span className="font-mono">runtime/context.json</span> budgets. It does not dump
+        SKILL.md, memory, or tools. Host LLM{" "}
+        <span className="font-mono">{panel.data?.llm.provider ?? "local_deterministic"}</span>. Export is a Chat
+        transcript, not a sealed Run.
       </p>
       <ErrorBanner error={error ?? panel.error} />
       <div className="grid grid-cols-1 gap-5 lg:grid-cols-[18rem_minmax(0,1fr)]">
         <div className="order-2 space-y-5 lg:order-1">
           <IoPanel io={io} />
+          {contextPack ? <ContextPack pack={contextPack} /> : null}
           {files.length ? (
             <section className="rounded-2xl border border-stone-200 bg-white p-5" data-testid="chat-files">
               <h2 className="mb-1 text-sm font-semibold text-stone-900">Saved transcripts</h2>

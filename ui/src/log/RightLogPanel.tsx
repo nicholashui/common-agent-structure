@@ -11,8 +11,8 @@ import { LOG_SESSION_ID, snapshot, subscribe, type LogChannel, type LogEntry } f
 import { logFilesSnapshot, subscribeLogFiles, type LogFiles } from "./persist";
 
 const TABS: { id: LogChannel; label: string }[] = [
-  { id: "api", label: "API log" },
-  { id: "ui", label: "UI log" },
+  { id: "api", label: "APL" },
+  { id: "ui", label: "UI" },
 ];
 
 function fileLabel(path: string | undefined): string {

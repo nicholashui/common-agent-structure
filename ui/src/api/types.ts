@@ -258,6 +258,27 @@ export interface ChatLlmView {
   usage?: Record<string, number>;
 }
 
+export interface ChatContextSegment {
+  name: string;
+  budget: number;
+  tokens: number;
+  clipped: boolean;
+  included: boolean;
+}
+
+export interface ChatContextPack {
+  tokenizer?: string;
+  compaction?: string;
+  max_input_tokens?: number;
+  prompt_reference?: string;
+  skills?: { skill_id: string; description?: string }[];
+  omitted?: string[];
+  segments?: ChatContextSegment[];
+  history_turns?: number;
+  history_clipped?: boolean;
+  system_tokens?: number;
+}
+
 export interface ChatResponse {
   agent_id: string;
   reply: string;
@@ -268,6 +289,7 @@ export interface ChatResponse {
   plugins_executed: boolean;
   t3_enabled: boolean;
   used_prompt_reference?: string;
+  context?: ChatContextPack;
   llm?: ChatLlmView;
 }
 

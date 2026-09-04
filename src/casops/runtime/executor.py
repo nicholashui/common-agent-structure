@@ -17,7 +17,7 @@ from casops.errors.codes import ErrorCode
 from casops.errors.exceptions import CasopsError
 from casops.compose.io import folder_io
 from casops.runtime.adapter import DeterministicAdapter
-from casops.runtime.chat import build_chat_system, load_prompt, normalize_history, require_message
+from casops.runtime.chat import normalize_history, pack_chat_context, require_message
 from casops.runtime.dag import compile_dag
 from casops.runtime.health import observe_health
 from casops.runtime.llm import LlmRouter, parse_token_count, public_llm_view, resolve_completion_tokens
@@ -167,18 +167,24 @@ class Runtime:
         spec = json.loads((folder / "agent_spec.json").read_text(encoding="utf-8"))
         safety_policy = json.loads((folder / "safety" / "policy.json").read_text(encoding="utf-8"))
         io = folder_io(folder, spec=spec, merged=False)
-        system, prompt_ref = load_prompt(folder, spec)
+        packed = pack_chat_context(
+            folder,
+            spec,
+            io,
+            message=text,
+            history=normalize_history(history),
+        )
         budget = spec.get("budget_policy") or {}
         declared = parse_token_count(budget.get("max_output_tokens"))
         max_tokens, max_tokens_source = resolve_completion_tokens(budget.get("max_output_tokens"))
         router = self.llm or LlmRouter()
         completion = router.complete(
             agent_id=str(spec.get("agent_id") or agent_id),
-            prompt=text,
+            prompt=packed["message"],
             node_id="chat",
             max_tokens=max_tokens,
-            system=build_chat_system(prompt=system, io=io),
-            history=normalize_history(history),
+            system=packed["system"],
+            history=packed["history"],
         )
         safety = safety_gate(output=completion, policy=safety_policy, cancelled=False)
         return {
@@ -190,7 +196,8 @@ class Runtime:
             "memory_writes": [],
             "plugins_executed": False,
             "t3_enabled": False,
-            "used_prompt_reference": prompt_ref,
+            "used_prompt_reference": packed["public"]["prompt_reference"],
+            "context": packed["public"],
             "safety": safety,
             "llm": public_llm_view(
                 completion,
