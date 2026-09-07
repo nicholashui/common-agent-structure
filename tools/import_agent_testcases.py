@@ -1,7 +1,8 @@
 """Write characterization fixtures into every loaded agent evals/fixtures/.
 
 Source prompts: vendor/common-agent-swarm-ops/testcases/api_test/<id>/cases.json
-Dest: agents/<agent_id>/evals/fixtures/{chat-tc1..3,run-tc1,provenance}.json
+  (embedded as seeds inside complex Chat cases; not copied as 3 one-liners)
+Dest: agents/<agent_id>/evals/fixtures/{chat-tc1..10,run-tc1,provenance}.json
 
 Does not enable network, plugins, memory writes, T3, or production.
 Does not call live LLMs. Honesty is CHARACTERIZATION, never an eval pass.
@@ -13,6 +14,7 @@ import json
 import re
 from pathlib import Path
 
+from complex_agent_testcases import MIN_CHAT_CASES, build_complex_chat_cases  # noqa: E402
 from reloc import REPO, VENDOR_API_TEST, repo_posix  # noqa: E402
 
 DEFAULT_API_TEST = VENDOR_API_TEST
@@ -153,14 +155,20 @@ def run_expect(agent_id: str) -> dict:
     }
 
 
-def chat_fixture(agent_id: str, case_id: str, message: str, source: dict) -> dict:
+def chat_fixture(
+    agent_id: str,
+    case_id: str,
+    message: str,
+    source: dict,
+    history: list[dict[str, str]] | None = None,
+) -> dict:
     return {
         "schema_version": SCHEMA_VERSION,
         "id": case_id,
         "agent_id": agent_id,
         "path": "chat",
         "honesty": "CHARACTERIZATION",
-        "input": {"message": message, "history": []},
+        "input": {"message": message, "history": list(history or [])},
         "expect": chat_expect(agent_id),
         "source": source,
     }
@@ -182,7 +190,7 @@ def run_fixture(agent_id: str) -> dict:
     }
 
 
-def collect_chat_prompts(folder: Path, spec: dict, api_test_root: Path) -> tuple[list[tuple[str, dict]], dict]:
+def collect_swarm_seeds(folder: Path, spec: dict, api_test_root: Path) -> tuple[list[tuple[str, dict]], dict]:
     agent_id = str(spec.get("agent_id") or folder.name)
     case_path = swarm_case_path(api_test_root, agent_id)
     provenance: dict = {
@@ -190,8 +198,9 @@ def collect_chat_prompts(folder: Path, spec: dict, api_test_root: Path) -> tuple
         "folder": repo_posix(folder),
         "honesty": "CHARACTERIZATION",
         "note": "Chat prompts are characterization only. Not an eval pass. casops-eval stays NOT_RUN while instruments are unqualified.",
+        "chat_count": MIN_CHAT_CASES,
     }
-    prompts: list[tuple[str, dict]] = []
+    seeds: list[tuple[str, dict]] = []
     if case_path is not None:
         payload = json.loads(case_path.read_text(encoding="utf-8"))
         cases = payload.get("cases") if isinstance(payload, dict) else []
@@ -209,25 +218,17 @@ def collect_chat_prompts(folder: Path, spec: dict, api_test_root: Path) -> tuple
                 "case_id": str(case.get("id") or f"tc{index}"),
                 "case_name": str(case.get("name") or ""),
             }
-            prompts.append((text, source))
-            if len(prompts) == 3:
-                break
-    if len(prompts) < 3:
-        role = str(spec.get("role") or agent_id)
-        extras = fallback_prompts(agent_id, role, spec_excerpt(folder))
-        provenance["fallback"] = "role+SPEC.md" if not prompts else "padded_from_SPEC"
-        while len(prompts) < 3:
-            idx = len(prompts)
-            prompts.append(
-                (
-                    extras[idx],
-                    {
-                        "repo": "common-agent-structure",
-                        "file": "SPEC.md" if (folder / "SPEC.md").is_file() else "agent_spec.json",
-                        "case_id": f"fallback-tc{idx + 1}",
-                    },
-                )
-            )
+            seeds.append((text, source))
+    else:
+        provenance["fallback"] = "role+SPEC.md"
+    return seeds, provenance
+
+
+def collect_chat_prompts(folder: Path, spec: dict, api_test_root: Path) -> tuple[list[tuple[str, dict]], dict]:
+    """Compatibility wrapper: first three complex messages (tests still import this)."""
+    seeds, provenance = collect_swarm_seeds(folder, spec, api_test_root)
+    cases = build_complex_chat_cases(folder, spec, seeds)
+    prompts = [(item.message, item.source) for item in cases]
     return prompts[:3], provenance
 
 
@@ -240,13 +241,18 @@ def write_agent_fixtures(folder: Path, spec: dict, api_test_root: Path) -> int:
     run_path = fixtures / "run-tc1.json"
     if run_path.is_file():
         run_path.unlink()
-    prompts, provenance = collect_chat_prompts(folder, spec, api_test_root)
+    seeds, provenance = collect_swarm_seeds(folder, spec, api_test_root)
+    cases = build_complex_chat_cases(folder, spec, seeds)
+    provenance["chat_case_kinds"] = [item.kind for item in cases]
     written = 0
     ids: list[dict] = []
-    for index, (message, source) in enumerate(prompts, start=1):
+    for index, case in enumerate(cases, start=1):
         case_id = f"chat-tc{index}"
-        dump(fixtures / f"{case_id}.json", chat_fixture(agent_id, case_id, message, source))
-        ids.append({"id": case_id, "honesty": "CHARACTERIZATION", "path": "chat"})
+        dump(
+            fixtures / f"{case_id}.json",
+            chat_fixture(agent_id, case_id, case.message, case.source, history=list(case.history)),
+        )
+        ids.append({"id": case_id, "honesty": "CHARACTERIZATION", "path": "chat", "kind": case.kind})
         written += 1
     dump(fixtures / "run-tc1.json", run_fixture(agent_id))
     ids.append({"id": "run-tc1", "honesty": "CHARACTERIZATION", "path": "run"})

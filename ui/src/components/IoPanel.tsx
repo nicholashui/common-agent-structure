@@ -23,18 +23,22 @@ function ChipList({ items, empty, testId }: { items: string[]; empty: string; te
 export function IoPanel({
   io = EMPTY_IO,
   title = "Inputs and outputs",
+  mode = "folder",
 }: {
   io?: AgentIo;
   title?: string;
+  mode?: "folder" | "chat";
 }) {
   return (
     <Card>
       <div data-testid="io-panel">
         <h2 className="mb-1 text-sm font-semibold text-stone-900">{title}</h2>
         <p className="mb-3 text-xs text-stone-500">
-          {io.merged ? "Merged compose contract" : "Folder-declared contract"}
-          {io.source === "critique_edges" ? " · critique_edges" : ""}
-          {ioHasContract(io) ? "" : " · none declared"}
+          {mode === "chat"
+            ? "Operator message is the bound Chat input. Declared buses below are names only — this request did not fetch them. Not a DAG run."
+            : `${io.merged ? "Merged compose contract" : "Folder-declared contract"}${
+                io.source === "critique_edges" ? " · critique_edges" : ""
+              }${ioHasContract(io) ? "" : " · none declared"}`}
         </p>
         <div className="space-y-3">
           <div>

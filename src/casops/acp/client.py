@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import os
 import subprocess
 import threading
 import time
@@ -13,6 +14,7 @@ from casops.acp.protocol import (
     THOUGHT_UPDATES,
     decode_message,
     encode_message,
+    error_payload,
     notify_payload,
     request_payload,
     text_from_update,
@@ -22,10 +24,29 @@ from casops.errors.codes import ErrorCode
 from casops.errors.exceptions import CasopsError
 
 
+def resolve_acp_auth_method(auth_ids: set[str], *, env: dict[str, str] | None = None) -> str | None:
+    """Pick a headless ACP auth method. Never selects interactive grok.com."""
+    ids = {item for item in auth_ids if item}
+    if not ids:
+        return None
+    environ = env if env is not None else os.environ
+    if "xai.api_key" in ids and str(environ.get("XAI_API_KEY") or "").strip():
+        return "xai.api_key"
+    if "cached_token" in ids:
+        return "cached_token"
+    raise CasopsError(
+        ErrorCode.PERF_ROUTE_UNAVAILABLE,
+        detail=(
+            "ACP auth required: set XAI_API_KEY or log in so Grok offers cached_token. "
+            "Interactive grok.com login is not performed."
+        ),
+    )
+
+
 class StdioAcpClient:
     def __init__(
         self,
-        proc: subprocess.Popen[str],
+        proc: subprocess.Popen[Any],
         *,
         timeout_s: float = 120.0,
         debug: Callable[..., None] | None = None,
@@ -81,9 +102,10 @@ class StdioAcpClient:
             protocolVersion=result.get("protocolVersion"),
             auth_ids=sorted(item for item in ids if item),
         )
-        if "cached_token" in ids:
-            self.request("authenticate", {"methodId": "cached_token", "_meta": {"headless": True}})
-            self._trace("authenticate", methodId="cached_token")
+        method_id = resolve_acp_auth_method(ids)
+        if method_id:
+            self.request("authenticate", {"methodId": method_id, "_meta": {"headless": True}})
+            self._trace("authenticate", methodId=method_id)
         return result
 
     def session_new(
@@ -194,20 +216,24 @@ class StdioAcpClient:
                 with self._lock:
                     self._chunks.append(chunk)
             return
-        if method == "session/request_permission" and "id" in message:
-            self._write(
-                {
-                    "jsonrpc": "2.0",
-                    "id": message["id"],
-                    "result": {"outcome": "cancelled"},
-                }
-            )
+        req_id = message.get("id")
+        if method and req_id is not None and "result" not in message and "error" not in message:
+            if method == "session/request_permission":
+                self._write({"jsonrpc": "2.0", "id": req_id, "result": {"outcome": "cancelled"}})
+                self._trace("peer_rpc", method=method, outcome="cancelled")
+                return
+            self._write(error_payload(req_id, -32601, "method not found"))
+            self._trace("peer_rpc", method=method, outcome="method_not_found")
 
     def _write(self, payload: dict[str, Any]) -> None:
         stdin = self.proc.stdin
         if stdin is None:
             raise CasopsError(ErrorCode.PERF_ROUTE_UNAVAILABLE, detail="ACP stdin closed")
+        raw = encode_message(payload).encode("utf-8")
         try:
+            stdin.write(raw)  # type: ignore[arg-type]
+            stdin.flush()
+        except TypeError:
             stdin.write(encode_message(payload))
             stdin.flush()
         except OSError as exc:
@@ -218,9 +244,17 @@ class StdioAcpClient:
         if stdout is None:
             return
         while True:
-            line = stdout.readline()
-            if line == "":
+            try:
+                line = stdout.readline()
+            except UnicodeDecodeError:
+                self._trace("rpc", method="stdout", ok=False, error="utf8_replace")
+                continue
+            if line in ("", b""):
                 return
-            message = decode_message(line)
+            if isinstance(line, bytes):
+                text = line.decode("utf-8", errors="replace")
+            else:
+                text = line
+            message = decode_message(text)
             if message is not None:
                 self._queue.put(message)

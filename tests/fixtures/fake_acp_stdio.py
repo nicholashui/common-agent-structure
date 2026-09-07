@@ -22,12 +22,19 @@ def _read() -> dict | None:
 
 
 def _write(payload: dict) -> None:
-    sys.stdout.write(json.dumps(payload, separators=(",", ":")) + "\n")
+    line = json.dumps(payload, separators=(",", ":"), ensure_ascii=False) + "\n"
+    sys.stdout.write(line)
     sys.stdout.flush()
 
 
 def main() -> None:
+    if hasattr(sys.stdout, "reconfigure"):
+        sys.stdout.reconfigure(encoding="utf-8")
+    if hasattr(sys.stdin, "reconfigure"):
+        sys.stdin.reconfigure(encoding="utf-8")
     sessions = 0
+    advertised = [item.strip() for item in os.environ.get("CASOPS_FAKE_ACP_AUTH", "").split(",") if item.strip()]
+    authed = not advertised
     while True:
         message = _read()
         if message is None:
@@ -55,11 +62,45 @@ def main() -> None:
                     "result": {
                         "protocolVersion": 1,
                         "agentCapabilities": {"loadSession": False, "promptCapabilities": {}},
-                        "authMethods": [],
+                        "authMethods": [{"id": item} for item in advertised],
                     },
                 }
             )
+            _write(
+                {
+                    "jsonrpc": "2.0",
+                    "method": "session/update",
+                    "params": {
+                        "update": {
+                            "sessionUpdate": "agent_thought_chunk",
+                            "content": {"type": "text", "text": "— café 意圖"},
+                        }
+                    },
+                }
+            )
+        elif method == "authenticate":
+            method_id = str(params.get("methodId") or "")
+            if advertised and method_id not in advertised:
+                _write(
+                    {
+                        "jsonrpc": "2.0",
+                        "id": req_id,
+                        "error": {"code": -32602, "message": f"unknown auth method {method_id}"},
+                    }
+                )
+                continue
+            authed = True
+            _write({"jsonrpc": "2.0", "id": req_id, "result": {}})
         elif method == "session/new":
+            if advertised and not authed:
+                _write(
+                    {
+                        "jsonrpc": "2.0",
+                        "id": req_id,
+                        "error": {"code": -32000, "message": "authenticate before session/new"},
+                    }
+                )
+                continue
             if params.get("mcpServers") != []:
                 _write(
                     {
@@ -70,6 +111,21 @@ def main() -> None:
                 )
                 continue
             sessions += 1
+            perm_id = f"perm-{sessions}"
+            _write(
+                {
+                    "jsonrpc": "2.0",
+                    "id": perm_id,
+                    "method": "session/request_permission",
+                    "params": {"options": [{"optionId": "allow", "name": "allow"}]},
+                }
+            )
+            while True:
+                reply = _read()
+                if reply is None:
+                    return
+                if reply.get("id") == perm_id:
+                    break
             _write({"jsonrpc": "2.0", "id": req_id, "result": {"sessionId": f"fake-{os.getpid()}-{sessions}"}})
         elif method == "session/prompt":
             prompt = params.get("prompt")
@@ -78,6 +134,22 @@ def main() -> None:
                 for block in prompt:
                     if isinstance(block, dict):
                         text += str(block.get("text") or "")
+            echo = os.environ.get("CASOPS_FAKE_ACP_ECHO", "tail").strip().lower()
+            if echo == "full":
+                chunk = f"{text}**1. Locution** fake-analysis"
+            elif echo == "pack":
+                chunk = (
+                    "You are Demo (`demo.agent`).\n"
+                    "Voice: neutral.\n"
+                    "Does not own: Credentials\n"
+                    "Enabled skills: (none enabled — do not load SKILL.md).\n"
+                    "Host chat: treat the latest operator message as free-text input and reply in natural language. "
+                    "Do not call tools, write memory, enable T3, or request network.\n\n"
+                    "## System\n\nYou are demo.\n\n"
+                    f"## Operator message\n\n{text}**1. Locution** fake-analysis"
+                )
+            else:
+                chunk = f"fake-acp:{text[-80:]}"
             _write(
                 {
                     "jsonrpc": "2.0",
@@ -86,7 +158,7 @@ def main() -> None:
                         "sessionId": params.get("sessionId"),
                         "update": {
                             "sessionUpdate": "agent_message_chunk",
-                            "content": {"type": "text", "text": f"fake-acp:{text[-80:]}"},
+                            "content": {"type": "text", "text": chunk},
                         },
                     },
                 }

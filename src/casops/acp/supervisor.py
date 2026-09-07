@@ -13,6 +13,7 @@ from typing import Any
 
 from casops.acp.client import StdioAcpClient
 from casops.acp.debug import AcpProcessLog
+from casops.acp.echo import pack_session_prompt, strip_chat_echo, strip_prompt_echo
 from casops.acp.project import acp_home, prepare_grok_home, project_agent, sanitize_grok_env
 from casops.compose.folders import locate_agent_folder
 from casops.contracts.canonical import sha256_json
@@ -20,6 +21,17 @@ from casops.errors.codes import ErrorCode
 from casops.errors.exceptions import CasopsError
 
 ADAPTERS = ("host_llm", "grok_acp")
+
+__all__ = (
+    "ADAPTERS",
+    "AcpHandle",
+    "AcpSupervisor",
+    "grok_binary",
+    "pack_session_prompt",
+    "resolve_chat_adapter",
+    "strip_chat_echo",
+    "strip_prompt_echo",
+)
 
 
 def grok_binary() -> str | None:
@@ -133,13 +145,14 @@ class AcpSupervisor:
             grok_home=str(grok_home),
             command=command,
         )
+        env.setdefault("PYTHONUTF8", "1")
+        env.setdefault("PYTHONIOENCODING", "utf-8")
         proc = subprocess.Popen(
             command,
             stdin=subprocess.PIPE,
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
-            text=True,
-            bufsize=1,
+            bufsize=0,
             cwd=str(folder.resolve()),
             env=env,
         )
@@ -191,26 +204,22 @@ class AcpSupervisor:
         session_id = handle.session_id
         if not session_id:
             raise CasopsError(ErrorCode.PERF_ROUTE_UNAVAILABLE, detail="ACP session missing")
-        if handle.primed:
-            prompt_text = message
-        else:
-            parts: list[str] = []
-            if system.strip():
-                parts.append(system.strip())
-            if history:
-                parts.append("## Conversation")
-                for turn in history:
-                    label = "Operator" if turn.get("role") == "user" else "Agent"
-                    parts.append(f"{label}: {turn.get('content', '')}")
-            parts.append("## Operator message")
-            parts.append(message)
-            prompt_text = "\n\n".join(parts)
-            handle.primed = True
+        # Packed system is already in profile.md. Re-sending it on session/prompt
+        # makes Grok complete the document and leak the pack into Chat (every agent).
+        prompt_text = pack_session_prompt(primed=handle.primed, message=message, history=history)
+        handle.primed = True
         result = handle.client.prompt(session_id, prompt_text, casops={"agent_id": agent_id, "task_id": task_id})
+        text = strip_chat_echo(
+            prompt=prompt_text,
+            reply=str(result.get("text") or ""),
+            system=system,
+            message=message,
+        )
+        result["text"] = text
         result["adapter"] = "grok_acp"
         result["pid"] = handle.proc.pid
         result["session_id"] = session_id
-        result["digest"] = sha256_json({"agent_id": agent_id, "text": result.get("text"), "session_id": session_id})
+        result["digest"] = sha256_json({"agent_id": agent_id, "text": text, "session_id": session_id})
         return result
 
     def adapter_view(self, agent_id: str, *, selected: str) -> dict[str, Any]:

@@ -4,17 +4,62 @@
     {
       "id": "chat-tc1",
       "honesty": "CHARACTERIZATION",
-      "path": "chat"
+      "path": "chat",
+      "kind": "craft_dense"
     },
     {
       "id": "chat-tc2",
       "honesty": "CHARACTERIZATION",
-      "path": "chat"
+      "path": "chat",
+      "kind": "absorb_peer"
     },
     {
       "id": "chat-tc3",
       "honesty": "CHARACTERIZATION",
-      "path": "chat"
+      "path": "chat",
+      "kind": "production_activation"
+    },
+    {
+      "id": "chat-tc4",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "secrets_prompt_leak"
+    },
+    {
+      "id": "chat-tc5",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "contradictory_locks"
+    },
+    {
+      "id": "chat-tc6",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "unfetched_evidence"
+    },
+    {
+      "id": "chat-tc7",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "poisoned_peer_bus"
+    },
+    {
+      "id": "chat-tc8",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "jailbreak_pack_echo"
+    },
+    {
+      "id": "chat-tc9",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "activation_creep"
+    },
+    {
+      "id": "chat-tc10",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "dual_bind_promotion"
     },
     {
       "id": "run-tc1",

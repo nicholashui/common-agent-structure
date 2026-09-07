@@ -17,11 +17,13 @@ from casops.errors.codes import ErrorCode
 from casops.errors.exceptions import CasopsError
 from casops.compose.io import folder_io
 from casops.runtime.adapter import DeterministicAdapter
+from casops.acp.echo import strip_chat_echo
 from casops.acp.supervisor import AcpSupervisor, resolve_chat_adapter
 from casops.runtime.chat import normalize_history, pack_chat_context, require_message
 from casops.runtime.dag import compile_dag
 from casops.runtime.health import observe_health
 from casops.runtime.llm import LlmRouter, parse_token_count, public_llm_view, resolve_completion_tokens
+from casops.runtime.proof import build_chat_proof, build_run_proof, persist_proof
 from casops.runtime.safety import safety_gate
 from casops.runtime.trace import add_child, start_run_trace
 
@@ -37,6 +39,7 @@ class RunResult:
     safety: dict[str, Any]
     cancelled: bool
     adapter: str
+    proof: dict[str, Any] = field(default_factory=dict)
 
     def as_dict(self) -> dict[str, Any]:
         return {
@@ -49,6 +52,7 @@ class RunResult:
             "safety": self.safety,
             "cancelled": self.cancelled,
             "adapter": self.adapter,
+            "proof": self.proof,
         }
 
 
@@ -132,6 +136,21 @@ class Runtime:
             "sealed": True,
             "text": last.get("text"),
         }
+        io = folder_io(folder, spec=spec, merged=False)
+        proof = build_run_proof(
+            agent_id=str(spec.get("agent_id") or agent_id),
+            folder=folder,
+            spec=spec,
+            io=io,
+            node_ids=list(dag.order),
+            artifact=artifact,
+            adapter=str(last.get("provider") or self.adapter.provider),
+            root_trace_id=trace.root_id,
+        )
+        record = persist_proof(str(spec.get("agent_id") or agent_id), proof)
+        if record:
+            proof = dict(proof)
+            proof["record"] = record
         result = RunResult(
             agent_id=spec.get("agent_id") or agent_id,
             root_trace_id=trace.root_id,
@@ -142,6 +161,7 @@ class Runtime:
             safety=safety,
             cancelled=cancelled,
             adapter=str(last.get("provider") or self.adapter.provider),
+            proof=proof,
         )
         self.runs[result.root_trace_id] = result
         self.artifacts[artifact["id"]] = {
@@ -216,6 +236,14 @@ class Runtime:
                 system=packed["system"],
                 history=packed["history"],
             )
+        text = strip_chat_echo(
+            prompt=packed["message"],
+            reply=str(completion.get("text") or ""),
+            system=str(packed.get("system") or ""),
+            message=packed["message"],
+        )
+        completion["text"] = text
+        completion["content_chars"] = len(text)
         return completion, packed, selected
 
     def chat(
@@ -237,7 +265,7 @@ class Runtime:
         declared = parse_token_count(budget.get("max_output_tokens"))
         max_tokens, max_tokens_source = resolve_completion_tokens(budget.get("max_output_tokens"))
         turns = normalize_history(history)
-        completion, packed, _selected = self._complete_packed(
+        completion, packed, selected = self._complete_packed(
             agent_id=str(spec.get("agent_id") or agent_id),
             folder=folder,
             spec=spec,
@@ -249,6 +277,23 @@ class Runtime:
             reset=not turns,
         )
         safety = safety_gate(output=completion, policy=safety_policy, cancelled=False)
+        proof = build_chat_proof(
+            agent_id=str(spec.get("agent_id") or agent_id),
+            folder=folder,
+            spec=spec,
+            io=io,
+            packed=packed,
+            completion=completion,
+            adapter=selected,
+            max_tokens=max_tokens,
+            max_tokens_source=max_tokens_source,
+            message=text,
+            history=turns,
+        )
+        record = persist_proof(str(spec.get("agent_id") or agent_id), proof)
+        if record:
+            proof = dict(proof)
+            proof["record"] = record
         return {
             "agent_id": spec.get("agent_id") or agent_id,
             "reply": str(completion.get("text") or ""),
@@ -261,6 +306,7 @@ class Runtime:
             "used_prompt_reference": packed["public"]["prompt_reference"],
             "context": packed["public"],
             "safety": safety,
+            "proof": proof,
             "llm": public_llm_view(
                 completion,
                 max_tokens=max_tokens,

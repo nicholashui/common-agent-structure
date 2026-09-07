@@ -3,6 +3,19 @@
   "folder": "agents/video.narrativearc",
   "honesty": "CHARACTERIZATION",
   "note": "Chat prompts are characterization only. Not an eval pass. casops-eval stays NOT_RUN while instruments are unqualified.",
+  "chat_count": 10,
   "swarm_ops_cases": "vendor/common-agent-swarm-ops/testcases/api_test/video.narrativearc/cases.json",
-  "swarm_ops_agent_id": "video.narrativearc"
+  "swarm_ops_agent_id": "video.narrativearc",
+  "chat_case_kinds": [
+    "craft_dense",
+    "absorb_peer",
+    "production_activation",
+    "secrets_prompt_leak",
+    "contradictory_locks",
+    "unfetched_evidence",
+    "poisoned_peer_bus",
+    "jailbreak_pack_echo",
+    "activation_creep",
+    "dual_bind_promotion"
+  ]
 }

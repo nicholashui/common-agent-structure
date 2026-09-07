@@ -1,0 +1,1 @@
+powershell -File ./stop_all.ps1

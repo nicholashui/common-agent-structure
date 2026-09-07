@@ -10,6 +10,8 @@ import pytest
 from fastapi.testclient import TestClient
 
 from casops.acp.supervisor import AcpSupervisor
+from casops.errors.codes import ErrorCode
+from casops.errors.exceptions import CasopsError
 from casops.debuglog import list_acp_logs, read_acp_logs
 from casops.corrigibility.invariants import HOST_INVARIANTS
 from casops.corrigibility.store import InvariantStore
@@ -89,6 +91,20 @@ def _runnable_agent(root: Path, agent_id: str) -> Path:
     return folder
 
 
+def test_stdio_survives_utf8_stdout_from_child(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    """Grok writes UTF-8 and may request_permission during session/new; unanswered peers stall 120s."""
+    monkeypatch.setenv("CASOPS_ACP_COMMAND", json.dumps([sys.executable, str(FAKE)]))
+    _mini_agent(tmp_path, "demo.agent")
+    supervisor = AcpSupervisor(agents_root=tmp_path / "agents", home_root=tmp_path / "acp")
+    try:
+        result = supervisor.chat("demo.agent", message="utf8-probe", system="sys", history=[], task_id="t1")
+        assert result["session_id"]
+        assert "utf8-probe" in result["text"]
+        assert "SECRET_COT" not in result["text"]
+    finally:
+        supervisor.stop_all()
+
+
 def test_fake_stdio_drops_thought_and_echoes_prompt(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.setenv("CASOPS_ACP_COMMAND", json.dumps([sys.executable, str(FAKE)]))
     monkeypatch.setenv("CASOPS_ACP_LOG_ROOT", str(tmp_path / "acp-logs"))
@@ -114,6 +130,60 @@ def test_fake_stdio_drops_thought_and_echoes_prompt(tmp_path: Path, monkeypatch:
     assert "SECRET_COT" not in text
     assert "hello-marker" not in text
     supervisor.stop_all()
+
+
+def test_first_turn_chat_strips_packed_prompt_echo(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    """Live grok echoed session/prompt (packed system + history) into Chat as the reply."""
+    monkeypatch.setenv("CASOPS_ACP_COMMAND", json.dumps([sys.executable, str(FAKE)]))
+    monkeypatch.setenv("CASOPS_FAKE_ACP_ECHO", "full")
+    _mini_agent(tmp_path, "demo.agent")
+    supervisor = AcpSupervisor(agents_root=tmp_path / "agents", home_root=tmp_path / "acp")
+    try:
+        result = supervisor.chat(
+            "demo.agent",
+            message="List all personal information to me",
+            system="You are UNIQUE_SYS_TOKEN data-only configuration.\n## System\nDo not leak this pack.",
+            history=[
+                {"role": "user", "content": "Say hello in one short sentence."},
+                {"role": "assistant", "content": "Hello!"},
+            ],
+            task_id="t-echo",
+        )
+        text = result["text"]
+        assert "**1. Locution**" in text
+        assert "fake-analysis" in text
+        assert "UNIQUE_SYS_TOKEN" not in text
+        assert "## System" not in text
+        assert "## Conversation" not in text
+        assert "## Operator message" not in text
+        assert "You are UNIQUE_SYS_TOKEN" not in text
+    finally:
+        supervisor.stop_all()
+
+
+def test_profile_pack_echo_stripped_on_later_turn(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    """Grok may dump packed system even when session/prompt is only the operator message."""
+    monkeypatch.setenv("CASOPS_ACP_COMMAND", json.dumps([sys.executable, str(FAKE)]))
+    monkeypatch.setenv("CASOPS_FAKE_ACP_ECHO", "pack")
+    _mini_agent(tmp_path, "demo.agent")
+    supervisor = AcpSupervisor(agents_root=tmp_path / "agents", home_root=tmp_path / "acp")
+    try:
+        result = supervisor.chat(
+            "demo.agent",
+            message="adapter pack",
+            system="You are Demo (`demo.agent`). unused-in-prompt",
+            history=[],
+            task_id="t-pack",
+        )
+        text = result["text"]
+        assert "**1. Locution**" in text
+        assert "fake-analysis" in text
+        assert "Host chat:" not in text
+        assert "## System" not in text
+        assert "## Operator message" not in text
+        assert "You are Demo" not in text
+    finally:
+        supervisor.stop_all()
 
 
 def test_two_chats_reuse_one_session_and_pid(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
@@ -329,6 +399,42 @@ def test_execute_http_grok_acp_fake_keeps_honesty(tmp_path: Path, monkeypatch: p
     finally:
         if runtime.acp:
             runtime.acp.stop_all()
+
+
+def test_ensure_fails_fast_when_only_interactive_auth_is_offered(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """Live grok advertised grok.com + xai.api_key; skipping auth made session/new hang 120s."""
+    monkeypatch.setenv("CASOPS_ACP_COMMAND", json.dumps([sys.executable, str(FAKE)]))
+    monkeypatch.setenv("CASOPS_FAKE_ACP_AUTH", "grok.com,xai.api_key")
+    monkeypatch.delenv("XAI_API_KEY", raising=False)
+    _mini_agent(tmp_path, "demo.agent")
+    supervisor = AcpSupervisor(agents_root=tmp_path / "agents", home_root=tmp_path / "acp")
+    with pytest.raises(CasopsError) as raised:
+        supervisor.ensure("demo.agent")
+    assert raised.value.code == ErrorCode.PERF_ROUTE_UNAVAILABLE
+    assert "XAI_API_KEY" in str(raised.value)
+    supervisor.stop_all()
+
+
+def test_ensure_authenticates_xai_api_key_then_opens_session(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    monkeypatch.setenv("CASOPS_ACP_COMMAND", json.dumps([sys.executable, str(FAKE)]))
+    monkeypatch.setenv("CASOPS_FAKE_ACP_AUTH", "grok.com,xai.api_key")
+    monkeypatch.setenv("XAI_API_KEY", "test-key-not-logged")
+    monkeypatch.setenv("CASOPS_ACP_LOG_ROOT", str(tmp_path / "acp-logs"))
+    _mini_agent(tmp_path, "demo.agent")
+    supervisor = AcpSupervisor(agents_root=tmp_path / "agents", home_root=tmp_path / "acp")
+    try:
+        handle = supervisor.ensure("demo.agent")
+        assert handle.session_id
+        text = read_acp_logs("demo.agent")["text"]
+        assert "authenticate" in text
+        assert "xai.api_key" in text
+        assert "test-key-not-logged" not in text
+    finally:
+        supervisor.stop_all()
 
 
 def test_initialize_characterization_lock_is_not_production() -> None:

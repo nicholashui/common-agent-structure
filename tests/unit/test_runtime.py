@@ -20,6 +20,7 @@ REPO = Path(__file__).resolve().parents[2]
 
 def _local_runtime(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> Runtime:
     monkeypatch.setenv("DEFAULT_LLM", "local_deterministic")
+    monkeypatch.setenv("CASOPS_PROOF_ROOT", str(tmp_path / "proof"))
     llm = LlmRouter(settings=LlmSettings(path=tmp_path / "llm.json", default_llm="local_deterministic"))
     return Runtime(agents_root=REPO / "agents", store=InvariantStore.with_host_defaults(), llm=llm)
 
@@ -52,9 +53,14 @@ def test_template_run_has_one_root_trace_and_no_memory_write(
     assert result.artifact["sealed"] is True
     assert len(result.artifact["digest"]) == 64
     assert result.safety["passed"] is True
+    assert result.proof["path_id"] == "execute"
+    assert result.proof["spec_applied"]["dag_executed"] is True
+    assert result.proof["eval"]["pass"] is False
+    assert result.proof["observability"]["status"] == "NOT_APPLIED"
 
 
-def test_common_health_run_returns_host_snapshot() -> None:
+def test_common_health_run_returns_host_snapshot(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.setenv("CASOPS_PROOF_ROOT", str(tmp_path / "proof"))
     runtime = Runtime(agents_root=REPO / "agents", store=InvariantStore.with_host_defaults())
     result = runtime.execute("common.health")
     assert result.agent_id == "common.health"
@@ -112,6 +118,12 @@ def test_chat_uses_operator_message_and_does_not_record_a_run(
     assert first["plugins_executed"] is False
     assert first["t3_enabled"] is False
     assert first["provider"] == "local_deterministic"
+    proof = first["proof"]
+    assert proof["path_id"] == "chat"
+    assert proof["not_a_dag_run"] is True
+    assert proof["eval"]["pass"] is False
+    assert proof["io_binding"]["declared_inputs_fetched"] is False
+    assert proof["observability"]["status"] == "NOT_APPLIED"
     assert json.loads(first["reply"])["prompt_sha256"] != json.loads(second["reply"])["prompt_sha256"]
 
 
@@ -150,6 +162,7 @@ def test_chat_stub_output_budget_uses_host_floor_and_drops_reasoning(
 
     monkeypatch.setenv("DEFAULT_LLM", "openai")
     monkeypatch.setenv("OPENAI_API_KEY", "sk-test")
+    monkeypatch.setenv("CASOPS_PROOF_ROOT", str(tmp_path / "proof"))
     llm = LlmRouter(settings=LlmSettings(path=tmp_path / "llm.json", default_llm="openai"), post=post)
     runtime = Runtime(agents_root=tmp_path, store=InvariantStore.with_host_defaults(), llm=llm)
     result = runtime.chat("stub.chat", message="what you are thinking?")
@@ -174,6 +187,7 @@ def test_chat_declared_budget_above_floor_is_honoured(
 
     monkeypatch.setenv("DEFAULT_LLM", "openai")
     monkeypatch.setenv("OPENAI_API_KEY", "sk-test")
+    monkeypatch.setenv("CASOPS_PROOF_ROOT", str(tmp_path / "proof"))
     llm = LlmRouter(settings=LlmSettings(path=tmp_path / "llm.json", default_llm="openai"), post=post)
     runtime = Runtime(agents_root=REPO / "agents", store=InvariantStore.with_host_defaults(), llm=llm)
     result = runtime.chat("video.director", message="hello from operator")

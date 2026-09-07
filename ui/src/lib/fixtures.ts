@@ -14,6 +14,26 @@ export function fixtureMessage(item: EvalFixture | null | undefined): string {
   return typeof message === "string" ? message.trim() : "";
 }
 
+export function fixtureHistory(item: EvalFixture | null | undefined): { role: "user" | "assistant"; content: string }[] {
+  const raw = item?.input?.history;
+  if (!Array.isArray(raw)) {
+    return [];
+  }
+  const turns: { role: "user" | "assistant"; content: string }[] = [];
+  for (const row of raw) {
+    if (!row || typeof row !== "object") {
+      continue;
+    }
+    const rec = row as { role?: unknown; content?: unknown };
+    const role = String(rec.role || "").trim().toLowerCase();
+    const content = typeof rec.content === "string" ? rec.content.trim() : "";
+    if ((role === "user" || role === "assistant") && content) {
+      turns.push({ role, content });
+    }
+  }
+  return turns;
+}
+
 export function fixtureTitle(item: EvalFixture): string {
   const name = item.source?.case_name?.trim();
   return name || item.id;

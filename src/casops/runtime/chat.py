@@ -34,6 +34,23 @@ _PROMPT_STOP = (
     "## Refine policy",
     "## Collaboration",
     "## Tools",
+    "## Few-shot discipline",
+    "## RETHINK_100 operating guidance",
+    "## RETHINK_100",
+)
+_OUTPUT_STOP = (
+    "## Few-shot discipline",
+    "## RETHINK_100 operating guidance",
+    "## RETHINK_100",
+    "## Developer",
+    "## Task",
+    "## Tests",
+    "## Harness",
+    "## Bindings",
+    "## Self-evaluation loop",
+    "## Refine policy",
+    "## Collaboration",
+    "## Tools",
 )
 _HTML_COMMENT = re.compile(r"<!--.*?-->", re.DOTALL)
 
@@ -250,10 +267,22 @@ def _evidence_text(io: dict[str, Any]) -> str:
     )
 
 
+def _clip_at_headings(text: str, headings: tuple[str, ...]) -> str:
+    stop_at = len(text)
+    for heading in headings:
+        found = text.find("\n" + heading)
+        if found > 0:
+            stop_at = min(stop_at, found)
+    comment_at = text.find("\n<!-- RETHINK")
+    if comment_at > 0:
+        stop_at = min(stop_at, comment_at)
+    return text[:stop_at].strip()
+
+
 def _output_text(folder: Path, spec: dict[str, Any], prompt: str) -> str:
     at = prompt.find("## Output schema")
     if at >= 0:
-        return prompt[at : at + 1200].strip()
+        return _clip_at_headings(prompt[at : at + 1200], _OUTPUT_STOP)
     ref = str(spec.get("rubric_reference") or "rubrics/primary.md")
     path = folder / ref
     if path.is_file():

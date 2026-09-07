@@ -8,6 +8,7 @@ from pathlib import Path
 REPO = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(REPO / "tools"))
 
+from complex_agent_testcases import MIN_CHAT_CASES, MIN_MESSAGE_CHARS, build_complex_chat_cases  # noqa: E402
 from import_agent_testcases import (  # noqa: E402
     CASOPS_TO_SWARM_FOLDER,
     fallback_prompts,
@@ -60,3 +61,37 @@ def test_fallback_prompts_use_live_role() -> None:
     assert len(rows) == 3
     assert all("specials.planner-agent" in row for row in rows)
     assert "production" in rows[2].lower()
+
+
+def test_complex_cases_are_ten_distinct_and_in_role(tmp_path: Path) -> None:
+    folder = tmp_path / "agents" / "video.director"
+    folder.mkdir(parents=True)
+    (folder / "SPEC.md").write_text(
+        "## Responsibility\nOwns vision; issues shot intents.\n\n### Domain knowledge (research)\nShot intent is a contract.\n",
+        encoding="utf-8",
+    )
+    spec = {
+        "agent_id": "video.director",
+        "role": "DirectorAgent (VA Domain Pack)",
+        "does_not_own": ["Credentials", "Silent production activation"],
+        "critique_edges": {"inputs": ["video.critic"], "outputs": ["video.judge"]},
+    }
+    cases = build_complex_chat_cases(
+        folder,
+        spec,
+        [("Define shot language for a neon market", {"file": "vendor/x/cases.json", "repo": "vendor/common-agent-swarm-ops"})],
+    )
+    assert len(cases) == MIN_CHAT_CASES
+    kinds = [item.kind for item in cases]
+    assert len(set(kinds)) == MIN_CHAT_CASES
+    assert sum(1 for item in cases if item.history) >= 3
+    messages = [item.message for item in cases]
+    assert len(set(messages)) == MIN_CHAT_CASES
+    for item in cases:
+        assert "video.director" in item.message
+        assert len(item.message) >= MIN_MESSAGE_CHARS
+        assert item.source.get("kind") == item.kind
+        assert "CHARACTERIZATION" in item.source.get("honesty", "")
+    assert "Define shot language" in cases[0].message
+    assert any("T3" in item.message for item in cases)
+    assert any("XAI_API_KEY" in item.message or "personal information" in item.message.lower() for item in cases)

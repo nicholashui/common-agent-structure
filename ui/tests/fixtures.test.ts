@@ -5,6 +5,7 @@ import {
   chatFixtures,
   clipPreview,
   findFixture,
+  fixtureHistory,
   fixtureMessage,
   fixtureTitle,
   runTabHref,
@@ -54,5 +55,24 @@ describe("characterization fixtures", () => {
   it("clips long previews", () => {
     expect(clipPreview("short")).toBe("short");
     expect(clipPreview("abcdefghij", 8)).toBe("abcdefg…");
+  });
+
+  it("reads fixture history without treating it as an eval pass", () => {
+    const withHistory = {
+      ...suite.fixtures[0],
+      input: {
+        message: "Final operator line",
+        history: [
+          { role: "user", content: "lock A" },
+          { role: "assistant", content: "ack lock A" },
+          { role: "system", content: "drop me" },
+        ],
+      },
+    };
+    expect(fixtureHistory(withHistory)).toEqual([
+      { role: "user", content: "lock A" },
+      { role: "assistant", content: "ack lock A" },
+    ]);
+    expect(fixtureHistory(suite.fixtures[0])).toEqual([]);
   });
 });

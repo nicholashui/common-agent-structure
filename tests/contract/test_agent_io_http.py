@@ -85,6 +85,7 @@ def test_chat_empty_message_is_rejected(tmp_path: Path, monkeypatch: pytest.Monk
 
 def _chat_client(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> TestClient:
     monkeypatch.setenv("DEFAULT_LLM", "local_deterministic")
+    monkeypatch.setenv("CASOPS_PROOF_ROOT", str(tmp_path / "proof"))
     llm = LlmRouter(settings=LlmSettings(path=tmp_path / "llm.json", default_llm="local_deterministic"))
     return TestClient(create_control_plane(agents_root=REPO / "agents", llm=llm))
 
@@ -106,6 +107,18 @@ def test_chat_returns_reply_without_memory_or_plugins(
     assert body["memory_writes"] == []
     assert body["plugins_executed"] is False
     assert body["t3_enabled"] is False
+    proof = body["proof"]
+    assert proof["path_id"] == "chat"
+    assert proof["not_a_dag_run"] is True
+    assert proof["eval"]["pass"] is not True
+    assert proof["eval"]["verdict"] == "NOT_RUN"
+    assert proof["io_binding"]["declared_inputs_fetched"] is False
+    assert proof["io_binding"]["operator_message"]["status"] == "bound"
+    assert "video.critic" in [row["id"] for row in proof["io_binding"]["declared_inputs"]]
+    assert proof["observability"]["status"] == "NOT_APPLIED"
+    assert proof["observability"]["exporter_wired"] is False
+    assert proof["negative"]["network_granted"] is False
+    assert proof["spec_applied"]["dag_executed"] is False
     assert body["llm"]["max_tokens_source"] == "spec"
     assert body["llm"]["truncated"] is False
     assert "video.critic" in body["io"]["inputs"]
@@ -142,3 +155,39 @@ def test_chat_accepts_human_text_for_every_sample_agent(
         assert body["agent_id"] == agent_id
         assert body["reply"]
         assert body["memory_writes"] == []
+        assert body["proof"]["path_id"] == "chat"
+        assert body["proof"]["io_binding"]["declared_inputs_fetched"] is False
+        assert body["proof"]["eval"]["pass"] is not True
+
+
+def test_chat_proof_every_loaded_agent_is_honest(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    client = _chat_client(tmp_path, monkeypatch)
+    listed = client.get("/api/v3/agents").json()["agents"]
+    assert listed
+    bad: list[str] = []
+    for row in listed:
+        agent_id = row["agent_id"]
+        body = client.post(
+            f"/api/v3/agents/{agent_id}/runtime/chat",
+            headers=MUTATION,
+            json={"message": "issue-0002 proof probe", "history": []},
+        ).json()
+        proof = body.get("proof") or {}
+        if proof.get("path_id") != "chat":
+            bad.append(f"{agent_id}:path")
+        if proof.get("not_a_dag_run") is not True:
+            bad.append(f"{agent_id}:dag")
+        if (proof.get("io_binding") or {}).get("declared_inputs_fetched") is not False:
+            bad.append(f"{agent_id}:fetched")
+        if (proof.get("eval") or {}).get("pass") is True:
+            bad.append(f"{agent_id}:eval-pass")
+        if (proof.get("observability") or {}).get("status") != "NOT_APPLIED":
+            bad.append(f"{agent_id}:obs")
+        if (proof.get("negative") or {}).get("plugins_executed") is not False:
+            bad.append(f"{agent_id}:plugins")
+        record = proof.get("decision_record") or {}
+        for key in ("inputs", "actions", "constraints", "codes", "outcomes"):
+            if key not in record:
+                bad.append(f"{agent_id}:decision.{key}")
+                break
+    assert bad == []

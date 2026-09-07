@@ -75,12 +75,18 @@ class AcpProcessLog:
         while True:
             try:
                 line = stream.readline()
+            except UnicodeDecodeError:
+                continue
             except OSError:
                 return
-            if line == "":
+            if line in ("", b""):
                 return
+            if isinstance(line, bytes):
+                decoded = line.decode("utf-8", errors="replace")
+            else:
+                decoded = line
             ts = isoformat_hkt()
-            text = clip_field(line.rstrip("\r\n"))
+            text = clip_field(decoded.rstrip("\r\n"))
             with self._lock:
                 try:
                     self._stderr.write(f"{ts} {text}\n")

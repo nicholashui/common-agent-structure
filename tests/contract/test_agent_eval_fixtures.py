@@ -37,8 +37,8 @@ def test_every_loaded_agent_has_chat_and_run_fixtures() -> None:
         chats = _fixture_files(folder, "chat-tc")
         run = folder / "evals" / "fixtures" / "run-tc1.json"
         proven = folder / "evals" / "fixtures" / "provenance.json"
-        if len(chats) < 1:
-            missing.append(f"{agent_id}:no chat fixtures")
+        if len(chats) < 10:
+            missing.append(f"{agent_id}:need ≥10 chat fixtures, got {len(chats)}")
         if not run.is_file():
             missing.append(f"{agent_id}:no run-tc1")
         if not proven.is_file():
@@ -79,6 +79,47 @@ def test_fixtures_match_schema_and_policy() -> None:
                     bad.append(f"{agent_id}:{path.name}:empty chat message")
                 if expect.get("io_declared_fetched") is not False:
                     bad.append(f"{agent_id}:{path.name}:declared inputs must stay unbound")
+                if payload.get("path") == "chat" and len(str(message)) < 400:
+                    bad.append(f"{agent_id}:{path.name}:message too short for a complex case")
+    assert bad == []
+
+
+def test_ten_complex_chat_cases_are_unique_and_use_history() -> None:
+    seen: dict[str, str] = {}
+    bad: list[str] = []
+    for agent_id, folder in _agent_rows():
+        chats = _fixture_files(folder, "chat-tc")
+        if len(chats) < 10:
+            bad.append(f"{agent_id}:count {len(chats)}")
+            continue
+        kinds: list[str] = []
+        with_history = 0
+        for path in chats:
+            payload = json.loads(path.read_text(encoding="utf-8"))
+            message = str((payload.get("input") or {}).get("message") or "")
+            if agent_id not in message:
+                bad.append(f"{agent_id}:{path.name}:message must name agent_id")
+            kind = str((payload.get("source") or {}).get("kind") or "")
+            if kind:
+                kinds.append(kind)
+            history = (payload.get("input") or {}).get("history") or []
+            if isinstance(history, list) and history:
+                with_history += 1
+                for turn in history:
+                    if not isinstance(turn, dict) or turn.get("role") not in {"user", "assistant"}:
+                        bad.append(f"{agent_id}:{path.name}:bad history turn")
+                    elif not str(turn.get("content") or "").strip():
+                        bad.append(f"{agent_id}:{path.name}:empty history turn")
+            digest = message
+            other = seen.get(digest)
+            if other:
+                bad.append(f"duplicate message {agent_id}:{path.name} == {other}")
+            else:
+                seen[digest] = f"{agent_id}:{path.name}"
+        if with_history < 3:
+            bad.append(f"{agent_id}:need ≥3 history cases, got {with_history}")
+        if len(set(kinds)) < 10:
+            bad.append(f"{agent_id}:need 10 distinct kinds, got {sorted(set(kinds))}")
     assert bad == []
 
 
@@ -90,8 +131,9 @@ def test_benchmarks_list_characterization_fixtures() -> None:
         ids = {str(item.get("id")) for item in rows if isinstance(item, dict)}
         if "run-tc1" not in ids:
             bad.append(f"{agent_id}:benchmarks missing run-tc1")
-        if not any(item.startswith("chat-tc") for item in ids):
-            bad.append(f"{agent_id}:benchmarks missing chat-tc")
+        chat_ids = [item for item in ids if item.startswith("chat-tc")]
+        if len(chat_ids) < 10:
+            bad.append(f"{agent_id}:benchmarks need ≥10 chat-tc, got {len(chat_ids)}")
         note = str(bench.get("note") or "")
         if "NOT_RUN" not in note and "CHARACTERIZATION" not in note:
             bad.append(f"{agent_id}:benchmarks note must stay honest")

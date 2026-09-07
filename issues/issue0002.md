@@ -1,7 +1,7 @@
 # ISSUE-0002 — Prove an agent is actually running: input interface and Chat-to-output flow
 
-**Status:** Open (proof gap remains). Chat UX slice landed 2026-09-04.  
-**Severity:** High (operator cannot confirm correct agent execution)  
+**Status:** Implemented (proof on Chat/Run JSON + Chat UI). Chat still does **not** execute the DAG; eval stays `NOT_RUN`; observability stays `NOT_APPLIED`.  
+**Severity:** High (a Chat 200 without proof looked like the agent ran)  
 **Component:** Chat (`Runtime.chat` / `POST /api/v3/agents/{id}/runtime/chat`), declared I/O (`critique_edges`), `agents/<agent_id>/observability/`  
 **Observed:** 2026-09-04  
 **Sample session:** `logs/debug/2026-09-04-00-58-29-767-yr38m0-ui.log`, `logs/debug/2026-09-04-00-58-29-767-yr38m0-api.log`  
@@ -334,16 +334,18 @@ Those fight the current Chat contract: host-routed free text, no memory write, n
 
 ---
 
-## Suggested order of work (not started)
+## Suggested order of work
 
-Proof path (this issue’s original ask):
+Proof path (landed):
 
-1. Document in Chat UI, next to IoPanel: “declared buses (not bound this request)” vs “operator message (bound).”
-2. Return a `proof` / `io_binding` object on Chat JSON (and debug API log) covering items 1–5. Keep CoT out.
-3. Decide Chat vs Run: Chat stays free-text host LLM; Run stays DAG. Do not pretend Chat executed `execution.json`.
-4. Wire or explicitly `NOT_APPLY` `observability/telemetry.json` (and sampling/redaction) on both paths. Empty `slo.json` stays empty until SLOs exist.
-5. Optional: persist a decision record under host logs (not agent-rewritable) keyed by Chat digest / run id, schema-valid against the folder’s `decision_record.schema.json`.
-6. Tests: Chat with declared inputs still has `io.inputs` listed and `io_binding.declared_inputs_fetched: false` until a real bind exists; observability files exist; Chat does not read them until step 4 says it does.
+1. Chat UI IoPanel: operator message is bound; declared buses are name-only. **Done.**
+2. Chat JSON includes `proof` / `io_binding` / `decision_record` (inputs, actions, constraints, codes, outcomes). CoT stays out. **Done.**
+3. Chat stays free-text packed-spec; Run stays DAG. `proof.path_id` is `chat` or `execute`. Chat is not labelled a DAG run. **Done.**
+4. Observability is explicit `NOT_APPLIED` (files present, exporter declared, not wired). **Done.** Eval remains `NOT_RUN`.
+5. Host log `logs/proof/{chat|execute}/<agent_id>/<digest>.json` (not agent-writable). **Done.**
+6. Tests scan loaded agents: `declared_inputs_fetched: false`, `eval.pass` is not true, observability `NOT_APPLIED`. **Done.**
+
+Still out of this issue: wiring OTLP, fetching peer buses, treating Chat 200 as an eval pass.
 
 UX path: **parked**. Implement none of the P0–P2 table until the operator chooses a slice.
 

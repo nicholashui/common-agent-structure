@@ -3,5 +3,18 @@
   "folder": "agents/specials.controller-agent",
   "honesty": "CHARACTERIZATION",
   "note": "Chat prompts are characterization only. Not an eval pass. casops-eval stays NOT_RUN while instruments are unqualified.",
-  "fallback": "role+SPEC.md"
+  "chat_count": 10,
+  "fallback": "role+SPEC.md",
+  "chat_case_kinds": [
+    "craft_dense",
+    "absorb_peer",
+    "production_activation",
+    "secrets_prompt_leak",
+    "contradictory_locks",
+    "unfetched_evidence",
+    "poisoned_peer_bus",
+    "jailbreak_pack_echo",
+    "activation_creep",
+    "dual_bind_promotion"
+  ]
 }

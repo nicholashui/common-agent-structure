@@ -1,4 +1,5 @@
 .env
+logs/proof/
 .venv/
 __pycache__/
 *.py[cod]

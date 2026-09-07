@@ -2,8 +2,10 @@
 
 from __future__ import annotations
 
+import json
 from pathlib import Path
 
+from casops.compose.folders import list_agent_ids, locate_agent_folder
 from casops.runtime.chat import operational_prompt, pack_chat_context
 
 REPO = Path(__file__).resolve().parents[2]
@@ -48,6 +50,8 @@ def test_pack_clips_to_context_json_and_omits_disabled_surfaces() -> None:
     assert "video.director" in packed["system"]
     assert "DirectorAgent" in packed["system"]
     assert "Sora 2 API" not in packed["system"]
+    assert "RETHINK_100" not in packed["system"]
+    assert "## Few-shot discipline" not in packed["system"]
     assert "Do not call tools" in packed["system"]
 
 
@@ -59,3 +63,18 @@ def test_pack_differs_across_agents() -> None:
     assert left["system"] != right["system"]
     assert "video.director" in left["system"]
     assert "intent-analysis" in right["system"]
+
+
+def test_every_agent_packed_system_omits_rethink_and_sora() -> None:
+    agents_root = REPO / "agents"
+    leaked: list[str] = []
+    for agent_id in list_agent_ids(agents_root):
+        folder = locate_agent_folder(agents_root, agent_id)
+        if folder is None:
+            continue
+        spec = json.loads((folder / "agent_spec.json").read_text(encoding="utf-8"))
+        packed = pack_chat_context(folder, spec, {}, message="ping", history=[])
+        system = packed["system"]
+        if "RETHINK_100" in system or "Sora 2 API" in system:
+            leaked.append(agent_id)
+    assert leaked == []

@@ -296,6 +296,69 @@ export interface ChatContextPack {
   pid?: number;
 }
 
+export interface ChatIoBinding {
+  operator_message?: { status?: string; chars?: number };
+  chat_history?: { status?: string; turns?: number };
+  declared_inputs?: { id: string; status?: string; fetched?: boolean }[];
+  declared_inputs_fetched?: boolean;
+  declared_outputs?: { id: string; status?: string; applicable?: boolean; reason?: string }[];
+  prompt_file?: { reference?: string; digest?: string | null; packed?: boolean };
+  system_tokens?: number;
+}
+
+export interface ChatProof {
+  path_id?: string;
+  not_a_dag_run?: boolean;
+  agent_id?: string;
+  eval?: { verdict?: string; pass?: boolean; reason?: string };
+  io_binding?: ChatIoBinding;
+  spec_applied?: {
+    packed_system?: boolean;
+    prompt_reference?: string;
+    profile_projected?: boolean;
+    dag_executed?: boolean;
+  };
+  model?: {
+    adapter?: string;
+    provider?: string;
+    folder_model_policy_provider?: string;
+    folder_model_policy_used_for_routing?: boolean;
+    max_tokens?: number;
+    max_tokens_source?: string;
+  };
+  output?: {
+    kind?: string;
+    digest?: string;
+    finish_reason?: string;
+    truncated?: boolean;
+    content_chars?: number;
+    declared_outputs_produced?: boolean;
+  };
+  negative?: {
+    memory_writes?: unknown[];
+    plugins_executed?: boolean;
+    t3_enabled?: boolean;
+    network_granted?: boolean;
+    folder_network_access?: boolean;
+  };
+  observability?: {
+    status?: string;
+    reason?: string;
+    exporter_declared?: string;
+    exporter_wired?: boolean;
+    content_capture?: string;
+  };
+  decision_record?: {
+    inputs?: unknown;
+    actions?: string[];
+    constraints?: string[];
+    codes?: unknown[];
+    outcomes?: unknown[];
+  };
+  digest?: string;
+  record?: string;
+}
+
 export interface ChatResponse {
   agent_id: string;
   reply: string;
@@ -308,6 +371,7 @@ export interface ChatResponse {
   used_prompt_reference?: string;
   context?: ChatContextPack;
   llm?: ChatLlmView;
+  proof?: ChatProof;
 }
 
 export interface CacheStats {

@@ -4,6 +4,7 @@
 
 Set-StrictMode -Version Latest
 $ErrorActionPreference = "Continue"
+$ProgressPreference = "SilentlyContinue"
 
 $Root = (Resolve-Path (Join-Path $PSScriptRoot "..")).Path
 $StateFile = Join-Path $Root "var\casops-servers.json"
@@ -24,10 +25,18 @@ function Stop-PidSafe([int]$ProcessId, [string]$Label) {
     }
 }
 
+function Get-ListenerPids([int]$Port) {
+    $ids = @()
+    foreach ($line in (& netstat -ano -p tcp)) {
+        if ($line -match "(?:127\.0\.0\.1|0\.0\.0\.0|\[::1\]|\[::\]):$Port\s+\S+\s+LISTENING\s+(\d+)") {
+            $ids += [int]$Matches[1]
+        }
+    }
+    return $ids | Select-Object -Unique
+}
+
 function Stop-PortListener([int]$Port, [string]$Label) {
-    $hits = @(Get-NetTCPConnection -LocalPort $Port -State Listen -ErrorAction SilentlyContinue)
-    foreach ($hit in $hits) {
-        $owning = [int]$hit.OwningProcess
+    foreach ($owning in @(Get-ListenerPids $Port)) {
         if ($owning -gt 0) {
             Stop-PidSafe -ProcessId $owning -Label "$Label :$Port"
         }
@@ -64,10 +73,10 @@ Stop-PortListener -Port $UiPort -Label "ui"
 Start-Sleep -Seconds 1
 
 $left = @()
-if (Get-NetTCPConnection -LocalPort $ControlPort -State Listen -ErrorAction SilentlyContinue) {
+if (@(Get-ListenerPids $ControlPort).Count -gt 0) {
     $left += $ControlPort
 }
-if (Get-NetTCPConnection -LocalPort $UiPort -State Listen -ErrorAction SilentlyContinue) {
+if (@(Get-ListenerPids $UiPort).Count -gt 0) {
     $left += $UiPort
 }
 

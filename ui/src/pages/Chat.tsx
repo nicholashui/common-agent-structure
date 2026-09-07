@@ -5,9 +5,10 @@ import { ChatMarkdown } from "../components/ChatMarkdown";
 import { ConfirmDialog } from "../components/ConfirmDialog";
 import { CharacterizationBadge, ChatFixtureList } from "../components/EvalFixtures";
 import { ErrorBanner } from "../components/RecoveryBanner";
+import { ChatProofPanel } from "../components/ChatProof";
 import { IoPanel } from "../components/IoPanel";
 import { DangerButton, GhostButton, PageHeader, PrimaryButton } from "../components/ui";
-import { RequestAbortedError, type ChatContextPack, type EvalFixture, type RuntimeAdapter } from "../api/types";
+import { RequestAbortedError, type ChatContextPack, type ChatProof, type EvalFixture, type RuntimeAdapter } from "../api/types";
 import {
   canRegenerate,
   clearThread,
@@ -19,6 +20,7 @@ import {
   loadThread,
   chatHitOutputCap,
   buildChatBody,
+  makeChatSessionId,
   replaceThread,
   saveThread,
   sessionFromFileName,
@@ -27,7 +29,7 @@ import {
 } from "../lib/chat";
 import { enqueueChatPersist, flushChatNow, loadChatTranscript, refreshChatFiles, subscribeChatFiles } from "../lib/chatPersist";
 import { isPinnedToBottom } from "../lib/chatScroll";
-import { chatFixtures, findFixture, fixtureMessage } from "../lib/fixtures";
+import { chatFixtures, findFixture, fixtureHistory, fixtureMessage } from "../lib/fixtures";
 import { followUpChips } from "../lib/followUps";
 import { useAgentId, useAsync } from "../lib/hooks";
 import { parseAgentIo } from "../lib/io";
@@ -100,6 +102,7 @@ export function ChatPage() {
   const [copiedKey, setCopiedKey] = useState<string>("");
   const [loadTarget, setLoadTarget] = useState<ChatFile | null>(null);
   const [contextPack, setContextPack] = useState<ChatContextPack | null>(null);
+  const [chatProof, setChatProof] = useState<ChatProof | null>(null);
   const [adapterLive, setAdapterLive] = useState<RuntimeAdapter | null>(null);
   const logRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
@@ -178,10 +181,8 @@ export function ChatPage() {
       return;
     }
     const item = findFixture(fixtures.data, fixtureId);
-    const message = fixtureMessage(item);
-    if (message) {
-      setDraft(message);
-      inputRef.current?.focus();
+    if (item) {
+      applyFixture(item);
     }
     const next = new URLSearchParams(searchParams);
     if (next.has("fixture")) {
@@ -190,13 +191,20 @@ export function ChatPage() {
     }
   }, [agentId, fixtureId, fixtures.data, searchParams, setSearchParams]);
 
-  function loadCase(item: EvalFixture) {
+  function applyFixture(item: EvalFixture) {
     const message = fixtureMessage(item);
     if (!message) {
       return;
     }
+    const prior = fixtureHistory(item).map((turn) => ({ ...turn, ts: nowHktIso() }));
+    replaceThread(agentId, prior, makeChatSessionId());
+    setTurns(prior);
     setDraft(message);
     inputRef.current?.focus();
+  }
+
+  function loadCase(item: EvalFixture) {
+    applyFixture(item);
   }
 
   function markCopied(key: string) {
@@ -231,6 +239,7 @@ export function ChatPage() {
       enqueueChatPersist(agentId, loadThread(agentId).session, assistantTurn);
       void flushChatNow();
       setContextPack(result.context ?? null);
+      setChatProof(result.proof ?? null);
       if (result.context?.pid != null || result.context?.session_id) {
         setAdapterLive((current) => ({
           agent_id: agentId,
@@ -343,6 +352,8 @@ export function ChatPage() {
                 setTurns(next.turns);
                 setFiles(next.files);
                 setStopped(false);
+                setChatProof(null);
+                setContextPack(null);
               }}
             >
               Clear
@@ -363,7 +374,8 @@ export function ChatPage() {
       <div className="grid grid-cols-1 gap-5 lg:grid-cols-[18rem_minmax(0,1fr)]">
         <div className="order-2 space-y-5 lg:order-1">
           <AdapterStatus adapter={adapter} testId="chat-adapter-detail" />
-          <IoPanel io={io} />
+          <IoPanel io={io} mode="chat" />
+          {chatProof ? <ChatProofPanel proof={chatProof} /> : null}
           {contextPack ? <ContextPack pack={contextPack} /> : null}
           {files.length ? (
             <section className="rounded-2xl border border-stone-200 bg-white p-5" data-testid="chat-files">

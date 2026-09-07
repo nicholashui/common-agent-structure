@@ -1,0 +1,1 @@
+powershell -File ./start_all.ps1
