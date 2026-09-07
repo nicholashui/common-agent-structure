@@ -1,0 +1,26 @@
+{
+  "honesty": "CHARACTERIZATION",
+  "not_eval_pass": true,
+  "not_production_lock": true,
+  "not_generated_acp_binding_lock": true,
+  "adapter": "grok 1.0.13",
+  "command": "grok agent --no-leader stdio",
+  "note": "Observed initialize handshake on 2026-09-04. This is CHARACTERIZATION, not generated/acp-binding.lock.json and not a §23.6 production lock. ACP v2 is not claimed. Ambient MCP appeared on the probe process; packaged session/new MUST send mcpServers: []. Thought chunks are dropped by the host client.",
+  "initialize": {
+    "request": {
+      "method": "initialize",
+      "protocolVersion": 1
+    },
+    "result": {
+      "protocolVersion": 1,
+      "authMethods": [
+        { "id": "cached_token" },
+        { "id": "grok.com" }
+      ]
+    }
+  },
+  "session_new": {
+    "mcpServers": []
+  },
+  "drops": ["agent_thought_chunk"]
+}

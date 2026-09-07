@@ -80,6 +80,18 @@ def test_operator_sets_default_and_agent_override(tmp_path: Path, monkeypatch) -
     assert view["default_llm"] == "openai"
 
 
+def test_unset_chat_adapter_resolves_grok_when_binary_present(tmp_path: Path, monkeypatch) -> None:
+    monkeypatch.delenv("CASOPS_CHAT_ADAPTER", raising=False)
+    monkeypatch.setenv("CASOPS_GROK_BIN", str(tmp_path / "grok-fake"))
+    client = _client(tmp_path, monkeypatch)
+    body = client.get("/api/v3/llm/settings").json()
+    assert body["chat_adapter_saved"] is None
+    assert body["chat_adapter"] == "grok_acp"
+    assert body["grok_available"] is True
+    adapter = client.get("/api/v3/agents/video.director/runtime/adapter").json()
+    assert adapter["kind"] == "grok_acp"
+
+
 def test_agent_runtime_cannot_change_llm(tmp_path: Path, monkeypatch) -> None:
     client = _client(tmp_path, monkeypatch)
     headers = dict(MUTATION)

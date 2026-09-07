@@ -49,6 +49,7 @@ export const COMPANION_V3_PATHS = [
   ["GET", "/api/v3/agents/{agent_id}/files"],
   ["GET", "/api/v3/agents/{agent_id}/files/item"],
   ["PUT", "/api/v3/agents/{agent_id}/files/item"],
+  ["GET", "/api/v3/agents/{agent_id}/runtime/adapter"],
 ] as const;
 
 export type HttpMethod = "GET" | "POST" | "PUT" | "PATCH" | "DELETE";
@@ -101,6 +102,7 @@ export const CLIENT_BINDINGS = {
   listAgentFiles: ["GET", "/api/v3/agents/{agent_id}/files"],
   getAgentFile: ["GET", "/api/v3/agents/{agent_id}/files/item"],
   putAgentFile: ["PUT", "/api/v3/agents/{agent_id}/files/item"],
+  getRuntimeAdapter: ["GET", "/api/v3/agents/{agent_id}/runtime/adapter"],
 } as const;
 
 export const MUTATING = new Set<string>(["POST", "PUT", "PATCH", "DELETE"]);

@@ -1,0 +1,12 @@
+{
+  "schema_version": "3.0",
+  "allow": [
+    "cli-chat-proxy.grok.com",
+    "auth.x.ai"
+  ],
+  "deny": [
+    "code.grok.com"
+  ],
+  "bind": "127.0.0.1",
+  "share": false
+}

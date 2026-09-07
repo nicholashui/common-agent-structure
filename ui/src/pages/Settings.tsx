@@ -99,7 +99,7 @@ export function SettingsPage() {
               onClick={() => {
                 setError(null);
                 void session.client
-                  .setLlmSettings(selected)
+                  .setLlmSettings({ default_llm: selected })
                   .then((view) => {
                     setNotice(view.dry_run ? "dry-run: not persisted" : `saved default_llm=${view.default_llm}`);
                     llm.reload();
@@ -110,6 +110,44 @@ export function SettingsPage() {
               {session.dryRun ? "Preview default LLM" : "Save default LLM"}
             </PrimaryButton>
           </div>
+        </Card>
+        <Card className="lg:col-span-2">
+          <h2 className="mb-2 text-sm font-semibold">Chat adapter</h2>
+          <p className="mb-3 text-sm text-stone-500">
+            <span className="font-mono">host_llm</span> is the in-process complete() path.{" "}
+            <span className="font-mono">grok_acp</span> is UI → API → one Grok Build process per agent (ACP stdio). Chat
+            and Run model nodes share this adapter. Unset default is grok_acp when grok is on PATH and the agent profile
+            exists, else host_llm. Resolved now:{" "}
+            <span className="font-mono">{llm.data?.chat_adapter ?? "host_llm"}</span>. Grok available:{" "}
+            {llm.data?.grok_available ? "yes" : "no"}. Does not enable T3, plugins, memory writes, or production.
+          </p>
+          <Field label="CASOPS_CHAT_ADAPTER">
+            <select
+              className={inputClass}
+              data-testid="settings-chat-adapter"
+              disabled={!session.mutationReady}
+              value={llm.data?.chat_adapter_saved || "default"}
+              onChange={(event) => {
+                setError(null);
+                const raw = event.target.value;
+                void session.client
+                  .setLlmSettings({ chat_adapter: raw === "default" ? null : raw })
+                  .then((view) => {
+                    setNotice(
+                      view.dry_run
+                        ? "dry-run: adapter not persisted"
+                        : `saved chat_adapter=${view.chat_adapter_saved || "default"} resolved=${view.chat_adapter}`,
+                    );
+                    llm.reload();
+                  })
+                  .catch((err: unknown) => setError(err instanceof Error ? err : new Error(String(err))));
+              }}
+            >
+              <option value="default">default (grok_acp when profile ready)</option>
+              <option value="host_llm">host_llm</option>
+              <option value="grok_acp">grok_acp</option>
+            </select>
+          </Field>
         </Card>
         <Card className="lg:col-span-2">
           <h2 className="mb-2 text-sm font-semibold">Known agent IDs</h2>

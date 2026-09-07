@@ -1,0 +1,43 @@
+{
+  "schema_version": "3.0",
+  "binding_id": "acp.grok_build.v1",
+  "adapter": {
+    "kind": "PeerAdapter",
+    "vendor": "xai.grok_build",
+    "command": "grok",
+    "required_flags": [
+      "--no-leader"
+    ],
+    "forbidden_flags": [
+      "--leader"
+    ]
+  },
+  "protocol": {
+    "family": "agentclientprotocol.com",
+    "requested_version": 1,
+    "accepted_versions": [
+      1
+    ],
+    "v2_enabled": false
+  },
+  "transport": {
+    "modes": [
+      "stdio"
+    ],
+    "default": "stdio"
+  },
+  "session": {
+    "task_binding": "one_session_per_casops_task",
+    "resume_policy": "audit_recovery_only",
+    "meta_denylist": [
+      "systemPromptOverride",
+      "rules",
+      "pluginDirs"
+    ]
+  },
+  "mcp": {
+    "always_send_servers_array": true,
+    "servers": []
+  },
+  "agent_id": "video.copywriter"
+}

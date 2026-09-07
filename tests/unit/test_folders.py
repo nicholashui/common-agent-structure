@@ -5,7 +5,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-from casops.compose.folders import list_agent_summaries, locate_agent_folder, public_folder_ref
+from casops.compose.folders import list_agent_ids, list_agent_summaries, locate_agent_folder, public_folder_ref
 
 
 def _write_spec(folder: Path, agent_id: str, role: str = "", va_category: str | None = None) -> None:
@@ -32,6 +32,7 @@ def test_list_agent_summaries_returns_every_spec(tmp_path: Path) -> None:
     (tmp_path / "skip-me").mkdir()
     rows = list_agent_summaries(tmp_path)
     assert [row["agent_id"] for row in rows] == ["pack.alpha", "pack.beta"]
+    assert list_agent_ids(tmp_path) == ["pack.alpha", "pack.beta"]
     assert rows[0]["memory_mode"] == "none"
     assert rows[0]["va_category"] == ""
 

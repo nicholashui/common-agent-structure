@@ -17,6 +17,7 @@ from casops.errors.codes import ErrorCode
 from casops.errors.exceptions import CasopsError
 from casops.compose.io import folder_io
 from casops.runtime.adapter import DeterministicAdapter
+from casops.acp.supervisor import AcpSupervisor, resolve_chat_adapter
 from casops.runtime.chat import normalize_history, pack_chat_context, require_message
 from casops.runtime.dag import compile_dag
 from casops.runtime.health import observe_health
@@ -57,6 +58,7 @@ class Runtime:
     store: InvariantStore
     adapter: DeterministicAdapter = field(default_factory=DeterministicAdapter)
     llm: LlmRouter | None = None
+    acp: AcpSupervisor | None = None
     runs: dict[str, RunResult] = field(default_factory=dict)
     artifacts: dict[str, dict[str, Any]] = field(default_factory=dict)
 
@@ -100,18 +102,17 @@ class Runtime:
             node = dag.nodes[node_id]
             add_child(trace, name=f"node.{node.kind}", attributes={"node_id": node_id})
             if node.kind == "model":
-                prompt = (folder / "prompts" / "primary.md").read_text(encoding="utf-8")
-                budget = spec.get("budget_policy") or {}
-                max_tokens, _source = resolve_completion_tokens(budget.get("max_output_tokens"))
-                router = self.llm or LlmRouter()
-                outputs.append(
-                    router.complete(
-                        agent_id=str(spec.get("agent_id") or agent_id),
-                        prompt=prompt,
-                        node_id=node_id,
-                        max_tokens=max_tokens,
-                    )
+                io = folder_io(folder, spec=spec, merged=False)
+                completion, _packed, _selected = self._complete_packed(
+                    agent_id=str(spec.get("agent_id") or agent_id),
+                    folder=folder,
+                    spec=spec,
+                    io=io,
+                    message=f"Execute craft node `{node_id}`. Reply with the artifact for this run. Do not call tools.",
+                    history=[],
+                    node_id=node_id,
                 )
+                outputs.append(completion)
             elif node.kind == "transform":
                 if node.op != "health_snapshot":
                     raise CasopsError(ErrorCode.PERF_PLAN_CYCLE, detail=f"unsupported transform {node.op}")
@@ -153,6 +154,66 @@ class Runtime:
         }
         return result
 
+    def _complete_packed(
+        self,
+        *,
+        agent_id: str,
+        folder: Path,
+        spec: dict[str, Any],
+        io: dict[str, Any],
+        message: str,
+        history: list[Any] | None,
+        node_id: str,
+    ) -> tuple[dict[str, Any], dict[str, Any], str]:
+        packed = pack_chat_context(
+            folder,
+            spec,
+            io,
+            message=message,
+            history=normalize_history(history),
+        )
+        budget = spec.get("budget_policy") or {}
+        max_tokens, _source = resolve_completion_tokens(budget.get("max_output_tokens"))
+        router = self.llm or LlmRouter()
+        selected = resolve_chat_adapter(
+            router.settings.chat_adapter,
+            profile_ready=bool(self.acp and self.acp.profile_ready(agent_id)),
+        )
+        packed["public"]["adapter"] = selected
+        if selected == "grok_acp":
+            if self.acp is None:
+                raise CasopsError(ErrorCode.PERF_ROUTE_UNAVAILABLE, detail="ACP supervisor not configured")
+            acp_result = self.acp.chat(
+                agent_id,
+                message=packed["message"],
+                system=packed["system"],
+                history=packed["history"],
+                task_id=str(sha256_json({"agent": agent_id, "node": node_id, "n": len(self.runs)})[:16]),
+            )
+            completion = {
+                "provider": "grok_acp",
+                "model": "grok-acp",
+                "node_id": node_id,
+                "text": acp_result.get("text") or "",
+                "digest": acp_result.get("digest") or "",
+                "finish_reason": acp_result.get("stop_reason") or "stop",
+                "content_chars": len(str(acp_result.get("text") or "")),
+                "truncated": False,
+                "usage": acp_result.get("usage") or {},
+            }
+            packed["public"]["session_id"] = acp_result.get("session_id")
+            packed["public"]["pid"] = acp_result.get("pid")
+        else:
+            completion = router.complete(
+                agent_id=agent_id,
+                prompt=packed["message"],
+                node_id=node_id,
+                max_tokens=max_tokens,
+                system=packed["system"],
+                history=packed["history"],
+            )
+        return completion, packed, selected
+
     def chat(
         self,
         agent_id: str,
@@ -167,24 +228,17 @@ class Runtime:
         spec = json.loads((folder / "agent_spec.json").read_text(encoding="utf-8"))
         safety_policy = json.loads((folder / "safety" / "policy.json").read_text(encoding="utf-8"))
         io = folder_io(folder, spec=spec, merged=False)
-        packed = pack_chat_context(
-            folder,
-            spec,
-            io,
-            message=text,
-            history=normalize_history(history),
-        )
         budget = spec.get("budget_policy") or {}
         declared = parse_token_count(budget.get("max_output_tokens"))
         max_tokens, max_tokens_source = resolve_completion_tokens(budget.get("max_output_tokens"))
-        router = self.llm or LlmRouter()
-        completion = router.complete(
+        completion, packed, _selected = self._complete_packed(
             agent_id=str(spec.get("agent_id") or agent_id),
-            prompt=packed["message"],
+            folder=folder,
+            spec=spec,
+            io=io,
+            message=text,
+            history=history,
             node_id="chat",
-            max_tokens=max_tokens,
-            system=packed["system"],
-            history=packed["history"],
         )
         safety = safety_gate(output=completion, policy=safety_policy, cancelled=False)
         return {

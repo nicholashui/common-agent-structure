@@ -29,6 +29,7 @@ from casops.debuglog import list_chat_files, read_chat_file, write_chat_turns, w
 from casops.cache.manager import CacheManager
 from casops.memory.store import ConsolidationWorker, MemoryService
 from casops.plugins.validate import validate_registry
+from casops.acp.supervisor import AcpSupervisor, resolve_chat_adapter
 from casops.runtime.executor import Runtime
 from casops.runtime.llm import (
     PROVIDER_CATALOG,
@@ -92,6 +93,7 @@ COMPANION_V3_PATHS: tuple[tuple[str, str], ...] = (
     ("GET", "/api/v3/agents/{agent_id}/files"),
     ("GET", "/api/v3/agents/{agent_id}/files/item"),
     ("PUT", "/api/v3/agents/{agent_id}/files/item"),
+    ("GET", "/api/v3/agents/{agent_id}/runtime/adapter"),
 )
 
 _DEFAULT_CORS_ORIGINS = (
@@ -148,7 +150,13 @@ def create_control_plane(
     memory = memory or MemoryService()
     settings_path = Path(os.environ.get("CASOPS_LLM_SETTINGS", str(Path.cwd() / "var" / "llm-settings.json")))
     llm = llm or LlmRouter(settings=LlmSettings.load(settings_path))
-    runtime = runtime or Runtime(agents_root=agents_root, store=store, llm=llm)
+    acp_home = Path(os.environ.get("CASOPS_ACP_HOME", str(Path.cwd() / "var" / "acp")))
+    runtime = runtime or Runtime(
+        agents_root=agents_root,
+        store=store,
+        llm=llm,
+        acp=AcpSupervisor(agents_root=agents_root, home_root=acp_home),
+    )
     consolidator = consolidator or ConsolidationWorker(memory)
     state = HostState(
         agents_root=agents_root,
@@ -231,24 +239,38 @@ def create_control_plane(
     @app.post("/api/v3/llm/settings")
     def set_llm_settings(request: Request, body: dict[str, Any]) -> dict[str, Any]:
         _forbid_agent_llm_actor(request)
-        default_llm = body.get("default_llm")
-        if default_llm in {None, ""}:
-            next_default = None
-        else:
-            next_default = canonicalize_provider(str(default_llm))
-            if next_default not in PROVIDER_CATALOG:
-                raise CasopsError(ErrorCode.PERF_ROUTE_UNAVAILABLE, detail="unknown LLM provider")
+        next_default = state.llm.settings.default_llm
+        if "default_llm" in body:
+            default_llm = body.get("default_llm")
+            if default_llm in {None, ""}:
+                next_default = None
+            else:
+                next_default = canonicalize_provider(str(default_llm))
+                if next_default not in PROVIDER_CATALOG:
+                    raise CasopsError(ErrorCode.PERF_ROUTE_UNAVAILABLE, detail="unknown LLM provider")
+        next_adapter = state.llm.settings.chat_adapter
+        if "chat_adapter" in body:
+            raw_adapter = body.get("chat_adapter")
+            if raw_adapter in {None, "", "default"}:
+                next_adapter = None
+            else:
+                text = str(raw_adapter).strip().lower()
+                if text not in {"host_llm", "grok_acp"}:
+                    raise CasopsError(ErrorCode.PERF_ROUTE_UNAVAILABLE, detail="unknown chat adapter")
+                next_adapter = text
         if getattr(request.state, "dry_run", False):
             preview = LlmSettings(
                 path=state.llm.settings.path,
                 default_llm=next_default,
                 agents=dict(state.llm.settings.agents),
+                chat_adapter=next_adapter,
             )
             view = preview.public_view()
             view["saved"] = False
             view["dry_run"] = True
             return view
         state.llm.settings.default_llm = next_default
+        state.llm.settings.chat_adapter = next_adapter
         state.llm.settings.save()
         view = state.llm.settings.public_view()
         view["saved"] = True
@@ -342,6 +364,24 @@ def create_control_plane(
             "lock": result.lock,
             "wrote_locks": False,
         }
+
+    @app.get("/api/v3/agents/{agent_id}/runtime/adapter")
+    def runtime_adapter(agent_id: str) -> dict[str, Any]:
+        _folder(state, agent_id)
+        selected = resolve_chat_adapter(
+            state.llm.settings.chat_adapter,
+            profile_ready=bool(state.runtime.acp and state.runtime.acp.profile_ready(agent_id)),
+        )
+        if state.runtime.acp is None:
+            return {
+                "agent_id": agent_id,
+                "kind": selected,
+                "grok_available": False,
+                "profile_ready": False,
+                "pid": None,
+                "healthy": False,
+            }
+        return state.runtime.acp.adapter_view(agent_id, selected=selected)
 
     @app.get("/api/v3/agents/{agent_id}/runtime/plan")
     def runtime_plan(agent_id: str) -> dict[str, Any]:

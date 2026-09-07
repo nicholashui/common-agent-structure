@@ -24,6 +24,7 @@ import {
   type LlmProvider,
   type LlmSettingsView,
   type AgentLlmView,
+  type RuntimeAdapter,
   type ChatResponse,
   type EvalFixturesResponse,
   type AgentFileItem,
@@ -302,8 +303,10 @@ export function createClient(options: ClientOptions) {
       bound("runAgent", { agent_id: agentId }, { timeoutMs: LONG_TIMEOUT_MS }) as Promise<RunResult>,
     listLlmProviders: () => bound("listLlmProviders", {}) as Promise<{ providers: LlmProvider[] }>,
     getLlmSettings: () => bound("getLlmSettings", {}) as Promise<LlmSettingsView>,
-    setLlmSettings: (defaultLlm: string | null) =>
-      request<LlmSettingsView>("POST", "/api/v3/llm/settings", { body: { default_llm: defaultLlm } }),
+    setLlmSettings: (body: { default_llm?: string | null; chat_adapter?: string | null }) =>
+      request<LlmSettingsView>("POST", "/api/v3/llm/settings", { body }),
+    getRuntimeAdapter: (agentId: string) =>
+      bound("getRuntimeAdapter", { agent_id: agentId }) as Promise<RuntimeAdapter>,
     getAgentLlm: (agentId: string) => bound("getAgentLlm", { agent_id: agentId }) as Promise<AgentLlmView>,
     setAgentLlm: (agentId: string, provider: string | null) =>
       request<AgentLlmView>("POST", "/api/v3/agents/{agent_id}/llm", {

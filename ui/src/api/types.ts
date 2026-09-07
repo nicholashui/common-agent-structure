@@ -233,6 +233,9 @@ export interface LlmSettingsView {
   default_source: string;
   agents: Record<string, string>;
   providers: LlmProvider[];
+  chat_adapter?: string;
+  chat_adapter_saved?: string | null;
+  grok_available?: boolean;
   saved?: boolean;
   dry_run?: boolean;
 }
@@ -245,6 +248,16 @@ export interface AgentLlmView {
   providers?: LlmProvider[];
   saved?: boolean;
   dry_run?: boolean;
+}
+
+export interface RuntimeAdapter {
+  agent_id: string;
+  kind: string;
+  grok_available?: boolean;
+  profile_ready?: boolean;
+  pid?: number | null;
+  healthy?: boolean;
+  home?: string;
 }
 
 export interface ChatLlmView {
@@ -277,6 +290,9 @@ export interface ChatContextPack {
   history_turns?: number;
   history_clipped?: boolean;
   system_tokens?: number;
+  adapter?: string;
+  session_id?: string;
+  pid?: number;
 }
 
 export interface ChatResponse {

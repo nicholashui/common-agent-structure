@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { AdapterStatus } from "../components/AdapterStatus";
 import { DryRunControl } from "../components/ActorStrip";
 import { ErrorBanner } from "../components/RecoveryBanner";
 import { StatusPill } from "../components/StatusPill";
@@ -14,13 +15,14 @@ export function RunPage() {
   const agentId = useAgentId();
   const session = useSession();
   const panel = useAsync(async () => {
-    const [plan, budget, cache, llm] = await Promise.all([
+    const [plan, budget, cache, llm, adapter] = await Promise.all([
       session.client.getRuntimePlan(agentId),
       session.client.getContextBudget(agentId),
       session.client.getCacheStats(agentId),
       session.client.getAgentLlm(agentId),
+      session.client.getRuntimeAdapter(agentId),
     ]);
-    return { plan, budget, cache, llm };
+    return { plan, budget, cache, llm, adapter };
   }, [session.client, agentId]);
   const [run, setRun] = useState<RunResult | null>(session.lastRuns[agentId] ?? null);
   const [error, setError] = useState<Error | null>(null);
@@ -77,11 +79,16 @@ export function RunPage() {
         }
       />
       <p className="mb-4 text-sm text-stone-500">
-        No streaming chat API. Model node uses host LLM{" "}
+        No streaming chat API. Model nodes use the same adapter as Chat:{" "}
+        <span className="font-mono">{panel.data?.adapter?.kind ?? "host_llm"}</span>
+        {panel.data?.adapter?.kind === "grok_acp" ? " (UI → API → one Grok process)" : " (in-process host LLM)"}. Provider{" "}
         <span className="font-mono">{panel.data?.llm.provider ?? "local_deterministic"}</span>
-        {panel.data?.llm.override ? " (agent override)" : " (DEFAULT_LLM)"}.
+        {panel.data?.llm.override ? " (agent override)" : " (DEFAULT_LLM)"}. Memory writes, plugins, and T3 stay off.
       </p>
       <ErrorBanner error={error ?? panel.error} />
+      <div className="mb-5">
+        <AdapterStatus adapter={panel.data?.adapter} testId="run-adapter" />
+      </div>
       <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
         <Card>
           <h2 className="mb-3 text-sm font-semibold">DAG</h2>

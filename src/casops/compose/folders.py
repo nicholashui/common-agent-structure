@@ -45,6 +45,10 @@ def list_agent_summaries(agents_root: Path) -> list[dict[str, Any]]:
     return summaries
 
 
+def list_agent_ids(agents_root: Path) -> list[str]:
+    return [str(row["agent_id"]) for row in list_agent_summaries(agents_root)]
+
+
 def _optional_str(value: Any) -> str:
     if value is None:
         return ""

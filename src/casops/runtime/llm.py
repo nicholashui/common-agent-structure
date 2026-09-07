@@ -221,6 +221,7 @@ class LlmSettings:
     path: Path
     default_llm: str | None = None
     agents: dict[str, str] = field(default_factory=dict)
+    chat_adapter: str | None = None
 
     @classmethod
     def load(cls, path: Path) -> "LlmSettings":
@@ -234,16 +235,28 @@ class LlmSettings:
             if value
         }
         default = payload.get("default_llm")
+        adapter = str(payload.get("chat_adapter") or "").strip().lower() or None
+        if adapter not in {"host_llm", "grok_acp"}:
+            adapter = None
         return cls(
             path=path,
             default_llm=canonicalize_provider(str(default)) if default else None,
             agents=cleaned,
+            chat_adapter=adapter,
         )
 
     def save(self) -> None:
         self.path.parent.mkdir(parents=True, exist_ok=True)
         self.path.write_text(
-            json.dumps({"default_llm": self.default_llm, "agents": self.agents}, indent=2) + "\n",
+            json.dumps(
+                {
+                    "default_llm": self.default_llm,
+                    "agents": self.agents,
+                    "chat_adapter": self.chat_adapter,
+                },
+                indent=2,
+            )
+            + "\n",
             encoding="utf-8",
         )
 
@@ -257,12 +270,18 @@ class LlmSettings:
         return self.resolved_default()
 
     def public_view(self) -> dict[str, Any]:
+        from casops.acp.supervisor import grok_binary, resolve_chat_adapter
+
+        adapter = resolve_chat_adapter(self.chat_adapter, profile_ready=bool(grok_binary()))
         return {
             "env_default": env_default_llm(),
             "default_llm": self.resolved_default(),
             "default_source": "operator" if self.default_llm else "DEFAULT_LLM",
             "agents": dict(self.agents),
             "providers": list_providers(),
+            "chat_adapter": adapter,
+            "chat_adapter_saved": self.chat_adapter,
+            "grok_available": bool(grok_binary()),
         }
 
 

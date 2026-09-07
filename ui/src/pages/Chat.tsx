@@ -1,5 +1,6 @@
 import { FormEvent, useEffect, useRef, useState } from "react";
 import { useSearchParams } from "react-router-dom";
+import { AdapterStatus } from "../components/AdapterStatus";
 import { ChatMarkdown } from "../components/ChatMarkdown";
 import { ConfirmDialog } from "../components/ConfirmDialog";
 import { CharacterizationBadge, ChatFixtureList } from "../components/EvalFixtures";
@@ -44,8 +45,8 @@ function ContextPack({ pack }: { pack: ChatContextPack }) {
     <section className="rounded-2xl border border-stone-200 bg-white p-5" data-testid="chat-context">
       <h2 className="mb-1 text-sm font-semibold text-stone-900">Context pack</h2>
       <p className="mb-3 text-xs text-stone-500">
-        Host packed this turn from folder segments. Compaction {pack.compaction ?? "disabled"}. Not an eval pass.
-        Memory, plugins, and T3 stay off.
+        Adapter {pack.adapter ?? "host_llm"}. Host packed this turn from folder segments. Compaction{" "}
+        {pack.compaction ?? "disabled"}. Not an eval pass. Memory, plugins, and T3 stay off.
       </p>
       <ul className="space-y-1 font-mono text-[11px] text-stone-700">
         {segments.map((row) => (
@@ -59,6 +60,7 @@ function ContextPack({ pack }: { pack: ChatContextPack }) {
       <p className="mt-3 text-[11px] text-stone-500">
         prompt {pack.prompt_reference ?? "—"} · system {pack.system_tokens ?? 0} tok · history {pack.history_turns ?? 0}
         {pack.history_clipped ? " clipped" : ""}
+        {pack.session_id ? ` · session ${pack.session_id}` : ""}
       </p>
       <p className="mt-1 text-[11px] text-stone-500">
         skills {skills.length ? skills.map((item) => item.skill_id).join(", ") : "(none enabled)"}
@@ -82,11 +84,12 @@ export function ChatPage() {
   const session = useSession();
   const [searchParams, setSearchParams] = useSearchParams();
   const panel = useAsync(async () => {
-    const [structure, llm] = await Promise.all([
+    const [structure, llm, adapter] = await Promise.all([
       session.client.getStructure(agentId),
       session.client.getAgentLlm(agentId),
+      session.client.getRuntimeAdapter(agentId),
     ]);
-    return { structure, llm };
+    return { structure, llm, adapter };
   }, [session.client, agentId]);
   const fixtures = useAsync(() => session.client.getEvalFixtures(agentId), [session.client, agentId]);
   const [turns, setTurns] = useState<ChatTurn[]>(() => loadThread(agentId).turns);
@@ -103,6 +106,7 @@ export function ChatPage() {
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const abortRef = useRef<AbortController | null>(null);
   const io = parseAgentIo(panel.data?.structure.io);
+  const adapterKind = panel.data?.adapter?.kind ?? "host_llm";
   const chatReady = session.healthOk && !session.stale && !session.containment;
   const cases = chatFixtures(fixtures.data);
   const fixtureId = searchParams.get("fixture") || "";
@@ -317,13 +321,16 @@ export function ChatPage() {
       <p className="mb-4 text-sm text-stone-500">
         Type a text message to talk to <span className="font-mono">{agentId}</span>. The host packs identity plus the
         operational prompt under <span className="font-mono">runtime/context.json</span> budgets. It does not dump
-        SKILL.md, memory, or tools. Host LLM{" "}
+        SKILL.md, memory, or tools. Adapter{" "}
+        <span className="font-mono">{adapterKind}</span>
+        {adapterKind === "grok_acp" ? " (UI → API → one Grok process)" : " (in-process host LLM)"}. Provider{" "}
         <span className="font-mono">{panel.data?.llm.provider ?? "local_deterministic"}</span>. Export is a Chat
         transcript, not a sealed Run.
       </p>
       <ErrorBanner error={error ?? panel.error} />
       <div className="grid grid-cols-1 gap-5 lg:grid-cols-[18rem_minmax(0,1fr)]">
         <div className="order-2 space-y-5 lg:order-1">
+          <AdapterStatus adapter={panel.data?.adapter} testId="chat-adapter-detail" />
           <IoPanel io={io} />
           {contextPack ? <ContextPack pack={contextPack} /> : null}
           {files.length ? (
@@ -445,7 +452,9 @@ export function ChatPage() {
                 </div>
               );
             })}
-            {pending ? <p className="text-xs text-stone-400">Waiting for the host router…</p> : null}
+            {pending ? (
+              <p className="text-xs text-stone-400">Waiting for {adapterKind}…</p>
+            ) : null}
             {stopped && !pending ? (
               <p className="text-xs text-amber-800" data-testid="chat-stopped">
                 Generation stopped. The last user message is kept.
@@ -491,6 +500,13 @@ export function ChatPage() {
                 </div>
               </details>
             ) : null}
+            <p className="border-b border-stone-100 px-3 py-2 font-mono text-[11px] text-stone-500" data-testid="chat-adapter">
+              Adapter {adapterKind}
+              {panel.data?.adapter?.profile_ready ? " · profile ready" : " · profile missing"}
+              {panel.data?.adapter?.grok_available ? " · grok yes" : " · grok no"}
+              {panel.data?.adapter?.pid ? ` · pid ${panel.data.adapter.pid}` : ""}
+              . Memory, plugins, T3 stay off.
+            </p>
             <form className="flex gap-2 p-3" onSubmit={(event) => void send(event)}>
               <label className="sr-only" htmlFor="agent-chat-input">
                 Message

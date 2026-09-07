@@ -85,7 +85,8 @@ describe("SPEC_V3 client coverage", () => {
     await client.listAgents();
     await client.listLlmProviders();
     await client.getLlmSettings();
-    await client.setLlmSettings("local_deterministic");
+    await client.setLlmSettings({ default_llm: "local_deterministic" });
+    await client.getRuntimeAdapter("a");
     await client.getAgentLlm("a");
     await client.setAgentLlm("a", "openai");
     await client.chatAgent("a", { message: "hello" });
@@ -119,5 +120,6 @@ describe("SPEC_V3 client coverage", () => {
     expect(normalized).toContain("GET /api/v3/agents/{agent_id}/files");
     expect(normalized).toContain("GET /api/v3/agents/{agent_id}/files/item");
     expect(normalized).toContain("PUT /api/v3/agents/{agent_id}/files/item");
+    expect(normalized).toContain("GET /api/v3/agents/{agent_id}/runtime/adapter");
   });
 });
