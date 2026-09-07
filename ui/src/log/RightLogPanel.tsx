@@ -7,12 +7,16 @@ import {
   HELP_WIDTH_STEP_LARGE,
   clampHelpWidth,
 } from "../help/paths";
+import { useSession } from "../state/session";
 import { LOG_SESSION_ID, snapshot, subscribe, type LogChannel, type LogEntry } from "./bus";
 import { logFilesSnapshot, subscribeLogFiles, type LogFiles } from "./persist";
 
-const TABS: { id: LogChannel; label: string }[] = [
+type DrawerTab = LogChannel | "acp";
+
+const TABS: { id: DrawerTab; label: string }[] = [
   { id: "api", label: "APL" },
   { id: "ui", label: "UI" },
+  { id: "acp", label: "ACP" },
 ];
 
 function fileLabel(path: string | undefined): string {
@@ -25,19 +29,24 @@ function fileLabel(path: string | undefined): string {
 export function RightLogPanel({
   width,
   dragging,
+  agentId,
   onClose,
   onWidthChange,
   onDraggingChange,
 }: {
   width: number;
   dragging: boolean;
+  agentId?: string;
   onClose: () => void;
   onWidthChange: (width: number, persist?: boolean) => void;
   onDraggingChange: (dragging: boolean) => void;
 }) {
-  const [tab, setTab] = useState<LogChannel>("api");
+  const session = useSession();
+  const [tab, setTab] = useState<DrawerTab>("api");
   const [entries, setEntries] = useState<LogEntry[]>(() => snapshot("api"));
   const [files, setFiles] = useState<LogFiles>(logFilesSnapshot);
+  const [acpText, setAcpText] = useState("");
+  const [acpFiles, setAcpFiles] = useState<string[]>([]);
   const scroller = useRef<HTMLPreElement>(null);
   const stick = useRef(true);
   const drag = useRef<{ startX: number; startWidth: number } | null>(null);
@@ -45,6 +54,9 @@ export function RightLogPanel({
   widthRef.current = width;
 
   useEffect(() => {
+    if (tab === "acp") {
+      return;
+    }
     setEntries(snapshot(tab));
     return subscribe((channel, next) => {
       if (channel === tab) {
@@ -53,6 +65,41 @@ export function RightLogPanel({
     });
   }, [tab]);
 
+  useEffect(() => {
+    if (tab !== "acp") {
+      return;
+    }
+    let cancelled = false;
+    async function load() {
+      if (!agentId) {
+        setAcpText("");
+        setAcpFiles([]);
+        return;
+      }
+      const base = session.settings.baseUrl.replace(/\/$/, "");
+      const url = `${base}/debug/acp?agent_id=${encodeURIComponent(agentId)}`;
+      try {
+        const response = await fetch(url, { headers: { Accept: "application/json" } });
+        const body = (await response.json()) as { text?: string; files?: { name: string }[] };
+        if (cancelled) {
+          return;
+        }
+        setAcpText(body.text || "");
+        setAcpFiles((body.files ?? []).map((row) => row.name));
+      } catch {
+        if (!cancelled) {
+          setAcpText("");
+        }
+      }
+    }
+    void load();
+    const timer = window.setInterval(() => void load(), 1500);
+    return () => {
+      cancelled = true;
+      window.clearInterval(timer);
+    };
+  }, [tab, agentId, session.settings.baseUrl]);
+
   useEffect(() => subscribeLogFiles(setFiles), []);
 
   useEffect(() => {
@@ -60,7 +107,7 @@ export function RightLogPanel({
     if (node && stick.current) {
       node.scrollTop = node.scrollHeight;
     }
-  }, [entries]);
+  }, [entries, acpText, tab]);
 
   useEffect(() => {
     function onMove(event: PointerEvent) {
@@ -179,18 +226,36 @@ export function RightLogPanel({
           stick.current = node.scrollHeight - node.scrollTop - node.clientHeight < 32;
         }}
       >
-        {entries.length ? (
-          entries.map((entry) => (
-            <LogLine key={entry.id} entry={entry} />
-          ))
+        {tab === "acp" ? (
+          acpText ? (
+            acpText
+          ) : (
+            <span className="text-stone-400">
+              {agentId
+                ? `No ACP log files yet for ${agentId}. Send Chat with grok_acp. Files logs/acp/${agentId}.*.log`
+                : "Select an agent to view ACP logs."}
+            </span>
+          )
+        ) : entries.length ? (
+          entries.map((entry) => <LogLine key={entry.id} entry={entry} />)
         ) : (
           <span className="text-stone-400">No {tab === "api" ? "API" : "UI"} log lines yet.</span>
         )}
       </pre>
       <p className="border-t border-stone-200 px-3 py-2 font-mono text-[10px] text-stone-500">
-        session {LOG_SESSION_ID}
-        <br />
-        {tab === "api" ? fileLabel(files.api) : fileLabel(files.ui)}
+        {tab === "acp" ? (
+          <>
+            agent {agentId || "—"}
+            <br />
+            {acpFiles.length ? acpFiles.map(fileLabel).join(" · ") : "logs/acp/<agent_id>.*.log"}
+          </>
+        ) : (
+          <>
+            session {LOG_SESSION_ID}
+            <br />
+            {tab === "api" ? fileLabel(files.api) : fileLabel(files.ui)}
+          </>
+        )}
       </p>
     </aside>
   );

@@ -6,6 +6,7 @@ import subprocess
 import threading
 import time
 from queue import Empty, Queue
+from collections.abc import Callable
 from typing import Any
 
 from casops.acp.protocol import (
@@ -22,15 +23,30 @@ from casops.errors.exceptions import CasopsError
 
 
 class StdioAcpClient:
-    def __init__(self, proc: subprocess.Popen[str], *, timeout_s: float = 120.0) -> None:
+    def __init__(
+        self,
+        proc: subprocess.Popen[str],
+        *,
+        timeout_s: float = 120.0,
+        debug: Callable[..., None] | None = None,
+    ) -> None:
         self.proc = proc
         self.timeout_s = timeout_s
+        self._debug = debug
         self._next_id = 1
         self._queue: Queue[dict[str, Any]] = Queue()
         self._chunks: list[str] = []
         self._lock = threading.Lock()
         self._reader = threading.Thread(target=self._read_loop, daemon=True)
         self._reader.start()
+
+    def _trace(self, name: str, **fields: Any) -> None:
+        if self._debug is None:
+            return
+        try:
+            self._debug(name, **fields)
+        except Exception:
+            return
 
     def close(self) -> None:
         if self.proc.poll() is None:
@@ -60,8 +76,14 @@ class StdioAcpClient:
         )
         methods = result.get("authMethods") if isinstance(result.get("authMethods"), list) else []
         ids = {str(item.get("id") or "") for item in methods if isinstance(item, dict)}
+        self._trace(
+            "initialize",
+            protocolVersion=result.get("protocolVersion"),
+            auth_ids=sorted(item for item in ids if item),
+        )
         if "cached_token" in ids:
             self.request("authenticate", {"methodId": "cached_token", "_meta": {"headless": True}})
+            self._trace("authenticate", methodId="cached_token")
         return result
 
     def session_new(
@@ -94,6 +116,7 @@ class StdioAcpClient:
         session_id = str(result.get("sessionId") or result.get("session_id") or "")
         if not session_id:
             raise CasopsError(ErrorCode.PERF_ROUTE_UNAVAILABLE, detail="ACP session/new returned no sessionId")
+        self._trace("session_new", session_id=session_id)
         return session_id
 
     def prompt(self, session_id: str, text: str, *, casops: dict[str, Any] | None = None) -> dict[str, Any]:
@@ -108,9 +131,11 @@ class StdioAcpClient:
         result = self.request("session/prompt", params)
         with self._lock:
             reply = "".join(self._chunks)
+        stop_reason = str(result.get("stopReason") or result.get("stop_reason") or "")
+        self._trace("session_prompt", session_id=session_id, stop_reason=stop_reason, reply_chars=len(reply))
         return {
             "text": reply or str(result.get("text") or ""),
-            "stop_reason": str(result.get("stopReason") or result.get("stop_reason") or ""),
+            "stop_reason": stop_reason,
             "usage": result.get("usage") if isinstance(result.get("usage"), dict) else {},
             "session_id": session_id,
         }
@@ -127,6 +152,7 @@ class StdioAcpClient:
     def request(self, method: str, params: dict[str, Any] | None = None) -> dict[str, Any]:
         req_id = self._next_id
         self._next_id += 1
+        started = time.monotonic()
         self._write(request_payload(req_id, method, params))
         deadline = time.monotonic() + self.timeout_s
         while time.monotonic() < deadline:
@@ -134,18 +160,23 @@ class StdioAcpClient:
                 message = self._queue.get(timeout=0.1)
             except Empty:
                 if self.proc.poll() is not None:
+                    self._trace("rpc", method=method, ok=False, error="process exited")
                     raise CasopsError(ErrorCode.PERF_ROUTE_UNAVAILABLE, detail="ACP process exited")
                 continue
             self._handle_incoming(message)
             if message.get("id") == req_id and "result" in message:
                 result = message.get("result")
+                self._trace("rpc", method=method, ok=True, ms=int((time.monotonic() - started) * 1000))
                 return result if isinstance(result, dict) else {}
             if message.get("id") == req_id and "error" in message:
                 err = message.get("error") if isinstance(message.get("error"), dict) else {}
+                detail = str(err.get("message") or "ACP request failed")
+                self._trace("rpc", method=method, ok=False, error=detail, ms=int((time.monotonic() - started) * 1000))
                 raise CasopsError(
                     ErrorCode.PERF_ROUTE_UNAVAILABLE,
-                    detail=str(err.get("message") or "ACP request failed"),
+                    detail=detail,
                 )
+        self._trace("rpc", method=method, ok=False, error="timeout")
         raise CasopsError(ErrorCode.PERF_DEADLINE, detail=f"ACP {method} timed out")
 
     def notify(self, method: str, params: dict[str, Any] | None = None) -> None:

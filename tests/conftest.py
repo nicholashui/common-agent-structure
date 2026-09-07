@@ -12,3 +12,4 @@ def pin_offline_llm(monkeypatch: pytest.MonkeyPatch, tmp_path: Path) -> None:
     monkeypatch.setenv("DEFAULT_LLM", "local_deterministic")
     monkeypatch.setenv("CASOPS_LLM_SETTINGS", str(tmp_path / "casops-llm-settings.json"))
     monkeypatch.setenv("CASOPS_CHAT_ADAPTER", "host_llm")
+    monkeypatch.setenv("CASOPS_ACP_LOG_ROOT", str(tmp_path / "acp-logs"))

@@ -7,7 +7,7 @@ import { CharacterizationBadge, ChatFixtureList } from "../components/EvalFixtur
 import { ErrorBanner } from "../components/RecoveryBanner";
 import { IoPanel } from "../components/IoPanel";
 import { DangerButton, GhostButton, PageHeader, PrimaryButton } from "../components/ui";
-import { RequestAbortedError, type ChatContextPack, type EvalFixture } from "../api/types";
+import { RequestAbortedError, type ChatContextPack, type EvalFixture, type RuntimeAdapter } from "../api/types";
 import {
   canRegenerate,
   clearThread,
@@ -102,11 +102,13 @@ export function ChatPage() {
   const [copiedKey, setCopiedKey] = useState<string>("");
   const [loadTarget, setLoadTarget] = useState<ChatFile | null>(null);
   const [contextPack, setContextPack] = useState<ChatContextPack | null>(null);
+  const [adapterLive, setAdapterLive] = useState<RuntimeAdapter | null>(null);
   const logRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const abortRef = useRef<AbortController | null>(null);
   const io = parseAgentIo(panel.data?.structure.io);
-  const adapterKind = panel.data?.adapter?.kind ?? "host_llm";
+  const adapter = adapterLive ?? panel.data?.adapter ?? null;
+  const adapterKind = adapter?.kind ?? "host_llm";
   const chatReady = session.healthOk && !session.stale && !session.containment;
   const cases = chatFixtures(fixtures.data);
   const fixtureId = searchParams.get("fixture") || "";
@@ -121,6 +123,7 @@ export function ChatPage() {
     setError(null);
     setStopped(false);
     setContextPack(null);
+    setAdapterLive(null);
     setPinned(true);
     abortRef.current?.abort();
     abortRef.current = null;
@@ -143,6 +146,24 @@ export function ChatPage() {
       el.scrollTo({ top: el.scrollHeight });
     }
   }, [turns, pending, pinned, stopped]);
+
+  useEffect(() => {
+    if (panel.data?.adapter) {
+      setAdapterLive(panel.data.adapter);
+    }
+  }, [panel.data?.adapter]);
+
+  useEffect(() => {
+    if (!pending) {
+      return;
+    }
+    const tick = () => {
+      void session.client.getRuntimeAdapter(agentId).then(setAdapterLive).catch(() => undefined);
+    };
+    tick();
+    const timer = window.setInterval(tick, 1500);
+    return () => window.clearInterval(timer);
+  }, [pending, agentId, session.client]);
 
   useEffect(() => {
     function onKey(event: KeyboardEvent) {
@@ -212,6 +233,19 @@ export function ChatPage() {
       enqueueChatPersist(agentId, loadThread(agentId).session, assistantTurn);
       void flushChatNow();
       setContextPack(result.context ?? null);
+      if (result.context?.pid != null || result.context?.session_id) {
+        setAdapterLive((current) => ({
+          agent_id: agentId,
+          kind: result.context?.adapter ?? current?.kind ?? "grok_acp",
+          grok_available: current?.grok_available,
+          profile_ready: current?.profile_ready,
+          pid: result.context?.pid ?? current?.pid ?? null,
+          session_id: result.context?.session_id ?? current?.session_id ?? null,
+          healthy: true,
+          home: current?.home,
+        }));
+      }
+      void session.client.getRuntimeAdapter(agentId).then(setAdapterLive).catch(() => undefined);
       logUi(`chat reply ${agentId} ${result.provider ?? ""}`, clipLogText(result.reply));
     } catch (err) {
       if (err instanceof RequestAbortedError) {
@@ -330,7 +364,7 @@ export function ChatPage() {
       <ErrorBanner error={error ?? panel.error} />
       <div className="grid grid-cols-1 gap-5 lg:grid-cols-[18rem_minmax(0,1fr)]">
         <div className="order-2 space-y-5 lg:order-1">
-          <AdapterStatus adapter={panel.data?.adapter} testId="chat-adapter-detail" />
+          <AdapterStatus adapter={adapter} testId="chat-adapter-detail" />
           <IoPanel io={io} />
           {contextPack ? <ContextPack pack={contextPack} /> : null}
           {files.length ? (
@@ -502,9 +536,10 @@ export function ChatPage() {
             ) : null}
             <p className="border-b border-stone-100 px-3 py-2 font-mono text-[11px] text-stone-500" data-testid="chat-adapter">
               Adapter {adapterKind}
-              {panel.data?.adapter?.profile_ready ? " · profile ready" : " · profile missing"}
-              {panel.data?.adapter?.grok_available ? " · grok yes" : " · grok no"}
-              {panel.data?.adapter?.pid ? ` · pid ${panel.data.adapter.pid}` : ""}
+              {adapter?.profile_ready ? " · profile ready" : " · profile missing"}
+              {adapter?.grok_available ? " · grok yes" : " · grok no"}
+              {adapter?.pid != null ? ` · pid ${adapter.pid}` : ""}
+              {adapter?.session_id ? ` · session ${adapter.session_id}` : ""}
               . Memory, plugins, T3 stay off.
             </p>
             <form className="flex gap-2 p-3" onSubmit={(event) => void send(event)}>

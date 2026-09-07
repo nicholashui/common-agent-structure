@@ -7,7 +7,7 @@ from pathlib import Path
 
 import pytest
 
-from casops.debuglog import list_chat_files, read_chat_file, write_chat_turns, write_debug_logs
+from casops.debuglog import list_acp_logs, list_chat_files, read_acp_logs, read_chat_file, write_chat_turns, write_debug_logs
 
 
 def test_write_debug_logs_appends_jsonl(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
@@ -124,6 +124,29 @@ def test_read_chat_file_rejects_path_escape(tmp_path: Path, monkeypatch: pytest.
         read_chat_file("common.health", "../secret.jsonl")
     with pytest.raises(ValueError):
         read_chat_file("common.health", "missing.jsonl")
+
+
+def test_acp_logs_list_and_reject_escape(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.setenv("CASOPS_ACP_LOG_ROOT", str(tmp_path))
+    agent_id = "specials.intent-analysis-agent"
+    host = tmp_path / f"{agent_id}.2026-09-06-12-00-00.host.log"
+    err = tmp_path / f"{agent_id}.2026-09-06-12-00-00.stderr.log"
+    host.write_text('{"event":"spawn","agent_id":"specials.intent-analysis-agent"}\n', encoding="utf-8")
+    err.write_text("2026-09-06T12:00:00Z grok stderr line\n", encoding="utf-8")
+    listed = list_acp_logs(agent_id)
+    names = {row["name"] for row in listed}
+    assert host.name in names
+    assert err.name in names
+    combined = read_acp_logs(agent_id)
+    assert "spawn" in combined["text"]
+    assert "stderr line" in combined["text"]
+    one = read_acp_logs(agent_id, host.name)
+    assert "spawn" in one["text"]
+    assert "stderr line" not in one["text"]
+    with pytest.raises(ValueError):
+        read_acp_logs(agent_id, "../secret.log")
+    with pytest.raises(ValueError):
+        read_acp_logs("../escape")
 
 
 def test_write_chat_turns_rejects_bad_agent(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:

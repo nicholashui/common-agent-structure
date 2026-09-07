@@ -25,7 +25,7 @@ from casops.eval.fixtures import list_eval_fixtures
 from casops.eval.harness import evaluate
 from casops.improvement.trainer import TrainerBridge
 from casops.instruments.registry import InstrumentRegistry
-from casops.debuglog import list_chat_files, read_chat_file, write_chat_turns, write_debug_logs
+from casops.debuglog import list_chat_files, read_acp_logs, read_chat_file, write_chat_turns, write_debug_logs
 from casops.cache.manager import CacheManager
 from casops.memory.store import ConsolidationWorker, MemoryService
 from casops.plugins.validate import validate_registry
@@ -379,6 +379,7 @@ def create_control_plane(
                 "grok_available": False,
                 "profile_ready": False,
                 "pid": None,
+                "session_id": None,
                 "healthy": False,
             }
         return state.runtime.acp.adapter_view(agent_id, selected=selected)
@@ -657,6 +658,17 @@ def create_control_plane(
         except ValueError as exc:
             raise HTTPException(status_code=400, detail=str(exc)) from exc
         return {"ok": True, "agent_id": agent_id, "files": files}
+
+    @app.get("/debug/acp")
+    def debug_acp_logs(
+        agent_id: str = Query(..., min_length=1, max_length=80),
+        name: str | None = Query(default=None, min_length=1, max_length=160),
+    ) -> dict[str, Any]:
+        try:
+            payload = read_acp_logs(agent_id, name)
+        except ValueError as exc:
+            raise HTTPException(status_code=400, detail=str(exc)) from exc
+        return {"ok": True, **payload}
 
     # health is not public API v3; tests require OpenAPI public paths to be /api/v3 only.
     # Exclude /health from OpenAPI.

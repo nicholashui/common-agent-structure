@@ -116,3 +116,21 @@ def test_debug_chat_writes_and_lists_files(tmp_path: Path, monkeypatch: pytest.M
     assert turns[1]["provider"] == "xai"
     escaped = client.get("/debug/chat", params={"agent_id": "video.director", "name": "../secret.jsonl"})
     assert escaped.status_code == 400
+
+
+def test_debug_acp_lists_agent_logs(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.setenv("CASOPS_ACP_LOG_ROOT", str(tmp_path))
+    agent_id = "video.director"
+    path = tmp_path / f"{agent_id}.2026-09-06-13-00-00.host.log"
+    path.write_text('{"event":"spawn"}\n', encoding="utf-8")
+    client = TestClient(create_control_plane(agents_root=REPO / "agents"))
+    spec = client.get("/openapi.json").json()
+    assert "/debug/acp" not in spec["paths"]
+    listed = client.get("/debug/acp", params={"agent_id": agent_id})
+    assert listed.status_code == 200
+    body = listed.json()
+    assert body["ok"] is True
+    assert body["files"][0]["name"] == path.name
+    assert "spawn" in body["text"]
+    escaped = client.get("/debug/acp", params={"agent_id": agent_id, "name": "../secret.log"})
+    assert escaped.status_code == 400

@@ -12,6 +12,7 @@ from pathlib import Path
 from typing import Any
 
 from casops.acp.client import StdioAcpClient
+from casops.acp.debug import AcpProcessLog
 from casops.acp.project import acp_home, project_agent
 from casops.compose.folders import locate_agent_folder
 from casops.contracts.canonical import sha256_json
@@ -71,6 +72,9 @@ class AcpHandle:
     profile: Path
     proc: subprocess.Popen[str]
     client: StdioAcpClient
+    debug: AcpProcessLog | None = None
+    session_id: str | None = None
+    primed: bool = False
 
 
 @dataclass
@@ -105,6 +109,14 @@ class AcpSupervisor:
         env["GROK_HOME"] = str(grok_home)
         env["GROK_SUBAGENTS"] = "0"
         command = _command_for(profile, home)
+        debug = AcpProcessLog(agent_id)
+        debug.event(
+            "spawn",
+            profile=str(profile),
+            cwd=str(folder.resolve()),
+            grok_home=str(grok_home),
+            command=command,
+        )
         proc = subprocess.Popen(
             command,
             stdin=subprocess.PIPE,
@@ -115,13 +127,28 @@ class AcpSupervisor:
             cwd=str(folder.resolve()),
             env=env,
         )
-        client = StdioAcpClient(proc)
+        debug.event("spawned", pid=proc.pid)
+        debug.attach_stderr(proc)
+        client = StdioAcpClient(proc, debug=debug.event)
         try:
             client.initialize(agent_id=agent_id)
-        except Exception:
+            session_id = client.session_new(cwd=str(folder.resolve()), agent_id=agent_id, task_id=agent_id)
+        except Exception as exc:
+            debug.event("initialize_failed", error=str(exc))
             client.close()
+            debug.close()
             raise
-        handle = AcpHandle(agent_id=agent_id, home=home, profile=profile, proc=proc, client=client)
+        debug.event("session", session_id=session_id, pid=proc.pid)
+        handle = AcpHandle(
+            agent_id=agent_id,
+            home=home,
+            profile=profile,
+            proc=proc,
+            client=client,
+            debug=debug,
+            session_id=session_id,
+            primed=False,
+        )
         self.handles[agent_id] = handle
         return handle
 
@@ -135,27 +162,28 @@ class AcpSupervisor:
         task_id: str,
     ) -> dict[str, Any]:
         handle = self.ensure(agent_id)
-        folder = locate_agent_folder(self.agents_root, agent_id)
-        if folder is None:
-            raise CasopsError(ErrorCode.INH_PARENT_MISSING)
-        cwd = str(folder.resolve())
-        session_id = handle.client.session_new(cwd=cwd, agent_id=agent_id, task_id=task_id)
-        parts: list[str] = []
-        if system.strip():
-            parts.append(system.strip())
-        if history:
-            parts.append("## Conversation")
-            for turn in history:
-                label = "Operator" if turn.get("role") == "user" else "Agent"
-                parts.append(f"{label}: {turn.get('content', '')}")
-        parts.append("## Operator message")
-        parts.append(message)
-        try:
-            result = handle.client.prompt(session_id, "\n\n".join(parts), casops={"agent_id": agent_id, "task_id": task_id})
-        finally:
-            handle.client.session_close(session_id)
+        session_id = handle.session_id
+        if not session_id:
+            raise CasopsError(ErrorCode.PERF_ROUTE_UNAVAILABLE, detail="ACP session missing")
+        if handle.primed:
+            prompt_text = message
+        else:
+            parts: list[str] = []
+            if system.strip():
+                parts.append(system.strip())
+            if history:
+                parts.append("## Conversation")
+                for turn in history:
+                    label = "Operator" if turn.get("role") == "user" else "Agent"
+                    parts.append(f"{label}: {turn.get('content', '')}")
+            parts.append("## Operator message")
+            parts.append(message)
+            prompt_text = "\n\n".join(parts)
+            handle.primed = True
+        result = handle.client.prompt(session_id, prompt_text, casops={"agent_id": agent_id, "task_id": task_id})
         result["adapter"] = "grok_acp"
         result["pid"] = handle.proc.pid
+        result["session_id"] = session_id
         result["digest"] = sha256_json({"agent_id": agent_id, "text": result.get("text"), "session_id": session_id})
         return result
 
@@ -168,6 +196,7 @@ class AcpSupervisor:
             "grok_available": bool(grok_binary()),
             "profile_ready": self.profile_ready(agent_id),
             "pid": handle.proc.pid if alive and handle else None,
+            "session_id": handle.session_id if alive and handle else None,
             "healthy": alive,
             "home": str(acp_home(self.home_root, agent_id).as_posix()),
         }
@@ -175,7 +204,13 @@ class AcpSupervisor:
     def stop(self, agent_id: str) -> None:
         handle = self.handles.pop(agent_id, None)
         if handle:
+            if handle.debug:
+                handle.debug.event("stop", pid=handle.proc.pid, session_id=handle.session_id)
+            if handle.session_id:
+                handle.client.session_close(handle.session_id)
             handle.client.close()
+            if handle.debug:
+                handle.debug.close()
 
     def stop_all(self) -> None:
         for agent_id in list(self.handles):

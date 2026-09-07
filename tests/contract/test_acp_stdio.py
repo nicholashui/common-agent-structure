@@ -10,6 +10,7 @@ import pytest
 from fastapi.testclient import TestClient
 
 from casops.acp.supervisor import AcpSupervisor
+from casops.debuglog import list_acp_logs, read_acp_logs
 from casops.corrigibility.invariants import HOST_INVARIANTS
 from casops.corrigibility.store import InvariantStore
 from casops.api.apps import create_control_plane
@@ -90,6 +91,7 @@ def _runnable_agent(root: Path, agent_id: str) -> Path:
 
 def test_fake_stdio_drops_thought_and_echoes_prompt(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.setenv("CASOPS_ACP_COMMAND", json.dumps([sys.executable, str(FAKE)]))
+    monkeypatch.setenv("CASOPS_ACP_LOG_ROOT", str(tmp_path / "acp-logs"))
     agents_root = tmp_path / "agents"
     _mini_agent(tmp_path, "demo.agent")
     supervisor = AcpSupervisor(agents_root=agents_root, home_root=tmp_path / "acp")
@@ -104,6 +106,28 @@ def test_fake_stdio_drops_thought_and_echoes_prompt(tmp_path: Path, monkeypatch:
     assert "hello-marker" in result["text"]
     assert "SECRET_COT" not in result["text"]
     assert result["session_id"].startswith("fake-")
+    logs = list_acp_logs("demo.agent")
+    assert logs
+    text = read_acp_logs("demo.agent")["text"]
+    assert "spawn" in text
+    assert "session_new" in text or "session/new" in text or '"method": "session/new"' in text or "rpc" in text
+    assert "SECRET_COT" not in text
+    assert "hello-marker" not in text
+    supervisor.stop_all()
+
+
+def test_two_chats_reuse_one_session_and_pid(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.setenv("CASOPS_ACP_COMMAND", json.dumps([sys.executable, str(FAKE)]))
+    _mini_agent(tmp_path, "demo.agent")
+    supervisor = AcpSupervisor(agents_root=tmp_path / "agents", home_root=tmp_path / "acp")
+    first = supervisor.chat("demo.agent", message="turn-one", system="sys", history=[], task_id="t1")
+    second = supervisor.chat("demo.agent", message="turn-two", system="sys", history=[], task_id="t2")
+    assert first["session_id"] == second["session_id"]
+    assert first["pid"] == second["pid"]
+    assert "turn-two" in second["text"]
+    view = supervisor.adapter_view("demo.agent", selected="grok_acp")
+    assert view["pid"] == first["pid"]
+    assert view["session_id"] == first["session_id"]
     supervisor.stop_all()
 
 

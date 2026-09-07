@@ -47,6 +47,110 @@ def _clip(value: Any) -> str:
     return text
 
 
+clip_field = _clip
+
+_MAX_ACP_BYTES = 262_144
+
+
+def acp_root() -> Path:
+    raw = os.environ.get("CASOPS_ACP_LOG_ROOT", str(Path.cwd() / "logs" / "acp"))
+    path = Path(raw)
+    path.mkdir(parents=True, exist_ok=True)
+    return path
+
+
+def acp_log_stamp() -> str:
+    return datetime.now(timezone.utc).strftime("%Y-%m-%d-%H-%M-%S")
+
+
+def acp_log_paths(agent_id: str, stamp: str) -> dict[str, Path]:
+    safe = _safe_id(agent_id, "agent id")
+    stamp_id = _safe_id(stamp, "stamp")
+    root = acp_root()
+    return {
+        "host": root / f"{safe}.{stamp_id}.host.log",
+        "stderr": root / f"{safe}.{stamp_id}.stderr.log",
+    }
+
+
+def _acp_kind(name: str, agent_id: str) -> str:
+    prefix = f"{agent_id}."
+    rest = name[len(prefix) : -len(".log")] if name.endswith(".log") else name
+    if rest.endswith(".host") or rest == "host":
+        return "host"
+    if rest.endswith(".stderr") or rest == "stderr":
+        return "stderr"
+    return "other"
+
+
+def list_acp_logs(agent_id: str) -> list[dict[str, Any]]:
+    safe = _safe_id(agent_id, "agent id")
+    root = acp_root()
+    if not root.is_dir():
+        return []
+    rows: list[dict[str, Any]] = []
+    with _LOCK:
+        paths = sorted(root.glob(f"{safe}.*.log"), key=lambda item: item.stat().st_mtime)
+        for path in paths[-_MAX_FILES:]:
+            if not path.is_file():
+                continue
+            stat = path.stat()
+            stamp = datetime.fromtimestamp(stat.st_mtime, tz=timezone.utc).isoformat()
+            rows.append(
+                {
+                    "path": str(path.as_posix()),
+                    "name": path.name,
+                    "ts": stamp,
+                    "bytes": stat.st_size,
+                    "kind": _acp_kind(path.name, safe),
+                }
+            )
+    return rows
+
+
+def _tail_text(path: Path) -> str:
+    size = path.stat().st_size
+    with path.open("rb") as handle:
+        if size > _MAX_ACP_BYTES:
+            handle.seek(size - _MAX_ACP_BYTES)
+            data = handle.read()
+            text = data.decode("utf-8", errors="replace")
+            nl = text.find("\n")
+            if nl >= 0:
+                text = text[nl + 1 :]
+            return "…(truncated)\n" + text
+        return handle.read().decode("utf-8", errors="replace")
+
+
+def read_acp_logs(agent_id: str, name: str | None = None) -> dict[str, Any]:
+    safe = _safe_id(agent_id, "agent id")
+    root = acp_root().resolve()
+    files = list_acp_logs(safe)
+    if name:
+        raw = Path(str(name or "")).name
+        prefix = f"{safe}."
+        if not raw.startswith(prefix) or not raw.endswith(".log"):
+            raise ValueError("invalid acp log name")
+        rest = raw[len(prefix) : -len(".log")]
+        if not rest or not _SESSION.fullmatch(rest):
+            raise ValueError("invalid acp log name")
+        path = (root / raw).resolve()
+        if not path.is_relative_to(root) or not path.is_file():
+            raise ValueError("acp log not found")
+        with _LOCK:
+            text = _tail_text(path)
+        return {"agent_id": safe, "name": raw, "files": [row for row in files if row["name"] == raw], "text": text}
+    chunks: list[str] = []
+    with _LOCK:
+        for row in files:
+            path = (root / row["name"]).resolve()
+            if not path.is_relative_to(root) or not path.is_file():
+                continue
+            body = _tail_text(path).rstrip()
+            chunks.append(f"==> {row['name']} <==\n{body}")
+    return {"agent_id": safe, "name": None, "files": files, "text": "\n\n".join(chunks)}
+
+
 def write_debug_logs(payload: dict[str, Any]) -> dict[str, str]:
     session = str(payload.get("session") or "")
     if not _SESSION.fullmatch(session):

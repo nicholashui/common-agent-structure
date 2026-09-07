@@ -2,8 +2,8 @@
 
 **Status:** Open (operator transport proof). Not an eval pass.  
 **Severity:** High (a fluent Chat 200 still looks like the agent ran)  
-**Component:** `src/casops/acp/`, `POST /api/v3/agents/{id}/runtime/chat`, `GET /api/v3/agents/{id}/runtime/adapter`, `scripts/prove_grok_acp.ps1`  
-**Asked:** 2026-09-06 — how to prove access to an agent through Grok Build; write the proof and a complete run step.
+**Component:** `src/casops/acp/`, `POST /api/v3/agents/{id}/runtime/chat`, `GET /api/v3/agents/{id}/runtime/adapter`, `GET /debug/acp`, Logs drawer ACP tab, `scripts/prove_grok_acp.ps1`  
+**Asked:** 2026-09-06 — how to prove access to an agent through Grok Build; write the proof and a complete run step. How to run Grok under `agents/<id>/` (e.g. `specials.intent-analysis-agent`); whether UI Chat is the same as the ACP server. Operator started `grok agent … stdio` by hand then Chatted in the UI (`UNAVAILABLE signal is aborted without reason`). Does the UI call that process? Must each agent be started as an ACP server? Can a console show what that agent is doing?
 
 **Related:** ISSUE-0005 (ACP adapter). ISSUE-0002 (Chat 200 ≠ agent-correct; proof gap stays Open). Do not claim an eval PASS. Production, T3, plugins, and memory writes stay off.
 
@@ -30,6 +30,145 @@ It does **not** prove the packaged agent answered as specified. A 200 and a flue
 
 ---
 
+## How to run Grok on an agent folder
+
+Do **not** `cd` into the folder and type `grok`. That uses personal `~/.grok`, ambient MCP, and is not the packaged agent.
+
+Worked example: `agents/specials.intent-analysis-agent` (`agent_id` `specials.intent-analysis-agent`). The packaged identity is that **folder** plus the **generated** profile `var/acp/specials.intent-analysis-agent/profile.md` (`DO NOT EDIT`, `tools: []`, `skills: []`).
+
+There are three Grok paths. UI Chat/Run with adapter `grok_acp` **is** the ACP stdio server this host ships. A Grok TUI in the folder is not.
+
+### 1. UI → API → ACP stdio (this is the ACP server)
+
+CASOPS starts one process, cwd = the agent folder. Paths below are relative to the **repo root** (the directory that contains `agents/`, `scripts/`, and `var/`; wherever you cloned or copied this project):
+
+```text
+grok agent --no-leader --always-approve --agent-profile var\acp\specials.intent-analysis-agent\profile.md stdio
+```
+
+`GROK_HOME` is `var\acp\specials.intent-analysis-agent\grok-home`. Packaged `session/new` sends `mcpServers: []`.
+
+You do not start Grok yourself. Start the host, then Chat:
+
+```powershell
+powershell -File scripts/start_all.ps1
+# browser: http://127.0.0.1:15173/agents/specials.intent-analysis-agent/chat
+# composer must say Adapter grok_acp before Send
+powershell -File scripts/prove_grok_acp.ps1 -AgentId specials.intent-analysis-agent
+```
+
+That **is** ACP: JSON-RPC stdio, one Grok process and one `session_id` per `agent_id` until that process stops. It is **not** `grok agent serve` (HTTP). It is **not** a Grok TUI. The UI attaches to this supervisor process, not to a CLI you started.
+
+### 2. CLI Grok TUI on the same projected profile (not ACP)
+
+Same folder + same generated profile, interactive Grok, **no** ACP stdio supervisor:
+
+```powershell
+python tools/grok_agent.py chat specials.intent-analysis-agent
+python tools/grok_agent.py prompt specials.intent-analysis-agent -p "what inputs do you require?"
+```
+
+Same `profile.md` and `GROK_HOME`. Different wire: Grok’s own CLI, not `session/new` / `session/prompt`. The UI does **not** attach to this process.
+
+### 3. Workshop — edit the folder (not packaged execution)
+
+```powershell
+python tools/grok_agent.py workshop specials.intent-analysis-agent
+```
+
+Grok runs in `agents/specials.intent-analysis-agent` with `Write(corrigibility/**)` and `Edit(corrigibility/**)` denied. Operator editing, not Chat, not ACP, not `approve_candidate`.
+
+### Which path is ACP?
+
+| How you connect | Protocol | Same as ACP server? |
+|---|---|---|
+| Control UI Chat/Run with `grok_acp` | ACP stdio via CASOPS | **Yes** — this is it |
+| `tools/grok_agent.py chat` / `prompt` | Grok TUI + projected profile | No — same profile, not ACP |
+| `cd agents\specials.intent-analysis-agent; grok` | Personal global Grok | **No** |
+| `tools/grok_agent.py workshop` | Grok in the folder | **No** |
+
+Tools, memory writes, plugins, and T3 stay off on all of these paths. A fluent reply still does not prove the agent is correct (ISSUE-0002).
+
+---
+
+## Who starts Grok (you do not)
+
+You do **not** start a per-agent ACP server. The Control UI never connects to Grok. It only calls CASOPS. CASOPS starts Grok when it needs it.
+
+```text
+Browser Chat Send
+    → POST http://127.0.0.1:18080/api/v3/agents/specials.intent-analysis-agent/runtime/chat
+    → Runtime sees adapter grok_acp
+    → AcpSupervisor.ensure("specials.intent-analysis-agent")
+         if no live child for that id:
+           spawn: grok agent --no-leader --always-approve
+                  --agent-profile var/acp/specials.intent-analysis-agent/profile.md
+                  stdio
+           cwd = agents/specials.intent-analysis-agent
+           GROK_HOME = var/acp/specials.intent-analysis-agent/grok-home
+           initialize (+ cached_token if Grok offers it)
+    → session/new once (mcpServers: []) — same session_id for later Chat turns on this process
+    → session/prompt  (first turn: packed system + message; later turns: new message only)
+    → JSON reply back to the UI (session stays open until the process stops)
+```
+
+| Piece | Role |
+|---|---|
+| You | Start CASOPS only (`scripts/start_all.ps1`). Open Chat. Type. |
+| UI | HTTP client of `/api/v3`. Never talks to `grok.exe`. |
+| CASOPS host | ACP **client**. Spawns and owns stdin/stdout of Grok. |
+| `grok agent … stdio` | ACP **server**, child process, one per `agent_id`. |
+
+A Grok you start in a terminal is a second, disconnected server. It waits on **that console’s stdin** for JSON-RPC. The host cannot see that stdin, so Chat will not use it. `GET .../runtime/adapter` `pid` will not be your terminal Grok (or stays `null` if Chat never started a host-owned process).
+
+### Separate process?
+
+Yes — **when the adapter is `grok_acp`**. Each `agent_id` gets its **own** `grok.exe` child, started by the host.
+
+| Adapter | Separate process? |
+|---|---|
+| `grok_acp` | Yes. One Grok ACP stdio process per `agent_id`. |
+| `host_llm` | No. Chat/Run stay inside the uvicorn process and call the LLM HTTP API. |
+
+- **Lifetime:** started on first Chat/Run for that id; reused for later turns; not one process per message.
+- **Session:** one ACP `session/new` when that process starts. All later Chat turns on that agent reuse the same `session_id` until the process dies.
+- **Isolation:** another agent is another `grok.exe` and another `var/acp/<id>/grok-home`.
+- **Identity:** still the folder. Grok is the PeerAdapter, not a second agent.
+
+What you run: `powershell -File scripts/start_all.ps1`, then Chat with **Adapter grok_acp**. The first Send may take a while (host starts Grok). After that, adapter `pid` is the host-owned process.
+
+### `UNAVAILABLE signal is aborted without reason`
+
+That is **not** Grok. The UI `fetch` was aborted. Chrome reports `AbortError: signal is aborted without reason`. The client wraps any non-user abort as `UNAVAILABLE`.
+
+Usual cause: **Chat timeout is 120s**. First ACP turn (host starts Grok, `initialize`, `authenticate`, `session/new`, `session/prompt`) often runs longer. At 120s the UI aborts. Same if you hit Stop, Escape, Clear, or change agent mid-wait. `scripts/prove_grok_acp.ps1` uses 180s.
+
+---
+
+## No console on the host-owned agent
+
+The host starts Grok as a **hidden child**. There is no Grok TUI window for that process.
+
+stdin/stdout **are** the ACP cable (JSON-RPC). Those must stay piped. stderr and host ACP events are written under the **repo root**:
+
+`logs/acp/<agent_id>.<stamp>.stderr.log`  
+`logs/acp/<agent_id>.<stamp>.host.log`
+
+Open the Logs drawer (ScrollText) → **ACP**. That tab tails `GET /debug/acp?agent_id=` for the selected agent (poll 1.5s). Host lines are JSONL (`spawn`, `rpc`, `session_new`, …) without prompt/thought/secret text. stderr is Grok’s own stream.
+
+| Surface | What it shows |
+|---|---|
+| Logs drawer **ACP** | `logs/acp/<agent_id>.*.log` |
+| Chat composer | Adapter `grok_acp`, then the reply |
+| `GET /api/v3/agents/<id>/runtime/adapter` | `pid`, `healthy`, `home` |
+| Task Manager / `Get-CimInstance Win32_Process` | That `pid`’s command line |
+| APL log | HTTP Chat POST timing / errors |
+| `scripts/prove_grok_acp.ps1` | Transport proof JSON |
+
+A Grok TUI you start yourself (`python tools/grok_agent.py chat specials.intent-analysis-agent`) **does** show a console, but the UI does not use that process. A full Grok TUI cannot share stdout with Chat.
+
+---
+
 ## Session id (do not invent one)
 
 You do **not** pass a session id on Chat POST. Grok Build returns it from `session/new`.
@@ -41,7 +180,7 @@ You do **not** pass a session id on Chat POST. Grok Build returns it from `sessi
 
 Do not send the UI file name as the ACP session. Fake pytest ACP uses `fake-1`. Live grok uses whatever the binary returns (often a UUID or `sess_…`). Proof is: **non-empty** `context.session_id` plus `provider=grok_acp` plus a live `pid` whose command line is Grok Build.
 
-The host opens one ACP session per Chat turn, then `session/close`. The next Send gets a new id.
+The host opens **one ACP session per agent process** at Grok start (`session/new` once). Later Chat turns reuse that `session_id` and `pid`. A new session appears only if the Grok process is restarted. The UI adapter card shows the live `pid` and `session_id` (polls while a turn is in flight). Grok assigns `session_id`; the host does not invent it.
 
 ---
 
@@ -141,13 +280,9 @@ That profile is generated (`DO NOT EDIT`, `name: video.director`, `tools: []`). 
 
 Two agents must not share pid or home.
 
-### 4. Optional CLI (same profile, not the HTTP supervisor)
+### 4. Optional CLI (same profile, not ACP)
 
-```powershell
-python tools/grok_agent.py chat video.director
-```
-
-This launches Grok Build on the projected profile. It is **not** the UI ACP stdio supervisor. Use steps 1–3 for UI → API proof.
+See **How to run Grok on an agent folder**. `python tools/grok_agent.py chat <agent_id>` is the TUI path. Use steps 1–3 (or `scripts/prove_grok_acp.ps1`) for UI → API ACP proof.
 
 ---
 
@@ -162,6 +297,8 @@ This launches Grok Build on the projected profile. It is **not** the UI ACP stdi
 | Command line is `python … fake_acp_stdio.py` | Pytest fake, not Grok Build |
 | `CASOPS_ACP_COMMAND` set in the server env | Forced fake/override command |
 | Auth / initialize error | `grok` not logged in; CHARACTERIZATION handshake is `tests/fixtures/acp_initialize.characterization.json` |
+| Operator started `grok agent … stdio` in a terminal, then used UI Chat | UI does not attach to that process. Stop it. Let CASOPS spawn Grok. |
+| `UNAVAILABLE signal is aborted without reason` | UI `fetch` aborted (usually 120s Chat timeout, Stop, Escape, Clear, or agent change). Not a Grok ACP error code. |
 
 ---
 

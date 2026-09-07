@@ -1,0 +1,1 @@
+grok agent --no-leader --always-approve --agent-profile .\var\acp\specials.intent-analysis-agent\profile.md stdio

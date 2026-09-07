@@ -39,6 +39,7 @@ describe("runtime log bus", () => {
     expect(shouldSkipApiLog("http://127.0.0.1:18080/health")).toBe(true);
     expect(shouldSkipApiLog("/debug/logs")).toBe(true);
     expect(shouldSkipApiLog("http://127.0.0.1:18080/debug/logs")).toBe(true);
+    expect(shouldSkipApiLog("/debug/acp")).toBe(true);
     expect(shouldSkipApiLog("/api/v3/agents")).toBe(false);
   });
 

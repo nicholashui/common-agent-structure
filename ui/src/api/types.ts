@@ -256,6 +256,7 @@ export interface RuntimeAdapter {
   grok_available?: boolean;
   profile_ready?: boolean;
   pid?: number | null;
+  session_id?: string | null;
   healthy?: boolean;
   home?: string;
 }

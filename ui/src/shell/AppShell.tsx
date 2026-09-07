@@ -359,6 +359,7 @@ export function AppShell() {
           <RightLogPanel
             width={logs.logPanelWidth}
             dragging={logs.logPanelDragging}
+            agentId={agentId}
             onClose={logs.closeLogPanel}
             onWidthChange={logs.updateLogWidth}
             onDraggingChange={logs.setLogPanelDragging}
