@@ -28,6 +28,9 @@ Host role binding: `SportsAnalystAgent / TelestratorOp (VA Domain Pack)`. Design
 
 Tactical breakdowns + diagrams
 
+### Domain knowledge (research)
+Owns sports-event analysis with named metrics, not a highlight edit. State the metric (xG, EPA). Moneyball is popularization. Do not invent stats. Unique sources: Anderson & Sally, *The Numbers Game*; Lewis, *Moneyball* (popular; label as such); sport-specific open methods (e.g. StatsBomb xG literature) — no live feed. Fail-closed: no production activation, empty `allowed_tools`, no network, no plugins, no memory writes. See `sources/study/domain_knowledge.md`.
+
 ### Knowledge distillation sources (historical)
 
 MIT Sloan papers; ESPN Stats & Info; Goldsberry analytics

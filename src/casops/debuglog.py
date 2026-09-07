@@ -10,6 +10,8 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
+from casops.time import isoformat_hkt, stamp_hkt
+
 _SESSION = re.compile(r"^[A-Za-z0-9._-]{1,80}$")
 _CHANNELS = {"api", "ui"}
 _ROLES = {"user", "assistant"}
@@ -60,7 +62,7 @@ def acp_root() -> Path:
 
 
 def acp_log_stamp() -> str:
-    return datetime.now(timezone.utc).strftime("%Y-%m-%d-%H-%M-%S")
+    return stamp_hkt()
 
 
 def acp_log_paths(agent_id: str, stamp: str) -> dict[str, Path]:
@@ -95,7 +97,7 @@ def list_acp_logs(agent_id: str) -> list[dict[str, Any]]:
             if not path.is_file():
                 continue
             stat = path.stat()
-            stamp = datetime.fromtimestamp(stat.st_mtime, tz=timezone.utc).isoformat()
+            stamp = isoformat_hkt(datetime.fromtimestamp(stat.st_mtime, tz=timezone.utc))
             rows.append(
                 {
                     "path": str(path.as_posix()),
@@ -236,7 +238,7 @@ def list_chat_files(agent_id: str) -> list[dict[str, Any]]:
         paths = sorted(folder.glob("*.jsonl"), key=lambda item: item.stat().st_mtime, reverse=True)
         for path in paths[:_MAX_FILES]:
             stat = path.stat()
-            stamp = datetime.fromtimestamp(stat.st_mtime, tz=timezone.utc).isoformat()
+            stamp = isoformat_hkt(datetime.fromtimestamp(stat.st_mtime, tz=timezone.utc))
             rows.append(
                 {
                     "path": str(path),

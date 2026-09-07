@@ -37,8 +37,8 @@ Source rubric `video.rubric.vfxsupervisor.v1.json` (baseline_safe; not a product
         },
         {
           "id": "d3",
-          "name": "CLIP-T vs plate",
-          "description": "CLIP-T vs plate",
+          "name": "Plate integration",
+          "description": "Comp notes vs plate (scale, grain, light). CLIP-T vs plate is a design prior, not a measured score on this host.",
           "weight": 0.3334,
           "threshold_hint": null,
           "score_min": 0,
@@ -70,7 +70,7 @@ Source rubric `video.rubric.vfxsupervisor.v1.json` (baseline_safe; not a product
     "L3_preference": {
       "description": "Optional pairwise/arena preference when human or synthetic preference data exists",
       "surpass_signal_design": "Weta-grade QC pass rate at fraction of time",
-      "note": "Do not claim surpass until measured baseline exists"
+      "note": "Do not claim surpass or CLIP-T vs plate until a measured baseline exists on this host"
     }
   },
   "refine_policy": {

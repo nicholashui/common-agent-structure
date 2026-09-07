@@ -28,6 +28,9 @@ Host role binding: `UXAgent (VA Domain Pack)`. Design-time VA table content belo
 
 Reviews clarity and usability of personalized or interactive outputs
 
+### Domain knowledge (research)
+Owns interaction/usability of the viewing or tool UI, not brand ads. Nielsen 10 heuristics. Norman: affordance and feedback. Unique sources: Norman, *The Design of Everyday Things*; Nielsen, 10 usability heuristics — https://www.nngroup.com/articles/ten-usability-heuristics/; WCAG 2.2 for the UI surface — https://www.w3.org/TR/WCAG22/. Fail-closed: no production activation, empty `allowed_tools`, no network, no plugins, no memory writes. See `sources/study/domain_knowledge.md`.
+
 ### Knowledge distillation sources (historical)
 
 UX heuristics, accessibility criteria, usability testing patterns

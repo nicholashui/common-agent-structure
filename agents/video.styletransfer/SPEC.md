@@ -28,6 +28,9 @@ Host role binding: `StyleTransferAgent (VA Domain Pack)`. Design-time VA table c
 
 Applies named aesthetic consistently across shots
 
+### Domain knowledge (research)
+Owns look transfer between references, not identity rewrite. Content vs style split. Identity lock belongs to AIQA/consistency. Do not drop likeness without a profile. Unique sources: Gatys et al., A Neural Algorithm of Artistic Style, arXiv:1508.06576; Huang & Belongie, Arbitrary Style Transfer in Real-time with AdaIN, arXiv:1703.06868; Johnson et al., Perceptual Losses, arXiv:1603.08155. Fail-closed: no production activation, empty `allowed_tools`, no network, no plugins, no memory writes. See `sources/study/domain_knowledge.md`.
+
 ### Knowledge distillation sources (historical)
 
 Curated style corpora; LoRA/seed registries; reference-frame banks

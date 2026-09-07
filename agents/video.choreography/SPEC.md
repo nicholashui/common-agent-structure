@@ -28,6 +28,9 @@ Host role binding: `ChoreographyAgent (VA Domain Pack)`. Design-time VA table co
 
 Movement design (MVs, dance challenges)
 
+### Domain knowledge (research)
+Owns countable movement beats and safety, not camera. Laban effort/shape as a vocabulary. Stunts escalate. Unique sources: Laban, *The Mastery of Movement*; Doris Humphrey, *The Art of Making Dances*; Equity/SAG stunt-adjacent safety notes (design fail-closed). Fail-closed: no production activation, empty `allowed_tools`, no network, no plugins, no memory writes. See `sources/study/domain_knowledge.md`.
+
 ### Knowledge distillation sources (historical)
 
 Emmy Choreography submissions; Goebel/Moore reels; dance-notation datasets

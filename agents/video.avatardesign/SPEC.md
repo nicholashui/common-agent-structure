@@ -28,6 +28,9 @@ Host role binding: `AvatarDesignAgent (VA Domain Pack)`. Design-time VA table co
 
 Synthetic-presenter identity
 
+### Domain knowledge (research)
+Owns character mesh/look-dev identity, not the scene’s lighting. Identity is a rig + palette + proportion lock. SMPL/FLAME are research priors, not enabled runtimes. Unique sources: Li et al., FLAME, arXiv:1703.07531; Loper et al., SMPL, SIGGRAPH Asia 2015 / arXiv:1112.4052 lineage; Hasler / character consistency in generative pipelines (design). Fail-closed: no production activation, empty `allowed_tools`, no network, no plugins, no memory writes. See `sources/study/domain_knowledge.md`.
+
 ### Knowledge distillation sources (historical)
 
 Synthesia/HeyGen design docs; Hany Farid deepfake-detection; C2PA spec

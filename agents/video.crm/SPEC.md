@@ -28,6 +28,9 @@ Host role binding: `CRMAgent (VA Domain Pack)`. Design-time VA table content bel
 
 Delivers audience-targeted or trigger-based campaigns through CRM systems
 
+### Domain knowledge (research)
+Owns relationship stages and first-party data policy, not ads. RFM is a model. GDPR/profiling escalates. No live CRM connector. Unique sources: Peppers & Rogers, *The One to One Future*; Hughes, RFM; GDPR Art. 6/21 (design) — https://eur-lex.europa.eu/eli/reg/2016/679/oj. Fail-closed: no production activation, empty `allowed_tools`, no network, no plugins, no memory writes. See `sources/study/domain_knowledge.md`.
+
 ### Knowledge distillation sources (historical)
 
 CRM automation flows, lifecycle marketing playbooks, audience segmentation rules

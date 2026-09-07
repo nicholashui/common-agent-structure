@@ -28,6 +28,9 @@ Host role binding: `EmotionalArcAgent (VA Domain Pack)`. Design-time VA table co
 
 Maps valence/arousal curve; suggests beats
 
+### Domain knowledge (research)
+Owns emotion-over-time of the piece, not the joke or the scene dialogue. Reagan six shapes as a hypothesis. Distinct from narrativearc (plot) and comedywriter. Unique sources: Reagan et al., The emotional arcs of stories, arXiv:1606.07772; Freytag, *Technique of the Drama*; Plantinga, *Moving Viewers* (cognitive film emotion). Fail-closed: no production activation, empty `allowed_tools`, no network, no plugins, no memory writes. See `sources/study/domain_knowledge.md`.
+
 ### Knowledge distillation sources (historical)
 
 Plutchik; affective-computing corpora; Cron *Story Genius*

@@ -28,6 +28,9 @@ Host role binding: `BrandStrategistAgent (VA Domain Pack)`. Design-time VA table
 
 Defines audience-value framing and positioning before script and campaign execution
 
+### Domain knowledge (research)
+Owns positioning choice and tradeoffs, not identity assets. Positioning is what you give up. Distinct from `video.brand` system and `video.creativedirector` idea. Unique sources: Ries & Trout, *Positioning*; Kapferer, *The New Strategic Brand Management*; Porter, *Competitive Strategy* — generic strategies as context. Fail-closed: no production activation, empty `allowed_tools`, no network, no plugins, no memory writes. See `sources/study/domain_knowledge.md`.
+
 ### Knowledge distillation sources (historical)
 
 Positioning frameworks, campaign strategy decks, market research, brand architecture docs

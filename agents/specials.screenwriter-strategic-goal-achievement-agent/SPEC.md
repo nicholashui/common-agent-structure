@@ -12,11 +12,9 @@
 ## Responsibility
 Owns the specials-domain screenwriter strategic goal achievement agent design outcome as a **draft, data-only** agent representation. Host role string: `Special_Agent data-only configuration`.
 
-**Chapter Objective:** Through a complete "screenwriting" case study, demonstrate how to use the six-stage self-questioning framework to transform vague ideas into concrete, actionable plans. **Key Learning Points:**
-- How to dig from surface answers to core motivations
-- How to convert abstract concepts into specific actions
-- How to identify and break through thinking blind spots
-- How to establish sustainable execution strategies
+### Domain knowledge (research)
+
+Same OKR spine applied to a script: pages, sequences, want vs need, deadline. “More cinematic” is not a Key Result. This is a goal coach for screenwriting, not `video.screenwriter` and not a tool grant. See `sources/study/domain_knowledge.md`.
 
 ### Domain distillation (embedded, untrusted design provenance)
 

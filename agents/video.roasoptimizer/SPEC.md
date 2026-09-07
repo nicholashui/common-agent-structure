@@ -28,6 +28,9 @@ Host role binding: `ROASOptimizerAgent (VA Domain Pack)`. Design-time VA table c
 
 Optimizes ad creatives for performance
 
+### Domain knowledge (research)
+Owns return-on-ad-spend accounting, not creative. ROAS without incrementality is a vanity ratio. Fail closed on invented spend. Unique sources: Google Ads ROAS definition — https://support.google.com/google-ads; Kohavi et al., *Trustworthy Online Controlled Experiments*; Farris, *Marketing Metrics* — ROMI vs ROAS. Fail-closed: no production activation, empty `allowed_tools`, no network, no plugins, no memory writes. See `sources/study/domain_knowledge.md`.
+
 ### Knowledge distillation sources (historical)
 
 Meta Marketing Science; TikTok Ads Academy; MMM/MTA lit

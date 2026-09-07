@@ -19,8 +19,8 @@ Source rubric `video.rubric.director.v1.json` (baseline_safe; not a production p
       "dimensions": [
         {
           "id": "d1",
-          "name": "Shot-intent fidelity (CLIP-T ≥0.32)",
-          "description": "Shot-intent fidelity (CLIP-T ≥0.32)",
+          "name": "Shot-intent fidelity",
+          "description": "Shot size, angle, move, duration, and whose look are specified. CLIP-T ≥0.32 is a design prior, not a measured score on this host.",
           "weight": 0.3333,
           "threshold_hint": "≥0.32",
           "score_min": 0,
@@ -76,8 +76,8 @@ Source rubric `video.rubric.director.v1.json` (baseline_safe; not a production p
     },
     "L3_preference": {
       "description": "Optional pairwise/arena preference when human or synthetic preference data exists",
-      "surpass_signal_design": "Wins ≥55% blind pairwise vs DGA cuts (Arena)",
-      "note": "Do not claim surpass until measured baseline exists"
+      "surpass_signal_design": "Wins ≥55% blind pairwise vs DGA cuts (Arena) — design-time ambition only",
+      "note": "Do not claim surpass, CLIP-T, or arena win-rate until a measured baseline exists on this host"
     }
   },
   "refine_policy": {

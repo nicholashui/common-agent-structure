@@ -28,6 +28,9 @@ Host role binding: `ColoristAgent (VA Domain Pack)`. Design-time VA table conten
 
 Final grade; look consistency
 
+### Domain knowledge (research)
+Owns look, legalization, display-referred vs scene-referred. State the display (Rec.709 / P3 / HDR). ACES is intent, not an enabled CDL pipeline here. Unique sources: Alexis Van Hurkman, *Color Correction Handbook*; ACES documentation — https://www.oscars.org/science-technology/aces; ITU-R BT.709 / BT.2020 (display encoding, design). Fail-closed: no production activation, empty `allowed_tools`, no network, no plugins, no memory writes. See `sources/study/domain_knowledge.md`.
+
 ### Knowledge distillation sources (historical)
 
 ICA corpora; Sonnenfeld sessions; HPA Award grades

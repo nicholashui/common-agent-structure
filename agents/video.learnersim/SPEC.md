@@ -28,6 +28,9 @@ Host role binding: `LearnerSimAgent (VA Domain Pack)`. Design-time VA table cont
 
 Simulates learner behavior, confusion points, and assessment performance
 
+### Domain knowledge (research)
+Owns a learner persona with a knowledge state, not a generic viewer. Bloom levels. Knowledge tracing is a model, unmeasured here. Distinct from audiencesim (taste/retention). Unique sources: Bloom, *Taxonomy of Educational Objectives*; Piech et al., Deep Knowledge Tracing, arXiv:1506.05908; Anderson & Krathwohl, revised Bloom. Fail-closed: no production activation, empty `allowed_tools`, no network, no plugins, no memory writes. See `sources/study/domain_knowledge.md`.
+
 ### Knowledge distillation sources (historical)
 
 Learner-modeling datasets, completion analytics, quiz outcome patterns

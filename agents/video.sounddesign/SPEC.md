@@ -28,6 +28,9 @@ Host role binding: `SoundDesignAgent (VA Domain Pack)`. Design-time VA table con
 
 Ambience, foley, SFX
 
+### Domain knowledge (research)
+Owns SFX, ambience, designed elements — not the mix bus. Diegetic vs non-diegetic. Added value (Chion) is the test. Unique sources: Chion, *Audio-Vision*; Sonnenschein, *Sound Design*; Viers, *The Sound Effects Bible*. Fail-closed: no production activation, empty `allowed_tools`, no network, no plugins, no memory writes. See `sources/study/domain_knowledge.md`.
+
 ### Knowledge distillation sources (historical)
 
 BBC SFX library; MPSE Golden Reel; Burtt/Lievsay notes

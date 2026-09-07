@@ -12,7 +12,9 @@
 ## Responsibility
 Owns the specials-domain aesthetics agent design outcome as a **draft, data-only** agent representation. Host role string: `Special_Agent data-only configuration`.
 
-This is the **definitive, production-grade specification** for building the **Aesthetics Agent** — a stateful, multimodal evaluation-and-alignment service that operationalizes a simulated **"artiste sense"** (artistic/aesthetic intuition) for the entire VA-Agent-Swarm. It is the deep rethink of [`aesthetics_agents.md`](./aesthetics_agents.md): where that document is a *survey of methods*, this is a *buildable agent contract*. It reframes "teach AI artistic sense" from a single image scorer into a **shared aesthetic nervous system** — a critic that every generative agent consults, a reward signal that every fine-tuning loop trusts, and a personalization engine that carries a director's, brand's, or artist's taste across the whole pipeline.
+### Domain knowledge (research)
+
+Separate **technical quality** (blur, noise) from **taste**. NIMA (Talebi & Milanfar, arXiv:1709.05424) predicts a *distribution* of rater scores, not one scalar. LAION-Aesthetics is a CLIP linear head for “like 1–10” used to curate data; Taylor et al. (arXiv:2601.09896) show it encodes a narrow Western/portrait gaze. Always emit a dimension vector + confidence + `hack_likelihood` under a named AestheticProfile. Live vision stays off. See `sources/study/domain_knowledge.md`.
 
 ### Domain distillation (embedded, untrusted design provenance)
 

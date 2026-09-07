@@ -28,6 +28,9 @@ Host role binding: `PersonalizationEngineerAgent (VA Domain Pack)`. Design-time 
 
 Variable templates (name/face/voice swap)
 
+### Domain knowledge (research)
+Owns personalization policy and features, not a live recsys. Ricci handbook. GDPR profiling. No tracking pixels. Unique sources: Ricci, Rokach, Shapira, *Recommender Systems Handbook*; GDPR Art. 22 — https://eur-lex.europa.eu/eli/reg/2016/679/oj; Pariser, *The Filter Bubble*. Fail-closed: no production activation, empty `allowed_tools`, no network, no plugins, no memory writes. See `sources/study/domain_knowledge.md`.
+
 ### Knowledge distillation sources (historical)
 
 Idomoo case studies; DMA campaigns; MarTech lit

@@ -28,6 +28,9 @@ Host role binding: `ScreenwriterAgent (VA Domain Pack)`. Design-time VA table co
 
 Treatment → screenplay; dialogue; structure
 
+### Domain knowledge (research)
+Owns treatment → screenplay, dialogue, structure. Want vs need, turning points, scene purpose, whose POV. A beat sheet is a contract for director/editor. Do not silently rewrite another craft’s pages. Unique sources: McKee, *Story*; Syd Field, *Screenplay*; John Truby, *The Anatomy of Story*; WGA schedule/format (design) — not a membership grant. Fail-closed: no production activation, empty `allowed_tools`, no network, no plugins, no memory writes. See `sources/study/domain_knowledge.md`.
+
 ### Knowledge distillation sources (historical)
 
 Black List scripts; WGA library; McKee *Story*; Truby; Kaufman/Sorkin interviews

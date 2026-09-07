@@ -28,6 +28,9 @@ Host role binding: `StandardsEditorAgent (VA Domain Pack)`. Design-time VA table
 
 Enforces editorial standards, sourcing discipline, and corrections policy
 
+### Domain knowledge (research)
+Owns SMPTE/EBU/IMF delivery conformance notes, not the story edit. Name the standard and the clause. EBU R128 is loudness, not picture. Unique sources: SMPTE standards catalog — https://www.smpte.org; EBU R128; IMF (SMPTE ST 2067) as a delivery package (design). Fail-closed: no production activation, empty `allowed_tools`, no network, no plugins, no memory writes. See `sources/study/domain_knowledge.md`.
+
 ### Knowledge distillation sources (historical)
 
 Newsroom standards manuals, corrections policies, attribution standards

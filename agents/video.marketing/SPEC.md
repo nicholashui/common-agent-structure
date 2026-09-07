@@ -28,6 +28,9 @@ Host role binding: `MarketingAgent (VA Domain Pack)`. Design-time VA table conte
 
 Packages content for launch, promotions, and release sequencing
 
+### Domain knowledge (research)
+Owns offer, message, channel mix — not SEO tricks. KPI needs a window and a denominator. 4Ps as a checklist. Unique sources: Kotler & Keller, *Marketing Management*; McCarthy, 4Ps; Farris et al., *Marketing Metrics*. Fail-closed: no production activation, empty `allowed_tools`, no network, no plugins, no memory writes. See `sources/study/domain_knowledge.md`.
+
 ### Knowledge distillation sources (historical)
 
 Campaign playbooks, launch calendars, media plans, asset packaging requirements

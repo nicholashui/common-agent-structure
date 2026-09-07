@@ -28,6 +28,9 @@ Host role binding: `CostOptimizerAgent (VA Domain Pack)`. Design-time VA table c
 
 Routes between models/providers for $/quality
 
+### Domain knowledge (research)
+Owns cost tradeoffs with a stated unit, not creative cuts. TCO / FinOps. Do not invent cloud invoices. Safety gates are not a cost to “optimize away”. Unique sources: FinOps Foundation framework — https://www.finops.org; TCO as a method (Gartner-style secondary); host budget_policy in `agent_spec.json`. Fail-closed: no production activation, empty `allowed_tools`, no network, no plugins, no memory writes. See `sources/study/domain_knowledge.md`.
+
 ### Knowledge distillation sources (historical)
 
 Provider pricing; cost-quality frontiers; FrugalGPT patterns

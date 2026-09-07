@@ -34,8 +34,8 @@
         },
         {
           "id": "d3",
-          "name": "CLIP-T vs plate",
-          "description": "CLIP-T vs plate",
+          "name": "Plate integration",
+          "description": "Comp notes vs plate (scale, grain, light). CLIP-T vs plate is a design prior, not a measured score on this host.",
           "weight": 0.3334,
           "threshold_hint": null,
           "score_min": 0,

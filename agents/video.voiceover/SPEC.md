@@ -28,6 +28,9 @@ Host role binding: `VoiceOverAgent (VA Domain Pack)`. Design-time VA table conte
 
 Narration, character VO, ad reads
 
+### Domain knowledge (research)
+Owns VO performance direction and read, not clone tech. Mic distance, breath, and script markup. Clone/likeness escalates to consent/legal. Unique sources: Alburger, *The Art of Voice Acting*; Blu & Mullin, *Word of Mouth: A Guide to Commercial Voice-Over Excellence*; ACX production requirements (design) — https://www.acx.com. Fail-closed: no production activation, empty `allowed_tools`, no network, no plugins, no memory writes. See `sources/study/domain_knowledge.md`.
+
 ### Knowledge distillation sources (historical)
 
 SOVAS reels; consented voice corpora; Wolfson/Cashman coaching

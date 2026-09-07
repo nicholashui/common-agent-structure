@@ -12,7 +12,9 @@
 ## Responsibility
 Owns the specials-domain psychological profile agent design outcome as a **draft, data-only** agent representation. Host role string: `Special_Agent data-only configuration`.
 
-Provide personalized parameter configurations for the framework in this chapter and Appendix A workflow **File Structure:** - Basic information (code, age, professional background) - Psychological traits (MBTI tendencies, motivation types, fear patterns) - Creation parameters (best tools, time allocation, support needs) - Framework adaptation (key focuses for each stage, predicted obstacles, success strategies)
+### Domain knowledge (research)
+
+Prefer **Big Five / FFM** (OCEAN) and **HEXACO** (adds Honesty–Humility). MBTI letters are self-report labels, not a research gold standard. No clinical diagnosis, no therapy, no patient records. Profiles here are creative-workflow parameters. See `sources/study/domain_knowledge.md`.
 
 ### Domain distillation (embedded, untrusted design provenance)
 

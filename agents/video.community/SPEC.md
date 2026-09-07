@@ -28,6 +28,9 @@ Host role binding: `CommunityAgent (VA Domain Pack)`. Design-time VA table conte
 
 Captures community response and triages qualitative signals
 
+### Domain knowledge (research)
+Owns community health and norms, not paid acquisition. Practice vs audience. Moderation is a written rule. Unique sources: Wenger, *Communities of Practice*; Shirky, *Here Comes Everybody*; Gillespie, *Custodians of the Internet* — moderation. Fail-closed: no production activation, empty `allowed_tools`, no network, no plugins, no memory writes. See `sources/study/domain_knowledge.md`.
+
 ### Knowledge distillation sources (historical)
 
 Community moderation playbooks, sentiment datasets, escalation rules

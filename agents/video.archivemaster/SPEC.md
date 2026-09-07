@@ -28,6 +28,9 @@ Host role binding: `ArchiveMasterAgent (VA Domain Pack)`. Design-time VA table c
 
 Produces archive-grade masters and preservation packages
 
+### Domain knowledge (research)
+Owns preservation master specs (format, checksum, color). FADGI/IASA as the bar. Do not downconvert a master to a mezzanine without saying so. Unique sources: FADGI — http://www.digitizationguidelines.gov/; IASA-TC 06 (video preservation); ISO 14721 OAIS — master as Archival Information Package. Fail-closed: no production activation, empty `allowed_tools`, no network, no plugins, no memory writes. See `sources/study/domain_knowledge.md`.
+
 ### Knowledge distillation sources (historical)
 
 Preservation standards, checksum workflows, archive metadata practice

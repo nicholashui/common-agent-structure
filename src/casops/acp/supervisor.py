@@ -13,7 +13,7 @@ from typing import Any
 
 from casops.acp.client import StdioAcpClient
 from casops.acp.debug import AcpProcessLog
-from casops.acp.project import acp_home, project_agent
+from casops.acp.project import acp_home, prepare_grok_home, project_agent, sanitize_grok_env
 from casops.compose.folders import locate_agent_folder
 from casops.contracts.canonical import sha256_json
 from casops.errors.codes import ErrorCode
@@ -75,6 +75,7 @@ class AcpHandle:
     debug: AcpProcessLog | None = None
     session_id: str | None = None
     primed: bool = False
+    operator_session: str | None = None
 
 
 @dataclass
@@ -93,10 +94,25 @@ class AcpSupervisor:
         profile = acp_home(self.home_root, agent_id) / "profile.md"
         return profile.is_file()
 
+    def _reap_dead(self, agent_id: str) -> None:
+        handle = self.handles.get(agent_id)
+        if handle is None or handle.proc.poll() is None:
+            return
+        if handle.debug:
+            handle.debug.event("reap", pid=handle.proc.pid)
+            handle.debug.close()
+        try:
+            handle.client.close()
+        except (OSError, CasopsError):
+            pass
+        self.handles.pop(agent_id, None)
+
     def ensure(self, agent_id: str) -> AcpHandle:
         existing = self.handles.get(agent_id)
         if existing and existing.proc.poll() is None:
             return existing
+        if existing:
+            self._reap_dead(agent_id)
         folder = locate_agent_folder(self.agents_root, agent_id)
         if folder is None:
             raise CasopsError(ErrorCode.INH_PARENT_MISSING)
@@ -104,8 +120,8 @@ class AcpSupervisor:
         profile = Path(projected["profile"])
         home = Path(projected["home"])
         grok_home = home / "grok-home"
-        grok_home.mkdir(parents=True, exist_ok=True)
-        env = os.environ.copy()
+        prepare_grok_home(grok_home)
+        env = sanitize_grok_env(os.environ.copy())
         env["GROK_HOME"] = str(grok_home)
         env["GROK_SUBAGENTS"] = "0"
         command = _command_for(profile, home)
@@ -160,8 +176,18 @@ class AcpSupervisor:
         system: str,
         history: list[dict[str, str]],
         task_id: str,
+        session: str | None = None,
+        reset: bool = False,
     ) -> dict[str, Any]:
         handle = self.ensure(agent_id)
+        session_changed = bool(session and handle.operator_session and session != handle.operator_session)
+        if (reset or session_changed) and handle.primed:
+            if handle.debug:
+                handle.debug.event("reset_session", previous=handle.session_id, reason="empty_history" if reset else "session_changed")
+            self.stop(agent_id)
+            handle = self.ensure(agent_id)
+        if session:
+            handle.operator_session = session
         session_id = handle.session_id
         if not session_id:
             raise CasopsError(ErrorCode.PERF_ROUTE_UNAVAILABLE, detail="ACP session missing")

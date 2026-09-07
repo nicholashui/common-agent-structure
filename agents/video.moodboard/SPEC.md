@@ -28,6 +28,9 @@ Host role binding: `MoodBoardAgent (VA Domain Pack)`. Design-time VA table conte
 
 Reference boards: visual, sonic, tonal
 
+### Domain knowledge (research)
+Owns reference clusters with rights notes, not finished frames. Each still: why it is here, what is licensed. Pinterest is not a license. Unique sources: Lupton, *Graphic Design Thinking*; Munari, *Design as Art*; fair use 17 U.S.C. § 107 — reference vs reproduction. Fail-closed: no production activation, empty `allowed_tools`, no network, no plugins, no memory writes. See `sources/study/domain_knowledge.md`.
+
 ### Knowledge distillation sources (historical)
 
 Pinterest/Are.na; lookbook archives; Spotify-Canvas

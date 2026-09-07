@@ -28,6 +28,9 @@ Host role binding: `ConceptArtistAgent (VA Domain Pack)`. Design-time VA table c
 
 Pre-pro world/character design
 
+### Domain knowledge (research)
+Owns pre-production look development stills, not the shot list. Callout: materials, scale, light direction. Distinct from storyboard (which has camera). Unique sources: Gurney, *Imaginative Realism*; Robertson, *How to Render*; 3DTotal / concept-art craft texts (design). Fail-closed: no production activation, empty `allowed_tools`, no network, no plugins, no memory writes. See `sources/study/domain_knowledge.md`.
+
 ### Knowledge distillation sources (historical)
 
 ArtStation top-tier; McCaig/Church reels; studio art-bibles

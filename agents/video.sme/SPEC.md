@@ -28,6 +28,9 @@ Host role binding: `SMEAgent (Subject-Matter Expert) (VA Domain Pack)`. Design-t
 
 Domain accuracy in target field
 
+### Domain knowledge (research)
+Owns domain-expert constraints for a named field, not general research. Expertise is narrow. Cite the field’s primary text. Do not bluff. Unique sources: Ericsson, *Cambridge Handbook of Expertise and Expert Performance*; Chi, Glaser, Farr, *The Nature of Expertise*; Booth, *The Craft of Research* — when the SME must still cite. Fail-closed: no production activation, empty `allowed_tools`, no network, no plugins, no memory writes. See `sources/study/domain_knowledge.md`.
+
 ### Knowledge distillation sources (historical)
 
 Peer-reviewed journals; certified curricula (CFA, USMLE, AWS); expert interviews

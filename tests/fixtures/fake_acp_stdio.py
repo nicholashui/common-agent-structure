@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import os
 import sys
 
 
@@ -69,7 +70,7 @@ def main() -> None:
                 )
                 continue
             sessions += 1
-            _write({"jsonrpc": "2.0", "id": req_id, "result": {"sessionId": f"fake-{sessions}"}})
+            _write({"jsonrpc": "2.0", "id": req_id, "result": {"sessionId": f"fake-{os.getpid()}-{sessions}"}})
         elif method == "session/prompt":
             prompt = params.get("prompt")
             text = ""

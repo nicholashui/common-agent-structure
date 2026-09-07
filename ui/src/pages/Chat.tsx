@@ -18,7 +18,7 @@ import {
   lastUserIndex,
   loadThread,
   chatHitOutputCap,
-  normalizeChatHistory,
+  buildChatBody,
   replaceThread,
   saveThread,
   sessionFromFileName,
@@ -32,6 +32,7 @@ import { followUpChips } from "../lib/followUps";
 import { useAgentId, useAsync } from "../lib/hooks";
 import { parseAgentIo } from "../lib/io";
 import { clipLogText, logUi } from "../log/bus";
+import { formatHktClock, formatHktDateTime, nowHktIso } from "../lib/time";
 import { useSession } from "../state/session";
 
 function fileLabel(path: string): string {
@@ -73,10 +74,7 @@ function ContextPack({ pack }: { pack: ChatContextPack }) {
 }
 
 function turnTime(ts?: string): string {
-  if (!ts) {
-    return "";
-  }
-  return ts.slice(11, 19) || ts.slice(0, 10);
+  return formatHktClock(ts);
 }
 
 export function ChatPage() {
@@ -217,7 +215,7 @@ export function ChatPage() {
     try {
       const result = await session.client.chatAgent(
         agentId,
-        { message, history: normalizeChatHistory(historyTurns) },
+        buildChatBody(message, historyTurns, loadThread(agentId).session),
         { signal: controller.signal },
       );
       const assistantTurn: ChatTurn = {
@@ -225,7 +223,7 @@ export function ChatPage() {
         content: result.reply || "(empty reply)",
         provider: result.provider,
         truncated: chatHitOutputCap(result.llm),
-        ts: new Date().toISOString(),
+        ts: nowHktIso(),
       };
       const withReply = [...baseTurns, assistantTurn];
       setTurns(withReply);
@@ -267,7 +265,7 @@ export function ChatPage() {
       return;
     }
     const chatSession = loadThread(agentId).session;
-    const userTurn: ChatTurn = { role: "user", content: trimmed, ts: new Date().toISOString() };
+    const userTurn: ChatTurn = { role: "user", content: trimmed, ts: nowHktIso() };
     const nextTurns: ChatTurn[] = [...historyTurns, userTurn];
     setTurns(nextTurns);
     saveThread(agentId, nextTurns);
@@ -377,7 +375,7 @@ export function ChatPage() {
                 {files.slice(0, 8).map((file) => (
                   <li key={file.path} className="flex items-start justify-between gap-2" data-testid="chat-file">
                     <span className="min-w-0 font-mono text-[11px] text-stone-500">
-                      {file.ts.slice(0, 19).replace("T", " ")}
+                      {formatHktDateTime(file.ts)}
                       <span className="mt-0.5 block break-all">{fileLabel(file.path)}</span>
                     </span>
                     <GhostButton

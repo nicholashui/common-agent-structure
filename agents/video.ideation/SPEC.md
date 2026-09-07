@@ -28,6 +28,9 @@ Host role binding: `IdeationAgent (VA Domain Pack)`. Design-time VA table conten
 
 Divergent brainstorm of concepts, hooks, taglines
 
+### Domain knowledge (research)
+Owns option generation before lock of a single idea. Diverge then converge. Do not skip constraints (audience, medium, legal). Unique sources: Osborn, *Applied Imagination*; Guilford, *The Nature of Human Intelligence*; Boden, *The Creative Mind* — combinational vs exploratory. Fail-closed: no production activation, empty `allowed_tools`, no network, no plugins, no memory writes. See `sources/study/domain_knowledge.md`.
+
 ### Knowledge distillation sources (historical)
 
 Cannes Grand Prix; D&AD; IDEO design-thinking; SCAMPER/de Bono

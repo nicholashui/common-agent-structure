@@ -28,6 +28,9 @@ Host role binding: `MotionGraphicsAgent (VA Domain Pack)`. Design-time VA table 
 
 Kinetic typography, lower thirds, infographics
 
+### Domain knowledge (research)
+Owns designed type/shape motion, not live-action coverage. Easing, hierarchy, and hold frames are the craft. After Effects names in design text are not tools. Unique sources: Crook & Beare, *Motion Graphics*; Arnheim, *Art and Visual Perception*; Williams, *The Animator’s Survival Kit* — timing/easing. Fail-closed: no production activation, empty `allowed_tools`, no network, no plugins, no memory writes. See `sources/study/domain_knowledge.md`.
+
 ### Knowledge distillation sources (historical)
 
 Motionographer; School of Motion; AICP Next Awards

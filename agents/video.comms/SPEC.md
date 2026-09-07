@@ -28,6 +28,9 @@ Host role binding: `CommsAgent (VA Domain Pack)`. Design-time VA table content b
 
 Coordinates external messaging, disclosure, and public-response posture
 
+### Domain knowledge (research)
+Owns public statements and issues response, not ads. Grunig excellence: two-way. Corrections go to `video.corrections`. Unique sources: Grunig, *Excellence in Public Relations and Communication Management*; AP Stylebook; Coombs, situational crisis communication (design). Fail-closed: no production activation, empty `allowed_tools`, no network, no plugins, no memory writes. See `sources/study/domain_knowledge.md`.
+
 ### Knowledge distillation sources (historical)
 
 Crisis communication guides, disclosure standards, PR playbooks

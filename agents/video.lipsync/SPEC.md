@@ -28,6 +28,9 @@ Host role binding: `LipSyncAgent (VA Domain Pack)`. Design-time VA table content
 
 Validates and refines phoneme-viseme alignment as a dedicated gate
 
+### Domain knowledge (research)
+Owns mouth-shape to audio alignment, not performance direction. Phoneme-viseme mapping. Fail closed on cloned voices without consent. Unique sources: Prajwal et al., Wav2Lip, arXiv:2008.10010; Chung & Zisserman, Lip Reading in the Wild; Park et al. / talking-head surveys — design only, no live model. Fail-closed: no production activation, empty `allowed_tools`, no network, no plugins, no memory writes. See `sources/study/domain_knowledge.md`.
+
 ### Knowledge distillation sources (historical)
 
 Lip-sync research, animation timing references, viseme datasets

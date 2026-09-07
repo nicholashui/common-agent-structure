@@ -28,6 +28,9 @@ Host role binding: `SafetyRedTeamAgent (VA Domain Pack)`. Design-time VA table c
 
 Adversarially attacks for deepfake, bias, jailbreak, defamation
 
+### Domain knowledge (research)
+Owns adversarial probes to find bypasses — not to ship them. Report: attack, impact, recommended control. Do not include exploit payloads. Unique sources: Perez et al., Red Teaming Language Models with Language Models, arXiv:2202.03286; OWASP Top 10 for LLM Applications — https://owasp.org/www-project-top-10-for-large-language-model-applications/; NIST AI RMF — measure/manage. Fail-closed: no production activation, empty `allowed_tools`, no network, no plugins, no memory writes. See `sources/study/domain_knowledge.md`.
+
 ### Knowledge distillation sources (historical)
 
 Hany Farid benchmarks; Partnership on AI Framework; OWASP LLM Top 10

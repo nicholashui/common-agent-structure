@@ -30,6 +30,14 @@ Single `transform` node `health_1` with `op: health_snapshot`, `side_effect_clas
 | `attestation` | host reference digest / invariant set (not agent-writable) |
 | `containment_stop` | null unless a safety gate already stopped the run |
 
+## Domain knowledge (research)
+
+Health is three different questions: **startup** (may I be probed yet), **liveness** (restart me if deadlocked), **readiness** (send me new work). A single deep `/health` that also pings dependencies causes fleet drains. Google SRE golden signals (latency, traffic, errors, saturation) measure *user-visible service* health; this agent reports a **host-filled folder snapshot**, not those four metrics and not an eval pass. See `sources/study/domain_knowledge.md`.
+
+## Local knowledge sources
+
+- [Domain knowledge (research)](sources/study/domain_knowledge.md) — SRE probes vs golden signals vs this snapshot.
+
 ## Out of scope
 
 - OS/hardware probes, live HTTP self-GET of `:18080/health`

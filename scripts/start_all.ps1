@@ -110,7 +110,7 @@ if (-not (Wait-Http "http://127.0.0.1:$UiPort/")) {
 }
 
 $state = [ordered]@{
-    started_at         = (Get-Date).ToString("o")
+    started_at         = [DateTime]::UtcNow.AddHours(8).ToString("yyyy-MM-ddTHH:mm:ss") + "+08:00"
     repo               = $Root
     control_plane_url  = "http://127.0.0.1:$ControlPort"
     ui_url             = "http://127.0.0.1:$UiPort"

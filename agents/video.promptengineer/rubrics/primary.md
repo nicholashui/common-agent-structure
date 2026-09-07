@@ -19,8 +19,8 @@ Source rubric `video.rubric.promptengineer.v1.json` (baseline_safe; not a produc
       "dimensions": [
         {
           "id": "d1",
-          "name": "Prompt→output CLIP-T",
-          "description": "Prompt→output CLIP-T",
+          "name": "Prompt→output fidelity",
+          "description": "Prompt specifies subject, camera, light, and constraints. CLIP-T is a design prior, not a measured score on this host.",
           "weight": 0.3333,
           "threshold_hint": null,
           "score_min": 0,
@@ -63,7 +63,7 @@ Source rubric `video.rubric.promptengineer.v1.json` (baseline_safe; not a produc
     "L3_preference": {
       "description": "Optional pairwise/arena preference when human or synthetic preference data exists",
       "surpass_signal_design": "Target shot in ≤3 iterations vs human avg 10",
-      "note": "Do not claim surpass until measured baseline exists"
+      "note": "Do not claim surpass, CLIP-T, or iteration-vs-human until a measured baseline exists on this host"
     }
   },
   "refine_policy": {

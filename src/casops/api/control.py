@@ -619,10 +619,13 @@ def create_control_plane(
     @app.post("/api/v3/agents/{agent_id}/runtime/chat")
     def runtime_chat(agent_id: str, body: dict[str, Any]) -> dict[str, Any]:
         history = body.get("history") if isinstance(body.get("history"), list) else []
+        raw_session = body.get("session")
+        session = str(raw_session).strip() if isinstance(raw_session, str) and str(raw_session).strip() else None
         return state.runtime.chat(
             agent_id,
             message=str(body.get("message") or ""),
             history=history,
+            session=session,
         )
 
     @app.get("/health")

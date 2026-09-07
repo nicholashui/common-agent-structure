@@ -28,6 +28,9 @@ Host role binding: `DeepfakeDetectionAgent (VA Domain Pack)`. Design-time VA tab
 
 Detects synthetic identity, voice, and provenance deception risks
 
+### Domain knowledge (research)
+Owns synthetic-media detection notes, not a live detector. FaceForensics++ / DFDC as literature. Do not claim a measured AUC on this host. Unique sources: Rössler et al., FaceForensics++, arXiv:1901.08971; Korshunov & Marcel, DeepFakes threat to face recognition, arXiv:1812.08685; Dolhansky et al., Deepfake Detection Challenge (Facebook/DFDC). Fail-closed: no production activation, empty `allowed_tools`, no network, no plugins, no memory writes. See `sources/study/domain_knowledge.md`.
+
 ### Knowledge distillation sources (historical)
 
 Deepfake forensics corpora, synthetic-media benchmarks, identity-risk studies

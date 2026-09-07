@@ -4,11 +4,11 @@ from __future__ import annotations
 
 import json
 import threading
-from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
 from casops.debuglog import acp_log_paths, acp_log_stamp, clip_field
+from casops.time import isoformat_hkt
 
 _DENY = {
     "prompt",
@@ -40,7 +40,7 @@ class AcpProcessLog:
 
     def event(self, name: str, **fields: Any) -> None:
         record: dict[str, Any] = {
-            "ts": datetime.now(timezone.utc).isoformat(),
+            "ts": isoformat_hkt(),
             "agent_id": self.agent_id,
             "event": name,
         }
@@ -79,7 +79,7 @@ class AcpProcessLog:
                 return
             if line == "":
                 return
-            ts = datetime.now(timezone.utc).isoformat()
+            ts = isoformat_hkt()
             text = clip_field(line.rstrip("\r\n"))
             with self._lock:
                 try:

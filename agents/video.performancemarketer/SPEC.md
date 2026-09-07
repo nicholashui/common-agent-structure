@@ -28,6 +28,9 @@ Host role binding: `PerformanceMarketerAgent (VA Domain Pack)`. Design-time VA t
 
 Optimize ads for ROAS
 
+### Domain knowledge (research)
+Owns paid performance hypotheses and incrementality, not brand identity. Last-click is not causal. Name the attribution window. Unique sources: Farris et al., *Marketing Metrics*; Google Ads measurement / incrementality docs (design) — https://support.google.com/google-ads; Kohavi et al., *Trustworthy Online Controlled Experiments*. Fail-closed: no production activation, empty `allowed_tools`, no network, no plugins, no memory writes. See `sources/study/domain_knowledge.md`.
+
 ### Knowledge distillation sources (historical)
 
 Meta Blueprint; TikTok Ads Academy; MMM literature

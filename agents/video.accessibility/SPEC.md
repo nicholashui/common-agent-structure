@@ -28,6 +28,9 @@ Host role binding: `AccessibilityAgent (VA Domain Pack)`. Design-time VA table c
 
 Owns final accessibility acceptance before release
 
+### Domain knowledge (research)
+Owns captions, AD, contrast, timing as requirements, not polish. Do not claim a WCAG conformance level without a listed check. Sign-language space is a composition constraint. Unique sources: W3C WCAG 2.2 — https://www.w3.org/TR/WCAG22/; W3C MAUR (media accessibility user requirements); FCC captioning rules (US broadcast/online, design). Fail-closed: no production activation, empty `allowed_tools`, no network, no plugins, no memory writes. See `sources/study/domain_knowledge.md`.
+
 ### Knowledge distillation sources (historical)
 
 WCAG 2.2, captioning and AD guidelines, Deaf/HoH review frameworks

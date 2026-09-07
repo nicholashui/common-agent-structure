@@ -28,6 +28,9 @@ Host role binding: `OrchestratorAgent (VA Domain Pack)`. Design-time VA table co
 
 Runs CrewAI/AutoGen/LangGraph DAG; retries, timeouts, fan-out/fan-in
 
+### Domain knowledge (research)
+Owns multi-agent hop graph and stop conditions, not craft output. ReAct is an execution loop. Hop budget required. Do not absorb director. Unique sources: Yao et al., ReAct, arXiv:2210.03629; Wooldridge, *An Introduction to MultiAgent Systems*; host `max_peer_hops` / fail-closed tools. Fail-closed: no production activation, empty `allowed_tools`, no network, no plugins, no memory writes. See `sources/study/domain_knowledge.md`.
+
 ### Knowledge distillation sources (historical)
 
 LangGraph + CrewAI + AutoGen patterns; Airflow/Temporal; PGA schedule templates

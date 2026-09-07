@@ -28,6 +28,9 @@ Host role binding: `CameraOperatorAgent (VA Domain Pack)`. Design-time VA table 
 
 Executes framing / focus / move per DoP intent
 
+### Domain knowledge (research)
+Executes camera moves; does not own lighting design. Operator craft is repeatable path, headroom, and horizon — distinct from DoP look. Handheld vs steadicam vs locked-off are procedures. Unique sources: ASC Manual — operating vs cinematography split; Brown, *Cinematography: Theory and Practice* — camera movement grammar; Malkiewicz & Mullen, *Cinematography* — practical operating. Fail-closed: no production activation, empty `allowed_tools`, no network, no plugins, no memory writes. See `sources/study/domain_knowledge.md`.
+
 ### Knowledge distillation sources (historical)
 
 SOC archive; Steadicam workshop reels; focus-pull telemetry

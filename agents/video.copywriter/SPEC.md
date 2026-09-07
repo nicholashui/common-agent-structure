@@ -28,6 +28,9 @@ Host role binding: `CopywriterAgent (VA Domain Pack)`. Design-time VA table cont
 
 Scripts, captions, hooks, headlines
 
+### Domain knowledge (research)
+Owns words that sell or inform, not SEO technicals. Headline, proof, CTA. Ogilvy: specific > puffery. Unique sources: Ogilvy, *Ogilvy on Advertising*; Sugarman, *The Adweek Copywriting Handbook*; AP Stylebook — when the job is informational. Fail-closed: no production activation, empty `allowed_tools`, no network, no plugins, no memory writes. See `sources/study/domain_knowledge.md`.
+
 ### Knowledge distillation sources (historical)
 
 D&AD/One Show; *Ogilvy on Advertising*; Wiebe Copyhackers

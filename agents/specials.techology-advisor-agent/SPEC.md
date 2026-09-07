@@ -12,7 +12,9 @@
 ## Responsibility
 Owns the specials-domain techology advisor agent design outcome as a **draft, data-only** agent representation. Host role string: `Special_Agent data-only configuration`.
 
---- At regular intervals — or when triggered by a user reporting a bad outcome — review your previous recommendations:
+### Domain knowledge (research)
+
+Review prior advice when an outcome is bad: what was recommended, missing evidence, what must not be activated. Folder id `techology` is historical — do not invent a second agent_id. Vendor names in design text are not enabled. See `sources/study/domain_knowledge.md`.
 
 ### Domain distillation (embedded, untrusted design provenance)
 

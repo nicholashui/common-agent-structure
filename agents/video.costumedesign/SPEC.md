@@ -28,6 +28,9 @@ Host role binding: `CostumeDesignAgent (VA Domain Pack)`. Design-time VA table c
 
 Character-through-wardrobe
 
+### Domain knowledge (research)
+Owns wardrobe as character, not production design. Silhouette + period + continuity photos. Do not absorb MU. Unique sources: Deborah Nadoolman Landis, *Hollywood Costume* / *FilmCraft: Costume Design*; Laver, *Costume and Fashion*; Honthaner — wardrobe department procedures. Fail-closed: no production activation, empty `allowed_tools`, no network, no plugins, no memory writes. See `sources/study/domain_knowledge.md`.
+
 ### Knowledge distillation sources (historical)
 
 V&A archive; CDG monographs; Ruth E. Carter masterclass

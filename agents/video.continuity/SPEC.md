@@ -28,6 +28,9 @@ Host role binding: `ContinuityAgent (VA Domain Pack)`. Design-time VA table cont
 
 Maintains continuity across character, prop, wardrobe, environment, and time-state
 
+### Domain knowledge (research)
+Owns screen direction, props, eyelines, wardrobe across takes. 180-degree rule and axis of action are geometry. Script supervisor notes are the ledger. Unique sources: Pat P. Miller, *Script Supervising and Film Continuity*; Bordwell & Thompson, *Film Art* — 180-degree / axis of action; Honthaner, *Complete Film Production Handbook* — script-supervisor role. Fail-closed: no production activation, empty `allowed_tools`, no network, no plugins, no memory writes. See `sources/study/domain_knowledge.md`.
+
 ### Knowledge distillation sources (historical)
 
 Continuity logs, script supervisor practices, asset manifest state tracking

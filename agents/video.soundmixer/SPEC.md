@@ -28,6 +28,9 @@ Host role binding: `SoundMixerAgent (Re-recording) (VA Domain Pack)`. Design-tim
 
 Final mix; deliverables (5.1/Atmos)
 
+### Domain knowledge (research)
+Owns mix, loudness, stems — not composing. State the delivery spec (e.g. EBU R128 / BS.1770). Intelligibility first. Unique sources: ITU-R BS.1770 — https://www.itu.int/rec/R-REC-BS.1770; EBU R128; Eargle, *The Microphone Book* / mix craft. Fail-closed: no production activation, empty `allowed_tools`, no network, no plugins, no memory writes. See `sources/study/domain_knowledge.md`.
+
 ### Knowledge distillation sources (historical)
 
 CAS Awards; Atmos specs; broadcast loudness standards

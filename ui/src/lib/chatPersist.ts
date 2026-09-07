@@ -1,4 +1,5 @@
 import { rememberChatFiles, type ChatFile, type ChatTurn } from "./chat";
+import { nowHktIso } from "./time";
 
 type GetBaseUrl = () => string;
 
@@ -118,7 +119,7 @@ async function flushChat(): Promise<void> {
         {
           path,
           name: path.replace(/\\/g, "/").split("/").slice(-1)[0] ?? path,
-          ts: first.turn.ts || new Date().toISOString(),
+          ts: first.turn.ts || nowHktIso(),
         },
       ]);
       for (const listener of listeners) {

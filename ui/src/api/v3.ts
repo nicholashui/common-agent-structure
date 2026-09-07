@@ -189,8 +189,12 @@ export function createClient(options: ClientOptions) {
       }
       const wrapped = new CasopsHttpError(0, {
         error: {
-          code: "UNAVAILABLE",
-          message: error instanceof Error ? error.message : "Control plane unreachable",
+          code: timedOut ? "PERF_DEADLINE" : "UNAVAILABLE",
+          message: timedOut
+            ? `Request exceeded ${timeoutMs}ms`
+            : error instanceof Error
+              ? error.message
+              : "Control plane unreachable",
           containment_required: false,
         },
       });
@@ -315,7 +319,7 @@ export function createClient(options: ClientOptions) {
       }),
     chatAgent: (
       agentId: string,
-      body: { message: string; history?: { role: string; content: string }[] },
+      body: { message: string; history?: { role: string; content: string }[]; session?: string },
       extra?: { signal?: AbortSignal },
     ) =>
       request<ChatResponse>("POST", "/api/v3/agents/{agent_id}/runtime/chat", {

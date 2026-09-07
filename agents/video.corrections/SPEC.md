@@ -28,6 +28,9 @@ Host role binding: `CorrectionsAgent (VA Domain Pack)`. Design-time VA table con
 
 Coordinates post-publication fixes and correction disclosures
 
+### Domain knowledge (research)
+Coordinates post-publication fixes and correction disclosures. A correction is a public record: what was wrong, what is true now, where it ran. This is journalism/QC disclosure, not Murch cutting. Unique sources: Kovach & Rosenstiel, *The Elements of Journalism* — corrections as accountability; IFCN Code of Principles — https://www.ifcncodeofprinciples.poynter.org/; SPJ Code of Ethics — minimize harm; acknowledge mistakes. Fail-closed: no production activation, empty `allowed_tools`, no network, no plugins, no memory writes. See `sources/study/domain_knowledge.md`.
+
 ### Knowledge distillation sources (historical)
 
 Corrections workflows, retraction and update policies, version tracking

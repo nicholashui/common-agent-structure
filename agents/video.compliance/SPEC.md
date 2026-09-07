@@ -28,6 +28,9 @@ Host role binding: `ComplianceAgent (Legal) (VA Domain Pack)`. Design-time VA ta
 
 FTC, HIPAA, GDPR, IP, AI-likeness clearance
 
+### Domain knowledge (research)
+Owns mapped obligations (privacy, ads, kids), not ethics essays. Name the regime (GDPR, COPPA, DSA). Do not fake a certification. Unique sources: GDPR — https://eur-lex.europa.eu/eli/reg/2016/679/oj; COPPA — https://www.ftc.gov/legal-library/browse/rules/childrens-online-privacy-protection-rule-coppa; DSA — https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32022R2065. Fail-closed: no production activation, empty `allowed_tools`, no network, no plugins, no memory writes. See `sources/study/domain_knowledge.md`.
+
 ### Knowledge distillation sources (historical)
 
 Bar CLE; FTC guides; EU AI Act; GDPR/CCPA; SAG-AFTRA AI rider

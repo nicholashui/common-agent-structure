@@ -131,6 +131,127 @@ def test_two_chats_reuse_one_session_and_pid(tmp_path: Path, monkeypatch: pytest
     supervisor.stop_all()
 
 
+def test_empty_history_http_chat_resets_primed_acp_session(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    """Clear Chat sends history=[] on the next POST; that must not keep the old Grok session."""
+    monkeypatch.setenv("CASOPS_ACP_COMMAND", json.dumps([sys.executable, str(FAKE)]))
+    monkeypatch.setenv("CASOPS_CHAT_ADAPTER", "grok_acp")
+    _mini_agent(tmp_path, "demo.agent")
+    llm = LlmRouter(
+        settings=LlmSettings(path=tmp_path / "llm.json", default_llm="local_deterministic", chat_adapter="grok_acp")
+    )
+    runtime = Runtime(
+        agents_root=tmp_path / "agents",
+        store=InvariantStore.with_host_defaults(),
+        llm=llm,
+        acp=AcpSupervisor(agents_root=tmp_path / "agents", home_root=tmp_path / "acp"),
+    )
+    client = TestClient(create_control_plane(agents_root=tmp_path / "agents", llm=llm, runtime=runtime))
+    try:
+        first = client.post(
+            "/api/v3/agents/demo.agent/runtime/chat",
+            headers=MUTATION,
+            json={"message": "first-thread", "history": []},
+        )
+        assert first.status_code == 200
+        first_session = first.json()["context"]["session_id"]
+        assert first_session
+        second = client.post(
+            "/api/v3/agents/demo.agent/runtime/chat",
+            headers=MUTATION,
+            json={"message": "cleared-thread", "history": []},
+        )
+        assert second.status_code == 200
+        second_session = second.json()["context"]["session_id"]
+        assert second_session
+        assert second_session != first_session
+        assert "cleared-thread" in second.json()["reply"]
+        assert second.json()["memory_writes"] == []
+    finally:
+        if runtime.acp:
+            runtime.acp.stop_all()
+
+
+def test_operator_session_change_resets_acp_even_with_history(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.setenv("CASOPS_ACP_COMMAND", json.dumps([sys.executable, str(FAKE)]))
+    _mini_agent(tmp_path, "demo.agent")
+    supervisor = AcpSupervisor(agents_root=tmp_path / "agents", home_root=tmp_path / "acp")
+    first = supervisor.chat(
+        "demo.agent",
+        message="loaded-old",
+        system="sys",
+        history=[],
+        task_id="t1",
+        session="sess-a",
+    )
+    second = supervisor.chat(
+        "demo.agent",
+        message="loaded-new",
+        system="sys",
+        history=[{"role": "user", "content": "prior from file"}],
+        task_id="t2",
+        session="sess-b",
+    )
+    try:
+        assert first["session_id"] != second["session_id"]
+        assert "loaded-new" in second["text"]
+        assert "prior from file" in second["text"]
+    finally:
+        supervisor.stop_all()
+
+
+def test_ensure_reaps_dead_process_before_respawn(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.setenv("CASOPS_ACP_COMMAND", json.dumps([sys.executable, str(FAKE)]))
+    monkeypatch.setenv("CASOPS_ACP_LOG_ROOT", str(tmp_path / "acp-logs"))
+    _mini_agent(tmp_path, "demo.agent")
+    supervisor = AcpSupervisor(agents_root=tmp_path / "agents", home_root=tmp_path / "acp")
+    first = supervisor.ensure("demo.agent")
+    old_pid = first.proc.pid
+    old_debug = first.debug
+    assert old_debug is not None
+    first.proc.kill()
+    first.proc.wait(timeout=5)
+    second = supervisor.ensure("demo.agent")
+    try:
+        assert second.proc.pid != old_pid
+        assert second.proc.poll() is None
+        assert second.session_id
+        with pytest.raises((ValueError, OSError)):
+            old_debug.event("after-reap")
+        view = supervisor.adapter_view("demo.agent", selected="grok_acp")
+        assert view["pid"] == second.proc.pid
+        assert view["session_id"] == second.session_id
+    finally:
+        supervisor.stop_all()
+
+
+def test_adapter_get_does_not_spawn_process(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.setenv("CASOPS_ACP_COMMAND", json.dumps([sys.executable, str(FAKE)]))
+    monkeypatch.setenv("CASOPS_CHAT_ADAPTER", "grok_acp")
+    _mini_agent(tmp_path, "demo.agent")
+    llm = LlmRouter(
+        settings=LlmSettings(path=tmp_path / "llm.json", default_llm="local_deterministic", chat_adapter="grok_acp")
+    )
+    runtime = Runtime(
+        agents_root=tmp_path / "agents",
+        store=InvariantStore.with_host_defaults(),
+        llm=llm,
+        acp=AcpSupervisor(agents_root=tmp_path / "agents", home_root=tmp_path / "acp"),
+    )
+    client = TestClient(create_control_plane(agents_root=tmp_path / "agents", llm=llm, runtime=runtime))
+    try:
+        adapter = client.get("/api/v3/agents/demo.agent/runtime/adapter").json()
+        assert adapter["kind"] == "grok_acp"
+        assert "pid" in adapter
+        assert "session_id" in adapter
+        assert adapter["pid"] is None
+        assert adapter["session_id"] is None
+        assert runtime.acp is not None
+        assert runtime.acp.handles == {}
+    finally:
+        if runtime.acp:
+            runtime.acp.stop_all()
+
+
 def test_two_agents_use_separate_homes(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.setenv("CASOPS_ACP_COMMAND", json.dumps([sys.executable, str(FAKE)]))
     _mini_agent(tmp_path, "alpha")

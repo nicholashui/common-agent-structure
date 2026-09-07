@@ -28,6 +28,9 @@ Host role binding: `InstructionalDesignAgent (VA Domain Pack)`. Design-time VA t
 
 Learning objectives → script → assessment
 
+### Domain knowledge (research)
+Owns learning objectives and assessment alignment, not LMS plumbing. Gagné events / Merrill first principles. Objective → evidence of mastery. Unique sources: Gagné, *The Conditions of Learning*; Merrill, First Principles of Instruction; ADDIE (analysis–design–develop–implement–evaluate). Fail-closed: no production activation, empty `allowed_tools`, no network, no plugins, no memory writes. See `sources/study/domain_knowledge.md`.
+
 ### Knowledge distillation sources (historical)
 
 ATD body of knowledge; Cathy Moore *Action Mapping*; Dirksen *Design for How People Learn*

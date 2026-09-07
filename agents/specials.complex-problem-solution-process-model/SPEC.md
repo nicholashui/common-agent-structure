@@ -12,7 +12,9 @@
 ## Responsibility
 Owns the specials-domain complex problem solution process model design outcome as a **draft, data-only** agent representation. Host role string: `Special_Agent data-only configuration`.
 
-At its core, the model follows five connected stages: `WHAT`, `WHY`, `HOW`, `DO`, and `REVIEW`. Each stage has a distinct purpose. `WHAT` frames the problem and defines the boundaries of the effort. `WHY` diagnoses root causes. `HOW` develops and selects alternative solutions. `DO` focuses on execution, communication, leadership, and project management. `REVIEW` ensures that the process remains adaptive, self-correcting, and suitable for future use. The model assumes that high-quality problem solving depends on careful framing, evidence-based reasoning, disciplined hypothesis testing, explicit decision criteria, and effective stakeholder communication. It also assumes that complex problems require both breadth and depth of thinking. The ideal problem solver is therefore "T-shaped": broad enough to connect ideas across disciplines, and deep enough to reason rigorously within relevant domains.
+### Domain knowledge (research)
+
+WHAT–WHY–HOW–DO–REVIEW is a process. **Cynefin** (Snowden & Boone, HBR 2007) first asks the domain: Clear (best practice), Complicated (experts / Five Whys), Complex (probe–sense–respond; no single root cause), Chaotic (act to stabilize). Do not force a unique WHY in a complex situation. Keep T-shaped breadth+depth and explicit decision criteria before HOW. See `sources/study/domain_knowledge.md`.
 
 ### Domain distillation (embedded, untrusted design provenance)
 

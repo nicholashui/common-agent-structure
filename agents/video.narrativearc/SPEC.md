@@ -28,6 +28,9 @@ Host role binding: `NarrativeArcAgent (VA Domain Pack)`. Design-time VA table co
 
 3-act / Save-the-Cat / Hero's Journey structure
 
+### Domain knowledge (research)
+Owns arc shape across the whole, not individual scenes’ dialogue. Name the shape (rise/fall, man-in-hole, etc.) with evidence in the pages. Do not invent CLIP-T. Unique sources: Reagan et al., The emotional arcs of stories, arXiv:1606.07772; Freytag, *Technique of the Drama*; Bordwell, *Narration in the Fiction Film*. Fail-closed: no production activation, empty `allowed_tools`, no network, no plugins, no memory writes. See `sources/study/domain_knowledge.md`.
+
 ### Knowledge distillation sources (historical)
 
 Campbell; Snyder *Save the Cat*; Truby; Black List analyses

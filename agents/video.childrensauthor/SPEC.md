@@ -28,6 +28,9 @@ Host role binding: `ChildrensAuthorAgent (VA Domain Pack)`. Design-time VA table
 
 Age-appropriate story + safety
 
+### Domain knowledge (research)
+Owns age-band language, picture-book or kids’-video pacing. Developmental load (vocabulary, fear, runtime) is a constraint. COPPA/child-directed rules escalate to legal. Do not diagnose. Unique sources: Piaget, *The Language and Thought of the Child*; Nodelman, *Words About Pictures*; COPPA (US) — https://www.ftc.gov/legal-library/browse/rules/childrens-online-privacy-protection-rule-coppa — design fail-closed. Fail-closed: no production activation, empty `allowed_tools`, no network, no plugins, no memory writes. See `sources/study/domain_knowledge.md`.
+
 ### Knowledge distillation sources (historical)
 
 Caldecott/Geisel winners; Mo Willems/Donaldson; ECE lit

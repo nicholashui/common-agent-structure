@@ -9,15 +9,13 @@
     "Agentic Graph",
     "Agent Skills"
   ],
-  "bindings": [
-    "agent_loop_v3",
-    "complex_problem_solution_process_model"
-  ],
+  "bindings": [],
   "entrypoint": {
     "type": "host_agent_runner",
     "agent_id": "video.orchestrator"
   },
   "fail_closed": true,
   "generated_by": "improve_agents_from_plan_v1.py",
-  "generated_at": "2026-07-30T14:45:34Z"
+  "generated_at": "2026-07-30T14:45:34Z",
+  "note": "Source special_skills are not enabled on baseline_safe; host resolve_skills reads skills/bindings.json bindings=[]."
 }

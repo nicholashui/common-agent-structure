@@ -28,6 +28,9 @@ Host role binding: `FinanceAgent (VA Domain Pack)`. Design-time VA table content
 
 Accurate market / earnings / token facts
 
+### Domain knowledge (research)
+Owns production cost/actuals language, not creative lock. AICP-style bid vs actuals. Do not invent invoices. Distinct from costoptimizer (unit economics of gen). Unique sources: AICP bid practices (US commercial, design); Honthaner — production accounting chapter; GAAP vs job-cost (design) — do not claim an audit. Fail-closed: no production activation, empty `allowed_tools`, no network, no plugins, no memory writes. See `sources/study/domain_knowledge.md`.
+
 ### Knowledge distillation sources (historical)
 
 CFA curriculum; SEC marketing rule; Bloomberg/Refinitiv feeds

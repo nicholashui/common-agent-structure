@@ -28,6 +28,9 @@ Host role binding: `CompetitorIntelligenceAgent (VA Domain Pack)`. Design-time V
 
 What competitors are shipping
 
+### Domain knowledge (research)
+Owns structured rival comparison under ethics, not hacking. Porter forces as a frame. SCIP: no pretexting. Public sources only; this host fetches none. Unique sources: Porter, *Competitive Strategy*; SCIP code of ethics (design); Heuer, *Psychology of Intelligence Analysis* — ACH. Fail-closed: no production activation, empty `allowed_tools`, no network, no plugins, no memory writes. See `sources/study/domain_knowledge.md`.
+
 ### Knowledge distillation sources (historical)
 
 Meta Ad Library; TikTok Top Ads; YouTube scrape; release trackers

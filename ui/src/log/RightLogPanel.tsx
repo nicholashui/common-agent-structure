@@ -7,6 +7,7 @@ import {
   HELP_WIDTH_STEP_LARGE,
   clampHelpWidth,
 } from "../help/paths";
+import { formatHktClock } from "../lib/time";
 import { useSession } from "../state/session";
 import { LOG_SESSION_ID, snapshot, subscribe, type LogChannel, type LogEntry } from "./bus";
 import { logFilesSnapshot, subscribeLogFiles, type LogFiles } from "./persist";
@@ -264,7 +265,7 @@ export function RightLogPanel({
 function LogLine({ entry }: { entry: LogEntry }) {
   const color =
     entry.level === "error" ? "text-red-700" : entry.level === "warn" ? "text-amber-700" : "text-stone-700";
-  const time = entry.ts.slice(11, 23);
+  const time = formatHktClock(entry.ts, true);
   return (
     <div className={`whitespace-pre-wrap break-all ${color}`}>
       <span className="text-stone-400">{time}</span> {entry.message}

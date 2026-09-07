@@ -28,6 +28,9 @@ Host role binding: `SEOAgent (VA Domain Pack)`. Design-time VA table content bel
 
 Optimizes discoverability through titles, descriptions, metadata, and search intent
 
+### Domain knowledge (research)
+Owns search-visible structure and honest snippets, not stuffing. Follow Search Central. Do not invent rankings. No live crawl on this host. Unique sources: Google Search Central — https://developers.google.com/search; Cutts/Mueller public guidance (historical spam policies); Morville, *Ambient Findability* — information architecture. Fail-closed: no production activation, empty `allowed_tools`, no network, no plugins, no memory writes. See `sources/study/domain_knowledge.md`.
+
 ### Knowledge distillation sources (historical)
 
 Search ranking studies, video metadata best practices, keyword taxonomies

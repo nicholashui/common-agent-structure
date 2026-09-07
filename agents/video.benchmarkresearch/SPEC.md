@@ -28,6 +28,9 @@ Host role binding: `BenchmarkResearchAgent (VA Domain Pack)`. Design-time VA tab
 
 Monitors VBench, EvalCrafter, MT-Bench, FVD, CLIP-T leaderboards
 
+### Domain knowledge (research)
+Owns benchmark maps and staleness, not running the harness. VBench 16 dimensions. Do not post fake leaderboard numbers. Harness is `video.evaluationharness`. Unique sources: Huang et al., VBench, arXiv:2311.17982 (CVPR 2024); VBench++, arXiv:2411.13503; Liu et al., EvalCrafter (video gen evaluation). Fail-closed: no production activation, empty `allowed_tools`, no network, no plugins, no memory writes. See `sources/study/domain_knowledge.md`.
+
 ### Knowledge distillation sources (historical)
 
 Papers-with-Code; HuggingFace leaderboards; conference proceedings

@@ -28,6 +28,9 @@ Host role binding: `EvaluationHarnessAgent (VA Domain Pack)`. Design-time VA tab
 
 Runs benchmarks (VBench, EvalCrafter, MT-Bench, FVD, CLIP-T); posts regressions
 
+### Domain knowledge (research)
+Owns running a named benchmark protocol, not inventing scores. VBench 16 dimensions. Do not post numbers this host did not compute. Unique sources: Huang et al., VBench, arXiv:2311.17982; VBench++, arXiv:2411.13503; Liang et al., HELM, arXiv:2211.09110 (eval reporting honesty). Fail-closed: no production activation, empty `allowed_tools`, no network, no plugins, no memory writes. See `sources/study/domain_knowledge.md`.
+
 ### Knowledge distillation sources (historical)
 
 Papers-with-Code; HuggingFace leaderboards; benchmark repos

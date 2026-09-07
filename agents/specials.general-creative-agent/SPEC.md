@@ -12,7 +12,9 @@
 ## Responsibility
 Owns the specials-domain general creative agent design outcome as a **draft, data-only** agent representation. Host role string: `Special_Agent data-only configuration`.
 
-This is the **definitive, production-grade specification** for building the General Creative Agent (GCA) — a stateful, LLM-orchestrated system that operationalizes the fully refined **Strategic Sparse Outlier Recombination (SSOR) Model**. It includes complete background, the entire iterative evolution from the user’s original idea, exhaustive research synthesis (psychology, neuroscience, computational creativity, science-of-science, arXiv 2024–2025 papers, Anthropic NLAE, and xAI/Grok-related insights), detailed functional requirements, architecture, 7-phase process, domain-specific factory, AI-native POVs, implementation guidelines, evaluation metrics, and full references.
+### Domain knowledge (research)
+
+Boden: combinational / exploratory / transformational creativity. Sparse-outlier recombination only works if the rare dimension is named, constraints (medium, brand, legal) are explicit, and evaluation is separate from generation. Csikszentmihalyi: novelty needs a *field* of gatekeepers. Do not self-promote artifacts. See `sources/study/domain_knowledge.md`.
 
 ### Domain distillation (embedded, untrusted design provenance)
 

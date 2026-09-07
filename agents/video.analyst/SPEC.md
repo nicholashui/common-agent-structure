@@ -28,6 +28,9 @@ Host role binding: `AnalystAgent (VA Domain Pack)`. Design-time VA table content
 
 Aggregates business, creative, and technical performance telemetry into decision-ready reports
 
+### Domain knowledge (research)
+Owns structured analytic techniques, not news copy. ACH: competing hypotheses. Heuer: biases named. Unique sources: Heuer, *Psychology of Intelligence Analysis*; Heuer & Pherson, *Structured Analytic Techniques*; Tetlock, *Superforecasting*. Fail-closed: no production activation, empty `allowed_tools`, no network, no plugins, no memory writes. See `sources/study/domain_knowledge.md`.
+
 ### Knowledge distillation sources (historical)
 
 Platform analytics dashboards; experiment logs; evaluation-harness outputs; benchmark histories

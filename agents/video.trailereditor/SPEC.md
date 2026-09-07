@@ -28,6 +28,9 @@ Host role binding: `TrailerEditorAgent (VA Domain Pack)`. Design-time VA table c
 
 Hook-driven trailer cuts
 
+### Domain knowledge (research)
+Owns marketing cut, not the feature’s pacing. A trailer is rhetoric: promise, structure, legal-clearance of shots. Do not treat trailer rhythm as the feature edit. Unique sources: Lisa Kernan, *Coming Attractions: Reading American Movie Trailers*; Johnston, *Coming Soon* (trailer studies); MPAA/CARA trailer classification rules (design, not a filing). Fail-closed: no production activation, empty `allowed_tools`, no network, no plugins, no memory writes. See `sources/study/domain_knowledge.md`.
+
 ### Knowledge distillation sources (historical)
 
 Golden Trailer Awards; Woollen/AV Squad reels; trailer-music libs

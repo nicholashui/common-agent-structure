@@ -28,6 +28,9 @@ Host role binding: `AudienceSimAgent (VA Domain Pack)`. Design-time VA table con
 
 Simulates audience preference, engagement, and drop-off
 
+### Domain knowledge (research)
+Owns simulated viewer segments and predicted friction, not the cut. A persona has a knowledge/taste state and a denominator. Do not invent Nielsen numbers. Unique sources: Katz, Blumler, Gurevitch — uses and gratifications; Napoli, *Audience Evolution*; Ebbinghaus — memory/retention as a curve, unmeasured here. Fail-closed: no production activation, empty `allowed_tools`, no network, no plugins, no memory writes. See `sources/study/domain_knowledge.md`.
+
 ### Knowledge distillation sources (historical)
 
 Pairwise preference datasets; retention studies; audience segmentation models

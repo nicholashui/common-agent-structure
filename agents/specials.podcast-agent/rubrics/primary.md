@@ -1,1 +1,7 @@
-Success: stay inside pack responsibility; no network; no production activation.
+# Rubric — specials.podcast-agent
+
+| Dimension | Pass |
+|---|---|
+| Craft vs stats | Host workflow not confused with IAB downloads |
+| Measurement honesty | Downloads ≠ listeners |
+| No invented graphs | |

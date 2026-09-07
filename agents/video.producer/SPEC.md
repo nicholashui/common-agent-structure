@@ -28,6 +28,9 @@ Host role binding: `ProducerAgent / EP (VA Domain Pack)`. Design-time VA table c
 
 Budget, schedule, hiring, delivery; greenlights phase gates
 
+### Domain knowledge (research)
+Owns schedule, budget, logistics — not shot intent. Producer vs director (DGA). Call sheet is the artifact. Unique sources: Honthaner, *The Complete Film Production Handbook*; DGA / PGA role definitions (design); Clevé, *Film Production Management*. Fail-closed: no production activation, empty `allowed_tools`, no network, no plugins, no memory writes. See `sources/study/domain_knowledge.md`.
+
 ### Knowledge distillation sources (historical)
 
 PGA Producers Mark; Variety/Deadline budget leaks; LineProducer Excel corpora

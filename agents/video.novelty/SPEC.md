@@ -28,6 +28,9 @@ Host role binding: `NoveltyAgent / Anti-Cliché Critic (VA Domain Pack)`. Design
 
 Flags tropes, clichés, over-fit outputs
 
+### Domain knowledge (research)
+Owns novelty assessment against a named baseline, not the generate step. Boden: combinational / exploratory / transformational. Torrance is unmeasured here. Unique sources: Boden, *The Creative Mind*; Torrance Tests of Creative Thinking (unmeasured on this host); Csikszentmihalyi — domain/field/individual. Fail-closed: no production activation, empty `allowed_tools`, no network, no plugins, no memory writes. See `sources/study/domain_knowledge.md`.
+
 ### Knowledge distillation sources (historical)
 
 TV Tropes; OpenSubtitles n-gram freq; corpus-novelty embeddings

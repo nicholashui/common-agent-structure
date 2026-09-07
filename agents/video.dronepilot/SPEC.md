@@ -28,6 +28,9 @@ Host role binding: `DronePilotAgent (VA Domain Pack)`. Design-time VA table cont
 
 Aerial cinematography (simulated or real)
 
+### Domain knowledge (research)
+Aerial camera paths under safety and airspace constraints. Height, speed, and parallax are numbers. Fail closed on unlicensed airspace. This host does not fly a drone. Unique sources: FAA 14 CFR Part 107 (US small UAS) — https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-107; EASA UAS regulations (design analog outside US); Aerial cinematography: altitude vs compression (Brown / ASC operating notes). Fail-closed: no production activation, empty `allowed_tools`, no network, no plugins, no memory writes. See `sources/study/domain_knowledge.md`.
+
 ### Knowledge distillation sources (historical)
 
 Philip Bloom tutorials; FAA Part 107; SkyPixel award reels

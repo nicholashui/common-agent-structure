@@ -28,6 +28,9 @@ Host role binding: `RealEstatePhotoAgent / 3D Scan (VA Domain Pack)`. Design-tim
 
 Wide interiors; Matterport scans
 
+### Domain knowledge (research)
+Owns accurate property depiction, not travel cine. NAR: no deceptive HDR that invents rooms. MLS photo rules as design. Unique sources: NAR Code of Ethics — https://www.nar.realtor; MLS photo representation rules (design, vary by board); HDR bracketing as technique, not a tool grant. Fail-closed: no production activation, empty `allowed_tools`, no network, no plugins, no memory writes. See `sources/study/domain_knowledge.md`.
+
 ### Knowledge distillation sources (historical)
 
 Mike Kelley tutorials; APALA refs

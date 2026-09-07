@@ -28,6 +28,9 @@ Host role binding: `ChannelManagerAgent (VA Domain Pack)`. Design-time VA table 
 
 Manages episodic or platform channel operations for cadence and metadata readiness
 
+### Domain knowledge (research)
+Owns channel mix and windowing, not festival strategy. Theatrical / SVOD / AVOD / linear windows. Do not invent subscriber counts. Unique sources: Ulin, *The Business of Media Distribution*; windowing practice (Vogel, *Entertainment Industry Economics*); platform delivery specs (IMF/ProRes as design, not a tool). Fail-closed: no production activation, empty `allowed_tools`, no network, no plugins, no memory writes. See `sources/study/domain_knowledge.md`.
+
 ### Knowledge distillation sources (historical)
 
 Channel publishing playbooks, metadata standards, scheduling ops

@@ -28,6 +28,9 @@ Host role binding: `LabelA&RAgent (VA Domain Pack)`. Design-time VA table conten
 
 Represents label and artist direction for music-specific workflows
 
+### Domain knowledge (research)
+Owns label/artist A&R direction for music workflows — not MPAA ratings. A&R: repertoire fit, artist brief, release timing. Distinct from `video.mpa` (feature ratings) and `video.musicsupervisor` (sync). Unique sources: Passman, *All You Need to Know About the Music Business*; Seabrook, *The Song Machine*; label release calendar as the artifact (design). Fail-closed: no production activation, empty `allowed_tools`, no network, no plugins, no memory writes. See `sources/study/domain_knowledge.md`.
+
 ### Knowledge distillation sources (historical)
 
 A&R playbooks, label release notes, artist brief archives

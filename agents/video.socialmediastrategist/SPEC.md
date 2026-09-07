@@ -28,6 +28,9 @@ Host role binding: `SocialMediaStrategistAgent (VA Domain Pack)`. Design-time VA
 
 Platform-native distribution, timing, trends
 
+### Domain knowledge (research)
+Owns platform-native format and community rules, not paid ROAS. Honeycomb: identity, conversations, sharing, presence, relationships, reputation, groups. ToS is a constraint. Unique sources: Kietzmann et al., Social media? Get serious! *Business Horizons* (2011) honeycomb; platform ToS as written constraints (design); Jenkins, *Convergence Culture*. Fail-closed: no production activation, empty `allowed_tools`, no network, no plugins, no memory writes. See `sources/study/domain_knowledge.md`.
+
 ### Knowledge distillation sources (historical)
 
 TikTok Creator Portal; Meta Marketing Science; Tubular/Sensor Tower

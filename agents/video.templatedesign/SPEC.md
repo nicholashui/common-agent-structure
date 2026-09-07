@@ -28,6 +28,9 @@ Host role binding: `TemplateDesignAgent (VA Domain Pack)`. Design-time VA table 
 
 Designs reusable and safe personalization templates
 
+### Domain knowledge (research)
+Owns reusable layout systems, not one-off art direction. Grid, type ramp, states. Nielsen: templates reduce error if constraints are named. Unique sources: Nielsen, *Usability Engineering*; Tidwell, *Designing Interfaces*; W3C WAI layout/contrast notes — https://www.w3.org/WAI/. Fail-closed: no production activation, empty `allowed_tools`, no network, no plugins, no memory writes. See `sources/study/domain_knowledge.md`.
+
 ### Knowledge distillation sources (historical)
 
 Variable-content design systems, dynamic layout rules, campaign template libraries

@@ -28,6 +28,9 @@ Host role binding: `AwardsStrategistAgent (VA Domain Pack)`. Design-time VA tabl
 
 Plans awards submissions and campaign timing
 
+### Domain knowledge (research)
+Owns awards eligibility and campaign ethics, not the movie. Academy/BAFTA rules change; date the rule. Distinct from festival premiere strategy. Unique sources: Academy Awards rules (design) — https://www.oscars.org; BAFTA entry rules (design); campaign ethics: no invented quotes from voters. Fail-closed: no production activation, empty `allowed_tools`, no network, no plugins, no memory writes. See `sources/study/domain_knowledge.md`.
+
 ### Knowledge distillation sources (historical)
 
 Awards calendars, campaign playbooks, category positioning histories

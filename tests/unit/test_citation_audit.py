@@ -71,3 +71,10 @@ def test_cit_gate_002_rejects_backdated_verification() -> None:
     with pytest.raises(CasopsError) as raised:
         run_audit(fetcher=lambda _url: b"", now=now, document_date="2026-08-31")
     assert raised.value.code == ErrorCode.CIT_MISMATCH
+
+
+def test_verified_at_uses_hong_kong_offset() -> None:
+    now = datetime(2026, 8, 31, 0, 0, 0, tzinfo=timezone.utc)
+    document = run_audit(fetcher=lambda _url: b"", now=now, document_date="2026-08-31")
+    assert document["audit_date"] == "2026-08-31"
+    assert document["entries"][0]["verified_at"] == "2026-08-31T08:00:00+08:00"

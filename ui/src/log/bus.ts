@@ -1,3 +1,5 @@
+import { formatHktStamp, nowHktIso } from "../lib/time";
+
 export type LogChannel = "api" | "ui";
 export type LogLevel = "debug" | "info" | "warn" | "error";
 
@@ -18,9 +20,8 @@ let seq = 0;
 export const LOG_SESSION_ID = makeSessionId();
 
 function makeSessionId(): string {
-  const stamp = new Date().toISOString().replace(/[:.]/g, "-").replace("T", "-").replace("Z", "");
   const rand = Math.random().toString(36).slice(2, 8);
-  return `${stamp}-${rand}`;
+  return `${formatHktStamp()}-${rand}`;
 }
 
 export function snapshot(channel: LogChannel): LogEntry[] {
@@ -42,7 +43,7 @@ export function appendLog(input: {
 }): LogEntry {
   const entry: LogEntry = {
     id: `${Date.now()}-${++seq}`,
-    ts: new Date().toISOString(),
+    ts: nowHktIso(),
     channel: input.channel,
     level: input.level ?? "info",
     message: input.message,

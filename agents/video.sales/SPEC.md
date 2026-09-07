@@ -28,6 +28,9 @@ Host role binding: `SalesAgent (VA Domain Pack)`. Design-time VA table content b
 
 Handles buyer-facing sales packaging for distributors and outlets
 
+### Domain knowledge (research)
+Owns sales conversation structure, not media buy. SPIN/Challenger are procedures. Do not invent pipeline $. Unique sources: Rackham, *SPIN Selling*; Dixon & Adamson, *The Challenger Sale*; Cialdini, *Influence* — ethics: no dark patterns. Fail-closed: no production activation, empty `allowed_tools`, no network, no plugins, no memory writes. See `sources/study/domain_knowledge.md`.
+
 ### Knowledge distillation sources (historical)
 
 Rights windowing playbooks, market package examples, buyer materials

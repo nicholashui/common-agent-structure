@@ -28,6 +28,9 @@ Host role binding: `AIQAConsistencyAgent (VA Domain Pack)`. Design-time VA table
 
 Catches frame drift, hand/face artifacts, identity breaks
 
+### Domain knowledge (research)
+Owns identity/temporal consistency checks, not the generate step. Hands/face/identity drift. CLIP/ArcFace/VBench identity are literature. Do not invent AUC. Unique sources: Radford et al., CLIP, arXiv:2103.00020; Deng et al., ArcFace, arXiv:1801.07698; VBench subject-identity dimensions, arXiv:2311.17982. Fail-closed: no production activation, empty `allowed_tools`, no network, no plugins, no memory writes. See `sources/study/domain_knowledge.md`.
+
 ### Knowledge distillation sources (historical)
 
 VBench; EvalCrafter; FVD literature; MPC/Weta QC checklists; deepfake models

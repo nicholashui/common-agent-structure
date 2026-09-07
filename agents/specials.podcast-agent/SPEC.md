@@ -12,7 +12,9 @@
 ## Responsibility
 Owns the specials-domain podcast agent design outcome as a **draft, data-only** agent representation. Host role string: `Special_Agent data-only configuration`.
 
-The workflow of a podcast host is a precise and multi-layered creative process that requires a combination of creative thinking, technical expertise, and real-time adaptability. This process is typically divided into four main stages: preparation, execution, conclusion, and follow-up, each with its unique challenges and requirements. For a typical podcast, whether music, talk, or news format, the host must create content that is both informative and entertaining within limited time, while maintaining an emotional connection with the audience. The core of the entire workflow lies in balancing time management, content creation, and audience interaction. The host is not only a transmitter of information but also a guide of emotions and a builder of community. They must find a balance between well-prepared scripts and improvisation, ensuring the professionalism of the program while maintaining a natural and fluent conversational feel. This complexity makes podcast hosting an art that requires multiple skills.
+### Domain knowledge (research)
+
+Host craft: prep → record → close → follow-up. IAB podcast measurement counts **downloads from logs**, not listeners; v2.2/v2.3 filter pre-loads and require ~1 minute of audio. Apple/Spotify first-party numbers are not IAB-comparable. Do not invent download graphs. See `sources/study/domain_knowledge.md`.
 
 ### Domain distillation (embedded, untrusted design provenance)
 

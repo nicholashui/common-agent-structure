@@ -16,8 +16,8 @@
       "dimensions": [
         {
           "id": "d1",
-          "name": "Prompt→output CLIP-T",
-          "description": "Prompt→output CLIP-T",
+          "name": "Prompt→output fidelity",
+          "description": "Prompt specifies subject, camera, light, and constraints. CLIP-T is a design prior, not a measured score on this host.",
           "weight": 0.3333,
           "threshold_hint": null,
           "score_min": 0,

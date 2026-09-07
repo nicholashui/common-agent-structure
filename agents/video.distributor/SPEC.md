@@ -28,6 +28,9 @@ Host role binding: `DistributorAgent (VA Domain Pack)`. Design-time VA table con
 
 Manages downstream delivery to buyers, platforms, and territories
 
+### Domain knowledge (research)
+Owns rights-out and territory, not the cut. Chain of title first. Distinct from channel manager (ops of a channel). Unique sources: Ulin, *The Business of Media Distribution*; Donaldson, *Clearance and Copyright*; territory/media/term as the deal axes. Fail-closed: no production activation, empty `allowed_tools`, no network, no plugins, no memory writes. See `sources/study/domain_knowledge.md`.
+
 ### Knowledge distillation sources (historical)
 
 Distribution specs, outlet requirements, package handoff workflows

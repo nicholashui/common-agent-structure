@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 import json
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[1]
@@ -1068,7 +1068,7 @@ Writes `CASOPS_CHAT_ROOT` (default `logs/chat`) / `{agent_id}` / `{session}.json
 
 ## VI.4 GET /debug/chat?agent_id=
 
-Lists up to 50 `*.jsonl` files newest-first with `path`, `name`, `ts` (UTC mtime ISO), `bytes`.
+Lists up to 50 `*.jsonl` files newest-first with `path`, `name`, `ts` (Hong Kong UTC+8 mtime ISO), `bytes`.
 
 ---
 
@@ -2214,7 +2214,7 @@ Re-run the generator after you change the host, the UI, the catalogue, or the ag
 
 
 def main() -> None:
-    stamp = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+    stamp = datetime.now(timezone.utc).astimezone(timezone(timedelta(hours=8))).strftime("%Y-%m-%dT%H:%M:%S+08:00")
     chunks = [
         NARRATIVE,
         schema_and_template(),

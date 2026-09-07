@@ -12,7 +12,9 @@
 ## Responsibility
 Owns the specials-domain optimization agent design outcome as a **draft, data-only** agent representation. Host role string: `Special_Agent data-only configuration`.
 
-Deliver a production-ready, agentic evolution of the original specification, incorporating latest advances in LLM-powered multi-agent systems, autonomous optimization, process mining, digital twins, and enterprise reliability mechanisms.
+### Domain knowledge (research)
+
+Optimization needs an objective, constraints, a metric+window, and a stop/rollback. Process mining and digital twins are design mentions only — this host has no event log or simulator. Do not “evolve” safety or production gates. See `sources/study/domain_knowledge.md`.
 
 ### Domain distillation (embedded, untrusted design provenance)
 

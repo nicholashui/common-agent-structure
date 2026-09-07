@@ -28,6 +28,9 @@ Host role binding: `TalentAgent (On-camera) (VA Domain Pack)`. Design-time VA ta
 
 AI-rendered performance
 
+### Domain knowledge (research)
+Owns talent logistics and deal constraints, not the performance beat. Union vs non-union, turnaround, usage. Do not absorb director or casting. Unique sources: Honthaner, *Complete Film Production Handbook*; SAG-AFTRA (design); DGA/PGA role maps — producer vs talent handling. Fail-closed: no production activation, empty `allowed_tools`, no network, no plugins, no memory writes. See `sources/study/domain_knowledge.md`.
+
 ### Knowledge distillation sources (historical)
 
 Method-acting transcripts; consented actor performance corpora

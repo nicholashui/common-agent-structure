@@ -28,6 +28,9 @@ Host role binding: `ArchiveResearchAgent (VA Domain Pack)`. Design-time VA table
 
 Historical / academic / archival deep search
 
+### Domain knowledge (research)
+Owns finding aids and rights-in-reuse questions, not mastering. OAIS: ingest, archival storage, access. Distinct from archivemaster. Unique sources: ISO 14721 OAIS; SAA *Principles of Archival Description* / DACS; FADGI still/motion guidelines (research vs master). Fail-closed: no production activation, empty `allowed_tools`, no network, no plugins, no memory writes. See `sources/study/domain_knowledge.md`.
+
 ### Knowledge distillation sources (historical)
 
 JSTOR, arXiv, PubMed, AP Archive, Getty, FOIA

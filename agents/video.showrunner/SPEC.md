@@ -28,6 +28,9 @@ Host role binding: `ShowrunnerAgent (VA Domain Pack)`. Design-time VA table cont
 
 Cross-episode arc, writers'-room orchestration
 
+### Domain knowledge (research)
+Owns series bible, room decisions, season arc — not a single shot. Writers’ room is a critique bus with a named closer. Episode vs season goals must not collide. Unique sources: Landau, *The TV Showrunner’s Roadmap*; Douglas, *Writing the TV Drama Series*; WGA MBA (design) — room credit/authority, not a membership grant. Fail-closed: no production activation, empty `allowed_tools`, no network, no plugins, no memory writes. See `sources/study/domain_knowledge.md`.
+
 ### Knowledge distillation sources (historical)
 
 WGA showrunner training; Sopranos/BB room transcripts; Mike Schur material

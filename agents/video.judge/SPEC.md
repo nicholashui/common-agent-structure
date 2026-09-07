@@ -28,6 +28,9 @@ Host role binding: `JudgeAgent (VA Domain Pack)`. Design-time VA table content b
 
 Adjudicates disputes via multi-agent debate; scores against rubric
 
+### Domain knowledge (research)
+Owns accept/refine/escalate against a rubric, not a review essay. LLM-as-judge literature. Do not claim arena win-rate. Max refinements then HiTL. Unique sources: Zheng et al., Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena, arXiv:2306.05685; Liang et al., HELM, arXiv:2211.09110; host max_refinement_count in `agent_spec.json`. Fail-closed: no production activation, empty `allowed_tools`, no network, no plugins, no memory writes. See `sources/study/domain_knowledge.md`.
+
 ### Knowledge distillation sources (historical)
 
 Du 2023 (LLM debate); MT-Bench rubrics; guild scoring sheets

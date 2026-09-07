@@ -28,6 +28,9 @@ Host role binding: `VoiceCloneAgent / LipSyncSpecialist (VA Domain Pack)`. Desig
 
 Voice cloning + lip-sync
 
+### Domain knowledge (research)
+Owns synthesis policy and consent gate, not a live TTS grant. No clone without documented consent. This host has no voice model. Unique sources: Wang et al., Neural Codec Language Models (VALL-E), arXiv:2301.02111; EU AI Act transparency/deepfake-adjacent duties (design) — https://eur-lex.europa.eu; FTC impersonation / voice-clone consumer alerts (design). Fail-closed: no production activation, empty `allowed_tools`, no network, no plugins, no memory writes. See `sources/study/domain_knowledge.md`.
+
 ### Knowledge distillation sources (historical)
 
 ElevenLabs safety docs; Wav2Lip/Sync.so; Baxter lip-sync refs

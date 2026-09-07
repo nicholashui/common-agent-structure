@@ -28,6 +28,9 @@ Host role binding: `LMSAgent (VA Domain Pack)`. Design-time VA table content bel
 
 Packages and deploys learning content to LMS environments
 
+### Domain knowledge (research)
+Owns packaging for an LMS (SCO/xAPI), not pedagogy. SCORM vs xAPI. This host has no LMS connector. Unique sources: ADL SCORM — https://adlnet.gov; xAPI (IEEE 9274 / Experience API); IMS Caliper (design). Fail-closed: no production activation, empty `allowed_tools`, no network, no plugins, no memory writes. See `sources/study/domain_knowledge.md`.
+
 ### Knowledge distillation sources (historical)
 
 SCORM/xAPI standards, LMS publishing workflows, completion-tracking schemas

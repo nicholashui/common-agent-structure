@@ -28,6 +28,9 @@ Host role binding: `PromptEngineerAgent / GeneratorOperator (VA Domain Pack)`. D
 
 Crafts prompts; steers Sora/Veo/Runway/Kling
 
+### Domain knowledge (research)
+Owns generation prompts as structured specs, not the model. Subject, camera, light, negatives. CLIP-T is a design prior, unmeasured. Vendors in Developer are not grants. Unique sources: Radford et al., CLIP, arXiv:2103.00020; Yang et al., OPRO, arXiv:2309.03409; Zhou et al., Learning to Prompt for Vision-Language Models (CoOp). Fail-closed: no production activation, empty `allowed_tools`, no network, no plugins, no memory writes. See `sources/study/domain_knowledge.md`.
+
 ### Knowledge distillation sources (historical)
 
 Karen X. Cheng/Trillo public sets; r/aivideo; Runway AIFF jury notes

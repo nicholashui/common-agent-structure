@@ -28,6 +28,9 @@ Host role binding: `ComedyWriterAgent (VA Domain Pack)`. Design-time VA table co
 
 Skits, parody, viral meme writing
 
+### Domain knowledge (research)
+Owns joke structure and comic premise, not the director’s coverage. Setup/payoff, rule of three, character-based vs one-liner. Taste is not a license to punch down — escalate harm. Unique sources: Vorhaus, *The Comic Toolbox*; John Vorhaus / sitcom structure notes; Dean, television comedy structure; Morreall, *Comic Relief* (philosophy of humor) — what the joke targets. Fail-closed: no production activation, empty `allowed_tools`, no network, no plugins, no memory writes. See `sources/study/domain_knowledge.md`.
+
 ### Knowledge distillation sources (historical)
 
 UCB/Groundlings manuals; SNL transcripts; Schur/Fey teaching

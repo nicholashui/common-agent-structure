@@ -28,6 +28,9 @@ Host role binding: `RetentionOptimizerAgent (VA Domain Pack)`. Design-time VA ta
 
 Tunes hook, pacing, structure for AVD/hold-rate
 
+### Domain knowledge (research)
+Owns drop-off hypotheses, not the edit lock. Retention is a curve with a denominator. Do not invent YouTube Studio graphs. Unique sources: Ebbinghaus forgetting curve (as analogy, not a measured score); YouTube/creator analytics definitions (design) — watch time vs unique viewers; Napoli, *Audience Evolution*. Fail-closed: no production activation, empty `allowed_tools`, no network, no plugins, no memory writes. See `sources/study/domain_knowledge.md`.
+
 ### Knowledge distillation sources (historical)
 
 YouTube Analytics benchmarks; TikTok retention curves; AudienceSim

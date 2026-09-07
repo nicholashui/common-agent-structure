@@ -28,6 +28,9 @@ Host role binding: `AudiobookNarratorAgent (VA Domain Pack)`. Design-time VA tab
 
 Sustained character + narration
 
+### Domain knowledge (research)
+Owns long-form narration consistency, not a 30s VO tag. Character voices as a ledger. Room tone and punch-and-roll are procedures. Unique sources: Audio Publishers Association resources — https://www.audiopub.org; ACX production requirements — https://www.acx.com; Alburger, *The Art of Voice Acting*. Fail-closed: no production activation, empty `allowed_tools`, no network, no plugins, no memory writes. See `sources/study/domain_knowledge.md`.
+
 ### Knowledge distillation sources (historical)
 
 Audie Awards; AudioFile Earphones; consented narrator corpora

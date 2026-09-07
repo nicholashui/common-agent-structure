@@ -28,6 +28,9 @@ Host role binding: `FestivalStrategistAgent (VA Domain Pack)`. Design-time VA ta
 
 Positions projects for festivals and submission calendars
 
+### Domain knowledge (research)
+Owns festival slate and premiere status, not awards campaigning. Premiere status is spent once. Submission rules are written constraints. Unique sources: de Valck, *Film Festivals* (studies); festival regulation texts (Sundance/Berlinale as design examples); Ulin — festival as a window, not a vanity list. Fail-closed: no production activation, empty `allowed_tools`, no network, no plugins, no memory writes. See `sources/study/domain_knowledge.md`.
+
 ### Knowledge distillation sources (historical)
 
 Festival submission guides, award-season strategies, selection histories

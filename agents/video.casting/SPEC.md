@@ -28,6 +28,9 @@ Host role binding: `CastingAgent (VA Domain Pack)`. Design-time VA table content
 
 Voice + likeness selection; audition simulation
 
+### Domain knowledge (research)
+Owns role briefs and candidate slates, not a celebrity wishlist. Brief: age band, language, union, availability. Likeness escalates to legal. Unique sources: SAG-AFTRA contracts (design) — https://www.sagaftra.org; Honthaner, *Complete Film Production Handbook* — casting; Breakdown / sides as the artifact, not a tool grant. Fail-closed: no production activation, empty `allowed_tools`, no network, no plugins, no memory writes. See `sources/study/domain_knowledge.md`.
+
 ### Knowledge distillation sources (historical)
 
 CSA Artios archive; SAG-AFTRA AI rider; consented voice-actor corpora

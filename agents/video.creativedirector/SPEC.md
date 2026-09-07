@@ -28,6 +28,9 @@ Host role binding: `CreativeDirectorAgent (VA Domain Pack)`. Design-time VA tabl
 
 Campaign concept; cross-discipline taste
 
+### Domain knowledge (research)
+Owns campaign idea and brand-story lock, not DoP lighting. Idea must survive three placements (hero, cutdown, still). Distinct from `video.director` shot intent. Unique sources: Aaker, *Building Strong Brands*; Ries & Trout, *Positioning*; Barry, *The Advertising Concept Book*. Fail-closed: no production activation, empty `allowed_tools`, no network, no plugins, no memory writes. See `sources/study/domain_knowledge.md`.
+
 ### Knowledge distillation sources (historical)
 
 Cannes Lions Grand Prix; D&AD Pencils; agency case studies

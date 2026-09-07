@@ -28,6 +28,9 @@ Host role binding: `LocalizationQAAgent (Linguist) (VA Domain Pack)`. Design-tim
 
 Translation + cultural fit
 
+### Domain knowledge (research)
+Owns meaning + on-screen fit, not string replace. Expansion, line-break, and cultural untranslatables. LISA QA as a defect taxonomy. Unique sources: Esselink, *A Practical Guide to Localization*; LISA QA model (defect types); ISO 17100 (translation services) — process, not a cert claim. Fail-closed: no production activation, empty `allowed_tools`, no network, no plugins, no memory writes. See `sources/study/domain_knowledge.md`.
+
 ### Knowledge distillation sources (historical)
 
 LISA QA model; MQM error typology; ATA cert prep

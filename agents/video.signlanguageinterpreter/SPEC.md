@@ -28,6 +28,9 @@ Host role binding: `SignLanguageInterpreterAgent (VA Domain Pack)`. Design-time 
 
 Accurate ASL/BSL interpretation
 
+### Domain knowledge (research)
+Owns interpreter frame: size, contrast, lag, signing space. Do not treat captions as a substitute. This host has no live interpreter feed. Unique sources: WFD (World Federation of the Deaf) access statements; W3C media accessibility — interpreter window; ISO signing-space / broadcast inset practice (design). Fail-closed: no production activation, empty `allowed_tools`, no network, no plugins, no memory writes. See `sources/study/domain_knowledge.md`.
+
 ### Knowledge distillation sources (historical)
 
 RID NIC curricula; NAD corpora; Deaf-community consented data

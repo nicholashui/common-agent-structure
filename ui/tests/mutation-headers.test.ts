@@ -1,4 +1,5 @@
 import { describe, expect, it } from "vitest";
+import { LONG_TIMEOUT_MS } from "../src/api/paths";
 import { createClient } from "../src/api/v3";
 import { MutationContractError } from "../src/api/types";
 import type { MutationContract } from "../src/api/types";
@@ -137,5 +138,53 @@ describe("mutation headers", () => {
     await expect(client.chatAgent("video.director", { message: "hello" }, { signal: controller.signal })).rejects.toMatchObject({
       name: "RequestAbortedError",
     });
+  });
+
+  it("maps a client deadline abort to PERF_DEADLINE not UNAVAILABLE", async () => {
+    const client = createClient({
+      getBaseUrl: () => "http://127.0.0.1:18080",
+      getMutation: () => ({
+        actor: "human_operator",
+        reason: "operator chat",
+        expectedParent: "none",
+        dryRun: true,
+      }),
+      fetchImpl: async (_url, init) =>
+        new Promise<Response>((_resolve, reject) => {
+          const fail = () => reject(new DOMException("signal is aborted without reason", "AbortError"));
+          if (init?.signal?.aborted) {
+            fail();
+            return;
+          }
+          init?.signal?.addEventListener("abort", fail, { once: true });
+        }),
+    });
+    await expect(client.request("GET", "/health", { timeoutMs: 20 })).rejects.toMatchObject({
+      name: "CasopsHttpError",
+      code: "PERF_DEADLINE",
+    });
+  });
+
+  it("keeps a transport throw as UNAVAILABLE", async () => {
+    const client = createClient({
+      getBaseUrl: () => "http://127.0.0.1:18080",
+      getMutation: () => ({
+        actor: "human_operator",
+        reason: "operator chat",
+        expectedParent: "none",
+        dryRun: true,
+      }),
+      fetchImpl: async () => {
+        throw new TypeError("Failed to fetch");
+      },
+    });
+    await expect(client.getHealth()).rejects.toMatchObject({
+      name: "CasopsHttpError",
+      code: "UNAVAILABLE",
+    });
+  });
+
+  it("keeps Chat/Run UI deadline longer than the 120s ACP RPC timeout", () => {
+    expect(LONG_TIMEOUT_MS).toBeGreaterThan(120_000);
   });
 });

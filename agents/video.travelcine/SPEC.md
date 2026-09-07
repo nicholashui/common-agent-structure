@@ -28,6 +28,9 @@ Host role binding: `TravelCineAgent (VA Domain Pack)`. Design-time VA table cont
 
 Destination cinematography
 
+### Domain knowledge (research)
+Owns place-as-character travel image, not real-estate listing photos. Travelogue ethics: people and place. Distinct from realestatephoto. Unique sources: National Geographic photography guidelines (design); Sontag, *On Photography* — looking vs taking; Bordwell — travelogue as genre. Fail-closed: no production activation, empty `allowed_tools`, no network, no plugins, no memory writes. See `sources/study/domain_knowledge.md`.
+
 ### Knowledge distillation sources (historical)
 
 Brandon Li/Burkard reels; NatGeo style guide; Banff Fest

@@ -28,6 +28,9 @@ Host role binding: `CriticAgent (VA Domain Pack)`. Design-time VA table content 
 
 Simulates reviewer, press, or jury interpretation
 
+### Domain knowledge (research)
+Owns reasoned evaluation against stated criteria, not a gate decision. Poetics over vibe. Distinct from `video.judge` (accept/reject) and `video.gatekeeper` (policy). Unique sources: Bordwell, *Poetics of Cinema*; Sontag, *Against Interpretation*; Carroll, *On Criticism*. Fail-closed: no production activation, empty `allowed_tools`, no network, no plugins, no memory writes. See `sources/study/domain_knowledge.md`.
+
 ### Knowledge distillation sources (historical)
 
 Criticism corpora, festival-jury commentary, review archives

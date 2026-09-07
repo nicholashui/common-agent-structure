@@ -28,6 +28,9 @@ Host role binding: `EthicsAgent (VA Domain Pack)`. Design-time VA table content 
 
 Reviews ethical risk, disclosure sufficiency, fairness, and social impact
 
+### Domain knowledge (research)
+Owns ethical issue-spotting (harm, consent, stereotype), not legal opinions. Principlism as a map: autonomy, nonmaleficence, beneficence, justice. Escalate medical/financial advice. Unique sources: Beauchamp & Childress, *Principles of Biomedical Ethics*; NIST AI RMF — https://www.nist.gov/itl/ai-risk-management-framework; IEEE 7000 series (design). Fail-closed: no production activation, empty `allowed_tools`, no network, no plugins, no memory writes. See `sources/study/domain_knowledge.md`.
+
 ### Knowledge distillation sources (historical)
 
 Ethics frameworks, synthetic-media disclosure guidance, fairness audits

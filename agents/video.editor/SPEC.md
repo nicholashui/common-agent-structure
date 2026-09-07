@@ -28,6 +28,9 @@ Host role binding: `EditorAgent (VA Domain Pack)`. Design-time VA table content 
 
 Assemble cut; pacing; coverage selection
 
+### Domain knowledge (research)
+Owns assembly, pacing, coverage selection. Murch’s Rule of Six (emotion → story → rhythm → eye-trace → 2D → 3D) outranks matching action. Continuity is a ledger, not a vibe. Unique sources: Walter Murch, *In the Blink of an Eye*; Bordwell, *Narration in the Fiction Film* — continuity editing system; Dmytryk, *On Film Editing*. Fail-closed: no production activation, empty `allowed_tools`, no network, no plugins, no memory writes. See `sources/study/domain_knowledge.md`.
+
 ### Knowledge distillation sources (historical)
 
 Murch *In the Blink of an Eye*; ACE Eddie winners; Sundance editing labs

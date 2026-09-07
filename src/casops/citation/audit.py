@@ -12,6 +12,7 @@ from casops.citation.inventory import spec_references
 from casops.contracts.canonical import canonical_dumps, sha256_json
 from casops.errors.codes import ErrorCode
 from casops.errors.exceptions import CasopsError
+from casops.time import as_hkt, isoformat_hkt
 
 SPEC_DOCUMENT_DATE = "2026-08-31"
 _STOP = frozenset("a an the of for to in on with and or by from as is are".split())
@@ -127,8 +128,8 @@ def run_audit(
     now: datetime | None = None,
     document_date: str = SPEC_DOCUMENT_DATE,
 ) -> dict[str, Any]:
-    clock = now or datetime.now(timezone.utc)
-    verified_at = clock.replace(microsecond=0).isoformat().replace("+00:00", "Z")
+    clock = as_hkt(now or datetime.now(timezone.utc)).replace(microsecond=0)
+    verified_at = isoformat_hkt(clock)
     audit_date = clock.date().isoformat()
     # CIT-GATE-002: do not backdate. If verification is after the spec cutoff, record it.
     if audit_date < document_date:

@@ -1,13 +1,5 @@
 {
   "agent_id": "video.orchestrator",
-  "special_skills": [
-    {
-      "skill_id": "agent_loop_v3",
-      "path": "business/video/special_skills/agent_loop_v3/"
-    },
-    {
-      "skill_id": "complex_problem_solution_process_model",
-      "path": "business/video/special_skills/complex_problem_solution_process_model/"
-    }
-  ]
+  "bindings": [],
+  "special_skills": []
 }

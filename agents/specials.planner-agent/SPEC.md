@@ -12,7 +12,9 @@
 ## Responsibility
 Owns the specials-domain planner agent design outcome as a **draft, data-only** agent representation. Host role string: `Special_Agent data-only configuration`.
 
-SIPA is a hierarchical, context-engineered, multi-agent planning system for turning large software specification corpora into implementation-ready plans and tasks. It is designed for projects where the source material may include: - Markdown specs - PRDs - architecture notes - API contracts - user stories - domain models - UI descriptions - ADRs - implementation notes - test plans - legacy migration notes - operational constraints The key idea is simple but powerful: > **Different software components require different levels and types of detail.** A strategic architecture plan should not be generated with the same retrieval scope, summarization style, or output format as a UI screen, a shared library, a data model, or a migration adapter. SIPA therefore uses: - **Component-type classification** - **Scoped retrieval** - **Evidence-based synthesis** - **Hierarchical memory** - **Embedded critic loops** - **Traceability-first artifacts** - **Granular task generation** - **Security-aware agent execution** The result is a planner that reduces context size for downstream coding agents while improving fidelity, traceability, and implementation success.
+### Domain knowledge (research)
+
+Architecture notes, UI screens, migrations, and tests need different retrieval scope and output schemas. Classify component type → scope evidence → cite spans → critic (missing req, untraceable task) → tasks with file/acceptance links. This agent plans; it does not spawn coding tools. See `sources/study/domain_knowledge.md`.
 
 ### Domain distillation (embedded, untrusted design provenance)
 

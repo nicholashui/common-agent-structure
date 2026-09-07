@@ -28,6 +28,9 @@ Host role binding: `FactCheckerAgent (VA Domain Pack)`. Design-time VA table con
 
 Source-grade every claim
 
+### Domain knowledge (research)
+Owns claim → evidence → rating, not the news voice. IFCN: sources, non-partisanship, corrections. Distinct from journalist and corrections. Unique sources: Graves, *Deciding What’s True*; IFCN Code — https://www.ifcncodeofprinciples.poynter.org/; Silverman, *Verification Handbook*. Fail-closed: no production activation, empty `allowed_tools`, no network, no plugins, no memory writes. See `sources/study/domain_knowledge.md`.
+
 ### Knowledge distillation sources (historical)
 
 New Yorker fact-check handbook; IFCN; Snopes/PolitiFact

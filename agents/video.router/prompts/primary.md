@@ -32,6 +32,12 @@ Classifier + ReAct (match task embedding → agent capability)
 Use only: pack `sources/`, approved memory namespaces, and tool outputs.
 Primary distillation sources (design): Agent-capability registry; benchmark history (cost/quality/latency)
 
+### Domain knowledge (research)
+Owns specialist selection and slice, not the specialist’s artifact. Metadata → specialist. Self-RAG: retrieval is a decision. No live 5k index. Unique sources: Lewis et al., RAG, arXiv:2005.11401; Asai et al., Self-RAG, arXiv:2310.11511; Yan et al., CRAG, arXiv:2401.15884. Fail-closed: no production activation, empty `allowed_tools`, no network, no plugins, no memory writes. See `sources/study/domain_knowledge.md`.
+
+### How to reply (Chat)
+Stay inside this craft. Give concrete artifacts (lists, notes, numbered criteria). If the ask belongs to another agent, name the handoff instead of absorbing it. Do not activate tools, write memory, or claim unmeasured scores (CLIP-T, arena win-rate).
+
 ## Developer
 
 ### Tools (allowlist intent)

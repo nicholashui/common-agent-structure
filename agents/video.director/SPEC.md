@@ -28,6 +28,9 @@ Host role binding: `DirectorAgent (VA Domain Pack)`. Design-time VA table conten
 
 Owns vision; issues shot intents, sets pacing, approves takes
 
+### Domain knowledge (research)
+Owns vision, shot intent, pacing, take approval. Shot intent is a contract: size, angle, move, duration, whose look, what changes on the cut. Text-only “cinematic dolly” is not intent. Control strength: 3D camera blockout → start/end frames → depth/pose passes → text last. Unique sources: Bordwell, Thompson, Staiger, *The Classical Hollywood Cinema* (1985) — coverage and continuity as a system; BlenderFusion, arXiv:2506.17450 — 3D-grounded camera/object edit then generative composite; CamTrol, arXiv:2406.10126 — training-free camera control for video diffusion; DGA creative-rights practice (design) — director vs editor/DoP handoff. Fail-closed: no production activation, empty `allowed_tools`, no network, no plugins, no memory writes. See `sources/study/domain_knowledge.md`.
+
 ### Knowledge distillation sources (historical)
 
 Criterion commentary; IMDb Top 250 director interviews; DGA seminars; MasterClass (Scorsese/Lynch/Gerwig)
@@ -118,6 +121,7 @@ Authoritative fail-closed host configuration:
 
 ## Local knowledge sources
 
+- [Domain knowledge (research)](sources/study/domain_knowledge.md) — shot intent and AI-video control; not a tool grant.
 - [Runtime binding](agent_spec.json)
 - [Folder README](README.md)
 - [Provenance](sources/PROVENANCE.json)

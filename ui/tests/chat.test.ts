@@ -1,5 +1,6 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
 import {
+  buildChatBody,
   canRegenerate,
   clearThread,
   exportThreadJson,
@@ -34,10 +35,15 @@ describe("per-agent chat history", () => {
         ts: "2026-09-02T12:00:00.000Z",
       },
     ]);
+    const priorSession = loadThread("common.health").session;
     const cleared = clearThread("common.health");
     expect(cleared.turns).toEqual([]);
     expect(cleared.files[0].name).toBe("2026-09-02-12-00-00.jsonl");
     expect(loadThread("video.director").turns).toHaveLength(1);
+    const body = buildChatBody("hello after clear", cleared.turns, cleared.session);
+    expect(body.history).toEqual([]);
+    expect(body.session).toBe(cleared.session);
+    expect(body.session).not.toBe(priorSession);
   });
 });
 

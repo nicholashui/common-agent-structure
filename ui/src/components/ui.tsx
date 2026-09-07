@@ -1,4 +1,5 @@
 import type { ButtonHTMLAttributes, ReactNode } from "react";
+import { formatHktIso } from "../lib/time";
 
 const focus = "focus-visible:ring-2 focus-visible:ring-indigo-600 focus-visible:ring-offset-2";
 
@@ -67,7 +68,7 @@ export function AsOf({ date }: { date?: Date | null }) {
   if (!date) {
     return <p className="text-sm text-stone-500">as_of —</p>;
   }
-  return <p className="text-sm text-stone-500">as_of {date.toISOString()}</p>;
+  return <p className="text-sm text-stone-500">as_of {formatHktIso(date)}</p>;
 }
 
 export function PageHeader({

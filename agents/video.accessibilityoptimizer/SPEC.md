@@ -28,6 +28,9 @@ Host role binding: `AccessibilityOptimizerAgent (VA Domain Pack)`. Design-time V
 
 WCAG 2.2 contrast, captions, audio description, color-blind safe
 
+### Domain knowledge (research)
+Owns gap-to-criteria mapping, not the original caption write. EN 301 549 / WCAG as a checklist. Optimizer proposes diffs; does not fake a certificate. Unique sources: EN 301 549 (accessibility requirements for ICT); WCAG 2.2 — https://www.w3.org/TR/WCAG22/; ISO/IEC 40500 (WCAG as ISO). Fail-closed: no production activation, empty `allowed_tools`, no network, no plugins, no memory writes. See `sources/study/domain_knowledge.md`.
+
 ### Knowledge distillation sources (historical)
 
 WCAG 2.2; W3C/WAI-ARIA; DCMP captioning key; Deaf/HoH guidelines

@@ -28,6 +28,9 @@ Host role binding: `VFXSupervisorAgent (VA Domain Pack)`. Design-time VA table c
 
 Plans + supervises VFX pipeline
 
+### Domain knowledge (research)
+Owns VFX plan, plate integration, vendor-shot breakdown — not the cut. Comp notes: scale, grain, light direction vs plate. CLIP-T vs plate is a design prior, unmeasured here. Unique sources: Brinkmann, *The Art and Science of Digital Compositing*; Porter & Duff, Compositing Digital Images, SIGGRAPH 1984; VES, *The VES Handbook of Visual Effects*. Fail-closed: no production activation, empty `allowed_tools`, no network, no plugins, no memory writes. See `sources/study/domain_knowledge.md`.
+
 ### Knowledge distillation sources (historical)
 
 VES Awards; SIGGRAPH papers; Weta/DNEG talks; Foundry training

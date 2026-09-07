@@ -28,6 +28,9 @@ Host role binding: `AnimatorAgent (2D/3D) (VA Domain Pack)`. Design-time VA tabl
 
 Character motion, weight, timing
 
+### Domain knowledge (research)
+Owns 2D performance (squash, anticipation, arcs). Twelve principles are the checklist. Do not claim a live Toon Boom grant. Unique sources: Thomas & Johnston, *The Illusion of Life* — 12 principles; Richard Williams, *The Animator’s Survival Kit*; Blair, *Cartoon Animation*. Fail-closed: no production activation, empty `allowed_tools`, no network, no plugins, no memory writes. See `sources/study/domain_knowledge.md`.
+
 ### Knowledge distillation sources (historical)
 
 Williams *Animator's Survival Kit*; Annie Awards; Pixar SparkShorts; Blaise lessons

@@ -28,6 +28,9 @@ Host role binding: `MusicSupervisorAgent (VA Domain Pack)`. Design-time VA table
 
 Manages music fit, cue usage, rights awareness, and soundtrack packaging
 
+### Domain knowledge (research)
+Owns licensed music (sync + master), not original score. Two licenses: composition and master. Cue sheets. Distinct from `video.composer`. Unique sources: Passman, *All You Need to Know About the Music Business*; Seabrook, *The Song Machine* (industry context); cue-sheet / PRO practice (ASCAP/BMI design). Fail-closed: no production activation, empty `allowed_tools`, no network, no plugins, no memory writes. See `sources/study/domain_knowledge.md`.
+
 ### Knowledge distillation sources (historical)
 
 Music supervision notes, cue placement references, soundtrack release practice

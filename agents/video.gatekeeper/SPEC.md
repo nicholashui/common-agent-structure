@@ -28,6 +28,9 @@ Host role binding: `GateKeeperAgent (VA Domain Pack)`. Design-time VA table cont
 
 Phase transitions; verifies L1/L2/L3 criteria; signs C2PA
 
+### Domain knowledge (research)
+Owns go/no-go against a written rule set, not taste. Lewin gatekeeping: what passes. Cite the rule. Distinct from critic/judge. Unique sources: Lewin, Frontiers in Group Dynamics (gatekeeping); Shoemaker & Vos, *Gatekeeping Theory*; platform distribution policies as the written gate (design). Fail-closed: no production activation, empty `allowed_tools`, no network, no plugins, no memory writes. See `sources/study/domain_knowledge.md`.
+
 ### Knowledge distillation sources (historical)
 
 Stage-gate methodology; PGA Producers Mark; QMS audit

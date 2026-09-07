@@ -28,6 +28,9 @@ Host role binding: `WorldBuildingAgent (VA Domain Pack)`. Design-time VA table c
 
 Lore, rules, geography, factions, magic/tech systems
 
+### Domain knowledge (research)
+Owns consistent secondary-world rules, not a single scene’s blocking. Geography, institutions, and causal rules must not contradict. Novelty without a field is private play. Unique sources: Mark J. P. Wolf, *Building Imaginary Worlds*; Tolkien, *On Fairy-Stories*; Le Guin, *Steering the Craft* (consistency of invented terms). Fail-closed: no production activation, empty `allowed_tools`, no network, no plugins, no memory writes. See `sources/study/domain_knowledge.md`.
+
 ### Knowledge distillation sources (historical)
 
 Tolkien; *Worldbuilding* (Adams); fan-wikis; series-bible leaks

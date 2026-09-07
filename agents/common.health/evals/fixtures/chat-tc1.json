@@ -5,7 +5,7 @@
   "path": "chat",
   "honesty": "CHARACTERIZATION",
   "input": {
-    "message": "As common.health (HostHealthObserver), stay baseline_safe and respond to: common.health Mission Return a sealed host health snapshot of this CASOPS control plane and of this agent folder. Operators run it the same way as the template: compose-preview, then POST /api/v3/agents/common.health/runtime/run . Why this ",
+    "message": "What does your health snapshot include, and what must you not invent?",
     "history": []
   },
   "expect": {

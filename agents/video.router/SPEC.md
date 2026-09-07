@@ -28,6 +28,9 @@ Host role binding: `RouterAgent (VA Domain Pack)`. Design-time VA table content 
 
 Picks right specialist agent (and model) for each subtask
 
+### Domain knowledge (research)
+Owns specialist selection and slice, not the specialist’s artifact. Metadata → specialist. Self-RAG: retrieval is a decision. No live 5k index. Unique sources: Lewis et al., RAG, arXiv:2005.11401; Asai et al., Self-RAG, arXiv:2310.11511; Yan et al., CRAG, arXiv:2401.15884. Fail-closed: no production activation, empty `allowed_tools`, no network, no plugins, no memory writes. See `sources/study/domain_knowledge.md`.
+
 ### Knowledge distillation sources (historical)
 
 Agent-capability registry; benchmark history (cost/quality/latency)

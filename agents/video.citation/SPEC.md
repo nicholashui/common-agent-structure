@@ -28,6 +28,9 @@ Host role binding: `CitationAgent (VA Domain Pack)`. Design-time VA table conten
 
 Normalizes sources; grades primary/secondary/tertiary
 
+### Domain knowledge (research)
+Owns complete, consistent citations — not the fact check. Identifier > fluffy title. Do not invent DOIs or arXiv IDs. Unique sources: *Chicago Manual of Style*; DataCite metadata schema — https://datacite.org; CASOPS citation grades: do not mark [A] without audit. Fail-closed: no production activation, empty `allowed_tools`, no network, no plugins, no memory writes. See `sources/study/domain_knowledge.md`.
+
 ### Knowledge distillation sources (historical)
 
 Chicago, APA, AP style; SPJ grading; CRAAP test

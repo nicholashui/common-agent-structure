@@ -106,5 +106,6 @@ export const CLIENT_BINDINGS = {
 } as const;
 
 export const MUTATING = new Set<string>(["POST", "PUT", "PATCH", "DELETE"]);
-export const LONG_TIMEOUT_MS = 120_000;
+/** Chat/Run fetch deadline. Must exceed StdioAcpClient.timeout_s (120s) so host PERF_DEADLINE can return. */
+export const LONG_TIMEOUT_MS = 180_000;
 export const DEFAULT_TIMEOUT_MS = 30_000;

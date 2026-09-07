@@ -12,28 +12,9 @@
 ## Responsibility
 Owns the specials-domain agentic rag agent design outcome as a **draft, data-only** agent representation. Host role string: `Special_Agent data-only configuration`.
 
-** Initial Prompt to task.md from Creator **
-```
-# How to create backend services
-FIRST:
-Conduct a comprehensive analysis and research of the task.md file to fully understand all requirements, specifications, 
-and technical details. Based on this analysis, design and implement a complete backend server architecture that fulfills 
-all outlined requirements. The backend server must be created within a dedicated 'backend' folder structure. Ensure the 
-implementation includes proper API endpoints, database schema design, authentication mechanisms, error handling, logging 
-systems, and follows RESTful principles. Document all API endpoints with clear specifications, implement comprehensive 
-unit and integration tests, and verify that the server handles all edge cases and scalability requirements mentioned in 
-task.md.
-THEN:
-Configure the application to integrate with GROK from x.ai by utilizing the environment variables defined in backend/.env  . 
-Update all relevant codebase components to establish GROK as the primary Large Language Model (LLM) provider. This includes 
-modifying API connection configurations, authentication parameters, model endpoints, and any existing LLM integration code 
-to ensure seamless communication with GROK services. Implement proper error handling, rate limiting, and fallback mechanisms.
-Verify the integration by testing all LLM-dependent features including text generation, chat completions, and any custom 
-model interactions. Document the configuration changes and ensure backward compatibility where applicable. ```
-**Task Owner:** Coding Agent  
-**Priority:** Critical  
-**Estimated Effort:** 10–14 days (MVP core in 6 days; full scale, hybrid integration, wiki compounding, observability & benchmarks in remaining days)  
-**Goal:** Deliver a **complete, production-ready, observable, evaluable, extensible, and benchmarked Agentic RAG system** that **precisely** implements the **4 Core Agentic Design Patterns** and **7 Architectural Elements** from the survey paper "Agentic Retrieval-Augmented Generation: A Survey on Agentic RAG" (arXiv:2501.09136, v4 as of April 2026) and the YouTube video "Agentic RAG Overview: 4 Core Principles and 7 Architectural Elements!" (https://youtu.be/MT3DM82PRLc).
+### Domain knowledge (research)
+
+RAG (Lewis et al., arXiv:2005.11401) = parametric model + non-parametric index. **Self-RAG** (Asai et al., arXiv:2310.11511) uses Retrieve / IsRel / IsSup / IsUse tokens so retrieval is a *decision*. **CRAG** (Yan et al., arXiv:2401.15884) marks Correct / Incorrect / Ambiguous and rewrites or abstains. This host has no live retriever: do not invent passages. Cite operator text or local `sources/`. See `sources/study/domain_knowledge.md`.
 
 ### Domain distillation (embedded, untrusted design provenance)
 

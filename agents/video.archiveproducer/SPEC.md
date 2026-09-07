@@ -28,6 +28,9 @@ Host role binding: `ArchiveProducerAgent (VA Domain Pack)`. Design-time VA table
 
 Packages archival materials and source assets for reuse-heavy or documentary workflows
 
+### Domain knowledge (research)
+Owns editorial reuse of archive, not the preservation spec. Rights + context card. Distinct from archivemaster and archiveresearch. Unique sources: IASA / archive-production ethics; Donaldson, *Clearance and Copyright*; BBC/PBS archive reuse notes (design). Fail-closed: no production activation, empty `allowed_tools`, no network, no plugins, no memory writes. See `sources/study/domain_knowledge.md`.
+
 ### Knowledge distillation sources (historical)
 
 Archive production notes, source curation practices, provenance preservation standards

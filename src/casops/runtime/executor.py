@@ -164,6 +164,8 @@ class Runtime:
         message: str,
         history: list[Any] | None,
         node_id: str,
+        session: str | None = None,
+        reset: bool = False,
     ) -> tuple[dict[str, Any], dict[str, Any], str]:
         packed = pack_chat_context(
             folder,
@@ -189,6 +191,8 @@ class Runtime:
                 system=packed["system"],
                 history=packed["history"],
                 task_id=str(sha256_json({"agent": agent_id, "node": node_id, "n": len(self.runs)})[:16]),
+                session=session,
+                reset=reset,
             )
             completion = {
                 "provider": "grok_acp",
@@ -220,6 +224,7 @@ class Runtime:
         *,
         message: str,
         history: list[Any] | None = None,
+        session: str | None = None,
     ) -> dict[str, Any]:
         folder = locate_agent_folder(self.agents_root, agent_id)
         if folder is None:
@@ -231,14 +236,17 @@ class Runtime:
         budget = spec.get("budget_policy") or {}
         declared = parse_token_count(budget.get("max_output_tokens"))
         max_tokens, max_tokens_source = resolve_completion_tokens(budget.get("max_output_tokens"))
+        turns = normalize_history(history)
         completion, packed, _selected = self._complete_packed(
             agent_id=str(spec.get("agent_id") or agent_id),
             folder=folder,
             spec=spec,
             io=io,
             message=text,
-            history=history,
+            history=turns,
             node_id="chat",
+            session=session,
+            reset=not turns,
         )
         safety = safety_gate(output=completion, policy=safety_policy, cancelled=False)
         return {

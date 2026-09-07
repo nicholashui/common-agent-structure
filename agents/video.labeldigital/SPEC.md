@@ -28,6 +28,9 @@ Host role binding: `LabelDigitalAgent (VA Domain Pack)`. Design-time VA table co
 
 Runs label-side digital rollout, metadata, and channel packaging
 
+### Domain knowledge (research)
+Owns DSP metadata and digital rollout, not A&R taste. DDEX/ERN, ISRC/ISWC, storefront fields. Distinct from distributor of films. Unique sources: DDEX ERN — https://ddex.net; ISRC handbook — https://isrc.ifpi.org; DSP storefront style guides (design). Fail-closed: no production activation, empty `allowed_tools`, no network, no plugins, no memory writes. See `sources/study/domain_knowledge.md`.
+
 ### Knowledge distillation sources (historical)
 
 Digital music release operations, metadata schemas, distribution platform requirements

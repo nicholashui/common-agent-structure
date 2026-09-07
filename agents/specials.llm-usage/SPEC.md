@@ -12,13 +12,9 @@
 ## Responsibility
 Owns the specials-domain llm usage design outcome as a **draft, data-only** agent representation. Host role string: `Special_Agent data-only configuration`.
 
-The user currently has accounts with:  
-- x.ai (Grok API)  
-- Poe  
-- MiniMax  
-- Kimi (Moonshot AI)  
-- OpenRouter  
-...and many others. The app should let the user add their API keys once and see **everything aggregated in one beautiful dashboard** — total monthly spend, remaining credits, per-provider breakdowns, charts, trends, alerts, etc.
+### Domain knowledge (research)
+
+Meter **tokens × price × retries**, split input/output/cache, success vs error. Request counts are not cost. Never store API keys in this folder. Naming xAI/Poe/MiniMax/Kimi/OpenRouter is not a live integration. See `sources/study/domain_knowledge.md`.
 
 ### Domain distillation (embedded, untrusted design provenance)
 

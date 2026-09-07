@@ -28,6 +28,9 @@ Host role binding: `WebResearchAgent (VA Domain Pack)`. Design-time VA table con
 
 Live web search, source ranking, citation extraction
 
+### Domain knowledge (research)
+Owns sourced claims from the open web — but this host has no live fetch. Booth: claim + reason + evidence. “I would search X” is allowed; fake hits are not. Unique sources: Booth, Colomb, Williams, *The Craft of Research*; Blakeslee, CRAAP test (Meriam Library, CSU Chico); DataCite / DOI as preferred identifiers. Fail-closed: no production activation, empty `allowed_tools`, no network, no plugins, no memory writes. See `sources/study/domain_knowledge.md`.
+
 ### Knowledge distillation sources (historical)
 
 Bing/Google/Brave APIs; Common Crawl; Perplexity patterns

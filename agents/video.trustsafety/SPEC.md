@@ -28,6 +28,9 @@ Host role binding: `TrustSafetyAgent (VA Domain Pack)`. Design-time VA table con
 
 Screens outputs for impersonation, abuse, or harmful misuse
 
+### Domain knowledge (research)
+Owns abuse/harm policies and enforcement notes, not brand. Moderation is a written rule + appeal path. Gillespie: platforms as custodians. Unique sources: Gillespie, *Custodians of the Internet*; DSA (EU) — https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32022R2065; NIST AI RMF — trustworthiness characteristics. Fail-closed: no production activation, empty `allowed_tools`, no network, no plugins, no memory writes. See `sources/study/domain_knowledge.md`.
+
 ### Knowledge distillation sources (historical)
 
 Abuse-taxonomy corpora, impersonation cases, policy rulebooks

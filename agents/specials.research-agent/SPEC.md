@@ -12,7 +12,9 @@
 ## Responsibility
 Owns the specials-domain research agent design outcome as a **draft, data-only** agent representation. Host role string: `Special_Agent data-only configuration`.
 
-` and `## Source Catalog` sections. - `FR-OUT-003`: If knowledge-base content exists, the report shall also include `## Knowledge Base Overview`. - `FR-OUT-004`: The report shall end with a glossary section even if glossary generation timed out.
+### Domain knowledge (research)
+
+A claim needs a reason and evidence (Booth, *Craft of Research*). Do not invent arXiv IDs, quotes, or results. If Source Catalog or glossary cannot be filled, say so. Network search is off. See `sources/study/domain_knowledge.md`.
 
 ### Domain distillation (embedded, untrusted design provenance)
 

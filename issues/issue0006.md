@@ -156,6 +156,8 @@ stdin/stdout **are** the ACP cable (JSON-RPC). Those must stay piped. stderr and
 
 Open the Logs drawer (ScrollText) → **ACP**. That tab tails `GET /debug/acp?agent_id=` for the selected agent (poll 1.5s). Host lines are JSONL (`spawn`, `rpc`, `session_new`, …) without prompt/thought/secret text. stderr is Grok’s own stream.
 
+`Failed to spawn MCP server 'mcp-search': program not found` is ambient operator MCP leaking into the packaged Grok (plugin `.mcp.json` / parent env). Packaged ACP must send `mcpServers: []` and pin `GROK_HOME/config.toml` with `plugins.enabled = []` and `disabled_mcp_servers` including `mcp-search`. It is not a Chat transport failure; Chat can still complete. It is not an eval pass.
+
 | Surface | What it shows |
 |---|---|
 | Logs drawer **ACP** | `logs/acp/<agent_id>.*.log` |
@@ -299,6 +301,7 @@ See **How to run Grok on an agent folder**. `python tools/grok_agent.py chat <ag
 | Auth / initialize error | `grok` not logged in; CHARACTERIZATION handshake is `tests/fixtures/acp_initialize.characterization.json` |
 | Operator started `grok agent … stdio` in a terminal, then used UI Chat | UI does not attach to that process. Stop it. Let CASOPS spawn Grok. |
 | `UNAVAILABLE signal is aborted without reason` | UI `fetch` aborted (usually 120s Chat timeout, Stop, Escape, Clear, or agent change). Not a Grok ACP error code. |
+| `Failed to spawn MCP server 'mcp-search'` | Ambient operator MCP (not packaged). Host rewrites `var/acp/<id>/grok-home/config.toml` to disable plugins/MCP and strips `CLAUDE_PLUGIN_ROOT` / `PLUGIN_ROOT` from the child env. |
 
 ---
 

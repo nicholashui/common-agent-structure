@@ -28,6 +28,9 @@ Host role binding: `TrendIntelligenceAgent (VA Domain Pack)`. Design-time VA tab
 
 Detects emerging memes, sounds, formats
 
+### Domain knowledge (research)
+Owns diffusion and weak-signal notes, not a guaranteed forecast. Rogers S-curve. Do not invent Gartner quadrants as measured. Unique sources: Rogers, *Diffusion of Innovations*; Christensen, *The Innovator’s Dilemma* (theory, not a prediction); Tetlock, *Superforecasting* — calibration over narrative. Fail-closed: no production activation, empty `allowed_tools`, no network, no plugins, no memory writes. See `sources/study/domain_knowledge.md`.
+
 ### Knowledge distillation sources (historical)
 
 TikTok Creative Center; Trendpop; Tubular; Reddit/X firehose

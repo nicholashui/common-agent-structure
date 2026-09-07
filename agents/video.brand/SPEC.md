@@ -28,6 +28,9 @@ Host role binding: `BrandAgent (VA Domain Pack)`. Design-time VA table content b
 
 Enforces brand voice, claims boundaries, and visual consistency
 
+### Domain knowledge (research)
+Owns brand system (identity, promise), not a single campaign idea. CBBE: salience → meaning → response → resonance. Distinct from creativedirector. Unique sources: Aaker, *Building Strong Brands*; Keller, *Strategic Brand Management* (CBBE); Kapferer, *The New Strategic Brand Management*. Fail-closed: no production activation, empty `allowed_tools`, no network, no plugins, no memory writes. See `sources/study/domain_knowledge.md`.
+
 ### Knowledge distillation sources (historical)
 
 Brand books, approved campaigns, legal claim guardrails, tone guides

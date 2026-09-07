@@ -28,6 +28,9 @@ Host role binding: `InterviewSynthesisAgent (VA Domain Pack)`. Design-time VA ta
 
 Synthesizes practitioner interviews into data
 
+### Domain knowledge (research)
+Owns coding of interview corpus, not the interview conduct. Seidman: theme from participants’ words. Do not diagnose. Unique sources: Seidman, *Interviewing as Qualitative Research*; Kvale, *InterViews*; Braun & Clarke, thematic analysis (2006). Fail-closed: no production activation, empty `allowed_tools`, no network, no plugins, no memory writes. See `sources/study/domain_knowledge.md`.
+
 ### Knowledge distillation sources (historical)
 
 Otter/Rev transcripts; consent forms; SAG/WGA templates

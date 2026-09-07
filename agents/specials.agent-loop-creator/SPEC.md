@@ -12,7 +12,9 @@
 ## Responsibility
 Owns the specials-domain agent loop creator design outcome as a **draft, data-only** agent representation. Host role string: `Special_Agent data-only configuration`.
 
-Actionable reference for building reliable, scalable LLM-based agent systems. Combines academic foundations (ReAct synergy of reasoning + acting), xAI's server-side agentic implementation (multi-agent orchestration for deep research), and advanced hierarchical patterns (planner + specialists + self-evolution). **Target Audience:** Builders of harnesses, multi-agent systems, coding agents, research agents (e.g., N1ch01as-style Architect with critic/self-refinement loops). **Key Principle:** Controlled loops with explicit state, structured outputs, quality gates, and hierarchical delegation. Not uncontrolled chain reactions — managed orchestration with bubbling-up consolidation and deliberate synthesis.
+### Domain knowledge (research)
+
+**ReAct** (Yao et al., arXiv:2210.03629): Thought → Action → Observation; no cross-episode memory. **Reflexion** (Shinn et al.): Actor / Evaluator / verbal self-reflection stored as text. Plan-and-Execute vs ReWOO (parallel tools, brittle). A loop is admissible only with explicit state, schema gates, hop budget, and escalation after failed refinements. This folder describes shapes; it does not spawn tools. See `sources/study/domain_knowledge.md`.
 
 ### Domain distillation (embedded, untrusted design provenance)
 

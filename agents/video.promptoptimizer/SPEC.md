@@ -28,6 +28,9 @@ Host role binding: `PromptOptimizerAgent (VA Domain Pack)`. Design-time VA table
 
 Auto-improves prompts via OPRO/APE/DSPy/Promptbreeder
 
+### Domain knowledge (research)
+Owns iterative prompt diffs against a rubric, not first-write. APE/Promptbreeder are literature. Without a rubric, “optimization” is mutation. Distinct from promptengineer. Unique sources: Zhou et al., Large Language Models Are Human-Level Prompt Engineers (APE), arXiv:2211.01910; Fernando et al., Promptbreeder, arXiv:2309.16797; Yang et al., OPRO, arXiv:2309.03409. Fail-closed: no production activation, empty `allowed_tools`, no network, no plugins, no memory writes. See `sources/study/domain_knowledge.md`.
+
 ### Knowledge distillation sources (historical)
 
 OPRO (Yang 2023); APE (Zhou 2022); DSPy (Stanford); Promptbreeder (DeepMind)

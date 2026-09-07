@@ -28,6 +28,9 @@ Host role binding: `MPAAgent (VA Domain Pack)`. Design-time VA table content bel
 
 Prepares rating-related packaging and release-readiness inputs for feature workflows
 
+### Domain knowledge (research)
+Owns rating-board packaging (advisories, cuts notes) for features. CARA/MPA ratings are a written process. This host does not file. Distinct from label A&R. Unique sources: MPA / CARA rating system — https://www.motionpictures.org; BBFC classification guidelines (design analog); trailer/feature rating split (Kernan as context only). Fail-closed: no production activation, empty `allowed_tools`, no network, no plugins, no memory writes. See `sources/study/domain_knowledge.md`.
+
 ### Knowledge distillation sources (historical)
 
 Rating submission references, content advisories, theatrical packaging rules

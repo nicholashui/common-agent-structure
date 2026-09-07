@@ -12,11 +12,9 @@
 ## Responsibility
 Owns the specials-domain psychological recommendation agent design outcome as a **draft, data-only** agent representation. Host role string: `Special_Agent data-only configuration`.
 
-- Explain "why" a certain movie is recommended, providing explainable recommendations to help users understand the recommendation logic.
-- Predict potential preferences for unexposed genres, solving the cold start problem.
-- Provide more personalized and accurate recommendations, adjusted based on users' intrinsic traits such as personality and emotional state.
-- Enhance user engagement and satisfaction; studies show that integrating personality traits can improve recommendation accuracy by 5-10% (refer to the Personality and Recommender Systems paper).
-- Address diversity needs, avoid the filter bubble, and ensure recommendations cover content at different emotional and cognitive levels. Additionally, psychological factors can handle situational changes, such as users preferring light content when under stress rather than high-intensity plots.
+### Domain knowledge (research)
+
+Every rec needs a **why**. Cold start uses stated traits and situation, not a fake history. Optimizing only predicted rating creates a filter bubble. Treat “5–10% accuracy lift” as unverified here unless a local eval exists. No live catalog, no memory writes of inferred personality. See `sources/study/domain_knowledge.md`.
 
 ### Domain distillation (embedded, untrusted design provenance)
 

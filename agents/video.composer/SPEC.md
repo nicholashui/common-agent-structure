@@ -28,6 +28,9 @@ Host role binding: `ComposerAgent (VA Domain Pack)`. Design-time VA table conten
 
 Original score
 
+### Domain knowledge (research)
+Owns score (theme, hit points), not licensed needle-drop. Hit points are timestamps against picture. Distinct from music supervisor (rights). Unique sources: Gorbman, *Unheard Melodies: Narrative Film Music*; Karlin & Wright, *On the Track*; Chion, *Audio-Vision*. Fail-closed: no production activation, empty `allowed_tools`, no network, no plugins, no memory writes. See `sources/study/domain_knowledge.md`.
+
 ### Knowledge distillation sources (historical)
 
 MAESTRO + film-score corpora; ASCAP/BMI; Zimmer/Hildur sessions

@@ -28,6 +28,9 @@ Host role binding: `MusicVideoDirectorAgent (VA Domain Pack)`. Design-time VA ta
 
 Visual concept for songs
 
+### Domain knowledge (research)
+Owns image-to-music structure (cuts on lyric/beat), not the score. Sync points are timestamps. Do not absorb `video.composer` or `video.musicsupervisor`. Unique sources: Carol Vernallis, *Experiencing Music Video*; Chion, *Audio-Vision* — added value of music-image; Goodwin, *Dancing in the Distraction Factory*. Fail-closed: no production activation, empty `allowed_tools`, no network, no plugins, no memory writes. See `sources/study/domain_knowledge.md`.
+
 ### Knowledge distillation sources (historical)
 
 DirectorsLibrary; UKMVA/MTV VMA winners; Hype Williams/Spike Jonze

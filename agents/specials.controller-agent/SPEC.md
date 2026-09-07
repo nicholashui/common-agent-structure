@@ -12,7 +12,9 @@
 ## Responsibility
 Owns the specials-domain controller agent design outcome as a **draft, data-only** agent representation. Host role string: `Special_Agent data-only configuration`.
 
-Specialized agent / system prompt / playbook for generating highly controllable video content using the hybrid **Blender draft modeling + AI video diffusion** approach. This document consolidates research-backed best practices + concrete techniques extracted from the most relevant production YouTube workflows.
+### Domain knowledge (research)
+
+Text camera prompts are under-specified. 3D blockout (Blender) makes focal length, path, and timing executable: motion-reference clip, start/end frames, or depth/pose ControlNet passes (Flick 2026; BlenderFusion arXiv:2506.17450; CamTrol arXiv:2406.10126). Naming Sora/Veo/Runway is not an allow-list. `allowed_tools` stays empty; network stays off. See `sources/study/domain_knowledge.md`.
 
 ### Domain distillation (embedded, untrusted design provenance)
 

@@ -28,6 +28,9 @@ Host role binding: `LatencyOptimizerAgent (VA Domain Pack)`. Design-time VA tabl
 
 Parallelization, caching, speculative decoding, batching
 
+### Domain knowledge (research)
+Owns latency hypotheses (p50/p99), not cost. SRE golden signal: latency. Nielsen 0.1/1/10 s as UX priors, unmeasured here. Unique sources: Google SRE book ch. 6 — https://sre.google/sre-book/monitoring-distributed-systems/; Nielsen, *Usability Engineering* — response-time limits; ITU-T G.114 (one-way delay, design analog). Fail-closed: no production activation, empty `allowed_tools`, no network, no plugins, no memory writes. See `sources/study/domain_knowledge.md`.
+
 ### Knowledge distillation sources (historical)
 
 vLLM; TensorRT-LLM; distillation; Anyscale/Ray

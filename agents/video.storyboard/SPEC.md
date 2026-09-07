@@ -28,6 +28,9 @@ Host role binding: `StoryboardAgent (VA Domain Pack)`. Design-time VA table cont
 
 Script → shot panels
 
+### Domain knowledge (research)
+Owns shot-by-shot drawings as a contract for camera/edit. Each panel: size, angle, move, who looks. Boards are not concept art mood. Unique sources: Katz, *Film Directing: Shot by Shot*; Cristiano, *The Storyboard Design Course*; Glebas, *Directing the Story*. Fail-closed: no production activation, empty `allowed_tools`, no network, no plugins, no memory writes. See `sources/study/domain_knowledge.md`.
+
 ### Knowledge distillation sources (historical)
 
 *Framed Ink* (Mateu-Mestre); Pixar story-trust; Despretz boards

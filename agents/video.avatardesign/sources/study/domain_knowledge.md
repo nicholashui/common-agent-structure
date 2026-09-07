@@ -1,0 +1,25 @@
+# Domain knowledge — `video.avatardesign`
+
+Design-time unique paper/book/standard set (2026-09). Does not enable providers, MCP, network, plugins, memory writes, or production activation. `allowed_tools` stays empty. CLIP-T / arena / VBench numbers are design priors unless this host measures them.
+
+## Owns
+
+Owns character mesh/look-dev identity, not the scene’s lighting.
+
+## Craft
+
+Identity is a rig + palette + proportion lock. SMPL/FLAME are research priors, not enabled runtimes.
+
+## Sources (unique to this agent)
+
+- Li et al., FLAME, arXiv:1703.07531
+- Loper et al., SMPL, SIGGRAPH Asia 2015 / arXiv:1112.4052 lineage
+- Hasler / character consistency in generative pipelines (design)
+
+## Shared (generation crafts only)
+
+If this role specifies camera/motion for generative video, control strength is 3D/layout → start/end frames → ControlNet-style passes → text (Flick 2026; NVIDIA RTX video guide; BlenderFusion arXiv:2506.17450). Skip this if the role is legal, archive, finance, or ratings.
+
+## Honesty
+
+Does not enable providers, MCP, network, plugins, memory writes, or production activation. `allowed_tools` stays empty. CLIP-T / arena / VBench numbers are design priors unless this host measures them.

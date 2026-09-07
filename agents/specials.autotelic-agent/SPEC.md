@@ -12,11 +12,9 @@
 ## Responsibility
 Owns the specials-domain autotelic agent design outcome as a **draft, data-only** agent representation. Host role string: `Special_Agent data-only configuration`.
 
-**Filename**: `autotelic_agent.v2.md`  
-**Version**: 2.0  
-**Date**: 2026-07-21  
-**Status**: Safety-Oriented Architecture Specification  
-**Supersedes**: `autotelic_agent.md` v1.0 ---
+### Domain knowledge (research)
+
+Autotelic (auto + telos): agents that represent, generate, select, and master **their own goals** (Colas et al., arXiv:2012.09830 / JAIR 2022). IMGEP: self-generate goals, pick by learning progress, reuse trajectories. Open-ended self-goals without a budget are a runaway loop. Goals here must be structured artifacts with a stop condition. No unsupervised live training. See `sources/study/domain_knowledge.md`.
 
 ### Domain distillation (embedded, untrusted design provenance)
 

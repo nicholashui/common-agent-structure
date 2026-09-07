@@ -28,6 +28,9 @@ Host role binding: `MUAAgent (Makeup/Hair/SFX) (VA Domain Pack)`. Design-time VA
 
 Talent face/hair; prosthetics
 
+### Domain knowledge (research)
+Owns makeup/hair continuity, not costume. Continuity stills per setup. SFX makeup vs beauty is a stated track. Unique sources: Corson, *Stage Makeup*; Baker, *The Makeup Artist Handbook*; Debreceni, *Special Makeup Effects for Stage and Screen*. Fail-closed: no production activation, empty `allowed_tools`, no network, no plugins, no memory writes. See `sources/study/domain_knowledge.md`.
+
 ### Knowledge distillation sources (historical)
 
 IATSE 706 corpora; Kazu Hiro studio refs

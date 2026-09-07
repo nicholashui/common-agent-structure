@@ -1,3 +1,5 @@
+import { formatHktStamp } from "./time";
+
 export type ChatRole = "user" | "assistant";
 
 export interface ChatTurn {
@@ -38,9 +40,8 @@ const THREAD_KEY = "casops.control-ui.chat.v1";
 const memory = new Map<string, ChatThread>();
 
 export function makeChatSessionId(): string {
-  const stamp = new Date().toISOString().replace(/[:.]/g, "-").replace("T", "-").replace("Z", "");
   const rand = Math.random().toString(36).slice(2, 8);
-  return `${stamp}-${rand}`;
+  return `${formatHktStamp()}-${rand}`;
 }
 
 export function normalizeChatHistory(turns: ChatTurn[]): { role: ChatRole; content: string }[] {
@@ -48,6 +49,14 @@ export function normalizeChatHistory(turns: ChatTurn[]): { role: ChatRole; conte
     .filter((turn) => (turn.role === "user" || turn.role === "assistant") && turn.content.trim())
     .slice(-MAX_HISTORY)
     .map((turn) => ({ role: turn.role, content: turn.content.trim() }));
+}
+
+export function buildChatBody(
+  message: string,
+  history: ChatTurn[],
+  session: string,
+): { message: string; history: { role: ChatRole; content: string }[]; session: string } {
+  return { message, history: normalizeChatHistory(history), session };
 }
 
 export function emptyThread(): ChatThread {

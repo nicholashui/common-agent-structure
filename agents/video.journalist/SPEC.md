@@ -28,6 +28,9 @@ Host role binding: `JournalistAgent (VA Domain Pack)`. Design-time VA table cont
 
 Reporting + ethical framing
 
+### Domain knowledge (research)
+Owns reporting: who/what/when/where/why with named sources. Elements of Journalism. Do not invent quotes. Network is off. Unique sources: Kovach & Rosenstiel, *The Elements of Journalism*; SPJ Code of Ethics — https://www.spj.org/ethicscode.asp; AP Stylebook. Fail-closed: no production activation, empty `allowed_tools`, no network, no plugins, no memory writes. See `sources/study/domain_knowledge.md`.
+
 ### Knowledge distillation sources (historical)
 
 Pulitzer/duPont/Peabody winners; SPJ Ethics; Poynter
