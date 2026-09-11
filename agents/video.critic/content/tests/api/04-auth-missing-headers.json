@@ -1,0 +1,15 @@
+{
+  "method": "POST",
+  "path": "/api/v3/agents/video.critic/runtime/chat",
+  "headers": {
+    "Content-Type": "application/json"
+  },
+  "body": {
+    "message": "Poetics over vibe. Distinct from `video.judge` (accept/reject) and `video.gatekeeper` (policy).",
+    "history": []
+  },
+  "expect": {
+    "http_status": 409,
+    "error_code": "IMP_UNSIGNED"
+  }
+}

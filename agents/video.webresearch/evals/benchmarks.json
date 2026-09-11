@@ -65,6 +65,66 @@
       "id": "run-tc1",
       "honesty": "CHARACTERIZATION",
       "path": "run"
+    },
+    {
+      "id": "chat-vwebresearch-ambiguous",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vwebresearch_ambiguous"
+    },
+    {
+      "id": "chat-vwebresearch-multi-intent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vwebresearch_multi_intent"
+    },
+    {
+      "id": "chat-vwebresearch-domain-specific",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vwebresearch_domain_specific"
+    },
+    {
+      "id": "chat-vwebresearch-multilingual",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vwebresearch_multilingual"
+    },
+    {
+      "id": "chat-vwebresearch-oos",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vwebresearch_oos"
+    },
+    {
+      "id": "chat-vwebresearch-wait",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vwebresearch_wait"
+    },
+    {
+      "id": "chat-vwebresearch-invent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vwebresearch_invent"
+    },
+    {
+      "id": "chat-vwebresearch-activation",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vwebresearch_activation"
+    },
+    {
+      "id": "chat-vwebresearch-shift",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vwebresearch_shift"
+    },
+    {
+      "id": "chat-vwebresearch-handoff",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vwebresearch_handoff"
     }
   ],
   "note": "Fixtures are CHARACTERIZATION / policy checks. Not an eval pass. casops-eval remains NOT_RUN while instruments are unqualified."

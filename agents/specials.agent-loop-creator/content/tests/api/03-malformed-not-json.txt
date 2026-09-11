@@ -1,0 +1,1 @@
+Not JSON. POST to /api/v3/agents/specials.agent-loop-creator/runtime/chat with mutation headers. Expect 4xx.

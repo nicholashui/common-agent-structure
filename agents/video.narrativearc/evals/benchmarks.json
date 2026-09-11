@@ -65,6 +65,66 @@
       "id": "run-tc1",
       "honesty": "CHARACTERIZATION",
       "path": "run"
+    },
+    {
+      "id": "chat-vnarrativearc-ambiguous",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vnarrativearc_ambiguous"
+    },
+    {
+      "id": "chat-vnarrativearc-multi-intent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vnarrativearc_multi_intent"
+    },
+    {
+      "id": "chat-vnarrativearc-domain-specific",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vnarrativearc_domain_specific"
+    },
+    {
+      "id": "chat-vnarrativearc-multilingual",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vnarrativearc_multilingual"
+    },
+    {
+      "id": "chat-vnarrativearc-oos",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vnarrativearc_oos"
+    },
+    {
+      "id": "chat-vnarrativearc-wait",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vnarrativearc_wait"
+    },
+    {
+      "id": "chat-vnarrativearc-invent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vnarrativearc_invent"
+    },
+    {
+      "id": "chat-vnarrativearc-activation",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vnarrativearc_activation"
+    },
+    {
+      "id": "chat-vnarrativearc-shift",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vnarrativearc_shift"
+    },
+    {
+      "id": "chat-vnarrativearc-handoff",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vnarrativearc_handoff"
     }
   ],
   "note": "Fixtures are CHARACTERIZATION / policy checks. Not an eval pass. casops-eval remains NOT_RUN while instruments are unqualified."

@@ -1,0 +1,15 @@
+{
+  "method": "POST",
+  "path": "/api/v3/agents/video.gatekeeper/runtime/chat",
+  "headers": {
+    "Content-Type": "application/json"
+  },
+  "body": {
+    "message": "Lewin gatekeeping: what passes. Cite the rule. Distinct from critic/judge.",
+    "history": []
+  },
+  "expect": {
+    "http_status": 409,
+    "error_code": "IMP_UNSIGNED"
+  }
+}

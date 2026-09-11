@@ -14,7 +14,7 @@ Owns the specials-domain intent analysis agent design outcome as a **draft, data
 
 ### Domain knowledge (research)
 
-Austin: locution / illocution / perlocution. Searle illocutions: assertive, directive, commissive, expressive, declaration. Grice maxims explain implicature (meant vs said); a maxim flout is not automatically deception. Prefer ISO 24617-2 dialogue-act labels over an undefined private taxonomy. “Hidden agenda” needs evidence of illocution vs likely perlocution. See `sources/study/domain_knowledge.md`.
+Austin: locution / illocution / perlocution. Searle illocutions: assertive, directive, commissive, expressive, declaration. Grice maxims explain implicature (meant vs said); a maxim flout is not automatically deception. Prefer ISO 24617-2 dialogue-act labels over an undefined private taxonomy. Multi-intent utterances are listed, not collapsed (arXiv:2509.10010). Out-of-scope is a first-class label (arXiv:2507.22289). Semantically complete is not action-ready — wait when not triggerable (arXiv:2506.01881). “Hidden agenda” needs evidence of illocution vs likely perlocution. xAI function calling is vendor documentation, not a grant (`allowed_tools` empty). See `sources/study/domain_knowledge.md`. Operator study and tests: `content/` and `content/test_guide.md`.
 
 ### Domain distillation (embedded, untrusted design provenance)
 
@@ -23,6 +23,7 @@ The **Deep Intent Analysis Framework (DIA) v2.0** is a complete, production-read
 ## Boundaries and escalation
 - Remains `status: draft` with `production_activation_requested: false`.
 - `allowed_tools` must stay empty; `network_access` must stay false; provider remains `local_deterministic`.
+- Skill `casops.skill.intent.speech-act` is **declared** in `skills/bindings.json` and **not resolved**. Live enablement requires AND of author/inherited/operator_toggle **and** a host grant in `permissions/register.json` (INV-01: this folder cannot self-grant). Operator toggle stays OFF until FR-SKL-003. Request: `skills/permission_request.json`.
 - Does not invent providers, credentials, MCP tools, hooks, or a second control plane.
 - Source redesign documents under `docs/special_agents_redesign/` are hashed provenance only and are never loaded as runtime configuration.
 - Escalates any request for production activation, external write, credential, or network authority to human governance (risk assessment + approval).

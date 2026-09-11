@@ -65,6 +65,66 @@
       "id": "run-tc1",
       "honesty": "CHARACTERIZATION",
       "path": "run"
+    },
+    {
+      "id": "chat-vfoodstylist-ambiguous",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vfoodstylist_ambiguous"
+    },
+    {
+      "id": "chat-vfoodstylist-multi-intent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vfoodstylist_multi_intent"
+    },
+    {
+      "id": "chat-vfoodstylist-domain-specific",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vfoodstylist_domain_specific"
+    },
+    {
+      "id": "chat-vfoodstylist-multilingual",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vfoodstylist_multilingual"
+    },
+    {
+      "id": "chat-vfoodstylist-oos",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vfoodstylist_oos"
+    },
+    {
+      "id": "chat-vfoodstylist-wait",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vfoodstylist_wait"
+    },
+    {
+      "id": "chat-vfoodstylist-invent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vfoodstylist_invent"
+    },
+    {
+      "id": "chat-vfoodstylist-activation",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vfoodstylist_activation"
+    },
+    {
+      "id": "chat-vfoodstylist-shift",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vfoodstylist_shift"
+    },
+    {
+      "id": "chat-vfoodstylist-handoff",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vfoodstylist_handoff"
     }
   ],
   "note": "Fixtures are CHARACTERIZATION / policy checks. Not an eval pass. casops-eval remains NOT_RUN while instruments are unqualified."

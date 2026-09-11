@@ -1,0 +1,17 @@
+{
+  "title": "Mutation contract missing — not Bearer 401",
+  "method": "POST",
+  "path": "/api/v3/agents/specials.intent-analysis-agent/runtime/chat",
+  "headers": {
+    "Content-Type": "application/json"
+  },
+  "body": {
+    "message": "Analyse this: hello",
+    "history": []
+  },
+  "expect": {
+    "http_status": 409,
+    "error_code": "IMP_UNSIGNED",
+    "note": "CASOPS does not use 401 for this gate. Missing actor/reason/expected-parent/dry-run is 409."
+  }
+}

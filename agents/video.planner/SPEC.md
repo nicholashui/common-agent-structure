@@ -7201,3 +7201,6 @@ M1 — Foundation: Agentic RAG (Knowledge Backbone)
 - Ingestion 
 ```
 
+## Gated skill (this host)
+
+Skill `casops.skill.video.planner.okr-notes` is **declared** in `skills/bindings.json` and **not resolved**. Live enablement requires AND of author/inherited/operator_toggle **and** a host grant in `permissions/register.json`. Request: `skills/permission_request.json`.

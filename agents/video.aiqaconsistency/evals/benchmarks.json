@@ -65,6 +65,66 @@
       "id": "run-tc1",
       "honesty": "CHARACTERIZATION",
       "path": "run"
+    },
+    {
+      "id": "chat-vaiqaconsistency-ambiguous",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vaiqaconsistency_ambiguous"
+    },
+    {
+      "id": "chat-vaiqaconsistency-multi-intent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vaiqaconsistency_multi_intent"
+    },
+    {
+      "id": "chat-vaiqaconsistency-domain-specific",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vaiqaconsistency_domain_specific"
+    },
+    {
+      "id": "chat-vaiqaconsistency-multilingual",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vaiqaconsistency_multilingual"
+    },
+    {
+      "id": "chat-vaiqaconsistency-oos",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vaiqaconsistency_oos"
+    },
+    {
+      "id": "chat-vaiqaconsistency-wait",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vaiqaconsistency_wait"
+    },
+    {
+      "id": "chat-vaiqaconsistency-invent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vaiqaconsistency_invent"
+    },
+    {
+      "id": "chat-vaiqaconsistency-activation",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vaiqaconsistency_activation"
+    },
+    {
+      "id": "chat-vaiqaconsistency-shift",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vaiqaconsistency_shift"
+    },
+    {
+      "id": "chat-vaiqaconsistency-handoff",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vaiqaconsistency_handoff"
     }
   ],
   "note": "Fixtures are CHARACTERIZATION / policy checks. Not an eval pass. casops-eval remains NOT_RUN while instruments are unqualified."

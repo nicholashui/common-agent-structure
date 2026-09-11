@@ -1,0 +1,12 @@
+{
+  "title": "Mutation contract missing — not Bearer 401",
+  "method": "POST",
+  "path": "/api/v3/agents/specials.aesthetics-agent/runtime/chat",
+  "headers": { "Content-Type": "application/json" },
+  "body": { "message": "Score this: hello", "history": [] },
+  "expect": {
+    "http_status": 409,
+    "error_code": "IMP_UNSIGNED",
+    "note": "CASOPS does not use 401 for this gate."
+  }
+}

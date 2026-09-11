@@ -65,6 +65,66 @@
       "id": "run-tc1",
       "honesty": "CHARACTERIZATION",
       "path": "run"
+    },
+    {
+      "id": "chat-vnovelty-ambiguous",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vnovelty_ambiguous"
+    },
+    {
+      "id": "chat-vnovelty-multi-intent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vnovelty_multi_intent"
+    },
+    {
+      "id": "chat-vnovelty-domain-specific",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vnovelty_domain_specific"
+    },
+    {
+      "id": "chat-vnovelty-multilingual",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vnovelty_multilingual"
+    },
+    {
+      "id": "chat-vnovelty-oos",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vnovelty_oos"
+    },
+    {
+      "id": "chat-vnovelty-wait",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vnovelty_wait"
+    },
+    {
+      "id": "chat-vnovelty-invent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vnovelty_invent"
+    },
+    {
+      "id": "chat-vnovelty-activation",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vnovelty_activation"
+    },
+    {
+      "id": "chat-vnovelty-shift",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vnovelty_shift"
+    },
+    {
+      "id": "chat-vnovelty-handoff",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vnovelty_handoff"
     }
   ],
   "note": "Fixtures are CHARACTERIZATION / policy checks. Not an eval pass. casops-eval remains NOT_RUN while instruments are unqualified."

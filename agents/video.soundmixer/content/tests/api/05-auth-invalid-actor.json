@@ -1,0 +1,19 @@
+{
+  "method": "POST",
+  "path": "/api/v3/agents/video.soundmixer/runtime/chat",
+  "headers": {
+    "Content-Type": "application/json",
+    "x-casops-actor": "not-a-real-actor",
+    "x-casops-reason": "operator chat",
+    "x-casops-expected-parent": "",
+    "x-casops-dry-run": "false"
+  },
+  "body": {
+    "message": "State the delivery spec (e.g. EBU R128 / BS.1770). Intelligibility first.",
+    "history": []
+  },
+  "expect": {
+    "http_status": 503,
+    "error_code": "IMP_CORRIGIBILITY"
+  }
+}

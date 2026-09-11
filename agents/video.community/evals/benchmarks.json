@@ -65,6 +65,66 @@
       "id": "run-tc1",
       "honesty": "CHARACTERIZATION",
       "path": "run"
+    },
+    {
+      "id": "chat-vcommunity-ambiguous",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vcommunity_ambiguous"
+    },
+    {
+      "id": "chat-vcommunity-multi-intent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vcommunity_multi_intent"
+    },
+    {
+      "id": "chat-vcommunity-domain-specific",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vcommunity_domain_specific"
+    },
+    {
+      "id": "chat-vcommunity-multilingual",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vcommunity_multilingual"
+    },
+    {
+      "id": "chat-vcommunity-oos",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vcommunity_oos"
+    },
+    {
+      "id": "chat-vcommunity-wait",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vcommunity_wait"
+    },
+    {
+      "id": "chat-vcommunity-invent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vcommunity_invent"
+    },
+    {
+      "id": "chat-vcommunity-activation",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vcommunity_activation"
+    },
+    {
+      "id": "chat-vcommunity-shift",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vcommunity_shift"
+    },
+    {
+      "id": "chat-vcommunity-handoff",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vcommunity_handoff"
     }
   ],
   "note": "Fixtures are CHARACTERIZATION / policy checks. Not an eval pass. casops-eval remains NOT_RUN while instruments are unqualified."

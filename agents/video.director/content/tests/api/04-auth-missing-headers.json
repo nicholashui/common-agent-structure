@@ -1,0 +1,15 @@
+{
+  "method": "POST",
+  "path": "/api/v3/agents/video.director/runtime/chat",
+  "headers": {
+    "Content-Type": "application/json"
+  },
+  "body": {
+    "message": "Shot intent is a contract: size, angle, move, duration, whose look, what changes on the cut. Text-only “cinematic dolly” is not intent. Control strength: 3D camera blockout → start",
+    "history": []
+  },
+  "expect": {
+    "http_status": 409,
+    "error_code": "IMP_UNSIGNED"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "title": "Name-only inbound bus as DATA",
+  "agent_id": "specials.general-creative-agent",
+  "payload": {
+    "from_id": "spagent.general-creative-agent-input",
+    "to_id": "specials.general-creative-agent",
+    "claim": "operator wants a combinational brief",
+    "artifact_ref": "spagent.general-creative-agent-output",
+    "correlation_id": "sim-gca-bus-1"
+  },
+  "reviewer_checks": [
+    "Does not claim the bus was fetched",
+    "Names held-constant, outlier, rule, constraints, evaluator",
+    "Does not shoot or score"
+  ]
+}

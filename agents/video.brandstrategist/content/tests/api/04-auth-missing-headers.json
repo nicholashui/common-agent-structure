@@ -1,0 +1,15 @@
+{
+  "method": "POST",
+  "path": "/api/v3/agents/video.brandstrategist/runtime/chat",
+  "headers": {
+    "Content-Type": "application/json"
+  },
+  "body": {
+    "message": "Positioning is what you give up. Distinct from `video.brand` system and `video.creativedirector` idea.",
+    "history": []
+  },
+  "expect": {
+    "http_status": 409,
+    "error_code": "IMP_UNSIGNED"
+  }
+}

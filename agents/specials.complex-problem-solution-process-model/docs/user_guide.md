@@ -385,3 +385,13 @@ At its core, the model follows five connected stages: `WHAT`, `WHY`, `HOW`, `DO`
 | Trust model | Design corpus = untrusted data; host config = fail-closed |
 
 *End of guide for **Complex Problem Solution Process Model**. Start from §1 Snapshot and §5 When to involve; use §8–§10 for CASOPS operations and improvement; use §11–§12 only for deep design fidelity.*
+
+## 16. Operator testing (this host)
+
+Characterization only. Chat 200 ≠ agent-correct.
+
+- Packed craft: `prompts/primary.md` (Cynefin domain + five stages; complex uses probes not one root cause).
+- Study: `sources/study/domain_knowledge.md`.
+- Fixtures: `chat-tc1`–`10`, `chat-cyn-*`, `run-tc1`.
+- Guide: `content/test_guide.md`.
+- Skill `casops.skill.complex.cynefin-stage` declared; host register does not grant it.

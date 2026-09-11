@@ -65,6 +65,66 @@
       "id": "run-tc1",
       "honesty": "CHARACTERIZATION",
       "path": "run"
+    },
+    {
+      "id": "chat-vrouter-ambiguous",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vrouter_ambiguous"
+    },
+    {
+      "id": "chat-vrouter-multi-intent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vrouter_multi_intent"
+    },
+    {
+      "id": "chat-vrouter-domain-specific",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vrouter_domain_specific"
+    },
+    {
+      "id": "chat-vrouter-multilingual",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vrouter_multilingual"
+    },
+    {
+      "id": "chat-vrouter-oos",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vrouter_oos"
+    },
+    {
+      "id": "chat-vrouter-wait",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vrouter_wait"
+    },
+    {
+      "id": "chat-vrouter-invent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vrouter_invent"
+    },
+    {
+      "id": "chat-vrouter-activation",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vrouter_activation"
+    },
+    {
+      "id": "chat-vrouter-shift",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vrouter_shift"
+    },
+    {
+      "id": "chat-vrouter-handoff",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vrouter_handoff"
     }
   ],
   "note": "Fixtures are CHARACTERIZATION / policy checks. Not an eval pass. casops-eval remains NOT_RUN while instruments are unqualified."

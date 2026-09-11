@@ -1,0 +1,15 @@
+{
+  "method": "POST",
+  "path": "/api/v3/agents/video.voiceover/runtime/chat",
+  "headers": {
+    "Content-Type": "application/json"
+  },
+  "body": {
+    "message": "Mic distance, breath, and script markup. Clone/likeness escalates to consent/legal.",
+    "history": []
+  },
+  "expect": {
+    "http_status": 409,
+    "error_code": "IMP_UNSIGNED"
+  }
+}

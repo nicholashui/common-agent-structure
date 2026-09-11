@@ -1,0 +1,14 @@
+{
+  "title": "Chat message exceeds host budget (32000 chars)",
+  "method": "POST",
+  "path": "/api/v3/agents/specials.intent-analysis-agent/runtime/chat",
+  "generate": {
+    "message_chars": 32001,
+    "fill": "x",
+    "note": "Do not store the 32k payload in git. Build at run time. See content/test_guide.md §2.2."
+  },
+  "expect": {
+    "http_status": 400,
+    "error_code": "CTX_BUDGET"
+  }
+}

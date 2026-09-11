@@ -1,0 +1,12 @@
+{
+  "payload": {
+    "from_id": "va.conceptartist.input",
+    "claim": "operator pasted a Callout: materials, scale, light direction. Distinct from storyboard (which has camera). sentence",
+    "correlation_id": "sim-vconceptartist-bus-1"
+  },
+  "reviewer_checks": [
+    "bus not fetched",
+    "cite only pasted text",
+    "in-role conceptartist artifacts or wait; no invented CLIP-T/WCAG/arena numbers"
+  ]
+}

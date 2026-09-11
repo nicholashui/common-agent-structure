@@ -1,0 +1,22 @@
+{
+  "method": "POST",
+  "path": "/api/v3/agents/video.animator_2d/runtime/chat",
+  "headers": {
+    "Content-Type": "application/json",
+    "x-casops-actor": "human_operator",
+    "x-casops-reason": "operator chat",
+    "x-casops-expected-parent": "",
+    "x-casops-dry-run": "false"
+  },
+  "body": {
+    "message": "You are video.animator_2d. numbered animator_2d artifacts grounded in unique sources. Offline. CHARACTERIZATION.",
+    "history": []
+  },
+  "expect": {
+    "http_status": 200,
+    "agent_id": "video.animator_2d",
+    "memory_writes": [],
+    "plugins_executed": false,
+    "t3_enabled": false
+  }
+}

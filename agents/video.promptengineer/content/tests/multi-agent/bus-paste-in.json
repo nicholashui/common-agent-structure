@@ -1,0 +1,12 @@
+{
+  "payload": {
+    "from_id": "va.promptengineer.input",
+    "claim": "operator pasted a Subject, camera, light, negatives. CLIP-T is a design prior, unmeasured. Vendors in Developer are not grants. sentence",
+    "correlation_id": "sim-vpromptengineer-bus-1"
+  },
+  "reviewer_checks": [
+    "bus not fetched",
+    "cite only pasted text",
+    "in-role promptengineer artifacts or wait; no invented CLIP-T/WCAG/arena numbers"
+  ]
+}

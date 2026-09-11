@@ -17,3 +17,19 @@ On this host:
 
 - Booth, Colomb, Williams, *The Craft of Research*, 4th ed. (already in several PROVENANCE books)
 - Host citation grades: do not mark [A] without a live audit
+
+## Triple research (design-time, 2026-09)
+
+Design-time citations collected to complete the arXiv + YouTube + x.ai triple. **Not** live grants. `allowed_tools` stays `[]`. Network, plugins, T3, memory writes, and production stay off.
+
+### arXiv
+- [2508.12752](https://arxiv.org/abs/2508.12752) — Deep Research survey — planning/retrieval/synthesis; this host does not fetch the web
+- [2609.01432](https://arxiv.org/abs/2609.01432) — Citing Less Critically — LLMs reshape citation rhetoric; do not invent arXiv IDs
+- [2605.07723](https://arxiv.org/abs/2605.07723) — LLM hallucinations in the wild — non-existent citations
+
+### YouTube (educational; do not paste transcripts into Chat)
+- [Claim–Evidence–Reasoning (Booth-style argument spine)](https://www.youtube.com/watch?v=fkpZfpNWjWY)
+
+### xAI (non-activating vendor docs)
+- [Web Search exists at xAI; CASOPS Chat does not enable it](https://docs.x.ai/developers/tools/overview)
+

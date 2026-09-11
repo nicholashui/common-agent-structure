@@ -65,6 +65,66 @@
       "id": "run-tc1",
       "honesty": "CHARACTERIZATION",
       "path": "run"
+    },
+    {
+      "id": "chat-vugccreator-ambiguous",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vugccreator_ambiguous"
+    },
+    {
+      "id": "chat-vugccreator-multi-intent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vugccreator_multi_intent"
+    },
+    {
+      "id": "chat-vugccreator-domain-specific",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vugccreator_domain_specific"
+    },
+    {
+      "id": "chat-vugccreator-multilingual",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vugccreator_multilingual"
+    },
+    {
+      "id": "chat-vugccreator-oos",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vugccreator_oos"
+    },
+    {
+      "id": "chat-vugccreator-wait",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vugccreator_wait"
+    },
+    {
+      "id": "chat-vugccreator-invent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vugccreator_invent"
+    },
+    {
+      "id": "chat-vugccreator-activation",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vugccreator_activation"
+    },
+    {
+      "id": "chat-vugccreator-shift",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vugccreator_shift"
+    },
+    {
+      "id": "chat-vugccreator-handoff",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vugccreator_handoff"
     }
   ],
   "note": "Fixtures are CHARACTERIZATION / policy checks. Not an eval pass. casops-eval remains NOT_RUN while instruments are unqualified."

@@ -65,6 +65,66 @@
       "id": "run-tc1",
       "honesty": "CHARACTERIZATION",
       "path": "run"
+    },
+    {
+      "id": "chat-vinstructionaldesig-ambiguous",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vinstructionaldesig_ambiguous"
+    },
+    {
+      "id": "chat-vinstructionaldesig-multi-intent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vinstructionaldesig_multi_intent"
+    },
+    {
+      "id": "chat-vinstructionaldesig-domain-specific",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vinstructionaldesig_domain_specific"
+    },
+    {
+      "id": "chat-vinstructionaldesig-multilingual",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vinstructionaldesig_multilingual"
+    },
+    {
+      "id": "chat-vinstructionaldesig-oos",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vinstructionaldesig_oos"
+    },
+    {
+      "id": "chat-vinstructionaldesig-wait",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vinstructionaldesig_wait"
+    },
+    {
+      "id": "chat-vinstructionaldesig-invent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vinstructionaldesig_invent"
+    },
+    {
+      "id": "chat-vinstructionaldesig-activation",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vinstructionaldesig_activation"
+    },
+    {
+      "id": "chat-vinstructionaldesig-shift",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vinstructionaldesig_shift"
+    },
+    {
+      "id": "chat-vinstructionaldesig-handoff",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vinstructionaldesig_handoff"
     }
   ],
   "note": "Fixtures are CHARACTERIZATION / policy checks. Not an eval pass. casops-eval remains NOT_RUN while instruments are unqualified."

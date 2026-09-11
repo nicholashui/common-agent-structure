@@ -65,6 +65,66 @@
       "id": "run-tc1",
       "honesty": "CHARACTERIZATION",
       "path": "run"
+    },
+    {
+      "id": "chat-vchannelmanager-ambiguous",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vchannelmanager_ambiguous"
+    },
+    {
+      "id": "chat-vchannelmanager-multi-intent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vchannelmanager_multi_intent"
+    },
+    {
+      "id": "chat-vchannelmanager-domain-specific",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vchannelmanager_domain_specific"
+    },
+    {
+      "id": "chat-vchannelmanager-multilingual",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vchannelmanager_multilingual"
+    },
+    {
+      "id": "chat-vchannelmanager-oos",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vchannelmanager_oos"
+    },
+    {
+      "id": "chat-vchannelmanager-wait",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vchannelmanager_wait"
+    },
+    {
+      "id": "chat-vchannelmanager-invent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vchannelmanager_invent"
+    },
+    {
+      "id": "chat-vchannelmanager-activation",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vchannelmanager_activation"
+    },
+    {
+      "id": "chat-vchannelmanager-shift",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vchannelmanager_shift"
+    },
+    {
+      "id": "chat-vchannelmanager-handoff",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vchannelmanager_handoff"
     }
   ],
   "note": "Fixtures are CHARACTERIZATION / policy checks. Not an eval pass. casops-eval remains NOT_RUN while instruments are unqualified."

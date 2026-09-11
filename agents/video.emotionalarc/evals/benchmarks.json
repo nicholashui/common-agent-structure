@@ -65,6 +65,66 @@
       "id": "run-tc1",
       "honesty": "CHARACTERIZATION",
       "path": "run"
+    },
+    {
+      "id": "chat-vemotionalarc-ambiguous",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vemotionalarc_ambiguous"
+    },
+    {
+      "id": "chat-vemotionalarc-multi-intent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vemotionalarc_multi_intent"
+    },
+    {
+      "id": "chat-vemotionalarc-domain-specific",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vemotionalarc_domain_specific"
+    },
+    {
+      "id": "chat-vemotionalarc-multilingual",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vemotionalarc_multilingual"
+    },
+    {
+      "id": "chat-vemotionalarc-oos",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vemotionalarc_oos"
+    },
+    {
+      "id": "chat-vemotionalarc-wait",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vemotionalarc_wait"
+    },
+    {
+      "id": "chat-vemotionalarc-invent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vemotionalarc_invent"
+    },
+    {
+      "id": "chat-vemotionalarc-activation",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vemotionalarc_activation"
+    },
+    {
+      "id": "chat-vemotionalarc-shift",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vemotionalarc_shift"
+    },
+    {
+      "id": "chat-vemotionalarc-handoff",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vemotionalarc_handoff"
     }
   ],
   "note": "Fixtures are CHARACTERIZATION / policy checks. Not an eval pass. casops-eval remains NOT_RUN while instruments are unqualified."

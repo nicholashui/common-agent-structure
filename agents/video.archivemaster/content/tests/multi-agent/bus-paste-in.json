@@ -1,0 +1,12 @@
+{
+  "payload": {
+    "from_id": "va.archivemaster.input",
+    "claim": "operator pasted a FADGI/IASA as the bar. Do not downconvert a master to a mezzanine without saying so. sentence",
+    "correlation_id": "sim-varchivemaster-bus-1"
+  },
+  "reviewer_checks": [
+    "bus not fetched",
+    "cite only pasted text",
+    "in-role archivemaster artifacts or wait; no invented CLIP-T/WCAG/arena numbers"
+  ]
+}

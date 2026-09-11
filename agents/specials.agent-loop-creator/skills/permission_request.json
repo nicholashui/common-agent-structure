@@ -1,0 +1,24 @@
+{
+  "schema_version": "casops.permission_request.v1",
+  "agent_id": "specials.agent-loop-creator",
+  "status": "pending",
+  "requested_skills": [
+    {
+      "skill_id": "casops.skill.loop.controlled-shape",
+      "path": "skills/SKILL.md",
+      "tools": [],
+      "purpose": "Load the controlled-loop design procedure into Chat policy only when host_permission AND operator_toggle resolve true. Adds no spawn, tools, or memory writes."
+    }
+  ],
+  "requested_tools": [],
+  "does_not_request": [
+    "network",
+    "plugins",
+    "memory_writes",
+    "production_activation",
+    "T3",
+    "subagent spawn",
+    "xAI function calling"
+  ],
+  "note": "This file is a request. Grant lives in permissions/register.json."
+}

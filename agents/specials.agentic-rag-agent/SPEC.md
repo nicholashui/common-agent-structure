@@ -14,7 +14,7 @@ Owns the specials-domain agentic rag agent design outcome as a **draft, data-onl
 
 ### Domain knowledge (research)
 
-RAG (Lewis et al., arXiv:2005.11401) = parametric model + non-parametric index. **Self-RAG** (Asai et al., arXiv:2310.11511) uses Retrieve / IsRel / IsSup / IsUse tokens so retrieval is a *decision*. **CRAG** (Yan et al., arXiv:2401.15884) marks Correct / Incorrect / Ambiguous and rewrites or abstains. This host has no live retriever: do not invent passages. Cite operator text or local `sources/`. See `sources/study/domain_knowledge.md`.
+RAG (Lewis et al., arXiv:2005.11401) = parametric model + non-parametric index. **Self-RAG** (Asai et al., arXiv:2310.11511) uses Retrieve / IsRel / IsSup / IsUse so retrieval is a *decision*. **CRAG** (Yan et al., arXiv:2401.15884) marks Correct / Incorrect / Ambiguous; on this host fallback is abstain, not web search. Agentic RAG survey (Singh et al., arXiv:2501.09136). Adaptive extra hops are not always better (arXiv:2606.05658). No live retriever: do not invent passages. Skill `casops.skill.rag.retrieve-decision` is declared, not host-granted. See `sources/study/domain_knowledge.md`. Operator study: `content/` and `content/test_guide.md`.
 
 ### Domain distillation (embedded, untrusted design provenance)
 
@@ -44,6 +44,7 @@ model interactions. Document the configuration changes and ensure backward compa
 ## Boundaries and escalation
 - Remains `status: draft` with `production_activation_requested: false`.
 - `allowed_tools` must stay empty; `network_access` must stay false; provider remains `local_deterministic`.
+- Skill `casops.skill.rag.retrieve-decision` is **declared** in `skills/bindings.json` and **not resolved**. Live enablement requires AND of author/inherited/operator_toggle **and** a host grant in `permissions/register.json`. Request: `skills/permission_request.json`.
 - Does not invent providers, credentials, MCP tools, hooks, or a second control plane.
 - Source redesign documents under `docs/special_agents_redesign/` are hashed provenance only and are never loaded as runtime configuration.
 - Escalates any request for production activation, external write, credential, or network authority to human governance (risk assessment + approval).

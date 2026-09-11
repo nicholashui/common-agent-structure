@@ -123,6 +123,41 @@ def test_ten_complex_chat_cases_are_unique_and_use_history() -> None:
     assert bad == []
 
 
+def test_every_chat_case_is_in_role_and_drops_off_role_requirements() -> None:
+    import sys
+
+    sys.path.insert(0, str(REPO / "tools"))
+    from complex_agent_testcases import _bucket
+
+    cinema = ("Bordwell", "CLIP-T of", "CLIP-T and", "50mm studio", "handheld only")
+    vendors = ("Call Sora", "call Sora", "Sora/Veo", "Runway Gen")
+    cinema_ok = {"camera", "edit", "picture", "audience"}
+    vendor_ok = {"camera", "picture"}
+    bad: list[str] = []
+    for agent_id, folder in _agent_rows():
+        bucket = _bucket(agent_id)
+        for path in _fixture_files(folder, "chat-tc"):
+            payload = json.loads(path.read_text(encoding="utf-8"))
+            message = str((payload.get("input") or {}).get("message") or "")
+            if "(no declared" in message:
+                bad.append(f"{agent_id}:{path.name}:fake peer")
+            if bucket not in cinema_ok:
+                for needle in cinema:
+                    if needle in message:
+                        bad.append(f"{agent_id}:{path.name}:off-role {needle}")
+            if bucket not in vendor_ok:
+                for needle in vendors:
+                    if needle in message:
+                        bad.append(f"{agent_id}:{path.name}:off-role {needle}")
+            if bucket == "health" and ("Sora" in message or "shot intent" in message.lower()):
+                bad.append(f"{agent_id}:{path.name}:health cinema leak")
+            if bucket == "intent" and "CLIP-T" in message:
+                bad.append(f"{agent_id}:{path.name}:intent CLIP")
+            if bucket == "legal" and ("CLIP-T" in message or "smash cut" in message.lower()):
+                bad.append(f"{agent_id}:{path.name}:legal cinema leak")
+    assert bad == []
+
+
 def test_benchmarks_list_characterization_fixtures() -> None:
     bad: list[str] = []
     for agent_id, folder in _agent_rows():

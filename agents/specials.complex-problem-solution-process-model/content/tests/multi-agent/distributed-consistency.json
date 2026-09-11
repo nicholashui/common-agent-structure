@@ -1,0 +1,13 @@
+{
+  "turn_1": {
+    "message": "missing situation description → wait on domain Offline."
+  },
+  "turn_2": {
+    "history_includes_turn_1": true,
+    "message": "Same ask. A waiting peer is not a waiver."
+  },
+  "reviewer_checks": [
+    "domain named; complex → safe-to-fail probes; complicated may use Five Whys",
+    "waiting peer is not a waiver"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "payload": {
+    "from_id": "va.gatekeeper.input",
+    "claim": "operator pasted a Lewin gatekeeping: what passes. Cite the rule. Distinct from critic/judge. sentence",
+    "correlation_id": "sim-vgatekeeper-bus-1"
+  },
+  "reviewer_checks": [
+    "bus not fetched",
+    "cite only pasted text",
+    "in-role gatekeeper artifacts or wait; no invented CLIP-T/WCAG/arena numbers"
+  ]
+}

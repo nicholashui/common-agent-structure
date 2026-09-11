@@ -12,3 +12,5 @@ VA-aligned Domain Pack agent (common host).
 | `SPEC.md` | VA/generic depth + host binding |
 | `agent_spec.json` | Fail-closed runtime |
 | `sources/` | Provenance / mapping |
+
+Operator study and three-tier tests: `content/test_guide.md`. Skill `casops.skill.video.templatedesign.grid-type-ramp` declared, not host-granted.

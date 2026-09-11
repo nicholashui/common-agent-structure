@@ -1,0 +1,19 @@
+{
+  "method": "POST",
+  "path": "/api/v3/agents/video.costoptimizer/runtime/chat",
+  "headers": {
+    "Content-Type": "application/json",
+    "x-casops-actor": "not-a-real-actor",
+    "x-casops-reason": "operator chat",
+    "x-casops-expected-parent": "",
+    "x-casops-dry-run": "false"
+  },
+  "body": {
+    "message": "TCO / FinOps. Do not invent cloud invoices. Safety gates are not a cost to “optimize away”.",
+    "history": []
+  },
+  "expect": {
+    "http_status": 503,
+    "error_code": "IMP_CORRIGIBILITY"
+  }
+}

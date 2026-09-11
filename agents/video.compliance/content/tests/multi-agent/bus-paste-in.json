@@ -1,0 +1,12 @@
+{
+  "payload": {
+    "from_id": "va.compliance.input",
+    "claim": "operator pasted a Name the regime (GDPR, COPPA, DSA). Do not fake a certification. sentence",
+    "correlation_id": "sim-vcompliance-bus-1"
+  },
+  "reviewer_checks": [
+    "bus not fetched",
+    "cite only pasted text",
+    "in-role compliance artifacts or wait; no invented CLIP-T/WCAG/arena numbers"
+  ]
+}

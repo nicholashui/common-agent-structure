@@ -1,0 +1,12 @@
+{
+  "payload": {
+    "from_id": "va.musicvideodirector.input",
+    "claim": "operator pasted a Sync points are timestamps. Do not absorb `video.composer` or `video.musicsupervisor`. sentence",
+    "correlation_id": "sim-vmusicvideodirector-bus-1"
+  },
+  "reviewer_checks": [
+    "bus not fetched",
+    "cite only pasted text",
+    "in-role musicvideodirector artifacts or wait; no invented CLIP-T/WCAG/arena numbers"
+  ]
+}

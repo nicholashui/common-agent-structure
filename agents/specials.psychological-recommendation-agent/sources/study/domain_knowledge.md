@@ -16,3 +16,19 @@ No live catalog, no tracking pixels, no memory writes of inferred personality.
 - Pariser, E. *The Filter Bubble* (2011) — diversity as a constraint
 - HEXACO: https://hexaco.org — side features, not a live catalog
 - Sibling: `agents/specials.psychological-profile-agent/sources/study/domain_knowledge.md`
+
+## Triple research (design-time, 2026-09)
+
+Design-time citations collected to complete the arXiv + YouTube + x.ai triple. **Not** live grants. `allowed_tools` stays `[]`. Network, plugins, T3, memory writes, and production stay off.
+
+### arXiv
+- [2101.12153](https://arxiv.org/abs/2101.12153) — Survey on personality-aware recommendation systems
+- [2106.03060](https://arxiv.org/abs/2106.03060) — Big-Five vs HEXACO vs MBTI for personality-aware recs; cold start
+- [2501.01945](https://arxiv.org/abs/2501.01945) — Cold-start recommendation in the LLM era — no fake history
+
+### YouTube (educational; do not paste transcripts into Chat)
+- [Trait theories lecture (Eysenck, Costa, McCrae, Cattell) — traits as rec side-features](https://www.youtube.com/watch?v=D33VOyGGib8)
+
+### xAI (non-activating vendor docs)
+- [No live catalog, no tracking pixels](https://docs.x.ai/developers/tools/overview)
+

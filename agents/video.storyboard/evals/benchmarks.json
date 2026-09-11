@@ -65,6 +65,66 @@
       "id": "run-tc1",
       "honesty": "CHARACTERIZATION",
       "path": "run"
+    },
+    {
+      "id": "chat-vstoryboard-ambiguous",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vstoryboard_ambiguous"
+    },
+    {
+      "id": "chat-vstoryboard-multi-intent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vstoryboard_multi_intent"
+    },
+    {
+      "id": "chat-vstoryboard-domain-specific",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vstoryboard_domain_specific"
+    },
+    {
+      "id": "chat-vstoryboard-multilingual",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vstoryboard_multilingual"
+    },
+    {
+      "id": "chat-vstoryboard-oos",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vstoryboard_oos"
+    },
+    {
+      "id": "chat-vstoryboard-wait",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vstoryboard_wait"
+    },
+    {
+      "id": "chat-vstoryboard-invent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vstoryboard_invent"
+    },
+    {
+      "id": "chat-vstoryboard-activation",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vstoryboard_activation"
+    },
+    {
+      "id": "chat-vstoryboard-shift",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vstoryboard_shift"
+    },
+    {
+      "id": "chat-vstoryboard-handoff",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vstoryboard_handoff"
     }
   ],
   "note": "Fixtures are CHARACTERIZATION / policy checks. Not an eval pass. casops-eval remains NOT_RUN while instruments are unqualified."

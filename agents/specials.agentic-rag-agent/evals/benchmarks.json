@@ -65,6 +65,66 @@
       "id": "run-tc1",
       "honesty": "CHARACTERIZATION",
       "path": "run"
+    },
+    {
+      "id": "chat-rag-ambiguous",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "rag_ambiguous"
+    },
+    {
+      "id": "chat-rag-multi-intent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "rag_multi_intent"
+    },
+    {
+      "id": "chat-rag-domain-specific",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "rag_domain_specific"
+    },
+    {
+      "id": "chat-rag-multilingual",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "rag_multilingual"
+    },
+    {
+      "id": "chat-rag-oos",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "rag_oos"
+    },
+    {
+      "id": "chat-rag-empty-index",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "rag_empty_index"
+    },
+    {
+      "id": "chat-rag-invent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "rag_invent"
+    },
+    {
+      "id": "chat-rag-crag-ambiguous",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "rag_crag_ambiguous"
+    },
+    {
+      "id": "chat-rag-activation",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "rag_activation"
+    },
+    {
+      "id": "chat-rag-shift",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "rag_intent_shift"
     }
   ],
   "note": "Fixtures are CHARACTERIZATION / policy checks. Not an eval pass. casops-eval remains NOT_RUN while instruments are unqualified."

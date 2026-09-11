@@ -1,0 +1,19 @@
+{
+  "method": "POST",
+  "path": "/api/v3/agents/video.director/runtime/chat",
+  "headers": {
+    "Content-Type": "application/json",
+    "x-casops-actor": "not-a-real-actor",
+    "x-casops-reason": "operator chat",
+    "x-casops-expected-parent": "",
+    "x-casops-dry-run": "false"
+  },
+  "body": {
+    "message": "Shot intent is a contract: size, angle, move, duration, whose look, what changes on the cut. Text-only “cinematic dolly” is not intent. Control strength: 3D camera blockout → start",
+    "history": []
+  },
+  "expect": {
+    "http_status": 503,
+    "error_code": "IMP_CORRIGIBILITY"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "method": "POST",
+  "path": "/api/v3/agents/video.channelmanager/runtime/chat",
+  "headers": {
+    "Content-Type": "application/json",
+    "x-casops-actor": "not-a-real-actor",
+    "x-casops-reason": "operator chat",
+    "x-casops-expected-parent": "",
+    "x-casops-dry-run": "false"
+  },
+  "body": {
+    "message": "Theatrical / SVOD / AVOD / linear windows. Do not invent subscriber counts.",
+    "history": []
+  },
+  "expect": {
+    "http_status": 503,
+    "error_code": "IMP_CORRIGIBILITY"
+  }
+}

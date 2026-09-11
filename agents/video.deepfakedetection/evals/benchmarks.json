@@ -65,6 +65,66 @@
       "id": "run-tc1",
       "honesty": "CHARACTERIZATION",
       "path": "run"
+    },
+    {
+      "id": "chat-vdeepfakedetection-ambiguous",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vdeepfakedetection_ambiguous"
+    },
+    {
+      "id": "chat-vdeepfakedetection-multi-intent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vdeepfakedetection_multi_intent"
+    },
+    {
+      "id": "chat-vdeepfakedetection-domain-specific",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vdeepfakedetection_domain_specific"
+    },
+    {
+      "id": "chat-vdeepfakedetection-multilingual",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vdeepfakedetection_multilingual"
+    },
+    {
+      "id": "chat-vdeepfakedetection-oos",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vdeepfakedetection_oos"
+    },
+    {
+      "id": "chat-vdeepfakedetection-wait",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vdeepfakedetection_wait"
+    },
+    {
+      "id": "chat-vdeepfakedetection-invent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vdeepfakedetection_invent"
+    },
+    {
+      "id": "chat-vdeepfakedetection-activation",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vdeepfakedetection_activation"
+    },
+    {
+      "id": "chat-vdeepfakedetection-shift",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vdeepfakedetection_shift"
+    },
+    {
+      "id": "chat-vdeepfakedetection-handoff",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vdeepfakedetection_handoff"
     }
   ],
   "note": "Fixtures are CHARACTERIZATION / policy checks. Not an eval pass. casops-eval remains NOT_RUN while instruments are unqualified."

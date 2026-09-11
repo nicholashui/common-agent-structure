@@ -65,6 +65,66 @@
       "id": "run-tc1",
       "honesty": "CHARACTERIZATION",
       "path": "run"
+    },
+    {
+      "id": "chat-vseo-ambiguous",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vseo_ambiguous"
+    },
+    {
+      "id": "chat-vseo-multi-intent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vseo_multi_intent"
+    },
+    {
+      "id": "chat-vseo-domain-specific",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vseo_domain_specific"
+    },
+    {
+      "id": "chat-vseo-multilingual",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vseo_multilingual"
+    },
+    {
+      "id": "chat-vseo-oos",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vseo_oos"
+    },
+    {
+      "id": "chat-vseo-wait",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vseo_wait"
+    },
+    {
+      "id": "chat-vseo-invent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vseo_invent"
+    },
+    {
+      "id": "chat-vseo-activation",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vseo_activation"
+    },
+    {
+      "id": "chat-vseo-shift",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vseo_shift"
+    },
+    {
+      "id": "chat-vseo-handoff",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vseo_handoff"
     }
   ],
   "note": "Fixtures are CHARACTERIZATION / policy checks. Not an eval pass. casops-eval remains NOT_RUN while instruments are unqualified."

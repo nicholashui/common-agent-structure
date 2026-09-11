@@ -1,0 +1,13 @@
+{
+  "turn_1": {
+    "message": "missing component type or corpus spans → wait Offline."
+  },
+  "turn_2": {
+    "history_includes_turn_1": true,
+    "message": "Same ask. A waiting peer is not a waiver."
+  },
+  "reviewer_checks": [
+    "every task cites a span; ReAct is not this planner; no coding-agent spawn",
+    "waiting peer is not a waiver"
+  ]
+}

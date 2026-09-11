@@ -1,0 +1,12 @@
+{
+  "payload": {
+    "from_id": "va.copywriter.input",
+    "claim": "operator pasted a Headline, proof, CTA. Ogilvy: specific > puffery. sentence",
+    "correlation_id": "sim-vcopywriter-bus-1"
+  },
+  "reviewer_checks": [
+    "bus not fetched",
+    "cite only pasted text",
+    "in-role copywriter artifacts or wait; no invented CLIP-T/WCAG/arena numbers"
+  ]
+}

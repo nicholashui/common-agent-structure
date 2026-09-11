@@ -1,0 +1,12 @@
+{
+  "payload": {
+    "from_id": "va.brand.input",
+    "claim": "operator pasted a CBBE: salience → meaning → response → resonance. Distinct from creativedirector. sentence",
+    "correlation_id": "sim-vbrand-bus-1"
+  },
+  "reviewer_checks": [
+    "bus not fetched",
+    "cite only pasted text",
+    "in-role brand artifacts or wait; no invented CLIP-T/WCAG/arena numbers"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "payload": {
+    "from_id": "va.retentionoptimizer.input",
+    "claim": "operator pasted a Retention is a curve with a denominator. Do not invent YouTube Studio graphs. sentence",
+    "correlation_id": "sim-vretentionoptimizer-bus-1"
+  },
+  "reviewer_checks": [
+    "bus not fetched",
+    "cite only pasted text",
+    "in-role retentionoptimizer artifacts or wait; no invented CLIP-T/WCAG/arena numbers"
+  ]
+}

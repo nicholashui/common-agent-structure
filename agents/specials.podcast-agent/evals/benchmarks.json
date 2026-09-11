@@ -65,6 +65,66 @@
       "id": "run-tc1",
       "honesty": "CHARACTERIZATION",
       "path": "run"
+    },
+    {
+      "id": "chat-pod-ambiguous",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "pod_ambiguous"
+    },
+    {
+      "id": "chat-pod-multi-intent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "pod_multi_intent"
+    },
+    {
+      "id": "chat-pod-domain-specific",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "pod_domain_specific"
+    },
+    {
+      "id": "chat-pod-multilingual",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "pod_multilingual"
+    },
+    {
+      "id": "chat-pod-oos",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "pod_oos"
+    },
+    {
+      "id": "chat-pod-wait",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "pod_wait"
+    },
+    {
+      "id": "chat-pod-invent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "pod_invent"
+    },
+    {
+      "id": "chat-pod-activation",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "pod_activation"
+    },
+    {
+      "id": "chat-pod-shift",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "pod_shift"
+    },
+    {
+      "id": "chat-pod-handoff",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "pod_handoff"
     }
   ],
   "note": "Fixtures are CHARACTERIZATION / policy checks. Not an eval pass. casops-eval remains NOT_RUN while instruments are unqualified."

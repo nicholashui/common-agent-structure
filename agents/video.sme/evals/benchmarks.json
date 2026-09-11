@@ -65,6 +65,66 @@
       "id": "run-tc1",
       "honesty": "CHARACTERIZATION",
       "path": "run"
+    },
+    {
+      "id": "chat-vsme-ambiguous",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vsme_ambiguous"
+    },
+    {
+      "id": "chat-vsme-multi-intent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vsme_multi_intent"
+    },
+    {
+      "id": "chat-vsme-domain-specific",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vsme_domain_specific"
+    },
+    {
+      "id": "chat-vsme-multilingual",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vsme_multilingual"
+    },
+    {
+      "id": "chat-vsme-oos",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vsme_oos"
+    },
+    {
+      "id": "chat-vsme-wait",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vsme_wait"
+    },
+    {
+      "id": "chat-vsme-invent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vsme_invent"
+    },
+    {
+      "id": "chat-vsme-activation",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vsme_activation"
+    },
+    {
+      "id": "chat-vsme-shift",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vsme_shift"
+    },
+    {
+      "id": "chat-vsme-handoff",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vsme_handoff"
     }
   ],
   "note": "Fixtures are CHARACTERIZATION / policy checks. Not an eval pass. casops-eval remains NOT_RUN while instruments are unqualified."

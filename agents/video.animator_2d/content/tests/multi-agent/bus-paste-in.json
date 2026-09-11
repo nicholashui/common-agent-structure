@@ -1,0 +1,12 @@
+{
+  "payload": {
+    "from_id": "va.animator_2d.input",
+    "claim": "operator pasted a Twelve principles are the checklist. Do not claim a live Toon Boom grant. sentence",
+    "correlation_id": "sim-vanimator2d-bus-1"
+  },
+  "reviewer_checks": [
+    "bus not fetched",
+    "cite only pasted text",
+    "in-role animator_2d artifacts or wait; no invented CLIP-T/WCAG/arena numbers"
+  ]
+}

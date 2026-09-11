@@ -65,6 +65,66 @@
       "id": "run-tc1",
       "honesty": "CHARACTERIZATION",
       "path": "run"
+    },
+    {
+      "id": "chat-vtemplatedesign-ambiguous",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vtemplatedesign_ambiguous"
+    },
+    {
+      "id": "chat-vtemplatedesign-multi-intent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vtemplatedesign_multi_intent"
+    },
+    {
+      "id": "chat-vtemplatedesign-domain-specific",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vtemplatedesign_domain_specific"
+    },
+    {
+      "id": "chat-vtemplatedesign-multilingual",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vtemplatedesign_multilingual"
+    },
+    {
+      "id": "chat-vtemplatedesign-oos",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vtemplatedesign_oos"
+    },
+    {
+      "id": "chat-vtemplatedesign-wait",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vtemplatedesign_wait"
+    },
+    {
+      "id": "chat-vtemplatedesign-invent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vtemplatedesign_invent"
+    },
+    {
+      "id": "chat-vtemplatedesign-activation",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vtemplatedesign_activation"
+    },
+    {
+      "id": "chat-vtemplatedesign-shift",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vtemplatedesign_shift"
+    },
+    {
+      "id": "chat-vtemplatedesign-handoff",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vtemplatedesign_handoff"
     }
   ],
   "note": "Fixtures are CHARACTERIZATION / policy checks. Not an eval pass. casops-eval remains NOT_RUN while instruments are unqualified."

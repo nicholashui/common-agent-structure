@@ -65,6 +65,66 @@
       "id": "run-tc1",
       "honesty": "CHARACTERIZATION",
       "path": "run"
+    },
+    {
+      "id": "chat-vworldbuilding-ambiguous",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vworldbuilding_ambiguous"
+    },
+    {
+      "id": "chat-vworldbuilding-multi-intent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vworldbuilding_multi_intent"
+    },
+    {
+      "id": "chat-vworldbuilding-domain-specific",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vworldbuilding_domain_specific"
+    },
+    {
+      "id": "chat-vworldbuilding-multilingual",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vworldbuilding_multilingual"
+    },
+    {
+      "id": "chat-vworldbuilding-oos",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vworldbuilding_oos"
+    },
+    {
+      "id": "chat-vworldbuilding-wait",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vworldbuilding_wait"
+    },
+    {
+      "id": "chat-vworldbuilding-invent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vworldbuilding_invent"
+    },
+    {
+      "id": "chat-vworldbuilding-activation",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vworldbuilding_activation"
+    },
+    {
+      "id": "chat-vworldbuilding-shift",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vworldbuilding_shift"
+    },
+    {
+      "id": "chat-vworldbuilding-handoff",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vworldbuilding_handoff"
     }
   ],
   "note": "Fixtures are CHARACTERIZATION / policy checks. Not an eval pass. casops-eval remains NOT_RUN while instruments are unqualified."

@@ -1,0 +1,12 @@
+{
+  "payload": {
+    "from_id": "va.lms.input",
+    "claim": "operator pasted a SCORM vs xAPI. This host has no LMS connector. sentence",
+    "correlation_id": "sim-vlms-bus-1"
+  },
+  "reviewer_checks": [
+    "bus not fetched",
+    "cite only pasted text",
+    "in-role lms artifacts or wait; no invented CLIP-T/WCAG/arena numbers"
+  ]
+}

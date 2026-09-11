@@ -1,0 +1,12 @@
+{
+  "payload": {
+    "from_id": "spagent.research-agent-input",
+    "claim": "operator pasted a Booth claim–reason–evidence sentence",
+    "correlation_id": "sim-rsh-bus-1"
+  },
+  "reviewer_checks": [
+    "bus not fetched",
+    "cite only pasted text",
+    "no invented arXiv IDs or quotes; missing section → say so"
+  ]
+}

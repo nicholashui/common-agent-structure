@@ -1,0 +1,8 @@
+{
+  "title": "Mutation contract missing — not Bearer 401",
+  "method": "POST",
+  "path": "/api/v3/agents/specials.general-creative-agent/runtime/chat",
+  "headers": { "Content-Type": "application/json" },
+  "body": { "message": "Be original", "history": [] },
+  "expect": { "http_status": 409, "error_code": "IMP_UNSIGNED" }
+}

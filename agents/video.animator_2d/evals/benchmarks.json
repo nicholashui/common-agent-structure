@@ -65,6 +65,66 @@
       "id": "run-tc1",
       "honesty": "CHARACTERIZATION",
       "path": "run"
+    },
+    {
+      "id": "chat-vanimator2d-ambiguous",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vanimator2d_ambiguous"
+    },
+    {
+      "id": "chat-vanimator2d-multi-intent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vanimator2d_multi_intent"
+    },
+    {
+      "id": "chat-vanimator2d-domain-specific",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vanimator2d_domain_specific"
+    },
+    {
+      "id": "chat-vanimator2d-multilingual",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vanimator2d_multilingual"
+    },
+    {
+      "id": "chat-vanimator2d-oos",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vanimator2d_oos"
+    },
+    {
+      "id": "chat-vanimator2d-wait",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vanimator2d_wait"
+    },
+    {
+      "id": "chat-vanimator2d-invent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vanimator2d_invent"
+    },
+    {
+      "id": "chat-vanimator2d-activation",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vanimator2d_activation"
+    },
+    {
+      "id": "chat-vanimator2d-shift",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vanimator2d_shift"
+    },
+    {
+      "id": "chat-vanimator2d-handoff",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vanimator2d_handoff"
     }
   ],
   "note": "Fixtures are CHARACTERIZATION / policy checks. Not an eval pass. casops-eval remains NOT_RUN while instruments are unqualified."

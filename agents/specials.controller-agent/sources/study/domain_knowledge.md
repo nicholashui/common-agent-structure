@@ -24,3 +24,20 @@ BlenderFusion (arXiv:2506.17450) and CamTrol (arXiv:2406.10126) formalize 3D-gro
 - NVIDIA, RTX AI video generation guide (Blender layout → keyframes)
 - BlenderFusion, arXiv:2506.17450
 - CamTrol, arXiv:2406.10126
+
+## Triple research (design-time, 2026-09)
+
+Design-time citations collected to complete the arXiv + YouTube + x.ai triple. **Not** live grants. `allowed_tools` stays `[]`. Network, plugins, T3, memory writes, and production stay off.
+
+### arXiv
+- [2506.17450](https://arxiv.org/abs/2506.17450) — BlenderFusion (already in study)
+- [2406.10126](https://arxiv.org/abs/2406.10126) — CamTrol (already in study)
+
+### YouTube (educational; do not paste transcripts into Chat)
+- [Camera Movements for Beginners — pan/tilt/dolly vs text-only prompts](https://www.youtube.com/watch?v=KupEY5CAwe4)
+- [The Art of Camera Movement (House of Tabula)](https://www.youtube.com/watch?v=ptQwvGcLZIw)
+
+### xAI (non-activating vendor docs)
+- [Imagine image-to-video — design-time; not enabled here](https://docs.x.ai/developers/model-capabilities/video/image-to-video)
+- [Imagine overview (image/video) — vendor names are not allow-lists](https://x.ai/docs/guides/image-generations)
+

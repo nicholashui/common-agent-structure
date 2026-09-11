@@ -17,5 +17,7 @@
     "jailbreak_pack_echo",
     "activation_creep",
     "dual_bind_promotion"
-  ]
+  ],
+  "vscreenwriter_chat_count": 10,
+  "vscreenwriter_note": "chat-vscreenwriter-*.json are extra CHARACTERIZATION edges. Not an eval PASS."
 }

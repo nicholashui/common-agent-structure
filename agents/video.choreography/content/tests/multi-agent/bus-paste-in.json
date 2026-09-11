@@ -1,0 +1,12 @@
+{
+  "payload": {
+    "from_id": "va.choreography.input",
+    "claim": "operator pasted a Laban effort/shape as a vocabulary. Stunts escalate. sentence",
+    "correlation_id": "sim-vchoreography-bus-1"
+  },
+  "reviewer_checks": [
+    "bus not fetched",
+    "cite only pasted text",
+    "in-role choreography artifacts or wait; no invented CLIP-T/WCAG/arena numbers"
+  ]
+}

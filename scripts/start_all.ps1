@@ -1,6 +1,7 @@
 # Start the local CASOPS operator stack: control plane (:18080) and Control UI (:15173).
-# Run from anywhere:  powershell -File scripts/start_all.ps1
-# uvicorn/vite run hidden. This script must return the prompt.
+# Run from anywhere:  powershell -NoProfile -File scripts/start_all.ps1
+# Servers are detached. This script must return the prompt (do not -Wait, do not
+# RedirectStandardOutput on Start-Process — that keeps this console attached).
 
 Set-StrictMode -Version Latest
 $ErrorActionPreference = "Stop"
@@ -19,34 +20,37 @@ New-Item -ItemType Directory -Force -Path $VarDir, $LogDir | Out-Null
 Write-Host "CASOPS start_all from $Root"
 
 function Test-PortListen([int]$Port) {
-    $client = [System.Net.Sockets.TcpClient]::new()
+    $client = $null
     try {
-        $iar = $client.BeginConnect("127.0.0.1", $Port, $null, $null)
-        if (-not $iar.AsyncWaitHandle.WaitOne(400)) {
+        $client = [System.Net.Sockets.TcpClient]::new()
+        $task = $client.ConnectAsync("127.0.0.1", $Port)
+        if (-not $task.Wait(300)) {
             return $false
         }
-        $client.EndConnect($iar)
-        return $true
+        return [bool]$client.Connected
     }
     catch {
         return $false
     }
     finally {
-        $client.Dispose()
+        if ($null -ne $client) {
+            try { $client.Close() } catch { }
+            try { $client.Dispose() } catch { }
+        }
     }
 }
 
-function Wait-Port([int]$Port, [int]$Seconds = 45) {
-    Write-Host "Waiting for 127.0.0.1:$Port ..."
-    $deadline = [datetime]::UtcNow.AddSeconds($Seconds)
-    $lastReport = 0
-    while ([datetime]::UtcNow -lt $deadline) {
+function Wait-Port([int]$Port, [int]$Seconds = 25) {
+    Write-Host "Waiting for 127.0.0.1:$Port (max ${Seconds}s) ..."
+    $started = Get-Date
+    $lastReport = -5
+    while (((Get-Date) - $started).TotalSeconds -lt $Seconds) {
         if (Test-PortListen $Port) {
             Write-Host "  127.0.0.1:$Port is up"
             return $true
         }
-        Start-Sleep -Milliseconds 250
-        $elapsed = [int]($Seconds - ($deadline - [datetime]::UtcNow).TotalSeconds)
+        Start-Sleep -Milliseconds 200
+        $elapsed = [int]((Get-Date) - $started).TotalSeconds
         if ($elapsed -ge ($lastReport + 5)) {
             $lastReport = $elapsed
             Write-Host "  still waiting (${elapsed}s)"
@@ -73,6 +77,16 @@ function Get-LogPair([string]$Prefix) {
     return @{ Out = $out; Err = $err }
 }
 
+function Write-LaunchCmd([string]$Path, [string]$Body) {
+    Set-Content -Path $Path -Value $Body -Encoding Ascii
+}
+
+function Start-DetachedCmd([string]$CmdPath) {
+    # No -Wait. No RedirectStandard*. Hidden window. Returns immediately.
+    $proc = Start-Process -FilePath $env:ComSpec -ArgumentList @("/c", "`"$CmdPath`"") -WorkingDirectory $Root -WindowStyle Hidden -PassThru
+    return $proc
+}
+
 $controlPid = $null
 $uiPid = $null
 $controlLogs = Get-LogPair "control-plane"
@@ -91,25 +105,24 @@ else {
     }
     Write-Host "Starting control plane with $Python"
 
-    $env:PYTHONPATH = $SrcDir
-    $env:CASOPS_AGENTS_ROOT = Join-Path $Root "agents"
-    $env:PYTHONUNBUFFERED = "1"
-
-    $control = Start-Process -FilePath $Python -ArgumentList @(
-        "-m", "uvicorn",
-        "casops.api.control:create_app_from_env",
-        "--factory",
-        "--host", "127.0.0.1",
-        "--port", "$ControlPort"
-    ) -WorkingDirectory $Root -RedirectStandardOutput $controlLogs.Out -RedirectStandardError $controlLogs.Err -PassThru -WindowStyle Hidden
-
+    $launchControl = Join-Path $VarDir "start-control-plane.cmd"
+    $agentsRoot = Join-Path $Root "agents"
+    Write-LaunchCmd $launchControl @"
+@echo off
+cd /d "$Root"
+set PYTHONPATH=$SrcDir
+set CASOPS_AGENTS_ROOT=$agentsRoot
+set PYTHONUNBUFFERED=1
+"$Python" -m uvicorn casops.api.control:create_app_from_env --factory --host 127.0.0.1 --port $ControlPort > "$($controlLogs.Out)" 2> "$($controlLogs.Err)"
+"@
+    $control = Start-DetachedCmd $launchControl
     $controlPid = $control.Id
-    Write-Host "Started control plane pid=$controlPid -> http://127.0.0.1:$ControlPort"
+    Write-Host "Started control plane wrapper pid=$controlPid -> http://127.0.0.1:$ControlPort"
     Write-Host "  stderr $($controlLogs.Err)"
     if (-not (Wait-Port $ControlPort)) {
         $tail = ""
         if (Test-Path $controlLogs.Err) {
-            $tail = (Get-Content $controlLogs.Err -Tail 20) -join "`n"
+            $tail = (Get-Content $controlLogs.Err -Tail 20 -ErrorAction SilentlyContinue) -join "`n"
         }
         throw "Control plane did not become ready on :$ControlPort.`n$tail"
     }
@@ -127,15 +140,19 @@ else {
     }
 
     Write-Host "Starting Control UI..."
-    $ui = Start-Process -FilePath "cmd.exe" -ArgumentList @(
-        "/c", "npx vite --host 127.0.0.1 --port $UiPort"
-    ) -WorkingDirectory $UiDir -RedirectStandardOutput $uiLogs.Out -RedirectStandardError $uiLogs.Err -PassThru -WindowStyle Hidden
+    $launchUi = Join-Path $VarDir "start-ui.cmd"
+    Write-LaunchCmd $launchUi @"
+@echo off
+cd /d "$UiDir"
+npx --no-install vite --host 127.0.0.1 --port $UiPort > "$($uiLogs.Out)" 2> "$($uiLogs.Err)"
+"@
+    $ui = Start-DetachedCmd $launchUi
     $uiPid = $ui.Id
-    Write-Host "Started Control UI pid=$uiPid -> http://127.0.0.1:$UiPort"
+    Write-Host "Started Control UI wrapper pid=$uiPid -> http://127.0.0.1:$UiPort"
     if (-not (Wait-Port $UiPort)) {
         $tail = ""
         if (Test-Path $uiLogs.Err) {
-            $tail = (Get-Content $uiLogs.Err -Tail 20) -join "`n"
+            $tail = (Get-Content $uiLogs.Err -Tail 20 -ErrorAction SilentlyContinue) -join "`n"
         }
         throw "Control UI did not become ready on :$UiPort.`n$tail"
     }
@@ -157,5 +174,5 @@ Write-Host "  Control plane  $($state.control_plane_url)  (GET /health, /api/v3,
 Write-Host "  Control UI     $($state.ui_url)"
 Write-Host "Logs: $($controlLogs.Err)"
 Write-Host "      $($uiLogs.Err)"
-Write-Host "Stop with: powershell -File scripts/stop_all.ps1"
+Write-Host "Stop with: powershell -NoProfile -File scripts/stop_all.ps1"
 Write-Host "This window is free. Servers keep running in the background."

@@ -1,0 +1,12 @@
+{
+  "payload": {
+    "from_id": "va.ux.input",
+    "claim": "operator pasted a Nielsen 10 heuristics. Norman: affordance and feedback. sentence",
+    "correlation_id": "sim-vux-bus-1"
+  },
+  "reviewer_checks": [
+    "bus not fetched",
+    "cite only pasted text",
+    "in-role ux artifacts or wait; no invented CLIP-T/WCAG/arena numbers"
+  ]
+}

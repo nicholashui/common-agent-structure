@@ -65,6 +65,66 @@
       "id": "run-tc1",
       "honesty": "CHARACTERIZATION",
       "path": "run"
+    },
+    {
+      "id": "chat-vjudge-ambiguous",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vjudge_ambiguous"
+    },
+    {
+      "id": "chat-vjudge-multi-intent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vjudge_multi_intent"
+    },
+    {
+      "id": "chat-vjudge-domain-specific",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vjudge_domain_specific"
+    },
+    {
+      "id": "chat-vjudge-multilingual",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vjudge_multilingual"
+    },
+    {
+      "id": "chat-vjudge-oos",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vjudge_oos"
+    },
+    {
+      "id": "chat-vjudge-wait",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vjudge_wait"
+    },
+    {
+      "id": "chat-vjudge-invent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vjudge_invent"
+    },
+    {
+      "id": "chat-vjudge-activation",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vjudge_activation"
+    },
+    {
+      "id": "chat-vjudge-shift",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vjudge_shift"
+    },
+    {
+      "id": "chat-vjudge-handoff",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vjudge_handoff"
     }
   ],
   "note": "Fixtures are CHARACTERIZATION / policy checks. Not an eval pass. casops-eval remains NOT_RUN while instruments are unqualified."

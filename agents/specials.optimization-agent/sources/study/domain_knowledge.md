@@ -17,3 +17,19 @@ Process mining and digital twins are **design mentions**. This host does not att
 
 - Deming PDCA as the default closed loop
 - Cynefin: do not “optimize” a complex domain as if it were a convex program
+
+## Triple research (design-time, 2026-09)
+
+Design-time citations collected to complete the arXiv + YouTube + x.ai triple. **Not** live grants. `allowed_tools` stays `[]`. Network, plugins, T3, memory writes, and production stay off.
+
+### arXiv
+- [2503.12434](https://arxiv.org/abs/2503.12434) — Survey on optimization of LLM-based agents
+- [2605.27630](https://arxiv.org/abs/2605.27630) — OptiLoop — verify constraints in the loop; missing contract is not a convex program
+- [2605.27375](https://arxiv.org/abs/2605.27375) — LCO — LLM constraint optimization; missing safety constraints
+
+### YouTube (educational; do not paste transcripts into Chat)
+- [EPM, PDCA Cycle Explained (Deming / Shewhart)](https://www.youtube.com/watch?v=bO3GpAjVvD8)
+
+### xAI (non-activating vendor docs)
+- [Cost is a constraint, not a live dashboard](https://docs.x.ai/developers/pricing)
+

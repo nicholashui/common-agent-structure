@@ -1,0 +1,12 @@
+{
+  "payload": {
+    "from_id": "va.journalist.input",
+    "claim": "operator pasted a Elements of Journalism. Do not invent quotes. Network is off. sentence",
+    "correlation_id": "sim-vjournalist-bus-1"
+  },
+  "reviewer_checks": [
+    "bus not fetched",
+    "cite only pasted text",
+    "in-role journalist artifacts or wait; no invented CLIP-T/WCAG/arena numbers"
+  ]
+}

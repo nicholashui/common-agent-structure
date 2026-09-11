@@ -65,6 +65,66 @@
       "id": "run-tc1",
       "honesty": "CHARACTERIZATION",
       "path": "run"
+    },
+    {
+      "id": "chat-vmusicvideodirector-ambiguous",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vmusicvideodirector_ambiguous"
+    },
+    {
+      "id": "chat-vmusicvideodirector-multi-intent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vmusicvideodirector_multi_intent"
+    },
+    {
+      "id": "chat-vmusicvideodirector-domain-specific",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vmusicvideodirector_domain_specific"
+    },
+    {
+      "id": "chat-vmusicvideodirector-multilingual",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vmusicvideodirector_multilingual"
+    },
+    {
+      "id": "chat-vmusicvideodirector-oos",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vmusicvideodirector_oos"
+    },
+    {
+      "id": "chat-vmusicvideodirector-wait",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vmusicvideodirector_wait"
+    },
+    {
+      "id": "chat-vmusicvideodirector-invent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vmusicvideodirector_invent"
+    },
+    {
+      "id": "chat-vmusicvideodirector-activation",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vmusicvideodirector_activation"
+    },
+    {
+      "id": "chat-vmusicvideodirector-shift",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vmusicvideodirector_shift"
+    },
+    {
+      "id": "chat-vmusicvideodirector-handoff",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vmusicvideodirector_handoff"
     }
   ],
   "note": "Fixtures are CHARACTERIZATION / policy checks. Not an eval pass. casops-eval remains NOT_RUN while instruments are unqualified."

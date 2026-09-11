@@ -1,0 +1,12 @@
+{
+  "payload": {
+    "from_id": "va.signlanguageinterpreter.input",
+    "claim": "operator pasted a Do not treat captions as a substitute. This host has no live interpreter feed. sentence",
+    "correlation_id": "sim-vsignlanguageinterp-bus-1"
+  },
+  "reviewer_checks": [
+    "bus not fetched",
+    "cite only pasted text",
+    "in-role signlanguageinterpreter artifacts or wait; no invented CLIP-T/WCAG/arena numbers"
+  ]
+}

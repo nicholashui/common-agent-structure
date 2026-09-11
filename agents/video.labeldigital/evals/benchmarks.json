@@ -65,6 +65,66 @@
       "id": "run-tc1",
       "honesty": "CHARACTERIZATION",
       "path": "run"
+    },
+    {
+      "id": "chat-vlabeldigital-ambiguous",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vlabeldigital_ambiguous"
+    },
+    {
+      "id": "chat-vlabeldigital-multi-intent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vlabeldigital_multi_intent"
+    },
+    {
+      "id": "chat-vlabeldigital-domain-specific",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vlabeldigital_domain_specific"
+    },
+    {
+      "id": "chat-vlabeldigital-multilingual",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vlabeldigital_multilingual"
+    },
+    {
+      "id": "chat-vlabeldigital-oos",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vlabeldigital_oos"
+    },
+    {
+      "id": "chat-vlabeldigital-wait",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vlabeldigital_wait"
+    },
+    {
+      "id": "chat-vlabeldigital-invent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vlabeldigital_invent"
+    },
+    {
+      "id": "chat-vlabeldigital-activation",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vlabeldigital_activation"
+    },
+    {
+      "id": "chat-vlabeldigital-shift",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vlabeldigital_shift"
+    },
+    {
+      "id": "chat-vlabeldigital-handoff",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vlabeldigital_handoff"
     }
   ],
   "note": "Fixtures are CHARACTERIZATION / policy checks. Not an eval pass. casops-eval remains NOT_RUN while instruments are unqualified."

@@ -65,6 +65,66 @@
       "id": "run-tc1",
       "honesty": "CHARACTERIZATION",
       "path": "run"
+    },
+    {
+      "id": "chat-vcomms-ambiguous",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vcomms_ambiguous"
+    },
+    {
+      "id": "chat-vcomms-multi-intent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vcomms_multi_intent"
+    },
+    {
+      "id": "chat-vcomms-domain-specific",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vcomms_domain_specific"
+    },
+    {
+      "id": "chat-vcomms-multilingual",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vcomms_multilingual"
+    },
+    {
+      "id": "chat-vcomms-oos",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vcomms_oos"
+    },
+    {
+      "id": "chat-vcomms-wait",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vcomms_wait"
+    },
+    {
+      "id": "chat-vcomms-invent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vcomms_invent"
+    },
+    {
+      "id": "chat-vcomms-activation",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vcomms_activation"
+    },
+    {
+      "id": "chat-vcomms-shift",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vcomms_shift"
+    },
+    {
+      "id": "chat-vcomms-handoff",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vcomms_handoff"
     }
   ],
   "note": "Fixtures are CHARACTERIZATION / policy checks. Not an eval pass. casops-eval remains NOT_RUN while instruments are unqualified."

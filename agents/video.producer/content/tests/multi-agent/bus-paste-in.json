@@ -1,0 +1,12 @@
+{
+  "payload": {
+    "from_id": "va.producer.input",
+    "claim": "operator pasted a Producer vs director (DGA). Call sheet is the artifact. sentence",
+    "correlation_id": "sim-vproducer-bus-1"
+  },
+  "reviewer_checks": [
+    "bus not fetched",
+    "cite only pasted text",
+    "in-role producer artifacts or wait; no invented CLIP-T/WCAG/arena numbers"
+  ]
+}

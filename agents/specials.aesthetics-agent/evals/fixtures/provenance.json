@@ -4,6 +4,8 @@
   "honesty": "CHARACTERIZATION",
   "note": "Chat prompts are characterization only. Not an eval pass. casops-eval stays NOT_RUN while instruments are unqualified.",
   "chat_count": 10,
+  "aes_chat_count": 10,
+  "aes_note": "chat-aes-*.json are extra CHARACTERIZATION edges for the critic craft. Not an eval PASS.",
   "swarm_ops_cases": "vendor/common-agent-swarm-ops/testcases/api_test/specials.aesthetics_agent/cases.json",
   "swarm_ops_agent_id": "specials.aesthetics_agent",
   "chat_case_kinds": [

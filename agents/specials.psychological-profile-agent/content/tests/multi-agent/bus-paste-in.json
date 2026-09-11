@@ -1,0 +1,12 @@
+{
+  "payload": {
+    "from_id": "spagent.psychological-profile-agent-input",
+    "claim": "operator pasted a FFM/HEXACO workflow profile sentence",
+    "correlation_id": "sim-ffm-bus-1"
+  },
+  "reviewer_checks": [
+    "bus not fetched",
+    "cite only pasted text",
+    "never diagnose; never invent a patient record"
+  ]
+}

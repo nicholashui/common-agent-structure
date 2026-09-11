@@ -1,0 +1,12 @@
+{
+  "payload": {
+    "from_id": "va.performancemarketer.input",
+    "claim": "operator pasted a Last-click is not causal. Name the attribution window. sentence",
+    "correlation_id": "sim-vperformancemarkete-bus-1"
+  },
+  "reviewer_checks": [
+    "bus not fetched",
+    "cite only pasted text",
+    "in-role performancemarketer artifacts or wait; no invented CLIP-T/WCAG/arena numbers"
+  ]
+}

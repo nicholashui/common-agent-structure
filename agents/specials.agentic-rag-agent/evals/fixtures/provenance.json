@@ -4,6 +4,8 @@
   "honesty": "CHARACTERIZATION",
   "note": "Chat prompts are characterization only. Not an eval pass. casops-eval stays NOT_RUN while instruments are unqualified.",
   "chat_count": 10,
+  "rag_chat_count": 10,
+  "rag_note": "chat-rag-*.json are extra CHARACTERIZATION edges. Not an eval PASS.",
   "swarm_ops_cases": "vendor/common-agent-swarm-ops/testcases/api_test/specials.agentic_rag/cases.json",
   "swarm_ops_agent_id": "specials.agentic_rag",
   "chat_case_kinds": [

@@ -1,0 +1,22 @@
+{
+  "schema_version": "casops.permission_request.v1",
+  "agent_id": "video.motiongraphics",
+  "status": "pending",
+  "requested_skills": [
+    {
+      "skill_id": "casops.skill.video.motiongraphics.easing-hierarchy-hold",
+      "path": "skills/SKILL.md",
+      "tools": [],
+      "purpose": "Load Easing, hierarchy, and hold frames are the craft. After Effects names in design text are not tools. procedure into Chat policy only when host_permission AND operator_toggle resolve true. Adds no tools."
+    }
+  ],
+  "requested_tools": [],
+  "does_not_request": [
+    "network",
+    "plugins",
+    "memory_writes",
+    "production_activation",
+    "T3"
+  ],
+  "note": "Request only. Grant lives in permissions/register.json."
+}

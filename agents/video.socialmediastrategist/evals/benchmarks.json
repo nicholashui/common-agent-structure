@@ -65,6 +65,66 @@
       "id": "run-tc1",
       "honesty": "CHARACTERIZATION",
       "path": "run"
+    },
+    {
+      "id": "chat-vsocialmediastrateg-ambiguous",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vsocialmediastrateg_ambiguous"
+    },
+    {
+      "id": "chat-vsocialmediastrateg-multi-intent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vsocialmediastrateg_multi_intent"
+    },
+    {
+      "id": "chat-vsocialmediastrateg-domain-specific",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vsocialmediastrateg_domain_specific"
+    },
+    {
+      "id": "chat-vsocialmediastrateg-multilingual",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vsocialmediastrateg_multilingual"
+    },
+    {
+      "id": "chat-vsocialmediastrateg-oos",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vsocialmediastrateg_oos"
+    },
+    {
+      "id": "chat-vsocialmediastrateg-wait",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vsocialmediastrateg_wait"
+    },
+    {
+      "id": "chat-vsocialmediastrateg-invent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vsocialmediastrateg_invent"
+    },
+    {
+      "id": "chat-vsocialmediastrateg-activation",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vsocialmediastrateg_activation"
+    },
+    {
+      "id": "chat-vsocialmediastrateg-shift",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vsocialmediastrateg_shift"
+    },
+    {
+      "id": "chat-vsocialmediastrateg-handoff",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vsocialmediastrateg_handoff"
     }
   ],
   "note": "Fixtures are CHARACTERIZATION / policy checks. Not an eval pass. casops-eval remains NOT_RUN while instruments are unqualified."

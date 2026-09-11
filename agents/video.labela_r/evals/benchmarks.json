@@ -65,6 +65,66 @@
       "id": "run-tc1",
       "honesty": "CHARACTERIZATION",
       "path": "run"
+    },
+    {
+      "id": "chat-vlabelar-ambiguous",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vlabelar_ambiguous"
+    },
+    {
+      "id": "chat-vlabelar-multi-intent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vlabelar_multi_intent"
+    },
+    {
+      "id": "chat-vlabelar-domain-specific",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vlabelar_domain_specific"
+    },
+    {
+      "id": "chat-vlabelar-multilingual",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vlabelar_multilingual"
+    },
+    {
+      "id": "chat-vlabelar-oos",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vlabelar_oos"
+    },
+    {
+      "id": "chat-vlabelar-wait",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vlabelar_wait"
+    },
+    {
+      "id": "chat-vlabelar-invent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vlabelar_invent"
+    },
+    {
+      "id": "chat-vlabelar-activation",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vlabelar_activation"
+    },
+    {
+      "id": "chat-vlabelar-shift",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vlabelar_shift"
+    },
+    {
+      "id": "chat-vlabelar-handoff",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vlabelar_handoff"
     }
   ],
   "note": "Fixtures are CHARACTERIZATION / policy checks. Not an eval pass. casops-eval remains NOT_RUN while instruments are unqualified."

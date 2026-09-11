@@ -1,0 +1,12 @@
+{
+  "payload": {
+    "from_id": "va.router.input",
+    "claim": "operator pasted a Metadata → specialist. Self-RAG: retrieval is a decision. No live 5k index. sentence",
+    "correlation_id": "sim-vrouter-bus-1"
+  },
+  "reviewer_checks": [
+    "bus not fetched",
+    "cite only pasted text",
+    "in-role router artifacts or wait; no invented CLIP-T/WCAG/arena numbers"
+  ]
+}

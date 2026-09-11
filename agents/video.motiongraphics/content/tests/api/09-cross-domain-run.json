@@ -1,0 +1,17 @@
+{
+  "method": "POST",
+  "path": "/api/v3/agents/video.motiongraphics/runtime/run",
+  "headers": {
+    "Content-Type": "application/json",
+    "x-casops-actor": "human_operator",
+    "x-casops-reason": "operator run characterization",
+    "x-casops-expected-parent": "",
+    "x-casops-dry-run": "false"
+  },
+  "body": {},
+  "expect": {
+    "http_status": 200,
+    "agent_id": "video.motiongraphics",
+    "path_id": "run"
+  }
+}

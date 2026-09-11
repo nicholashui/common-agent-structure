@@ -455,3 +455,13 @@ You are a strategic goal achievement coach, specializing in helping users clarif
 | Trust model | Design corpus = untrusted data; host config = fail-closed |
 
 *End of guide for **Strategic Goal Achievement Agent**. Start from §1 Snapshot and §5 When to involve; use §8–§10 for CASOPS operations and improvement; use §11–§12 only for deep design fidelity.*
+
+## 16. Operator testing (this host)
+
+Characterization only. Chat 200 ≠ agent-correct.
+
+- Packed craft: `prompts/primary.md` (Objective (what) + 3–5 KRs (yes/no); six stages until a KR or qualitative stop).
+- Study: `sources/study/domain_knowledge.md`.
+- Fixtures: `chat-tc1`–`10`, `chat-okr-*`, `run-tc1`.
+- Guide: `content/test_guide.md`.
+- Skill `casops.skill.strategy.okr-kr` declared; host register does not grant it.

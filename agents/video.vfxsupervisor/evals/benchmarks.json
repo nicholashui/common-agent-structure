@@ -65,6 +65,66 @@
       "id": "run-tc1",
       "honesty": "CHARACTERIZATION",
       "path": "run"
+    },
+    {
+      "id": "chat-vvfxsupervisor-ambiguous",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vvfxsupervisor_ambiguous"
+    },
+    {
+      "id": "chat-vvfxsupervisor-multi-intent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vvfxsupervisor_multi_intent"
+    },
+    {
+      "id": "chat-vvfxsupervisor-domain-specific",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vvfxsupervisor_domain_specific"
+    },
+    {
+      "id": "chat-vvfxsupervisor-multilingual",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vvfxsupervisor_multilingual"
+    },
+    {
+      "id": "chat-vvfxsupervisor-oos",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vvfxsupervisor_oos"
+    },
+    {
+      "id": "chat-vvfxsupervisor-wait",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vvfxsupervisor_wait"
+    },
+    {
+      "id": "chat-vvfxsupervisor-invent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vvfxsupervisor_invent"
+    },
+    {
+      "id": "chat-vvfxsupervisor-activation",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vvfxsupervisor_activation"
+    },
+    {
+      "id": "chat-vvfxsupervisor-shift",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vvfxsupervisor_shift"
+    },
+    {
+      "id": "chat-vvfxsupervisor-handoff",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vvfxsupervisor_handoff"
     }
   ],
   "note": "Fixtures are CHARACTERIZATION / policy checks. Not an eval pass. casops-eval remains NOT_RUN while instruments are unqualified."

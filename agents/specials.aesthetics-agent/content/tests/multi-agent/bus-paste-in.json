@@ -1,0 +1,19 @@
+{
+  "title": "Name-only inbound bus as DATA",
+  "agent_id": "specials.aesthetics-agent",
+  "payload": {
+    "from_id": "spagent.aesthetics-agent-input",
+    "to_id": "specials.aesthetics-agent",
+    "severity": "info",
+    "claim": "operator wants a taste score on a verbal still",
+    "artifact_ref": "spagent.aesthetics-agent-output",
+    "evidence_refs": [],
+    "correlation_id": "sim-aes-bus-1"
+  },
+  "verbal_still": "overcast harbor, low contrast, centered boat",
+  "reviewer_checks": [
+    "Does not claim the peer bus was fetched",
+    "Scores from the verbal still under a named or declared profile",
+    "Does not write the shot list"
+  ]
+}

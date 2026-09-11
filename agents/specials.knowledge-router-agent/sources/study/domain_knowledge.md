@@ -25,3 +25,19 @@ A practical stack (named in this folder’s design text, grounded here):
 - Lewis et al., RAG, arXiv:2005.11401
 - Asai et al., Self-RAG, arXiv:2310.11511
 - Yan et al., CRAG, arXiv:2401.15884
+
+## Triple research (design-time, 2026-09)
+
+Design-time citations collected to complete the arXiv + YouTube + x.ai triple. **Not** live grants. `allowed_tools` stays `[]`. Network, plugins, T3, memory writes, and production stay off.
+
+### arXiv
+- [2005.11401](https://arxiv.org/abs/2005.11401) — Lewis RAG (already in study)
+- [2310.11511](https://arxiv.org/abs/2310.11511) — Self-RAG (already in study)
+
+### YouTube (educational; do not paste transcripts into Chat)
+- [Akari Asai, Self-reflective LMs with retrieval (UMass ML lunch)](https://www.youtube.com/watch?v=bVz8Ua1VVsE)
+
+### xAI (non-activating vendor docs)
+- [Files & Collections mentioned as RAG pipelines — this host has no live index](https://x.ai/docs/developers/quickstart)
+- [Collections/Web Search are vendor tools; allowed_tools stays empty](https://docs.x.ai/developers/tools/overview)
+

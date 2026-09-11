@@ -431,3 +431,13 @@ DSPy / OPRO prompt optimization (Yang 2023)
 | Trust model | Design corpus = untrusted data; host config = fail-closed |
 
 *End of guide for **PromptEngineerAgent / GeneratorOperator**. Start from §1 Snapshot and §5 When to involve; use §8–§10 for CASOPS operations and improvement; use §11–§12 only for deep design fidelity.*
+
+## 16. Operator testing (this host)
+
+Characterization only. Chat 200 ≠ agent-correct.
+
+- Packed craft: `prompts/primary.md` (numbered promptengineer artifacts grounded in unique sources).
+- Study: `sources/study/domain_knowledge.md`.
+- Fixtures: `chat-tc1`–`10`, `chat-vpromptengineer-*`, `run-tc1`.
+- Guide: `content/test_guide.md`.
+- Skill `casops.skill.video.promptengineer.brief-tokens` declared; host register does not grant it.

@@ -4,6 +4,8 @@
   "honesty": "CHARACTERIZATION",
   "note": "Chat prompts are characterization only. Not an eval pass. casops-eval stays NOT_RUN while instruments are unqualified.",
   "chat_count": 10,
+  "nlu_chat_count": 10,
+  "nlu_note": "chat-nlu-*.json are extra CHARACTERIZATION edges (ambiguous, multi-intent, domain, multilingual, OOS). Not an eval PASS.",
   "swarm_ops_cases": "vendor/common-agent-swarm-ops/testcases/api_test/specials.intent_analysis_agent/cases.json",
   "swarm_ops_agent_id": "specials.intent_analysis_agent",
   "chat_case_kinds": [

@@ -1,0 +1,12 @@
+{
+  "payload": {
+    "from_id": "va.labela_r.input",
+    "claim": "operator pasted a A&R: repertoire fit, artist brief, release timing. Distinct from `video.mpa` (feature ratings) and `video.musicsupervisor` (sync). sentence",
+    "correlation_id": "sim-vlabelar-bus-1"
+  },
+  "reviewer_checks": [
+    "bus not fetched",
+    "cite only pasted text",
+    "in-role labela_r artifacts or wait; no invented CLIP-T/WCAG/arena numbers"
+  ]
+}

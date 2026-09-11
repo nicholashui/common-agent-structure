@@ -1,0 +1,12 @@
+{
+  "payload": {
+    "from_id": "va.narrativearc.input",
+    "claim": "operator pasted a Name the shape (rise/fall, man-in-hole, etc.) with evidence in the pages. Do not invent CLIP-T. sentence",
+    "correlation_id": "sim-vnarrativearc-bus-1"
+  },
+  "reviewer_checks": [
+    "bus not fetched",
+    "cite only pasted text",
+    "in-role narrativearc artifacts or wait; no invented CLIP-T/WCAG/arena numbers"
+  ]
+}

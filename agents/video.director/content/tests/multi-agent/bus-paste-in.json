@@ -1,0 +1,12 @@
+{
+  "payload": {
+    "from_id": "va.director.input",
+    "claim": "operator pasted a Shot intent is a contract: size, angle, move, duration, whose look, what changes on the cut. Text-only “cinematic dolly” is not intent. Control strength: 3D camera blockout → start sentence",
+    "correlation_id": "sim-vdirector-bus-1"
+  },
+  "reviewer_checks": [
+    "bus not fetched",
+    "cite only pasted text",
+    "in-role director artifacts or wait; no invented CLIP-T/WCAG/arena numbers"
+  ]
+}

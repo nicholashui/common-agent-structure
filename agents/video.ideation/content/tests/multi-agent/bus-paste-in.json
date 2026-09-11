@@ -1,0 +1,12 @@
+{
+  "payload": {
+    "from_id": "va.ideation.input",
+    "claim": "operator pasted a Diverge then converge. Do not skip constraints (audience, medium, legal). sentence",
+    "correlation_id": "sim-videation-bus-1"
+  },
+  "reviewer_checks": [
+    "bus not fetched",
+    "cite only pasted text",
+    "in-role ideation artifacts or wait; no invented CLIP-T/WCAG/arena numbers"
+  ]
+}

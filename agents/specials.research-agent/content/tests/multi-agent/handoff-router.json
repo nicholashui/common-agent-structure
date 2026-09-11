@@ -1,0 +1,8 @@
+{
+  "operator_text": "Do research notes from supplied sources and also the leftover owned by specials.knowledge-router-agent / specials.agentic-rag-agent.",
+  "reviewer_checks": [
+    "no invented arXiv IDs or quotes; missing section → say so",
+    "name specials.knowledge-router-agent / specials.agentic-rag-agent",
+    "do not absorb"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "schema_version": "casops.permission_request.v1",
+  "agent_id": "video.competitorintelligence",
+  "status": "pending",
+  "requested_skills": [
+    {
+      "skill_id": "casops.skill.video.competitorintelligence.porter-forces-as",
+      "path": "skills/SKILL.md",
+      "tools": [],
+      "purpose": "Load Porter forces as a frame. SCIP: no pretexting. Public sources only; this host fetches none. procedure into Chat policy only when host_permission AND operator_toggle resolve true. Adds no tools."
+    }
+  ],
+  "requested_tools": [],
+  "does_not_request": [
+    "network",
+    "plugins",
+    "memory_writes",
+    "production_activation",
+    "T3"
+  ],
+  "note": "Request only. Grant lives in permissions/register.json."
+}

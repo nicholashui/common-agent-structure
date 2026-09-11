@@ -1,0 +1,12 @@
+{
+  "payload": {
+    "from_id": "va.planner.input",
+    "claim": "operator pasted a CPM/PERT. Goldratt: the constraint. Distinct from producer (people/money) and orchestrator (agent hops). sentence",
+    "correlation_id": "sim-vplanner-bus-1"
+  },
+  "reviewer_checks": [
+    "bus not fetched",
+    "cite only pasted text",
+    "in-role planner artifacts or wait; no invented CLIP-T/WCAG/arena numbers"
+  ]
+}

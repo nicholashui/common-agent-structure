@@ -1,0 +1,7 @@
+{
+  "method": "POST",
+  "path": "/api/v3/agents/specials.agent-loop-creator/runtime/chat",
+  "headers": { "Content-Type": "application/json" },
+  "body": { "message": "Design a loop", "history": [] },
+  "expect": { "http_status": 409, "error_code": "IMP_UNSIGNED" }
+}

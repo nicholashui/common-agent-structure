@@ -65,6 +65,66 @@
       "id": "run-tc1",
       "honesty": "CHARACTERIZATION",
       "path": "run"
+    },
+    {
+      "id": "chat-vmemory-ambiguous",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vmemory_ambiguous"
+    },
+    {
+      "id": "chat-vmemory-multi-intent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vmemory_multi_intent"
+    },
+    {
+      "id": "chat-vmemory-domain-specific",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vmemory_domain_specific"
+    },
+    {
+      "id": "chat-vmemory-multilingual",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vmemory_multilingual"
+    },
+    {
+      "id": "chat-vmemory-oos",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vmemory_oos"
+    },
+    {
+      "id": "chat-vmemory-wait",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vmemory_wait"
+    },
+    {
+      "id": "chat-vmemory-invent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vmemory_invent"
+    },
+    {
+      "id": "chat-vmemory-activation",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vmemory_activation"
+    },
+    {
+      "id": "chat-vmemory-shift",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vmemory_shift"
+    },
+    {
+      "id": "chat-vmemory-handoff",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vmemory_handoff"
     }
   ],
   "note": "Fixtures are CHARACTERIZATION / policy checks. Not an eval pass. casops-eval remains NOT_RUN while instruments are unqualified."

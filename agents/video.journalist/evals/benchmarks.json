@@ -65,6 +65,66 @@
       "id": "run-tc1",
       "honesty": "CHARACTERIZATION",
       "path": "run"
+    },
+    {
+      "id": "chat-vjournalist-ambiguous",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vjournalist_ambiguous"
+    },
+    {
+      "id": "chat-vjournalist-multi-intent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vjournalist_multi_intent"
+    },
+    {
+      "id": "chat-vjournalist-domain-specific",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vjournalist_domain_specific"
+    },
+    {
+      "id": "chat-vjournalist-multilingual",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vjournalist_multilingual"
+    },
+    {
+      "id": "chat-vjournalist-oos",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vjournalist_oos"
+    },
+    {
+      "id": "chat-vjournalist-wait",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vjournalist_wait"
+    },
+    {
+      "id": "chat-vjournalist-invent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vjournalist_invent"
+    },
+    {
+      "id": "chat-vjournalist-activation",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vjournalist_activation"
+    },
+    {
+      "id": "chat-vjournalist-shift",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vjournalist_shift"
+    },
+    {
+      "id": "chat-vjournalist-handoff",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vjournalist_handoff"
     }
   ],
   "note": "Fixtures are CHARACTERIZATION / policy checks. Not an eval pass. casops-eval remains NOT_RUN while instruments are unqualified."

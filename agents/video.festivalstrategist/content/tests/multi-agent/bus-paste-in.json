@@ -1,0 +1,12 @@
+{
+  "payload": {
+    "from_id": "va.festivalstrategist.input",
+    "claim": "operator pasted a Premiere status is spent once. Submission rules are written constraints. sentence",
+    "correlation_id": "sim-vfestivalstrategist-bus-1"
+  },
+  "reviewer_checks": [
+    "bus not fetched",
+    "cite only pasted text",
+    "in-role festivalstrategist artifacts or wait; no invented CLIP-T/WCAG/arena numbers"
+  ]
+}

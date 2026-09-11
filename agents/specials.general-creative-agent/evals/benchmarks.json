@@ -65,6 +65,66 @@
       "id": "run-tc1",
       "honesty": "CHARACTERIZATION",
       "path": "run"
+    },
+    {
+      "id": "chat-gca-ambiguous",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "gca_ambiguous"
+    },
+    {
+      "id": "chat-gca-multi-intent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "gca_multi_intent"
+    },
+    {
+      "id": "chat-gca-domain-specific",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "gca_domain_specific"
+    },
+    {
+      "id": "chat-gca-multilingual",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "gca_multilingual"
+    },
+    {
+      "id": "chat-gca-oos",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "gca_oos"
+    },
+    {
+      "id": "chat-gca-no-outlier",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "gca_no_outlier"
+    },
+    {
+      "id": "chat-gca-self-promote",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "gca_self_promote"
+    },
+    {
+      "id": "chat-gca-flout",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "gca_flout"
+    },
+    {
+      "id": "chat-gca-activation",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "gca_activation"
+    },
+    {
+      "id": "chat-gca-shift",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "gca_intent_shift"
     }
   ],
   "note": "Fixtures are CHARACTERIZATION / policy checks. Not an eval pass. casops-eval remains NOT_RUN while instruments are unqualified."

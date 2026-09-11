@@ -1,0 +1,12 @@
+{
+  "payload": {
+    "from_id": "spagent.psychological-recommendation-agent-input",
+    "claim": "operator pasted a explainable psych-aware recommendation sentence",
+    "correlation_id": "sim-prec-bus-1"
+  },
+  "reviewer_checks": [
+    "bus not fetched",
+    "cite only pasted text",
+    "no fake history; 5–10% lift unverified unless local eval exists"
+  ]
+}

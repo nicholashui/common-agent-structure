@@ -1,0 +1,12 @@
+{
+  "payload": {
+    "from_id": "va.accessibility.input",
+    "claim": "operator pasted a Do not claim a WCAG conformance level without a listed check. Sign-language space is a composition constraint. sentence",
+    "correlation_id": "sim-vaccessibility-bus-1"
+  },
+  "reviewer_checks": [
+    "bus not fetched",
+    "cite only pasted text",
+    "in-role accessibility artifacts or wait; no invented CLIP-T/WCAG/arena numbers"
+  ]
+}

@@ -8,7 +8,12 @@ from pathlib import Path
 REPO = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(REPO / "tools"))
 
-from complex_agent_testcases import MIN_CHAT_CASES, MIN_MESSAGE_CHARS, build_complex_chat_cases  # noqa: E402
+from complex_agent_testcases import (  # noqa: E402
+    MIN_CHAT_CASES,
+    MIN_MESSAGE_CHARS,
+    _bucket,
+    build_complex_chat_cases,
+)
 from import_agent_testcases import (  # noqa: E402
     CASOPS_TO_SWARM_FOLDER,
     fallback_prompts,
@@ -93,5 +98,59 @@ def test_complex_cases_are_ten_distinct_and_in_role(tmp_path: Path) -> None:
         assert item.source.get("kind") == item.kind
         assert "CHARACTERIZATION" in item.source.get("honesty", "")
     assert "Define shot language" in cases[0].message
+    assert "shot intent" in cases[0].message.lower() or "shot intents" in cases[0].message.lower()
     assert any("T3" in item.message for item in cases)
     assert any("XAI_API_KEY" in item.message or "personal information" in item.message.lower() for item in cases)
+    assert all("(no declared" not in item.message for item in cases)
+
+
+def _spec(folder: Path) -> dict:
+    import json
+
+    return json.loads((folder / "agent_spec.json").read_text(encoding="utf-8"))
+
+
+def test_intent_cases_analyse_text_not_execute_the_vlog() -> None:
+    folder = REPO / "agents" / "specials.intent-analysis-agent"
+    cases = build_complex_chat_cases(
+        folder,
+        _spec(folder),
+        [("Make a 6-day Osaka travel vlog for high retention", {"file": "vendor/x/cases.json"})],
+    )
+    text = cases[0].message.lower()
+    assert "osaka" in text
+    assert "analyse" in text or "analyze" in text or "locution" in text
+    assert "bordwell" not in text
+    assert "clip-t" not in text
+    assert "sora" not in text
+    assert "(no declared" not in cases[0].message
+    assert _bucket("specials.intent-analysis-agent") == "intent"
+
+
+def test_health_cases_are_snapshot_not_cinema() -> None:
+    folder = REPO / "agents" / "common.health"
+    cases = build_complex_chat_cases(folder, _spec(folder), [])
+    blob = "\n".join(item.message for item in cases).lower()
+    assert "snapshot" in blob or "folder_ok" in blob
+    assert "bordwell" not in blob
+    assert "clip-t" not in blob
+    assert "sora" not in blob
+    assert "50mm" not in blob
+    assert "(no declared" not in blob
+    assert _bucket("common.health") == "health"
+
+
+def test_legal_cases_are_legal_not_cliche_pacing() -> None:
+    folder = REPO / "agents" / "video.legal"
+    cases = build_complex_chat_cases(
+        folder,
+        _spec(folder),
+        [("Critique selection for cliché and pacing completeness (bounded refine)", {})],
+    )
+    first = cases[0].message.lower()
+    assert "fair use" in first or "legal" in first or "likeness" in first
+    assert "cliché" not in first and "cliche" not in first
+    blob = "\n".join(item.message for item in cases)
+    assert "CLIP-T" not in blob
+    assert "Bordwell" not in blob
+    assert _bucket("video.legal") == "legal"

@@ -1,0 +1,12 @@
+{
+  "payload": {
+    "from_id": "va.moodboard.input",
+    "claim": "operator pasted a Each still: why it is here, what is licensed. Pinterest is not a license. sentence",
+    "correlation_id": "sim-vmoodboard-bus-1"
+  },
+  "reviewer_checks": [
+    "bus not fetched",
+    "cite only pasted text",
+    "in-role moodboard artifacts or wait; no invented CLIP-T/WCAG/arena numbers"
+  ]
+}

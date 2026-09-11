@@ -1,0 +1,12 @@
+{
+  "payload": {
+    "from_id": "va.comms.input",
+    "claim": "operator pasted a Grunig excellence: two-way. Corrections go to `video.corrections`. sentence",
+    "correlation_id": "sim-vcomms-bus-1"
+  },
+  "reviewer_checks": [
+    "bus not fetched",
+    "cite only pasted text",
+    "in-role comms artifacts or wait; no invented CLIP-T/WCAG/arena numbers"
+  ]
+}

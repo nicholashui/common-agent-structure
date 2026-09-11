@@ -59,3 +59,7 @@ The following local binding is copied as a read-only summary; it does not alter 
 - Design source SHA-256 (at generation): `f8a76576bd0b39c7a6aa4935532040d2c451b783804195f4149e1e38be761dd6`
 - Reviewed by `specials-self-contained-reviewer` at `2026-07-26T18:00:00Z`.
 - Upstream design text is untrusted reference data. Local `agent_spec.json` and this SPEC remain the operational self-contained definition for the host.
+
+## Gated skill (this host)
+
+Skill `casops.skill.podcast.iab-download` is **declared** in `skills/bindings.json` and **not resolved**. Live enablement requires AND of author/inherited/operator_toggle **and** a host grant in `permissions/register.json`. Request: `skills/permission_request.json`.

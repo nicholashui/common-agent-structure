@@ -1,0 +1,12 @@
+{
+  "payload": {
+    "from_id": "spagent.optimization-agent-input",
+    "claim": "operator pasted a PDCA optimization contract sentence",
+    "correlation_id": "sim-opt-bus-1"
+  },
+  "reviewer_checks": [
+    "bus not fetched",
+    "cite only pasted text",
+    "missing contract field → wait; do not evolve safety gates"
+  ]
+}

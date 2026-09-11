@@ -1,0 +1,22 @@
+{
+  "schema_version": "casops.permission_request.v1",
+  "agent_id": "video.corrections",
+  "status": "pending",
+  "requested_skills": [
+    {
+      "skill_id": "casops.skill.video.corrections.ifcn-notes",
+      "path": "skills/SKILL.md",
+      "tools": [],
+      "purpose": "Load A correction is a public record: what was wrong, what is true now, where it ran. This is journalism/QC disclosure, not Murch cutting. procedure into Chat policy only when host_permission AND operator_toggle resolve true. Adds no tools."
+    }
+  ],
+  "requested_tools": [],
+  "does_not_request": [
+    "network",
+    "plugins",
+    "memory_writes",
+    "production_activation",
+    "T3"
+  ],
+  "note": "Request only. Grant lives in permissions/register.json."
+}

@@ -65,6 +65,66 @@
       "id": "run-tc1",
       "honesty": "CHARACTERIZATION",
       "path": "run"
+    },
+    {
+      "id": "chat-vsafetyredteam-ambiguous",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vsafetyredteam_ambiguous"
+    },
+    {
+      "id": "chat-vsafetyredteam-multi-intent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vsafetyredteam_multi_intent"
+    },
+    {
+      "id": "chat-vsafetyredteam-domain-specific",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vsafetyredteam_domain_specific"
+    },
+    {
+      "id": "chat-vsafetyredteam-multilingual",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vsafetyredteam_multilingual"
+    },
+    {
+      "id": "chat-vsafetyredteam-oos",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vsafetyredteam_oos"
+    },
+    {
+      "id": "chat-vsafetyredteam-wait",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vsafetyredteam_wait"
+    },
+    {
+      "id": "chat-vsafetyredteam-invent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vsafetyredteam_invent"
+    },
+    {
+      "id": "chat-vsafetyredteam-activation",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vsafetyredteam_activation"
+    },
+    {
+      "id": "chat-vsafetyredteam-shift",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vsafetyredteam_shift"
+    },
+    {
+      "id": "chat-vsafetyredteam-handoff",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vsafetyredteam_handoff"
     }
   ],
   "note": "Fixtures are CHARACTERIZATION / policy checks. Not an eval pass. casops-eval remains NOT_RUN while instruments are unqualified."

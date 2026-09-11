@@ -1035,3 +1035,6 @@ Live primary-source expansion remains a residual for score 100 on S3 where depth
 
 ```
 
+## Gated skill (this host)
+
+Skill `casops.skill.video.accessibility.wcag-captions` is **declared** in `skills/bindings.json` and **not resolved**. Live enablement requires AND of author/inherited/operator_toggle **and** a host grant in `permissions/register.json`. Request: `skills/permission_request.json`.

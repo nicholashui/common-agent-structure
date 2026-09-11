@@ -65,6 +65,66 @@
       "id": "run-tc1",
       "honesty": "CHARACTERIZATION",
       "path": "run"
+    },
+    {
+      "id": "chat-vpromptoptimizer-ambiguous",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vpromptoptimizer_ambiguous"
+    },
+    {
+      "id": "chat-vpromptoptimizer-multi-intent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vpromptoptimizer_multi_intent"
+    },
+    {
+      "id": "chat-vpromptoptimizer-domain-specific",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vpromptoptimizer_domain_specific"
+    },
+    {
+      "id": "chat-vpromptoptimizer-multilingual",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vpromptoptimizer_multilingual"
+    },
+    {
+      "id": "chat-vpromptoptimizer-oos",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vpromptoptimizer_oos"
+    },
+    {
+      "id": "chat-vpromptoptimizer-wait",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vpromptoptimizer_wait"
+    },
+    {
+      "id": "chat-vpromptoptimizer-invent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vpromptoptimizer_invent"
+    },
+    {
+      "id": "chat-vpromptoptimizer-activation",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vpromptoptimizer_activation"
+    },
+    {
+      "id": "chat-vpromptoptimizer-shift",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vpromptoptimizer_shift"
+    },
+    {
+      "id": "chat-vpromptoptimizer-handoff",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vpromptoptimizer_handoff"
     }
   ],
   "note": "Fixtures are CHARACTERIZATION / policy checks. Not an eval pass. casops-eval remains NOT_RUN while instruments are unqualified."

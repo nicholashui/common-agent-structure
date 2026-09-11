@@ -1,0 +1,12 @@
+{
+  "payload": {
+    "from_id": "va.citation.input",
+    "claim": "operator pasted a Identifier > fluffy title. Do not invent DOIs or arXiv IDs. sentence",
+    "correlation_id": "sim-vcitation-bus-1"
+  },
+  "reviewer_checks": [
+    "bus not fetched",
+    "cite only pasted text",
+    "in-role citation artifacts or wait; no invented CLIP-T/WCAG/arena numbers"
+  ]
+}

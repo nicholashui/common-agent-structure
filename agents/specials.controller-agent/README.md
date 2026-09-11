@@ -17,3 +17,5 @@ Local deterministic adapter only. Not production-certified.
 
 Open this folder alone — no external repo or pack `corpus/` is required.
 This agent is **not** production-active.
+
+Operator study and three-tier tests: `content/test_guide.md`. Skill `casops.skill.controller.control-map` declared, not host-granted.

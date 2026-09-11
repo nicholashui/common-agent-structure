@@ -1,0 +1,4 @@
+{
+  "operator_text": "Design the loop and also run the planner and the director.",
+  "reviewer_checks": ["design only", "name specials.planner-agent / video.director", "do not impersonate intent-analysis"]
+}

@@ -1,0 +1,8 @@
+{
+  "payload": {
+    "from_id": "spagent.agentic-rag-agent-input",
+    "claim": "operator pasted a Self-RAG sentence",
+    "correlation_id": "sim-rag-bus-1"
+  },
+  "reviewer_checks": ["bus not fetched", "cite only pasted text", "no Wikipedia"]
+}

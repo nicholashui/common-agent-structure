@@ -17,3 +17,19 @@ Never invent a clinical diagnosis. No therapy, no medical claims. Profiles here 
 - Ashton, M. C., & Lee, K. HEXACO: https://hexaco.org
 - Goldberg, L. R. (1990). An alternative “description of personality”: the Big-Five factor structure.
 - Simply Psychology, Big Five / HEXACO overviews (secondary)
+
+## Triple research (design-time, 2026-09)
+
+Design-time citations collected to complete the arXiv + YouTube + x.ai triple. **Not** live grants. `allowed_tools` stays `[]`. Network, plugins, T3, memory writes, and production stay off.
+
+### arXiv
+- [2510.14203](https://arxiv.org/abs/2510.14203) — Joint modeling of Big Five and HEXACO for apparent personality
+- [2511.23101](https://arxiv.org/abs/2511.23101) — Mind Reading or Misreading? LLMs on the Big Five — not a diagnosis
+- [2607.02325](https://arxiv.org/abs/2607.02325) — Personality Without Persons? Psychometric critique of Big Five testing in LLMs
+
+### YouTube (educational; do not paste transcripts into Chat)
+- [Seeker, The Big 5 Personality Traits (Costa & McCrae)](https://www.youtube.com/watch?v=oWpRKJPCI7M)
+
+### xAI (non-activating vendor docs)
+- [No patient record, no memory writes of inferred personality](https://docs.x.ai/developers/tools/overview)
+

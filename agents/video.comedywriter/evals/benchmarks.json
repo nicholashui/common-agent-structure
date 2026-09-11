@@ -65,6 +65,66 @@
       "id": "run-tc1",
       "honesty": "CHARACTERIZATION",
       "path": "run"
+    },
+    {
+      "id": "chat-vcomedywriter-ambiguous",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vcomedywriter_ambiguous"
+    },
+    {
+      "id": "chat-vcomedywriter-multi-intent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vcomedywriter_multi_intent"
+    },
+    {
+      "id": "chat-vcomedywriter-domain-specific",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vcomedywriter_domain_specific"
+    },
+    {
+      "id": "chat-vcomedywriter-multilingual",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vcomedywriter_multilingual"
+    },
+    {
+      "id": "chat-vcomedywriter-oos",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vcomedywriter_oos"
+    },
+    {
+      "id": "chat-vcomedywriter-wait",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vcomedywriter_wait"
+    },
+    {
+      "id": "chat-vcomedywriter-invent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vcomedywriter_invent"
+    },
+    {
+      "id": "chat-vcomedywriter-activation",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vcomedywriter_activation"
+    },
+    {
+      "id": "chat-vcomedywriter-shift",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vcomedywriter_shift"
+    },
+    {
+      "id": "chat-vcomedywriter-handoff",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vcomedywriter_handoff"
     }
   ],
   "note": "Fixtures are CHARACTERIZATION / policy checks. Not an eval pass. casops-eval remains NOT_RUN while instruments are unqualified."

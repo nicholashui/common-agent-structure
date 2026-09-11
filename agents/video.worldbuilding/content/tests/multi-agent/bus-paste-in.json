@@ -1,0 +1,12 @@
+{
+  "payload": {
+    "from_id": "va.worldbuilding.input",
+    "claim": "operator pasted a Geography, institutions, and causal rules must not contradict. Novelty without a field is private play. sentence",
+    "correlation_id": "sim-vworldbuilding-bus-1"
+  },
+  "reviewer_checks": [
+    "bus not fetched",
+    "cite only pasted text",
+    "in-role worldbuilding artifacts or wait; no invented CLIP-T/WCAG/arena numbers"
+  ]
+}

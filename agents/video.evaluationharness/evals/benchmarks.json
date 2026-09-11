@@ -65,6 +65,66 @@
       "id": "run-tc1",
       "honesty": "CHARACTERIZATION",
       "path": "run"
+    },
+    {
+      "id": "chat-vevaluationharness-ambiguous",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vevaluationharness_ambiguous"
+    },
+    {
+      "id": "chat-vevaluationharness-multi-intent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vevaluationharness_multi_intent"
+    },
+    {
+      "id": "chat-vevaluationharness-domain-specific",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vevaluationharness_domain_specific"
+    },
+    {
+      "id": "chat-vevaluationharness-multilingual",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vevaluationharness_multilingual"
+    },
+    {
+      "id": "chat-vevaluationharness-oos",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vevaluationharness_oos"
+    },
+    {
+      "id": "chat-vevaluationharness-wait",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vevaluationharness_wait"
+    },
+    {
+      "id": "chat-vevaluationharness-invent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vevaluationharness_invent"
+    },
+    {
+      "id": "chat-vevaluationharness-activation",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vevaluationharness_activation"
+    },
+    {
+      "id": "chat-vevaluationharness-shift",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vevaluationharness_shift"
+    },
+    {
+      "id": "chat-vevaluationharness-handoff",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vevaluationharness_handoff"
     }
   ],
   "note": "Fixtures are CHARACTERIZATION / policy checks. Not an eval pass. casops-eval remains NOT_RUN while instruments are unqualified."

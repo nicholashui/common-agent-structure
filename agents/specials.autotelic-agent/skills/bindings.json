@@ -1,3 +1,16 @@
 {
-  "bindings": []
+  "bindings": [
+    {
+      "skill_id": "casops.skill.autotelic.imgep-curriculum",
+      "source": "local",
+      "path": "skills/SKILL.md",
+      "enabled": true,
+      "author_enabled": true,
+      "inherited_enabled": true,
+      "operator_toggle": false,
+      "host_permission": false,
+      "tools": []
+    }
+  ],
+  "note": "Declared, not resolved. host_permission in this file is not a grant."
 }

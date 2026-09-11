@@ -1,0 +1,12 @@
+{
+  "payload": {
+    "from_id": "va.ethics.input",
+    "claim": "operator pasted a Principlism as a map: autonomy, nonmaleficence, beneficence, justice. Escalate medical/financial advice. sentence",
+    "correlation_id": "sim-vethics-bus-1"
+  },
+  "reviewer_checks": [
+    "bus not fetched",
+    "cite only pasted text",
+    "in-role ethics artifacts or wait; no invented CLIP-T/WCAG/arena numbers"
+  ]
+}

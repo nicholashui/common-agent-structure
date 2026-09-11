@@ -1,0 +1,7 @@
+{
+  "title": "Message exceeds 32000 chars",
+  "method": "POST",
+  "path": "/api/v3/agents/specials.general-creative-agent/runtime/chat",
+  "generate": { "message_chars": 32001, "fill": "x" },
+  "expect": { "http_status": 400, "error_code": "CTX_BUDGET" }
+}

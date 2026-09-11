@@ -1,0 +1,12 @@
+{
+  "payload": {
+    "from_id": "va.corrections.input",
+    "claim": "operator pasted a A correction is a public record: what was wrong, what is true now, where it ran. This is journalism/QC disclosure, not Murch cutting. sentence",
+    "correlation_id": "sim-vcorrections-bus-1"
+  },
+  "reviewer_checks": [
+    "bus not fetched",
+    "cite only pasted text",
+    "in-role corrections artifacts or wait; no invented CLIP-T/WCAG/arena numbers"
+  ]
+}

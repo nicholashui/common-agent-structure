@@ -1,0 +1,22 @@
+{
+  "method": "POST",
+  "path": "/api/v3/agents/video.evaluationharness/runtime/chat",
+  "headers": {
+    "Content-Type": "application/json",
+    "x-casops-actor": "human_operator",
+    "x-casops-reason": "operator chat",
+    "x-casops-expected-parent": "",
+    "x-casops-dry-run": "false"
+  },
+  "body": {
+    "message": "You are video.evaluationharness. numbered evaluationharness artifacts grounded in unique sources. Offline. CHARACTERIZATION.",
+    "history": []
+  },
+  "expect": {
+    "http_status": 200,
+    "agent_id": "video.evaluationharness",
+    "memory_writes": [],
+    "plugins_executed": false,
+    "t3_enabled": false
+  }
+}

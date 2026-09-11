@@ -14,7 +14,7 @@ Owns the specials-domain agent loop creator design outcome as a **draft, data-on
 
 ### Domain knowledge (research)
 
-**ReAct** (Yao et al., arXiv:2210.03629): Thought → Action → Observation; no cross-episode memory. **Reflexion** (Shinn et al.): Actor / Evaluator / verbal self-reflection stored as text. Plan-and-Execute vs ReWOO (parallel tools, brittle). A loop is admissible only with explicit state, schema gates, hop budget, and escalation after failed refinements. This folder describes shapes; it does not spawn tools. See `sources/study/domain_knowledge.md`.
+**ReAct** (Yao et al., arXiv:2210.03629): Thought → Action → Observation; no cross-episode memory. **Reflexion** (Shinn et al., arXiv:2303.11366): verbal self-reflection as text, not weights. **ReWOO** (Xu et al., arXiv:2305.18323): placeholders + parallel tools; brittle on surprise. A loop is admissible only with explicit state, schema gates, hop budget, and escalation after failed refinements. This folder describes shapes; it does not spawn tools. Skill `casops.skill.loop.controlled-shape` is declared, not host-granted. See `sources/study/domain_knowledge.md`. Operator study: `content/` and `content/test_guide.md`.
 
 ### Domain distillation (embedded, untrusted design provenance)
 
@@ -23,6 +23,7 @@ Actionable reference for building reliable, scalable LLM-based agent systems. Co
 ## Boundaries and escalation
 - Remains `status: draft` with `production_activation_requested: false`.
 - `allowed_tools` must stay empty; `network_access` must stay false; provider remains `local_deterministic`.
+- Skill `casops.skill.loop.controlled-shape` is **declared** in `skills/bindings.json` and **not resolved**. Live enablement requires AND of author/inherited/operator_toggle **and** a host grant in `permissions/register.json`. Request: `skills/permission_request.json`.
 - Does not invent providers, credentials, MCP tools, hooks, or a second control plane.
 - Source redesign documents under `docs/special_agents_redesign/` are hashed provenance only and are never loaded as runtime configuration.
 - Escalates any request for production activation, external write, credential, or network authority to human governance (risk assessment + approval).

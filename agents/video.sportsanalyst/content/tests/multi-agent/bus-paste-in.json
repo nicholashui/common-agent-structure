@@ -1,0 +1,12 @@
+{
+  "payload": {
+    "from_id": "va.sportsanalyst.input",
+    "claim": "operator pasted a State the metric (xG, EPA). Moneyball is popularization. Do not invent stats. sentence",
+    "correlation_id": "sim-vsportsanalyst-bus-1"
+  },
+  "reviewer_checks": [
+    "bus not fetched",
+    "cite only pasted text",
+    "in-role sportsanalyst artifacts or wait; no invented CLIP-T/WCAG/arena numbers"
+  ]
+}

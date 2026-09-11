@@ -65,6 +65,66 @@
       "id": "run-tc1",
       "honesty": "CHARACTERIZATION",
       "path": "run"
+    },
+    {
+      "id": "chat-vlms-ambiguous",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vlms_ambiguous"
+    },
+    {
+      "id": "chat-vlms-multi-intent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vlms_multi_intent"
+    },
+    {
+      "id": "chat-vlms-domain-specific",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vlms_domain_specific"
+    },
+    {
+      "id": "chat-vlms-multilingual",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vlms_multilingual"
+    },
+    {
+      "id": "chat-vlms-oos",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vlms_oos"
+    },
+    {
+      "id": "chat-vlms-wait",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vlms_wait"
+    },
+    {
+      "id": "chat-vlms-invent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vlms_invent"
+    },
+    {
+      "id": "chat-vlms-activation",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vlms_activation"
+    },
+    {
+      "id": "chat-vlms-shift",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vlms_shift"
+    },
+    {
+      "id": "chat-vlms-handoff",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vlms_handoff"
     }
   ],
   "note": "Fixtures are CHARACTERIZATION / policy checks. Not an eval pass. casops-eval remains NOT_RUN while instruments are unqualified."

@@ -1,0 +1,12 @@
+{
+  "payload": {
+    "from_id": "va.seo.input",
+    "claim": "operator pasted a Follow Search Central. Do not invent rankings. No live crawl on this host. sentence",
+    "correlation_id": "sim-vseo-bus-1"
+  },
+  "reviewer_checks": [
+    "bus not fetched",
+    "cite only pasted text",
+    "in-role seo artifacts or wait; no invented CLIP-T/WCAG/arena numbers"
+  ]
+}

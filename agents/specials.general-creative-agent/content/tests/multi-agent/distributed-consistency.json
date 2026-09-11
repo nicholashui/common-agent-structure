@@ -1,0 +1,16 @@
+{
+  "title": "Same brief, two Chat turns — outlier stays named",
+  "agent_id": "specials.general-creative-agent",
+  "turn_1": {
+    "message": "Combinational: hold quiet-harbor tropes; sparse outlier = silent-comedy beat; 15s vertical; evaluator = specials.aesthetics-agent. Offline."
+  },
+  "turn_2": {
+    "history_includes_turn_1": true,
+    "message": "Same brief. Do not flip to H-creativity because a director is waiting. Do not auto-promote."
+  },
+  "reviewer_checks": [
+    "Turn 1: named outlier and constraints",
+    "Turn 2: same Boden type; director waiting is not a waiver",
+    "Fail-closed gates unchanged"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "schema_version": "casops.permission_request.v1",
+  "agent_id": "video.director",
+  "status": "pending",
+  "requested_skills": [
+    {
+      "skill_id": "casops.skill.video.director.shot-intent",
+      "path": "skills/SKILL.md",
+      "tools": [],
+      "purpose": "Load Shot intent is a contract: size, angle, move, duration, whose look, what changes on the cut. Text-only “cinematic dolly” is not intent. Control strength: 3D camera blockout → start procedure into Chat policy only when host_permission AND operator_toggle resolve true. Adds no tools."
+    }
+  ],
+  "requested_tools": [],
+  "does_not_request": [
+    "network",
+    "plugins",
+    "memory_writes",
+    "production_activation",
+    "T3"
+  ],
+  "note": "Request only. Grant lives in permissions/register.json."
+}

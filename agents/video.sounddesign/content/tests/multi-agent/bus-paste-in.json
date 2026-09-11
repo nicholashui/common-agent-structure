@@ -1,0 +1,12 @@
+{
+  "payload": {
+    "from_id": "va.sounddesign.input",
+    "claim": "operator pasted a Diegetic vs non-diegetic. Added value (Chion) is the test. sentence",
+    "correlation_id": "sim-vsounddesign-bus-1"
+  },
+  "reviewer_checks": [
+    "bus not fetched",
+    "cite only pasted text",
+    "in-role sounddesign artifacts or wait; no invented CLIP-T/WCAG/arena numbers"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "payload": {
+    "from_id": "va.sales.input",
+    "claim": "operator pasted a SPIN/Challenger are procedures. Do not invent pipeline $. sentence",
+    "correlation_id": "sim-vsales-bus-1"
+  },
+  "reviewer_checks": [
+    "bus not fetched",
+    "cite only pasted text",
+    "in-role sales artifacts or wait; no invented CLIP-T/WCAG/arena numbers"
+  ]
+}

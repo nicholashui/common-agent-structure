@@ -65,6 +65,66 @@
       "id": "run-tc1",
       "honesty": "CHARACTERIZATION",
       "path": "run"
+    },
+    {
+      "id": "chat-tec-ambiguous",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "tec_ambiguous"
+    },
+    {
+      "id": "chat-tec-multi-intent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "tec_multi_intent"
+    },
+    {
+      "id": "chat-tec-domain-specific",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "tec_domain_specific"
+    },
+    {
+      "id": "chat-tec-multilingual",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "tec_multilingual"
+    },
+    {
+      "id": "chat-tec-oos",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "tec_oos"
+    },
+    {
+      "id": "chat-tec-wait",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "tec_wait"
+    },
+    {
+      "id": "chat-tec-invent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "tec_invent"
+    },
+    {
+      "id": "chat-tec-activation",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "tec_activation"
+    },
+    {
+      "id": "chat-tec-shift",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "tec_shift"
+    },
+    {
+      "id": "chat-tec-handoff",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "tec_handoff"
     }
   ],
   "note": "Fixtures are CHARACTERIZATION / policy checks. Not an eval pass. casops-eval remains NOT_RUN while instruments are unqualified."

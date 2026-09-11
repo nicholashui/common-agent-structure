@@ -444,3 +444,14 @@ The **Deep Intent Analysis Framework (DIA) v2.0** is a complete, production-read
 | Trust model | Design corpus = untrusted data; host config = fail-closed |
 
 *End of guide for **Intent Analysis Agent**. Start from §1 Snapshot and §5 When to involve; use §8–§10 for CASOPS operations and improvement; use §11–§12 only for deep design fidelity.*
+
+## 16. Operator testing (this host)
+
+Characterization only — not an eval PASS. Chat 200 ≠ agent-correct.
+
+- Packed craft: `prompts/primary.md` (How to reply: locution / illocution / implicature / triggerability / scope).
+- Cited study: `sources/study/domain_knowledge.md`.
+- Host fixtures: `evals/fixtures/chat-tc1.json`–`chat-tc10.json`, `chat-nlu-*.json`, `run-tc1.json`.
+- Operator suite + three-tier instructions: `content/test_guide.md`.
+- Public API: `/api/v3` only. Mutation POSTs need `x-casops-actor`, `x-casops-reason`, `x-casops-expected-parent`, `x-casops-dry-run`.
+- Skills/tools/network/production stay off. Do not invent a classification-accuracy PASS.

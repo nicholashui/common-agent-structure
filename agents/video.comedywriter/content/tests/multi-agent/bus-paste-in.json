@@ -1,0 +1,12 @@
+{
+  "payload": {
+    "from_id": "va.comedywriter.input",
+    "claim": "operator pasted a Setup/payoff, rule of three, character-based vs one-liner. Taste is not a license to punch down — escalate harm. sentence",
+    "correlation_id": "sim-vcomedywriter-bus-1"
+  },
+  "reviewer_checks": [
+    "bus not fetched",
+    "cite only pasted text",
+    "in-role comedywriter artifacts or wait; no invented CLIP-T/WCAG/arena numbers"
+  ]
+}

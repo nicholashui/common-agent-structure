@@ -1,0 +1,12 @@
+{
+  "payload": {
+    "from_id": "va.benchmarkresearch.input",
+    "claim": "operator pasted a VBench 16 dimensions. Do not post fake leaderboard numbers. Harness is `video.evaluationharness`. sentence",
+    "correlation_id": "sim-vbenchmarkresearch-bus-1"
+  },
+  "reviewer_checks": [
+    "bus not fetched",
+    "cite only pasted text",
+    "in-role benchmarkresearch artifacts or wait; no invented CLIP-T/WCAG/arena numbers"
+  ]
+}

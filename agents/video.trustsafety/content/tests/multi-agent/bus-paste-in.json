@@ -1,0 +1,12 @@
+{
+  "payload": {
+    "from_id": "va.trustsafety.input",
+    "claim": "operator pasted a Moderation is a written rule + appeal path. Gillespie: platforms as custodians. sentence",
+    "correlation_id": "sim-vtrustsafety-bus-1"
+  },
+  "reviewer_checks": [
+    "bus not fetched",
+    "cite only pasted text",
+    "in-role trustsafety artifacts or wait; no invented CLIP-T/WCAG/arena numbers"
+  ]
+}

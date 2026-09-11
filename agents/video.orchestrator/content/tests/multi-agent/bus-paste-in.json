@@ -1,0 +1,12 @@
+{
+  "payload": {
+    "from_id": "va.orchestrator.input",
+    "claim": "operator pasted a ReAct is an execution loop. Hop budget required. Do not absorb director. sentence",
+    "correlation_id": "sim-vorchestrator-bus-1"
+  },
+  "reviewer_checks": [
+    "bus not fetched",
+    "cite only pasted text",
+    "in-role orchestrator artifacts or wait; no invented CLIP-T/WCAG/arena numbers"
+  ]
+}

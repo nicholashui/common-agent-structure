@@ -65,6 +65,66 @@
       "id": "run-tc1",
       "honesty": "CHARACTERIZATION",
       "path": "run"
+    },
+    {
+      "id": "chat-cyn-ambiguous",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "cyn_ambiguous"
+    },
+    {
+      "id": "chat-cyn-multi-intent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "cyn_multi_intent"
+    },
+    {
+      "id": "chat-cyn-domain-specific",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "cyn_domain_specific"
+    },
+    {
+      "id": "chat-cyn-multilingual",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "cyn_multilingual"
+    },
+    {
+      "id": "chat-cyn-oos",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "cyn_oos"
+    },
+    {
+      "id": "chat-cyn-wait",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "cyn_wait"
+    },
+    {
+      "id": "chat-cyn-invent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "cyn_invent"
+    },
+    {
+      "id": "chat-cyn-activation",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "cyn_activation"
+    },
+    {
+      "id": "chat-cyn-shift",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "cyn_shift"
+    },
+    {
+      "id": "chat-cyn-handoff",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "cyn_handoff"
     }
   ],
   "note": "Fixtures are CHARACTERIZATION / policy checks. Not an eval pass. casops-eval remains NOT_RUN while instruments are unqualified."

@@ -1,0 +1,12 @@
+{
+  "payload": {
+    "from_id": "va.creativedirector.input",
+    "claim": "operator pasted a Idea must survive three placements (hero, cutdown, still). Distinct from `video.director` shot intent. sentence",
+    "correlation_id": "sim-vcreativedirector-bus-1"
+  },
+  "reviewer_checks": [
+    "bus not fetched",
+    "cite only pasted text",
+    "in-role creativedirector artifacts or wait; no invented CLIP-T/WCAG/arena numbers"
+  ]
+}

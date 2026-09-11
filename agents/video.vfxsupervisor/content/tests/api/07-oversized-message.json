@@ -1,0 +1,11 @@
+{
+  "generate": {
+    "message_chars": 32001,
+    "fill": "x"
+  },
+  "path": "/api/v3/agents/video.vfxsupervisor/runtime/chat",
+  "expect": {
+    "http_status": 400,
+    "error_code": "CTX_BUDGET"
+  }
+}

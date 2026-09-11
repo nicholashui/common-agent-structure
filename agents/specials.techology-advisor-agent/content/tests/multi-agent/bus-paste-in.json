@@ -1,0 +1,12 @@
+{
+  "payload": {
+    "from_id": "spagent.techology-advisor-agent-input",
+    "claim": "operator pasted a reviewable technology advice sentence",
+    "correlation_id": "sim-tec-bus-1"
+  },
+  "reviewer_checks": [
+    "bus not fetched",
+    "cite only pasted text",
+    "dated citations over “latest model”; vendor names are not enabled APIs"
+  ]
+}

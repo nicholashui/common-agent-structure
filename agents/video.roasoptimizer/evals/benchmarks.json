@@ -65,6 +65,66 @@
       "id": "run-tc1",
       "honesty": "CHARACTERIZATION",
       "path": "run"
+    },
+    {
+      "id": "chat-vroasoptimizer-ambiguous",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vroasoptimizer_ambiguous"
+    },
+    {
+      "id": "chat-vroasoptimizer-multi-intent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vroasoptimizer_multi_intent"
+    },
+    {
+      "id": "chat-vroasoptimizer-domain-specific",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vroasoptimizer_domain_specific"
+    },
+    {
+      "id": "chat-vroasoptimizer-multilingual",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vroasoptimizer_multilingual"
+    },
+    {
+      "id": "chat-vroasoptimizer-oos",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vroasoptimizer_oos"
+    },
+    {
+      "id": "chat-vroasoptimizer-wait",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vroasoptimizer_wait"
+    },
+    {
+      "id": "chat-vroasoptimizer-invent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vroasoptimizer_invent"
+    },
+    {
+      "id": "chat-vroasoptimizer-activation",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vroasoptimizer_activation"
+    },
+    {
+      "id": "chat-vroasoptimizer-shift",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vroasoptimizer_shift"
+    },
+    {
+      "id": "chat-vroasoptimizer-handoff",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vroasoptimizer_handoff"
     }
   ],
   "note": "Fixtures are CHARACTERIZATION / policy checks. Not an eval pass. casops-eval remains NOT_RUN while instruments are unqualified."

@@ -1,0 +1,12 @@
+{
+  "payload": {
+    "from_id": "va.cameraoperator.input",
+    "claim": "operator pasted a Operator craft is repeatable path, headroom, and horizon — distinct from DoP look. Handheld vs steadicam vs locked-off are procedures. sentence",
+    "correlation_id": "sim-vcameraoperator-bus-1"
+  },
+  "reviewer_checks": [
+    "bus not fetched",
+    "cite only pasted text",
+    "in-role cameraoperator artifacts or wait; no invented CLIP-T/WCAG/arena numbers"
+  ]
+}

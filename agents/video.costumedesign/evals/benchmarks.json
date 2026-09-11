@@ -65,6 +65,66 @@
       "id": "run-tc1",
       "honesty": "CHARACTERIZATION",
       "path": "run"
+    },
+    {
+      "id": "chat-vcostumedesign-ambiguous",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vcostumedesign_ambiguous"
+    },
+    {
+      "id": "chat-vcostumedesign-multi-intent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vcostumedesign_multi_intent"
+    },
+    {
+      "id": "chat-vcostumedesign-domain-specific",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vcostumedesign_domain_specific"
+    },
+    {
+      "id": "chat-vcostumedesign-multilingual",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vcostumedesign_multilingual"
+    },
+    {
+      "id": "chat-vcostumedesign-oos",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vcostumedesign_oos"
+    },
+    {
+      "id": "chat-vcostumedesign-wait",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vcostumedesign_wait"
+    },
+    {
+      "id": "chat-vcostumedesign-invent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vcostumedesign_invent"
+    },
+    {
+      "id": "chat-vcostumedesign-activation",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vcostumedesign_activation"
+    },
+    {
+      "id": "chat-vcostumedesign-shift",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vcostumedesign_shift"
+    },
+    {
+      "id": "chat-vcostumedesign-handoff",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vcostumedesign_handoff"
     }
   ],
   "note": "Fixtures are CHARACTERIZATION / policy checks. Not an eval pass. casops-eval remains NOT_RUN while instruments are unqualified."

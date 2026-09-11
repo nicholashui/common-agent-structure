@@ -1,0 +1,12 @@
+{
+  "payload": {
+    "from_id": "va.analyst.input",
+    "claim": "operator pasted a ACH: competing hypotheses. Heuer: biases named. sentence",
+    "correlation_id": "sim-vanalyst-bus-1"
+  },
+  "reviewer_checks": [
+    "bus not fetched",
+    "cite only pasted text",
+    "in-role analyst artifacts or wait; no invented CLIP-T/WCAG/arena numbers"
+  ]
+}

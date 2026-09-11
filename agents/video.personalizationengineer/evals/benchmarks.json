@@ -65,6 +65,66 @@
       "id": "run-tc1",
       "honesty": "CHARACTERIZATION",
       "path": "run"
+    },
+    {
+      "id": "chat-vpersonalizationeng-ambiguous",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vpersonalizationeng_ambiguous"
+    },
+    {
+      "id": "chat-vpersonalizationeng-multi-intent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vpersonalizationeng_multi_intent"
+    },
+    {
+      "id": "chat-vpersonalizationeng-domain-specific",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vpersonalizationeng_domain_specific"
+    },
+    {
+      "id": "chat-vpersonalizationeng-multilingual",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vpersonalizationeng_multilingual"
+    },
+    {
+      "id": "chat-vpersonalizationeng-oos",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vpersonalizationeng_oos"
+    },
+    {
+      "id": "chat-vpersonalizationeng-wait",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vpersonalizationeng_wait"
+    },
+    {
+      "id": "chat-vpersonalizationeng-invent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vpersonalizationeng_invent"
+    },
+    {
+      "id": "chat-vpersonalizationeng-activation",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vpersonalizationeng_activation"
+    },
+    {
+      "id": "chat-vpersonalizationeng-shift",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vpersonalizationeng_shift"
+    },
+    {
+      "id": "chat-vpersonalizationeng-handoff",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vpersonalizationeng_handoff"
     }
   ],
   "note": "Fixtures are CHARACTERIZATION / policy checks. Not an eval pass. casops-eval remains NOT_RUN while instruments are unqualified."

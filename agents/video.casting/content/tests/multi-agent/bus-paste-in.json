@@ -1,0 +1,12 @@
+{
+  "payload": {
+    "from_id": "va.casting.input",
+    "claim": "operator pasted a Brief: age band, language, union, availability. Likeness escalates to legal. sentence",
+    "correlation_id": "sim-vcasting-bus-1"
+  },
+  "reviewer_checks": [
+    "bus not fetched",
+    "cite only pasted text",
+    "in-role casting artifacts or wait; no invented CLIP-T/WCAG/arena numbers"
+  ]
+}

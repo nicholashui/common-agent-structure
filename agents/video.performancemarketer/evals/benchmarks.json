@@ -65,6 +65,66 @@
       "id": "run-tc1",
       "honesty": "CHARACTERIZATION",
       "path": "run"
+    },
+    {
+      "id": "chat-vperformancemarkete-ambiguous",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vperformancemarkete_ambiguous"
+    },
+    {
+      "id": "chat-vperformancemarkete-multi-intent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vperformancemarkete_multi_intent"
+    },
+    {
+      "id": "chat-vperformancemarkete-domain-specific",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vperformancemarkete_domain_specific"
+    },
+    {
+      "id": "chat-vperformancemarkete-multilingual",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vperformancemarkete_multilingual"
+    },
+    {
+      "id": "chat-vperformancemarkete-oos",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vperformancemarkete_oos"
+    },
+    {
+      "id": "chat-vperformancemarkete-wait",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vperformancemarkete_wait"
+    },
+    {
+      "id": "chat-vperformancemarkete-invent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vperformancemarkete_invent"
+    },
+    {
+      "id": "chat-vperformancemarkete-activation",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vperformancemarkete_activation"
+    },
+    {
+      "id": "chat-vperformancemarkete-shift",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vperformancemarkete_shift"
+    },
+    {
+      "id": "chat-vperformancemarkete-handoff",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vperformancemarkete_handoff"
     }
   ],
   "note": "Fixtures are CHARACTERIZATION / policy checks. Not an eval pass. casops-eval remains NOT_RUN while instruments are unqualified."

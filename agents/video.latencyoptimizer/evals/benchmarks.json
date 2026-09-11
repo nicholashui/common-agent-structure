@@ -65,6 +65,66 @@
       "id": "run-tc1",
       "honesty": "CHARACTERIZATION",
       "path": "run"
+    },
+    {
+      "id": "chat-vlatencyoptimizer-ambiguous",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vlatencyoptimizer_ambiguous"
+    },
+    {
+      "id": "chat-vlatencyoptimizer-multi-intent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vlatencyoptimizer_multi_intent"
+    },
+    {
+      "id": "chat-vlatencyoptimizer-domain-specific",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vlatencyoptimizer_domain_specific"
+    },
+    {
+      "id": "chat-vlatencyoptimizer-multilingual",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vlatencyoptimizer_multilingual"
+    },
+    {
+      "id": "chat-vlatencyoptimizer-oos",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vlatencyoptimizer_oos"
+    },
+    {
+      "id": "chat-vlatencyoptimizer-wait",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vlatencyoptimizer_wait"
+    },
+    {
+      "id": "chat-vlatencyoptimizer-invent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vlatencyoptimizer_invent"
+    },
+    {
+      "id": "chat-vlatencyoptimizer-activation",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vlatencyoptimizer_activation"
+    },
+    {
+      "id": "chat-vlatencyoptimizer-shift",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vlatencyoptimizer_shift"
+    },
+    {
+      "id": "chat-vlatencyoptimizer-handoff",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vlatencyoptimizer_handoff"
     }
   ],
   "note": "Fixtures are CHARACTERIZATION / policy checks. Not an eval pass. casops-eval remains NOT_RUN while instruments are unqualified."

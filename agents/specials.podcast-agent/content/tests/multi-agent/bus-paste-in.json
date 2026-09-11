@@ -1,0 +1,12 @@
+{
+  "payload": {
+    "from_id": "spagent.podcast-agent-input",
+    "claim": "operator pasted a podcast craft vs IAB measurement sentence",
+    "correlation_id": "sim-pod-bus-1"
+  },
+  "reviewer_checks": [
+    "bus not fetched",
+    "cite only pasted text",
+    "do not invent download graphs; Apple/Spotify first-party ≠ IAB"
+  ]
+}

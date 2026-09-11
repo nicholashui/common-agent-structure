@@ -1,0 +1,24 @@
+{
+  "title": "Valid Chat request",
+  "method": "POST",
+  "path": "/api/v3/agents/specials.intent-analysis-agent/runtime/chat",
+  "headers": {
+    "Content-Type": "application/json",
+    "x-casops-actor": "human_operator",
+    "x-casops-reason": "operator chat",
+    "x-casops-expected-parent": "",
+    "x-casops-dry-run": "false"
+  },
+  "body": {
+    "message": "You are specials.intent-analysis-agent. Analyse locution, illocution, implicature, triggerability, and scope. Do not write the deliverable. Operator text: «Can we maybe do something about Osaka?»",
+    "history": []
+  },
+  "expect": {
+    "http_status": 200,
+    "agent_id": "specials.intent-analysis-agent",
+    "memory_writes": [],
+    "plugins_executed": false,
+    "t3_enabled": false,
+    "note": "200 proves the host routed Chat. It does not prove the reply is craft-correct (ISSUE-0002)."
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "payload": {
+    "from_id": "va.judge.input",
+    "claim": "operator pasted a LLM-as-judge literature. Do not claim arena win-rate. Max refinements then HiTL. sentence",
+    "correlation_id": "sim-vjudge-bus-1"
+  },
+  "reviewer_checks": [
+    "bus not fetched",
+    "cite only pasted text",
+    "in-role judge artifacts or wait; no invented CLIP-T/WCAG/arena numbers"
+  ]
+}

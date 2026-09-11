@@ -65,6 +65,66 @@
       "id": "run-tc1",
       "honesty": "CHARACTERIZATION",
       "path": "run"
+    },
+    {
+      "id": "chat-vvoiceclone-ambiguous",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vvoiceclone_ambiguous"
+    },
+    {
+      "id": "chat-vvoiceclone-multi-intent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vvoiceclone_multi_intent"
+    },
+    {
+      "id": "chat-vvoiceclone-domain-specific",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vvoiceclone_domain_specific"
+    },
+    {
+      "id": "chat-vvoiceclone-multilingual",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vvoiceclone_multilingual"
+    },
+    {
+      "id": "chat-vvoiceclone-oos",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vvoiceclone_oos"
+    },
+    {
+      "id": "chat-vvoiceclone-wait",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vvoiceclone_wait"
+    },
+    {
+      "id": "chat-vvoiceclone-invent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vvoiceclone_invent"
+    },
+    {
+      "id": "chat-vvoiceclone-activation",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vvoiceclone_activation"
+    },
+    {
+      "id": "chat-vvoiceclone-shift",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vvoiceclone_shift"
+    },
+    {
+      "id": "chat-vvoiceclone-handoff",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vvoiceclone_handoff"
     }
   ],
   "note": "Fixtures are CHARACTERIZATION / policy checks. Not an eval pass. casops-eval remains NOT_RUN while instruments are unqualified."

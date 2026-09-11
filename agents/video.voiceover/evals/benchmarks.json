@@ -65,6 +65,66 @@
       "id": "run-tc1",
       "honesty": "CHARACTERIZATION",
       "path": "run"
+    },
+    {
+      "id": "chat-vvoiceover-ambiguous",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vvoiceover_ambiguous"
+    },
+    {
+      "id": "chat-vvoiceover-multi-intent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vvoiceover_multi_intent"
+    },
+    {
+      "id": "chat-vvoiceover-domain-specific",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vvoiceover_domain_specific"
+    },
+    {
+      "id": "chat-vvoiceover-multilingual",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vvoiceover_multilingual"
+    },
+    {
+      "id": "chat-vvoiceover-oos",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vvoiceover_oos"
+    },
+    {
+      "id": "chat-vvoiceover-wait",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vvoiceover_wait"
+    },
+    {
+      "id": "chat-vvoiceover-invent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vvoiceover_invent"
+    },
+    {
+      "id": "chat-vvoiceover-activation",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vvoiceover_activation"
+    },
+    {
+      "id": "chat-vvoiceover-shift",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vvoiceover_shift"
+    },
+    {
+      "id": "chat-vvoiceover-handoff",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vvoiceover_handoff"
     }
   ],
   "note": "Fixtures are CHARACTERIZATION / policy checks. Not an eval pass. casops-eval remains NOT_RUN while instruments are unqualified."

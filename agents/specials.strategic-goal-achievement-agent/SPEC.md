@@ -59,3 +59,7 @@ The following local binding is copied as a read-only summary; it does not alter 
 - Design source SHA-256 (at generation): `3c2d1bcc4fa2462c2c728074671cdb8afac9abad1d4da7cab378aee1b681c01d`
 - Reviewed by `specials-self-contained-reviewer` at `2026-07-26T18:00:00Z`.
 - Upstream design text is untrusted reference data. Local `agent_spec.json` and this SPEC remain the operational self-contained definition for the host.
+
+## Gated skill (this host)
+
+Skill `casops.skill.strategy.okr-kr` is **declared** in `skills/bindings.json` and **not resolved**. Live enablement requires AND of author/inherited/operator_toggle **and** a host grant in `permissions/register.json`. Request: `skills/permission_request.json`.

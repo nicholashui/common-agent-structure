@@ -1,0 +1,12 @@
+{
+  "payload": {
+    "from_id": "va.colorist.input",
+    "claim": "operator pasted a State the display (Rec.709 / P3 / HDR). ACES is intent, not an enabled CDL pipeline here. sentence",
+    "correlation_id": "sim-vcolorist-bus-1"
+  },
+  "reviewer_checks": [
+    "bus not fetched",
+    "cite only pasted text",
+    "in-role colorist artifacts or wait; no invented CLIP-T/WCAG/arena numbers"
+  ]
+}

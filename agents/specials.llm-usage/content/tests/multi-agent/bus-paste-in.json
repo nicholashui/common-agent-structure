@@ -1,0 +1,12 @@
+{
+  "payload": {
+    "from_id": "spagent.llm-usage-input",
+    "claim": "operator pasted a LLM usage metering sentence",
+    "correlation_id": "sim-llm-bus-1"
+  },
+  "reviewer_checks": [
+    "bus not fetched",
+    "cite only pasted text",
+    "request counts are not the meter; no API keys stored"
+  ]
+}

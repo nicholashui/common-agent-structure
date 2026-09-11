@@ -1,0 +1,4 @@
+This file is intentionally not JSON.
+POST as body of /api/v3/agents/specials.general-creative-agent/runtime/chat
+with Content-Type application/json and the four mutation headers.
+Expect 4xx parse, not a Chat 200 with a fabricated mashup.

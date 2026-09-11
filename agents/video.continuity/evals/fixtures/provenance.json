@@ -17,5 +17,7 @@
     "jailbreak_pack_echo",
     "activation_creep",
     "dual_bind_promotion"
-  ]
+  ],
+  "vcontinuity_chat_count": 10,
+  "vcontinuity_note": "chat-vcontinuity-*.json are extra CHARACTERIZATION edges. Not an eval PASS."
 }

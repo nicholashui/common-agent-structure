@@ -1,0 +1,12 @@
+{
+  "payload": {
+    "from_id": "va.costoptimizer.input",
+    "claim": "operator pasted a TCO / FinOps. Do not invent cloud invoices. Safety gates are not a cost to “optimize away”. sentence",
+    "correlation_id": "sim-vcostoptimizer-bus-1"
+  },
+  "reviewer_checks": [
+    "bus not fetched",
+    "cite only pasted text",
+    "in-role costoptimizer artifacts or wait; no invented CLIP-T/WCAG/arena numbers"
+  ]
+}

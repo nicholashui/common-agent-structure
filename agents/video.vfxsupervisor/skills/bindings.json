@@ -1,5 +1,18 @@
 {
   "agent_id": "video.vfxsupervisor",
-  "bindings": [],
-  "special_skills": []
+  "bindings": [
+    {
+      "skill_id": "casops.skill.video.vfxsupervisor.comp-notes-scale",
+      "source": "local",
+      "path": "skills/SKILL.md",
+      "enabled": true,
+      "author_enabled": true,
+      "inherited_enabled": true,
+      "operator_toggle": false,
+      "host_permission": false,
+      "tools": []
+    }
+  ],
+  "special_skills": [],
+  "note": "Declared, not resolved. host_permission in this file is not a grant."
 }

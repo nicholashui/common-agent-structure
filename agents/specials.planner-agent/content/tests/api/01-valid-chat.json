@@ -1,0 +1,22 @@
+{
+  "method": "POST",
+  "path": "/api/v3/agents/specials.planner-agent/runtime/chat",
+  "headers": {
+    "Content-Type": "application/json",
+    "x-casops-actor": "human_operator",
+    "x-casops-reason": "operator chat",
+    "x-casops-expected-parent": "",
+    "x-casops-dry-run": "false"
+  },
+  "body": {
+    "message": "You are specials.planner-agent. component type → scoped files → cited spans → tasks with file+acceptance. Offline. CHARACTERIZATION.",
+    "history": []
+  },
+  "expect": {
+    "http_status": 200,
+    "agent_id": "specials.planner-agent",
+    "memory_writes": [],
+    "plugins_executed": false,
+    "t3_enabled": false
+  }
+}

@@ -65,6 +65,66 @@
       "id": "run-tc1",
       "honesty": "CHARACTERIZATION",
       "path": "run"
+    },
+    {
+      "id": "chat-vmedicalillustrator-ambiguous",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vmedicalillustrator_ambiguous"
+    },
+    {
+      "id": "chat-vmedicalillustrator-multi-intent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vmedicalillustrator_multi_intent"
+    },
+    {
+      "id": "chat-vmedicalillustrator-domain-specific",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vmedicalillustrator_domain_specific"
+    },
+    {
+      "id": "chat-vmedicalillustrator-multilingual",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vmedicalillustrator_multilingual"
+    },
+    {
+      "id": "chat-vmedicalillustrator-oos",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vmedicalillustrator_oos"
+    },
+    {
+      "id": "chat-vmedicalillustrator-wait",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vmedicalillustrator_wait"
+    },
+    {
+      "id": "chat-vmedicalillustrator-invent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vmedicalillustrator_invent"
+    },
+    {
+      "id": "chat-vmedicalillustrator-activation",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vmedicalillustrator_activation"
+    },
+    {
+      "id": "chat-vmedicalillustrator-shift",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vmedicalillustrator_shift"
+    },
+    {
+      "id": "chat-vmedicalillustrator-handoff",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vmedicalillustrator_handoff"
     }
   ],
   "note": "Fixtures are CHARACTERIZATION / policy checks. Not an eval pass. casops-eval remains NOT_RUN while instruments are unqualified."

@@ -1,0 +1,12 @@
+{
+  "payload": {
+    "from_id": "va.emotionalarc.input",
+    "claim": "operator pasted a Reagan six shapes as a hypothesis. Distinct from narrativearc (plot) and comedywriter. sentence",
+    "correlation_id": "sim-vemotionalarc-bus-1"
+  },
+  "reviewer_checks": [
+    "bus not fetched",
+    "cite only pasted text",
+    "in-role emotionalarc artifacts or wait; no invented CLIP-T/WCAG/arena numbers"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "payload": {
+    "from_id": "va.awardsstrategist.input",
+    "claim": "operator pasted a Academy/BAFTA rules change; date the rule. Distinct from festival premiere strategy. sentence",
+    "correlation_id": "sim-vawardsstrategist-bus-1"
+  },
+  "reviewer_checks": [
+    "bus not fetched",
+    "cite only pasted text",
+    "in-role awardsstrategist artifacts or wait; no invented CLIP-T/WCAG/arena numbers"
+  ]
+}

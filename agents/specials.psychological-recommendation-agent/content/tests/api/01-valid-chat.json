@@ -1,0 +1,22 @@
+{
+  "method": "POST",
+  "path": "/api/v3/agents/specials.psychological-recommendation-agent/runtime/chat",
+  "headers": {
+    "Content-Type": "application/json",
+    "x-casops-actor": "human_operator",
+    "x-casops-reason": "operator chat",
+    "x-casops-expected-parent": "",
+    "x-casops-dry-run": "false"
+  },
+  "body": {
+    "message": "You are specials.psychological-recommendation-agent. why (features/trait/not-chosen) + cold-start from stated traits. Offline. CHARACTERIZATION.",
+    "history": []
+  },
+  "expect": {
+    "http_status": 200,
+    "agent_id": "specials.psychological-recommendation-agent",
+    "memory_writes": [],
+    "plugins_executed": false,
+    "t3_enabled": false
+  }
+}

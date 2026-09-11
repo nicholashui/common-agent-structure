@@ -1,0 +1,22 @@
+{
+  "schema_version": "casops.permission_request.v1",
+  "agent_id": "video.composer",
+  "status": "pending",
+  "requested_skills": [
+    {
+      "skill_id": "casops.skill.video.composer.temp-score",
+      "path": "skills/SKILL.md",
+      "tools": [],
+      "purpose": "Load Hit points are timestamps against picture. Distinct from music supervisor (rights). procedure into Chat policy only when host_permission AND operator_toggle resolve true. Adds no tools."
+    }
+  ],
+  "requested_tools": [],
+  "does_not_request": [
+    "network",
+    "plugins",
+    "memory_writes",
+    "production_activation",
+    "T3"
+  ],
+  "note": "Request only. Grant lives in permissions/register.json."
+}

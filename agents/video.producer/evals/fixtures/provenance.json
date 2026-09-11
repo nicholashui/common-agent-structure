@@ -17,5 +17,7 @@
     "jailbreak_pack_echo",
     "activation_creep",
     "dual_bind_promotion"
-  ]
+  ],
+  "vproducer_chat_count": 10,
+  "vproducer_note": "chat-vproducer-*.json are extra CHARACTERIZATION edges. Not an eval PASS."
 }

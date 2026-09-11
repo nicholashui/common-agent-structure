@@ -65,6 +65,66 @@
       "id": "run-tc1",
       "honesty": "CHARACTERIZATION",
       "path": "run"
+    },
+    {
+      "id": "chat-vstandardseditor-ambiguous",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vstandardseditor_ambiguous"
+    },
+    {
+      "id": "chat-vstandardseditor-multi-intent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vstandardseditor_multi_intent"
+    },
+    {
+      "id": "chat-vstandardseditor-domain-specific",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vstandardseditor_domain_specific"
+    },
+    {
+      "id": "chat-vstandardseditor-multilingual",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vstandardseditor_multilingual"
+    },
+    {
+      "id": "chat-vstandardseditor-oos",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vstandardseditor_oos"
+    },
+    {
+      "id": "chat-vstandardseditor-wait",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vstandardseditor_wait"
+    },
+    {
+      "id": "chat-vstandardseditor-invent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vstandardseditor_invent"
+    },
+    {
+      "id": "chat-vstandardseditor-activation",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vstandardseditor_activation"
+    },
+    {
+      "id": "chat-vstandardseditor-shift",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vstandardseditor_shift"
+    },
+    {
+      "id": "chat-vstandardseditor-handoff",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vstandardseditor_handoff"
     }
   ],
   "note": "Fixtures are CHARACTERIZATION / policy checks. Not an eval pass. casops-eval remains NOT_RUN while instruments are unqualified."

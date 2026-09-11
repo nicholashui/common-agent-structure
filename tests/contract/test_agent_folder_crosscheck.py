@@ -88,10 +88,29 @@ def test_every_scanned_agent_folder_matches_fail_closed_contract() -> None:
         if segs.get("memory") not in (0, None) or segs.get("tools") not in (0, None):
             bad.append(f"{agent_id}:context_budgets")
         bindings = json.loads((folder / "skills" / "bindings.json").read_text(encoding="utf-8"))
-        if bindings.get("bindings") not in ([], None):
-            bad.append(f"{agent_id}:host_bindings")
         if bindings.get("special_skills") not in ([], None):
             bad.append(f"{agent_id}:special_skills")
+        rows = bindings.get("bindings") or []
+        if rows:
+            from casops.compose.skills import resolve_skills
+
+            resolved = resolve_skills([folder])
+            if resolved.get("enabled"):
+                bad.append(f"{agent_id}:skills_resolved_enabled")
+            for item in resolved.get("bindings") or []:
+                if item.get("resolved_enabled"):
+                    bad.append(f"{agent_id}:skill_live:{item.get('skill_id')}")
+                if item.get("host_permission"):
+                    bad.append(f"{agent_id}:host_permission_grant:{item.get('skill_id')}")
+                extra_tools = [str(t) for t in (item.get("tools") or []) if str(t).strip()]
+                if extra_tools:
+                    bad.append(f"{agent_id}:skill_tools:{item.get('skill_id')}")
+            raw_tools = []
+            for raw in rows:
+                if isinstance(raw, dict):
+                    raw_tools.extend(str(t) for t in (raw.get("tools") or []) if str(t).strip())
+            if raw_tools:
+                bad.append(f"{agent_id}:binding_tools")
         integ_path = folder / "skills" / "integration.json"
         if integ_path.is_file():
             integ = json.loads(integ_path.read_text(encoding="utf-8"))

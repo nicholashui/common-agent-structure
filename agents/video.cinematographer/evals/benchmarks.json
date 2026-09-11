@@ -65,6 +65,66 @@
       "id": "run-tc1",
       "honesty": "CHARACTERIZATION",
       "path": "run"
+    },
+    {
+      "id": "chat-vcinematographer-ambiguous",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vcinematographer_ambiguous"
+    },
+    {
+      "id": "chat-vcinematographer-multi-intent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vcinematographer_multi_intent"
+    },
+    {
+      "id": "chat-vcinematographer-domain-specific",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vcinematographer_domain_specific"
+    },
+    {
+      "id": "chat-vcinematographer-multilingual",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vcinematographer_multilingual"
+    },
+    {
+      "id": "chat-vcinematographer-oos",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vcinematographer_oos"
+    },
+    {
+      "id": "chat-vcinematographer-wait",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vcinematographer_wait"
+    },
+    {
+      "id": "chat-vcinematographer-invent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vcinematographer_invent"
+    },
+    {
+      "id": "chat-vcinematographer-activation",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vcinematographer_activation"
+    },
+    {
+      "id": "chat-vcinematographer-shift",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vcinematographer_shift"
+    },
+    {
+      "id": "chat-vcinematographer-handoff",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vcinematographer_handoff"
     }
   ],
   "note": "Fixtures are CHARACTERIZATION / policy checks. Not an eval pass. casops-eval remains NOT_RUN while instruments are unqualified."

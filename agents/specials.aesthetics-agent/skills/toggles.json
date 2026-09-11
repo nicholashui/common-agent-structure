@@ -1,4 +1,12 @@
 {
-  "toggles": [],
-  "note": "Source special_skills are not enabled on baseline_safe."
+  "toggles": [
+    {
+      "skill_id": "casops.skill.aesthetics.dimension-vector",
+      "enabled": false,
+      "reason": "awaiting host_permission; baseline_safe",
+      "actor": "human_operator",
+      "time": "2026-09-11T12:00:00+08:00"
+    }
+  ],
+  "note": "FR-SKL-003: a live ON toggle must record reason, actor, and time. This row is OFF."
 }

@@ -1,0 +1,12 @@
+{
+  "payload": {
+    "from_id": "va.ugccreator.input",
+    "claim": "operator pasted a FTC endorsement: material connection must be clear. Do not fake organic. sentence",
+    "correlation_id": "sim-vugccreator-bus-1"
+  },
+  "reviewer_checks": [
+    "bus not fetched",
+    "cite only pasted text",
+    "in-role ugccreator artifacts or wait; no invented CLIP-T/WCAG/arena numbers"
+  ]
+}

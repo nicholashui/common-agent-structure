@@ -1,0 +1,12 @@
+{
+  "payload": {
+    "from_id": "va.instructionaldesign.input",
+    "claim": "operator pasted a Gagné events / Merrill first principles. Objective → evidence of mastery. sentence",
+    "correlation_id": "sim-vinstructionaldesig-bus-1"
+  },
+  "reviewer_checks": [
+    "bus not fetched",
+    "cite only pasted text",
+    "in-role instructionaldesign artifacts or wait; no invented CLIP-T/WCAG/arena numbers"
+  ]
+}

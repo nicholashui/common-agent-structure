@@ -65,6 +65,66 @@
       "id": "run-tc1",
       "honesty": "CHARACTERIZATION",
       "path": "run"
+    },
+    {
+      "id": "chat-vsportsanalyst-ambiguous",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vsportsanalyst_ambiguous"
+    },
+    {
+      "id": "chat-vsportsanalyst-multi-intent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vsportsanalyst_multi_intent"
+    },
+    {
+      "id": "chat-vsportsanalyst-domain-specific",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vsportsanalyst_domain_specific"
+    },
+    {
+      "id": "chat-vsportsanalyst-multilingual",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vsportsanalyst_multilingual"
+    },
+    {
+      "id": "chat-vsportsanalyst-oos",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vsportsanalyst_oos"
+    },
+    {
+      "id": "chat-vsportsanalyst-wait",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vsportsanalyst_wait"
+    },
+    {
+      "id": "chat-vsportsanalyst-invent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vsportsanalyst_invent"
+    },
+    {
+      "id": "chat-vsportsanalyst-activation",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vsportsanalyst_activation"
+    },
+    {
+      "id": "chat-vsportsanalyst-shift",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vsportsanalyst_shift"
+    },
+    {
+      "id": "chat-vsportsanalyst-handoff",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vsportsanalyst_handoff"
     }
   ],
   "note": "Fixtures are CHARACTERIZATION / policy checks. Not an eval pass. casops-eval remains NOT_RUN while instruments are unqualified."

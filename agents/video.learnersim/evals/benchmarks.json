@@ -65,6 +65,66 @@
       "id": "run-tc1",
       "honesty": "CHARACTERIZATION",
       "path": "run"
+    },
+    {
+      "id": "chat-vlearnersim-ambiguous",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vlearnersim_ambiguous"
+    },
+    {
+      "id": "chat-vlearnersim-multi-intent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vlearnersim_multi_intent"
+    },
+    {
+      "id": "chat-vlearnersim-domain-specific",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vlearnersim_domain_specific"
+    },
+    {
+      "id": "chat-vlearnersim-multilingual",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vlearnersim_multilingual"
+    },
+    {
+      "id": "chat-vlearnersim-oos",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vlearnersim_oos"
+    },
+    {
+      "id": "chat-vlearnersim-wait",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vlearnersim_wait"
+    },
+    {
+      "id": "chat-vlearnersim-invent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vlearnersim_invent"
+    },
+    {
+      "id": "chat-vlearnersim-activation",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vlearnersim_activation"
+    },
+    {
+      "id": "chat-vlearnersim-shift",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vlearnersim_shift"
+    },
+    {
+      "id": "chat-vlearnersim-handoff",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vlearnersim_handoff"
     }
   ],
   "note": "Fixtures are CHARACTERIZATION / policy checks. Not an eval pass. casops-eval remains NOT_RUN while instruments are unqualified."

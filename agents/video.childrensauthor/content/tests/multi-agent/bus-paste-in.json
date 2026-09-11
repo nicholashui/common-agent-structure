@@ -1,0 +1,12 @@
+{
+  "payload": {
+    "from_id": "va.childrensauthor.input",
+    "claim": "operator pasted a Developmental load (vocabulary, fear, runtime) is a constraint. COPPA/child-directed rules escalate to legal. Do not diagnose. sentence",
+    "correlation_id": "sim-vchildrensauthor-bus-1"
+  },
+  "reviewer_checks": [
+    "bus not fetched",
+    "cite only pasted text",
+    "in-role childrensauthor artifacts or wait; no invented CLIP-T/WCAG/arena numbers"
+  ]
+}

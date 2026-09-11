@@ -65,6 +65,66 @@
       "id": "run-tc1",
       "honesty": "CHARACTERIZATION",
       "path": "run"
+    },
+    {
+      "id": "chat-vdistributor-ambiguous",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vdistributor_ambiguous"
+    },
+    {
+      "id": "chat-vdistributor-multi-intent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vdistributor_multi_intent"
+    },
+    {
+      "id": "chat-vdistributor-domain-specific",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vdistributor_domain_specific"
+    },
+    {
+      "id": "chat-vdistributor-multilingual",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vdistributor_multilingual"
+    },
+    {
+      "id": "chat-vdistributor-oos",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vdistributor_oos"
+    },
+    {
+      "id": "chat-vdistributor-wait",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vdistributor_wait"
+    },
+    {
+      "id": "chat-vdistributor-invent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vdistributor_invent"
+    },
+    {
+      "id": "chat-vdistributor-activation",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vdistributor_activation"
+    },
+    {
+      "id": "chat-vdistributor-shift",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vdistributor_shift"
+    },
+    {
+      "id": "chat-vdistributor-handoff",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vdistributor_handoff"
     }
   ],
   "note": "Fixtures are CHARACTERIZATION / policy checks. Not an eval pass. casops-eval remains NOT_RUN while instruments are unqualified."

@@ -65,6 +65,66 @@
       "id": "run-tc1",
       "honesty": "CHARACTERIZATION",
       "path": "run"
+    },
+    {
+      "id": "chat-vbrandstrategist-ambiguous",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vbrandstrategist_ambiguous"
+    },
+    {
+      "id": "chat-vbrandstrategist-multi-intent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vbrandstrategist_multi_intent"
+    },
+    {
+      "id": "chat-vbrandstrategist-domain-specific",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vbrandstrategist_domain_specific"
+    },
+    {
+      "id": "chat-vbrandstrategist-multilingual",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vbrandstrategist_multilingual"
+    },
+    {
+      "id": "chat-vbrandstrategist-oos",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vbrandstrategist_oos"
+    },
+    {
+      "id": "chat-vbrandstrategist-wait",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vbrandstrategist_wait"
+    },
+    {
+      "id": "chat-vbrandstrategist-invent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vbrandstrategist_invent"
+    },
+    {
+      "id": "chat-vbrandstrategist-activation",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vbrandstrategist_activation"
+    },
+    {
+      "id": "chat-vbrandstrategist-shift",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vbrandstrategist_shift"
+    },
+    {
+      "id": "chat-vbrandstrategist-handoff",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vbrandstrategist_handoff"
     }
   ],
   "note": "Fixtures are CHARACTERIZATION / policy checks. Not an eval pass. casops-eval remains NOT_RUN while instruments are unqualified."

@@ -1,0 +1,12 @@
+{
+  "payload": {
+    "from_id": "va.trailereditor.input",
+    "claim": "operator pasted a A trailer is rhetoric: promise, structure, legal-clearance of shots. Do not treat trailer rhythm as the feature edit. sentence",
+    "correlation_id": "sim-vtrailereditor-bus-1"
+  },
+  "reviewer_checks": [
+    "bus not fetched",
+    "cite only pasted text",
+    "in-role trailereditor artifacts or wait; no invented CLIP-T/WCAG/arena numbers"
+  ]
+}

@@ -65,6 +65,66 @@
       "id": "run-tc1",
       "honesty": "CHARACTERIZATION",
       "path": "run"
+    },
+    {
+      "id": "chat-alc-ambiguous",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "alc_ambiguous"
+    },
+    {
+      "id": "chat-alc-multi-intent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "alc_multi_intent"
+    },
+    {
+      "id": "chat-alc-domain-specific",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "alc_domain_specific"
+    },
+    {
+      "id": "chat-alc-multilingual",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "alc_multilingual"
+    },
+    {
+      "id": "chat-alc-oos",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "alc_oos"
+    },
+    {
+      "id": "chat-alc-no-budget",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "alc_no_budget"
+    },
+    {
+      "id": "chat-alc-spawn",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "alc_spawn"
+    },
+    {
+      "id": "chat-alc-flout",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "alc_flout"
+    },
+    {
+      "id": "chat-alc-activation",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "alc_activation"
+    },
+    {
+      "id": "chat-alc-shift",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "alc_intent_shift"
     }
   ],
   "note": "Fixtures are CHARACTERIZATION / policy checks. Not an eval pass. casops-eval remains NOT_RUN while instruments are unqualified."

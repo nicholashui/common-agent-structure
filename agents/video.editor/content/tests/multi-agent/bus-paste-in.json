@@ -1,0 +1,12 @@
+{
+  "payload": {
+    "from_id": "va.editor.input",
+    "claim": "operator pasted a Murch’s Rule of Six (emotion → story → rhythm → eye-trace → 2D → 3D) outranks matching action. Continuity is a ledger, not a vibe. sentence",
+    "correlation_id": "sim-veditor-bus-1"
+  },
+  "reviewer_checks": [
+    "bus not fetched",
+    "cite only pasted text",
+    "in-role editor artifacts or wait; no invented CLIP-T/WCAG/arena numbers"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "payload": {
+    "from_id": "va.travelcine.input",
+    "claim": "operator pasted a Travelogue ethics: people and place. Distinct from realestatephoto. sentence",
+    "correlation_id": "sim-vtravelcine-bus-1"
+  },
+  "reviewer_checks": [
+    "bus not fetched",
+    "cite only pasted text",
+    "in-role travelcine artifacts or wait; no invented CLIP-T/WCAG/arena numbers"
+  ]
+}

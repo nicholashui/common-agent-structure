@@ -1,0 +1,12 @@
+{
+  "payload": {
+    "from_id": "spagent.strategic-goal-achievement-agent-input",
+    "claim": "operator pasted a OKR elicitation sentence",
+    "correlation_id": "sim-okr-bus-1"
+  },
+  "reviewer_checks": [
+    "bus not fetched",
+    "cite only pasted text",
+    "do not execute the plan; no KR → keep asking or accept qualitative stop"
+  ]
+}

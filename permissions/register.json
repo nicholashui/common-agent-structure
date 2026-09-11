@@ -1,0 +1,804 @@
+{
+  "schema_version": "casops.host_permission.v1",
+  "note": "Host-owned. Missing agent, skill, or tool is deny. Bindings.json host_permission is not a grant. Production, network, plugins, T3, and memory writes are not granted here.",
+  "grants": {
+    "specials.intent-analysis-agent": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/specials.intent-analysis-agent/skills/permission_request.json"
+    },
+    "specials.aesthetics-agent": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/specials.aesthetics-agent/skills/permission_request.json"
+    },
+    "specials.general-creative-agent": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/specials.general-creative-agent/skills/permission_request.json"
+    },
+    "specials.agent-loop-creator": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/specials.agent-loop-creator/skills/permission_request.json"
+    },
+    "specials.agentic-rag-agent": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/specials.agentic-rag-agent/skills/permission_request.json"
+    },
+    "specials.autotelic-agent": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/specials.autotelic-agent/skills/permission_request.json"
+    },
+    "specials.complex-problem-solution-process-model": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/specials.complex-problem-solution-process-model/skills/permission_request.json"
+    },
+    "specials.controller-agent": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/specials.controller-agent/skills/permission_request.json"
+    },
+    "specials.knowledge-router-agent": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/specials.knowledge-router-agent/skills/permission_request.json"
+    },
+    "specials.llm-usage": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/specials.llm-usage/skills/permission_request.json"
+    },
+    "specials.optimization-agent": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/specials.optimization-agent/skills/permission_request.json"
+    },
+    "specials.planner-agent": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/specials.planner-agent/skills/permission_request.json"
+    },
+    "specials.podcast-agent": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/specials.podcast-agent/skills/permission_request.json"
+    },
+    "specials.psychological-profile-agent": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/specials.psychological-profile-agent/skills/permission_request.json"
+    },
+    "specials.psychological-recommendation-agent": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/specials.psychological-recommendation-agent/skills/permission_request.json"
+    },
+    "specials.research-agent": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/specials.research-agent/skills/permission_request.json"
+    },
+    "specials.screenwriter-strategic-goal-achievement-agent": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/specials.screenwriter-strategic-goal-achievement-agent/skills/permission_request.json"
+    },
+    "specials.strategic-goal-achievement-agent": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/specials.strategic-goal-achievement-agent/skills/permission_request.json"
+    },
+    "specials.techology-advisor-agent": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/specials.techology-advisor-agent/skills/permission_request.json"
+    },
+    "video.accessibility": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/video.accessibility/skills/permission_request.json"
+    },
+    "video.accessibilityoptimizer": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/video.accessibilityoptimizer/skills/permission_request.json"
+    },
+    "video.aiqaconsistency": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/video.aiqaconsistency/skills/permission_request.json"
+    },
+    "video.analyst": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/video.analyst/skills/permission_request.json"
+    },
+    "video.animator_2d": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/video.animator_2d/skills/permission_request.json"
+    },
+    "video.archivemaster": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/video.archivemaster/skills/permission_request.json"
+    },
+    "video.archiveproducer": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/video.archiveproducer/skills/permission_request.json"
+    },
+    "video.archiveresearch": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/video.archiveresearch/skills/permission_request.json"
+    },
+    "video.audiencesim": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/video.audiencesim/skills/permission_request.json"
+    },
+    "video.audiobooknarrator": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/video.audiobooknarrator/skills/permission_request.json"
+    },
+    "video.avatardesign": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/video.avatardesign/skills/permission_request.json"
+    },
+    "video.awardsstrategist": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/video.awardsstrategist/skills/permission_request.json"
+    },
+    "video.benchmarkresearch": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/video.benchmarkresearch/skills/permission_request.json"
+    },
+    "video.brand": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/video.brand/skills/permission_request.json"
+    },
+    "video.brandstrategist": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/video.brandstrategist/skills/permission_request.json"
+    },
+    "video.cameraoperator": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/video.cameraoperator/skills/permission_request.json"
+    },
+    "video.casting": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/video.casting/skills/permission_request.json"
+    },
+    "video.channelmanager": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/video.channelmanager/skills/permission_request.json"
+    },
+    "video.childrensauthor": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/video.childrensauthor/skills/permission_request.json"
+    },
+    "video.choreography": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/video.choreography/skills/permission_request.json"
+    },
+    "video.cinematographer": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/video.cinematographer/skills/permission_request.json"
+    },
+    "video.citation": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/video.citation/skills/permission_request.json"
+    },
+    "video.colorist": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/video.colorist/skills/permission_request.json"
+    },
+    "video.comedywriter": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/video.comedywriter/skills/permission_request.json"
+    },
+    "video.comms": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/video.comms/skills/permission_request.json"
+    },
+    "video.community": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/video.community/skills/permission_request.json"
+    },
+    "video.competitorintelligence": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/video.competitorintelligence/skills/permission_request.json"
+    },
+    "video.compliance": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/video.compliance/skills/permission_request.json"
+    },
+    "video.composer": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/video.composer/skills/permission_request.json"
+    },
+    "video.conceptartist": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/video.conceptartist/skills/permission_request.json"
+    },
+    "video.continuity": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/video.continuity/skills/permission_request.json"
+    },
+    "video.copywriter": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/video.copywriter/skills/permission_request.json"
+    },
+    "video.corrections": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/video.corrections/skills/permission_request.json"
+    },
+    "video.costoptimizer": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/video.costoptimizer/skills/permission_request.json"
+    },
+    "video.costumedesign": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/video.costumedesign/skills/permission_request.json"
+    },
+    "video.creativedirector": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/video.creativedirector/skills/permission_request.json"
+    },
+    "video.critic": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/video.critic/skills/permission_request.json"
+    },
+    "video.crm": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/video.crm/skills/permission_request.json"
+    },
+    "video.deepfakedetection": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/video.deepfakedetection/skills/permission_request.json"
+    },
+    "video.director": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/video.director/skills/permission_request.json"
+    },
+    "video.distributor": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/video.distributor/skills/permission_request.json"
+    },
+    "video.dronepilot": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/video.dronepilot/skills/permission_request.json"
+    },
+    "video.editor": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/video.editor/skills/permission_request.json"
+    },
+    "video.emotionalarc": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/video.emotionalarc/skills/permission_request.json"
+    },
+    "video.ethics": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/video.ethics/skills/permission_request.json"
+    },
+    "video.evaluationharness": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/video.evaluationharness/skills/permission_request.json"
+    },
+    "video.factchecker": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/video.factchecker/skills/permission_request.json"
+    },
+    "video.festivalstrategist": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/video.festivalstrategist/skills/permission_request.json"
+    },
+    "video.finance": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/video.finance/skills/permission_request.json"
+    },
+    "video.foodstylist": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/video.foodstylist/skills/permission_request.json"
+    },
+    "video.gatekeeper": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/video.gatekeeper/skills/permission_request.json"
+    },
+    "video.ideation": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/video.ideation/skills/permission_request.json"
+    },
+    "video.instructionaldesign": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/video.instructionaldesign/skills/permission_request.json"
+    },
+    "video.interviewsynthesis": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/video.interviewsynthesis/skills/permission_request.json"
+    },
+    "video.journalist": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/video.journalist/skills/permission_request.json"
+    },
+    "video.judge": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/video.judge/skills/permission_request.json"
+    },
+    "video.labela_r": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/video.labela_r/skills/permission_request.json"
+    },
+    "video.labeldigital": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/video.labeldigital/skills/permission_request.json"
+    },
+    "video.latencyoptimizer": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/video.latencyoptimizer/skills/permission_request.json"
+    },
+    "video.learnersim": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/video.learnersim/skills/permission_request.json"
+    },
+    "video.legal": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/video.legal/skills/permission_request.json"
+    },
+    "video.lipsync": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/video.lipsync/skills/permission_request.json"
+    },
+    "video.lms": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/video.lms/skills/permission_request.json"
+    },
+    "video.localizationqa": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/video.localizationqa/skills/permission_request.json"
+    },
+    "video.marketing": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/video.marketing/skills/permission_request.json"
+    },
+    "video.medicalillustrator": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/video.medicalillustrator/skills/permission_request.json"
+    },
+    "video.memory": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/video.memory/skills/permission_request.json"
+    },
+    "video.moodboard": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/video.moodboard/skills/permission_request.json"
+    },
+    "video.motiongraphics": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/video.motiongraphics/skills/permission_request.json"
+    },
+    "video.mpa": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/video.mpa/skills/permission_request.json"
+    },
+    "video.mua_makeup": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/video.mua_makeup/skills/permission_request.json"
+    },
+    "video.musicsupervisor": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/video.musicsupervisor/skills/permission_request.json"
+    },
+    "video.musicvideodirector": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/video.musicvideodirector/skills/permission_request.json"
+    },
+    "video.narrativearc": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/video.narrativearc/skills/permission_request.json"
+    },
+    "video.novelty": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/video.novelty/skills/permission_request.json"
+    },
+    "video.orchestrator": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/video.orchestrator/skills/permission_request.json"
+    },
+    "video.performancemarketer": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/video.performancemarketer/skills/permission_request.json"
+    },
+    "video.personalizationengineer": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/video.personalizationengineer/skills/permission_request.json"
+    },
+    "video.planner": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/video.planner/skills/permission_request.json"
+    },
+    "video.producer": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/video.producer/skills/permission_request.json"
+    },
+    "video.productiondesign": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/video.productiondesign/skills/permission_request.json"
+    },
+    "video.promptengineer": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/video.promptengineer/skills/permission_request.json"
+    },
+    "video.promptoptimizer": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/video.promptoptimizer/skills/permission_request.json"
+    },
+    "video.realestatephoto": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/video.realestatephoto/skills/permission_request.json"
+    },
+    "video.retentionoptimizer": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/video.retentionoptimizer/skills/permission_request.json"
+    },
+    "video.roasoptimizer": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/video.roasoptimizer/skills/permission_request.json"
+    },
+    "video.router": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/video.router/skills/permission_request.json"
+    },
+    "video.safetyredteam": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/video.safetyredteam/skills/permission_request.json"
+    },
+    "video.sales": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/video.sales/skills/permission_request.json"
+    },
+    "video.screenwriter": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/video.screenwriter/skills/permission_request.json"
+    },
+    "video.seo": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/video.seo/skills/permission_request.json"
+    },
+    "video.showrunner": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/video.showrunner/skills/permission_request.json"
+    },
+    "video.signlanguageinterpreter": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/video.signlanguageinterpreter/skills/permission_request.json"
+    },
+    "video.sme": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/video.sme/skills/permission_request.json"
+    },
+    "video.socialmediastrategist": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/video.socialmediastrategist/skills/permission_request.json"
+    },
+    "video.sounddesign": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/video.sounddesign/skills/permission_request.json"
+    },
+    "video.soundmixer": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/video.soundmixer/skills/permission_request.json"
+    },
+    "video.sportsanalyst": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/video.sportsanalyst/skills/permission_request.json"
+    },
+    "video.standardseditor": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/video.standardseditor/skills/permission_request.json"
+    },
+    "video.storyboard": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/video.storyboard/skills/permission_request.json"
+    },
+    "video.styletransfer": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/video.styletransfer/skills/permission_request.json"
+    },
+    "video.talent": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/video.talent/skills/permission_request.json"
+    },
+    "video.templatedesign": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/video.templatedesign/skills/permission_request.json"
+    },
+    "video.trailereditor": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/video.trailereditor/skills/permission_request.json"
+    },
+    "video.travelcine": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/video.travelcine/skills/permission_request.json"
+    },
+    "video.trendintelligence": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/video.trendintelligence/skills/permission_request.json"
+    },
+    "video.trustsafety": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/video.trustsafety/skills/permission_request.json"
+    },
+    "video.ugccreator": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/video.ugccreator/skills/permission_request.json"
+    },
+    "video.ux": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/video.ux/skills/permission_request.json"
+    },
+    "video.vfxsupervisor": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/video.vfxsupervisor/skills/permission_request.json"
+    },
+    "video.voiceclone": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/video.voiceclone/skills/permission_request.json"
+    },
+    "video.voiceover": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/video.voiceover/skills/permission_request.json"
+    },
+    "video.webresearch": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/video.webresearch/skills/permission_request.json"
+    },
+    "video.worldbuilding": {
+      "status": "pending",
+      "skills": [],
+      "tools": [],
+      "request_ref": "agents/video.worldbuilding/skills/permission_request.json"
+    }
+  }
+}

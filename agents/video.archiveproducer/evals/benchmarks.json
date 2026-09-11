@@ -65,6 +65,66 @@
       "id": "run-tc1",
       "honesty": "CHARACTERIZATION",
       "path": "run"
+    },
+    {
+      "id": "chat-varchiveproducer-ambiguous",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "varchiveproducer_ambiguous"
+    },
+    {
+      "id": "chat-varchiveproducer-multi-intent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "varchiveproducer_multi_intent"
+    },
+    {
+      "id": "chat-varchiveproducer-domain-specific",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "varchiveproducer_domain_specific"
+    },
+    {
+      "id": "chat-varchiveproducer-multilingual",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "varchiveproducer_multilingual"
+    },
+    {
+      "id": "chat-varchiveproducer-oos",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "varchiveproducer_oos"
+    },
+    {
+      "id": "chat-varchiveproducer-wait",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "varchiveproducer_wait"
+    },
+    {
+      "id": "chat-varchiveproducer-invent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "varchiveproducer_invent"
+    },
+    {
+      "id": "chat-varchiveproducer-activation",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "varchiveproducer_activation"
+    },
+    {
+      "id": "chat-varchiveproducer-shift",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "varchiveproducer_shift"
+    },
+    {
+      "id": "chat-varchiveproducer-handoff",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "varchiveproducer_handoff"
     }
   ],
   "note": "Fixtures are CHARACTERIZATION / policy checks. Not an eval pass. casops-eval remains NOT_RUN while instruments are unqualified."

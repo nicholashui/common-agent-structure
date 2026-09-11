@@ -18,3 +18,17 @@ ReAct/Plan-and-Execute apply to *execution*; this agent **plans**. It must not s
 
 - Yao et al., ReAct, arXiv:2210.03629 (execution loops, not this planner’s job)
 - Traceability-first: every task cites a source span in the operator corpus
+
+## Triple research (design-time, 2026-09)
+
+Design-time citations collected to complete the arXiv + YouTube + x.ai triple. **Not** live grants. `allowed_tools` stays `[]`. Network, plugins, T3, memory writes, and production stay off.
+
+### arXiv
+- [2210.03629](https://arxiv.org/abs/2210.03629) — Yao et al., ReAct — execution loops, not this planner's job (already in study)
+
+### YouTube (educational; do not paste transcripts into Chat)
+- [Yao, LLM Agents history & overview (UC Berkeley CS294-196) — ReAct is execution](https://www.youtube.com/watch?v=RM6ZArd2nVc)
+
+### xAI (non-activating vendor docs)
+- [Planner emits file+acceptance; it does not spawn tools](https://docs.x.ai/developers/tools/overview)
+

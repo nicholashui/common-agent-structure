@@ -1,0 +1,12 @@
+{
+  "payload": {
+    "from_id": "va.mpa.input",
+    "claim": "operator pasted a CARA/MPA ratings are a written process. This host does not file. Distinct from label A&R. sentence",
+    "correlation_id": "sim-vmpa-bus-1"
+  },
+  "reviewer_checks": [
+    "bus not fetched",
+    "cite only pasted text",
+    "in-role mpa artifacts or wait; no invented CLIP-T/WCAG/arena numbers"
+  ]
+}

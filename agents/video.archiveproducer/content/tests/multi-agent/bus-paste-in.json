@@ -1,0 +1,12 @@
+{
+  "payload": {
+    "from_id": "va.archiveproducer.input",
+    "claim": "operator pasted a Rights + context card. Distinct from archivemaster and archiveresearch. sentence",
+    "correlation_id": "sim-varchiveproducer-bus-1"
+  },
+  "reviewer_checks": [
+    "bus not fetched",
+    "cite only pasted text",
+    "in-role archiveproducer artifacts or wait; no invented CLIP-T/WCAG/arena numbers"
+  ]
+}

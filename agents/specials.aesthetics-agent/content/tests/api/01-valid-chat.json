@@ -1,0 +1,24 @@
+{
+  "title": "Valid Chat request",
+  "method": "POST",
+  "path": "/api/v3/agents/specials.aesthetics-agent/runtime/chat",
+  "headers": {
+    "Content-Type": "application/json",
+    "x-casops-actor": "human_operator",
+    "x-casops-reason": "operator chat",
+    "x-casops-expected-parent": "",
+    "x-casops-dry-run": "false"
+  },
+  "body": {
+    "message": "You are specials.aesthetics-agent. Verbal still: overcast harbor, low contrast, centered boat. Named profile brand.quiet-harbor. Emit the dimension vector. Do not invent pixels or a LAP score.",
+    "history": []
+  },
+  "expect": {
+    "http_status": 200,
+    "agent_id": "specials.aesthetics-agent",
+    "memory_writes": [],
+    "plugins_executed": false,
+    "t3_enabled": false,
+    "note": "200 proves the host routed Chat. It does not prove the reply is craft-correct (ISSUE-0002)."
+  }
+}

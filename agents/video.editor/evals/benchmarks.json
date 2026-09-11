@@ -65,6 +65,66 @@
       "id": "run-tc1",
       "honesty": "CHARACTERIZATION",
       "path": "run"
+    },
+    {
+      "id": "chat-veditor-ambiguous",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "veditor_ambiguous"
+    },
+    {
+      "id": "chat-veditor-multi-intent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "veditor_multi_intent"
+    },
+    {
+      "id": "chat-veditor-domain-specific",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "veditor_domain_specific"
+    },
+    {
+      "id": "chat-veditor-multilingual",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "veditor_multilingual"
+    },
+    {
+      "id": "chat-veditor-oos",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "veditor_oos"
+    },
+    {
+      "id": "chat-veditor-wait",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "veditor_wait"
+    },
+    {
+      "id": "chat-veditor-invent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "veditor_invent"
+    },
+    {
+      "id": "chat-veditor-activation",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "veditor_activation"
+    },
+    {
+      "id": "chat-veditor-shift",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "veditor_shift"
+    },
+    {
+      "id": "chat-veditor-handoff",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "veditor_handoff"
     }
   ],
   "note": "Fixtures are CHARACTERIZATION / policy checks. Not an eval pass. casops-eval remains NOT_RUN while instruments are unqualified."

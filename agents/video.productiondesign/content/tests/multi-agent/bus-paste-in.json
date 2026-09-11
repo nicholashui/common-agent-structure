@@ -1,0 +1,12 @@
+{
+  "payload": {
+    "from_id": "va.productiondesign.input",
+    "claim": "operator pasted a Period, palette, silhouette. Moodboards are evidence, not the set. sentence",
+    "correlation_id": "sim-vproductiondesign-bus-1"
+  },
+  "reviewer_checks": [
+    "bus not fetched",
+    "cite only pasted text",
+    "in-role productiondesign artifacts or wait; no invented CLIP-T/WCAG/arena numbers"
+  ]
+}

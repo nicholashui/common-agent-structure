@@ -1,0 +1,12 @@
+{
+  "payload": {
+    "from_id": "va.localizationqa.input",
+    "claim": "operator pasted a Expansion, line-break, and cultural untranslatables. LISA QA as a defect taxonomy. sentence",
+    "correlation_id": "sim-vlocalizationqa-bus-1"
+  },
+  "reviewer_checks": [
+    "bus not fetched",
+    "cite only pasted text",
+    "in-role localizationqa artifacts or wait; no invented CLIP-T/WCAG/arena numbers"
+  ]
+}

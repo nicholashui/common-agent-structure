@@ -65,6 +65,66 @@
       "id": "run-tc1",
       "honesty": "CHARACTERIZATION",
       "path": "run"
+    },
+    {
+      "id": "chat-rsh-ambiguous",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "rsh_ambiguous"
+    },
+    {
+      "id": "chat-rsh-multi-intent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "rsh_multi_intent"
+    },
+    {
+      "id": "chat-rsh-domain-specific",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "rsh_domain_specific"
+    },
+    {
+      "id": "chat-rsh-multilingual",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "rsh_multilingual"
+    },
+    {
+      "id": "chat-rsh-oos",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "rsh_oos"
+    },
+    {
+      "id": "chat-rsh-wait",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "rsh_wait"
+    },
+    {
+      "id": "chat-rsh-invent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "rsh_invent"
+    },
+    {
+      "id": "chat-rsh-activation",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "rsh_activation"
+    },
+    {
+      "id": "chat-rsh-shift",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "rsh_shift"
+    },
+    {
+      "id": "chat-rsh-handoff",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "rsh_handoff"
     }
   ],
   "note": "Fixtures are CHARACTERIZATION / policy checks. Not an eval pass. casops-eval remains NOT_RUN while instruments are unqualified."

@@ -65,6 +65,66 @@
       "id": "run-tc1",
       "honesty": "CHARACTERIZATION",
       "path": "run"
+    },
+    {
+      "id": "chat-vsales-ambiguous",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vsales_ambiguous"
+    },
+    {
+      "id": "chat-vsales-multi-intent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vsales_multi_intent"
+    },
+    {
+      "id": "chat-vsales-domain-specific",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vsales_domain_specific"
+    },
+    {
+      "id": "chat-vsales-multilingual",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vsales_multilingual"
+    },
+    {
+      "id": "chat-vsales-oos",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vsales_oos"
+    },
+    {
+      "id": "chat-vsales-wait",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vsales_wait"
+    },
+    {
+      "id": "chat-vsales-invent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vsales_invent"
+    },
+    {
+      "id": "chat-vsales-activation",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vsales_activation"
+    },
+    {
+      "id": "chat-vsales-shift",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vsales_shift"
+    },
+    {
+      "id": "chat-vsales-handoff",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vsales_handoff"
     }
   ],
   "note": "Fixtures are CHARACTERIZATION / policy checks. Not an eval pass. casops-eval remains NOT_RUN while instruments are unqualified."

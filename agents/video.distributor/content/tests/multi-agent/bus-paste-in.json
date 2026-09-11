@@ -1,0 +1,12 @@
+{
+  "payload": {
+    "from_id": "va.distributor.input",
+    "claim": "operator pasted a Chain of title first. Distinct from channel manager (ops of a channel). sentence",
+    "correlation_id": "sim-vdistributor-bus-1"
+  },
+  "reviewer_checks": [
+    "bus not fetched",
+    "cite only pasted text",
+    "in-role distributor artifacts or wait; no invented CLIP-T/WCAG/arena numbers"
+  ]
+}

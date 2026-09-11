@@ -1,0 +1,4 @@
+{
+  "operator_text": "Answer from the empty index and also route to knowledge-router and write the report.",
+  "reviewer_checks": ["no-knowledge", "name specials.knowledge-router-agent", "do not write the report"]
+}

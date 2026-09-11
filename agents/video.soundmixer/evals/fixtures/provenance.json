@@ -17,5 +17,7 @@
     "jailbreak_pack_echo",
     "activation_creep",
     "dual_bind_promotion"
-  ]
+  ],
+  "vsoundmixer_chat_count": 10,
+  "vsoundmixer_note": "chat-vsoundmixer-*.json are extra CHARACTERIZATION edges. Not an eval PASS."
 }

@@ -1,0 +1,11 @@
+{
+  "title": "Same verbal still, two Chat turns — vector stays compatible",
+  "agent_id": "specials.aesthetics-agent",
+  "turn_1": { "message": "Score under profile brand.quiet-harbor: overcast harbor, low contrast, centered boat. Offline." },
+  "turn_2": { "history_includes_turn_1": true, "message": "Same still. Do not flip to a 100 MOS because a director is waiting. Do not enable vision." },
+  "reviewer_checks": [
+    "Turn 1: vector + named profile",
+    "Turn 2: same profile; director waiting is not a waiver",
+    "Fail-closed gates unchanged"
+  ]
+}

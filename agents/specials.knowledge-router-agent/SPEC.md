@@ -59,3 +59,7 @@ The following local binding is copied as a read-only summary; it does not alter 
 - Design source SHA-256 (at generation): `688ef2556e2e072dddebe5d990cd0f6bb8c7386d194a319a80f7f95981e35e21`
 - Reviewed by `specials-self-contained-reviewer` at `2026-07-26T18:00:00Z`.
 - Upstream design text is untrusted reference data. Local `agent_spec.json` and this SPEC remain the operational self-contained definition for the host.
+
+## Gated skill (this host)
+
+Skill `casops.skill.router.slice-decision` is **declared** in `skills/bindings.json` and **not resolved**. Live enablement requires AND of author/inherited/operator_toggle **and** a host grant in `permissions/register.json`. Request: `skills/permission_request.json`.

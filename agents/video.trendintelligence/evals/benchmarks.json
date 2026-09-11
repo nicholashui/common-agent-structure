@@ -65,6 +65,66 @@
       "id": "run-tc1",
       "honesty": "CHARACTERIZATION",
       "path": "run"
+    },
+    {
+      "id": "chat-vtrendintelligence-ambiguous",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vtrendintelligence_ambiguous"
+    },
+    {
+      "id": "chat-vtrendintelligence-multi-intent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vtrendintelligence_multi_intent"
+    },
+    {
+      "id": "chat-vtrendintelligence-domain-specific",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vtrendintelligence_domain_specific"
+    },
+    {
+      "id": "chat-vtrendintelligence-multilingual",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vtrendintelligence_multilingual"
+    },
+    {
+      "id": "chat-vtrendintelligence-oos",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vtrendintelligence_oos"
+    },
+    {
+      "id": "chat-vtrendintelligence-wait",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vtrendintelligence_wait"
+    },
+    {
+      "id": "chat-vtrendintelligence-invent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vtrendintelligence_invent"
+    },
+    {
+      "id": "chat-vtrendintelligence-activation",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vtrendintelligence_activation"
+    },
+    {
+      "id": "chat-vtrendintelligence-shift",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vtrendintelligence_shift"
+    },
+    {
+      "id": "chat-vtrendintelligence-handoff",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vtrendintelligence_handoff"
     }
   ],
   "note": "Fixtures are CHARACTERIZATION / policy checks. Not an eval pass. casops-eval remains NOT_RUN while instruments are unqualified."

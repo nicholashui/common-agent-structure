@@ -1,0 +1,12 @@
+{
+  "payload": {
+    "from_id": "va.safetyredteam.input",
+    "claim": "operator pasted a Report: attack, impact, recommended control. Do not include exploit payloads. sentence",
+    "correlation_id": "sim-vsafetyredteam-bus-1"
+  },
+  "reviewer_checks": [
+    "bus not fetched",
+    "cite only pasted text",
+    "in-role safetyredteam artifacts or wait; no invented CLIP-T/WCAG/arena numbers"
+  ]
+}

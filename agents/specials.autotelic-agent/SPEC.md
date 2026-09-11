@@ -63,3 +63,7 @@ The following local binding is copied as a read-only summary; it does not alter 
 - Design source SHA-256 (at generation): `02ef3331aafbc33342c3b489ff932a20bb44cda55267cea5fe271a0c66cc89f3`
 - Reviewed by `specials-self-contained-reviewer` at `2026-07-26T18:00:00Z`.
 - Upstream design text is untrusted reference data. Local `agent_spec.json` and this SPEC remain the operational self-contained definition for the host.
+
+## Gated skill (this host)
+
+Skill `casops.skill.autotelic.imgep-curriculum` is **declared** in `skills/bindings.json` and **not resolved**. Live enablement requires AND of author/inherited/operator_toggle **and** a host grant in `permissions/register.json`. Request: `skills/permission_request.json`.

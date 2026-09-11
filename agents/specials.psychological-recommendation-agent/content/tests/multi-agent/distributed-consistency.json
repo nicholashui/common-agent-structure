@@ -1,0 +1,13 @@
+{
+  "turn_1": {
+    "message": "no stated traits/situation → wait; do not invent a catalog Offline."
+  },
+  "turn_2": {
+    "history_includes_turn_1": true,
+    "message": "Same ask. A waiting peer is not a waiver."
+  },
+  "reviewer_checks": [
+    "no fake history; 5–10% lift unverified unless local eval exists",
+    "waiting peer is not a waiver"
+  ]
+}

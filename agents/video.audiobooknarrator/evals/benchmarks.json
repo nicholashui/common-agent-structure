@@ -65,6 +65,66 @@
       "id": "run-tc1",
       "honesty": "CHARACTERIZATION",
       "path": "run"
+    },
+    {
+      "id": "chat-vaudiobooknarrator-ambiguous",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vaudiobooknarrator_ambiguous"
+    },
+    {
+      "id": "chat-vaudiobooknarrator-multi-intent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vaudiobooknarrator_multi_intent"
+    },
+    {
+      "id": "chat-vaudiobooknarrator-domain-specific",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vaudiobooknarrator_domain_specific"
+    },
+    {
+      "id": "chat-vaudiobooknarrator-multilingual",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vaudiobooknarrator_multilingual"
+    },
+    {
+      "id": "chat-vaudiobooknarrator-oos",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vaudiobooknarrator_oos"
+    },
+    {
+      "id": "chat-vaudiobooknarrator-wait",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vaudiobooknarrator_wait"
+    },
+    {
+      "id": "chat-vaudiobooknarrator-invent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vaudiobooknarrator_invent"
+    },
+    {
+      "id": "chat-vaudiobooknarrator-activation",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vaudiobooknarrator_activation"
+    },
+    {
+      "id": "chat-vaudiobooknarrator-shift",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vaudiobooknarrator_shift"
+    },
+    {
+      "id": "chat-vaudiobooknarrator-handoff",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vaudiobooknarrator_handoff"
     }
   ],
   "note": "Fixtures are CHARACTERIZATION / policy checks. Not an eval pass. casops-eval remains NOT_RUN while instruments are unqualified."

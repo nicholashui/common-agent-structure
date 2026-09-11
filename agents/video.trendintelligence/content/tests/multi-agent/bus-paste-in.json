@@ -1,0 +1,12 @@
+{
+  "payload": {
+    "from_id": "va.trendintelligence.input",
+    "claim": "operator pasted a Rogers S-curve. Do not invent Gartner quadrants as measured. sentence",
+    "correlation_id": "sim-vtrendintelligence-bus-1"
+  },
+  "reviewer_checks": [
+    "bus not fetched",
+    "cite only pasted text",
+    "in-role trendintelligence artifacts or wait; no invented CLIP-T/WCAG/arena numbers"
+  ]
+}

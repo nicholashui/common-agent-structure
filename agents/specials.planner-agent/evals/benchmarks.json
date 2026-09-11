@@ -65,6 +65,66 @@
       "id": "run-tc1",
       "honesty": "CHARACTERIZATION",
       "path": "run"
+    },
+    {
+      "id": "chat-pln-ambiguous",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "pln_ambiguous"
+    },
+    {
+      "id": "chat-pln-multi-intent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "pln_multi_intent"
+    },
+    {
+      "id": "chat-pln-domain-specific",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "pln_domain_specific"
+    },
+    {
+      "id": "chat-pln-multilingual",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "pln_multilingual"
+    },
+    {
+      "id": "chat-pln-oos",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "pln_oos"
+    },
+    {
+      "id": "chat-pln-wait",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "pln_wait"
+    },
+    {
+      "id": "chat-pln-invent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "pln_invent"
+    },
+    {
+      "id": "chat-pln-activation",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "pln_activation"
+    },
+    {
+      "id": "chat-pln-shift",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "pln_shift"
+    },
+    {
+      "id": "chat-pln-handoff",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "pln_handoff"
     }
   ],
   "note": "Fixtures are CHARACTERIZATION / policy checks. Not an eval pass. casops-eval remains NOT_RUN while instruments are unqualified."

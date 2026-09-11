@@ -5999,3 +5999,6 @@ From `corpus/study/human_video_production_workflow.md` Copy: `sources/excerpts/h
 | 38 | **Financial Analyst (for video)** | Accurate market / token / earnings facts | CFA charter, SEC/Reg-
 ```
 
+## Gated skill (this host)
+
+Skill `casops.skill.video.orchestrator.handoff-map` is **declared** in `skills/bindings.json` and **not resolved**. Live enablement requires AND of author/inherited/operator_toggle **and** a host grant in `permissions/register.json`. Request: `skills/permission_request.json`.

@@ -65,6 +65,66 @@
       "id": "run-tc1",
       "honesty": "CHARACTERIZATION",
       "path": "run"
+    },
+    {
+      "id": "chat-okr-ambiguous",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "okr_ambiguous"
+    },
+    {
+      "id": "chat-okr-multi-intent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "okr_multi_intent"
+    },
+    {
+      "id": "chat-okr-domain-specific",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "okr_domain_specific"
+    },
+    {
+      "id": "chat-okr-multilingual",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "okr_multilingual"
+    },
+    {
+      "id": "chat-okr-oos",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "okr_oos"
+    },
+    {
+      "id": "chat-okr-wait",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "okr_wait"
+    },
+    {
+      "id": "chat-okr-invent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "okr_invent"
+    },
+    {
+      "id": "chat-okr-activation",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "okr_activation"
+    },
+    {
+      "id": "chat-okr-shift",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "okr_shift"
+    },
+    {
+      "id": "chat-okr-handoff",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "okr_handoff"
     }
   ],
   "note": "Fixtures are CHARACTERIZATION / policy checks. Not an eval pass. casops-eval remains NOT_RUN while instruments are unqualified."

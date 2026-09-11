@@ -65,6 +65,66 @@
       "id": "run-tc1",
       "honesty": "CHARACTERIZATION",
       "path": "run"
+    },
+    {
+      "id": "chat-vchildrensauthor-ambiguous",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vchildrensauthor_ambiguous"
+    },
+    {
+      "id": "chat-vchildrensauthor-multi-intent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vchildrensauthor_multi_intent"
+    },
+    {
+      "id": "chat-vchildrensauthor-domain-specific",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vchildrensauthor_domain_specific"
+    },
+    {
+      "id": "chat-vchildrensauthor-multilingual",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vchildrensauthor_multilingual"
+    },
+    {
+      "id": "chat-vchildrensauthor-oos",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vchildrensauthor_oos"
+    },
+    {
+      "id": "chat-vchildrensauthor-wait",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vchildrensauthor_wait"
+    },
+    {
+      "id": "chat-vchildrensauthor-invent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vchildrensauthor_invent"
+    },
+    {
+      "id": "chat-vchildrensauthor-activation",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vchildrensauthor_activation"
+    },
+    {
+      "id": "chat-vchildrensauthor-shift",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vchildrensauthor_shift"
+    },
+    {
+      "id": "chat-vchildrensauthor-handoff",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vchildrensauthor_handoff"
     }
   ],
   "note": "Fixtures are CHARACTERIZATION / policy checks. Not an eval pass. casops-eval remains NOT_RUN while instruments are unqualified."

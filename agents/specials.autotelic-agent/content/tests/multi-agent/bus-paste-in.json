@@ -1,0 +1,12 @@
+{
+  "payload": {
+    "from_id": "spagent.autotelic-agent-input",
+    "claim": "operator pasted a autotelic IMGEP curriculum sentence",
+    "correlation_id": "sim-auto-bus-1"
+  },
+  "reviewer_checks": [
+    "bus not fetched",
+    "cite only pasted text",
+    "IMGEP vs EMGEP is labelled; stop condition present; no live training grant"
+  ]
+}

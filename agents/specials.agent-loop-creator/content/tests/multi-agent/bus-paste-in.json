@@ -1,0 +1,10 @@
+{
+  "agent_id": "specials.agent-loop-creator",
+  "payload": {
+    "from_id": "spagent.agent-loop-creator-input",
+    "to_id": "specials.agent-loop-creator",
+    "claim": "operator wants a Plan-and-Execute design",
+    "correlation_id": "sim-alc-bus-1"
+  },
+  "reviewer_checks": ["bus not fetched", "design only", "no spawn"]
+}

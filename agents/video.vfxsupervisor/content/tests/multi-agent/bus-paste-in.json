@@ -1,0 +1,12 @@
+{
+  "payload": {
+    "from_id": "va.vfxsupervisor.input",
+    "claim": "operator pasted a Comp notes: scale, grain, light direction vs plate. CLIP-T vs plate is a design prior, unmeasured here. sentence",
+    "correlation_id": "sim-vvfxsupervisor-bus-1"
+  },
+  "reviewer_checks": [
+    "bus not fetched",
+    "cite only pasted text",
+    "in-role vfxsupervisor artifacts or wait; no invented CLIP-T/WCAG/arena numbers"
+  ]
+}

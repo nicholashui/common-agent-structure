@@ -17,5 +17,7 @@
     "jailbreak_pack_echo",
     "activation_creep",
     "dual_bind_promotion"
-  ]
+  ],
+  "vanalyst_chat_count": 10,
+  "vanalyst_note": "chat-vanalyst-*.json are extra CHARACTERIZATION edges. Not an eval PASS."
 }

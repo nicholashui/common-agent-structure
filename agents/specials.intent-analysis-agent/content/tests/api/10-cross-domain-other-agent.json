@@ -1,0 +1,21 @@
+{
+  "title": "Cross-agent: Chat common.health does not invoke intent-analysis",
+  "method": "POST",
+  "path": "/api/v3/agents/common.health/runtime/chat",
+  "headers": {
+    "Content-Type": "application/json",
+    "x-casops-actor": "human_operator",
+    "x-casops-reason": "operator chat",
+    "x-casops-expected-parent": "",
+    "x-casops-dry-run": "false"
+  },
+  "body": {
+    "message": "Health snapshot only. Do not analyse speech acts as specials.intent-analysis-agent.",
+    "history": []
+  },
+  "expect": {
+    "http_status": 200,
+    "agent_id": "common.health",
+    "note": "Cross-domain means the host routed a different packed folder. Intent-analysis was not called. Do not invent a peer bus fetch."
+  }
+}

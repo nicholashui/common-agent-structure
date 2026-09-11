@@ -65,6 +65,66 @@
       "id": "run-tc1",
       "honesty": "CHARACTERIZATION",
       "path": "run"
+    },
+    {
+      "id": "chat-vsoundmixer-ambiguous",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vsoundmixer_ambiguous"
+    },
+    {
+      "id": "chat-vsoundmixer-multi-intent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vsoundmixer_multi_intent"
+    },
+    {
+      "id": "chat-vsoundmixer-domain-specific",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vsoundmixer_domain_specific"
+    },
+    {
+      "id": "chat-vsoundmixer-multilingual",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vsoundmixer_multilingual"
+    },
+    {
+      "id": "chat-vsoundmixer-oos",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vsoundmixer_oos"
+    },
+    {
+      "id": "chat-vsoundmixer-wait",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vsoundmixer_wait"
+    },
+    {
+      "id": "chat-vsoundmixer-invent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vsoundmixer_invent"
+    },
+    {
+      "id": "chat-vsoundmixer-activation",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vsoundmixer_activation"
+    },
+    {
+      "id": "chat-vsoundmixer-shift",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vsoundmixer_shift"
+    },
+    {
+      "id": "chat-vsoundmixer-handoff",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vsoundmixer_handoff"
     }
   ],
   "note": "Fixtures are CHARACTERIZATION / policy checks. Not an eval pass. casops-eval remains NOT_RUN while instruments are unqualified."

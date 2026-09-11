@@ -14,7 +14,7 @@ Owns the specials-domain aesthetics agent design outcome as a **draft, data-only
 
 ### Domain knowledge (research)
 
-Separate **technical quality** (blur, noise) from **taste**. NIMA (Talebi & Milanfar, arXiv:1709.05424) predicts a *distribution* of rater scores, not one scalar. LAION-Aesthetics is a CLIP linear head for “like 1–10” used to curate data; Taylor et al. (arXiv:2601.09896) show it encodes a narrow Western/portrait gaze. Always emit a dimension vector + confidence + `hack_likelihood` under a named AestheticProfile. Live vision stays off. See `sources/study/domain_knowledge.md`.
+Separate **technical quality** (blur, noise) from **taste**. NIMA (Talebi & Milanfar, arXiv:1709.05424) predicts a *distribution* of rater scores, not one scalar. LAION-Aesthetics is a CLIP linear head for “like 1–10”; Taylor et al. (arXiv:2601.09896) show a narrow gaze. AesBiasBench (arXiv:2509.11620): MLLM aesthetic scores can carry demographic bias. Prefer attribute/relative critique over a naked MOS (arXiv:2606.05778). Always emit a dimension vector + confidence + `hack_likelihood` under a named AestheticProfile. Live vision stays off. Skill `casops.skill.aesthetics.dimension-vector` is declared, not host-granted. See `sources/study/domain_knowledge.md`. Operator study: `content/` and `content/test_guide.md`.
 
 ### Domain distillation (embedded, untrusted design provenance)
 
@@ -23,6 +23,7 @@ This is the **definitive, production-grade specification** for building the **Ae
 ## Boundaries and escalation
 - Remains `status: draft` with `production_activation_requested: false`.
 - `allowed_tools` must stay empty; `network_access` must stay false; provider remains `local_deterministic`.
+- Skill `casops.skill.aesthetics.dimension-vector` is **declared** in `skills/bindings.json` and **not resolved**. Live enablement requires AND of author/inherited/operator_toggle **and** a host grant in `permissions/register.json`. Request: `skills/permission_request.json`.
 - Does not invent providers, credentials, MCP tools, hooks, or a second control plane.
 - Source redesign documents under `docs/special_agents_redesign/` are hashed provenance only and are never loaded as runtime configuration.
 - Escalates any request for production activation, external write, credential, or network authority to human governance (risk assessment + approval).

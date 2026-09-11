@@ -65,6 +65,66 @@
       "id": "run-tc1",
       "honesty": "CHARACTERIZATION",
       "path": "run"
+    },
+    {
+      "id": "chat-vproductiondesign-ambiguous",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vproductiondesign_ambiguous"
+    },
+    {
+      "id": "chat-vproductiondesign-multi-intent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vproductiondesign_multi_intent"
+    },
+    {
+      "id": "chat-vproductiondesign-domain-specific",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vproductiondesign_domain_specific"
+    },
+    {
+      "id": "chat-vproductiondesign-multilingual",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vproductiondesign_multilingual"
+    },
+    {
+      "id": "chat-vproductiondesign-oos",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vproductiondesign_oos"
+    },
+    {
+      "id": "chat-vproductiondesign-wait",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vproductiondesign_wait"
+    },
+    {
+      "id": "chat-vproductiondesign-invent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vproductiondesign_invent"
+    },
+    {
+      "id": "chat-vproductiondesign-activation",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vproductiondesign_activation"
+    },
+    {
+      "id": "chat-vproductiondesign-shift",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vproductiondesign_shift"
+    },
+    {
+      "id": "chat-vproductiondesign-handoff",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vproductiondesign_handoff"
     }
   ],
   "note": "Fixtures are CHARACTERIZATION / policy checks. Not an eval pass. casops-eval remains NOT_RUN while instruments are unqualified."

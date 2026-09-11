@@ -1,0 +1,12 @@
+{
+  "payload": {
+    "from_id": "spagent.complex-problem-solution-process-model-input",
+    "claim": "operator pasted a Cynefin then WHAT–WHY–HOW–DO–REVIEW sentence",
+    "correlation_id": "sim-cyn-bus-1"
+  },
+  "reviewer_checks": [
+    "bus not fetched",
+    "cite only pasted text",
+    "domain named; complex → safe-to-fail probes; complicated may use Five Whys"
+  ]
+}

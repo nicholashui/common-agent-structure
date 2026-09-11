@@ -65,6 +65,66 @@
       "id": "run-tc1",
       "honesty": "CHARACTERIZATION",
       "path": "run"
+    },
+    {
+      "id": "chat-vlipsync-ambiguous",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vlipsync_ambiguous"
+    },
+    {
+      "id": "chat-vlipsync-multi-intent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vlipsync_multi_intent"
+    },
+    {
+      "id": "chat-vlipsync-domain-specific",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vlipsync_domain_specific"
+    },
+    {
+      "id": "chat-vlipsync-multilingual",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vlipsync_multilingual"
+    },
+    {
+      "id": "chat-vlipsync-oos",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vlipsync_oos"
+    },
+    {
+      "id": "chat-vlipsync-wait",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vlipsync_wait"
+    },
+    {
+      "id": "chat-vlipsync-invent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vlipsync_invent"
+    },
+    {
+      "id": "chat-vlipsync-activation",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vlipsync_activation"
+    },
+    {
+      "id": "chat-vlipsync-shift",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vlipsync_shift"
+    },
+    {
+      "id": "chat-vlipsync-handoff",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vlipsync_handoff"
     }
   ],
   "note": "Fixtures are CHARACTERIZATION / policy checks. Not an eval pass. casops-eval remains NOT_RUN while instruments are unqualified."

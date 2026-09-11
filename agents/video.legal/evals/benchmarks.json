@@ -65,6 +65,66 @@
       "id": "run-tc1",
       "honesty": "CHARACTERIZATION",
       "path": "run"
+    },
+    {
+      "id": "chat-vlegal-ambiguous",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vlegal_ambiguous"
+    },
+    {
+      "id": "chat-vlegal-multi-intent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vlegal_multi_intent"
+    },
+    {
+      "id": "chat-vlegal-domain-specific",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vlegal_domain_specific"
+    },
+    {
+      "id": "chat-vlegal-multilingual",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vlegal_multilingual"
+    },
+    {
+      "id": "chat-vlegal-oos",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vlegal_oos"
+    },
+    {
+      "id": "chat-vlegal-wait",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vlegal_wait"
+    },
+    {
+      "id": "chat-vlegal-invent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vlegal_invent"
+    },
+    {
+      "id": "chat-vlegal-activation",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vlegal_activation"
+    },
+    {
+      "id": "chat-vlegal-shift",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vlegal_shift"
+    },
+    {
+      "id": "chat-vlegal-handoff",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vlegal_handoff"
     }
   ],
   "note": "Fixtures are CHARACTERIZATION / policy checks. Not an eval pass. casops-eval remains NOT_RUN while instruments are unqualified."

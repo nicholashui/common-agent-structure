@@ -65,6 +65,66 @@
       "id": "run-tc1",
       "honesty": "CHARACTERIZATION",
       "path": "run"
+    },
+    {
+      "id": "chat-vdronepilot-ambiguous",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vdronepilot_ambiguous"
+    },
+    {
+      "id": "chat-vdronepilot-multi-intent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vdronepilot_multi_intent"
+    },
+    {
+      "id": "chat-vdronepilot-domain-specific",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vdronepilot_domain_specific"
+    },
+    {
+      "id": "chat-vdronepilot-multilingual",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vdronepilot_multilingual"
+    },
+    {
+      "id": "chat-vdronepilot-oos",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vdronepilot_oos"
+    },
+    {
+      "id": "chat-vdronepilot-wait",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vdronepilot_wait"
+    },
+    {
+      "id": "chat-vdronepilot-invent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vdronepilot_invent"
+    },
+    {
+      "id": "chat-vdronepilot-activation",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vdronepilot_activation"
+    },
+    {
+      "id": "chat-vdronepilot-shift",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vdronepilot_shift"
+    },
+    {
+      "id": "chat-vdronepilot-handoff",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vdronepilot_handoff"
     }
   ],
   "note": "Fixtures are CHARACTERIZATION / policy checks. Not an eval pass. casops-eval remains NOT_RUN while instruments are unqualified."

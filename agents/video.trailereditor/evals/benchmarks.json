@@ -65,6 +65,66 @@
       "id": "run-tc1",
       "honesty": "CHARACTERIZATION",
       "path": "run"
+    },
+    {
+      "id": "chat-vtrailereditor-ambiguous",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vtrailereditor_ambiguous"
+    },
+    {
+      "id": "chat-vtrailereditor-multi-intent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vtrailereditor_multi_intent"
+    },
+    {
+      "id": "chat-vtrailereditor-domain-specific",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vtrailereditor_domain_specific"
+    },
+    {
+      "id": "chat-vtrailereditor-multilingual",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vtrailereditor_multilingual"
+    },
+    {
+      "id": "chat-vtrailereditor-oos",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vtrailereditor_oos"
+    },
+    {
+      "id": "chat-vtrailereditor-wait",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vtrailereditor_wait"
+    },
+    {
+      "id": "chat-vtrailereditor-invent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vtrailereditor_invent"
+    },
+    {
+      "id": "chat-vtrailereditor-activation",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vtrailereditor_activation"
+    },
+    {
+      "id": "chat-vtrailereditor-shift",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vtrailereditor_shift"
+    },
+    {
+      "id": "chat-vtrailereditor-handoff",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vtrailereditor_handoff"
     }
   ],
   "note": "Fixtures are CHARACTERIZATION / policy checks. Not an eval pass. casops-eval remains NOT_RUN while instruments are unqualified."

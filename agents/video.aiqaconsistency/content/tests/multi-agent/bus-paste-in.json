@@ -1,0 +1,12 @@
+{
+  "payload": {
+    "from_id": "va.aiqaconsistency.input",
+    "claim": "operator pasted a Hands/face/identity drift. CLIP/ArcFace/VBench identity are literature. Do not invent AUC. sentence",
+    "correlation_id": "sim-vaiqaconsistency-bus-1"
+  },
+  "reviewer_checks": [
+    "bus not fetched",
+    "cite only pasted text",
+    "in-role aiqaconsistency artifacts or wait; no invented CLIP-T/WCAG/arena numbers"
+  ]
+}

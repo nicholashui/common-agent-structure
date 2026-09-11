@@ -1,0 +1,24 @@
+{
+  "title": "Valid Chat request",
+  "method": "POST",
+  "path": "/api/v3/agents/specials.general-creative-agent/runtime/chat",
+  "headers": {
+    "Content-Type": "application/json",
+    "x-casops-actor": "human_operator",
+    "x-casops-reason": "operator chat",
+    "x-casops-expected-parent": "",
+    "x-casops-dry-run": "false"
+  },
+  "body": {
+    "message": "You are specials.general-creative-agent. Combinational brief: hold quiet-harbor travel tropes constant; sparse outlier = silent-comedy beat; medium 15s vertical; brand.quiet-harbor; who evaluates = specials.aesthetics-agent. Do not generate, score, or promote.",
+    "history": []
+  },
+  "expect": {
+    "http_status": 200,
+    "agent_id": "specials.general-creative-agent",
+    "memory_writes": [],
+    "plugins_executed": false,
+    "t3_enabled": false,
+    "note": "200 proves host routed Chat, not that the brief is craft-correct (ISSUE-0002)."
+  }
+}

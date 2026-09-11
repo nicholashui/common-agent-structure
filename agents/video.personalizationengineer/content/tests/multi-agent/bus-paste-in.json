@@ -1,0 +1,12 @@
+{
+  "payload": {
+    "from_id": "va.personalizationengineer.input",
+    "claim": "operator pasted a Ricci handbook. GDPR profiling. No tracking pixels. sentence",
+    "correlation_id": "sim-vpersonalizationeng-bus-1"
+  },
+  "reviewer_checks": [
+    "bus not fetched",
+    "cite only pasted text",
+    "in-role personalizationengineer artifacts or wait; no invented CLIP-T/WCAG/arena numbers"
+  ]
+}

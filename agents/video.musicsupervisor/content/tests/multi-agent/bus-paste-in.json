@@ -1,0 +1,12 @@
+{
+  "payload": {
+    "from_id": "va.musicsupervisor.input",
+    "claim": "operator pasted a Two licenses: composition and master. Cue sheets. Distinct from `video.composer`. sentence",
+    "correlation_id": "sim-vmusicsupervisor-bus-1"
+  },
+  "reviewer_checks": [
+    "bus not fetched",
+    "cite only pasted text",
+    "in-role musicsupervisor artifacts or wait; no invented CLIP-T/WCAG/arena numbers"
+  ]
+}

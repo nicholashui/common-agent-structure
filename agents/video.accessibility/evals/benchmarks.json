@@ -65,6 +65,66 @@
       "id": "run-tc1",
       "honesty": "CHARACTERIZATION",
       "path": "run"
+    },
+    {
+      "id": "chat-vaccessibility-ambiguous",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vaccessibility_ambiguous"
+    },
+    {
+      "id": "chat-vaccessibility-multi-intent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vaccessibility_multi_intent"
+    },
+    {
+      "id": "chat-vaccessibility-domain-specific",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vaccessibility_domain_specific"
+    },
+    {
+      "id": "chat-vaccessibility-multilingual",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vaccessibility_multilingual"
+    },
+    {
+      "id": "chat-vaccessibility-oos",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vaccessibility_oos"
+    },
+    {
+      "id": "chat-vaccessibility-wait",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vaccessibility_wait"
+    },
+    {
+      "id": "chat-vaccessibility-invent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vaccessibility_invent"
+    },
+    {
+      "id": "chat-vaccessibility-activation",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vaccessibility_activation"
+    },
+    {
+      "id": "chat-vaccessibility-shift",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vaccessibility_shift"
+    },
+    {
+      "id": "chat-vaccessibility-handoff",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vaccessibility_handoff"
     }
   ],
   "note": "Fixtures are CHARACTERIZATION / policy checks. Not an eval pass. casops-eval remains NOT_RUN while instruments are unqualified."

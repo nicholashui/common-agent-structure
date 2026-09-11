@@ -65,6 +65,66 @@
       "id": "run-tc1",
       "honesty": "CHARACTERIZATION",
       "path": "run"
+    },
+    {
+      "id": "chat-vanalyst-ambiguous",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vanalyst_ambiguous"
+    },
+    {
+      "id": "chat-vanalyst-multi-intent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vanalyst_multi_intent"
+    },
+    {
+      "id": "chat-vanalyst-domain-specific",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vanalyst_domain_specific"
+    },
+    {
+      "id": "chat-vanalyst-multilingual",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vanalyst_multilingual"
+    },
+    {
+      "id": "chat-vanalyst-oos",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vanalyst_oos"
+    },
+    {
+      "id": "chat-vanalyst-wait",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vanalyst_wait"
+    },
+    {
+      "id": "chat-vanalyst-invent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vanalyst_invent"
+    },
+    {
+      "id": "chat-vanalyst-activation",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vanalyst_activation"
+    },
+    {
+      "id": "chat-vanalyst-shift",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vanalyst_shift"
+    },
+    {
+      "id": "chat-vanalyst-handoff",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vanalyst_handoff"
     }
   ],
   "note": "Fixtures are CHARACTERIZATION / policy checks. Not an eval pass. casops-eval remains NOT_RUN while instruments are unqualified."

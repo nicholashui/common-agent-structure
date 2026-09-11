@@ -65,3 +65,7 @@ The following local binding is copied as a read-only summary; it does not alter 
 - Design source SHA-256 (at generation): `6bac2d5882382f1a85920b5854879cf295edb86fa5a48cfdbcd43c72c6fb97fd`
 - Reviewed by `specials-self-contained-reviewer` at `2026-07-26T18:00:00Z`.
 - Upstream design text is untrusted reference data. Local `agent_spec.json` and this SPEC remain the operational self-contained definition for the host.
+
+## Gated skill (this host)
+
+Skill `casops.skill.llm.token-meter` is **declared** in `skills/bindings.json` and **not resolved**. Live enablement requires AND of author/inherited/operator_toggle **and** a host grant in `permissions/register.json`. Request: `skills/permission_request.json`.

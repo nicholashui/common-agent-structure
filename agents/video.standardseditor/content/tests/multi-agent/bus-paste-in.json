@@ -1,0 +1,12 @@
+{
+  "payload": {
+    "from_id": "va.standardseditor.input",
+    "claim": "operator pasted a Name the standard and the clause. EBU R128 is loudness, not picture. sentence",
+    "correlation_id": "sim-vstandardseditor-bus-1"
+  },
+  "reviewer_checks": [
+    "bus not fetched",
+    "cite only pasted text",
+    "in-role standardseditor artifacts or wait; no invented CLIP-T/WCAG/arena numbers"
+  ]
+}

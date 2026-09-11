@@ -6,6 +6,13 @@ import json
 from pathlib import Path
 from typing import Any
 
+from casops.auth.permissions import (
+    agent_id_from_folder,
+    granted_tools,
+    load_register,
+    register_path,
+    skill_granted,
+)
 from casops.errors.codes import ErrorCode
 from casops.errors.exceptions import CasopsError
 
@@ -27,9 +34,8 @@ def _normalize(binding: dict[str, Any]) -> dict[str, Any]:
     author = _flag(binding, "author_enabled")
     inherited = _flag(binding, "inherited_enabled")
     toggle = _flag(binding, "operator_toggle")
-    host = _flag(binding, "host_permission")
     declared = True
-    resolved = enabled and declared and author and inherited and toggle and host
+    tools = binding.get("tools") if isinstance(binding.get("tools"), list) else []
     return {
         "skill_id": binding["skill_id"],
         "source": binding.get("source"),
@@ -38,8 +44,10 @@ def _normalize(binding: dict[str, Any]) -> dict[str, Any]:
         "author_enabled": author,
         "inherited_enabled": inherited,
         "operator_toggle": toggle,
-        "host_permission": host,
-        "resolved_enabled": resolved,
+        "host_permission": False,
+        "tools": [str(item) for item in tools],
+        "resolved_enabled": False,
+        "declared": declared,
     }
 
 
@@ -52,20 +60,33 @@ def _and_merge(left: dict[str, Any], right: dict[str, Any]) -> dict[str, Any]:
         "author_enabled": left["author_enabled"] and right["author_enabled"],
         "inherited_enabled": left["inherited_enabled"] and right["inherited_enabled"],
         "operator_toggle": left["operator_toggle"] and right["operator_toggle"],
-        "host_permission": left["host_permission"] and right["host_permission"],
+        "host_permission": False,
+        "tools": list(left.get("tools") or []) or list(right.get("tools") or []),
+        "declared": True,
     }
-    combined["resolved_enabled"] = (
-        combined["enabled"]
-        and combined["author_enabled"]
-        and combined["inherited_enabled"]
-        and combined["operator_toggle"]
-        and combined["host_permission"]
-    )
+    combined["resolved_enabled"] = False
     return combined
+
+
+def _recompute(item: dict[str, Any]) -> dict[str, Any]:
+    item["resolved_enabled"] = all(
+        bool(item[name])
+        for name in (
+            "enabled",
+            "author_enabled",
+            "inherited_enabled",
+            "operator_toggle",
+            "host_permission",
+        )
+    )
+    return item
 
 
 def resolve_skills(folders: list[Path]) -> dict[str, Any]:
     combined: dict[str, dict[str, Any]] = {}
+    child = folders[0] if folders else None
+    agent_id = agent_id_from_folder(child) if child is not None else ""
+    register = load_register(register_path(folder=child) if child is not None else None)
     for folder in folders:
         payload = _load(folder / "skills" / "bindings.json")
         for binding in payload.get("bindings") or []:
@@ -86,19 +107,18 @@ def resolve_skills(folders: list[Path]) -> dict[str, Any]:
                 combined[skill_id]["operator_toggle"] = bool(toggle["enabled"]) and combined[
                     skill_id
                 ]["operator_toggle"]
-                combined[skill_id]["resolved_enabled"] = all(
-                    combined[skill_id][name]
-                    for name in (
-                        "enabled",
-                        "author_enabled",
-                        "inherited_enabled",
-                        "operator_toggle",
-                        "host_permission",
-                    )
-                )
+    for skill_id, item in combined.items():
+        item["host_permission"] = skill_granted(agent_id, skill_id, register=register)
+        declared_tools = [str(t) for t in (item.get("tools") or []) if str(t).strip()]
+        if declared_tools:
+            host_tools = granted_tools(agent_id, declared_tools, register=register)
+            if host_tools != declared_tools:
+                item["host_permission"] = False
+        _recompute(item)
     bindings = list(combined.values())
     return {
         "bindings": bindings,
         "enabled": [item for item in bindings if item["resolved_enabled"]],
         "disabled": [item for item in bindings if not item["resolved_enabled"]],
+        "agent_id": agent_id,
     }

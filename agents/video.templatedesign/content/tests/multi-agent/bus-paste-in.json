@@ -1,0 +1,12 @@
+{
+  "payload": {
+    "from_id": "va.templatedesign.input",
+    "claim": "operator pasted a Grid, type ramp, states. Nielsen: templates reduce error if constraints are named. sentence",
+    "correlation_id": "sim-vtemplatedesign-bus-1"
+  },
+  "reviewer_checks": [
+    "bus not fetched",
+    "cite only pasted text",
+    "in-role templatedesign artifacts or wait; no invented CLIP-T/WCAG/arena numbers"
+  ]
+}

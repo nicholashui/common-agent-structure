@@ -65,6 +65,66 @@
       "id": "run-tc1",
       "honesty": "CHARACTERIZATION",
       "path": "run"
+    },
+    {
+      "id": "chat-vethics-ambiguous",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vethics_ambiguous"
+    },
+    {
+      "id": "chat-vethics-multi-intent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vethics_multi_intent"
+    },
+    {
+      "id": "chat-vethics-domain-specific",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vethics_domain_specific"
+    },
+    {
+      "id": "chat-vethics-multilingual",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vethics_multilingual"
+    },
+    {
+      "id": "chat-vethics-oos",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vethics_oos"
+    },
+    {
+      "id": "chat-vethics-wait",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vethics_wait"
+    },
+    {
+      "id": "chat-vethics-invent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vethics_invent"
+    },
+    {
+      "id": "chat-vethics-activation",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vethics_activation"
+    },
+    {
+      "id": "chat-vethics-shift",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vethics_shift"
+    },
+    {
+      "id": "chat-vethics-handoff",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vethics_handoff"
     }
   ],
   "note": "Fixtures are CHARACTERIZATION / policy checks. Not an eval pass. casops-eval remains NOT_RUN while instruments are unqualified."

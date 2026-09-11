@@ -1,0 +1,12 @@
+{
+  "payload": {
+    "from_id": "va.labeldigital.input",
+    "claim": "operator pasted a DDEX/ERN, ISRC/ISWC, storefront fields. Distinct from distributor of films. sentence",
+    "correlation_id": "sim-vlabeldigital-bus-1"
+  },
+  "reviewer_checks": [
+    "bus not fetched",
+    "cite only pasted text",
+    "in-role labeldigital artifacts or wait; no invented CLIP-T/WCAG/arena numbers"
+  ]
+}

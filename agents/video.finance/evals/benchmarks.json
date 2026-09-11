@@ -65,6 +65,66 @@
       "id": "run-tc1",
       "honesty": "CHARACTERIZATION",
       "path": "run"
+    },
+    {
+      "id": "chat-vfinance-ambiguous",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vfinance_ambiguous"
+    },
+    {
+      "id": "chat-vfinance-multi-intent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vfinance_multi_intent"
+    },
+    {
+      "id": "chat-vfinance-domain-specific",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vfinance_domain_specific"
+    },
+    {
+      "id": "chat-vfinance-multilingual",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vfinance_multilingual"
+    },
+    {
+      "id": "chat-vfinance-oos",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vfinance_oos"
+    },
+    {
+      "id": "chat-vfinance-wait",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vfinance_wait"
+    },
+    {
+      "id": "chat-vfinance-invent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vfinance_invent"
+    },
+    {
+      "id": "chat-vfinance-activation",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vfinance_activation"
+    },
+    {
+      "id": "chat-vfinance-shift",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vfinance_shift"
+    },
+    {
+      "id": "chat-vfinance-handoff",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vfinance_handoff"
     }
   ],
   "note": "Fixtures are CHARACTERIZATION / policy checks. Not an eval pass. casops-eval remains NOT_RUN while instruments are unqualified."

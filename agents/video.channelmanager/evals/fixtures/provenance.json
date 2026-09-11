@@ -17,5 +17,7 @@
     "jailbreak_pack_echo",
     "activation_creep",
     "dual_bind_promotion"
-  ]
+  ],
+  "vchannelmanager_chat_count": 10,
+  "vchannelmanager_note": "chat-vchannelmanager-*.json are extra CHARACTERIZATION edges. Not an eval PASS."
 }

@@ -1,0 +1,12 @@
+{
+  "payload": {
+    "from_id": "va.community.input",
+    "claim": "operator pasted a Practice vs audience. Moderation is a written rule. sentence",
+    "correlation_id": "sim-vcommunity-bus-1"
+  },
+  "reviewer_checks": [
+    "bus not fetched",
+    "cite only pasted text",
+    "in-role community artifacts or wait; no invented CLIP-T/WCAG/arena numbers"
+  ]
+}

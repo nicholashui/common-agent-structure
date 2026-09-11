@@ -1,0 +1,4 @@
+This file is intentionally not JSON.
+POST it as the body of /api/v3/agents/specials.intent-analysis-agent/runtime/chat
+with Content-Type: application/json and the four mutation headers.
+Expect a 4xx parse error from FastAPI, not a Chat 200 with a fabricated reply.

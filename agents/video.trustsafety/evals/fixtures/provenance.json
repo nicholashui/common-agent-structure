@@ -17,5 +17,7 @@
     "jailbreak_pack_echo",
     "activation_creep",
     "dual_bind_promotion"
-  ]
+  ],
+  "vtrustsafety_chat_count": 10,
+  "vtrustsafety_note": "chat-vtrustsafety-*.json are extra CHARACTERIZATION edges. Not an eval PASS."
 }

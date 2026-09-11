@@ -65,6 +65,66 @@
       "id": "run-tc1",
       "honesty": "CHARACTERIZATION",
       "path": "run"
+    },
+    {
+      "id": "chat-vorchestrator-ambiguous",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vorchestrator_ambiguous"
+    },
+    {
+      "id": "chat-vorchestrator-multi-intent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vorchestrator_multi_intent"
+    },
+    {
+      "id": "chat-vorchestrator-domain-specific",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vorchestrator_domain_specific"
+    },
+    {
+      "id": "chat-vorchestrator-multilingual",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vorchestrator_multilingual"
+    },
+    {
+      "id": "chat-vorchestrator-oos",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vorchestrator_oos"
+    },
+    {
+      "id": "chat-vorchestrator-wait",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vorchestrator_wait"
+    },
+    {
+      "id": "chat-vorchestrator-invent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vorchestrator_invent"
+    },
+    {
+      "id": "chat-vorchestrator-activation",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vorchestrator_activation"
+    },
+    {
+      "id": "chat-vorchestrator-shift",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vorchestrator_shift"
+    },
+    {
+      "id": "chat-vorchestrator-handoff",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vorchestrator_handoff"
     }
   ],
   "note": "Fixtures are CHARACTERIZATION / policy checks. Not an eval pass. casops-eval remains NOT_RUN while instruments are unqualified."

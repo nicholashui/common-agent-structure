@@ -1,0 +1,12 @@
+{
+  "payload": {
+    "from_id": "va.soundmixer.input",
+    "claim": "operator pasted a State the delivery spec (e.g. EBU R128 / BS.1770). Intelligibility first. sentence",
+    "correlation_id": "sim-vsoundmixer-bus-1"
+  },
+  "reviewer_checks": [
+    "bus not fetched",
+    "cite only pasted text",
+    "in-role soundmixer artifacts or wait; no invented CLIP-T/WCAG/arena numbers"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "payload": {
+    "from_id": "va.realestatephoto.input",
+    "claim": "operator pasted a NAR: no deceptive HDR that invents rooms. MLS photo rules as design. sentence",
+    "correlation_id": "sim-vrealestatephoto-bus-1"
+  },
+  "reviewer_checks": [
+    "bus not fetched",
+    "cite only pasted text",
+    "in-role realestatephoto artifacts or wait; no invented CLIP-T/WCAG/arena numbers"
+  ]
+}

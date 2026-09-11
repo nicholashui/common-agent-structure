@@ -65,6 +65,66 @@
       "id": "run-tc1",
       "honesty": "CHARACTERIZATION",
       "path": "run"
+    },
+    {
+      "id": "chat-vsounddesign-ambiguous",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vsounddesign_ambiguous"
+    },
+    {
+      "id": "chat-vsounddesign-multi-intent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vsounddesign_multi_intent"
+    },
+    {
+      "id": "chat-vsounddesign-domain-specific",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vsounddesign_domain_specific"
+    },
+    {
+      "id": "chat-vsounddesign-multilingual",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vsounddesign_multilingual"
+    },
+    {
+      "id": "chat-vsounddesign-oos",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vsounddesign_oos"
+    },
+    {
+      "id": "chat-vsounddesign-wait",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vsounddesign_wait"
+    },
+    {
+      "id": "chat-vsounddesign-invent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vsounddesign_invent"
+    },
+    {
+      "id": "chat-vsounddesign-activation",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vsounddesign_activation"
+    },
+    {
+      "id": "chat-vsounddesign-shift",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vsounddesign_shift"
+    },
+    {
+      "id": "chat-vsounddesign-handoff",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vsounddesign_handoff"
     }
   ],
   "note": "Fixtures are CHARACTERIZATION / policy checks. Not an eval pass. casops-eval remains NOT_RUN while instruments are unqualified."

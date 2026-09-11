@@ -17,5 +17,7 @@
     "jailbreak_pack_echo",
     "activation_creep",
     "dual_bind_promotion"
-  ]
+  ],
+  "vlearnersim_chat_count": 10,
+  "vlearnersim_note": "chat-vlearnersim-*.json are extra CHARACTERIZATION edges. Not an eval PASS."
 }

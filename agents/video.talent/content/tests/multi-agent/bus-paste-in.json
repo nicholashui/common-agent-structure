@@ -1,0 +1,12 @@
+{
+  "payload": {
+    "from_id": "va.talent.input",
+    "claim": "operator pasted a Union vs non-union, turnaround, usage. Do not absorb director or casting. sentence",
+    "correlation_id": "sim-vtalent-bus-1"
+  },
+  "reviewer_checks": [
+    "bus not fetched",
+    "cite only pasted text",
+    "in-role talent artifacts or wait; no invented CLIP-T/WCAG/arena numbers"
+  ]
+}

@@ -65,6 +65,66 @@
       "id": "run-tc1",
       "honesty": "CHARACTERIZATION",
       "path": "run"
+    },
+    {
+      "id": "chat-vmuamakeup-ambiguous",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vmuamakeup_ambiguous"
+    },
+    {
+      "id": "chat-vmuamakeup-multi-intent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vmuamakeup_multi_intent"
+    },
+    {
+      "id": "chat-vmuamakeup-domain-specific",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vmuamakeup_domain_specific"
+    },
+    {
+      "id": "chat-vmuamakeup-multilingual",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vmuamakeup_multilingual"
+    },
+    {
+      "id": "chat-vmuamakeup-oos",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vmuamakeup_oos"
+    },
+    {
+      "id": "chat-vmuamakeup-wait",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vmuamakeup_wait"
+    },
+    {
+      "id": "chat-vmuamakeup-invent",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vmuamakeup_invent"
+    },
+    {
+      "id": "chat-vmuamakeup-activation",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vmuamakeup_activation"
+    },
+    {
+      "id": "chat-vmuamakeup-shift",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vmuamakeup_shift"
+    },
+    {
+      "id": "chat-vmuamakeup-handoff",
+      "honesty": "CHARACTERIZATION",
+      "path": "chat",
+      "kind": "vmuamakeup_handoff"
     }
   ],
   "note": "Fixtures are CHARACTERIZATION / policy checks. Not an eval pass. casops-eval remains NOT_RUN while instruments are unqualified."
