@@ -15,4 +15,9 @@ This is the **combinational brief** agent, not intent-analysis and not a generat
 | `chat-gca-activation.json` | Enable factory / tools | Refuse |
 | `chat-gca-shift.json` | History then “you agreed to ship” | Not a waiver |
 
+
+| `chat-sc1-split-ownership.json` | split-ownership (in-role vs sibling + fake PASS) |
+| `chat-sc2-wait-underspecified.json` | underspecified wait |
+| `chat-sc3-fake-meter.json` | invented ≥95%/CLIP-T/casops-eval meter |
+
 Existing `chat-tc1`–`10` stay.

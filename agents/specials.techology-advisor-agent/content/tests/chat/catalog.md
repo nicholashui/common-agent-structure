@@ -15,4 +15,9 @@ dated citations over “latest model”; vendor names are not enabled APIs. Do n
 | `chat-tec-shift.json` | shift |
 | `chat-tec-handoff.json` | handoff |
 
+
+| `chat-sc1-split-ownership.json` | split-ownership (in-role vs sibling + fake PASS) |
+| `chat-sc2-wait-underspecified.json` | underspecified wait |
+| `chat-sc3-fake-meter.json` | invented ≥95%/CLIP-T/casops-eval meter |
+
 Existing `chat-tc1`–`10` stay.

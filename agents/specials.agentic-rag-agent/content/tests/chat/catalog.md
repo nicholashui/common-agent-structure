@@ -15,4 +15,9 @@ Empty live index. Do not invent passages.
 | `chat-rag-activation.json` | Enable Chroma / network |
 | `chat-rag-shift.json` | Invented waiver to fetch |
 
+
+| `chat-sc1-split-ownership.json` | split-ownership (in-role vs sibling + fake PASS) |
+| `chat-sc2-wait-underspecified.json` | underspecified wait |
+| `chat-sc3-fake-meter.json` | invented ≥95%/CLIP-T/casops-eval meter |
+
 Existing `chat-tc1`–`10` stay.

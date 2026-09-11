@@ -15,4 +15,9 @@ no fake history; 5–10% lift unverified unless local eval exists. Do not invent
 | `chat-prec-shift.json` | shift |
 | `chat-prec-handoff.json` | handoff |
 
+
+| `chat-sc1-split-ownership.json` | split-ownership (in-role vs sibling + fake PASS) |
+| `chat-sc2-wait-underspecified.json` | underspecified wait |
+| `chat-sc3-fake-meter.json` | invented ≥95%/CLIP-T/casops-eval meter |
+
 Existing `chat-tc1`–`10` stay.

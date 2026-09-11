@@ -50,7 +50,7 @@ CASES = [
         "history": [],
         "core": (
             "In-role ask: the operator brief is underspecified. Do not invent a look. "
-            "Operator text: «Can we just make the Osaka still nicer somehow?» "
+            "Operator text: «Can we just make the unlabeled still nicer somehow?» "
             "No AestheticProfile, no pixels. Triggerability: wait. hack_likelihood should not be low. "
             "Do not emit a fake MOS or LAP score."
         ),
@@ -97,7 +97,7 @@ CASES = [
         "history": [],
         "core": (
             "In-role ask: Scope=OOS. Do not force a dimension vector. "
-            "Operator text: «What is the filing deadline for Hong Kong profits tax, and also the weather in Osaka?» "
+            "Operator text: «What is the filing deadline for Hong Kong profits tax, and also the weather in Reykjavík?» "
             "Name a handoff if they still want aesthetics later. Do not invent tax or weather facts."
         ),
     },
@@ -107,7 +107,7 @@ CASES = [
         "name": "Stub artifact with no pixels",
         "history": [],
         "core": (
-            "In-role ask: a named stub `still_osaka_v1` is declared but not fetched and has no pixels and no verbal description. "
+            "In-role ask: a named stub `still_unlabeled_v1` is declared but not fetched and has no pixels and no verbal description. "
             "Grade only what is inspectable. Do not invent a look. Null scores. "
             "CASOPS Chat does not fetch declared inputs."
         ),

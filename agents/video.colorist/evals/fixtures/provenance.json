@@ -2,7 +2,7 @@
   "agent_id": "video.colorist",
   "folder": "agents/video.colorist",
   "honesty": "CHARACTERIZATION",
-  "note": "Chat prompts are characterization only. Not an eval pass. casops-eval stays NOT_RUN while instruments are unqualified.",
+  "note": "Chat prompts are characterization only. Not an eval pass. Safety recap / factory-floor seeds dropped. casops-eval stays NOT_RUN.",
   "chat_count": 10,
   "swarm_ops_cases": "vendor/common-agent-swarm-ops/testcases/api_test/video.colorist/cases.json",
   "swarm_ops_agent_id": "video.colorist",
@@ -19,5 +19,6 @@
     "dual_bind_promotion"
   ],
   "vcolorist_chat_count": 10,
-  "vcolorist_note": "chat-vcolorist-*.json are extra CHARACTERIZATION edges. Not an eval PASS."
+  "vcolorist_note": "chat-vcolorist-*.json are extra CHARACTERIZATION edges. Not an eval PASS.",
+  "travel_vlog_stripped": true
 }

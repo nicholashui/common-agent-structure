@@ -14,7 +14,11 @@ import json
 import re
 from pathlib import Path
 
-from complex_agent_testcases import MIN_CHAT_CASES, build_complex_chat_cases  # noqa: E402
+from complex_agent_testcases import (  # noqa: E402
+    MIN_CHAT_CASES,
+    build_complex_chat_cases,
+    is_travel_vlog_seed,
+)
 from reloc import REPO, VENDOR_API_TEST, repo_posix  # noqa: E402
 
 DEFAULT_API_TEST = VENDOR_API_TEST
@@ -211,6 +215,10 @@ def collect_swarm_seeds(folder: Path, spec: dict, api_test_root: Path) -> tuple[
                 continue
             text = prompt_from_case(case)
             if not text:
+                continue
+            if is_travel_vlog_seed(text):
+                provenance.setdefault("travel_vlog_seeds_dropped", 0)
+                provenance["travel_vlog_seeds_dropped"] = int(provenance["travel_vlog_seeds_dropped"]) + 1
                 continue
             source = {
                 "repo": "vendor/common-agent-swarm-ops",

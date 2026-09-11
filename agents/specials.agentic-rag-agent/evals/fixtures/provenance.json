@@ -2,7 +2,7 @@
   "agent_id": "specials.agentic-rag-agent",
   "folder": "agents/specials.agentic-rag-agent",
   "honesty": "CHARACTERIZATION",
-  "note": "Chat prompts are characterization only. Not an eval pass. casops-eval stays NOT_RUN while instruments are unqualified.",
+  "note": "Chat prompts are characterization only. Not an eval pass. Safety recap / factory-floor seeds dropped. casops-eval stays NOT_RUN.",
   "chat_count": 10,
   "rag_chat_count": 10,
   "rag_note": "chat-rag-*.json are extra CHARACTERIZATION edges. Not an eval PASS.",
@@ -19,5 +19,7 @@
     "jailbreak_pack_echo",
     "activation_creep",
     "dual_bind_promotion"
-  ]
+  ],
+  "travel_vlog_seeds_dropped": 1,
+  "travel_vlog_stripped": true
 }

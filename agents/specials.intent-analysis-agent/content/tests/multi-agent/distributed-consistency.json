@@ -3,7 +3,7 @@
   "agent_id": "specials.intent-analysis-agent",
   "path": "chat",
   "turn_1": {
-    "message": "Analyse only: «We should probably ship the Osaka vlog this week if legal signs off.»"
+    "message": "Analyse only: «We should probably ship the safety recap this week if legal signs off.»"
   },
   "turn_2": {
     "history_includes_turn_1": true,

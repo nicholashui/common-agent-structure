@@ -1,4 +1,5 @@
-import { FormEvent, useEffect, useRef, useState } from "react";
+import { FormEvent, useEffect, useRef, useState, type ReactNode } from "react";
+import { ArrowUp, Copy, Download, Plus, RefreshCw, Square } from "lucide-react";
 import { useSearchParams } from "react-router-dom";
 import { AdapterStatus } from "../components/AdapterStatus";
 import { ChatMarkdown } from "../components/ChatMarkdown";
@@ -7,7 +8,7 @@ import { CharacterizationBadge, ChatFixtureList } from "../components/EvalFixtur
 import { ErrorBanner } from "../components/RecoveryBanner";
 import { ChatProofPanel } from "../components/ChatProof";
 import { IoPanel } from "../components/IoPanel";
-import { DangerButton, GhostButton, PageHeader, PrimaryButton } from "../components/ui";
+import { GhostButton } from "../components/ui";
 import { RequestAbortedError, type ChatContextPack, type ChatProof, type EvalFixture, type RuntimeAdapter } from "../api/types";
 import {
   canRegenerate,
@@ -34,7 +35,7 @@ import { followUpChips } from "../lib/followUps";
 import { useAgentId, useAsync } from "../lib/hooks";
 import { parseAgentIo } from "../lib/io";
 import { clipLogText, logUi } from "../log/bus";
-import { formatHktClock, formatHktDateTime, nowHktIso } from "../lib/time";
+import { formatHktClock, formatHktDateTime, formatHktIso, nowHktIso } from "../lib/time";
 import { useSession } from "../state/session";
 
 function fileLabel(path: string): string {
@@ -77,6 +78,42 @@ function ContextPack({ pack }: { pack: ChatContextPack }) {
 
 function turnTime(ts?: string): string {
   return formatHktClock(ts);
+}
+
+function IconBtn({
+  label,
+  testId,
+  onClick,
+  disabled,
+  children,
+}: {
+  label: string;
+  testId?: string;
+  onClick?: () => void;
+  disabled?: boolean;
+  children: ReactNode;
+}) {
+  return (
+    <button
+      type="button"
+      title={label}
+      aria-label={label}
+      data-testid={testId}
+      disabled={disabled}
+      onClick={onClick}
+      className="inline-flex h-8 w-8 items-center justify-center rounded-full text-stone-500 hover:bg-stone-100 hover:text-stone-800 disabled:cursor-not-allowed disabled:opacity-40 dark:hover:bg-stone-800 dark:hover:text-stone-100"
+    >
+      {children}
+    </button>
+  );
+}
+
+function resizeComposer(el: HTMLTextAreaElement | null) {
+  if (!el) {
+    return;
+  }
+  el.style.height = "auto";
+  el.style.height = `${Math.min(Math.max(el.scrollHeight, 28), 160)}px`;
 }
 
 export function ChatPage() {
@@ -175,6 +212,10 @@ export function ChatPage() {
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, []);
+
+  useEffect(() => {
+    resizeComposer(inputRef.current);
+  }, [draft]);
 
   useEffect(() => {
     if (!fixtureId || !fixtures.data) {
@@ -331,201 +372,204 @@ export function ChatPage() {
     );
   }
 
+  const liveSession = loadThread(agentId).session;
+
+  function startNewChat() {
+    abortRef.current?.abort();
+    const next = clearThread(agentId);
+    setTurns(next.turns);
+    setFiles(next.files);
+    setStopped(false);
+    setChatProof(null);
+    setContextPack(null);
+    setDraft("");
+    inputRef.current?.focus();
+  }
+
   return (
-    <div data-testid="agent-chat">
-      <PageHeader
-        title="Chat"
-        asOf={panel.asOf}
-        actions={
-          <>
-            <GhostButton type="button" data-testid="chat-export-md" disabled={!turns.length} onClick={exportMd}>
-              Export MD
-            </GhostButton>
-            <GhostButton type="button" data-testid="chat-export-json" disabled={!turns.length} onClick={exportJson}>
-              Export JSON
-            </GhostButton>
-            <GhostButton
-              type="button"
-              onClick={() => {
-                abortRef.current?.abort();
-                const next = clearThread(agentId);
-                setTurns(next.turns);
-                setFiles(next.files);
-                setStopped(false);
-                setChatProof(null);
-                setContextPack(null);
-              }}
-            >
-              Clear
-            </GhostButton>
-          </>
-        }
-      />
-      <p className="mb-4 text-sm text-stone-500">
-        Type a text message to talk to <span className="font-mono">{agentId}</span>. The host packs identity plus the
-        operational prompt under <span className="font-mono">runtime/context.json</span> budgets. It does not dump
-        SKILL.md, memory, or tools. Adapter{" "}
-        <span className="font-mono">{adapterKind}</span>
-        {adapterKind === "grok_acp" ? " (UI → API → one Grok process)" : " (in-process host LLM)"}. Provider{" "}
-        <span className="font-mono">{panel.data?.llm.provider ?? "local_deterministic"}</span>. Export is a Chat
-        transcript, not a sealed Run.
+    <div data-testid="agent-chat" className="flex h-[calc(100vh-8.25rem)] flex-col overflow-hidden">
+      <div className="mb-3 flex shrink-0 flex-wrap items-center justify-between gap-2">
+        <div>
+          <h2 className="text-lg font-semibold text-stone-800">Chat</h2>
+          <p className="text-xs text-stone-400">as_of {panel.asOf ? formatHktIso(panel.asOf) : "—"}</p>
+        </div>
+        <div className="flex flex-wrap gap-2">
+          <GhostButton type="button" data-testid="chat-export-md" disabled={!turns.length} onClick={exportMd}>
+            Export MD
+          </GhostButton>
+          <GhostButton type="button" data-testid="chat-export-json" disabled={!turns.length} onClick={exportJson}>
+            Export JSON
+          </GhostButton>
+          <GhostButton type="button" onClick={startNewChat}>
+            Clear
+          </GhostButton>
+        </div>
+      </div>
+      <p className="sr-only">
+        Type a text message to talk to {agentId}. The host packs identity plus the operational prompt. It does not dump
+        SKILL.md, memory, or tools. Adapter {adapterKind}. Export is a Chat transcript, not a sealed Run.
       </p>
       <ErrorBanner error={error ?? panel.error} />
-      <div className="grid grid-cols-1 gap-5 lg:grid-cols-[18rem_minmax(0,1fr)]">
-        <div className="order-2 space-y-5 lg:order-1">
-          <AdapterStatus adapter={adapter} testId="chat-adapter-detail" />
-          <IoPanel io={io} mode="chat" />
-          {chatProof ? <ChatProofPanel proof={chatProof} /> : null}
-          {contextPack ? <ContextPack pack={contextPack} /> : null}
+      <div className="grid min-h-0 flex-1 grid-cols-1 gap-6 overflow-hidden lg:grid-cols-[15.5rem_minmax(0,1fr)]">
+        <aside className="hidden min-h-0 flex-col overflow-y-auto lg:flex">
+          <p className="mb-2 text-[11px] font-medium uppercase tracking-wide text-stone-400">Chats</p>
           {files.length ? (
-            <section className="rounded-2xl border border-stone-200 bg-white p-5" data-testid="chat-files">
-              <h2 className="mb-1 text-sm font-semibold text-stone-900">Saved transcripts</h2>
-              <p className="mb-3 text-xs text-stone-500">
-                Load replaces the live thread. Files stay on disk. Clear starts a new file and does not delete these.
-              </p>
-              <ul className="space-y-2">
-                {files.slice(0, 8).map((file) => (
-                  <li key={file.path} className="flex items-start justify-between gap-2" data-testid="chat-file">
-                    <span className="min-w-0 font-mono text-[11px] text-stone-500">
-                      {formatHktDateTime(file.ts)}
-                      <span className="mt-0.5 block break-all">{fileLabel(file.path)}</span>
-                    </span>
-                    <GhostButton
-                      type="button"
-                      data-testid="chat-load-history"
-                      onClick={() => {
-                        if (turns.length) {
-                          setLoadTarget(file);
-                        } else {
-                          void applyLoad(file);
-                        }
-                      }}
-                    >
-                      Load
-                    </GhostButton>
-                  </li>
-                ))}
+            <section className="min-h-0 flex-1" data-testid="chat-files">
+              <ul className="space-y-0.5">
+                {files.slice(0, 16).map((file) => {
+                  const active = sessionFromFileName(file.name) === liveSession;
+                  return (
+                    <li key={file.path} data-testid="chat-file">
+                      <button
+                        type="button"
+                        data-testid="chat-load-history"
+                        className={[
+                          "w-full rounded-xl px-3 py-2 text-left text-sm text-stone-700 hover:bg-stone-100 dark:text-stone-300 dark:hover:bg-stone-800",
+                          active ? "bg-stone-100 font-medium text-stone-900 dark:bg-stone-800 dark:text-stone-50" : "",
+                        ].join(" ")}
+                        onClick={() => {
+                          if (turns.length) {
+                            setLoadTarget(file);
+                          } else {
+                            void applyLoad(file);
+                          }
+                        }}
+                      >
+                        <span className="block truncate">{formatHktDateTime(file.ts)}</span>
+                        <span className="mt-0.5 block truncate font-mono text-[10px] text-stone-400">
+                          {fileLabel(file.path)}
+                        </span>
+                      </button>
+                    </li>
+                  );
+                })}
               </ul>
             </section>
           ) : (
-            <p className="font-mono text-[11px] text-stone-400" data-testid="chat-files-empty">
-              Transcripts save under logs/chat/{agentId}/ with a timestamped file per conversation.
+            <p className="text-xs text-stone-400" data-testid="chat-files-empty">
+              Transcripts save under logs/chat/{agentId}/.
             </p>
           )}
-        </div>
-        <section className="relative order-1 flex h-[min(70vh,40rem)] flex-col overflow-hidden rounded-2xl border border-stone-200 bg-white lg:order-2">
+          <details className="mt-4 border-t border-stone-100 pt-3 dark:border-stone-800">
+            <summary className="cursor-pointer text-xs text-stone-500">Details</summary>
+            <div className="mt-3 space-y-3">
+              <AdapterStatus adapter={adapter} testId="chat-adapter-detail" />
+              <IoPanel io={io} mode="chat" />
+              {chatProof ? <ChatProofPanel proof={chatProof} /> : null}
+              {contextPack ? <ContextPack pack={contextPack} /> : null}
+              {cases.length ? (
+                <div>
+                  <div className="mb-2 flex flex-wrap items-center gap-2">
+                    <p className="text-xs font-medium text-stone-700">Characterization cases</p>
+                    <CharacterizationBadge />
+                  </div>
+                  <ChatFixtureList items={cases} onLoad={loadCase} compact />
+                </div>
+              ) : null}
+            </div>
+          </details>
+        </aside>
+
+        <section className="relative flex min-h-0 flex-col overflow-hidden">
           <div
             ref={logRef}
-            className="flex-1 space-y-3 overflow-y-auto p-4"
+            className="flex-1 space-y-8 overflow-y-auto px-1 pb-4 pt-2 lg:px-8"
             data-testid="chat-log"
             aria-live="polite"
             onScroll={(event) => setPinned(isPinnedToBottom(event.currentTarget))}
           >
             {turns.length === 0 && !pending ? (
-              <div>
-                <p className="text-sm text-stone-500">Send a message to talk to this agent.</p>
-                {cases.length ? (
-                  <div className="mt-4">
-                    <div className="mb-2 flex flex-wrap items-center gap-2">
-                      <p className="text-sm font-medium text-stone-800">Characterization cases</p>
-                      <CharacterizationBadge />
-                    </div>
-                    <p className="mb-3 text-xs text-stone-500">
-                      Load fills the composer only. Sending is still host Chat, not an eval pass.
-                    </p>
-                    <ChatFixtureList items={cases} onLoad={loadCase} />
-                  </div>
-                ) : null}
-              </div>
+              <p className="pt-16 text-center text-sm text-stone-400">Ask anything</p>
             ) : null}
             {turns.map((turn, index) => {
               const key = `${turn.role}-${index}`;
               const lastAssistantTurn = turn.role === "assistant" && index === turns.length - 1;
-              return (
-                <div key={key} className={turn.role === "user" ? "flex justify-end" : "flex justify-start"}>
-                  <div
-                    className={[
-                      "max-w-[85%] rounded-2xl px-3 py-2 text-sm",
-                      turn.role === "user" ? "bg-indigo-600 text-white whitespace-pre-wrap" : "bg-stone-100 text-stone-900",
-                    ].join(" ")}
-                    data-testid={turn.role === "user" ? "chat-user" : "chat-assistant"}
-                  >
-                    {turn.role === "assistant" ? <ChatMarkdown text={turn.content} /> : turn.content}
-                    {turn.role === "assistant" && turn.truncated ? (
-                      <p className="mt-1 text-[11px] text-amber-800" data-testid="chat-output-cap">
-                        Reply hit the output token cap.
-                      </p>
-                    ) : null}
-                    <div className="mt-1 flex flex-wrap items-center gap-2">
-                      <p
-                        className={`font-mono text-[10px] ${turn.role === "user" ? "text-indigo-100" : "text-stone-500"}`}
-                        data-testid="chat-turn-time"
-                      >
-                        {turnTime(turn.ts)}
-                        {turn.role === "assistant" && turn.provider ? ` · ${turn.provider}` : ""}
-                      </p>
-                      <button
-                        type="button"
-                        className={`text-[10px] underline-offset-2 hover:underline ${
-                          turn.role === "user" ? "text-indigo-100" : "text-stone-500"
-                        }`}
-                        data-testid="chat-copy"
-                        onClick={() => {
-                          void copyText(turn.content).then((ok) => {
-                            if (ok) {
-                              markCopied(key);
-                            }
-                          });
-                        }}
-                      >
-                        {copiedKey === key ? "Copied" : "Copy"}
-                      </button>
-                      {lastAssistantTurn && !pending ? (
+              if (turn.role === "user") {
+                return (
+                  <div key={key} className="flex justify-end">
+                    <div
+                      className="max-w-[min(36rem,90%)] whitespace-pre-wrap rounded-2xl bg-stone-100 px-4 py-2.5 text-sm text-stone-900 dark:bg-stone-800 dark:text-stone-50"
+                      data-testid="chat-user"
+                    >
+                      {turn.content}
+                      <div className="mt-1 flex items-center gap-2">
+                        <p className="font-mono text-[10px] text-stone-400" data-testid="chat-turn-time">
+                          {turnTime(turn.ts)}
+                        </p>
                         <button
                           type="button"
-                          className="text-[10px] text-stone-500 underline-offset-2 hover:underline"
-                          data-testid="chat-regenerate"
-                          disabled={!chatReady || !canRegenerate(turns)}
-                          onClick={() => void regenerate()}
+                          className="text-[10px] text-stone-400 underline-offset-2 hover:underline"
+                          data-testid="chat-copy"
+                          onClick={() => {
+                            void copyText(turn.content).then((ok) => {
+                              if (ok) {
+                                markCopied(key);
+                              }
+                            });
+                          }}
                         >
-                          Regenerate
+                          {copiedKey === key ? "Copied" : "Copy"}
                         </button>
-                      ) : null}
+                      </div>
                     </div>
+                  </div>
+                );
+              }
+              return (
+                <div key={key} className="mx-auto w-full max-w-[46rem]" data-testid="chat-assistant">
+                  <ChatMarkdown text={turn.content} />
+                  {turn.truncated ? (
+                    <p className="mt-2 text-[11px] text-amber-800" data-testid="chat-output-cap">
+                      Reply hit the output token cap.
+                    </p>
+                  ) : null}
+                  <div className="mt-3 flex flex-wrap items-center gap-1 text-stone-400">
+                    <p className="mr-2 font-mono text-[10px] text-stone-400" data-testid="chat-turn-time">
+                      {turnTime(turn.ts)}
+                      {turn.provider ? ` · ${turn.provider}` : ""}
+                    </p>
+                    <IconBtn
+                      label={copiedKey === key ? "Copied" : "Copy"}
+                      testId="chat-copy"
+                      onClick={() => {
+                        void copyText(turn.content).then((ok) => {
+                          if (ok) {
+                            markCopied(key);
+                          }
+                        });
+                      }}
+                    >
+                      <Copy className="h-4 w-4" />
+                    </IconBtn>
+                    {lastAssistantTurn && !pending ? (
+                      <IconBtn
+                        label="Regenerate"
+                        testId="chat-regenerate"
+                        disabled={!chatReady || !canRegenerate(turns)}
+                        onClick={() => void regenerate()}
+                      >
+                        <RefreshCw className="h-4 w-4" />
+                      </IconBtn>
+                    ) : null}
+                    <IconBtn label="Export markdown" onClick={exportMd}>
+                      <Download className="h-4 w-4" />
+                    </IconBtn>
                   </div>
                 </div>
               );
             })}
-            {pending ? (
-              <p className="text-xs text-stone-400">Waiting for {adapterKind}…</p>
-            ) : null}
+            {pending ? <p className="text-xs text-stone-400">Waiting for {adapterKind}…</p> : null}
             {stopped && !pending ? (
               <p className="text-xs text-amber-800" data-testid="chat-stopped">
                 Generation stopped. The last user message is kept.
               </p>
-            ) : null}
-            {!pending && chips.length > 0 ? (
-              <div className="flex flex-wrap gap-2 pt-1" data-testid="chat-follow-ups">
-                {chips.map((chip) => (
-                  <button
-                    key={chip}
-                    type="button"
-                    data-testid="chat-follow-up"
-                    className="rounded-full border border-stone-200 bg-white px-3 py-1 text-left text-xs text-stone-700 hover:border-stone-300 hover:text-stone-900"
-                    disabled={!chatReady}
-                    onClick={() => void sendMessage(chip)}
-                  >
-                    {chip}
-                  </button>
-                ))}
-              </div>
             ) : null}
           </div>
           {!pinned ? (
             <button
               type="button"
               data-testid="chat-jump-latest"
-              className="absolute bottom-24 right-4 rounded-full border border-stone-200 bg-white px-3 py-1 text-xs text-stone-700 shadow-sm"
+              className="absolute bottom-36 right-6 rounded-full border border-stone-200 bg-white px-3 py-1 text-xs text-stone-700 shadow-sm dark:border-stone-700 dark:bg-stone-900 dark:text-stone-200"
               onClick={() => {
                 setPinned(true);
                 logRef.current?.scrollTo({ top: logRef.current.scrollHeight });
@@ -534,17 +578,25 @@ export function ChatPage() {
               Jump to latest
             </button>
           ) : null}
-          <div className="border-t border-stone-200">
-            {turns.length > 0 && cases.length ? (
-              <details className="border-b border-stone-200 px-3 py-2">
-                <summary className="cursor-pointer text-xs text-stone-600">Load a characterization case</summary>
-                <p className="mt-2 text-[11px] text-stone-500">Fills the composer. Not an eval pass.</p>
-                <div className="mt-2">
-                  <ChatFixtureList items={cases} onLoad={loadCase} compact />
-                </div>
-              </details>
+
+          <div className="mx-auto w-full max-w-[46rem] px-1 pb-3 lg:px-0">
+            {!pending && chips.length > 0 ? (
+              <div className="mb-3 flex flex-wrap gap-2" data-testid="chat-follow-ups">
+                {chips.map((chip) => (
+                  <button
+                    key={chip}
+                    type="button"
+                    data-testid="chat-follow-up"
+                    className="rounded-full border border-stone-200 bg-white px-3 py-1.5 text-left text-xs text-stone-700 hover:border-stone-300 hover:bg-stone-50 dark:border-stone-700 dark:bg-stone-900 dark:text-stone-200"
+                    disabled={!chatReady}
+                    onClick={() => void sendMessage(chip)}
+                  >
+                    {chip}
+                  </button>
+                ))}
+              </div>
             ) : null}
-            <p className="border-b border-stone-100 px-3 py-2 font-mono text-[11px] text-stone-500" data-testid="chat-adapter">
+            <p className="sr-only" data-testid="chat-adapter">
               Adapter {adapterKind}
               {adapter?.profile_ready ? " · profile ready" : " · profile missing"}
               {adapter?.grok_available ? " · grok yes" : " · grok no"}
@@ -552,7 +604,10 @@ export function ChatPage() {
               {adapter?.session_id ? ` · session ${adapter.session_id}` : ""}
               . Memory, plugins, T3 stay off.
             </p>
-            <form className="flex gap-2 p-3" onSubmit={(event) => void send(event)}>
+            <form
+              className="rounded-[1.75rem] border border-stone-200 bg-white px-4 py-3 shadow-sm dark:border-stone-700 dark:bg-stone-900"
+              onSubmit={(event) => void send(event)}
+            >
               <label className="sr-only" htmlFor="agent-chat-input">
                 Message
               </label>
@@ -560,10 +615,10 @@ export function ChatPage() {
                 id="agent-chat-input"
                 ref={inputRef}
                 data-testid="chat-input"
-                className="min-h-[2.5rem] flex-1 resize-none rounded-lg border border-stone-200 bg-white px-3 py-2 text-sm text-stone-900"
-                rows={2}
+                className="min-h-[1.75rem] w-full resize-none border-0 bg-transparent px-1 py-1 text-sm text-stone-900 outline-none placeholder:text-stone-400 dark:text-stone-50"
+                rows={1}
                 value={draft}
-                placeholder="Message this agent"
+                placeholder="Ask anything"
                 onChange={(event) => setDraft(event.target.value)}
                 onKeyDown={(event) => {
                   if (event.key === "Enter" && !event.shiftKey) {
@@ -572,19 +627,31 @@ export function ChatPage() {
                   }
                 }}
               />
-              {pending ? (
-                <DangerButton
-                  type="button"
-                  data-testid="chat-stop"
-                  onClick={() => abortRef.current?.abort()}
-                >
-                  Stop
-                </DangerButton>
-              ) : (
-                <PrimaryButton type="submit" disabled={!chatReady || !draft.trim()}>
-                  {session.stale ? "Stale — Refresh First" : "Send"}
-                </PrimaryButton>
-              )}
+              <div className="mt-2 flex items-center justify-between">
+                <IconBtn label="New chat" onClick={startNewChat}>
+                  <Plus className="h-4 w-4" />
+                </IconBtn>
+                {pending ? (
+                  <button
+                    type="button"
+                    data-testid="chat-stop"
+                    className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-red-600 text-white hover:bg-red-500"
+                    onClick={() => abortRef.current?.abort()}
+                    aria-label="Stop"
+                  >
+                    <Square className="h-3.5 w-3.5 fill-current" />
+                  </button>
+                ) : (
+                  <button
+                    type="submit"
+                    disabled={!chatReady || !draft.trim()}
+                    aria-label={session.stale ? "Stale — Refresh First" : "Send"}
+                    className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-stone-900 text-white hover:bg-stone-700 disabled:cursor-not-allowed disabled:bg-stone-200 disabled:text-stone-400 dark:bg-stone-100 dark:text-stone-900 dark:hover:bg-white dark:disabled:bg-stone-700"
+                  >
+                    <ArrowUp className="h-4 w-4" />
+                  </button>
+                )}
+              </div>
             </form>
           </div>
         </section>

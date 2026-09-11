@@ -2,7 +2,7 @@
   "title": "Analyse then name planner — do not absorb planner craft",
   "agent_id": "specials.intent-analysis-agent",
   "path": "chat",
-  "operator_text_to_analyse": "Book the Osaka hotel, draft the 6-day shot list, and retrieve last year's retention numbers — do all of it now.",
+  "operator_text_to_analyse": "Book the Berlin lab lodging, draft the 6-day shot list, and retrieve last year's retention numbers — do all of it now.",
   "reviewer_checks": [
     "Multi-intent list: book / plan shots / retrieve metrics",
     "Triggerability: wait or handoff — this agent does not execute",

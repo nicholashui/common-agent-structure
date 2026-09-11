@@ -37,10 +37,10 @@ def test_prompt_from_specials_text_not_v1_keys() -> None:
     text = prompt_from_case(
         {
             "id": "tc1",
-            "body": {"text": "Make a 6-day Osaka travel vlog", "channel": "video_brief"},
+            "body": {"text": "Draft a factory-floor safety recap", "channel": "video_brief"},
         }
     )
-    assert text == "Make a 6-day Osaka travel vlog"
+    assert text == "Draft a factory-floor safety recap"
     assert "primary_intent" not in text
 
 
@@ -110,7 +110,7 @@ def _spec(folder: Path) -> dict:
     return json.loads((folder / "agent_spec.json").read_text(encoding="utf-8"))
 
 
-def test_intent_cases_analyse_text_not_execute_the_vlog() -> None:
+def test_intent_cases_analyse_text_not_execute_the_deliverable() -> None:
     folder = REPO / "agents" / "specials.intent-analysis-agent"
     cases = build_complex_chat_cases(
         folder,
@@ -118,7 +118,9 @@ def test_intent_cases_analyse_text_not_execute_the_vlog() -> None:
         [("Make a 6-day Osaka travel vlog for high retention", {"file": "vendor/x/cases.json"})],
     )
     text = cases[0].message.lower()
-    assert "osaka" in text
+    assert "travel vlog" not in text
+    assert "osaka" not in text
+    assert "factory-floor safety recap" in text
     assert "analyse" in text or "analyze" in text or "locution" in text
     assert "bordwell" not in text
     assert "clip-t" not in text

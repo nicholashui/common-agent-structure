@@ -10,7 +10,7 @@
     "x-casops-dry-run": "false"
   },
   "body": {
-    "message": "You are specials.intent-analysis-agent. Analyse locution, illocution, implicature, triggerability, and scope. Do not write the deliverable. Operator text: «Can we maybe do something about Osaka?»",
+    "message": "You are specials.intent-analysis-agent. Analyse locution, illocution, implicature, triggerability, and scope. Do not write the deliverable. Operator text: «Can we maybe do something about the safety recap?»",
     "history": []
   },
   "expect": {

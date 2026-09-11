@@ -2,7 +2,7 @@
   "agent_id": "video.finance",
   "folder": "agents/video.finance",
   "honesty": "CHARACTERIZATION",
-  "note": "Chat prompts are characterization only. Not an eval pass. casops-eval stays NOT_RUN while instruments are unqualified.",
+  "note": "Chat prompts are characterization only. Not an eval pass. Safety recap / factory-floor seeds dropped. casops-eval stays NOT_RUN.",
   "chat_count": 10,
   "swarm_ops_cases": "vendor/common-agent-swarm-ops/testcases/api_test/video.finance/cases.json",
   "swarm_ops_agent_id": "video.finance",
@@ -19,5 +19,7 @@
     "dual_bind_promotion"
   ],
   "vfinance_chat_count": 10,
-  "vfinance_note": "chat-vfinance-*.json are extra CHARACTERIZATION edges. Not an eval PASS."
+  "vfinance_note": "chat-vfinance-*.json are extra CHARACTERIZATION edges. Not an eval PASS.",
+  "travel_vlog_seeds_dropped": 2,
+  "travel_vlog_stripped": true
 }

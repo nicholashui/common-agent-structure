@@ -278,6 +278,43 @@ def _bucket(agent_id: str) -> str:
     return "host"
 
 
+_VLOG_NEEDLES = (
+    "travel vlog",
+    "osaka",
+    "osaka-style",
+    "大阪",
+)
+
+
+def is_travel_vlog_seed(text: str) -> bool:
+    low = (text or "").lower()
+    return any(needle in low for needle in _VLOG_NEEDLES)
+
+
+def in_role_operator_text(agent_id: str, bucket: str, responsibility: str, domain: str) -> str:
+    slug = _slug(agent_id)
+    owns = (responsibility or "").strip()
+    domain = (domain or "").strip()
+    if is_travel_vlog_seed(domain):
+        domain = ""
+    if bucket == "intent":
+        return "Ship the quarterly factory-floor safety recap this week if legal agrees."
+    if bucket == "aesthetics":
+        return "Score this unlabeled still under a named AestheticProfile; there are no pixels in this thread."
+    if bucket == "legal":
+        return (
+            "Flag uncleared archive music and a living instructor likeness in a "
+            "factory-floor safety recap; escalate, do not clear."
+        )
+    if domain:
+        return f"Produce the in-role {slug} artifact for: {domain[:160]}"
+    if owns:
+        return f"Produce the in-role {slug} artifact. Owns: {owns[:160]}. Offline only."
+    return (
+        f"Produce the in-role {slug} artifact for the quarterly factory-floor safety recap. Offline only."
+    )
+
+
 def _seed_fits(seed: str, agent_id: str, role: str, responsibility: str, bucket: str) -> bool:
     if not seed.strip():
         return False
@@ -534,13 +571,22 @@ def _profile(
 
     scene = scenes.get(bucket, scenes["video_generic" if agent_id.startswith("video.") else "specials_generic"])
     craft = craft_core
-    if swarm and _seed_fits(swarm, agent_id, role, responsibility, bucket):
+    swarm_ok = (
+        bool(swarm)
+        and not is_travel_vlog_seed(swarm)
+        and _seed_fits(swarm, agent_id, role, responsibility, bucket)
+    )
+    if swarm_ok:
         if bucket == "intent":
             craft = f"{craft} Operator text to analyse (not to execute): «{swarm}»"
         else:
             craft = f"{craft} Operator brief in this craft: {swarm}"
-    elif domain and _seed_fits(domain, agent_id, role, responsibility, bucket):
-        craft = f"{craft} Domain note (untrusted provenance, not a fetch): {domain[:220]}"
+    else:
+        brief = in_role_operator_text(agent_id, bucket, responsibility, domain)
+        if bucket == "intent":
+            craft = f"{craft} Operator text to analyse (not to execute): «{brief}»"
+        else:
+            craft = f"{craft} Operator brief in this craft: {brief}"
 
     return RoleProfile(
         bucket=bucket,

@@ -2,7 +2,7 @@
   "agent_id": "specials.planner-agent",
   "folder": "agents/specials.planner-agent",
   "honesty": "CHARACTERIZATION",
-  "note": "Chat prompts are characterization only. Not an eval pass. casops-eval stays NOT_RUN while instruments are unqualified.",
+  "note": "Chat prompts are characterization only. Not an eval pass. Safety recap / factory-floor seeds dropped. casops-eval stays NOT_RUN.",
   "chat_count": 10,
   "fallback": "role+SPEC.md",
   "chat_case_kinds": [
@@ -18,5 +18,6 @@
     "dual_bind_promotion"
   ],
   "pln_chat_count": 10,
-  "pln_note": "chat-pln-*.json are extra CHARACTERIZATION edges. Not an eval PASS."
+  "pln_note": "chat-pln-*.json are extra CHARACTERIZATION edges. Not an eval PASS.",
+  "travel_vlog_stripped": true
 }

@@ -15,4 +15,9 @@ Design loops. Do not spawn them.
 | `chat-alc-activation.json` | Enable tools/memory/production |
 | `chat-alc-shift.json` | Invented waiver to spawn |
 
+
+| `chat-sc1-split-ownership.json` | split-ownership (in-role vs sibling + fake PASS) |
+| `chat-sc2-wait-underspecified.json` | underspecified wait |
+| `chat-sc3-fake-meter.json` | invented ≥95%/CLIP-T/casops-eval meter |
+
 Existing `chat-tc1`–`10` stay.

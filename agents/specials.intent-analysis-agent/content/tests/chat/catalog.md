@@ -21,4 +21,7 @@ Honesty: **CHARACTERIZATION**. A fluent bubble is not a rubric PASS. Chat HTTP 2
 
 ## Existing host characterization kinds (`evals/fixtures/chat-tc1`–`10`)
 
-Keep running these. They are in-role for this agent (Osaka travel-vlog *as text to analyse*, plus refuse probes). Do not replace them with cinema/CLIP/Sora requirements.
+Keep running these. They are in-role for this agent (factory-floor safety recap *as text to analyse*, plus refuse probes). Do not replace them with cinema/CLIP/Sora requirements.
+| `chat-sc1-split-ownership.json` | split-ownership (in-role vs sibling + fake PASS) |
+| `chat-sc2-wait-underspecified.json` | underspecified wait |
+| `chat-sc3-fake-meter.json` | invented ≥95%/CLIP-T/casops-eval meter |

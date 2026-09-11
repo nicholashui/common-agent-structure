@@ -2,7 +2,7 @@
   "agent_id": "video.cinematographer",
   "folder": "agents/video.cinematographer",
   "honesty": "CHARACTERIZATION",
-  "note": "Chat prompts are characterization only. Not an eval pass. casops-eval stays NOT_RUN while instruments are unqualified.",
+  "note": "Chat prompts are characterization only. Not an eval pass. Safety recap / factory-floor seeds dropped. casops-eval stays NOT_RUN.",
   "chat_count": 10,
   "swarm_ops_cases": "vendor/common-agent-swarm-ops/testcases/api_test/video.cinematographer/cases.json",
   "swarm_ops_agent_id": "video.cinematographer",
@@ -19,5 +19,6 @@
     "dual_bind_promotion"
   ],
   "vcinematographer_chat_count": 10,
-  "vcinematographer_note": "chat-vcinematographer-*.json are extra CHARACTERIZATION edges. Not an eval PASS."
+  "vcinematographer_note": "chat-vcinematographer-*.json are extra CHARACTERIZATION edges. Not an eval PASS.",
+  "travel_vlog_stripped": true
 }

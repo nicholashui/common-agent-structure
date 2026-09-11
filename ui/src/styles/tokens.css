@@ -120,17 +120,35 @@ textarea:focus-visible {
 }
 .md-body table {
   width: 100%;
-  border-collapse: collapse;
-  font-size: 0.8rem;
-  margin: 0.75rem 0;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 0.875rem;
+  margin: 0.85rem 0;
+  overflow: hidden;
+  border: 1px solid #e7e5e4;
+  border-radius: 1rem;
+  background: #fff;
 }
 .md-body th,
 .md-body td {
-  border: 1px solid #e7e5e4;
-  padding: 0.35rem 0.5rem;
+  border: 0;
+  border-bottom: 1px solid #e7e5e4;
+  padding: 0.7rem 1rem;
   text-align: left;
+  vertical-align: top;
 }
-.md-body th { background: #fafaf9; font-weight: 600; }
+.md-body tr:last-child td { border-bottom: 0; }
+.md-body th { background: #fafaf9; font-weight: 600; color: #44403c; }
+
+.md-body-chat { font-size: 0.95rem; line-height: 1.7; max-width: 46rem; }
+.md-body-chat h1 { font-size: 1.55rem; border: 0; padding: 0; }
+.md-body-chat h2 { font-size: 1.25rem; font-weight: 700; }
+.md-body-chat code {
+  background: #f8efe6;
+  color: #c2410c;
+  border-radius: 0.35rem;
+  padding: 0.12rem 0.4rem;
+}
 .md-body hr {
   border: 0;
   border-top: 1px solid #e7e5e4;
@@ -169,9 +187,11 @@ html.dark .md-body blockquote {
   border-left-color: #4338ca;
   color: #d6d3d1;
 }
+html.dark .md-body table { border-color: #44403c; background: #1c1917; }
 html.dark .md-body th,
-html.dark .md-body td { border-color: #44403c; }
-html.dark .md-body th { background: #1c1917; }
+html.dark .md-body td { border-bottom-color: #44403c; }
+html.dark .md-body th { background: #292524; color: #e7e5e4; }
+html.dark .md-body-chat code { background: #3f2e22; color: #fdba74; }
 html.dark .md-body hr { border-top-color: #44403c; }
 html.dark .md-body a { color: #a5b4fc; }
 

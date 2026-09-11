@@ -15,4 +15,9 @@ do not execute the plan; no KR → keep asking or accept qualitative stop. Do no
 | `chat-okr-shift.json` | shift |
 | `chat-okr-handoff.json` | handoff |
 
+
+| `chat-sc1-split-ownership.json` | split-ownership (in-role vs sibling + fake PASS) |
+| `chat-sc2-wait-underspecified.json` | underspecified wait |
+| `chat-sc3-fake-meter.json` | invented ≥95%/CLIP-T/casops-eval meter |
+
 Existing `chat-tc1`–`10` stay.

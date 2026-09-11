@@ -2,7 +2,7 @@
   "agent_id": "video.travelcine",
   "folder": "agents/video.travelcine",
   "honesty": "CHARACTERIZATION",
-  "note": "Chat prompts are characterization only. Not an eval pass. casops-eval stays NOT_RUN while instruments are unqualified.",
+  "note": "Chat prompts are characterization only. Not an eval pass. Safety recap / factory-floor seeds dropped. casops-eval stays NOT_RUN.",
   "chat_count": 10,
   "swarm_ops_cases": "vendor/common-agent-swarm-ops/testcases/api_test/video.travelcine/cases.json",
   "swarm_ops_agent_id": "video.travelcine",
@@ -19,5 +19,6 @@
     "dual_bind_promotion"
   ],
   "vtravelcine_chat_count": 10,
-  "vtravelcine_note": "chat-vtravelcine-*.json are extra CHARACTERIZATION edges. Not an eval PASS."
+  "vtravelcine_note": "chat-vtravelcine-*.json are extra CHARACTERIZATION edges. Not an eval PASS.",
+  "travel_vlog_stripped": true
 }

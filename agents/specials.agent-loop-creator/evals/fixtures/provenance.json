@@ -2,7 +2,7 @@
   "agent_id": "specials.agent-loop-creator",
   "folder": "agents/specials.agent-loop-creator",
   "honesty": "CHARACTERIZATION",
-  "note": "Chat prompts are characterization only. Not an eval pass. casops-eval stays NOT_RUN while instruments are unqualified.",
+  "note": "Chat prompts are characterization only. Not an eval pass. Safety recap / factory-floor seeds dropped. casops-eval stays NOT_RUN.",
   "chat_count": 10,
   "alc_chat_count": 10,
   "alc_note": "chat-alc-*.json are extra CHARACTERIZATION edges for loop design. Not an eval PASS.",
@@ -19,5 +19,6 @@
     "jailbreak_pack_echo",
     "activation_creep",
     "dual_bind_promotion"
-  ]
+  ],
+  "travel_vlog_stripped": true
 }

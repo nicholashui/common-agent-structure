@@ -2,7 +2,7 @@
   "agent_id": "video.screenwriter",
   "folder": "agents/video.screenwriter",
   "honesty": "CHARACTERIZATION",
-  "note": "Chat prompts are characterization only. Not an eval pass. casops-eval stays NOT_RUN while instruments are unqualified.",
+  "note": "Chat prompts are characterization only. Not an eval pass. Safety recap / factory-floor seeds dropped. casops-eval stays NOT_RUN.",
   "chat_count": 10,
   "swarm_ops_cases": "vendor/common-agent-swarm-ops/testcases/api_test/video.screenwriter/cases.json",
   "swarm_ops_agent_id": "video.screenwriter",
@@ -19,5 +19,6 @@
     "dual_bind_promotion"
   ],
   "vscreenwriter_chat_count": 10,
-  "vscreenwriter_note": "chat-vscreenwriter-*.json are extra CHARACTERIZATION edges. Not an eval PASS."
+  "vscreenwriter_note": "chat-vscreenwriter-*.json are extra CHARACTERIZATION edges. Not an eval PASS.",
+  "travel_vlog_stripped": true
 }

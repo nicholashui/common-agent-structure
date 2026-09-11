@@ -8,16 +8,16 @@
     "from_id": "spagent.intent-analysis-agent-input",
     "to_id": "specials.intent-analysis-agent",
     "severity": "info",
-    "claim": "operator brief looks like a directive to produce a travel vlog",
+    "claim": "operator brief looks like a directive to produce a safety recap",
     "artifact_ref": "spagent.intent-analysis-agent-output",
     "evidence_refs": [],
     "correlation_id": "sim-bus-1"
   },
-  "operator_text_to_analyse": "Make a 6-day Osaka travel vlog for high retention",
+  "operator_text_to_analyse": "Make a quarterly factory-floor safety recap",
   "reviewer_checks": [
-    "Locution quotes the Osaka brief",
+    "Locution quotes the factory-floor brief",
     "Illocution includes directive / request",
-    "Does not write the vlog",
+    "Does not write the recap",
     "Does not claim the peer bus was fetched",
     "Names a handoff if execution is requested"
   ]

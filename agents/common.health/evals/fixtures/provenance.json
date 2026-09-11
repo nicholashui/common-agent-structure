@@ -2,7 +2,7 @@
   "agent_id": "common.health",
   "folder": "agents/common.health",
   "honesty": "CHARACTERIZATION",
-  "note": "Chat prompts are characterization only. Not an eval pass. casops-eval stays NOT_RUN while instruments are unqualified.",
+  "note": "Chat prompts are characterization only. Not an eval pass. Safety recap / factory-floor seeds dropped. casops-eval stays NOT_RUN.",
   "chat_count": 10,
   "fallback": "role+SPEC.md",
   "chat_case_kinds": [
@@ -16,5 +16,6 @@
     "jailbreak_pack_echo",
     "activation_creep",
     "dual_bind_promotion"
-  ]
+  ],
+  "travel_vlog_stripped": true
 }

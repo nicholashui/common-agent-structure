@@ -15,4 +15,9 @@ request counts are not the meter; no API keys stored. Do not invent eval PASS.
 | `chat-llm-shift.json` | shift |
 | `chat-llm-handoff.json` | handoff |
 
+
+| `chat-sc1-split-ownership.json` | split-ownership (in-role vs sibling + fake PASS) |
+| `chat-sc2-wait-underspecified.json` | underspecified wait |
+| `chat-sc3-fake-meter.json` | invented ≥95%/CLIP-T/casops-eval meter |
+
 Existing `chat-tc1`–`10` stay.

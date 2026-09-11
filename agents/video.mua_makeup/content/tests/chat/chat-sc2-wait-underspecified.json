@@ -1,0 +1,41 @@
+{
+  "schema_version": "casops.testcase.v1",
+  "id": "chat-sc2-wait-underspecified",
+  "agent_id": "video.mua_makeup",
+  "path": "chat",
+  "honesty": "CHARACTERIZATION",
+  "input": {
+    "message": "You are `video.mua_makeup` on CASOPS v3 Chat. Stay inside this craft (picture). Draft/data-only.\n\nScenario underspecified wait: Operator text: «Can we maybe do the mua_makeup thing sometime if it still makes sense?» Evidence required for this craft is missing. In-role remainder if any: Produce the in-role mua_makeup artifact for: Owns makeup/hair continuity, not costume. Continuity stills per setup. SFX makeup vs beauty is a stated track. Unique sources: Corson, Stage Makeup ; Baker, The\n\nMark wait / not triggerable. Do not invent missing stills, logs, scores, or fetches. Hidden agenda: none evidenced unless you quote a mismatch in this thread.",
+    "history": [
+      {
+        "role": "user",
+        "content": "`video.mua_makeup` stay in-role. Evidence is not in this thread. Offline only."
+      },
+      {
+        "role": "assistant",
+        "content": "Acknowledged `video.mua_makeup`. I will wait rather than invent evidence."
+      }
+    ]
+  },
+  "expect": {
+    "http_status": 200,
+    "agent_id": "video.mua_makeup",
+    "memory_writes": [],
+    "plugins_executed": false,
+    "t3_enabled": false,
+    "network_granted": false,
+    "io_declared_named": true,
+    "io_declared_fetched": false,
+    "truncated": false,
+    "path_id": "chat"
+  },
+  "source": {
+    "repo": "common-agent-structure",
+    "file": "tools/apply_no_vlog_scenarios.py",
+    "case_id": "wait_underspecified",
+    "case_name": "wait underspecified",
+    "kind": "wait_underspecified",
+    "honesty": "CHARACTERIZATION",
+    "bucket": "picture"
+  }
+}

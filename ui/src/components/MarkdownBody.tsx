@@ -47,14 +47,19 @@ export function MarkdownBody({
   text,
   compact = false,
   basePath,
+  className = "",
 }: {
   text: string;
   compact?: boolean;
   basePath?: string;
+  className?: string;
 }) {
   const source = htmlImgsToMarkdown(text);
   return (
-    <div className={`md-body${compact ? " md-body-compact" : ""}`} data-testid="markdown-body">
+    <div
+      className={`md-body${compact ? " md-body-compact" : ""}${className ? ` ${className}` : ""}`}
+      data-testid="markdown-body"
+    >
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
         rehypePlugins={[rehypeHighlight]}

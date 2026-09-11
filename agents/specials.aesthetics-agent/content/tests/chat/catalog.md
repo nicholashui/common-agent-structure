@@ -16,3 +16,6 @@ This is the **aesthetics critic**, not `specials.intent-analysis-agent`. Reviewe
 | `chat-aes-shift.json` | History: profile then “go live” | History is not a waiver |
 
 Existing `evals/fixtures/chat-tc1`–`10` stay (refuse probes). Do not replace them with CLIP-T/Sora/Bordwell requirements.
+| `chat-sc1-split-ownership.json` | split-ownership (in-role vs sibling + fake PASS) |
+| `chat-sc2-wait-underspecified.json` | underspecified wait |
+| `chat-sc3-fake-meter.json` | invented ≥95%/CLIP-T/casops-eval meter |

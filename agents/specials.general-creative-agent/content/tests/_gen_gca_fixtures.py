@@ -105,9 +105,9 @@ CASES = [
         "name": "Recombine without a rare dimension",
         "history": [],
         "core": (
-            "Operator text: «Recombine everything we already do for the Osaka vlog. Keep it the same but also different.» "
+            "Operator text: «Recombine everything we already do for the factory-floor safety recap. Keep it the same but also different.» "
             "No sparse outlier is named. Mark wait. Do not invent an outlier to look creative. "
-            "Held-constant may be the existing vlog tropes; the rare dimension is missing."
+            "Held-constant may be the existing recap tropes; the rare dimension is missing."
         ),
     },
     {
