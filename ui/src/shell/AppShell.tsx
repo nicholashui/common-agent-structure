@@ -8,6 +8,7 @@ import {
   Database,
   FileCode,
   FileText,
+  FolderKanban,
   FolderTree,
   GitMerge,
   Home,
@@ -33,6 +34,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { useEffect, useState, type ReactNode } from "react";
+import type { ProjectSummary } from "../api/types";
 import { RightHelpPanel } from "../help/RightHelpPanel";
 import { HELP_FULL_PAGE_PATH } from "../help/tabs";
 import { helpPageFrom, helpPageHref } from "../help/paths";
@@ -50,6 +52,7 @@ import {
   AGENT_MENU_LABEL,
   AGENT_TABS,
   HOME_LABEL,
+  PROJECT_MENU_LABEL,
   WORKFLOW_MENU_LABEL,
   WORKFLOW_TABS,
   agentHref,
@@ -97,6 +100,7 @@ export function AppShell() {
   const params = useParams();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [chrome, setChrome] = useState(loadNavChrome);
+  const [projects, setProjects] = useState<ProjectSummary[]>([]);
   const help = useHelpPanel();
   const logs = useLogPanel();
   const agentId = params.agentId ? decodeURIComponent(params.agentId) : session.agents[0]?.agent_id;
@@ -119,11 +123,22 @@ export function AppShell() {
     return () => window.removeEventListener("resize", onResize);
   }, []);
 
+  useEffect(() => {
+    if (!session.healthOk) {
+      return;
+    }
+    session.client
+      .listProjects()
+      .then((payload) => setProjects(payload.projects ?? []))
+      .catch(() => setProjects([]));
+  }, [session.client, session.healthOk, location.pathname]);
+
   const crumb = locationLabel(location.pathname);
   const collapsed = chrome.collapsed && !mobileOpen;
   const agentOn = location.pathname.startsWith("/agents/");
   const orgOn = location.pathname === "/org-chat";
   const workflowOn = location.pathname === "/workflow" || location.pathname.startsWith("/workflow/");
+  const projectOn = location.pathname.startsWith("/projects");
 
   function closeMobile() {
     setMobileOpen(false);
@@ -245,12 +260,61 @@ export function AppShell() {
             </div>
           </div>
           <nav className="flex flex-1 flex-col gap-0.5 overflow-y-auto text-xs">
-            <SideLink to="/" end collapsed={collapsed} icon={Layers} onClick={closeMobile}>
-              {HOME_LABEL}
-            </SideLink>
-            <SideLink to="/org-chat" collapsed={collapsed} icon={Share2} onClick={closeMobile}>
-              Agent Org Chat
-            </SideLink>
+            <button
+              type="button"
+              className={navClass(projectOn && !collapsed, collapsed)}
+              aria-expanded={chrome.projectOpen}
+              title={PROJECT_MENU_LABEL}
+              data-testid="nav-project"
+              onClick={() => {
+                setChrome((current) => ({ ...current, projectOpen: true }));
+                navigate("/projects/new");
+                closeMobile();
+              }}
+            >
+              <FolderKanban size={16} className="shrink-0" />
+              {collapsed ? <span className="sr-only">{PROJECT_MENU_LABEL}</span> : <span className="flex-1 text-left">{PROJECT_MENU_LABEL}</span>}
+              {collapsed ? null : (
+                <span
+                  role="button"
+                  tabIndex={0}
+                  className="rounded p-0.5 text-stone-400 hover:text-stone-700"
+                  onClick={(event) => {
+                    event.stopPropagation();
+                    setChrome((current) => ({ ...current, projectOpen: !current.projectOpen }));
+                  }}
+                  onKeyDown={(event) => {
+                    if (event.key === "Enter" || event.key === " ") {
+                      event.preventDefault();
+                      event.stopPropagation();
+                      setChrome((current) => ({ ...current, projectOpen: !current.projectOpen }));
+                    }
+                  }}
+                >
+                  <ChevronDown size={14} className={`transition-transform ${chrome.projectOpen ? "" : "-rotate-90"}`} />
+                </span>
+              )}
+            </button>
+            {chrome.projectOpen && !collapsed
+              ? [
+                  <SideLink key="new" to="/projects/new" end collapsed={collapsed} icon={FolderKanban} inset testId="nav-project-new" onClick={closeMobile}>
+                    New project
+                  </SideLink>,
+                  ...projects.map((item) => (
+                    <SideLink
+                      key={item.id}
+                      to={`/projects/${encodeURIComponent(item.id)}`}
+                      collapsed={collapsed}
+                      icon={GitBranch}
+                      inset
+                      testId={`nav-project-${item.id}`}
+                      onClick={closeMobile}
+                    >
+                      {item.title || item.name || item.id}
+                    </SideLink>
+                  )),
+                ]
+              : null}
             <button
               type="button"
               className={navClass(workflowOn && !collapsed, collapsed)}
@@ -284,11 +348,18 @@ export function AppShell() {
                   );
                 })
               : null}
+            <SideLink to="/org-chat" collapsed={collapsed} icon={Share2} testId="nav-org-chat" onClick={closeMobile}>
+              Agent Org Chat
+            </SideLink>
+            <SideLink to="/" end collapsed={collapsed} icon={Layers} testId="nav-agent-swarm" onClick={closeMobile}>
+              {HOME_LABEL}
+            </SideLink>
             <button
               type="button"
               className={navClass(agentOn && !collapsed && !orgOn, collapsed)}
               aria-expanded={chrome.agentOpen}
               title={AGENT_MENU_LABEL}
+              data-testid="nav-agent-profile"
               onClick={() => setChrome((current) => ({ ...current, agentOpen: !current.agentOpen }))}
             >
               <Bot size={16} className="shrink-0" />
@@ -392,6 +463,7 @@ function SideLink({
   inset,
   insetDepth,
   onClick,
+  testId,
   children,
 }: {
   to: string;
@@ -401,6 +473,7 @@ function SideLink({
   inset?: boolean;
   insetDepth?: number;
   onClick?: () => void;
+  testId?: string;
   children: ReactNode;
 }) {
   const indent = insetDepth === 2 ? "ml-6" : inset || insetDepth === 1 ? "ml-3" : "";
@@ -410,6 +483,7 @@ function SideLink({
       end={end}
       title={typeof children === "string" ? children : undefined}
       onClick={onClick}
+      data-testid={testId}
       className={({ isActive }) => `${navClass(isActive, collapsed)} ${indent}`}
     >
       <Icon size={16} className="shrink-0" />

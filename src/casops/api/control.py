@@ -26,6 +26,17 @@ from casops.eval.harness import evaluate
 from casops.improvement.trainer import TrainerBridge
 from casops.instruments.registry import InstrumentRegistry
 from casops.debuglog import list_chat_files, read_acp_logs, read_chat_file, write_chat_turns, write_debug_logs
+from casops.projects import (
+    catalog_public,
+    list_projects,
+    merge_suggestions,
+    next_prompt,
+    projects_root_for,
+    read_project,
+    suggest_next,
+    suggest_prompt,
+    write_project,
+)
 from casops.cache.manager import CacheManager
 from casops.memory.store import ConsolidationWorker, MemoryService
 from casops.plugins.validate import validate_registry
@@ -94,6 +105,13 @@ COMPANION_V3_PATHS: tuple[tuple[str, str], ...] = (
     ("GET", "/api/v3/agents/{agent_id}/files/item"),
     ("PUT", "/api/v3/agents/{agent_id}/files/item"),
     ("GET", "/api/v3/agents/{agent_id}/runtime/adapter"),
+    ("GET", "/api/v3/projects"),
+    ("GET", "/api/v3/projects/catalog"),
+    ("POST", "/api/v3/projects/suggest"),
+    ("POST", "/api/v3/projects"),
+    ("GET", "/api/v3/projects/{project_id}"),
+    ("PUT", "/api/v3/projects/{project_id}"),
+    ("POST", "/api/v3/projects/{project_id}/next"),
 )
 
 _DEFAULT_CORS_ORIGINS = (
@@ -116,6 +134,7 @@ class HostState:
     trainer: TrainerBridge
     llm: LlmRouter
     cache: CacheManager = field(default_factory=CacheManager)
+    projects_root: Path = field(default_factory=lambda: Path("project"))
     incidents: list[dict[str, Any]] = field(default_factory=list)
     candidates: dict[str, dict[str, Any]] = field(default_factory=dict)
     ledger: list[dict[str, Any]] = field(default_factory=list)
@@ -144,6 +163,7 @@ def create_control_plane(
     consolidator: ConsolidationWorker | None = None,
     cache: CacheManager | None = None,
     llm: LlmRouter | None = None,
+    projects_root: Path | None = None,
 ) -> FastAPI:
     store = store or InvariantStore.with_host_defaults()
     instruments = instruments or InstrumentRegistry()
@@ -169,6 +189,7 @@ def create_control_plane(
         trainer=TrainerBridge(),
         llm=llm,
         cache=cache or CacheManager(),
+        projects_root=projects_root_for(agents_root, projects_root),
     )
     app = FastAPI(title="casops-control-plane", version="0.1.0")
     install_error_handler(app)
@@ -626,6 +647,71 @@ def create_control_plane(
             message=str(body.get("message") or ""),
             history=history,
             session=session,
+        )
+
+    @app.get("/api/v3/projects")
+    def project_list() -> dict[str, Any]:
+        return {"projects": list_projects(state.projects_root)}
+
+    @app.get("/api/v3/projects/catalog")
+    def project_catalog() -> dict[str, Any]:
+        return {"group": "video", "items": catalog_public()}
+
+    @app.post("/api/v3/projects/suggest")
+    def project_suggest(body: dict[str, Any]) -> dict[str, Any]:
+        brief = body if isinstance(body, dict) else {}
+        # Rank against the video template/scale catalog. Do not call Grok ACP here —
+        # Chat can block the operator for minutes. The prompt is still the planner brief.
+        merged = merge_suggestions(brief, "", False)
+        merged["adapter"] = resolve_chat_adapter(state.llm.settings.chat_adapter, profile_ready=False)
+        merged["prompt"] = suggest_prompt(brief)
+        merged["catalog"] = catalog_public()
+        return merged
+
+    @app.post("/api/v3/projects")
+    def project_create(request: Request, body: dict[str, Any]) -> dict[str, Any]:
+        if getattr(request.state, "actor", None) is ActorClass.agent_runtime:
+            raise CasopsError(ErrorCode.IMP_SELF_APPROVAL)
+        return write_project(
+            state.projects_root,
+            body if isinstance(body, dict) else {},
+            dry_run=bool(getattr(request.state, "dry_run", False)),
+            create=True,
+        )
+
+    @app.get("/api/v3/projects/{project_id}")
+    def project_get(project_id: str) -> dict[str, Any]:
+        return read_project(state.projects_root, project_id)
+
+    @app.post("/api/v3/projects/{project_id}/next")
+    def project_next(project_id: str, body: dict[str, Any]) -> dict[str, Any]:
+        record = read_project(state.projects_root, project_id)
+        payload = body if isinstance(body, dict) else {}
+        occupied = payload.get("occupied") if isinstance(payload.get("occupied"), list) else []
+        merged = suggest_next(
+            state.agents_root,
+            template_id=str(record.get("sub_workflow_id") or "video.template.a"),
+            from_id=str(payload.get("from_id") or "create-project"),
+            from_agent_id=str(payload.get("from_agent_id") or "") or None,
+            occupied=[str(item) for item in occupied],
+            out_bus=str(payload.get("out_bus") or "") or None,
+        )
+        merged["adapter"] = resolve_chat_adapter(state.llm.settings.chat_adapter, profile_ready=False)
+        merged["prompt"] = next_prompt(merged)
+        return merged
+
+    @app.put("/api/v3/projects/{project_id}")
+    def project_put(project_id: str, request: Request, body: dict[str, Any]) -> dict[str, Any]:
+        if getattr(request.state, "actor", None) is ActorClass.agent_runtime:
+            raise CasopsError(ErrorCode.IMP_SELF_APPROVAL)
+        payload = dict(body) if isinstance(body, dict) else {}
+        payload["id"] = project_id
+        payload.setdefault("name", project_id)
+        return write_project(
+            state.projects_root,
+            payload,
+            dry_run=bool(getattr(request.state, "dry_run", False)),
+            create=False,
         )
 
     @app.get("/health")

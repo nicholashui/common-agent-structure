@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { AGENT_MENU_LABEL, AGENT_TABS, WORKFLOW_MENU_LABEL, WORKFLOW_TABS, locationLabel } from "../src/shell/nav";
+import { AGENT_MENU_LABEL, AGENT_TABS, PROJECT_MENU_LABEL, WORKFLOW_MENU_LABEL, WORKFLOW_TABS, locationLabel } from "../src/shell/nav";
 import { listSubWorkflows, subWorkflowSvgSrc, workflowAgentChatHrefs, workflowSvgSrc } from "../src/lib/workflow";
 import videoWorkflowSvg from "../public/svg/video.workflow.svg?raw";
 import { ioHasContract, parseAgentIo } from "../src/lib/io";
@@ -43,6 +43,8 @@ describe("page location label", () => {
     expect(locationLabel("/workflow")).toBe("Agent Swarm / Agent Workflow / Main Workflow");
     expect(locationLabel("/workflow/sub")).toBe("Agent Swarm / Agent Workflow / Main Workflow / Sub Workflow");
     expect(locationLabel("/help")).toBe("Agent Swarm / Help");
+    expect(locationLabel("/projects/new")).toBe("Project / New project");
+    expect(locationLabel("/projects/safety-recap")).toBe("Project / safety-recap");
   });
 });
 
@@ -97,6 +99,7 @@ describe("agent menu label", () => {
   });
 
   it("nests Main Workflow under Agent Workflow", () => {
+    expect(PROJECT_MENU_LABEL).toBe("Project");
     expect(WORKFLOW_MENU_LABEL).toBe("Agent Workflow");
     expect(WORKFLOW_TABS.some((tab) => tab.id === "main" && tab.path === "/workflow" && tab.label === "Main Workflow")).toBe(true);
     expect(WORKFLOW_TABS.some((tab) => tab.id === "sub" && tab.path === "/workflow/sub" && tab.label === "Sub Workflow" && tab.depth === 2)).toBe(true);

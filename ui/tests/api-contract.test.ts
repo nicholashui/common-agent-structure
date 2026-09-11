@@ -94,6 +94,13 @@ describe("SPEC_V3 client coverage", () => {
     await client.listAgentFiles("a");
     await client.getAgentFile("a", "prompts/primary.md");
     await client.putAgentFile("a", "prompts/primary.md", "# x\n");
+    await client.listProjects();
+    await client.getProjectCatalog();
+    await client.suggestProject({ brief: "safety recap" });
+    await client.createProject({ name: "demo" });
+    await client.getProject("demo");
+    await client.saveProject("demo", { name: "demo", title: "Demo" });
+    await client.suggestProjectNext("demo", { from_id: "create-project" });
 
     const normalized = seen.map((row) =>
       row
@@ -103,7 +110,8 @@ describe("SPEC_V3 client coverage", () => {
         .replace("/api/v3/artifacts/art", "/api/v3/artifacts/{artifact_id}")
         .replace("/memory/m1", "/memory/{memory_id}")
         .replace("/candidates/c1/", "/candidates/{cid}/")
-        .replace("/rollback/v1", "/rollback/{version}"),
+        .replace("/rollback/v1", "/rollback/{version}")
+        .replace("/api/v3/projects/demo", "/api/v3/projects/{project_id}"),
     );
 
     for (const [method, path] of SPEC_V3_PATHS) {
@@ -121,5 +129,12 @@ describe("SPEC_V3 client coverage", () => {
     expect(normalized).toContain("GET /api/v3/agents/{agent_id}/files/item");
     expect(normalized).toContain("PUT /api/v3/agents/{agent_id}/files/item");
     expect(normalized).toContain("GET /api/v3/agents/{agent_id}/runtime/adapter");
+    expect(normalized).toContain("GET /api/v3/projects");
+    expect(normalized).toContain("GET /api/v3/projects/catalog");
+    expect(normalized).toContain("POST /api/v3/projects/suggest");
+    expect(normalized).toContain("POST /api/v3/projects");
+    expect(normalized).toContain("GET /api/v3/projects/{project_id}");
+    expect(normalized).toContain("PUT /api/v3/projects/{project_id}");
+    expect(normalized).toContain("POST /api/v3/projects/{project_id}/next");
   });
 });

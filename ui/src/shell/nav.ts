@@ -23,6 +23,7 @@ export function agentHref(agentId: string, tabPath: string): string {
 }
 
 export const HOME_LABEL = "Agent Swarm";
+export const PROJECT_MENU_LABEL = "Project";
 export const AGENT_MENU_LABEL = "Agent Profile";
 export const WORKFLOW_MENU_LABEL = "Agent Workflow";
 export const WORKFLOW_TABS = [
@@ -34,6 +35,16 @@ export function locationLabel(pathname: string): string {
   const trimmed = pathname.replace(/\/+$/, "") || "/";
   if (trimmed === "/") {
     return HOME_LABEL;
+  }
+  if (trimmed === "/projects/new") {
+    return `${PROJECT_MENU_LABEL} / New project`;
+  }
+  if (trimmed.startsWith("/projects/")) {
+    const id = decodeURIComponent(trimmed.slice("/projects/".length));
+    return `${PROJECT_MENU_LABEL} / ${id}`;
+  }
+  if (trimmed === "/projects") {
+    return PROJECT_MENU_LABEL;
   }
   if (trimmed === "/org-chat") {
     return `${HOME_LABEL} / Agent Org Chat`;
@@ -66,22 +77,24 @@ export interface NavChrome {
   collapsed: boolean;
   agentOpen: boolean;
   workflowOpen: boolean;
+  projectOpen: boolean;
 }
 
 export function loadNavChrome(): NavChrome {
   try {
     const raw = localStorage.getItem(NAV_KEY);
     if (!raw) {
-      return { collapsed: false, agentOpen: true, workflowOpen: true };
+      return { collapsed: false, agentOpen: true, workflowOpen: true, projectOpen: true };
     }
     const parsed = JSON.parse(raw) as Partial<NavChrome>;
     return {
       collapsed: Boolean(parsed.collapsed),
       agentOpen: parsed.agentOpen !== false,
       workflowOpen: parsed.workflowOpen !== false,
+      projectOpen: parsed.projectOpen !== false,
     };
   } catch {
-    return { collapsed: false, agentOpen: true, workflowOpen: true };
+    return { collapsed: false, agentOpen: true, workflowOpen: true, projectOpen: true };
   }
 }
 

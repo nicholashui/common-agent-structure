@@ -382,3 +382,89 @@ export interface CacheStats {
   telemetry?: Record<string, number>;
   false_reuse_rate?: number | null;
 }
+
+export interface ProjectSummary {
+  id: string;
+  name?: string;
+  title?: string;
+  sub_workflow_id?: string | null;
+  updated_at?: string;
+}
+
+export interface ProjectCatalogItem {
+  id: string;
+  kind: string;
+  code: string;
+  label: string;
+  use: string;
+}
+
+export interface ProjectSuggestionRow {
+  id: string;
+  label: string;
+  kind: string;
+  reason: string;
+  rank: number;
+  source: string;
+}
+
+export interface ProjectSuggestion {
+  honesty: string;
+  llm_used: boolean;
+  primary: string;
+  suggestions: ProjectSuggestionRow[];
+  llm_excerpt?: string;
+  note?: string;
+  prompt?: string;
+  adapter?: string;
+  catalog?: ProjectCatalogItem[];
+}
+
+export interface ProjectNextRow {
+  id: string;
+  label: string;
+  kind: string;
+  role?: string;
+  inputs: string[];
+  outputs: string[];
+  contract: string[];
+  reason: string;
+  rank: number;
+  source: string;
+}
+
+export interface ProjectNextSuggestion {
+  honesty: string;
+  llm_used: boolean;
+  from_id: string;
+  from_agent_id?: string | null;
+  out_bus?: string | null;
+  outs?: string[];
+  parent_chat_id?: string;
+  primary: string;
+  suggestions: ProjectNextRow[];
+  note?: string;
+  prompt?: string;
+  adapter?: string;
+  llm_excerpt?: string;
+}
+
+export interface ProjectRecord {
+  id: string;
+  name: string;
+  title: string;
+  brief: string;
+  audience?: string;
+  duration?: string;
+  outlets?: string;
+  risk?: string;
+  notes?: string;
+  group?: string;
+  sub_workflow_id?: string;
+  suggestion?: ProjectSuggestion | null;
+  graph?: { nodes: unknown[]; edges: unknown[] };
+  honesty?: string;
+  saved?: boolean;
+  dry_run?: boolean;
+  folder?: string;
+}

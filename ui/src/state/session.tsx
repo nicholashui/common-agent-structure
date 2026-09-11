@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
+import { createContext, useContext, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import { createClient, type CasopsClient } from "../api/v3";
 import { logUi } from "../log/bus";
 import { startChatSink } from "../lib/chatPersist";
@@ -148,10 +148,33 @@ function deriveConnection(opts: {
 export function SessionProvider({ children }: { children: ReactNode }) {
   const [settings, setSettingsState] = useState<SettingsState>(() => loadSettings());
   const initial = loadActor(settings);
-  const [actor, setActor] = useState<ActorClass>(initial.actor);
-  const [reason, setReason] = useState(initial.reason);
-  const [expectedParent, setExpectedParent] = useState(initial.expectedParent);
-  const [dryRun, setDryRun] = useState(initial.dryRun);
+  const [actor, setActorState] = useState<ActorClass>(initial.actor);
+  const [reason, setReasonState] = useState(initial.reason);
+  const [expectedParent, setExpectedParentState] = useState(initial.expectedParent);
+  const [dryRun, setDryRunState] = useState(initial.dryRun);
+  const mutationRef = useRef<MutationContract>({
+    actor: initial.actor,
+    reason: initial.reason,
+    expectedParent: initial.expectedParent,
+    dryRun: initial.dryRun,
+  });
+  mutationRef.current = { actor, reason, expectedParent, dryRun };
+  const setActor = (value: ActorClass) => {
+    mutationRef.current = { ...mutationRef.current, actor: value };
+    setActorState(value);
+  };
+  const setReason = (value: string) => {
+    mutationRef.current = { ...mutationRef.current, reason: value };
+    setReasonState(value);
+  };
+  const setExpectedParent = (value: string) => {
+    mutationRef.current = { ...mutationRef.current, expectedParent: value };
+    setExpectedParentState(value);
+  };
+  const setDryRun = (value: boolean) => {
+    mutationRef.current = { ...mutationRef.current, dryRun: value };
+    setDryRunState(value);
+  };
   const [healthOk, setHealthOk] = useState(false);
   const [reconnecting, setReconnecting] = useState(false);
   const [lastSuccessAt, setLastSuccessAt] = useState<number | null>(null);
@@ -188,7 +211,7 @@ export function SessionProvider({ children }: { children: ReactNode }) {
     () =>
       createClient({
         getBaseUrl: () => settings.baseUrl,
-        getMutation: () => ({ actor, reason, expectedParent, dryRun }),
+        getMutation: () => mutationRef.current,
         onSuccess: () => {
           setLastSuccessAt(Date.now());
           setReconnecting(false);

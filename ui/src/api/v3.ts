@@ -29,6 +29,11 @@ import {
   type EvalFixturesResponse,
   type AgentFileItem,
   type AgentFilesResponse,
+  type ProjectSummary,
+  type ProjectCatalogItem,
+  type ProjectSuggestion,
+  type ProjectRecord,
+  type ProjectNextSuggestion,
 } from "./types";
 
 export type FetchLike = (input: string, init?: RequestInit) => Promise<Response>;
@@ -316,6 +321,36 @@ export function createClient(options: ClientOptions) {
       request<AgentLlmView>("POST", "/api/v3/agents/{agent_id}/llm", {
         params: { agent_id: agentId },
         body: { provider },
+      }),
+    listProjects: () => bound("listProjects", {}) as Promise<{ projects: ProjectSummary[] }>,
+    getProjectCatalog: () => bound("getProjectCatalog", {}) as Promise<{ group: string; items: ProjectCatalogItem[] }>,
+    suggestProject: (body: Record<string, string>) =>
+      request<ProjectSuggestion>("POST", "/api/v3/projects/suggest", {
+        body,
+        reasonFallback: "project suggest",
+        timeoutMs: DEFAULT_TIMEOUT_MS,
+      }),
+    createProject: (body: Record<string, unknown>) =>
+      request<ProjectRecord>("POST", "/api/v3/projects", {
+        body,
+        reasonFallback: "create project",
+      }),
+    getProject: (projectId: string) => bound("getProject", { project_id: projectId }) as Promise<ProjectRecord>,
+    saveProject: (projectId: string, body: Record<string, unknown>) =>
+      request<ProjectRecord>("PUT", "/api/v3/projects/{project_id}", {
+        params: { project_id: projectId },
+        body,
+        reasonFallback: "save project",
+      }),
+    suggestProjectNext: (
+      projectId: string,
+      body: { from_id: string; from_agent_id?: string; occupied?: string[]; out_bus?: string },
+    ) =>
+      request<ProjectNextSuggestion>("POST", "/api/v3/projects/{project_id}/next", {
+        params: { project_id: projectId },
+        body,
+        reasonFallback: "project next",
+        timeoutMs: DEFAULT_TIMEOUT_MS,
       }),
     chatAgent: (
       agentId: string,

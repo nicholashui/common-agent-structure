@@ -2,6 +2,10 @@ import { afterEach, describe, expect, it, vi } from "vitest";
 import {
   buildChatBody,
   canRegenerate,
+  CHAT_SIDE_WIDTH_DEFAULT,
+  CHAT_SIDE_WIDTH_MAX,
+  CHAT_SIDE_WIDTH_MIN,
+  clampChatSideWidth,
   clearThread,
   exportThreadJson,
   exportThreadMarkdown,
@@ -127,6 +131,13 @@ describe("chat transcript helpers", () => {
     expect(fromQuestion).toHaveLength(3);
     const fallback = followUpChips("No questions here.");
     expect(fallback[0]).toMatch(/Summarize/i);
+  });
+
+  it("clamps the chats sub-area width", () => {
+    expect(clampChatSideWidth(Number.NaN)).toBe(CHAT_SIDE_WIDTH_DEFAULT);
+    expect(clampChatSideWidth(0)).toBe(CHAT_SIDE_WIDTH_MIN);
+    expect(clampChatSideWidth(10_000)).toBe(CHAT_SIDE_WIDTH_MAX);
+    expect(clampChatSideWidth(360)).toBe(360);
   });
 
   it("treats near-bottom as pinned", () => {

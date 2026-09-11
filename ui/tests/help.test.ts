@@ -26,6 +26,14 @@ describe("help route resolution", () => {
     ]);
     expect(docCandidates("/", {}, "userguide")).toEqual(["/docs/userguide.md", "/docs/index/userguide.md"]);
     expect(docCandidates("/workflow/sub", {}, "spec")).toEqual(["/docs/workflow/sub/spec.md"]);
+    expect(docCandidates("/projects/new", {}, "spec")).toEqual([
+      "/docs/projects/new/spec.md",
+      "/docs/projects/spec.md",
+    ]);
+    expect(docCandidates("/projects/safety-recap", { projectId: "safety-recap" }, "userguide")).toEqual([
+      "/docs/projects/safety-recap/userguide.md",
+      "/docs/projects/userguide.md",
+    ]);
   });
 
   it("strips encoded and raw param values", () => {

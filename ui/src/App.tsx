@@ -23,6 +23,8 @@ import { SettingsPage } from "./pages/Settings";
 import { OrgChatPage } from "./pages/OrgChat";
 import { WorkflowPage } from "./pages/Workflow";
 import { HelpPage } from "./pages/Help";
+import { ProjectNewPage } from "./pages/ProjectNew";
+import { ProjectFlowPage } from "./pages/ProjectFlow";
 
 export function App() {
   return (
@@ -32,6 +34,9 @@ export function App() {
           <Routes>
             <Route element={<AppShell />}>
               <Route path="/" element={<FleetPage />} />
+              <Route path="/projects/new" element={<ProjectNewPage />} />
+              <Route path="/projects/:projectId" element={<ProjectFlowPage />} />
+              <Route path="/projects" element={<ProjectNewPage />} />
               <Route path="/org-chat" element={<OrgChatPage />} />
               <Route path="/workflow" element={<WorkflowPage kind="main" />} />
               <Route path="/workflow/sub" element={<WorkflowPage kind="sub" />} />

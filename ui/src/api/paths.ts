@@ -50,6 +50,13 @@ export const COMPANION_V3_PATHS = [
   ["GET", "/api/v3/agents/{agent_id}/files/item"],
   ["PUT", "/api/v3/agents/{agent_id}/files/item"],
   ["GET", "/api/v3/agents/{agent_id}/runtime/adapter"],
+  ["GET", "/api/v3/projects"],
+  ["GET", "/api/v3/projects/catalog"],
+  ["POST", "/api/v3/projects/suggest"],
+  ["POST", "/api/v3/projects"],
+  ["GET", "/api/v3/projects/{project_id}"],
+  ["PUT", "/api/v3/projects/{project_id}"],
+  ["POST", "/api/v3/projects/{project_id}/next"],
 ] as const;
 
 export type HttpMethod = "GET" | "POST" | "PUT" | "PATCH" | "DELETE";
@@ -103,6 +110,13 @@ export const CLIENT_BINDINGS = {
   getAgentFile: ["GET", "/api/v3/agents/{agent_id}/files/item"],
   putAgentFile: ["PUT", "/api/v3/agents/{agent_id}/files/item"],
   getRuntimeAdapter: ["GET", "/api/v3/agents/{agent_id}/runtime/adapter"],
+  listProjects: ["GET", "/api/v3/projects"],
+  getProjectCatalog: ["GET", "/api/v3/projects/catalog"],
+  suggestProject: ["POST", "/api/v3/projects/suggest"],
+  createProject: ["POST", "/api/v3/projects"],
+  getProject: ["GET", "/api/v3/projects/{project_id}"],
+  saveProject: ["PUT", "/api/v3/projects/{project_id}"],
+  suggestProjectNext: ["POST", "/api/v3/projects/{project_id}/next"],
 } as const;
 
 export const MUTATING = new Set<string>(["POST", "PUT", "PATCH", "DELETE"]);

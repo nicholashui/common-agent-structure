@@ -37,6 +37,38 @@ export interface ChatThread {
 const MAX_HISTORY = 20;
 const MAX_STORED = 200;
 const THREAD_KEY = "casops.control-ui.chat.v1";
+export const CHAT_SIDE_WIDTH_KEY = "casops.control-ui.chat-side-width.v1";
+export const CHAT_SIDE_WIDTH_MIN = 280;
+export const CHAT_SIDE_WIDTH_MAX = 560;
+export const CHAT_SIDE_WIDTH_DEFAULT = 360;
+export const CHAT_SIDE_WIDTH_STEP = 16;
+
+export function clampChatSideWidth(width: number): number {
+  if (!Number.isFinite(width)) {
+    return CHAT_SIDE_WIDTH_DEFAULT;
+  }
+  return Math.min(CHAT_SIDE_WIDTH_MAX, Math.max(CHAT_SIDE_WIDTH_MIN, Math.round(width)));
+}
+
+export function loadChatSideWidth(): number {
+  try {
+    const raw = localStorage.getItem(CHAT_SIDE_WIDTH_KEY);
+    if (!raw) {
+      return CHAT_SIDE_WIDTH_DEFAULT;
+    }
+    return clampChatSideWidth(Number(raw));
+  } catch {
+    return CHAT_SIDE_WIDTH_DEFAULT;
+  }
+}
+
+export function saveChatSideWidth(width: number): void {
+  try {
+    localStorage.setItem(CHAT_SIDE_WIDTH_KEY, String(clampChatSideWidth(width)));
+  } catch {
+    // ignore quota / private-mode
+  }
+}
 const memory = new Map<string, ChatThread>();
 
 export function makeChatSessionId(): string {

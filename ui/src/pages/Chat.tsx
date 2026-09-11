@@ -1,5 +1,5 @@
-import { FormEvent, useEffect, useRef, useState, type ReactNode } from "react";
-import { ArrowUp, Copy, Download, Plus, RefreshCw, Square } from "lucide-react";
+import { FormEvent, useEffect, useRef, useState, type PointerEvent as ReactPointerEvent, type ReactNode } from "react";
+import { ArrowUp, ChevronRight, Copy, Download, Plus, RefreshCw, Square } from "lucide-react";
 import { useSearchParams } from "react-router-dom";
 import { AdapterStatus } from "../components/AdapterStatus";
 import { ChatMarkdown } from "../components/ChatMarkdown";
@@ -25,6 +25,12 @@ import {
   replaceThread,
   saveThread,
   sessionFromFileName,
+  loadChatSideWidth,
+  saveChatSideWidth,
+  clampChatSideWidth,
+  CHAT_SIDE_WIDTH_MIN,
+  CHAT_SIDE_WIDTH_MAX,
+  CHAT_SIDE_WIDTH_STEP,
   type ChatFile,
   type ChatTurn,
 } from "../lib/chat";
@@ -116,6 +122,45 @@ function resizeComposer(el: HTMLTextAreaElement | null) {
   el.style.height = `${Math.min(Math.max(el.scrollHeight, 28), 160)}px`;
 }
 
+function AccordionItem({
+  title,
+  subtitle,
+  open,
+  onToggle,
+  testId,
+  children,
+}: {
+  title: string;
+  subtitle?: string;
+  open: boolean;
+  onToggle: () => void;
+  testId?: string;
+  children: ReactNode;
+}) {
+  return (
+    <div
+      className="rounded-xl border border-stone-200 bg-white dark:border-stone-700 dark:bg-stone-900"
+      data-testid={testId}
+    >
+      <button
+        type="button"
+        aria-expanded={open}
+        onClick={onToggle}
+        className="flex w-full items-start gap-2 px-3 py-2 text-left text-sm text-stone-800 hover:bg-stone-50 dark:text-stone-100 dark:hover:bg-stone-800"
+      >
+        <ChevronRight
+          className={`mt-0.5 h-4 w-4 shrink-0 text-stone-400 transition-transform ${open ? "rotate-90" : ""}`}
+        />
+        <span className="min-w-0 flex-1">
+          <span className="block truncate font-medium">{title}</span>
+          {subtitle ? <span className="mt-0.5 block truncate font-mono text-[10px] text-stone-400">{subtitle}</span> : null}
+        </span>
+      </button>
+      {open ? <div className="border-t border-stone-100 px-3 py-3 dark:border-stone-800">{children}</div> : null}
+    </div>
+  );
+}
+
 export function ChatPage() {
   const agentId = useAgentId();
   const session = useSession();
@@ -144,6 +189,12 @@ export function ChatPage() {
   const logRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const abortRef = useRef<AbortController | null>(null);
+  const sideDrag = useRef<{ startX: number; startWidth: number } | null>(null);
+  const [sideWidth, setSideWidth] = useState(loadChatSideWidth);
+  const [sideDragging, setSideDragging] = useState(false);
+  const [openItems, setOpenItems] = useState<Record<string, boolean>>({});
+  const sideWidthRef = useRef(sideWidth);
+  sideWidthRef.current = sideWidth;
   const io = parseAgentIo(panel.data?.structure.io);
   const adapter = adapterLive ?? panel.data?.adapter ?? null;
   const adapterKind = adapter?.kind ?? "host_llm";
@@ -163,6 +214,7 @@ export function ChatPage() {
     setContextPack(null);
     setAdapterLive(null);
     setPinned(true);
+    setOpenItems({});
     abortRef.current?.abort();
     abortRef.current = null;
     void refreshChatFiles(agentId)
@@ -216,6 +268,69 @@ export function ChatPage() {
   useEffect(() => {
     resizeComposer(inputRef.current);
   }, [draft]);
+
+  useEffect(() => {
+    function onMove(event: PointerEvent) {
+      const session = sideDrag.current;
+      if (!session) {
+        return;
+      }
+      setSideWidth(clampChatSideWidth(session.startWidth + (event.clientX - session.startX)));
+    }
+    function onUp() {
+      if (!sideDrag.current) {
+        return;
+      }
+      sideDrag.current = null;
+      setSideDragging(false);
+      document.body.style.cursor = "";
+      document.body.style.userSelect = "";
+      saveChatSideWidth(sideWidthRef.current);
+    }
+    window.addEventListener("pointermove", onMove);
+    window.addEventListener("pointerup", onUp);
+    window.addEventListener("pointercancel", onUp);
+    return () => {
+      window.removeEventListener("pointermove", onMove);
+      window.removeEventListener("pointerup", onUp);
+      window.removeEventListener("pointercancel", onUp);
+    };
+  }, []);
+
+  function beginSideDrag(event: ReactPointerEvent<HTMLDivElement>) {
+    event.preventDefault();
+    sideDrag.current = { startX: event.clientX, startWidth: sideWidth };
+    setSideDragging(true);
+    document.body.style.cursor = "col-resize";
+    document.body.style.userSelect = "none";
+  }
+
+  function onSideKey(event: React.KeyboardEvent<HTMLDivElement>) {
+    const step = event.shiftKey ? CHAT_SIDE_WIDTH_STEP * 4 : CHAT_SIDE_WIDTH_STEP;
+    if (event.key === "ArrowLeft") {
+      event.preventDefault();
+      const next = clampChatSideWidth(sideWidth - step);
+      setSideWidth(next);
+      saveChatSideWidth(next);
+    } else if (event.key === "ArrowRight") {
+      event.preventDefault();
+      const next = clampChatSideWidth(sideWidth + step);
+      setSideWidth(next);
+      saveChatSideWidth(next);
+    } else if (event.key === "Home") {
+      event.preventDefault();
+      setSideWidth(CHAT_SIDE_WIDTH_MIN);
+      saveChatSideWidth(CHAT_SIDE_WIDTH_MIN);
+    } else if (event.key === "End") {
+      event.preventDefault();
+      setSideWidth(CHAT_SIDE_WIDTH_MAX);
+      saveChatSideWidth(CHAT_SIDE_WIDTH_MAX);
+    }
+  }
+
+  function toggleItem(id: string) {
+    setOpenItems((current) => ({ ...current, [id]: !current[id] }));
+  }
 
   useEffect(() => {
     if (!fixtureId || !fixtures.data) {
@@ -410,67 +525,123 @@ export function ChatPage() {
         SKILL.md, memory, or tools. Adapter {adapterKind}. Export is a Chat transcript, not a sealed Run.
       </p>
       <ErrorBanner error={error ?? panel.error} />
-      <div className="grid min-h-0 flex-1 grid-cols-1 gap-6 overflow-hidden lg:grid-cols-[15.5rem_minmax(0,1fr)]">
-        <aside className="hidden min-h-0 flex-col overflow-y-auto lg:flex">
-          <p className="mb-2 text-[11px] font-medium uppercase tracking-wide text-stone-400">Chats</p>
-          {files.length ? (
-            <section className="min-h-0 flex-1" data-testid="chat-files">
-              <ul className="space-y-0.5">
-                {files.slice(0, 16).map((file) => {
-                  const active = sessionFromFileName(file.name) === liveSession;
-                  return (
-                    <li key={file.path} data-testid="chat-file">
-                      <button
-                        type="button"
-                        data-testid="chat-load-history"
-                        className={[
-                          "w-full rounded-xl px-3 py-2 text-left text-sm text-stone-700 hover:bg-stone-100 dark:text-stone-300 dark:hover:bg-stone-800",
-                          active ? "bg-stone-100 font-medium text-stone-900 dark:bg-stone-800 dark:text-stone-50" : "",
-                        ].join(" ")}
-                        onClick={() => {
-                          if (turns.length) {
-                            setLoadTarget(file);
-                          } else {
-                            void applyLoad(file);
-                          }
-                        }}
-                      >
-                        <span className="block truncate">{formatHktDateTime(file.ts)}</span>
-                        <span className="mt-0.5 block truncate font-mono text-[10px] text-stone-400">
-                          {fileLabel(file.path)}
-                        </span>
-                      </button>
-                    </li>
-                  );
-                })}
-              </ul>
-            </section>
-          ) : (
-            <p className="text-xs text-stone-400" data-testid="chat-files-empty">
-              Transcripts save under logs/chat/{agentId}/.
-            </p>
-          )}
-          <details className="mt-4 border-t border-stone-100 pt-3 dark:border-stone-800">
-            <summary className="cursor-pointer text-xs text-stone-500">Details</summary>
-            <div className="mt-3 space-y-3">
+      <div className="flex min-h-0 flex-1 flex-col overflow-hidden md:flex-row">
+        <aside
+          data-testid="chat-subarea"
+          style={{ ["--chat-side-width" as string]: `${sideWidth}px` }}
+          className={[
+            "flex min-h-0 w-full shrink-0 flex-col overflow-hidden max-md:max-h-[38vh] md:w-[var(--chat-side-width)]",
+            sideDragging ? "select-none" : "",
+          ].join(" ")}
+        >
+          <p className="mb-2 shrink-0 text-[11px] font-medium uppercase tracking-wide text-stone-400">Chats</p>
+          <div className="min-h-0 flex-1 space-y-2 overflow-y-auto pr-1" data-testid="chat-subarea-scroll">
+            {files.length ? (
+              <section data-testid="chat-files">
+                <ul className="space-y-2">
+                  {files.map((file) => {
+                    const id = `file:${file.name}`;
+                    const open = Boolean(openItems[id]);
+                    const active = sessionFromFileName(file.name) === liveSession;
+                    return (
+                      <li key={file.path} data-testid="chat-file">
+                        <AccordionItem
+                          title={formatHktDateTime(file.ts)}
+                          subtitle={fileLabel(file.path)}
+                          open={open}
+                          onToggle={() => toggleItem(id)}
+                        >
+                          <p className="break-all font-mono text-[11px] text-stone-500">{file.path}</p>
+                          {file.bytes != null ? (
+                            <p className="mt-1 text-[11px] text-stone-400">{file.bytes} bytes</p>
+                          ) : null}
+                          {active ? <p className="mt-1 text-[11px] text-stone-500">Current thread</p> : null}
+                          <GhostButton
+                            type="button"
+                            data-testid="chat-load-history"
+                            className="mt-3"
+                            onClick={() => {
+                              if (turns.length) {
+                                setLoadTarget(file);
+                              } else {
+                                void applyLoad(file);
+                              }
+                            }}
+                          >
+                            Load
+                          </GhostButton>
+                        </AccordionItem>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </section>
+            ) : (
+              <p className="text-xs text-stone-400" data-testid="chat-files-empty">
+                Transcripts save under logs/chat/{agentId}/.
+              </p>
+            )}
+            <AccordionItem
+              title="Adapter"
+              open={Boolean(openItems.adapter)}
+              onToggle={() => toggleItem("adapter")}
+            >
               <AdapterStatus adapter={adapter} testId="chat-adapter-detail" />
+            </AccordionItem>
+            <AccordionItem
+              title="Inputs and outputs"
+              open={Boolean(openItems.io)}
+              onToggle={() => toggleItem("io")}
+            >
               <IoPanel io={io} mode="chat" />
-              {chatProof ? <ChatProofPanel proof={chatProof} /> : null}
-              {contextPack ? <ContextPack pack={contextPack} /> : null}
-              {cases.length ? (
-                <div>
-                  <div className="mb-2 flex flex-wrap items-center gap-2">
-                    <p className="text-xs font-medium text-stone-700">Characterization cases</p>
-                    <CharacterizationBadge />
-                  </div>
-                  <ChatFixtureList items={cases} onLoad={loadCase} compact />
+            </AccordionItem>
+            {chatProof ? (
+              <AccordionItem
+                title="Chat proof"
+                open={Boolean(openItems.proof)}
+                onToggle={() => toggleItem("proof")}
+              >
+                <ChatProofPanel proof={chatProof} />
+              </AccordionItem>
+            ) : null}
+            {contextPack ? (
+              <AccordionItem
+                title="Context pack"
+                open={Boolean(openItems.context)}
+                onToggle={() => toggleItem("context")}
+              >
+                <ContextPack pack={contextPack} />
+              </AccordionItem>
+            ) : null}
+            {cases.length ? (
+              <AccordionItem
+                title="Characterization cases"
+                subtitle={`${cases.length} cases`}
+                open={Boolean(openItems.cases)}
+                onToggle={() => toggleItem("cases")}
+              >
+                <div className="mb-2">
+                  <CharacterizationBadge />
                 </div>
-              ) : null}
-            </div>
-          </details>
+                <ChatFixtureList items={cases} onLoad={loadCase} compact />
+              </AccordionItem>
+            ) : null}
+          </div>
         </aside>
-
-        <section className="relative flex min-h-0 flex-col overflow-hidden">
+        <div
+          role="separator"
+          aria-orientation="vertical"
+          aria-label="Resize chats panel"
+          aria-valuemin={CHAT_SIDE_WIDTH_MIN}
+          aria-valuemax={CHAT_SIDE_WIDTH_MAX}
+          aria-valuenow={sideWidth}
+          tabIndex={0}
+          data-testid="chat-subarea-resize"
+          className="relative hidden w-2 shrink-0 cursor-col-resize md:block after:absolute after:inset-y-3 after:left-1/2 after:w-px after:-translate-x-1/2 after:bg-stone-200 hover:after:bg-stone-400 dark:after:bg-stone-700"
+          onPointerDown={beginSideDrag}
+          onKeyDown={onSideKey}
+        />
+        <section className="relative flex min-h-0 min-w-0 flex-1 flex-col overflow-hidden">
           <div
             ref={logRef}
             className="flex-1 space-y-8 overflow-y-auto px-1 pb-4 pt-2 lg:px-8"
