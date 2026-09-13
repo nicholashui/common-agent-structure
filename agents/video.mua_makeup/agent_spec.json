@@ -30,7 +30,9 @@
       "video.continuity"
     ],
     "outputs": [
-      "video.judge"
+      "video.judge",
+      "video.promptengineer",
+      "video.continuity"
     ]
   },
   "max_refinement_count": 0,
@@ -45,7 +47,10 @@
     "Another agent's exclusive craft output without handoff",
     "Automatic promotion of self-generated artifacts",
     "Modification of safety, telemetry, gates, permissions, or corrigibility",
-    "Self-granting tools, plugins, network, or isolation downgrades"
+    "Self-granting tools, plugins, network, or isolation downgrades",
+    "Pore manifesto / skin-texture lock exclusive of video.continuity",
+    "Lighting photometrics",
+    "Camera motor exclusive of video.cameraoperator"
   ],
   "va_id": 18,
   "va_name": "MUAAgent (Makeup/Hair/SFX)",

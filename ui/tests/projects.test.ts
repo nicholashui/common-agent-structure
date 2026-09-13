@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { applyLlmNext, applyLlmSuggestion, parseVideoAgentIds, parseVideoWorkflowIds, suggestionRow } from "../src/lib/projects";
+import { applyLlmNext, applyLlmSuggestion, createsCycle, parseVideoAgentIds, parseVideoWorkflowIds, suggestionRow } from "../src/lib/projects";
 import type { ProjectCatalogItem, ProjectSuggestion } from "../src/api/types";
 
 const CATALOG: ProjectCatalogItem[] = [
@@ -86,5 +86,15 @@ describe("project next-node merge", () => {
     );
     expect(merged.primary).toBe("video.screenwriter");
     expect(merged.suggestions[0].source).toBe("llm");
+  });
+
+  it("detects A→B, B→A as a cycle and not a clone", () => {
+    const edges = [
+      { source: "a", target: "b" },
+      { source: "start", target: "a" },
+    ];
+    expect(createsCycle(edges, "b", "a")).toBe(true);
+    expect(createsCycle(edges, "b", "c")).toBe(false);
+    expect(createsCycle(edges, "a", "a")).toBe(true);
   });
 });

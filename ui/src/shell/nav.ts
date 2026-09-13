@@ -31,6 +31,11 @@ export const WORKFLOW_TABS = [
   { id: "sub", label: "Sub Workflow", path: "/workflow/sub", depth: 2 },
 ] as const;
 
+export const PROJECT_INSTANCE_TABS = [
+  { id: "workflow", label: "Workflow", path: "workflow" },
+  { id: "chat", label: "Chat", path: "chat" },
+] as const;
+
 export function locationLabel(pathname: string): string {
   const trimmed = pathname.replace(/\/+$/, "") || "/";
   if (trimmed === "/") {
@@ -40,7 +45,14 @@ export function locationLabel(pathname: string): string {
     return `${PROJECT_MENU_LABEL} / New project`;
   }
   if (trimmed.startsWith("/projects/")) {
-    const id = decodeURIComponent(trimmed.slice("/projects/".length));
+    const rest = decodeURIComponent(trimmed.slice("/projects/".length));
+    const [id, tab] = rest.split("/");
+    if (tab === "chat") {
+      return `${PROJECT_MENU_LABEL} / ${id} / Chat`;
+    }
+    if (tab === "workflow") {
+      return `${PROJECT_MENU_LABEL} / ${id} / Workflow`;
+    }
     return `${PROJECT_MENU_LABEL} / ${id}`;
   }
   if (trimmed === "/projects") {

@@ -431,6 +431,7 @@ export interface ProjectNextRow {
   reason: string;
   rank: number;
   source: string;
+  loopback?: boolean;
 }
 
 export interface ProjectNextSuggestion {
@@ -447,6 +448,138 @@ export interface ProjectNextSuggestion {
   prompt?: string;
   adapter?: string;
   llm_excerpt?: string;
+}
+
+export interface ProjectCommTag {
+  project_id: string;
+  node_id: string;
+  comm_id: string;
+  label: string;
+}
+
+export interface ProjectDecisionOption {
+  id: string;
+  label: string;
+  why?: string;
+}
+
+export interface ProjectDecision {
+  id: string;
+  agent_id: string;
+  node_id?: string;
+  point: string;
+  thinking?: string;
+  options: ProjectDecisionOption[];
+  recommend?: string;
+  chosen?: string;
+  decide_by?: string;
+  selected_by?: string;
+  select_reason?: string;
+}
+
+export interface ProjectMedia {
+  name?: string;
+  kind: string;
+  path?: string;
+  url: string;
+  poster?: string;
+}
+
+export interface ProjectGeneratorTag {
+  id: string;
+  label: string;
+  engine: string;
+  live: boolean;
+  configured?: boolean;
+  why?: string;
+}
+
+export interface ProjectVideoConfig {
+  engine?: string;
+  mode?: string;
+  aspect_ratio?: string;
+  duration?: number;
+  resolution?: string;
+  image_model?: string;
+  video_model?: string;
+  image_resolution?: string;
+}
+
+export interface ProjectCommItem {
+  id: string;
+  node_id: string;
+  from: string;
+  to: string;
+  kind: string;
+  text: string;
+  input_tags: ProjectCommTag[];
+  output_tags: ProjectCommTag[];
+  pass_id?: string;
+  created_at?: string;
+  live?: boolean;
+  provider?: string;
+  error?: string;
+  agents?: string[];
+  media?: ProjectMedia | null;
+}
+
+export interface ProjectCommsPayload {
+  schema_version?: string;
+  project_id?: string;
+  items: ProjectCommItem[];
+  decisions?: ProjectDecision[];
+  walkthrough?: string;
+  honesty?: string;
+  note?: string;
+  saved?: boolean;
+  dry_run?: boolean;
+}
+
+export interface ProjectOutputPayload {
+  path: string;
+  exists: boolean;
+  text: string;
+  honesty?: string;
+  media?: ProjectMedia[];
+  generators?: ProjectGeneratorTag[];
+  video_config?: ProjectVideoConfig;
+}
+
+export interface ProjectGenerateResult {
+  honesty?: string;
+  engine?: string;
+  live?: boolean;
+  error?: string;
+  config?: ProjectVideoConfig;
+  media?: ProjectMedia[];
+  comms?: ProjectCommsPayload;
+  note?: string;
+}
+
+export interface ProjectRunResult {
+  honesty: string;
+  dry_run?: boolean;
+  saved?: boolean;
+  first_called?: string;
+  comms?: ProjectCommsPayload;
+  graph?: { nodes: unknown[]; edges: unknown[] };
+  output_path?: string;
+  validation?: {
+    matched?: boolean;
+    exact?: boolean;
+    copied_sample?: boolean;
+    missing_markers?: string[];
+    missing_sections?: string[];
+  };
+  live_hops?: number;
+  live?: boolean;
+  section_sources?: Record<string, string>;
+  conflicts?: string[];
+  human_asks?: string[];
+  dispatch_ids?: string[];
+  creative_why?: string;
+  status?: string;
+  note?: string;
 }
 
 export interface ProjectRecord {

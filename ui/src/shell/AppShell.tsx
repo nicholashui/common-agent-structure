@@ -53,6 +53,7 @@ import {
   AGENT_TABS,
   HOME_LABEL,
   PROJECT_MENU_LABEL,
+  PROJECT_INSTANCE_TABS,
   WORKFLOW_MENU_LABEL,
   WORKFLOW_TABS,
   agentHref,
@@ -300,19 +301,35 @@ export function AppShell() {
                   <SideLink key="new" to="/projects/new" end collapsed={collapsed} icon={FolderKanban} inset testId="nav-project-new" onClick={closeMobile}>
                     New project
                   </SideLink>,
-                  ...projects.map((item) => (
-                    <SideLink
-                      key={item.id}
-                      to={`/projects/${encodeURIComponent(item.id)}`}
-                      collapsed={collapsed}
-                      icon={GitBranch}
-                      inset
-                      testId={`nav-project-${item.id}`}
-                      onClick={closeMobile}
-                    >
-                      {item.title || item.name || item.id}
-                    </SideLink>
-                  )),
+                  ...projects.flatMap((item) => {
+                    const href = `/projects/${encodeURIComponent(item.id)}`;
+                    const title = item.title || item.name || item.id;
+                    const kids = PROJECT_INSTANCE_TABS.map((tab) => (
+                      <SideLink
+                        key={`${item.id}-${tab.id}`}
+                        to={`${href}/${tab.path}`}
+                        end
+                        collapsed={collapsed}
+                        icon={tab.id === "chat" ? MessageSquare : GitBranch}
+                        inset
+                        insetDepth={2}
+                        testId={`nav-project-${item.id}-${tab.id}`}
+                        onClick={closeMobile}
+                      >
+                        {tab.label}
+                      </SideLink>
+                    ));
+                    return [
+                      <p
+                        key={item.id}
+                        className="ml-3 px-2 py-1 text-xs font-medium text-stone-500"
+                        data-testid={`nav-project-${item.id}`}
+                      >
+                        {title}
+                      </p>,
+                      ...kids,
+                    ];
+                  }),
                 ]
               : null}
             <button
@@ -348,11 +365,11 @@ export function AppShell() {
                   );
                 })
               : null}
-            <SideLink to="/org-chat" collapsed={collapsed} icon={Share2} testId="nav-org-chat" onClick={closeMobile}>
-              Agent Org Chat
-            </SideLink>
             <SideLink to="/" end collapsed={collapsed} icon={Layers} testId="nav-agent-swarm" onClick={closeMobile}>
               {HOME_LABEL}
+            </SideLink>
+            <SideLink to="/org-chat" collapsed={collapsed} icon={Share2} testId="nav-org-chat" onClick={closeMobile}>
+              Agent Org Chat
             </SideLink>
             <button
               type="button"

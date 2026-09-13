@@ -101,6 +101,11 @@ describe("SPEC_V3 client coverage", () => {
     await client.getProject("demo");
     await client.saveProject("demo", { name: "demo", title: "Demo" });
     await client.suggestProjectNext("demo", { from_id: "create-project" });
+    await client.listProjectComms("demo");
+    await client.addProjectComm("demo", { text: "hi" });
+    await client.runProject("demo", { instruction: "go" });
+    await client.getProjectOutput("demo");
+    await client.generateProject("demo", { engine: "grok-imagine" });
 
     const normalized = seen.map((row) =>
       row
@@ -136,5 +141,10 @@ describe("SPEC_V3 client coverage", () => {
     expect(normalized).toContain("GET /api/v3/projects/{project_id}");
     expect(normalized).toContain("PUT /api/v3/projects/{project_id}");
     expect(normalized).toContain("POST /api/v3/projects/{project_id}/next");
+    expect(normalized).toContain("GET /api/v3/projects/{project_id}/comms");
+    expect(normalized).toContain("POST /api/v3/projects/{project_id}/comms");
+    expect(normalized).toContain("POST /api/v3/projects/{project_id}/run");
+    expect(normalized).toContain("GET /api/v3/projects/{project_id}/output");
+    expect(normalized).toContain("POST /api/v3/projects/{project_id}/generate");
   });
 });

@@ -31,7 +31,8 @@
     ],
     "outputs": [
       "video.judge",
-      "video.vfxsupervisor"
+      "video.vfxsupervisor",
+      "video.promptengineer"
     ]
   },
   "max_refinement_count": 0,

@@ -39,7 +39,7 @@ export interface OrgEdgeDraft {
   id: string;
   source: string;
   target: string;
-  type: "smoothstep";
+  type: "default";
 }
 
 export function agentsInGroup(agents: OrgAgent[], group: Exclude<AgentPack, "all">): OrgAgent[] {
@@ -121,7 +121,7 @@ export function buildOrgChart(
       id: `e:${group}->${category}`,
       source: `group:${group}`,
       target: catId,
-      type: "smoothstep",
+      type: "default",
     });
     layoutLeaves(nodes, edges, buckets.get(category) ?? [], catId, slotX, top + LEVEL_GAP);
   });
@@ -199,7 +199,7 @@ function layoutLeaves(
       id: `e:${parentId}->${agent.agent_id}`,
       source: parentId,
       target: id,
-      type: "smoothstep",
+      type: "default",
     });
   });
 }

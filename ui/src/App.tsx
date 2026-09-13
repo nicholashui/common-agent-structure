@@ -1,4 +1,4 @@
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes, useParams } from "react-router-dom";
 import { AppShell } from "./shell/AppShell";
 import { SessionProvider } from "./state/session";
 import { ThemeProvider } from "./theme/ThemeProvider";
@@ -25,6 +25,12 @@ import { WorkflowPage } from "./pages/Workflow";
 import { HelpPage } from "./pages/Help";
 import { ProjectNewPage } from "./pages/ProjectNew";
 import { ProjectFlowPage } from "./pages/ProjectFlow";
+import { ProjectChatPage } from "./pages/ProjectChat";
+
+function ProjectWorkflowRedirect() {
+  const { projectId } = useParams();
+  return <Navigate to={`/projects/${encodeURIComponent(projectId || "")}/workflow`} replace />;
+}
 
 export function App() {
   return (
@@ -35,7 +41,9 @@ export function App() {
             <Route element={<AppShell />}>
               <Route path="/" element={<FleetPage />} />
               <Route path="/projects/new" element={<ProjectNewPage />} />
-              <Route path="/projects/:projectId" element={<ProjectFlowPage />} />
+              <Route path="/projects/:projectId/workflow" element={<ProjectFlowPage />} />
+              <Route path="/projects/:projectId/chat" element={<ProjectChatPage />} />
+              <Route path="/projects/:projectId" element={<ProjectWorkflowRedirect />} />
               <Route path="/projects" element={<ProjectNewPage />} />
               <Route path="/org-chat" element={<OrgChatPage />} />
               <Route path="/workflow" element={<WorkflowPage kind="main" />} />

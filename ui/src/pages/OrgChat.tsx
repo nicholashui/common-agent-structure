@@ -4,6 +4,7 @@ import {
   Background,
   BackgroundVariant,
   Controls,
+  ConnectionLineType,
   MiniMap,
   ReactFlow,
   type Node,
@@ -12,24 +13,22 @@ import "@xyflow/react/dist/style.css";
 import { EmptyState, PageHeader, inputClass } from "../components/ui";
 import { OrgNode, type OrgFlowNode } from "../components/OrgNode";
 import { listAgentGroups } from "../lib/agents";
+import { GRAPH_KIND, socketColor } from "../lib/graphStyle";
 import { buildOrgChart, nodesForInitialFit, ORG_MIN_READABLE_ZOOM, type OrgEdgeDraft } from "../lib/orgChart";
 import { agentHref } from "../shell/nav";
 import { useSession } from "../state/session";
+import { useTheme } from "../theme/ThemeProvider";
 
 const nodeTypes = { orgNode: OrgNode };
 
 function minimapColor(node: OrgFlowNode): string {
-  if (node.data.kind === "group") {
-    return "#4f46e5";
-  }
-  if (node.data.kind === "category") {
-    return "#7c3aed";
-  }
-  return "#a8a29e";
+  return GRAPH_KIND[node.data.kind].mini;
 }
 
 export function OrgChatPage() {
   const session = useSession();
+  const { theme } = useTheme();
+  const dark = theme === "dark";
   const navigate = useNavigate();
   const groups = useMemo(() => listAgentGroups(session.agents), [session.agents]);
   const [group, setGroup] = useState<string>("");
@@ -89,11 +88,13 @@ export function OrgChatPage() {
         />
       ) : (
         <div
-          className="h-[calc(100vh-14rem)] overflow-hidden rounded-2xl border border-stone-200 bg-stone-50"
+          className="casops-graph h-[calc(100vh-14rem)] overflow-hidden rounded-md border border-stone-200 dark:border-black"
           data-testid="org-chart"
+          data-graph-theme={theme}
         >
           <ReactFlow
-            key={selected}
+            key={`${selected}-${theme}`}
+            className="casops-graph"
             nodes={graph.nodes as OrgFlowNode[]}
             edges={graph.edges}
             nodeTypes={nodeTypes}
@@ -109,17 +110,20 @@ export function OrgChatPage() {
             nodesDraggable
             elementsSelectable
             panOnScroll
+            colorMode={theme}
+            connectionLineType={ConnectionLineType.Bezier}
             onNodeClick={onNodeClick}
-            defaultEdgeOptions={{ type: "smoothstep", style: { stroke: "#a8a29e" } }}
-            proOptions={{ hideAttribution: false }}
+            defaultEdgeOptions={{ type: "default", style: { stroke: socketColor("org"), strokeWidth: 2.4 } }}
+            proOptions={{ hideAttribution: true }}
           >
-            <Background variant={BackgroundVariant.Dots} gap={18} color="#e7e5e4" />
+            <Background variant={BackgroundVariant.Dots} gap={20} size={1.2} color={dark ? "#3a3a3a" : "#d6d3d1"} />
             <Controls showInteractive={false} />
             <MiniMap
               pannable
               zoomable
               nodeColor={(node) => minimapColor(node as OrgFlowNode)}
-              maskColor="rgba(250, 250, 249, 0.7)"
+              maskColor={dark ? "rgba(12, 12, 12, 0.55)" : "rgba(250, 250, 249, 0.7)"}
+              bgColor={dark ? "#252525" : "#f5f5f4"}
             />
           </ReactFlow>
         </div>

@@ -37,7 +37,13 @@
     ],
     "outputs": [
       "video.judge",
-      "video.aiqaconsistency"
+      "video.aiqaconsistency",
+      "video.director",
+      "video.cinematographer",
+      "video.mua_makeup",
+      "video.cameraoperator",
+      "video.continuity",
+      "video.critic"
     ]
   },
   "max_refinement_count": 0,

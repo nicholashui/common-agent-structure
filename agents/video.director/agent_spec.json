@@ -35,7 +35,8 @@
       "video.editor",
       "video.cinematographer",
       "video.screenwriter",
-      "video.composer"
+      "video.composer",
+      "video.promptengineer"
     ]
   },
   "max_refinement_count": 0,
@@ -50,7 +51,11 @@
     "Another agent's exclusive craft output without handoff",
     "Automatic promotion of self-generated artifacts",
     "Modification of safety, telemetry, gates, permissions, or corrigibility",
-    "Self-granting tools, plugins, network, or isolation downgrades"
+    "Self-granting tools, plugins, network, or isolation downgrades",
+    "Lighting photometrics",
+    "Makeup continuity bible",
+    "Camera motor exclusive of video.cameraoperator",
+    "generation_prompt_spec closer role"
   ],
   "va_id": 1,
   "va_name": "DirectorAgent",

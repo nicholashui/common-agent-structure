@@ -2,14 +2,16 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { EmptyState, PageHeader, inputClass } from "../components/ui";
 import { listAgentGroups } from "../lib/agents";
+import { applySvgTheme } from "../lib/graphStyle";
 import { listSubWorkflows, subWorkflowSvgSrc, workflowSvgSrc } from "../lib/workflow";
 import { useSession } from "../state/session";
+import { useTheme } from "../theme/ThemeProvider";
 
 const MIN_ZOOM = 1;
 const MAX_ZOOM = 2.5;
 const ZOOM_STEP = 0.25;
 const zoomButtonClass =
-  "inline-flex h-8 min-w-8 items-center justify-center rounded-lg border border-stone-200 bg-white px-2 text-xs font-semibold text-stone-700 shadow-sm transition hover:border-indigo-300 hover:bg-indigo-50 hover:text-indigo-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 disabled:cursor-not-allowed disabled:opacity-40";
+  "inline-flex h-8 min-w-8 items-center justify-center rounded border border-stone-200 bg-white px-2 text-xs font-semibold text-stone-700 shadow-sm transition hover:border-indigo-300 hover:bg-indigo-50 hover:text-indigo-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 disabled:cursor-not-allowed disabled:opacity-40 dark:border-[#111] dark:bg-[#353535] dark:text-[#ddd] dark:hover:border-[#64b5f6] dark:hover:bg-[#454545] dark:hover:text-white dark:focus-visible:ring-[#64b5f6]";
 
 function isAgentChatHref(href: string | null): href is string {
   return Boolean(href && href.startsWith("/agents/") && href.endsWith("/chat"));
@@ -21,6 +23,7 @@ function clampZoom(value: number): number {
 
 export function WorkflowPage({ kind = "main" }: { kind?: "main" | "sub" }) {
   const session = useSession();
+  const { theme } = useTheme();
   const navigate = useNavigate();
   const objectRef = useRef<HTMLObjectElement>(null);
   const groups = useMemo(() => listAgentGroups(session.agents), [session.agents]);
@@ -79,20 +82,20 @@ export function WorkflowPage({ kind = "main" }: { kind?: "main" | "sub" }) {
     const host: HTMLObjectElement = diagram;
     function bind(doc: Document) {
       const tagged = doc as Document & { __casopsAgentLinks?: boolean };
-      if (tagged.__casopsAgentLinks) {
-        return;
+      if (!tagged.__casopsAgentLinks) {
+        tagged.__casopsAgentLinks = true;
+        doc.addEventListener("click", (event) => {
+          const target = event.target as Element | null;
+          const link = target?.closest("a.agent-link");
+          const href = link?.getAttribute("href") ?? null;
+          if (!isAgentChatHref(href)) {
+            return;
+          }
+          event.preventDefault();
+          navigate(href);
+        });
       }
-      tagged.__casopsAgentLinks = true;
-      doc.addEventListener("click", (event) => {
-        const target = event.target as Element | null;
-        const link = target?.closest("a.agent-link");
-        const href = link?.getAttribute("href") ?? null;
-        if (!isAgentChatHref(href)) {
-          return;
-        }
-        event.preventDefault();
-        navigate(href);
-      });
+      applySvgTheme(doc, theme);
     }
     function onLoad() {
       const doc = host.contentDocument;
@@ -105,7 +108,7 @@ export function WorkflowPage({ kind = "main" }: { kind?: "main" | "sub" }) {
       onLoad();
     }
     return () => host.removeEventListener("load", onLoad);
-  }, [src, navigate]);
+  }, [src, navigate, theme]);
 
   function changeZoom(delta: number) {
     setZoom((current) => clampZoom(current + delta));
@@ -170,13 +173,14 @@ export function WorkflowPage({ kind = "main" }: { kind?: "main" | "sub" }) {
         />
       ) : src ? (
         <div
-          className="flex h-[calc(100dvh-14rem)] min-h-[28rem] flex-col overflow-hidden rounded-2xl border border-stone-200 bg-[#f4f7fb] shadow-sm"
+          className="casops-graph flex h-[calc(100dvh-14rem)] min-h-[28rem] flex-col overflow-hidden rounded-md border border-stone-200 shadow-sm dark:border-black"
           data-testid={kind === "sub" ? "agent-sub-workflow" : "agent-workflow"}
+          data-graph-theme={theme}
         >
-          <div className="z-10 flex min-h-11 shrink-0 flex-wrap items-center justify-between gap-2 border-b border-stone-200 bg-white/95 px-3 py-1.5 shadow-sm backdrop-blur">
+          <div className="z-10 flex min-h-11 shrink-0 flex-wrap items-center justify-between gap-2 border-b border-stone-200 bg-white px-3 py-1.5 dark:border-[#111] dark:bg-[#252525]">
             <div>
-              <p className="text-xs font-semibold text-stone-800">Diagram view</p>
-              <p className="hidden text-[11px] text-stone-500 sm:block">Fit for overview; zoom for readable detail.</p>
+              <p className="text-xs font-semibold text-stone-800 dark:text-[#eee]">Diagram view</p>
+              <p className="hidden text-[11px] text-stone-500 sm:block dark:text-[#888]">Fit for overview; zoom for readable detail.</p>
             </div>
             <div className="flex items-center gap-1.5" role="group" aria-label="Diagram zoom controls">
               <button
@@ -196,7 +200,7 @@ export function WorkflowPage({ kind = "main" }: { kind?: "main" | "sub" }) {
               >
                 Fit
               </button>
-              <output className="min-w-12 text-center font-mono text-xs font-semibold text-stone-600" aria-live="polite">
+              <output className="min-w-12 text-center font-mono text-xs font-semibold text-stone-600 dark:text-[#bbb]" aria-live="polite">
                 {Math.round(zoom * 100)}%
               </output>
               <button

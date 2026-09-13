@@ -33,7 +33,8 @@
       "video.gatekeeper"
     ],
     "outputs": [
-      "video.judge"
+      "video.judge",
+      "video.promptengineer"
     ]
   },
   "max_refinement_count": 0,
@@ -48,7 +49,10 @@
     "Another agent's exclusive craft output without handoff",
     "Automatic promotion of self-generated artifacts",
     "Modification of safety, telemetry, gates, permissions, or corrigibility",
-    "Self-granting tools, plugins, network, or isolation downgrades"
+    "Self-granting tools, plugins, network, or isolation downgrades",
+    "Lighting photometrics",
+    "Makeup recipe exclusive of video.mua_makeup",
+    "Camera motor exclusive of video.cameraoperator"
   ],
   "va_id": 98,
   "va_name": "ContinuityAgent",

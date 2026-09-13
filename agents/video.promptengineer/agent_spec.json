@@ -30,6 +30,14 @@
     ],
     "outputs": [
       "video.judge",
+      "video.aiqaconsistency",
+      "video.director",
+      "video.cinematographer",
+      "video.mua_makeup",
+      "video.cameraoperator",
+      "video.continuity",
+      "video.critic",
+      "video.creativedirector",
       "video.aiqaconsistency"
     ]
   },
@@ -45,7 +53,11 @@
     "Another agent's exclusive craft output without handoff",
     "Automatic promotion of self-generated artifacts",
     "Modification of safety, telemetry, gates, permissions, or corrigibility",
-    "Self-granting tools, plugins, network, or isolation downgrades"
+    "Self-granting tools, plugins, network, or isolation downgrades",
+    "Makeup continuity bible",
+    "Lighting photometrics",
+    "Camera motor exclusive of video.cameraoperator",
+    "Live vendor generation"
   ],
   "va_id": 46,
   "va_name": "PromptEngineerAgent / GeneratorOperator",

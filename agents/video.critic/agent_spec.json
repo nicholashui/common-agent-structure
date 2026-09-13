@@ -32,7 +32,8 @@
       "video.judge"
     ],
     "outputs": [
-      "video.judge"
+      "video.judge",
+      "video.promptengineer"
     ]
   },
   "max_refinement_count": 0,
@@ -47,7 +48,10 @@
     "Another agent's exclusive craft output without handoff",
     "Automatic promotion of self-generated artifacts",
     "Modification of safety, telemetry, gates, permissions, or corrigibility",
-    "Self-granting tools, plugins, network, or isolation downgrades"
+    "Self-granting tools, plugins, network, or isolation downgrades",
+    "generation_prompt_spec closer role",
+    "Live vendor generation",
+    "Accept/reject gate exclusive of video.judge"
   ],
   "va_id": 95,
   "va_name": "CriticAgent",

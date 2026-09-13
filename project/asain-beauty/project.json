@@ -1,0 +1,726 @@
+{
+  "schema_version": "casops.project.v1",
+  "id": "asain-beauty",
+  "name": "asain-beauty",
+  "title": "Asain Beauty",
+  "brief": "Short vertical beauty clip. Adult East Asian woman.",
+  "audience": "18-34 beauty shoppers on social",
+  "duration": "15s",
+  "outlets": "social",
+  "risk": "low",
+  "notes": "",
+  "group": "video",
+  "sub_workflow_id": "video.template.b",
+  "suggestion": {
+    "honesty": "CHARACTERIZATION",
+    "llm_used": false,
+    "primary": "video.template.b",
+    "suggestions": [
+      {
+        "id": "video.template.b",
+        "label": "B · UGC Ad",
+        "kind": "template",
+        "reason": "paid social, creator-style product ad",
+        "rank": 1,
+        "source": "heuristic"
+      },
+      {
+        "id": "video.scale.s1",
+        "label": "S1 · Scale S1",
+        "kind": "scale",
+        "reason": "one outlet, fast, low risk",
+        "rank": 2,
+        "source": "heuristic"
+      },
+      {
+        "id": "video.template.a",
+        "label": "A · Viral Hook",
+        "kind": "template",
+        "reason": "short social spike, meme, CTA",
+        "rank": 3,
+        "source": "heuristic"
+      },
+      {
+        "id": "video.template.c",
+        "label": "C · Animated Explainer",
+        "kind": "template",
+        "reason": "how-to, product explainer",
+        "rank": 4,
+        "source": "heuristic"
+      },
+      {
+        "id": "video.template.d",
+        "label": "D · Personalized Birthday",
+        "kind": "template",
+        "reason": "personal greeting, short gift clip",
+        "rank": 5,
+        "source": "heuristic"
+      }
+    ],
+    "llm_excerpt": "",
+    "note": "Not an eval PASS. Chat HTTP 200 is not craft-correct. Skills and tools stay ungated.",
+    "adapter": "host_llm",
+    "prompt": "Pick one video.template.* and one video.scale.* for this draft. Reply with the ids.\n- video.template.a: Viral Hook — short social spike, meme, CTA\n- video.template.b: UGC Ad — paid social, creator-style product ad\n- video.template.c: Animated Explainer — how-to, product explainer\n- video.template.d: Personalized Birthday — personal greeting, short gift clip\n- video.template.e: AI Short Film — narrative short, cinematic sketch\n- video.template.f: Corporate Training — internal training, safety recap\n- video.template.g: Music Video — performance, beat-led picture\n- video.template.h: AI Avatar — presenter, talking-head, avatar\n- video.template.i: Documentary — interview, archive, long-form report\n- video.template.j: Feature Film — feature-length, high-risk production\n- video.scale.s1: Scale S1 — one outlet, fast, low risk\n- video.scale.s2: Scale S2 — two outlets, light brand gate\n- video.scale.s3: Scale S3 — variant campaign, mid depth\n- video.scale.s4: Scale S4 — multi-phase, review-heavy\n- video.scale.s5: Scale S5 — premium short / training series\n- video.scale.s6: Scale S6 — long-form documentary depth\n- video.scale.s7: Scale S7 — feature / broadcast, highest risk\nBrief:\nname: asain-beauty\ntitle: Asain Beauty\nbrief: 30s social UGC ad for an Asian beauty skincare line: glass-skin glow, creator demo, shop CTA\naudience: 18-34 beauty shoppers on social\nduration: 30s\noutlets: social\nrisk: low\nDo not enable tools, network, production, or memory writes.",
+    "catalog": [
+      {
+        "id": "video.template.a",
+        "kind": "template",
+        "code": "A",
+        "label": "Viral Hook",
+        "use": "short social spike, meme, CTA"
+      },
+      {
+        "id": "video.template.b",
+        "kind": "template",
+        "code": "B",
+        "label": "UGC Ad",
+        "use": "paid social, creator-style product ad"
+      },
+      {
+        "id": "video.template.c",
+        "kind": "template",
+        "code": "C",
+        "label": "Animated Explainer",
+        "use": "how-to, product explainer"
+      },
+      {
+        "id": "video.template.d",
+        "kind": "template",
+        "code": "D",
+        "label": "Personalized Birthday",
+        "use": "personal greeting, short gift clip"
+      },
+      {
+        "id": "video.template.e",
+        "kind": "template",
+        "code": "E",
+        "label": "AI Short Film",
+        "use": "narrative short, cinematic sketch"
+      },
+      {
+        "id": "video.template.f",
+        "kind": "template",
+        "code": "F",
+        "label": "Corporate Training",
+        "use": "internal training, safety recap"
+      },
+      {
+        "id": "video.template.g",
+        "kind": "template",
+        "code": "G",
+        "label": "Music Video",
+        "use": "performance, beat-led picture"
+      },
+      {
+        "id": "video.template.h",
+        "kind": "template",
+        "code": "H",
+        "label": "AI Avatar",
+        "use": "presenter, talking-head, avatar"
+      },
+      {
+        "id": "video.template.i",
+        "kind": "template",
+        "code": "I",
+        "label": "Documentary",
+        "use": "interview, archive, long-form report"
+      },
+      {
+        "id": "video.template.j",
+        "kind": "template",
+        "code": "J",
+        "label": "Feature Film",
+        "use": "feature-length, high-risk production"
+      },
+      {
+        "id": "video.scale.s1",
+        "kind": "scale",
+        "code": "S1",
+        "label": "Scale S1",
+        "use": "one outlet, fast, low risk"
+      },
+      {
+        "id": "video.scale.s2",
+        "kind": "scale",
+        "code": "S2",
+        "label": "Scale S2",
+        "use": "two outlets, light brand gate"
+      },
+      {
+        "id": "video.scale.s3",
+        "kind": "scale",
+        "code": "S3",
+        "label": "Scale S3",
+        "use": "variant campaign, mid depth"
+      },
+      {
+        "id": "video.scale.s4",
+        "kind": "scale",
+        "code": "S4",
+        "label": "Scale S4",
+        "use": "multi-phase, review-heavy"
+      },
+      {
+        "id": "video.scale.s5",
+        "kind": "scale",
+        "code": "S5",
+        "label": "Scale S5",
+        "use": "premium short / training series"
+      },
+      {
+        "id": "video.scale.s6",
+        "kind": "scale",
+        "code": "S6",
+        "label": "Scale S6",
+        "use": "long-form documentary depth"
+      },
+      {
+        "id": "video.scale.s7",
+        "kind": "scale",
+        "code": "S7",
+        "label": "Scale S7",
+        "use": "feature / broadcast, highest risk"
+      }
+    ]
+  },
+  "graph": {
+    "nodes": [
+      {
+        "id": "create-project",
+        "type": "start",
+        "position": {
+          "x": 80,
+          "y": 200
+        },
+        "deletable": false,
+        "data": {
+          "kind": "start",
+          "label": "Create Project",
+          "title": "Asain Beauty",
+          "brief": "Short vertical beauty clip. Adult East Asian woman.",
+          "audience": "18-34 beauty shoppers on social",
+          "duration": "15s",
+          "outlets": "social",
+          "risk": "low",
+          "agent_id": null,
+          "io": {
+            "inputs": [],
+            "outputs": [
+              "video.promptengineer"
+            ]
+          }
+        }
+      },
+      {
+        "id": "agent-video-promptengineer",
+        "type": "agent",
+        "position": {
+          "x": 400,
+          "y": 200
+        },
+        "data": {
+          "kind": "agent",
+          "label": "video.promptengineer",
+          "agent_id": "video.promptengineer",
+          "reason": "Who leads the first expert hop",
+          "thinking": "The human brief is only intent. A domain expert must propose a thesis before anyone writes clip grammar.",
+          "options": [
+            {
+              "id": "1",
+              "label": "Induce video.creativedirector first",
+              "why": "Owns campaign thesis and WHY, not shot lists."
+            },
+            {
+              "id": "2",
+              "label": "Induce video.director first",
+              "why": "Shot-led path; risks locking coverage before taste."
+            },
+            {
+              "id": "3",
+              "label": "Induce video.ugccreator first",
+              "why": "Creator-ad grammar; fits shop CTA, not a skin study."
+            }
+          ],
+          "recommend": "1",
+          "decide_by": "human",
+          "chosen": "1",
+          "selected_by": "human_operator",
+          "select_reason": "Human confirmed the expert recommend.",
+          "io": {
+            "inputs": [
+              "create-project"
+            ],
+            "outputs": [
+              "video.creativedirector",
+              "video.director",
+              "video.cinematographer",
+              "video.mua_makeup",
+              "video.cameraoperator",
+              "video.continuity",
+              "video.critic",
+              "human-ask",
+              "output"
+            ]
+          }
+        }
+      },
+      {
+        "id": "agent-video-creativedirector",
+        "type": "agent",
+        "position": {
+          "x": 760,
+          "y": 20
+        },
+        "data": {
+          "kind": "agent",
+          "label": "video.creativedirector",
+          "agent_id": "video.creativedirector",
+          "reason": "Creative thesis",
+          "thinking": "Audience is 18-34 beauty shoppers, but the brief is a clip about a woman, not a product demo. Thesis must survive a 15s vertical without becoming an idol-template ad.",
+          "options": [
+            {
+              "id": "1",
+              "label": "Phone-macro skin study: hard sun, anti-idol, pores and identity marks readable",
+              "why": "Matches 'adult woman' + beauty without inventing a shop CTA the human did not write."
+            },
+            {
+              "id": "2",
+              "label": "Glass-skin UGC demo with product and CTA",
+              "why": "Fits template B heuristics; the human did not name a product."
+            },
+            {
+              "id": "3",
+              "label": "Studio beauty still then I2V",
+              "why": "More control, but ring/softbox fights a phone-macro look."
+            }
+          ],
+          "recommend": "1",
+          "decide_by": "video.promptengineer",
+          "chosen": "1",
+          "selected_by": "video.promptengineer",
+          "select_reason": "Parent orchestrator picked option 1 because the human brief is a person, not a product. Option 2 would write a UGC ad the human could have typed themselves if they wanted it. Option 3 implies studio gear nobody authorized.",
+          "io": {
+            "inputs": [
+              "video.promptengineer"
+            ],
+            "outputs": [
+              "video.promptengineer"
+            ]
+          }
+        }
+      },
+      {
+        "id": "agent-video-director",
+        "type": "agent",
+        "position": {
+          "x": 760,
+          "y": 150
+        },
+        "data": {
+          "kind": "agent",
+          "label": "video.director",
+          "agent_id": "video.director",
+          "reason": "Coverage / beat map",
+          "thinking": "Thesis is a 15s face-stuck macro. Coverage should be one climb on the face, not a portrait pullback.",
+          "options": [
+            {
+              "id": "1",
+              "label": "Five face-stuck beats: smash, eye/skin macro, nose/mouth super close-up, climb, one-eye hold",
+              "why": "Keeps identity on one plane; no speech; features may clip the frame."
+            },
+            {
+              "id": "2",
+              "label": "Three I2V clips 6/4/5 from a locked still",
+              "why": "Imagine-family split; more vendor-shaped, still valid."
+            },
+            {
+              "id": "3",
+              "label": "Wide-to-close hero plus product insert",
+              "why": "Needs a product the brief never named."
+            }
+          ],
+          "recommend": "1",
+          "decide_by": "video.creativedirector",
+          "chosen": "1",
+          "selected_by": "video.creativedirector",
+          "select_reason": "Creative director selected option 1 so the thesis (phone-macro skin study) is one continuous face crawl. Option 2 is a packing strategy, not coverage intent. Option 3 contradicts the no-product thesis already chosen.",
+          "io": {
+            "inputs": [
+              "video.promptengineer"
+            ],
+            "outputs": [
+              "video.promptengineer"
+            ]
+          }
+        }
+      },
+      {
+        "id": "agent-video-cinematographer",
+        "type": "agent",
+        "position": {
+          "x": 760,
+          "y": 280
+        },
+        "data": {
+          "kind": "agent",
+          "label": "video.cinematographer",
+          "agent_id": "video.cinematographer",
+          "reason": "Light / lens",
+          "thinking": "Macro skin needs raking natural sun so pores read. Softbox would flatten the thesis.",
+          "options": [
+            {
+              "id": "1",
+              "label": "Hard 4pm sun camera-left through half-open window and thin white sheer, 10–20cm phone-main, moving dapple",
+              "why": "Raking key so pores and freckles read; curtain/leaves/hair cut the sun."
+            },
+            {
+              "id": "2",
+              "label": "Overcast window, no sheer, even fill",
+              "why": "Safer exposure, weaker pore contrast."
+            },
+            {
+              "id": "3",
+              "label": "Beauty ring + large softbox",
+              "why": "Idol catchlight; critic will reject."
+            }
+          ],
+          "recommend": "1",
+          "decide_by": "video.director",
+          "chosen": "1",
+          "selected_by": "video.director",
+          "select_reason": "Director selected option 1 because the chosen beats stay 10-20cm on skin; a ring light (option 3) would fight every smash/macro beat. Option 2 is acceptable but weaker for the anti-idol thesis.",
+          "io": {
+            "inputs": [
+              "video.promptengineer"
+            ],
+            "outputs": [
+              "video.promptengineer"
+            ]
+          }
+        }
+      },
+      {
+        "id": "agent-video-mua_makeup",
+        "type": "agent",
+        "position": {
+          "x": 760,
+          "y": 410
+        },
+        "data": {
+          "kind": "agent",
+          "label": "video.mua_makeup",
+          "agent_id": "video.mua_makeup",
+          "reason": "Makeup lock",
+          "thinking": "Bare lock only. Pore manifesto is continuity, not MUA.",
+          "options": [
+            {
+              "id": "1",
+              "label": "Sunscreen + thin moisturizer; natural brow; dusty-rose wet glaze; wet iris with real window catch; no fake lashes",
+              "why": "Supports hard-sun pores; makeup stays a lock, not a filter."
+            },
+            {
+              "id": "2",
+              "label": "Full base, contour, lash strip",
+              "why": "Reads as influencer template under hard sun."
+            },
+            {
+              "id": "3",
+              "label": "No product on skin at all",
+              "why": "Legal, but dry flake may dominate the macro."
+            }
+          ],
+          "recommend": "1",
+          "decide_by": "video.creativedirector",
+          "chosen": "1",
+          "selected_by": "video.creativedirector",
+          "select_reason": "Creative director selected option 1: enough moisture for sun speculars, not enough coverage to become option 2's idol face. Option 3 is a continuity texture choice, not makeup.",
+          "io": {
+            "inputs": [
+              "video.promptengineer"
+            ],
+            "outputs": [
+              "video.promptengineer"
+            ]
+          }
+        }
+      },
+      {
+        "id": "agent-video-cameraoperator",
+        "type": "agent",
+        "position": {
+          "x": 760,
+          "y": 540
+        },
+        "data": {
+          "kind": "agent",
+          "label": "video.cameraoperator",
+          "agent_id": "video.cameraoperator",
+          "reason": "Camera motor",
+          "thinking": "One motor. Director beats are a crawl on the face; orbit would steal DoP's crop.",
+          "options": [
+            {
+              "id": "1",
+              "label": "Handheld 1-2mm breath crawl. No push / pull / pan / orbit",
+              "why": "Matches face-stuck beats and 10-20cm working distance."
+            },
+            {
+              "id": "2",
+              "label": "Slow planar slider across the cheek",
+              "why": "Cleaner, less breath; slightly less 'phone'."
+            },
+            {
+              "id": "3",
+              "label": "Gentle orbit around the head",
+              "why": "Breaks the no-orbit motor and recenters the face."
+            }
+          ],
+          "recommend": "1",
+          "decide_by": "video.cinematographer",
+          "chosen": "1",
+          "selected_by": "video.cinematographer",
+          "select_reason": "Cinematographer selected option 1 so the motor does not add a second move on top of hard-sun crop. Option 3 is rejected: orbit was never granted. Option 2 is fine if the human later wants less shake.",
+          "io": {
+            "inputs": [
+              "video.promptengineer"
+            ],
+            "outputs": [
+              "video.promptengineer"
+            ]
+          }
+        }
+      },
+      {
+        "id": "agent-video-continuity",
+        "type": "agent",
+        "position": {
+          "x": 760,
+          "y": 670
+        },
+        "data": {
+          "kind": "agent",
+          "label": "video.continuity",
+          "agent_id": "video.continuity",
+          "reason": "Identity freeze",
+          "thinking": "Identity freeze must come from human fills, not from a host gold paste. ASK_HUMAN, then freeze what they named.",
+          "options": [
+            {
+              "id": "1",
+              "label": "Unmarked adult freeze only",
+              "why": "If the human names no moles."
+            },
+            {
+              "id": "2",
+              "label": "Freeze human-named marks: left-eye mole, mouth-corner mole, sleep crease, 25-26 adult, black hair part, pale freckles",
+              "why": "Matches what the sample human would have filled from asain-beauty-prompt.txt."
+            },
+            {
+              "id": "3",
+              "label": "Allow identity drift across beats",
+              "why": "Breaks the thesis; AIQA would fail."
+            }
+          ],
+          "recommend": "2",
+          "decide_by": "human",
+          "chosen": "2",
+          "selected_by": "human_operator",
+          "select_reason": "Human selected this option.",
+          "io": {
+            "inputs": [
+              "video.promptengineer"
+            ],
+            "outputs": [
+              "video.promptengineer",
+              "human-ask"
+            ]
+          }
+        }
+      },
+      {
+        "id": "agent-video-critic",
+        "type": "agent",
+        "position": {
+          "x": 760,
+          "y": 800
+        },
+        "data": {
+          "kind": "agent",
+          "label": "video.critic",
+          "agent_id": "video.critic",
+          "reason": "Critique / negatives",
+          "thinking": "Check chosen locks against idol-template, poreless skin, ring light, 4K claims, orbit.",
+          "options": [
+            {
+              "id": "1",
+              "label": "Pass with Avoid: no beauty filter, no poreless skin, no ring-light, no orbit, no extra fingers, no morph",
+              "why": "Chosen path already avoids those; write them as Avoid, not as a studio redo."
+            },
+            {
+              "id": "2",
+              "label": "Blocker: send back for studio lighting",
+              "why": "Would undo cinematographer's pick."
+            },
+            {
+              "id": "3",
+              "label": "Blocker: require a product insert",
+              "why": "Contradicts creative thesis."
+            }
+          ],
+          "recommend": "1",
+          "decide_by": "video.promptengineer",
+          "chosen": "1",
+          "selected_by": "video.promptengineer",
+          "select_reason": "Orchestrator selected option 1 so negatives document the already-chosen path. Options 2 and 3 reopen decisions that parent experts already closed.",
+          "io": {
+            "inputs": [
+              "video.promptengineer"
+            ],
+            "outputs": [
+              "video.promptengineer"
+            ]
+          }
+        }
+      },
+      {
+        "id": "human-ask",
+        "type": "human",
+        "position": {
+          "x": 400,
+          "y": 520
+        },
+        "data": {
+          "kind": "human",
+          "label": "Human",
+          "reason": "Identity freeze is a human decision",
+          "brief": "Q (video.promptengineer): Duration, aspect, and look?\nA: 15-second, 9:16 vertical, 4K ultra-photoreal live-action. Handheld phone-main close-up, roughly 50–70mm equivalent with a slight tele crop. Optical shallow depth of field: only the nearest skin plane is sharp; the ear side and rear hair fall off. No studio setup. No cinematic grade. No AI-smoothed face.\nQ (video.promptengineer): If the engine can carry native audio, what room?\nA: Extreme close-up room tone only: leaves outside, a very faint distant car, one swallow, breath. No score. No VO.\nQ (video.continuity): Which identity marks must freeze for the whole 15s?\nA: Clearly adult East Asian woman, about 25–26. Natural cool-toned East Asian face. Slightly long small oval, cheekbones gently lifted but not sharp, soft jawline, a visible philtrum groove. Real facial proportions. Not an influencer-template face. A tiny light-brown mole ",
+          "io": {
+            "inputs": [
+              "video.continuity"
+            ],
+            "outputs": [
+              "answer"
+            ]
+          }
+        }
+      },
+      {
+        "id": "output-prompt",
+        "type": "output",
+        "position": {
+          "x": 1120,
+          "y": 200
+        },
+        "deletable": false,
+        "data": {
+          "kind": "output",
+          "label": "Output",
+          "reason": "project/asain-beauty/output/asain-beauty-prompt.txt",
+          "brief": "Generate from the locked decisions below. Host-assembled from Chat selections and ASK_HUMAN fills. sample/ is not a source.\n\nCreative direction\nPhone-macro skin study: hard sun, anti-idol, pores and identity marks readable.\nWHY: video.promptengineer selected this because the huma",
+          "io": {
+            "inputs": [
+              "video.promptengineer"
+            ],
+            "outputs": []
+          }
+        }
+      }
+    ],
+    "edges": [
+      {
+        "id": "e-create-promptengineer",
+        "source": "create-project",
+        "target": "agent-video-promptengineer",
+        "sourceHandle": "video.promptengineer",
+        "targetHandle": "in",
+        "type": "smoothstep",
+        "label": "video.promptengineer"
+      },
+      {
+        "id": "e-pe-video-creativedirector",
+        "source": "agent-video-promptengineer",
+        "target": "agent-video-creativedirector",
+        "sourceHandle": "video.creativedirector",
+        "targetHandle": "in",
+        "type": "smoothstep",
+        "label": "video.creativedirector"
+      },
+      {
+        "id": "e-pe-video-director",
+        "source": "agent-video-promptengineer",
+        "target": "agent-video-director",
+        "sourceHandle": "video.director",
+        "targetHandle": "in",
+        "type": "smoothstep",
+        "label": "video.director"
+      },
+      {
+        "id": "e-pe-video-cinematographer",
+        "source": "agent-video-promptengineer",
+        "target": "agent-video-cinematographer",
+        "sourceHandle": "video.cinematographer",
+        "targetHandle": "in",
+        "type": "smoothstep",
+        "label": "video.cinematographer"
+      },
+      {
+        "id": "e-pe-video-mua_makeup",
+        "source": "agent-video-promptengineer",
+        "target": "agent-video-mua_makeup",
+        "sourceHandle": "video.mua_makeup",
+        "targetHandle": "in",
+        "type": "smoothstep",
+        "label": "video.mua_makeup"
+      },
+      {
+        "id": "e-pe-video-cameraoperator",
+        "source": "agent-video-promptengineer",
+        "target": "agent-video-cameraoperator",
+        "sourceHandle": "video.cameraoperator",
+        "targetHandle": "in",
+        "type": "smoothstep",
+        "label": "video.cameraoperator"
+      },
+      {
+        "id": "e-pe-video-continuity",
+        "source": "agent-video-promptengineer",
+        "target": "agent-video-continuity",
+        "sourceHandle": "video.continuity",
+        "targetHandle": "in",
+        "type": "smoothstep",
+        "label": "video.continuity"
+      },
+      {
+        "id": "e-pe-video-critic",
+        "source": "agent-video-promptengineer",
+        "target": "agent-video-critic",
+        "sourceHandle": "video.critic",
+        "targetHandle": "in",
+        "type": "smoothstep",
+        "label": "video.critic"
+      },
+      {
+        "id": "e-cont-human",
+        "source": "agent-video-continuity",
+        "target": "human-ask",
+        "sourceHandle": "human-ask",
+        "targetHandle": "in",
+        "type": "smoothstep",
+        "label": "ASK_HUMAN"
+      },
+      {
+        "id": "e-pe-output",
+        "source": "agent-video-promptengineer",
+        "target": "output-prompt",
+        "sourceHandle": "output",
+        "targetHandle": "in",
+        "type": "smoothstep",
+        "label": "output"
+      }
+    ]
+  },
+  "honesty": "CHARACTERIZATION",
+  "created_at": "2026-09-13T03:21:03Z",
+  "updated_at": "2026-09-13T11:03:54Z",
+  "folder": "project/asain-beauty",
+  "production_activation": false,
+  "allowed_tools": []
+}

@@ -57,6 +57,12 @@ export const COMPANION_V3_PATHS = [
   ["GET", "/api/v3/projects/{project_id}"],
   ["PUT", "/api/v3/projects/{project_id}"],
   ["POST", "/api/v3/projects/{project_id}/next"],
+  ["GET", "/api/v3/projects/{project_id}/comms"],
+  ["POST", "/api/v3/projects/{project_id}/comms"],
+  ["POST", "/api/v3/projects/{project_id}/run"],
+  ["GET", "/api/v3/projects/{project_id}/output"],
+  ["GET", "/api/v3/projects/{project_id}/output/file"],
+  ["POST", "/api/v3/projects/{project_id}/generate"],
 ] as const;
 
 export type HttpMethod = "GET" | "POST" | "PUT" | "PATCH" | "DELETE";
@@ -117,6 +123,11 @@ export const CLIENT_BINDINGS = {
   getProject: ["GET", "/api/v3/projects/{project_id}"],
   saveProject: ["PUT", "/api/v3/projects/{project_id}"],
   suggestProjectNext: ["POST", "/api/v3/projects/{project_id}/next"],
+  listProjectComms: ["GET", "/api/v3/projects/{project_id}/comms"],
+  addProjectComm: ["POST", "/api/v3/projects/{project_id}/comms"],
+  runProject: ["POST", "/api/v3/projects/{project_id}/run"],
+  getProjectOutput: ["GET", "/api/v3/projects/{project_id}/output"],
+  generateProject: ["POST", "/api/v3/projects/{project_id}/generate"],
 } as const;
 
 export const MUTATING = new Set<string>(["POST", "PUT", "PATCH", "DELETE"]);

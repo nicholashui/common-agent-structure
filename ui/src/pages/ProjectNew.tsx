@@ -106,7 +106,7 @@ export function ProjectNewPage() {
         setError(new Error("Dry-run is on. Uncheck Dry-run in the header to write project/<name>/."));
         return;
       }
-      navigate(`/projects/${encodeURIComponent(created.id)}`);
+      navigate(`/projects/${encodeURIComponent(created.id)}/workflow`);
     } catch (err) {
       setError(err instanceof Error ? err : new Error(String(err)));
     } finally {

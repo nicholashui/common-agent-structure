@@ -77,6 +77,37 @@ export function applyLlmSuggestion(
   };
 }
 
+export function createsCycle(edges: { source: string; target: string }[], source: string, target: string): boolean {
+  if (source === target) {
+    return true;
+  }
+  const adj = new Map<string, string[]>();
+  for (const edge of edges) {
+    const list = adj.get(edge.source) ?? [];
+    list.push(edge.target);
+    adj.set(edge.source, list);
+  }
+  const stack = [target];
+  const seen = new Set<string>();
+  while (stack.length) {
+    const current = stack.pop();
+    if (!current) {
+      break;
+    }
+    if (current === source) {
+      return true;
+    }
+    if (seen.has(current)) {
+      continue;
+    }
+    seen.add(current);
+    for (const next of adj.get(current) ?? []) {
+      stack.push(next);
+    }
+  }
+  return false;
+}
+
 const AGENT_ID_RE = /video\.[a-z0-9_]+/gi;
 
 export function parseVideoAgentIds(text: string): string[] {

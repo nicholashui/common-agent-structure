@@ -31,7 +31,7 @@ export function paramsFromPathname(pathname: string): Record<string, string | un
   if (topTrace?.[1]) {
     params.tid = decodeURIComponent(topTrace[1]);
   }
-  const project = /^\/projects\/([^/]+)$/.exec(path);
+  const project = /^\/projects\/([^/]+)(?:\/(.*))?$/.exec(path);
   if (project?.[1] && project[1] !== "new") {
     params.projectId = decodeURIComponent(project[1]);
   }

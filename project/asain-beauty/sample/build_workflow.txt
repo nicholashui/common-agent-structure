@@ -1,0 +1,17 @@
+Develop and implement a complete end-to-end workflow to generate the target instruction file for the video generator, following these technical and functional requirements:
+
+### Core Project Node System Implementation
+1. For every project node, implement a persistent communication history storage system that logs all incoming instructions, which may originate from human users or other AI agents. Each communication entry must include associated lists of input tags and output tags.
+2. Develop clickable tag functionality that, when activated, navigates to the corresponding project name and automatically scrolls and focuses on the linked communication block, with visual highlighting to emphasize the active entry.
+3. Configure the system to initialize all new projects with a first node created exclusively by a human via the "Create Project node" interface, which includes all required input fields. The first instruction entered into this node serves as the initial prompt that launches the suggested workflow.
+
+### Multi-Agent Collaboration & Instruction Generation
+4. Draft a comprehensive sample instruction to pass to the video agent, containing clear directives for the agent to identify, initiate calls to, and coordinate with all related supporting agents to enable cross-agent collaboration.
+5. Specify that the first agent called must consolidate all responses received from collaborating agents into a single unified output, then generate a follow-up instruction formatted identically to the initial prompt to continue the workflow sequence.
+
+### Reference File Implementation & Workflow Execution
+6. First review all implementation guidelines contained in the markdown files located at `project\asain-beauty\sample\*.md` to align workflow design with the suggested architecture.
+7. Analyze the target output format defined in `project\asain-beauty\sample\asain-beauty-prompt.txt`, which represents the final instruction set to be sent to the video generator, to ensure the workflow produces an exact match in structure and content.
+8. Map out step-by-step workflow stages including: initial project node creation, human input of the first prompt, video agent activation, cross-agent coordination logic, response consolidation, follow-up instruction generation, and final output validation against the target file.
+9. Implement validation checks to confirm the generated workflow produces output that matches the format, content, and functionality requirements specified in the reference files, with error handling for any misaligned agent communications or missing tag associations.
+10. Test the end-to-end workflow to verify tag navigation functions correctly, communication history is properly stored for all project nodes, and the video agent successfully coordinates with supporting agents to produce the consolidated final instruction set.

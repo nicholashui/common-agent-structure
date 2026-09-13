@@ -95,6 +95,86 @@ def test_live_create_and_get(tmp_path: Path) -> None:
     assert fetched.json()["title"] == "Hook demo"
 
 
+def test_output_file_is_inline_video(tmp_path: Path) -> None:
+    client = _client(tmp_path)
+    created = client.post("/api/v3/projects", headers=LIVE, json={"name": "clip-demo", "title": "Clip", "brief": "x"})
+    assert created.status_code == 200
+    folder = tmp_path / "project" / "clip-demo" / "output"
+    folder.mkdir(parents=True)
+    (folder / "clip-demo.mp4").write_bytes(b"\x00\x00\x00 ftypisom" + b"\x00" * 24)
+    resp = client.get("/api/v3/projects/clip-demo/output/file", params={"name": "clip-demo.mp4"})
+    assert resp.status_code == 200
+    assert resp.headers["content-type"].startswith("video/mp4")
+    disposition = resp.headers.get("content-disposition", "")
+    assert "inline" in disposition
+    assert not disposition.lower().startswith("attachment")
+    ranged = client.get(
+        "/api/v3/projects/clip-demo/output/file",
+        params={"name": "clip-demo.mp4"},
+        headers={"Range": "bytes=0-3"},
+    )
+    assert ranged.status_code == 206
+    bad = client.get("/api/v3/projects/clip-demo/output/file", params={"name": "../sample/x.txt"})
+    assert bad.status_code >= 400
+
+
+def test_output_file_get_does_not_mkdir(tmp_path: Path) -> None:
+    client = _client(tmp_path)
+    created = client.post("/api/v3/projects", headers=LIVE, json={"name": "empty-out", "title": "Empty", "brief": "x"})
+    assert created.status_code == 200
+    out = tmp_path / "project" / "empty-out" / "output"
+    assert not out.exists()
+    resp = client.get("/api/v3/projects/empty-out/output/file", params={"name": "missing.mp4"})
+    assert resp.status_code == 404
+    assert not out.exists()
+    sample_escape = client.get(
+        "/api/v3/projects/empty-out/output/file",
+        params={"name": "../sample/asain-beauty-prompt.txt"},
+    )
+    assert sample_escape.status_code >= 400
+    assert not (tmp_path / "project" / "empty-out" / "sample").exists()
+
+
+def test_projects_spec_doc_lists_generate_and_file_routes() -> None:
+    text = (REPO / "ui" / "public" / "docs" / "projects" / "spec.md").read_text(encoding="utf-8")
+    assert "projects/{id}/generate" in text
+    assert "output/file" in text
+    assert "sample/" in text
+
+
+def test_generate_dry_run_and_fail_closed(tmp_path: Path) -> None:
+    client = _client(tmp_path)
+    created = client.post(
+        "/api/v3/projects",
+        headers=LIVE,
+        json={"name": "asain-beauty", "title": "Asain Beauty", "brief": "clip"},
+    )
+    assert created.status_code == 200
+    folder = tmp_path / "project" / "asain-beauty" / "output"
+    folder.mkdir(parents=True, exist_ok=True)
+    (folder / "asain-beauty-prompt.txt").write_text("Frame\n9:16\n", encoding="utf-8")
+    out = client.get("/api/v3/projects/asain-beauty/output").json()
+    ids = [row["id"] for row in out["generators"]]
+    assert "grok-imagine" in ids
+    assert "grok-image" in ids
+    assert "runway" in ids
+    dry = client.post(
+        "/api/v3/projects/asain-beauty/generate",
+        headers=MUTATION,
+        json={"engine": "grok-imagine"},
+    )
+    assert dry.status_code == 200
+    assert dry.json()["error"] == "dry_run"
+    kling = client.post(
+        "/api/v3/projects/asain-beauty/generate",
+        headers=LIVE,
+        json={"engine": "kling"},
+    )
+    assert kling.status_code == 200
+    assert kling.json()["error"] == "engine_not_activated"
+    assert kling.json()["comms"]["items"][-1]["kind"] == "generated_media"
+
+
 def test_reject_escape_and_agent_actor(tmp_path: Path) -> None:
     client = _client(tmp_path)
     bad = client.post("/api/v3/projects", headers=LIVE, json={"name": "../secret"})

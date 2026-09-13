@@ -104,3 +104,14 @@ def test_suggest_next_start_and_parent_io() -> None:
     assert one_out["out_bus"] == "video.screenwriter"
     assert one_out["suggestions"][0]["id"] == "video.screenwriter"
     assert len(one_out["outs"]) >= 2
+    looped = suggest_next(
+        root,
+        template_id="video.template.f",
+        from_id="n-screenwriter",
+        from_agent_id="video.screenwriter",
+        occupied=["video.instructionaldesign", "video.screenwriter"],
+        out_bus="video.instructionaldesign",
+    )
+    back = next(row for row in looped["suggestions"] if row["id"] == "video.instructionaldesign")
+    assert back.get("loopback") is True
+    assert back["kind"] == "loop"

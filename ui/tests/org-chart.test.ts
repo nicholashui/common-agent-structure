@@ -55,7 +55,7 @@ describe("agent org chart", () => {
         id: "e:group:specials->specials.planner-agent",
         source: "group:specials",
         target: "agent:specials.planner-agent",
-        type: "smoothstep",
+        type: "default",
       },
     ]);
   });

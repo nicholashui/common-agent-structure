@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import html
 import json
+import re
 import textwrap
 from pathlib import Path
 from xml.etree import ElementTree
@@ -19,6 +20,9 @@ WIDTH = 3200
 HEIGHT = 5700
 PHASE_Y = (1040, 1630, 2220, 2810, 3400, 3990, 4580)
 PHASE_HEIGHT = 560
+VISUAL_SYSTEM = "casops-workflow-v3"
+TITLE_BAR = 32
+SOCKET_R = 7
 
 
 def phase(name, work, agents, control, gate, output, feedback, *, parallel=False, feedback_kind="feedback"):
@@ -374,6 +378,83 @@ def esc(value):
     return html.escape(str(value), quote=True)
 
 
+def spline_h(x1, y1, x2, y2):
+    mid = (x1 + x2) / 2
+    return f"M{x1:g} {y1:g} C{mid:g} {y1:g} {mid:g} {y2:g} {x2:g} {y2:g}"
+
+
+def spline_v(x, y1, y2):
+    mid = (y1 + y2) / 2
+    return f"M{x:g} {y1:g} C{x + 48:g} {mid:g} {x - 48:g} {mid:g} {x:g} {y2:g}"
+
+
+def socket_pair(parts, x, y, width, in_class="socket-in", out_class="socket-out"):
+    cy = y + TITLE_BAR + 16
+    parts.append(f'<circle class="socket {in_class}" cx="{x:g}" cy="{cy:g}" r="{SOCKET_R}"/>')
+    parts.append(f'<circle class="socket {out_class}" cx="{x + width:g}" cy="{cy:g}" r="{SOCKET_R}"/>')
+
+
+def visual_css(fid: str) -> str:
+    return f"""
+          svg{{background:#1e1e1e;text-rendering:optimizeLegibility}}
+          .canvas{{fill:url(#{fid}-grid)}}
+          .header-title{{font:750 52px 'Segoe UI',Arial,sans-serif;fill:#ffffff;letter-spacing:-.7px}}
+          .header-sub{{font:450 22px 'Segoe UI',Arial,sans-serif;fill:#c8c8c8}}
+          .header-note{{font:650 18px 'Segoe UI',Arial,sans-serif;fill:#f5d0a0}}
+          .stat{{font:700 17px 'Segoe UI',Arial,sans-serif;fill:#ffffff;letter-spacing:.15px}}
+          .section-title{{font:750 31px 'Segoe UI',Arial,sans-serif;fill:#eeeeee;letter-spacing:-.25px}}
+          .section-sub{{font:450 18px 'Segoe UI',Arial,sans-serif;fill:#b0b0b0}}
+          .phase-num{{font:800 36px 'Segoe UI',Arial,sans-serif;fill:#ffffff}}
+          .phase-name{{font:750 30px 'Segoe UI',Arial,sans-serif;fill:#eeeeee;letter-spacing:-.2px}}
+          .phase-count{{font:700 16px 'Segoe UI',Arial,sans-serif;fill:#9a9a9a;letter-spacing:.8px}}
+          .card-title{{font:700 16px 'Segoe UI',Arial,sans-serif;fill:#ffffff}}
+          .small{{font:500 18px 'Segoe UI',Arial,sans-serif;fill:#c8c8c8}}
+          .tiny{{font:450 15px 'Segoe UI',Arial,sans-serif;fill:#9a9a9a}}
+          .label{{font:750 16px 'Segoe UI',Arial,sans-serif;fill:#d0d0d0;letter-spacing:.65px}}
+          .agent-text{{font:650 18px 'Segoe UI',Arial,sans-serif;fill:#9cdcfe;text-decoration:underline;text-decoration-color:#3d6a88}}
+          .agent-link{{cursor:pointer;text-decoration:none;outline:none}}
+          .agent-hit{{fill:#2a2a2a;stroke:#3d3d3d;stroke-width:1;opacity:.95;vector-effect:non-scaling-stroke}}
+          .agent-link:hover .agent-hit,.agent-link:focus .agent-hit{{fill:#1e3a4c;stroke:#64b5f6;stroke-width:2}}
+          .agent-link:hover .agent-text,.agent-link:focus .agent-text{{fill:#b8e4ff;text-decoration-color:#64b5f6}}
+          .gateway-text{{font:800 15px 'Segoe UI',Arial,sans-serif;fill:#ffcc80;text-anchor:middle}}
+          .gateway-sub{{font:750 13px 'Segoe UI',Arial,sans-serif;fill:#ffcc80;text-anchor:middle}}
+          .parallel-symbol{{font:800 30px 'Segoe UI',Arial,sans-serif;fill:#c7d2fe;text-anchor:middle}}
+          .feedback-label{{font:700 16px 'Segoe UI',Arial,sans-serif;fill:#f38ba8}}
+          .phase-bg{{fill:#252525;stroke:#3a3a3a;stroke-width:2;filter:url(#{fid}-panel-shadow)}}
+          .phase-bg-alt{{fill:#222222;stroke:#3a3a3a;stroke-width:2;filter:url(#{fid}-panel-shadow)}}
+          .control-bg{{fill:#252525;stroke:#3d3d3d;stroke-width:2;filter:url(#{fid}-panel-shadow)}}
+          .card,.card-blue,.card-purple,.card-green,.card-amber,.card-rose{{stroke-width:1.5;filter:url(#{fid}-shadow);vector-effect:non-scaling-stroke}}
+          .card{{fill:#353535;stroke:#111111}}
+          .card-blue{{fill:#353535;stroke:#111111}}
+          .card-purple{{fill:#353535;stroke:#111111}}
+          .card-green{{fill:#353535;stroke:#111111}}
+          .card-amber{{fill:#353535;stroke:#111111}}
+          .card-rose{{fill:#353535;stroke:#111111}}
+          .card-accent{{stroke:none}}
+          .accent-blue{{fill:#2a5ea7}} .accent-purple{{fill:#6a1b9a}} .accent-green{{fill:#2e7d32}}
+          .accent-amber{{fill:#e65100}} .accent-rose{{fill:#9f1239}} .accent-neutral{{fill:#455a64}}
+          .artifact{{fill:#2b2b2b;stroke:#a6adc8;stroke-width:2;stroke-dasharray:9 7;filter:url(#{fid}-shadow);vector-effect:non-scaling-stroke}}
+          .gateway{{fill:#3d2e12;stroke:#f0a020;stroke-width:3;filter:url(#{fid}-shadow);vector-effect:non-scaling-stroke}}
+          .parallel{{fill:#1e1b4b;stroke:#818cf8;stroke-width:3;filter:url(#{fid}-shadow);vector-effect:non-scaling-stroke}}
+          .phase-start{{fill:#2a5ea7;stroke:#64b5f6;stroke-width:4;vector-effect:non-scaling-stroke}}
+          .event{{fill:#2a5ea7;stroke:#64b5f6;stroke-width:5;vector-effect:non-scaling-stroke}}
+          .end-event-outer{{fill:#1b3a1d;stroke:#81c784;stroke-width:5;vector-effect:non-scaling-stroke}}
+          .end-event-inner{{fill:none;stroke:#81c784;stroke-width:3;vector-effect:non-scaling-stroke}}
+          .flow{{fill:none;stroke:#64b5f6;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;marker-end:url(#{fid}-arrow);vector-effect:non-scaling-stroke}}
+          .branch{{fill:none;stroke:#81c784;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;marker-end:url(#{fid}-arrow);vector-effect:non-scaling-stroke}}
+          .feedback{{fill:none;stroke:#f38ba8;stroke-width:3;stroke-linecap:round;stroke-dasharray:12 8;marker-end:url(#{fid}-feedback-arrow);vector-effect:non-scaling-stroke}}
+          .learning{{fill:none;stroke:#cba6f7;stroke-width:3;stroke-linecap:round;stroke-dasharray:12 8;marker-end:url(#{fid}-learning-arrow);vector-effect:non-scaling-stroke}}
+          .association{{fill:none;stroke:#6c7086;stroke-width:2;stroke-linecap:round;stroke-dasharray:5 7;vector-effect:non-scaling-stroke}}
+          .phase-chip{{fill:#2a5ea7}} .phase-chip-purple{{fill:#6a1b9a}} .phase-chip-green{{fill:#2e7d32}}
+          .phase-chip-amber{{fill:#e65100}} .phase-chip-rose{{fill:#9f1239}}
+          .runtime-banner{{fill:#3d2e12;stroke:#f0a020;stroke-width:2;vector-effect:non-scaling-stroke}}
+          .legend-line{{stroke:#64b5f6;stroke-width:4;stroke-linecap:round;vector-effect:non-scaling-stroke}}
+          .socket{{stroke:#111;stroke-width:2;vector-effect:non-scaling-stroke}}
+          .socket-in{{fill:#64b5f6}} .socket-out{{fill:#81c784}}
+        
+"""
+
+
 def wrap(value, width=72, limit=None):
     """Wrap visible copy without ever dropping source information."""
     lines = textwrap.wrap(str(value), width=width, break_long_words=False, break_on_hyphens=False) or [""]
@@ -405,10 +486,11 @@ def render_card(parts, css_class, x, y, width, height, title, lines, *, line_cla
         "card-rose": "accent-rose",
     }.get(css_class, "accent-neutral")
     parts.append('<g class="content-card">')
-    parts.append(f'<rect class="{css_class}" x="{x}" y="{y}" width="{width}" height="{height}" rx="18"/>')
-    parts.append(f'<rect class="card-accent {accent_class}" x="{x + 1}" y="{y + 1}" width="{width - 2}" height="8" rx="4"/>')
-    parts.append(f'<text class="card-title" x="{x + 28}" y="{y + 45}">{esc(title)}</text>')
-    text_lines(parts, line_class, x + 28, y + 82, lines, 31)
+    parts.append(f'<rect class="{css_class}" x="{x}" y="{y}" width="{width}" height="{height}" rx="8"/>')
+    parts.append(f'<rect class="card-accent {accent_class}" x="{x}" y="{y}" width="{width}" height="{TITLE_BAR}"/>')
+    parts.append(f'<text class="card-title" x="{x + 28}" y="{y + 22}">{esc(title)}</text>')
+    socket_pair(parts, x, y, width)
+    text_lines(parts, line_class, x + 28, y + 62, lines, 31)
     parts.append("</g>")
 
 
@@ -446,10 +528,14 @@ def render_phase(parts, item, index, y):
         parts.append(f'<polygon class="parallel" points="1600,{y + 90} 1646,{y + 136} 1600,{y + 182} 1554,{y + 136}"/>')
         parts.append(f'<text class="parallel-symbol" x="1600" y="{y + 146}">+</text>')
         for center in (540, 1540, 2540):
-            parts.append(f'<path class="branch" data-flow-kind="branch" d="M1600 {y + 182} L{center} {card_y - 14}"/>')
+            parts.append(
+                f'<path class="branch" data-flow-kind="branch" d="{spline_h(1600, y + 182, center, card_y - 14)}"/>'
+            )
     else:
         parts.append(f'<circle class="phase-start" cx="1600" cy="{y + 132}" r="20"/>')
-        parts.append(f'<path class="flow" data-flow-kind="sequence" d="M1600 {y + 152} V{y + 158} H540 V{card_y - 14}"/>')
+        parts.append(
+            f'<path class="flow" data-flow-kind="sequence" d="{spline_v(1600, y + 152, card_y - 14)}"/>'
+        )
 
     card_x = (80, 1080, 2080)
     card_w = 920
@@ -470,14 +556,15 @@ def render_phase(parts, item, index, y):
 
     parts.append('<g class="content-card">')
     parts.append(
-        f'<rect class="{card_classes[1]}" x="{card_x[1]}" y="{card_y}" width="{card_w}" height="{card_h}" rx="18"/>'
+        f'<rect class="{card_classes[1]}" x="{card_x[1]}" y="{card_y}" width="{card_w}" height="{card_h}" rx="8"/>'
     )
     parts.append(
-        f'<rect class="card-accent accent-purple" x="{card_x[1] + 1}" y="{card_y + 1}" width="{card_w - 2}" height="8" rx="4"/>'
+        f'<rect class="card-accent accent-purple" x="{card_x[1]}" y="{card_y}" width="{card_w}" height="{TITLE_BAR}"/>'
     )
-    parts.append(f'<text class="card-title" x="{card_x[1] + 28}" y="{card_y + 45}">Principal crew</text>')
+    parts.append(f'<text class="card-title" x="{card_x[1] + 28}" y="{card_y + 22}">Principal crew</text>')
+    socket_pair(parts, card_x[1], card_y, card_w)
     for agent_index, agent_id in enumerate(phase_data["agents"]):
-        agent_link(parts, agent_id, card_x[1] + 28, card_y + 83 + agent_index * 28, card_w - 56)
+        agent_link(parts, agent_id, card_x[1] + 28, card_y + 66 + agent_index * 28, card_w - 56)
     parts.append("</g>")
 
     render_card(
@@ -492,15 +579,22 @@ def render_phase(parts, item, index, y):
         line_class="small",
     )
 
+    socket_y = card_y + TITLE_BAR + 16
     if phase_data["parallel"]:
         for center in (540, 1540, 2540):
             parts.append(
-                f'<path class="branch" data-flow-kind="branch" d="M{center} {card_y + card_h} V{y + 427} H1600"/>'
+                f'<path class="branch" data-flow-kind="branch" d="{spline_h(center, card_y + card_h, 1600, y + 427)}"/>'
             )
     else:
-        parts.append(f'<path class="flow" data-flow-kind="sequence" d="M1000 {card_y + 120} H1065"/>')
-        parts.append(f'<path class="flow" data-flow-kind="sequence" d="M2000 {card_y + 120} H2065"/>')
-        parts.append(f'<path class="flow" data-flow-kind="sequence" d="M2540 {card_y + card_h} V{y + 427} H1600"/>')
+        parts.append(
+            f'<path class="flow" data-flow-kind="sequence" d="{spline_h(1000, socket_y, 1080, socket_y)}"/>'
+        )
+        parts.append(
+            f'<path class="flow" data-flow-kind="sequence" d="{spline_h(2000, socket_y, 2080, socket_y)}"/>'
+        )
+        parts.append(
+            f'<path class="flow" data-flow-kind="sequence" d="{spline_h(2540, card_y + card_h, 1600, y + 427)}"/>'
+        )
 
     parts.append(
         f'<polygon class="gateway" data-gate="{esc(phase_data["gate"])}" '
@@ -535,75 +629,22 @@ def render_svg(item):
         "video.planner", "video.producer", "video.orchestrator", "video.router", "video.memory", "video.judge", "video.gatekeeper", "video.evaluationharness"
     })
     parts = [
-        f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {WIDTH} {HEIGHT}" width="{WIDTH}" height="{HEIGHT}" preserveAspectRatio="xMinYMin meet" lang="en" role="img" aria-labelledby="{title_id} {desc_id}" data-diagram-id="{slug}" data-diagram-kind="{item["kind"]}" data-code="{item["code"]}" data-agent-count="{len(unique_agents)}" data-schema-version="1" data-visual-system="casops-workflow-v2">',
+        f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {WIDTH} {HEIGHT}" width="{WIDTH}" height="{HEIGHT}" preserveAspectRatio="xMinYMin meet" lang="en" role="img" aria-labelledby="{title_id} {desc_id}" data-diagram-id="{slug}" data-diagram-kind="{item["kind"]}" data-code="{item["code"]}" data-agent-count="{len(unique_agents)}" data-schema-version="1" data-visual-system="{VISUAL_SYSTEM}">',
         f'<title id="{title_id}">Video {esc(item["kind"].title())} {esc(item["code"])} BPM workflow — {esc(item["title"])}</title>',
         f'<desc id="{desc_id}">Seven-phase governed video production BPM workflow for {esc(item["title"])}. It shows greenlight, pre-production, production, post, release review, distribution, post-launch learning, quality gates, typed artifacts, principal agents, targeted rework, and fail-closed runtime status.</desc>',
         f'<metadata>Generated from spec/production_scale_framework.md. Visual system follows ui/public/svg/video.workflow.svg. Evidence basis: {esc(item["basis"])} Runtime remains fail-closed; capability maps do not activate tools, network, or production.</metadata>',
         '<defs>',
         '<style><![CDATA[',
-        f'''
-          svg{{background:#f4f7fb;text-rendering:optimizeLegibility}}
-          .canvas{{fill:#f4f7fb}}
-          .header-title{{font:750 52px 'Segoe UI',Arial,sans-serif;fill:#ffffff;letter-spacing:-.7px}}
-          .header-sub{{font:450 22px 'Segoe UI',Arial,sans-serif;fill:#cbd5e1}}
-          .header-note{{font:650 18px 'Segoe UI',Arial,sans-serif;fill:#78350f}}
-          .stat{{font:700 17px 'Segoe UI',Arial,sans-serif;fill:#ffffff;letter-spacing:.15px}}
-          .section-title{{font:750 31px 'Segoe UI',Arial,sans-serif;fill:#0f172a;letter-spacing:-.25px}}
-          .section-sub{{font:450 18px 'Segoe UI',Arial,sans-serif;fill:#475569}}
-          .phase-num{{font:800 36px 'Segoe UI',Arial,sans-serif;fill:#ffffff}}
-          .phase-name{{font:750 30px 'Segoe UI',Arial,sans-serif;fill:#0f172a;letter-spacing:-.2px}}
-          .phase-count{{font:700 16px 'Segoe UI',Arial,sans-serif;fill:#526176;letter-spacing:.8px}}
-          .card-title{{font:700 21px 'Segoe UI',Arial,sans-serif;fill:#172033}}
-          .small{{font:500 18px 'Segoe UI',Arial,sans-serif;fill:#405066}}
-          .tiny{{font:450 15px 'Segoe UI',Arial,sans-serif;fill:#64748b}}
-          .label{{font:750 16px 'Segoe UI',Arial,sans-serif;fill:#334155;letter-spacing:.65px}}
-          .agent-text{{font:650 18px 'Segoe UI',Arial,sans-serif;fill:#1d4ed8;text-decoration:underline;text-decoration-color:#bfdbfe}}
-          .agent-link{{cursor:pointer;text-decoration:none;outline:none}}
-          .agent-hit{{fill:#eff6ff;stroke:#dbeafe;stroke-width:1;opacity:.9;vector-effect:non-scaling-stroke}}
-          .agent-link:hover .agent-hit,.agent-link:focus .agent-hit{{fill:#dbeafe;stroke:#60a5fa;stroke-width:2}}
-          .agent-link:hover .agent-text,.agent-link:focus .agent-text{{fill:#1e40af;text-decoration-color:#60a5fa}}
-          .gateway-text{{font:800 15px 'Segoe UI',Arial,sans-serif;fill:#78350f;text-anchor:middle}}
-          .gateway-sub{{font:750 13px 'Segoe UI',Arial,sans-serif;fill:#78350f;text-anchor:middle}}
-          .parallel-symbol{{font:800 30px 'Segoe UI',Arial,sans-serif;fill:#3730a3;text-anchor:middle}}
-          .feedback-label{{font:700 16px 'Segoe UI',Arial,sans-serif;fill:#b42318}}
-          .phase-bg{{fill:#ffffff;stroke:#d8e1ec;stroke-width:2;filter:url(#{slug}-panel-shadow)}}
-          .phase-bg-alt{{fill:#f8fafc;stroke:#d8e1ec;stroke-width:2;filter:url(#{slug}-panel-shadow)}}
-          .control-bg{{fill:url(#{slug}-control-surface);stroke:#c7d2fe;stroke-width:2;filter:url(#{slug}-panel-shadow)}}
-          .card,.card-blue,.card-purple,.card-green,.card-amber,.card-rose{{stroke-width:2;filter:url(#{slug}-shadow);vector-effect:non-scaling-stroke}}
-          .card{{fill:#ffffff;stroke:#cbd5e1}}
-          .card-blue{{fill:#f8fbff;stroke:#bfdbfe}}
-          .card-purple{{fill:#faf9ff;stroke:#ddd6fe}}
-          .card-green{{fill:#f7fcfa;stroke:#bbf7d0}}
-          .card-amber{{fill:#fffdf7;stroke:#fde68a}}
-          .card-rose{{fill:#fff9fa;stroke:#fecdd3}}
-          .card-accent{{stroke:none}}
-          .accent-blue{{fill:#2563eb}} .accent-purple{{fill:#7c3aed}} .accent-green{{fill:#059669}}
-          .accent-amber{{fill:#b45309}} .accent-rose{{fill:#be123c}} .accent-neutral{{fill:#64748b}}
-          .artifact{{fill:#ffffff;stroke:#64748b;stroke-width:2;stroke-dasharray:9 7;filter:url(#{slug}-shadow);vector-effect:non-scaling-stroke}}
-          .gateway{{fill:#fff7ed;stroke:#d97706;stroke-width:3;filter:url(#{slug}-shadow);vector-effect:non-scaling-stroke}}
-          .parallel{{fill:#eef2ff;stroke:#4f46e5;stroke-width:3;filter:url(#{slug}-shadow);vector-effect:non-scaling-stroke}}
-          .phase-start{{fill:#ffffff;stroke:#2563eb;stroke-width:4;vector-effect:non-scaling-stroke}}
-          .event{{fill:#ffffff;stroke:#2563eb;stroke-width:5;vector-effect:non-scaling-stroke}}
-          .end-event-outer{{fill:#ffffff;stroke:#047857;stroke-width:5;vector-effect:non-scaling-stroke}}
-          .end-event-inner{{fill:none;stroke:#047857;stroke-width:3;vector-effect:non-scaling-stroke}}
-          .flow{{fill:none;stroke:#334155;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;marker-end:url(#{slug}-arrow);vector-effect:non-scaling-stroke}}
-          .branch{{fill:none;stroke:#526176;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;marker-end:url(#{slug}-arrow);vector-effect:non-scaling-stroke}}
-          .feedback{{fill:none;stroke:#c2413b;stroke-width:3;stroke-linecap:round;stroke-dasharray:12 8;marker-end:url(#{slug}-feedback-arrow);vector-effect:non-scaling-stroke}}
-          .learning{{fill:none;stroke:#6d28d9;stroke-width:3;stroke-linecap:round;stroke-dasharray:12 8;marker-end:url(#{slug}-learning-arrow);vector-effect:non-scaling-stroke}}
-          .association{{fill:none;stroke:#64748b;stroke-width:2;stroke-linecap:round;stroke-dasharray:5 7;vector-effect:non-scaling-stroke}}
-          .phase-chip{{fill:#1d4ed8}} .phase-chip-purple{{fill:#6d28d9}} .phase-chip-green{{fill:#047857}}
-          .phase-chip-amber{{fill:#92400e}} .phase-chip-rose{{fill:#9f1239}}
-          .runtime-banner{{fill:#fffbeb;stroke:#f59e0b;stroke-width:2;vector-effect:non-scaling-stroke}}
-          .legend-line{{stroke:#334155;stroke-width:4;stroke-linecap:round;vector-effect:non-scaling-stroke}}
-        ''',
+        visual_css(slug),
         ']]></style>',
-        f'<linearGradient id="{slug}-header-gradient" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0f172a"/><stop offset="0.56" stop-color="#172554"/><stop offset="1" stop-color="#312e81"/></linearGradient>',
-        f'<linearGradient id="{slug}-control-surface" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f8fbff"/><stop offset="1" stop-color="#eef2ff"/></linearGradient>',
-        f'<filter id="{slug}-panel-shadow" x="-8%" y="-8%" width="116%" height="120%"><feDropShadow dx="0" dy="7" stdDeviation="12" flood-color="#0f172a" flood-opacity="0.07"/></filter>',
-        f'<filter id="{slug}-shadow" x="-15%" y="-15%" width="130%" height="140%"><feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#0f172a" flood-opacity="0.09"/></filter>',
-        f'<marker id="{slug}-arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="1.6" markerHeight="1.6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#334155"/></marker>',
-        f'<marker id="{slug}-feedback-arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="1.6" markerHeight="1.6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#c2413b"/></marker>',
-        f'<marker id="{slug}-learning-arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="1.6" markerHeight="1.6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#6d28d9"/></marker>',
+        f'<pattern id="{slug}-grid" width="20" height="20" patternUnits="userSpaceOnUse"><rect width="20" height="20" fill="#1e1e1e"/><circle cx="1" cy="1" r="1.05" fill="#3a3a3a"/></pattern>',
+        f'<linearGradient id="{slug}-header-gradient" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#151515"/><stop offset="0.56" stop-color="#1a1a2e"/><stop offset="1" stop-color="#1e1b4b"/></linearGradient>',
+        f'<linearGradient id="{slug}-control-surface" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2a2a2a"/><stop offset="1" stop-color="#232323"/></linearGradient>',
+        f'<filter id="{slug}-panel-shadow" x="-8%" y="-8%" width="116%" height="120%"><feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#000000" flood-opacity="0.45"/></filter>',
+        f'<filter id="{slug}-shadow" x="-15%" y="-15%" width="130%" height="140%"><feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#000000" flood-opacity="0.5"/></filter>',
+        f'<marker id="{slug}-arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="1.6" markerHeight="1.6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#64b5f6"/></marker>',
+        f'<marker id="{slug}-feedback-arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="1.6" markerHeight="1.6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#f38ba8"/></marker>',
+        f'<marker id="{slug}-learning-arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="1.6" markerHeight="1.6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#cba6f7"/></marker>',
         '</defs>',
         f'<rect class="canvas" width="{WIDTH}" height="{HEIGHT}"/>',
     ]
@@ -665,11 +706,12 @@ def render_svg(item):
     for idx, (cls, title, agents) in enumerate(control_cards):
         x = xs[idx]
         w = widths[idx]
-        parts.append(f'<rect class="{cls}" x="{x}" y="835" width="{w}" height="130" rx="18"/>')
-        parts.append(f'<rect class="card-accent {control_accents[idx]}" x="{x + 1}" y="836" width="{w - 2}" height="8" rx="4"/>')
-        parts.append(f'<text class="card-title" x="{x + 28}" y="878">{esc(title)}</text>')
+        parts.append(f'<rect class="{cls}" x="{x}" y="835" width="{w}" height="130" rx="8"/>')
+        parts.append(f'<rect class="card-accent {control_accents[idx]}" x="{x}" y="835" width="{w}" height="{TITLE_BAR}"/>')
+        parts.append(f'<text class="card-title" x="{x + 28}" y="857">{esc(title)}</text>')
+        socket_pair(parts, x, 835, w)
         for a_idx, agent_id in enumerate(agents):
-            agent_link(parts, agent_id, x + 28, 912 + a_idx * 28, w - 56)
+            agent_link(parts, agent_id, x + 28, 896 + a_idx * 28, w - 56)
     parts.extend(['<path class="association" d="M1600 965 V1020"/>', '</g>'])
 
     # Phases and inter-phase sequence
@@ -677,16 +719,18 @@ def render_svg(item):
         render_phase(parts, item, index, y)
         if index < len(PHASE_Y) - 1:
             next_y = PHASE_Y[index + 1]
-            parts.append(f'<path class="flow" data-flow-kind="sequence" d="M1600 {y + 537} V{next_y + 74}"/>')
+            parts.append(
+                f'<path class="flow" data-flow-kind="sequence" d="{spline_v(1600, y + 537, next_y + 74)}"/>'
+            )
 
     # Systemic learning loop
     parts.append(f'<path class="learning" data-flow-kind="learning" d="M1545 {PHASE_Y[-1] + 482} C900 5160 25 5160 25 865 H70"/>')
-    parts.append('<text class="label" x="90" y="5172" fill="#6d28d9">REGRESSION-TESTED LEARNING → FUTURE PLAN / BRIEF</text>')
+    parts.append('<text class="label" x="90" y="5172" fill="#cba6f7">REGRESSION-TESTED LEARNING → FUTURE PLAN / BRIEF</text>')
 
     # Footer
     parts.extend([
         '<g id="legend-and-source" role="group" aria-labelledby="legend-and-source-title">',
-        f'<rect x="40" y="5220" width="3120" height="410" rx="24" fill="#ffffff" stroke="#d8e1ec" stroke-width="2" filter="url(#{slug}-panel-shadow)"/>',
+        f'<rect class="phase-bg" x="40" y="5220" width="3120" height="410" rx="16"/>',
         '<text id="legend-and-source-title" class="section-title" x="70" y="5265">BPM legend and operating notes</text>',
         '<circle class="event" cx="110" cy="5325" r="18"/><text class="small" x="145" y="5331">event / phase start</text>',
         '<rect class="card" x="430" y="5305" width="80" height="40" rx="9"/><text class="small" x="530" y="5331">task group</text>',
@@ -775,7 +819,7 @@ def validate_svg_output(item, target, declared_agents):
     require(root.get("data-diagram-kind") == item["kind"], "diagram kind mismatch")
     require(root.get("data-code") == item["code"], "diagram code mismatch")
     require(root.get("data-schema-version") == "1", "schema version mismatch")
-    require(root.get("data-visual-system") == "casops-workflow-v2", "visual-system version mismatch")
+    require(root.get("data-visual-system") == VISUAL_SYSTEM, "visual-system version mismatch")
 
     ids = [node.get("id") for node in nodes if node.get("id")]
     duplicate_ids = sorted({node_id for node_id in ids if ids.count(node_id) > 1})
@@ -892,16 +936,18 @@ def validate_svg_output(item, target, declared_agents):
     required_style_tokens = [
         "Segoe UI",
         "text-rendering:optimizeLegibility",
-        ".canvas{fill:#f4f7fb}",
+        ".canvas{fill:url(#",
+        "#1e1e1e",
         ".header-title{font:750 52px",
-        ".phase-bg{fill:#ffffff",
-        ".card-blue{fill:#f8fbff",
-        ".agent-hit{fill:#eff6ff",
-        ".gateway{fill:#fff7ed;stroke:#d97706",
-        ".parallel{fill:#eef2ff;stroke:#4f46e5",
-        ".feedback{fill:none;stroke:#c2413b",
-        ".learning{fill:none;stroke:#6d28d9",
-        ".artifact{fill:#ffffff;stroke:#64748b",
+        ".phase-bg{fill:#252525",
+        ".card-blue{fill:#353535",
+        ".agent-hit{fill:#2a2a2a",
+        ".gateway{fill:#3d2e12;stroke:#f0a020",
+        ".parallel{fill:#1e1b4b;stroke:#818cf8",
+        ".feedback{fill:none;stroke:#f38ba8",
+        ".learning{fill:none;stroke:#cba6f7",
+        ".artifact{fill:#2b2b2b;stroke:#a6adc8",
+        ".socket{stroke:#111",
         "vector-effect:non-scaling-stroke",
         "stroke-dasharray",
     ]
@@ -939,7 +985,7 @@ def validate_main_svg(target, declared_agents):
     require(root.get("data-diagram-id") == "video-main-workflow", "main diagram id mismatch")
     require(root.get("data-diagram-kind") == "main", "main diagram kind mismatch")
     require(root.get("data-agent-count") == "114" and root.get("data-video-agent-count") == "114", "main agent count metadata mismatch")
-    require(root.get("data-visual-system") == "casops-workflow-v2", "visual-system version mismatch")
+    require(root.get("data-visual-system") == VISUAL_SYSTEM, "visual-system version mismatch")
     require(len(ids) == len(set(ids)), "duplicate ids are present")
     labelled_by = root.get("aria-labelledby", "").split()
     require(labelled_by == ["workflow-title", "workflow-desc"], "aria-labelledby mismatch")
@@ -976,11 +1022,12 @@ def validate_main_svg(target, declared_agents):
     css = "\n".join(node.text or "" for node in style_nodes)
     for token in [
         "text-rendering:optimizeLegibility",
-        ".canvas{fill:#f4f7fb}",
+        ".canvas{fill:url(#graph-grid)}",
         ".header-title{font:750 52px",
-        ".agent-list .agentline{fill:#1d4ed8",
-        ".phase-bg{fill:#ffffff",
-        ".card-blue{fill:#f8fbff",
+        ".agent-list .agentline{fill:#9cdcfe",
+        ".phase-bg{fill:#252525",
+        ".card-blue{fill:#353535",
+        ".socket{stroke:#111",
         "vector-effect:non-scaling-stroke",
     ]:
         require(token in css, f"missing main visual-system token: {token}")
@@ -1003,6 +1050,132 @@ def validate_generated_set(expected_files):
         raise ValueError(f"SVG directory inventory mismatch: {sorted(actual_all ^ expected_all)}")
 
 
+MAIN_CSS = """
+      svg{background:#1e1e1e;text-rendering:optimizeLegibility}
+      .canvas{fill:url(#graph-grid)}
+      .header-title{font:750 52px 'Segoe UI',Arial,sans-serif;fill:#ffffff;letter-spacing:-.7px}
+      .header-sub{font:450 22px 'Segoe UI',Arial,sans-serif;fill:#c8c8c8}
+      .header-note{font:650 18px 'Segoe UI',Arial,sans-serif;fill:#f5d0a0}
+      .stat{font:700 17px 'Segoe UI',Arial,sans-serif;fill:#ffffff;letter-spacing:.15px}
+      .section-title{font:750 31px 'Segoe UI',Arial,sans-serif;fill:#eeeeee;letter-spacing:-.25px}
+      .section-sub{font:450 18px 'Segoe UI',Arial,sans-serif;fill:#b0b0b0}
+      .phase-num{font:800 36px 'Segoe UI',Arial,sans-serif;fill:#ffffff}
+      .phase-name{font:750 30px 'Segoe UI',Arial,sans-serif;fill:#eeeeee;letter-spacing:-.2px}
+      .phase-count{font:700 16px 'Segoe UI',Arial,sans-serif;fill:#9a9a9a;letter-spacing:.8px}
+      .card-title{font:700 16px 'Segoe UI',Arial,sans-serif;fill:#ffffff}
+      .card-sub{font:450 16px 'Segoe UI',Arial,sans-serif;fill:#9a9a9a}
+      .agent-list{font:600 17px 'Segoe UI',Arial,sans-serif;fill:#c8c8c8}
+      .agent-list .agentline{fill:#9cdcfe;text-decoration:underline;text-decoration-color:#3d6a88}
+      .agent-link{cursor:pointer;text-decoration:none;outline:none}
+      .agent-link:hover .agentline{fill:#b8e4ff;text-decoration-color:#64b5f6}
+      .agent-link:focus .agentline{fill:#b8e4ff;stroke:#1e3a4c;stroke-width:6;paint-order:stroke;stroke-linejoin:round;text-decoration-color:#64b5f6}
+      .mono{font:600 16px Consolas,'Courier New',monospace;fill:#c8c8c8}
+      .tiny{font:450 15px 'Segoe UI',Arial,sans-serif;fill:#9a9a9a}
+      .small{font:500 17px 'Segoe UI',Arial,sans-serif;fill:#c8c8c8}
+      .label{font:750 16px 'Segoe UI',Arial,sans-serif;fill:#d0d0d0;letter-spacing:.65px}
+      .white-label{font:750 16px 'Segoe UI',Arial,sans-serif;fill:#ffffff;letter-spacing:.65px}
+      .gateway-text{font:800 18px 'Segoe UI',Arial,sans-serif;fill:#ffcc80;text-anchor:middle}
+      .gateway-sub{font:750 14px 'Segoe UI',Arial,sans-serif;fill:#ffcc80;text-anchor:middle}
+      .phase-bg{fill:#252525;stroke:#3a3a3a;stroke-width:2;filter:url(#panel-shadow)}
+      .phase-bg-alt{fill:#222222;stroke:#3a3a3a;stroke-width:2;filter:url(#panel-shadow)}
+      .control-bg{fill:#252525;stroke:#3d3d3d;stroke-width:2;filter:url(#panel-shadow)}
+      .card,.card-blue,.card-purple,.card-green,.card-amber,.card-rose{stroke-width:1.5;filter:url(#shadow);vector-effect:non-scaling-stroke}
+      .card{fill:#353535;stroke:#111111}
+      .card-blue{fill:#353535;stroke:#111111}
+      .card-purple{fill:#353535;stroke:#111111}
+      .card-green{fill:#353535;stroke:#111111}
+      .card-amber{fill:#353535;stroke:#111111}
+      .card-rose{fill:#353535;stroke:#111111}
+      .card-accent{stroke:none}
+      .accent-blue{fill:#2a5ea7} .accent-purple{fill:#6a1b9a} .accent-green{fill:#2e7d32}
+      .accent-amber{fill:#e65100} .accent-rose{fill:#9f1239} .accent-neutral{fill:#455a64}
+      .artifact{fill:#2b2b2b;stroke:#a6adc8;stroke-width:2;stroke-dasharray:9 7;filter:url(#shadow);vector-effect:non-scaling-stroke}
+      .gateway{fill:#3d2e12;stroke:#f0a020;stroke-width:3;filter:url(#shadow);vector-effect:non-scaling-stroke}
+      .parallel{fill:#1e1b4b;stroke:#818cf8;stroke-width:3;filter:url(#shadow);vector-effect:non-scaling-stroke}
+      .event{fill:#2a5ea7;stroke:#64b5f6;stroke-width:5;vector-effect:non-scaling-stroke}
+      .end-event-outer{fill:#1b3a1d;stroke:#81c784;stroke-width:5;vector-effect:non-scaling-stroke}
+      .end-event-inner{fill:none;stroke:#81c784;stroke-width:3;vector-effect:non-scaling-stroke}
+      .flow{fill:none;stroke:#64b5f6;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;marker-end:url(#arrow);vector-effect:non-scaling-stroke}
+      .branch{fill:none;stroke:#81c784;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;marker-end:url(#arrow);vector-effect:non-scaling-stroke}
+      .feedback{fill:none;stroke:#f38ba8;stroke-width:3;stroke-linecap:round;stroke-dasharray:12 8;marker-end:url(#feedback-arrow);vector-effect:non-scaling-stroke}
+      .learning{fill:none;stroke:#cba6f7;stroke-width:3;stroke-linecap:round;stroke-dasharray:12 8;marker-end:url(#learning-arrow);vector-effect:non-scaling-stroke}
+      .association{fill:none;stroke:#6c7086;stroke-width:2;stroke-linecap:round;stroke-dasharray:5 7;vector-effect:non-scaling-stroke}
+      .phase-chip{fill:#2a5ea7}
+      .phase-chip-purple{fill:#6a1b9a}
+      .phase-chip-green{fill:#2e7d32}
+      .phase-chip-amber{fill:#e65100}
+      .phase-chip-rose{fill:#9f1239}
+      .pill{fill:#2b2b2b;stroke:#3a3a3a;stroke-width:1.5;vector-effect:non-scaling-stroke}
+      .runtime-banner{fill:#3d2e12;stroke:#f0a020;stroke-width:2;vector-effect:non-scaling-stroke}
+      .legend-line{stroke:#64b5f6;stroke-width:4;stroke-linecap:round;vector-effect:non-scaling-stroke}
+      .socket{stroke:#111;stroke-width:2;vector-effect:non-scaling-stroke}
+      .socket-in{fill:#64b5f6} .socket-out{fill:#81c784}
+"""
+
+CARD_ACCENT = {
+    "card": "accent-neutral",
+    "card-blue": "accent-blue",
+    "card-purple": "accent-purple",
+    "card-green": "accent-green",
+    "card-amber": "accent-amber",
+    "card-rose": "accent-rose",
+}
+
+
+def restyle_main_svg(target: Path) -> None:
+    raw = target.read_text(encoding="utf-8")
+    raw = raw.replace('data-visual-system="casops-workflow-v2"', f'data-visual-system="{VISUAL_SYSTEM}"')
+    raw = raw.replace('data-visual-system="casops-workflow-v3"', f'data-visual-system="{VISUAL_SYSTEM}"')
+    raw = re.sub(
+        r"<style><!\[CDATA\[.*?\]\]></style>",
+        "<style><![CDATA[" + MAIN_CSS + "    ]]></style>",
+        raw,
+        count=1,
+        flags=re.S,
+    )
+    if 'id="graph-grid"' not in raw:
+        raw = raw.replace(
+            "<defs>",
+            '<defs>\n    <pattern id="graph-grid" width="20" height="20" patternUnits="userSpaceOnUse">'
+            '<rect width="20" height="20" fill="#1e1e1e"/><circle cx="1" cy="1" r="1.05" fill="#3a3a3a"/></pattern>',
+            1,
+        )
+    raw = re.sub(
+        r'(<linearGradient id="control-surface"[^>]*>)(.*?)(</linearGradient>)',
+        r'\1<stop offset="0" stop-color="#2a2a2a"/><stop offset="1" stop-color="#232323"/>\3',
+        raw,
+        count=1,
+        flags=re.S,
+    )
+    raw = raw.replace('fill="#ffffff" stroke="#d8e1ec"', 'fill="#252525" stroke="#3a3a3a"')
+    raw = raw.replace('fill="#0f172a">BPM LEGEND', 'fill="#eeeeee">BPM LEGEND')
+    raw = raw.replace('flood-opacity="0.07"', 'flood-opacity="0.45"')
+    raw = raw.replace('flood-opacity="0.09"', 'flood-opacity="0.5"')
+    raw = raw.replace('<path d="M0 0 L10 5 L0 10 Z" fill="#334155"/>', '<path d="M0 0 L10 5 L0 10 Z" fill="#64b5f6"/>')
+    raw = raw.replace('<path d="M0 0 L10 5 L0 10 Z" fill="#c2413b"/>', '<path d="M0 0 L10 5 L0 10 Z" fill="#f38ba8"/>')
+    raw = raw.replace('<path d="M0 0 L10 5 L0 10 Z" fill="#6d28d9"/>', '<path d="M0 0 L10 5 L0 10 Z" fill="#cba6f7"/>')
+
+    card_re = re.compile(
+        r'<rect class="(card(?:-blue|-purple|-green|-amber|-rose)?)" x="([0-9.]+)" y="([0-9.]+)" width="([0-9.]+)" height="([0-9.]+)" rx="[0-9.]+"/>'
+    )
+
+    def chrome(match):
+        cls, x_s, y_s, w_s, h_s = match.groups()
+        x, y, w = float(x_s), float(y_s), float(w_s)
+        accent = CARD_ACCENT[cls]
+        cy = y + TITLE_BAR + 16
+        return (
+            f'<rect class="{cls}" x="{x_s}" y="{y_s}" width="{w_s}" height="{h_s}" rx="8"/>'
+            f'<rect class="card-accent {accent}" x="{x_s}" y="{y_s}" width="{w_s}" height="{TITLE_BAR}"/>'
+            f'<circle class="socket socket-in" cx="{x:g}" cy="{cy:g}" r="{SOCKET_R}"/>'
+            f'<circle class="socket socket-out" cx="{x + w:g}" cy="{cy:g}" r="{SOCKET_R}"/>'
+        )
+
+    if 'class="socket socket-in"' not in raw:
+        raw = card_re.sub(chrome, raw)
+    target.write_text(raw, encoding="utf-8")
+
+
 def main():
     validate_matrix()
     OUT_DIR.mkdir(parents=True, exist_ok=True)
@@ -1014,6 +1187,7 @@ def main():
         validate_svg_output(item, target, declared_agents)
         print(target.relative_to(ROOT))
     main_svg = OUT_DIR / "video.workflow.svg"
+    restyle_main_svg(main_svg)
     validate_main_svg(main_svg, declared_agents)
     print(main_svg.relative_to(ROOT))
     validate_generated_set(expected_files)

@@ -33,7 +33,9 @@
     "outputs": [
       "video.judge",
       "video.director",
-      "video.colorist"
+      "video.colorist",
+      "video.promptengineer",
+      "video.cameraoperator"
     ]
   },
   "max_refinement_count": 0,
@@ -48,7 +50,10 @@
     "Another agent's exclusive craft output without handoff",
     "Automatic promotion of self-generated artifacts",
     "Modification of safety, telemetry, gates, permissions, or corrigibility",
-    "Self-granting tools, plugins, network, or isolation downgrades"
+    "Self-granting tools, plugins, network, or isolation downgrades",
+    "Makeup continuity bible",
+    "Shot-intent beats exclusive of video.director",
+    "Camera motor exclusive of video.cameraoperator"
   ],
   "va_id": 6,
   "va_name": "CinematographerAgent (DoP)",

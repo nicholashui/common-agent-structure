@@ -30,7 +30,8 @@
     ],
     "outputs": [
       "video.judge",
-      "video.copywriter"
+      "video.copywriter",
+      "video.promptengineer"
     ]
   },
   "max_refinement_count": 0,

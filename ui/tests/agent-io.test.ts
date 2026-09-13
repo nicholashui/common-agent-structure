@@ -45,6 +45,8 @@ describe("page location label", () => {
     expect(locationLabel("/help")).toBe("Agent Swarm / Help");
     expect(locationLabel("/projects/new")).toBe("Project / New project");
     expect(locationLabel("/projects/safety-recap")).toBe("Project / safety-recap");
+    expect(locationLabel("/projects/asain-beauty/workflow")).toBe("Project / asain-beauty / Workflow");
+    expect(locationLabel("/projects/asain-beauty/chat")).toBe("Project / asain-beauty / Chat");
   });
 });
 
@@ -90,6 +92,7 @@ describe("agent workflow svg", () => {
     expect(hrefs).toContain("video.director");
     expect(hrefs).toContain("video.orchestrator");
     expect(videoWorkflowSvg).toContain('target="_top"');
+    expect(videoWorkflowSvg).toContain('data-visual-system="casops-workflow-v3"');
   });
 });
 

@@ -1,0 +1,112 @@
+/* Node-graph chrome. Light by default; html.dark follows the header theme toggle. */
+
+.casops-graph {
+  --xy-background-color: #fafaf9;
+  --graph-canvas: #fafaf9;
+  --graph-node-bg: #ffffff;
+  --graph-node-fg: #1c1917;
+  --graph-node-border: #e7e5e4;
+  --graph-muted: #78716c;
+  --graph-dot: #d6d3d1;
+  --graph-minimap: #f5f5f4;
+  --graph-control: #ffffff;
+  --graph-control-border: #e7e5e4;
+  background: var(--graph-canvas);
+  color: var(--graph-node-fg);
+}
+
+html.dark .casops-graph {
+  --xy-background-color: #1e1e1e;
+  --graph-canvas: #1e1e1e;
+  --graph-node-bg: #353535;
+  --graph-node-fg: #ddd;
+  --graph-node-border: #111;
+  --graph-muted: #a8a29e;
+  --graph-dot: #3a3a3a;
+  --graph-minimap: #252525;
+  --graph-control: #353535;
+  --graph-control-border: #111;
+}
+
+.casops-graph .react-flow__background {
+  background: var(--graph-canvas) !important;
+}
+
+.casops-graph .react-flow__edge-path {
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.casops-graph .react-flow__connection-path {
+  stroke: #64b5f6;
+  stroke-width: 2.4;
+}
+
+.casops-graph .react-flow__handle {
+  width: 11px;
+  height: 11px;
+  border: 2px solid var(--graph-node-border);
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px rgb(0 0 0 / 0.15);
+}
+
+html.dark .casops-graph .react-flow__handle {
+  box-shadow: 0 0 0 1px rgb(0 0 0 / 0.4);
+}
+
+.casops-graph .react-flow__handle-connecting {
+  box-shadow: 0 0 0 3px rgba(100, 181, 246, 0.45);
+}
+
+.casops-graph .react-flow__minimap {
+  background: var(--graph-minimap);
+  border: 1px solid var(--graph-control-border);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.casops-graph .react-flow__controls {
+  border: 1px solid var(--graph-control-border);
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgb(0 0 0 / 0.12);
+}
+
+.casops-graph .react-flow__controls-button {
+  background: var(--graph-control);
+  border-bottom: 1px solid var(--graph-control-border);
+  fill: var(--graph-node-fg);
+  width: 26px;
+  height: 26px;
+}
+
+.casops-graph .react-flow__controls-button:hover {
+  background: var(--graph-minimap);
+}
+
+.casops-graph .react-flow__controls-button svg {
+  fill: var(--graph-node-fg);
+}
+
+.casops-graph .react-flow__attribution {
+  background: transparent !important;
+  color: var(--graph-muted);
+}
+
+.casops-node {
+  font-family: Inter, "Segoe UI", Arial, sans-serif;
+  background: var(--graph-node-bg);
+  color: var(--graph-node-fg);
+  border-color: var(--graph-node-border);
+  box-shadow: 0 6px 16px rgb(0 0 0 / 0.12);
+}
+
+html.dark .casops-node {
+  box-shadow: 0 6px 16px rgb(0 0 0 / 0.5);
+}
+
+.casops-node .socket-label {
+  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+  font-size: 10px;
+  color: var(--graph-muted);
+}

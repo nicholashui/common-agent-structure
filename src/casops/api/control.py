@@ -9,7 +9,7 @@ from typing import Any
 
 from fastapi import FastAPI, Header, HTTPException, Query, Request
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import JSONResponse
+from fastapi.responses import FileResponse, JSONResponse
 
 from casops.api.http import actor_from_header, install_error_handler
 from casops.auth.actors import ActorClass, is_allowed
@@ -26,6 +26,8 @@ from casops.eval.harness import evaluate
 from casops.improvement.trainer import TrainerBridge
 from casops.instruments.registry import InstrumentRegistry
 from casops.debuglog import list_chat_files, read_acp_logs, read_chat_file, write_chat_turns, write_debug_logs
+from casops.project_comms import append_comm, load_comms, read_output, run_asain_beauty_workflow
+from casops.project_generate import generate_project_media, safe_output_file
 from casops.projects import (
     catalog_public,
     list_projects,
@@ -112,6 +114,12 @@ COMPANION_V3_PATHS: tuple[tuple[str, str], ...] = (
     ("GET", "/api/v3/projects/{project_id}"),
     ("PUT", "/api/v3/projects/{project_id}"),
     ("POST", "/api/v3/projects/{project_id}/next"),
+    ("GET", "/api/v3/projects/{project_id}/comms"),
+    ("POST", "/api/v3/projects/{project_id}/comms"),
+    ("POST", "/api/v3/projects/{project_id}/run"),
+    ("GET", "/api/v3/projects/{project_id}/output"),
+    ("GET", "/api/v3/projects/{project_id}/output/file"),
+    ("POST", "/api/v3/projects/{project_id}/generate"),
 )
 
 _DEFAULT_CORS_ORIGINS = (
@@ -699,6 +707,105 @@ def create_control_plane(
         merged["adapter"] = resolve_chat_adapter(state.llm.settings.chat_adapter, profile_ready=False)
         merged["prompt"] = next_prompt(merged)
         return merged
+
+    @app.get("/api/v3/projects/{project_id}/output")
+    def project_output_get(project_id: str) -> dict[str, Any]:
+        read_project(state.projects_root, project_id)
+        return read_output(state.projects_root, project_id)
+
+    @app.get("/api/v3/projects/{project_id}/output/file")
+    def project_output_file(project_id: str, name: str = Query(..., min_length=1, max_length=120)) -> FileResponse:
+        read_project(state.projects_root, project_id)
+        path = safe_output_file(state.projects_root, project_id, name)
+        if not path.is_file():
+            raise HTTPException(status_code=404, detail="output file missing")
+        suffix = path.suffix.lower()
+        media_type = {
+            ".mp4": "video/mp4",
+            ".webm": "video/webm",
+            ".jpg": "image/jpeg",
+            ".jpeg": "image/jpeg",
+            ".png": "image/png",
+            ".webp": "image/webp",
+        }.get(suffix, "application/octet-stream")
+        return FileResponse(
+            path,
+            media_type=media_type,
+            filename=path.name,
+            content_disposition_type="inline",
+            headers={
+                "Accept-Ranges": "bytes",
+                "Cache-Control": "private, max-age=120",
+                "X-Content-Type-Options": "nosniff",
+            },
+        )
+
+    @app.post("/api/v3/projects/{project_id}/generate")
+    def project_generate(project_id: str, request: Request, body: dict[str, Any]) -> dict[str, Any]:
+        if getattr(request.state, "actor", None) is ActorClass.agent_runtime:
+            raise CasopsError(ErrorCode.IMP_SELF_APPROVAL)
+        payload = body if isinstance(body, dict) else {}
+        engine = str(payload.get("engine") or payload.get("tag") or "grok-imagine")
+        config = payload.get("config") if isinstance(payload.get("config"), dict) else payload
+        return generate_project_media(
+            state.projects_root,
+            project_id,
+            engine=engine,
+            config=config if isinstance(config, dict) else {},
+            dry_run=bool(getattr(request.state, "dry_run", False)),
+        )
+
+    @app.get("/api/v3/projects/{project_id}/comms")
+    def project_comms_get(project_id: str) -> dict[str, Any]:
+        read_project(state.projects_root, project_id)
+        return load_comms(state.projects_root, project_id)
+
+    @app.post("/api/v3/projects/{project_id}/comms")
+    def project_comms_post(project_id: str, request: Request, body: dict[str, Any]) -> dict[str, Any]:
+        if getattr(request.state, "actor", None) is ActorClass.agent_runtime:
+            raise CasopsError(ErrorCode.IMP_SELF_APPROVAL)
+        payload = body if isinstance(body, dict) else {}
+        return append_comm(
+            state.projects_root,
+            project_id,
+            payload,
+            dry_run=bool(getattr(request.state, "dry_run", False)),
+        )
+
+    @app.post("/api/v3/projects/{project_id}/run")
+    def project_run(project_id: str, request: Request, body: dict[str, Any]) -> dict[str, Any]:
+        if getattr(request.state, "actor", None) is ActorClass.agent_runtime:
+            raise CasopsError(ErrorCode.IMP_SELF_APPROVAL)
+        payload = body if isinstance(body, dict) else {}
+        def chat_fn(agent_id: str, message: str) -> dict[str, Any]:
+            return state.runtime.chat(
+                agent_id,
+                message=message,
+                history=[],
+                session=f"project-{project_id}-{agent_id}",
+            )
+
+        raw_answers = payload.get("answers") if isinstance(payload.get("answers"), list) else []
+        answers = []
+        for item in raw_answers:
+            if isinstance(item, str) and item.strip():
+                answers.append(item.strip())
+            elif isinstance(item, dict):
+                text = str(item.get("text") or item.get("answer") or "").strip()
+                if text:
+                    answers.append(text)
+        raw_choices = payload.get("choices") if isinstance(payload.get("choices"), dict) else {}
+        choices = {str(key): str(value) for key, value in raw_choices.items() if str(key) and str(value)}
+        return run_asain_beauty_workflow(
+            state.projects_root,
+            project_id,
+            first_instruction=str(payload.get("instruction") or payload.get("text") or ""),
+            dry_run=bool(getattr(request.state, "dry_run", False)),
+            agents_root=state.agents_root,
+            chat_fn=None if bool(getattr(request.state, "dry_run", False)) else chat_fn,
+            human_answers=answers,
+            choices=choices,
+        )
 
     @app.put("/api/v3/projects/{project_id}")
     def project_put(project_id: str, request: Request, body: dict[str, Any]) -> dict[str, Any]:

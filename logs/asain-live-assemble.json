@@ -1,0 +1,124 @@
+{
+  "status": 200,
+  "live": true,
+  "live_hops": 8,
+  "saved": true,
+  "validation": {
+    "matched": false,
+    "exact": false,
+    "copied_sample": false,
+    "missing_markers": [
+      "No traditional push / pull / pan / orbit"
+    ],
+    "generated_chars": 11879,
+    "gold_chars": 6932,
+    "missing_sections": []
+  },
+  "section_sources": {
+    "Frame": "comm-0003",
+    "Sound": "comm-0003",
+    "0\u20133s | opening face smash": "comm-0005",
+    "3\u20136s | eye and skin macro": "comm-0005",
+    "6\u201310s | nose and mouth super close-up": "comm-0005",
+    "10\u201313s | climb back to the eye": "comm-0005",
+    "13\u201315s | eye hold": "comm-0005",
+    "Light": "comm-0007",
+    "Makeup": "comm-0009",
+    "Skin": "comm-0009",
+    "Camera lock": "comm-0011",
+    "Subject": "comm-0013",
+    "Hair": "comm-0013",
+    "Negatives": "comm-0015"
+  },
+  "note": "Host assembles live English sections into output/. sample/ is not written. HTTP 200 is not craft-correct. Not an eval PASS. Tools stay off. Agent max_output_tokens=1024 cannot emit the full gold novel in one hop.",
+  "output_path": "project/asain-beauty/output/asain-beauty-prompt.txt",
+  "member_returns": [
+    {
+      "agent_id": "video.director",
+      "live": true,
+      "provider": "grok_acp",
+      "extracted_headings": [
+        "0\u20133s | opening face smash",
+        "3\u20136s | eye and skin macro",
+        "6\u201310s | nose and mouth super close-up",
+        "10\u201313s | climb back to the eye",
+        "13\u201315s | eye hold"
+      ],
+      "error": "",
+      "reply_chars": 4176
+    },
+    {
+      "agent_id": "video.cinematographer",
+      "live": true,
+      "provider": "grok_acp",
+      "extracted_headings": [
+        "Light"
+      ],
+      "error": "",
+      "reply_chars": 1497
+    },
+    {
+      "agent_id": "video.mua_makeup",
+      "live": true,
+      "provider": "grok_acp",
+      "extracted_headings": [
+        "Makeup",
+        "Skin"
+      ],
+      "error": "",
+      "reply_chars": 1037
+    },
+    {
+      "agent_id": "video.cameraoperator",
+      "live": true,
+      "provider": "grok_acp",
+      "extracted_headings": [
+        "Camera lock"
+      ],
+      "error": "",
+      "reply_chars": 1423
+    },
+    {
+      "agent_id": "video.continuity",
+      "live": true,
+      "provider": "grok_acp",
+      "extracted_headings": [
+        "Subject",
+        "Hair"
+      ],
+      "error": "",
+      "reply_chars": 1481
+    },
+    {
+      "agent_id": "video.critic",
+      "live": true,
+      "provider": "grok_acp",
+      "extracted_headings": [
+        "Negatives"
+      ],
+      "error": "",
+      "reply_chars": 1103
+    }
+  ],
+  "kinds": [
+    "instruction",
+    "instruction",
+    "instruction",
+    "induce",
+    "return",
+    "induce",
+    "return",
+    "induce",
+    "return",
+    "induce",
+    "return",
+    "induce",
+    "return",
+    "induce",
+    "return",
+    "consolidated",
+    "next_instruction",
+    "assembled",
+    "output"
+  ]
+}

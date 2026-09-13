@@ -354,12 +354,20 @@ def suggest_next(
 
     def push(agent_id: str, contract: list[str], reason: str, source: str) -> None:
         key = agent_id.lower()
-        if not key.startswith("video.") or key in taken or key in seen or key in CATALOG_BY_ID:
+        if not key.startswith("video.") or key in seen or key in CATALOG_BY_ID:
+            return
+        if key == parent:
             return
         if key not in index and source != "lane":
             return
         seen.add(key)
-        ranked.append(_row_for_agent(key, index, contract=contract, reason=reason, source=source, rank=len(ranked) + 1))
+        row = _row_for_agent(key, index, contract=contract, reason=reason, source=source, rank=len(ranked) + 1)
+        if key in taken:
+            row["loopback"] = True
+            row["kind"] = "loop"
+            row["source"] = "loopback"
+            row["reason"] = f"Already on the graph — link back to {key} (A→B, B→A). One node, extra edge, no clone."
+        ranked.append(row)
 
     parent = (from_agent_id or "").lower()
     start = from_id == "create-project" or not parent
@@ -403,7 +411,7 @@ def suggest_next(
         "parent_chat_id": parent if parent in index else "video.planner",
         "primary": ranked[0]["id"] if ranked else "",
         "suggestions": ranked[:8],
-        "note": "Not an eval PASS. A node may Out to several next agents. Declared I/O handoff, not a live grant. Skills and tools stay ungated.",
+        "note": "Not an eval PASS. Multiple Outs allowed. If the next agent is already on the graph, Add next draws a loop edge (no second node). Skills and tools stay ungated.",
         "llm_excerpt": "",
     }
 

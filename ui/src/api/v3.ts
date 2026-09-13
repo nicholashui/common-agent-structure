@@ -34,6 +34,11 @@ import {
   type ProjectSuggestion,
   type ProjectRecord,
   type ProjectNextSuggestion,
+  type ProjectCommsPayload,
+  type ProjectRunResult,
+  type ProjectOutputPayload,
+  type ProjectGenerateResult,
+  type ProjectVideoConfig,
 } from "./types";
 
 export type FetchLike = (input: string, init?: RequestInit) => Promise<Response>;
@@ -341,6 +346,30 @@ export function createClient(options: ClientOptions) {
         params: { project_id: projectId },
         body,
         reasonFallback: "save project",
+      }),
+    listProjectComms: (projectId: string) =>
+      bound("listProjectComms", { project_id: projectId }) as Promise<ProjectCommsPayload>,
+    addProjectComm: (projectId: string, body: Record<string, unknown>) =>
+      request<ProjectCommsPayload>("POST", "/api/v3/projects/{project_id}/comms", {
+        params: { project_id: projectId },
+        body,
+        reasonFallback: "project comm",
+      }),
+    runProject: (projectId: string, body: Record<string, unknown>) =>
+      request<ProjectRunResult>("POST", "/api/v3/projects/{project_id}/run", {
+        params: { project_id: projectId },
+        body,
+        reasonFallback: "project run",
+        timeoutMs: LONG_TIMEOUT_MS,
+      }),
+    getProjectOutput: (projectId: string) =>
+      bound("getProjectOutput", { project_id: projectId }) as Promise<ProjectOutputPayload>,
+    generateProject: (projectId: string, body: { engine: string; config?: ProjectVideoConfig }) =>
+      request<ProjectGenerateResult>("POST", "/api/v3/projects/{project_id}/generate", {
+        params: { project_id: projectId },
+        body,
+        reasonFallback: "project generate grok imagine",
+        timeoutMs: 360_000,
       }),
     suggestProjectNext: (
       projectId: string,
