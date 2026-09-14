@@ -20,6 +20,7 @@ from casops.project_instruction import (
     order_induce,
     parse_emitted_instructions,
     pick_option,
+    split_continuity_craft,
 )
 from casops.projects import normalize_slug, read_project, write_project
 
@@ -46,6 +47,12 @@ GENERATOR_SECTIONS: tuple[str, ...] = (
 )
 FIRST_CALLED_HEADINGS: tuple[str, ...] = ("Frame", "Sound")
 INDUCE_ROSTER: tuple[tuple[str, str, str, tuple[str, ...]], ...] = (
+    (
+        "video.creativedirector",
+        "br_asain_01_cd",
+        "Creative thesis only: THESIS + WHY grounded in the human brief. Do not author lighting, makeup, or motors.",
+        ("Creative direction",),
+    ),
     (
         "video.director",
         "br_asain_01_dir",
@@ -139,6 +146,15 @@ LOCK_SLICES: dict[str, str] = {
 }
 # Distinctive gold sentence that must NEVER be sent to agents (proves we did not paste the sample body).
 GOLD_BODY_PROBE = "Two or three wisps catch on the glossed mouth corner mid-clip."
+EUROPEAN_GOLD_BODY_PROBE = "A few teeth may flash and disappear."
+JAPANESE_GOLD_BODY_PROBE = "RETURN THE PICKLES BEFORE DINNER"
+HONGKONG_GOLD_BODY_PROBE = "GET HOME WITH THE BUN"
+GOLD_BODY_PROBES: tuple[str, ...] = (
+    GOLD_BODY_PROBE,
+    EUROPEAN_GOLD_BODY_PROBE,
+    JAPANESE_GOLD_BODY_PROBE,
+    HONGKONG_GOLD_BODY_PROBE,
+)
 HEADING_ALIASES = {
     "0-3s | opening face smash": "0–3s | opening face smash",
     "3-6s | eye and skin macro": "3–6s | eye and skin macro",
@@ -204,6 +220,8 @@ def load_comms(root: Path, slug: str) -> dict[str, Any]:
         return {"schema_version": COMMS_SCHEMA, "project_id": slug, "items": []}
     items = payload.get("items") if isinstance(payload.get("items"), list) else []
     decisions = payload.get("decisions") if isinstance(payload.get("decisions"), list) else []
+    locks = payload.get("locks") if isinstance(payload.get("locks"), dict) else {}
+    autopilot = payload.get("autopilot") if isinstance(payload.get("autopilot"), dict) else {}
     return {
         "schema_version": COMMS_SCHEMA,
         "project_id": slug,
@@ -212,6 +230,8 @@ def load_comms(root: Path, slug: str) -> dict[str, Any]:
         "walkthrough": payload.get("walkthrough") or "",
         "honesty": payload.get("honesty") or "CHARACTERIZATION",
         "note": payload.get("note") or "",
+        "locks": {str(key): str(value) for key, value in locks.items() if str(key) and str(value)},
+        "autopilot": autopilot,
     }
 
 
@@ -225,6 +245,8 @@ def save_comms(root: Path, slug: str, payload: dict[str, Any], *, dry_run: bool)
         "updated_at": _now(),
         "honesty": "CHARACTERIZATION",
         "note": payload.get("note") or "",
+        "locks": payload.get("locks") if isinstance(payload.get("locks"), dict) else {},
+        "autopilot": payload.get("autopilot") if isinstance(payload.get("autopilot"), dict) else {},
     }
     if dry_run:
         record["saved"] = False
@@ -278,6 +300,8 @@ def append_comm(
             "decisions": store.get("decisions") or [],
             "walkthrough": store.get("walkthrough") or "",
             "note": store.get("note") or "",
+            "locks": store.get("locks") or {},
+            "autopilot": store.get("autopilot") or {},
         },
         dry_run=dry_run,
     )
@@ -286,18 +310,36 @@ def append_comm(
 
 
 def sample_prompt_path(root: Path, slug: str) -> Path:
-    return Path(root) / slug / "sample" / "asain-beauty-prompt.txt"
+    return Path(root) / slug / "sample" / f"{slug}-prompt.txt"
 
 
 def output_prompt_path(root: Path, slug: str) -> Path:
-    return Path(root) / slug / "output" / "asain-beauty-prompt.txt"
+    return Path(root) / slug / "output" / f"{slug}-prompt.txt"
+
+
+def walkthrough_module(slug: str) -> Any:
+    if slug == "european-handsome":
+        from casops import project_european_handsome_walkthrough as mod
+
+        return mod
+    if slug == "japanese-grandma-gta":
+        from casops import project_japanese_grandma_gta_walkthrough as mod
+
+        return mod
+    if slug == "hongkong-grandma-gta":
+        from casops import project_hongkong_grandma_gta_walkthrough as mod
+
+        return mod
+    from casops import project_sample_walkthrough as mod
+
+    return mod
 
 
 def read_output(root: Path, slug: str) -> dict[str, Any]:
     """Read generated prompt only from output/. Never from sample/."""
     normalize_slug(slug)
     path = output_prompt_path(root, slug)
-    rel = f"project/{slug}/output/asain-beauty-prompt.txt"
+    rel = f"project/{slug}/output/{slug}-prompt.txt"
     if "sample" in path.parts:
         raise CasopsError(ErrorCode.INH_STRUCTURE_MISMATCH, detail="sample/ is read-only")
     import os
@@ -445,7 +487,8 @@ def assemble_generator_instruction(parts: dict[str, str]) -> tuple[str, list[str
 
 
 def _assert_no_gold_body(message: str) -> None:
-    if GOLD_BODY_PROBE.lower() in (message or "").lower():
+    lower = (message or "").lower()
+    if any(probe.lower() in lower for probe in GOLD_BODY_PROBES):
         raise CasopsError(ErrorCode.INH_STRUCTURE_MISMATCH, detail="sample body must not be sent to agents")
 
 
@@ -676,15 +719,62 @@ def _decision_extra(parsed: dict[str, Any], chosen: str) -> dict[str, Any]:
     }
 
 
+def _option_labels(options: list[Any]) -> dict[str, str]:
+    labels: dict[str, str] = {}
+    for row in options:
+        if not isinstance(row, dict):
+            continue
+        option_id = str(row.get("id") or "").strip()
+        if option_id:
+            labels[option_id] = str(row.get("label") or "").strip()
+    return labels
+
+
+def _human_ask_item(items: list[Any], agent_id: str) -> dict[str, Any] | None:
+    found: dict[str, Any] | None = None
+    for item in items:
+        if isinstance(item, dict) and item.get("kind") == "human_ask" and item.get("from") == agent_id:
+            found = item
+    return found
+
+
+def _is_disjoint_human_lock(agent_id: str, option_id: str, graph_options: list[Any], items: list[Any]) -> bool:
+    """True when ASK option ids collide with a different expert-decision namespace."""
+    ask = _human_ask_item(items, agent_id)
+    if not ask:
+        return False
+    parsed = parse_emitted_instructions(str(ask.get("text") or ""))
+    ask_labels = _option_labels(parsed.get("options") or [])
+    graph_labels = _option_labels(graph_options)
+    if option_id not in ask_labels:
+        return False
+    if option_id not in graph_labels:
+        return True
+    return ask_labels[option_id] != graph_labels[option_id]
+
+
 def _apply_pick(section_parts: dict[str, str], agent_id: str, parsed: dict[str, Any], choice: str | None) -> None:
     pick = pick_option(parsed, choice)
     if not pick:
         return
-    text = f"{pick.get('label') or ''}\n{pick.get('why') or ''}".strip()
+    craft = str(pick.get("craft") or "").strip()
+    text = craft or f"{pick.get('label') or ''}\n{pick.get('why') or ''}".strip()
     if not text:
         return
     if agent_id == "video.creativedirector":
         section_parts["Creative direction"] = text
+        return
+    if agent_id == "video.continuity":
+        for heading, body in split_continuity_craft(craft or text).items():
+            if body:
+                section_parts[heading] = body
+        return
+    if agent_id == "video.promptengineer":
+        frame, _, sound = text.partition("\n")
+        if frame.strip():
+            section_parts["Frame"] = frame.strip()
+        if sound.strip():
+            section_parts["Sound"] = sound.strip()
         return
     heads = craft_headings_for(agent_id)
     if heads:
@@ -702,10 +792,45 @@ def apply_project_choices(
     dry_run: bool,
 ) -> dict[str, Any]:
     """Human/parent picks among already-generated expert options. Does not re-call agents."""
+    if "host_service" in picks:
+        gate = "continue" if str(picks.get("host_service")) == "2" else "stop"
+        return apply_autopilot_cycle(root, slug, record, gate, dry_run=dry_run)
     gold_path = sample_prompt_path(root, slug)
     gold = gold_path.read_text(encoding="utf-8") if gold_path.is_file() else ""
     nodes = list((record.get("graph") or {}).get("nodes") or [])
     edges = list((record.get("graph") or {}).get("edges") or [])
+    store = load_comms(root, slug)
+    items = [dict(row) for row in (store.get("items") or []) if isinstance(row, dict)]
+    locks = {str(key): str(value) for key, value in (store.get("locks") or {}).items() if str(key) and str(value)}
+    autopilot = dict(store.get("autopilot") or {})
+    cycle_locks = {
+        str(key): str(value)
+        for key, value in (autopilot.get("cycle_locks") or {}).items()
+        if str(key) and str(value)
+    }
+    node_options: dict[str, list[Any]] = {}
+    for node in nodes:
+        if not isinstance(node, dict) or not isinstance(node.get("data"), dict):
+            continue
+        agent_id = str(node["data"].get("agent_id") or "")
+        options = node["data"].get("options") if isinstance(node["data"].get("options"), list) else []
+        if agent_id:
+            node_options[agent_id] = options
+    lock_picks: dict[str, str] = {}
+    expert_picks: dict[str, str] = {}
+    for agent_id, option_id in picks.items():
+        if str(option_id).startswith("p3-"):
+            cycle_locks[agent_id] = option_id
+            lock_picks[agent_id] = option_id
+        elif _is_disjoint_human_lock(agent_id, option_id, node_options.get(agent_id) or [], items):
+            lock_picks[agent_id] = option_id
+        else:
+            expert_picks[agent_id] = option_id
+    domain_lock_picks = {key: value for key, value in lock_picks.items() if not str(value).startswith("p3-")}
+    locks.update(domain_lock_picks)
+    autopilot["cycle_locks"] = cycle_locks
+    if {"video.critic", "video.continuity"} <= set(cycle_locks) and autopilot.get("cycle") == "open":
+        autopilot["cycle"] = "ready"
     section_parts: dict[str, str] = {}
     for node in nodes:
         if not isinstance(node, dict) or not isinstance(node.get("data"), dict):
@@ -719,13 +844,47 @@ def apply_project_choices(
             "thinking": str(data.get("thinking") or ""),
             "decide_by": str(data.get("decide_by") or ""),
         }
-        if agent_id in picks:
-            data["chosen"] = picks[agent_id]
+        if agent_id in expert_picks:
+            data["chosen"] = expert_picks[agent_id]
             node["data"] = data
-        _apply_pick(section_parts, agent_id, parsed, data.get("chosen") or picks.get(agent_id))
+        if agent_id in lock_picks:
+            continue
+        _apply_pick(section_parts, agent_id, parsed, data.get("chosen") or expert_picks.get(agent_id))
         if data.get("thinking") and agent_id == "video.creativedirector" and "Creative direction" not in section_parts:
             section_parts["Creative direction"] = str(data.get("thinking") or "")
-    output_text, missing_sections = assemble_generator_instruction(section_parts)
+    missing_sections: list[str] = []
+    if lock_picks:
+        walk = walkthrough_module(slug)
+        output_text = walk.assembled_output(locks=locks, cycle_locks=cycle_locks)
+        for agent_id, option_id in lock_picks.items():
+            text = walk.human_lock_choice_text(agent_id, option_id)
+            if not text:
+                continue
+            updated = False
+            cycle_pick = str(option_id).startswith("p3-")
+            for item in reversed(items):
+                if item.get("kind") != "choice" or item.get("from") != "human_operator" or item.get("to") != agent_id:
+                    continue
+                if cycle_pick and item.get("pass_id") != "pass_03":
+                    continue
+                item["text"] = text
+                updated = True
+                break
+            if not updated:
+                items.append(
+                    {
+                        "id": f"comm-lock-{agent_id.replace('.', '-')}-{option_id}",
+                        "node_id": "human-ask",
+                        "from": "human_operator",
+                        "to": agent_id,
+                        "kind": "choice",
+                        "text": text,
+                        "pass_id": "pass_03" if cycle_pick else "pass_01",
+                        "live": False,
+                    }
+                )
+    else:
+        output_text, missing_sections = assemble_generator_instruction(section_parts)
     report = validate_prompt(output_text, gold) if gold else {
         "matched": False,
         "exact": False,
@@ -735,16 +894,50 @@ def apply_project_choices(
         "gold_chars": 0,
     }
     report["missing_sections"] = missing_sections
-    out_rel = f"project/{slug}/output/asain-beauty-prompt.txt"
+    out_rel = f"project/{slug}/output/{slug}-prompt.txt"
     copied = bool(report.get("copied_sample"))
-    store = load_comms(root, slug)
     decisions = [dict(row) for row in (store.get("decisions") or []) if isinstance(row, dict)]
     for row in decisions:
         agent_id = str(row.get("agent_id") or "")
-        if agent_id in picks:
-            row["chosen"] = picks[agent_id]
+        if agent_id in expert_picks:
+            row["chosen"] = expert_picks[agent_id]
             row["selected_by"] = "human_operator"
             row["select_reason"] = ""
+    if autopilot.get("cycle") == "ready" and not any(
+        item.get("kind") == "next_instruction" and item.get("pass_id") == "pass_03" for item in items
+    ):
+        seq = len(items) + 1
+        items.append(
+            {
+                "id": f"comm-{seq:04d}",
+                "node_id": "agent-video-promptengineer",
+                "from": FIRST_CALLED,
+                "to": FIRST_CALLED,
+                "kind": "next_instruction",
+                "text": (
+                    "next_instruction pass_03. Host re-assembled after clip review. "
+                    "Click Grok Imagine to generate again. Folder max_refinement_count stays 0."
+                ),
+                "pass_id": "pass_03",
+                "live": False,
+                "input_tags": [],
+                "output_tags": [],
+            }
+        )
+        items.append(
+            {
+                "id": f"comm-{seq + 1:04d}",
+                "node_id": "output-prompt",
+                "from": "host_service",
+                "to": "output-prompt",
+                "kind": "assembled",
+                "text": "Host-joined pass_03 generator instruction. First-called did not write the novel.",
+                "pass_id": "pass_03",
+                "live": False,
+                "input_tags": [],
+                "output_tags": [],
+            }
+        )
     if not dry_run and not copied:
         out_path = output_prompt_path(root, slug)
         out_path.parent.mkdir(parents=True, exist_ok=True)
@@ -759,10 +952,12 @@ def apply_project_choices(
             root,
             slug,
             {
-                "items": store.get("items") or [],
+                "items": items,
                 "decisions": decisions,
                 "walkthrough": store.get("walkthrough") or "",
                 "note": store.get("note") or "",
+                "locks": locks,
+                "autopilot": autopilot,
             },
             dry_run=False,
         )
@@ -776,12 +971,134 @@ def apply_project_choices(
         "comms": {
             "schema_version": COMMS_SCHEMA,
             "project_id": slug,
-            "items": store.get("items") or [],
+            "items": items,
             "decisions": decisions,
+            "locks": locks,
+            "autopilot": autopilot,
         },
         "output_path": out_rel,
         "validation": report,
         "note": "Applied human/parent option picks to existing expert suggestions. Did not re-call agents. Not an eval PASS.",
+    }
+
+
+def apply_autopilot_cycle(
+    root: Path,
+    slug: str,
+    record: dict[str, Any],
+    gate: str,
+    *,
+    dry_run: bool,
+) -> dict[str, Any]:
+    """Host-owned pass_03 gate. Does not raise folder max_refinement_count. Does not call Imagine."""
+    walk = walkthrough_module(slug)
+    CYCLE_ASKS = walk.CYCLE_ASKS
+    CYCLE_GATE = walk.CYCLE_GATE
+    _ask_block = walk._ask_block
+    _choice_block = walk._choice_block
+
+    store = load_comms(root, slug)
+    items = [dict(row) for row in (store.get("items") or []) if isinstance(row, dict)]
+    autopilot = dict(store.get("autopilot") or {})
+    cycles = int(autopilot.get("cycles") or 0)
+    action = "continue" if gate == "continue" else "stop"
+    if action == "continue" and cycles >= 1:
+        action = "stop"
+    overlay = dict(CYCLE_GATE)
+    overlay["chosen"] = "2" if action == "continue" else "1"
+    seq = len(items) + 1
+    items.append(
+        {
+            "id": f"comm-{seq:04d}",
+            "node_id": "human-ask",
+            "from": "host_service",
+            "to": "human_operator",
+            "kind": "human_ask",
+            "text": _ask_block(CYCLE_GATE),
+            "pass_id": "pass_03",
+            "live": False,
+            "input_tags": [],
+            "output_tags": [],
+        }
+    )
+    items.append(
+        {
+            "id": f"comm-{seq + 1:04d}",
+            "node_id": "human-ask",
+            "from": "human_operator",
+            "to": "host_service",
+            "kind": "choice",
+            "text": _choice_block(overlay),
+            "pass_id": "pass_03",
+            "live": False,
+            "input_tags": [],
+            "output_tags": [],
+        }
+    )
+    seq = len(items)
+    cycle_from = {str(row["from"]) for row in CYCLE_ASKS}
+    if action == "continue":
+        for ask in CYCLE_ASKS:
+            seq += 1
+            items.append(
+                {
+                    "id": f"comm-{seq:04d}",
+                    "node_id": "human-ask",
+                    "from": ask["from"],
+                    "to": "human_operator",
+                    "kind": "human_ask",
+                    "text": _ask_block(ask),
+                    "pass_id": "pass_03",
+                    "live": False,
+                    "input_tags": [],
+                    "output_tags": [],
+                }
+            )
+        autopilot["cycle"] = "open"
+        autopilot["cycles"] = cycles + 1
+        autopilot["cycle_locks"] = {}
+    else:
+        items = [
+            item
+            for item in items
+            if not (
+                item.get("pass_id") == "pass_03"
+                and item.get("kind") == "human_ask"
+                and item.get("from") in cycle_from
+            )
+        ]
+        autopilot["cycle"] = "stopped"
+    graph = record.get("graph") or {"nodes": [], "edges": []}
+    if not dry_run:
+        save_comms(
+            root,
+            slug,
+            {
+                "items": items,
+                "decisions": store.get("decisions") or [],
+                "walkthrough": store.get("walkthrough") or "",
+                "note": store.get("note") or "",
+                "locks": store.get("locks") or {},
+                "autopilot": autopilot,
+            },
+            dry_run=False,
+        )
+    return {
+        "honesty": "CHARACTERIZATION",
+        "dry_run": dry_run,
+        "saved": not dry_run,
+        "first_called": FIRST_CALLED,
+        "status": "ok",
+        "graph": graph,
+        "comms": {
+            "schema_version": COMMS_SCHEMA,
+            "project_id": slug,
+            "items": items,
+            "decisions": store.get("decisions") or [],
+            "locks": store.get("locks") or {},
+            "autopilot": autopilot,
+        },
+        "note": "Host-owned Auto Pilot cycle gate. Did not re-call agents. Did not call Imagine. Not an eval PASS.",
     }
 
 
@@ -811,7 +1128,7 @@ def run_asain_beauty_workflow(
         if any(isinstance(node, dict) and isinstance(node.get("data"), dict) and node["data"].get("options") for node in prior_nodes):
             return apply_project_choices(root, slug, record, picks, dry_run=dry_run)
 
-    required_ids = [FIRST_CALLED, "video.creativedirector", *[row[0] for row in INDUCE_ROSTER]]
+    required_ids = [FIRST_CALLED, *[row[0] for row in INDUCE_ROSTER]]
     missing_agents: list[str] = []
     if agents_root is not None:
         for agent_id in required_ids:
@@ -820,6 +1137,7 @@ def run_asain_beauty_workflow(
     if missing_agents:
         raise CasopsError(ErrorCode.INH_PARENT_MISSING, detail="missing agents: " + ",".join(missing_agents))
 
+    prior_comms = load_comms(root, slug)
     items: list[dict[str, Any]] = []
     seq = 0
 
@@ -872,6 +1190,47 @@ def run_asain_beauty_workflow(
         outputs=[],
         pass_id="pass_01",
     )
+    for special_id, special_task in (
+        (
+            "specials.intent-analysis-agent",
+            "Auto Pilot: interpret the human draft only. Return locution, illocution, triggerability, "
+            "OPTIONS for thesis class, RECOMMEND, DECIDE_BY. Do not write shot grammar. Do not copy sample/.",
+        ),
+        (
+            "specials.general-creative-agent",
+            "Auto Pilot: from the intent reading, propose 3 campaign concepts as OPTIONS. "
+            "DECIDE_BY: video.promptengineer. Do not write the generator novel. Do not copy sample/.",
+        ),
+    ):
+        if agents_root is not None and not (Path(agents_root) / special_id / "agent_spec.json").is_file():
+            continue
+        spec_node = f"agent-{special_id.replace('.', '-')}"
+        spec_msg = f"{special_task}\n\nHuman draft:\n{prompt}"
+        _assert_no_gold_body(spec_msg)
+        brief = add(
+            node_id="create-project",
+            from_id="create-project",
+            to_id=special_id,
+            kind="instruction",
+            text=spec_msg,
+            inputs=[_tag(slug, "create-project", human["id"], "human-draft")],
+            outputs=[_tag(slug, spec_node, "comm-pending", special_id)],
+            pass_id="pass_01",
+        )
+        hop = call_agent(chat_fn, special_id, spec_msg)
+        add(
+            node_id=spec_node,
+            from_id=special_id,
+            to_id="create-project",
+            kind="return",
+            text=hop.get("reply") or hop.get("error") or "(empty live reply)",
+            inputs=[_tag(slug, "create-project", brief["id"], "autopilot")],
+            outputs=[],
+            pass_id="pass_01",
+        )
+        stamp(items[-1], hop)
+        if hop.get("live"):
+            items[-1]["live"] = True
     launch = add(
         node_id="create-project",
         from_id="create-project",
@@ -962,6 +1321,10 @@ def run_asain_beauty_workflow(
     human_asks: list[str] = list(first_parsed.get("human_asks") or [])
     dispatch_ids = [row["agent_id"] for row in emitted_calls if row.get("agent_id") != FIRST_CALLED]
     why_by_id = {row["agent_id"]: row.get("why") or "" for row in emitted_calls}
+    for agent_id, _brief_id, why, _heads in INDUCE_ROSTER:
+        if agent_id not in dispatch_ids:
+            dispatch_ids.append(agent_id)
+            why_by_id.setdefault(agent_id, why)
     if not dispatch_ids:
         dispatch_ids = [agent_id for agent_id in named_agent_ids(prompt, agents_root) if agent_id != FIRST_CALLED]
         add(
@@ -979,7 +1342,11 @@ def run_asain_beauty_workflow(
         dispatch_ids = [agent_id for agent_id in dispatch_ids if (Path(agents_root) / agent_id / "agent_spec.json").is_file()]
 
     member_summaries: list[dict[str, Any]] = []
-    live_hops = (1 if hop_first.get("live") else 0) + live_hops_first_repair
+    live_hops = (
+        (1 if hop_first.get("live") else 0)
+        + live_hops_first_repair
+        + sum(1 for item in items if item.get("live") and str(item.get("from") or "").startswith("specials."))
+    )
     direction_text = ""
     freeze_text = ""
     extra_queue: list[tuple[str, str]] = []
@@ -1080,7 +1447,7 @@ def run_asain_beauty_workflow(
                 "status": "ok" if hop.get("reply") else "failed",
                 "accepted": bool(hop.get("reply")),
                 "summary": (hop.get("reply") or hop.get("error") or "")[:400],
-                "artifact_ref": f"artifact://asain-beauty/{agent_id}/pass_01",
+                "artifact_ref": f"artifact://{slug}/{agent_id}/pass_01",
                 "return_comm_id": ret["id"],
                 "live": hop.get("live"),
                 "provider": hop.get("provider"),
@@ -1182,7 +1549,7 @@ def run_asain_beauty_workflow(
                 "status": "ok" if hop.get("reply") else "failed",
                 "accepted": bool(hop.get("reply")),
                 "summary": (hop.get("reply") or hop.get("error") or "")[:400],
-                "artifact_ref": f"artifact://asain-beauty/{extra_id}/pass_01",
+                "artifact_ref": f"artifact://{slug}/{extra_id}/pass_01",
                 "return_comm_id": ret["id"],
                 "live": hop.get("live"),
                 "provider": hop.get("provider"),
@@ -1192,27 +1559,46 @@ def run_asain_beauty_workflow(
             }
         )
 
-    for question in human_asks:
-        add(
-            node_id="human-ask",
-            from_id=FIRST_CALLED,
-            to_id="human_operator",
-            kind="human_ask",
-            text=question,
-            inputs=[_tag(slug, first_node, received["id"], "ask")],
-            outputs=[_tag(slug, "create-project", "comm-pending", "answer")],
-            pass_id="pass_01",
-        )
-        add(
-            node_id="create-project",
-            from_id=FIRST_CALLED,
-            to_id="human_operator",
-            kind="instruction",
-            text=f"ASK_HUMAN (generated instruction to the human): {question}",
-            inputs=[_tag(slug, first_node, received["id"], "ask")],
-            outputs=[],
-            pass_id="pass_01",
-        )
+    seen_asks: set[str] = set()
+    for agent_id, parsed in decisions.items():
+        if agent_id not in {
+            "video.promptengineer",
+            "video.director",
+            "video.cinematographer",
+            "video.mua_makeup",
+            "video.continuity",
+        }:
+            continue
+        questions = list(parsed.get("human_asks") or [])
+        if not questions and parsed.get("options") and str(parsed.get("decide_by") or "").lower() in {"human", "human_operator"}:
+            questions = [str(parsed.get("why") or f"{agent_id} lock")]
+        for question in questions:
+            key = f"{agent_id}:{question}"
+            if key in seen_asks:
+                continue
+            seen_asks.add(key)
+            ask_text = question
+            options = parsed.get("options") or []
+            if options:
+                lines = [f"ASK_HUMAN: {question}", "THINKING: Confirm this lock by selecting an option. Do not draft craft.", f"Decision point: {agent_id}"]
+                for opt in options:
+                    rec = " (recommend)" if str(opt.get("id")) == str(parsed.get("recommend") or "") else ""
+                    label = str(opt.get("label") or "")
+                    why = str(opt.get("why") or "")
+                    lines.append(f"OPTION {opt.get('id')}: {label} — {why}{rec}" if why else f"OPTION {opt.get('id')}: {label}{rec}")
+                lines.append(f"RECOMMEND: {parsed.get('recommend') or options[0].get('id')}")
+                lines.append("DECIDE_BY: human")
+                ask_text = "\n".join(lines)
+            add(
+                node_id="human-ask",
+                from_id=agent_id,
+                to_id="human_operator",
+                kind="human_ask",
+                text=ask_text,
+                inputs=[_tag(slug, f"agent-{agent_id.replace('.', '-')}", received["id"], "ask")],
+                outputs=[_tag(slug, "human-ask", "comm-pending", "answer")],
+                pass_id="pass_01",
+            )
 
     conflicts = collect_conflicts(section_parts)
     fanin_message = _first_called_fanin(prompt, member_summaries, conflicts)
@@ -1228,7 +1614,7 @@ def run_asain_beauty_workflow(
         kind="consolidated",
         text=cons_text,
         inputs=[_tag(slug, f"agent-{row['agent_id'].replace('.', '-')}", row["return_comm_id"], row["agent_id"]) for row in member_summaries],
-        outputs=[_tag(slug, "create-project", "comm-pending", "asain-beauty-prompt")],
+        outputs=[_tag(slug, "create-project", "comm-pending", f"{slug}-prompt")],
         pass_id="pass_01",
     )
     stamp(cons, hop_cons)
@@ -1249,18 +1635,18 @@ def run_asain_beauty_workflow(
     output_text, missing_sections = assemble_generator_instruction(section_parts)
     missing_sections = [item for item in missing_sections if item != "Human asks" or human_asks]
     lineage_lines = [
-        "Host assembled output/asain-beauty-prompt.txt from live section bodies. sample/ was not copied.",
+        f"Host assembled output/{slug}-prompt.txt from live section bodies. sample/ was not copied.",
         f"missing_sections: {', '.join(missing_sections) if missing_sections else '(none)'}",
         f"conflicts: {'; '.join(conflicts) if conflicts else '(none)'}",
     ]
     for heading in GENERATOR_SECTIONS:
         lineage_lines.append(f"{heading} <- {section_sources.get(heading) or 'MISSING'}")
     lineage = add(
-        node_id="create-project",
+        node_id="output-prompt",
         from_id="host_service",
-        to_id="create-project",
+        to_id="output-prompt",
         kind="assembled",
-        text="\n".join(lineage_lines),
+        text="Host-joined generator instruction. First-called did not write the novel.\n" + "\n".join(lineage_lines),
         inputs=[_tag(slug, first_node, cons["id"], "consolidated")],
         outputs=[],
         pass_id="pass_02",
@@ -1288,7 +1674,7 @@ def run_asain_beauty_workflow(
                     continue
                 row = dict(tag)
                 if row.get("comm_id") == "comm-pending":
-                    row["comm_id"] = check["id"] if row.get("label") in {"asain-beauty-prompt", "fan-in"} else received["id"]
+                    row["comm_id"] = check["id"] if row.get("label") in {f"{slug}-prompt", "fan-in"} else received["id"]
                 fixed.append(row)
             item[bag] = fixed
 
@@ -1402,7 +1788,7 @@ def run_asain_beauty_workflow(
             "data": {
                 "kind": "output",
                 "label": "Output",
-                "reason": f"project/{slug}/output/asain-beauty-prompt.txt",
+                "reason": f"project/{slug}/output/{slug}-prompt.txt",
                 "brief": (output_text or "")[:280],
                 "io": {"inputs": [FIRST_CALLED], "outputs": []},
             },
@@ -1429,13 +1815,25 @@ def run_asain_beauty_workflow(
         "gold_chars": 0,
     }
     report["missing_sections"] = missing_sections
-    out_rel = f"project/{slug}/output/asain-beauty-prompt.txt"
+    out_rel = f"project/{slug}/output/{slug}-prompt.txt"
     copied = bool(report.get("copied_sample"))
     if not dry_run and not copied:
         out_path = output_prompt_path(root, slug)
         out_path.parent.mkdir(parents=True, exist_ok=True)
         out_path.write_text(output_text if output_text.endswith("\n") else output_text + "\n", encoding="utf-8")
-        save_comms(root, slug, {"items": items}, dry_run=False)
+        save_comms(
+            root,
+            slug,
+            {
+                "items": items,
+                "decisions": prior_comms.get("decisions") or [],
+                "walkthrough": prior_comms.get("walkthrough") or "",
+                "note": prior_comms.get("note") or "",
+                "locks": prior_comms.get("locks") or {},
+                "autopilot": prior_comms.get("autopilot") or {},
+            },
+            dry_run=False,
+        )
         record["graph"] = {"nodes": nodes, "edges": edges}
         write_project(root, record, dry_run=False, create=False)
     return {

@@ -1,0 +1,29 @@
+{
+  "schema_version": "4.0",
+  "structure_id": "casops.common_swarm.v4",
+  "swarm_id": "video.asain-beauty",
+  "topology_class": "static_pipeline",
+  "nodes": [
+    { "id": "specials.intent-analysis-agent", "agent_id": "specials.intent-analysis-agent" },
+    { "id": "specials.general-creative-agent", "agent_id": "specials.general-creative-agent" },
+    { "id": "video.promptengineer", "agent_id": "video.promptengineer" },
+    { "id": "video.creativedirector", "agent_id": "video.creativedirector" },
+    { "id": "video.director", "agent_id": "video.director" },
+    { "id": "video.cinematographer", "agent_id": "video.cinematographer" },
+    { "id": "video.mua_makeup", "agent_id": "video.mua_makeup" },
+    { "id": "video.cameraoperator", "agent_id": "video.cameraoperator" },
+    { "id": "video.continuity", "agent_id": "video.continuity" },
+    { "id": "video.critic", "agent_id": "video.critic" }
+  ],
+  "edges": [
+    { "from": "specials.intent-analysis-agent", "to": "specials.general-creative-agent" },
+    { "from": "specials.general-creative-agent", "to": "video.promptengineer" },
+    { "from": "video.promptengineer", "to": "video.creativedirector" },
+    { "from": "video.promptengineer", "to": "video.director" },
+    { "from": "video.promptengineer", "to": "video.cinematographer" },
+    { "from": "video.promptengineer", "to": "video.mua_makeup" },
+    { "from": "video.promptengineer", "to": "video.cameraoperator" },
+    { "from": "video.promptengineer", "to": "video.continuity" },
+    { "from": "video.promptengineer", "to": "video.critic" }
+  ]
+}

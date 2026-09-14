@@ -6,6 +6,7 @@ import {
   Controls,
   ConnectionLineType,
   MiniMap,
+  Panel,
   ReactFlow,
   addEdge,
   applyEdgeChanges,
@@ -25,8 +26,11 @@ import { ErrorBanner } from "../components/RecoveryBanner";
 import { ProjectCommsPanel } from "../components/ProjectComms";
 import { ProjectNode, type ProjectFlowNode, type ProjectNodeData } from "../components/ProjectNode";
 import type { ProjectCommItem, ProjectNextRow, ProjectNextSuggestion, ProjectRecord } from "../api/types";
+import { AutoLayoutButton } from "../components/GraphAutoLayout";
+import { applyAutoLayout } from "../lib/autoLayout";
 import { GRAPH_KIND, graphEdgeStyle, socketColor } from "../lib/graphStyle";
-import { sortProjectComms } from "../lib/projectChat";
+import { commIdForAgent, sortProjectComms } from "../lib/projectChat";
+import { projectChatHref, rememberProject } from "../lib/projectContext";
 import { applyLlmNext, createsCycle } from "../lib/projects";
 import { useSession } from "../state/session";
 import { useTheme } from "../theme/ThemeProvider";
@@ -37,10 +41,12 @@ function FitOnResize({
   nodeCount,
   width,
   height,
+  nonce,
 }: {
   nodeCount: number;
   width: number;
   height: number;
+  nonce: number;
 }) {
   const { fitView } = useReactFlow();
   const ready = useNodesInitialized();
@@ -54,7 +60,7 @@ function FitOnResize({
       window.cancelAnimationFrame(frame);
       window.clearTimeout(later);
     };
-  }, [fitView, nodeCount, ready, width, height]);
+  }, [fitView, nodeCount, ready, width, height, nonce]);
   return null;
 }
 
@@ -100,7 +106,7 @@ function asEdges(graph: ProjectRecord["graph"]): Edge[] {
 function persistable(nodes: Node<ProjectNodeData>[], edges: Edge[]) {
   return {
     nodes: nodes.map((node) => {
-      const { onNext: _onNext, onChoose: _onChoose, linkedOuts: _linked, ...data } = node.data;
+      const { onNext: _onNext, onChoose: _onChoose, onOpenChat: _onOpen, linkedOuts: _linked, ...data } = node.data;
       return { ...node, data };
     }),
     edges,
@@ -131,9 +137,11 @@ export function ProjectFlowPage() {
   const [canvasSize, setCanvasSize] = useState({ width: 0, height: 0 });
   const [flowSize, setFlowSize] = useState({ width: 0, height: 0 });
   const [comms, setComms] = useState<ProjectCommItem[]>([]);
+  const [autoPilot, setAutoPilot] = useState(false);
   const orderedComms = useMemo(() => sortProjectComms(comms), [comms]);
   const [instruction, setInstruction] = useState("");
   const [launching, setLaunching] = useState(false);
+  const [layoutNonce, setLayoutNonce] = useState(0);
 
   useEffect(() => {
     const el = canvasRef.current;
@@ -162,6 +170,7 @@ export function ProjectFlowPage() {
     if (!projectId) {
       return;
     }
+    rememberProject(projectId);
     session.client
       .getProject(projectId)
       .then((payload) => {
@@ -175,7 +184,10 @@ export function ProjectFlowPage() {
       .catch((err) => setError(err instanceof Error ? err : new Error(String(err))));
     session.client
       .listProjectComms(projectId)
-      .then((payload) => setComms(payload.items ?? []))
+      .then((payload) => {
+        setComms(payload.items ?? []);
+        setAutoPilot(Boolean(payload.autopilot?.status || payload.walkthrough === "auto-pilot-v1"));
+      })
       .catch(() => undefined);
   }, [projectId, session.client]);
 
@@ -302,12 +314,48 @@ export function ProjectFlowPage() {
         data: {
           ...node.data,
           linkedOuts: linkedBySource.get(node.id) ?? [],
-          onNext: (id: string, bus?: string) => void handleNext(id, bus),
+          onOpenChat: (id: string) => openChatForNode(id),
+          onNext: autoPilot ? undefined : (id: string, bus?: string) => void handleNext(id, bus),
           onChoose: (id: string, optionId: string) => void handleChoose(id, optionId),
         },
       })),
-    [nodes, handleNext, linkedBySource],
+    [nodes, handleNext, linkedBySource, autoPilot],
   );
+
+  function openChatForNode(nodeId: string) {
+    const node = nodes.find((item) => item.id === nodeId);
+    if (!node) {
+      return;
+    }
+    onNodeClick(undefined, node);
+  }
+
+  function onNodeClick(_event: unknown, node: Node<ProjectNodeData>) {
+    if (!projectId) {
+      return;
+    }
+    const kind = node.data?.kind;
+    const agentId = String(node.data?.agent_id || "");
+    if (kind === "start") {
+      const first = orderedComms.find((item) => item.kind === "instruction" && item.from === "human_operator");
+      navigate(projectChatHref(projectId, { comm: first?.id || "comm-0001" }));
+      return;
+    }
+    if (kind === "output") {
+      const output = [...orderedComms].reverse().find((item) => item.kind === "output" || item.kind === "assembled");
+      navigate(projectChatHref(projectId, { comm: output?.id, agent: undefined }));
+      return;
+    }
+    if (kind === "human") {
+      const ask = [...orderedComms].reverse().find((item) => item.kind === "human_ask");
+      navigate(projectChatHref(projectId, { comm: ask?.id }));
+      return;
+    }
+    if (agentId) {
+      const comm = commIdForAgent(orderedComms, agentId);
+      navigate(projectChatHref(projectId, comm ? { comm } : { agent: agentId }));
+    }
+  }
 
   function addNext(rows: ProjectNextRow[]) {
     const parent = nodes.find((node) => node.id === fromId);
@@ -389,7 +437,11 @@ export function ProjectFlowPage() {
     try {
       const result = await session.client.runProject(projectId, { instruction });
       if (result.dry_run) {
-        setError(new Error("Dry-run is on. Uncheck Dry-run to write comms, graph, and output/asain-beauty-prompt.txt."));
+        setError(
+          new Error(
+            `Dry-run is on. Uncheck Dry-run to write comms, graph, and output/${projectId}-prompt.txt.`,
+          ),
+        );
       }
       if (result.graph) {
         setNodes(asNodes(result.graph));
@@ -401,7 +453,9 @@ export function ProjectFlowPage() {
       if (result.status === "needs_hitl") {
         setError(new Error("Agents generated ASK_HUMAN instructions. Open Chat and answer, then Launch again."));
       } else if (result.validation?.copied_sample) {
-        setError(new Error("Output matched sample/asain-beauty-prompt.txt byte-for-byte — refused as a copy."));
+        setError(
+          new Error(`Output matched sample/${projectId}-prompt.txt byte-for-byte — refused as a copy.`),
+        );
       } else if (result.validation?.missing_markers?.length) {
         setError(
           new Error(
@@ -414,6 +468,19 @@ export function ProjectFlowPage() {
     } finally {
       setLaunching(false);
     }
+  }
+
+  function onAutoLayout() {
+    setNodes((current) =>
+      applyAutoLayout(current, edges, {
+        direction: "LR",
+        rankGap: 96,
+        packGap: 36,
+        defaultWidth: 320,
+        defaultHeight: 240,
+      }),
+    );
+    setLayoutNonce((current) => current + 1);
   }
 
   async function onSave() {
@@ -444,11 +511,15 @@ export function ProjectFlowPage() {
         <div>
           <h2 className="text-lg font-semibold text-stone-800">{record?.title ?? projectId}</h2>
           <p className="text-xs text-stone-500">
-            {record?.folder ?? `project/${projectId}`} · one workflow · {record?.sub_workflow_id ?? "—"} · CHARACTERIZATION
+            {record?.folder ?? `project/${projectId}`} · pack map {record?.sub_workflow_id ?? "—"} (not this
+            project&apos;s creative lock) · CHARACTERIZATION
           </p>
         </div>
         <div className="flex gap-2">
           <DryRunControl />
+          <GhostButton type="button" data-testid="project-auto-layout" disabled={!nodes.length} onClick={onAutoLayout}>
+            Auto layout
+          </GhostButton>
           <GhostButton type="button" onClick={() => navigate("/projects/new")}>
             New project
           </GhostButton>
@@ -559,6 +630,7 @@ export function ProjectFlowPage() {
             onNodesChange={onNodesChange}
             onEdgesChange={onEdgesChange}
             onConnect={onConnect}
+            onNodeClick={onNodeClick}
             fitView
             panOnScroll
             colorMode={theme}
@@ -569,9 +641,17 @@ export function ProjectFlowPage() {
             defaultEdgeOptions={{ type: "default", style: { stroke: socketColor("next"), strokeWidth: 2.4 } }}
             proOptions={{ hideAttribution: true }}
           >
-            <FitOnResize nodeCount={displayNodes.length} width={flowSize.width} height={flowSize.height} />
+            <FitOnResize
+              nodeCount={displayNodes.length}
+              width={flowSize.width}
+              height={flowSize.height}
+              nonce={layoutNonce}
+            />
             <Background variant={BackgroundVariant.Dots} gap={20} size={1.2} color={dark ? "#3a3a3a" : "#d6d3d1"} />
             <Controls />
+            <Panel position="top-right" className="m-2">
+              <AutoLayoutButton testId="project-canvas-auto-layout" disabled={!nodes.length} onClick={onAutoLayout} />
+            </Panel>
             {flowSize.width >= 640 ? (
               <MiniMap
                 pannable

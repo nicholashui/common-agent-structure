@@ -83,30 +83,79 @@ export function locationLabel(pathname: string): string {
   return `${HOME_LABEL} / ${path}`;
 }
 
-const NAV_KEY = "casops.control-ui.nav.v1";
+export const NAV_KEY = "casops.control-ui.nav.v2";
 
 export interface NavChrome {
   collapsed: boolean;
   agentOpen: boolean;
   workflowOpen: boolean;
   projectOpen: boolean;
+  openProjects: string[];
+}
+
+export function defaultNavChrome(): NavChrome {
+  return { collapsed: false, agentOpen: false, workflowOpen: false, projectOpen: false, openProjects: [] };
+}
+
+export function parseOpenProjects(value: unknown): string[] {
+  if (!Array.isArray(value)) {
+    return [];
+  }
+  const out: string[] = [];
+  for (const item of value) {
+    if (typeof item === "string" && item && !out.includes(item)) {
+      out.push(item);
+    }
+  }
+  return out;
+}
+
+export function toggleOpenProject(ids: string[], id: string): string[] {
+  if (!id) {
+    return ids;
+  }
+  return ids.includes(id) ? ids.filter((item) => item !== id) : [...ids, id];
+}
+
+export function ensureOpenProject(ids: string[], id: string): string[] {
+  if (!id || ids.includes(id)) {
+    return ids;
+  }
+  return [...ids, id];
+}
+
+export function projectIdFromPath(pathname: string): string {
+  const trimmed = pathname.replace(/\/+$/, "") || "/";
+  const match = /^\/projects\/([^/]+)/.exec(trimmed);
+  if (!match) {
+    return "";
+  }
+  let id = match[1];
+  try {
+    id = decodeURIComponent(id);
+  } catch {
+    // keep the raw segment
+  }
+  return id === "new" ? "" : id;
 }
 
 export function loadNavChrome(): NavChrome {
+  const fallback = defaultNavChrome();
   try {
     const raw = localStorage.getItem(NAV_KEY);
     if (!raw) {
-      return { collapsed: false, agentOpen: true, workflowOpen: true, projectOpen: true };
+      return fallback;
     }
     const parsed = JSON.parse(raw) as Partial<NavChrome>;
     return {
       collapsed: Boolean(parsed.collapsed),
-      agentOpen: parsed.agentOpen !== false,
-      workflowOpen: parsed.workflowOpen !== false,
-      projectOpen: parsed.projectOpen !== false,
+      agentOpen: Boolean(parsed.agentOpen),
+      workflowOpen: Boolean(parsed.workflowOpen),
+      projectOpen: Boolean(parsed.projectOpen),
+      openProjects: parseOpenProjects(parsed.openProjects),
     };
   } catch {
-    return { collapsed: false, agentOpen: true, workflowOpen: true, projectOpen: true };
+    return fallback;
   }
 }
 

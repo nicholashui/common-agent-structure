@@ -59,7 +59,9 @@ import {
   agentHref,
   loadNavChrome,
   locationLabel,
+  projectIdFromPath,
   saveNavChrome,
+  toggleOpenProject,
 } from "./nav";
 
 const TAB_ICONS: Record<string, LucideIcon> = {
@@ -140,6 +142,7 @@ export function AppShell() {
   const orgOn = location.pathname === "/org-chat";
   const workflowOn = location.pathname === "/workflow" || location.pathname.startsWith("/workflow/");
   const projectOn = location.pathname.startsWith("/projects");
+  const currentProjectId = projectIdFromPath(location.pathname);
 
   function closeMobile() {
     setMobileOpen(false);
@@ -267,11 +270,7 @@ export function AppShell() {
               aria-expanded={chrome.projectOpen}
               title={PROJECT_MENU_LABEL}
               data-testid="nav-project"
-              onClick={() => {
-                setChrome((current) => ({ ...current, projectOpen: true }));
-                navigate("/projects/new");
-                closeMobile();
-              }}
+              onClick={() => setChrome((current) => ({ ...current, projectOpen: !current.projectOpen }))}
             >
               <FolderKanban size={16} className="shrink-0" />
               {collapsed ? <span className="sr-only">{PROJECT_MENU_LABEL}</span> : <span className="flex-1 text-left">{PROJECT_MENU_LABEL}</span>}
@@ -304,29 +303,76 @@ export function AppShell() {
                   ...projects.flatMap((item) => {
                     const href = `/projects/${encodeURIComponent(item.id)}`;
                     const title = item.title || item.name || item.id;
-                    const kids = PROJECT_INSTANCE_TABS.map((tab) => (
-                      <SideLink
-                        key={`${item.id}-${tab.id}`}
-                        to={`${href}/${tab.path}`}
-                        end
-                        collapsed={collapsed}
-                        icon={tab.id === "chat" ? MessageSquare : GitBranch}
-                        inset
-                        insetDepth={2}
-                        testId={`nav-project-${item.id}-${tab.id}`}
-                        onClick={closeMobile}
-                      >
-                        {tab.label}
-                      </SideLink>
-                    ));
+                    const open = chrome.openProjects.includes(item.id);
+                    const active = currentProjectId === item.id;
+                    const kids = open
+                      ? PROJECT_INSTANCE_TABS.map((tab) => (
+                          <SideLink
+                            key={`${item.id}-${tab.id}`}
+                            to={`${href}/${tab.path}`}
+                            end
+                            collapsed={collapsed}
+                            icon={tab.id === "chat" ? MessageSquare : GitBranch}
+                            inset
+                            insetDepth={2}
+                            testId={`nav-project-${item.id}-${tab.id}`}
+                            onClick={closeMobile}
+                          >
+                            {tab.label}
+                          </SideLink>
+                        ))
+                      : [];
                     return [
-                      <p
+                      <button
                         key={item.id}
-                        className="ml-3 px-2 py-1 text-xs font-medium text-stone-500"
+                        type="button"
+                        className={`${navClass(active && !collapsed, collapsed)} ml-3`}
+                        aria-expanded={open}
+                        title={title}
                         data-testid={`nav-project-${item.id}`}
+                        onClick={() => {
+                          navigate(`${href}/workflow`);
+                          closeMobile();
+                        }}
                       >
-                        {title}
-                      </p>,
+                        <FolderKanban size={16} className="shrink-0" />
+                        {collapsed ? (
+                          <span className="sr-only">{title}</span>
+                        ) : (
+                          <span className="flex-1 truncate text-left">{title}</span>
+                        )}
+                        {collapsed ? null : (
+                          <span
+                            role="button"
+                            tabIndex={0}
+                            className="rounded p-0.5 text-stone-400 hover:text-stone-700"
+                            data-testid={`nav-project-${item.id}-toggle`}
+                            aria-label={open ? `Collapse ${title}` : `Expand ${title}`}
+                            onClick={(event) => {
+                              event.stopPropagation();
+                              setChrome((current) => ({
+                                ...current,
+                                openProjects: toggleOpenProject(current.openProjects, item.id),
+                              }));
+                            }}
+                            onKeyDown={(event) => {
+                              if (event.key === "Enter" || event.key === " ") {
+                                event.preventDefault();
+                                event.stopPropagation();
+                                setChrome((current) => ({
+                                  ...current,
+                                  openProjects: toggleOpenProject(current.openProjects, item.id),
+                                }));
+                              }
+                            }}
+                          >
+                            <ChevronDown
+                              size={14}
+                              className={`transition-transform ${open ? "" : "-rotate-90"}`}
+                            />
+                          </span>
+                        )}
+                      </button>,
                       ...kids,
                     ];
                   }),

@@ -23,6 +23,7 @@ export type ProjectNodeData = {
   contract?: string[];
   reason?: string;
   linkedOuts?: string[];
+  onOpenChat?: (id: string) => void;
   onNext?: (id: string, outBus?: string) => void;
   thinking?: string;
   options?: { id: string; label: string; why?: string }[];
@@ -79,6 +80,19 @@ export function ProjectNode({ id, data, selected }: NodeProps<ProjectFlowNode>) 
       >
         <span className="uppercase tracking-wide">{chrome.label}</span>
         <span className="truncate font-mono text-[10px] opacity-90">{data.label}</span>
+        {data.onOpenChat ? (
+          <button
+            type="button"
+            className="nodrag nopan shrink-0 rounded border border-white/30 px-1 text-[9px] font-medium uppercase tracking-wide text-white hover:bg-white/15"
+            data-testid={`project-open-chat-${id}`}
+            onClick={(event) => {
+              event.stopPropagation();
+              data.onOpenChat?.(id);
+            }}
+          >
+            Chat
+          </button>
+        ) : null}
       </div>
       {start ? null : (
         <div className="relative flex items-center px-2 py-1">
@@ -206,6 +220,8 @@ export function ProjectNode({ id, data, selected }: NodeProps<ProjectFlowNode>) 
       ) : null}
       {output ? (
         <p className="px-2 py-1 text-[10px] font-semibold uppercase tracking-wide text-amber-700 dark:text-[#ffcc80]">No Out · end node</p>
+      ) : !data.onNext ? (
+        <p className="px-2 py-1 text-[10px] text-stone-400">Out sockets follow the Chat spine. Next / video.planner is off for Auto Pilot.</p>
       ) : (
         <div className="space-y-0.5 pb-1 pt-1">
           {(outputs.length ? outputs : ["next"]).map((bus) => {

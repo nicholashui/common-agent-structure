@@ -5,6 +5,8 @@ import shutil
 from casops.project_comms import (
     GOLD_BODY_PROBE,
     append_comm,
+    apply_autopilot_cycle,
+    apply_project_choices,
     assemble_generator_instruction,
     extract_sections,
     load_comms,
@@ -12,6 +14,7 @@ from casops.project_comms import (
     sample_prompt_path,
     _induce_envelope,
 )
+from casops.projects import read_project
 from casops.project_instruction import human_brief_only, parse_emitted_instructions, pick_option
 
 
@@ -46,16 +49,360 @@ def test_walkthrough_chat_matches_workflow() -> None:
     assert "ribbed tank strap" in out
     assert "window grid" in out
     assert "Human asks" not in out
-    from casops.project_sample_walkthrough import HUMAN_FILLS
+    from casops.project_sample_walkthrough import HUMAN_ASKS, HUMAN_DOMAIN_ROLES, CREATIVE_AGENT, INTENT_AGENT
 
-    for fill in HUMAN_FILLS:
-        assert any(item["kind"] == "human_ask" and item["text"] == fill["question"] for item in comms["items"])
-        assert any(item["kind"] == "instruction" and item["from"] == "human_operator" and item["text"] == fill["answer"] for item in comms["items"])
+    human_domain = [
+        item
+        for item in comms["items"]
+        if item["from"] == "human_operator" and item["to"] in HUMAN_DOMAIN_ROLES
+    ]
+    assert {item["to"] for item in human_domain} == set(HUMAN_DOMAIN_ROLES)
+    assert all(item["kind"] == "choice" for item in human_domain)
+    assert not any(
+        item["from"] == "human_operator"
+        and item["to"] in {"video.cameraoperator", "video.critic"}
+        for item in comms["items"]
+    )
+    assert not any(
+        item["from"] == "human_operator"
+        and item["kind"] == "instruction"
+        and item["to"] != "create-project"
+        for item in comms["items"]
+    )
+    for ask in HUMAN_ASKS:
+        assert any(
+            item["kind"] == "human_ask" and item["from"] == ask["from"] and ask["question"] in item["text"]
+            for item in comms["items"]
+        )
+    parties = {(item["from"], item["to"]) for item in comms["items"]}
+    assert ("create-project", INTENT_AGENT) in parties
+    assert (INTENT_AGENT, CREATIVE_AGENT) in parties or (CREATIVE_AGENT, INTENT_AGENT) in parties
     kinds = {item["kind"] for item in comms["items"]}
     assert "choice" in kinds
     assert "human_ask" in kinds
     choosers = [item for item in comms["items"] if item["kind"] == "choice"]
     assert any("REASON:" in item["text"] and item["from"] != "human_operator" for item in choosers)
+
+
+def test_output_prompt_path_uses_slug() -> None:
+    from casops.project_comms import output_prompt_path, read_output, sample_prompt_path
+
+    root = REPO / "project"
+    assert output_prompt_path(root, "asain-beauty").name == "asain-beauty-prompt.txt"
+    assert output_prompt_path(root, "european-handsome").name == "european-handsome-prompt.txt"
+    assert sample_prompt_path(root, "european-handsome").name == "european-handsome-prompt.txt"
+    payload = read_output(root, "european-handsome")
+    assert payload["path"] == "project/european-handsome/output/european-handsome-prompt.txt"
+    assert payload["exists"] is True
+    assert "Rooftop phone-macro" in payload["text"]
+    assert "asain-beauty-prompt.txt" not in payload["path"]
+    assert output_prompt_path(root, "japanese-grandma-gta").name == "japanese-grandma-gta-prompt.txt"
+    assert sample_prompt_path(root, "japanese-grandma-gta").name == "japanese-grandma-gta-prompt.txt"
+    assert output_prompt_path(root, "hongkong-grandma-gta").name == "hongkong-grandma-gta-prompt.txt"
+    assert sample_prompt_path(root, "hongkong-grandma-gta").name == "hongkong-grandma-gta-prompt.txt"
+
+
+def test_european_handsome_walkthrough_chat_matches_workflow() -> None:
+    from casops.project_european_handsome_walkthrough import (
+        CREATIVE_AGENT,
+        DECISIONS,
+        GOLD_BODY_PROBE,
+        HUMAN_ASKS,
+        HUMAN_DOMAIN_ROLES,
+        INTENT_AGENT,
+        assembled_output,
+        comms_payload,
+        expected_autopilot_hops,
+        graph_bundle,
+        pack_map_suggestion,
+    )
+    from casops.project_comms import extract_sections
+
+    comms = comms_payload()
+    graph = graph_bundle()
+    assert comms["decisions"] == DECISIONS
+    by_agent = {node["data"]["agent_id"]: node["data"] for node in graph["nodes"] if node["data"].get("agent_id")}
+    for dec in DECISIONS:
+        data = by_agent[dec["agent_id"]]
+        assert data["options"] == dec["options"]
+        assert data["chosen"] == dec["chosen"]
+        assert data["selected_by"] == dec["selected_by"]
+    assert "output-prompt" in [node["id"] for node in graph["nodes"]]
+    out = assembled_output()
+    gold = (REPO / "project" / "european-handsome" / "sample" / "european-handsome-prompt.txt").read_text(
+        encoding="utf-8"
+    )
+    assert GOLD_BODY_PROBE not in out
+    assert out.strip() != gold.strip()
+    assert "tiny pale scar cuts the left eyebrow" in out
+    assert "flat brown mole sits on the right side of the neck" in out
+    assert "broken capillary near the inner right eye" in out
+    assert "7:20am" in out
+    assert "6–10°" in out
+    assert "faded black cotton tank" in out
+    assert "thin silver chain" in out
+    assert "grey-green" in out
+    assert "hooks it away with his lower lip" not in out
+    assert "no hair in the mouth" in out
+    assert "never crosses the mouth" in out or "never into the mouth" in out
+    assert "salt-damp tips" in out
+    assert "sleep-swelling" in out
+    assert "concrete roof" in out
+    assert "tank strap" in out
+    parts = extract_sections(out, ("Subject", "Hair", "Skin"))
+    assert "tiny pale scar" in parts["Subject"]
+    assert "tiny pale scar" not in parts["Hair"]
+    assert "slightly wavy" in parts["Hair"]
+    assert "broken capillary" in parts["Skin"]
+    hops = expected_autopilot_hops()
+    assert hops[0] == ("human_operator", "create-project", "instruction")
+    assert hops[1] == ("create-project", INTENT_AGENT, "instruction")
+    assert hops[-1] == ("video.promptengineer", "output-prompt", "output")
+    human_domain = [
+        item
+        for item in comms["items"]
+        if item["from"] == "human_operator" and item["to"] in HUMAN_DOMAIN_ROLES
+    ]
+    assert {item["to"] for item in human_domain} == set(HUMAN_DOMAIN_ROLES)
+    assert not any(
+        item["from"] == "human_operator" and item["to"] in {"video.cameraoperator", "video.critic"}
+        for item in comms["items"]
+    )
+    for ask in HUMAN_ASKS:
+        assert any(
+            item["kind"] == "human_ask" and item["from"] == ask["from"] and ask["question"] in item["text"]
+            for item in comms["items"]
+        )
+    parties = {(item["from"], item["to"]) for item in comms["items"]}
+    assert ("create-project", INTENT_AGENT) in parties
+    assert (INTENT_AGENT, CREATIVE_AGENT) in parties or (CREATIVE_AGENT, INTENT_AGENT) in parties
+    suggestion = pack_map_suggestion(
+        {
+            "name": "european-handsome",
+            "title": "European Handsome",
+            "brief": "Short vertical beauty clip. Adult European man.",
+            "audience": "18-34 on social",
+            "duration": "15s",
+            "outlets": "social",
+            "risk": "low",
+        }
+    )
+    assert suggestion["primary"] == "video.template.b"
+    assert suggestion["suggestions"][0]["id"] == "video.template.b"
+    assert "pack map" in suggestion["suggestions"][0]["label"]
+    assert len(suggestion["suggestions"]) >= 2
+    assert suggestion["catalog"]
+
+
+def test_japanese_grandma_gta_walkthrough_chat_matches_workflow() -> None:
+    from casops.project_japanese_grandma_gta_walkthrough import (
+        CREATIVE_AGENT,
+        DECISIONS,
+        GOLD_BODY_PROBE,
+        HUMAN_ASKS,
+        HUMAN_DOMAIN_ROLES,
+        INTENT_AGENT,
+        assembled_output,
+        comms_payload,
+        expected_autopilot_hops,
+        graph_bundle,
+        pack_map_suggestion,
+    )
+    from casops.project_comms import extract_sections
+
+    comms = comms_payload()
+    graph = graph_bundle()
+    assert comms["decisions"] == DECISIONS
+    by_agent = {node["data"]["agent_id"]: node["data"] for node in graph["nodes"] if node["data"].get("agent_id")}
+    for dec in DECISIONS:
+        data = by_agent[dec["agent_id"]]
+        assert data["options"] == dec["options"]
+        assert data["chosen"] == dec["chosen"]
+        assert data["selected_by"] == dec["selected_by"]
+    assert "output-prompt" in [node["id"] for node in graph["nodes"]]
+    out = assembled_output()
+    gold = (REPO / "project" / "japanese-grandma-gta" / "sample" / "japanese-grandma-gta-prompt.txt").read_text(
+        encoding="utf-8"
+    )
+    assert GOLD_BODY_PROBE not in out
+    assert out.strip() != gold.strip()
+    assert "silver four-wheel senior mobility scooter" in out
+    assert "short permed silver" in out
+    assert "Floral blouse" in out
+    assert "beige cardigan" in out
+    assert "rice paddies" in out
+    assert "3 meters behind" in out
+    assert "get the pickles home before supper" in out
+    assert "wanted stars" in out
+    assert "not Miami" in out or "No neon Vice City" in out
+    parts = extract_sections(out, ("Subject", "Hair", "Skin"))
+    assert "75–82" in parts["Subject"]
+    assert "75–82" not in parts["Hair"]
+    assert "permed silver" in parts["Hair"]
+    assert "age spots" in parts["Skin"]
+    hops = expected_autopilot_hops()
+    assert hops[0] == ("human_operator", "create-project", "instruction")
+    assert hops[1] == ("create-project", INTENT_AGENT, "instruction")
+    assert hops[-1] == ("video.promptengineer", "output-prompt", "output")
+    human_domain = [
+        item
+        for item in comms["items"]
+        if item["from"] == "human_operator" and item["to"] in HUMAN_DOMAIN_ROLES
+    ]
+    assert {item["to"] for item in human_domain} == set(HUMAN_DOMAIN_ROLES)
+    assert not any(
+        item["from"] == "human_operator" and item["to"] in {"video.cameraoperator", "video.critic"}
+        for item in comms["items"]
+    )
+    for ask in HUMAN_ASKS:
+        assert any(
+            item["kind"] == "human_ask" and item["from"] == ask["from"] and ask["question"] in item["text"]
+            for item in comms["items"]
+        )
+    parties = {(item["from"], item["to"]) for item in comms["items"]}
+    assert ("create-project", INTENT_AGENT) in parties
+    assert (INTENT_AGENT, CREATIVE_AGENT) in parties or (CREATIVE_AGENT, INTENT_AGENT) in parties
+    suggestion = pack_map_suggestion(
+        {
+            "name": "japanese-grandma-gta",
+            "title": "Japanese Grandma GTA",
+            "brief": "Short 16:9 chase clip. Adult Japanese grandma on a senior scooter.",
+            "audience": "18-34 on social",
+            "duration": "15s",
+            "outlets": "social",
+            "risk": "low",
+        }
+    )
+    assert suggestion["primary"] == "video.template.b"
+    assert suggestion["suggestions"][0]["id"] == "video.template.b"
+    assert "pack map" in suggestion["suggestions"][0]["label"]
+    assert len(suggestion["suggestions"]) >= 2
+    assert suggestion["catalog"]
+
+
+def test_hongkong_grandma_gta_walkthrough_chat_matches_workflow() -> None:
+    from casops.project_hongkong_grandma_gta_walkthrough import (
+        CREATIVE_AGENT,
+        DECISIONS,
+        GOLD_BODY_PROBE,
+        HUMAN_ASKS,
+        HUMAN_DOMAIN_ROLES,
+        INTENT_AGENT,
+        assembled_output,
+        comms_payload,
+        expected_autopilot_hops,
+        graph_bundle,
+        pack_map_suggestion,
+    )
+    from casops.project_comms import extract_sections
+
+    comms = comms_payload()
+    graph = graph_bundle()
+    assert comms["decisions"] == DECISIONS
+    by_agent = {node["data"]["agent_id"]: node["data"] for node in graph["nodes"] if node["data"].get("agent_id")}
+    for dec in DECISIONS:
+        data = by_agent[dec["agent_id"]]
+        assert data["options"] == dec["options"]
+        assert data["chosen"] == dec["chosen"]
+        assert data["selected_by"] == dec["selected_by"]
+    assert "output-prompt" in [node["id"] for node in graph["nodes"]]
+    out = assembled_output()
+    gold = (REPO / "project" / "hongkong-grandma-gta" / "sample" / "hongkong-grandma-gta-prompt.txt").read_text(
+        encoding="utf-8"
+    )
+    assert GOLD_BODY_PROBE not in out
+    assert out.strip() != gold.strip()
+    assert "pineapple bun" in out
+    assert "Mong Kok" in out
+    assert "2–3 meters behind" in out
+    assert "bring the pineapple bun home" in out
+    assert "grey-white perm" in out or "grey-white permed" in out
+    assert "Floral short-sleeve blouse" in out or "floral short-sleeve blouse" in out
+    assert "wanted stars" in out
+    parts = extract_sections(out, ("Subject", "Hair", "Skin"))
+    assert "70–78" in parts["Subject"]
+    assert "70–78" not in parts["Hair"]
+    assert "grey-white perm" in parts["Hair"] or "grey-white permed" in parts["Hair"]
+    assert "age spots" in parts["Skin"]
+    hops = expected_autopilot_hops()
+    assert hops[0] == ("human_operator", "create-project", "instruction")
+    assert hops[1] == ("create-project", INTENT_AGENT, "instruction")
+    assert hops[-1] == ("video.promptengineer", "output-prompt", "output")
+    human_domain = [
+        item
+        for item in comms["items"]
+        if item["from"] == "human_operator" and item["to"] in HUMAN_DOMAIN_ROLES
+    ]
+    assert {item["to"] for item in human_domain} == set(HUMAN_DOMAIN_ROLES)
+    assert not any(
+        item["from"] == "human_operator" and item["to"] in {"video.cameraoperator", "video.critic"}
+        for item in comms["items"]
+    )
+    for ask in HUMAN_ASKS:
+        assert any(
+            item["kind"] == "human_ask" and item["from"] == ask["from"] and ask["question"] in item["text"]
+            for item in comms["items"]
+        )
+    parties = {(item["from"], item["to"]) for item in comms["items"]}
+    assert ("create-project", INTENT_AGENT) in parties
+    assert (INTENT_AGENT, CREATIVE_AGENT) in parties or (CREATIVE_AGENT, INTENT_AGENT) in parties
+    suggestion = pack_map_suggestion(
+        {
+            "name": "hongkong-grandma-gta",
+            "title": "Hong Kong Grandma GTA",
+            "brief": "Short 16:9 chase clip. Adult Hong Kong grandma walking home at night.",
+            "audience": "18-34 on social",
+            "duration": "15s",
+            "outlets": "social",
+            "risk": "low",
+        }
+    )
+    assert suggestion["primary"] == "video.template.b"
+    assert suggestion["suggestions"][0]["id"] == "video.template.b"
+    assert "pack map" in suggestion["suggestions"][0]["label"]
+    assert len(suggestion["suggestions"]) >= 2
+    assert suggestion["catalog"]
+
+
+def test_expected_autopilot_hops_match_chat_spine() -> None:
+    from casops.project_comms import INDUCE_ROSTER
+    from casops.project_sample_walkthrough import expected_autopilot_hops
+
+    hops = expected_autopilot_hops()
+    assert hops[0] == ("human_operator", "create-project", "instruction")
+    assert hops[1] == ("create-project", "specials.intent-analysis-agent", "instruction")
+    assert ("host_service", "output-prompt", "assembled") in hops
+    assert hops[-1] == ("video.promptengineer", "output-prompt", "output")
+    assert hops[hops.index(("host_service", "output-prompt", "assembled")) + 1] == (
+        "video.promptengineer",
+        "output-prompt",
+        "output",
+    )
+    assert [row[0] for row in INDUCE_ROSTER][0] == "video.creativedirector"
+    human_tos = [to for frm, to, kind in hops if frm == "human_operator" and kind == "choice"]
+    assert "video.cameraoperator" not in human_tos
+    assert "video.critic" not in human_tos
+    assert "video.promptengineer" in human_tos
+
+
+def test_assembled_output_splits_continuity_into_distinct_sections() -> None:
+    from casops.project_sample_walkthrough import assembled_output
+
+    out = assembled_output()
+    parts = extract_sections(out, ("Subject", "Hair", "Skin"))
+    subject, hair, skin = parts["Subject"], parts["Hair"], parts["Skin"]
+    assert subject != hair
+    assert hair != skin
+    assert "tiny light-brown mole sits just under the outer corner of the left eye" in subject
+    assert "tiny light-brown mole" not in hair
+    assert "slight wave" in hair
+    assert "slight wave" not in subject
+    assert "faint blue vessels" in skin
+    assert "faint blue vessels" not in subject
+    assert "ribbed tank strap" in subject
+    assert "ribbed tank strap" not in hair
+    assert "ribbed tank strap" not in skin
+    assert GOLD_BODY_PROBE not in out
 
 
 def test_append_comm_and_tags(tmp_path: Path) -> None:
@@ -521,6 +868,10 @@ def test_apply_choices_does_not_recall_agents(tmp_path: Path) -> None:
         chat_fn=fake_chat,
     )
     hops = calls["n"]
+    saved = load_comms(root, "asain-beauty")
+    assert saved.get("autopilot", {}).get("status") == "aligned"
+    assert saved.get("locks")
+    assert any(item.get("kind") == "assembled" and item.get("from") == "host_service" for item in first["comms"]["items"])
     second = run_asain_beauty_workflow(
         root,
         "asain-beauty",
@@ -534,3 +885,149 @@ def test_apply_choices_does_not_recall_agents(tmp_path: Path) -> None:
     cin = next(node for node in second["graph"]["nodes"] if node["data"].get("agent_id") == "video.cinematographer")
     assert cin["data"]["chosen"] == "2"
     assert "output-prompt" in [node["id"] for node in first["graph"]["nodes"]]
+
+
+def test_human_lock_pick_does_not_clobber_expert_who_leads(tmp_path: Path) -> None:
+    root = tmp_path / "project"
+    src = REPO / "project" / "asain-beauty"
+    shutil.copytree(src, root / "asain-beauty")
+    record = read_project(root, "asain-beauty")
+    result = apply_project_choices(
+        root,
+        "asain-beauty",
+        record,
+        {"video.promptengineer": "2"},
+        dry_run=False,
+    )
+    pe = next(row for row in result["comms"]["decisions"] if row["agent_id"] == "video.promptengineer")
+    assert pe["chosen"] == "1"
+    assert pe["selected_by"] == "specials.general-creative-agent"
+    assert pe["select_reason"]
+    node = next(row for row in result["graph"]["nodes"] if row.get("data", {}).get("agent_id") == "video.promptengineer")
+    assert node["data"]["chosen"] == "1"
+    out = (root / "asain-beauty" / "output" / "asain-beauty-prompt.txt").read_text(encoding="utf-8")
+    assert "Induce video.director first" not in out
+    assert "6-second square talking-head" in out
+    assert result["comms"].get("autopilot", {}).get("status") == "aligned"
+    assert result["comms"].get("locks", {}).get("video.promptengineer") == "2"
+    saved = load_comms(root, "asain-beauty")
+    assert saved.get("autopilot", {}).get("status") == "aligned"
+    assert saved.get("locks", {}).get("video.promptengineer") == "2"
+    choice = next(
+        item
+        for item in reversed(result["comms"]["items"])
+        if item.get("kind") == "choice" and item.get("to") == "video.promptengineer"
+    )
+    assert "OPTION 2" in choice["text"]
+
+
+def test_autopilot_cycle_is_host_owned_and_capped(tmp_path: Path) -> None:
+    root = tmp_path / "project"
+    shutil.copytree(REPO / "project" / "asain-beauty", root / "asain-beauty")
+    record = read_project(root, "asain-beauty")
+    first = apply_autopilot_cycle(root, "asain-beauty", record, "continue", dry_run=False)
+    assert first["comms"]["autopilot"]["cycle"] == "open"
+    assert first["comms"]["autopilot"]["cycles"] == 1
+    asks = [item for item in first["comms"]["items"] if item.get("kind") == "human_ask" and item.get("pass_id") == "pass_03"]
+    assert any(item["from"] == "host_service" for item in asks)
+    assert any(item["from"] == "video.critic" for item in asks)
+    assert any(item["from"] == "video.continuity" for item in asks)
+    again = apply_autopilot_cycle(root, "asain-beauty", record, "continue", dry_run=False)
+    assert again["comms"]["autopilot"]["cycle"] == "stopped"
+    picked = apply_project_choices(
+        root,
+        "asain-beauty",
+        record,
+        {"video.critic": "p3-2", "video.continuity": "p3-1"},
+        dry_run=False,
+    )
+    # continue was capped to stop on second gate; p3 picks still record cycle_locks
+    assert picked["comms"]["autopilot"].get("cycle_locks", {}).get("video.critic") == "p3-2"
+
+
+def test_cycle_ready_appends_pass03_next_instruction(tmp_path: Path) -> None:
+    root = tmp_path / "project"
+    shutil.copytree(REPO / "project" / "asain-beauty", root / "asain-beauty")
+    record = read_project(root, "asain-beauty")
+    apply_autopilot_cycle(root, "asain-beauty", record, "continue", dry_run=False)
+    picked = apply_project_choices(
+        root,
+        "asain-beauty",
+        record,
+        {"video.critic": "p3-2", "video.continuity": "p3-1"},
+        dry_run=False,
+    )
+    assert picked["comms"]["autopilot"]["cycle"] == "ready"
+    assert any(
+        item.get("kind") == "next_instruction" and item.get("pass_id") == "pass_03"
+        for item in picked["comms"]["items"]
+    )
+    assert any(
+        item.get("kind") == "assembled" and item.get("pass_id") == "pass_03"
+        for item in picked["comms"]["items"]
+    )
+    out = (root / "asain-beauty" / "output" / "asain-beauty-prompt.txt").read_text(encoding="utf-8")
+    assert "no extra jewelry" in out or "no identity morph" in out
+
+
+def test_cycle_stop_retracts_open_pass03_asks(tmp_path: Path) -> None:
+    root = tmp_path / "project"
+    shutil.copytree(REPO / "project" / "asain-beauty", root / "asain-beauty")
+    record = read_project(root, "asain-beauty")
+    apply_autopilot_cycle(root, "asain-beauty", record, "continue", dry_run=False)
+    stopped = apply_autopilot_cycle(root, "asain-beauty", record, "stop", dry_run=False)
+    assert stopped["comms"]["autopilot"]["cycle"] == "stopped"
+    open_from = {
+        item["from"]
+        for item in stopped["comms"]["items"]
+        if item.get("kind") == "human_ask"
+        and item.get("pass_id") == "pass_03"
+        and item.get("from") in {"video.critic", "video.continuity"}
+    }
+    answered = {
+        item["to"]
+        for item in stopped["comms"]["items"]
+        if item.get("kind") == "choice"
+        and item.get("from") == "human_operator"
+        and item.get("to") in {"video.critic", "video.continuity"}
+        and item.get("pass_id") == "pass_03"
+    }
+    assert not (open_from - answered)
+
+
+def test_cycle_dry_run_does_not_write_comms(tmp_path: Path) -> None:
+    root = tmp_path / "project"
+    shutil.copytree(REPO / "project" / "asain-beauty", root / "asain-beauty")
+    record = read_project(root, "asain-beauty")
+    before = load_comms(root, "asain-beauty")
+    result = apply_autopilot_cycle(root, "asain-beauty", record, "continue", dry_run=True)
+    after = load_comms(root, "asain-beauty")
+    assert result["dry_run"] is True
+    assert result["saved"] is False
+    assert after.get("autopilot", {}).get("cycle") == before.get("autopilot", {}).get("cycle")
+
+
+def test_cycle_ask_option_ids_parse_on_real_hop() -> None:
+    from casops.project_instruction import parse_emitted_instructions
+    from casops.project_sample_walkthrough import CYCLE_ASKS, _ask_block
+
+    fixture = REPO / "ui" / "tests" / "fixtures" / "cycle-ask-critic.txt"
+    text = _ask_block(CYCLE_ASKS[0])
+    assert text.strip() == fixture.read_text(encoding="utf-8").strip()
+    parsed = parse_emitted_instructions(text)
+    assert [row["id"] for row in parsed["options"]] == ["p3-1", "p3-2"]
+    assert parsed["recommend"] == "p3-1"
+
+
+def test_swarm_roster_is_read_only() -> None:
+    from casops.swarms import compose_preview, list_swarms, read_swarm
+
+    listed = list_swarms(REPO / "agents")
+    ids = [row["swarm_id"] for row in listed["swarms"]]
+    assert "video.asain-beauty" in ids
+    payload = read_swarm(REPO / "agents", "video.asain-beauty")
+    assert payload["runner"] is False
+    assert "video.promptengineer" in payload["member_ids"]
+    assert "specials.intent-analysis-agent" in payload["member_ids"]
+    preview = compose_preview(REPO / "agents", "video.asain-beauty")
+    assert preview["wrote_locks"] is False

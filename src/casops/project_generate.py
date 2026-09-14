@@ -303,6 +303,8 @@ def still_prompt(instruction: str) -> str:
         parts.get("Negatives", ""),
     ]
     text = "\n".join(item for item in chunks if item).strip()
+    if "Hair stays off the lips" not in text:
+        text = (text + "\nHair stays off the lips. No hair in the mouth.").strip()
     return text[:4500]
 
 
@@ -312,10 +314,11 @@ def motion_prompt(instruction: str) -> str:
         parts.get(key, "") for key in list(parts) if key[:1].isdigit()
     )
     chunks = [
-        "Animate this locked still. Keep the same adult woman, moles, hair, makeup, and light. Motion and sound only. Do not re-describe the face.",
+        "Animate this locked still. Keep the same adult identity, moles, hair, makeup, and light. Motion and sound only. Do not re-describe the face.",
         beats,
         parts.get("Camera lock", ""),
         parts.get("Sound", ""),
+        "Hair stays off the lips. Do not put hair in the mouth. Do not chew or eat hair. Do not hook a strand with the lip.",
     ]
     text = "\n".join(item for item in chunks if item).strip()
     return text[:4500]

@@ -14,10 +14,10 @@ export type ParsedOptionBlock = {
   decideBy: string;
 };
 
-const OPTION_RE = /^OPTION\s+([A-Za-z0-9]+)[:.)]\s*(.+)$/i;
+const OPTION_RE = /^OPTION\s+([A-Za-z0-9][A-Za-z0-9_-]*)[:.)]\s*(.+)$/i;
 const RECOMMEND_RE = /^RECOMMEND:\s*(\S+)/i;
 const DECIDE_BY_RE = /^DECIDE_BY:\s*(\S+)/i;
-const SELECTED_RE = /^SELECTED:\s*(?:OPTION\s*)?([A-Za-z0-9]+)\b/i;
+const SELECTED_RE = /^SELECTED:\s*(?:OPTION\s*)?([A-Za-z0-9][A-Za-z0-9_-]*)\b/i;
 const SELECTED_BY_RE = /^SELECTED_BY:\s*(.+)$/i;
 const REASON_RE = /^REASON:\s*(.+)$/i;
 
@@ -83,4 +83,11 @@ export function parseOptionBlock(text: string): ParsedOptionBlock {
     reason,
     decideBy,
   };
+}
+
+export function choiceIdFromAsk(askText: string, typed: string): string {
+  const parsed = parseOptionBlock(askText);
+  const want = (typed || "").trim();
+  const hit = parsed.options.find((row) => row.id === want || row.label === want);
+  return hit?.id || want;
 }

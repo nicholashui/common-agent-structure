@@ -63,6 +63,11 @@ export const COMPANION_V3_PATHS = [
   ["GET", "/api/v3/projects/{project_id}/output"],
   ["GET", "/api/v3/projects/{project_id}/output/file"],
   ["POST", "/api/v3/projects/{project_id}/generate"],
+  ["GET", "/api/v3/swarms"],
+  ["GET", "/api/v3/swarms/{swarm_id}"],
+  ["GET", "/api/v3/swarms/{swarm_id}/roster"],
+  ["GET", "/api/v3/swarms/{swarm_id}/graph"],
+  ["POST", "/api/v3/swarms/{swarm_id}/compose-preview"],
 ] as const;
 
 export type HttpMethod = "GET" | "POST" | "PUT" | "PATCH" | "DELETE";
@@ -128,6 +133,11 @@ export const CLIENT_BINDINGS = {
   runProject: ["POST", "/api/v3/projects/{project_id}/run"],
   getProjectOutput: ["GET", "/api/v3/projects/{project_id}/output"],
   generateProject: ["POST", "/api/v3/projects/{project_id}/generate"],
+  listSwarms: ["GET", "/api/v3/swarms"],
+  getSwarm: ["GET", "/api/v3/swarms/{swarm_id}"],
+  getSwarmRoster: ["GET", "/api/v3/swarms/{swarm_id}/roster"],
+  getSwarmGraph: ["GET", "/api/v3/swarms/{swarm_id}/graph"],
+  composeSwarmPreview: ["POST", "/api/v3/swarms/{swarm_id}/compose-preview"],
 } as const;
 
 export const MUTATING = new Set<string>(["POST", "PUT", "PATCH", "DELETE"]);

@@ -8,7 +8,7 @@
   "duration": "15s",
   "outlets": "social",
   "risk": "low",
-  "notes": "",
+  "notes": "sub_workflow_id is the pack-map SVG only. Chat creative lock is a phone-macro skin study, not a UGC ad.",
   "group": "video",
   "sub_workflow_id": "video.template.b",
   "suggestion": {
@@ -18,9 +18,9 @@
     "suggestions": [
       {
         "id": "video.template.b",
-        "label": "B · UGC Ad",
+        "label": "B · pack map (not this project's creative lock)",
         "kind": "template",
-        "reason": "paid social, creator-style product ad",
+        "reason": "Sub-workflow SVG template B is the pack picture only. Chat lock is no-SKU phone-macro.",
         "rank": 1,
         "source": "heuristic"
       },
@@ -181,7 +181,45 @@
         "label": "Scale S7",
         "use": "feature / broadcast, highest risk"
       }
-    ]
+    ],
+    "honesty_note": "Pack map only — not this project's creative lock."
+  },
+  "io_overlay": {
+    "note": "Auto Pilot Chat edges. Pack critique_edges on video.* stay for Main/Sub SVG. Host dispatch does not count against folder max_peer_hops (agent-initiated tools only; allowlist empty).",
+    "peer_hops": "host_mediated",
+    "edges": {
+      "specials.intent-analysis-agent": {
+        "inputs": [
+          "create-project"
+        ],
+        "outputs": [
+          "specials.general-creative-agent"
+        ]
+      },
+      "specials.general-creative-agent": {
+        "inputs": [
+          "specials.intent-analysis-agent"
+        ],
+        "outputs": [
+          "video.promptengineer"
+        ]
+      },
+      "video.promptengineer": {
+        "inputs": [
+          "specials.general-creative-agent",
+          "create-project"
+        ],
+        "outputs": [
+          "video.creativedirector",
+          "video.director",
+          "video.cinematographer",
+          "video.mua_makeup",
+          "video.cameraoperator",
+          "video.continuity",
+          "video.critic"
+        ]
+      }
+    }
   },
   "graph": {
     "nodes": [
@@ -189,8 +227,8 @@
         "id": "create-project",
         "type": "start",
         "position": {
-          "x": 80,
-          "y": 200
+          "x": 40,
+          "y": 160
         },
         "deletable": false,
         "data": {
@@ -206,6 +244,96 @@
           "io": {
             "inputs": [],
             "outputs": [
+              "specials.intent-analysis-agent"
+            ]
+          }
+        }
+      },
+      {
+        "id": "agent-specials-intent-analysis-agent",
+        "type": "agent",
+        "position": {
+          "x": 380,
+          "y": 40
+        },
+        "data": {
+          "kind": "agent",
+          "label": "intent-analysis-agent",
+          "agent_id": "specials.intent-analysis-agent",
+          "reason": "What the draft is asking for",
+          "thinking": "Locution: a short vertical beauty clip of an adult East Asian woman. Illocution: directive to produce a clip. Triggerable as a container, not as shot grammar. No product, speech, or studio is evidenced.",
+          "options": [
+            {
+              "id": "1",
+              "label": "Person-led beauty skin study (no product named)",
+              "why": "Draft names a woman, not a SKU or CTA."
+            },
+            {
+              "id": "2",
+              "label": "Paid UGC product ad",
+              "why": "Would invent a shop CTA the draft omitted."
+            },
+            {
+              "id": "3",
+              "label": "Talking-head explainer",
+              "why": "Draft did not ask for speech."
+            }
+          ],
+          "recommend": "1",
+          "decide_by": "specials.general-creative-agent",
+          "chosen": "1",
+          "selected_by": "specials.general-creative-agent",
+          "select_reason": "Creative-agent takes the person-led reading; a UGC ad or explainer would exceed the draft.",
+          "io": {
+            "inputs": [
+              "create-project"
+            ],
+            "outputs": [
+              "specials.general-creative-agent"
+            ]
+          }
+        }
+      },
+      {
+        "id": "agent-specials-general-creative-agent",
+        "type": "agent",
+        "position": {
+          "x": 380,
+          "y": 280
+        },
+        "data": {
+          "kind": "agent",
+          "label": "creative-agent",
+          "agent_id": "specials.general-creative-agent",
+          "reason": "Campaign concept / execution framework",
+          "thinking": "Intent is a person, not a product. The framework must survive a short vertical without becoming an idol-template ad. Domain experts (promptengineer, director, cinematographer, mua_makeup, continuity) lock craft via ASK_HUMAN options.",
+          "options": [
+            {
+              "id": "1",
+              "label": "Phone-macro anti-idol skin study, five face-stuck beats",
+              "why": "Aligns with intent-analysis option 1; no SKU."
+            },
+            {
+              "id": "2",
+              "label": "Glass-skin UGC demo with product insert",
+              "why": "Contradicts the draft: no product was named."
+            },
+            {
+              "id": "3",
+              "label": "Studio beauty still then I2V",
+              "why": "Implies gear the draft did not authorize."
+            }
+          ],
+          "recommend": "1",
+          "decide_by": "video.promptengineer",
+          "chosen": "1",
+          "selected_by": "video.promptengineer",
+          "select_reason": "Promptengineer accepts the phone-macro framework and will induce creativedirector to lock WHY.",
+          "io": {
+            "inputs": [
+              "specials.intent-analysis-agent"
+            ],
+            "outputs": [
               "video.promptengineer"
             ]
           }
@@ -215,8 +343,8 @@
         "id": "agent-video-promptengineer",
         "type": "agent",
         "position": {
-          "x": 400,
-          "y": 200
+          "x": 720,
+          "y": 160
         },
         "data": {
           "kind": "agent",
@@ -242,13 +370,13 @@
             }
           ],
           "recommend": "1",
-          "decide_by": "human",
+          "decide_by": "specials.general-creative-agent",
           "chosen": "1",
-          "selected_by": "human_operator",
-          "select_reason": "Human confirmed the expert recommend.",
+          "selected_by": "specials.general-creative-agent",
+          "select_reason": "Creative-agent confirmed the intent-analysis reading: a person-led clip, so thesis (creativedirector) precedes coverage.",
           "io": {
             "inputs": [
-              "create-project"
+              "specials.general-creative-agent"
             ],
             "outputs": [
               "video.creativedirector",
@@ -268,7 +396,7 @@
         "id": "agent-video-creativedirector",
         "type": "agent",
         "position": {
-          "x": 760,
+          "x": 1060,
           "y": 20
         },
         "data": {
@@ -313,7 +441,7 @@
         "id": "agent-video-director",
         "type": "agent",
         "position": {
-          "x": 760,
+          "x": 1060,
           "y": 150
         },
         "data": {
@@ -349,7 +477,8 @@
               "video.promptengineer"
             ],
             "outputs": [
-              "video.promptengineer"
+              "video.promptengineer",
+              "human-ask"
             ]
           }
         }
@@ -358,7 +487,7 @@
         "id": "agent-video-cinematographer",
         "type": "agent",
         "position": {
-          "x": 760,
+          "x": 1060,
           "y": 280
         },
         "data": {
@@ -394,7 +523,8 @@
               "video.promptengineer"
             ],
             "outputs": [
-              "video.promptengineer"
+              "video.promptengineer",
+              "human-ask"
             ]
           }
         }
@@ -403,7 +533,7 @@
         "id": "agent-video-mua_makeup",
         "type": "agent",
         "position": {
-          "x": 760,
+          "x": 1060,
           "y": 410
         },
         "data": {
@@ -439,7 +569,8 @@
               "video.promptengineer"
             ],
             "outputs": [
-              "video.promptengineer"
+              "video.promptengineer",
+              "human-ask"
             ]
           }
         }
@@ -448,7 +579,7 @@
         "id": "agent-video-cameraoperator",
         "type": "agent",
         "position": {
-          "x": 760,
+          "x": 1060,
           "y": 540
         },
         "data": {
@@ -461,7 +592,8 @@
             {
               "id": "1",
               "label": "Handheld 1-2mm breath crawl. No push / pull / pan / orbit",
-              "why": "Matches face-stuck beats and 10-20cm working distance."
+              "why": "Matches face-stuck beats and 10-20cm working distance.",
+              "craft": "No traditional push / pull / pan / orbit. This is a macro crawl stuck to the face. Same adult East Asian woman the whole time. Features, moles, hair color, and skin do not morph. Stable but with real handheld breath, about 1–2mm. Features may clip the frame edge. No jump cuts. No warped face. No melted teeth. No drifting eyes."
             },
             {
               "id": "2",
@@ -493,7 +625,7 @@
         "id": "agent-video-continuity",
         "type": "agent",
         "position": {
-          "x": 760,
+          "x": 1060,
           "y": 670
         },
         "data": {
@@ -520,10 +652,10 @@
             }
           ],
           "recommend": "2",
-          "decide_by": "human",
+          "decide_by": "video.promptengineer",
           "chosen": "2",
-          "selected_by": "human_operator",
-          "select_reason": "Human selected this option.",
+          "selected_by": "video.promptengineer",
+          "select_reason": "Human already froze named marks on the ASK_HUMAN lock; orchestrator confirms option 2.",
           "io": {
             "inputs": [
               "video.promptengineer"
@@ -539,7 +671,7 @@
         "id": "agent-video-critic",
         "type": "agent",
         "position": {
-          "x": 760,
+          "x": 1060,
           "y": 800
         },
         "data": {
@@ -552,7 +684,8 @@
             {
               "id": "1",
               "label": "Pass with Avoid: no beauty filter, no poreless skin, no ring-light, no orbit, no extra fingers, no morph",
-              "why": "Chosen path already avoids those; write them as Avoid, not as a studio redo."
+              "why": "Chosen path already avoids those; write them as Avoid, not as a studio redo.",
+              "craft": "no beauty filter, no airbrushed skin, no poreless skin, no plastic CGI face, no doll skin, no influencer template face, no studio softbox, no ring light catchlight, no fake eyelashes, no over-symmetrical face, no cinematic color grade, no talking, no posed smile to camera, no dolly zoom, no orbit shot, no extra fingers, no warped nose, no morphing identity."
             },
             {
               "id": "2",
@@ -584,16 +717,20 @@
         "id": "human-ask",
         "type": "human",
         "position": {
-          "x": 400,
-          "y": 520
+          "x": 720,
+          "y": 480
         },
         "data": {
           "kind": "human",
           "label": "Human",
-          "reason": "Identity freeze is a human decision",
-          "brief": "Q (video.promptengineer): Duration, aspect, and look?\nA: 15-second, 9:16 vertical, 4K ultra-photoreal live-action. Handheld phone-main close-up, roughly 50–70mm equivalent with a slight tele crop. Optical shallow depth of field: only the nearest skin plane is sharp; the ear side and rear hair fall off. No studio setup. No cinematic grade. No AI-smoothed face.\nQ (video.promptengineer): If the engine can carry native audio, what room?\nA: Extreme close-up room tone only: leaves outside, a very faint distant car, one swallow, breath. No score. No VO.\nQ (video.continuity): Which identity marks must freeze for the whole 15s?\nA: Clearly adult East Asian woman, about 25–26. Natural cool-toned East Asian face. Slightly long small oval, cheekbones gently lifted but not sharp, soft jawline, a visible philtrum groove. Real facial proportions. Not an influencer-template face. A tiny light-brown mole ",
+          "reason": "Five domain ASK_HUMAN locks — human selects options only",
+          "brief": "Human → video.promptengineer: Duration, aspect, look, and room tone? (option 1)\nHuman → video.director: Beat map and performance? (option 1)\nHuman → video.cinematographer: Light, working distance, and eye catch? (option 1)\nHuman → video.mua_makeup: Makeup lock? (option 1)\nHuman → video.continuity: Identity, hair, skin, and wardrobe freeze? (option 2)",
           "io": {
             "inputs": [
+              "video.promptengineer",
+              "video.director",
+              "video.cinematographer",
+              "video.mua_makeup",
               "video.continuity"
             ],
             "outputs": [
@@ -606,15 +743,15 @@
         "id": "output-prompt",
         "type": "output",
         "position": {
-          "x": 1120,
-          "y": 200
+          "x": 1480,
+          "y": 160
         },
         "deletable": false,
         "data": {
           "kind": "output",
           "label": "Output",
           "reason": "project/asain-beauty/output/asain-beauty-prompt.txt",
-          "brief": "Generate from the locked decisions below. Host-assembled from Chat selections and ASK_HUMAN fills. sample/ is not a source.\n\nCreative direction\nPhone-macro skin study: hard sun, anti-idol, pores and identity marks readable.\nWHY: video.promptengineer selected this because the huma",
+          "brief": "Generate from the locked decisions below. Host-assembled from Chat selections and ASK_HUMAN locks. sample/ is not a source.\n\nCreative direction\nPhone-macro skin study: hard sun, anti-idol, pores and identity marks readable.\nWHY: Auto Pilot — intent-analysis read a person, not a p",
           "io": {
             "inputs": [
               "video.promptengineer"
@@ -626,8 +763,26 @@
     ],
     "edges": [
       {
-        "id": "e-create-promptengineer",
+        "id": "e-create-intent",
         "source": "create-project",
+        "target": "agent-specials-intent-analysis-agent",
+        "sourceHandle": "specials.intent-analysis-agent",
+        "targetHandle": "in",
+        "type": "smoothstep",
+        "label": "specials.intent-analysis-agent"
+      },
+      {
+        "id": "e-intent-creative",
+        "source": "agent-specials-intent-analysis-agent",
+        "target": "agent-specials-general-creative-agent",
+        "sourceHandle": "specials.general-creative-agent",
+        "targetHandle": "in",
+        "type": "smoothstep",
+        "label": "specials.general-creative-agent"
+      },
+      {
+        "id": "e-creative-promptengineer",
+        "source": "agent-specials-general-creative-agent",
         "target": "agent-video-promptengineer",
         "sourceHandle": "video.promptengineer",
         "targetHandle": "in",
@@ -698,7 +853,43 @@
         "label": "video.critic"
       },
       {
-        "id": "e-cont-human",
+        "id": "e-video-promptengineer-human",
+        "source": "agent-video-promptengineer",
+        "target": "human-ask",
+        "sourceHandle": "human-ask",
+        "targetHandle": "in",
+        "type": "smoothstep",
+        "label": "ASK_HUMAN"
+      },
+      {
+        "id": "e-video-director-human",
+        "source": "agent-video-director",
+        "target": "human-ask",
+        "sourceHandle": "human-ask",
+        "targetHandle": "in",
+        "type": "smoothstep",
+        "label": "ASK_HUMAN"
+      },
+      {
+        "id": "e-video-cinematographer-human",
+        "source": "agent-video-cinematographer",
+        "target": "human-ask",
+        "sourceHandle": "human-ask",
+        "targetHandle": "in",
+        "type": "smoothstep",
+        "label": "ASK_HUMAN"
+      },
+      {
+        "id": "e-video-mua_makeup-human",
+        "source": "agent-video-mua_makeup",
+        "target": "human-ask",
+        "sourceHandle": "human-ask",
+        "targetHandle": "in",
+        "type": "smoothstep",
+        "label": "ASK_HUMAN"
+      },
+      {
+        "id": "e-video-continuity-human",
         "source": "agent-video-continuity",
         "target": "human-ask",
         "sourceHandle": "human-ask",
@@ -719,7 +910,7 @@
   },
   "honesty": "CHARACTERIZATION",
   "created_at": "2026-09-13T03:21:03Z",
-  "updated_at": "2026-09-13T11:03:54Z",
+  "updated_at": "2026-09-14T05:31:47Z",
   "folder": "project/asain-beauty",
   "production_activation": false,
   "allowed_tools": []

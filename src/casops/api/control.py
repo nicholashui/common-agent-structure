@@ -26,7 +26,14 @@ from casops.eval.harness import evaluate
 from casops.improvement.trainer import TrainerBridge
 from casops.instruments.registry import InstrumentRegistry
 from casops.debuglog import list_chat_files, read_acp_logs, read_chat_file, write_chat_turns, write_debug_logs
-from casops.project_comms import append_comm, load_comms, read_output, run_asain_beauty_workflow
+from casops.project_comms import (
+    append_comm,
+    apply_autopilot_cycle,
+    load_comms,
+    read_output,
+    run_asain_beauty_workflow,
+)
+from casops.swarms import compose_preview, list_swarms, read_swarm
 from casops.project_generate import generate_project_media, safe_output_file
 from casops.projects import (
     catalog_public,
@@ -120,6 +127,11 @@ COMPANION_V3_PATHS: tuple[tuple[str, str], ...] = (
     ("GET", "/api/v3/projects/{project_id}/output"),
     ("GET", "/api/v3/projects/{project_id}/output/file"),
     ("POST", "/api/v3/projects/{project_id}/generate"),
+    ("GET", "/api/v3/swarms"),
+    ("GET", "/api/v3/swarms/{swarm_id}"),
+    ("GET", "/api/v3/swarms/{swarm_id}/roster"),
+    ("GET", "/api/v3/swarms/{swarm_id}/graph"),
+    ("POST", "/api/v3/swarms/{swarm_id}/compose-preview"),
 )
 
 _DEFAULT_CORS_ORIGINS = (
@@ -796,6 +808,16 @@ def create_control_plane(
                     answers.append(text)
         raw_choices = payload.get("choices") if isinstance(payload.get("choices"), dict) else {}
         choices = {str(key): str(value) for key, value in raw_choices.items() if str(key) and str(value)}
+        cycle = str(payload.get("cycle") or "").strip().lower()
+        if cycle in {"continue", "stop"}:
+            record = read_project(state.projects_root, project_id)
+            return apply_autopilot_cycle(
+                state.projects_root,
+                project_id,
+                record,
+                cycle,
+                dry_run=bool(getattr(request.state, "dry_run", False)),
+            )
         return run_asain_beauty_workflow(
             state.projects_root,
             project_id,
@@ -820,6 +842,30 @@ def create_control_plane(
             dry_run=bool(getattr(request.state, "dry_run", False)),
             create=False,
         )
+
+    @app.get("/api/v3/swarms")
+    def swarms_list() -> dict[str, Any]:
+        return list_swarms(state.agents_root)
+
+    @app.get("/api/v3/swarms/{swarm_id}")
+    def swarm_get(swarm_id: str) -> dict[str, Any]:
+        return read_swarm(state.agents_root, swarm_id)
+
+    @app.get("/api/v3/swarms/{swarm_id}/roster")
+    def swarm_roster(swarm_id: str) -> dict[str, Any]:
+        payload = read_swarm(state.agents_root, swarm_id)
+        return {"swarm_id": swarm_id, "members": payload["roster"].get("members") or [], "honesty": "CHARACTERIZATION"}
+
+    @app.get("/api/v3/swarms/{swarm_id}/graph")
+    def swarm_graph(swarm_id: str) -> dict[str, Any]:
+        payload = read_swarm(state.agents_root, swarm_id)
+        return {"swarm_id": swarm_id, "graph": payload["graph"], "honesty": "CHARACTERIZATION"}
+
+    @app.post("/api/v3/swarms/{swarm_id}/compose-preview")
+    def swarm_compose_preview(swarm_id: str, request: Request) -> dict[str, Any]:
+        if getattr(request.state, "actor", None) is ActorClass.agent_runtime:
+            raise CasopsError(ErrorCode.IMP_SELF_APPROVAL)
+        return compose_preview(state.agents_root, swarm_id)
 
     @app.get("/health")
     def health() -> dict[str, str]:

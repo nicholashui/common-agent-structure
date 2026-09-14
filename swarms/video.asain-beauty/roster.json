@@ -1,0 +1,17 @@
+{
+  "schema_version": "4.0",
+  "structure_id": "casops.common_swarm.v4",
+  "swarm_id": "video.asain-beauty",
+  "members": [
+    { "agent_id": "specials.intent-analysis-agent", "department": "" },
+    { "agent_id": "specials.general-creative-agent", "department": "" },
+    { "agent_id": "video.promptengineer", "department": "" },
+    { "agent_id": "video.creativedirector", "department": "" },
+    { "agent_id": "video.director", "department": "" },
+    { "agent_id": "video.cinematographer", "department": "" },
+    { "agent_id": "video.mua_makeup", "department": "" },
+    { "agent_id": "video.cameraoperator", "department": "" },
+    { "agent_id": "video.continuity", "department": "" },
+    { "agent_id": "video.critic", "department": "" }
+  ]
+}

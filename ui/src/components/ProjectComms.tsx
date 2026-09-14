@@ -54,7 +54,7 @@ export function ProjectCommsPanel({
       <div className="border-b border-stone-100 p-3">
         <h3 className="text-sm font-semibold text-stone-900">Node communications</h3>
         <p className="mt-1 text-[11px] text-stone-500">
-          Create Project is high-level intent only. Experts on each node suggest options; you or a parent agent pick.
+          Auto Pilot: Create Project is the draft only. intent-analysis-agent and creative-agent frame the run. Domain experts ask; you select options.
         </p>
         <textarea
           className={`${inputClass} mt-2 h-20 py-2 text-xs`}

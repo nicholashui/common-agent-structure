@@ -20,7 +20,64 @@ const PARTY_NAMES: Record<string, string> = {
   "create-project": "Create Project",
   "output-prompt": "Output",
   "human-ask": "Human",
+  host_service: "Host",
+  "specials.intent-analysis-agent": "intent-analysis-agent",
+  "specials.general-creative-agent": "creative-agent",
 };
+
+export const HUMAN_DOMAIN_ROLES = [
+  "video.promptengineer",
+  "video.director",
+  "video.cinematographer",
+  "video.mua_makeup",
+  "video.continuity",
+] as const;
+
+export function humanReplyAgent(askFrom: string): string {
+  return String(askFrom || "").trim();
+}
+
+export type AskPairHop = {
+  id?: string;
+  kind?: string;
+  from?: string;
+  to?: string;
+  node_id?: string;
+};
+
+export function pairHumanAsks<T extends AskPairHop>(hops: T[]): { ask: T; answer: T | undefined }[] {
+  return hops
+    .map((item, index) => {
+      if (item.kind !== "human_ask") {
+        return null;
+      }
+      const answer = hops.slice(index + 1).find(
+        (row) =>
+          row.from === "human_operator" &&
+          row.to === item.from &&
+          (row.kind === "choice" || row.kind === "instruction"),
+      );
+      return { ask: item, answer };
+    })
+    .filter((row): row is { ask: T; answer: T | undefined } => row !== null);
+}
+
+export function commIdForAgent(
+  items: { id?: string; from?: string; to?: string; kind?: string }[],
+  agentId: string,
+): string {
+  const id = String(agentId || "").trim();
+  if (!id) {
+    return "";
+  }
+  const rows = items.filter((item) => item.from === id || item.to === id);
+  const ask = [...rows].reverse().find((item) => item.kind === "human_ask" && item.from === id);
+  if (ask?.id) {
+    return ask.id;
+  }
+  const last = rows[rows.length - 1];
+  return last?.id || "";
+}
 
 export function displayPartyName(id: string): string {
   const key = String(id || "").trim();
@@ -51,6 +108,10 @@ export function sourceCommId<T extends ChatHop>(item: T, items: T[]): string {
   return "";
 }
 
+export function cyclePersistError(dryRun: boolean): string {
+  return dryRun ? "Dry-run is on. Uncheck Dry-run to save the Auto Pilot cycle." : "";
+}
+
 export function hopKindLabel(kind: string, optionCount = 0): string {
   if (kind === "return" && optionCount) {
     return "suggestions";
@@ -64,7 +125,10 @@ export function hopKindLabel(kind: string, optionCount = 0): string {
   if (kind === "generated_media") {
     return "generated clip";
   }
-  if (kind === "output" || kind === "assembled") {
+  if (kind === "assembled") {
+    return "host-joined instruction";
+  }
+  if (kind === "output") {
     return "generated instruction";
   }
   if (kind === "next_instruction") {
@@ -94,6 +158,39 @@ export function hopExtra(
     item.error || "",
   ].filter(Boolean);
   return bits.join(" · ");
+}
+
+export function shownOptionId(input: {
+  kind: string;
+  optionIds: string[];
+  parsedSelected?: string;
+  followSelected?: string;
+  expertChosen?: string;
+  recommend?: string;
+  focusOpt?: string;
+  focusMatchesComm?: boolean;
+}): string {
+  const ids = new Set((input.optionIds || []).map((id) => String(id)));
+  const inIds = (value?: string) => Boolean(value && ids.has(value));
+  if (input.focusMatchesComm && inIds(input.focusOpt)) {
+    return input.focusOpt || "";
+  }
+  if (inIds(input.parsedSelected)) {
+    return input.parsedSelected || "";
+  }
+  if (inIds(input.followSelected)) {
+    return input.followSelected || "";
+  }
+  if (input.kind === "human_ask") {
+    return "";
+  }
+  if (inIds(input.expertChosen)) {
+    return input.expertChosen || "";
+  }
+  if (inIds(input.recommend)) {
+    return input.recommend || "";
+  }
+  return "";
 }
 
 export function hopHeaderText(
@@ -162,6 +259,11 @@ export function splitProjectChat<T extends ChatTimeItem>(items: T[]): {
     instruction: ordered.filter((item) => OUTPUT_KINDS.has(item.kind)),
     clips: ordered.filter((item) => CLIP_KINDS.has(item.kind)),
   };
+}
+
+export function instructionHopForPanel<T extends ChatTimeItem>(items: T[]): T | undefined {
+  const { instruction } = splitProjectChat(items);
+  return instruction.find((item) => item.kind === "output") || instruction[0];
 }
 
 const FILE_NAME = /^[A-Za-z0-9._-]+$/;

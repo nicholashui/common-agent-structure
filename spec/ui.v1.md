@@ -13,6 +13,8 @@
 | Operator guide | `user_guide.v1.md` |
 | Status | `DRAFT` — UI not implemented |
 
+**Delta 2026-09-14 (ISSUE-0008).** The Control UI **is implemented** under `ui/` for agent profile, org chart, main/sub SVG, and **Project Chat / Workflow**. Operator-verified collab example: `/projects/asain-beauty/chat` (Auto Pilot host collab, CHARACTERIZATION hops; Grok Imagine is live when Dry-run is off). That is **not** v4 swarm Chat and not Agent Profile packed Chat. `/` is a pack browser, not a swarm runner. `?swarm=video.asain-beauty` filters Fleet / Org Chat / Main SVG to the Chat-spine roster; `POST /api/v3/swarms/{id}/runtime/run` is not implemented. This spec’s “UI not implemented” line is stale for those surfaces; keep fail-closed rules (no T3, no plugin execute, Org Chat not a write surface).
+
 This document specifies a browser UI that lets an **operator** completely manage every CASOPS agent the host can load, **only** through the public control-plane API. It is not a chat wrapper and not a second control plane.
 
 ---

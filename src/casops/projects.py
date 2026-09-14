@@ -524,6 +524,7 @@ def write_project(root: Path, payload: dict[str, Any], *, dry_run: bool, create:
         "group": "video",
         "sub_workflow_id": selected,
         "suggestion": payload.get("suggestion") if isinstance(payload.get("suggestion"), dict) else None,
+        "io_overlay": payload.get("io_overlay") if isinstance(payload.get("io_overlay"), dict) else None,
         "graph": graph,
         "honesty": "CHARACTERIZATION",
         "created_at": payload.get("created_at") or now,

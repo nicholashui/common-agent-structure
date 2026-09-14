@@ -49,7 +49,7 @@ svg{background:#f4f7fb!important}
 .gateway-text,.gateway-sub{fill:#78350f!important}
 .parallel{fill:#eef2ff!important;stroke:#4f46e5!important}
 .parallel-symbol{fill:#3730a3!important}
-.artifact{fill:#ffffff!important;stroke:#64748b!important}
+.artifact{fill:transparent!important;stroke:#64748b!important}
 .runtime-banner{fill:#fffbeb!important;stroke:#f59e0b!important}
 .header-note{fill:#78350f!important}
 .feedback-label{fill:#b42318!important}

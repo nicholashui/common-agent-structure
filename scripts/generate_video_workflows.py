@@ -1,7 +1,7 @@
-"""Generate scale- and template-specific video BPM workflow SVGs.
+"""Generate scale- and template-specific video ComfyUI workflow SVGs.
 
 Source of truth: spec/production_scale_framework.md
-Visual reference: ui/public/svg/video.workflow.svg
+Visual reference: Project Workflow React Flow nodes (ui/src/components/ProjectNode.tsx)
 """
 
 from __future__ import annotations
@@ -17,12 +17,17 @@ ROOT = Path(__file__).resolve().parents[1]
 OUT_DIR = ROOT / "ui" / "public" / "svg"
 AGENTS_DIR = ROOT / "agents"
 WIDTH = 3200
-HEIGHT = 5700
-PHASE_Y = (1040, 1630, 2220, 2810, 3400, 3990, 4580)
-PHASE_HEIGHT = 560
+HEIGHT = 7600
+PHASE_HEIGHT = 840
+PHASE_Y = tuple(1120 + index * 870 for index in range(7))
 VISUAL_SYSTEM = "casops-workflow-v3"
-TITLE_BAR = 32
-SOCKET_R = 7
+TITLE_BAR = 28
+SOCKET_R = 6
+NODE_W = 280
+NODE_GAP = 24
+AGENT_H = 96
+COL_XS = (70, 850, 1630, 2410)
+COL_WS = (730, 730, 730, 720)
 
 
 def phase(name, work, agents, control, gate, output, feedback, *, parallel=False, feedback_kind="feedback"):
@@ -388,10 +393,85 @@ def spline_v(x, y1, y2):
     return f"M{x:g} {y1:g} C{x + 48:g} {mid:g} {x - 48:g} {mid:g} {x:g} {y2:g}"
 
 
-def socket_pair(parts, x, y, width, in_class="socket-in", out_class="socket-out"):
-    cy = y + TITLE_BAR + 16
-    parts.append(f'<circle class="socket {in_class}" cx="{x:g}" cy="{cy:g}" r="{SOCKET_R}"/>')
-    parts.append(f'<circle class="socket {out_class}" cx="{x + width:g}" cy="{cy:g}" r="{SOCKET_R}"/>')
+def socket_fill(name: str) -> str:
+    palette = ("#64b5f6", "#81c784", "#ffcc80", "#ce93d8", "#f48fb1", "#80deea", "#aed581", "#ffab91")
+    key = name.strip() or "next"
+    hash_value = 0
+    for char in key:
+        hash_value = (hash_value * 31 + ord(char)) & 0xFFFFFFFF
+    return palette[hash_value % len(palette)]
+
+
+def socket_dot(parts, x, y, name, side="in"):
+    cls = "socket-in" if side == "in" else "socket-out"
+    parts.append(
+        f'<circle class="socket {cls}" cx="{x:g}" cy="{y:g}" r="{SOCKET_R}" style="fill:{socket_fill(name)}"/>'
+    )
+
+
+def socket_pair(parts, x, y, width, in_name="in", out_name="out"):
+    cy = y + TITLE_BAR + 14
+    socket_dot(parts, x, cy, in_name, "in")
+    socket_dot(parts, x + width, cy, out_name, "out")
+    return x, cy, x + width, cy
+
+
+KIND_CHROME = {
+    "start": ("card-blue", "accent-blue", "START"),
+    "agent": ("card-green", "accent-green", "AGENT"),
+    "human": ("card-purple", "accent-purple", "HUMAN"),
+    "output": ("card-amber", "accent-amber", "OUTPUT"),
+    "workflow": ("card", "accent-neutral", "WORKFLOW"),
+}
+
+
+def node_height(lines=None, agent_id=None):
+    extra = 28 if agent_id else 0
+    return max(AGENT_H, TITLE_BAR + 40 + extra + 16 * len(lines or []))
+
+
+def comfy_node(
+    parts,
+    kind,
+    x,
+    y,
+    width,
+    height,
+    title,
+    lines=None,
+    *,
+    in_name="in",
+    out_name="out",
+    agent_id=None,
+    terminal=False,
+):
+    """Project-Flow-like ComfyUI node: colored title bar, sockets, optional agent link."""
+    card_cls, accent, kind_label = KIND_CHROME[kind]
+    show_in = kind != "start"
+    show_out = not terminal
+    cy = y + TITLE_BAR + 14
+    parts.append(f'<g class="comfy-node" data-node-kind="{kind}">')
+    parts.append(f'<rect class="{card_cls}" x="{x:g}" y="{y:g}" width="{width:g}" height="{height:g}" rx="6"/>')
+    parts.append(f'<rect class="card-accent {accent}" x="{x:g}" y="{y:g}" width="{width:g}" height="{TITLE_BAR}"/>')
+    parts.append(f'<text class="card-title" x="{x + 12:g}" y="{y + 19:g}">{esc(kind_label)}</text>')
+    parts.append(f'<text class="card-title" x="{x + width - 12:g}" y="{y + 19:g}" text-anchor="end">{esc(title[:26])}</text>')
+    if show_in:
+        socket_dot(parts, x, cy, in_name, "in")
+        parts.append(f'<text class="tiny" x="{x + 14:g}" y="{y + TITLE_BAR + 18:g}">{esc(in_name)}</text>')
+    if show_out:
+        socket_dot(parts, x + width, cy, out_name, "out")
+        parts.append(f'<text class="tiny" x="{x + width - 14:g}" y="{y + TITLE_BAR + 18:g}" text-anchor="end">{esc(out_name)}</text>')
+    elif kind == "output":
+        parts.append(f'<text class="tiny" x="{x + width - 14:g}" y="{y + TITLE_BAR + 18:g}" text-anchor="end">No Out</text>')
+    body_y = y + TITLE_BAR + 36
+    if agent_id:
+        agent_link(parts, agent_id, x + 12, body_y, max(80, width - 24))
+        body_y += 26
+    for line in lines or []:
+        parts.append(f'<text class="tiny" x="{x + 12:g}" y="{body_y:g}">{esc(line)}</text>')
+        body_y += 16
+    parts.append("</g>")
+    return x + width, cy
 
 
 def visual_css(fid: str) -> str:
@@ -463,17 +543,24 @@ def wrap(value, width=72, limit=None):
     return lines
 
 
+def wrap_all(values, width=36):
+    lines = []
+    for value in values:
+        lines.extend(wrap(value, width))
+    return lines
+
+
 def text_lines(parts, css_class, x, y, lines, dy=30, prefix=""):
     for index, line in enumerate(lines):
         parts.append(f'<text class="{css_class}" x="{x}" y="{y + index * dy}">{esc(prefix + line)}</text>')
 
 
-def agent_link(parts, agent_id, x, y, width=650):
+def agent_link(parts, agent_id, x, y, width=260):
     safe = esc(agent_id)
     parts.append(
         f'<a class="agent-link" href="/agents/{safe}/chat" target="_top" aria-label="Open {safe} Chat">'
-        f'<rect class="agent-hit" x="{x - 12}" y="{y - 21}" width="{width}" height="27" rx="8"/>'
-        f'<text class="agent-text" data-agent-id="{safe}" x="{x}" y="{y}">• {safe}  ↗</text></a>'
+        f'<rect class="agent-hit" x="{x - 4}" y="{y - 18}" width="{width}" height="26" rx="4"/>'
+        f'<text class="agent-text" data-agent-id="{safe}" x="{x}" y="{y}">{safe}</text></a>'
     )
 
 
@@ -508,117 +595,164 @@ def render_phase(parts, item, index, y):
         "phase-chip-green",
         "phase-chip",
     )[index]
-    gate_center_y = y + 482
-    card_y = y + 170
+    agents = phase_data["agents"]
+    work_lines = wrap_all(phase_data["work"], 34)
+    control_lines = wrap_all(phase_data["control"], 34)
+    output_lines = wrap(phase_data["output"], 34)
+    gate_lines = wrap(phase_data["gate"], 28)
+    work_h = node_height(work_lines)
+    control_h = node_height(control_lines)
+    gate_h = node_height(gate_lines)
+    art_h = node_height(output_lines)
+    node_y = y + 108
+    start_x = 56
+    two_col = phase_data["parallel"] and len(agents) > 3
+    agent_cols = 2 if two_col else 1
+    agent_x = start_x + NODE_W + NODE_GAP
+    agent_block_w = agent_cols * NODE_W + (agent_cols - 1) * 16
+    control_x = agent_x + agent_block_w + NODE_GAP
+    gate_x = control_x + NODE_W + NODE_GAP
+    out_x = gate_x + NODE_W + NODE_GAP
     parts.append(
         f'<g id="{slug}-phase-{index}" role="group" aria-labelledby="{label_id}" '
         f'data-phase-index="{index}" data-phase-name="{esc(phase_data["name"].lower().replace(" ", "-"))}">'
     )
-    parts.append(f'<rect class="{bg}" x="40" y="{y}" width="3120" height="{PHASE_HEIGHT}" rx="24"/>')
-    parts.append(f'<rect class="{chip}" x="40" y="{y + 22}" width="8" height="516" rx="4"/>')
-    parts.append(f'<rect class="{chip}" x="70" y="{y + 28}" width="64" height="64" rx="18"/>')
-    parts.append(f'<text class="phase-num" x="91" y="{y + 73}">{index}</text>')
-    parts.append(f'<text id="{label_id}" class="phase-name" x="158" y="{y + 59}">{esc(phase_data["name"])}</text>')
+    parts.append(f'<rect class="{bg}" x="40" y="{y}" width="3120" height="{PHASE_HEIGHT}" rx="16"/>')
+    parts.append(f'<rect class="{chip}" x="40" y="{y + 18}" width="8" height="{PHASE_HEIGHT - 36}" rx="4"/>')
+    parts.append(f'<rect class="{chip}" x="64" y="{y + 20}" width="48" height="48" rx="10"/>')
+    parts.append(f'<text class="phase-num" x="88" y="{y + 54}" text-anchor="middle">{index}</text>')
+    parts.append(f'<text id="{label_id}" class="phase-name" x="128" y="{y + 44}">{esc(phase_data["name"])}</text>')
     mode_label = "PARALLEL FAN-OUT / FAN-IN" if phase_data["parallel"] else "GOVERNED SEQUENCE"
     parts.append(
-        f'<text class="phase-count" x="158" y="{y + 89}">{mode_label} · TYPED ARTIFACT HANDOFF · BOUNDED REWORK</text>'
+        f'<text class="phase-count" x="128" y="{y + 72}">{mode_label} · TYPED ARTIFACT HANDOFF · BOUNDED REWORK</text>'
     )
 
-    if phase_data["parallel"]:
-        parts.append(f'<polygon class="parallel" points="1600,{y + 90} 1646,{y + 136} 1600,{y + 182} 1554,{y + 136}"/>')
-        parts.append(f'<text class="parallel-symbol" x="1600" y="{y + 146}">+</text>')
-        for center in (540, 1540, 2540):
-            parts.append(
-                f'<path class="branch" data-flow-kind="branch" d="{spline_h(1600, y + 182, center, card_y - 14)}"/>'
-            )
-    else:
-        parts.append(f'<circle class="phase-start" cx="1600" cy="{y + 132}" r="20"/>')
-        parts.append(
-            f'<path class="flow" data-flow-kind="sequence" d="{spline_v(1600, y + 152, card_y - 14)}"/>'
-        )
-
-    card_x = (80, 1080, 2080)
-    card_w = 920
-    card_h = 240
-    card_classes = ("card-blue", "card-purple", "card-green")
-
-    render_card(
+    start_out = comfy_node(
         parts,
-        card_classes[0],
-        card_x[0],
-        card_y,
-        card_w,
-        card_h,
+        "start",
+        start_x,
+        node_y,
+        NODE_W,
+        work_h,
         "Work package",
-        [f"• {line}" for line in phase_data["work"]],
-        line_class="small",
+        work_lines,
+        in_name="brief",
+        out_name="crew",
     )
 
-    parts.append('<g class="content-card">')
-    parts.append(
-        f'<rect class="{card_classes[1]}" x="{card_x[1]}" y="{card_y}" width="{card_w}" height="{card_h}" rx="8"/>'
-    )
-    parts.append(
-        f'<rect class="card-accent accent-purple" x="{card_x[1]}" y="{card_y}" width="{card_w}" height="{TITLE_BAR}"/>'
-    )
-    parts.append(f'<text class="card-title" x="{card_x[1] + 28}" y="{card_y + 22}">Principal crew</text>')
-    socket_pair(parts, card_x[1], card_y, card_w)
-    for agent_index, agent_id in enumerate(phase_data["agents"]):
-        agent_link(parts, agent_id, card_x[1] + 28, card_y + 66 + agent_index * 28, card_w - 56)
-    parts.append("</g>")
-
-    render_card(
-        parts,
-        card_classes[2],
-        card_x[2],
-        card_y,
-        card_w,
-        card_h,
-        "Control and acceptance",
-        [f"• {line}" for line in phase_data["control"]],
-        line_class="small",
-    )
-
-    socket_y = card_y + TITLE_BAR + 16
-    if phase_data["parallel"]:
-        for center in (540, 1540, 2540):
+    agent_ports = []
+    rows = (len(agents) + agent_cols - 1) // agent_cols
+    for agent_index, agent_id in enumerate(agents):
+        col = agent_index % agent_cols
+        row = agent_index // agent_cols
+        ax = agent_x + col * (NODE_W + 16)
+        ay = node_y + row * (AGENT_H + 12)
+        short = agent_id.split(".", 1)[-1]
+        port = comfy_node(
+            parts,
+            "agent",
+            ax,
+            ay,
+            NODE_W,
+            AGENT_H,
+            short[:22],
+            in_name="in",
+            out_name=short[:12],
+            agent_id=agent_id,
+        )
+        agent_ports.append((ax, ay, port[0], port[1]))
+        flow_cls = "branch" if phase_data["parallel"] else "flow"
+        flow_kind = "branch" if phase_data["parallel"] else "sequence"
+        if phase_data["parallel"] or agent_index == 0:
             parts.append(
-                f'<path class="branch" data-flow-kind="branch" d="{spline_h(center, card_y + card_h, 1600, y + 427)}"/>'
+                f'<path class="{flow_cls}" data-flow-kind="{flow_kind}" d="{spline_h(start_out[0], start_out[1], ax, port[1])}"/>'
+            )
+        else:
+            prev = agent_ports[agent_index - 1]
+            parts.append(
+                f'<path class="flow" data-flow-kind="sequence" d="{spline_v(prev[0] + NODE_W / 2, prev[1] + AGENT_H, ay)}"/>'
+            )
+
+    if phase_data["parallel"]:
+        diamond_y = y + 36
+        parts.append(f'<polygon class="parallel" points="1580,{diamond_y} 1618,{diamond_y + 38} 1580,{diamond_y + 76} 1542,{diamond_y + 38}"/>')
+        parts.append(f'<text class="parallel-symbol" x="1580" y="{diamond_y + 48}">+</text>')
+    else:
+        parts.append(f'<circle class="phase-start event" cx="1580" cy="{y + 52}" r="14"/>')
+
+    control_out = comfy_node(
+        parts,
+        "human",
+        control_x,
+        node_y,
+        NODE_W,
+        control_h,
+        "Control / acceptance",
+        control_lines,
+        in_name="crew",
+        out_name="gate",
+    )
+    flow_cls = "branch" if phase_data["parallel"] else "flow"
+    flow_kind = "branch" if phase_data["parallel"] else "sequence"
+    if phase_data["parallel"]:
+        for _ax, _ay, px, py in agent_ports:
+            parts.append(
+                f'<path class="branch" data-flow-kind="branch" d="{spline_h(px, py, control_x, control_out[1])}"/>'
             )
     else:
+        last = agent_ports[-1]
         parts.append(
-            f'<path class="flow" data-flow-kind="sequence" d="{spline_h(1000, socket_y, 1080, socket_y)}"/>'
-        )
-        parts.append(
-            f'<path class="flow" data-flow-kind="sequence" d="{spline_h(2000, socket_y, 2080, socket_y)}"/>'
-        )
-        parts.append(
-            f'<path class="flow" data-flow-kind="sequence" d="{spline_h(2540, card_y + card_h, 1600, y + 427)}"/>'
+            f'<path class="{flow_cls}" data-flow-kind="{flow_kind}" d="{spline_h(last[2], last[3], control_x, control_out[1])}"/>'
         )
 
+    gate_out = comfy_node(
+        parts,
+        "output",
+        gate_x,
+        node_y,
+        NODE_W,
+        gate_h,
+        "Gate",
+        gate_lines,
+        in_name="gate",
+        out_name="handoff",
+    )
+    parts.append(
+        f'<path class="flow" data-flow-kind="sequence" d="{spline_h(control_out[0], control_out[1], gate_x, gate_out[1])}"/>'
+    )
+    gate_center_y = node_y + gate_h + 26
     parts.append(
         f'<polygon class="gateway" data-gate="{esc(phase_data["gate"])}" '
-        f'points="1600,{gate_center_y - 55} 1655,{gate_center_y} 1600,{gate_center_y + 55} 1545,{gate_center_y}"/>'
+        f'points="{gate_x + NODE_W / 2},{gate_center_y - 18} {gate_x + NODE_W / 2 + 18},{gate_center_y} '
+        f'{gate_x + NODE_W / 2},{gate_center_y + 18} {gate_x + NODE_W / 2 - 18},{gate_center_y}"/>'
     )
-    gate_lines = wrap(phase_data["gate"], 18, 2)
-    if len(gate_lines) == 1:
-        parts.append(f'<text class="gateway-text" x="1600" y="{gate_center_y + 6}">{esc(gate_lines[0])}</text>')
-    else:
-        parts.append(f'<text class="gateway-text" x="1600" y="{gate_center_y - 3}">{esc(gate_lines[0])}</text>')
-        parts.append(f'<text class="gateway-sub" x="1600" y="{gate_center_y + 19}">{esc(gate_lines[1])}</text>')
 
-    parts.append(f'<path class="association" data-flow-kind="artifact" d="M1655 {gate_center_y} H1875"/>')
-    parts.append(f'<rect class="artifact" x="1900" y="{y + 426}" width="1130" height="108" rx="14"/>')
-    parts.append(f'<text class="label" x="1928" y="{y + 458}">HANDOFF / OUTPUT</text>')
-    text_lines(parts, "small", 1928, y + 492, wrap(phase_data["output"], 70, 2), 27)
+    art_w = NODE_W + 36
+    comfy_node(
+        parts,
+        "output",
+        out_x,
+        node_y,
+        art_w,
+        max(art_h, 120),
+        "Handoff",
+        ["HANDOFF / OUTPUT", *output_lines],
+        in_name="handoff",
+        out_name="next",
+        terminal=index == 6,
+    )
+    parts.append(
+        f'<path class="association" data-flow-kind="artifact" d="{spline_h(gate_out[0], gate_out[1], out_x, node_y + TITLE_BAR + 14)}"/>'
+    )
 
     feedback_class = phase_data["feedback_kind"]
     parts.append(
         f'<path class="{feedback_class}" data-flow-kind="{feedback_class}" '
-        f'd="M1545 {gate_center_y} C1050 {y + 551} 65 {y + 551} 65 {card_y + 120} H80"/>'
+        f'd="M{gate_x} {gate_out[1]} C{gate_x - 180} {y + PHASE_HEIGHT - 36} {start_x - 20} {y + PHASE_HEIGHT - 36} {start_x} {start_out[1]}"/>'
     )
-    parts.append(f'<text class="feedback-label" x="120" y="{y + 544}">{esc(phase_data["feedback"])}</text>')
+    parts.append(f'<text class="feedback-label" x="{start_x}" y="{y + PHASE_HEIGHT - 18}">{esc(phase_data["feedback"])}</text>')
     parts.append("</g>")
+    return rows
 
 
 def render_svg(item):
@@ -630,8 +764,8 @@ def render_svg(item):
     })
     parts = [
         f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {WIDTH} {HEIGHT}" width="{WIDTH}" height="{HEIGHT}" preserveAspectRatio="xMinYMin meet" lang="en" role="img" aria-labelledby="{title_id} {desc_id}" data-diagram-id="{slug}" data-diagram-kind="{item["kind"]}" data-code="{item["code"]}" data-agent-count="{len(unique_agents)}" data-schema-version="1" data-visual-system="{VISUAL_SYSTEM}">',
-        f'<title id="{title_id}">Video {esc(item["kind"].title())} {esc(item["code"])} BPM workflow — {esc(item["title"])}</title>',
-        f'<desc id="{desc_id}">Seven-phase governed video production BPM workflow for {esc(item["title"])}. It shows greenlight, pre-production, production, post, release review, distribution, post-launch learning, quality gates, typed artifacts, principal agents, targeted rework, and fail-closed runtime status.</desc>',
+        f'<title id="{title_id}">Video {esc(item["kind"].title())} {esc(item["code"])} ComfyUI workflow — {esc(item["title"])}</title>',
+        f'<desc id="{desc_id}">Seven-phase governed video production ComfyUI workflow for {esc(item["title"])}. It shows greenlight, pre-production, production, post, release review, distribution, post-launch learning, quality gates, typed artifacts, principal agents, targeted rework, and fail-closed runtime status.</desc>',
         f'<metadata>Generated from spec/production_scale_framework.md. Visual system follows ui/public/svg/video.workflow.svg. Evidence basis: {esc(item["basis"])} Runtime remains fail-closed; capability maps do not activate tools, network, or production.</metadata>',
         '<defs>',
         '<style><![CDATA[',
@@ -655,8 +789,8 @@ def render_svg(item):
         f'<rect x="0" y="0" width="3200" height="290" fill="url(#{slug}-header-gradient)"/>',
         '<circle cx="2940" cy="-35" r="280" fill="#a5b4fc" opacity="0.10"/>',
         '<circle cx="3120" cy="210" r="190" fill="#38bdf8" opacity="0.07"/>',
-        f'<text class="header-title" x="70" y="78">Video {esc(item["kind"].title())} {esc(item["code"])} · {esc(item["title"])} BPM Workflow</text>',
-        '<text class="header-sub" x="70" y="120">Shared seven-phase production skeleton · specialized tasks, crew, gates, handoffs and feedback</text>',
+        f'<text class="header-title" x="70" y="78">Video {esc(item["kind"].title())} {esc(item["code"])} · {esc(item["title"])} ComfyUI Workflow</text>',
+        '<text class="header-sub" x="70" y="120">Shared seven-phase ComfyUI node graph · one node per agent · sockets · spline handoffs</text>',
     ])
     pill_x = (70, 330, 650, 970)
     pill_w = (230, 290, 290, 390)
@@ -678,41 +812,66 @@ def render_svg(item):
         '<text class="section-sub" x="70" y="393">Scale is selected before archetype. Typed handoffs carry correlation, evidence, quality, rights and HiTL state.</text>',
     ])
     summaries = [
-        ("card-blue", "Purpose", item["purpose"] + " " + item["use_when"]),
-        ("card-purple", "Operating envelope", item["primary"]),
-        ("card-green", "DNA / source basis", item["dna"] + ". " + item["basis"]),
-        ("card-amber", "Quality posture", item["quality"]),
+        ("start", "Purpose", item["purpose"] + " " + item["use_when"]),
+        ("human", "Operating envelope", item["primary"]),
+        ("agent", "DNA / source basis", item["dna"] + ". " + item["basis"]),
+        ("output", "Quality posture", item["quality"]),
     ]
-    xs = (70, 850, 1630, 2410)
-    widths = (730, 730, 730, 720)
-    for idx, (cls, title, body) in enumerate(summaries):
-        render_card(parts, cls, xs[idx], 420, widths[idx], 230, title, wrap(body, 64, 5), line_class="small")
+    xs = COL_XS
+    widths = COL_WS
+    for idx, (kind, title, body) in enumerate(summaries):
+        comfy_node(parts, kind, xs[idx], 420, widths[idx], 230, title, wrap(body, 42, 8), in_name="in", out_name="out")
     parts.append('</g>')
 
-    # Control spine
+    # Control spine — one ComfyUI node per control agent
     parts.extend([
         '<g id="governed-control-spine" role="group" aria-labelledby="governed-control-spine-title">',
-        '<rect class="phase-bg" x="40" y="730" width="3120" height="280" rx="24"/>',
-        '<text id="governed-control-spine-title" class="section-title" x="70" y="775">Governed control spine</text>',
-        '<text class="section-sub" x="70" y="803">Host-owned orchestration, evidence, memory and approvals span all seven phases.</text>',
+        '<rect class="phase-bg" x="40" y="720" width="3120" height="360" rx="24"/>',
+        '<text id="governed-control-spine-title" class="section-title" x="70" y="765">Governed control spine</text>',
+        '<text class="section-sub" x="70" y="793">Host-owned orchestration, evidence, memory and approvals span all seven phases.</text>',
     ])
     control_cards = [
-        ("card-blue", "Plan and greenlight", ["video.planner", "video.producer"]),
-        ("card-purple", "Execute and route", ["video.orchestrator", "video.router"]),
-        ("card-green", "Memory and evidence", ["video.memory", "video.evaluationharness"]),
-        ("card-amber", "Critique and gate", ["video.judge", "video.gatekeeper"]),
+        ("start", ["video.planner", "video.producer"]),
+        ("agent", ["video.orchestrator", "video.router"]),
+        ("agent", ["video.memory", "video.evaluationharness"]),
+        ("human", ["video.judge", "video.gatekeeper"]),
     ]
-    control_accents = ("accent-blue", "accent-purple", "accent-green", "accent-amber")
-    for idx, (cls, title, agents) in enumerate(control_cards):
+    pair_kinds = {
+        0: ("start", "start"),
+        1: ("agent", "agent"),
+        2: ("agent", "agent"),
+        3: ("human", "output"),
+    }
+    for idx, (_kind, agents) in enumerate(control_cards):
         x = xs[idx]
         w = widths[idx]
-        parts.append(f'<rect class="{cls}" x="{x}" y="835" width="{w}" height="130" rx="8"/>')
-        parts.append(f'<rect class="card-accent {control_accents[idx]}" x="{x}" y="835" width="{w}" height="{TITLE_BAR}"/>')
-        parts.append(f'<text class="card-title" x="{x + 28}" y="857">{esc(title)}</text>')
-        socket_pair(parts, x, 835, w)
+        kinds = pair_kinds[idx]
+        ports = []
         for a_idx, agent_id in enumerate(agents):
-            agent_link(parts, agent_id, x + 28, 896 + a_idx * 28, w - 56)
-    parts.extend(['<path class="association" d="M1600 965 V1020"/>', '</g>'])
+            ny = 820 + a_idx * (AGENT_H + 14)
+            short = agent_id.split(".", 1)[-1]
+            port = comfy_node(
+                parts,
+                kinds[a_idx],
+                x,
+                ny,
+                w,
+                AGENT_H,
+                short[:22],
+                in_name="in",
+                out_name=short[:12],
+                agent_id=agent_id,
+            )
+            ports.append(port)
+            if a_idx:
+                parts.append(
+                    f'<path class="flow" data-flow-kind="sequence" d="{spline_v(x + w / 2, ny - 14, ny)}"/>'
+                )
+        if idx < 3:
+            parts.append(
+                f'<path class="flow" data-flow-kind="sequence" d="{spline_h(ports[0][0], ports[0][1], xs[idx + 1], 820 + TITLE_BAR + 14)}"/>'
+            )
+    parts.extend(['<path class="association" d="M1600 1036 V1110"/>', '</g>'])
 
     # Phases and inter-phase sequence
     for index, y in enumerate(PHASE_Y):
@@ -720,33 +879,35 @@ def render_svg(item):
         if index < len(PHASE_Y) - 1:
             next_y = PHASE_Y[index + 1]
             parts.append(
-                f'<path class="flow" data-flow-kind="sequence" d="{spline_v(1600, y + 537, next_y + 74)}"/>'
+                f'<path class="flow" data-flow-kind="sequence" d="{spline_v(1580, y + PHASE_HEIGHT - 12, next_y + 52)}"/>'
             )
 
-    # Systemic learning loop
-    parts.append(f'<path class="learning" data-flow-kind="learning" d="M1545 {PHASE_Y[-1] + 482} C900 5160 25 5160 25 865 H70"/>')
-    parts.append('<text class="label" x="90" y="5172" fill="#cba6f7">REGRESSION-TESTED LEARNING → FUTURE PLAN / BRIEF</text>')
+    last_gate_y = PHASE_Y[-1] + 108 + TITLE_BAR + 14
+    parts.append(
+        f'<path class="learning" data-flow-kind="learning" d="M{56 + 3 * (NODE_W + NODE_GAP)} {last_gate_y} C900 7160 25 7160 25 850 H70"/>'
+    )
+    parts.append('<text class="label" x="90" y="7176" fill="#cba6f7">REGRESSION-TESTED LEARNING → FUTURE PLAN / BRIEF</text>')
 
     # Footer
     parts.extend([
         '<g id="legend-and-source" role="group" aria-labelledby="legend-and-source-title">',
-        f'<rect class="phase-bg" x="40" y="5220" width="3120" height="410" rx="16"/>',
-        '<text id="legend-and-source-title" class="section-title" x="70" y="5265">BPM legend and operating notes</text>',
-        '<circle class="event" cx="110" cy="5325" r="18"/><text class="small" x="145" y="5331">event / phase start</text>',
-        '<rect class="card" x="430" y="5305" width="80" height="40" rx="9"/><text class="small" x="530" y="5331">task group</text>',
-        '<polygon class="gateway" points="760,5305 780,5325 760,5345 740,5325"/><text class="small" x="800" y="5331">quality / decision gate</text>',
-        '<polygon class="parallel" points="1130,5305 1150,5325 1130,5345 1110,5325"/><text class="small" x="1170" y="5331">parallel fan-out / fan-in</text>',
-        '<line x1="1510" y1="5325" x2="1600" y2="5325" class="legend-line"/><text class="small" x="1620" y="5331">sequence / branch</text>',
-        '<line x1="1900" y1="5325" x2="1990" y2="5325" stroke="#c2413b" stroke-width="3" stroke-dasharray="10 7"/><text class="small" x="2010" y="5331">targeted rework</text>',
-        '<line x1="2280" y1="5325" x2="2370" y2="5325" stroke="#6d28d9" stroke-width="3" stroke-dasharray="10 7"/><text class="small" x="2390" y="5331">systemic learning</text>',
-        '<rect class="artifact" x="2700" y="5305" width="90" height="40" rx="8"/><text class="small" x="2810" y="5331">typed artifact</text>',
-        '<rect class="runtime-banner" x="70" y="5370" width="3060" height="92" rx="12"/>',
-        '<text class="header-note" x="96" y="5404">HANDOFF CONTRACT — correlation_id · from/to agent · artifact_ref/type · scale · archetype · evidence_refs · L1/L2 · rights_state · needs_hitl</text>',
-        '<text class="tiny" x="96" y="5434">Offline/UAT runs also emit knowledge_usage. Crew lists are capability maps; host policy remains authoritative.</text>',
-        f'<text class="label" x="70" y="5505">OUTPUT: {esc(item["filename"])}</text>',
-        f'<text class="small" x="70" y="5538">Evidence basis: {esc(item["basis"])}</text>',
-        '<text class="small" x="70" y="5570">Source: spec/production_scale_framework.md · Style reference: ui/public/svg/video.workflow.svg</text>',
-        f'<text class="tiny" x="70" y="5602">Principal unique agents linked in this diagram: {len(unique_agents)} · Seven phases · fail-closed runtime · no automatic scale promotion.</text>',
+        f'<rect class="phase-bg" x="40" y="7180" width="3120" height="360" rx="16"/>',
+        '<text id="legend-and-source-title" class="section-title" x="70" y="7224">ComfyUI node legend and operating notes</text>',
+        '<rect class="card-blue" x="70" y="7256" width="120" height="40" rx="6"/><rect class="card-accent accent-blue" x="70" y="7256" width="120" height="16"/><text class="tiny" x="200" y="7282">START node</text>',
+        '<rect class="card-green" x="430" y="7256" width="120" height="40" rx="6"/><rect class="card-accent accent-green" x="430" y="7256" width="120" height="16"/><text class="tiny" x="560" y="7282">AGENT node</text>',
+        '<rect class="card-purple" x="790" y="7256" width="120" height="40" rx="6"/><rect class="card-accent accent-purple" x="790" y="7256" width="120" height="16"/><text class="tiny" x="920" y="7282">HUMAN / control</text>',
+        '<rect class="card-amber" x="1220" y="7256" width="120" height="40" rx="6"/><rect class="card-accent accent-amber" x="1220" y="7256" width="120" height="16"/><text class="tiny" x="1350" y="7282">OUTPUT / gate</text>',
+        '<polygon class="gateway" points="1680,7256 1700,7276 1680,7296 1660,7276"/><text class="tiny" x="1720" y="7282">quality gate</text>',
+        '<polygon class="parallel" points="1980,7256 2000,7276 1980,7296 1960,7276"/><text class="tiny" x="2020" y="7282">parallel fan-out</text>',
+        '<line x1="2280" y1="7276" x2="2370" y2="7276" class="legend-line"/><text class="tiny" x="2390" y="7282">spline</text>',
+        '<line x1="2580" y1="7276" x2="2670" y2="7276" stroke="#f38ba8" stroke-width="3" stroke-dasharray="10 7"/><text class="tiny" x="2690" y="7282">bounded rework</text>',
+        '<rect class="runtime-banner" x="70" y="7316" width="3060" height="80" rx="12"/>',
+        '<text class="header-note" x="96" y="7348">HANDOFF CONTRACT — correlation_id · from/to agent · artifact_ref/type · scale · archetype · evidence_refs · L1/L2 · rights_state · needs_hitl</text>',
+        '<text class="tiny" x="96" y="7376">Offline/UAT runs also emit knowledge_usage. Crew lists are capability maps; host policy remains authoritative. systemic learning</text>',
+        f'<text class="label" x="70" y="7424">OUTPUT: {esc(item["filename"])}</text>',
+        f'<text class="small" x="70" y="7454">Evidence basis: {esc(item["basis"])}</text>',
+        '<text class="small" x="70" y="7484">Source: spec/production_scale_framework.md · Style reference: ui/public/svg/video.workflow.svg</text>',
+        f'<text class="tiny" x="70" y="7514">Principal unique agents linked in this diagram: {len(unique_agents)} · Seven phases · fail-closed runtime · typed artifact · no automatic scale promotion.</text>',
         '</g>',
     ])
 
@@ -1066,9 +1227,12 @@ MAIN_CSS = """
       .card-sub{font:450 16px 'Segoe UI',Arial,sans-serif;fill:#9a9a9a}
       .agent-list{font:600 17px 'Segoe UI',Arial,sans-serif;fill:#c8c8c8}
       .agent-list .agentline{fill:#9cdcfe;text-decoration:underline;text-decoration-color:#3d6a88}
+      .agent-text{font:650 16px 'Segoe UI',Arial,sans-serif;fill:#9cdcfe;text-decoration:underline;text-decoration-color:#3d6a88}
       .agent-link{cursor:pointer;text-decoration:none;outline:none}
-      .agent-link:hover .agentline{fill:#b8e4ff;text-decoration-color:#64b5f6}
-      .agent-link:focus .agentline{fill:#b8e4ff;stroke:#1e3a4c;stroke-width:6;paint-order:stroke;stroke-linejoin:round;text-decoration-color:#64b5f6}
+      .agent-hit{fill:#2a2a2a;stroke:#3d3d3d;stroke-width:1;opacity:.95;vector-effect:non-scaling-stroke}
+      .agent-link:hover .agent-hit,.agent-link:focus .agent-hit{fill:#1e3a4c;stroke:#64b5f6;stroke-width:2}
+      .agent-link:hover .agentline,.agent-link:focus .agentline{fill:#b8e4ff;text-decoration-color:#64b5f6}
+      .agent-link:hover .agent-text,.agent-link:focus .agent-text{fill:#b8e4ff;text-decoration-color:#64b5f6}
       .mono{font:600 16px Consolas,'Courier New',monospace;fill:#c8c8c8}
       .tiny{font:450 15px 'Segoe UI',Arial,sans-serif;fill:#9a9a9a}
       .small{font:500 17px 'Segoe UI',Arial,sans-serif;fill:#c8c8c8}
@@ -1112,68 +1276,366 @@ MAIN_CSS = """
       .socket-in{fill:#64b5f6} .socket-out{fill:#81c784}
 """
 
-CARD_ACCENT = {
-    "card": "accent-neutral",
-    "card-blue": "accent-blue",
-    "card-purple": "accent-purple",
-    "card-green": "accent-green",
-    "card-amber": "accent-amber",
-    "card-rose": "accent-rose",
-}
+MAIN_NODE_W = 268
+
+
+def render_agent_grid(parts, agents, x, y, cols=2, flow_kind="sequence"):
+    """Place one ComfyUI AGENT node per crew member and spline them together."""
+    ports = []
+    gap_x = 14
+    gap_y = 12
+    flow_cls = "branch" if flow_kind == "branch" else "flow"
+    for index, (agent_id, role) in enumerate(agents):
+        col = index % cols
+        row = index // cols
+        nx = x + col * (MAIN_NODE_W + gap_x)
+        ny = y + row * (AGENT_H + gap_y)
+        short = agent_id.split(".", 1)[-1]
+        lines = wrap(role, 30)[:2]
+        port = comfy_node(
+            parts,
+            "agent",
+            nx,
+            ny,
+            MAIN_NODE_W,
+            AGENT_H,
+            short[:20],
+            lines,
+            in_name="in",
+            out_name=short[:10],
+            agent_id=agent_id,
+        )
+        ports.append((nx, ny, port[0], port[1]))
+        if col > 0:
+            prev = ports[index - 1]
+            parts.append(
+                f'<path class="{flow_cls}" data-flow-kind="{flow_kind}" d="{spline_h(prev[2], prev[3], nx, port[1])}"/>'
+            )
+        elif row > 0:
+            above = ports[index - cols]
+            parts.append(
+                f'<path class="{flow_cls}" data-flow-kind="{flow_kind}" d="{spline_v(nx + MAIN_NODE_W / 2, above[1] + AGENT_H, ny)}"/>'
+            )
+    rows = (len(agents) + cols - 1) // cols if agents else 0
+    height = rows * (AGENT_H + gap_y) - gap_y if rows else 0
+    return ports, height
+
+
+def phase_band(parts, y, height, index, name, count_label, alt=False):
+    bg = "phase-bg-alt" if alt else "phase-bg"
+    chip = (
+        "phase-chip",
+        "phase-chip-purple",
+        "phase-chip-green",
+        "phase-chip-amber",
+        "phase-chip-rose",
+        "phase-chip-green",
+        "phase-chip",
+        "phase-chip-purple",
+    )[index]
+    parts.append(f'<rect class="{bg}" x="40" y="{y}" width="3120" height="{height}" rx="16"/>')
+    parts.append(f'<rect class="{chip}" x="70" y="{y + 20}" width="48" height="48" rx="10"/>')
+    parts.append(f'<text class="phase-num" x="94" y="{y + 54}" text-anchor="middle">{index}</text>')
+    parts.append(f'<text class="phase-name" x="132" y="{y + 42}">{esc(name)}</text>')
+    parts.append(f'<text class="phase-count" x="132" y="{y + 68}">{esc(count_label)}</text>')
+
+
+def render_main_svg(target: Path) -> None:
+    """114-agent main workflow as a Project-Flow-like ComfyUI node graph."""
+    cross = [
+        (
+            "Control plane · #53–58",
+            [
+                ("video.orchestrator", "#53 schedule / retry / fan-in"),
+                ("video.planner", "#54 brief → phased DAG"),
+                ("video.router", "#55 specialist / model routing"),
+                ("video.judge", "#56 rubric disputes"),
+                ("video.gatekeeper", "#57 transitions / provenance"),
+                ("video.memory", "#58 project recall / learning"),
+            ],
+        ),
+        (
+            "Creative meta · #59–65",
+            [
+                ("video.ideation", "#59 concepts / hooks"),
+                ("video.narrativearc", "#60 structural beats"),
+                ("video.styletransfer", "#61 cross-shot aesthetic"),
+                ("video.worldbuilding", "#62 lore / rules"),
+                ("video.moodboard", "#63 visual / sonic references"),
+                ("video.novelty", "#64 anti-cliché review"),
+                ("video.emotionalarc", "#65 valence / pacing curve"),
+            ],
+        ),
+        (
+            "Research and evidence · #66–72",
+            [
+                ("video.webresearch", "#66 live source discovery"),
+                ("video.archiveresearch", "#67 primary archives"),
+                ("video.trendintelligence", "#68 emerging formats"),
+                ("video.competitorintelligence", "#69 landscape"),
+                ("video.citation", "#70 source grading"),
+                ("video.interviewsynthesis", "#71 expert themes"),
+                ("video.benchmarkresearch", "#72 eval baselines"),
+            ],
+        ),
+        (
+            "Optimization and safety · #73–80",
+            [
+                ("video.promptoptimizer", "#73 prompt uplift"),
+                ("video.costoptimizer", "#74 cost / quality frontier"),
+                ("video.latencyoptimizer", "#75 parallelism / cache"),
+                ("video.retentionoptimizer", "#76 hold-rate / AVD"),
+                ("video.roasoptimizer", "#77 ad performance"),
+                ("video.accessibilityoptimizer", "#78 WCAG / captions"),
+                ("video.evaluationharness", "#79 regression suites"),
+                ("video.safetyredteam", "#80 adversarial probes"),
+            ],
+        ),
+    ]
+    stages = [
+        (
+            1,
+            "Development / concept",
+            "16 PRINCIPAL AGENTS · DIVERGE IN PARALLEL → GREENLIGHT",
+            "G0",
+            "GREENLIGHT",
+            "HANDOFF · APPROVED DEVELOPMENT PACK",
+            "Treatment / objectives · KPI targets · budget envelope · rights-risk register · scale profile",
+            True,
+            [
+                ("Business, positioning and greenlight case", [("video.producer", "#02 scope / schedule / greenlight"), ("video.finance", "#38 numerical / market accuracy"), ("video.brand", "#84 voice / claims / consistency"), ("video.brandstrategist", "#85 positioning")]),
+                ("Story and creative leadership", [("video.director", "#01 vision / shot intent"), ("video.screenwriter", "#03 treatment / screenplay"), ("video.showrunner", "#04 cross-episode arc"), ("video.creativedirector", "#30 campaign concept")]),
+                ("Format-specific writing and direction", [("video.musicvideodirector", "#24 song concept"), ("video.comedywriter", "#25 skits / viral comedy"), ("video.copywriter", "#29 hooks / captions / CTA"), ("video.childrensauthor", "#41 child-safe story")]),
+                ("Knowledge, learning and stakeholders", [("video.instructionaldesign", "#32 learning design"), ("video.sme", "#33 domain accuracy"), ("video.journalist", "#36 reporting / framing"), ("video.labela_r", "#101 artist / label direction")]),
+            ],
+        ),
+        (
+            2,
+            "Pre-production",
+            "12 PRINCIPAL AGENTS · PARALLEL PACKAGE BUILD → L1 SPEC + HUMAN APPROVAL",
+            "G1",
+            "L1 SPEC",
+            "HANDOFF · PRE-PRODUCTION PACKET",
+            "Script lock · boards / lookbook · asset IDs · bibles · consent · continuity baseline",
+            True,
+            [
+                ("Casting, boards and visual intent", [("video.casting", "#05 voice / likeness selection"), ("video.storyboard", "#14 script → panels"), ("video.conceptartist", "#15 world / character look")]),
+                ("Art department and continuity look", [("video.productiondesign", "#16 sets / world look"), ("video.costumedesign", "#17 character wardrobe"), ("video.mua_makeup", "#18 hair / makeup / SFX")]),
+                ("Movement, specialist assets and identity", [("video.choreography", "#23 movement design"), ("video.foodstylist", "#39 camera-ready food"), ("video.avatardesign", "#47 synthetic identity")]),
+                ("Reusable systems, state and source package", [("video.templatedesign", "#89 safe variable layout"), ("video.continuity", "#98 character / prop state"), ("video.archiveproducer", "#105 source package")]),
+            ],
+        ),
+        (
+            3,
+            "Production / generation",
+            "17 PRINCIPAL AGENTS · SCENES / SHOTS FAN OUT → PER-SHOT QC → L2 CRAFT GATE",
+            "G2",
+            "L2 CRAFT",
+            "HANDOFF · PRODUCTION PACKET",
+            "Shot prompts · camera plans · performances · plates / takes · render telemetry",
+            True,
+            [
+                ("Live, hybrid and location capture", [("video.cinematographer", "#06 lens / light / look"), ("video.cameraoperator", "#07 framing / focus / move"), ("video.dronepilot", "#08 aerial capture"), ("video.travelcine", "#40 destination cinematography"), ("video.realestatephoto", "#45 interiors / 3D scan")]),
+                ("Performance, voice and creator modes", [("video.voiceover", "#21 narration / character VO"), ("video.talent", "#26 rendered performance"), ("video.ugccreator", "#27 authentic creator ads"), ("video.audiobooknarrator", "#42 sustained narration")]),
+                ("Synthetic, animation and specialist visuals", [("video.animator_2d", "#12 character motion"), ("video.medicalillustrator", "#35 anatomy visuals"), ("video.promptengineer", "#46 generation prompts"), ("video.personalizationengineer", "#50 variable renders"), ("video.sportsanalyst", "#52 tactical overlays")]),
+                ("Identity, consistency and sync gate", [("video.voiceclone", "#48 consented voice / sync"), ("video.aiqaconsistency", "#49 drift / artifact QC"), ("video.lipsync", "#99 phoneme / viseme gate")]),
+            ],
+        ),
+        (
+            4,
+            "Post-production",
+            "11 PRINCIPAL AGENTS · PICTURE / VISUAL / SOUND / ACCESSIBILITY LANES → REVIEWABLE MASTER",
+            "G3",
+            "POST",
+            "HANDOFF · POST MASTER",
+            "Timeline · graded master · stems · captions / subtitles · QC report · outlet variants",
+            True,
+            [
+                ("Picture edit and campaign cutdowns", [("video.editor", "#09 cut / pacing / coverage"), ("video.trailereditor", "#51 hook-driven variants")]),
+                ("Visual finishing", [("video.colorist", "#10 final grade"), ("video.vfxsupervisor", "#11 VFX pipeline / comp"), ("video.motiongraphics", "#13 titles / infographics")]),
+                ("Sound, score and final mix", [("video.sounddesign", "#19 ambience / foley / SFX"), ("video.composer", "#20 original score"), ("video.soundmixer", "#22 5.1 / Atmos / loudness"), ("video.musicsupervisor", "#100 cue / rights package")]),
+                ("Language and accessible variants", [("video.signlanguageinterpreter", "#43 ASL / BSL"), ("video.localizationqa", "#44 translation / culture")]),
+            ],
+        ),
+        (
+            5,
+            "Review, safety and release approval",
+            "13 PRINCIPAL AGENTS · EVIDENCE + AUDIENCE + SAFETY + DOMAIN REVIEW → L3 / Q1–Q6 / HUMAN GATE",
+            "G3",
+            "RELEASE",
+            "RELEASE PACK · L3 PREFERENCE + SIX-PASS DELIVERY MESH",
+            "Q1 spec · Q2 visual · Q3 audio/sync · Q4 continuity · Q5 perceptual · Q6 outlet readiness",
+            True,
+            [
+                ("Factual, compliance and legal review", [("video.factchecker", "#34 claim / source grade"), ("video.compliance", "#37 FTC / privacy / IP"), ("video.legal", "#93 novel high-risk review"), ("video.standardseditor", "#106 editorial standards")]),
+                ("Audience, accessibility and qualitative fit", [("video.audiencesim", "#82 preference / drop-off"), ("video.accessibility", "#83 final access acceptance"), ("video.ux", "#90 clarity / interaction review"), ("video.critic", "#95 press / festival interpretation")]),
+                ("Trust, synthetic-media and ethical review", [("video.trustsafety", "#91 abuse / impersonation"), ("video.deepfakedetection", "#103 forensic risk"), ("video.ethics", "#107 fairness / disclosure")]),
+                ("Domain release readiness", [("video.learnersim", "#97 learner confusion / outcomes"), ("video.mpa", "#110 rating / advisory package")]),
+            ],
+        ),
+        (
+            6,
+            "Delivery, distribution and preservation",
+            "14 PRINCIPAL AGENTS · CHANNELS FAN OUT IN PARALLEL · EACH BRANCH READY / PENDING / BLOCKED",
+            "G4",
+            "CHANNEL",
+            "CHANNEL PACK",
+            "Ready → publish · Pending → fix branch · Blocked → hold outlet",
+            True,
+            [
+                ("Campaign and discovery", [("video.socialmediastrategist", "#28 socialmediastrategist"), ("video.performancemarketer", "#31 performancemarketer"), ("video.marketing", "#86 marketing"), ("video.seo", "#87 seo")]),
+                ("Direct, learning and channels", [("video.crm", "#92 targeted delivery"), ("video.lms", "#96 SCORM / xAPI"), ("video.channelmanager", "#108 publish ops")]),
+                ("Music digital and communications", [("video.labeldigital", "#102 label rollout"), ("video.comms", "#104 disclosure / response")]),
+                ("Markets, buyers, outlets and archive", [("video.festivalstrategist", "#94 festivalstrategist"), ("video.sales", "#111 buyer package"), ("video.awardsstrategist", "#113 awardsstrategist"), ("video.distributor", "#112 territories / specs"), ("video.archivemaster", "#114 preservation")]),
+            ],
+        ),
+        (
+            7,
+            "Post-release observation, correction and continuous learning",
+            "3 PRINCIPAL AGENTS + CROSS-CUTTING RETENTION / ROAS / EVALUATION / MEMORY SERVICES",
+            "×",
+            "ISSUE?",
+            "LEARN SAFELY",
+            "Failure patterns → prompt, routing, rubric or training ticket → regression → canary",
+            False,
+            [
+                ("Performance telemetry", [("video.analyst", "#81 decision-ready reports")]),
+                ("Community signal", [("video.community", "#88 sentiment / triage")]),
+                ("Correction and replacement", [("video.corrections", "#109 close fix loop")]),
+                ("Learn safely", []),
+            ],
+        ),
+    ]
+
+    parts = [
+        f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {WIDTH} {HEIGHT}" width="{WIDTH}" height="{HEIGHT}" preserveAspectRatio="xMinYMin meet" lang="en" role="img" aria-labelledby="workflow-title workflow-desc" data-diagram-id="video-main-workflow" data-diagram-kind="main" data-code="VIDEO" data-agent-count="114" data-video-agent-count="114" data-schema-version="1" data-visual-system="{VISUAL_SYSTEM}">',
+        '<title id="workflow-title">Complete video production ComfyUI workflow for all 114 CASOPS video agents</title>',
+        '<desc id="workflow-desc">A top-to-bottom ComfyUI node graph covering intake, development and greenlight, pre-production, production, post-production, release review, distribution and archival, and post-release learning. All 114 video agents are shown once in their principal phase or in a cross-cutting orchestration, creative, research, optimization, and safety band. Parallel branches, quality gateways, human approval, targeted rework, correction loops, artifacts, and runtime status are identified.</desc>',
+        "<metadata>Synthesized from agents/video.*/SPEC.md and agent_spec.json, agents/video.orchestrator/sources/excerpts/agents.md, agents/video.worldbuilding/sources/excerpts/ai_agent_video_production_workflow.md, and agents/video.worldbuilding/sources/excerpts/ui_design.md. Principal placement is used for readability; many agents participate across phases. The multi-agent BPM is documented design intent. Current active agent runtimes are baseline-safe, local-deterministic, single-node DAGs with peer routing disabled.</metadata>",
+        "<defs>",
+        f"<style><![CDATA[{MAIN_CSS}    ]]></style>",
+        '<pattern id="graph-grid" width="20" height="20" patternUnits="userSpaceOnUse"><rect width="20" height="20" fill="#1e1e1e"/><circle cx="1" cy="1" r="1.05" fill="#3a3a3a"/></pattern>',
+        '<linearGradient id="header-gradient" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#151515"/><stop offset="0.56" stop-color="#1a1a2e"/><stop offset="1" stop-color="#1e1b4b"/></linearGradient>',
+        '<linearGradient id="control-surface" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2a2a2a"/><stop offset="1" stop-color="#232323"/></linearGradient>',
+        '<filter id="panel-shadow" x="-8%" y="-8%" width="116%" height="120%"><feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#000000" flood-opacity="0.45"/></filter>',
+        '<filter id="shadow" x="-15%" y="-15%" width="130%" height="140%"><feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#000000" flood-opacity="0.5"/></filter>',
+        '<marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="1.6" markerHeight="1.6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#64b5f6"/></marker>',
+        '<marker id="feedback-arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="1.6" markerHeight="1.6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#f38ba8"/></marker>',
+        '<marker id="learning-arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="1.6" markerHeight="1.6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#cba6f7"/></marker>',
+        "</defs>",
+        f'<rect class="canvas" width="{WIDTH}" height="{HEIGHT}"/>',
+    ]
+
+    parts.extend([
+        '<g id="header" role="group" aria-label="Workflow title and runtime status">',
+        '<rect x="0" y="0" width="3200" height="270" fill="url(#header-gradient)"/>',
+        '<text class="header-title" x="70" y="78">Video Production · Complete Agent ComfyUI Workflow</text>',
+        '<text class="header-sub" x="70" y="120">All 114 CASOPS video agents · one ComfyUI node per agent · principal phase placement · governed artifact handoffs</text>',
+        '<rect x="70" y="143" width="210" height="40" rx="20" fill="#1d4ed8"/><text class="stat" x="104" y="169">114 agents</text>',
+        '<rect x="300" y="143" width="260" height="40" rx="20" fill="#6d28d9"/><text class="stat" x="332" y="169">8 lifecycle stages</text>',
+        '<rect x="580" y="143" width="255" height="40" rx="20" fill="#047857"/><text class="stat" x="610" y="169">4 quality gates</text>',
+        '<rect x="855" y="143" width="310" height="40" rx="20" fill="#92400e"/><text class="stat" x="886" y="169">5 delivery branches</text>',
+        '<rect x="1185" y="143" width="330" height="40" rx="20" fill="#9f1239"/><text class="stat" x="1216" y="169">human escalation points</text>',
+        '<rect class="runtime-banner" x="70" y="200" width="3060" height="50" rx="12"/>',
+        '<text class="header-note" x="96" y="232">STATUS NOTE — This is the documented multi-agent production design. Active agent runtimes remain baseline-safe, single-node local_deterministic DAGs with routing, peer hops, tools, and production activation disabled.</text>',
+        "</g>",
+    ])
+
+    # Cross-cutting 28 agents as individual nodes
+    cross_y = 300
+    cross_h = 980
+    parts.append('<rect class="control-bg" x="40" y="290" width="3120" height="700" rx="22"/>')
+    parts.append('<text class="section-title" x="70" y="335">Cross-cutting control, creative, research, optimization and safety services</text>')
+    parts.append('<text class="section-sub" x="70" y="363">Applied across every phase. These 28 agents shape, govern, measure, and remember work; craft and support agents own the phase deliverables.</text>')
+    for col, (title, agents) in enumerate(cross):
+        x = COL_XS[col]
+        comfy_node(parts, ("human", "start", "agent", "output")[col], x, 390, COL_WS[col], 72, title.split(" · ")[0], in_name="in", out_name="crew")
+        render_agent_grid(parts, agents, x, 478, cols=2 if len(agents) > 4 else 1, flow_kind="sequence")
+        if col < 3:
+            parts.append(f'<path class="association" d="{spline_h(x + COL_WS[col], 390 + TITLE_BAR + 14, COL_XS[col + 1], 390 + TITLE_BAR + 14)}"/>')
+    parts.append('<text class="tiny" x="70" y="968">governance and support apply throughout</text>')
+
+    # Intake
+    intake_y = 1020
+    phase_band(parts, intake_y, 280, 0, "Intake, archetype and scale routing", "USER + CONTROL PLANE · TEMPLATE A–J · SCALE S1–S7")
+    ny = intake_y + 90
+    start_port = comfy_node(parts, "start", 70, ny + 10, 240, 120, "START / IDEA", ["Vision · audience · genre"], out_name="brief")
+    brief = comfy_node(parts, "start", 360, ny, 500, 140, "Brief Studio", ["Vision · audience · genre · duration · tone", "References · rights · accessibility · platforms", "Budget · deadline · success metrics"], out_name="select")
+    parts.append(f'<path class="flow" data-flow-kind="sequence" d="{spline_h(start_port[0], start_port[1], 360, brief[1])}"/>')
+    arch = comfy_node(parts, "human", 940, ny, 620, 140, "Workflow archetype + scale", ["A Viral · B UGC · C Explainer · D Personalized · E Short", "F Training · G Music · H Avatar · I Documentary · J Feature", "S1–S2 fast crew · S3–S4 premium · S5–S7 feature"], in_name="select", out_name="plan")
+    parts.append(f'<path class="flow" data-flow-kind="sequence" d="{spline_h(brief[0], brief[1], 940, arch[1])}"/>')
+    plan = comfy_node(parts, "agent", 1640, ny, 560, 140, "Plan preview", ["Estimate tasks, gates, cost, latency and risks", "Initialize artifact manifest and project memory", "Brief → Planner → Orchestrator → Router"], in_name="plan", out_name="launch")
+    parts.append(f'<path class="flow" data-flow-kind="sequence" d="{spline_h(arch[0], arch[1], 1640, plan[1])}"/>')
+    launch = comfy_node(parts, "output", 2280, ny, 500, 140, "Launch governed project", ["Freeze brief scope and acceptance criteria", "Create versioned artifact dependency graph", "Open human approval and escalation slots"], in_name="launch", out_name="next")
+    parts.append(f'<path class="flow" data-flow-kind="sequence" d="{spline_h(plan[0], plan[1], 2280, launch[1])}"/>')
+    parts.append(f'<path class="flow" data-flow-kind="sequence" d="{spline_v(2530, ny + 140, 1340)}"/>')
+
+    y = 1340
+    for stage_index, (num, name, count_label, gate_code, gate_sub, handoff, handoff_body, parallel, groups) in enumerate(stages):
+        max_agents = max((len(group[1]) for group in groups), default=0)
+        cols = 2 if max_agents >= 4 else 1
+        rows_needed = (max_agents + cols - 1) // cols
+        grid_h = max(AGENT_H, rows_needed * (AGENT_H + 12) - 12)
+        band_h = 110 + grid_h + 150
+        alt = stage_index % 2 == 1
+        phase_band(parts, y, band_h, num, name, count_label, alt=alt)
+        node_y = y + 96
+        if parallel:
+            parts.append(f'<polygon class="parallel" points="1580,{y + 24} 1618,{y + 62} 1580,{y + 100} 1542,{y + 62}"/>')
+            parts.append(f'<text class="parallel-symbol" x="1580" y="{y + 72}">+</text>')
+        group_ports = []
+        for col, (title, agents) in enumerate(groups):
+            gx = COL_XS[col] if col < 4 else COL_XS[3]
+            if agents:
+                comfy_node(parts, "workflow", gx, node_y - 8, min(COL_WS[col], MAIN_NODE_W * 2), 56, title[:28], in_name="in", out_name="crew")
+                ports, _h = render_agent_grid(parts, agents, gx, node_y + 56, cols=cols, flow_kind="branch" if parallel else "sequence")
+                group_ports.append(ports)
+                if parallel and ports:
+                    parts.append(f'<path class="branch" data-flow-kind="branch" d="{spline_h(1580, y + 100, gx, node_y + 56 + TITLE_BAR + 14)}"/>')
+            else:
+                comfy_node(parts, "human", gx, node_y + 56, COL_WS[min(col, 3)], 160, title, wrap(handoff_body, 36)[:4], in_name="in", out_name="next")
+        gate_y = y + band_h - 120
+        gx = 1480
+        parts.append(
+            f'<polygon class="gateway" data-gate="{esc(gate_code + " · " + gate_sub)}" '
+            f'points="{gx},{gate_y} {gx + 50},{gate_y + 50} {gx},{gate_y + 100} {gx - 50},{gate_y + 50}"/>'
+        )
+        parts.append(f'<text class="gateway-text" x="{gx}" y="{gate_y + 46}">{esc(gate_code)}</text>')
+        parts.append(f'<text class="gateway-sub" x="{gx}" y="{gate_y + 66}">{esc(gate_sub)}</text>')
+        art_x = 1900
+        comfy_node(parts, "output", art_x, gate_y, 1100, 100, "Handoff", [handoff, handoff_body], in_name="handoff", out_name="next", terminal=num == 7)
+        if group_ports:
+            for ports in group_ports:
+                if ports:
+                    last = ports[-1]
+                    parts.append(f'<path class="branch" data-flow-kind="branch" d="{spline_h(last[2], last[3], gx - 50, gate_y + 50)}"/>')
+        parts.append(f'<path class="association" data-flow-kind="artifact" d="{spline_h(gx + 50, gate_y + 50, art_x, gate_y + TITLE_BAR + 14)}"/>')
+        if num != 7:
+            parts.append(f'<path class="feedback" data-flow-kind="feedback" d="M{gx - 50} {gate_y + 50} C900 {gate_y + 90} 80 {gate_y + 90} 80 {node_y}"/>')
+        y += band_h + 24
+
+    parts.extend([
+        f'<path class="learning" data-flow-kind="learning" d="M1480 {y - 40} C900 {y + 20} 25 {y + 20} 25 850 H70"/>',
+        '<g id="legend-and-source">',
+        f'<rect class="phase-bg" x="40" y="{y}" width="3120" height="280" rx="16"/>',
+        f'<text class="section-title" x="70" y="{y + 44}">ComfyUI node legend and operating notes</text>',
+        f'<rect class="card-blue" x="70" y="{y + 70}" width="120" height="40" rx="6"/><rect class="card-accent accent-blue" x="70" y="{y + 70}" width="120" height="16"/><text class="tiny" x="200" y="{y + 96}">START node</text>',
+        f'<rect class="card-green" x="430" y="{y + 70}" width="120" height="40" rx="6"/><rect class="card-accent accent-green" x="430" y="{y + 70}" width="120" height="16"/><text class="tiny" x="560" y="{y + 96}">AGENT node</text>',
+        f'<rect class="card-purple" x="790" y="{y + 70}" width="120" height="40" rx="6"/><rect class="card-accent accent-purple" x="790" y="{y + 70}" width="120" height="16"/><text class="tiny" x="920" y="{y + 96}">HUMAN / control</text>',
+        f'<rect class="card-amber" x="1220" y="{y + 70}" width="120" height="40" rx="6"/><rect class="card-accent accent-amber" x="1220" y="{y + 70}" width="120" height="16"/><text class="tiny" x="1350" y="{y + 96}">OUTPUT / gate</text>',
+        f'<text class="small" x="70" y="{y + 150}">Coverage: cross-cutting 28 + development 16 + pre-production 12 + production 17 + post 11 + review 13 + distribution 14 + post-release 3 = 114. Principal placement avoids duplicate roster entries; roles may participate in multiple stages.</text>',
+        f'<text class="tiny" x="70" y="{y + 180}">Sources: video agent SPECs / active agent_spec.json files; orchestrator roster; documented AI video workflow; project-stage UI design. Generated for repository workflow analysis.</text>',
+        f'<text class="tiny" x="70" y="{y + 210}">C2PA / provenance bundle · sign-off log · unresolved-risk list · DCP · streaming mezzanine · broadcast master · digital variants · stems · checksums</text>',
+        f'<circle class="end-event-outer" cx="3080" cy="{y + 90}" r="34"/><circle class="end-event-inner" cx="3080" cy="{y + 90}" r="25"/><text class="label" x="2988" y="{y + 150}">MONITORED</text>',
+        "</g>",
+        "</svg>",
+        "",
+    ])
+    target.write_text("\n".join(parts), encoding="utf-8")
 
 
 def restyle_main_svg(target: Path) -> None:
-    raw = target.read_text(encoding="utf-8")
-    raw = raw.replace('data-visual-system="casops-workflow-v2"', f'data-visual-system="{VISUAL_SYSTEM}"')
-    raw = raw.replace('data-visual-system="casops-workflow-v3"', f'data-visual-system="{VISUAL_SYSTEM}"')
-    raw = re.sub(
-        r"<style><!\[CDATA\[.*?\]\]></style>",
-        "<style><![CDATA[" + MAIN_CSS + "    ]]></style>",
-        raw,
-        count=1,
-        flags=re.S,
-    )
-    if 'id="graph-grid"' not in raw:
-        raw = raw.replace(
-            "<defs>",
-            '<defs>\n    <pattern id="graph-grid" width="20" height="20" patternUnits="userSpaceOnUse">'
-            '<rect width="20" height="20" fill="#1e1e1e"/><circle cx="1" cy="1" r="1.05" fill="#3a3a3a"/></pattern>',
-            1,
-        )
-    raw = re.sub(
-        r'(<linearGradient id="control-surface"[^>]*>)(.*?)(</linearGradient>)',
-        r'\1<stop offset="0" stop-color="#2a2a2a"/><stop offset="1" stop-color="#232323"/>\3',
-        raw,
-        count=1,
-        flags=re.S,
-    )
-    raw = raw.replace('fill="#ffffff" stroke="#d8e1ec"', 'fill="#252525" stroke="#3a3a3a"')
-    raw = raw.replace('fill="#0f172a">BPM LEGEND', 'fill="#eeeeee">BPM LEGEND')
-    raw = raw.replace('flood-opacity="0.07"', 'flood-opacity="0.45"')
-    raw = raw.replace('flood-opacity="0.09"', 'flood-opacity="0.5"')
-    raw = raw.replace('<path d="M0 0 L10 5 L0 10 Z" fill="#334155"/>', '<path d="M0 0 L10 5 L0 10 Z" fill="#64b5f6"/>')
-    raw = raw.replace('<path d="M0 0 L10 5 L0 10 Z" fill="#c2413b"/>', '<path d="M0 0 L10 5 L0 10 Z" fill="#f38ba8"/>')
-    raw = raw.replace('<path d="M0 0 L10 5 L0 10 Z" fill="#6d28d9"/>', '<path d="M0 0 L10 5 L0 10 Z" fill="#cba6f7"/>')
-
-    card_re = re.compile(
-        r'<rect class="(card(?:-blue|-purple|-green|-amber|-rose)?)" x="([0-9.]+)" y="([0-9.]+)" width="([0-9.]+)" height="([0-9.]+)" rx="[0-9.]+"/>'
-    )
-
-    def chrome(match):
-        cls, x_s, y_s, w_s, h_s = match.groups()
-        x, y, w = float(x_s), float(y_s), float(w_s)
-        accent = CARD_ACCENT[cls]
-        cy = y + TITLE_BAR + 16
-        return (
-            f'<rect class="{cls}" x="{x_s}" y="{y_s}" width="{w_s}" height="{h_s}" rx="8"/>'
-            f'<rect class="card-accent {accent}" x="{x_s}" y="{y_s}" width="{w_s}" height="{TITLE_BAR}"/>'
-            f'<circle class="socket socket-in" cx="{x:g}" cy="{cy:g}" r="{SOCKET_R}"/>'
-            f'<circle class="socket socket-out" cx="{x + w:g}" cy="{cy:g}" r="{SOCKET_R}"/>'
-        )
-
-    if 'class="socket socket-in"' not in raw:
-        raw = card_re.sub(chrome, raw)
-    target.write_text(raw, encoding="utf-8")
+    render_main_svg(target)
 
 
 def main():

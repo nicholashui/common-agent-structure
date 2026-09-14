@@ -1,6 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3200 5700" width="3200" height="5700" preserveAspectRatio="xMinYMin meet" lang="en" role="img" aria-labelledby="video-template-f-workflow-title video-template-f-workflow-desc" data-diagram-id="video-template-f-workflow" data-diagram-kind="template" data-code="F" data-agent-count="35" data-schema-version="1" data-visual-system="casops-workflow-v3">
-<title id="video-template-f-workflow-title">Video Template F BPM workflow — Corporate Training</title>
-<desc id="video-template-f-workflow-desc">Seven-phase governed video production BPM workflow for Corporate Training. It shows greenlight, pre-production, production, post, release review, distribution, post-launch learning, quality gates, typed artifacts, principal agents, targeted rework, and fail-closed runtime status.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3200 7600" width="3200" height="7600" preserveAspectRatio="xMinYMin meet" lang="en" role="img" aria-labelledby="video-template-f-workflow-title video-template-f-workflow-desc" data-diagram-id="video-template-f-workflow" data-diagram-kind="template" data-code="F" data-agent-count="35" data-schema-version="1" data-visual-system="casops-workflow-v3">
+<title id="video-template-f-workflow-title">Video Template F ComfyUI workflow — Corporate Training</title>
+<desc id="video-template-f-workflow-desc">Seven-phase governed video production ComfyUI workflow for Corporate Training. It shows greenlight, pre-production, production, post, release review, distribution, post-launch learning, quality gates, typed artifacts, principal agents, targeted rework, and fail-closed runtime status.</desc>
 <metadata>Generated from spec/production_scale_framework.md. Visual system follows ui/public/svg/video.workflow.svg. Evidence basis: Detailed S3 flow with the shared skeleton; S2/S4/S5 are scale-depth overlays. Runtime remains fail-closed; capability maps do not activate tools, network, or production.</metadata>
 <defs>
 <style><![CDATA[
@@ -72,13 +72,13 @@
 <marker id="video-template-f-workflow-feedback-arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="1.6" markerHeight="1.6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#f38ba8"/></marker>
 <marker id="video-template-f-workflow-learning-arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="1.6" markerHeight="1.6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#cba6f7"/></marker>
 </defs>
-<rect class="canvas" width="3200" height="5700"/>
+<rect class="canvas" width="3200" height="7600"/>
 <g id="header" role="group" aria-label="Workflow title, profile and runtime status">
 <rect x="0" y="0" width="3200" height="290" fill="url(#video-template-f-workflow-header-gradient)"/>
 <circle cx="2940" cy="-35" r="280" fill="#a5b4fc" opacity="0.10"/>
 <circle cx="3120" cy="210" r="190" fill="#38bdf8" opacity="0.07"/>
-<text class="header-title" x="70" y="78">Video Template F · Corporate Training BPM Workflow</text>
-<text class="header-sub" x="70" y="120">Shared seven-phase production skeleton · specialized tasks, crew, gates, handoffs and feedback</text>
+<text class="header-title" x="70" y="78">Video Template F · Corporate Training ComfyUI Workflow</text>
+<text class="header-sub" x="70" y="120">Shared seven-phase ComfyUI node graph · one node per agent · sockets · spline handoffs</text>
 <rect x="70" y="143" width="230" height="40" rx="20" fill="#1d4ed8"/>
 <text class="stat" x="98" y="169">Template F</text>
 <rect x="330" y="143" width="290" height="40" rx="20" fill="#6d28d9"/>
@@ -94,474 +94,1056 @@
 <rect class="control-bg" x="40" y="320" width="3120" height="380" rx="24"/>
 <text id="workflow-summary-title" class="section-title" x="70" y="365">Workflow profile and evidence basis</text>
 <text class="section-sub" x="70" y="393">Scale is selected before archetype. Typed handoffs carry correlation, evidence, quality, rights and HiTL state.</text>
-<g class="content-card">
-<rect class="card-blue" x="70" y="420" width="730" height="230" rx="8"/>
-<rect class="card-accent accent-blue" x="70" y="420" width="730" height="32"/>
-<text class="card-title" x="98" y="442">Purpose</text>
-<circle class="socket socket-in" cx="70" cy="468" r="7"/>
-<circle class="socket socket-out" cx="800" cy="468" r="7"/>
-<text class="small" x="98" y="482">Build accurate, accessible and measurable training content from</text>
-<text class="small" x="98" y="513">objectives through LMS-ready delivery. Corporate learning</text>
-<text class="small" x="98" y="544">modules, recurring training series, compliance education and</text>
-<text class="small" x="98" y="575">multilingual programmes.</text>
+<g class="comfy-node" data-node-kind="start">
+<rect class="card-blue" x="70" y="420" width="730" height="230" rx="6"/>
+<rect class="card-accent accent-blue" x="70" y="420" width="730" height="28"/>
+<text class="card-title" x="82" y="439">START</text>
+<text class="card-title" x="788" y="439" text-anchor="end">Purpose</text>
+<circle class="socket socket-out" cx="800" cy="462" r="6" style="fill:#aed581"/>
+<text class="tiny" x="786" y="466" text-anchor="end">out</text>
+<text class="tiny" x="82" y="484">Build accurate, accessible and measurable</text>
+<text class="tiny" x="82" y="500">training content from objectives through</text>
+<text class="tiny" x="82" y="516">LMS-ready delivery. Corporate learning</text>
+<text class="tiny" x="82" y="532">modules, recurring training series,</text>
+<text class="tiny" x="82" y="548">compliance education and multilingual</text>
+<text class="tiny" x="82" y="564">programmes.</text>
 </g>
-<g class="content-card">
-<rect class="card-purple" x="850" y="420" width="730" height="230" rx="8"/>
-<rect class="card-accent accent-purple" x="850" y="420" width="730" height="32"/>
-<text class="card-title" x="878" y="442">Operating envelope</text>
-<circle class="socket socket-in" cx="850" cy="468" r="7"/>
-<circle class="socket socket-out" cx="1580" cy="468" r="7"/>
-<text class="small" x="878" y="482">Primary scales S2–S5</text>
+<g class="comfy-node" data-node-kind="human">
+<rect class="card-purple" x="850" y="420" width="730" height="230" rx="6"/>
+<rect class="card-accent accent-purple" x="850" y="420" width="730" height="28"/>
+<text class="card-title" x="862" y="439">HUMAN</text>
+<text class="card-title" x="1568" y="439" text-anchor="end">Operating envelope</text>
+<circle class="socket socket-in" cx="850" cy="462" r="6" style="fill:#80deea"/>
+<text class="tiny" x="864" y="466">in</text>
+<circle class="socket socket-out" cx="1580" cy="462" r="6" style="fill:#aed581"/>
+<text class="tiny" x="1566" y="466" text-anchor="end">out</text>
+<text class="tiny" x="862" y="484">Primary scales S2–S5</text>
 </g>
-<g class="content-card">
-<rect class="card-green" x="1630" y="420" width="730" height="230" rx="8"/>
-<rect class="card-accent accent-green" x="1630" y="420" width="730" height="32"/>
-<text class="card-title" x="1658" y="442">DNA / source basis</text>
-<circle class="socket socket-in" cx="1630" cy="468" r="7"/>
-<circle class="socket socket-out" cx="2360" cy="468" r="7"/>
-<text class="small" x="1658" y="482">wf_video_arch_f_corporate_training_v1.dna.json. Detailed S3 flow</text>
-<text class="small" x="1658" y="513">with the shared skeleton; S2/S4/S5 are scale-depth overlays.</text>
+<g class="comfy-node" data-node-kind="agent">
+<rect class="card-green" x="1630" y="420" width="730" height="230" rx="6"/>
+<rect class="card-accent accent-green" x="1630" y="420" width="730" height="28"/>
+<text class="card-title" x="1642" y="439">AGENT</text>
+<text class="card-title" x="2348" y="439" text-anchor="end">DNA / source basis</text>
+<circle class="socket socket-in" cx="1630" cy="462" r="6" style="fill:#80deea"/>
+<text class="tiny" x="1644" y="466">in</text>
+<circle class="socket socket-out" cx="2360" cy="462" r="6" style="fill:#aed581"/>
+<text class="tiny" x="2346" y="466" text-anchor="end">out</text>
+<text class="tiny" x="1642" y="484">wf_video_arch_f_corporate_training_v1.dna.json.</text>
+<text class="tiny" x="1642" y="500">Detailed S3 flow with the shared skeleton;</text>
+<text class="tiny" x="1642" y="516">S2/S4/S5 are scale-depth overlays.</text>
 </g>
-<g class="content-card">
-<rect class="card-amber" x="2410" y="420" width="720" height="230" rx="8"/>
-<rect class="card-accent accent-amber" x="2410" y="420" width="720" height="32"/>
-<text class="card-title" x="2438" y="442">Quality posture</text>
-<circle class="socket socket-in" cx="2410" cy="468" r="7"/>
-<circle class="socket socket-out" cx="3130" cy="468" r="7"/>
-<text class="small" x="2438" y="482">L1 required; SME/fact/legal gates; accessibility and learner</text>
-<text class="small" x="2438" y="513">outcome review; corrections feed project memory.</text>
+<g class="comfy-node" data-node-kind="output">
+<rect class="card-amber" x="2410" y="420" width="720" height="230" rx="6"/>
+<rect class="card-accent accent-amber" x="2410" y="420" width="720" height="28"/>
+<text class="card-title" x="2422" y="439">OUTPUT</text>
+<text class="card-title" x="3118" y="439" text-anchor="end">Quality posture</text>
+<circle class="socket socket-in" cx="2410" cy="462" r="6" style="fill:#80deea"/>
+<text class="tiny" x="2424" y="466">in</text>
+<circle class="socket socket-out" cx="3130" cy="462" r="6" style="fill:#aed581"/>
+<text class="tiny" x="3116" y="466" text-anchor="end">out</text>
+<text class="tiny" x="2422" y="484">L1 required; SME/fact/legal gates;</text>
+<text class="tiny" x="2422" y="500">accessibility and learner outcome review;</text>
+<text class="tiny" x="2422" y="516">corrections feed project memory.</text>
 </g>
 </g>
 <g id="governed-control-spine" role="group" aria-labelledby="governed-control-spine-title">
-<rect class="phase-bg" x="40" y="730" width="3120" height="280" rx="24"/>
-<text id="governed-control-spine-title" class="section-title" x="70" y="775">Governed control spine</text>
-<text class="section-sub" x="70" y="803">Host-owned orchestration, evidence, memory and approvals span all seven phases.</text>
-<rect class="card-blue" x="70" y="835" width="730" height="130" rx="8"/>
-<rect class="card-accent accent-blue" x="70" y="835" width="730" height="32"/>
-<text class="card-title" x="98" y="857">Plan and greenlight</text>
-<circle class="socket socket-in" cx="70" cy="883" r="7"/>
-<circle class="socket socket-out" cx="800" cy="883" r="7"/>
-<a class="agent-link" href="/agents/video.planner/chat" target="_top" aria-label="Open video.planner Chat"><rect class="agent-hit" x="86" y="875" width="674" height="27" rx="8"/><text class="agent-text" data-agent-id="video.planner" x="98" y="896">• video.planner  ↗</text></a>
-<a class="agent-link" href="/agents/video.producer/chat" target="_top" aria-label="Open video.producer Chat"><rect class="agent-hit" x="86" y="903" width="674" height="27" rx="8"/><text class="agent-text" data-agent-id="video.producer" x="98" y="924">• video.producer  ↗</text></a>
-<rect class="card-purple" x="850" y="835" width="730" height="130" rx="8"/>
-<rect class="card-accent accent-purple" x="850" y="835" width="730" height="32"/>
-<text class="card-title" x="878" y="857">Execute and route</text>
-<circle class="socket socket-in" cx="850" cy="883" r="7"/>
-<circle class="socket socket-out" cx="1580" cy="883" r="7"/>
-<a class="agent-link" href="/agents/video.orchestrator/chat" target="_top" aria-label="Open video.orchestrator Chat"><rect class="agent-hit" x="866" y="875" width="674" height="27" rx="8"/><text class="agent-text" data-agent-id="video.orchestrator" x="878" y="896">• video.orchestrator  ↗</text></a>
-<a class="agent-link" href="/agents/video.router/chat" target="_top" aria-label="Open video.router Chat"><rect class="agent-hit" x="866" y="903" width="674" height="27" rx="8"/><text class="agent-text" data-agent-id="video.router" x="878" y="924">• video.router  ↗</text></a>
-<rect class="card-green" x="1630" y="835" width="730" height="130" rx="8"/>
-<rect class="card-accent accent-green" x="1630" y="835" width="730" height="32"/>
-<text class="card-title" x="1658" y="857">Memory and evidence</text>
-<circle class="socket socket-in" cx="1630" cy="883" r="7"/>
-<circle class="socket socket-out" cx="2360" cy="883" r="7"/>
-<a class="agent-link" href="/agents/video.memory/chat" target="_top" aria-label="Open video.memory Chat"><rect class="agent-hit" x="1646" y="875" width="674" height="27" rx="8"/><text class="agent-text" data-agent-id="video.memory" x="1658" y="896">• video.memory  ↗</text></a>
-<a class="agent-link" href="/agents/video.evaluationharness/chat" target="_top" aria-label="Open video.evaluationharness Chat"><rect class="agent-hit" x="1646" y="903" width="674" height="27" rx="8"/><text class="agent-text" data-agent-id="video.evaluationharness" x="1658" y="924">• video.evaluationharness  ↗</text></a>
-<rect class="card-amber" x="2410" y="835" width="720" height="130" rx="8"/>
-<rect class="card-accent accent-amber" x="2410" y="835" width="720" height="32"/>
-<text class="card-title" x="2438" y="857">Critique and gate</text>
-<circle class="socket socket-in" cx="2410" cy="883" r="7"/>
-<circle class="socket socket-out" cx="3130" cy="883" r="7"/>
-<a class="agent-link" href="/agents/video.judge/chat" target="_top" aria-label="Open video.judge Chat"><rect class="agent-hit" x="2426" y="875" width="664" height="27" rx="8"/><text class="agent-text" data-agent-id="video.judge" x="2438" y="896">• video.judge  ↗</text></a>
-<a class="agent-link" href="/agents/video.gatekeeper/chat" target="_top" aria-label="Open video.gatekeeper Chat"><rect class="agent-hit" x="2426" y="903" width="664" height="27" rx="8"/><text class="agent-text" data-agent-id="video.gatekeeper" x="2438" y="924">• video.gatekeeper  ↗</text></a>
-<path class="association" d="M1600 965 V1020"/>
+<rect class="phase-bg" x="40" y="720" width="3120" height="360" rx="24"/>
+<text id="governed-control-spine-title" class="section-title" x="70" y="765">Governed control spine</text>
+<text class="section-sub" x="70" y="793">Host-owned orchestration, evidence, memory and approvals span all seven phases.</text>
+<g class="comfy-node" data-node-kind="start">
+<rect class="card-blue" x="70" y="820" width="730" height="96" rx="6"/>
+<rect class="card-accent accent-blue" x="70" y="820" width="730" height="28"/>
+<text class="card-title" x="82" y="839">START</text>
+<text class="card-title" x="788" y="839" text-anchor="end">planner</text>
+<circle class="socket socket-out" cx="800" cy="862" r="6" style="fill:#ffcc80"/>
+<text class="tiny" x="786" y="866" text-anchor="end">planner</text>
+<a class="agent-link" href="/agents/video.planner/chat" target="_top" aria-label="Open video.planner Chat"><rect class="agent-hit" x="78" y="866" width="706" height="26" rx="4"/><text class="agent-text" data-agent-id="video.planner" x="82" y="884">video.planner</text></a>
+</g>
+<g class="comfy-node" data-node-kind="start">
+<rect class="card-blue" x="70" y="930" width="730" height="96" rx="6"/>
+<rect class="card-accent accent-blue" x="70" y="930" width="730" height="28"/>
+<text class="card-title" x="82" y="949">START</text>
+<text class="card-title" x="788" y="949" text-anchor="end">producer</text>
+<circle class="socket socket-out" cx="800" cy="972" r="6" style="fill:#ffcc80"/>
+<text class="tiny" x="786" y="976" text-anchor="end">producer</text>
+<a class="agent-link" href="/agents/video.producer/chat" target="_top" aria-label="Open video.producer Chat"><rect class="agent-hit" x="78" y="976" width="706" height="26" rx="4"/><text class="agent-text" data-agent-id="video.producer" x="82" y="994">video.producer</text></a>
+</g>
+<path class="flow" data-flow-kind="sequence" d="M435 916 C483 923 387 923 435 930"/>
+<path class="flow" data-flow-kind="sequence" d="M800 862 C825 862 825 862 850 862"/>
+<g class="comfy-node" data-node-kind="agent">
+<rect class="card-green" x="850" y="820" width="730" height="96" rx="6"/>
+<rect class="card-accent accent-green" x="850" y="820" width="730" height="28"/>
+<text class="card-title" x="862" y="839">AGENT</text>
+<text class="card-title" x="1568" y="839" text-anchor="end">orchestrator</text>
+<circle class="socket socket-in" cx="850" cy="862" r="6" style="fill:#80deea"/>
+<text class="tiny" x="864" y="866">in</text>
+<circle class="socket socket-out" cx="1580" cy="862" r="6" style="fill:#ffcc80"/>
+<text class="tiny" x="1566" y="866" text-anchor="end">orchestrator</text>
+<a class="agent-link" href="/agents/video.orchestrator/chat" target="_top" aria-label="Open video.orchestrator Chat"><rect class="agent-hit" x="858" y="866" width="706" height="26" rx="4"/><text class="agent-text" data-agent-id="video.orchestrator" x="862" y="884">video.orchestrator</text></a>
+</g>
+<g class="comfy-node" data-node-kind="agent">
+<rect class="card-green" x="850" y="930" width="730" height="96" rx="6"/>
+<rect class="card-accent accent-green" x="850" y="930" width="730" height="28"/>
+<text class="card-title" x="862" y="949">AGENT</text>
+<text class="card-title" x="1568" y="949" text-anchor="end">router</text>
+<circle class="socket socket-in" cx="850" cy="972" r="6" style="fill:#80deea"/>
+<text class="tiny" x="864" y="976">in</text>
+<circle class="socket socket-out" cx="1580" cy="972" r="6" style="fill:#81c784"/>
+<text class="tiny" x="1566" y="976" text-anchor="end">router</text>
+<a class="agent-link" href="/agents/video.router/chat" target="_top" aria-label="Open video.router Chat"><rect class="agent-hit" x="858" y="976" width="706" height="26" rx="4"/><text class="agent-text" data-agent-id="video.router" x="862" y="994">video.router</text></a>
+</g>
+<path class="flow" data-flow-kind="sequence" d="M1215 916 C1263 923 1167 923 1215 930"/>
+<path class="flow" data-flow-kind="sequence" d="M1580 862 C1605 862 1605 862 1630 862"/>
+<g class="comfy-node" data-node-kind="agent">
+<rect class="card-green" x="1630" y="820" width="730" height="96" rx="6"/>
+<rect class="card-accent accent-green" x="1630" y="820" width="730" height="28"/>
+<text class="card-title" x="1642" y="839">AGENT</text>
+<text class="card-title" x="2348" y="839" text-anchor="end">memory</text>
+<circle class="socket socket-in" cx="1630" cy="862" r="6" style="fill:#80deea"/>
+<text class="tiny" x="1644" y="866">in</text>
+<circle class="socket socket-out" cx="2360" cy="862" r="6" style="fill:#81c784"/>
+<text class="tiny" x="2346" y="866" text-anchor="end">memory</text>
+<a class="agent-link" href="/agents/video.memory/chat" target="_top" aria-label="Open video.memory Chat"><rect class="agent-hit" x="1638" y="866" width="706" height="26" rx="4"/><text class="agent-text" data-agent-id="video.memory" x="1642" y="884">video.memory</text></a>
+</g>
+<g class="comfy-node" data-node-kind="agent">
+<rect class="card-green" x="1630" y="930" width="730" height="96" rx="6"/>
+<rect class="card-accent accent-green" x="1630" y="930" width="730" height="28"/>
+<text class="card-title" x="1642" y="949">AGENT</text>
+<text class="card-title" x="2348" y="949" text-anchor="end">evaluationharness</text>
+<circle class="socket socket-in" cx="1630" cy="972" r="6" style="fill:#80deea"/>
+<text class="tiny" x="1644" y="976">in</text>
+<circle class="socket socket-out" cx="2360" cy="972" r="6" style="fill:#80deea"/>
+<text class="tiny" x="2346" y="976" text-anchor="end">evaluationha</text>
+<a class="agent-link" href="/agents/video.evaluationharness/chat" target="_top" aria-label="Open video.evaluationharness Chat"><rect class="agent-hit" x="1638" y="976" width="706" height="26" rx="4"/><text class="agent-text" data-agent-id="video.evaluationharness" x="1642" y="994">video.evaluationharness</text></a>
+</g>
+<path class="flow" data-flow-kind="sequence" d="M1995 916 C2043 923 1947 923 1995 930"/>
+<path class="flow" data-flow-kind="sequence" d="M2360 862 C2385 862 2385 862 2410 862"/>
+<g class="comfy-node" data-node-kind="human">
+<rect class="card-purple" x="2410" y="820" width="720" height="96" rx="6"/>
+<rect class="card-accent accent-purple" x="2410" y="820" width="720" height="28"/>
+<text class="card-title" x="2422" y="839">HUMAN</text>
+<text class="card-title" x="3118" y="839" text-anchor="end">judge</text>
+<circle class="socket socket-in" cx="2410" cy="862" r="6" style="fill:#80deea"/>
+<text class="tiny" x="2424" y="866">in</text>
+<circle class="socket socket-out" cx="3130" cy="862" r="6" style="fill:#ffab91"/>
+<text class="tiny" x="3116" y="866" text-anchor="end">judge</text>
+<a class="agent-link" href="/agents/video.judge/chat" target="_top" aria-label="Open video.judge Chat"><rect class="agent-hit" x="2418" y="866" width="696" height="26" rx="4"/><text class="agent-text" data-agent-id="video.judge" x="2422" y="884">video.judge</text></a>
+</g>
+<g class="comfy-node" data-node-kind="output">
+<rect class="card-amber" x="2410" y="930" width="720" height="96" rx="6"/>
+<rect class="card-accent accent-amber" x="2410" y="930" width="720" height="28"/>
+<text class="card-title" x="2422" y="949">OUTPUT</text>
+<text class="card-title" x="3118" y="949" text-anchor="end">gatekeeper</text>
+<circle class="socket socket-in" cx="2410" cy="972" r="6" style="fill:#80deea"/>
+<text class="tiny" x="2424" y="976">in</text>
+<circle class="socket socket-out" cx="3130" cy="972" r="6" style="fill:#80deea"/>
+<text class="tiny" x="3116" y="976" text-anchor="end">gatekeeper</text>
+<a class="agent-link" href="/agents/video.gatekeeper/chat" target="_top" aria-label="Open video.gatekeeper Chat"><rect class="agent-hit" x="2418" y="976" width="696" height="26" rx="4"/><text class="agent-text" data-agent-id="video.gatekeeper" x="2422" y="994">video.gatekeeper</text></a>
+</g>
+<path class="flow" data-flow-kind="sequence" d="M2770 916 C2818 923 2722 923 2770 930"/>
+<path class="association" d="M1600 1036 V1110"/>
 </g>
 <g id="video-template-f-workflow-phase-0" role="group" aria-labelledby="video-template-f-workflow-phase-0-label" data-phase-index="0" data-phase-name="greenlight">
-<rect class="phase-bg" x="40" y="1040" width="3120" height="560" rx="24"/>
-<rect class="phase-chip" x="40" y="1062" width="8" height="516" rx="4"/>
-<rect class="phase-chip" x="70" y="1068" width="64" height="64" rx="18"/>
-<text class="phase-num" x="91" y="1113">0</text>
-<text id="video-template-f-workflow-phase-0-label" class="phase-name" x="158" y="1099">Greenlight</text>
-<text class="phase-count" x="158" y="1129">GOVERNED SEQUENCE · TYPED ARTIFACT HANDOFF · BOUNDED REWORK</text>
-<circle class="phase-start" cx="1600" cy="1172" r="20"/>
-<path class="flow" data-flow-kind="sequence" d="M1600 1192 C1648 1194 1552 1194 1600 1196"/>
-<g class="content-card">
-<rect class="card-blue" x="80" y="1210" width="920" height="240" rx="8"/>
-<rect class="card-accent accent-blue" x="80" y="1210" width="920" height="32"/>
-<text class="card-title" x="108" y="1232">Work package</text>
-<circle class="socket socket-in" cx="80" cy="1258" r="7"/>
-<circle class="socket socket-out" cx="1000" cy="1258" r="7"/>
-<text class="small" x="108" y="1272">• Define learning objectives and target roles.</text>
-<text class="small" x="108" y="1303">• Select scale from module/series complexity.</text>
-<text class="small" x="108" y="1334">• Confirm SME, compliance, accessibility and budget.</text>
+<rect class="phase-bg" x="40" y="1120" width="3120" height="840" rx="16"/>
+<rect class="phase-chip" x="40" y="1138" width="8" height="804" rx="4"/>
+<rect class="phase-chip" x="64" y="1140" width="48" height="48" rx="10"/>
+<text class="phase-num" x="88" y="1174" text-anchor="middle">0</text>
+<text id="video-template-f-workflow-phase-0-label" class="phase-name" x="128" y="1164">Greenlight</text>
+<text class="phase-count" x="128" y="1192">GOVERNED SEQUENCE · TYPED ARTIFACT HANDOFF · BOUNDED REWORK</text>
+<g class="comfy-node" data-node-kind="start">
+<rect class="card-blue" x="56" y="1228" width="280" height="164" rx="6"/>
+<rect class="card-accent accent-blue" x="56" y="1228" width="280" height="28"/>
+<text class="card-title" x="68" y="1247">START</text>
+<text class="card-title" x="324" y="1247" text-anchor="end">Work package</text>
+<circle class="socket socket-out" cx="336" cy="1270" r="6" style="fill:#81c784"/>
+<text class="tiny" x="322" y="1274" text-anchor="end">crew</text>
+<text class="tiny" x="68" y="1292">Define learning objectives and</text>
+<text class="tiny" x="68" y="1308">target roles.</text>
+<text class="tiny" x="68" y="1324">Select scale from module/series</text>
+<text class="tiny" x="68" y="1340">complexity.</text>
+<text class="tiny" x="68" y="1356">Confirm SME, compliance,</text>
+<text class="tiny" x="68" y="1372">accessibility and budget.</text>
 </g>
-<g class="content-card">
-<rect class="card-purple" x="1080" y="1210" width="920" height="240" rx="8"/>
-<rect class="card-accent accent-purple" x="1080" y="1210" width="920" height="32"/>
-<text class="card-title" x="1108" y="1232">Principal crew</text>
-<circle class="socket socket-in" cx="1080" cy="1258" r="7"/>
-<circle class="socket socket-out" cx="2000" cy="1258" r="7"/>
-<a class="agent-link" href="/agents/video.instructionaldesign/chat" target="_top" aria-label="Open video.instructionaldesign Chat"><rect class="agent-hit" x="1096" y="1255" width="864" height="27" rx="8"/><text class="agent-text" data-agent-id="video.instructionaldesign" x="1108" y="1276">• video.instructionaldesign  ↗</text></a>
-<a class="agent-link" href="/agents/video.producer/chat" target="_top" aria-label="Open video.producer Chat"><rect class="agent-hit" x="1096" y="1283" width="864" height="27" rx="8"/><text class="agent-text" data-agent-id="video.producer" x="1108" y="1304">• video.producer  ↗</text></a>
-<a class="agent-link" href="/agents/video.sme/chat" target="_top" aria-label="Open video.sme Chat"><rect class="agent-hit" x="1096" y="1311" width="864" height="27" rx="8"/><text class="agent-text" data-agent-id="video.sme" x="1108" y="1332">• video.sme  ↗</text></a>
-<a class="agent-link" href="/agents/video.compliance/chat" target="_top" aria-label="Open video.compliance Chat"><rect class="agent-hit" x="1096" y="1339" width="864" height="27" rx="8"/><text class="agent-text" data-agent-id="video.compliance" x="1108" y="1360">• video.compliance  ↗</text></a>
+<g class="comfy-node" data-node-kind="agent">
+<rect class="card-green" x="360" y="1228" width="280" height="96" rx="6"/>
+<rect class="card-accent accent-green" x="360" y="1228" width="280" height="28"/>
+<text class="card-title" x="372" y="1247">AGENT</text>
+<text class="card-title" x="628" y="1247" text-anchor="end">instructionaldesign</text>
+<circle class="socket socket-in" cx="360" cy="1270" r="6" style="fill:#80deea"/>
+<text class="tiny" x="374" y="1274">in</text>
+<circle class="socket socket-out" cx="640" cy="1270" r="6" style="fill:#ce93d8"/>
+<text class="tiny" x="626" y="1274" text-anchor="end">instructiona</text>
+<a class="agent-link" href="/agents/video.instructionaldesign/chat" target="_top" aria-label="Open video.instructionaldesign Chat"><rect class="agent-hit" x="368" y="1274" width="256" height="26" rx="4"/><text class="agent-text" data-agent-id="video.instructionaldesign" x="372" y="1292">video.instructionaldesign</text></a>
 </g>
-<g class="content-card">
-<rect class="card-green" x="2080" y="1210" width="920" height="240" rx="8"/>
-<rect class="card-accent accent-green" x="2080" y="1210" width="920" height="32"/>
-<text class="card-title" x="2108" y="1232">Control and acceptance</text>
-<circle class="socket socket-in" cx="2080" cy="1258" r="7"/>
-<circle class="socket socket-out" cx="3000" cy="1258" r="7"/>
-<text class="small" x="2108" y="1272">• Reject unmeasurable objectives or missing owner.</text>
-<text class="small" x="2108" y="1303">• Freeze assessment and distribution strategy.</text>
+<path class="flow" data-flow-kind="sequence" d="M336 1270 C348 1270 348 1270 360 1270"/>
+<g class="comfy-node" data-node-kind="agent">
+<rect class="card-green" x="360" y="1336" width="280" height="96" rx="6"/>
+<rect class="card-accent accent-green" x="360" y="1336" width="280" height="28"/>
+<text class="card-title" x="372" y="1355">AGENT</text>
+<text class="card-title" x="628" y="1355" text-anchor="end">producer</text>
+<circle class="socket socket-in" cx="360" cy="1378" r="6" style="fill:#80deea"/>
+<text class="tiny" x="374" y="1382">in</text>
+<circle class="socket socket-out" cx="640" cy="1378" r="6" style="fill:#ffcc80"/>
+<text class="tiny" x="626" y="1382" text-anchor="end">producer</text>
+<a class="agent-link" href="/agents/video.producer/chat" target="_top" aria-label="Open video.producer Chat"><rect class="agent-hit" x="368" y="1382" width="256" height="26" rx="4"/><text class="agent-text" data-agent-id="video.producer" x="372" y="1400">video.producer</text></a>
 </g>
-<path class="flow" data-flow-kind="sequence" d="M1000 1258 C1040 1258 1040 1258 1080 1258"/>
-<path class="flow" data-flow-kind="sequence" d="M2000 1258 C2040 1258 2040 1258 2080 1258"/>
-<path class="flow" data-flow-kind="sequence" d="M2540 1450 C2070 1450 2070 1467 1600 1467"/>
-<polygon class="gateway" data-gate="G0 · GREENLIGHT" points="1600,1467 1655,1522 1600,1577 1545,1522"/>
-<text class="gateway-text" x="1600" y="1528">G0 · GREENLIGHT</text>
-<path class="association" data-flow-kind="artifact" d="M1655 1522 H1875"/>
-<rect class="artifact" x="1900" y="1466" width="1130" height="108" rx="14"/>
-<text class="label" x="1928" y="1498">HANDOFF / OUTPUT</text>
-<text class="small" x="1928" y="1532">Learning brief · objectives · budget · policy scope</text>
-<path class="feedback" data-flow-kind="feedback" d="M1545 1522 C1050 1591 65 1591 65 1330 H80"/>
-<text class="feedback-label" x="120" y="1584">Revise objective, scope or governance.</text>
+<path class="flow" data-flow-kind="sequence" d="M500 1324 C548 1330 452 1330 500 1336"/>
+<g class="comfy-node" data-node-kind="agent">
+<rect class="card-green" x="360" y="1444" width="280" height="96" rx="6"/>
+<rect class="card-accent accent-green" x="360" y="1444" width="280" height="28"/>
+<text class="card-title" x="372" y="1463">AGENT</text>
+<text class="card-title" x="628" y="1463" text-anchor="end">sme</text>
+<circle class="socket socket-in" cx="360" cy="1486" r="6" style="fill:#80deea"/>
+<text class="tiny" x="374" y="1490">in</text>
+<circle class="socket socket-out" cx="640" cy="1486" r="6" style="fill:#ce93d8"/>
+<text class="tiny" x="626" y="1490" text-anchor="end">sme</text>
+<a class="agent-link" href="/agents/video.sme/chat" target="_top" aria-label="Open video.sme Chat"><rect class="agent-hit" x="368" y="1490" width="256" height="26" rx="4"/><text class="agent-text" data-agent-id="video.sme" x="372" y="1508">video.sme</text></a>
 </g>
-<path class="flow" data-flow-kind="sequence" d="M1600 1577 C1648 1640.5 1552 1640.5 1600 1704"/>
+<path class="flow" data-flow-kind="sequence" d="M500 1432 C548 1438 452 1438 500 1444"/>
+<g class="comfy-node" data-node-kind="agent">
+<rect class="card-green" x="360" y="1552" width="280" height="96" rx="6"/>
+<rect class="card-accent accent-green" x="360" y="1552" width="280" height="28"/>
+<text class="card-title" x="372" y="1571">AGENT</text>
+<text class="card-title" x="628" y="1571" text-anchor="end">compliance</text>
+<circle class="socket socket-in" cx="360" cy="1594" r="6" style="fill:#80deea"/>
+<text class="tiny" x="374" y="1598">in</text>
+<circle class="socket socket-out" cx="640" cy="1594" r="6" style="fill:#ce93d8"/>
+<text class="tiny" x="626" y="1598" text-anchor="end">compliance</text>
+<a class="agent-link" href="/agents/video.compliance/chat" target="_top" aria-label="Open video.compliance Chat"><rect class="agent-hit" x="368" y="1598" width="256" height="26" rx="4"/><text class="agent-text" data-agent-id="video.compliance" x="372" y="1616">video.compliance</text></a>
+</g>
+<path class="flow" data-flow-kind="sequence" d="M500 1540 C548 1546 452 1546 500 1552"/>
+<circle class="phase-start event" cx="1580" cy="1172" r="14"/>
+<g class="comfy-node" data-node-kind="human">
+<rect class="card-purple" x="664" y="1228" width="280" height="132" rx="6"/>
+<rect class="card-accent accent-purple" x="664" y="1228" width="280" height="28"/>
+<text class="card-title" x="676" y="1247">HUMAN</text>
+<text class="card-title" x="932" y="1247" text-anchor="end">Control / acceptance</text>
+<circle class="socket socket-in" cx="664" cy="1270" r="6" style="fill:#81c784"/>
+<text class="tiny" x="678" y="1274">crew</text>
+<circle class="socket socket-out" cx="944" cy="1270" r="6" style="fill:#ce93d8"/>
+<text class="tiny" x="930" y="1274" text-anchor="end">gate</text>
+<text class="tiny" x="676" y="1292">Reject unmeasurable objectives or</text>
+<text class="tiny" x="676" y="1308">missing owner.</text>
+<text class="tiny" x="676" y="1324">Freeze assessment and distribution</text>
+<text class="tiny" x="676" y="1340">strategy.</text>
+</g>
+<path class="flow" data-flow-kind="sequence" d="M640 1594 C652 1594 652 1270 664 1270"/>
+<g class="comfy-node" data-node-kind="output">
+<rect class="card-amber" x="968" y="1228" width="280" height="96" rx="6"/>
+<rect class="card-accent accent-amber" x="968" y="1228" width="280" height="28"/>
+<text class="card-title" x="980" y="1247">OUTPUT</text>
+<text class="card-title" x="1236" y="1247" text-anchor="end">Gate</text>
+<circle class="socket socket-in" cx="968" cy="1270" r="6" style="fill:#ce93d8"/>
+<text class="tiny" x="982" y="1274">gate</text>
+<circle class="socket socket-out" cx="1248" cy="1270" r="6" style="fill:#64b5f6"/>
+<text class="tiny" x="1234" y="1274" text-anchor="end">handoff</text>
+<text class="tiny" x="980" y="1292">G0 · GREENLIGHT</text>
+</g>
+<path class="flow" data-flow-kind="sequence" d="M944 1270 C956 1270 956 1270 968 1270"/>
+<polygon class="gateway" data-gate="G0 · GREENLIGHT" points="1108.0,1332 1126.0,1350 1108.0,1368 1090.0,1350"/>
+<g class="comfy-node" data-node-kind="output">
+<rect class="card-amber" x="1272" y="1228" width="316" height="120" rx="6"/>
+<rect class="card-accent accent-amber" x="1272" y="1228" width="316" height="28"/>
+<text class="card-title" x="1284" y="1247">OUTPUT</text>
+<text class="card-title" x="1576" y="1247" text-anchor="end">Handoff</text>
+<circle class="socket socket-in" cx="1272" cy="1270" r="6" style="fill:#64b5f6"/>
+<text class="tiny" x="1286" y="1274">handoff</text>
+<circle class="socket socket-out" cx="1588" cy="1270" r="6" style="fill:#ce93d8"/>
+<text class="tiny" x="1574" y="1274" text-anchor="end">next</text>
+<text class="tiny" x="1284" y="1292">HANDOFF / OUTPUT</text>
+<text class="tiny" x="1284" y="1308">Learning brief · objectives ·</text>
+<text class="tiny" x="1284" y="1324">budget · policy scope</text>
+</g>
+<path class="association" data-flow-kind="artifact" d="M1248 1270 C1260 1270 1260 1270 1272 1270"/>
+<path class="feedback" data-flow-kind="feedback" d="M968 1270 C788 1924 36 1924 56 1270"/>
+<text class="feedback-label" x="56" y="1942">Revise objective, scope or governance.</text>
+</g>
+<path class="flow" data-flow-kind="sequence" d="M1580 1948 C1628 1995 1532 1995 1580 2042"/>
 <g id="video-template-f-workflow-phase-1" role="group" aria-labelledby="video-template-f-workflow-phase-1-label" data-phase-index="1" data-phase-name="pre-production">
-<rect class="phase-bg-alt" x="40" y="1630" width="3120" height="560" rx="24"/>
-<rect class="phase-chip-purple" x="40" y="1652" width="8" height="516" rx="4"/>
-<rect class="phase-chip-purple" x="70" y="1658" width="64" height="64" rx="18"/>
-<text class="phase-num" x="91" y="1703">1</text>
-<text id="video-template-f-workflow-phase-1-label" class="phase-name" x="158" y="1689">Pre-production</text>
-<text class="phase-count" x="158" y="1719">GOVERNED SEQUENCE · TYPED ARTIFACT HANDOFF · BOUNDED REWORK</text>
-<circle class="phase-start" cx="1600" cy="1762" r="20"/>
-<path class="flow" data-flow-kind="sequence" d="M1600 1782 C1648 1784 1552 1784 1600 1786"/>
-<g class="content-card">
-<rect class="card-blue" x="80" y="1800" width="920" height="240" rx="8"/>
-<rect class="card-accent accent-blue" x="80" y="1800" width="920" height="32"/>
-<text class="card-title" x="108" y="1822">Work package</text>
-<circle class="socket socket-in" cx="80" cy="1848" r="7"/>
-<circle class="socket socket-out" cx="1000" cy="1848" r="7"/>
-<text class="small" x="108" y="1862">• Build series bible or module structure.</text>
-<text class="small" x="108" y="1893">• Write script, assessment and visual plan.</text>
-<text class="small" x="108" y="1924">• Fact-check terminology and legal requirements.</text>
+<rect class="phase-bg-alt" x="40" y="1990" width="3120" height="840" rx="16"/>
+<rect class="phase-chip-purple" x="40" y="2008" width="8" height="804" rx="4"/>
+<rect class="phase-chip-purple" x="64" y="2010" width="48" height="48" rx="10"/>
+<text class="phase-num" x="88" y="2044" text-anchor="middle">1</text>
+<text id="video-template-f-workflow-phase-1-label" class="phase-name" x="128" y="2034">Pre-production</text>
+<text class="phase-count" x="128" y="2062">GOVERNED SEQUENCE · TYPED ARTIFACT HANDOFF · BOUNDED REWORK</text>
+<g class="comfy-node" data-node-kind="start">
+<rect class="card-blue" x="56" y="2098" width="280" height="164" rx="6"/>
+<rect class="card-accent accent-blue" x="56" y="2098" width="280" height="28"/>
+<text class="card-title" x="68" y="2117">START</text>
+<text class="card-title" x="324" y="2117" text-anchor="end">Work package</text>
+<circle class="socket socket-out" cx="336" cy="2140" r="6" style="fill:#81c784"/>
+<text class="tiny" x="322" y="2144" text-anchor="end">crew</text>
+<text class="tiny" x="68" y="2162">Build series bible or module</text>
+<text class="tiny" x="68" y="2178">structure.</text>
+<text class="tiny" x="68" y="2194">Write script, assessment and</text>
+<text class="tiny" x="68" y="2210">visual plan.</text>
+<text class="tiny" x="68" y="2226">Fact-check terminology and legal</text>
+<text class="tiny" x="68" y="2242">requirements.</text>
 </g>
-<g class="content-card">
-<rect class="card-purple" x="1080" y="1800" width="920" height="240" rx="8"/>
-<rect class="card-accent accent-purple" x="1080" y="1800" width="920" height="32"/>
-<text class="card-title" x="1108" y="1822">Principal crew</text>
-<circle class="socket socket-in" cx="1080" cy="1848" r="7"/>
-<circle class="socket socket-out" cx="2000" cy="1848" r="7"/>
-<a class="agent-link" href="/agents/video.showrunner/chat" target="_top" aria-label="Open video.showrunner Chat"><rect class="agent-hit" x="1096" y="1845" width="864" height="27" rx="8"/><text class="agent-text" data-agent-id="video.showrunner" x="1108" y="1866">• video.showrunner  ↗</text></a>
-<a class="agent-link" href="/agents/video.screenwriter/chat" target="_top" aria-label="Open video.screenwriter Chat"><rect class="agent-hit" x="1096" y="1873" width="864" height="27" rx="8"/><text class="agent-text" data-agent-id="video.screenwriter" x="1108" y="1894">• video.screenwriter  ↗</text></a>
-<a class="agent-link" href="/agents/video.instructionaldesign/chat" target="_top" aria-label="Open video.instructionaldesign Chat"><rect class="agent-hit" x="1096" y="1901" width="864" height="27" rx="8"/><text class="agent-text" data-agent-id="video.instructionaldesign" x="1108" y="1922">• video.instructionaldesign  ↗</text></a>
-<a class="agent-link" href="/agents/video.factchecker/chat" target="_top" aria-label="Open video.factchecker Chat"><rect class="agent-hit" x="1096" y="1929" width="864" height="27" rx="8"/><text class="agent-text" data-agent-id="video.factchecker" x="1108" y="1950">• video.factchecker  ↗</text></a>
-<a class="agent-link" href="/agents/video.storyboard/chat" target="_top" aria-label="Open video.storyboard Chat"><rect class="agent-hit" x="1096" y="1957" width="864" height="27" rx="8"/><text class="agent-text" data-agent-id="video.storyboard" x="1108" y="1978">• video.storyboard  ↗</text></a>
+<g class="comfy-node" data-node-kind="agent">
+<rect class="card-green" x="360" y="2098" width="280" height="96" rx="6"/>
+<rect class="card-accent accent-green" x="360" y="2098" width="280" height="28"/>
+<text class="card-title" x="372" y="2117">AGENT</text>
+<text class="card-title" x="628" y="2117" text-anchor="end">showrunner</text>
+<circle class="socket socket-in" cx="360" cy="2140" r="6" style="fill:#80deea"/>
+<text class="tiny" x="374" y="2144">in</text>
+<circle class="socket socket-out" cx="640" cy="2140" r="6" style="fill:#80deea"/>
+<text class="tiny" x="626" y="2144" text-anchor="end">showrunner</text>
+<a class="agent-link" href="/agents/video.showrunner/chat" target="_top" aria-label="Open video.showrunner Chat"><rect class="agent-hit" x="368" y="2144" width="256" height="26" rx="4"/><text class="agent-text" data-agent-id="video.showrunner" x="372" y="2162">video.showrunner</text></a>
 </g>
-<g class="content-card">
-<rect class="card-green" x="2080" y="1800" width="920" height="240" rx="8"/>
-<rect class="card-accent accent-green" x="2080" y="1800" width="920" height="32"/>
-<text class="card-title" x="2108" y="1822">Control and acceptance</text>
-<circle class="socket socket-in" cx="2080" cy="1848" r="7"/>
-<circle class="socket socket-out" cx="3000" cy="1848" r="7"/>
-<text class="small" x="2108" y="1862">• L1 validates objectives, script and assessment map.</text>
-<text class="small" x="2108" y="1893">• SME and Compliance pre-clear factual content.</text>
+<path class="flow" data-flow-kind="sequence" d="M336 2140 C348 2140 348 2140 360 2140"/>
+<g class="comfy-node" data-node-kind="agent">
+<rect class="card-green" x="360" y="2206" width="280" height="96" rx="6"/>
+<rect class="card-accent accent-green" x="360" y="2206" width="280" height="28"/>
+<text class="card-title" x="372" y="2225">AGENT</text>
+<text class="card-title" x="628" y="2225" text-anchor="end">screenwriter</text>
+<circle class="socket socket-in" cx="360" cy="2248" r="6" style="fill:#80deea"/>
+<text class="tiny" x="374" y="2252">in</text>
+<circle class="socket socket-out" cx="640" cy="2248" r="6" style="fill:#ffab91"/>
+<text class="tiny" x="626" y="2252" text-anchor="end">screenwriter</text>
+<a class="agent-link" href="/agents/video.screenwriter/chat" target="_top" aria-label="Open video.screenwriter Chat"><rect class="agent-hit" x="368" y="2252" width="256" height="26" rx="4"/><text class="agent-text" data-agent-id="video.screenwriter" x="372" y="2270">video.screenwriter</text></a>
 </g>
-<path class="flow" data-flow-kind="sequence" d="M1000 1848 C1040 1848 1040 1848 1080 1848"/>
-<path class="flow" data-flow-kind="sequence" d="M2000 1848 C2040 1848 2040 1848 2080 1848"/>
-<path class="flow" data-flow-kind="sequence" d="M2540 2040 C2070 2040 2070 2057 1600 2057"/>
-<polygon class="gateway" data-gate="G1 · L1 SPEC" points="1600,2057 1655,2112 1600,2167 1545,2112"/>
-<text class="gateway-text" x="1600" y="2118">G1 · L1 SPEC</text>
-<path class="association" data-flow-kind="artifact" d="M1655 2112 H1875"/>
-<rect class="artifact" x="1900" y="2056" width="1130" height="108" rx="14"/>
-<text class="label" x="1928" y="2088">HANDOFF / OUTPUT</text>
-<text class="small" x="1928" y="2122">Script lock · assessment · boards · source evidence</text>
-<path class="feedback" data-flow-kind="feedback" d="M1545 2112 C1050 2181 65 2181 65 1920 H80"/>
-<text class="feedback-label" x="120" y="2174">Return failed fact, objective or sequence.</text>
+<path class="flow" data-flow-kind="sequence" d="M500 2194 C548 2200 452 2200 500 2206"/>
+<g class="comfy-node" data-node-kind="agent">
+<rect class="card-green" x="360" y="2314" width="280" height="96" rx="6"/>
+<rect class="card-accent accent-green" x="360" y="2314" width="280" height="28"/>
+<text class="card-title" x="372" y="2333">AGENT</text>
+<text class="card-title" x="628" y="2333" text-anchor="end">instructionaldesign</text>
+<circle class="socket socket-in" cx="360" cy="2356" r="6" style="fill:#80deea"/>
+<text class="tiny" x="374" y="2360">in</text>
+<circle class="socket socket-out" cx="640" cy="2356" r="6" style="fill:#ce93d8"/>
+<text class="tiny" x="626" y="2360" text-anchor="end">instructiona</text>
+<a class="agent-link" href="/agents/video.instructionaldesign/chat" target="_top" aria-label="Open video.instructionaldesign Chat"><rect class="agent-hit" x="368" y="2360" width="256" height="26" rx="4"/><text class="agent-text" data-agent-id="video.instructionaldesign" x="372" y="2378">video.instructionaldesign</text></a>
 </g>
-<path class="flow" data-flow-kind="sequence" d="M1600 2167 C1648 2230.5 1552 2230.5 1600 2294"/>
+<path class="flow" data-flow-kind="sequence" d="M500 2302 C548 2308 452 2308 500 2314"/>
+<g class="comfy-node" data-node-kind="agent">
+<rect class="card-green" x="360" y="2422" width="280" height="96" rx="6"/>
+<rect class="card-accent accent-green" x="360" y="2422" width="280" height="28"/>
+<text class="card-title" x="372" y="2441">AGENT</text>
+<text class="card-title" x="628" y="2441" text-anchor="end">factchecker</text>
+<circle class="socket socket-in" cx="360" cy="2464" r="6" style="fill:#80deea"/>
+<text class="tiny" x="374" y="2468">in</text>
+<circle class="socket socket-out" cx="640" cy="2464" r="6" style="fill:#81c784"/>
+<text class="tiny" x="626" y="2468" text-anchor="end">factchecker</text>
+<a class="agent-link" href="/agents/video.factchecker/chat" target="_top" aria-label="Open video.factchecker Chat"><rect class="agent-hit" x="368" y="2468" width="256" height="26" rx="4"/><text class="agent-text" data-agent-id="video.factchecker" x="372" y="2486">video.factchecker</text></a>
+</g>
+<path class="flow" data-flow-kind="sequence" d="M500 2410 C548 2416 452 2416 500 2422"/>
+<g class="comfy-node" data-node-kind="agent">
+<rect class="card-green" x="360" y="2530" width="280" height="96" rx="6"/>
+<rect class="card-accent accent-green" x="360" y="2530" width="280" height="28"/>
+<text class="card-title" x="372" y="2549">AGENT</text>
+<text class="card-title" x="628" y="2549" text-anchor="end">storyboard</text>
+<circle class="socket socket-in" cx="360" cy="2572" r="6" style="fill:#80deea"/>
+<text class="tiny" x="374" y="2576">in</text>
+<circle class="socket socket-out" cx="640" cy="2572" r="6" style="fill:#81c784"/>
+<text class="tiny" x="626" y="2576" text-anchor="end">storyboard</text>
+<a class="agent-link" href="/agents/video.storyboard/chat" target="_top" aria-label="Open video.storyboard Chat"><rect class="agent-hit" x="368" y="2576" width="256" height="26" rx="4"/><text class="agent-text" data-agent-id="video.storyboard" x="372" y="2594">video.storyboard</text></a>
+</g>
+<path class="flow" data-flow-kind="sequence" d="M500 2518 C548 2524 452 2524 500 2530"/>
+<circle class="phase-start event" cx="1580" cy="2042" r="14"/>
+<g class="comfy-node" data-node-kind="human">
+<rect class="card-purple" x="664" y="2098" width="280" height="132" rx="6"/>
+<rect class="card-accent accent-purple" x="664" y="2098" width="280" height="28"/>
+<text class="card-title" x="676" y="2117">HUMAN</text>
+<text class="card-title" x="932" y="2117" text-anchor="end">Control / acceptance</text>
+<circle class="socket socket-in" cx="664" cy="2140" r="6" style="fill:#81c784"/>
+<text class="tiny" x="678" y="2144">crew</text>
+<circle class="socket socket-out" cx="944" cy="2140" r="6" style="fill:#ce93d8"/>
+<text class="tiny" x="930" y="2144" text-anchor="end">gate</text>
+<text class="tiny" x="676" y="2162">L1 validates objectives, script</text>
+<text class="tiny" x="676" y="2178">and assessment map.</text>
+<text class="tiny" x="676" y="2194">SME and Compliance pre-clear</text>
+<text class="tiny" x="676" y="2210">factual content.</text>
+</g>
+<path class="flow" data-flow-kind="sequence" d="M640 2572 C652 2572 652 2140 664 2140"/>
+<g class="comfy-node" data-node-kind="output">
+<rect class="card-amber" x="968" y="2098" width="280" height="96" rx="6"/>
+<rect class="card-accent accent-amber" x="968" y="2098" width="280" height="28"/>
+<text class="card-title" x="980" y="2117">OUTPUT</text>
+<text class="card-title" x="1236" y="2117" text-anchor="end">Gate</text>
+<circle class="socket socket-in" cx="968" cy="2140" r="6" style="fill:#ce93d8"/>
+<text class="tiny" x="982" y="2144">gate</text>
+<circle class="socket socket-out" cx="1248" cy="2140" r="6" style="fill:#64b5f6"/>
+<text class="tiny" x="1234" y="2144" text-anchor="end">handoff</text>
+<text class="tiny" x="980" y="2162">G1 · L1 SPEC</text>
+</g>
+<path class="flow" data-flow-kind="sequence" d="M944 2140 C956 2140 956 2140 968 2140"/>
+<polygon class="gateway" data-gate="G1 · L1 SPEC" points="1108.0,2202 1126.0,2220 1108.0,2238 1090.0,2220"/>
+<g class="comfy-node" data-node-kind="output">
+<rect class="card-amber" x="1272" y="2098" width="316" height="120" rx="6"/>
+<rect class="card-accent accent-amber" x="1272" y="2098" width="316" height="28"/>
+<text class="card-title" x="1284" y="2117">OUTPUT</text>
+<text class="card-title" x="1576" y="2117" text-anchor="end">Handoff</text>
+<circle class="socket socket-in" cx="1272" cy="2140" r="6" style="fill:#64b5f6"/>
+<text class="tiny" x="1286" y="2144">handoff</text>
+<circle class="socket socket-out" cx="1588" cy="2140" r="6" style="fill:#ce93d8"/>
+<text class="tiny" x="1574" y="2144" text-anchor="end">next</text>
+<text class="tiny" x="1284" y="2162">HANDOFF / OUTPUT</text>
+<text class="tiny" x="1284" y="2178">Script lock · assessment · boards</text>
+<text class="tiny" x="1284" y="2194">· source evidence</text>
+</g>
+<path class="association" data-flow-kind="artifact" d="M1248 2140 C1260 2140 1260 2140 1272 2140"/>
+<path class="feedback" data-flow-kind="feedback" d="M968 2140 C788 2794 36 2794 56 2140"/>
+<text class="feedback-label" x="56" y="2812">Return failed fact, objective or sequence.</text>
+</g>
+<path class="flow" data-flow-kind="sequence" d="M1580 2818 C1628 2865 1532 2865 1580 2912"/>
 <g id="video-template-f-workflow-phase-2" role="group" aria-labelledby="video-template-f-workflow-phase-2-label" data-phase-index="2" data-phase-name="production">
-<rect class="phase-bg" x="40" y="2220" width="3120" height="560" rx="24"/>
-<rect class="phase-chip-green" x="40" y="2242" width="8" height="516" rx="4"/>
-<rect class="phase-chip-green" x="70" y="2248" width="64" height="64" rx="18"/>
-<text class="phase-num" x="91" y="2293">2</text>
-<text id="video-template-f-workflow-phase-2-label" class="phase-name" x="158" y="2279">Production</text>
-<text class="phase-count" x="158" y="2309">PARALLEL FAN-OUT / FAN-IN · TYPED ARTIFACT HANDOFF · BOUNDED REWORK</text>
-<polygon class="parallel" points="1600,2310 1646,2356 1600,2402 1554,2356"/>
-<text class="parallel-symbol" x="1600" y="2366">+</text>
-<path class="branch" data-flow-kind="branch" d="M1600 2402 C1070 2402 1070 2376 540 2376"/>
-<path class="branch" data-flow-kind="branch" d="M1600 2402 C1570 2402 1570 2376 1540 2376"/>
-<path class="branch" data-flow-kind="branch" d="M1600 2402 C2070 2402 2070 2376 2540 2376"/>
-<g class="content-card">
-<rect class="card-blue" x="80" y="2390" width="920" height="240" rx="8"/>
-<rect class="card-accent accent-blue" x="80" y="2390" width="920" height="32"/>
-<text class="card-title" x="108" y="2412">Work package</text>
-<circle class="socket socket-in" cx="80" cy="2438" r="7"/>
-<circle class="socket socket-out" cx="1000" cy="2438" r="7"/>
-<text class="small" x="108" y="2452">• Direct presenter/avatar and supporting visuals.</text>
-<text class="small" x="108" y="2483">• Generate graphics, demonstrations and narration.</text>
-<text class="small" x="108" y="2514">• Run consistency and domain QA.</text>
+<rect class="phase-bg" x="40" y="2860" width="3120" height="840" rx="16"/>
+<rect class="phase-chip-green" x="40" y="2878" width="8" height="804" rx="4"/>
+<rect class="phase-chip-green" x="64" y="2880" width="48" height="48" rx="10"/>
+<text class="phase-num" x="88" y="2914" text-anchor="middle">2</text>
+<text id="video-template-f-workflow-phase-2-label" class="phase-name" x="128" y="2904">Production</text>
+<text class="phase-count" x="128" y="2932">PARALLEL FAN-OUT / FAN-IN · TYPED ARTIFACT HANDOFF · BOUNDED REWORK</text>
+<g class="comfy-node" data-node-kind="start">
+<rect class="card-blue" x="56" y="2968" width="280" height="148" rx="6"/>
+<rect class="card-accent accent-blue" x="56" y="2968" width="280" height="28"/>
+<text class="card-title" x="68" y="2987">START</text>
+<text class="card-title" x="324" y="2987" text-anchor="end">Work package</text>
+<circle class="socket socket-out" cx="336" cy="3010" r="6" style="fill:#81c784"/>
+<text class="tiny" x="322" y="3014" text-anchor="end">crew</text>
+<text class="tiny" x="68" y="3032">Direct presenter/avatar and</text>
+<text class="tiny" x="68" y="3048">supporting visuals.</text>
+<text class="tiny" x="68" y="3064">Generate graphics, demonstrations</text>
+<text class="tiny" x="68" y="3080">and narration.</text>
+<text class="tiny" x="68" y="3096">Run consistency and domain QA.</text>
 </g>
-<g class="content-card">
-<rect class="card-purple" x="1080" y="2390" width="920" height="240" rx="8"/>
-<rect class="card-accent accent-purple" x="1080" y="2390" width="920" height="32"/>
-<text class="card-title" x="1108" y="2412">Principal crew</text>
-<circle class="socket socket-in" cx="1080" cy="2438" r="7"/>
-<circle class="socket socket-out" cx="2000" cy="2438" r="7"/>
-<a class="agent-link" href="/agents/video.director/chat" target="_top" aria-label="Open video.director Chat"><rect class="agent-hit" x="1096" y="2435" width="864" height="27" rx="8"/><text class="agent-text" data-agent-id="video.director" x="1108" y="2456">• video.director  ↗</text></a>
-<a class="agent-link" href="/agents/video.avatardesign/chat" target="_top" aria-label="Open video.avatardesign Chat"><rect class="agent-hit" x="1096" y="2463" width="864" height="27" rx="8"/><text class="agent-text" data-agent-id="video.avatardesign" x="1108" y="2484">• video.avatardesign  ↗</text></a>
-<a class="agent-link" href="/agents/video.motiongraphics/chat" target="_top" aria-label="Open video.motiongraphics Chat"><rect class="agent-hit" x="1096" y="2491" width="864" height="27" rx="8"/><text class="agent-text" data-agent-id="video.motiongraphics" x="1108" y="2512">• video.motiongraphics  ↗</text></a>
-<a class="agent-link" href="/agents/video.voiceover/chat" target="_top" aria-label="Open video.voiceover Chat"><rect class="agent-hit" x="1096" y="2519" width="864" height="27" rx="8"/><text class="agent-text" data-agent-id="video.voiceover" x="1108" y="2540">• video.voiceover  ↗</text></a>
-<a class="agent-link" href="/agents/video.aiqaconsistency/chat" target="_top" aria-label="Open video.aiqaconsistency Chat"><rect class="agent-hit" x="1096" y="2547" width="864" height="27" rx="8"/><text class="agent-text" data-agent-id="video.aiqaconsistency" x="1108" y="2568">• video.aiqaconsistency  ↗</text></a>
+<g class="comfy-node" data-node-kind="agent">
+<rect class="card-green" x="360" y="2968" width="280" height="96" rx="6"/>
+<rect class="card-accent accent-green" x="360" y="2968" width="280" height="28"/>
+<text class="card-title" x="372" y="2987">AGENT</text>
+<text class="card-title" x="628" y="2987" text-anchor="end">director</text>
+<circle class="socket socket-in" cx="360" cy="3010" r="6" style="fill:#80deea"/>
+<text class="tiny" x="374" y="3014">in</text>
+<circle class="socket socket-out" cx="640" cy="3010" r="6" style="fill:#f48fb1"/>
+<text class="tiny" x="626" y="3014" text-anchor="end">director</text>
+<a class="agent-link" href="/agents/video.director/chat" target="_top" aria-label="Open video.director Chat"><rect class="agent-hit" x="368" y="3014" width="256" height="26" rx="4"/><text class="agent-text" data-agent-id="video.director" x="372" y="3032">video.director</text></a>
 </g>
-<g class="content-card">
-<rect class="card-green" x="2080" y="2390" width="920" height="240" rx="8"/>
-<rect class="card-accent accent-green" x="2080" y="2390" width="920" height="32"/>
-<text class="card-title" x="2108" y="2412">Control and acceptance</text>
-<circle class="socket socket-in" cx="2080" cy="2438" r="7"/>
-<circle class="socket socket-out" cx="3000" cy="2438" r="7"/>
-<text class="small" x="2108" y="2452">• Claims remain tied to approved evidence.</text>
-<text class="small" x="2108" y="2483">• Targeted rerender preserves accepted lessons.</text>
+<path class="branch" data-flow-kind="branch" d="M336 3010 C348 3010 348 3010 360 3010"/>
+<g class="comfy-node" data-node-kind="agent">
+<rect class="card-green" x="656" y="2968" width="280" height="96" rx="6"/>
+<rect class="card-accent accent-green" x="656" y="2968" width="280" height="28"/>
+<text class="card-title" x="668" y="2987">AGENT</text>
+<text class="card-title" x="924" y="2987" text-anchor="end">avatardesign</text>
+<circle class="socket socket-in" cx="656" cy="3010" r="6" style="fill:#80deea"/>
+<text class="tiny" x="670" y="3014">in</text>
+<circle class="socket socket-out" cx="936" cy="3010" r="6" style="fill:#ffab91"/>
+<text class="tiny" x="922" y="3014" text-anchor="end">avatardesign</text>
+<a class="agent-link" href="/agents/video.avatardesign/chat" target="_top" aria-label="Open video.avatardesign Chat"><rect class="agent-hit" x="664" y="3014" width="256" height="26" rx="4"/><text class="agent-text" data-agent-id="video.avatardesign" x="668" y="3032">video.avatardesign</text></a>
 </g>
-<path class="branch" data-flow-kind="branch" d="M540 2630 C1070 2630 1070 2647 1600 2647"/>
-<path class="branch" data-flow-kind="branch" d="M1540 2630 C1570 2630 1570 2647 1600 2647"/>
-<path class="branch" data-flow-kind="branch" d="M2540 2630 C2070 2630 2070 2647 1600 2647"/>
-<polygon class="gateway" data-gate="G2 · CRAFT QC" points="1600,2647 1655,2702 1600,2757 1545,2702"/>
-<text class="gateway-text" x="1600" y="2708">G2 · CRAFT QC</text>
-<path class="association" data-flow-kind="artifact" d="M1655 2702 H1875"/>
-<rect class="artifact" x="1900" y="2646" width="1130" height="108" rx="14"/>
-<text class="label" x="1928" y="2678">HANDOFF / OUTPUT</text>
-<text class="small" x="1928" y="2712">Lesson scenes · narration · graphics · QA report</text>
-<path class="feedback" data-flow-kind="feedback" d="M1545 2702 C1050 2771 65 2771 65 2510 H80"/>
-<text class="feedback-label" x="120" y="2764">Rerender or rewrite the failed lesson element.</text>
+<path class="branch" data-flow-kind="branch" d="M336 3010 C496 3010 496 3010 656 3010"/>
+<g class="comfy-node" data-node-kind="agent">
+<rect class="card-green" x="360" y="3076" width="280" height="96" rx="6"/>
+<rect class="card-accent accent-green" x="360" y="3076" width="280" height="28"/>
+<text class="card-title" x="372" y="3095">AGENT</text>
+<text class="card-title" x="628" y="3095" text-anchor="end">motiongraphics</text>
+<circle class="socket socket-in" cx="360" cy="3118" r="6" style="fill:#80deea"/>
+<text class="tiny" x="374" y="3122">in</text>
+<circle class="socket socket-out" cx="640" cy="3118" r="6" style="fill:#81c784"/>
+<text class="tiny" x="626" y="3122" text-anchor="end">motiongraphi</text>
+<a class="agent-link" href="/agents/video.motiongraphics/chat" target="_top" aria-label="Open video.motiongraphics Chat"><rect class="agent-hit" x="368" y="3122" width="256" height="26" rx="4"/><text class="agent-text" data-agent-id="video.motiongraphics" x="372" y="3140">video.motiongraphics</text></a>
 </g>
-<path class="flow" data-flow-kind="sequence" d="M1600 2757 C1648 2820.5 1552 2820.5 1600 2884"/>
+<path class="branch" data-flow-kind="branch" d="M336 3010 C348 3010 348 3118 360 3118"/>
+<g class="comfy-node" data-node-kind="agent">
+<rect class="card-green" x="656" y="3076" width="280" height="96" rx="6"/>
+<rect class="card-accent accent-green" x="656" y="3076" width="280" height="28"/>
+<text class="card-title" x="668" y="3095">AGENT</text>
+<text class="card-title" x="924" y="3095" text-anchor="end">voiceover</text>
+<circle class="socket socket-in" cx="656" cy="3118" r="6" style="fill:#80deea"/>
+<text class="tiny" x="670" y="3122">in</text>
+<circle class="socket socket-out" cx="936" cy="3118" r="6" style="fill:#aed581"/>
+<text class="tiny" x="922" y="3122" text-anchor="end">voiceover</text>
+<a class="agent-link" href="/agents/video.voiceover/chat" target="_top" aria-label="Open video.voiceover Chat"><rect class="agent-hit" x="664" y="3122" width="256" height="26" rx="4"/><text class="agent-text" data-agent-id="video.voiceover" x="668" y="3140">video.voiceover</text></a>
+</g>
+<path class="branch" data-flow-kind="branch" d="M336 3010 C496 3010 496 3118 656 3118"/>
+<g class="comfy-node" data-node-kind="agent">
+<rect class="card-green" x="360" y="3184" width="280" height="96" rx="6"/>
+<rect class="card-accent accent-green" x="360" y="3184" width="280" height="28"/>
+<text class="card-title" x="372" y="3203">AGENT</text>
+<text class="card-title" x="628" y="3203" text-anchor="end">aiqaconsistency</text>
+<circle class="socket socket-in" cx="360" cy="3226" r="6" style="fill:#80deea"/>
+<text class="tiny" x="374" y="3230">in</text>
+<circle class="socket socket-out" cx="640" cy="3226" r="6" style="fill:#f48fb1"/>
+<text class="tiny" x="626" y="3230" text-anchor="end">aiqaconsiste</text>
+<a class="agent-link" href="/agents/video.aiqaconsistency/chat" target="_top" aria-label="Open video.aiqaconsistency Chat"><rect class="agent-hit" x="368" y="3230" width="256" height="26" rx="4"/><text class="agent-text" data-agent-id="video.aiqaconsistency" x="372" y="3248">video.aiqaconsistency</text></a>
+</g>
+<path class="branch" data-flow-kind="branch" d="M336 3010 C348 3010 348 3226 360 3226"/>
+<polygon class="parallel" points="1580,2896 1618,2934 1580,2972 1542,2934"/>
+<text class="parallel-symbol" x="1580" y="2944">+</text>
+<g class="comfy-node" data-node-kind="human">
+<rect class="card-purple" x="960" y="2968" width="280" height="132" rx="6"/>
+<rect class="card-accent accent-purple" x="960" y="2968" width="280" height="28"/>
+<text class="card-title" x="972" y="2987">HUMAN</text>
+<text class="card-title" x="1228" y="2987" text-anchor="end">Control / acceptance</text>
+<circle class="socket socket-in" cx="960" cy="3010" r="6" style="fill:#81c784"/>
+<text class="tiny" x="974" y="3014">crew</text>
+<circle class="socket socket-out" cx="1240" cy="3010" r="6" style="fill:#ce93d8"/>
+<text class="tiny" x="1226" y="3014" text-anchor="end">gate</text>
+<text class="tiny" x="972" y="3032">Claims remain tied to approved</text>
+<text class="tiny" x="972" y="3048">evidence.</text>
+<text class="tiny" x="972" y="3064">Targeted rerender preserves</text>
+<text class="tiny" x="972" y="3080">accepted lessons.</text>
+</g>
+<path class="branch" data-flow-kind="branch" d="M640 3010 C800 3010 800 3010 960 3010"/>
+<path class="branch" data-flow-kind="branch" d="M936 3010 C948 3010 948 3010 960 3010"/>
+<path class="branch" data-flow-kind="branch" d="M640 3118 C800 3118 800 3010 960 3010"/>
+<path class="branch" data-flow-kind="branch" d="M936 3118 C948 3118 948 3010 960 3010"/>
+<path class="branch" data-flow-kind="branch" d="M640 3226 C800 3226 800 3010 960 3010"/>
+<g class="comfy-node" data-node-kind="output">
+<rect class="card-amber" x="1264" y="2968" width="280" height="96" rx="6"/>
+<rect class="card-accent accent-amber" x="1264" y="2968" width="280" height="28"/>
+<text class="card-title" x="1276" y="2987">OUTPUT</text>
+<text class="card-title" x="1532" y="2987" text-anchor="end">Gate</text>
+<circle class="socket socket-in" cx="1264" cy="3010" r="6" style="fill:#ce93d8"/>
+<text class="tiny" x="1278" y="3014">gate</text>
+<circle class="socket socket-out" cx="1544" cy="3010" r="6" style="fill:#64b5f6"/>
+<text class="tiny" x="1530" y="3014" text-anchor="end">handoff</text>
+<text class="tiny" x="1276" y="3032">G2 · CRAFT QC</text>
+</g>
+<path class="flow" data-flow-kind="sequence" d="M1240 3010 C1252 3010 1252 3010 1264 3010"/>
+<polygon class="gateway" data-gate="G2 · CRAFT QC" points="1404.0,3072 1422.0,3090 1404.0,3108 1386.0,3090"/>
+<g class="comfy-node" data-node-kind="output">
+<rect class="card-amber" x="1568" y="2968" width="316" height="120" rx="6"/>
+<rect class="card-accent accent-amber" x="1568" y="2968" width="316" height="28"/>
+<text class="card-title" x="1580" y="2987">OUTPUT</text>
+<text class="card-title" x="1872" y="2987" text-anchor="end">Handoff</text>
+<circle class="socket socket-in" cx="1568" cy="3010" r="6" style="fill:#64b5f6"/>
+<text class="tiny" x="1582" y="3014">handoff</text>
+<circle class="socket socket-out" cx="1884" cy="3010" r="6" style="fill:#ce93d8"/>
+<text class="tiny" x="1870" y="3014" text-anchor="end">next</text>
+<text class="tiny" x="1580" y="3032">HANDOFF / OUTPUT</text>
+<text class="tiny" x="1580" y="3048">Lesson scenes · narration ·</text>
+<text class="tiny" x="1580" y="3064">graphics · QA report</text>
+</g>
+<path class="association" data-flow-kind="artifact" d="M1544 3010 C1556 3010 1556 3010 1568 3010"/>
+<path class="feedback" data-flow-kind="feedback" d="M1264 3010 C1084 3664 36 3664 56 3010"/>
+<text class="feedback-label" x="56" y="3682">Rerender or rewrite the failed lesson element.</text>
+</g>
+<path class="flow" data-flow-kind="sequence" d="M1580 3688 C1628 3735 1532 3735 1580 3782"/>
 <g id="video-template-f-workflow-phase-3" role="group" aria-labelledby="video-template-f-workflow-phase-3-label" data-phase-index="3" data-phase-name="post-production">
-<rect class="phase-bg-alt" x="40" y="2810" width="3120" height="560" rx="24"/>
-<rect class="phase-chip-amber" x="40" y="2832" width="8" height="516" rx="4"/>
-<rect class="phase-chip-amber" x="70" y="2838" width="64" height="64" rx="18"/>
-<text class="phase-num" x="91" y="2883">3</text>
-<text id="video-template-f-workflow-phase-3-label" class="phase-name" x="158" y="2869">Post-production</text>
-<text class="phase-count" x="158" y="2899">PARALLEL FAN-OUT / FAN-IN · TYPED ARTIFACT HANDOFF · BOUNDED REWORK</text>
-<polygon class="parallel" points="1600,2900 1646,2946 1600,2992 1554,2946"/>
-<text class="parallel-symbol" x="1600" y="2956">+</text>
-<path class="branch" data-flow-kind="branch" d="M1600 2992 C1070 2992 1070 2966 540 2966"/>
-<path class="branch" data-flow-kind="branch" d="M1600 2992 C1570 2992 1570 2966 1540 2966"/>
-<path class="branch" data-flow-kind="branch" d="M1600 2992 C2070 2992 2070 2966 2540 2966"/>
-<g class="content-card">
-<rect class="card-blue" x="80" y="2980" width="920" height="240" rx="8"/>
-<rect class="card-accent accent-blue" x="80" y="2980" width="920" height="32"/>
-<text class="card-title" x="108" y="3002">Work package</text>
-<circle class="socket socket-in" cx="80" cy="3028" r="7"/>
-<circle class="socket socket-out" cx="1000" cy="3028" r="7"/>
-<text class="small" x="108" y="3042">• Assemble lesson and assessment cues.</text>
-<text class="small" x="108" y="3073">• Grade, mix, caption and localize.</text>
-<text class="small" x="108" y="3104">• Create SCORM/xAPI and channel variants.</text>
+<rect class="phase-bg-alt" x="40" y="3730" width="3120" height="840" rx="16"/>
+<rect class="phase-chip-amber" x="40" y="3748" width="8" height="804" rx="4"/>
+<rect class="phase-chip-amber" x="64" y="3750" width="48" height="48" rx="10"/>
+<text class="phase-num" x="88" y="3784" text-anchor="middle">3</text>
+<text id="video-template-f-workflow-phase-3-label" class="phase-name" x="128" y="3774">Post-production</text>
+<text class="phase-count" x="128" y="3802">PARALLEL FAN-OUT / FAN-IN · TYPED ARTIFACT HANDOFF · BOUNDED REWORK</text>
+<g class="comfy-node" data-node-kind="start">
+<rect class="card-blue" x="56" y="3838" width="280" height="148" rx="6"/>
+<rect class="card-accent accent-blue" x="56" y="3838" width="280" height="28"/>
+<text class="card-title" x="68" y="3857">START</text>
+<text class="card-title" x="324" y="3857" text-anchor="end">Work package</text>
+<circle class="socket socket-out" cx="336" cy="3880" r="6" style="fill:#81c784"/>
+<text class="tiny" x="322" y="3884" text-anchor="end">crew</text>
+<text class="tiny" x="68" y="3902">Assemble lesson and assessment</text>
+<text class="tiny" x="68" y="3918">cues.</text>
+<text class="tiny" x="68" y="3934">Grade, mix, caption and localize.</text>
+<text class="tiny" x="68" y="3950">Create SCORM/xAPI and channel</text>
+<text class="tiny" x="68" y="3966">variants.</text>
 </g>
-<g class="content-card">
-<rect class="card-purple" x="1080" y="2980" width="920" height="240" rx="8"/>
-<rect class="card-accent accent-purple" x="1080" y="2980" width="920" height="32"/>
-<text class="card-title" x="1108" y="3002">Principal crew</text>
-<circle class="socket socket-in" cx="1080" cy="3028" r="7"/>
-<circle class="socket socket-out" cx="2000" cy="3028" r="7"/>
-<a class="agent-link" href="/agents/video.editor/chat" target="_top" aria-label="Open video.editor Chat"><rect class="agent-hit" x="1096" y="3025" width="864" height="27" rx="8"/><text class="agent-text" data-agent-id="video.editor" x="1108" y="3046">• video.editor  ↗</text></a>
-<a class="agent-link" href="/agents/video.soundmixer/chat" target="_top" aria-label="Open video.soundmixer Chat"><rect class="agent-hit" x="1096" y="3053" width="864" height="27" rx="8"/><text class="agent-text" data-agent-id="video.soundmixer" x="1108" y="3074">• video.soundmixer  ↗</text></a>
-<a class="agent-link" href="/agents/video.accessibility/chat" target="_top" aria-label="Open video.accessibility Chat"><rect class="agent-hit" x="1096" y="3081" width="864" height="27" rx="8"/><text class="agent-text" data-agent-id="video.accessibility" x="1108" y="3102">• video.accessibility  ↗</text></a>
-<a class="agent-link" href="/agents/video.localizationqa/chat" target="_top" aria-label="Open video.localizationqa Chat"><rect class="agent-hit" x="1096" y="3109" width="864" height="27" rx="8"/><text class="agent-text" data-agent-id="video.localizationqa" x="1108" y="3130">• video.localizationqa  ↗</text></a>
-<a class="agent-link" href="/agents/video.signlanguageinterpreter/chat" target="_top" aria-label="Open video.signlanguageinterpreter Chat"><rect class="agent-hit" x="1096" y="3137" width="864" height="27" rx="8"/><text class="agent-text" data-agent-id="video.signlanguageinterpreter" x="1108" y="3158">• video.signlanguageinterpreter  ↗</text></a>
+<g class="comfy-node" data-node-kind="agent">
+<rect class="card-green" x="360" y="3838" width="280" height="96" rx="6"/>
+<rect class="card-accent accent-green" x="360" y="3838" width="280" height="28"/>
+<text class="card-title" x="372" y="3857">AGENT</text>
+<text class="card-title" x="628" y="3857" text-anchor="end">editor</text>
+<circle class="socket socket-in" cx="360" cy="3880" r="6" style="fill:#80deea"/>
+<text class="tiny" x="374" y="3884">in</text>
+<circle class="socket socket-out" cx="640" cy="3880" r="6" style="fill:#80deea"/>
+<text class="tiny" x="626" y="3884" text-anchor="end">editor</text>
+<a class="agent-link" href="/agents/video.editor/chat" target="_top" aria-label="Open video.editor Chat"><rect class="agent-hit" x="368" y="3884" width="256" height="26" rx="4"/><text class="agent-text" data-agent-id="video.editor" x="372" y="3902">video.editor</text></a>
 </g>
-<g class="content-card">
-<rect class="card-green" x="2080" y="2980" width="920" height="240" rx="8"/>
-<rect class="card-accent accent-green" x="2080" y="2980" width="920" height="32"/>
-<text class="card-title" x="2108" y="3002">Control and acceptance</text>
-<circle class="socket socket-in" cx="2080" cy="3028" r="7"/>
-<circle class="socket socket-out" cx="3000" cy="3028" r="7"/>
-<text class="small" x="2108" y="3042">• Check intelligibility, caption accuracy and contrast.</text>
-<text class="small" x="2108" y="3073">• Preserve learning-objective traceability.</text>
+<path class="branch" data-flow-kind="branch" d="M336 3880 C348 3880 348 3880 360 3880"/>
+<g class="comfy-node" data-node-kind="agent">
+<rect class="card-green" x="656" y="3838" width="280" height="96" rx="6"/>
+<rect class="card-accent accent-green" x="656" y="3838" width="280" height="28"/>
+<text class="card-title" x="668" y="3857">AGENT</text>
+<text class="card-title" x="924" y="3857" text-anchor="end">soundmixer</text>
+<circle class="socket socket-in" cx="656" cy="3880" r="6" style="fill:#80deea"/>
+<text class="tiny" x="670" y="3884">in</text>
+<circle class="socket socket-out" cx="936" cy="3880" r="6" style="fill:#ffcc80"/>
+<text class="tiny" x="922" y="3884" text-anchor="end">soundmixer</text>
+<a class="agent-link" href="/agents/video.soundmixer/chat" target="_top" aria-label="Open video.soundmixer Chat"><rect class="agent-hit" x="664" y="3884" width="256" height="26" rx="4"/><text class="agent-text" data-agent-id="video.soundmixer" x="668" y="3902">video.soundmixer</text></a>
 </g>
-<path class="branch" data-flow-kind="branch" d="M540 3220 C1070 3220 1070 3237 1600 3237"/>
-<path class="branch" data-flow-kind="branch" d="M1540 3220 C1570 3220 1570 3237 1600 3237"/>
-<path class="branch" data-flow-kind="branch" d="M2540 3220 C2070 3220 2070 3237 1600 3237"/>
-<polygon class="gateway" data-gate="G3 · POST MASTER" points="1600,3237 1655,3292 1600,3347 1545,3292"/>
-<text class="gateway-text" x="1600" y="3298">G3 · POST MASTER</text>
-<path class="association" data-flow-kind="artifact" d="M1655 3292 H1875"/>
-<rect class="artifact" x="1900" y="3236" width="1130" height="108" rx="14"/>
-<text class="label" x="1928" y="3268">HANDOFF / OUTPUT</text>
-<text class="small" x="1928" y="3302">Training master · captions · localized assets</text>
-<path class="feedback" data-flow-kind="feedback" d="M1545 3292 C1050 3361 65 3361 65 3100 H80"/>
-<text class="feedback-label" x="120" y="3354">Fix accessibility, localization or pacing defect.</text>
+<path class="branch" data-flow-kind="branch" d="M336 3880 C496 3880 496 3880 656 3880"/>
+<g class="comfy-node" data-node-kind="agent">
+<rect class="card-green" x="360" y="3946" width="280" height="96" rx="6"/>
+<rect class="card-accent accent-green" x="360" y="3946" width="280" height="28"/>
+<text class="card-title" x="372" y="3965">AGENT</text>
+<text class="card-title" x="628" y="3965" text-anchor="end">accessibility</text>
+<circle class="socket socket-in" cx="360" cy="3988" r="6" style="fill:#80deea"/>
+<text class="tiny" x="374" y="3992">in</text>
+<circle class="socket socket-out" cx="640" cy="3988" r="6" style="fill:#ce93d8"/>
+<text class="tiny" x="626" y="3992" text-anchor="end">accessibilit</text>
+<a class="agent-link" href="/agents/video.accessibility/chat" target="_top" aria-label="Open video.accessibility Chat"><rect class="agent-hit" x="368" y="3992" width="256" height="26" rx="4"/><text class="agent-text" data-agent-id="video.accessibility" x="372" y="4010">video.accessibility</text></a>
 </g>
-<path class="flow" data-flow-kind="sequence" d="M1600 3347 C1648 3410.5 1552 3410.5 1600 3474"/>
+<path class="branch" data-flow-kind="branch" d="M336 3880 C348 3880 348 3988 360 3988"/>
+<g class="comfy-node" data-node-kind="agent">
+<rect class="card-green" x="656" y="3946" width="280" height="96" rx="6"/>
+<rect class="card-accent accent-green" x="656" y="3946" width="280" height="28"/>
+<text class="card-title" x="668" y="3965">AGENT</text>
+<text class="card-title" x="924" y="3965" text-anchor="end">localizationqa</text>
+<circle class="socket socket-in" cx="656" cy="3988" r="6" style="fill:#80deea"/>
+<text class="tiny" x="670" y="3992">in</text>
+<circle class="socket socket-out" cx="936" cy="3988" r="6" style="fill:#81c784"/>
+<text class="tiny" x="922" y="3992" text-anchor="end">localization</text>
+<a class="agent-link" href="/agents/video.localizationqa/chat" target="_top" aria-label="Open video.localizationqa Chat"><rect class="agent-hit" x="664" y="3992" width="256" height="26" rx="4"/><text class="agent-text" data-agent-id="video.localizationqa" x="668" y="4010">video.localizationqa</text></a>
+</g>
+<path class="branch" data-flow-kind="branch" d="M336 3880 C496 3880 496 3988 656 3988"/>
+<g class="comfy-node" data-node-kind="agent">
+<rect class="card-green" x="360" y="4054" width="280" height="96" rx="6"/>
+<rect class="card-accent accent-green" x="360" y="4054" width="280" height="28"/>
+<text class="card-title" x="372" y="4073">AGENT</text>
+<text class="card-title" x="628" y="4073" text-anchor="end">signlanguageinterprete</text>
+<circle class="socket socket-in" cx="360" cy="4096" r="6" style="fill:#80deea"/>
+<text class="tiny" x="374" y="4100">in</text>
+<circle class="socket socket-out" cx="640" cy="4096" r="6" style="fill:#80deea"/>
+<text class="tiny" x="626" y="4100" text-anchor="end">signlanguage</text>
+<a class="agent-link" href="/agents/video.signlanguageinterpreter/chat" target="_top" aria-label="Open video.signlanguageinterpreter Chat"><rect class="agent-hit" x="368" y="4100" width="256" height="26" rx="4"/><text class="agent-text" data-agent-id="video.signlanguageinterpreter" x="372" y="4118">video.signlanguageinterpreter</text></a>
+</g>
+<path class="branch" data-flow-kind="branch" d="M336 3880 C348 3880 348 4096 360 4096"/>
+<polygon class="parallel" points="1580,3766 1618,3804 1580,3842 1542,3804"/>
+<text class="parallel-symbol" x="1580" y="3814">+</text>
+<g class="comfy-node" data-node-kind="human">
+<rect class="card-purple" x="960" y="3838" width="280" height="132" rx="6"/>
+<rect class="card-accent accent-purple" x="960" y="3838" width="280" height="28"/>
+<text class="card-title" x="972" y="3857">HUMAN</text>
+<text class="card-title" x="1228" y="3857" text-anchor="end">Control / acceptance</text>
+<circle class="socket socket-in" cx="960" cy="3880" r="6" style="fill:#81c784"/>
+<text class="tiny" x="974" y="3884">crew</text>
+<circle class="socket socket-out" cx="1240" cy="3880" r="6" style="fill:#ce93d8"/>
+<text class="tiny" x="1226" y="3884" text-anchor="end">gate</text>
+<text class="tiny" x="972" y="3902">Check intelligibility, caption</text>
+<text class="tiny" x="972" y="3918">accuracy and contrast.</text>
+<text class="tiny" x="972" y="3934">Preserve learning-objective</text>
+<text class="tiny" x="972" y="3950">traceability.</text>
+</g>
+<path class="branch" data-flow-kind="branch" d="M640 3880 C800 3880 800 3880 960 3880"/>
+<path class="branch" data-flow-kind="branch" d="M936 3880 C948 3880 948 3880 960 3880"/>
+<path class="branch" data-flow-kind="branch" d="M640 3988 C800 3988 800 3880 960 3880"/>
+<path class="branch" data-flow-kind="branch" d="M936 3988 C948 3988 948 3880 960 3880"/>
+<path class="branch" data-flow-kind="branch" d="M640 4096 C800 4096 800 3880 960 3880"/>
+<g class="comfy-node" data-node-kind="output">
+<rect class="card-amber" x="1264" y="3838" width="280" height="96" rx="6"/>
+<rect class="card-accent accent-amber" x="1264" y="3838" width="280" height="28"/>
+<text class="card-title" x="1276" y="3857">OUTPUT</text>
+<text class="card-title" x="1532" y="3857" text-anchor="end">Gate</text>
+<circle class="socket socket-in" cx="1264" cy="3880" r="6" style="fill:#ce93d8"/>
+<text class="tiny" x="1278" y="3884">gate</text>
+<circle class="socket socket-out" cx="1544" cy="3880" r="6" style="fill:#64b5f6"/>
+<text class="tiny" x="1530" y="3884" text-anchor="end">handoff</text>
+<text class="tiny" x="1276" y="3902">G3 · POST MASTER</text>
+</g>
+<path class="flow" data-flow-kind="sequence" d="M1240 3880 C1252 3880 1252 3880 1264 3880"/>
+<polygon class="gateway" data-gate="G3 · POST MASTER" points="1404.0,3942 1422.0,3960 1404.0,3978 1386.0,3960"/>
+<g class="comfy-node" data-node-kind="output">
+<rect class="card-amber" x="1568" y="3838" width="316" height="120" rx="6"/>
+<rect class="card-accent accent-amber" x="1568" y="3838" width="316" height="28"/>
+<text class="card-title" x="1580" y="3857">OUTPUT</text>
+<text class="card-title" x="1872" y="3857" text-anchor="end">Handoff</text>
+<circle class="socket socket-in" cx="1568" cy="3880" r="6" style="fill:#64b5f6"/>
+<text class="tiny" x="1582" y="3884">handoff</text>
+<circle class="socket socket-out" cx="1884" cy="3880" r="6" style="fill:#ce93d8"/>
+<text class="tiny" x="1870" y="3884" text-anchor="end">next</text>
+<text class="tiny" x="1580" y="3902">HANDOFF / OUTPUT</text>
+<text class="tiny" x="1580" y="3918">Training master · captions ·</text>
+<text class="tiny" x="1580" y="3934">localized assets</text>
+</g>
+<path class="association" data-flow-kind="artifact" d="M1544 3880 C1556 3880 1556 3880 1568 3880"/>
+<path class="feedback" data-flow-kind="feedback" d="M1264 3880 C1084 4534 36 4534 56 3880"/>
+<text class="feedback-label" x="56" y="4552">Fix accessibility, localization or pacing defect.</text>
+</g>
+<path class="flow" data-flow-kind="sequence" d="M1580 4558 C1628 4605 1532 4605 1580 4652"/>
 <g id="video-template-f-workflow-phase-4" role="group" aria-labelledby="video-template-f-workflow-phase-4-label" data-phase-index="4" data-phase-name="review-&amp;-release">
-<rect class="phase-bg" x="40" y="3400" width="3120" height="560" rx="24"/>
-<rect class="phase-chip-rose" x="40" y="3422" width="8" height="516" rx="4"/>
-<rect class="phase-chip-rose" x="70" y="3428" width="64" height="64" rx="18"/>
-<text class="phase-num" x="91" y="3473">4</text>
-<text id="video-template-f-workflow-phase-4-label" class="phase-name" x="158" y="3459">Review &amp; release</text>
-<text class="phase-count" x="158" y="3489">GOVERNED SEQUENCE · TYPED ARTIFACT HANDOFF · BOUNDED REWORK</text>
-<circle class="phase-start" cx="1600" cy="3532" r="20"/>
-<path class="flow" data-flow-kind="sequence" d="M1600 3552 C1648 3554 1552 3554 1600 3556"/>
-<g class="content-card">
-<rect class="card-blue" x="80" y="3570" width="920" height="240" rx="8"/>
-<rect class="card-accent accent-blue" x="80" y="3570" width="920" height="32"/>
-<text class="card-title" x="108" y="3592">Work package</text>
-<circle class="socket socket-in" cx="80" cy="3618" r="7"/>
-<circle class="socket socket-out" cx="1000" cy="3618" r="7"/>
-<text class="small" x="108" y="3632">• SME and FactChecker verify instruction.</text>
-<text class="small" x="108" y="3663">• StandardsEditor and Legal review policy framing.</text>
-<text class="small" x="108" y="3694">• LearnerSim tests confusion and assessment fit.</text>
+<rect class="phase-bg" x="40" y="4600" width="3120" height="840" rx="16"/>
+<rect class="phase-chip-rose" x="40" y="4618" width="8" height="804" rx="4"/>
+<rect class="phase-chip-rose" x="64" y="4620" width="48" height="48" rx="10"/>
+<text class="phase-num" x="88" y="4654" text-anchor="middle">4</text>
+<text id="video-template-f-workflow-phase-4-label" class="phase-name" x="128" y="4644">Review &amp; release</text>
+<text class="phase-count" x="128" y="4672">GOVERNED SEQUENCE · TYPED ARTIFACT HANDOFF · BOUNDED REWORK</text>
+<g class="comfy-node" data-node-kind="start">
+<rect class="card-blue" x="56" y="4708" width="280" height="164" rx="6"/>
+<rect class="card-accent accent-blue" x="56" y="4708" width="280" height="28"/>
+<text class="card-title" x="68" y="4727">START</text>
+<text class="card-title" x="324" y="4727" text-anchor="end">Work package</text>
+<circle class="socket socket-out" cx="336" cy="4750" r="6" style="fill:#81c784"/>
+<text class="tiny" x="322" y="4754" text-anchor="end">crew</text>
+<text class="tiny" x="68" y="4772">SME and FactChecker verify</text>
+<text class="tiny" x="68" y="4788">instruction.</text>
+<text class="tiny" x="68" y="4804">StandardsEditor and Legal review</text>
+<text class="tiny" x="68" y="4820">policy framing.</text>
+<text class="tiny" x="68" y="4836">LearnerSim tests confusion and</text>
+<text class="tiny" x="68" y="4852">assessment fit.</text>
 </g>
-<g class="content-card">
-<rect class="card-purple" x="1080" y="3570" width="920" height="240" rx="8"/>
-<rect class="card-accent accent-purple" x="1080" y="3570" width="920" height="32"/>
-<text class="card-title" x="1108" y="3592">Principal crew</text>
-<circle class="socket socket-in" cx="1080" cy="3618" r="7"/>
-<circle class="socket socket-out" cx="2000" cy="3618" r="7"/>
-<a class="agent-link" href="/agents/video.sme/chat" target="_top" aria-label="Open video.sme Chat"><rect class="agent-hit" x="1096" y="3615" width="864" height="27" rx="8"/><text class="agent-text" data-agent-id="video.sme" x="1108" y="3636">• video.sme  ↗</text></a>
-<a class="agent-link" href="/agents/video.factchecker/chat" target="_top" aria-label="Open video.factchecker Chat"><rect class="agent-hit" x="1096" y="3643" width="864" height="27" rx="8"/><text class="agent-text" data-agent-id="video.factchecker" x="1108" y="3664">• video.factchecker  ↗</text></a>
-<a class="agent-link" href="/agents/video.standardseditor/chat" target="_top" aria-label="Open video.standardseditor Chat"><rect class="agent-hit" x="1096" y="3671" width="864" height="27" rx="8"/><text class="agent-text" data-agent-id="video.standardseditor" x="1108" y="3692">• video.standardseditor  ↗</text></a>
-<a class="agent-link" href="/agents/video.legal/chat" target="_top" aria-label="Open video.legal Chat"><rect class="agent-hit" x="1096" y="3699" width="864" height="27" rx="8"/><text class="agent-text" data-agent-id="video.legal" x="1108" y="3720">• video.legal  ↗</text></a>
-<a class="agent-link" href="/agents/video.learnersim/chat" target="_top" aria-label="Open video.learnersim Chat"><rect class="agent-hit" x="1096" y="3727" width="864" height="27" rx="8"/><text class="agent-text" data-agent-id="video.learnersim" x="1108" y="3748">• video.learnersim  ↗</text></a>
+<g class="comfy-node" data-node-kind="agent">
+<rect class="card-green" x="360" y="4708" width="280" height="96" rx="6"/>
+<rect class="card-accent accent-green" x="360" y="4708" width="280" height="28"/>
+<text class="card-title" x="372" y="4727">AGENT</text>
+<text class="card-title" x="628" y="4727" text-anchor="end">sme</text>
+<circle class="socket socket-in" cx="360" cy="4750" r="6" style="fill:#80deea"/>
+<text class="tiny" x="374" y="4754">in</text>
+<circle class="socket socket-out" cx="640" cy="4750" r="6" style="fill:#ce93d8"/>
+<text class="tiny" x="626" y="4754" text-anchor="end">sme</text>
+<a class="agent-link" href="/agents/video.sme/chat" target="_top" aria-label="Open video.sme Chat"><rect class="agent-hit" x="368" y="4754" width="256" height="26" rx="4"/><text class="agent-text" data-agent-id="video.sme" x="372" y="4772">video.sme</text></a>
 </g>
-<g class="content-card">
-<rect class="card-green" x="2080" y="3570" width="920" height="240" rx="8"/>
-<rect class="card-accent accent-green" x="2080" y="3570" width="920" height="32"/>
-<text class="card-title" x="2108" y="3592">Control and acceptance</text>
-<circle class="socket socket-in" cx="2080" cy="3618" r="7"/>
-<circle class="socket socket-out" cx="3000" cy="3618" r="7"/>
-<text class="small" x="2108" y="3632">• L3/HiTL includes SME and legal acceptance.</text>
-<text class="small" x="2108" y="3663">• No module ships with unresolved factual risk.</text>
+<path class="flow" data-flow-kind="sequence" d="M336 4750 C348 4750 348 4750 360 4750"/>
+<g class="comfy-node" data-node-kind="agent">
+<rect class="card-green" x="360" y="4816" width="280" height="96" rx="6"/>
+<rect class="card-accent accent-green" x="360" y="4816" width="280" height="28"/>
+<text class="card-title" x="372" y="4835">AGENT</text>
+<text class="card-title" x="628" y="4835" text-anchor="end">factchecker</text>
+<circle class="socket socket-in" cx="360" cy="4858" r="6" style="fill:#80deea"/>
+<text class="tiny" x="374" y="4862">in</text>
+<circle class="socket socket-out" cx="640" cy="4858" r="6" style="fill:#81c784"/>
+<text class="tiny" x="626" y="4862" text-anchor="end">factchecker</text>
+<a class="agent-link" href="/agents/video.factchecker/chat" target="_top" aria-label="Open video.factchecker Chat"><rect class="agent-hit" x="368" y="4862" width="256" height="26" rx="4"/><text class="agent-text" data-agent-id="video.factchecker" x="372" y="4880">video.factchecker</text></a>
 </g>
-<path class="flow" data-flow-kind="sequence" d="M1000 3618 C1040 3618 1040 3618 1080 3618"/>
-<path class="flow" data-flow-kind="sequence" d="M2000 3618 C2040 3618 2040 3618 2080 3618"/>
-<path class="flow" data-flow-kind="sequence" d="M2540 3810 C2070 3810 2070 3827 1600 3827"/>
-<polygon class="gateway" data-gate="G4 · RELEASE" points="1600,3827 1655,3882 1600,3937 1545,3882"/>
-<text class="gateway-text" x="1600" y="3888">G4 · RELEASE</text>
-<path class="association" data-flow-kind="artifact" d="M1655 3882 H1875"/>
-<rect class="artifact" x="1900" y="3826" width="1130" height="108" rx="14"/>
-<text class="label" x="1928" y="3858">HANDOFF / OUTPUT</text>
-<text class="small" x="1928" y="3892">SME/legal report · learner simulation · sign-off</text>
-<path class="feedback" data-flow-kind="feedback" d="M1545 3882 C1050 3951 65 3951 65 3690 H80"/>
-<text class="feedback-label" x="120" y="3944">Route issue to script, visual or assessment owner.</text>
+<path class="flow" data-flow-kind="sequence" d="M500 4804 C548 4810 452 4810 500 4816"/>
+<g class="comfy-node" data-node-kind="agent">
+<rect class="card-green" x="360" y="4924" width="280" height="96" rx="6"/>
+<rect class="card-accent accent-green" x="360" y="4924" width="280" height="28"/>
+<text class="card-title" x="372" y="4943">AGENT</text>
+<text class="card-title" x="628" y="4943" text-anchor="end">standardseditor</text>
+<circle class="socket socket-in" cx="360" cy="4966" r="6" style="fill:#80deea"/>
+<text class="tiny" x="374" y="4970">in</text>
+<circle class="socket socket-out" cx="640" cy="4966" r="6" style="fill:#f48fb1"/>
+<text class="tiny" x="626" y="4970" text-anchor="end">standardsedi</text>
+<a class="agent-link" href="/agents/video.standardseditor/chat" target="_top" aria-label="Open video.standardseditor Chat"><rect class="agent-hit" x="368" y="4970" width="256" height="26" rx="4"/><text class="agent-text" data-agent-id="video.standardseditor" x="372" y="4988">video.standardseditor</text></a>
 </g>
-<path class="flow" data-flow-kind="sequence" d="M1600 3937 C1648 4000.5 1552 4000.5 1600 4064"/>
+<path class="flow" data-flow-kind="sequence" d="M500 4912 C548 4918 452 4918 500 4924"/>
+<g class="comfy-node" data-node-kind="agent">
+<rect class="card-green" x="360" y="5032" width="280" height="96" rx="6"/>
+<rect class="card-accent accent-green" x="360" y="5032" width="280" height="28"/>
+<text class="card-title" x="372" y="5051">AGENT</text>
+<text class="card-title" x="628" y="5051" text-anchor="end">legal</text>
+<circle class="socket socket-in" cx="360" cy="5074" r="6" style="fill:#80deea"/>
+<text class="tiny" x="374" y="5078">in</text>
+<circle class="socket socket-out" cx="640" cy="5074" r="6" style="fill:#81c784"/>
+<text class="tiny" x="626" y="5078" text-anchor="end">legal</text>
+<a class="agent-link" href="/agents/video.legal/chat" target="_top" aria-label="Open video.legal Chat"><rect class="agent-hit" x="368" y="5078" width="256" height="26" rx="4"/><text class="agent-text" data-agent-id="video.legal" x="372" y="5096">video.legal</text></a>
+</g>
+<path class="flow" data-flow-kind="sequence" d="M500 5020 C548 5026 452 5026 500 5032"/>
+<g class="comfy-node" data-node-kind="agent">
+<rect class="card-green" x="360" y="5140" width="280" height="96" rx="6"/>
+<rect class="card-accent accent-green" x="360" y="5140" width="280" height="28"/>
+<text class="card-title" x="372" y="5159">AGENT</text>
+<text class="card-title" x="628" y="5159" text-anchor="end">learnersim</text>
+<circle class="socket socket-in" cx="360" cy="5182" r="6" style="fill:#80deea"/>
+<text class="tiny" x="374" y="5186">in</text>
+<circle class="socket socket-out" cx="640" cy="5182" r="6" style="fill:#aed581"/>
+<text class="tiny" x="626" y="5186" text-anchor="end">learnersim</text>
+<a class="agent-link" href="/agents/video.learnersim/chat" target="_top" aria-label="Open video.learnersim Chat"><rect class="agent-hit" x="368" y="5186" width="256" height="26" rx="4"/><text class="agent-text" data-agent-id="video.learnersim" x="372" y="5204">video.learnersim</text></a>
+</g>
+<path class="flow" data-flow-kind="sequence" d="M500 5128 C548 5134 452 5134 500 5140"/>
+<circle class="phase-start event" cx="1580" cy="4652" r="14"/>
+<g class="comfy-node" data-node-kind="human">
+<rect class="card-purple" x="664" y="4708" width="280" height="132" rx="6"/>
+<rect class="card-accent accent-purple" x="664" y="4708" width="280" height="28"/>
+<text class="card-title" x="676" y="4727">HUMAN</text>
+<text class="card-title" x="932" y="4727" text-anchor="end">Control / acceptance</text>
+<circle class="socket socket-in" cx="664" cy="4750" r="6" style="fill:#81c784"/>
+<text class="tiny" x="678" y="4754">crew</text>
+<circle class="socket socket-out" cx="944" cy="4750" r="6" style="fill:#ce93d8"/>
+<text class="tiny" x="930" y="4754" text-anchor="end">gate</text>
+<text class="tiny" x="676" y="4772">L3/HiTL includes SME and legal</text>
+<text class="tiny" x="676" y="4788">acceptance.</text>
+<text class="tiny" x="676" y="4804">No module ships with unresolved</text>
+<text class="tiny" x="676" y="4820">factual risk.</text>
+</g>
+<path class="flow" data-flow-kind="sequence" d="M640 5182 C652 5182 652 4750 664 4750"/>
+<g class="comfy-node" data-node-kind="output">
+<rect class="card-amber" x="968" y="4708" width="280" height="96" rx="6"/>
+<rect class="card-accent accent-amber" x="968" y="4708" width="280" height="28"/>
+<text class="card-title" x="980" y="4727">OUTPUT</text>
+<text class="card-title" x="1236" y="4727" text-anchor="end">Gate</text>
+<circle class="socket socket-in" cx="968" cy="4750" r="6" style="fill:#ce93d8"/>
+<text class="tiny" x="982" y="4754">gate</text>
+<circle class="socket socket-out" cx="1248" cy="4750" r="6" style="fill:#64b5f6"/>
+<text class="tiny" x="1234" y="4754" text-anchor="end">handoff</text>
+<text class="tiny" x="980" y="4772">G4 · RELEASE</text>
+</g>
+<path class="flow" data-flow-kind="sequence" d="M944 4750 C956 4750 956 4750 968 4750"/>
+<polygon class="gateway" data-gate="G4 · RELEASE" points="1108.0,4812 1126.0,4830 1108.0,4848 1090.0,4830"/>
+<g class="comfy-node" data-node-kind="output">
+<rect class="card-amber" x="1272" y="4708" width="316" height="120" rx="6"/>
+<rect class="card-accent accent-amber" x="1272" y="4708" width="316" height="28"/>
+<text class="card-title" x="1284" y="4727">OUTPUT</text>
+<text class="card-title" x="1576" y="4727" text-anchor="end">Handoff</text>
+<circle class="socket socket-in" cx="1272" cy="4750" r="6" style="fill:#64b5f6"/>
+<text class="tiny" x="1286" y="4754">handoff</text>
+<circle class="socket socket-out" cx="1588" cy="4750" r="6" style="fill:#ce93d8"/>
+<text class="tiny" x="1574" y="4754" text-anchor="end">next</text>
+<text class="tiny" x="1284" y="4772">HANDOFF / OUTPUT</text>
+<text class="tiny" x="1284" y="4788">SME/legal report · learner</text>
+<text class="tiny" x="1284" y="4804">simulation · sign-off</text>
+</g>
+<path class="association" data-flow-kind="artifact" d="M1248 4750 C1260 4750 1260 4750 1272 4750"/>
+<path class="feedback" data-flow-kind="feedback" d="M968 4750 C788 5404 36 5404 56 4750"/>
+<text class="feedback-label" x="56" y="5422">Route issue to script, visual or assessment owner.</text>
+</g>
+<path class="flow" data-flow-kind="sequence" d="M1580 5428 C1628 5475 1532 5475 1580 5522"/>
 <g id="video-template-f-workflow-phase-5" role="group" aria-labelledby="video-template-f-workflow-phase-5-label" data-phase-index="5" data-phase-name="distribution">
-<rect class="phase-bg-alt" x="40" y="3990" width="3120" height="560" rx="24"/>
-<rect class="phase-chip-green" x="40" y="4012" width="8" height="516" rx="4"/>
-<rect class="phase-chip-green" x="70" y="4018" width="64" height="64" rx="18"/>
-<text class="phase-num" x="91" y="4063">5</text>
-<text id="video-template-f-workflow-phase-5-label" class="phase-name" x="158" y="4049">Distribution</text>
-<text class="phase-count" x="158" y="4079">PARALLEL FAN-OUT / FAN-IN · TYPED ARTIFACT HANDOFF · BOUNDED REWORK</text>
-<polygon class="parallel" points="1600,4080 1646,4126 1600,4172 1554,4126"/>
-<text class="parallel-symbol" x="1600" y="4136">+</text>
-<path class="branch" data-flow-kind="branch" d="M1600 4172 C1070 4172 1070 4146 540 4146"/>
-<path class="branch" data-flow-kind="branch" d="M1600 4172 C1570 4172 1570 4146 1540 4146"/>
-<path class="branch" data-flow-kind="branch" d="M1600 4172 C2070 4172 2070 4146 2540 4146"/>
-<g class="content-card">
-<rect class="card-blue" x="80" y="4160" width="920" height="240" rx="8"/>
-<rect class="card-accent accent-blue" x="80" y="4160" width="920" height="32"/>
-<text class="card-title" x="108" y="4182">Work package</text>
-<circle class="socket socket-in" cx="80" cy="4208" r="7"/>
-<circle class="socket socket-out" cx="1000" cy="4208" r="7"/>
-<text class="small" x="108" y="4222">• Package and deploy to LMS.</text>
-<text class="small" x="108" y="4253">• Schedule portal/channel and archive copies.</text>
-<text class="small" x="108" y="4284">• Carry metadata, accessibility and tracking schema.</text>
+<rect class="phase-bg-alt" x="40" y="5470" width="3120" height="840" rx="16"/>
+<rect class="phase-chip-green" x="40" y="5488" width="8" height="804" rx="4"/>
+<rect class="phase-chip-green" x="64" y="5490" width="48" height="48" rx="10"/>
+<text class="phase-num" x="88" y="5524" text-anchor="middle">5</text>
+<text id="video-template-f-workflow-phase-5-label" class="phase-name" x="128" y="5514">Distribution</text>
+<text class="phase-count" x="128" y="5542">PARALLEL FAN-OUT / FAN-IN · TYPED ARTIFACT HANDOFF · BOUNDED REWORK</text>
+<g class="comfy-node" data-node-kind="start">
+<rect class="card-blue" x="56" y="5578" width="280" height="148" rx="6"/>
+<rect class="card-accent accent-blue" x="56" y="5578" width="280" height="28"/>
+<text class="card-title" x="68" y="5597">START</text>
+<text class="card-title" x="324" y="5597" text-anchor="end">Work package</text>
+<circle class="socket socket-out" cx="336" cy="5620" r="6" style="fill:#81c784"/>
+<text class="tiny" x="322" y="5624" text-anchor="end">crew</text>
+<text class="tiny" x="68" y="5642">Package and deploy to LMS.</text>
+<text class="tiny" x="68" y="5658">Schedule portal/channel and</text>
+<text class="tiny" x="68" y="5674">archive copies.</text>
+<text class="tiny" x="68" y="5690">Carry metadata, accessibility and</text>
+<text class="tiny" x="68" y="5706">tracking schema.</text>
 </g>
-<g class="content-card">
-<rect class="card-purple" x="1080" y="4160" width="920" height="240" rx="8"/>
-<rect class="card-accent accent-purple" x="1080" y="4160" width="920" height="32"/>
-<text class="card-title" x="1108" y="4182">Principal crew</text>
-<circle class="socket socket-in" cx="1080" cy="4208" r="7"/>
-<circle class="socket socket-out" cx="2000" cy="4208" r="7"/>
-<a class="agent-link" href="/agents/video.lms/chat" target="_top" aria-label="Open video.lms Chat"><rect class="agent-hit" x="1096" y="4205" width="864" height="27" rx="8"/><text class="agent-text" data-agent-id="video.lms" x="1108" y="4226">• video.lms  ↗</text></a>
-<a class="agent-link" href="/agents/video.channelmanager/chat" target="_top" aria-label="Open video.channelmanager Chat"><rect class="agent-hit" x="1096" y="4233" width="864" height="27" rx="8"/><text class="agent-text" data-agent-id="video.channelmanager" x="1108" y="4254">• video.channelmanager  ↗</text></a>
-<a class="agent-link" href="/agents/video.distributor/chat" target="_top" aria-label="Open video.distributor Chat"><rect class="agent-hit" x="1096" y="4261" width="864" height="27" rx="8"/><text class="agent-text" data-agent-id="video.distributor" x="1108" y="4282">• video.distributor  ↗</text></a>
-<a class="agent-link" href="/agents/video.archivemaster/chat" target="_top" aria-label="Open video.archivemaster Chat"><rect class="agent-hit" x="1096" y="4289" width="864" height="27" rx="8"/><text class="agent-text" data-agent-id="video.archivemaster" x="1108" y="4310">• video.archivemaster  ↗</text></a>
-<a class="agent-link" href="/agents/video.seo/chat" target="_top" aria-label="Open video.seo Chat"><rect class="agent-hit" x="1096" y="4317" width="864" height="27" rx="8"/><text class="agent-text" data-agent-id="video.seo" x="1108" y="4338">• video.seo  ↗</text></a>
+<g class="comfy-node" data-node-kind="agent">
+<rect class="card-green" x="360" y="5578" width="280" height="96" rx="6"/>
+<rect class="card-accent accent-green" x="360" y="5578" width="280" height="28"/>
+<text class="card-title" x="372" y="5597">AGENT</text>
+<text class="card-title" x="628" y="5597" text-anchor="end">lms</text>
+<circle class="socket socket-in" cx="360" cy="5620" r="6" style="fill:#80deea"/>
+<text class="tiny" x="374" y="5624">in</text>
+<circle class="socket socket-out" cx="640" cy="5620" r="6" style="fill:#ffcc80"/>
+<text class="tiny" x="626" y="5624" text-anchor="end">lms</text>
+<a class="agent-link" href="/agents/video.lms/chat" target="_top" aria-label="Open video.lms Chat"><rect class="agent-hit" x="368" y="5624" width="256" height="26" rx="4"/><text class="agent-text" data-agent-id="video.lms" x="372" y="5642">video.lms</text></a>
 </g>
-<g class="content-card">
-<rect class="card-green" x="2080" y="4160" width="920" height="240" rx="8"/>
-<rect class="card-accent accent-green" x="2080" y="4160" width="920" height="32"/>
-<text class="card-title" x="2108" y="4182">Control and acceptance</text>
-<circle class="socket socket-in" cx="2080" cy="4208" r="7"/>
-<circle class="socket socket-out" cx="3000" cy="4208" r="7"/>
-<text class="small" x="2108" y="4222">• Validate SCORM/xAPI and completion tracking.</text>
-<text class="small" x="2108" y="4253">• Each language/package is independently ready.</text>
+<path class="branch" data-flow-kind="branch" d="M336 5620 C348 5620 348 5620 360 5620"/>
+<g class="comfy-node" data-node-kind="agent">
+<rect class="card-green" x="656" y="5578" width="280" height="96" rx="6"/>
+<rect class="card-accent accent-green" x="656" y="5578" width="280" height="28"/>
+<text class="card-title" x="668" y="5597">AGENT</text>
+<text class="card-title" x="924" y="5597" text-anchor="end">channelmanager</text>
+<circle class="socket socket-in" cx="656" cy="5620" r="6" style="fill:#80deea"/>
+<text class="tiny" x="670" y="5624">in</text>
+<circle class="socket socket-out" cx="936" cy="5620" r="6" style="fill:#80deea"/>
+<text class="tiny" x="922" y="5624" text-anchor="end">channelmanag</text>
+<a class="agent-link" href="/agents/video.channelmanager/chat" target="_top" aria-label="Open video.channelmanager Chat"><rect class="agent-hit" x="664" y="5624" width="256" height="26" rx="4"/><text class="agent-text" data-agent-id="video.channelmanager" x="668" y="5642">video.channelmanager</text></a>
 </g>
-<path class="branch" data-flow-kind="branch" d="M540 4400 C1070 4400 1070 4417 1600 4417"/>
-<path class="branch" data-flow-kind="branch" d="M1540 4400 C1570 4400 1570 4417 1600 4417"/>
-<path class="branch" data-flow-kind="branch" d="M2540 4400 C2070 4400 2070 4417 1600 4417"/>
-<polygon class="gateway" data-gate="G5 · CHANNEL" points="1600,4417 1655,4472 1600,4527 1545,4472"/>
-<text class="gateway-text" x="1600" y="4478">G5 · CHANNEL</text>
-<path class="association" data-flow-kind="artifact" d="M1655 4472 H1875"/>
-<rect class="artifact" x="1900" y="4416" width="1130" height="108" rx="14"/>
-<text class="label" x="1928" y="4448">HANDOFF / OUTPUT</text>
-<text class="small" x="1928" y="4482">LMS package · portal media · archive master</text>
-<path class="feedback" data-flow-kind="feedback" d="M1545 4472 C1050 4541 65 4541 65 4280 H80"/>
-<text class="feedback-label" x="120" y="4534">Repackage failed LMS or language endpoint.</text>
+<path class="branch" data-flow-kind="branch" d="M336 5620 C496 5620 496 5620 656 5620"/>
+<g class="comfy-node" data-node-kind="agent">
+<rect class="card-green" x="360" y="5686" width="280" height="96" rx="6"/>
+<rect class="card-accent accent-green" x="360" y="5686" width="280" height="28"/>
+<text class="card-title" x="372" y="5705">AGENT</text>
+<text class="card-title" x="628" y="5705" text-anchor="end">distributor</text>
+<circle class="socket socket-in" cx="360" cy="5728" r="6" style="fill:#80deea"/>
+<text class="tiny" x="374" y="5732">in</text>
+<circle class="socket socket-out" cx="640" cy="5728" r="6" style="fill:#ffab91"/>
+<text class="tiny" x="626" y="5732" text-anchor="end">distributor</text>
+<a class="agent-link" href="/agents/video.distributor/chat" target="_top" aria-label="Open video.distributor Chat"><rect class="agent-hit" x="368" y="5732" width="256" height="26" rx="4"/><text class="agent-text" data-agent-id="video.distributor" x="372" y="5750">video.distributor</text></a>
 </g>
-<path class="flow" data-flow-kind="sequence" d="M1600 4527 C1648 4590.5 1552 4590.5 1600 4654"/>
+<path class="branch" data-flow-kind="branch" d="M336 5620 C348 5620 348 5728 360 5728"/>
+<g class="comfy-node" data-node-kind="agent">
+<rect class="card-green" x="656" y="5686" width="280" height="96" rx="6"/>
+<rect class="card-accent accent-green" x="656" y="5686" width="280" height="28"/>
+<text class="card-title" x="668" y="5705">AGENT</text>
+<text class="card-title" x="924" y="5705" text-anchor="end">archivemaster</text>
+<circle class="socket socket-in" cx="656" cy="5728" r="6" style="fill:#80deea"/>
+<text class="tiny" x="670" y="5732">in</text>
+<circle class="socket socket-out" cx="936" cy="5728" r="6" style="fill:#aed581"/>
+<text class="tiny" x="922" y="5732" text-anchor="end">archivemaste</text>
+<a class="agent-link" href="/agents/video.archivemaster/chat" target="_top" aria-label="Open video.archivemaster Chat"><rect class="agent-hit" x="664" y="5732" width="256" height="26" rx="4"/><text class="agent-text" data-agent-id="video.archivemaster" x="668" y="5750">video.archivemaster</text></a>
+</g>
+<path class="branch" data-flow-kind="branch" d="M336 5620 C496 5620 496 5728 656 5728"/>
+<g class="comfy-node" data-node-kind="agent">
+<rect class="card-green" x="360" y="5794" width="280" height="96" rx="6"/>
+<rect class="card-accent accent-green" x="360" y="5794" width="280" height="28"/>
+<text class="card-title" x="372" y="5813">AGENT</text>
+<text class="card-title" x="628" y="5813" text-anchor="end">seo</text>
+<circle class="socket socket-in" cx="360" cy="5836" r="6" style="fill:#80deea"/>
+<text class="tiny" x="374" y="5840">in</text>
+<circle class="socket socket-out" cx="640" cy="5836" r="6" style="fill:#80deea"/>
+<text class="tiny" x="626" y="5840" text-anchor="end">seo</text>
+<a class="agent-link" href="/agents/video.seo/chat" target="_top" aria-label="Open video.seo Chat"><rect class="agent-hit" x="368" y="5840" width="256" height="26" rx="4"/><text class="agent-text" data-agent-id="video.seo" x="372" y="5858">video.seo</text></a>
+</g>
+<path class="branch" data-flow-kind="branch" d="M336 5620 C348 5620 348 5836 360 5836"/>
+<polygon class="parallel" points="1580,5506 1618,5544 1580,5582 1542,5544"/>
+<text class="parallel-symbol" x="1580" y="5554">+</text>
+<g class="comfy-node" data-node-kind="human">
+<rect class="card-purple" x="960" y="5578" width="280" height="132" rx="6"/>
+<rect class="card-accent accent-purple" x="960" y="5578" width="280" height="28"/>
+<text class="card-title" x="972" y="5597">HUMAN</text>
+<text class="card-title" x="1228" y="5597" text-anchor="end">Control / acceptance</text>
+<circle class="socket socket-in" cx="960" cy="5620" r="6" style="fill:#81c784"/>
+<text class="tiny" x="974" y="5624">crew</text>
+<circle class="socket socket-out" cx="1240" cy="5620" r="6" style="fill:#ce93d8"/>
+<text class="tiny" x="1226" y="5624" text-anchor="end">gate</text>
+<text class="tiny" x="972" y="5642">Validate SCORM/xAPI and completion</text>
+<text class="tiny" x="972" y="5658">tracking.</text>
+<text class="tiny" x="972" y="5674">Each language/package is</text>
+<text class="tiny" x="972" y="5690">independently ready.</text>
+</g>
+<path class="branch" data-flow-kind="branch" d="M640 5620 C800 5620 800 5620 960 5620"/>
+<path class="branch" data-flow-kind="branch" d="M936 5620 C948 5620 948 5620 960 5620"/>
+<path class="branch" data-flow-kind="branch" d="M640 5728 C800 5728 800 5620 960 5620"/>
+<path class="branch" data-flow-kind="branch" d="M936 5728 C948 5728 948 5620 960 5620"/>
+<path class="branch" data-flow-kind="branch" d="M640 5836 C800 5836 800 5620 960 5620"/>
+<g class="comfy-node" data-node-kind="output">
+<rect class="card-amber" x="1264" y="5578" width="280" height="96" rx="6"/>
+<rect class="card-accent accent-amber" x="1264" y="5578" width="280" height="28"/>
+<text class="card-title" x="1276" y="5597">OUTPUT</text>
+<text class="card-title" x="1532" y="5597" text-anchor="end">Gate</text>
+<circle class="socket socket-in" cx="1264" cy="5620" r="6" style="fill:#ce93d8"/>
+<text class="tiny" x="1278" y="5624">gate</text>
+<circle class="socket socket-out" cx="1544" cy="5620" r="6" style="fill:#64b5f6"/>
+<text class="tiny" x="1530" y="5624" text-anchor="end">handoff</text>
+<text class="tiny" x="1276" y="5642">G5 · CHANNEL</text>
+</g>
+<path class="flow" data-flow-kind="sequence" d="M1240 5620 C1252 5620 1252 5620 1264 5620"/>
+<polygon class="gateway" data-gate="G5 · CHANNEL" points="1404.0,5682 1422.0,5700 1404.0,5718 1386.0,5700"/>
+<g class="comfy-node" data-node-kind="output">
+<rect class="card-amber" x="1568" y="5578" width="316" height="120" rx="6"/>
+<rect class="card-accent accent-amber" x="1568" y="5578" width="316" height="28"/>
+<text class="card-title" x="1580" y="5597">OUTPUT</text>
+<text class="card-title" x="1872" y="5597" text-anchor="end">Handoff</text>
+<circle class="socket socket-in" cx="1568" cy="5620" r="6" style="fill:#64b5f6"/>
+<text class="tiny" x="1582" y="5624">handoff</text>
+<circle class="socket socket-out" cx="1884" cy="5620" r="6" style="fill:#ce93d8"/>
+<text class="tiny" x="1870" y="5624" text-anchor="end">next</text>
+<text class="tiny" x="1580" y="5642">HANDOFF / OUTPUT</text>
+<text class="tiny" x="1580" y="5658">LMS package · portal media ·</text>
+<text class="tiny" x="1580" y="5674">archive master</text>
+</g>
+<path class="association" data-flow-kind="artifact" d="M1544 5620 C1556 5620 1556 5620 1568 5620"/>
+<path class="feedback" data-flow-kind="feedback" d="M1264 5620 C1084 6274 36 6274 56 5620"/>
+<text class="feedback-label" x="56" y="6292">Repackage failed LMS or language endpoint.</text>
+</g>
+<path class="flow" data-flow-kind="sequence" d="M1580 6298 C1628 6345 1532 6345 1580 6392"/>
 <g id="video-template-f-workflow-phase-6" role="group" aria-labelledby="video-template-f-workflow-phase-6-label" data-phase-index="6" data-phase-name="post-launch-learning">
-<rect class="phase-bg" x="40" y="4580" width="3120" height="560" rx="24"/>
-<rect class="phase-chip" x="40" y="4602" width="8" height="516" rx="4"/>
-<rect class="phase-chip" x="70" y="4608" width="64" height="64" rx="18"/>
-<text class="phase-num" x="91" y="4653">6</text>
-<text id="video-template-f-workflow-phase-6-label" class="phase-name" x="158" y="4639">Post-launch learning</text>
-<text class="phase-count" x="158" y="4669">GOVERNED SEQUENCE · TYPED ARTIFACT HANDOFF · BOUNDED REWORK</text>
-<circle class="phase-start" cx="1600" cy="4712" r="20"/>
-<path class="flow" data-flow-kind="sequence" d="M1600 4732 C1648 4734 1552 4734 1600 4736"/>
-<g class="content-card">
-<rect class="card-blue" x="80" y="4750" width="920" height="240" rx="8"/>
-<rect class="card-accent accent-blue" x="80" y="4750" width="920" height="32"/>
-<text class="card-title" x="108" y="4772">Work package</text>
-<circle class="socket socket-in" cx="80" cy="4798" r="7"/>
-<circle class="socket socket-out" cx="1000" cy="4798" r="7"/>
-<text class="small" x="108" y="4812">• Measure completion, quiz outcomes and confusion.</text>
-<text class="small" x="108" y="4843">• Log corrections and support signals.</text>
-<text class="small" x="108" y="4874">• Update project bible and improvement tickets.</text>
+<rect class="phase-bg" x="40" y="6340" width="3120" height="840" rx="16"/>
+<rect class="phase-chip" x="40" y="6358" width="8" height="804" rx="4"/>
+<rect class="phase-chip" x="64" y="6360" width="48" height="48" rx="10"/>
+<text class="phase-num" x="88" y="6394" text-anchor="middle">6</text>
+<text id="video-template-f-workflow-phase-6-label" class="phase-name" x="128" y="6384">Post-launch learning</text>
+<text class="phase-count" x="128" y="6412">GOVERNED SEQUENCE · TYPED ARTIFACT HANDOFF · BOUNDED REWORK</text>
+<g class="comfy-node" data-node-kind="start">
+<rect class="card-blue" x="56" y="6448" width="280" height="164" rx="6"/>
+<rect class="card-accent accent-blue" x="56" y="6448" width="280" height="28"/>
+<text class="card-title" x="68" y="6467">START</text>
+<text class="card-title" x="324" y="6467" text-anchor="end">Work package</text>
+<circle class="socket socket-out" cx="336" cy="6490" r="6" style="fill:#81c784"/>
+<text class="tiny" x="322" y="6494" text-anchor="end">crew</text>
+<text class="tiny" x="68" y="6512">Measure completion, quiz outcomes</text>
+<text class="tiny" x="68" y="6528">and confusion.</text>
+<text class="tiny" x="68" y="6544">Log corrections and support</text>
+<text class="tiny" x="68" y="6560">signals.</text>
+<text class="tiny" x="68" y="6576">Update project bible and</text>
+<text class="tiny" x="68" y="6592">improvement tickets.</text>
 </g>
-<g class="content-card">
-<rect class="card-purple" x="1080" y="4750" width="920" height="240" rx="8"/>
-<rect class="card-accent accent-purple" x="1080" y="4750" width="920" height="32"/>
-<text class="card-title" x="1108" y="4772">Principal crew</text>
-<circle class="socket socket-in" cx="1080" cy="4798" r="7"/>
-<circle class="socket socket-out" cx="2000" cy="4798" r="7"/>
-<a class="agent-link" href="/agents/video.analyst/chat" target="_top" aria-label="Open video.analyst Chat"><rect class="agent-hit" x="1096" y="4795" width="864" height="27" rx="8"/><text class="agent-text" data-agent-id="video.analyst" x="1108" y="4816">• video.analyst  ↗</text></a>
-<a class="agent-link" href="/agents/video.learnersim/chat" target="_top" aria-label="Open video.learnersim Chat"><rect class="agent-hit" x="1096" y="4823" width="864" height="27" rx="8"/><text class="agent-text" data-agent-id="video.learnersim" x="1108" y="4844">• video.learnersim  ↗</text></a>
-<a class="agent-link" href="/agents/video.corrections/chat" target="_top" aria-label="Open video.corrections Chat"><rect class="agent-hit" x="1096" y="4851" width="864" height="27" rx="8"/><text class="agent-text" data-agent-id="video.corrections" x="1108" y="4872">• video.corrections  ↗</text></a>
-<a class="agent-link" href="/agents/video.memory/chat" target="_top" aria-label="Open video.memory Chat"><rect class="agent-hit" x="1096" y="4879" width="864" height="27" rx="8"/><text class="agent-text" data-agent-id="video.memory" x="1108" y="4900">• video.memory  ↗</text></a>
+<g class="comfy-node" data-node-kind="agent">
+<rect class="card-green" x="360" y="6448" width="280" height="96" rx="6"/>
+<rect class="card-accent accent-green" x="360" y="6448" width="280" height="28"/>
+<text class="card-title" x="372" y="6467">AGENT</text>
+<text class="card-title" x="628" y="6467" text-anchor="end">analyst</text>
+<circle class="socket socket-in" cx="360" cy="6490" r="6" style="fill:#80deea"/>
+<text class="tiny" x="374" y="6494">in</text>
+<circle class="socket socket-out" cx="640" cy="6490" r="6" style="fill:#ffcc80"/>
+<text class="tiny" x="626" y="6494" text-anchor="end">analyst</text>
+<a class="agent-link" href="/agents/video.analyst/chat" target="_top" aria-label="Open video.analyst Chat"><rect class="agent-hit" x="368" y="6494" width="256" height="26" rx="4"/><text class="agent-text" data-agent-id="video.analyst" x="372" y="6512">video.analyst</text></a>
 </g>
-<g class="content-card">
-<rect class="card-green" x="2080" y="4750" width="920" height="240" rx="8"/>
-<rect class="card-accent accent-green" x="2080" y="4750" width="920" height="32"/>
-<text class="card-title" x="2108" y="4772">Control and acceptance</text>
-<circle class="socket socket-in" cx="2080" cy="4798" r="7"/>
-<circle class="socket socket-out" cx="3000" cy="4798" r="7"/>
-<text class="small" x="2108" y="4812">• Corrections preserve version and notice history.</text>
-<text class="small" x="2108" y="4843">• Regression-test revised prompts and rubrics.</text>
+<path class="flow" data-flow-kind="sequence" d="M336 6490 C348 6490 348 6490 360 6490"/>
+<g class="comfy-node" data-node-kind="agent">
+<rect class="card-green" x="360" y="6556" width="280" height="96" rx="6"/>
+<rect class="card-accent accent-green" x="360" y="6556" width="280" height="28"/>
+<text class="card-title" x="372" y="6575">AGENT</text>
+<text class="card-title" x="628" y="6575" text-anchor="end">learnersim</text>
+<circle class="socket socket-in" cx="360" cy="6598" r="6" style="fill:#80deea"/>
+<text class="tiny" x="374" y="6602">in</text>
+<circle class="socket socket-out" cx="640" cy="6598" r="6" style="fill:#aed581"/>
+<text class="tiny" x="626" y="6602" text-anchor="end">learnersim</text>
+<a class="agent-link" href="/agents/video.learnersim/chat" target="_top" aria-label="Open video.learnersim Chat"><rect class="agent-hit" x="368" y="6602" width="256" height="26" rx="4"/><text class="agent-text" data-agent-id="video.learnersim" x="372" y="6620">video.learnersim</text></a>
 </g>
-<path class="flow" data-flow-kind="sequence" d="M1000 4798 C1040 4798 1040 4798 1080 4798"/>
-<path class="flow" data-flow-kind="sequence" d="M2000 4798 C2040 4798 2040 4798 2080 4798"/>
-<path class="flow" data-flow-kind="sequence" d="M2540 4990 C2070 4990 2070 5007 1600 5007"/>
-<polygon class="gateway" data-gate="OBSERVE" points="1600,5007 1655,5062 1600,5117 1545,5062"/>
-<text class="gateway-text" x="1600" y="5068">OBSERVE</text>
-<path class="association" data-flow-kind="artifact" d="M1655 5062 H1875"/>
-<rect class="artifact" x="1900" y="5006" width="1130" height="108" rx="14"/>
-<text class="label" x="1928" y="5038">HANDOFF / OUTPUT</text>
-<text class="small" x="1928" y="5072">Learning analytics · corrections · improvement tickets</text>
-<path class="learning" data-flow-kind="learning" d="M1545 5062 C1050 5131 65 5131 65 4870 H80"/>
-<text class="feedback-label" x="120" y="5124">Feed validated outcomes into the next module.</text>
+<path class="flow" data-flow-kind="sequence" d="M500 6544 C548 6550 452 6550 500 6556"/>
+<g class="comfy-node" data-node-kind="agent">
+<rect class="card-green" x="360" y="6664" width="280" height="96" rx="6"/>
+<rect class="card-accent accent-green" x="360" y="6664" width="280" height="28"/>
+<text class="card-title" x="372" y="6683">AGENT</text>
+<text class="card-title" x="628" y="6683" text-anchor="end">corrections</text>
+<circle class="socket socket-in" cx="360" cy="6706" r="6" style="fill:#80deea"/>
+<text class="tiny" x="374" y="6710">in</text>
+<circle class="socket socket-out" cx="640" cy="6706" r="6" style="fill:#80deea"/>
+<text class="tiny" x="626" y="6710" text-anchor="end">corrections</text>
+<a class="agent-link" href="/agents/video.corrections/chat" target="_top" aria-label="Open video.corrections Chat"><rect class="agent-hit" x="368" y="6710" width="256" height="26" rx="4"/><text class="agent-text" data-agent-id="video.corrections" x="372" y="6728">video.corrections</text></a>
 </g>
-<path class="learning" data-flow-kind="learning" d="M1545 5062 C900 5160 25 5160 25 865 H70"/>
-<text class="label" x="90" y="5172" fill="#cba6f7">REGRESSION-TESTED LEARNING → FUTURE PLAN / BRIEF</text>
+<path class="flow" data-flow-kind="sequence" d="M500 6652 C548 6658 452 6658 500 6664"/>
+<g class="comfy-node" data-node-kind="agent">
+<rect class="card-green" x="360" y="6772" width="280" height="96" rx="6"/>
+<rect class="card-accent accent-green" x="360" y="6772" width="280" height="28"/>
+<text class="card-title" x="372" y="6791">AGENT</text>
+<text class="card-title" x="628" y="6791" text-anchor="end">memory</text>
+<circle class="socket socket-in" cx="360" cy="6814" r="6" style="fill:#80deea"/>
+<text class="tiny" x="374" y="6818">in</text>
+<circle class="socket socket-out" cx="640" cy="6814" r="6" style="fill:#81c784"/>
+<text class="tiny" x="626" y="6818" text-anchor="end">memory</text>
+<a class="agent-link" href="/agents/video.memory/chat" target="_top" aria-label="Open video.memory Chat"><rect class="agent-hit" x="368" y="6818" width="256" height="26" rx="4"/><text class="agent-text" data-agent-id="video.memory" x="372" y="6836">video.memory</text></a>
+</g>
+<path class="flow" data-flow-kind="sequence" d="M500 6760 C548 6766 452 6766 500 6772"/>
+<circle class="phase-start event" cx="1580" cy="6392" r="14"/>
+<g class="comfy-node" data-node-kind="human">
+<rect class="card-purple" x="664" y="6448" width="280" height="132" rx="6"/>
+<rect class="card-accent accent-purple" x="664" y="6448" width="280" height="28"/>
+<text class="card-title" x="676" y="6467">HUMAN</text>
+<text class="card-title" x="932" y="6467" text-anchor="end">Control / acceptance</text>
+<circle class="socket socket-in" cx="664" cy="6490" r="6" style="fill:#81c784"/>
+<text class="tiny" x="678" y="6494">crew</text>
+<circle class="socket socket-out" cx="944" cy="6490" r="6" style="fill:#ce93d8"/>
+<text class="tiny" x="930" y="6494" text-anchor="end">gate</text>
+<text class="tiny" x="676" y="6512">Corrections preserve version and</text>
+<text class="tiny" x="676" y="6528">notice history.</text>
+<text class="tiny" x="676" y="6544">Regression-test revised prompts</text>
+<text class="tiny" x="676" y="6560">and rubrics.</text>
+</g>
+<path class="flow" data-flow-kind="sequence" d="M640 6814 C652 6814 652 6490 664 6490"/>
+<g class="comfy-node" data-node-kind="output">
+<rect class="card-amber" x="968" y="6448" width="280" height="96" rx="6"/>
+<rect class="card-accent accent-amber" x="968" y="6448" width="280" height="28"/>
+<text class="card-title" x="980" y="6467">OUTPUT</text>
+<text class="card-title" x="1236" y="6467" text-anchor="end">Gate</text>
+<circle class="socket socket-in" cx="968" cy="6490" r="6" style="fill:#ce93d8"/>
+<text class="tiny" x="982" y="6494">gate</text>
+<circle class="socket socket-out" cx="1248" cy="6490" r="6" style="fill:#64b5f6"/>
+<text class="tiny" x="1234" y="6494" text-anchor="end">handoff</text>
+<text class="tiny" x="980" y="6512">OBSERVE</text>
+</g>
+<path class="flow" data-flow-kind="sequence" d="M944 6490 C956 6490 956 6490 968 6490"/>
+<polygon class="gateway" data-gate="OBSERVE" points="1108.0,6552 1126.0,6570 1108.0,6588 1090.0,6570"/>
+<g class="comfy-node" data-node-kind="output">
+<rect class="card-amber" x="1272" y="6448" width="316" height="120" rx="6"/>
+<rect class="card-accent accent-amber" x="1272" y="6448" width="316" height="28"/>
+<text class="card-title" x="1284" y="6467">OUTPUT</text>
+<text class="card-title" x="1576" y="6467" text-anchor="end">Handoff</text>
+<circle class="socket socket-in" cx="1272" cy="6490" r="6" style="fill:#64b5f6"/>
+<text class="tiny" x="1286" y="6494">handoff</text>
+<text class="tiny" x="1574" y="6494" text-anchor="end">No Out</text>
+<text class="tiny" x="1284" y="6512">HANDOFF / OUTPUT</text>
+<text class="tiny" x="1284" y="6528">Learning analytics · corrections ·</text>
+<text class="tiny" x="1284" y="6544">improvement tickets</text>
+</g>
+<path class="association" data-flow-kind="artifact" d="M1248 6490 C1260 6490 1260 6490 1272 6490"/>
+<path class="learning" data-flow-kind="learning" d="M968 6490 C788 7144 36 7144 56 6490"/>
+<text class="feedback-label" x="56" y="7162">Feed validated outcomes into the next module.</text>
+</g>
+<path class="learning" data-flow-kind="learning" d="M968 6490 C900 7160 25 7160 25 850 H70"/>
+<text class="label" x="90" y="7176" fill="#cba6f7">REGRESSION-TESTED LEARNING → FUTURE PLAN / BRIEF</text>
 <g id="legend-and-source" role="group" aria-labelledby="legend-and-source-title">
-<rect class="phase-bg" x="40" y="5220" width="3120" height="410" rx="16"/>
-<text id="legend-and-source-title" class="section-title" x="70" y="5265">BPM legend and operating notes</text>
-<circle class="event" cx="110" cy="5325" r="18"/><text class="small" x="145" y="5331">event / phase start</text>
-<rect class="card" x="430" y="5305" width="80" height="40" rx="9"/><text class="small" x="530" y="5331">task group</text>
-<polygon class="gateway" points="760,5305 780,5325 760,5345 740,5325"/><text class="small" x="800" y="5331">quality / decision gate</text>
-<polygon class="parallel" points="1130,5305 1150,5325 1130,5345 1110,5325"/><text class="small" x="1170" y="5331">parallel fan-out / fan-in</text>
-<line x1="1510" y1="5325" x2="1600" y2="5325" class="legend-line"/><text class="small" x="1620" y="5331">sequence / branch</text>
-<line x1="1900" y1="5325" x2="1990" y2="5325" stroke="#c2413b" stroke-width="3" stroke-dasharray="10 7"/><text class="small" x="2010" y="5331">targeted rework</text>
-<line x1="2280" y1="5325" x2="2370" y2="5325" stroke="#6d28d9" stroke-width="3" stroke-dasharray="10 7"/><text class="small" x="2390" y="5331">systemic learning</text>
-<rect class="artifact" x="2700" y="5305" width="90" height="40" rx="8"/><text class="small" x="2810" y="5331">typed artifact</text>
-<rect class="runtime-banner" x="70" y="5370" width="3060" height="92" rx="12"/>
-<text class="header-note" x="96" y="5404">HANDOFF CONTRACT — correlation_id · from/to agent · artifact_ref/type · scale · archetype · evidence_refs · L1/L2 · rights_state · needs_hitl</text>
-<text class="tiny" x="96" y="5434">Offline/UAT runs also emit knowledge_usage. Crew lists are capability maps; host policy remains authoritative.</text>
-<text class="label" x="70" y="5505">OUTPUT: video.template.f.workflow.svg</text>
-<text class="small" x="70" y="5538">Evidence basis: Detailed S3 flow with the shared skeleton; S2/S4/S5 are scale-depth overlays.</text>
-<text class="small" x="70" y="5570">Source: spec/production_scale_framework.md · Style reference: ui/public/svg/video.workflow.svg</text>
-<text class="tiny" x="70" y="5602">Principal unique agents linked in this diagram: 35 · Seven phases · fail-closed runtime · no automatic scale promotion.</text>
+<rect class="phase-bg" x="40" y="7180" width="3120" height="360" rx="16"/>
+<text id="legend-and-source-title" class="section-title" x="70" y="7224">ComfyUI node legend and operating notes</text>
+<rect class="card-blue" x="70" y="7256" width="120" height="40" rx="6"/><rect class="card-accent accent-blue" x="70" y="7256" width="120" height="16"/><text class="tiny" x="200" y="7282">START node</text>
+<rect class="card-green" x="430" y="7256" width="120" height="40" rx="6"/><rect class="card-accent accent-green" x="430" y="7256" width="120" height="16"/><text class="tiny" x="560" y="7282">AGENT node</text>
+<rect class="card-purple" x="790" y="7256" width="120" height="40" rx="6"/><rect class="card-accent accent-purple" x="790" y="7256" width="120" height="16"/><text class="tiny" x="920" y="7282">HUMAN / control</text>
+<rect class="card-amber" x="1220" y="7256" width="120" height="40" rx="6"/><rect class="card-accent accent-amber" x="1220" y="7256" width="120" height="16"/><text class="tiny" x="1350" y="7282">OUTPUT / gate</text>
+<polygon class="gateway" points="1680,7256 1700,7276 1680,7296 1660,7276"/><text class="tiny" x="1720" y="7282">quality gate</text>
+<polygon class="parallel" points="1980,7256 2000,7276 1980,7296 1960,7276"/><text class="tiny" x="2020" y="7282">parallel fan-out</text>
+<line x1="2280" y1="7276" x2="2370" y2="7276" class="legend-line"/><text class="tiny" x="2390" y="7282">spline</text>
+<line x1="2580" y1="7276" x2="2670" y2="7276" stroke="#f38ba8" stroke-width="3" stroke-dasharray="10 7"/><text class="tiny" x="2690" y="7282">bounded rework</text>
+<rect class="runtime-banner" x="70" y="7316" width="3060" height="80" rx="12"/>
+<text class="header-note" x="96" y="7348">HANDOFF CONTRACT — correlation_id · from/to agent · artifact_ref/type · scale · archetype · evidence_refs · L1/L2 · rights_state · needs_hitl</text>
+<text class="tiny" x="96" y="7376">Offline/UAT runs also emit knowledge_usage. Crew lists are capability maps; host policy remains authoritative. systemic learning</text>
+<text class="label" x="70" y="7424">OUTPUT: video.template.f.workflow.svg</text>
+<text class="small" x="70" y="7454">Evidence basis: Detailed S3 flow with the shared skeleton; S2/S4/S5 are scale-depth overlays.</text>
+<text class="small" x="70" y="7484">Source: spec/production_scale_framework.md · Style reference: ui/public/svg/video.workflow.svg</text>
+<text class="tiny" x="70" y="7514">Principal unique agents linked in this diagram: 35 · Seven phases · fail-closed runtime · typed artifact · no automatic scale promotion.</text>
 </g>
 </svg>

@@ -66,6 +66,9 @@ def test_prompts_are_still_then_motion() -> None:
     assert "Adult East Asian woman" in still
     assert "Animate this locked still" in motion
     assert "0–3s smash" in motion
+    assert "Hair stays off the lips" in still
+    assert "Do not put hair in the mouth" in motion
+    assert "Do not chew or eat hair" in motion
     assert GOLD_BODY_PROBE not in still
     assert GOLD_BODY_PROBE not in motion
 

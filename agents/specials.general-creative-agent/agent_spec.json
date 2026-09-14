@@ -25,10 +25,10 @@
   "rubric_reference": "rubrics/primary.md",
   "critique_edges": {
     "inputs": [
-      "spagent.general-creative-agent-input"
+      "specials.intent-analysis-agent"
     ],
     "outputs": [
-      "spagent.general-creative-agent-output"
+      "video.promptengineer"
     ]
   },
   "max_refinement_count": 0,

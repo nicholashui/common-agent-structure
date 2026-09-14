@@ -1,5 +1,18 @@
 import { describe, expect, it } from "vitest";
-import { AGENT_MENU_LABEL, AGENT_TABS, PROJECT_MENU_LABEL, WORKFLOW_MENU_LABEL, WORKFLOW_TABS, locationLabel } from "../src/shell/nav";
+import {
+  AGENT_MENU_LABEL,
+  AGENT_TABS,
+  PROJECT_MENU_LABEL,
+  WORKFLOW_MENU_LABEL,
+  WORKFLOW_TABS,
+  defaultNavChrome,
+  ensureOpenProject,
+  loadNavChrome,
+  locationLabel,
+  parseOpenProjects,
+  projectIdFromPath,
+  toggleOpenProject,
+} from "../src/shell/nav";
 import { listSubWorkflows, subWorkflowSvgSrc, workflowAgentChatHrefs, workflowSvgSrc } from "../src/lib/workflow";
 import videoWorkflowSvg from "../public/svg/video.workflow.svg?raw";
 import { ioHasContract, parseAgentIo } from "../src/lib/io";
@@ -47,6 +60,42 @@ describe("page location label", () => {
     expect(locationLabel("/projects/safety-recap")).toBe("Project / safety-recap");
     expect(locationLabel("/projects/asain-beauty/workflow")).toBe("Project / asain-beauty / Workflow");
     expect(locationLabel("/projects/asain-beauty/chat")).toBe("Project / asain-beauty / Chat");
+  });
+});
+
+describe("project nav expand and collapse", () => {
+  it("reads a project id from workflow and chat paths", () => {
+    expect(projectIdFromPath("/projects/asain-beauty/workflow")).toBe("asain-beauty");
+    expect(projectIdFromPath("/projects/european-handsome/chat")).toBe("european-handsome");
+    expect(projectIdFromPath("/projects/new")).toBe("");
+    expect(projectIdFromPath("/projects")).toBe("");
+    expect(projectIdFromPath("/")).toBe("");
+  });
+
+  it("toggles and remembers which projects are open", () => {
+    expect(parseOpenProjects(["asain-beauty", "", "asain-beauty", 3])).toEqual(["asain-beauty"]);
+    expect(toggleOpenProject([], "asain-beauty")).toEqual(["asain-beauty"]);
+    expect(toggleOpenProject(["asain-beauty"], "asain-beauty")).toEqual([]);
+    const once = ensureOpenProject(["asain-beauty"], "asain-beauty");
+    expect(once).toEqual(["asain-beauty"]);
+    expect(ensureOpenProject(once, "asain-beauty")).toBe(once);
+    expect(ensureOpenProject(["asain-beauty"], "european-handsome")).toEqual([
+      "asain-beauty",
+      "european-handsome",
+    ]);
+    expect(defaultNavChrome().openProjects).toEqual([]);
+    expect(defaultNavChrome()).toMatchObject({
+      agentOpen: false,
+      workflowOpen: false,
+      projectOpen: false,
+      openProjects: [],
+    });
+    expect(loadNavChrome()).toMatchObject({
+      agentOpen: false,
+      workflowOpen: false,
+      projectOpen: false,
+      openProjects: [],
+    });
   });
 });
 

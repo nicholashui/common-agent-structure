@@ -533,6 +533,17 @@ export interface ProjectCommsPayload {
   note?: string;
   saved?: boolean;
   dry_run?: boolean;
+  locks?: Record<string, string>;
+  autopilot?: {
+    status?: string;
+    human_roles?: string[];
+    locks_selected?: number;
+    intent_agent?: string;
+    creative_agent?: string;
+    cycle?: string;
+    cycles?: number;
+    cycle_locks?: Record<string, string>;
+  };
 }
 
 export interface ProjectOutputPayload {

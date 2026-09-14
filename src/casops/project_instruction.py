@@ -13,7 +13,7 @@ INDUCE_LINE_RE = re.compile(
     re.I,
 )
 ASK_LINE_RE = re.compile(r"(?:ASK_HUMAN|human_ask)\s*:\s*(.+)$", re.I)
-OPTION_RE = re.compile(r"^OPTION\s*([A-Za-z0-9]+)[\.:)\]]\s*(.+)$", re.I)
+OPTION_RE = re.compile(r"^OPTION\s*([A-Za-z0-9][A-Za-z0-9_-]*)[\.:)\]]\s*(.+)$", re.I)
 RECOMMEND_RE = re.compile(r"^RECOMMEND:\s*(\S+)", re.I)
 DECIDE_BY_RE = re.compile(r"^DECIDE_BY:\s*(\S+)", re.I)
 DISPATCH_ORDER = (
@@ -234,3 +234,14 @@ def order_induce(agent_ids: list[str]) -> list[str]:
 
 def craft_headings_for(agent_id: str) -> tuple[str, ...]:
     return CRAFT_HEADINGS.get(agent_id, ())
+
+
+def split_continuity_craft(craft: str) -> dict[str, str]:
+    """Map one continuity lock craft into Subject / Hair / Skin. Wardrobe stays on Subject."""
+    parts = [item.strip() for item in (craft or "").split("\n") if item.strip()]
+    identity = parts[0] if parts else ""
+    hair = parts[1] if len(parts) > 1 else ""
+    skin = parts[2] if len(parts) > 2 else ""
+    wardrobe = "\n".join(parts[3:]) if len(parts) > 3 else ""
+    subject = "\n".join(item for item in (identity, wardrobe) if item)
+    return {"Subject": subject, "Hair": hair, "Skin": skin}

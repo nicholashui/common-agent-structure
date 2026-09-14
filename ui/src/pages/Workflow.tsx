@@ -1,9 +1,12 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { AutoLayoutButton } from "../components/GraphAutoLayout";
 import { EmptyState, PageHeader, inputClass } from "../components/ui";
 import { listAgentGroups } from "../lib/agents";
 import { applySvgTheme } from "../lib/graphStyle";
 import { listSubWorkflows, subWorkflowSvgSrc, workflowSvgSrc } from "../lib/workflow";
+import { agentIdFromProfileChatHref, lastProjectId, projectChatHref } from "../lib/projectContext";
+import { useSwarmRoster } from "../lib/swarmFilter";
 import { useSession } from "../state/session";
 import { useTheme } from "../theme/ThemeProvider";
 
@@ -25,7 +28,9 @@ export function WorkflowPage({ kind = "main" }: { kind?: "main" | "sub" }) {
   const session = useSession();
   const { theme } = useTheme();
   const navigate = useNavigate();
+  const { swarmId, roster } = useSwarmRoster();
   const objectRef = useRef<HTMLObjectElement>(null);
+  const scrollerRef = useRef<HTMLDivElement>(null);
   const groups = useMemo(() => listAgentGroups(session.agents), [session.agents]);
   const [group, setGroup] = useState<string>("");
   const [subId, setSubId] = useState<string>("");
@@ -92,10 +97,25 @@ export function WorkflowPage({ kind = "main" }: { kind?: "main" | "sub" }) {
             return;
           }
           event.preventDefault();
+          const agentId = agentIdFromProfileChatHref(href);
+          if (roster && agentId && !roster.includes(agentId)) {
+            return;
+          }
+          const projectId = lastProjectId();
+          if (projectId && agentId) {
+            navigate(projectChatHref(projectId, { agent: agentId }));
+            return;
+          }
           navigate(href);
         });
       }
       applySvgTheme(doc, theme);
+      doc.querySelectorAll("a.agent-link").forEach((link) => {
+        const agentId = link.querySelector("[data-agent-id]")?.getAttribute("data-agent-id") || "";
+        const dim = Boolean(roster && agentId && !roster.includes(agentId));
+        (link as HTMLElement).style.opacity = dim ? "0.28" : "";
+        (link as HTMLElement).style.pointerEvents = dim ? "none" : "";
+      });
     }
     function onLoad() {
       const doc = host.contentDocument;
@@ -108,10 +128,18 @@ export function WorkflowPage({ kind = "main" }: { kind?: "main" | "sub" }) {
       onLoad();
     }
     return () => host.removeEventListener("load", onLoad);
-  }, [src, navigate, theme]);
+  }, [src, navigate, theme, roster]);
 
   function changeZoom(delta: number) {
     setZoom((current) => clampZoom(current + delta));
+  }
+
+  function onAutoLayout() {
+    setZoom(MIN_ZOOM);
+    const scroller = scrollerRef.current;
+    if (scroller) {
+      scroller.scrollTo({ left: 0, top: 0, behavior: "smooth" });
+    }
   }
 
   return (
@@ -183,6 +211,10 @@ export function WorkflowPage({ kind = "main" }: { kind?: "main" | "sub" }) {
               <p className="hidden text-[11px] text-stone-500 sm:block dark:text-[#888]">Fit for overview; zoom for readable detail.</p>
             </div>
             <div className="flex items-center gap-1.5" role="group" aria-label="Diagram zoom controls">
+              <AutoLayoutButton
+                testId={kind === "sub" ? "sub-workflow-auto-layout" : "workflow-auto-layout"}
+                onClick={onAutoLayout}
+              />
               <button
                 type="button"
                 className={zoomButtonClass}
@@ -214,7 +246,7 @@ export function WorkflowPage({ kind = "main" }: { kind?: "main" | "sub" }) {
               </button>
             </div>
           </div>
-          <div className="min-h-0 flex-1 overflow-auto overscroll-contain">
+          <div ref={scrollerRef} className="min-h-0 flex-1 overflow-auto overscroll-contain">
             <div className="min-w-full">
               <object
                 key={src}

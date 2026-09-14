@@ -506,6 +506,9 @@ export function ChatPage() {
       <div className="mb-3 flex shrink-0 flex-wrap items-center justify-between gap-2">
         <div>
           <h2 className="text-lg font-semibold text-stone-800">Chat</h2>
+          <p className="text-xs text-stone-500" data-testid="agent-chat-not-autopilot">
+            Single-agent packed Chat. Not the project Auto Pilot transcript.
+          </p>
           <p className="text-xs text-stone-400">as_of {panel.asOf ? formatHktIso(panel.asOf) : "—"}</p>
         </div>
         <div className="flex flex-wrap gap-2">

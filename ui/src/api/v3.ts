@@ -371,6 +371,19 @@ export function createClient(options: ClientOptions) {
         reasonFallback: "project generate grok imagine",
         timeoutMs: 360_000,
       }),
+    listSwarms: () => bound("listSwarms", {}) as Promise<{ swarms: { swarm_id: string; member_count?: number }[] }>,
+    getSwarm: (swarmId: string) =>
+      bound("getSwarm", { swarm_id: swarmId }) as Promise<{ member_ids: string[]; runner?: boolean }>,
+    getSwarmRoster: (swarmId: string) =>
+      bound("getSwarmRoster", { swarm_id: swarmId }) as Promise<{
+        members: { agent_id: string }[];
+      }>,
+    composeSwarmPreview: (swarmId: string) =>
+      request<{ wrote_locks: boolean }>("POST", "/api/v3/swarms/{swarm_id}/compose-preview", {
+        params: { swarm_id: swarmId },
+        body: {},
+        reasonFallback: "swarm compose-preview",
+      }),
     suggestProjectNext: (
       projectId: string,
       body: { from_id: string; from_agent_id?: string; occupied?: string[]; out_bus?: string },

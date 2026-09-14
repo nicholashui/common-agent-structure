@@ -1,0 +1,7 @@
+ASK_HUMAN: After the clip, keep Negatives as-is or tighten?
+THINKING: Host-owned pass_03. Do not write the generator novel.
+Decision point: pass_03-cycle critic
+OPTION p3-1: keep Negatives — Clip matches the lock. (recommend)
+OPTION p3-2: tighten Negatives — Add no morph and no extra jewelry after seeing the clip.
+RECOMMEND: p3-1
+DECIDE_BY: human

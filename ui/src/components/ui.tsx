@@ -73,10 +73,12 @@ export function AsOf({ date }: { date?: Date | null }) {
 
 export function PageHeader({
   title,
+  subtitle,
   actions,
   asOf,
 }: {
   title: string;
+  subtitle?: string;
   actions?: ReactNode;
   asOf?: Date | null;
 }) {
@@ -84,6 +86,7 @@ export function PageHeader({
     <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
       <div>
         <h2 className="text-lg font-semibold text-stone-800">{title}</h2>
+        {subtitle ? <p className="mt-0.5 text-xs text-stone-500">{subtitle}</p> : null}
         <AsOf date={asOf} />
       </div>
       {actions ? <div className="flex flex-wrap gap-2">{actions}</div> : null}

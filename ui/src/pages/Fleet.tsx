@@ -1,11 +1,12 @@
 import { useEffect, useMemo, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { AgentCard, type AgentCardModel } from "../components/AgentCard";
 import { EmptyState, PageHeader, inputClass } from "../components/ui";
 import { ErrorBanner } from "../components/RecoveryBanner";
 import { CasopsHttpError, type AgentSummary } from "../api/types";
 import { type AgentPack, agentPack, filterAgentCards, groupFleetCards, listAgentCategories } from "../lib/agents";
 import { loadFleetFallback, loadFleetList, runStatusFor, summariesToCards } from "../lib/fleet";
+import { filterByRoster, useSwarmRoster } from "../lib/swarmFilter";
 import { HOME_LABEL } from "../shell/nav";
 import { useSession } from "../state/session";
 
@@ -19,6 +20,9 @@ const PACKS: { id: AgentPack; label: string }[] = [
 export function FleetPage() {
   const session = useSession();
   const navigate = useNavigate();
+  const [, setSearchParams] = useSearchParams();
+  const { swarmId, roster } = useSwarmRoster();
+  const [swarms, setSwarms] = useState<{ swarm_id: string }[]>([]);
   const [cards, setCards] = useState<AgentCardModel[]>([]);
   const [query, setQuery] = useState("");
   const [pack, setPack] = useState<AgentPack>("all");
@@ -49,6 +53,13 @@ export function FleetPage() {
   }
 
   useEffect(() => {
+    session.client
+      .listSwarms()
+      .then((payload) => setSwarms(payload.swarms || []))
+      .catch(() => setSwarms([]));
+  }, [session.client]);
+
+  useEffect(() => {
     void load();
     const tick = window.setInterval(() => {
       if (document.visibilityState === "visible" && !session.stale) {
@@ -69,8 +80,8 @@ export function FleetPage() {
       ...card,
       runStatus: runStatusFor(session.lastRuns[card.agent_id]),
     }));
-    return filterAgentCards(withRuns, query, pack, effectiveCategory);
-  }, [listed, query, pack, effectiveCategory, session.lastRuns]);
+    return filterByRoster(filterAgentCards(withRuns, query, pack, effectiveCategory), roster);
+  }, [listed, query, pack, effectiveCategory, session.lastRuns, roster]);
   const groups = useMemo(() => groupFleetCards(visible, pack), [visible, pack]);
   const showPackHeadings = pack === "all" && groups.length > 1;
 
@@ -78,6 +89,11 @@ export function FleetPage() {
     <div>
       <PageHeader
         title={HOME_LABEL}
+        subtitle={
+          swarmId
+            ? `Roster ${swarmId} — not a swarm runner`
+            : "Pack browser — not a swarm runner"
+        }
         asOf={asOf}
         actions={
           <p className="text-sm text-stone-500" data-testid="fleet-count">
@@ -101,6 +117,29 @@ export function FleetPage() {
             onChange={(event) => setQuery(event.target.value)}
             aria-label="Filter agents"
           />
+          {swarms.length ? (
+            <select
+              className={`${inputClass} w-full max-w-[16rem] font-mono`}
+              value={swarmId}
+              onChange={(event) => {
+                const value = event.target.value;
+                if (value) {
+                  setSearchParams({ swarm: value });
+                } else {
+                  setSearchParams({});
+                }
+              }}
+              aria-label="Swarm roster"
+              data-testid="fleet-swarm-filter"
+            >
+              <option value="">All pack</option>
+              {swarms.map((row) => (
+                <option key={row.swarm_id} value={row.swarm_id}>
+                  {row.swarm_id}
+                </option>
+              ))}
+            </select>
+          ) : null}
           {categoryOptions.length ? (
             <select
               className={`${inputClass} w-full max-w-[12rem] font-mono`}

@@ -27,6 +27,9 @@ describe("ComfyUI-like graph tokens", () => {
     expect(videoWorkflowSvg).toContain('data-visual-system="casops-workflow-v3"');
     expect(videoWorkflowSvg).toContain(".canvas{fill:url(#graph-grid)}");
     expect(videoWorkflowSvg).toContain('class="socket socket-in"');
+    expect(videoWorkflowSvg).toContain('class="comfy-node"');
+    expect(videoWorkflowSvg).toContain(">AGENT</text>");
+    expect(videoWorkflowSvg).toContain(">START</text>");
   });
 
   it("ships a light-theme SVG override that follows the header toggle", () => {
