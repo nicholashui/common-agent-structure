@@ -78,12 +78,24 @@ def test_catalog_has_grok_and_declared_tags() -> None:
     ids = [row["id"] for row in rows]
     assert ids[0] == "grok-imagine"
     assert "grok-image" in ids
-    for extra in ("kling", "veo", "seedance", "sora", "runway", "luma", "pika", "hailuo", "wan"):
+    for extra in ("kling", "veo", "seedance", "sora", "runway", "luma", "pika", "hailuo", "wan", "ltx"):
         assert extra in ids
     grok = next(row for row in rows if row["id"] == "grok-imagine")
     assert grok["live"] is True and grok["configured"] is True
     kling = next(row for row in rows if row["id"] == "kling")
     assert kling["live"] is False and kling["configured"] is False
+
+
+def test_safe_clip_path_allows_clips_subdir(tmp_path: Path) -> None:
+    from casops.project_generate import _safe_output_clip_path
+
+    nested = tmp_path / "asain-beauty" / "output" / "clips"
+    nested.mkdir(parents=True)
+    (nested / "CLIP.asain-beauty.001-canonical.yaml").write_text("{}", encoding="utf-8")
+    path = _safe_output_clip_path(tmp_path, "asain-beauty", "clips/CLIP.asain-beauty.001-canonical.yaml")
+    assert path is not None and path.is_file()
+    assert _safe_output_clip_path(tmp_path, "asain-beauty", "sample/asain-beauty-prompt.txt") is None
+    assert _safe_output_clip_path(tmp_path, "asain-beauty", "../secret.yaml") is None
 
 
 def test_safe_output_rejects_sample(tmp_path: Path) -> None:

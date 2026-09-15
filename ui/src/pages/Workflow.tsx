@@ -5,7 +5,8 @@ import { EmptyState, PageHeader, inputClass } from "../components/ui";
 import { listAgentGroups } from "../lib/agents";
 import { applySvgTheme } from "../lib/graphStyle";
 import { listSubWorkflows, subWorkflowSvgSrc, workflowSvgSrc } from "../lib/workflow";
-import { agentIdFromProfileChatHref, lastProjectId, projectChatHref } from "../lib/projectContext";
+import { agentIdFromProfileChatHref } from "../lib/projectContext";
+import { agentHref } from "../shell/nav";
 import { useSwarmRoster } from "../lib/swarmFilter";
 import { useSession } from "../state/session";
 import { useTheme } from "../theme/ThemeProvider";
@@ -18,6 +19,18 @@ const zoomButtonClass =
 
 function isAgentChatHref(href: string | null): href is string {
   return Boolean(href && href.startsWith("/agents/") && href.endsWith("/chat"));
+}
+
+function agentChatHrefFromSvgTarget(target: Element | null): string | null {
+  if (!target) {
+    return null;
+  }
+  const link = target.closest("a.agent-link");
+  const href =
+    link?.getAttribute("href") ??
+    target.closest("g.comfy-node")?.querySelector("a.agent-link")?.getAttribute("href") ??
+    null;
+  return isAgentChatHref(href) ? href : null;
 }
 
 function clampZoom(value: number): number {
@@ -91,30 +104,30 @@ export function WorkflowPage({ kind = "main" }: { kind?: "main" | "sub" }) {
         tagged.__casopsAgentLinks = true;
         doc.addEventListener("click", (event) => {
           const target = event.target as Element | null;
-          const link = target?.closest("a.agent-link");
-          const href = link?.getAttribute("href") ?? null;
+          const href = agentChatHrefFromSvgTarget(target);
           if (!isAgentChatHref(href)) {
             return;
           }
           event.preventDefault();
           const agentId = agentIdFromProfileChatHref(href);
-          if (roster && agentId && !roster.includes(agentId)) {
+          if (!agentId || (roster && !roster.includes(agentId))) {
             return;
           }
-          const projectId = lastProjectId();
-          if (projectId && agentId) {
-            navigate(projectChatHref(projectId, { agent: agentId }));
-            return;
-          }
-          navigate(href);
+          navigate(agentHref(agentId, "chat"));
         });
       }
       applySvgTheme(doc, theme);
       doc.querySelectorAll("a.agent-link").forEach((link) => {
-        const agentId = link.querySelector("[data-agent-id]")?.getAttribute("data-agent-id") || "";
+        const agentId =
+          link.querySelector("[data-agent-id]")?.getAttribute("data-agent-id") ||
+          agentIdFromProfileChatHref(link.getAttribute("href") || "");
         const dim = Boolean(roster && agentId && !roster.includes(agentId));
         (link as HTMLElement).style.opacity = dim ? "0.28" : "";
         (link as HTMLElement).style.pointerEvents = dim ? "none" : "";
+        const node = link.closest("g.comfy-node") as SVGElement | null;
+        if (node) {
+          node.style.cursor = dim ? "" : "pointer";
+        }
       });
     }
     function onLoad() {

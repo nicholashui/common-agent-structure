@@ -1,6 +1,265 @@
 {
   "schema_version": "casops.project.comms.v1",
   "project_id": "hongkong-grandma-gta",
+  "honesty": "CHARACTERIZATION",
+  "walkthrough": "auto-pilot-v1",
+  "note": "Auto Pilot characterization. Not live Grok hops. Human draft plus five option locks. Workflow nodes copy these decisions.",
+  "autopilot": {
+    "status": "aligned",
+    "human_roles": [
+      "video.promptengineer",
+      "video.director",
+      "video.cinematographer",
+      "video.mua_makeup",
+      "video.continuity"
+    ],
+    "locks_selected": 5,
+    "intent_agent": "specials.intent-analysis-agent",
+    "creative_agent": "specials.general-creative-agent"
+  },
+  "decisions": [
+    {
+      "id": "dec-01",
+      "agent_id": "video.promptengineer",
+      "node_id": "agent-video-promptengineer",
+      "point": "Who leads the first expert hop",
+      "thinking": "The human brief is only intent. A domain expert must propose a thesis before anyone writes clip grammar.",
+      "options": [
+        {
+          "id": "1",
+          "label": "Induce video.creativedirector first",
+          "why": "Owns campaign thesis and WHY, not shot lists."
+        },
+        {
+          "id": "2",
+          "label": "Induce video.director first",
+          "why": "Shot-led path; risks locking coverage before taste."
+        },
+        {
+          "id": "3",
+          "label": "Induce video.ugccreator first",
+          "why": "Creator-ad grammar; fits shop CTA, not a skin study."
+        }
+      ],
+      "recommend": "1",
+      "chosen": "1",
+      "decide_by": "specials.general-creative-agent",
+      "selected_by": "specials.general-creative-agent",
+      "select_reason": "Creative-agent confirmed the intent-analysis reading: a person-led clip, so thesis (creativedirector) precedes coverage."
+    },
+    {
+      "id": "dec-02",
+      "agent_id": "video.creativedirector",
+      "node_id": "agent-video-creativedirector",
+      "point": "Creative thesis",
+      "thinking": "The draft names an adult Hong Kong grandma walking home at night, not a SKU. Thesis must survive 15s as a Mong Kok gameplay walk, not Miami vice or a beauty spot.",
+      "options": [
+        {
+          "id": "1",
+          "label": "Hong Kong night third-person walk: grandma, pineapple bun, invented HUD, anti-Miami",
+          "why": "Matches 'adult grandma' + night streets without inventing a shop CTA or copying Rockstar assets."
+        },
+        {
+          "id": "2",
+          "label": "Grooming UGC demo with product and CTA",
+          "why": "Fits template heuristics; the human did not name a product."
+        },
+        {
+          "id": "3",
+          "label": "Vice City neon homage then I2V",
+          "why": "Fights the Hong Kong lock the draft implied."
+        }
+      ],
+      "recommend": "1",
+      "chosen": "1",
+      "decide_by": "video.promptengineer",
+      "selected_by": "video.promptengineer",
+      "select_reason": "Parent orchestrator picked option 1 because the brief is a grandma walking home in Mong Kok, not a product. Option 2 invents a CTA. Option 3 implies Miami nobody authorized."
+    },
+    {
+      "id": "dec-03",
+      "agent_id": "video.director",
+      "node_id": "agent-video-director",
+      "point": "Coverage / beat map",
+      "thinking": "Thesis is a 15s already-in-motion walk. Coverage should stay on grandma + pineapple bun as the player prop, not a portrait pullback.",
+      "options": [
+        {
+          "id": "1",
+          "label": "Five walk beats: alley smash, bun strike, bun backhand, main-street cut, shop-sign hold",
+          "why": "Keeps identity on the bun; slapstick only; HUD stays on."
+        },
+        {
+          "id": "2",
+          "label": "Three I2V clips 6/4/5 from a locked still",
+          "why": "Imagine-family split; more vendor-shaped, still valid."
+        },
+        {
+          "id": "3",
+          "label": "Wide-to-close hero plus product insert",
+          "why": "Needs a product the brief never named."
+        }
+      ],
+      "recommend": "1",
+      "chosen": "1",
+      "decide_by": "video.creativedirector",
+      "selected_by": "video.creativedirector",
+      "select_reason": "Creative director selected option 1 so the Mong Kok walk is one continuous gameplay take. Option 2 is packing, not coverage. Option 3 contradicts the no-product thesis."
+    },
+    {
+      "id": "dec-04",
+      "agent_id": "video.cinematographer",
+      "node_id": "agent-video-cinematographer",
+      "point": "Light / lens",
+      "thinking": "Gameplay cam needs wet Hong Kong night neon so mosaic tiles, signs, and the bun crust read. Miami vice would flatten the thesis.",
+      "options": [
+        {
+          "id": "1",
+          "label": "Wet Mong Kok night, magenta/teal/amber neon, puddle reflections, OTS chase key",
+          "why": "Night split on wet tiles and shop signs; no Vice City palm strip."
+        },
+        {
+          "id": "2",
+          "label": "Overcast even fill",
+          "why": "Safer exposure, weaker neon smear."
+        },
+        {
+          "id": "3",
+          "label": "Night neon Miami key",
+          "why": "Contradicts the Hong Kong lock; critic will reject."
+        }
+      ],
+      "recommend": "1",
+      "chosen": "1",
+      "decide_by": "video.director",
+      "selected_by": "video.director",
+      "select_reason": "Director selected option 1 because the beats stay on a wet Mong Kok walk; Miami neon would fight every Hong Kong beat."
+    },
+    {
+      "id": "dec-05",
+      "agent_id": "video.mua_makeup",
+      "node_id": "agent-video-mua_makeup",
+      "point": "Makeup lock",
+      "thinking": "No makeup. Age is continuity, not MUA. Do not de-age.",
+      "options": [
+        {
+          "id": "1",
+          "label": "No makeup; un-beautified 70–78 face; age spots; no liner or lashes",
+          "why": "Supports lived-in grandma identity; face stays a lock, not a filter."
+        },
+        {
+          "id": "2",
+          "label": "Soft-focus beauty base and brow gel",
+          "why": "Reads as de-aged influencer grandma."
+        },
+        {
+          "id": "3",
+          "label": "Contour and false lashes",
+          "why": "Contradicts the age freeze."
+        }
+      ],
+      "recommend": "1",
+      "chosen": "1",
+      "decide_by": "video.creativedirector",
+      "selected_by": "video.creativedirector",
+      "select_reason": "Creative director selected option 1: no product on skin. Option 2 becomes a de-aged template. Option 3 fights the 70–78 lock."
+    },
+    {
+      "id": "dec-06",
+      "agent_id": "video.cameraoperator",
+      "node_id": "agent-video-cameraoperator",
+      "point": "Camera motor",
+      "thinking": "One motor. Director beats are a walk; a beauty orbit would steal the gameplay cam.",
+      "options": [
+        {
+          "id": "1",
+          "label": "Third-person OTS cam 2–3m behind the right shoulder. Low tracking on swings only",
+          "why": "Matches GTA-like follow cam; grandma + bun stay readable lower-center.",
+          "craft": "Persistent third-person over-the-shoulder camera locked 2–3 meters behind and slightly above her right shoulder. Same adult Hong Kong grandma and the same intact pineapple bun the whole time. Occasional low tracking on swings, then back to gameplay cam. Subtle handheld game-cam sway. Motion blur only on fast movement. No beauty orbit. No extra limbs. No melted face."
+        },
+        {
+          "id": "2",
+          "label": "Locked hood-mount on the tiller",
+          "why": "Loses the walking GTA read."
+        },
+        {
+          "id": "3",
+          "label": "Gentle orbit around the head",
+          "why": "Breaks the walk motor and recenters as a portrait."
+        }
+      ],
+      "recommend": "1",
+      "chosen": "1",
+      "decide_by": "video.cinematographer",
+      "selected_by": "video.cinematographer",
+      "select_reason": "Cinematographer selected option 1 so the motor stays a gameplay follow cam. Option 3 is rejected: orbit was never granted."
+    },
+    {
+      "id": "dec-07",
+      "agent_id": "video.continuity",
+      "node_id": "agent-video-continuity",
+      "point": "Identity freeze",
+      "thinking": "Identity freeze must come from human fills, not from a host gold paste. ASK_HUMAN, then freeze what they named.",
+      "options": [
+        {
+          "id": "1",
+          "label": "Unmarked adult freeze only",
+          "why": "If the human names no wardrobe or bun."
+        },
+        {
+          "id": "2",
+          "label": "Freeze named lock: 70–78 grandma, grey-white perm, floral blouse, intact pineapple bun",
+          "why": "Matches the Mong Kok walker the draft implied."
+        },
+        {
+          "id": "3",
+          "label": "Allow identity drift across beats",
+          "why": "Breaks the thesis; AIQA would fail."
+        }
+      ],
+      "recommend": "2",
+      "chosen": "2",
+      "decide_by": "video.promptengineer",
+      "selected_by": "video.promptengineer",
+      "select_reason": "Human already froze named marks on the ASK_HUMAN lock; orchestrator confirms option 2."
+    },
+    {
+      "id": "dec-08",
+      "agent_id": "video.critic",
+      "node_id": "agent-video-critic",
+      "point": "Critique / negatives",
+      "thinking": "Check chosen locks against Rockstar replica UI, Miami, de-aged grandma, extra buns, gore.",
+      "options": [
+        {
+          "id": "1",
+          "label": "Pass with Avoid: no official GTA UI, no Miami, no young grandma, no extra buns, no gore",
+          "why": "Chosen path already avoids those; write them as Avoid.",
+          "craft": "no official Rockstar or GTA replica UI, no copied logos, cars, fonts, or characters, no Miami neon, no palm-lined vice strip, no art-deco hotels, no young pretty grandma, no de-aging, no weapon swap, no melted face, no extra limbs, no extra buns, no disappearing bag, no magic glow on the bun, no guns, no knives, no gore, no realistic grievous harm, not documentary footage, not a how-to, not encouragement of real violence."
+        },
+        {
+          "id": "2",
+          "label": "Blocker: send back for Miami neon",
+          "why": "Would undo cinematographer's pick."
+        },
+        {
+          "id": "3",
+          "label": "Blocker: require a product insert",
+          "why": "Contradicts creative thesis."
+        }
+      ],
+      "recommend": "1",
+      "chosen": "1",
+      "decide_by": "video.promptengineer",
+      "selected_by": "video.promptengineer",
+      "select_reason": "Orchestrator selected option 1 so negatives document the already-chosen path."
+    }
+  ],
+  "locks": {
+    "video.promptengineer": "1",
+    "video.director": "1",
+    "video.cinematographer": "1",
+    "video.mua_makeup": "1",
+    "video.continuity": "2"
+  },
   "items": [
     {
       "id": "comm-0001",
@@ -738,265 +997,5 @@
         "poster": "/api/v3/projects/hongkong-grandma-gta/output/file?name=hongkong-grandma-gta-still.jpg"
       }
     }
-  ],
-  "decisions": [
-    {
-      "id": "dec-01",
-      "agent_id": "video.promptengineer",
-      "node_id": "agent-video-promptengineer",
-      "point": "Who leads the first expert hop",
-      "thinking": "The human brief is only intent. A domain expert must propose a thesis before anyone writes clip grammar.",
-      "options": [
-        {
-          "id": "1",
-          "label": "Induce video.creativedirector first",
-          "why": "Owns campaign thesis and WHY, not shot lists."
-        },
-        {
-          "id": "2",
-          "label": "Induce video.director first",
-          "why": "Shot-led path; risks locking coverage before taste."
-        },
-        {
-          "id": "3",
-          "label": "Induce video.ugccreator first",
-          "why": "Creator-ad grammar; fits shop CTA, not a skin study."
-        }
-      ],
-      "recommend": "1",
-      "chosen": "1",
-      "decide_by": "specials.general-creative-agent",
-      "selected_by": "specials.general-creative-agent",
-      "select_reason": "Creative-agent confirmed the intent-analysis reading: a person-led clip, so thesis (creativedirector) precedes coverage."
-    },
-    {
-      "id": "dec-02",
-      "agent_id": "video.creativedirector",
-      "node_id": "agent-video-creativedirector",
-      "point": "Creative thesis",
-      "thinking": "The draft names an adult Hong Kong grandma walking home at night, not a SKU. Thesis must survive 15s as a Mong Kok gameplay walk, not Miami vice or a beauty spot.",
-      "options": [
-        {
-          "id": "1",
-          "label": "Hong Kong night third-person walk: grandma, pineapple bun, invented HUD, anti-Miami",
-          "why": "Matches 'adult grandma' + night streets without inventing a shop CTA or copying Rockstar assets."
-        },
-        {
-          "id": "2",
-          "label": "Grooming UGC demo with product and CTA",
-          "why": "Fits template heuristics; the human did not name a product."
-        },
-        {
-          "id": "3",
-          "label": "Vice City neon homage then I2V",
-          "why": "Fights the Hong Kong lock the draft implied."
-        }
-      ],
-      "recommend": "1",
-      "chosen": "1",
-      "decide_by": "video.promptengineer",
-      "selected_by": "video.promptengineer",
-      "select_reason": "Parent orchestrator picked option 1 because the brief is a grandma walking home in Mong Kok, not a product. Option 2 invents a CTA. Option 3 implies Miami nobody authorized."
-    },
-    {
-      "id": "dec-03",
-      "agent_id": "video.director",
-      "node_id": "agent-video-director",
-      "point": "Coverage / beat map",
-      "thinking": "Thesis is a 15s already-in-motion walk. Coverage should stay on grandma + pineapple bun as the player prop, not a portrait pullback.",
-      "options": [
-        {
-          "id": "1",
-          "label": "Five walk beats: alley smash, bun strike, bun backhand, main-street cut, shop-sign hold",
-          "why": "Keeps identity on the bun; slapstick only; HUD stays on."
-        },
-        {
-          "id": "2",
-          "label": "Three I2V clips 6/4/5 from a locked still",
-          "why": "Imagine-family split; more vendor-shaped, still valid."
-        },
-        {
-          "id": "3",
-          "label": "Wide-to-close hero plus product insert",
-          "why": "Needs a product the brief never named."
-        }
-      ],
-      "recommend": "1",
-      "chosen": "1",
-      "decide_by": "video.creativedirector",
-      "selected_by": "video.creativedirector",
-      "select_reason": "Creative director selected option 1 so the Mong Kok walk is one continuous gameplay take. Option 2 is packing, not coverage. Option 3 contradicts the no-product thesis."
-    },
-    {
-      "id": "dec-04",
-      "agent_id": "video.cinematographer",
-      "node_id": "agent-video-cinematographer",
-      "point": "Light / lens",
-      "thinking": "Gameplay cam needs wet Hong Kong night neon so mosaic tiles, signs, and the bun crust read. Miami vice would flatten the thesis.",
-      "options": [
-        {
-          "id": "1",
-          "label": "Wet Mong Kok night, magenta/teal/amber neon, puddle reflections, OTS chase key",
-          "why": "Night split on wet tiles and shop signs; no Vice City palm strip."
-        },
-        {
-          "id": "2",
-          "label": "Overcast even fill",
-          "why": "Safer exposure, weaker neon smear."
-        },
-        {
-          "id": "3",
-          "label": "Night neon Miami key",
-          "why": "Contradicts the Hong Kong lock; critic will reject."
-        }
-      ],
-      "recommend": "1",
-      "chosen": "1",
-      "decide_by": "video.director",
-      "selected_by": "video.director",
-      "select_reason": "Director selected option 1 because the beats stay on a wet Mong Kok walk; Miami neon would fight every Hong Kong beat."
-    },
-    {
-      "id": "dec-05",
-      "agent_id": "video.mua_makeup",
-      "node_id": "agent-video-mua_makeup",
-      "point": "Makeup lock",
-      "thinking": "No makeup. Age is continuity, not MUA. Do not de-age.",
-      "options": [
-        {
-          "id": "1",
-          "label": "No makeup; un-beautified 70–78 face; age spots; no liner or lashes",
-          "why": "Supports lived-in grandma identity; face stays a lock, not a filter."
-        },
-        {
-          "id": "2",
-          "label": "Soft-focus beauty base and brow gel",
-          "why": "Reads as de-aged influencer grandma."
-        },
-        {
-          "id": "3",
-          "label": "Contour and false lashes",
-          "why": "Contradicts the age freeze."
-        }
-      ],
-      "recommend": "1",
-      "chosen": "1",
-      "decide_by": "video.creativedirector",
-      "selected_by": "video.creativedirector",
-      "select_reason": "Creative director selected option 1: no product on skin. Option 2 becomes a de-aged template. Option 3 fights the 70–78 lock."
-    },
-    {
-      "id": "dec-06",
-      "agent_id": "video.cameraoperator",
-      "node_id": "agent-video-cameraoperator",
-      "point": "Camera motor",
-      "thinking": "One motor. Director beats are a walk; a beauty orbit would steal the gameplay cam.",
-      "options": [
-        {
-          "id": "1",
-          "label": "Third-person OTS cam 2–3m behind the right shoulder. Low tracking on swings only",
-          "why": "Matches GTA-like follow cam; grandma + bun stay readable lower-center.",
-          "craft": "Persistent third-person over-the-shoulder camera locked 2–3 meters behind and slightly above her right shoulder. Same adult Hong Kong grandma and the same intact pineapple bun the whole time. Occasional low tracking on swings, then back to gameplay cam. Subtle handheld game-cam sway. Motion blur only on fast movement. No beauty orbit. No extra limbs. No melted face."
-        },
-        {
-          "id": "2",
-          "label": "Locked hood-mount on the tiller",
-          "why": "Loses the walking GTA read."
-        },
-        {
-          "id": "3",
-          "label": "Gentle orbit around the head",
-          "why": "Breaks the walk motor and recenters as a portrait."
-        }
-      ],
-      "recommend": "1",
-      "chosen": "1",
-      "decide_by": "video.cinematographer",
-      "selected_by": "video.cinematographer",
-      "select_reason": "Cinematographer selected option 1 so the motor stays a gameplay follow cam. Option 3 is rejected: orbit was never granted."
-    },
-    {
-      "id": "dec-07",
-      "agent_id": "video.continuity",
-      "node_id": "agent-video-continuity",
-      "point": "Identity freeze",
-      "thinking": "Identity freeze must come from human fills, not from a host gold paste. ASK_HUMAN, then freeze what they named.",
-      "options": [
-        {
-          "id": "1",
-          "label": "Unmarked adult freeze only",
-          "why": "If the human names no wardrobe or bun."
-        },
-        {
-          "id": "2",
-          "label": "Freeze named lock: 70–78 grandma, grey-white perm, floral blouse, intact pineapple bun",
-          "why": "Matches the Mong Kok walker the draft implied."
-        },
-        {
-          "id": "3",
-          "label": "Allow identity drift across beats",
-          "why": "Breaks the thesis; AIQA would fail."
-        }
-      ],
-      "recommend": "2",
-      "chosen": "2",
-      "decide_by": "video.promptengineer",
-      "selected_by": "video.promptengineer",
-      "select_reason": "Human already froze named marks on the ASK_HUMAN lock; orchestrator confirms option 2."
-    },
-    {
-      "id": "dec-08",
-      "agent_id": "video.critic",
-      "node_id": "agent-video-critic",
-      "point": "Critique / negatives",
-      "thinking": "Check chosen locks against Rockstar replica UI, Miami, de-aged grandma, extra buns, gore.",
-      "options": [
-        {
-          "id": "1",
-          "label": "Pass with Avoid: no official GTA UI, no Miami, no young grandma, no extra buns, no gore",
-          "why": "Chosen path already avoids those; write them as Avoid.",
-          "craft": "no official Rockstar or GTA replica UI, no copied logos, cars, fonts, or characters, no Miami neon, no palm-lined vice strip, no art-deco hotels, no young pretty grandma, no de-aging, no weapon swap, no melted face, no extra limbs, no extra buns, no disappearing bag, no magic glow on the bun, no guns, no knives, no gore, no realistic grievous harm, not documentary footage, not a how-to, not encouragement of real violence."
-        },
-        {
-          "id": "2",
-          "label": "Blocker: send back for Miami neon",
-          "why": "Would undo cinematographer's pick."
-        },
-        {
-          "id": "3",
-          "label": "Blocker: require a product insert",
-          "why": "Contradicts creative thesis."
-        }
-      ],
-      "recommend": "1",
-      "chosen": "1",
-      "decide_by": "video.promptengineer",
-      "selected_by": "video.promptengineer",
-      "select_reason": "Orchestrator selected option 1 so negatives document the already-chosen path."
-    }
-  ],
-  "walkthrough": "auto-pilot-v1",
-  "updated_at": "2026-09-14T14:55:56Z",
-  "honesty": "CHARACTERIZATION",
-  "note": "Auto Pilot characterization. Not live Grok hops. Human draft plus five option locks. Workflow nodes copy these decisions.",
-  "locks": {
-    "video.promptengineer": "1",
-    "video.director": "1",
-    "video.cinematographer": "1",
-    "video.mua_makeup": "1",
-    "video.continuity": "2"
-  },
-  "autopilot": {
-    "status": "aligned",
-    "human_roles": [
-      "video.promptengineer",
-      "video.director",
-      "video.cinematographer",
-      "video.mua_makeup",
-      "video.continuity"
-    ],
-    "locks_selected": 5,
-    "intent_agent": "specials.intent-analysis-agent",
-    "creative_agent": "specials.general-creative-agent"
-  }
+  ]
 }

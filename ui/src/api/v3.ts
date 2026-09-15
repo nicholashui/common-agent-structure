@@ -362,9 +362,9 @@ export function createClient(options: ClientOptions) {
         reasonFallback: "project run",
         timeoutMs: LONG_TIMEOUT_MS,
       }),
-    getProjectOutput: (projectId: string) =>
-      bound("getProjectOutput", { project_id: projectId }) as Promise<ProjectOutputPayload>,
-    generateProject: (projectId: string, body: { engine: string; config?: ProjectVideoConfig }) =>
+    getProjectOutput: (projectId: string, engine?: string, clipId?: string) =>
+      bound("getProjectOutput", { project_id: projectId }, { query: { engine, clip_id: clipId } }) as Promise<ProjectOutputPayload>,
+    generateProject: (projectId: string, body: { engine: string; config?: ProjectVideoConfig; clip_id?: string }) =>
       request<ProjectGenerateResult>("POST", "/api/v3/projects/{project_id}/generate", {
         params: { project_id: projectId },
         body,

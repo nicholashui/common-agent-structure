@@ -1,0 +1,38 @@
+{
+  "profile_id": "google.veo-3.1.stub",
+  "profile_revision": 1,
+  "live": false,
+  "generator_tag": "veo",
+  "identity": {
+    "provider": "google",
+    "surface": "undeclared",
+    "model_id": "veo-3.1-generate-001",
+    "mode": "text_to_video"
+  },
+  "evidence": {
+    "documentation_status": "unverified",
+    "documentation_checked_at": "2026-09-15",
+    "source_ids": [],
+    "execution_status": "not_tested",
+    "execution_tested_at": null
+  },
+  "capabilities": {
+    "text_prompt": true,
+    "image_references": "unknown",
+    "audio_generation": "unknown",
+    "separate_audio_stems": "unknown",
+    "timestamp_prose": "unknown",
+    "exact_frame_timing": "unknown"
+  },
+  "validation": {
+    "duration_rule": "endpoint_specific",
+    "asset_roles": "endpoint_specific",
+    "combined_feature_constraints": "endpoint_specific",
+    "runtime_field_mapping": "adapter_owned"
+  },
+  "availability": {
+    "account_access": "unknown",
+    "quota": "unknown",
+    "region_access": "unknown"
+  }
+}

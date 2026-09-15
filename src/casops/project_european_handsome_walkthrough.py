@@ -22,6 +22,7 @@ from casops.project_sample_walkthrough import (
 SLUG = "european-handsome"
 HUMAN_BRIEF = "Short vertical beauty clip. Adult European man."
 GOLD_BODY_PROBE = "A few teeth may flash and disappear."
+ASSEMBLE_WHY = "Auto Pilot — intent-analysis read a person, not a product; creative-agent set the rooftop phone-macro framework."
 
 DECISIONS: list[dict[str, Any]] = [
     {
@@ -865,64 +866,9 @@ def assembled_output(
     locks: dict[str, str] | None = None,
     cycle_locks: dict[str, str] | None = None,
 ) -> str:
-    picked = {dec["agent_id"]: _chosen_option(dec) for dec in DECISIONS}
-    thesis = picked["video.creativedirector"]["label"]
-    pe_craft = _chosen_craft("video.promptengineer", locks)
-    frame, _, sound = pe_craft.partition("\n")
-    if not sound.strip():
-        frame, sound = pe_craft, pe_craft
-    cont = split_continuity_craft(_chosen_craft("video.continuity", locks))
-    makeup = _chosen_craft("video.mua_makeup", locks)
-    light = _chosen_craft("video.cinematographer", locks)
-    beats = _chosen_craft("video.director", locks)
-    motor = _chosen_craft("video.cameraoperator", locks)
-    negatives = _chosen_craft("video.critic", locks)
-    extra_neg = _cycle_craft("video.critic", cycle_locks)
-    extra_cont = _cycle_craft("video.continuity", cycle_locks)
-    if extra_neg:
-        negatives = "\n".join(part for part in (negatives, extra_neg) if part)
-    if extra_cont:
-        cont["Subject"] = "\n".join(part for part in (cont["Subject"], extra_cont) if part)
-    return "\n".join(
-        [
-            "Generate from the locked decisions below. Host-assembled from Chat selections and ASK_HUMAN locks. sample/ is not a source.",
-            "",
-            "Creative direction",
-            thesis + ".",
-            "WHY: Auto Pilot — intent-analysis read a person, not a product; creative-agent set the rooftop phone-macro framework.",
-            "",
-            "Frame",
-            frame.strip(),
-            "",
-            "Subject",
-            cont["Subject"],
-            "",
-            "Hair",
-            cont["Hair"],
-            "",
-            "Makeup",
-            makeup,
-            "",
-            "Skin",
-            cont["Skin"],
-            "",
-            "Light",
-            light,
-            "",
-            "Coverage / performance",
-            beats,
-            "",
-            "Camera lock",
-            motor,
-            "",
-            "Sound, if the model supports native audio",
-            sound.strip() or frame.strip(),
-            "",
-            "Negatives",
-            negatives,
-            "",
-        ]
-    )
+    from casops.video_prompt.assemble import clip_from_walkthrough, project_clip
+
+    return project_clip(clip_from_walkthrough(__import__("sys").modules[__name__], locks, cycle_locks))
 
 
 def graph_bundle() -> dict[str, Any]:
@@ -1232,10 +1178,11 @@ def write_european_handsome_walkthrough(root: Path) -> dict[str, Any]:
     if prior_media:
         comms["items"] = list(comms["items"]) + prior_media
     (folder / "comms.json").write_text(json.dumps(comms, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
-    out = assembled_output()
+    from casops.video_prompt.assemble import clip_from_walkthrough, write_clip_files
+
+    clip = clip_from_walkthrough(__import__("sys").modules[__name__])
     out_dir = folder / "output"
-    out_dir.mkdir(parents=True, exist_ok=True)
-    (out_dir / f"{SLUG}-prompt.txt").write_text(out if out.endswith("\n") else out + "\n", encoding="utf-8")
+    out = write_clip_files(out_dir, SLUG, clip)
     record = read_project(root, SLUG)
     record["brief"] = HUMAN_BRIEF
     record["title"] = "European Handsome"

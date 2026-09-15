@@ -6,6 +6,7 @@ Other tags stay fail-closed. sample/ is never written.
 
 from __future__ import annotations
 
+import json
 import os
 import re
 import time
@@ -96,6 +97,13 @@ GENERATOR_TAGS: list[dict[str, Any]] = [
         "engine": "wan",
         "live": False,
         "why": "Declared tag. Host has not activated Wan.",
+    },
+    {
+        "id": "ltx",
+        "label": "LTX-2",
+        "engine": "ltx",
+        "live": False,
+        "why": "Declared tag. Host has not activated LTX. Tag and stub profile ship together; not live.",
     },
 ]
 
@@ -253,75 +261,110 @@ def default_video_config(instruction: str = "") -> dict[str, Any]:
     }
 
 
-def _sections(text: str) -> dict[str, str]:
-    found: dict[str, str] = {}
-    current = ""
-    buf: list[str] = []
+def _compile_instruction(instruction: str) -> dict[str, Any]:
+    from casops.video_prompt.assemble import clip_from_projection
+    from casops.video_prompt.compile import GROK_I2V_PROFILE, compile_clip
 
-    def flush() -> None:
-        nonlocal current, buf
-        if current:
-            found[current] = "\n".join(buf).strip()
-        buf = []
-
-    for line in (text or "").splitlines():
-        stripped = line.strip()
-        if stripped and not stripped.startswith("•") and len(stripped) < 80:
-            key = stripped.lstrip("#").strip()
-            if key in {
-                "Creative direction",
-                "Frame",
-                "Subject",
-                "Hair",
-                "Makeup",
-                "Skin",
-                "Light",
-                "Coverage / performance",
-                "Camera lock",
-                "Sound, if the model supports native audio",
-                "Sound",
-                "Negatives",
-            } or (" | " in key and key[:1].isdigit()):
-                flush()
-                current = "Sound" if key.startswith("Sound") else key
-                continue
-        buf.append(line)
-    flush()
-    return found
+    return compile_clip(clip_from_projection("instruction", instruction), GROK_I2V_PROFILE)
 
 
 def still_prompt(instruction: str) -> str:
-    parts = _sections(instruction)
-    chunks = [
-        "Photoreal still, 9:16 vertical phone-macro close-up. Locked adult identity. Do not animate.",
-        parts.get("Frame", ""),
-        parts.get("Subject", ""),
-        parts.get("Hair", ""),
-        parts.get("Makeup", ""),
-        parts.get("Skin", ""),
-        parts.get("Light", ""),
-        parts.get("Negatives", ""),
-    ]
-    text = "\n".join(item for item in chunks if item).strip()
-    if "Hair stays off the lips" not in text:
-        text = (text + "\nHair stays off the lips. No hair in the mouth.").strip()
-    return text[:4500]
+    """Grok still dialect via compile_clip. Kept as a helper; generate reads the compiled package."""
+    prompt = _compile_instruction(instruction).get("prompt") or {}
+    return str(prompt.get("still") or "")[:4500]
 
 
 def motion_prompt(instruction: str) -> str:
-    parts = _sections(instruction)
-    beats = parts.get("Coverage / performance") or "\n".join(
-        parts.get(key, "") for key in list(parts) if key[:1].isdigit()
-    )
-    chunks = [
-        "Animate this locked still. Keep the same adult identity, moles, hair, makeup, and light. Motion and sound only. Do not re-describe the face.",
-        beats,
-        parts.get("Camera lock", ""),
-        parts.get("Sound", ""),
-        "Hair stays off the lips. Do not put hair in the mouth. Do not chew or eat hair. Do not hook a strand with the lip.",
-    ]
-    text = "\n".join(item for item in chunks if item).strip()
-    return text[:4500]
+    """Grok motion dialect via compile_clip. Kept as a helper; generate reads the compiled package."""
+    prompt = _compile_instruction(instruction).get("prompt") or {}
+    return str(prompt.get("motion") or "")[:4500]
+
+
+def _safe_output_clip_path(root: Path, slug: str, rel: str) -> Path | None:
+    raw = Path(str(rel or "").replace("\\", "/"))
+    parts = [part for part in raw.parts if part not in (".", "")]
+    if not parts or any(part == ".." or part.lower() == "sample" for part in parts):
+        return None
+    if len(parts) == 1:
+        name = parts[0]
+        if not _FILE_SAFE.match(name):
+            return None
+        path = Path(root) / slug / "output" / name
+    elif len(parts) == 2 and parts[0] == "clips" and _FILE_SAFE.match(parts[1]):
+        path = Path(root) / slug / "output" / "clips" / parts[1]
+    else:
+        return None
+    if "sample" in path.parts:
+        return None
+    return path
+
+
+def _load_clip_for_generate(
+    root: Path,
+    slug: str,
+    instruction: str,
+    clip_id: str | None = None,
+) -> tuple[dict[str, Any] | None, str]:
+    from casops.project_comms import output_canonical_path, output_sequence_path
+    from casops.video_prompt.assemble import clip_from_projection
+
+    wanted = str(clip_id or "").strip()
+    if wanted:
+        seq_path = output_sequence_path(root, slug)
+        if seq_path.is_file() and "sample" not in seq_path.parts:
+            try:
+                sequence = json.loads(seq_path.read_text(encoding="utf-8"))
+            except (OSError, json.JSONDecodeError, UnicodeDecodeError):
+                sequence = None
+            rows = sequence.get("clips") if isinstance(sequence, dict) and isinstance(sequence.get("clips"), list) else []
+            for row in rows:
+                if not isinstance(row, dict) or str(row.get("clip_id") or "") != wanted:
+                    continue
+                cand = _safe_output_clip_path(root, slug, str(row.get("path") or ""))
+                if cand is None or not cand.is_file():
+                    raise CasopsError(ErrorCode.INH_STRUCTURE_MISMATCH, detail=f"sequence clip {wanted} is missing")
+                try:
+                    payload = json.loads(cand.read_text(encoding="utf-8"))
+                except (OSError, json.JSONDecodeError, UnicodeDecodeError) as exc:
+                    raise CasopsError(ErrorCode.INH_STRUCTURE_MISMATCH, detail="sequence clip is not JSON") from exc
+                if not isinstance(payload, dict) or payload.get("kind") != "clip":
+                    raise CasopsError(ErrorCode.INH_STRUCTURE_MISMATCH, detail="sequence row is not a clip")
+                return payload, "canonical"
+        path = output_canonical_path(root, slug)
+        if path.is_file() and "sample" not in path.parts:
+            try:
+                payload = json.loads(path.read_text(encoding="utf-8"))
+            except (OSError, json.JSONDecodeError, UnicodeDecodeError):
+                payload = None
+            if isinstance(payload, dict) and payload.get("kind") == "clip" and str(payload.get("clip_id") or "") == wanted:
+                return payload, "canonical"
+        raise CasopsError(ErrorCode.INH_STRUCTURE_MISMATCH, detail=f"unknown sequence clip {wanted}")
+
+    path = output_canonical_path(root, slug)
+    if path.is_file() and "sample" not in path.parts:
+        try:
+            payload = json.loads(path.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError, UnicodeDecodeError):
+            payload = None
+        if isinstance(payload, dict) and payload.get("kind") == "clip":
+            return payload, "canonical"
+    if (instruction or "").strip():
+        return clip_from_projection(slug, instruction), "projection"
+    return None, "missing"
+
+
+def _profile_id_for_engine(engine_id: str) -> str:
+    from casops.video_prompt.compile import GROK_I2V_PROFILE, GROK_STILL_PROFILE
+    from casops.video_prompt.profiles import profile_for_tag
+
+    if engine_id == "grok-image":
+        return GROK_STILL_PROFILE
+    if engine_id == "grok-imagine":
+        return GROK_I2V_PROFILE
+    profile = profile_for_tag(engine_id)
+    if profile:
+        return str(profile.get("profile_id") or engine_id)
+    return engine_id
 
 
 def output_dir(root: Path, slug: str, *, create: bool = True) -> Path:
@@ -503,6 +546,7 @@ def generate_project_media(
     *,
     engine: str,
     config: dict[str, Any] | None = None,
+    clip_id: str | None = None,
     dry_run: bool,
     post_json: PostJson = _http_post_json,
     get_json: GetJson = _http_get_json,
@@ -512,7 +556,9 @@ def generate_project_media(
     normalize_slug(slug)
     read_project(root, slug)
     instruction = str(read_output(root, slug).get("text") or "")
-    if not instruction.strip():
+    wanted_clip = str(clip_id or (config or {}).get("clip_id") or "").strip()
+    clip, clip_source = _load_clip_for_generate(root, slug, instruction, clip_id=wanted_clip or None)
+    if clip is None:
         raise CasopsError(ErrorCode.INH_STRUCTURE_MISMATCH, detail="no assembled instruction in output/")
     tag = next((item for item in GENERATOR_TAGS if item["id"] == engine or item["engine"] == engine), None)
     if tag is None:
@@ -526,6 +572,15 @@ def generate_project_media(
         merged["duration"] = max(1, min(15, int(merged["duration"])))
     except (TypeError, ValueError):
         merged["duration"] = 10
+    from casops.video_prompt.compile import (
+        apply_runtime_config,
+        compile_clip,
+        compiled_snapshot,
+        write_compiled_package,
+    )
+
+    compiled = apply_runtime_config(compile_clip(clip, _profile_id_for_engine(tag["id"])), merged)
+    snapshot = compiled_snapshot(compiled)
     if dry_run:
         return {
             "honesty": "CHARACTERIZATION",
@@ -534,8 +589,13 @@ def generate_project_media(
             "error": "dry_run",
             "note": "Dry-run is on. Uncheck Dry-run in the header to submit to Grok Imagine.",
             "media": [],
+            "compiled": snapshot,
+            "clip_source": clip_source,
+            "clip_id": str((clip or {}).get("clip_id") or wanted_clip or ""),
         }
-    if not tag["live"]:
+    compiled_dir = output_dir(root, slug) / "compiled" / tag["id"]
+    write_compiled_package(compiled_dir, compiled)
+    if not tag["live"] or compiled.get("status") != "ok":
         saved = append_comm(
             root,
             slug,
@@ -563,8 +623,15 @@ def generate_project_media(
             "error": "engine_not_activated",
             "comms": saved,
             "media": [],
+            "compiled": snapshot,
+            "clip_source": clip_source,
+            "clip_id": str((clip or {}).get("clip_id") or wanted_clip or ""),
         }
 
+    request = compiled.get("request") if isinstance(compiled.get("request"), dict) else {}
+    prompt_map = compiled.get("prompt") if isinstance(compiled.get("prompt"), dict) else {}
+    still_text = str((request.get("still") or {}).get("prompt") or prompt_map.get("still") or "")
+    motion_text = str((request.get("video") or {}).get("prompt") or prompt_map.get("motion") or "")
     key, base = _xai_auth()
     folder = output_dir(root, slug)
     still_path = folder / f"{slug}-still.jpg"
@@ -574,7 +641,7 @@ def generate_project_media(
     mode = str(merged.get("mode") or "i2v")
     if tag["id"] == "grok-image" or (tag["id"] == "grok-imagine" and mode != "t2v"):
         _generate_still(
-            prompt=still_prompt(instruction),
+            prompt=still_text,
             config=merged,
             dest=still_path,
             key=key,
@@ -596,7 +663,7 @@ def generate_project_media(
     elif tag["id"] == "grok-imagine":
         image_path = still_path if still_path.is_file() and mode != "t2v" else None
         _generate_video(
-            prompt=motion_prompt(instruction) if image_path is not None else instruction[:4500],
+            prompt=motion_text if image_path is not None else (motion_text or still_text)[:4500],
             config=merged,
             image_path=image_path,
             dest=video_path,
@@ -608,15 +675,15 @@ def generate_project_media(
             sleep=sleep,
         )
         poster = f"/api/v3/projects/{slug}/output/file?name={still_path.name}" if still_path.is_file() else ""
-        clip = {
+        video_row = {
             "name": video_path.name,
             "kind": "video",
             "path": f"project/{slug}/output/{video_path.name}",
             "url": f"/api/v3/projects/{slug}/output/file?name={video_path.name}",
         }
         if poster:
-            clip["poster"] = poster
-        media.append(clip)
+            video_row["poster"] = poster
+        media.append(video_row)
         kind_label = "I2V" if image_path is not None else "T2V"
         text = (
             f"Grok Imagine rendered the clip ({merged['duration']}s {merged['aspect_ratio']} {merged['resolution']} {kind_label}). "
@@ -650,5 +717,8 @@ def generate_project_media(
         "config": merged,
         "media": media,
         "comms": saved,
+        "compiled": snapshot,
+        "clip_source": clip_source,
+        "clip_id": str((clip or {}).get("clip_id") or wanted_clip or ""),
         "note": "Not an eval PASS. sample/ was not written.",
     }

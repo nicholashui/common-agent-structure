@@ -1,6 +1,265 @@
 {
   "schema_version": "casops.project.comms.v1",
   "project_id": "european-handsome",
+  "honesty": "CHARACTERIZATION",
+  "walkthrough": "auto-pilot-v1",
+  "note": "Auto Pilot characterization. Not live Grok hops. Human draft plus five option locks. Workflow nodes copy these decisions.",
+  "autopilot": {
+    "status": "aligned",
+    "human_roles": [
+      "video.promptengineer",
+      "video.director",
+      "video.cinematographer",
+      "video.mua_makeup",
+      "video.continuity"
+    ],
+    "locks_selected": 5,
+    "intent_agent": "specials.intent-analysis-agent",
+    "creative_agent": "specials.general-creative-agent"
+  },
+  "decisions": [
+    {
+      "id": "dec-01",
+      "agent_id": "video.promptengineer",
+      "node_id": "agent-video-promptengineer",
+      "point": "Who leads the first expert hop",
+      "thinking": "The human brief is only intent. A domain expert must propose a thesis before anyone writes clip grammar.",
+      "options": [
+        {
+          "id": "1",
+          "label": "Induce video.creativedirector first",
+          "why": "Owns campaign thesis and WHY, not shot lists."
+        },
+        {
+          "id": "2",
+          "label": "Induce video.director first",
+          "why": "Shot-led path; risks locking coverage before taste."
+        },
+        {
+          "id": "3",
+          "label": "Induce video.ugccreator first",
+          "why": "Creator-ad grammar; fits shop CTA, not a skin study."
+        }
+      ],
+      "recommend": "1",
+      "chosen": "1",
+      "decide_by": "specials.general-creative-agent",
+      "selected_by": "specials.general-creative-agent",
+      "select_reason": "Creative-agent confirmed the intent-analysis reading: a person-led clip, so thesis (creativedirector) precedes coverage."
+    },
+    {
+      "id": "dec-02",
+      "agent_id": "video.creativedirector",
+      "node_id": "agent-video-creativedirector",
+      "point": "Creative thesis",
+      "thinking": "The draft names an adult European man, not a product. Thesis must survive 15s vertical without influencer tan or studio beauty.",
+      "options": [
+        {
+          "id": "1",
+          "label": "Rooftop phone-macro: lived-in handsome, hard morning sun, anti-influencer skin",
+          "why": "Matches 'adult man' + beauty without inventing a shop CTA."
+        },
+        {
+          "id": "2",
+          "label": "Grooming UGC demo with product and CTA",
+          "why": "Fits template heuristics; the human did not name a product."
+        },
+        {
+          "id": "3",
+          "label": "Studio still then I2V",
+          "why": "More control, but softbox fights a rooftop phone-macro look."
+        }
+      ],
+      "recommend": "1",
+      "chosen": "1",
+      "decide_by": "video.promptengineer",
+      "selected_by": "video.promptengineer",
+      "select_reason": "Parent orchestrator picked option 1 because the brief is a person on a roof, not a product. Option 2 invents a CTA. Option 3 implies studio gear nobody authorized."
+    },
+    {
+      "id": "dec-03",
+      "agent_id": "video.director",
+      "node_id": "agent-video-director",
+      "point": "Coverage / beat map",
+      "thinking": "Thesis is a 15s face-stuck macro. Coverage should be one climb on the face, not a portrait pullback.",
+      "options": [
+        {
+          "id": "1",
+          "label": "Five face-stuck beats: smash, skin rake, mouth/chin, climb to shaded eye, one-eye hold",
+          "why": "Keeps identity on one plane; no speech; features may clip the frame."
+        },
+        {
+          "id": "2",
+          "label": "Three I2V clips 6/4/5 from a locked still",
+          "why": "Imagine-family split; more vendor-shaped, still valid."
+        },
+        {
+          "id": "3",
+          "label": "Wide-to-close hero plus product insert",
+          "why": "Needs a product the brief never named."
+        }
+      ],
+      "recommend": "1",
+      "chosen": "1",
+      "decide_by": "video.creativedirector",
+      "selected_by": "video.creativedirector",
+      "select_reason": "Creative director selected option 1 so the rooftop thesis is one continuous face crawl. Option 2 is packing, not coverage. Option 3 contradicts the no-product thesis."
+    },
+    {
+      "id": "dec-04",
+      "agent_id": "video.cinematographer",
+      "node_id": "agent-video-cinematographer",
+      "point": "Light / lens",
+      "thinking": "Macro skin needs raking cold morning sun so pores and stubble read. Softbox would flatten the thesis.",
+      "options": [
+        {
+          "id": "1",
+          "label": "Hard 7:20am sun camera-right slightly behind, 10–20cm phone-main, rooftop rake",
+          "why": "Cold split so pores, freckles, and stubble shadows read; no ring-light."
+        },
+        {
+          "id": "2",
+          "label": "Overcast even fill",
+          "why": "Safer exposure, weaker pore contrast."
+        },
+        {
+          "id": "3",
+          "label": "Beauty ring + large softbox",
+          "why": "Influencer catchlight; critic will reject."
+        }
+      ],
+      "recommend": "1",
+      "chosen": "1",
+      "decide_by": "video.director",
+      "selected_by": "video.director",
+      "select_reason": "Director selected option 1 because the beats stay 10-20cm on skin; a ring light would fight every smash/macro beat."
+    },
+    {
+      "id": "dec-05",
+      "agent_id": "video.mua_makeup",
+      "node_id": "agent-video-mua_makeup",
+      "point": "Makeup lock",
+      "thinking": "No makeup. Pore manifesto is continuity, not MUA.",
+      "options": [
+        {
+          "id": "1",
+          "label": "No makeup; muted rose mouth; grey-green iris; raw brows; no liner or lashes",
+          "why": "Supports hard-sun pores; face stays a lock, not a filter."
+        },
+        {
+          "id": "2",
+          "label": "Grooming base, brow gel, lip balm shine",
+          "why": "Reads as influencer template under hard sun."
+        },
+        {
+          "id": "3",
+          "label": "Styled beard oil and contour",
+          "why": "Contradicts overnight stubble."
+        }
+      ],
+      "recommend": "1",
+      "chosen": "1",
+      "decide_by": "video.creativedirector",
+      "selected_by": "video.creativedirector",
+      "select_reason": "Creative director selected option 1: no product on skin. Option 2 becomes a male-model template. Option 3 fights the overnight-growth lock."
+    },
+    {
+      "id": "dec-06",
+      "agent_id": "video.cameraoperator",
+      "node_id": "agent-video-cameraoperator",
+      "point": "Camera motor",
+      "thinking": "One motor. Director beats are a crawl on the face; orbit would steal DoP's crop.",
+      "options": [
+        {
+          "id": "1",
+          "label": "Handheld 1-2mm breath crawl. No push / pull / pan / orbit",
+          "why": "Matches face-stuck beats and 10-20cm working distance.",
+          "craft": "No dolly, no orbit, no beauty push-in. A macro crawl stuck to the face. Same adult European man the whole time. Mole, brow scar, stubble pattern, hair color, and skin do not morph. Handheld breath, not gimbal glass. No jump cuts. No warped mouth. No extra teeth. Hair stays off the lips for the whole clip."
+        },
+        {
+          "id": "2",
+          "label": "Slow planar slider across the cheek",
+          "why": "Cleaner, less breath; slightly less 'phone'."
+        },
+        {
+          "id": "3",
+          "label": "Gentle orbit around the head",
+          "why": "Breaks the no-orbit motor and recenters the face."
+        }
+      ],
+      "recommend": "1",
+      "chosen": "1",
+      "decide_by": "video.cinematographer",
+      "selected_by": "video.cinematographer",
+      "select_reason": "Cinematographer selected option 1 so the motor does not add a second move on top of hard-sun crop. Option 3 is rejected: orbit was never granted."
+    },
+    {
+      "id": "dec-07",
+      "agent_id": "video.continuity",
+      "node_id": "agent-video-continuity",
+      "point": "Identity freeze",
+      "thinking": "Identity freeze must come from human fills, not from a host gold paste. ASK_HUMAN, then freeze what they named.",
+      "options": [
+        {
+          "id": "1",
+          "label": "Unmarked adult freeze only",
+          "why": "If the human names no moles."
+        },
+        {
+          "id": "2",
+          "label": "Freeze named marks: left-brow scar, right-neck mole, overnight stubble, grey-green iris",
+          "why": "Matches the rooftop man the draft implied."
+        },
+        {
+          "id": "3",
+          "label": "Allow identity drift across beats",
+          "why": "Breaks the thesis; AIQA would fail."
+        }
+      ],
+      "recommend": "2",
+      "chosen": "2",
+      "decide_by": "video.promptengineer",
+      "selected_by": "video.promptengineer",
+      "select_reason": "Human already froze named marks on the ASK_HUMAN lock; orchestrator confirms option 2."
+    },
+    {
+      "id": "dec-08",
+      "agent_id": "video.critic",
+      "node_id": "agent-video-critic",
+      "point": "Critique / negatives",
+      "thinking": "Check chosen locks against poreless skin, tanned influencer, ring light, orbit, styled beard.",
+      "options": [
+        {
+          "id": "1",
+          "label": "Pass with Avoid: no beauty filter, no poreless skin, no ring-light, no orbit, no styled beard, no morph",
+          "why": "Chosen path already avoids those; write them as Avoid.",
+          "craft": "no beauty filter, no airbrushed skin, no poreless skin, no plastic CGI face, no doll skin, no male-model template face, no overly tanned European influencer skin, no studio softbox, no ring light catchlight, no styled beard, no fake lashes, no over-symmetrical face, no golden-hour grade, no talking, no posed smile to camera, no dolly zoom, no orbit shot, no extra fingers, no warped nose, no morphing identity, no hair in the mouth, no chewing or eating hair, no lip-hooking a strand, no hair between the teeth."
+        },
+        {
+          "id": "2",
+          "label": "Blocker: send back for studio lighting",
+          "why": "Would undo cinematographer's pick."
+        },
+        {
+          "id": "3",
+          "label": "Blocker: require a product insert",
+          "why": "Contradicts creative thesis."
+        }
+      ],
+      "recommend": "1",
+      "chosen": "1",
+      "decide_by": "video.promptengineer",
+      "selected_by": "video.promptengineer",
+      "select_reason": "Orchestrator selected option 1 so negatives document the already-chosen path."
+    }
+  ],
+  "locks": {
+    "video.promptengineer": "1",
+    "video.director": "1",
+    "video.cinematographer": "1",
+    "video.mua_makeup": "1",
+    "video.continuity": "2"
+  },
   "items": [
     {
       "id": "comm-0001",
@@ -770,265 +1029,5 @@
         "poster": "/api/v3/projects/european-handsome/output/file?name=european-handsome-still.jpg"
       }
     }
-  ],
-  "decisions": [
-    {
-      "id": "dec-01",
-      "agent_id": "video.promptengineer",
-      "node_id": "agent-video-promptengineer",
-      "point": "Who leads the first expert hop",
-      "thinking": "The human brief is only intent. A domain expert must propose a thesis before anyone writes clip grammar.",
-      "options": [
-        {
-          "id": "1",
-          "label": "Induce video.creativedirector first",
-          "why": "Owns campaign thesis and WHY, not shot lists."
-        },
-        {
-          "id": "2",
-          "label": "Induce video.director first",
-          "why": "Shot-led path; risks locking coverage before taste."
-        },
-        {
-          "id": "3",
-          "label": "Induce video.ugccreator first",
-          "why": "Creator-ad grammar; fits shop CTA, not a skin study."
-        }
-      ],
-      "recommend": "1",
-      "chosen": "1",
-      "decide_by": "specials.general-creative-agent",
-      "selected_by": "specials.general-creative-agent",
-      "select_reason": "Creative-agent confirmed the intent-analysis reading: a person-led clip, so thesis (creativedirector) precedes coverage."
-    },
-    {
-      "id": "dec-02",
-      "agent_id": "video.creativedirector",
-      "node_id": "agent-video-creativedirector",
-      "point": "Creative thesis",
-      "thinking": "The draft names an adult European man, not a product. Thesis must survive 15s vertical without influencer tan or studio beauty.",
-      "options": [
-        {
-          "id": "1",
-          "label": "Rooftop phone-macro: lived-in handsome, hard morning sun, anti-influencer skin",
-          "why": "Matches 'adult man' + beauty without inventing a shop CTA."
-        },
-        {
-          "id": "2",
-          "label": "Grooming UGC demo with product and CTA",
-          "why": "Fits template heuristics; the human did not name a product."
-        },
-        {
-          "id": "3",
-          "label": "Studio still then I2V",
-          "why": "More control, but softbox fights a rooftop phone-macro look."
-        }
-      ],
-      "recommend": "1",
-      "chosen": "1",
-      "decide_by": "video.promptengineer",
-      "selected_by": "video.promptengineer",
-      "select_reason": "Parent orchestrator picked option 1 because the brief is a person on a roof, not a product. Option 2 invents a CTA. Option 3 implies studio gear nobody authorized."
-    },
-    {
-      "id": "dec-03",
-      "agent_id": "video.director",
-      "node_id": "agent-video-director",
-      "point": "Coverage / beat map",
-      "thinking": "Thesis is a 15s face-stuck macro. Coverage should be one climb on the face, not a portrait pullback.",
-      "options": [
-        {
-          "id": "1",
-          "label": "Five face-stuck beats: smash, skin rake, mouth/chin, climb to shaded eye, one-eye hold",
-          "why": "Keeps identity on one plane; no speech; features may clip the frame."
-        },
-        {
-          "id": "2",
-          "label": "Three I2V clips 6/4/5 from a locked still",
-          "why": "Imagine-family split; more vendor-shaped, still valid."
-        },
-        {
-          "id": "3",
-          "label": "Wide-to-close hero plus product insert",
-          "why": "Needs a product the brief never named."
-        }
-      ],
-      "recommend": "1",
-      "chosen": "1",
-      "decide_by": "video.creativedirector",
-      "selected_by": "video.creativedirector",
-      "select_reason": "Creative director selected option 1 so the rooftop thesis is one continuous face crawl. Option 2 is packing, not coverage. Option 3 contradicts the no-product thesis."
-    },
-    {
-      "id": "dec-04",
-      "agent_id": "video.cinematographer",
-      "node_id": "agent-video-cinematographer",
-      "point": "Light / lens",
-      "thinking": "Macro skin needs raking cold morning sun so pores and stubble read. Softbox would flatten the thesis.",
-      "options": [
-        {
-          "id": "1",
-          "label": "Hard 7:20am sun camera-right slightly behind, 10–20cm phone-main, rooftop rake",
-          "why": "Cold split so pores, freckles, and stubble shadows read; no ring-light."
-        },
-        {
-          "id": "2",
-          "label": "Overcast even fill",
-          "why": "Safer exposure, weaker pore contrast."
-        },
-        {
-          "id": "3",
-          "label": "Beauty ring + large softbox",
-          "why": "Influencer catchlight; critic will reject."
-        }
-      ],
-      "recommend": "1",
-      "chosen": "1",
-      "decide_by": "video.director",
-      "selected_by": "video.director",
-      "select_reason": "Director selected option 1 because the beats stay 10-20cm on skin; a ring light would fight every smash/macro beat."
-    },
-    {
-      "id": "dec-05",
-      "agent_id": "video.mua_makeup",
-      "node_id": "agent-video-mua_makeup",
-      "point": "Makeup lock",
-      "thinking": "No makeup. Pore manifesto is continuity, not MUA.",
-      "options": [
-        {
-          "id": "1",
-          "label": "No makeup; muted rose mouth; grey-green iris; raw brows; no liner or lashes",
-          "why": "Supports hard-sun pores; face stays a lock, not a filter."
-        },
-        {
-          "id": "2",
-          "label": "Grooming base, brow gel, lip balm shine",
-          "why": "Reads as influencer template under hard sun."
-        },
-        {
-          "id": "3",
-          "label": "Styled beard oil and contour",
-          "why": "Contradicts overnight stubble."
-        }
-      ],
-      "recommend": "1",
-      "chosen": "1",
-      "decide_by": "video.creativedirector",
-      "selected_by": "video.creativedirector",
-      "select_reason": "Creative director selected option 1: no product on skin. Option 2 becomes a male-model template. Option 3 fights the overnight-growth lock."
-    },
-    {
-      "id": "dec-06",
-      "agent_id": "video.cameraoperator",
-      "node_id": "agent-video-cameraoperator",
-      "point": "Camera motor",
-      "thinking": "One motor. Director beats are a crawl on the face; orbit would steal DoP's crop.",
-      "options": [
-        {
-          "id": "1",
-          "label": "Handheld 1-2mm breath crawl. No push / pull / pan / orbit",
-          "why": "Matches face-stuck beats and 10-20cm working distance.",
-          "craft": "No dolly, no orbit, no beauty push-in. A macro crawl stuck to the face. Same adult European man the whole time. Mole, brow scar, stubble pattern, hair color, and skin do not morph. Handheld breath, not gimbal glass. No jump cuts. No warped mouth. No extra teeth. Hair stays off the lips for the whole clip."
-        },
-        {
-          "id": "2",
-          "label": "Slow planar slider across the cheek",
-          "why": "Cleaner, less breath; slightly less 'phone'."
-        },
-        {
-          "id": "3",
-          "label": "Gentle orbit around the head",
-          "why": "Breaks the no-orbit motor and recenters the face."
-        }
-      ],
-      "recommend": "1",
-      "chosen": "1",
-      "decide_by": "video.cinematographer",
-      "selected_by": "video.cinematographer",
-      "select_reason": "Cinematographer selected option 1 so the motor does not add a second move on top of hard-sun crop. Option 3 is rejected: orbit was never granted."
-    },
-    {
-      "id": "dec-07",
-      "agent_id": "video.continuity",
-      "node_id": "agent-video-continuity",
-      "point": "Identity freeze",
-      "thinking": "Identity freeze must come from human fills, not from a host gold paste. ASK_HUMAN, then freeze what they named.",
-      "options": [
-        {
-          "id": "1",
-          "label": "Unmarked adult freeze only",
-          "why": "If the human names no moles."
-        },
-        {
-          "id": "2",
-          "label": "Freeze named marks: left-brow scar, right-neck mole, overnight stubble, grey-green iris",
-          "why": "Matches the rooftop man the draft implied."
-        },
-        {
-          "id": "3",
-          "label": "Allow identity drift across beats",
-          "why": "Breaks the thesis; AIQA would fail."
-        }
-      ],
-      "recommend": "2",
-      "chosen": "2",
-      "decide_by": "video.promptengineer",
-      "selected_by": "video.promptengineer",
-      "select_reason": "Human already froze named marks on the ASK_HUMAN lock; orchestrator confirms option 2."
-    },
-    {
-      "id": "dec-08",
-      "agent_id": "video.critic",
-      "node_id": "agent-video-critic",
-      "point": "Critique / negatives",
-      "thinking": "Check chosen locks against poreless skin, tanned influencer, ring light, orbit, styled beard.",
-      "options": [
-        {
-          "id": "1",
-          "label": "Pass with Avoid: no beauty filter, no poreless skin, no ring-light, no orbit, no styled beard, no morph",
-          "why": "Chosen path already avoids those; write them as Avoid.",
-          "craft": "no beauty filter, no airbrushed skin, no poreless skin, no plastic CGI face, no doll skin, no male-model template face, no overly tanned European influencer skin, no studio softbox, no ring light catchlight, no styled beard, no fake lashes, no over-symmetrical face, no golden-hour grade, no talking, no posed smile to camera, no dolly zoom, no orbit shot, no extra fingers, no warped nose, no morphing identity, no hair in the mouth, no chewing or eating hair, no lip-hooking a strand, no hair between the teeth."
-        },
-        {
-          "id": "2",
-          "label": "Blocker: send back for studio lighting",
-          "why": "Would undo cinematographer's pick."
-        },
-        {
-          "id": "3",
-          "label": "Blocker: require a product insert",
-          "why": "Contradicts creative thesis."
-        }
-      ],
-      "recommend": "1",
-      "chosen": "1",
-      "decide_by": "video.promptengineer",
-      "selected_by": "video.promptengineer",
-      "select_reason": "Orchestrator selected option 1 so negatives document the already-chosen path."
-    }
-  ],
-  "walkthrough": "auto-pilot-v1",
-  "updated_at": "2026-09-14T14:51:31Z",
-  "honesty": "CHARACTERIZATION",
-  "note": "Auto Pilot characterization. Not live Grok hops. Human draft plus five option locks. Workflow nodes copy these decisions.",
-  "locks": {
-    "video.promptengineer": "1",
-    "video.director": "1",
-    "video.cinematographer": "1",
-    "video.mua_makeup": "1",
-    "video.continuity": "2"
-  },
-  "autopilot": {
-    "status": "aligned",
-    "human_roles": [
-      "video.promptengineer",
-      "video.director",
-      "video.cinematographer",
-      "video.mua_makeup",
-      "video.continuity"
-    ],
-    "locks_selected": 5,
-    "intent_agent": "specials.intent-analysis-agent",
-    "creative_agent": "specials.general-creative-agent"
-  }
+  ]
 }

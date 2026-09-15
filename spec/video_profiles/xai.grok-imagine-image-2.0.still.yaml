@@ -1,0 +1,38 @@
+{
+  "profile_id": "xai.grok-imagine-image-2.0.still",
+  "profile_revision": 1,
+  "live": true,
+  "generator_tag": "grok-image",
+  "identity": {
+    "provider": "xai",
+    "surface": "grok_imagine_api",
+    "model_id": "grok-imagine-image-2.0",
+    "mode": "still"
+  },
+  "evidence": {
+    "documentation_status": "house_rule",
+    "documentation_checked_at": "2026-09-15",
+    "source_ids": ["SRC.CASOPS.PROJECT_GENERATE"],
+    "execution_status": "operator_verified",
+    "execution_tested_at": "2026-09-14"
+  },
+  "capabilities": {
+    "text_prompt": true,
+    "image_references": false,
+    "audio_generation": false,
+    "separate_audio_stems": false,
+    "timestamp_prose": false,
+    "exact_frame_timing": false
+  },
+  "validation": {
+    "duration_rule": "still_no_duration",
+    "asset_roles": "none",
+    "combined_feature_constraints": "adapter_owned",
+    "runtime_field_mapping": "adapter_owned"
+  },
+  "availability": {
+    "account_access": "env_xai_api_key",
+    "quota": "unknown",
+    "region_access": "unknown"
+  }
+}

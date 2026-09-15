@@ -24,6 +24,7 @@ import { OrgChatPage } from "./pages/OrgChat";
 import { WorkflowPage } from "./pages/Workflow";
 import { HelpPage } from "./pages/Help";
 import { ProjectNewPage } from "./pages/ProjectNew";
+import { ProjectStartPage } from "./pages/ProjectStart";
 import { ProjectFlowPage } from "./pages/ProjectFlow";
 import { ProjectChatPage } from "./pages/ProjectChat";
 
@@ -41,6 +42,7 @@ export function App() {
             <Route element={<AppShell />}>
               <Route path="/" element={<FleetPage />} />
               <Route path="/projects/new" element={<ProjectNewPage />} />
+              <Route path="/projects/:projectId/start" element={<ProjectStartPage />} />
               <Route path="/projects/:projectId/workflow" element={<ProjectFlowPage />} />
               <Route path="/projects/:projectId/chat" element={<ProjectChatPage />} />
               <Route path="/projects/:projectId" element={<ProjectWorkflowRedirect />} />

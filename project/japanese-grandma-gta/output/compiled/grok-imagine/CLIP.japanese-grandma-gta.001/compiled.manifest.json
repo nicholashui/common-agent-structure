@@ -1,0 +1,9 @@
+{
+  "compiler_version": "casops.video_prompt.compile.v1",
+  "profile_id": "xai.grok-imagine-video-1.5.i2v",
+  "generator_tag": "grok-imagine",
+  "status": "ok",
+  "clip_id": "CLIP.japanese-grandma-gta.001",
+  "live": true,
+  "mode": "image_to_video"
+}

@@ -546,6 +546,62 @@ export interface ProjectCommsPayload {
   };
 }
 
+export interface CompileCoverageRow {
+  requirement?: string;
+  disposition?: string;
+  path?: string;
+  implementation?: string;
+}
+
+export interface CompileDiagnostic {
+  code?: string;
+  agent_id?: string;
+  path?: string;
+  severity?: string;
+  message?: string;
+}
+
+export interface CompileSnapshot {
+  status?: string;
+  compiler_version?: string;
+  profile_id?: string;
+  generator_tag?: string;
+  live?: boolean;
+  mode?: string;
+  prompt?: { still?: string; motion?: string };
+  request?: Record<string, unknown>;
+  coverage?: CompileCoverageRow[];
+  diagnostics?: CompileDiagnostic[];
+  proposal?: { live?: boolean; message?: string } | null;
+}
+
+export interface OutputSection {
+  heading: string;
+  owner?: string;
+  path?: string;
+  body?: string;
+}
+
+export interface SequenceClipRow {
+  clip_id: string;
+  order: number;
+  start_s?: number;
+  end_s?: number;
+  path?: string;
+  role?: string;
+  logline?: string;
+}
+
+export interface SequenceManifest {
+  kind?: string;
+  sequence_id?: string;
+  project_id?: string;
+  intent?: { logline?: string };
+  clips: SequenceClipRow[];
+  delivery?: { timeline_duration_s?: number; in_s?: number; out_s?: number };
+  policy?: { generation_unit?: string; one_pass_one_clip?: boolean; concat?: string };
+}
+
 export interface ProjectOutputPayload {
   path: string;
   exists: boolean;
@@ -554,6 +610,21 @@ export interface ProjectOutputPayload {
   media?: ProjectMedia[];
   generators?: ProjectGeneratorTag[];
   video_config?: ProjectVideoConfig;
+  canonical_exists?: boolean;
+  clip_source?: string;
+  compile_note?: string;
+  compiled?: CompileSnapshot | null;
+  critic_warnings?: CompileDiagnostic[];
+  sections?: OutputSection[];
+  sequence?: SequenceManifest | null;
+  sequence_compile?: {
+    status?: string;
+    sequence_id?: string;
+    fused_request?: null;
+    clips?: { clip_id?: string; status?: string; compiled?: CompileSnapshot | null }[];
+    note?: string;
+  } | null;
+  clip_id?: string;
 }
 
 export interface ProjectGenerateResult {
@@ -564,6 +635,9 @@ export interface ProjectGenerateResult {
   config?: ProjectVideoConfig;
   media?: ProjectMedia[];
   comms?: ProjectCommsPayload;
+  compiled?: CompileSnapshot | null;
+  clip_source?: string;
+  clip_id?: string;
   note?: string;
 }
 
@@ -593,6 +667,21 @@ export interface ProjectRunResult {
   note?: string;
 }
 
+export interface ProjectStartSnapshot {
+  name?: string;
+  title?: string;
+  brief?: string;
+  audience?: string;
+  duration?: string;
+  outlets?: string;
+  risk?: string;
+  notes?: string;
+  sub_workflow_id?: string;
+  suggestion?: ProjectSuggestion | null;
+  saved_at?: string;
+  source?: string;
+}
+
 export interface ProjectRecord {
   id: string;
   name: string;
@@ -606,6 +695,8 @@ export interface ProjectRecord {
   group?: string;
   sub_workflow_id?: string;
   suggestion?: ProjectSuggestion | null;
+  start?: ProjectStartSnapshot | null;
+  start_persisted?: boolean;
   graph?: { nodes: unknown[]; edges: unknown[] };
   honesty?: string;
   saved?: boolean;

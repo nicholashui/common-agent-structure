@@ -1,4 +1,5 @@
 import { describe, expect, it } from "vitest";
+import { STUDY_DRAFTS, STUDY_PLACEHOLDER } from "../src/lib/projectDrafts";
 import { applyLlmNext, applyLlmSuggestion, createsCycle, parseVideoAgentIds, parseVideoWorkflowIds, suggestionRow } from "../src/lib/projects";
 import type { ProjectCatalogItem, ProjectSuggestion } from "../src/api/types";
 
@@ -17,6 +18,15 @@ const BASE: ProjectSuggestion = {
     suggestionRow(CATALOG[2], 2, "heuristic"),
   ],
 };
+
+describe("project new-form study drafts", () => {
+  it("keeps Chat-sample placeholders without a fill-from-sample control", () => {
+    expect(STUDY_PLACEHOLDER.brief).toBe("Short vertical beauty clip. Adult East Asian woman.");
+    expect(STUDY_PLACEHOLDER.audience).toContain("18-34");
+    expect(STUDY_PLACEHOLDER.duration).toBe("15s");
+    expect(STUDY_DRAFTS).toHaveLength(4);
+  });
+});
 
 describe("project suggestion merge", () => {
   it("parses template and scale ids", () => {

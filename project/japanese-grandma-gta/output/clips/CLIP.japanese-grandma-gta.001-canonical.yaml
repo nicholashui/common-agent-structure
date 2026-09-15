@@ -1,0 +1,190 @@
+{
+  "schema": "video_generation_prompt_specification.v2",
+  "spec_version": "2.0.0",
+  "kind": "clip",
+  "clip_id": "CLIP.japanese-grandma-gta.001",
+  "revision": 1,
+  "classification": {
+    "prompt_form": "labeled_blocks",
+    "input_mode": "image_to_video",
+    "clip_structure": "single_shot",
+    "legacy_tags": [
+      "T4",
+      "T7",
+      "T15"
+    ]
+  },
+  "target": {
+    "profile_id": "xai.grok-imagine-video-1.5.i2v",
+    "mode": "image_to_video",
+    "profile_revision": 1
+  },
+  "generation": {
+    "duration_s": 15.0,
+    "aspect_ratio": "16:9"
+  },
+  "delivery": {
+    "in_s": 0,
+    "out_s": 15.0,
+    "timeline_duration_s": 15.0,
+    "aspect_ratio": "16:9",
+    "audio_policy": "retain_if_approved"
+  },
+  "intent": {
+    "logline": "Rural-Japan third-person chase: grandma on a senior scooter, invented HUD, anti-Miami",
+    "emotion": "Auto Pilot — intent-analysis read a person, not a product; creative-agent set the rural-Japan scooter-chase framework."
+  },
+  "assets": [],
+  "creative": {
+    "continuity": {
+      "thesis": "Rural-Japan third-person chase: grandma on a senior scooter, invented HUD, anti-Miami"
+    },
+    "shots": [
+      {
+        "shot_id": "CLIP.japanese-grandma-gta.001.A",
+        "start_s": 0,
+        "end_s": 15.0,
+        "subjects": [
+          {
+            "subject_id": "CHAR.LEAD",
+            "identity": "Clearly adult Japanese grandma, about 75–82. Short round face, deep wrinkles, age spots, not beautified. Calm, slightly mischievous stone face. She never becomes young. No extra limbs. Floral blouse, beige cardigan, dark cropped trousers, white socks, plastic sandals or walking shoes, a small cloth shopping bag in the front basket.\nShe rides a silver four-wheel senior mobility scooter: two front wheels, two rear, high backrest, tiller steering, grocery basket. Scooter color, shape, and basket contents stay consistent. Jars of pickles bounce but do not vanish. The scooter looks like a real Japanese shinia-ka but moves with exaggerated game-physics speed, drifts, and jumps while remaining a mobility scooter.",
+            "hair": "Hair is short permed silver, not dyed, not flowing anime hair. Tight curls sit close to the scalp. A few flyaways at the nape lift in the scooter wind.",
+            "skin": "Skin is the age lock. Do not generate poreless AI skin or a de-aged idol grandma. You must clearly see: deep nasolabial folds; crow's feet; age spots on the cheeks and hands; thin under-eye skin; weather on the neck; knuckles on the tiller.",
+            "anchors": {
+              "hair": "Hair is short permed silver, not dyed, not flowing anime hair. Tight curls sit close to the scalp. A few flyaways at the nape lift in the scooter wind.",
+              "skin": "Skin is the age lock. Do not generate poreless AI skin or a de-aged idol grandma. You must clearly see: deep nasolabial folds; crow's feet; age spots on the cheeks and hands; thin under-eye skin; weather on the neck; knuckles on the tiller."
+            },
+            "scene_state": {
+              "makeup": "No makeup. Do not de-age. Mouth is a natural muted rose, a little dry. Brows are sparse silver-grey with a few darker hairs. Eyes are dark brown, slightly watery in the wind. Natural lashes, no liner, no false lashes, no contour."
+            }
+          }
+        ],
+        "lighting": {
+          "key": "Sunny late afternoon in the Japanese countryside. Narrow farm roads, rice paddies, irrigation ditches, utility poles, vending machines, tiled-roof houses, a convenience store, a small shrine gate, aging kei trucks, bicycles, scarecrows. Dust on asphalt. Green mountains in the distance. No neon Vice City, no palm trees, no art-deco hotels.\nSpecular on the scooter chrome and wet paddy water. Motion blur on the background only. Ray-traced puddles if a wet patch exists. No studio softbox. No ring-light catchlight."
+        },
+        "look": {
+          "medium": "Sunny late afternoon in the Japanese countryside. Narrow farm roads, rice paddies, irrigation ditches, utility poles, vending machines, tiled-roof houses, a convenience store, a small shrine gate, aging kei trucks, bicycles, scarecrows. Dust on asphalt. Green mountains in the distance. No neon Vice City, no palm trees, no art-deco hotels.\nSpecular on the scooter chrome and wet paddy water. Motion blur on the background only. Ray-traced puddles if a wet patch exists. No studio softbox. No ring-light catchlight."
+        },
+        "camera": {
+          "movement": "Persistent third-person chase camera about 3 meters behind and slightly above the scooter. Same adult Japanese grandma and the same silver four-wheel senior scooter the whole time. Occasional low wheel-level cut and one brief high drone peek, then back to gameplay cam. Subtle handheld game-cam. No beauty orbit. No extra wheels. No melted face.",
+          "framing": "Persistent third-person chase camera about 3 meters behind and slightly above the scooter. Same adult Japanese grandma and the same silver four-wheel senior scooter the whole time. Occasional low wheel-level cut and one brief high drone peek, then back to gameplay cam. Subtle handheld game-cam. No beauty orbit. No extra wheels. No melted face."
+        },
+        "action": {
+          "beats": [
+            {
+              "start_s": 0.0,
+              "end_s": 3.0,
+              "action": "farm-road smash. Already speeding down a narrow farm road on the scooter. Basket rattling. Cardigan flapping. Chickens scatter. Invented HUD is on. A distant siren. She does not look at the lens. Calm, slightly mischievous stone face. No speech."
+            },
+            {
+              "start_s": 3.0,
+              "end_s": 6.5,
+              "action": "paddy cut. She cuts a corner onto a rice-paddy path, kicking up water and mud, overtaking a slow kei truck. A white-and-black Japanese patrol car appears behind, lights flashing, arriving late."
+            },
+            {
+              "start_s": 6.5,
+              "end_s": 10.0,
+              "action": "village drift. Chase on the village main street past vending machines and a konbini. She drifts the scooter around a mailbox. Wanted stars tick up. Officers shout in Japanese in the distance. She is not scared."
+            },
+            {
+              "start_s": 10.0,
+              "end_s": 13.0,
+              "action": "drainage hop. She bumps a low irrigation lip; the scooter lands heavy but stays upright. A second patrol car slides and misses. Slapstick only: no blood, no crash that reads as real injury."
+            },
+            {
+              "start_s": 13.0,
+              "end_s": 15.0,
+              "action": "levee escape. Camera lifts slightly behind her as she pulls onto an empty levee road in late sun, scooter still screaming forward, jars of pickles still in the basket. Freeze on a readable gameplay pose: grandma, scooter, HUD, paddies stretching ahead. End."
+            }
+          ],
+          "prose": "0–3s | farm-road smash. Already speeding down a narrow farm road on the scooter. Basket rattling. Cardigan flapping. Chickens scatter. Invented HUD is on. A distant siren. She does not look at the lens. Calm, slightly mischievous stone face. No speech.\n3–6.5s | paddy cut. She cuts a corner onto a rice-paddy path, kicking up water and mud, overtaking a slow kei truck. A white-and-black Japanese patrol car appears behind, lights flashing, arriving late.\n6.5–10s | village drift. Chase on the village main street past vending machines and a konbini. She drifts the scooter around a mailbox. Wanted stars tick up. Officers shout in Japanese in the distance. She is not scared.\n10–13s | drainage hop. She bumps a low irrigation lip; the scooter lands heavy but stays upright. A second patrol car slides and misses. Slapstick only: no blood, no crash that reads as real injury.\n13–15s | levee escape. Camera lifts slightly behind her as she pulls onto an empty levee road in late sun, scooter still screaming forward, jars of pickles still in the basket. Freeze on a readable gameplay pose: grandma, scooter, HUD, paddies stretching ahead. End."
+        }
+      }
+    ],
+    "audio": {
+      "production": "native",
+      "prose": "Diegetic: high-pitched scooter motor, rattling basket, chickens, kei-truck horn, delayed siren, Japanese village ambience, a short muffled police yell. No licensed music. No narrator."
+    }
+  },
+  "constraints": {
+    "forbid": [
+      "no official Rockstar or GTA replica UI",
+      "no copied logos",
+      "cars",
+      "fonts",
+      "or characters",
+      "no Miami neon",
+      "no palm-lined vice strip",
+      "no art-deco hotels",
+      "no young pretty grandma",
+      "no de-aging",
+      "no motorcycle swap",
+      "no melted face",
+      "no extra limbs",
+      "no extra wheels",
+      "no disappearing basket",
+      "no explosions",
+      "no guns",
+      "no gore",
+      "no realistic grievous harm",
+      "not documentary footage",
+      "not a how-to"
+    ],
+    "hard": [],
+    "soft": [],
+    "acceptance": [],
+    "prose": "no official Rockstar or GTA replica UI, no copied logos, cars, fonts, or characters, no Miami neon, no palm-lined vice strip, no art-deco hotels, no young pretty grandma, no de-aging, no motorcycle swap, no melted face, no extra limbs, no extra wheels, no disappearing basket, no explosions, no guns, no gore, no realistic grievous harm, not documentary footage, not a how-to."
+  },
+  "provenance": {
+    "source_brief_id": "BRIEF.japanese-grandma-gta",
+    "honesty": "CHARACTERIZATION"
+  },
+  "extensions": {
+    "casops": {
+      "project_id": "japanese-grandma-gta",
+      "owner_map": {
+        "video.creativedirector": [
+          "intent",
+          "creative.continuity"
+        ],
+        "video.promptengineer": [
+          "generation",
+          "classification",
+          "creative.audio"
+        ],
+        "video.continuity": [
+          "creative.shots.subjects"
+        ],
+        "video.mua_makeup": [
+          "creative.shots.subjects.scene_state"
+        ],
+        "video.cinematographer": [
+          "creative.shots.lighting",
+          "creative.shots.look"
+        ],
+        "video.director": [
+          "creative.shots.action"
+        ],
+        "video.cameraoperator": [
+          "creative.shots.camera"
+        ],
+        "video.critic": [
+          "constraints",
+          "provenance.diagnostics"
+        ]
+      },
+      "thesis": "Rural-Japan third-person chase: grandma on a senior scooter, invented HUD, anti-Miami",
+      "why": "Auto Pilot — intent-analysis read a person, not a product; creative-agent set the rural-Japan scooter-chase framework.",
+      "frame_prose": "15-second, 16:9, photoreal next-gen AAA gameplay capture inspired by modern open-world crime games. Rural Japan, not Miami. Invented HUD only, visible the whole time: circular mini-map bottom-left with farm roads and a yellow destination blip; health and armor bars; wanted stars starting at 1 and rising to 2–3; a cash counter; tiny mission line that reads get the pickles home before supper. No watermark, no real brand marks, no burned-in subtitles. No official Rockstar logos, cars, fonts, or characters. Parody billing may read as a senior-scooter heist, not a licensed title.",
+      "sound_prose": "Diegetic: high-pitched scooter motor, rattling basket, chickens, kei-truck horn, delayed siren, Japanese village ambience, a short muffled police yell. No licensed music. No narrator.",
+      "subject_prose": "Clearly adult Japanese grandma, about 75–82. Short round face, deep wrinkles, age spots, not beautified. Calm, slightly mischievous stone face. She never becomes young. No extra limbs. Floral blouse, beige cardigan, dark cropped trousers, white socks, plastic sandals or walking shoes, a small cloth shopping bag in the front basket.\nShe rides a silver four-wheel senior mobility scooter: two front wheels, two rear, high backrest, tiller steering, grocery basket. Scooter color, shape, and basket contents stay consistent. Jars of pickles bounce but do not vanish. The scooter looks like a real Japanese shinia-ka but moves with exaggerated game-physics speed, drifts, and jumps while remaining a mobility scooter.",
+      "hair_prose": "Hair is short permed silver, not dyed, not flowing anime hair. Tight curls sit close to the scalp. A few flyaways at the nape lift in the scooter wind.",
+      "skin_prose": "Skin is the age lock. Do not generate poreless AI skin or a de-aged idol grandma. You must clearly see: deep nasolabial folds; crow's feet; age spots on the cheeks and hands; thin under-eye skin; weather on the neck; knuckles on the tiller.",
+      "makeup_prose": "No makeup. Do not de-age. Mouth is a natural muted rose, a little dry. Brows are sparse silver-grey with a few darker hairs. Eyes are dark brown, slightly watery in the wind. Natural lashes, no liner, no false lashes, no contour.",
+      "light_prose": "Sunny late afternoon in the Japanese countryside. Narrow farm roads, rice paddies, irrigation ditches, utility poles, vending machines, tiled-roof houses, a convenience store, a small shrine gate, aging kei trucks, bicycles, scarecrows. Dust on asphalt. Green mountains in the distance. No neon Vice City, no palm trees, no art-deco hotels.\nSpecular on the scooter chrome and wet paddy water. Motion blur on the background only. Ray-traced puddles if a wet patch exists. No studio softbox. No ring-light catchlight.",
+      "coverage_prose": "0–3s | farm-road smash. Already speeding down a narrow farm road on the scooter. Basket rattling. Cardigan flapping. Chickens scatter. Invented HUD is on. A distant siren. She does not look at the lens. Calm, slightly mischievous stone face. No speech.\n3–6.5s | paddy cut. She cuts a corner onto a rice-paddy path, kicking up water and mud, overtaking a slow kei truck. A white-and-black Japanese patrol car appears behind, lights flashing, arriving late.\n6.5–10s | village drift. Chase on the village main street past vending machines and a konbini. She drifts the scooter around a mailbox. Wanted stars tick up. Officers shout in Japanese in the distance. She is not scared.\n10–13s | drainage hop. She bumps a low irrigation lip; the scooter lands heavy but stays upright. A second patrol car slides and misses. Slapstick only: no blood, no crash that reads as real injury.\n13–15s | levee escape. Camera lifts slightly behind her as she pulls onto an empty levee road in late sun, scooter still screaming forward, jars of pickles still in the basket. Freeze on a readable gameplay pose: grandma, scooter, HUD, paddies stretching ahead. End.",
+      "camera_prose": "Persistent third-person chase camera about 3 meters behind and slightly above the scooter. Same adult Japanese grandma and the same silver four-wheel senior scooter the whole time. Occasional low wheel-level cut and one brief high drone peek, then back to gameplay cam. Subtle handheld game-cam. No beauty orbit. No extra wheels. No melted face.",
+      "negatives_prose": "no official Rockstar or GTA replica UI, no copied logos, cars, fonts, or characters, no Miami neon, no palm-lined vice strip, no art-deco hotels, no young pretty grandma, no de-aging, no motorcycle swap, no melted face, no extra limbs, no extra wheels, no disappearing basket, no explosions, no guns, no gore, no realistic grievous harm, not documentary footage, not a how-to."
+    }
+  }
+}

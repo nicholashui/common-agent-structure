@@ -2,6 +2,7 @@ import { Handle, Position, type Node, type NodeProps } from "@xyflow/react";
 import { Check } from "lucide-react";
 import { GRAPH_KIND, socketColor } from "../lib/graphStyle";
 import { displayPartyName, optionAgentIds } from "../lib/projectChat";
+import { ownerPathsFor } from "../lib/videoPrompt";
 
 export type ProjectIo = {
   inputs?: string[];
@@ -63,6 +64,7 @@ export function ProjectNode({ id, data, selected }: NodeProps<ProjectFlowNode>) 
   const kind = kindOf(data);
   const chrome = GRAPH_KIND[kind];
   const extraInputs = inputs.slice(1);
+  const ownedPaths = ownerPathsFor(String(data.agent_id || ""));
   return (
     <div
       data-testid={
@@ -127,7 +129,17 @@ export function ProjectNode({ id, data, selected }: NodeProps<ProjectFlowNode>) 
           ) : null}
         </dl>
       ) : (
-        <p className="px-2 font-mono text-[11px] text-indigo-700 dark:text-[#9cdcfe]">{data.agent_id || (output ? "generated prompt" : "")}</p>
+        <>
+          <p className="px-2 font-mono text-[11px] text-indigo-700 dark:text-[#9cdcfe]">{data.agent_id || (output ? "generated prompt" : "")}</p>
+          {ownedPaths.length ? (
+            <p
+              className="line-clamp-2 px-2 font-mono text-[10px] text-stone-400 dark:text-[#888]"
+              data-testid={`project-owned-path-${id}`}
+            >
+              owns {ownedPaths.join(" · ")}
+            </p>
+          ) : null}
+        </>
       )}
       {output || human ? (
         <p className="line-clamp-4 whitespace-pre-wrap px-2 text-[11px] text-stone-500 dark:text-[#bbb]">{data.brief || data.reason}</p>
@@ -220,42 +232,47 @@ export function ProjectNode({ id, data, selected }: NodeProps<ProjectFlowNode>) 
       ) : null}
       {output ? (
         <p className="px-2 py-1 text-[10px] font-semibold uppercase tracking-wide text-amber-700 dark:text-[#ffcc80]">No Out · end node</p>
-      ) : !data.onNext ? (
-        <p className="px-2 py-1 text-[10px] text-stone-400">Out sockets follow the Chat spine. Next / video.planner is off for Auto Pilot.</p>
       ) : (
         <div className="space-y-0.5 pb-1 pt-1">
           {(outputs.length ? outputs : ["next"]).map((bus) => {
             const named = bus !== "next";
             const used = linked.has(bus);
+            const handleId = named ? bus : "next";
             return (
               <div key={bus} className="relative flex items-center justify-end px-2 py-0.5">
-                <button
-                  type="button"
-                  className={[
-                    "nodrag nopan flex min-w-0 items-center gap-1 rounded px-1.5 py-0.5 text-right text-[11px]",
-                    used ? "text-emerald-800 dark:text-[#c8e6c9]" : "text-stone-600 hover:text-stone-900 dark:text-[#ccc] dark:hover:text-white",
-                  ].join(" ")}
-                  data-testid={named ? `project-out-${id}-${bus}` : `project-next-${id}`}
-                  title={named ? `Out ${bus} — suggest next agents` : "Suggest next agents"}
-                  onClick={(event) => {
-                    event.stopPropagation();
-                    data.onNext?.(id, named ? bus : undefined);
-                  }}
-                >
-                  {used ? <span className="text-[9px] font-semibold uppercase text-[#81c784]">linked</span> : null}
-                  <span className="socket-label truncate">{named ? bus : "Next"}</span>
-                </button>
+                {data.onNext ? (
+                  <button
+                    type="button"
+                    className={[
+                      "nodrag nopan flex min-w-0 items-center gap-1 rounded px-1.5 py-0.5 text-right text-[11px]",
+                      used ? "text-emerald-800 dark:text-[#c8e6c9]" : "text-stone-600 hover:text-stone-900 dark:text-[#ccc] dark:hover:text-white",
+                    ].join(" ")}
+                    data-testid={named ? `project-out-${id}-${bus}` : `project-next-${id}`}
+                    title={named ? `Out ${bus} — suggest next agents` : "Suggest next agents"}
+                    onClick={(event) => {
+                      event.stopPropagation();
+                      data.onNext?.(id, named ? bus : undefined);
+                    }}
+                  >
+                    {used ? <span className="text-[9px] font-semibold uppercase text-[#81c784]">linked</span> : null}
+                    <span className="socket-label truncate">{named ? bus : "Next"}</span>
+                  </button>
+                ) : (
+                  <span className="socket-label truncate px-1.5 text-[11px] text-stone-500 dark:text-[#bbb]">
+                    {named ? bus : "Out"}
+                  </span>
+                )}
                 <Handle
                   type="source"
-                  id={named ? bus : "next"}
+                  id={handleId}
                   position={Position.Right}
                   className="!right-[-6px]"
-                  style={{ background: socketColor(named ? bus : "next") }}
+                  style={{ background: socketColor(handleId) }}
                 />
               </div>
             );
           })}
-          {outputs.length ? (
+          {data.onNext && outputs.length ? (
             <button
               type="button"
               className="nodrag nopan mx-2 mb-1 inline-flex items-center rounded border border-stone-200 bg-white px-2 py-0.5 text-[10px] font-medium text-stone-600 hover:border-indigo-300 dark:border-[#4a4a4a] dark:bg-[#2b2b2b] dark:text-[#bbb] dark:hover:border-[#64b5f6] dark:hover:text-white"

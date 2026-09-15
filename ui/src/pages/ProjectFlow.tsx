@@ -26,8 +26,8 @@ import { ErrorBanner } from "../components/RecoveryBanner";
 import { ProjectCommsPanel } from "../components/ProjectComms";
 import { ProjectNode, type ProjectFlowNode, type ProjectNodeData } from "../components/ProjectNode";
 import type { ProjectCommItem, ProjectNextRow, ProjectNextSuggestion, ProjectRecord } from "../api/types";
-import { AutoLayoutButton } from "../components/GraphAutoLayout";
-import { applyAutoLayout } from "../lib/autoLayout";
+import { AutoLayoutMenu } from "../components/GraphAutoLayout";
+import { applyAutoLayout, layoutHasOverlap, type LayoutAlgorithm } from "../lib/autoLayout";
 import { GRAPH_KIND, graphEdgeStyle, socketColor } from "../lib/graphStyle";
 import { commIdForAgent, sortProjectComms } from "../lib/projectChat";
 import { projectChatHref, rememberProject } from "../lib/projectContext";
@@ -36,6 +36,30 @@ import { useSession } from "../state/session";
 import { useTheme } from "../theme/ThemeProvider";
 
 const nodeTypes = { start: ProjectNode, agent: ProjectNode, workflow: ProjectNode, output: ProjectNode, human: ProjectNode };
+
+function LayoutIfOverlap({
+  onLayout,
+}: {
+  onLayout: (measured: Node<ProjectNodeData>[]) => void;
+}) {
+  const ready = useNodesInitialized();
+  const { getNodes } = useReactFlow();
+  const ran = useRef(false);
+  useEffect(() => {
+    if (!ready || ran.current) {
+      return;
+    }
+    const measured = getNodes() as Node<ProjectNodeData>[];
+    if (!measured.length) {
+      return;
+    }
+    ran.current = true;
+    if (layoutHasOverlap(measured, 24, { width: 320, height: 240 })) {
+      onLayout(measured);
+    }
+  }, [ready, getNodes, onLayout]);
+  return null;
+}
 
 function FitOnResize({
   nodeCount,
@@ -470,18 +494,41 @@ export function ProjectFlowPage() {
     }
   }
 
-  function onAutoLayout() {
+  function onAutoLayout(algorithm: LayoutAlgorithm = "layered-lr") {
     setNodes((current) =>
       applyAutoLayout(current, edges, {
-        direction: "LR",
-        rankGap: 96,
-        packGap: 36,
+        algorithm,
+        rankGap: 112,
+        packGap: 48,
         defaultWidth: 320,
-        defaultHeight: 240,
+        defaultHeight: 280,
       }),
     );
     setLayoutNonce((current) => current + 1);
   }
+
+  const onLayoutIfOverlap = useCallback(
+    (measured: Node<ProjectNodeData>[]) => {
+      setNodes((current) =>
+        applyAutoLayout(
+          current.map((node) => {
+            const hit = measured.find((item) => item.id === node.id);
+            return hit?.measured ? { ...node, measured: hit.measured } : node;
+          }),
+          edges,
+          {
+            direction: "LR",
+            rankGap: 112,
+            packGap: 48,
+            defaultWidth: 320,
+            defaultHeight: 280,
+          },
+        ),
+      );
+      setLayoutNonce((current) => current + 1);
+    },
+    [edges],
+  );
 
   async function onSave() {
     if (!record) {
@@ -517,9 +564,7 @@ export function ProjectFlowPage() {
         </div>
         <div className="flex gap-2">
           <DryRunControl />
-          <GhostButton type="button" data-testid="project-auto-layout" disabled={!nodes.length} onClick={onAutoLayout}>
-            Auto layout
-          </GhostButton>
+          <AutoLayoutMenu testId="project-auto-layout" disabled={!nodes.length} onLayout={onAutoLayout} />
           <GhostButton type="button" onClick={() => navigate("/projects/new")}>
             New project
           </GhostButton>
@@ -641,6 +686,7 @@ export function ProjectFlowPage() {
             defaultEdgeOptions={{ type: "default", style: { stroke: socketColor("next"), strokeWidth: 2.4 } }}
             proOptions={{ hideAttribution: true }}
           >
+            <LayoutIfOverlap onLayout={onLayoutIfOverlap} />
             <FitOnResize
               nodeCount={displayNodes.length}
               width={flowSize.width}
@@ -650,7 +696,7 @@ export function ProjectFlowPage() {
             <Background variant={BackgroundVariant.Dots} gap={20} size={1.2} color={dark ? "#3a3a3a" : "#d6d3d1"} />
             <Controls />
             <Panel position="top-right" className="m-2">
-              <AutoLayoutButton testId="project-canvas-auto-layout" disabled={!nodes.length} onClick={onAutoLayout} />
+              <AutoLayoutMenu testId="project-canvas-auto-layout" disabled={!nodes.length} onLayout={onAutoLayout} />
             </Panel>
             {flowSize.width >= 640 ? (
               <MiniMap

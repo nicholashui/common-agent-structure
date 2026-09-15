@@ -60,6 +60,7 @@ describe("page location label", () => {
     expect(locationLabel("/projects/safety-recap")).toBe("Project / safety-recap");
     expect(locationLabel("/projects/asain-beauty/workflow")).toBe("Project / asain-beauty / Workflow");
     expect(locationLabel("/projects/asain-beauty/chat")).toBe("Project / asain-beauty / Chat");
+    expect(locationLabel("/projects/asain-beauty/start")).toBe("Project / asain-beauty / Start");
   });
 });
 

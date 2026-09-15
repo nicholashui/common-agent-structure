@@ -7,7 +7,9 @@ from casops.projects import (
     migrate_graph,
     normalize_slug,
     parse_llm_ids,
+    read_project,
     suggest_next,
+    write_project,
 )
 
 try:
@@ -115,3 +117,50 @@ def test_suggest_next_start_and_parent_io() -> None:
     back = next(row for row in looped["suggestions"] if row["id"] == "video.instructionaldesign")
     assert back.get("loopback") is True
     assert back["kind"] == "loop"
+
+
+def test_start_record_written_only_on_create(tmp_path: Path) -> None:
+    created = write_project(
+        tmp_path,
+        {
+            "name": "night-walk",
+            "title": "Night Walk",
+            "brief": "Short 16:9 chase clip. Adult Hong Kong grandma walking home at night.",
+            "audience": "18-34 on social",
+            "duration": "15s",
+            "outlets": "social",
+            "risk": "low",
+            "notes": "Pack map only.",
+            "sub_workflow_id": "video.template.b",
+        },
+        dry_run=False,
+        create=True,
+    )
+    assert created["start"]["source"] == "new_project"
+    assert created["start"]["brief"].startswith("Short 16:9")
+    loaded = read_project(tmp_path, "night-walk")
+    assert loaded["start_persisted"] is True
+    assert loaded["start"]["title"] == "Night Walk"
+    updated = write_project(
+        tmp_path,
+        {
+            **loaded,
+            "title": "Changed later",
+            "brief": "Later graph save must not rewrite Start.",
+        },
+        dry_run=False,
+        create=False,
+    )
+    assert updated["title"] == "Changed later"
+    assert updated["start"]["title"] == "Night Walk"
+    assert updated["start"]["brief"].startswith("Short 16:9")
+    again = read_project(tmp_path, "night-walk")
+    assert again["start"]["title"] == "Night Walk"
+    assert again["title"] == "Changed later"
+
+
+def test_start_record_derived_when_missing() -> None:
+    loaded = read_project(Path(__file__).resolve().parents[2] / "project", "asain-beauty")
+    assert loaded["start"]["brief"]
+    assert loaded["start_persisted"] is False
+    assert loaded["start"]["source"] == "derived"

@@ -15,7 +15,6 @@ import { OrgNode, type OrgFlowNode } from "../components/OrgNode";
 import { listAgentGroups } from "../lib/agents";
 import { GRAPH_KIND, socketColor } from "../lib/graphStyle";
 import { buildOrgChart, nodesForInitialFit, ORG_MIN_READABLE_ZOOM, type OrgEdgeDraft } from "../lib/orgChart";
-import { lastProjectId, projectChatHref } from "../lib/projectContext";
 import { filterByRoster, useSwarmRoster } from "../lib/swarmFilter";
 import { agentHref } from "../shell/nav";
 import { useSession } from "../state/session";
@@ -58,12 +57,7 @@ export function OrgChatPage() {
     if (data.kind !== "agent" || !agentId) {
       return;
     }
-    const projectId = lastProjectId();
-    if (projectId) {
-      navigate(projectChatHref(projectId, { agent: agentId }));
-      return;
-    }
-    navigate(agentHref(agentId, ""));
+    navigate(agentHref(agentId, "chat"));
   }
 
   return (
@@ -90,8 +84,8 @@ export function OrgChatPage() {
       />
       <p className="mb-4 text-sm text-stone-500">
         Org chart of the selected Agent Group (pack browser, not a swarm runner
-        {swarmId ? ` · roster ${swarmId}` : ""}). Click an agent: Project Chat hop if a project is in context, otherwise
-        Agent Profile.
+        {swarmId ? ` · roster ${swarmId}` : ""}). Click an agent node to open{" "}
+        <span className="font-mono">/agents/&lt;id&gt;/chat</span>.
       </p>
       {!session.agents.length ? (
         <EmptyState

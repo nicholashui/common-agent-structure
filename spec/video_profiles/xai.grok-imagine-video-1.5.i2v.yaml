@@ -1,0 +1,38 @@
+{
+  "profile_id": "xai.grok-imagine-video-1.5.i2v",
+  "profile_revision": 1,
+  "live": true,
+  "generator_tag": "grok-imagine",
+  "identity": {
+    "provider": "xai",
+    "surface": "grok_imagine_api",
+    "model_id": "grok-imagine-video-1.5",
+    "mode": "image_to_video"
+  },
+  "evidence": {
+    "documentation_status": "house_rule",
+    "documentation_checked_at": "2026-09-15",
+    "source_ids": ["SRC.CASOPS.PROJECT_GENERATE"],
+    "execution_status": "operator_verified",
+    "execution_tested_at": "2026-09-14"
+  },
+  "capabilities": {
+    "text_prompt": true,
+    "image_references": true,
+    "audio_generation": "unknown",
+    "separate_audio_stems": "unknown",
+    "timestamp_prose": "best_effort",
+    "exact_frame_timing": false
+  },
+  "validation": {
+    "duration_rule": "adapter_owned",
+    "asset_roles": "starting_image_required",
+    "combined_feature_constraints": "adapter_owned",
+    "runtime_field_mapping": "adapter_owned"
+  },
+  "availability": {
+    "account_access": "env_xai_api_key",
+    "quota": "unknown",
+    "region_access": "unknown"
+  }
+}

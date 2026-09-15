@@ -463,6 +463,42 @@ def list_projects(root: Path) -> list[dict[str, Any]]:
     return rows
 
 
+def start_snapshot(
+    brief: dict[str, Any],
+    selected: str,
+    suggestion: Any,
+    *,
+    saved_at: str,
+    source: str = "new_project",
+) -> dict[str, Any]:
+    return {
+        "name": str(brief.get("name") or ""),
+        "title": str(brief.get("title") or ""),
+        "brief": str(brief.get("brief") or ""),
+        "audience": str(brief.get("audience") or ""),
+        "duration": str(brief.get("duration") or ""),
+        "outlets": str(brief.get("outlets") or ""),
+        "risk": str(brief.get("risk") or ""),
+        "notes": str(brief.get("notes") or ""),
+        "sub_workflow_id": selected,
+        "suggestion": suggestion if isinstance(suggestion, dict) else None,
+        "saved_at": saved_at,
+        "source": source,
+    }
+
+
+def _prior_start(folder: Path) -> dict[str, Any] | None:
+    path = folder / "project.json"
+    if not path.is_file():
+        return None
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return None
+    start = payload.get("start") if isinstance(payload, dict) else None
+    return start if isinstance(start, dict) else None
+
+
 def read_project(root: Path, slug: str) -> dict[str, Any]:
     slug = normalize_slug(slug)
     folder = _safe_dir(root, slug)
@@ -482,8 +518,22 @@ def read_project(root: Path, slug: str) -> dict[str, Any]:
         "duration": str(payload.get("duration") or ""),
         "outlets": str(payload.get("outlets") or ""),
         "risk": str(payload.get("risk") or ""),
+        "notes": str(payload.get("notes") or ""),
     }
     payload["graph"] = migrate_graph(payload.get("graph"), brief, str(payload.get("sub_workflow_id") or "video.template.a"))
+    start = payload.get("start")
+    if isinstance(start, dict):
+        payload["start"] = start
+        payload["start_persisted"] = True
+    else:
+        payload["start"] = start_snapshot(
+            brief,
+            str(payload.get("sub_workflow_id") or "video.template.a"),
+            payload.get("suggestion"),
+            saved_at=str(payload.get("created_at") or ""),
+            source="derived",
+        )
+        payload["start_persisted"] = False
     return payload
 
 
@@ -510,6 +560,11 @@ def write_project(root: Path, payload: dict[str, Any], *, dry_run: bool, create:
     }
     graph = migrate_graph(payload.get("graph"), brief, selected)
     now = _now()
+    suggestion = payload.get("suggestion") if isinstance(payload.get("suggestion"), dict) else None
+    if create:
+        start = start_snapshot(brief, selected, suggestion, saved_at=now, source="new_project")
+    else:
+        start = _prior_start(folder)
     record = {
         "schema_version": "casops.project.v1",
         "id": slug,
@@ -523,7 +578,7 @@ def write_project(root: Path, payload: dict[str, Any], *, dry_run: bool, create:
         "notes": brief["notes"],
         "group": "video",
         "sub_workflow_id": selected,
-        "suggestion": payload.get("suggestion") if isinstance(payload.get("suggestion"), dict) else None,
+        "suggestion": suggestion,
         "io_overlay": payload.get("io_overlay") if isinstance(payload.get("io_overlay"), dict) else None,
         "graph": graph,
         "honesty": "CHARACTERIZATION",
@@ -533,6 +588,8 @@ def write_project(root: Path, payload: dict[str, Any], *, dry_run: bool, create:
         "production_activation": False,
         "allowed_tools": [],
     }
+    if start is not None:
+        record["start"] = start
     if dry_run:
         record["saved"] = False
         record["dry_run"] = True

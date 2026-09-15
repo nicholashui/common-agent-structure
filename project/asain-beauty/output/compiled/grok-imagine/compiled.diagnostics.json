@@ -1,0 +1,76 @@
+{
+  "status": "ok",
+  "diagnostics": [
+    {
+      "code": "CONSTRAINT_HAIR_OFF_LIPS_HOUSE",
+      "severity": "info",
+      "path": "constraints.forbid",
+      "message": "Hair-off-lips was not in constraints.forbid; compiled from the house constraint list."
+    }
+  ],
+  "coverage": [
+    {
+      "requirement": "generation.duration_s",
+      "disposition": "exact",
+      "path": "generation.duration_s"
+    },
+    {
+      "requirement": "generation.aspect_ratio",
+      "disposition": "exact",
+      "path": "generation.aspect_ratio"
+    },
+    {
+      "requirement": "subjects.identity",
+      "disposition": "prompted",
+      "path": "creative.shots.subjects.identity"
+    },
+    {
+      "requirement": "subjects.anchors",
+      "disposition": "prompted",
+      "path": "creative.shots.subjects.anchors"
+    },
+    {
+      "requirement": "constraints.hard",
+      "disposition": "prompted",
+      "path": "constraints.hard"
+    },
+    {
+      "requirement": "lighting",
+      "disposition": "prompted",
+      "path": "creative.shots.lighting"
+    },
+    {
+      "requirement": "look",
+      "disposition": "prompted",
+      "path": "creative.shots.look"
+    },
+    {
+      "requirement": "action.beats",
+      "disposition": "prompted",
+      "path": "creative.shots.action.beats"
+    },
+    {
+      "requirement": "camera",
+      "disposition": "prompted",
+      "path": "creative.shots.camera"
+    },
+    {
+      "requirement": "audio",
+      "disposition": "prompted",
+      "path": "creative.audio"
+    },
+    {
+      "requirement": "hair-off-lips",
+      "disposition": "prompted",
+      "path": "constraints.forbid+house",
+      "implementation": "compiled into still and motion"
+    },
+    {
+      "requirement": "starting_image",
+      "disposition": "post",
+      "path": "assets",
+      "implementation": "bound after Image 2.0 still"
+    }
+  ],
+  "proposal": null
+}

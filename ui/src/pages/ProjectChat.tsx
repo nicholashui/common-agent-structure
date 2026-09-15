@@ -32,7 +32,8 @@ import {
   instructionHopForPanel,
   splitProjectChat,
 } from "../lib/projectChat";
-import { rememberProject } from "../lib/projectContext";
+import { projectChatHref, rememberProject } from "../lib/projectContext";
+import { dispositionChips, splitProjection } from "../lib/videoPrompt";
 import { useSession } from "../state/session";
 
 function kindTone(kind: string, from: string): string {
@@ -262,11 +263,14 @@ export function ProjectChatPage() {
   const [generating, setGenerating] = useState(false);
   const [generatingEngine, setGeneratingEngine] = useState("");
   const [videoConfig, setVideoConfig] = useState<ProjectVideoConfig>({
+    engine: "grok-imagine",
     mode: "i2v",
     aspect_ratio: "9:16",
     duration: 15,
     resolution: "1080p",
   });
+  const [selectedEngine, setSelectedEngine] = useState("grok-imagine");
+  const [selectedClipId, setSelectedClipId] = useState("");
 
   useEffect(() => {
     if (!projectId) {
@@ -285,16 +289,22 @@ export function ProjectChatPage() {
         setAutopilotMeta(payload.autopilot ?? {});
       })
       .catch((err) => setError(err instanceof Error ? err : new Error(String(err))));
+  }, [projectId, session.client]);
+
+  useEffect(() => {
+    if (!projectId) {
+      return;
+    }
     session.client
-      .getProjectOutput(projectId)
+      .getProjectOutput(projectId, selectedEngine, selectedClipId || undefined)
       .then((payload) => {
         setOutput(payload);
         if (payload.video_config) {
-          setVideoConfig((current) => ({ ...current, ...payload.video_config }));
+          setVideoConfig((current) => ({ ...current, ...payload.video_config, engine: selectedEngine }));
         }
       })
       .catch(() => undefined);
-  }, [projectId, session.client]);
+  }, [projectId, selectedEngine, selectedClipId, session.client]);
 
   const { conversation, clips } = useMemo(() => splitProjectChat(items), [items]);
   const focusComm =
@@ -314,21 +324,29 @@ export function ProjectChatPage() {
   const instructionHop = useMemo(() => instructionHopForPanel(items), [items]);
   const outputText = output?.text || instructionHop?.text || "";
   const outputPath = output?.path || `project/${projectId}/output/${projectId}-prompt.txt`;
-  const generators: ProjectGeneratorTag[] = output?.generators?.length
-    ? output.generators
-    : [
-        { id: "grok-imagine", label: "Grok Imagine", engine: "grok-imagine", live: true },
-        { id: "grok-image", label: "Grok Image", engine: "grok-image", live: true },
-        { id: "kling", label: "Kling 3.0", engine: "kling", live: false },
-        { id: "veo", label: "Veo 3.1", engine: "veo", live: false },
-        { id: "seedance", label: "Seedance 2.0", engine: "seedance", live: false },
-        { id: "sora", label: "Sora 2", engine: "sora", live: false },
-        { id: "runway", label: "Runway Gen-4", engine: "runway", live: false },
-        { id: "luma", label: "Luma Ray 3", engine: "luma", live: false },
-        { id: "pika", label: "Pika 2.2", engine: "pika", live: false },
-        { id: "hailuo", label: "Hailuo 02", engine: "hailuo", live: false },
-        { id: "wan", label: "Wan 2.2", engine: "wan", live: false },
-      ];
+  const projection = useMemo(() => splitProjection(outputText), [outputText]);
+  const compileNote = output?.compile_note || "";
+  const chips = dispositionChips(output?.compiled?.coverage);
+  const criticWarnings = output?.critic_warnings ?? [];
+  const sequence = output?.sequence;
+
+  useEffect(() => {
+    const rows = sequence?.clips ?? [];
+    const first = rows[0]?.clip_id || "";
+    if (!first) {
+      return;
+    }
+    setSelectedClipId((current) => (rows.some((row) => row.clip_id === current) ? current : first));
+  }, [sequence]);
+
+  function openOwnerHop(owner: string) {
+    if (!projectId || !owner) {
+      return;
+    }
+    const comm = commIdForAgent(items, owner);
+    navigate(projectChatHref(projectId, comm ? { comm } : { agent: owner }));
+  }
+  const generators: ProjectGeneratorTag[] = output?.generators ?? [];
 
   async function onGenerate(engine: string) {
     if (!projectId || generating) {
@@ -336,16 +354,21 @@ export function ProjectChatPage() {
     }
     setGenerating(true);
     setGeneratingEngine(engine);
+    setSelectedEngine(engine);
     setError(null);
     try {
-      const result = await session.client.generateProject(projectId, { engine, config: videoConfig });
+      const result = await session.client.generateProject(projectId, {
+        engine,
+        config: { ...videoConfig, engine },
+        clip_id: selectedClipId || undefined,
+      });
       if (result.error === "dry_run") {
         setError(new Error(result.note || "Dry-run is on. Uncheck Dry-run to submit to Grok Imagine."));
       }
       if (result.comms?.items) {
         setItems(result.comms.items);
       }
-      const next = await session.client.getProjectOutput(projectId);
+      const next = await session.client.getProjectOutput(projectId, engine, selectedClipId || undefined);
       setOutput(next);
       const last = (result.comms?.items ?? []).at(-1);
       if (last?.id) {
@@ -411,7 +434,7 @@ export function ProjectChatPage() {
       if (result.graph) {
         setRecord((current) => (current ? { ...current, graph: result.graph } : current));
       }
-      const next = await session.client.getProjectOutput(projectId);
+      const next = await session.client.getProjectOutput(projectId, selectedEngine, selectedClipId || undefined);
       setOutput(next);
     } catch {
       /* walkthrough still highlights locally via ?opt= */
@@ -592,10 +615,91 @@ export function ProjectChatPage() {
             <span className="text-stone-400"> | {instructionHop ? hopExtra(instructionHop) : hopKindLabel("output")}</span>
           </p>
           <p className="mt-1 font-mono text-[11px] text-stone-500">{outputPath}</p>
-          <p className="mt-1 text-[11px] text-stone-500">
-            Host-assembled after the hops above. sample/ is never written. Click a generator tag to submit.
-            Generated clips appear below this box. Grok Imagine: still (Image 2.0) then I2V (Video 1.5). Uncheck Dry-run first.
+          {sequence?.clips?.length ? (
+            <div
+              className="mt-2 rounded-xl border border-amber-200 bg-white px-3 py-2 dark:border-amber-800 dark:bg-stone-900"
+              data-testid="project-sequence"
+            >
+              <p className="text-[11px] text-stone-600" data-testid="project-sequence-note">
+                Sequence · {sequence.clips.length} clip{sequence.clips.length === 1 ? "" : "s"}
+                {sequence.delivery?.timeline_duration_s != null
+                  ? ` · ${sequence.delivery.timeline_duration_s}s timeline`
+                  : ""}
+                {" · "}
+                generation unit: {sequence.policy?.generation_unit || "clip"}
+                {sequence.policy?.concat ? ` · concat ${sequence.policy.concat}` : ""}
+                . Each clip is its own generation. Imagine is not called for the whole sequence.
+              </p>
+              <ul className="mt-2 flex flex-wrap gap-1">
+                {sequence.clips.map((row) => {
+                  const active = selectedClipId === row.clip_id;
+                  const window =
+                    row.start_s != null && row.end_s != null ? `${row.start_s}–${row.end_s}s` : "";
+                  return (
+                    <li key={row.clip_id}>
+                      <button
+                        type="button"
+                        data-testid={`project-sequence-clip-${row.clip_id}`}
+                        className={[
+                          "rounded-full border px-2 py-0.5 font-mono text-[10px]",
+                          active
+                            ? "border-amber-500 bg-amber-100 text-amber-950"
+                            : "border-stone-200 bg-stone-50 text-stone-700 hover:border-amber-300",
+                        ].join(" ")}
+                        onClick={() => setSelectedClipId(row.clip_id)}
+                      >
+                        {row.clip_id}
+                        {window ? ` · ${window}` : ""}
+                        {row.role ? ` · ${row.role}` : ""}
+                      </button>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          ) : null}
+          <p className="mt-1 text-[11px] text-stone-500" data-testid="project-compile-note">
+            {compileNote || "Host-assembled T4 projection"}
+            {output?.compiled?.profile_id ? ` · ${output.compiled.profile_id}` : ""}
+            {output?.compiled?.mode ? ` · ${output.compiled.mode}` : ""}
+            . sample/ is never written. Click a generator tag to submit. Imagine is not called automatically. Uncheck
+            Dry-run first.
           </p>
+          {chips.length ? (
+            <div className="mt-2 flex flex-wrap gap-1" data-testid="project-disposition-chips">
+              {chips.map((chip) => (
+                <span
+                  key={chip.disposition}
+                  data-disposition={chip.disposition}
+                  className={[
+                    "rounded-full border px-2 py-0.5 font-mono text-[10px]",
+                    chip.disposition === "unsupported"
+                      ? "border-red-200 bg-red-50 text-red-800"
+                      : chip.disposition === "exact"
+                        ? "border-emerald-200 bg-emerald-50 text-emerald-800"
+                        : "border-indigo-200 bg-indigo-50 text-indigo-800",
+                  ].join(" ")}
+                >
+                  {chip.disposition}
+                  {chip.count > 1 ? ` · ${chip.count}` : ""}
+                </span>
+              ))}
+            </div>
+          ) : null}
+          {criticWarnings.length ? (
+            <ul
+              className="mt-2 space-y-1 rounded-xl border border-rose-200 bg-white px-3 py-2 text-[11px] text-rose-900"
+              data-testid="project-critic-warnings"
+            >
+              {criticWarnings.map((row, index) => (
+                <li key={`${row.path}-${index}`}>
+                  <span className="font-semibold">{row.severity || "warn"}</span>
+                  {row.path ? <span className="font-mono text-stone-500"> {row.path}</span> : null}
+                  {row.message ? <span> — {row.message}</span> : null}
+                </li>
+              ))}
+            </ul>
+          ) : null}
           <div className="mt-3 flex flex-wrap gap-2" data-testid="project-generator-tags">
             {generators.map((tag) => (
               <button
@@ -627,7 +731,27 @@ export function ProjectChatPage() {
               </button>
             ))}
           </div>
-          <div className="mt-3 grid gap-2 sm:grid-cols-4" data-testid="project-video-config">
+          <div className="mt-3 grid gap-2 sm:grid-cols-2 lg:grid-cols-5" data-testid="project-video-config">
+            <label className="text-[10px] font-semibold uppercase tracking-wide text-stone-500">
+              Engine
+              <select
+                className="mt-1 w-full rounded-lg border border-stone-200 bg-white px-2 py-1 text-xs"
+                data-testid="project-engine"
+                value={selectedEngine}
+                onChange={(event) => {
+                  const next = event.target.value;
+                  setSelectedEngine(next);
+                  setVideoConfig((current) => ({ ...current, engine: next }));
+                }}
+              >
+                {generators.map((tag) => (
+                  <option key={tag.id} value={tag.id}>
+                    {tag.label}
+                    {tag.live ? "" : " (declared)"}
+                  </option>
+                ))}
+              </select>
+            </label>
             <label className="text-[10px] font-semibold uppercase tracking-wide text-stone-500">
               Aspect
               <select
@@ -679,9 +803,35 @@ export function ProjectChatPage() {
               </select>
             </label>
           </div>
-          <pre className="mt-3 max-h-[40rem] overflow-auto whitespace-pre-wrap rounded-xl bg-white p-3 text-xs text-stone-800">
-            {outputText}
-          </pre>
+          <div className="mt-3 max-h-[40rem] overflow-auto rounded-xl bg-white p-3" data-testid="project-output-sections">
+            {projection.intro ? (
+              <p className="mb-3 text-xs text-stone-600">{projection.intro}</p>
+            ) : null}
+            {projection.sections.length ? (
+              projection.sections.map((sec) => (
+                <section key={sec.heading} className="mb-3 last:mb-0" data-testid={`project-section-${sec.heading}`}>
+                  <h4 className="flex flex-wrap items-center gap-2 text-[11px] font-semibold text-stone-800">
+                    <span>{sec.heading}</span>
+                    {sec.owner ? (
+                      <button
+                        type="button"
+                        className="rounded border border-indigo-200 bg-indigo-50 px-1.5 py-0.5 font-mono text-[10px] font-medium text-indigo-800 hover:bg-indigo-100"
+                        data-testid={`project-section-owner-${sec.heading}`}
+                        title={`Open Chat hop for ${sec.owner} (${sec.path})`}
+                        onClick={() => openOwnerHop(sec.owner)}
+                      >
+                        {displayPartyName(sec.owner)}
+                      </button>
+                    ) : null}
+                    {sec.path ? <span className="font-mono text-[10px] font-normal text-stone-400">{sec.path}</span> : null}
+                  </h4>
+                  <pre className="mt-1 whitespace-pre-wrap font-sans text-xs text-stone-800">{sec.body}</pre>
+                </section>
+              ))
+            ) : (
+              <pre className="whitespace-pre-wrap font-sans text-xs text-stone-800">{outputText}</pre>
+            )}
+          </div>
         </section>
       ) : null}
       {clips.length ? (

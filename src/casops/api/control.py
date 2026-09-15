@@ -721,9 +721,9 @@ def create_control_plane(
         return merged
 
     @app.get("/api/v3/projects/{project_id}/output")
-    def project_output_get(project_id: str) -> dict[str, Any]:
+    def project_output_get(project_id: str, engine: str = Query(""), clip_id: str = Query("")) -> dict[str, Any]:
         read_project(state.projects_root, project_id)
-        return read_output(state.projects_root, project_id)
+        return read_output(state.projects_root, project_id, engine=engine, clip_id=clip_id)
 
     @app.get("/api/v3/projects/{project_id}/output/file")
     def project_output_file(project_id: str, name: str = Query(..., min_length=1, max_length=120)) -> FileResponse:
@@ -759,11 +759,13 @@ def create_control_plane(
         payload = body if isinstance(body, dict) else {}
         engine = str(payload.get("engine") or payload.get("tag") or "grok-imagine")
         config = payload.get("config") if isinstance(payload.get("config"), dict) else payload
+        clip_id = str(payload.get("clip_id") or (config or {}).get("clip_id") or "")
         return generate_project_media(
             state.projects_root,
             project_id,
             engine=engine,
             config=config if isinstance(config, dict) else {},
+            clip_id=clip_id or None,
             dry_run=bool(getattr(request.state, "dry_run", False)),
         )
 

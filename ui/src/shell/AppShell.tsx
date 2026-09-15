@@ -8,6 +8,7 @@ import {
   Database,
   FileCode,
   FileText,
+  Flag,
   FolderKanban,
   FolderTree,
   GitMerge,
@@ -312,7 +313,7 @@ export function AppShell() {
                             to={`${href}/${tab.path}`}
                             end
                             collapsed={collapsed}
-                            icon={tab.id === "chat" ? MessageSquare : GitBranch}
+                            icon={tab.id === "chat" ? MessageSquare : tab.id === "start" ? Flag : GitBranch}
                             inset
                             insetDepth={2}
                             testId={`nav-project-${item.id}-${tab.id}`}

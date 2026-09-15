@@ -1,0 +1,42 @@
+{
+  "schema": "video_generation_prompt_specification.v2",
+  "spec_version": "2.0.0",
+  "kind": "sequence",
+  "sequence_id": "SEQ.japanese-grandma-gta.001",
+  "revision": 1,
+  "project_id": "japanese-grandma-gta",
+  "intent": {
+    "logline": "Rural-Japan third-person chase: grandma on a senior scooter, invented HUD, anti-Miami"
+  },
+  "clips": [
+    {
+      "clip_id": "CLIP.japanese-grandma-gta.001",
+      "order": 1,
+      "start_s": 0,
+      "end_s": 15.0,
+      "path": "clips/CLIP.japanese-grandma-gta.001-canonical.yaml",
+      "role": "primary",
+      "logline": "Rural-Japan third-person chase: grandma on a senior scooter, invented HUD, anti-Miami"
+    }
+  ],
+  "delivery": {
+    "timeline_duration_s": 15.0,
+    "in_s": 0,
+    "out_s": 15.0
+  },
+  "policy": {
+    "generation_unit": "clip",
+    "one_pass_one_clip": true,
+    "concat": "post"
+  },
+  "provenance": {
+    "honesty": "CHARACTERIZATION",
+    "source_clip_id": "CLIP.japanese-grandma-gta.001",
+    "schema": "video_generation_prompt_specification.v2"
+  },
+  "extensions": {
+    "casops": {
+      "project_id": "japanese-grandma-gta"
+    }
+  }
+}

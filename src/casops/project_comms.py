@@ -317,6 +317,14 @@ def output_prompt_path(root: Path, slug: str) -> Path:
     return Path(root) / slug / "output" / f"{slug}-prompt.txt"
 
 
+def output_canonical_path(root: Path, slug: str) -> Path:
+    return Path(root) / slug / "output" / f"{slug}-canonical.yaml"
+
+
+def output_sequence_path(root: Path, slug: str) -> Path:
+    return Path(root) / slug / "output" / f"{slug}-sequence.yaml"
+
+
 def walkthrough_module(slug: str) -> Any:
     if slug == "european-handsome":
         from casops import project_european_handsome_walkthrough as mod
@@ -335,7 +343,122 @@ def walkthrough_module(slug: str) -> Any:
     return mod
 
 
-def read_output(root: Path, slug: str) -> dict[str, Any]:
+def _output_compile_preview(root: Path, slug: str, text: str, *, engine: str, clip_id: str = "") -> dict[str, Any]:
+    """P5: compile snapshot + critic warnings for Chat. Never calls a vendor. Never reads sample/."""
+    empty = {
+        "canonical_exists": False,
+        "clip_source": "missing",
+        "compile_note": "",
+        "compiled": None,
+        "critic_warnings": [],
+    }
+    try:
+        from casops.project_generate import _load_clip_for_generate, _profile_id_for_engine
+        from casops.video_prompt.compile import compile_clip, compiled_snapshot
+        from casops.video_prompt.owners import heading_owner
+        from casops.video_prompt.assemble import parse_projection_sections
+    except Exception:
+        return empty
+    tag = str(engine or "grok-imagine").strip() or "grok-imagine"
+    wanted = str(clip_id or "").strip()
+    try:
+        clip, source = _load_clip_for_generate(root, slug, text, clip_id=wanted or None)
+    except Exception:
+        clip, source = _load_clip_for_generate(root, slug, text)
+    compiled = None
+    if clip:
+        compiled = compiled_snapshot(compile_clip(clip, _profile_id_for_engine(tag)))
+    warnings: list[dict[str, str]] = []
+    if isinstance(clip, dict):
+        provenance = clip.get("provenance") if isinstance(clip.get("provenance"), dict) else {}
+        for row in provenance.get("diagnostics") or []:
+            if not isinstance(row, dict):
+                continue
+            severity = str(row.get("severity") or "warn")
+            if severity not in {"warn", "error"}:
+                continue
+            warnings.append(
+                {
+                    "agent_id": str(row.get("agent_id") or "video.critic"),
+                    "path": str(row.get("path") or ""),
+                    "severity": severity,
+                    "message": str(row.get("message") or ""),
+                }
+            )
+    if isinstance(compiled, dict):
+        for row in compiled.get("diagnostics") or []:
+            if not isinstance(row, dict):
+                continue
+            severity = str(row.get("severity") or "")
+            if severity not in {"warn", "error"}:
+                continue
+            warnings.append(
+                {
+                    "agent_id": "video.critic" if "constraint" in str(row.get("code") or "").lower() else "compiler",
+                    "path": str(row.get("path") or ""),
+                    "severity": severity,
+                    "message": str(row.get("message") or ""),
+                }
+            )
+    sections: list[dict[str, str]] = []
+    if text.strip():
+        parts = parse_projection_sections(text)
+        for heading, body in parts.items():
+            owner, path = heading_owner(heading)
+            sections.append({"heading": heading, "owner": owner, "path": path, "body": body})
+    note = ""
+    if compiled:
+        note = "compiled from canonical v2" if source == "canonical" else "compiled from T4 projection"
+    sequence = None
+    try:
+        from casops.video_prompt.sequence import load_sequence_file, sequence_from_clip
+
+        seq_file = output_sequence_path(root, slug)
+        if seq_file.is_file() and "sample" not in seq_file.parts:
+            sequence = load_sequence_file(seq_file)
+        elif clip:
+            sequence = sequence_from_clip(clip, slug=slug, path=f"{slug}-canonical.yaml")
+    except Exception:
+        sequence = None
+    sequence_compile = None
+    if sequence and clip:
+        try:
+            from casops.project_generate import _safe_output_clip_path
+            from casops.video_prompt.sequence import compile_sequence
+
+            clips_map: dict[str, dict[str, Any]] = {}
+            for row in sequence.get("clips") or []:
+                if not isinstance(row, dict):
+                    continue
+                cid = str(row.get("clip_id") or "")
+                cand = _safe_output_clip_path(root, slug, str(row.get("path") or ""))
+                if cid and cand is not None and cand.is_file():
+                    try:
+                        payload = json.loads(cand.read_text(encoding="utf-8"))
+                    except (OSError, json.JSONDecodeError, UnicodeDecodeError):
+                        continue
+                    if isinstance(payload, dict) and payload.get("kind") == "clip":
+                        clips_map[cid] = payload
+            if clip.get("clip_id") and str(clip.get("clip_id")) not in clips_map:
+                clips_map[str(clip.get("clip_id"))] = clip
+            if clips_map:
+                sequence_compile = compile_sequence(sequence, clips_map, _profile_id_for_engine(tag))
+        except Exception:
+            sequence_compile = None
+    return {
+        "canonical_exists": source == "canonical",
+        "clip_source": source if clip else "missing",
+        "clip_id": str((clip or {}).get("clip_id") or wanted or ""),
+        "compile_note": note,
+        "compiled": compiled,
+        "critic_warnings": warnings,
+        "sections": sections,
+        "sequence": sequence,
+        "sequence_compile": sequence_compile,
+    }
+
+
+def read_output(root: Path, slug: str, *, engine: str = "", clip_id: str = "") -> dict[str, Any]:
     """Read generated prompt only from output/. Never from sample/."""
     normalize_slug(slug)
     path = output_prompt_path(root, slug)
@@ -356,9 +479,17 @@ def read_output(root: Path, slug: str) -> dict[str, Any]:
             "media": list_output_media(root, slug),
             "generators": generator_catalog(configured=configured),
             "video_config": default_video_config(""),
+            "canonical_exists": False,
+            "compile_note": "",
+            "compiled": None,
+            "critic_warnings": [],
+            "sections": [],
+            "sequence": None,
+            "sequence_compile": None,
+            "clip_id": "",
         }
     text = path.read_text(encoding="utf-8")
-    return {
+    payload = {
         "path": rel,
         "exists": True,
         "text": text,
@@ -367,6 +498,8 @@ def read_output(root: Path, slug: str) -> dict[str, Any]:
         "generators": generator_catalog(configured=configured),
         "video_config": default_video_config(text),
     }
+    payload.update(_output_compile_preview(root, slug, text, engine=engine, clip_id=clip_id))
+    return payload
 
 
 def _normalize_prompt(text: str) -> str:
@@ -853,9 +986,17 @@ def apply_project_choices(
         if data.get("thinking") and agent_id == "video.creativedirector" and "Creative direction" not in section_parts:
             section_parts["Creative direction"] = str(data.get("thinking") or "")
     missing_sections: list[str] = []
+    assembled_clip = None
     if lock_picks:
         walk = walkthrough_module(slug)
-        output_text = walk.assembled_output(locks=locks, cycle_locks=cycle_locks)
+        from casops.video_prompt.assemble import clip_from_walkthrough, project_clip
+
+        assembled_clip = clip_from_walkthrough(walk, locks=locks, cycle_locks=cycle_locks)
+        from casops.video_prompt.patch import apply_choice_overlays, overlays_from_comms
+
+        overlay_result = apply_choice_overlays(assembled_clip, overlays_from_comms(items))
+        assembled_clip = overlay_result["clip"]
+        output_text = project_clip(assembled_clip)
         for agent_id, option_id in lock_picks.items():
             text = walk.human_lock_choice_text(agent_id, option_id)
             if not text:
@@ -941,7 +1082,12 @@ def apply_project_choices(
     if not dry_run and not copied:
         out_path = output_prompt_path(root, slug)
         out_path.parent.mkdir(parents=True, exist_ok=True)
-        out_path.write_text(output_text if output_text.endswith("\n") else output_text + "\n", encoding="utf-8")
+        if assembled_clip is not None:
+            from casops.video_prompt.assemble import write_clip_files
+
+            write_clip_files(out_path.parent, slug, assembled_clip)
+        else:
+            out_path.write_text(output_text if output_text.endswith("\n") else output_text + "\n", encoding="utf-8")
         record["graph"] = {"nodes": nodes, "edges": edges}
         write_project(root, record, dry_run=False, create=False)
         for node in nodes:

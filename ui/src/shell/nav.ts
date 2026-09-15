@@ -32,6 +32,7 @@ export const WORKFLOW_TABS = [
 ] as const;
 
 export const PROJECT_INSTANCE_TABS = [
+  { id: "start", label: "Start", path: "start" },
   { id: "workflow", label: "Workflow", path: "workflow" },
   { id: "chat", label: "Chat", path: "chat" },
 ] as const;
@@ -52,6 +53,9 @@ export function locationLabel(pathname: string): string {
     }
     if (tab === "workflow") {
       return `${PROJECT_MENU_LABEL} / ${id} / Workflow`;
+    }
+    if (tab === "start") {
+      return `${PROJECT_MENU_LABEL} / ${id} / Start`;
     }
     return `${PROJECT_MENU_LABEL} / ${id}`;
   }
