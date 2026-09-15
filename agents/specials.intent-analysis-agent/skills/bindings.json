@@ -10,6 +10,17 @@
       "operator_toggle": false,
       "host_permission": false,
       "tools": []
+    },
+    {
+      "skill_id": "casops.skill.specials.intent-analysis-agent.operation-guide",
+      "source": "local",
+      "path": "skills/operation_guide.md",
+      "enabled": true,
+      "author_enabled": true,
+      "inherited_enabled": true,
+      "operator_toggle": false,
+      "host_permission": false,
+      "tools": []
     }
   ],
   "note": "Declared, not resolved. host_permission in this file is not a grant; casops.auth.permissions reads permissions/register.json. operator_toggle stays false until FR-SKL-003 (reason, actor, time) is recorded on a live toggle."

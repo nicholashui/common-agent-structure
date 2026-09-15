@@ -105,6 +105,13 @@ GENERATOR_TAGS: list[dict[str, Any]] = [
         "live": False,
         "why": "Declared tag. Host has not activated LTX. Tag and stub profile ship together; not live.",
     },
+    {
+        "id": "gpt-image",
+        "label": "GPT Image 2.5",
+        "engine": "gpt-image",
+        "live": False,
+        "why": "Declared still tag from spec/gpt_image_operation_guide.md. Host has not activated GPT Image.",
+    },
 ]
 
 LOCK_AGENTS = [

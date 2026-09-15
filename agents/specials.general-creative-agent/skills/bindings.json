@@ -10,6 +10,17 @@
       "operator_toggle": false,
       "host_permission": false,
       "tools": []
+    },
+    {
+      "skill_id": "casops.skill.specials.general-creative-agent.operation-guide",
+      "source": "local",
+      "path": "skills/operation_guide.md",
+      "enabled": true,
+      "author_enabled": true,
+      "inherited_enabled": true,
+      "operator_toggle": false,
+      "host_permission": false,
+      "tools": []
     }
   ],
   "note": "Declared, not resolved. host_permission in this file is not a grant; casops.auth.permissions reads permissions/register.json."

@@ -159,6 +159,7 @@ def test_generate_dry_run_and_fail_closed(tmp_path: Path) -> None:
     assert "grok-image" in ids
     assert "runway" in ids
     assert "ltx" in ids
+    assert "gpt-image" in ids
     assert "compiled from" in (out.get("compile_note") or "")
     assert out.get("compiled")
     seq = out.get("sequence") or {}

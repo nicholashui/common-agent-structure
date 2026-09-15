@@ -662,9 +662,31 @@ export function ProjectChatPage() {
             {compileNote || "Host-assembled T4 projection"}
             {output?.compiled?.profile_id ? ` · ${output.compiled.profile_id}` : ""}
             {output?.compiled?.mode ? ` · ${output.compiled.mode}` : ""}
-            . sample/ is never written. Click a generator tag to submit. Imagine is not called automatically. Uncheck
-            Dry-run first.
+            {output?.compiled?.guide ? ` · ${output.compiled.guide}` : ""}
+            . Still carries identity and light. Motion describes change only. Duration and aspect live in the
+            controls, not as vendor syntax. sample/ is never written. Click a generator tag to submit. Imagine is
+            not called automatically. Uncheck Dry-run first.
           </p>
+          {(output?.compiled?.prompt?.still || output?.compiled?.prompt?.motion) ? (
+            <div className="mt-2 grid gap-2 sm:grid-cols-2" data-testid="project-compiled-prompts">
+              {output?.compiled?.prompt?.still ? (
+                <div>
+                  <p className="text-[10px] font-semibold uppercase tracking-wide text-stone-500">Compiled still</p>
+                  <pre className="mt-1 max-h-40 overflow-auto whitespace-pre-wrap rounded-lg bg-white p-2 font-sans text-[11px] text-stone-800" data-testid="project-compiled-still">
+                    {output.compiled.prompt.still}
+                  </pre>
+                </div>
+              ) : null}
+              {output?.compiled?.prompt?.motion ? (
+                <div>
+                  <p className="text-[10px] font-semibold uppercase tracking-wide text-stone-500">Compiled motion</p>
+                  <pre className="mt-1 max-h-40 overflow-auto whitespace-pre-wrap rounded-lg bg-white p-2 font-sans text-[11px] text-stone-800" data-testid="project-compiled-motion">
+                    {output.compiled.prompt.motion}
+                  </pre>
+                </div>
+              ) : null}
+            </div>
+          ) : null}
           {chips.length ? (
             <div className="mt-2 flex flex-wrap gap-1" data-testid="project-disposition-chips">
               {chips.map((chip) => (

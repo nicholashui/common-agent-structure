@@ -29,9 +29,11 @@ def test_grok_compile_from_canonical_not_sample() -> None:
     assert compiled["compiler_version"] == COMPILER_VERSION
     assert "Do not animate" in still
     assert identity.split(".")[0] in still
+    assert not still.lower().lstrip().startswith("9:16")
+    assert compiled.get("guide") == "spec/grok_imagine_operation_guide.md"
     assert "hard, cold sunlight" in still.lower() or "7:20am" in still
     assert "opening smash" not in still.lower()
-    assert "Animate this locked still" in motion
+    assert "Hold the composition" in motion
     assert "opening smash" in motion.lower()
     assert "Hair stays off the lips" in still
     assert "Hair stays off the lips" in motion
@@ -80,8 +82,8 @@ def test_seedance_compile_is_blocked_not_a_fake_request() -> None:
     assert compiled["status"] == "blocked"
     assert compiled["live"] is False
     assert compiled["request"] == {}
-    assert compiled["prompt"]["still"] == ""
-    assert compiled["prompt"]["motion"] == ""
+    assert compiled["prompt"]["motion"]
+    assert compiled["guide"] == "spec/seedance_operation_guide.md"
     assert compiled["diagnostics"][0]["code"] == "CAPABILITY_PROFILE_NOT_LIVE"
     assert any(row["disposition"] == "unsupported" for row in compiled["coverage"])
     assert compiled["proposal"]["live"] is False
@@ -177,7 +179,7 @@ def test_generate_uses_canonical_not_t4_text(tmp_path: Path, monkeypatch) -> Non
     assert result["clip_source"] == "canonical"
     assert "CANONICAL-FACE-LOCK-XYZ" in seen["still"]
     assert "T4-FACE-LOCK-SHOULD-NOT-EMIT" not in seen["still"]
-    assert "Animate this locked still" in seen["motion"]
+    assert "Hold the composition" in seen["motion"]
     package = tmp_path / "asain-beauty" / "output" / "compiled" / "grok-imagine" / "compiled.request.json"
     assert package.is_file()
     assert not (tmp_path / "asain-beauty" / "sample").exists()

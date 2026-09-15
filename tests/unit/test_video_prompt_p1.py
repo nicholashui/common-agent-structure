@@ -84,7 +84,7 @@ def test_generate_prompts_unchanged_in_p1() -> None:
     still = still_prompt(text)
     motion = motion_prompt(text)
     assert "Do not animate" in still
-    assert "Animate this locked still" in motion
-    assert "0–3s smash" in motion
+    assert "Hold the composition" in motion
+    assert "0–3s smash" in motion or "smash" in motion
     assert "Hair stays off the lips" in still
     assert "Do not chew or eat hair" in motion

@@ -573,6 +573,7 @@ export interface CompileSnapshot {
   coverage?: CompileCoverageRow[];
   diagnostics?: CompileDiagnostic[];
   proposal?: { live?: boolean; message?: string } | null;
+  guide?: string | null;
 }
 
 export interface OutputSection {

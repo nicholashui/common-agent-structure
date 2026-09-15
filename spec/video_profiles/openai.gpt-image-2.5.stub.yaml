@@ -1,0 +1,38 @@
+{
+  "profile_id": "openai.gpt-image-2.5.stub",
+  "profile_revision": 1,
+  "live": false,
+  "generator_tag": "gpt-image",
+  "identity": {
+    "provider": "openai",
+    "surface": "undeclared",
+    "model_id": "gpt-image-2.5-flare",
+    "mode": "still"
+  },
+  "evidence": {
+    "documentation_status": "unverified",
+    "documentation_checked_at": "2026-09-15",
+    "source_ids": [],
+    "execution_status": "not_tested",
+    "execution_tested_at": null
+  },
+  "capabilities": {
+    "text_prompt": true,
+    "image_references": true,
+    "audio_generation": false,
+    "separate_audio_stems": false,
+    "timestamp_prose": false,
+    "exact_frame_timing": false
+  },
+  "validation": {
+    "duration_rule": "still_no_duration",
+    "asset_roles": "none",
+    "combined_feature_constraints": "adapter_owned",
+    "runtime_field_mapping": "adapter_owned"
+  },
+  "availability": {
+    "account_access": "unknown",
+    "quota": "unknown",
+    "region_access": "unknown"
+  }
+}

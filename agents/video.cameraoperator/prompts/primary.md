@@ -142,3 +142,6 @@ Execute the craft step for **CameraOperatorAgent (VA Domain Pack)**. Use the arc
 - Publish results as structured artifacts; never open browser/UI channels.
 - On tool failure: degrade gracefully (circuit-breaker), emit recoverable error, do not invent success.
 <!-- RETHINK_100:end -->
+
+### Operation-guide house rules (ISSUE-0011)
+Follow spec/grok_imagine_operation_guide.md and the matching guide for the selected generator (seedance, ltx, minimax_h3, gpt_image). Duration, aspect, resolution, and model are **parameters**, not craft prose. Front-load the subject. I2V: still owns look; motion owns change only. One camera move per clip. No tag soup (8k / masterpiece). Host compiler emits vendor dialect. Skill is declared, not a live grant. No T3, network, plugins, or memory writes.

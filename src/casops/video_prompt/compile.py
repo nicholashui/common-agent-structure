@@ -8,6 +8,7 @@ from copy import deepcopy
 from pathlib import Path
 from typing import Any
 
+from casops.video_prompt.dialects import GUIDE_BY_TAG, dialect_prompts
 from casops.video_prompt.profiles import ProfileError, load_profile, profile_for_tag
 from casops.video_prompt.schema import ClipSchemaError, validate_clip
 
@@ -236,30 +237,10 @@ def _compile_grok(clip: dict[str, Any], profile: dict[str, Any]) -> dict[str, An
     tag = str(profile.get("generator_tag") or "")
     mode = str((profile.get("identity") or {}).get("mode") or "")
     still_only = tag == "grok-image" or mode == "still"
-
-    still = _cap(
-        _join(
-            f"Photoreal still, {aspect} vertical phone-macro close-up. Locked adult identity. Do not animate.",
-            frame,
-            identity,
-            hair,
-            makeup,
-            skin,
-            light,
-            "\n".join(_unique_lines(hair_lines, hard, forbid, acceptance)),
-        )
-    )
-    motion = ""
-    if not still_only:
-        motion = _cap(
-            _join(
-                "Animate this locked still. Keep the same adult identity, moles, hair, makeup, and light. Motion and sound only. Do not re-describe the face.",
-                beats,
-                camera_text,
-                audio_text,
-                "\n".join(hair_lines),
-            )
-        )
+    constraint_text = "\n".join(_unique_lines(hair_lines, hard, forbid, acceptance))
+    dialect = dialect_prompts(clip, tag, constraints=constraint_text)
+    still = _cap(dialect.get("still") or "")
+    motion = "" if still_only else _cap(dialect.get("motion") or "")
 
     still_request = {
         "model": "grok-imagine-image-2.0",
@@ -328,6 +309,7 @@ def _compile_grok(clip: dict[str, Any], profile: dict[str, Any]) -> dict[str, An
         "diagnostics": diagnostics,
         "coverage": coverage,
         "proposal": None,
+        "guide": GUIDE_BY_TAG.get(tag),
     }
 
 
@@ -364,7 +346,16 @@ def compile_clip(canonical: dict[str, Any], profile_id: str | None = None) -> di
         )
     tag = str(profile.get("generator_tag") or "")
     if not profile.get("live") or tag not in GROK_LIVE_TAGS:
-        return _empty_package(
+        hair_lines, _src = constraint_lines(clip)
+        hard = _constraint_bucket(clip, "hard")
+        forbid = _forbid_list(clip)
+        acceptance = _constraint_bucket(clip, "acceptance")
+        dialect = dialect_prompts(
+            clip,
+            tag,
+            constraints="\n".join(_unique_lines(hair_lines, hard, forbid, acceptance)),
+        )
+        pkg = _empty_package(
             clip=clip,
             profile=profile,
             status="blocked",
@@ -375,13 +366,16 @@ def compile_clip(canonical: dict[str, Any], profile_id: str | None = None) -> di
                     path="target.profile_id",
                     message=(
                         f"{profile.get('profile_id')} ({tag}) is not a live compiler target. "
-                        "Fail-closed. Do not emit a pretend request."
+                        "Fail-closed. Dialect prompt is operator preview only. Do not emit a pretend request."
                     ),
                     proposal={"live": False, "activate": False},
                 )
             ],
             coverage=[_coverage_row("live emit", "unsupported", "target.profile_id")],
         )
+        pkg["prompt"] = {"still": dialect.get("still") or "", "motion": dialect.get("motion") or ""}
+        pkg["guide"] = GUIDE_BY_TAG.get(tag)
+        return pkg
     return _compile_grok(clip, profile)
 
 
@@ -490,4 +484,5 @@ def compiled_snapshot(compiled: dict[str, Any]) -> dict[str, Any]:
         "coverage": compiled.get("coverage") or [],
         "diagnostics": compiled.get("diagnostics") or [],
         "proposal": compiled.get("proposal"),
+        "guide": compiled.get("guide"),
     }

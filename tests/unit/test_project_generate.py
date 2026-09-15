@@ -64,7 +64,7 @@ def test_prompts_are_still_then_motion() -> None:
     motion = motion_prompt(text)
     assert "Do not animate" in still
     assert "Adult East Asian woman" in still
-    assert "Animate this locked still" in motion
+    assert "Hold the composition" in motion
     assert "0–3s smash" in motion
     assert "Hair stays off the lips" in still
     assert "Do not put hair in the mouth" in motion
@@ -78,7 +78,7 @@ def test_catalog_has_grok_and_declared_tags() -> None:
     ids = [row["id"] for row in rows]
     assert ids[0] == "grok-imagine"
     assert "grok-image" in ids
-    for extra in ("kling", "veo", "seedance", "sora", "runway", "luma", "pika", "hailuo", "wan", "ltx"):
+    for extra in ("kling", "veo", "seedance", "sora", "runway", "luma", "pika", "hailuo", "wan", "ltx", "gpt-image"):
         assert extra in ids
     grok = next(row for row in rows if row["id"] == "grok-imagine")
     assert grok["live"] is True and grok["configured"] is True
@@ -175,7 +175,7 @@ def test_grok_imagine_saves_video(tmp_path: Path, monkeypatch: pytest.MonkeyPatc
             return {"data": [{"b64_json": jpeg}]}
         if url.endswith("/videos/generations"):
             assert payload["image"]["url"].startswith("data:image/")
-            assert "Animate this locked still" in payload["prompt"]
+            assert "Hold the composition" in payload["prompt"]
             return {"request_id": "vid-1"}
         raise AssertionError(url)
 
