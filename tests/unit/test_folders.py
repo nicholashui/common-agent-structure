@@ -5,7 +5,13 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-from casops.compose.folders import list_agent_ids, list_agent_summaries, locate_agent_folder, public_folder_ref
+from casops.compose.folders import (
+    list_agent_ids,
+    list_agent_summaries,
+    locate_agent_folder,
+    public_folder_ref,
+    public_path_ref,
+)
 
 
 def _write_spec(folder: Path, agent_id: str, role: str = "", va_category: str | None = None) -> None:
@@ -71,6 +77,20 @@ def test_public_folder_ref_is_repo_relative(tmp_path: Path) -> None:
     folder = root / "video.director"
     folder.mkdir(parents=True)
     assert public_folder_ref(folder, root) == "agents/video.director"
+
+
+def test_public_path_ref_never_absolute(tmp_path: Path) -> None:
+    nested = tmp_path / "logs" / "chat" / "video.director" / "session.jsonl"
+    nested.parent.mkdir(parents=True)
+    nested.write_text("x", encoding="utf-8")
+    shown = public_path_ref(nested, tmp_path / "logs" / "chat")
+    posix = shown.replace("\\", "/")
+    assert not Path(posix).is_absolute()
+    assert posix[1:2] != ":"
+    assert posix.endswith("video.director/session.jsonl")
+    pack = tmp_path / "common-agent-structure" / "agents" / "video.director"
+    pack.mkdir(parents=True)
+    assert public_path_ref(pack).replace("\\", "/").endswith("agents/video.director")
 
 
 def test_locate_ignores_corrupt_sibling(tmp_path: Path) -> None:

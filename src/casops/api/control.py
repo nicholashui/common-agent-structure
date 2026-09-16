@@ -46,6 +46,7 @@ from casops.projects import (
     suggest_prompt,
     write_project,
 )
+from casops.programs import list_programs, programs_root_for, read_program, write_program
 from casops.cache.manager import CacheManager
 from casops.memory.store import ConsolidationWorker, MemoryService
 from casops.plugins.validate import validate_registry
@@ -127,6 +128,9 @@ COMPANION_V3_PATHS: tuple[tuple[str, str], ...] = (
     ("GET", "/api/v3/projects/{project_id}/output"),
     ("GET", "/api/v3/projects/{project_id}/output/file"),
     ("POST", "/api/v3/projects/{project_id}/generate"),
+    ("GET", "/api/v3/programs"),
+    ("POST", "/api/v3/programs"),
+    ("GET", "/api/v3/programs/{program_id}"),
     ("GET", "/api/v3/swarms"),
     ("GET", "/api/v3/swarms/{swarm_id}"),
     ("GET", "/api/v3/swarms/{swarm_id}/roster"),
@@ -155,6 +159,7 @@ class HostState:
     llm: LlmRouter
     cache: CacheManager = field(default_factory=CacheManager)
     projects_root: Path = field(default_factory=lambda: Path("project"))
+    programs_root: Path = field(default_factory=lambda: Path("program"))
     incidents: list[dict[str, Any]] = field(default_factory=list)
     candidates: dict[str, dict[str, Any]] = field(default_factory=dict)
     ledger: list[dict[str, Any]] = field(default_factory=list)
@@ -184,6 +189,7 @@ def create_control_plane(
     cache: CacheManager | None = None,
     llm: LlmRouter | None = None,
     projects_root: Path | None = None,
+    programs_root: Path | None = None,
 ) -> FastAPI:
     store = store or InvariantStore.with_host_defaults()
     instruments = instruments or InstrumentRegistry()
@@ -210,6 +216,7 @@ def create_control_plane(
         llm=llm,
         cache=cache or CacheManager(),
         projects_root=projects_root_for(agents_root, projects_root),
+        programs_root=programs_root_for(agents_root, programs_root),
     )
     app = FastAPI(title="casops-control-plane", version="0.1.0")
     install_error_handler(app)
@@ -668,6 +675,25 @@ def create_control_plane(
             history=history,
             session=session,
         )
+
+    @app.get("/api/v3/programs")
+    def program_list() -> dict[str, Any]:
+        return {"programs": list_programs(state.programs_root)}
+
+    @app.post("/api/v3/programs")
+    def program_create(request: Request, body: dict[str, Any]) -> dict[str, Any]:
+        if getattr(request.state, "actor", None) is ActorClass.agent_runtime:
+            raise CasopsError(ErrorCode.IMP_SELF_APPROVAL)
+        return write_program(
+            state.programs_root,
+            body if isinstance(body, dict) else {},
+            dry_run=bool(getattr(request.state, "dry_run", False)),
+            create=True,
+        )
+
+    @app.get("/api/v3/programs/{program_id}")
+    def program_get(program_id: str) -> dict[str, Any]:
+        return read_program(state.programs_root, program_id)
 
     @app.get("/api/v3/projects")
     def project_list() -> dict[str, Any]:

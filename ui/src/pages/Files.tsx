@@ -9,6 +9,7 @@ import type { AgentFileFolder, AgentFileItem, AgentFileRow } from "../api/types"
 import { useAgentId, useAsync } from "../lib/hooks";
 import { pretty } from "../lib/json";
 import { isJsonPath, isMarkdownPath } from "../lib/markdown";
+import { displayRelativePath } from "../lib/paths";
 import { useSession } from "../state/session";
 
 function folderOf(path: string): string {
@@ -152,7 +153,8 @@ export function FilesPage() {
     setNotice(null);
     try {
       const body = await session.client.putAgentFile(agentId, item.path, draft);
-      setNotice(body.saved ? `Saved ${body.path}` : `Dry-run only — ${body.path} was not written`);
+      const shown = displayRelativePath(body.path) || body.path;
+      setNotice(body.saved ? `Saved ${shown}` : `Dry-run only — ${shown} was not written`);
       if (body.saved) {
         setItem({ ...item, content: draft, bytes: body.bytes, sha256: body.sha256 ?? item.sha256 });
         tree.reload();
@@ -200,7 +202,11 @@ export function FilesPage() {
       <ErrorBanner error={loadError ?? saveError ?? tree.error} />
       {notice ? <p className="mb-4 text-sm text-emerald-800">{notice}</p> : null}
       {blocked && dirty ? <p className="mb-4 text-sm text-amber-800">{blocked}</p> : null}
-      {tree.data ? (
+      {tree.loading && !tree.data ? (
+        <p className="text-sm text-stone-500" data-testid="files-loading">
+          Loading files…
+        </p>
+      ) : tree.data ? (
         <div className="grid grid-cols-1 gap-5 lg:grid-cols-[16rem_minmax(0,1fr)]">
           <Card className="lg:max-h-[70vh] lg:overflow-auto">
             <div data-testid="files-folders">
@@ -236,7 +242,7 @@ export function FilesPage() {
                       }`}
                       onClick={() => selectPath(file.path)}
                     >
-                      {file.path.slice(activeFolder.length + 1) || file.path}
+                      {displayRelativePath(file.path.slice(activeFolder.length + 1) || file.path)}
                     </button>
                   </li>
                 ))
@@ -249,13 +255,13 @@ export function FilesPage() {
           <Card>
             {selectedPath ? (
               <p className="mb-2 font-mono text-xs text-stone-400" data-testid="files-path">
-                {selectedPath}
+                {displayRelativePath(selectedPath)}
               </p>
             ) : null}
             {item ? (
               <>
                 <div className="mb-3 flex flex-wrap items-center gap-2 text-xs">
-                  <span className="font-mono text-sm text-stone-900">{item.path}</span>
+                  <span className="font-mono text-sm text-stone-900">{displayRelativePath(item.path)}</span>
                   <span
                     className={`rounded-full border px-2 py-0.5 ${
                       item.writable ? "border-emerald-200 bg-emerald-50 text-emerald-800" : "border-stone-200 bg-stone-50 text-stone-500"
@@ -300,7 +306,7 @@ export function FilesPage() {
                     />
                   )
                 ) : (
-                  <EmptyState title="Not a text file" body={`${item.path} is ${item.kind} and cannot be edited here.`} />
+                  <EmptyState title="Not a text file" body={`${displayRelativePath(item.path)} is ${item.kind} and cannot be edited here.`} />
                 )}
                 {selectedMeta && !item.writable ? (
                   <p className="mt-3 text-xs text-stone-500">
@@ -309,7 +315,7 @@ export function FilesPage() {
                 ) : null}
               </>
             ) : selectedPath ? (
-              <p className="text-sm text-stone-500">Loading {selectedPath}…</p>
+              <p className="text-sm text-stone-500">Loading {displayRelativePath(selectedPath)}…</p>
             ) : (
               <EmptyState
                 title="Select a file"
@@ -324,7 +330,7 @@ export function FilesPage() {
         title="Write this file?"
         body={
           <p>
-            This PUTs <span className="font-mono">{item?.path}</span> into the agent folder. Dry-run is off, so the
+            This PUTs <span className="font-mono">{displayRelativePath(item?.path)}</span> into the agent folder. Dry-run is off, so the
             host will persist the bytes if the mutation contract is accepted.
           </p>
         }

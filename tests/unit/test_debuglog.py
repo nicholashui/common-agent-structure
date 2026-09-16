@@ -36,8 +36,10 @@ def test_write_debug_logs_appends_jsonl(tmp_path: Path, monkeypatch: pytest.Monk
     )
     api_path = tmp_path / f"{session}-api.log"
     ui_path = tmp_path / f"{session}-ui.log"
-    assert files["api"] == str(api_path)
-    assert files["ui"] == str(ui_path)
+    assert files["api"].replace("\\", "/").endswith(api_path.name)
+    assert files["ui"].replace("\\", "/").endswith(ui_path.name)
+    assert not Path(files["api"]).is_absolute()
+    assert not Path(files["ui"]).is_absolute()
     api = json.loads(api_path.read_text(encoding="utf-8").splitlines()[0])
     ui = json.loads(ui_path.read_text(encoding="utf-8").splitlines()[0])
     assert api["ts"] == "2026-09-02T12:00:00.001Z"
@@ -104,7 +106,8 @@ def test_write_chat_turns_saves_timestamped_file(tmp_path: Path, monkeypatch: py
         }
     )
     path = tmp_path / "common.health" / f"{session}.jsonl"
-    assert files["transcript"] == str(path)
+    assert files["transcript"].replace("\\", "/").endswith(f"common.health/{session}.jsonl")
+    assert not Path(files["transcript"]).is_absolute()
     lines = [json.loads(line) for line in path.read_text(encoding="utf-8").splitlines()]
     assert lines[0]["ts"] == "2026-09-02T12:00:00.000Z"
     assert lines[0]["role"] == "user"
@@ -112,6 +115,8 @@ def test_write_chat_turns_saves_timestamped_file(tmp_path: Path, monkeypatch: py
     listed = list_chat_files("common.health")
     assert listed[0]["name"] == f"{session}.jsonl"
     assert listed[0]["ts"]
+    assert not Path(listed[0]["path"]).is_absolute()
+    assert listed[0]["path"].replace("\\", "/").endswith(f"common.health/{session}.jsonl")
     loaded = read_chat_file("common.health", f"{session}.jsonl")
     assert loaded["session"] == session
     assert loaded["turns"][0]["content"] == "ping"

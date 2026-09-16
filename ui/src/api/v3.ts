@@ -29,6 +29,8 @@ import {
   type EvalFixturesResponse,
   type AgentFileItem,
   type AgentFilesResponse,
+  type ProgramSummary,
+  type ProgramRecord,
   type ProjectSummary,
   type ProjectCatalogItem,
   type ProjectSuggestion,
@@ -327,6 +329,14 @@ export function createClient(options: ClientOptions) {
         params: { agent_id: agentId },
         body: { provider },
       }),
+    listPrograms: () => bound("listPrograms", {}) as Promise<{ programs: ProgramSummary[] }>,
+    createProgram: (body: { code: string; name: string }) =>
+      request<ProgramRecord>("POST", "/api/v3/programs", {
+        body,
+        reasonFallback: "create program",
+      }),
+    getProgram: (programId: string) =>
+      bound("getProgram", { program_id: programId }) as Promise<ProgramRecord>,
     listProjects: () => bound("listProjects", {}) as Promise<{ projects: ProjectSummary[] }>,
     getProjectCatalog: () => bound("getProjectCatalog", {}) as Promise<{ group: string; items: ProjectCatalogItem[] }>,
     suggestProject: (body: Record<string, string>) =>

@@ -1,5 +1,6 @@
 import { BrowserRouter, Navigate, Route, Routes, useParams } from "react-router-dom";
 import { AppShell } from "./shell/AppShell";
+import { AgentProfileLayout } from "./shell/AgentProfileLayout";
 import { SessionProvider } from "./state/session";
 import { ThemeProvider } from "./theme/ThemeProvider";
 import { FleetPage } from "./pages/Fleet";
@@ -23,6 +24,8 @@ import { SettingsPage } from "./pages/Settings";
 import { OrgChatPage } from "./pages/OrgChat";
 import { WorkflowPage } from "./pages/Workflow";
 import { HelpPage } from "./pages/Help";
+import { ProgramNewPage } from "./pages/ProgramNew";
+import { ProgramViewPage } from "./pages/ProgramView";
 import { ProjectNewPage } from "./pages/ProjectNew";
 import { ProjectStartPage } from "./pages/ProjectStart";
 import { ProjectFlowPage } from "./pages/ProjectFlow";
@@ -41,6 +44,9 @@ export function App() {
           <Routes>
             <Route element={<AppShell />}>
               <Route path="/" element={<FleetPage />} />
+              <Route path="/programs/new" element={<ProgramNewPage />} />
+              <Route path="/programs/:programId" element={<ProgramViewPage />} />
+              <Route path="/programs" element={<ProgramNewPage />} />
               <Route path="/projects/new" element={<ProjectNewPage />} />
               <Route path="/projects/:projectId/start" element={<ProjectStartPage />} />
               <Route path="/projects/:projectId/workflow" element={<ProjectFlowPage />} />
@@ -53,23 +59,25 @@ export function App() {
               <Route path="/settings" element={<SettingsPage />} />
               <Route path="/help" element={<HelpPage />} />
               <Route path="/traces/:tid" element={<TracePage />} />
-              <Route path="/agents/:agentId" element={<AgentOverviewPage />} />
-              <Route path="/agents/:agentId/chat" element={<ChatPage />} />
-              <Route path="/agents/:agentId/structure" element={<StructurePage />} />
-              <Route path="/agents/:agentId/files" element={<FilesPage />} />
-              <Route path="/agents/:agentId/compose" element={<ComposePage />} />
-              <Route path="/agents/:agentId/run" element={<RunPage />} />
-              <Route path="/agents/:agentId/traces" element={<TracePage />} />
-              <Route path="/agents/:agentId/traces/:tid" element={<TracePage />} />
-              <Route path="/agents/:agentId/capabilities" element={<CapabilitiesPage />} />
-              <Route path="/agents/:agentId/protocols" element={<ProtocolsPage />} />
-              <Route path="/agents/:agentId/memory" element={<MemoryPage />} />
-              <Route path="/agents/:agentId/plugins" element={<PluginsPage />} />
-              <Route path="/agents/:agentId/cache" element={<CachePage />} />
-              <Route path="/agents/:agentId/safety" element={<SafetyPage />} />
-              <Route path="/agents/:agentId/improvement" element={<ImprovementPage />} />
-              <Route path="/agents/:agentId/validation" element={<ValidationPage />} />
-              <Route path="/agents/:agentId/corrigibility" element={<CorrigibilityPage />} />
+              <Route path="/agents/:agentId" element={<AgentProfileLayout />}>
+                <Route index element={<AgentOverviewPage />} />
+                <Route path="chat" element={<ChatPage />} />
+                <Route path="structure" element={<StructurePage />} />
+                <Route path="files" element={<FilesPage />} />
+                <Route path="compose" element={<ComposePage />} />
+                <Route path="run" element={<RunPage />} />
+                <Route path="traces" element={<TracePage />} />
+                <Route path="traces/:tid" element={<TracePage />} />
+                <Route path="capabilities" element={<CapabilitiesPage />} />
+                <Route path="protocols" element={<ProtocolsPage />} />
+                <Route path="memory" element={<MemoryPage />} />
+                <Route path="plugins" element={<PluginsPage />} />
+                <Route path="cache" element={<CachePage />} />
+                <Route path="safety" element={<SafetyPage />} />
+                <Route path="improvement" element={<ImprovementPage />} />
+                <Route path="validation" element={<ValidationPage />} />
+                <Route path="corrigibility" element={<CorrigibilityPage />} />
+              </Route>
               <Route path="*" element={<Navigate to="/" replace />} />
             </Route>
           </Routes>

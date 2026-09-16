@@ -2,12 +2,14 @@ import { describe, expect, it } from "vitest";
 import {
   AGENT_MENU_LABEL,
   AGENT_TABS,
+  PROGRAM_MENU_LABEL,
   PROJECT_MENU_LABEL,
   WORKFLOW_MENU_LABEL,
   WORKFLOW_TABS,
   defaultNavChrome,
   ensureOpenProject,
   loadNavChrome,
+  agentTabPath,
   locationLabel,
   parseOpenProjects,
   projectIdFromPath,
@@ -46,11 +48,12 @@ describe("agent I/O contract", () => {
 });
 
 describe("page location label", () => {
-  it("uses the agent path as the large menu label", () => {
+  it("uses a readable agent breadcrumb", () => {
     expect(locationLabel("/agents/common.health/corrigibility")).toBe(
-      "Agent Swarm / agents/common.health/corrigibility",
+      "Agent Swarm / common.health / Corrigibility",
     );
-    expect(locationLabel("/agents/video.director")).toBe("Agent Swarm / agents/video.director");
+    expect(locationLabel("/agents/video.director")).toBe("Agent Swarm / video.director");
+    expect(locationLabel("/agents/video.promptengineer/chat")).toBe("Agent Swarm / video.promptengineer / Chat");
     expect(locationLabel("/")).toBe("Agent Swarm");
     expect(locationLabel("/org-chat")).toBe("Agent Swarm / Agent Org Chat");
     expect(locationLabel("/workflow")).toBe("Agent Swarm / Agent Workflow / Main Workflow");
@@ -61,6 +64,14 @@ describe("page location label", () => {
     expect(locationLabel("/projects/asain-beauty/workflow")).toBe("Project / asain-beauty / Workflow");
     expect(locationLabel("/projects/asain-beauty/chat")).toBe("Project / asain-beauty / Chat");
     expect(locationLabel("/projects/asain-beauty/start")).toBe("Project / asain-beauty / Start");
+  });
+
+  it("keeps the Agent Profile tab when switching agents", () => {
+    expect(agentTabPath("/agents/video.director")).toBe("");
+    expect(agentTabPath("/agents/video.director/chat")).toBe("chat");
+    expect(agentTabPath("/agents/video.director/files")).toBe("files");
+    expect(agentTabPath("/agents/video.director/traces/abc")).toBe("traces");
+    expect(agentTabPath("/projects/asain-beauty/chat")).toBe("");
   });
 });
 
@@ -152,6 +163,7 @@ describe("agent menu label", () => {
   });
 
   it("nests Main Workflow under Agent Workflow", () => {
+    expect(PROGRAM_MENU_LABEL).toBe("Program");
     expect(PROJECT_MENU_LABEL).toBe("Project");
     expect(WORKFLOW_MENU_LABEL).toBe("Agent Workflow");
     expect(WORKFLOW_TABS.some((tab) => tab.id === "main" && tab.path === "/workflow" && tab.label === "Main Workflow")).toBe(true);

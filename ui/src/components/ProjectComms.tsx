@@ -56,13 +56,18 @@ export function ProjectCommsPanel({
         <p className="mt-1 text-[11px] text-stone-500">
           Auto Pilot: Create Project is the draft only. intent-analysis-agent and creative-agent frame the run. Domain experts ask; you select options.
         </p>
-        <textarea
-          className={`${inputClass} mt-2 h-20 py-2 text-xs`}
-          data-testid="project-first-instruction"
-          placeholder="High-level intent only (details are decided on expert nodes)"
-          value={instruction}
-          onChange={(event) => onInstruction(event.target.value)}
-        />
+        <label className="mt-2 flex flex-col gap-1 text-[11px] font-medium text-stone-600">
+          First instruction
+          <textarea
+            id="project-first-instruction"
+            className={`${inputClass} h-20 py-2 text-xs`}
+            data-testid="project-first-instruction"
+            aria-label="First instruction"
+            placeholder="High-level intent only (details are decided on expert nodes)"
+            value={instruction}
+            onChange={(event) => onInstruction(event.target.value)}
+          />
+        </label>
         <div className="mt-2">
           <PrimaryButton type="button" data-testid="project-run" disabled={launching} onClick={onLaunch}>
             {launching ? "Running…" : "Launch workflow"}

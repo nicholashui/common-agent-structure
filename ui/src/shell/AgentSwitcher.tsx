@@ -49,10 +49,11 @@ export function AgentSwitcher({
   }
 
   return (
-    <div ref={root} className="relative w-[min(50%,28rem)] min-w-[16rem]">
-      <label className="sr-only" htmlFor="agent-switcher">
-        Search agents
+    <div ref={root} className="flex w-full items-center gap-2">
+      <label className="shrink-0 text-xs font-medium text-stone-600" htmlFor="agent-switcher">
+        Agent
       </label>
+      <div className="relative min-w-0 flex-1">
       <input
         id="agent-switcher"
         role="combobox"
@@ -95,7 +96,7 @@ export function AgentSwitcher({
         }}
       />
       {open ? (
-        <div className="absolute left-0 right-0 top-full z-50 mt-1 overflow-hidden rounded-lg border border-stone-200 bg-white shadow-md">
+        <div className="absolute inset-x-0 top-full z-50 mt-1 overflow-hidden rounded-lg border border-stone-200 bg-white shadow-md dark:border-stone-700 dark:bg-stone-900">
           <p className="border-b border-stone-100 px-3 py-1.5 text-[11px] text-stone-500">
             {filtered.length} of {ids.length} agents
           </p>
@@ -133,6 +134,7 @@ export function AgentSwitcher({
           )}
         </div>
       ) : null}
+      </div>
     </div>
   );
 }

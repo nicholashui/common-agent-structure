@@ -1,4 +1,5 @@
 import { MarkdownBody } from "../components/MarkdownBody";
+import { displayRelativePath } from "../lib/paths";
 import type { MarkdownState } from "./useMarkdown";
 
 export function MarkdownView({ state }: { state: MarkdownState }) {
@@ -15,7 +16,7 @@ export function MarkdownView({ state }: { state: MarkdownState }) {
     return (
       <div className="rounded-xl border border-red-200 bg-red-50 p-3 text-sm text-red-800">
         <p className="font-medium">Could not load document.</p>
-        {state.path ? <p className="mt-1 font-mono text-xs">{state.path}</p> : null}
+        {state.path ? <p className="mt-1 font-mono text-xs">{displayRelativePath(state.path)}</p> : null}
         {state.error ? <p className="mt-1 text-xs">{state.error}</p> : null}
       </div>
     );

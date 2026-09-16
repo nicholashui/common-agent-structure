@@ -27,9 +27,14 @@ import { ProjectCommsPanel } from "../components/ProjectComms";
 import { ProjectNode, type ProjectFlowNode, type ProjectNodeData } from "../components/ProjectNode";
 import type { ProjectCommItem, ProjectNextRow, ProjectNextSuggestion, ProjectRecord } from "../api/types";
 import { AutoLayoutMenu } from "../components/GraphAutoLayout";
-import { applyAutoLayout, layoutHasOverlap, type LayoutAlgorithm } from "../lib/autoLayout";
+import {
+  applyAutoLayout,
+  DEFAULT_LAYOUT_ALGORITHM,
+  type LayoutAlgorithm,
+} from "../lib/autoLayout";
 import { GRAPH_KIND, graphEdgeStyle, socketColor } from "../lib/graphStyle";
 import { commIdForAgent, sortProjectComms } from "../lib/projectChat";
+import { displayRelativePath } from "../lib/paths";
 import { projectChatHref, rememberProject } from "../lib/projectContext";
 import { applyLlmNext, createsCycle } from "../lib/projects";
 import { useSession } from "../state/session";
@@ -37,7 +42,7 @@ import { useTheme } from "../theme/ThemeProvider";
 
 const nodeTypes = { start: ProjectNode, agent: ProjectNode, workflow: ProjectNode, output: ProjectNode, human: ProjectNode };
 
-function LayoutIfOverlap({
+function LayoutDefault({
   onLayout,
 }: {
   onLayout: (measured: Node<ProjectNodeData>[]) => void;
@@ -54,9 +59,7 @@ function LayoutIfOverlap({
       return;
     }
     ran.current = true;
-    if (layoutHasOverlap(measured, 24, { width: 320, height: 240 })) {
-      onLayout(measured);
-    }
+    onLayout(measured);
   }, [ready, getNodes, onLayout]);
   return null;
 }
@@ -494,7 +497,7 @@ export function ProjectFlowPage() {
     }
   }
 
-  function onAutoLayout(algorithm: LayoutAlgorithm = "layered-lr") {
+  function onAutoLayout(algorithm: LayoutAlgorithm = DEFAULT_LAYOUT_ALGORITHM) {
     setNodes((current) =>
       applyAutoLayout(current, edges, {
         algorithm,
@@ -507,7 +510,7 @@ export function ProjectFlowPage() {
     setLayoutNonce((current) => current + 1);
   }
 
-  const onLayoutIfOverlap = useCallback(
+  const onLayoutDefault = useCallback(
     (measured: Node<ProjectNodeData>[]) => {
       setNodes((current) =>
         applyAutoLayout(
@@ -517,7 +520,7 @@ export function ProjectFlowPage() {
           }),
           edges,
           {
-            direction: "LR",
+            algorithm: DEFAULT_LAYOUT_ALGORITHM,
             rankGap: 112,
             packGap: 48,
             defaultWidth: 320,
@@ -558,7 +561,7 @@ export function ProjectFlowPage() {
         <div>
           <h2 className="text-lg font-semibold text-stone-800">{record?.title ?? projectId}</h2>
           <p className="text-xs text-stone-500">
-            {record?.folder ?? `project/${projectId}`} · pack map {record?.sub_workflow_id ?? "—"} (not this
+            {displayRelativePath(record?.folder) || `project/${projectId}`} · pack map {record?.sub_workflow_id ?? "—"} (not this
             project&apos;s creative lock) · CHARACTERIZATION
           </p>
         </div>
@@ -661,13 +664,13 @@ export function ProjectFlowPage() {
       </div>
       <div
         ref={canvasRef}
-        className="casops-graph h-72 min-h-72 min-w-0 w-full overflow-hidden rounded-md border border-stone-200 dark:border-black lg:h-[calc(100vh-14rem)] lg:min-h-0 lg:flex-1"
+        className="casops-graph h-[28rem] min-h-[28rem] min-w-0 w-full overflow-hidden rounded-md border border-stone-200 dark:border-black lg:h-[calc(100vh-14rem)] lg:min-h-0 lg:flex-1"
         data-testid="project-canvas"
         data-graph-theme={theme}
       >
         {flowSize.width > 0 && flowSize.height > 0 && displayNodes.length ? (
           <ReactFlow
-            key={`${flowSize.width}x${flowSize.height}-${theme}`}
+            key={`${projectId}-${flowSize.width}x${flowSize.height}-${theme}`}
             className="casops-graph"
             nodes={displayNodes}
             edges={edges}
@@ -686,7 +689,7 @@ export function ProjectFlowPage() {
             defaultEdgeOptions={{ type: "default", style: { stroke: socketColor("next"), strokeWidth: 2.4 } }}
             proOptions={{ hideAttribution: true }}
           >
-            <LayoutIfOverlap onLayout={onLayoutIfOverlap} />
+            <LayoutDefault onLayout={onLayoutDefault} />
             <FitOnResize
               nodeCount={displayNodes.length}
               width={flowSize.width}
@@ -695,7 +698,7 @@ export function ProjectFlowPage() {
             />
             <Background variant={BackgroundVariant.Dots} gap={20} size={1.2} color={dark ? "#3a3a3a" : "#d6d3d1"} />
             <Controls />
-            <Panel position="top-right" className="m-2">
+            <Panel position="top-right" className="m-2 hidden md:block">
               <AutoLayoutMenu testId="project-canvas-auto-layout" disabled={!nodes.length} onLayout={onAutoLayout} />
             </Panel>
             {flowSize.width >= 640 ? (

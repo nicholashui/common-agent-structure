@@ -33,6 +33,7 @@ import {
   splitProjectChat,
 } from "../lib/projectChat";
 import { projectChatHref, rememberProject } from "../lib/projectContext";
+import { displayRelativePath } from "../lib/paths";
 import { dispositionChips, splitProjection } from "../lib/videoPrompt";
 import { useSession } from "../state/session";
 
@@ -271,12 +272,17 @@ export function ProjectChatPage() {
   });
   const [selectedEngine, setSelectedEngine] = useState("grok-imagine");
   const [selectedClipId, setSelectedClipId] = useState("");
+  const [commsLoaded, setCommsLoaded] = useState(false);
 
   useEffect(() => {
     if (!projectId) {
       return;
     }
     rememberProject(projectId);
+    setCommsLoaded(false);
+    setItems([]);
+    setOutput(null);
+    setRecord(null);
     session.client
       .getProject(projectId)
       .then(setRecord)
@@ -288,7 +294,8 @@ export function ProjectChatPage() {
         setDecisions(payload.decisions ?? []);
         setAutopilotMeta(payload.autopilot ?? {});
       })
-      .catch((err) => setError(err instanceof Error ? err : new Error(String(err))));
+      .catch((err) => setError(err instanceof Error ? err : new Error(String(err))))
+      .finally(() => setCommsLoaded(true));
   }, [projectId, session.client]);
 
   useEffect(() => {
@@ -514,7 +521,11 @@ export function ProjectChatPage() {
         </div>
       </div>
       <ErrorBanner error={error} />
-      {conversation.length === 0 && clips.length === 0 && !outputText ? (
+      {!commsLoaded ? (
+        <p className="text-sm text-stone-500" data-testid="project-chat-loading">
+          Loading Chat…
+        </p>
+      ) : conversation.length === 0 && clips.length === 0 && !outputText ? (
         <p className="rounded-2xl border border-stone-200 bg-white p-5 text-sm text-stone-500">
           No communications yet. Open Workflow, enter the first human instruction on Create Project, then Launch
           workflow.
@@ -614,7 +625,7 @@ export function ProjectChatPage() {
             <span className="font-semibold text-stone-800">{displayPartyName(instructionHop?.to || "output-prompt")}</span>
             <span className="text-stone-400"> | {instructionHop ? hopExtra(instructionHop) : hopKindLabel("output")}</span>
           </p>
-          <p className="mt-1 font-mono text-[11px] text-stone-500">{outputPath}</p>
+          <p className="mt-1 font-mono text-[11px] text-stone-500">{displayRelativePath(outputPath)}</p>
           {sequence?.clips?.length ? (
             <div
               className="mt-2 rounded-xl border border-amber-200 bg-white px-3 py-2 dark:border-amber-800 dark:bg-stone-900"
@@ -662,7 +673,7 @@ export function ProjectChatPage() {
             {compileNote || "Host-assembled T4 projection"}
             {output?.compiled?.profile_id ? ` · ${output.compiled.profile_id}` : ""}
             {output?.compiled?.mode ? ` · ${output.compiled.mode}` : ""}
-            {output?.compiled?.guide ? ` · ${output.compiled.guide}` : ""}
+            {output?.compiled?.guide ? ` · ${displayRelativePath(output.compiled.guide)}` : ""}
             . Still carries identity and light. Motion describes change only. Duration and aspect live in the
             controls, not as vendor syntax. sample/ is never written. Click a generator tag to submit. Imagine is
             not called automatically. Uncheck Dry-run first.

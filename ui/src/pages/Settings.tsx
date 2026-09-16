@@ -154,8 +154,10 @@ export function SettingsPage() {
           <p className="mb-3 text-sm text-stone-500">
             Used when GET /api/v3/agents is missing. Discovery {session.discovery}. Do not paste host Ed25519 keys here.
           </p>
+          <Field label="Known agent IDs">
           <textarea
-            className="min-h-[8rem] w-full rounded-xl border border-stone-200 bg-white p-3 font-mono text-sm text-stone-900"
+            className="min-h-[8rem] w-full rounded-xl border border-stone-200 bg-white p-3 font-mono text-sm text-stone-900 dark:border-stone-700 dark:bg-stone-900 dark:text-stone-100"
+            aria-label="Known agent IDs"
             value={settings.knownIds.join("\n")}
             onChange={(event) =>
               session.setSettings({
@@ -167,6 +169,7 @@ export function SettingsPage() {
               })
             }
           />
+          </Field>
         </Card>
         <Card className="lg:col-span-2 bg-stone-50 hover:shadow-none">
           <p className="text-sm text-stone-600">Never store production secrets in this UI. Localhost operator tool. No SSO.</p>

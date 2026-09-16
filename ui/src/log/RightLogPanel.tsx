@@ -7,6 +7,7 @@ import {
   HELP_WIDTH_STEP_LARGE,
   clampHelpWidth,
 } from "../help/paths";
+import { displayRelativePath } from "../lib/paths";
 import { formatHktClock } from "../lib/time";
 import { useSession } from "../state/session";
 import { LOG_SESSION_ID, snapshot, subscribe, type LogChannel, type LogEntry } from "./bus";
@@ -24,7 +25,7 @@ function fileLabel(path: string | undefined): string {
   if (!path) {
     return "pending";
   }
-  return path.replace(/\\/g, "/").split("/").slice(-2).join("/");
+  return displayRelativePath(path) || "pending";
 }
 
 export function RightLogPanel({

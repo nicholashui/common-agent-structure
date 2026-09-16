@@ -35,7 +35,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { useEffect, useState, type ReactNode } from "react";
-import type { ProjectSummary } from "../api/types";
+import type { ProgramSummary, ProjectSummary } from "../api/types";
 import { RightHelpPanel } from "../help/RightHelpPanel";
 import { HELP_FULL_PAGE_PATH } from "../help/tabs";
 import { helpPageFrom, helpPageHref } from "../help/paths";
@@ -48,16 +48,17 @@ import { Link, NavLink, Outlet, useLocation, useNavigate, useParams } from "reac
 import { RecoveryBanner } from "../components/RecoveryBanner";
 import { StatusPill } from "../components/StatusPill";
 import { useSession } from "../state/session";
-import { AgentSwitcher } from "./AgentSwitcher";
 import {
   AGENT_MENU_LABEL,
   AGENT_TABS,
   HOME_LABEL,
+  PROGRAM_MENU_LABEL,
   PROJECT_MENU_LABEL,
   PROJECT_INSTANCE_TABS,
   WORKFLOW_MENU_LABEL,
   WORKFLOW_TABS,
   agentHref,
+  APP_NAME,
   loadNavChrome,
   locationLabel,
   projectIdFromPath,
@@ -104,6 +105,7 @@ export function AppShell() {
   const params = useParams();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [chrome, setChrome] = useState(loadNavChrome);
+  const [programs, setPrograms] = useState<ProgramSummary[]>([]);
   const [projects, setProjects] = useState<ProjectSummary[]>([]);
   const help = useHelpPanel();
   const logs = useLogPanel();
@@ -132,6 +134,10 @@ export function AppShell() {
       return;
     }
     session.client
+      .listPrograms()
+      .then((payload) => setPrograms(payload.programs ?? []))
+      .catch(() => setPrograms([]));
+    session.client
       .listProjects()
       .then((payload) => setProjects(payload.projects ?? []))
       .catch(() => setProjects([]));
@@ -142,6 +148,7 @@ export function AppShell() {
   const agentOn = location.pathname.startsWith("/agents/");
   const orgOn = location.pathname === "/org-chat";
   const workflowOn = location.pathname === "/workflow" || location.pathname.startsWith("/workflow/");
+  const programOn = location.pathname.startsWith("/programs");
   const projectOn = location.pathname.startsWith("/projects");
   const currentProjectId = projectIdFromPath(location.pathname);
 
@@ -150,8 +157,14 @@ export function AppShell() {
   }
 
   return (
-    <div className="min-h-screen bg-white text-stone-900">
-      <header className="sticky top-0 z-50 overflow-visible border-b border-stone-200 bg-white/95 backdrop-blur-md">
+    <div className="min-h-screen bg-white text-stone-900 dark:bg-stone-950 dark:text-stone-100">
+      <a
+        href="#main"
+        className="sr-only focus:not-sr-only focus:absolute focus:left-3 focus:top-3 focus:z-[60] focus:rounded-lg focus:bg-white focus:px-3 focus:py-2 focus:text-sm focus:font-medium focus:text-stone-900 focus:shadow"
+      >
+        Skip to content
+      </a>
+      <header className="sticky top-0 z-50 overflow-visible border-b border-stone-200 bg-white/95 backdrop-blur-md dark:border-stone-800 dark:bg-stone-950/95">
         <div className="flex flex-wrap items-center gap-x-3 gap-y-2 px-4 py-2">
           <div className="flex items-center gap-2">
             <button
@@ -162,19 +175,15 @@ export function AppShell() {
             >
               <Menu size={18} />
             </button>
-            <Link to="/" className="flex items-center gap-2 shrink-0">
-              <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-indigo-600 shadow-sm">
+            <Link to="/" className="flex min-w-0 items-center gap-2 shrink-0" aria-label={APP_NAME} title={APP_NAME}>
+              <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-indigo-600 shadow-sm">
                 <Network size={13} className="text-white" />
               </div>
-              <span className="hidden text-sm font-semibold text-stone-900 sm:block">{HOME_LABEL}</span>
+              <span className="hidden max-w-[min(28rem,calc(100vw-14rem))] truncate text-sm font-semibold text-stone-900 sm:block dark:text-stone-100">
+                {APP_NAME}
+              </span>
             </Link>
           </div>
-          <AgentSwitcher
-            agents={session.agents}
-            extraIds={session.settings.knownIds}
-            currentId={agentId}
-            onSelect={(id) => navigate(agentHref(id, ""))}
-          />
           <div className="ml-auto flex shrink-0 items-center gap-1">
             <button
               type="button"
@@ -265,6 +274,41 @@ export function AppShell() {
             </div>
           </div>
           <nav className="flex flex-1 flex-col gap-0.5 overflow-y-auto text-xs">
+            <button
+              type="button"
+              className={navClass(programOn && !collapsed, collapsed)}
+              aria-expanded={chrome.programOpen}
+              title={PROGRAM_MENU_LABEL}
+              data-testid="nav-program"
+              onClick={() => setChrome((current) => ({ ...current, programOpen: !current.programOpen }))}
+            >
+              <Blocks size={16} className="shrink-0" />
+              {collapsed ? <span className="sr-only">{PROGRAM_MENU_LABEL}</span> : <span className="flex-1 text-left">{PROGRAM_MENU_LABEL}</span>}
+              {collapsed ? null : (
+                <ChevronDown size={14} className={`shrink-0 text-stone-400 transition-transform ${chrome.programOpen ? "" : "-rotate-90"}`} />
+              )}
+            </button>
+            {chrome.programOpen && !collapsed
+              ? [
+                  <SideLink key="new-program" to="/programs/new" end collapsed={collapsed} icon={Blocks} inset testId="nav-program-new" onClick={closeMobile}>
+                    New program
+                  </SideLink>,
+                  ...programs.map((item) => (
+                    <SideLink
+                      key={item.id}
+                      to={`/programs/${encodeURIComponent(item.id)}`}
+                      end
+                      collapsed={collapsed}
+                      icon={Blocks}
+                      inset
+                      testId={`nav-program-${item.id}`}
+                      onClick={closeMobile}
+                    >
+                      {item.name || item.code || item.id}
+                    </SideLink>
+                  )),
+                ]
+              : null}
             <button
               type="button"
               className={navClass(projectOn && !collapsed, collapsed)}
@@ -457,18 +501,26 @@ export function AppShell() {
           </nav>
         </aside>
         <main id="main" className="min-w-0 flex-1 px-4 py-6 md:px-8">
-          <div className="mb-4">
-            <h1 className="break-all text-2xl font-bold tracking-tight text-stone-900" data-testid="page-location">
-              {crumb}
-            </h1>
-            {session.stale || session.actor === "agent_runtime" ? (
-              <p className="mt-1 text-xs text-stone-400">
-                {session.stale ? "Stale — Refresh First" : ""}
-                {session.stale && session.actor === "agent_runtime" ? " · " : ""}
-                {session.actor === "agent_runtime" ? "Agent identities cannot approve." : ""}
-              </p>
-            ) : null}
-          </div>
+          {!agentOn ? (
+            <div className="mb-3">
+              <h1 className="break-words text-sm font-medium leading-snug text-stone-500" data-testid="page-location">
+                {crumb}
+              </h1>
+              {session.stale || session.actor === "agent_runtime" ? (
+                <p className="mt-1 text-xs text-stone-400">
+                  {session.stale ? "Stale — Refresh First" : ""}
+                  {session.stale && session.actor === "agent_runtime" ? " · " : ""}
+                  {session.actor === "agent_runtime" ? "Agent identities cannot approve." : ""}
+                </p>
+              ) : null}
+            </div>
+          ) : session.stale || session.actor === "agent_runtime" ? (
+            <p className="mb-3 text-xs text-stone-400">
+              {session.stale ? "Stale — Refresh First" : ""}
+              {session.stale && session.actor === "agent_runtime" ? " · " : ""}
+              {session.actor === "agent_runtime" ? "Agent identities cannot approve." : ""}
+            </p>
+          ) : null}
           <RecoveryBanner
             error={session.lastError}
             onReload={() => {
@@ -546,6 +598,7 @@ function SideLink({
       to={to}
       end={end}
       title={typeof children === "string" ? children : undefined}
+      aria-label={typeof children === "string" ? children : undefined}
       onClick={onClick}
       data-testid={testId}
       className={({ isActive }) => `${navClass(isActive, collapsed)} ${indent}`}

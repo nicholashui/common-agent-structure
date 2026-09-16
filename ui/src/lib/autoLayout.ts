@@ -14,12 +14,14 @@ export type LayoutEdge = {
 
 export type LayoutAlgorithm = "layered-lr" | "layered-tb" | "grid" | "radial" | "force";
 
+export const DEFAULT_LAYOUT_ALGORITHM: LayoutAlgorithm = "force";
+
 export const LAYOUT_ALGORITHMS: { id: LayoutAlgorithm; label: string; hint: string }[] = [
+  { id: "force", label: "Force", hint: "Spring-embedder organic layout (default)" },
   { id: "layered-lr", label: "Layered →", hint: "Sugiyama, left to right" },
   { id: "layered-tb", label: "Layered ↓", hint: "Sugiyama, top to bottom" },
   { id: "grid", label: "Grid", hint: "Regular rows and columns" },
   { id: "radial", label: "Radial", hint: "Rings around the start node" },
-  { id: "force", label: "Force", hint: "Spring-embedder organic layout" },
 ];
 
 export type LayoutOptions = {
@@ -33,7 +35,13 @@ export function resolveLayoutAlgorithm(options: LayoutOptions = {}): LayoutAlgor
   if (options.algorithm) {
     return options.algorithm;
   }
-  return options.direction === "TB" ? "layered-tb" : "layered-lr";
+  if (options.direction === "TB") {
+    return "layered-tb";
+  }
+  if (options.direction === "LR") {
+    return "layered-lr";
+  }
+  return DEFAULT_LAYOUT_ALGORITHM;
 }
 
 export function autoLayoutPositions(

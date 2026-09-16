@@ -106,6 +106,9 @@ describe("SPEC_V3 client coverage", () => {
     await client.runProject("demo", { instruction: "go" });
     await client.getProjectOutput("demo");
     await client.generateProject("demo", { engine: "grok-imagine" });
+    await client.listPrograms();
+    await client.createProgram({ code: "demo", name: "Demo" });
+    await client.getProgram("demo");
 
     const normalized = seen.map((row) =>
       row
@@ -116,7 +119,8 @@ describe("SPEC_V3 client coverage", () => {
         .replace("/memory/m1", "/memory/{memory_id}")
         .replace("/candidates/c1/", "/candidates/{cid}/")
         .replace("/rollback/v1", "/rollback/{version}")
-        .replace("/api/v3/projects/demo", "/api/v3/projects/{project_id}"),
+        .replace("/api/v3/projects/demo", "/api/v3/projects/{project_id}")
+        .replace("/api/v3/programs/demo", "/api/v3/programs/{program_id}"),
     );
 
     for (const [method, path] of SPEC_V3_PATHS) {
@@ -146,5 +150,8 @@ describe("SPEC_V3 client coverage", () => {
     expect(normalized).toContain("POST /api/v3/projects/{project_id}/run");
     expect(normalized).toContain("GET /api/v3/projects/{project_id}/output");
     expect(normalized).toContain("POST /api/v3/projects/{project_id}/generate");
+    expect(normalized).toContain("GET /api/v3/programs");
+    expect(normalized).toContain("POST /api/v3/programs");
+    expect(normalized).toContain("GET /api/v3/programs/{program_id}");
   });
 });

@@ -34,13 +34,13 @@ export function GhostButton(props: ButtonHTMLAttributes<HTMLButtonElement>) {
   return (
     <button
       {...props}
-      className={`inline-flex items-center justify-center gap-1.5 rounded-full border border-stone-200 bg-white px-4 py-2 text-xs font-medium text-stone-700 hover:border-stone-300 hover:text-stone-900 disabled:cursor-not-allowed disabled:bg-stone-100 disabled:text-stone-400 ${focus} ${props.className ?? ""}`}
+      className={`inline-flex items-center justify-center gap-1.5 rounded-full border border-stone-200 bg-white px-4 py-2 text-xs font-medium text-stone-700 hover:border-stone-300 hover:text-stone-900 disabled:cursor-not-allowed disabled:bg-stone-100 disabled:text-stone-400 dark:border-stone-700 dark:bg-stone-900 dark:text-stone-200 dark:hover:border-stone-500 dark:hover:text-white dark:disabled:bg-stone-800 dark:disabled:text-stone-500 ${focus} ${props.className ?? ""}`}
     />
   );
 }
 
 export function Card({ children, className = "" }: { children: ReactNode; className?: string }) {
-  return <section className={`rounded-2xl border border-stone-200 bg-white p-5 hover:shadow-md ${className}`}>{children}</section>;
+  return <section className={`rounded-2xl border border-stone-200 bg-white p-5 hover:shadow-md dark:border-stone-800 dark:bg-stone-900 ${className}`}>{children}</section>;
 }
 
 export function Field({
@@ -62,11 +62,11 @@ export function Field({
 }
 
 export const inputClass =
-  "h-9 rounded-lg border border-stone-200 bg-white px-3 text-sm text-stone-900 placeholder:text-stone-400 disabled:bg-stone-100";
+  "h-9 rounded-lg border border-stone-200 bg-white px-3 text-sm text-stone-900 placeholder:text-stone-400 disabled:bg-stone-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-600 dark:border-stone-700 dark:bg-stone-900 dark:text-stone-100 dark:disabled:bg-stone-800";
 
 export function AsOf({ date }: { date?: Date | null }) {
   if (!date) {
-    return <p className="text-sm text-stone-500">as_of —</p>;
+    return null;
   }
   return <p className="text-sm text-stone-500">as_of {formatHktIso(date)}</p>;
 }

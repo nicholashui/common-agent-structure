@@ -383,6 +383,25 @@ export interface CacheStats {
   false_reuse_rate?: number | null;
 }
 
+export interface ProgramSummary {
+  id: string;
+  code: string;
+  name: string;
+  updated_at?: string;
+}
+
+export interface ProgramRecord {
+  id: string;
+  code: string;
+  name: string;
+  folder?: string;
+  honesty?: string;
+  saved?: boolean;
+  dry_run?: boolean;
+  created_at?: string;
+  updated_at?: string;
+}
+
 export interface ProjectSummary {
   id: string;
   name?: string;

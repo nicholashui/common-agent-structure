@@ -42,10 +42,13 @@ import { useAgentId, useAsync } from "../lib/hooks";
 import { parseAgentIo } from "../lib/io";
 import { clipLogText, logUi } from "../log/bus";
 import { formatHktClock, formatHktDateTime, formatHktIso, nowHktIso } from "../lib/time";
+import { displayRelativePath } from "../lib/paths";
 import { useSession } from "../state/session";
 
 function fileLabel(path: string): string {
-  return path.replace(/\\/g, "/").split("/").slice(-2).join("/");
+  const rel = displayRelativePath(path);
+  const parts = rel.split("/").filter(Boolean);
+  return parts.slice(-2).join("/") || rel;
 }
 
 function ContextPack({ pack }: { pack: ChatContextPack }) {
@@ -502,7 +505,7 @@ export function ChatPage() {
   }
 
   return (
-    <div data-testid="agent-chat" className="flex h-[calc(100vh-8.25rem)] flex-col overflow-hidden">
+    <div data-testid="agent-chat" className="flex h-[calc(100dvh-12rem)] flex-col overflow-hidden">
       <div className="mb-3 flex shrink-0 flex-wrap items-center justify-between gap-2">
         <div>
           <h2 className="text-lg font-semibold text-stone-800">Chat</h2>
@@ -554,7 +557,7 @@ export function ChatPage() {
                           open={open}
                           onToggle={() => toggleItem(id)}
                         >
-                          <p className="break-all font-mono text-[11px] text-stone-500">{file.path}</p>
+                          <p className="break-all font-mono text-[11px] text-stone-500">{displayRelativePath(file.path)}</p>
                           {file.bytes != null ? (
                             <p className="mt-1 text-[11px] text-stone-400">{file.bytes} bytes</p>
                           ) : null}
@@ -653,7 +656,7 @@ export function ChatPage() {
             onScroll={(event) => setPinned(isPinnedToBottom(event.currentTarget))}
           >
             {turns.length === 0 && !pending ? (
-              <p className="pt-16 text-center text-sm text-stone-400">Ask anything</p>
+              <p className="pt-16 text-center text-sm text-stone-400">No messages yet. Type below to start.</p>
             ) : null}
             {turns.map((turn, index) => {
               const key = `${turn.role}-${index}`;

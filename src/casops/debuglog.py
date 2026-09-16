@@ -10,6 +10,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
+from casops.compose.folders import public_path_ref
 from casops.time import isoformat_hkt, stamp_hkt
 
 _SESSION = re.compile(r"^[A-Za-z0-9._-]{1,80}$")
@@ -100,7 +101,7 @@ def list_acp_logs(agent_id: str) -> list[dict[str, Any]]:
             stamp = isoformat_hkt(datetime.fromtimestamp(stat.st_mtime, tz=timezone.utc))
             rows.append(
                 {
-                    "path": str(path.as_posix()),
+                    "path": public_path_ref(path, root),
                     "name": path.name,
                     "ts": stamp,
                     "bytes": stat.st_size,
@@ -191,7 +192,7 @@ def write_debug_logs(payload: dict[str, Any]) -> dict[str, str]:
                 handle.write("\n".join(lines) + "\n")
                 handle.flush()
 
-    return {channel: str(path) for channel, path in files.items() if path.exists()}
+    return {channel: public_path_ref(path, log_root()) for channel, path in files.items() if path.exists()}
 
 
 def write_chat_turns(payload: dict[str, Any]) -> dict[str, str]:
@@ -226,7 +227,7 @@ def write_chat_turns(payload: dict[str, Any]) -> dict[str, str]:
         with path.open("a", encoding="utf-8") as handle:
             handle.write("\n".join(lines) + "\n")
             handle.flush()
-    return {"transcript": str(path)}
+    return {"transcript": public_path_ref(path, chat_root())}
 
 
 def list_chat_files(agent_id: str) -> list[dict[str, Any]]:
@@ -241,7 +242,7 @@ def list_chat_files(agent_id: str) -> list[dict[str, Any]]:
             stamp = isoformat_hkt(datetime.fromtimestamp(stat.st_mtime, tz=timezone.utc))
             rows.append(
                 {
-                    "path": str(path),
+                    "path": public_path_ref(path, chat_root()),
                     "name": path.name,
                     "ts": stamp,
                     "bytes": stat.st_size,

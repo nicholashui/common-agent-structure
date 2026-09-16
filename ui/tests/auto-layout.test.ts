@@ -2,8 +2,10 @@ import { describe, expect, it } from "vitest";
 import {
   applyAutoLayout,
   autoLayoutPositions,
+  DEFAULT_LAYOUT_ALGORITHM,
   LAYOUT_ALGORITHMS,
   layoutHasOverlap,
+  resolveLayoutAlgorithm,
 } from "../src/lib/autoLayout";
 
 describe("workflow auto layout", () => {
@@ -88,12 +90,14 @@ describe("workflow auto layout", () => {
   });
 
   it("exposes distinct algorithms that place the same graph differently", () => {
+    expect(DEFAULT_LAYOUT_ALGORITHM).toBe("force");
+    expect(resolveLayoutAlgorithm()).toBe("force");
     expect(LAYOUT_ALGORITHMS.map((row) => row.id)).toEqual([
+      "force",
       "layered-lr",
       "layered-tb",
       "grid",
       "radial",
-      "force",
     ]);
     const nodes = [
       { id: "create-project", position: { x: 0, y: 0 }, width: 320, height: 160, data: { kind: "start" } },
@@ -111,6 +115,7 @@ describe("workflow auto layout", () => {
     const grid = applyAutoLayout(nodes, edges, { algorithm: "grid" });
     const radial = applyAutoLayout(nodes, edges, { algorithm: "radial" });
     const force = applyAutoLayout(nodes, edges, { algorithm: "force" });
+    const implicit = applyAutoLayout(nodes, edges);
     const lrBy = Object.fromEntries(lr.map((node) => [node.id, node.position]));
     const tbBy = Object.fromEntries(tb.map((node) => [node.id, node.position]));
     const gridBy = Object.fromEntries(grid.map((node) => [node.id, node.position]));
@@ -119,6 +124,9 @@ describe("workflow auto layout", () => {
     expect(new Set(grid.map((node) => `${node.position.x},${node.position.y}`)).size).toBe(4);
     expect(radial.map((node) => node.position.x + node.position.y).some((sum) => sum !== 0)).toBe(true);
     expect(force.every((node) => Number.isFinite(node.position.x) && Number.isFinite(node.position.y))).toBe(true);
+    expect(implicit.map((node) => `${node.position.x},${node.position.y}`)).toEqual(
+      force.map((node) => `${node.position.x},${node.position.y}`),
+    );
     expect(`${lrBy["agent-2"].x},${lrBy["agent-2"].y}`).not.toBe(`${tbBy["agent-2"].x},${tbBy["agent-2"].y}`);
     expect(`${lrBy["agent-1"].x},${lrBy["agent-1"].y}`).not.toBe(`${gridBy["agent-1"].x},${gridBy["agent-1"].y}`);
   });

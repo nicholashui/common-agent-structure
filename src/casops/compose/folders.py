@@ -6,17 +6,72 @@ import json
 from pathlib import Path
 from typing import Any
 
+_REPO_MARKERS = (
+    "/agents/",
+    "/project/",
+    "/logs/",
+    "/spec/",
+    "/sample/",
+    "/docs/",
+    "/src/",
+    "/ui/",
+    "/issues/",
+    "/book/",
+    "/tests/",
+    "/evals/",
+    "/vendor/",
+)
+
+
+def public_path_ref(path: Path | str, *roots: Path) -> str:
+    """Repo-relative filesystem path for the public plane. Never a drive letter."""
+    candidate = Path(path)
+    try:
+        resolved = candidate.resolve()
+    except OSError:
+        resolved = candidate
+    bases: list[Path] = []
+    try:
+        bases.append(Path.cwd().resolve())
+    except OSError:
+        bases.append(Path.cwd())
+    for root in roots:
+        try:
+            bases.append(Path(root).resolve())
+        except OSError:
+            bases.append(Path(root))
+    for base in bases:
+        try:
+            return resolved.relative_to(base).as_posix()
+        except ValueError:
+            continue
+    posix = str(resolved).replace("\\", "/")
+    lower = posix.lower()
+    best = -1
+    for marker in _REPO_MARKERS:
+        idx = lower.rfind(marker)
+        if idx > best:
+            best = idx
+    if best >= 0:
+        return posix[best + 1 :]
+    posix = posix.replace("\\", "/")
+    if len(posix) >= 2 and posix[1] == ":":
+        posix = posix[2:]
+    posix = posix.lstrip("/")
+    parts = [part for part in posix.split("/") if part]
+    if len(parts) >= 2:
+        return "/".join(parts[-2:])
+    return parts[-1] if parts else posix
+
 
 def public_folder_ref(folder: Path, agents_root: Path) -> str:
     """Repo-relative pack location for the public plane, e.g. agents/video.director."""
-    try:
-        inner = folder.resolve().relative_to(agents_root.resolve()).as_posix()
-    except ValueError:
-        inner = folder.name
+    inner = public_path_ref(folder, agents_root)
     inner = inner.replace("\\", "/").strip("/")
     if inner.startswith("agents/"):
         return inner
-    return f"agents/{inner}" if inner else "agents"
+    name = Path(inner).name if inner else folder.name
+    return f"agents/{name}" if name else "agents"
 
 
 def list_agent_summaries(agents_root: Path) -> list[dict[str, Any]]:

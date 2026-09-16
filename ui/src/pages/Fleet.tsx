@@ -29,6 +29,7 @@ export function FleetPage() {
   const [category, setCategory] = useState("");
   const [error, setError] = useState<Error | null>(null);
   const [asOf, setAsOf] = useState<Date | null>(null);
+  const [ready, setReady] = useState(false);
 
   async function load() {
     try {
@@ -49,6 +50,8 @@ export function FleetPage() {
       setAsOf(new Date());
     } catch (err) {
       setError(err instanceof Error ? err : new Error(String(err)));
+    } finally {
+      setReady(true);
     }
   }
 
@@ -175,7 +178,11 @@ export function FleetPage() {
           </div>
         </div>
       ) : null}
-      {session.discovery === "empty" && !listed.length ? (
+      {!ready && !listed.length ? (
+        <p className="text-sm text-stone-500" data-testid="fleet-loading">
+          Loading agents…
+        </p>
+      ) : session.discovery === "empty" && !listed.length ? (
         <EmptyState
           title="No agents"
           body="Add a known agent_id in Settings or implement GET /api/v3/agents. The UI does not scan disk from the browser."

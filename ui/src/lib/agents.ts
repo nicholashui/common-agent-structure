@@ -1,25 +1,21 @@
+import { displayRelativePath } from "./paths";
+
 export type AgentPack = "all" | "specials" | "video" | "other";
 
 /** Display pack location as agents/<id>, never a drive-letter path. */
 export function relativeAgentFolder(folder: string | undefined, agentId?: string): string {
-  const raw = (folder || "").trim();
-  if (!raw && agentId) {
+  const shown = displayRelativePath(folder);
+  if (!shown && agentId) {
     return `agents/${agentId}`;
   }
-  if (!raw) {
+  if (!shown) {
     return "";
   }
-  const posix = raw.replace(/\\/g, "/");
-  const marker = "/agents/";
-  const at = posix.toLowerCase().lastIndexOf(marker);
-  if (at >= 0) {
-    return posix.slice(at + 1);
+  if (shown.toLowerCase().startsWith("agents/")) {
+    return shown;
   }
-  if (posix.toLowerCase().startsWith("agents/")) {
-    return posix;
-  }
-  const parts = posix.split("/").filter(Boolean);
-  const last = parts[parts.length - 1] || agentId || posix;
+  const parts = shown.split("/").filter(Boolean);
+  const last = parts[parts.length - 1] || agentId || shown;
   return last.startsWith("agents/") ? last : `agents/${last}`;
 }
 

@@ -22,7 +22,26 @@ export function agentHref(agentId: string, tabPath: string): string {
   return tabPath ? `${base}/${tabPath}` : base;
 }
 
+/** Current Agent Profile tab path (chat, files, traces, …). Empty on Overview. */
+export function agentTabPath(pathname: string): string {
+  const trimmed = pathname.replace(/\/+$/, "") || "/";
+  const match = /^\/agents\/[^/]+(?:\/(.*))?$/.exec(trimmed);
+  if (!match) {
+    return "";
+  }
+  const rest = match[1] || "";
+  if (!rest) {
+    return "";
+  }
+  if (rest === "traces" || rest.startsWith("traces/")) {
+    return "traces";
+  }
+  return rest.split("/")[0] || "";
+}
+
 export const HOME_LABEL = "Agent Swarm";
+export const APP_NAME = "Common Agents Swarm System (CASS)";
+export const PROGRAM_MENU_LABEL = "Program";
 export const PROJECT_MENU_LABEL = "Project";
 export const AGENT_MENU_LABEL = "Agent Profile";
 export const WORKFLOW_MENU_LABEL = "Agent Workflow";
@@ -41,6 +60,17 @@ export function locationLabel(pathname: string): string {
   const trimmed = pathname.replace(/\/+$/, "") || "/";
   if (trimmed === "/") {
     return HOME_LABEL;
+  }
+  if (trimmed === "/programs/new") {
+    return `${PROGRAM_MENU_LABEL} / New program`;
+  }
+  if (trimmed.startsWith("/programs/")) {
+    const rest = decodeURIComponent(trimmed.slice("/programs/".length));
+    const id = rest.split("/")[0] || "";
+    return id ? `${PROGRAM_MENU_LABEL} / ${id}` : PROGRAM_MENU_LABEL;
+  }
+  if (trimmed === "/programs") {
+    return PROGRAM_MENU_LABEL;
   }
   if (trimmed === "/projects/new") {
     return `${PROJECT_MENU_LABEL} / New project`;
@@ -78,6 +108,28 @@ export function locationLabel(pathname: string): string {
   if (trimmed === "/help") {
     return `${HOME_LABEL} / Help`;
   }
+  if (trimmed.startsWith("/agents/")) {
+    const rest = trimmed.slice("/agents/".length);
+    let decoded = rest;
+    try {
+      decoded = decodeURIComponent(rest);
+    } catch {
+      decoded = rest;
+    }
+    const slash = decoded.indexOf("/");
+    const id = slash >= 0 ? decoded.slice(0, slash) : decoded;
+    const tabPath = slash >= 0 ? decoded.slice(slash + 1) : "";
+    if (!id) {
+      return `${HOME_LABEL} / ${AGENT_MENU_LABEL}`;
+    }
+    const tab = AGENT_TABS.find(
+      (item) => item.path === tabPath || (item.id === "trace" && tabPath.startsWith("traces")),
+    );
+    if (tab && tab.path) {
+      return `${HOME_LABEL} / ${id} / ${tab.label}`;
+    }
+    return `${HOME_LABEL} / ${id}`;
+  }
   let path = trimmed.replace(/^\//, "");
   try {
     path = decodeURIComponent(path);
@@ -93,12 +145,20 @@ export interface NavChrome {
   collapsed: boolean;
   agentOpen: boolean;
   workflowOpen: boolean;
+  programOpen: boolean;
   projectOpen: boolean;
   openProjects: string[];
 }
 
 export function defaultNavChrome(): NavChrome {
-  return { collapsed: false, agentOpen: false, workflowOpen: false, projectOpen: false, openProjects: [] };
+  return {
+    collapsed: false,
+    agentOpen: false,
+    workflowOpen: false,
+    programOpen: false,
+    projectOpen: false,
+    openProjects: [],
+  };
 }
 
 export function parseOpenProjects(value: unknown): string[] {
@@ -155,6 +215,7 @@ export function loadNavChrome(): NavChrome {
       collapsed: Boolean(parsed.collapsed),
       agentOpen: Boolean(parsed.agentOpen),
       workflowOpen: Boolean(parsed.workflowOpen),
+      programOpen: Boolean(parsed.programOpen),
       projectOpen: Boolean(parsed.projectOpen),
       openProjects: parseOpenProjects(parsed.openProjects),
     };

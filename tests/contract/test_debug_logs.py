@@ -52,8 +52,10 @@ def test_debug_logs_writes_files(tmp_path: Path, monkeypatch: pytest.MonkeyPatch
     assert body["ok"] is True
     api_path = tmp_path / f"{session}-api.log"
     ui_path = tmp_path / f"{session}-ui.log"
-    assert body["files"]["api"] == str(api_path)
-    assert body["files"]["ui"] == str(ui_path)
+    assert body["files"]["api"].replace("\\", "/").endswith(api_path.name)
+    assert body["files"]["ui"].replace("\\", "/").endswith(ui_path.name)
+    assert not Path(body["files"]["api"]).is_absolute()
+    assert not Path(body["files"]["ui"]).is_absolute()
     api = json.loads(api_path.read_text(encoding="utf-8").splitlines()[0])
     ui = json.loads(ui_path.read_text(encoding="utf-8").splitlines()[0])
     assert api["ts"] == "2026-09-02T12:34:56.000Z"
@@ -102,7 +104,9 @@ def test_debug_chat_writes_and_lists_files(tmp_path: Path, monkeypatch: pytest.M
     )
     assert response.status_code == 200
     path = tmp_path / "video.director" / f"{session}.jsonl"
-    assert response.json()["files"]["transcript"] == str(path)
+    shown = response.json()["files"]["transcript"].replace("\\", "/")
+    assert shown.endswith(f"video.director/{session}.jsonl")
+    assert not Path(shown).is_absolute()
     listed = client.get("/debug/chat", params={"agent_id": "video.director"})
     assert listed.status_code == 200
     files = listed.json()["files"]
