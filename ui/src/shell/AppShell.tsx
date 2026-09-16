@@ -293,7 +293,7 @@ export function AppShell() {
                   <SideLink key="new-program" to="/programs/new" end collapsed={collapsed} icon={Blocks} inset testId="nav-program-new" onClick={closeMobile}>
                     New program
                   </SideLink>,
-                  ...programs.map((item) => (
+                  ...programs.flatMap((item) => [
                     <SideLink
                       key={item.id}
                       to={`/programs/${encodeURIComponent(item.id)}`}
@@ -305,8 +305,21 @@ export function AppShell() {
                       onClick={closeMobile}
                     >
                       {item.name || item.code || item.id}
-                    </SideLink>
-                  )),
+                    </SideLink>,
+                    ...(item.project_ids || []).map((childId) => (
+                      <SideLink
+                        key={`${item.id}-${childId}`}
+                        to={`/projects/${encodeURIComponent(childId)}/chat`}
+                        collapsed={collapsed}
+                        icon={Blocks}
+                        inset
+                        testId={`nav-program-child-${childId}`}
+                        onClick={closeMobile}
+                      >
+                        {childId}
+                      </SideLink>
+                    )),
+                  ]),
                 ]
               : null}
             <button

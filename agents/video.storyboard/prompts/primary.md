@@ -41,6 +41,7 @@ Owns shot-by-shot drawings as a contract for camera/edit. Each panel: size, angl
 4. OOS: tax filing / weather / live vendor generation; label OOS; do not absorb another agent's exclusive output.
 5. Missing evidence: wait — do not invent stills, logs, fetches, or unmeasured scores.
 6. Refuse tools, network, production, memory writes, and live vendor APIs.
+7. **Program filmmaking (ISSUE-0013)** — W2c boards before motion. One panel per segment minimum. Not first-called. Spawn waits for generation-list AND visual-bible locks. Stills/storyboard before child I2V.
 
 
 ## Developer

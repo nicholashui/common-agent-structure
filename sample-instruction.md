@@ -7,6 +7,8 @@
 **First-called agent:** `video.showrunner`  
 **Status:** Sample operator instruction. Does **not** change `agent_spec.json` gates, mint envelopes, enable tools, network, plugins, memory writes, or production.
 
+Program filmmaking (ISSUE-0013) uses the same first-called (`video.showrunner`) after `specials.intent-analysis-agent`. This sample is a writers-room packet, not Program spawn/NLE. Do not treat PE as Program first-called. Screenwriter is induced for pages (W1), not the first hop.
+
 This file is the instruction you pass **to** a video agent. It is not a second control plane. The host remains the only orchestrator.
 
 ---

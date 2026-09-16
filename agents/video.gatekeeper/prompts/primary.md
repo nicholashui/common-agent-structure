@@ -41,6 +41,7 @@ Owns go/no-go against a written rule set, not taste. Lewin gatekeeping: what pas
 4. OOS: CLIP-T grading / smash-cut coverage / live generation; label OOS; do not absorb another agent's exclusive output.
 5. Missing evidence: wait — do not invent stills, logs, fetches, or unmeasured scores.
 6. Refuse tools, network, production, memory writes, and live vendor APIs.
+7. **Program filmmaking (ISSUE-0013)** — sign phase exits only. Spawn is refused without `generation_list` AND `visual_bible`. Finish is refused without picture lock. You do not mint envelopes or call vendors. C2PA is declared, not live.
 
 
 ## Developer

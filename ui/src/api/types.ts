@@ -387,7 +387,24 @@ export interface ProgramSummary {
   id: string;
   code: string;
   name: string;
+  phase?: string;
+  project_ids?: string[];
   updated_at?: string;
+}
+
+export interface ProgramSegment {
+  id: string;
+  scene_id?: string;
+  purpose?: string;
+  duration_s?: number;
+  status?: string;
+  project_slug?: string;
+}
+
+export interface ProgramScene {
+  id: string;
+  title?: string;
+  segments?: ProgramSegment[];
 }
 
 export interface ProgramRecord {
@@ -400,6 +417,52 @@ export interface ProgramRecord {
   dry_run?: boolean;
   created_at?: string;
   updated_at?: string;
+  first_called?: string;
+  first_agent_hop?: string;
+  phase?: string;
+  locks?: Record<string, boolean>;
+  generation_list?: { scenes?: ProgramScene[] };
+  project_ids?: string[];
+  generation_list_ref?: string;
+  sequence_ref?: string;
+  bible_ref?: string;
+  storyboard_ref?: string;
+  delivery_ref?: string;
+  cut_state?: string;
+  preview?: { slug: string; scene_id: string; segment_id: string; purpose?: string }[];
+  spawned?: number;
+  finish?: string;
+  fused_request?: null;
+}
+
+export interface ProgramCommItem {
+  id: string;
+  from: string;
+  to: string;
+  kind: string;
+  text?: string;
+  pass_id?: string;
+  live?: boolean;
+}
+
+export interface ProgramComms {
+  program_id?: string;
+  first_called?: string;
+  first_agent_hop?: string;
+  child_first_called?: string;
+  child_human_locks?: string[];
+  honesty?: string;
+  items?: ProgramCommItem[];
+}
+
+export interface ProgramSequencePayload {
+  sequence?: {
+    kind?: string;
+    concat?: string;
+    fused_request?: null;
+    clips?: { clip_id?: string; path?: string }[];
+  };
+  compile?: { fused_request?: null; concat?: string };
 }
 
 export interface ProjectSummary {
@@ -700,6 +763,7 @@ export interface ProjectStartSnapshot {
   suggestion?: ProjectSuggestion | null;
   saved_at?: string;
   source?: string;
+  inherit?: Record<string, unknown>;
 }
 
 export interface ProjectRecord {
@@ -722,4 +786,5 @@ export interface ProjectRecord {
   saved?: boolean;
   dry_run?: boolean;
   folder?: string;
+  inherit?: Record<string, unknown>;
 }

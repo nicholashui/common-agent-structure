@@ -35,6 +35,10 @@ export function paramsFromPathname(pathname: string): Record<string, string | un
   if (project?.[1] && project[1] !== "new") {
     params.projectId = decodeURIComponent(project[1]);
   }
+  const program = /^\/programs\/([^/]+)(?:\/(.*))?$/.exec(path);
+  if (program?.[1] && program[1] !== "new") {
+    params.programId = decodeURIComponent(program[1]);
+  }
   return params;
 }
 
@@ -70,6 +74,9 @@ export function docCandidates(
   }
   if (exact.startsWith("/projects")) {
     addFolder("/projects");
+  }
+  if (exact.startsWith("/programs")) {
+    addFolder("/programs");
   }
   addFolder(stripped);
   const files: string[] = [];

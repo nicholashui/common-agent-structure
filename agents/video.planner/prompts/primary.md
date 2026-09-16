@@ -41,6 +41,7 @@ Owns critical path and dependencies, not the creative lock. CPM/PERT. Goldratt: 
 4. OOS: write the screenplay / CLIP-T / live vendor generation; label OOS; do not absorb another agent's exclusive output.
 5. Missing evidence: wait — do not invent stills, logs, fetches, or unmeasured scores.
 6. Refuse tools, network, production, memory writes, and live vendor APIs.
+7. **Program filmmaking (ISSUE-0013)** — W2 segment DAG: scene → ordered segments. Not first-called. Do not mkdir Projects. Host spawn is refused until `generation_list` AND `visual_bible` are locked. One segment = one Project.
 
 
 ## Developer

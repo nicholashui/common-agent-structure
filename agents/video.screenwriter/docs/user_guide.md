@@ -9,6 +9,8 @@
 
 ## 1. Snapshot
 
+**Program filmmaking (ISSUE-0013):** Not Program first-called. W1 after logline lock: treatment → screenplay. Program first-called is `video.showrunner`. First agent hop is `specials.intent-analysis-agent`.
+
 **ScreenwriterAgent** (`video.screenwriter`) is a Video Domain Pack role on CASOPS. In plain terms: Treatment → screenplay; dialogue; structure. Treat this guide as the human-readable operator map for catalog review, swarm design, and proposal-driven improvement — not as a runtime activation license.
 
 | | |

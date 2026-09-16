@@ -26,6 +26,7 @@ def install_error_handler(app: FastAPI) -> None:
                 "error": {
                     "code": exc.code.value,
                     "message": exc.external_message,
+                    "detail": exc.operator_message,
                     "containment_required": exc.containment_required,
                 }
             },

@@ -2,6 +2,8 @@
 
 # Intent Analysis Agent — Operator & Design Guide
 
+**Program filmmaking (ISSUE-0013):** First Program **agent hop** (`create-program` → this agent). Not first-called. Next is `specials.general-creative-agent` then `video.showrunner`. Child Auto Pilot still uses this hop then `video.promptengineer`.
+
 > **Who this is for:** operators, pack authors, swarm designers, and reviewers working in `common-agent-swarm-ops`.
 > **What you will get:** mission clarity, when-to-use guidance, collaboration map, CASOPS operating steps, improvement path, and a trust-tiered source map.
 >

@@ -109,6 +109,12 @@ describe("SPEC_V3 client coverage", () => {
     await client.listPrograms();
     await client.createProgram({ code: "demo", name: "Demo" });
     await client.getProgram("demo");
+    await client.saveProgram("demo", { name: "Demo" });
+    await client.spawnProgram("demo");
+    await client.finishProgram("demo", "color");
+    await client.listProgramComms("demo");
+    await client.stampProgramComms("demo");
+    await client.getProgramSequence("demo");
 
     const normalized = seen.map((row) =>
       row
@@ -153,5 +159,11 @@ describe("SPEC_V3 client coverage", () => {
     expect(normalized).toContain("GET /api/v3/programs");
     expect(normalized).toContain("POST /api/v3/programs");
     expect(normalized).toContain("GET /api/v3/programs/{program_id}");
+    expect(normalized).toContain("PUT /api/v3/programs/{program_id}");
+    expect(normalized).toContain("POST /api/v3/programs/{program_id}/spawn");
+    expect(normalized).toContain("POST /api/v3/programs/{program_id}/finish");
+    expect(normalized).toContain("GET /api/v3/programs/{program_id}/comms");
+    expect(normalized).toContain("POST /api/v3/programs/{program_id}/comms");
+    expect(normalized).toContain("GET /api/v3/programs/{program_id}/sequence");
   });
 });

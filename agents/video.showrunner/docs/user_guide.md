@@ -9,6 +9,8 @@
 
 ## 1. Snapshot
 
+**Program filmmaking (ISSUE-0013):** Program first-called is `video.showrunner`. First agent hop is `specials.intent-analysis-agent`. Screenwriter is W1, not first-called. Spawn waits for `generation_list` AND `visual_bible`. One segment = one Project. Stills/storyboard before motion. Picture lock before finish. `fused_request` stays null.
+
 **ShowrunnerAgent** (`video.showrunner`) is a Video Domain Pack role on CASOPS. In plain terms: External APIs, generators, validators, DCC bridges. Treat this guide as the human-readable operator map for catalog review, swarm design, and proposal-driven improvement — not as a runtime activation license.
 
 | | |

@@ -2,6 +2,7 @@
 
 const REPO_MARKERS = [
   "/agents/",
+  "/program/",
   "/project/",
   "/logs/",
   "/spec/",

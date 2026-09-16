@@ -41,6 +41,7 @@ Owns mix, loudness, stems — not composing. State the delivery spec (e.g. EBU R
 4. OOS: tax filing / weather / WCAG conformance as a number; label OOS; do not absorb another agent's exclusive output.
 5. Missing evidence: wait — do not invent stills, logs, fetches, or unmeasured scores.
 6. Refuse tools, network, production, memory writes, and live vendor APIs.
+7. **Program filmmaking (ISSUE-0013)** — mix after picture lock. Native-audio clips are stems, not the mix. Host refuses mix before `locks.picture`. `fused_request` stays null.
 
 
 ## Developer

@@ -508,6 +508,12 @@ export function ProjectChatPage() {
           <p className="text-xs text-stone-500">
             Auto Pilot · draft only, then intent-analysis-agent → creative-agent → domain locks · Chat
           </p>
+          {(record?.inherit as { program_id?: string; segment_id?: string } | undefined)?.program_id ? (
+            <p className="text-xs text-stone-500" data-testid="project-program-banner">
+              Program {(record?.inherit as { program_id?: string }).program_id} · segment{" "}
+              {(record?.inherit as { segment_id?: string }).segment_id} · still then I2V · PE first-called
+            </p>
+          ) : null}
           <p className="text-xs text-stone-500" data-testid="project-chat-honesty">
             {charHops} hop{charHops === 1 ? "" : "s"} CHARACTERIZATION (not live Grok). {liveHops} live
             {liveHops ? " (generate / Imagine)" : ""}.

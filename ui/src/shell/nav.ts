@@ -56,6 +56,12 @@ export const PROJECT_INSTANCE_TABS = [
   { id: "chat", label: "Chat", path: "chat" },
 ] as const;
 
+export const PROGRAM_INSTANCE_TABS = [
+  { id: "overview", label: "Overview", path: "" },
+  { id: "workflow", label: "Workflow", path: "workflow" },
+  { id: "chat", label: "Chat", path: "chat" },
+] as const;
+
 export function locationLabel(pathname: string): string {
   const trimmed = pathname.replace(/\/+$/, "") || "/";
   if (trimmed === "/") {
@@ -66,7 +72,13 @@ export function locationLabel(pathname: string): string {
   }
   if (trimmed.startsWith("/programs/")) {
     const rest = decodeURIComponent(trimmed.slice("/programs/".length));
-    const id = rest.split("/")[0] || "";
+    const [id, tab] = rest.split("/");
+    if (tab === "chat") {
+      return `${PROGRAM_MENU_LABEL} / ${id} / Chat`;
+    }
+    if (tab === "workflow") {
+      return `${PROGRAM_MENU_LABEL} / ${id} / Workflow`;
+    }
     return id ? `${PROGRAM_MENU_LABEL} / ${id}` : PROGRAM_MENU_LABEL;
   }
   if (trimmed === "/programs") {

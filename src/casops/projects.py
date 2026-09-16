@@ -590,6 +590,11 @@ def write_project(root: Path, payload: dict[str, Any], *, dry_run: bool, create:
     }
     if start is not None:
         record["start"] = start
+    inherit = payload.get("inherit") if isinstance(payload.get("inherit"), dict) else None
+    if inherit is not None:
+        record["inherit"] = inherit
+        if isinstance(record.get("start"), dict):
+            record["start"] = {**record["start"], "inherit": inherit}
     if dry_run:
         record["saved"] = False
         record["dry_run"] = True

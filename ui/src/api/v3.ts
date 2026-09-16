@@ -31,6 +31,8 @@ import {
   type AgentFilesResponse,
   type ProgramSummary,
   type ProgramRecord,
+  type ProgramComms,
+  type ProgramSequencePayload,
   type ProjectSummary,
   type ProjectCatalogItem,
   type ProjectSuggestion,
@@ -337,6 +339,34 @@ export function createClient(options: ClientOptions) {
       }),
     getProgram: (programId: string) =>
       bound("getProgram", { program_id: programId }) as Promise<ProgramRecord>,
+    saveProgram: (programId: string, body: Record<string, unknown>) =>
+      request<ProgramRecord>("PUT", "/api/v3/programs/{program_id}", {
+        params: { program_id: programId },
+        body,
+        reasonFallback: "save program",
+      }),
+    spawnProgram: (programId: string) =>
+      request<ProgramRecord>("POST", "/api/v3/programs/{program_id}/spawn", {
+        params: { program_id: programId },
+        body: {},
+        reasonFallback: "spawn program projects",
+      }),
+    finishProgram: (programId: string, kind: string) =>
+      request<ProgramRecord>("POST", "/api/v3/programs/{program_id}/finish", {
+        params: { program_id: programId },
+        body: { kind },
+        reasonFallback: "program finish",
+      }),
+    listProgramComms: (programId: string) =>
+      bound("listProgramComms", { program_id: programId }) as Promise<ProgramComms>,
+    stampProgramComms: (programId: string) =>
+      request<ProgramComms>("POST", "/api/v3/programs/{program_id}/comms", {
+        params: { program_id: programId },
+        body: {},
+        reasonFallback: "stamp program comms",
+      }),
+    getProgramSequence: (programId: string) =>
+      bound("getProgramSequence", { program_id: programId }) as Promise<ProgramSequencePayload>,
     listProjects: () => bound("listProjects", {}) as Promise<{ projects: ProjectSummary[] }>,
     getProjectCatalog: () => bound("getProjectCatalog", {}) as Promise<{ group: string; items: ProjectCatalogItem[] }>,
     suggestProject: (body: Record<string, string>) =>

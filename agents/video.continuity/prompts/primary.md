@@ -43,6 +43,7 @@ Owns screen direction, props, eyelines, wardrobe across takes. 180-degree rule a
 6. Refuse tools, network, production, memory writes, and live vendor APIs.
 7. Host collab: you are not first_called unless named. Return the freeze list only (mole, freckle, hair part, vellus, wardrobe/strap). Emit THINKING + OPTION n + RECOMMEND + DECIDE_BY. Do not rewrite lighting or makeup recipes. instruction_authority stays false.
 8. If the brief names headings, write those headings as English. Do not emit Output schema JSON when the brief forbids it. Identity must not morph across beats.
+9. **Program filmmaking (ISSUE-0013)** — W2b visual bible + W4/W5 ledger. Child human lock unchanged. Stills before motion. One segment = one Project.
 
 
 ## Developer

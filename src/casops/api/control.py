@@ -46,7 +46,17 @@ from casops.projects import (
     suggest_prompt,
     write_project,
 )
-from casops.programs import list_programs, programs_root_for, read_program, write_program
+from casops.program_comms import load_program_comms, stamp_program_comms
+from casops.programs import (
+    apply_finish,
+    compile_program_sequence,
+    list_programs,
+    program_sequence,
+    programs_root_for,
+    read_program,
+    spawn_child_projects,
+    write_program,
+)
 from casops.cache.manager import CacheManager
 from casops.memory.store import ConsolidationWorker, MemoryService
 from casops.plugins.validate import validate_registry
@@ -131,6 +141,12 @@ COMPANION_V3_PATHS: tuple[tuple[str, str], ...] = (
     ("GET", "/api/v3/programs"),
     ("POST", "/api/v3/programs"),
     ("GET", "/api/v3/programs/{program_id}"),
+    ("PUT", "/api/v3/programs/{program_id}"),
+    ("POST", "/api/v3/programs/{program_id}/spawn"),
+    ("POST", "/api/v3/programs/{program_id}/finish"),
+    ("GET", "/api/v3/programs/{program_id}/comms"),
+    ("POST", "/api/v3/programs/{program_id}/comms"),
+    ("GET", "/api/v3/programs/{program_id}/sequence"),
     ("GET", "/api/v3/swarms"),
     ("GET", "/api/v3/swarms/{swarm_id}"),
     ("GET", "/api/v3/swarms/{swarm_id}/roster"),
@@ -694,6 +710,64 @@ def create_control_plane(
     @app.get("/api/v3/programs/{program_id}")
     def program_get(program_id: str) -> dict[str, Any]:
         return read_program(state.programs_root, program_id)
+
+    @app.put("/api/v3/programs/{program_id}")
+    def program_put(request: Request, program_id: str, body: dict[str, Any]) -> dict[str, Any]:
+        if getattr(request.state, "actor", None) is ActorClass.agent_runtime:
+            raise CasopsError(ErrorCode.IMP_SELF_APPROVAL)
+        payload = dict(body if isinstance(body, dict) else {})
+        payload["code"] = program_id
+        if not payload.get("name"):
+            payload["name"] = read_program(state.programs_root, program_id).get("name") or program_id
+        return write_program(
+            state.programs_root,
+            payload,
+            dry_run=bool(getattr(request.state, "dry_run", False)),
+            create=False,
+        )
+
+    @app.post("/api/v3/programs/{program_id}/spawn")
+    def program_spawn(request: Request, program_id: str) -> dict[str, Any]:
+        if getattr(request.state, "actor", None) is ActorClass.agent_runtime:
+            raise CasopsError(ErrorCode.IMP_SELF_APPROVAL)
+        return spawn_child_projects(
+            state.programs_root,
+            state.projects_root,
+            program_id,
+            dry_run=bool(getattr(request.state, "dry_run", False)),
+        )
+
+    @app.post("/api/v3/programs/{program_id}/finish")
+    def program_finish(request: Request, program_id: str, body: dict[str, Any]) -> dict[str, Any]:
+        if getattr(request.state, "actor", None) is ActorClass.agent_runtime:
+            raise CasopsError(ErrorCode.IMP_SELF_APPROVAL)
+        kind = str((body or {}).get("kind") or (body or {}).get("action") or "")
+        return apply_finish(
+            state.programs_root,
+            program_id,
+            kind,
+            dry_run=bool(getattr(request.state, "dry_run", False)),
+        )
+
+    @app.get("/api/v3/programs/{program_id}/comms")
+    def program_comms_get(program_id: str) -> dict[str, Any]:
+        return load_program_comms(state.programs_root, program_id)
+
+    @app.post("/api/v3/programs/{program_id}/comms")
+    def program_comms_post(request: Request, program_id: str) -> dict[str, Any]:
+        if getattr(request.state, "actor", None) is ActorClass.agent_runtime:
+            raise CasopsError(ErrorCode.IMP_SELF_APPROVAL)
+        return stamp_program_comms(
+            state.programs_root,
+            program_id,
+            dry_run=bool(getattr(request.state, "dry_run", False)),
+        )
+
+    @app.get("/api/v3/programs/{program_id}/sequence")
+    def program_sequence_get(program_id: str) -> dict[str, Any]:
+        record = read_program(state.programs_root, program_id)
+        compiled = compile_program_sequence(record)
+        return {"sequence": program_sequence(record), "compile": compiled}
 
     @app.get("/api/v3/projects")
     def project_list() -> dict[str, Any]:

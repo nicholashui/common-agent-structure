@@ -1,5 +1,7 @@
 # Project — user guide
 
+When a Project is a Program child (ISSUE-0013), it is **one segment / one clip**. Program first-called stays `video.showrunner`. This Chat Auto Pilot still starts at `specials.intent-analysis-agent` then `video.promptengineer`, with the five human locks unchanged.
+
 1. Open **Project** (above Agent Swarm). Fill name, brief, audience, duration, outlets, risk.
 2. **Suggest sub-workflow** ranks templates A–J and scales S1–S7, then asks `video.planner` which to use. That choice is the *one* workflow for the project. CHARACTERIZATION, not an eval PASS.
 3. Confirm. Uncheck **Dry-run** to write `project/<name>/`. The designer opens with only **Create Project**.

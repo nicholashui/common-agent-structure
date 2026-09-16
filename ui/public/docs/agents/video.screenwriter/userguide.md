@@ -2,6 +2,8 @@
 
 # ScreenwriterAgent — Operator & Design Guide
 
+**Program filmmaking (ISSUE-0013):** Not Program first-called. W1 after logline lock: treatment → screenplay. Program first-called is `video.showrunner`. First agent hop is `specials.intent-analysis-agent`.
+
 > **Who this is for:** operators, pack authors, swarm designers, and reviewers working in `common-agent-swarm-ops`.
 > **What you will get:** mission clarity, when-to-use guidance, collaboration map, CASOPS operating steps, improvement path, and a trust-tiered source map.
 >

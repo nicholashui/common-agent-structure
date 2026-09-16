@@ -13,6 +13,9 @@ describe("displayRelativePath", () => {
     expect(displayRelativePath("/Users/me/common-agent-structure/project/asain-beauty")).toBe(
       "project/asain-beauty",
     );
+    expect(displayRelativePath("C:/Project/common-agent-structure/program/film/generation-list.yaml")).toBe(
+      "program/film/generation-list.yaml",
+    );
     expect(displayRelativePath("/docs/userguide.md")).toBe("docs/userguide.md");
     expect(displayRelativePath("spec/grok_imagine_operation_guide.md")).toBe(
       "spec/grok_imagine_operation_guide.md",

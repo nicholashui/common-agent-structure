@@ -43,8 +43,10 @@ export function ProgramNewPage() {
         <DryRunControl />
       </div>
       <p className="mb-4 text-sm text-stone-500">
-        Program Code is lowercase English with no spaces. Save writes{" "}
-        <span className="font-mono">program/&lt;code&gt;</span>.
+        Program Code is lowercase English with no spaces. Only Code and Name on this form.
+        Save writes <span className="font-mono">program/&lt;code&gt;</span>. Filmmaking (ISSUE-0013)
+        starts after save: first hop <span className="font-mono">specials.intent-analysis-agent</span>,
+        first-called <span className="font-mono">video.showrunner</span>.
       </p>
       <ErrorBanner error={error} />
       <form className="grid max-w-xl gap-4" onSubmit={(event) => void onSave(event)}>
