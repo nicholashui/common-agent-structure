@@ -57,14 +57,14 @@ def test_live_create_list_and_get(tmp_path: Path) -> None:
     )
     assert created.status_code == 200
     payload = created.json()
-    assert payload["id"] == "springlaunch"
-    assert payload["code"] == "springlaunch"
+    assert payload["id"] == "spring-launch"
+    assert payload["code"] == "spring-launch"
     assert payload["name"] == "Spring Launch"
     assert payload["first_called"] == "video.showrunner"
     listed = client.get("/api/v3/programs")
     assert listed.status_code == 200
-    assert any(row["id"] == "springlaunch" for row in listed.json()["programs"])
-    got = client.get("/api/v3/programs/springlaunch")
+    assert any(row["id"] == "spring-launch" for row in listed.json()["programs"])
+    got = client.get("/api/v3/programs/spring-launch")
     assert got.status_code == 200
     assert got.json()["name"] == "Spring Launch"
     assert got.json()["locks"]["visual_bible"] is False

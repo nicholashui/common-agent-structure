@@ -14,7 +14,7 @@ from typing import Any
 from casops.errors.codes import ErrorCode
 from casops.errors.exceptions import CasopsError
 
-CODE_RE = re.compile(r"^[a-z][a-z0-9]{0,47}$")
+CODE_RE = re.compile(r"^[a-z](?:[a-z0-9-]{0,46}[a-z0-9])?$")
 TOKEN_RE = re.compile(r"^[a-z][a-z0-9-]{0,46}$")
 
 PHASES: tuple[str, ...] = ("w0", "w1", "w2", "w3", "w4", "w5", "w6")
@@ -55,8 +55,9 @@ def normalize_code(value: str) -> str:
     original = value or ""
     if ".." in original or "/" in original.replace("\\", "/") or "\\" in original:
         raise CasopsError(ErrorCode.INH_STRUCTURE_MISMATCH, detail="invalid program code")
-    raw = original.strip().lower().replace(" ", "")
-    raw = re.sub(r"[^a-z0-9]+", "", raw)
+    raw = original.strip().lower().replace(" ", "-")
+    raw = re.sub(r"[^a-z0-9-]+", "", raw)
+    raw = re.sub(r"-{2,}", "-", raw).strip("-")
     if not raw or not CODE_RE.match(raw):
         raise CasopsError(ErrorCode.INH_STRUCTURE_MISMATCH, detail="invalid program code")
     return raw
@@ -441,6 +442,10 @@ def _merge_program(existing: dict[str, Any] | None, payload: dict[str, Any], cod
         delivery = dict(base.get("delivery") or {})
         delivery.update(payload["delivery"])
         base["delivery"] = delivery
+    if isinstance(payload.get("graph"), dict):
+        base["graph"] = payload["graph"]
+    elif existing and isinstance(existing.get("graph"), dict):
+        base["graph"] = existing["graph"]
     base["id"] = code
     base["code"] = code
     base["name"] = title
@@ -547,6 +552,10 @@ def write_program(root: Path, payload: dict[str, Any], *, dry_run: bool, create:
     persist = {key: value for key, value in record.items() if key not in {"saved", "dry_run"}}
     (folder / "program.json").write_text(json.dumps(persist, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     _write_sidecars(folder, persist)
+    if create:
+        from casops.program_comms import stamp_program_comms
+
+        stamp_program_comms(root, code, dry_run=False)
     record["saved"] = True
     record["dry_run"] = False
     return record

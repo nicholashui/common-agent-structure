@@ -30,7 +30,8 @@ from casops.project_sample_walkthrough import FIRST_CALLED as CLIP_FIRST_CALLED
 
 def test_normalize_code_lowercase_no_spaces() -> None:
     assert normalize_code("SpringLaunch") == "springlaunch"
-    assert normalize_code("spring launch") == "springlaunch"
+    assert normalize_code("spring launch") == "spring-launch"
+    assert normalize_code("night-letter") == "night-letter"
     with pytest.raises(CasopsError):
         normalize_code("")
     with pytest.raises(CasopsError):
@@ -50,16 +51,16 @@ def test_write_and_list_program(tmp_path: Path) -> None:
     assert dry["locks"]["generation_list"] is False
     assert not (root / "alpha" / "program.json").is_file()
     saved = write_program(root, {"code": "Alpha One", "name": "Alpha One"}, dry_run=False, create=True)
-    assert saved["id"] == "alphaone"
-    assert saved["code"] == "alphaone"
+    assert saved["id"] == "alpha-one"
+    assert saved["code"] == "alpha-one"
     assert saved["name"] == "Alpha One"
-    assert saved["folder"] == "program/alphaone"
+    assert saved["folder"] == "program/alpha-one"
     assert saved["first_called"] == "video.showrunner"
-    assert (root / "alphaone" / "program.json").is_file()
-    assert (root / "alphaone" / "generation-list.yaml").is_file()
+    assert (root / "alpha-one" / "program.json").is_file()
+    assert (root / "alpha-one" / "generation-list.yaml").is_file()
     rows = list_programs(root)
-    assert rows[0]["id"] == "alphaone"
-    loaded = read_program(root, "alphaone")
+    assert rows[0]["id"] == "alpha-one"
+    loaded = read_program(root, "alpha-one")
     assert loaded["name"] == "Alpha One"
     assert loaded["locks"]["picture"] is False
     assert loaded["generation_list"]["scenes"] == []
@@ -167,6 +168,17 @@ def test_program_sequence_fused_request_null(tmp_path: Path) -> None:
     assert compiled["fused_request"] is None
 
 
+def test_program_graph_from_hops_has_create_program_and_showrunner() -> None:
+    from casops.program_comms import graph_from_hops
+
+    graph = graph_from_hops()
+    ids = [node["id"] for node in graph["nodes"]]
+    assert "create-program" in ids
+    assert "video.showrunner" in ids
+    assert "specials.intent-analysis-agent" in ids
+    assert graph["edges"]
+
+
 def test_program_hops_showrunner_not_screenwriter() -> None:
     hops = characterization_hops()
     assert hops[0]["to"] == FIRST_AGENT_HOP
@@ -183,6 +195,38 @@ def test_program_hops_showrunner_not_screenwriter() -> None:
         "video.continuity",
     ]
     assert CHILD_FIRST_CALLED == CLIP_FIRST_CALLED
+
+
+def test_repo_sample_program_nightletter() -> None:
+    root = Path(__file__).resolve().parents[2] / "program"
+    loaded = read_program(root, "night-letter")
+    assert loaded["name"] == "Night Letter"
+    assert loaded["code"] == "night-letter"
+    assert loaded["first_called"] == "video.showrunner"
+    assert loaded["first_agent_hop"] == FIRST_AGENT_HOP
+    segs = loaded["generation_list"]["scenes"][0]["segments"]
+    assert len(segs) == 2
+    from casops.program_comms import load_program_comms
+
+    hops = load_program_comms(root, "night-letter")["items"]
+    assert hops[0]["to"] == FIRST_AGENT_HOP
+    assert (root / "night-letter" / "storyboard" / "sega.md").is_file()
+    assert (root / "night-letter" / "bible" / "cast.md").is_file()
+    blob = (root / "night-letter" / "program.json").read_text(encoding="utf-8")
+    for probe in GOLD_BODY_PROBES:
+        assert probe not in blob
+    assert not (root / "nightletter" / "program.json").is_file()
+    assert not (root / "start" / "program.json").is_file()
+
+
+def test_create_stamps_chat_hops(tmp_path: Path) -> None:
+    root = tmp_path / "program"
+    write_program(root, {"code": "gamma", "name": "Gamma"}, dry_run=False, create=True)
+    from casops.program_comms import load_program_comms
+
+    hops = load_program_comms(root, "gamma")["items"]
+    assert hops[0]["to"] == FIRST_AGENT_HOP
+    assert (root / "gamma" / "comms.json").is_file()
 
 
 def test_sample_never_written(tmp_path: Path) -> None:

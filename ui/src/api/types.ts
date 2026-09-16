@@ -17,6 +17,7 @@ export interface MutationContract {
 export interface CasopsErrorBody {
   code: string;
   message: string;
+  detail?: string;
   containment_required?: boolean;
 }
 
@@ -25,6 +26,7 @@ export class CasopsHttpError extends Error {
   readonly code: string;
   readonly containment_required: boolean;
   readonly body: unknown;
+  readonly detail?: string;
 
   constructor(status: number, body: unknown) {
     const error =
@@ -32,13 +34,17 @@ export class CasopsHttpError extends Error {
         ? (body as { error: CasopsErrorBody }).error
         : undefined;
     const code = error?.code || `HTTP_${status}`;
-    const message = error?.message || (typeof body === "string" ? body : "Request rejected");
+    const detail = error?.detail;
+    const message =
+      (detail && detail !== error?.message ? `${error?.message || "Request rejected"} (${detail})` : error?.message) ||
+      (typeof body === "string" ? body : "Request rejected");
     super(message);
     this.name = "CasopsHttpError";
     this.status = status;
     this.code = code;
     this.containment_required = Boolean(error?.containment_required);
     this.body = body;
+    this.detail = detail;
   }
 }
 
@@ -429,6 +435,7 @@ export interface ProgramRecord {
   storyboard_ref?: string;
   delivery_ref?: string;
   cut_state?: string;
+  graph?: { nodes?: unknown[]; edges?: unknown[] };
   preview?: { slug: string; scene_id: string; segment_id: string; purpose?: string }[];
   spawned?: number;
   finish?: string;
@@ -443,6 +450,7 @@ export interface ProgramCommItem {
   text?: string;
   pass_id?: string;
   live?: boolean;
+  created_at?: string;
 }
 
 export interface ProgramComms {
@@ -453,6 +461,7 @@ export interface ProgramComms {
   child_human_locks?: string[];
   honesty?: string;
   items?: ProgramCommItem[];
+  graph?: { nodes?: unknown[]; edges?: unknown[] };
 }
 
 export interface ProgramSequencePayload {

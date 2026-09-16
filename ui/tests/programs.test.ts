@@ -1,27 +1,45 @@
 import { describe, expect, it } from "vitest";
-import { PROGRAM_INSTANCE_TABS, PROGRAM_MENU_LABEL, locationLabel } from "../src/shell/nav";
+import { PROGRAM_INSTANCE_TABS, PROGRAM_MENU_LABEL, locationLabel, programIdFromPath } from "../src/shell/nav";
 import {
   PROGRAM_CHILD_FIRST_CALLED,
   PROGRAM_CHILD_HUMAN_LOCKS,
   PROGRAM_FIRST_AGENT_HOP,
   PROGRAM_FIRST_CALLED,
   PROGRAM_LOCKS,
+  PROGRAM_LOCK_LABELS,
   PROGRAM_PHASES,
   CUT_STATES,
+  OVERVIEW_PANELS,
   finishReady,
   generationListLockable,
   normalizeProgramCode,
   programCodeValid,
+  programNavLabel,
+  resolveOverviewPanel,
   spawnMissingLocks,
   spawnReady,
 } from "../src/lib/programs";
 import { displayRelativePath } from "../src/lib/paths";
+import { displayPartyName, hopKindLabel } from "../src/lib/projectChat";
+
+describe("program chat matches project chat hop design", () => {
+  it("names Create Program like Create Project and hop kinds", () => {
+    expect(displayPartyName("create-program")).toBe("Create Program");
+    expect(displayPartyName("create-project")).toBe("Create Project");
+    expect(displayPartyName("human_operator")).toBe("Human");
+    expect(hopKindLabel("instruction")).toBe("instruction");
+    expect(hopKindLabel("induce")).toBe("induce");
+    expect(hopKindLabel("return")).toBe("return");
+  });
+});
 
 describe("program code", () => {
   it("keeps lowercase english with no spaces", () => {
-    expect(normalizeProgramCode("Spring Launch")).toBe("springlaunch");
+    expect(normalizeProgramCode("Spring Launch")).toBe("spring-launch");
+    expect(normalizeProgramCode("night-letter")).toBe("night-letter");
     expect(normalizeProgramCode("ABC_def")).toBe("abcdef");
     expect(programCodeValid("springlaunch")).toBe(true);
+    expect(programCodeValid("night-letter")).toBe(true);
     expect(programCodeValid("1bad")).toBe(false);
     expect(programCodeValid("")).toBe(false);
   });
@@ -31,13 +49,23 @@ describe("program nav", () => {
   it("places New program under Program", () => {
     expect(PROGRAM_MENU_LABEL).toBe("Program");
     expect(locationLabel("/programs/new")).toBe("Program / New program");
-    expect(locationLabel("/programs/springlaunch")).toBe("Program / springlaunch");
+    expect(locationLabel("/programs/springlaunch")).toBe("Program / springlaunch / Start");
+    expect(locationLabel("/programs/springlaunch/start")).toBe("Program / springlaunch / Start");
     expect(locationLabel("/programs/springlaunch/chat")).toBe("Program / springlaunch / Chat");
     expect(locationLabel("/programs/springlaunch/workflow")).toBe("Program / springlaunch / Workflow");
+    expect(locationLabel("/programs/springlaunch/overview")).toBe("Program / springlaunch / Overflow");
+    expect(locationLabel("/programs/night-letter/overflow")).toBe("Program / night-letter / Overflow");
+    expect(programIdFromPath("/programs/night-letter/chat")).toBe("night-letter");
+    expect(programIdFromPath("/programs/new")).toBe("");
+    expect(programNavLabel({ name: "Night Letter", code: "night-letter", id: "night-letter" })).toBe(
+      "Night Letter",
+    );
+    expect(programNavLabel({ name: "Spring Launch", id: "spring-launch" })).toBe("Spring Launch");
   });
 
-  it("exposes overview workflow chat tabs", () => {
-    expect(PROGRAM_INSTANCE_TABS.map((item) => item.id)).toEqual(["overview", "workflow", "chat"]);
+  it("exposes Start Workflow Chat Overflow tabs (U1–U4)", () => {
+    expect(PROGRAM_INSTANCE_TABS.map((item) => item.id)).toEqual(["start", "workflow", "chat", "overflow"]);
+    expect(PROGRAM_INSTANCE_TABS.map((item) => item.label)).toEqual(["Start", "Workflow", "Chat", "Overflow"]);
   });
 });
 
@@ -94,7 +122,33 @@ describe("ISSUE-0013 program filmmaking state", () => {
     expect([...CUT_STATES]).toEqual(["assembly", "rough", "fine", "picture_lock"]);
     expect(PROGRAM_LOCKS).toContain("visual_bible");
     expect(PROGRAM_LOCKS).toContain("storyboard");
+    expect(PROGRAM_LOCK_LABELS.generation_list).toBe("Generation list");
+    expect(PROGRAM_LOCK_LABELS.visual_bible).toBe("Visual bible");
     expect(spawnReady({ generation_list: true })).toBe(false);
     expect(finishReady({ picture: false })).toBe(false);
+  });
+});
+
+describe("overview one function one UI", () => {
+  it("lists seven functions and defaults to generation list", () => {
+    expect(OVERVIEW_PANELS.map((item) => item.id)).toEqual([
+      "phase",
+      "locks",
+      "list",
+      "spawn",
+      "bible",
+      "cut",
+      "delivery",
+    ]);
+    expect(resolveOverviewPanel(null)).toBe("list");
+    expect(resolveOverviewPanel("")).toBe("list");
+    expect(resolveOverviewPanel("nope")).toBe("list");
+    expect(resolveOverviewPanel("phase")).toBe("phase");
+    expect(resolveOverviewPanel("locks")).toBe("locks");
+    expect(resolveOverviewPanel("spawn")).toBe("spawn");
+    expect(resolveOverviewPanel("bible")).toBe("bible");
+    expect(resolveOverviewPanel("cut")).toBe("cut");
+    expect(resolveOverviewPanel("delivery")).toBe("delivery");
+    expect(new Set(OVERVIEW_PANELS.map((item) => item.id)).size).toBe(OVERVIEW_PANELS.length);
   });
 });

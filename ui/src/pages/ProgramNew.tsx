@@ -43,7 +43,7 @@ export function ProgramNewPage() {
         <DryRunControl />
       </div>
       <p className="mb-4 text-sm text-stone-500">
-        Program Code is lowercase English with no spaces. Only Code and Name on this form.
+        Program Code is lowercase English, digits, and hyphens; no spaces. Only Code and Name on this form.
         Save writes <span className="font-mono">program/&lt;code&gt;</span>. Filmmaking (ISSUE-0013)
         starts after save: first hop <span className="font-mono">specials.intent-analysis-agent</span>,
         first-called <span className="font-mono">video.showrunner</span>.
@@ -52,7 +52,7 @@ export function ProgramNewPage() {
       <form className="grid max-w-xl gap-4" onSubmit={(event) => void onSave(event)}>
         <Card>
           <div className="grid gap-3">
-            <Field label="Program Code" hint="lowercase letters and digits, no spaces">
+            <Field label="Program Code" hint="lowercase letters, digits, hyphens; no spaces">
               <input
                 className={`${inputClass} font-mono`}
                 value={code}
@@ -60,7 +60,7 @@ export function ProgramNewPage() {
                 autoComplete="off"
                 spellCheck={false}
                 data-testid="program-code"
-                placeholder="e.g. springlaunch"
+                placeholder="e.g. night-letter"
                 onChange={(event) => setCode(normalizeProgramCode(event.target.value))}
               />
             </Field>

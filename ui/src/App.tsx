@@ -26,6 +26,9 @@ import { WorkflowPage } from "./pages/Workflow";
 import { HelpPage } from "./pages/Help";
 import { ProgramNewPage } from "./pages/ProgramNew";
 import { ProgramViewPage } from "./pages/ProgramView";
+import { ProgramOverviewPage } from "./pages/ProgramOverview";
+import { ProgramChatPage } from "./pages/ProgramChat";
+import { ProgramFlowPage } from "./pages/ProgramFlow";
 import { ProjectNewPage } from "./pages/ProjectNew";
 import { ProjectStartPage } from "./pages/ProjectStart";
 import { ProjectFlowPage } from "./pages/ProjectFlow";
@@ -45,8 +48,11 @@ export function App() {
             <Route element={<AppShell />}>
               <Route path="/" element={<FleetPage />} />
               <Route path="/programs/new" element={<ProgramNewPage />} />
-              <Route path="/programs/:programId/chat" element={<ProgramViewPage />} />
-              <Route path="/programs/:programId/workflow" element={<ProgramViewPage />} />
+              <Route path="/programs/:programId/chat" element={<ProgramChatPage />} />
+              <Route path="/programs/:programId/workflow" element={<ProgramFlowPage />} />
+              <Route path="/programs/:programId/overview" element={<ProgramOverviewPage />} />
+              <Route path="/programs/:programId/overflow" element={<ProgramOverviewPage />} />
+              <Route path="/programs/:programId/start" element={<ProgramViewPage />} />
               <Route path="/programs/:programId" element={<ProgramViewPage />} />
               <Route path="/programs" element={<ProgramNewPage />} />
               <Route path="/projects/new" element={<ProjectNewPage />} />

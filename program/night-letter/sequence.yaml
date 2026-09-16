@@ -1,0 +1,31 @@
+{
+  "kind": "sequence",
+  "schema_version": "casops.program.sequence.v1",
+  "program_id": "night-letter",
+  "generation_unit": "clip",
+  "one_pass_one_clip": true,
+  "concat": "post",
+  "fused_request": null,
+  "clips": [
+    {
+      "clip_id": "night-letter-sega",
+      "order": 1,
+      "path": "project/night-letter-sega/output/night-letter-sega-canonical.yaml",
+      "role": "clip",
+      "logline": "Wide establish of the night street",
+      "scene_id": "sc1",
+      "segment_id": "sega"
+    },
+    {
+      "clip_id": "night-letter-segb",
+      "order": 2,
+      "path": "project/night-letter-segb/output/night-letter-segb-canonical.yaml",
+      "role": "clip",
+      "logline": "Close on the letter",
+      "scene_id": "sc1",
+      "segment_id": "segb"
+    }
+  ],
+  "honesty": "CHARACTERIZATION",
+  "note": "Each clip compiles alone. Concatenation is post. Not one Imagine request."
+}

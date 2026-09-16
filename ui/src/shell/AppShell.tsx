@@ -47,6 +47,7 @@ import { ThemeToggle } from "../theme/ThemeToggle";
 import { Link, NavLink, Outlet, useLocation, useNavigate, useParams } from "react-router-dom";
 import { RecoveryBanner } from "../components/RecoveryBanner";
 import { StatusPill } from "../components/StatusPill";
+import { programNavLabel } from "../lib/programs";
 import { useSession } from "../state/session";
 import {
   AGENT_MENU_LABEL,
@@ -54,6 +55,7 @@ import {
   HOME_LABEL,
   PROGRAM_MENU_LABEL,
   PROJECT_MENU_LABEL,
+  PROGRAM_INSTANCE_TABS,
   PROJECT_INSTANCE_TABS,
   WORKFLOW_MENU_LABEL,
   WORKFLOW_TABS,
@@ -61,6 +63,7 @@ import {
   APP_NAME,
   loadNavChrome,
   locationLabel,
+  programIdFromPath,
   projectIdFromPath,
   saveNavChrome,
   toggleOpenProject,
@@ -151,6 +154,26 @@ export function AppShell() {
   const programOn = location.pathname.startsWith("/programs");
   const projectOn = location.pathname.startsWith("/projects");
   const currentProjectId = projectIdFromPath(location.pathname);
+  const currentProgramId = programIdFromPath(location.pathname);
+
+  useEffect(() => {
+    if (!currentProgramId) {
+      return;
+    }
+    setChrome((current) => {
+      const openPrograms = current.openPrograms ?? [];
+      if (openPrograms.includes(currentProgramId) && current.programOpen) {
+        return current;
+      }
+      return {
+        ...current,
+        programOpen: true,
+        openPrograms: openPrograms.includes(currentProgramId)
+          ? openPrograms
+          : [...openPrograms, currentProgramId],
+      };
+    });
+  }, [currentProgramId]);
 
   function closeMobile() {
     setMobileOpen(false);
@@ -293,33 +316,83 @@ export function AppShell() {
                   <SideLink key="new-program" to="/programs/new" end collapsed={collapsed} icon={Blocks} inset testId="nav-program-new" onClick={closeMobile}>
                     New program
                   </SideLink>,
-                  ...programs.flatMap((item) => [
-                    <SideLink
-                      key={item.id}
-                      to={`/programs/${encodeURIComponent(item.id)}`}
-                      end
-                      collapsed={collapsed}
-                      icon={Blocks}
-                      inset
-                      testId={`nav-program-${item.id}`}
-                      onClick={closeMobile}
-                    >
-                      {item.name || item.code || item.id}
-                    </SideLink>,
-                    ...(item.project_ids || []).map((childId) => (
-                      <SideLink
-                        key={`${item.id}-${childId}`}
-                        to={`/projects/${encodeURIComponent(childId)}/chat`}
-                        collapsed={collapsed}
-                        icon={Blocks}
-                        inset
-                        testId={`nav-program-child-${childId}`}
-                        onClick={closeMobile}
+                  ...programs.flatMap((item) => {
+                    const href = `/programs/${encodeURIComponent(item.id)}`;
+                    const title = programNavLabel(item);
+                    const open = (chrome.openPrograms ?? []).includes(item.id);
+                    const active = currentProgramId === item.id;
+                    const kids = open
+                      ? PROGRAM_INSTANCE_TABS.map((tab) => (
+                          <SideLink
+                            key={`${item.id}-${tab.id}`}
+                            to={tab.path ? `${href}/${tab.path}` : href}
+                            end={tab.id === "start"}
+                            collapsed={collapsed}
+                            icon={
+                              tab.id === "chat"
+                                ? MessageSquare
+                                : tab.id === "start"
+                                  ? Flag
+                                  : tab.id === "workflow"
+                                    ? GitBranch
+                                    : Home
+                            }
+                            inset
+                            insetDepth={2}
+                            testId={`nav-program-${item.id}-${tab.id}`}
+                            onClick={closeMobile}
+                          >
+                            {tab.label}
+                          </SideLink>
+                        ))
+                      : [];
+                    return [
+                      <button
+                        key={item.id}
+                        type="button"
+                        className={`${navClass(active && !collapsed, collapsed)} ml-3`}
+                        aria-expanded={open}
+                        title={title}
+                        data-testid={`nav-program-${item.id}`}
+                        onClick={() => {
+                          navigate(href);
+                          closeMobile();
+                        }}
                       >
-                        {childId}
-                      </SideLink>
-                    )),
-                  ]),
+                        <Blocks size={16} className="shrink-0" />
+                        {collapsed ? <span className="sr-only">{title}</span> : <span className="flex-1 truncate text-left">{title}</span>}
+                        {collapsed ? null : (
+                          <span
+                            role="button"
+                            tabIndex={0}
+                            className="rounded p-0.5 text-stone-400 hover:text-stone-700"
+                            data-testid={`nav-program-${item.id}-toggle`}
+                            aria-label={open ? `Collapse ${title}` : `Expand ${title}`}
+                            onClick={(event) => {
+                              event.stopPropagation();
+                              setChrome((current) => ({
+                                ...current,
+                                openPrograms: toggleOpenProject(current.openPrograms ?? [], item.id),
+                              }));
+                            }}
+                            onKeyDown={(event) => {
+                              if (event.key === "Enter" || event.key === " ") {
+                                event.preventDefault();
+                                event.stopPropagation();
+                                setChrome((current) => ({
+                                  ...current,
+                                  openPrograms: toggleOpenProject(current.openPrograms ?? [], item.id),
+                                }));
+                              }
+                            }}
+                          >
+                            <ChevronDown size={14} className={`transition-transform ${open ? "" : "-rotate-90"}`} />
+                          </span>
+                        )}
+                      </button>,
+                      ...kids,
+                    ];
+                  }),
                 ]
               : null}
             <button

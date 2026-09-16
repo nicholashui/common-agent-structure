@@ -126,6 +126,64 @@ def _now() -> str:
     return datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
 
 
+def graph_from_hops(items: list[dict[str, Any]] | None = None) -> dict[str, Any]:
+    hops = list(items or characterization_hops())
+    nodes: dict[str, dict[str, Any]] = {
+        "create-program": {
+            "id": "create-program",
+            "type": "start",
+            "position": {"x": 40, "y": 80},
+            "deletable": False,
+            "data": {"kind": "start", "label": "Create Program"},
+        }
+    }
+    edges: list[dict[str, Any]] = []
+    seen_edges: set[tuple[str, str]] = set()
+    for hop in hops:
+        src = str(hop.get("from") or "")
+        dst = str(hop.get("to") or "")
+        if not src or not dst:
+            continue
+        for party in (src, dst):
+            if party in nodes:
+                continue
+            if party in {"human_operator", "human-ask"}:
+                kind = "human"
+                label = "Human"
+                agent_id = None
+            elif party == "create-program":
+                continue
+            elif party in {"output-prompt", "host_service"}:
+                kind = "output" if party == "output-prompt" else "agent"
+                label = "Output" if party == "output-prompt" else "Host"
+                agent_id = None if party == "output-prompt" else party
+            else:
+                kind = "agent"
+                label = party.split(".")[-1]
+                agent_id = party
+            nodes[party] = {
+                "id": party,
+                "type": kind if kind in {"start", "output", "human"} else "agent",
+                "position": {"x": 80, "y": 80},
+                "data": {"kind": kind, "label": label, "agent_id": agent_id},
+            }
+        key = (src, dst)
+        if key in seen_edges or src == dst:
+            continue
+        seen_edges.add(key)
+        edges.append(
+            {
+                "id": f"e-{src}-{dst}-{len(edges)}",
+                "source": src,
+                "target": dst,
+                "sourceHandle": "next",
+                "targetHandle": "in",
+                "label": str(hop.get("kind") or ""),
+            }
+        )
+    return {"nodes": list(nodes.values()), "edges": edges}
+
+
 def characterization_hops() -> list[dict[str, Any]]:
     items: list[dict[str, Any]] = []
     for index, hop in enumerate(PROGRAM_HOPS, start=1):
@@ -157,6 +215,7 @@ def load_program_comms(root: Path, code: str) -> dict[str, Any]:
             payload["child_first_called"] = CHILD_FIRST_CALLED
             payload["child_human_locks"] = list(CHILD_HUMAN_LOCKS)
             payload["honesty"] = "CHARACTERIZATION"
+            payload["graph"] = graph_from_hops(payload.get("items") if isinstance(payload.get("items"), list) else None)
             return payload
     items = characterization_hops()
     return {
@@ -168,6 +227,7 @@ def load_program_comms(root: Path, code: str) -> dict[str, Any]:
         "honesty": "CHARACTERIZATION",
         "live": False,
         "items": items,
+        "graph": graph_from_hops(items),
     }
 
 
@@ -182,6 +242,7 @@ def stamp_program_comms(root: Path, code: str, *, dry_run: bool) -> dict[str, An
     payload["child_human_locks"] = list(CHILD_HUMAN_LOCKS)
     payload["honesty"] = "CHARACTERIZATION"
     payload["program_id"] = record["code"]
+    payload["graph"] = graph_from_hops(payload.get("items") if isinstance(payload.get("items"), list) else None)
     if dry_run:
         payload["dry_run"] = True
         payload["saved"] = False

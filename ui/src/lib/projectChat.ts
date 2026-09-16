@@ -18,6 +18,7 @@ export type ChatHop = ChatTimeItem & {
 const PARTY_NAMES: Record<string, string> = {
   human_operator: "Human",
   "create-project": "Create Project",
+  "create-program": "Create Program",
   "output-prompt": "Output",
   "human-ask": "Human",
   host_service: "Host",

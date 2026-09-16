@@ -14,6 +14,10 @@ export function ProjectCommsPanel({
   onInstruction,
   onLaunch,
   launching,
+  chatBase,
+  workflowHref,
+  launchLabel,
+  hint,
 }: {
   projectId: string;
   items: ProjectCommItem[];
@@ -22,7 +26,13 @@ export function ProjectCommsPanel({
   onInstruction: (value: string) => void;
   onLaunch: () => void;
   launching: boolean;
+  chatBase?: string;
+  workflowHref?: string;
+  launchLabel?: string;
+  hint?: string;
 }) {
+  const chatRoot = chatBase || `/projects/${encodeURIComponent(projectId)}/chat`;
+  const flowHref = workflowHref || `/projects/${encodeURIComponent(projectId)}/workflow`;
   const navigate = useNavigate();
   const focusRef = useRef<HTMLElement | null>(null);
 
@@ -38,12 +48,8 @@ export function ProjectCommsPanel({
   }, [focusId, items]);
 
   function openTag(tag: ProjectCommTag) {
-    const href = `/projects/${encodeURIComponent(tag.project_id)}/chat?comm=${encodeURIComponent(tag.comm_id)}`;
-    if (tag.project_id !== projectId) {
-      navigate(href);
-      return;
-    }
-    navigate(href, { replace: true });
+    const href = `${chatRoot}?comm=${encodeURIComponent(tag.comm_id)}`;
+    navigate(href, { replace: tag.project_id === projectId || !tag.project_id });
   }
 
   return (
@@ -54,7 +60,8 @@ export function ProjectCommsPanel({
       <div className="border-b border-stone-100 p-3">
         <h3 className="text-sm font-semibold text-stone-900">Node communications</h3>
         <p className="mt-1 text-[11px] text-stone-500">
-          Auto Pilot: Create Project is the draft only. intent-analysis-agent and creative-agent frame the run. Domain experts ask; you select options.
+          {hint
+            || "Auto Pilot: Create Project is the draft only. intent-analysis-agent and creative-agent frame the run. Domain experts ask; you select options."}
         </p>
         <label className="mt-2 flex flex-col gap-1 text-[11px] font-medium text-stone-600">
           First instruction
@@ -70,7 +77,7 @@ export function ProjectCommsPanel({
         </label>
         <div className="mt-2">
           <PrimaryButton type="button" data-testid="project-run" disabled={launching} onClick={onLaunch}>
-            {launching ? "Running…" : "Launch workflow"}
+            {launching ? "Running…" : launchLabel || "Launch workflow"}
           </PrimaryButton>
         </div>
       </div>
@@ -103,7 +110,7 @@ export function ProjectCommsPanel({
                       data-testid={`project-comm-output-agent-${item.id}`}
                       onClick={() =>
                         navigate(
-                          `/projects/${encodeURIComponent(projectId)}/chat?comm=${encodeURIComponent(sourceId)}`,
+                          `${chatRoot}?comm=${encodeURIComponent(sourceId)}`,
                         )
                       }
                     >
@@ -127,7 +134,7 @@ export function ProjectCommsPanel({
                   owner={item.from}
                   onPick={() =>
                     navigate(
-                      `/projects/${encodeURIComponent(projectId)}/chat?comm=${encodeURIComponent(item.id)}`,
+                      `${chatRoot}?comm=${encodeURIComponent(item.id)}`,
                     )
                   }
                 />
@@ -142,7 +149,7 @@ export function ProjectCommsPanel({
       <div className="border-t border-stone-100 p-2">
         <GhostButton
           type="button"
-          onClick={() => navigate(`/projects/${encodeURIComponent(projectId)}/workflow`)}
+          onClick={() => navigate(flowHref)}
         >
           Clear highlight
         </GhostButton>

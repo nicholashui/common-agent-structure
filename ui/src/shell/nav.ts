@@ -57,9 +57,10 @@ export const PROJECT_INSTANCE_TABS = [
 ] as const;
 
 export const PROGRAM_INSTANCE_TABS = [
-  { id: "overview", label: "Overview", path: "" },
+  { id: "start", label: "Start", path: "" },
   { id: "workflow", label: "Workflow", path: "workflow" },
   { id: "chat", label: "Chat", path: "chat" },
+  { id: "overflow", label: "Overflow", path: "overview" },
 ] as const;
 
 export function locationLabel(pathname: string): string {
@@ -79,7 +80,13 @@ export function locationLabel(pathname: string): string {
     if (tab === "workflow") {
       return `${PROGRAM_MENU_LABEL} / ${id} / Workflow`;
     }
-    return id ? `${PROGRAM_MENU_LABEL} / ${id}` : PROGRAM_MENU_LABEL;
+    if (tab === "overview" || tab === "overflow") {
+      return `${PROGRAM_MENU_LABEL} / ${id} / Overflow`;
+    }
+    if (tab === "start") {
+      return `${PROGRAM_MENU_LABEL} / ${id} / Start`;
+    }
+    return id ? `${PROGRAM_MENU_LABEL} / ${id} / Start` : PROGRAM_MENU_LABEL;
   }
   if (trimmed === "/programs") {
     return PROGRAM_MENU_LABEL;
@@ -160,6 +167,7 @@ export interface NavChrome {
   programOpen: boolean;
   projectOpen: boolean;
   openProjects: string[];
+  openPrograms: string[];
 }
 
 export function defaultNavChrome(): NavChrome {
@@ -170,6 +178,7 @@ export function defaultNavChrome(): NavChrome {
     programOpen: false,
     projectOpen: false,
     openProjects: [],
+    openPrograms: [],
   };
 }
 
@@ -198,6 +207,21 @@ export function ensureOpenProject(ids: string[], id: string): string[] {
     return ids;
   }
   return [...ids, id];
+}
+
+export function programIdFromPath(pathname: string): string {
+  const trimmed = pathname.replace(/\/+$/, "") || "/";
+  const match = /^\/programs\/([^/]+)/.exec(trimmed);
+  if (!match) {
+    return "";
+  }
+  let id = match[1];
+  try {
+    id = decodeURIComponent(id);
+  } catch {
+    // keep the raw segment
+  }
+  return id === "new" ? "" : id;
 }
 
 export function projectIdFromPath(pathname: string): string {
@@ -230,6 +254,7 @@ export function loadNavChrome(): NavChrome {
       programOpen: Boolean(parsed.programOpen),
       projectOpen: Boolean(parsed.projectOpen),
       openProjects: parseOpenProjects(parsed.openProjects),
+      openPrograms: parseOpenProjects(parsed.openPrograms),
     };
   } catch {
     return fallback;

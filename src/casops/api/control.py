@@ -709,7 +709,13 @@ def create_control_plane(
 
     @app.get("/api/v3/programs/{program_id}")
     def program_get(program_id: str) -> dict[str, Any]:
-        return read_program(state.programs_root, program_id)
+        record = read_program(state.programs_root, program_id)
+        if not isinstance(record.get("graph"), dict) or not record["graph"].get("nodes"):
+            from casops.program_comms import graph_from_hops, load_program_comms
+
+            comms = load_program_comms(state.programs_root, program_id)
+            record["graph"] = comms.get("graph") or graph_from_hops(comms.get("items"))
+        return record
 
     @app.put("/api/v3/programs/{program_id}")
     def program_put(request: Request, program_id: str, body: dict[str, Any]) -> dict[str, Any]:
