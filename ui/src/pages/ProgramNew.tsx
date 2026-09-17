@@ -60,7 +60,7 @@ export function ProgramNewPage() {
                 autoComplete="off"
                 spellCheck={false}
                 data-testid="program-code"
-                placeholder="e.g. night-letter"
+                placeholder="e.g. spring-launch"
                 onChange={(event) => setCode(normalizeProgramCode(event.target.value))}
               />
             </Field>

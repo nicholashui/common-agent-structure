@@ -1,0 +1,395 @@
+{
+  "program_id": "facial-expression",
+  "first_called": "video.showrunner",
+  "first_agent_hop": "specials.intent-analysis-agent",
+  "child_first_called": "video.promptengineer",
+  "child_human_locks": [
+    "video.promptengineer",
+    "video.director",
+    "video.cinematographer",
+    "video.mua_makeup",
+    "video.continuity"
+  ],
+  "honesty": "CHARACTERIZATION",
+  "live": false,
+  "items": [
+    {
+      "id": "comm-0001",
+      "from": "create-program",
+      "to": "specials.intent-analysis-agent",
+      "kind": "instruction",
+      "text": "Decode the Program brief. OPTIONS only. Do not write pages or shot grammar.",
+      "pass_id": "w0",
+      "live": false,
+      "honesty": "CHARACTERIZATION",
+      "created_at": "2026-09-17T01:22:09Z"
+    },
+    {
+      "id": "comm-0002",
+      "from": "specials.intent-analysis-agent",
+      "to": "create-program",
+      "kind": "return",
+      "text": "Locution read. Next agent is specials.general-creative-agent, then video.showrunner.",
+      "pass_id": "w0",
+      "live": false,
+      "honesty": "CHARACTERIZATION",
+      "created_at": "2026-09-17T01:22:09Z"
+    },
+    {
+      "id": "comm-0003",
+      "from": "specials.intent-analysis-agent",
+      "to": "specials.general-creative-agent",
+      "kind": "induce",
+      "text": "induce_call: specials.general-creative-agent because campaign framework. DECIDE_BY: video.showrunner.",
+      "pass_id": "w0",
+      "live": false,
+      "honesty": "CHARACTERIZATION",
+      "created_at": "2026-09-17T01:22:09Z"
+    },
+    {
+      "id": "comm-0004",
+      "from": "specials.general-creative-agent",
+      "to": "video.showrunner",
+      "kind": "return",
+      "text": "Three OPTIONS for the film framework. Do not write the generator novel. DECIDE_BY: video.showrunner.",
+      "pass_id": "w0",
+      "live": false,
+      "honesty": "CHARACTERIZATION",
+      "created_at": "2026-09-17T01:22:09Z"
+    },
+    {
+      "id": "comm-0005",
+      "from": "video.showrunner",
+      "to": "specials.general-creative-agent",
+      "kind": "choice",
+      "text": "Showrunner is Program first-called. Screenwriter is W1 after logline lock.",
+      "pass_id": "w0",
+      "live": false,
+      "honesty": "CHARACTERIZATION",
+      "created_at": "2026-09-17T01:22:09Z"
+    },
+    {
+      "id": "comm-0006",
+      "from": "create-program",
+      "to": "video.showrunner",
+      "kind": "instruction",
+      "text": "You are first-called for this Program. Own bible/arc. Induce video.screenwriter only after logline lock.",
+      "pass_id": "w0",
+      "live": false,
+      "honesty": "CHARACTERIZATION",
+      "created_at": "2026-09-17T01:22:09Z"
+    },
+    {
+      "id": "comm-0007",
+      "from": "video.showrunner",
+      "to": "video.screenwriter",
+      "kind": "induce",
+      "text": "induce_call: video.screenwriter because W1 treatment then screenplay. Not first-called.",
+      "pass_id": "w1",
+      "live": false,
+      "honesty": "CHARACTERIZATION",
+      "created_at": "2026-09-17T01:22:09Z"
+    },
+    {
+      "id": "comm-0008",
+      "from": "video.director",
+      "to": "video.planner",
+      "kind": "induce",
+      "text": "W2 generation list: scene → segments. One segment = one Project. Do not spawn yet.",
+      "pass_id": "w2",
+      "live": false,
+      "honesty": "CHARACTERIZATION",
+      "created_at": "2026-09-17T01:22:09Z"
+    },
+    {
+      "id": "comm-0009",
+      "from": "video.storyboard",
+      "to": "video.showrunner",
+      "kind": "return",
+      "text": "Boards before motion. Visual bible lock required with generation_list before spawn.",
+      "pass_id": "w2",
+      "live": false,
+      "honesty": "CHARACTERIZATION",
+      "created_at": "2026-09-17T01:22:09Z"
+    },
+    {
+      "id": "comm-0010",
+      "from": "host_service",
+      "to": "video.editor",
+      "kind": "instruction",
+      "text": "Cut pass only after takes exist. Order: assembly → rough → fine → picture lock. Then color/mix/VFX/titles. fused_request stays null.",
+      "pass_id": "w5",
+      "live": false,
+      "honesty": "CHARACTERIZATION",
+      "created_at": "2026-09-17T01:22:09Z"
+    },
+    {
+      "id": "comm-0011",
+      "from": "video.editor",
+      "to": "host_service",
+      "kind": "return",
+      "text": "cut_state: assembly",
+      "pass_id": "w5",
+      "live": false,
+      "honesty": "CHARACTERIZATION",
+      "created_at": "2026-09-17T01:22:09Z"
+    },
+    {
+      "id": "comm-0012",
+      "from": "video.editor",
+      "to": "host_service",
+      "kind": "return",
+      "text": "cut_state: rough",
+      "pass_id": "w5",
+      "live": false,
+      "honesty": "CHARACTERIZATION",
+      "created_at": "2026-09-17T01:22:09Z"
+    },
+    {
+      "id": "comm-0013",
+      "from": "video.editor",
+      "to": "host_service",
+      "kind": "return",
+      "text": "cut_state: fine",
+      "pass_id": "w5",
+      "live": false,
+      "honesty": "CHARACTERIZATION",
+      "created_at": "2026-09-17T01:22:09Z"
+    },
+    {
+      "id": "comm-0014",
+      "from": "video.editor",
+      "to": "host_service",
+      "kind": "return",
+      "text": "cut_state: picture_lock. Finish refused before this lock.",
+      "pass_id": "w5",
+      "live": false,
+      "honesty": "CHARACTERIZATION",
+      "created_at": "2026-09-17T01:22:09Z"
+    }
+  ],
+  "graph": {
+    "nodes": [
+      {
+        "id": "create-program",
+        "type": "start",
+        "position": {
+          "x": 40,
+          "y": 80
+        },
+        "deletable": false,
+        "data": {
+          "kind": "start",
+          "label": "Create Program"
+        }
+      },
+      {
+        "id": "specials.intent-analysis-agent",
+        "type": "agent",
+        "position": {
+          "x": 80,
+          "y": 80
+        },
+        "data": {
+          "kind": "agent",
+          "label": "intent-analysis-agent",
+          "agent_id": "specials.intent-analysis-agent"
+        }
+      },
+      {
+        "id": "specials.general-creative-agent",
+        "type": "agent",
+        "position": {
+          "x": 80,
+          "y": 80
+        },
+        "data": {
+          "kind": "agent",
+          "label": "general-creative-agent",
+          "agent_id": "specials.general-creative-agent"
+        }
+      },
+      {
+        "id": "video.showrunner",
+        "type": "agent",
+        "position": {
+          "x": 80,
+          "y": 80
+        },
+        "data": {
+          "kind": "agent",
+          "label": "showrunner",
+          "agent_id": "video.showrunner"
+        }
+      },
+      {
+        "id": "video.screenwriter",
+        "type": "agent",
+        "position": {
+          "x": 80,
+          "y": 80
+        },
+        "data": {
+          "kind": "agent",
+          "label": "screenwriter",
+          "agent_id": "video.screenwriter"
+        }
+      },
+      {
+        "id": "video.director",
+        "type": "agent",
+        "position": {
+          "x": 80,
+          "y": 80
+        },
+        "data": {
+          "kind": "agent",
+          "label": "director",
+          "agent_id": "video.director"
+        }
+      },
+      {
+        "id": "video.planner",
+        "type": "agent",
+        "position": {
+          "x": 80,
+          "y": 80
+        },
+        "data": {
+          "kind": "agent",
+          "label": "planner",
+          "agent_id": "video.planner"
+        }
+      },
+      {
+        "id": "video.storyboard",
+        "type": "agent",
+        "position": {
+          "x": 80,
+          "y": 80
+        },
+        "data": {
+          "kind": "agent",
+          "label": "storyboard",
+          "agent_id": "video.storyboard"
+        }
+      },
+      {
+        "id": "host_service",
+        "type": "agent",
+        "position": {
+          "x": 80,
+          "y": 80
+        },
+        "data": {
+          "kind": "agent",
+          "label": "Host",
+          "agent_id": "host_service"
+        }
+      },
+      {
+        "id": "video.editor",
+        "type": "agent",
+        "position": {
+          "x": 80,
+          "y": 80
+        },
+        "data": {
+          "kind": "agent",
+          "label": "editor",
+          "agent_id": "video.editor"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "id": "e-create-program-specials.intent-analysis-agent-0",
+        "source": "create-program",
+        "target": "specials.intent-analysis-agent",
+        "sourceHandle": "next",
+        "targetHandle": "in",
+        "label": "instruction"
+      },
+      {
+        "id": "e-specials.intent-analysis-agent-create-program-1",
+        "source": "specials.intent-analysis-agent",
+        "target": "create-program",
+        "sourceHandle": "next",
+        "targetHandle": "in",
+        "label": "return"
+      },
+      {
+        "id": "e-specials.intent-analysis-agent-specials.general-creative-agent-2",
+        "source": "specials.intent-analysis-agent",
+        "target": "specials.general-creative-agent",
+        "sourceHandle": "next",
+        "targetHandle": "in",
+        "label": "induce"
+      },
+      {
+        "id": "e-specials.general-creative-agent-video.showrunner-3",
+        "source": "specials.general-creative-agent",
+        "target": "video.showrunner",
+        "sourceHandle": "next",
+        "targetHandle": "in",
+        "label": "return"
+      },
+      {
+        "id": "e-video.showrunner-specials.general-creative-agent-4",
+        "source": "video.showrunner",
+        "target": "specials.general-creative-agent",
+        "sourceHandle": "next",
+        "targetHandle": "in",
+        "label": "choice"
+      },
+      {
+        "id": "e-create-program-video.showrunner-5",
+        "source": "create-program",
+        "target": "video.showrunner",
+        "sourceHandle": "next",
+        "targetHandle": "in",
+        "label": "instruction"
+      },
+      {
+        "id": "e-video.showrunner-video.screenwriter-6",
+        "source": "video.showrunner",
+        "target": "video.screenwriter",
+        "sourceHandle": "next",
+        "targetHandle": "in",
+        "label": "induce"
+      },
+      {
+        "id": "e-video.director-video.planner-7",
+        "source": "video.director",
+        "target": "video.planner",
+        "sourceHandle": "next",
+        "targetHandle": "in",
+        "label": "induce"
+      },
+      {
+        "id": "e-video.storyboard-video.showrunner-8",
+        "source": "video.storyboard",
+        "target": "video.showrunner",
+        "sourceHandle": "next",
+        "targetHandle": "in",
+        "label": "return"
+      },
+      {
+        "id": "e-host_service-video.editor-9",
+        "source": "host_service",
+        "target": "video.editor",
+        "sourceHandle": "next",
+        "targetHandle": "in",
+        "label": "instruction"
+      },
+      {
+        "id": "e-video.editor-host_service-10",
+        "source": "video.editor",
+        "target": "host_service",
+        "sourceHandle": "next",
+        "targetHandle": "in",
+        "label": "return"
+      }
+    ]
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "schema_version": "casops.program.v1",
+  "id": "facial-expression",
+  "code": "facial-expression",
+  "name": "Facial Expression",
+  "honesty": "CHARACTERIZATION",
+  "first_called": "video.showrunner",
+  "first_agent_hop": "specials.intent-analysis-agent",
+  "phase": "w0",
+  "locks": {
+    "logline": false,
+    "pages": false,
+    "generation_list": false,
+    "visual_bible": false,
+    "storyboard": false,
+    "picture": false,
+    "delivery": false
+  },
+  "generation_list": {
+    "scenes": []
+  },
+  "project_ids": [],
+  "cut_state": "assembly",
+  "generation_list_ref": "program/facial-expression/generation-list.yaml",
+  "sequence_ref": "program/facial-expression/sequence.yaml",
+  "bible_ref": "program/facial-expression/bible/",
+  "storyboard_ref": "program/facial-expression/storyboard/",
+  "delivery_ref": "program/facial-expression/delivery/",
+  "delivery": {
+    "runtime_target_s": null,
+    "aspect_ratio": null,
+    "frame_rate_fps": 24
+  },
+  "created_at": "2026-09-17T01:22:09Z",
+  "updated_at": "2026-09-17T01:22:09Z",
+  "folder": "program/facial-expression",
+  "production_activation": false,
+  "allowed_tools": []
+}

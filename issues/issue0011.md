@@ -23,7 +23,7 @@ Chat-spine domain experts plus PE:
 
 ## Work
 
-- Add `prompts/operation_guide_house_rules.md` (or a short block in `prompts/primary.md`) citing `spec/*_operation_guide.md`.
+- Add `prompts/operation_guide_house_rules.md` (or a short block in `prompts/primary.md`) citing `spec/*_operation_guide.md` (includes `spec/wan_operation_guide.md`).
 - Declare skill `casops.skill.video.operation-guide` in `skills/bindings.json` with `host_permission: false`.
 - Do not change Auto Pilot hop counts or five human ASK_HUMAN roles.
 - Do not paste `sample/` bodies into agent files.

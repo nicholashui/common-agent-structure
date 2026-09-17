@@ -31,7 +31,7 @@ def test_grok_still_front_loads_subject() -> None:
 
 def test_fail_closed_dialect_preview_has_no_request() -> None:
     clip = clip_from_walkthrough(walkthrough_module("asain-beauty"))
-    for tag in ("seedance", "ltx", "hailuo", "gpt-image"):
+    for tag in ("seedance", "ltx", "hailuo", "gpt-image", "wan"):
         profile = profile_for_tag(tag)
         compiled = compile_clip(clip, profile["profile_id"])
         assert compiled["status"] == "blocked"
@@ -53,3 +53,20 @@ def test_dialect_prompts_seedance_is_structured() -> None:
     dialect = dialect_prompts(clip, "seedance")
     assert "[Subject]" in dialect["motion"]
     assert "[Camera]" in dialect["motion"]
+
+
+def test_wan_dialect_is_fail_closed_i2v_lock() -> None:
+    clip = clip_from_walkthrough(walkthrough_module("asain-beauty"))
+    dialect = dialect_prompts(clip, "wan")
+    assert dialect["still"]
+    assert "Keep the first-frame" in dialect["motion"]
+    assert "9:16" not in dialect["still"]
+    compiled = compile_clip(clip, "alibaba.wan-2.2.stub")
+    assert compiled["status"] == "blocked"
+    assert compiled["live"] is False
+    assert compiled["request"] == {}
+    assert compiled["guide"] == "spec/wan_operation_guide.md"
+    assert compiled["generator_tag"] == "wan"
+    profile = profile_for_tag("wan")
+    assert profile["live"] is False
+    assert "wan_operation_guide.md" in str(profile.get("notes") or "")

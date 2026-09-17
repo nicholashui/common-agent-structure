@@ -1,28 +1,29 @@
 {
   "profile_id": "alibaba.wan-2.2.stub",
-  "profile_revision": 1,
+  "profile_revision": 2,
   "live": false,
   "generator_tag": "wan",
+  "notes": "Operation guide spec/wan_operation_guide.md covers Wan 3.0 video and Wan 2.7 Image. This stub stays Wan 2.2 open-weights lineage. Fail-closed. first_frame/last_frame cannot mix with omni-reference. No negative-prompt box.",
   "identity": {
     "provider": "alibaba",
     "surface": "undeclared",
     "model_id": "wan-2.2",
-    "mode": "text_to_video"
+    "mode": "image_to_video"
   },
   "evidence": {
     "documentation_status": "unverified",
-    "documentation_checked_at": "2026-09-15",
-    "source_ids": [],
+    "documentation_checked_at": "2026-09-17",
+    "source_ids": ["spec/wan_operation_guide.md"],
     "execution_status": "not_tested",
     "execution_tested_at": null
   },
   "capabilities": {
     "text_prompt": true,
-    "image_references": "unknown",
-    "audio_generation": "unknown",
+    "image_references": true,
+    "audio_generation": true,
     "separate_audio_stems": "unknown",
-    "timestamp_prose": "unknown",
-    "exact_frame_timing": "unknown"
+    "timestamp_prose": true,
+    "exact_frame_timing": false
   },
   "validation": {
     "duration_rule": "endpoint_specific",

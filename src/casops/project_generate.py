@@ -96,7 +96,7 @@ GENERATOR_TAGS: list[dict[str, Any]] = [
         "label": "Wan 2.2",
         "engine": "wan",
         "live": False,
-        "why": "Declared tag. Host has not activated Wan.",
+        "why": "Declared tag. Fail-closed. Guide spec/wan_operation_guide.md (Wan 3.0 / Wan-Image). Stub is Wan 2.2 lineage; not live.",
     },
     {
         "id": "ltx",

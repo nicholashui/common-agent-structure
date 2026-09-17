@@ -142,7 +142,7 @@ Execute the craft step for **PromptEngineerAgent / GeneratorOperator (VA Domain 
 <!-- RETHINK_100:end -->
 
 ### Operation-guide house rules (ISSUE-0011)
-Follow spec/grok_imagine_operation_guide.md and the matching guide for the selected generator (seedance, ltx, minimax_h3, gpt_image). Duration, aspect, resolution, and model are **parameters**, not craft prose. Front-load the subject. I2V: still owns look; motion owns change only. One camera move per clip. No tag soup (8k / masterpiece). Host compiler emits vendor dialect. Skill is declared, not a live grant. No T3, network, plugins, or memory writes.
+Follow spec/grok_imagine_operation_guide.md and the matching guide for the selected generator (seedance, ltx, minimax_h3, gpt_image, wan). Duration, aspect, resolution, and model are **parameters**, not craft prose. Front-load the subject. Event first, art second. I2V: still owns look; motion describes change / amplitude only. One camera move per clip. No tag soup (8k / masterpiece). Wan: exclusions in the main prompt (no negative box); first_frame cannot mix with omni-reference. Host compiler emits vendor dialect. Skill is declared, not a live grant. No T3, network, plugins, or memory writes.
 
 ### Program filmmaking (ISSUE-0013)
 You are first-called on **child Project** Auto Pilot only, never on Program. Program first-called is `video.showrunner`. Program first agent hop is `specials.intent-analysis-agent`. Five human locks on the child (you, director, cinematographer, mua, continuity) stay unchanged. One segment = one Project = one clip pass. Stills before motion. `fused_request` stays null.

@@ -2274,7 +2274,8 @@ Every generator tag in `casops.project_generate.GENERATOR_TAGS` MUST have a **ca
 |---|---|---|
 | `grok-imagine` | Live Image 2.0 still then Video 1.5 I2V | Profile + compiler required. Mode `image_to_video`. |
 | `grok-image` | Live still only | Mode is not video; compile still from identity/look only. |
-| `kling`, `veo`, `seedance`, `sora`, `runway`, `luma`, `pika`, `hailuo`, `wan` | Declared, fail-closed | Backlog profiles. Compiler MUST return `unsupported` diagnostics, not a pretend request. |
+| `kling`, `veo`, `seedance`, `sora`, `runway`, `luma`, `pika`, `hailuo` | Declared, fail-closed | Backlog profiles. Compiler MUST return `unsupported` diagnostics, not a pretend request. |
+| `wan` | Declared, fail-closed | Guide `spec/wan_operation_guide.md` (Wan 3.0 / Wan-Image). Stub `alibaba.wan-2.2.stub`. Dialect preview only. Not live. |
 | `ltx` | Declared, fail-closed | Stub profile `lightricks.ltx-2.stub`. Tag and profile ship together. Not live. |
 
 **House rule:** The operator's CONTROL is the canonical object. Adapters may reorder, shorten, or split still vs motion (T7). They MUST NOT invent plot, wardrobe, or lighting. Dry-run remains the default.

@@ -4,4 +4,4 @@ description: Declared house rules from spec/*_operation_guide.md. Not a live too
 ---
 # Operation-guide skill (declared)
 
-ISSUE-0011. Cite the operation guides. Do not call vendors. host_permission remains false.
+ISSUE-0011. Cite the operation guides including spec/wan_operation_guide.md. Do not call vendors. host_permission remains false.

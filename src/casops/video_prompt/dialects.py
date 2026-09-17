@@ -12,6 +12,7 @@ GUIDE_BY_TAG: dict[str, str] = {
     "ltx": "spec/ltx_operation_guide.md",
     "hailuo": "spec/minimax_h3_operation_guide.md",
     "gpt-image": "spec/gpt_image_operation_guide.md",
+    "wan": "spec/wan_operation_guide.md",
 }
 
 PARAM_LEAK_RE = re.compile(
@@ -177,6 +178,30 @@ def dialect_prompts(clip: dict[str, Any], tag: str, *, constraints: str = "") ->
             if part
         )
         return {"still": strip_param_leaks(still), "motion": ""}
+    if tag == "wan":
+        still = "\n".join(
+            part
+            for part in (
+                lead or ident,
+                light,
+                "One dominant subject. Photoreal still. Do not animate.",
+                constraints,
+            )
+            if part
+        )
+        motion = "\n".join(
+            part
+            for part in (
+                "Keep the first-frame identity, clothing, background, and composition unchanged.",
+                beats,
+                f"Camera: {camera} — only one move. Do not orbit, reset, or cut." if camera else "Camera: locked-off. Do not orbit, reset, or cut.",
+                f"Sound: {audio}" if audio else "Sound: no dialogue, no music.",
+                "Lock: face, outfit, light direction stay unchanged.",
+                constraints,
+            )
+            if part
+        )
+        return {"still": strip_param_leaks(still), "motion": strip_param_leaks(motion)}
     still = ident
     motion = beats
     return {"still": strip_param_leaks(still), "motion": strip_param_leaks(motion)}

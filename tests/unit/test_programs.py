@@ -197,24 +197,9 @@ def test_program_hops_showrunner_not_screenwriter() -> None:
     assert CHILD_FIRST_CALLED == CLIP_FIRST_CALLED
 
 
-def test_repo_sample_program_nightletter() -> None:
+def test_repo_has_no_night_letter_or_start_program() -> None:
     root = Path(__file__).resolve().parents[2] / "program"
-    loaded = read_program(root, "night-letter")
-    assert loaded["name"] == "Night Letter"
-    assert loaded["code"] == "night-letter"
-    assert loaded["first_called"] == "video.showrunner"
-    assert loaded["first_agent_hop"] == FIRST_AGENT_HOP
-    segs = loaded["generation_list"]["scenes"][0]["segments"]
-    assert len(segs) == 2
-    from casops.program_comms import load_program_comms
-
-    hops = load_program_comms(root, "night-letter")["items"]
-    assert hops[0]["to"] == FIRST_AGENT_HOP
-    assert (root / "night-letter" / "storyboard" / "sega.md").is_file()
-    assert (root / "night-letter" / "bible" / "cast.md").is_file()
-    blob = (root / "night-letter" / "program.json").read_text(encoding="utf-8")
-    for probe in GOLD_BODY_PROBES:
-        assert probe not in blob
+    assert not (root / "night-letter" / "program.json").is_file()
     assert not (root / "nightletter" / "program.json").is_file()
     assert not (root / "start" / "program.json").is_file()
 
